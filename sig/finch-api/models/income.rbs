@@ -1,0 +1,57 @@
+module FinchAPI
+  module Models
+    type income =
+      {
+        amount: Integer?,
+        currency: String?,
+        effective_date: String?,
+        unit: FinchAPI::Models::Income::unit?
+      }
+
+    class Income < FinchAPI::BaseModel
+      attr_accessor amount: Integer?
+
+      attr_accessor currency: String?
+
+      attr_accessor effective_date: String?
+
+      attr_accessor unit: FinchAPI::Models::Income::unit?
+
+      def initialize:
+        (
+          amount: Integer?,
+          currency: String?,
+          effective_date: String?,
+          unit: FinchAPI::Models::Income::unit?
+        ) -> void
+        | (?FinchAPI::Models::income | FinchAPI::BaseModel data) -> void
+
+      def to_hash: -> FinchAPI::Models::income
+
+      type unit =
+        :yearly
+        | :quarterly
+        | :monthly
+        | :semi_monthly
+        | :bi_weekly
+        | :weekly
+        | :daily
+        | :hourly
+        | :fixed
+
+      class Unit < FinchAPI::Enum
+        YEARLY: :yearly
+        QUARTERLY: :quarterly
+        MONTHLY: :monthly
+        SEMI_MONTHLY: :semi_monthly
+        BI_WEEKLY: :bi_weekly
+        WEEKLY: :weekly
+        DAILY: :daily
+        HOURLY: :hourly
+        FIXED: :fixed
+
+        def self.values: -> ::Array[FinchAPI::Models::Income::unit]
+      end
+    end
+  end
+end

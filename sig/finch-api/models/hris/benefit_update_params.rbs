@@ -1,0 +1,26 @@
+module FinchAPI
+  module Models
+    module HRIS
+      type benefit_update_params =
+        { description: String } & FinchAPI::request_parameters
+
+      class BenefitUpdateParams < FinchAPI::BaseModel
+        extend FinchAPI::RequestParameters::Converter
+        include FinchAPI::RequestParameters
+
+        attr_reader description: String?
+
+        def description=: (String) -> String
+
+        def initialize:
+          (description: String, request_options: FinchAPI::request_opts) -> void
+          | (
+            ?FinchAPI::Models::HRIS::benefit_update_params
+            | FinchAPI::BaseModel data
+          ) -> void
+
+        def to_hash: -> FinchAPI::Models::HRIS::benefit_update_params
+      end
+    end
+  end
+end

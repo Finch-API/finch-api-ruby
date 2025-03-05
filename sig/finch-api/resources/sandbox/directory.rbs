@@ -1,0 +1,19 @@
+module FinchAPI
+  module Resources
+    class Sandbox
+      class Directory
+        def create:
+          (
+            ?FinchAPI::Models::Sandbox::DirectoryCreateParams
+            | ::Hash[Symbol, top] params
+          ) -> FinchAPI::Models::Sandbox::directory_create_response
+          | (
+            body: ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body],
+            request_options: FinchAPI::request_opts
+          ) -> FinchAPI::Models::Sandbox::directory_create_response
+
+        def initialize: (client: FinchAPI::Client) -> void
+      end
+    end
+  end
+end

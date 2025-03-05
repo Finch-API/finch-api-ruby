@@ -1,0 +1,23 @@
+module FinchAPI
+  module Models
+    module Sandbox
+      module Jobs
+        type configuration_update_params = {  } & FinchAPI::request_parameters
+
+        class ConfigurationUpdateParams < FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration
+          extend FinchAPI::RequestParameters::Converter
+          include FinchAPI::RequestParameters
+
+          def initialize:
+            (request_options: FinchAPI::request_opts) -> void
+            | (
+              ?FinchAPI::Models::Sandbox::Jobs::configuration_update_params
+              | FinchAPI::BaseModel data
+            ) -> void
+
+          def to_hash: -> FinchAPI::Models::Sandbox::Jobs::configuration_update_params
+        end
+      end
+    end
+  end
+end

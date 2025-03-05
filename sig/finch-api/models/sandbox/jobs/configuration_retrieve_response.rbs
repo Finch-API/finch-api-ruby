@@ -1,0 +1,12 @@
+module FinchAPI
+  module Models
+    module Sandbox
+      module Jobs
+        type configuration_retrieve_response =
+          ::Array[FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration]
+
+        ConfigurationRetrieveResponse: configuration_retrieve_response
+      end
+    end
+  end
+end

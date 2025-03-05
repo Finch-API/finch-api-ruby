@@ -1,0 +1,31 @@
+module FinchAPI
+  module Models
+    module HRIS
+      module Benefits
+        type individual_retrieve_many_benefits_params =
+          { individual_ids: String } & FinchAPI::request_parameters
+
+        class IndividualRetrieveManyBenefitsParams < FinchAPI::BaseModel
+          extend FinchAPI::RequestParameters::Converter
+          include FinchAPI::RequestParameters
+
+          attr_reader individual_ids: String?
+
+          def individual_ids=: (String) -> String
+
+          def initialize:
+            (
+              individual_ids: String,
+              request_options: FinchAPI::request_opts
+            ) -> void
+            | (
+              ?FinchAPI::Models::HRIS::Benefits::individual_retrieve_many_benefits_params
+              | FinchAPI::BaseModel data
+            ) -> void
+
+          def to_hash: -> FinchAPI::Models::HRIS::Benefits::individual_retrieve_many_benefits_params
+        end
+      end
+    end
+  end
+end

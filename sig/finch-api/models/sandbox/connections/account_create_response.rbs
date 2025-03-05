@@ -1,0 +1,63 @@
+module FinchAPI
+  module Models
+    module Sandbox
+      module Connections
+        type account_create_response =
+          {
+            access_token: String,
+            account_id: String,
+            authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateResponse::authentication_type,
+            company_id: String,
+            connection_id: String,
+            products: ::Array[String],
+            provider_id: String
+          }
+
+        class AccountCreateResponse < FinchAPI::BaseModel
+          attr_accessor access_token: String
+
+          attr_accessor account_id: String
+
+          attr_accessor authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateResponse::authentication_type
+
+          attr_accessor company_id: String
+
+          attr_accessor connection_id: String
+
+          attr_accessor products: ::Array[String]
+
+          attr_accessor provider_id: String
+
+          def initialize:
+            (
+              access_token: String,
+              account_id: String,
+              authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateResponse::authentication_type,
+              company_id: String,
+              connection_id: String,
+              products: ::Array[String],
+              provider_id: String
+            ) -> void
+            | (
+              ?FinchAPI::Models::Sandbox::Connections::account_create_response
+              | FinchAPI::BaseModel data
+            ) -> void
+
+          def to_hash: -> FinchAPI::Models::Sandbox::Connections::account_create_response
+
+          type authentication_type =
+            :credential | :api_token | :oauth | :assisted
+
+          class AuthenticationType < FinchAPI::Enum
+            CREDENTIAL: :credential
+            API_TOKEN: :api_token
+            OAUTH: :oauth
+            ASSISTED: :assisted
+
+            def self.values: -> ::Array[FinchAPI::Models::Sandbox::Connections::AccountCreateResponse::authentication_type]
+          end
+        end
+      end
+    end
+  end
+end

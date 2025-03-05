@@ -1,0 +1,31 @@
+module FinchAPI
+  module Models
+    module HRIS
+      module Benefits
+        type individual_unenroll_many_params =
+          { individual_ids: ::Array[String] } & FinchAPI::request_parameters
+
+        class IndividualUnenrollManyParams < FinchAPI::BaseModel
+          extend FinchAPI::RequestParameters::Converter
+          include FinchAPI::RequestParameters
+
+          attr_reader individual_ids: ::Array[String]?
+
+          def individual_ids=: (::Array[String]) -> ::Array[String]
+
+          def initialize:
+            (
+              individual_ids: ::Array[String],
+              request_options: FinchAPI::request_opts
+            ) -> void
+            | (
+              ?FinchAPI::Models::HRIS::Benefits::individual_unenroll_many_params
+              | FinchAPI::BaseModel data
+            ) -> void
+
+          def to_hash: -> FinchAPI::Models::HRIS::Benefits::individual_unenroll_many_params
+        end
+      end
+    end
+  end
+end

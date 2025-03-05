@@ -1,0 +1,31 @@
+module FinchAPI
+  module Resources
+    class Sandbox
+      class Jobs
+        class Configuration
+          def retrieve:
+            (
+              ?FinchAPI::Models::Sandbox::Jobs::ConfigurationRetrieveParams
+              | ::Hash[Symbol, top] params
+            ) -> FinchAPI::Models::Sandbox::Jobs::configuration_retrieve_response
+            | (
+              request_options: FinchAPI::request_opts
+            ) -> FinchAPI::Models::Sandbox::Jobs::configuration_retrieve_response
+
+          def update:
+            (
+              FinchAPI::Models::Sandbox::Jobs::ConfigurationUpdateParams
+              | ::Hash[Symbol, top] params
+            ) -> FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration
+            | (
+              completion_status: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::completion_status,
+              type: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::type_,
+              request_options: FinchAPI::request_opts
+            ) -> FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration
+
+          def initialize: (client: FinchAPI::Client) -> void
+        end
+      end
+    end
+  end
+end
