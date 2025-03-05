@@ -1,0 +1,21 @@
+module FinchAPI
+  module Models
+    module HRIS
+      type benefit_retrieve_params = {  } & FinchAPI::request_parameters
+
+      class BenefitRetrieveParams < FinchAPI::BaseModel
+        extend FinchAPI::RequestParameters::Converter
+        include FinchAPI::RequestParameters
+
+        def initialize:
+          (request_options: FinchAPI::request_opts) -> void
+          | (
+            ?FinchAPI::Models::HRIS::benefit_retrieve_params
+            | FinchAPI::BaseModel data
+          ) -> void
+
+        def to_hash: -> FinchAPI::Models::HRIS::benefit_retrieve_params
+      end
+    end
+  end
+end

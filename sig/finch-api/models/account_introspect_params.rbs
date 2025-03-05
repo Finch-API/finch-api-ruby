@@ -1,0 +1,19 @@
+module FinchAPI
+  module Models
+    type account_introspect_params = {  } & FinchAPI::request_parameters
+
+    class AccountIntrospectParams < FinchAPI::BaseModel
+      extend FinchAPI::RequestParameters::Converter
+      include FinchAPI::RequestParameters
+
+      def initialize:
+        (request_options: FinchAPI::request_opts) -> void
+        | (
+          ?FinchAPI::Models::account_introspect_params
+          | FinchAPI::BaseModel data
+        ) -> void
+
+      def to_hash: -> FinchAPI::Models::account_introspect_params
+    end
+  end
+end

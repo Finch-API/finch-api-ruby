@@ -1,0 +1,57 @@
+module FinchAPI
+  module Models
+    module Jobs
+      type automated_create_params =
+        {
+          type: FinchAPI::Models::Jobs::AutomatedCreateParams::type_,
+          params: FinchAPI::Models::Jobs::AutomatedCreateParams::Params
+        }
+        & FinchAPI::request_parameters
+
+      class AutomatedCreateParams < FinchAPI::BaseModel
+        extend FinchAPI::RequestParameters::Converter
+        include FinchAPI::RequestParameters
+
+        attr_accessor type: FinchAPI::Models::Jobs::AutomatedCreateParams::type_
+
+        attr_accessor params: FinchAPI::Models::Jobs::AutomatedCreateParams::Params
+
+        def initialize:
+          (
+            type: FinchAPI::Models::Jobs::AutomatedCreateParams::type_,
+            params: FinchAPI::Models::Jobs::AutomatedCreateParams::Params,
+            request_options: FinchAPI::request_opts
+          ) -> void
+          | (
+            ?FinchAPI::Models::Jobs::automated_create_params
+            | FinchAPI::BaseModel data
+          ) -> void
+
+        def to_hash: -> FinchAPI::Models::Jobs::automated_create_params
+
+        type type_ = :w4_form_employee_sync
+
+        class Type < FinchAPI::Enum
+          W4_FORM_EMPLOYEE_SYNC: :w4_form_employee_sync
+
+          def self.values: -> ::Array[FinchAPI::Models::Jobs::AutomatedCreateParams::type_]
+        end
+
+        type params = { individual_id: String }
+
+        class Params < FinchAPI::BaseModel
+          attr_accessor individual_id: String
+
+          def initialize:
+            (individual_id: String) -> void
+            | (
+              ?FinchAPI::Models::Jobs::AutomatedCreateParams::params
+              | FinchAPI::BaseModel data
+            ) -> void
+
+          def to_hash: -> FinchAPI::Models::Jobs::AutomatedCreateParams::params
+        end
+      end
+    end
+  end
+end

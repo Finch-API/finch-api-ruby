@@ -1,0 +1,61 @@
+module FinchAPI
+  module Models
+    type directory_event =
+      {
+        data: FinchAPI::Models::DirectoryEvent::Data,
+        event_type: FinchAPI::Models::DirectoryEvent::event_type
+      }
+
+    class DirectoryEvent < FinchAPI::Models::BaseWebhookEvent
+      attr_reader data: FinchAPI::Models::DirectoryEvent::Data?
+
+      def data=: (
+        FinchAPI::Models::DirectoryEvent::Data
+      ) -> FinchAPI::Models::DirectoryEvent::Data
+
+      attr_reader event_type: FinchAPI::Models::DirectoryEvent::event_type?
+
+      def event_type=: (
+        FinchAPI::Models::DirectoryEvent::event_type
+      ) -> FinchAPI::Models::DirectoryEvent::event_type
+
+      def initialize:
+        (
+          data: FinchAPI::Models::DirectoryEvent::Data,
+          event_type: FinchAPI::Models::DirectoryEvent::event_type
+        ) -> void
+        | (
+          ?FinchAPI::Models::directory_event | FinchAPI::BaseModel data
+        ) -> void
+
+      def to_hash: -> FinchAPI::Models::directory_event
+
+      type data = { individual_id: String }
+
+      class Data < FinchAPI::BaseModel
+        attr_reader individual_id: String?
+
+        def individual_id=: (String) -> String
+
+        def initialize:
+          (individual_id: String) -> void
+          | (
+            ?FinchAPI::Models::DirectoryEvent::data | FinchAPI::BaseModel data
+          ) -> void
+
+        def to_hash: -> FinchAPI::Models::DirectoryEvent::data
+      end
+
+      type event_type =
+        :"directory.created" | :"directory.updated" | :"directory.deleted"
+
+      class EventType < FinchAPI::Enum
+        DIRECTORY_CREATED: :"directory.created"
+        DIRECTORY_UPDATED: :"directory.updated"
+        DIRECTORY_DELETED: :"directory.deleted"
+
+        def self.values: -> ::Array[FinchAPI::Models::DirectoryEvent::event_type]
+      end
+    end
+  end
+end

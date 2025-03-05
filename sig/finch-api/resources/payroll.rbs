@@ -1,0 +1,9 @@
+module FinchAPI
+  module Resources
+    class Payroll
+      attr_reader pay_groups: FinchAPI::Resources::Payroll::PayGroups
+
+      def initialize: (client: FinchAPI::Client) -> void
+    end
+  end
+end

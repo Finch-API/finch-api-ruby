@@ -1,0 +1,21 @@
+module FinchAPI
+  module Resources
+    class Sandbox
+      attr_reader connections: FinchAPI::Resources::Sandbox::Connections
+
+      attr_reader company: FinchAPI::Resources::Sandbox::Company
+
+      attr_reader directory: FinchAPI::Resources::Sandbox::Directory
+
+      attr_reader individual: FinchAPI::Resources::Sandbox::Individual
+
+      attr_reader employment: FinchAPI::Resources::Sandbox::Employment
+
+      attr_reader payment: FinchAPI::Resources::Sandbox::Payment
+
+      attr_reader jobs: FinchAPI::Resources::Sandbox::Jobs
+
+      def initialize: (client: FinchAPI::Client) -> void
+    end
+  end
+end

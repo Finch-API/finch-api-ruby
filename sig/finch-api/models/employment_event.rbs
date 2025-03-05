@@ -1,0 +1,61 @@
+module FinchAPI
+  module Models
+    type employment_event =
+      {
+        data: FinchAPI::Models::EmploymentEvent::Data,
+        event_type: FinchAPI::Models::EmploymentEvent::event_type
+      }
+
+    class EmploymentEvent < FinchAPI::Models::BaseWebhookEvent
+      attr_reader data: FinchAPI::Models::EmploymentEvent::Data?
+
+      def data=: (
+        FinchAPI::Models::EmploymentEvent::Data
+      ) -> FinchAPI::Models::EmploymentEvent::Data
+
+      attr_reader event_type: FinchAPI::Models::EmploymentEvent::event_type?
+
+      def event_type=: (
+        FinchAPI::Models::EmploymentEvent::event_type
+      ) -> FinchAPI::Models::EmploymentEvent::event_type
+
+      def initialize:
+        (
+          data: FinchAPI::Models::EmploymentEvent::Data,
+          event_type: FinchAPI::Models::EmploymentEvent::event_type
+        ) -> void
+        | (
+          ?FinchAPI::Models::employment_event | FinchAPI::BaseModel data
+        ) -> void
+
+      def to_hash: -> FinchAPI::Models::employment_event
+
+      type data = { individual_id: String }
+
+      class Data < FinchAPI::BaseModel
+        attr_reader individual_id: String?
+
+        def individual_id=: (String) -> String
+
+        def initialize:
+          (individual_id: String) -> void
+          | (
+            ?FinchAPI::Models::EmploymentEvent::data | FinchAPI::BaseModel data
+          ) -> void
+
+        def to_hash: -> FinchAPI::Models::EmploymentEvent::data
+      end
+
+      type event_type =
+        :"employment.created" | :"employment.updated" | :"employment.deleted"
+
+      class EventType < FinchAPI::Enum
+        EMPLOYMENT_CREATED: :"employment.created"
+        EMPLOYMENT_UPDATED: :"employment.updated"
+        EMPLOYMENT_DELETED: :"employment.deleted"
+
+        def self.values: -> ::Array[FinchAPI::Models::EmploymentEvent::event_type]
+      end
+    end
+  end
+end

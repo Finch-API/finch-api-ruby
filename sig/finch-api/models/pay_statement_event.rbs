@@ -1,0 +1,68 @@
+module FinchAPI
+  module Models
+    type pay_statement_event =
+      {
+        data: FinchAPI::Models::PayStatementEvent::Data,
+        event_type: FinchAPI::Models::PayStatementEvent::event_type
+      }
+
+    class PayStatementEvent < FinchAPI::Models::BaseWebhookEvent
+      attr_reader data: FinchAPI::Models::PayStatementEvent::Data?
+
+      def data=: (
+        FinchAPI::Models::PayStatementEvent::Data
+      ) -> FinchAPI::Models::PayStatementEvent::Data
+
+      attr_reader event_type: FinchAPI::Models::PayStatementEvent::event_type?
+
+      def event_type=: (
+        FinchAPI::Models::PayStatementEvent::event_type
+      ) -> FinchAPI::Models::PayStatementEvent::event_type
+
+      def initialize:
+        (
+          data: FinchAPI::Models::PayStatementEvent::Data,
+          event_type: FinchAPI::Models::PayStatementEvent::event_type
+        ) -> void
+        | (
+          ?FinchAPI::Models::pay_statement_event | FinchAPI::BaseModel data
+        ) -> void
+
+      def to_hash: -> FinchAPI::Models::pay_statement_event
+
+      type data = { individual_id: String, payment_id: String }
+
+      class Data < FinchAPI::BaseModel
+        attr_reader individual_id: String?
+
+        def individual_id=: (String) -> String
+
+        attr_reader payment_id: String?
+
+        def payment_id=: (String) -> String
+
+        def initialize:
+          (individual_id: String, payment_id: String) -> void
+          | (
+            ?FinchAPI::Models::PayStatementEvent::data
+            | FinchAPI::BaseModel data
+          ) -> void
+
+        def to_hash: -> FinchAPI::Models::PayStatementEvent::data
+      end
+
+      type event_type =
+        :"pay_statement.created"
+        | :"pay_statement.updated"
+        | :"pay_statement.deleted"
+
+      class EventType < FinchAPI::Enum
+        PAY_STATEMENT_CREATED: :"pay_statement.created"
+        PAY_STATEMENT_UPDATED: :"pay_statement.updated"
+        PAY_STATEMENT_DELETED: :"pay_statement.deleted"
+
+        def self.values: -> ::Array[FinchAPI::Models::PayStatementEvent::event_type]
+      end
+    end
+  end
+end

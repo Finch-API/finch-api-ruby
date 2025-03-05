@@ -1,0 +1,9 @@
+module FinchAPI
+  module Resources
+    class Connect
+      attr_reader sessions: FinchAPI::Resources::Connect::Sessions
+
+      def initialize: (client: FinchAPI::Client) -> void
+    end
+  end
+end

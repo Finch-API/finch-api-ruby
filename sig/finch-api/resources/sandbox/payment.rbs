@@ -1,0 +1,21 @@
+module FinchAPI
+  module Resources
+    class Sandbox
+      class Payment
+        def create:
+          (
+            ?FinchAPI::Models::Sandbox::PaymentCreateParams
+            | ::Hash[Symbol, top] params
+          ) -> FinchAPI::Models::Sandbox::PaymentCreateResponse
+          | (
+            end_date: String,
+            pay_statements: ::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement],
+            start_date: String,
+            request_options: FinchAPI::request_opts
+          ) -> FinchAPI::Models::Sandbox::PaymentCreateResponse
+
+        def initialize: (client: FinchAPI::Client) -> void
+      end
+    end
+  end
+end

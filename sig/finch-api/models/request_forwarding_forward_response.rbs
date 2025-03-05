@@ -1,0 +1,71 @@
+module FinchAPI
+  module Models
+    type request_forwarding_forward_response =
+      {
+        data: String?,
+        headers: top?,
+        request: FinchAPI::Models::RequestForwardingForwardResponse::Request,
+        status_code: Integer
+      }
+
+    class RequestForwardingForwardResponse < FinchAPI::BaseModel
+      attr_accessor data: String?
+
+      attr_accessor headers: top?
+
+      attr_accessor request: FinchAPI::Models::RequestForwardingForwardResponse::Request
+
+      attr_accessor status_code: Integer
+
+      def initialize:
+        (
+          data: String?,
+          headers: top?,
+          request: FinchAPI::Models::RequestForwardingForwardResponse::Request,
+          status_code: Integer
+        ) -> void
+        | (
+          ?FinchAPI::Models::request_forwarding_forward_response
+          | FinchAPI::BaseModel data
+        ) -> void
+
+      def to_hash: -> FinchAPI::Models::request_forwarding_forward_response
+
+      type request =
+        {
+          data: String?,
+          headers: top?,
+          method_: String,
+          params: top?,
+          route: String
+        }
+
+      class Request < FinchAPI::BaseModel
+        attr_accessor data: String?
+
+        attr_accessor headers: top?
+
+        attr_accessor method_: String
+
+        attr_accessor params: top?
+
+        attr_accessor route: String
+
+        def initialize:
+          (
+            data: String?,
+            headers: top?,
+            method_: String,
+            params: top?,
+            route: String
+          ) -> void
+          | (
+            ?FinchAPI::Models::RequestForwardingForwardResponse::request
+            | FinchAPI::BaseModel data
+          ) -> void
+
+        def to_hash: -> FinchAPI::Models::RequestForwardingForwardResponse::request
+      end
+    end
+  end
+end

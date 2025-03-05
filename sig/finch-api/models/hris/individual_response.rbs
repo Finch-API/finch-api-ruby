@@ -1,0 +1,41 @@
+module FinchAPI
+  module Models
+    module HRIS
+      type individual_response =
+        {
+          body: FinchAPI::Models::HRIS::Individual,
+          code: Integer,
+          individual_id: String
+        }
+
+      class IndividualResponse < FinchAPI::BaseModel
+        attr_reader body: FinchAPI::Models::HRIS::Individual?
+
+        def body=: (
+          FinchAPI::Models::HRIS::Individual
+        ) -> FinchAPI::Models::HRIS::Individual
+
+        attr_reader code: Integer?
+
+        def code=: (Integer) -> Integer
+
+        attr_reader individual_id: String?
+
+        def individual_id=: (String) -> String
+
+        def initialize:
+          (
+            body: FinchAPI::Models::HRIS::Individual,
+            code: Integer,
+            individual_id: String
+          ) -> void
+          | (
+            ?FinchAPI::Models::HRIS::individual_response
+            | FinchAPI::BaseModel data
+          ) -> void
+
+        def to_hash: -> FinchAPI::Models::HRIS::individual_response
+      end
+    end
+  end
+end

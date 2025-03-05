@@ -1,0 +1,34 @@
+module FinchAPI
+  module Models
+    module HRIS
+      type directory_list_individuals_params =
+        { limit: Integer, offset: Integer } & FinchAPI::request_parameters
+
+      class DirectoryListIndividualsParams < FinchAPI::BaseModel
+        extend FinchAPI::RequestParameters::Converter
+        include FinchAPI::RequestParameters
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> Integer
+
+        attr_reader offset: Integer?
+
+        def offset=: (Integer) -> Integer
+
+        def initialize:
+          (
+            limit: Integer,
+            offset: Integer,
+            request_options: FinchAPI::request_opts
+          ) -> void
+          | (
+            ?FinchAPI::Models::HRIS::directory_list_individuals_params
+            | FinchAPI::BaseModel data
+          ) -> void
+
+        def to_hash: -> FinchAPI::Models::HRIS::directory_list_individuals_params
+      end
+    end
+  end
+end
