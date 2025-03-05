@@ -1,0 +1,9 @@
+module FinchAPI
+  module Models
+    module Sandbox
+      type directory_create_response = ::Array[top]
+
+      DirectoryCreateResponse: directory_create_response
+    end
+  end
+end

@@ -1,0 +1,26 @@
+module FinchAPI
+  module Resources
+    class Sandbox
+      class Company
+        def update:
+          (
+            FinchAPI::Models::Sandbox::CompanyUpdateParams
+            | ::Hash[Symbol, top] params
+          ) -> FinchAPI::Models::Sandbox::CompanyUpdateResponse
+          | (
+            accounts: ::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Account]?,
+            departments: ::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Department?]?,
+            ein: String?,
+            entity: FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity?,
+            legal_name: String?,
+            locations: ::Array[FinchAPI::Models::Location?]?,
+            primary_email: String?,
+            primary_phone_number: String?,
+            request_options: FinchAPI::request_opts
+          ) -> FinchAPI::Models::Sandbox::CompanyUpdateResponse
+
+        def initialize: (client: FinchAPI::Client) -> void
+      end
+    end
+  end
+end

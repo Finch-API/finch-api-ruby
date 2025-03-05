@@ -1,0 +1,7 @@
+module FinchAPI
+  module Resources
+    class Webhooks
+      def initialize: (client: FinchAPI::Client) -> void
+    end
+  end
+end

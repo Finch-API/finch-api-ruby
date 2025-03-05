@@ -1,0 +1,18 @@
+module FinchAPI
+  module Models
+    type operation_support =
+      :supported
+      | :not_supported_by_finch
+      | :not_supported_by_provider
+      | :client_access_only
+
+    class OperationSupport < FinchAPI::Enum
+      SUPPORTED: :supported
+      NOT_SUPPORTED_BY_FINCH: :not_supported_by_finch
+      NOT_SUPPORTED_BY_PROVIDER: :not_supported_by_provider
+      CLIENT_ACCESS_ONLY: :client_access_only
+
+      def self.values: -> ::Array[FinchAPI::Models::operation_support]
+    end
+  end
+end

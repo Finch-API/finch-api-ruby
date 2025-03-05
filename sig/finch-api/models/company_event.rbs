@@ -1,0 +1,36 @@
+module FinchAPI
+  module Models
+    type company_event =
+      {
+        data: ::Hash[Symbol, top]?,
+        event_type: FinchAPI::Models::CompanyEvent::event_type
+      }
+
+    class CompanyEvent < FinchAPI::Models::BaseWebhookEvent
+      attr_accessor data: ::Hash[Symbol, top]?
+
+      attr_reader event_type: FinchAPI::Models::CompanyEvent::event_type?
+
+      def event_type=: (
+        FinchAPI::Models::CompanyEvent::event_type
+      ) -> FinchAPI::Models::CompanyEvent::event_type
+
+      def initialize:
+        (
+          data: ::Hash[Symbol, top]?,
+          event_type: FinchAPI::Models::CompanyEvent::event_type
+        ) -> void
+        | (?FinchAPI::Models::company_event | FinchAPI::BaseModel data) -> void
+
+      def to_hash: -> FinchAPI::Models::company_event
+
+      type event_type = :"company.updated"
+
+      class EventType < FinchAPI::Enum
+        COMPANY_UPDATED: :"company.updated"
+
+        def self.values: -> ::Array[FinchAPI::Models::CompanyEvent::event_type]
+      end
+    end
+  end
+end

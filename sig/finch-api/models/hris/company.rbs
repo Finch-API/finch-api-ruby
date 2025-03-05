@@ -1,0 +1,195 @@
+module FinchAPI
+  module Models
+    module HRIS
+      type hris_company =
+        {
+          id: String,
+          accounts: ::Array[FinchAPI::Models::HRIS::HRISCompany::Account]?,
+          departments: ::Array[FinchAPI::Models::HRIS::HRISCompany::Department?]?,
+          ein: String?,
+          entity: FinchAPI::Models::HRIS::HRISCompany::Entity?,
+          legal_name: String?,
+          locations: ::Array[FinchAPI::Models::Location?]?,
+          primary_email: String?,
+          primary_phone_number: String?
+        }
+
+      class HRISCompany < FinchAPI::BaseModel
+        attr_accessor id: String
+
+        attr_accessor accounts: ::Array[FinchAPI::Models::HRIS::HRISCompany::Account]?
+
+        attr_accessor departments: ::Array[FinchAPI::Models::HRIS::HRISCompany::Department?]?
+
+        attr_accessor ein: String?
+
+        attr_accessor entity: FinchAPI::Models::HRIS::HRISCompany::Entity?
+
+        attr_accessor legal_name: String?
+
+        attr_accessor locations: ::Array[FinchAPI::Models::Location?]?
+
+        attr_accessor primary_email: String?
+
+        attr_accessor primary_phone_number: String?
+
+        def initialize:
+          (
+            id: String,
+            accounts: ::Array[FinchAPI::Models::HRIS::HRISCompany::Account]?,
+            departments: ::Array[FinchAPI::Models::HRIS::HRISCompany::Department?]?,
+            ein: String?,
+            entity: FinchAPI::Models::HRIS::HRISCompany::Entity?,
+            legal_name: String?,
+            locations: ::Array[FinchAPI::Models::Location?]?,
+            primary_email: String?,
+            primary_phone_number: String?
+          ) -> void
+          | (
+            ?FinchAPI::Models::HRIS::hris_company | FinchAPI::BaseModel data
+          ) -> void
+
+        def to_hash: -> FinchAPI::Models::HRIS::hris_company
+
+        type account =
+          {
+            account_name: String?,
+            account_number: String?,
+            account_type: FinchAPI::Models::HRIS::HRISCompany::Account::account_type?,
+            institution_name: String?,
+            routing_number: String?
+          }
+
+        class Account < FinchAPI::BaseModel
+          attr_accessor account_name: String?
+
+          attr_accessor account_number: String?
+
+          attr_accessor account_type: FinchAPI::Models::HRIS::HRISCompany::Account::account_type?
+
+          attr_accessor institution_name: String?
+
+          attr_accessor routing_number: String?
+
+          def initialize:
+            (
+              account_name: String?,
+              account_number: String?,
+              account_type: FinchAPI::Models::HRIS::HRISCompany::Account::account_type?,
+              institution_name: String?,
+              routing_number: String?
+            ) -> void
+            | (
+              ?FinchAPI::Models::HRIS::HRISCompany::account
+              | FinchAPI::BaseModel data
+            ) -> void
+
+          def to_hash: -> FinchAPI::Models::HRIS::HRISCompany::account
+
+          type account_type = :checking | :savings
+
+          class AccountType < FinchAPI::Enum
+            CHECKING: :checking
+            SAVINGS: :savings
+
+            def self.values: -> ::Array[FinchAPI::Models::HRIS::HRISCompany::Account::account_type]
+          end
+        end
+
+        type department =
+          {
+            name: String?,
+            parent: FinchAPI::Models::HRIS::HRISCompany::Department::Parent?
+          }
+
+        class Department < FinchAPI::BaseModel
+          attr_accessor name: String?
+
+          attr_accessor parent: FinchAPI::Models::HRIS::HRISCompany::Department::Parent?
+
+          def initialize:
+            (
+              name: String?,
+              parent: FinchAPI::Models::HRIS::HRISCompany::Department::Parent?
+            ) -> void
+            | (
+              ?FinchAPI::Models::HRIS::HRISCompany::department
+              | FinchAPI::BaseModel data
+            ) -> void
+
+          def to_hash: -> FinchAPI::Models::HRIS::HRISCompany::department
+
+          type parent = { name: String? }
+
+          class Parent < FinchAPI::BaseModel
+            attr_accessor name: String?
+
+            def initialize:
+              (name: String?) -> void
+              | (
+                ?FinchAPI::Models::HRIS::HRISCompany::Department::parent
+                | FinchAPI::BaseModel data
+              ) -> void
+
+            def to_hash: -> FinchAPI::Models::HRIS::HRISCompany::Department::parent
+          end
+        end
+
+        type entity =
+          {
+            subtype: FinchAPI::Models::HRIS::HRISCompany::Entity::subtype?,
+            type: FinchAPI::Models::HRIS::HRISCompany::Entity::type_?
+          }
+
+        class Entity < FinchAPI::BaseModel
+          attr_accessor subtype: FinchAPI::Models::HRIS::HRISCompany::Entity::subtype?
+
+          attr_accessor type: FinchAPI::Models::HRIS::HRISCompany::Entity::type_?
+
+          def initialize:
+            (
+              subtype: FinchAPI::Models::HRIS::HRISCompany::Entity::subtype?,
+              type: FinchAPI::Models::HRIS::HRISCompany::Entity::type_?
+            ) -> void
+            | (
+              ?FinchAPI::Models::HRIS::HRISCompany::entity
+              | FinchAPI::BaseModel data
+            ) -> void
+
+          def to_hash: -> FinchAPI::Models::HRIS::HRISCompany::entity
+
+          type subtype = :s_corporation | :c_corporation | :b_corporation
+
+          class Subtype < FinchAPI::Enum
+            S_CORPORATION: :s_corporation
+            C_CORPORATION: :c_corporation
+            B_CORPORATION: :b_corporation
+
+            def self.values: -> ::Array[FinchAPI::Models::HRIS::HRISCompany::Entity::subtype]
+          end
+
+          type type_ =
+            :llc
+            | :lp
+            | :corporation
+            | :sole_proprietor
+            | :non_profit
+            | :partnership
+            | :cooperative
+
+          class Type < FinchAPI::Enum
+            LLC: :llc
+            LP: :lp
+            CORPORATION: :corporation
+            SOLE_PROPRIETOR: :sole_proprietor
+            NON_PROFIT: :non_profit
+            PARTNERSHIP: :partnership
+            COOPERATIVE: :cooperative
+
+            def self.values: -> ::Array[FinchAPI::Models::HRIS::HRISCompany::Entity::type_]
+          end
+        end
+      end
+    end
+  end
+end
