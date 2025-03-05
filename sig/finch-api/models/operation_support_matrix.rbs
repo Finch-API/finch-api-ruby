@@ -1,0 +1,50 @@
+module FinchAPI
+  module Models
+    type operation_support_matrix =
+      {
+        create: FinchAPI::Models::operation_support,
+        delete: FinchAPI::Models::operation_support,
+        read: FinchAPI::Models::operation_support,
+        update: FinchAPI::Models::operation_support
+      }
+
+    class OperationSupportMatrix < FinchAPI::BaseModel
+      attr_reader create: FinchAPI::Models::operation_support?
+
+      def create=: (
+        FinchAPI::Models::operation_support
+      ) -> FinchAPI::Models::operation_support
+
+      attr_reader delete: FinchAPI::Models::operation_support?
+
+      def delete=: (
+        FinchAPI::Models::operation_support
+      ) -> FinchAPI::Models::operation_support
+
+      attr_reader read: FinchAPI::Models::operation_support?
+
+      def read=: (
+        FinchAPI::Models::operation_support
+      ) -> FinchAPI::Models::operation_support
+
+      attr_reader update: FinchAPI::Models::operation_support?
+
+      def update=: (
+        FinchAPI::Models::operation_support
+      ) -> FinchAPI::Models::operation_support
+
+      def initialize:
+        (
+          create: FinchAPI::Models::operation_support,
+          delete: FinchAPI::Models::operation_support,
+          read: FinchAPI::Models::operation_support,
+          update: FinchAPI::Models::operation_support
+        ) -> void
+        | (
+          ?FinchAPI::Models::operation_support_matrix | FinchAPI::BaseModel data
+        ) -> void
+
+      def to_hash: -> FinchAPI::Models::operation_support_matrix
+    end
+  end
+end

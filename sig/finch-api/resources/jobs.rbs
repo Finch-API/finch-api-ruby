@@ -1,0 +1,11 @@
+module FinchAPI
+  module Resources
+    class Jobs
+      attr_reader automated: FinchAPI::Resources::Jobs::Automated
+
+      attr_reader manual: FinchAPI::Resources::Jobs::Manual
+
+      def initialize: (client: FinchAPI::Client) -> void
+    end
+  end
+end

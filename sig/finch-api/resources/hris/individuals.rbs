@@ -1,0 +1,20 @@
+module FinchAPI
+  module Resources
+    class HRIS
+      class Individuals
+        def retrieve_many:
+          (
+            ?FinchAPI::Models::HRIS::IndividualRetrieveManyParams
+            | ::Hash[Symbol, top] params
+          ) -> FinchAPI::ResponsesPage[FinchAPI::Models::HRIS::IndividualResponse]
+          | (
+            options: FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options?,
+            requests: ::Array[FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request],
+            request_options: FinchAPI::request_opts
+          ) -> FinchAPI::ResponsesPage[FinchAPI::Models::HRIS::IndividualResponse]
+
+        def initialize: (client: FinchAPI::Client) -> void
+      end
+    end
+  end
+end

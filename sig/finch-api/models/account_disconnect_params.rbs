@@ -1,0 +1,19 @@
+module FinchAPI
+  module Models
+    type account_disconnect_params = {  } & FinchAPI::request_parameters
+
+    class AccountDisconnectParams < FinchAPI::BaseModel
+      extend FinchAPI::RequestParameters::Converter
+      include FinchAPI::RequestParameters
+
+      def initialize:
+        (request_options: FinchAPI::request_opts) -> void
+        | (
+          ?FinchAPI::Models::account_disconnect_params
+          | FinchAPI::BaseModel data
+        ) -> void
+
+      def to_hash: -> FinchAPI::Models::account_disconnect_params
+    end
+  end
+end

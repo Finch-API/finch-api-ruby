@@ -1,0 +1,62 @@
+module FinchAPI
+  module Models
+    module Sandbox
+      module Connections
+        type account_create_params =
+          {
+            company_id: String,
+            provider_id: String,
+            authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::authentication_type,
+            products: ::Array[String]
+          }
+          & FinchAPI::request_parameters
+
+        class AccountCreateParams < FinchAPI::BaseModel
+          extend FinchAPI::RequestParameters::Converter
+          include FinchAPI::RequestParameters
+
+          attr_accessor company_id: String
+
+          attr_accessor provider_id: String
+
+          attr_reader authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::authentication_type?
+
+          def authentication_type=: (
+            FinchAPI::Models::Sandbox::Connections::AccountCreateParams::authentication_type
+          ) -> FinchAPI::Models::Sandbox::Connections::AccountCreateParams::authentication_type
+
+          attr_reader products: ::Array[String]?
+
+          def products=: (::Array[String]) -> ::Array[String]
+
+          def initialize:
+            (
+              company_id: String,
+              provider_id: String,
+              authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::authentication_type,
+              products: ::Array[String],
+              request_options: FinchAPI::request_opts
+            ) -> void
+            | (
+              ?FinchAPI::Models::Sandbox::Connections::account_create_params
+              | FinchAPI::BaseModel data
+            ) -> void
+
+          def to_hash: -> FinchAPI::Models::Sandbox::Connections::account_create_params
+
+          type authentication_type =
+            :credential | :api_token | :oauth | :assisted
+
+          class AuthenticationType < FinchAPI::Enum
+            CREDENTIAL: :credential
+            API_TOKEN: :api_token
+            OAUTH: :oauth
+            ASSISTED: :assisted
+
+            def self.values: -> ::Array[FinchAPI::Models::Sandbox::Connections::AccountCreateParams::authentication_type]
+          end
+        end
+      end
+    end
+  end
+end

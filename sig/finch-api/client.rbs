@@ -1,0 +1,54 @@
+module FinchAPI
+  class Client < FinchAPI::BaseClient
+    DEFAULT_MAX_RETRIES: 2
+
+    DEFAULT_TIMEOUT_IN_SECONDS: Float
+
+    DEFAULT_INITIAL_RETRY_DELAY: Float
+
+    DEFAULT_MAX_RETRY_DELAY: Float
+
+    attr_reader access_token: String?
+
+    attr_reader client_id: String?
+
+    attr_reader client_secret: String?
+
+    attr_reader access_tokens: FinchAPI::Resources::AccessTokens
+
+    attr_reader hris: FinchAPI::Resources::HRIS
+
+    attr_reader providers: FinchAPI::Resources::Providers
+
+    attr_reader account: FinchAPI::Resources::Account
+
+    attr_reader webhooks: FinchAPI::Resources::Webhooks
+
+    attr_reader request_forwarding: FinchAPI::Resources::RequestForwarding
+
+    attr_reader jobs: FinchAPI::Resources::Jobs
+
+    attr_reader sandbox: FinchAPI::Resources::Sandbox
+
+    attr_reader payroll: FinchAPI::Resources::Payroll
+
+    attr_reader connect: FinchAPI::Resources::Connect
+
+    private def auth_headers: -> ::Hash[String, String]
+
+    private def bearer_auth: -> ::Hash[String, String]
+
+    private def basic_auth: -> ::Hash[String, String]
+
+    def initialize: (
+      base_url: String?,
+      access_token: String?,
+      client_id: String?,
+      client_secret: String?,
+      max_retries: Integer,
+      timeout: Float,
+      initial_retry_delay: Float,
+      max_retry_delay: Float
+    ) -> void
+  end
+end

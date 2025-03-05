@@ -1,0 +1,61 @@
+module FinchAPI
+  module Models
+    type individual_event =
+      {
+        data: FinchAPI::Models::IndividualEvent::Data,
+        event_type: FinchAPI::Models::IndividualEvent::event_type
+      }
+
+    class IndividualEvent < FinchAPI::Models::BaseWebhookEvent
+      attr_reader data: FinchAPI::Models::IndividualEvent::Data?
+
+      def data=: (
+        FinchAPI::Models::IndividualEvent::Data
+      ) -> FinchAPI::Models::IndividualEvent::Data
+
+      attr_reader event_type: FinchAPI::Models::IndividualEvent::event_type?
+
+      def event_type=: (
+        FinchAPI::Models::IndividualEvent::event_type
+      ) -> FinchAPI::Models::IndividualEvent::event_type
+
+      def initialize:
+        (
+          data: FinchAPI::Models::IndividualEvent::Data,
+          event_type: FinchAPI::Models::IndividualEvent::event_type
+        ) -> void
+        | (
+          ?FinchAPI::Models::individual_event | FinchAPI::BaseModel data
+        ) -> void
+
+      def to_hash: -> FinchAPI::Models::individual_event
+
+      type data = { individual_id: String }
+
+      class Data < FinchAPI::BaseModel
+        attr_reader individual_id: String?
+
+        def individual_id=: (String) -> String
+
+        def initialize:
+          (individual_id: String) -> void
+          | (
+            ?FinchAPI::Models::IndividualEvent::data | FinchAPI::BaseModel data
+          ) -> void
+
+        def to_hash: -> FinchAPI::Models::IndividualEvent::data
+      end
+
+      type event_type =
+        :"individual.created" | :"individual.updated" | :"individual.deleted"
+
+      class EventType < FinchAPI::Enum
+        INDIVIDUAL_CREATED: :"individual.created"
+        INDIVIDUAL_UPDATED: :"individual.updated"
+        INDIVIDUAL_DELETED: :"individual.deleted"
+
+        def self.values: -> ::Array[FinchAPI::Models::IndividualEvent::event_type]
+      end
+    end
+  end
+end

@@ -1,0 +1,23 @@
+module FinchAPI
+  module Resources
+    class HRIS
+      attr_reader company: FinchAPI::Resources::HRIS::Company
+
+      attr_reader directory: FinchAPI::Resources::HRIS::Directory
+
+      attr_reader individuals: FinchAPI::Resources::HRIS::Individuals
+
+      attr_reader employments: FinchAPI::Resources::HRIS::Employments
+
+      attr_reader payments: FinchAPI::Resources::HRIS::Payments
+
+      attr_reader pay_statements: FinchAPI::Resources::HRIS::PayStatements
+
+      attr_reader documents: FinchAPI::Resources::HRIS::Documents
+
+      attr_reader benefits: FinchAPI::Resources::HRIS::Benefits
+
+      def initialize: (client: FinchAPI::Client) -> void
+    end
+  end
+end

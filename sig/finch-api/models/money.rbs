@@ -1,0 +1,19 @@
+module FinchAPI
+  module Models
+    type money = { amount: Integer?, currency: String }
+
+    class Money < FinchAPI::BaseModel
+      attr_accessor amount: Integer?
+
+      attr_reader currency: String?
+
+      def currency=: (String) -> String
+
+      def initialize:
+        (amount: Integer?, currency: String) -> void
+        | (?FinchAPI::Models::money | FinchAPI::BaseModel data) -> void
+
+      def to_hash: -> FinchAPI::Models::money
+    end
+  end
+end

@@ -1,0 +1,21 @@
+module FinchAPI
+  module Resources
+    class Sandbox
+      class Jobs
+        attr_reader configuration: FinchAPI::Resources::Sandbox::Jobs::Configuration
+
+        def create:
+          (
+            FinchAPI::Models::Sandbox::JobCreateParams
+            | ::Hash[Symbol, top] params
+          ) -> FinchAPI::Models::Sandbox::JobCreateResponse
+          | (
+            type: FinchAPI::Models::Sandbox::JobCreateParams::type_,
+            request_options: FinchAPI::request_opts
+          ) -> FinchAPI::Models::Sandbox::JobCreateResponse
+
+        def initialize: (client: FinchAPI::Client) -> void
+      end
+    end
+  end
+end

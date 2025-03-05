@@ -1,0 +1,35 @@
+module FinchAPI
+  module Models
+    module Payroll
+      type pay_group_list_params =
+        { individual_id: String, pay_frequencies: ::Array[String] }
+        & FinchAPI::request_parameters
+
+      class PayGroupListParams < FinchAPI::BaseModel
+        extend FinchAPI::RequestParameters::Converter
+        include FinchAPI::RequestParameters
+
+        attr_reader individual_id: String?
+
+        def individual_id=: (String) -> String
+
+        attr_reader pay_frequencies: ::Array[String]?
+
+        def pay_frequencies=: (::Array[String]) -> ::Array[String]
+
+        def initialize:
+          (
+            individual_id: String,
+            pay_frequencies: ::Array[String],
+            request_options: FinchAPI::request_opts
+          ) -> void
+          | (
+            ?FinchAPI::Models::Payroll::pay_group_list_params
+            | FinchAPI::BaseModel data
+          ) -> void
+
+        def to_hash: -> FinchAPI::Models::Payroll::pay_group_list_params
+      end
+    end
+  end
+end

@@ -1,0 +1,20 @@
+module FinchAPI
+  module Models
+    module HRIS
+      type update_company_benefit_response = { benefit_id: String }
+
+      class UpdateCompanyBenefitResponse < FinchAPI::BaseModel
+        attr_accessor benefit_id: String
+
+        def initialize:
+          (benefit_id: String) -> void
+          | (
+            ?FinchAPI::Models::HRIS::update_company_benefit_response
+            | FinchAPI::BaseModel data
+          ) -> void
+
+        def to_hash: -> FinchAPI::Models::HRIS::update_company_benefit_response
+      end
+    end
+  end
+end
