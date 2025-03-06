@@ -2003,22 +2003,6 @@ module FinchAPI
         # @abstract
         #
         # The type of authentication method.
-        #
-        # @example
-        # ```ruby
-        # case type
-        # in :assisted
-        #   # ...
-        # in :credential
-        #   # ...
-        # in :api_token
-        #   # ...
-        # in :api_credential
-        #   # ...
-        # in :oauth
-        #   # ...
-        # end
-        # ```
         class Type < FinchAPI::Enum
           ASSISTED = :assisted
           CREDENTIAL = :credential

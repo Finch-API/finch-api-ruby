@@ -74,20 +74,6 @@ module FinchAPI
           # @abstract
           #
           # HTTP status code. Either 201 or 200
-          #
-          # @example
-          # ```ruby
-          # case code
-          # in 200
-          #   # ...
-          # in 201
-          #   # ...
-          # in 404
-          #   # ...
-          # in 403
-          #   # ...
-          # end
-          # ```
           class Code < FinchAPI::Enum
             OK = 200
             CREATED = 201

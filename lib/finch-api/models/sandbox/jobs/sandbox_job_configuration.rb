@@ -26,19 +26,6 @@ module FinchAPI
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case completion_status
-          # in :complete
-          #   # ...
-          # in :reauth_error
-          #   # ...
-          # in :permissions_error
-          #   # ...
-          # in :error
-          #   # ...
-          # end
-          # ```
           class CompletionStatus < FinchAPI::Enum
             COMPLETE = :complete
             REAUTH_ERROR = :reauth_error
@@ -55,13 +42,6 @@ module FinchAPI
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case type
-          # in :data_sync_all
-          #   # ...
-          # end
-          # ```
           class Type < FinchAPI::Enum
             DATA_SYNC_ALL = :data_sync_all
 

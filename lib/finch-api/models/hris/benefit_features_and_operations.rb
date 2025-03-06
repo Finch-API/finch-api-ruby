@@ -126,15 +126,6 @@ module FinchAPI
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case company_contribution
-          # in :fixed
-          #   # ...
-          # in :percent
-          #   # ...
-          # end
-          # ```
           class CompanyContribution < FinchAPI::Enum
             FIXED = :fixed
             PERCENT = :percent
@@ -149,15 +140,6 @@ module FinchAPI
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case employee_deduction
-          # in :fixed
-          #   # ...
-          # in :percent
-          #   # ...
-          # end
-          # ```
           class EmployeeDeduction < FinchAPI::Enum
             FIXED = :fixed
             PERCENT = :percent
@@ -172,15 +154,6 @@ module FinchAPI
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case hsa_contribution_limit
-          # in :individual
-          #   # ...
-          # in :family
-          #   # ...
-          # end
-          # ```
           class HsaContributionLimit < FinchAPI::Enum
             INDIVIDUAL = :individual
             FAMILY = :family

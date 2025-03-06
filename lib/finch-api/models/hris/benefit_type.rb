@@ -6,24 +6,6 @@ module FinchAPI
       # @abstract
       #
       # Type of benefit.
-      #
-      # @example
-      # ```ruby
-      # case benefit_type
-      # in :"401k"
-      #   # ...
-      # in :"401k_roth"
-      #   # ...
-      # in :"401k_loan"
-      #   # ...
-      # in :"403b"
-      #   # ...
-      # in :"403b_roth"
-      #   # ...
-      # in ...
-      #   #...
-      # end
-      # ```
       class BenefitType < FinchAPI::Enum
         NUMBER_401K = :"401k"
         NUMBER_401K_ROTH = :"401k_roth"

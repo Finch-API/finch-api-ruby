@@ -5,17 +5,6 @@ module FinchAPI
     module HRIS
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case benefit_frequency
-      # in :one_time
-      #   # ...
-      # in :every_paycheck
-      #   # ...
-      # in :monthly
-      #   # ...
-      # end
-      # ```
       class BenefitFrequency < FinchAPI::Enum
         ONE_TIME = :one_time
         EVERY_PAYCHECK = :every_paycheck

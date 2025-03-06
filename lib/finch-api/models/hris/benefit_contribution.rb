@@ -27,16 +27,6 @@ module FinchAPI
         # @abstract
         #
         # Contribution type.
-        #
-        # @example
-        # ```ruby
-        # case type
-        # in :fixed
-        #   # ...
-        # in :percent
-        #   # ...
-        # end
-        # ```
         class Type < FinchAPI::Enum
           FIXED = :fixed
           PERCENT = :percent
