@@ -53,17 +53,6 @@ module FinchAPI
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case event_type
-      # in :"payment.created"
-      #   # ...
-      # in :"payment.updated"
-      #   # ...
-      # in :"payment.deleted"
-      #   # ...
-      # end
-      # ```
       class EventType < FinchAPI::Enum
         PAYMENT_CREATED = :"payment.created"
         PAYMENT_UPDATED = :"payment.updated"

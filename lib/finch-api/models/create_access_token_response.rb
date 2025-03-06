@@ -106,18 +106,6 @@ module FinchAPI
       # @abstract
       #
       # The type of application associated with a token.
-      #
-      # @example
-      # ```ruby
-      # case client_type
-      # in :production
-      #   # ...
-      # in :development
-      #   # ...
-      # in :sandbox
-      #   # ...
-      # end
-      # ```
       class ClientType < FinchAPI::Enum
         PRODUCTION = :production
         DEVELOPMENT = :development
@@ -137,16 +125,6 @@ module FinchAPI
       #
       #   - `provider` - connection to an external provider
       #   - `finch` - finch-generated data.
-      #
-      # @example
-      # ```ruby
-      # case connection_type
-      # in :provider
-      #   # ...
-      # in :finch
-      #   # ...
-      # end
-      # ```
       class ConnectionType < FinchAPI::Enum
         PROVIDER = :provider
         FINCH = :finch

@@ -50,17 +50,6 @@ module FinchAPI
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case event_type
-      # in :"individual.created"
-      #   # ...
-      # in :"individual.updated"
-      #   # ...
-      # in :"individual.deleted"
-      #   # ...
-      # end
-      # ```
       class EventType < FinchAPI::Enum
         INDIVIDUAL_CREATED = :"individual.created"
         INDIVIDUAL_UPDATED = :"individual.updated"

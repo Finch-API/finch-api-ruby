@@ -11,20 +11,6 @@ module FinchAPI
     #     so Finch cannot support
     #   - `client_access_only`: This behavior is supported by the provider, but only
     #     available to the client and not to Finch
-    #
-    # @example
-    # ```ruby
-    # case operation_support
-    # in :supported
-    #   # ...
-    # in :not_supported_by_finch
-    #   # ...
-    # in :not_supported_by_provider
-    #   # ...
-    # in :client_access_only
-    #   # ...
-    # end
-    # ```
     class OperationSupport < FinchAPI::Enum
       SUPPORTED = :supported
       NOT_SUPPORTED_BY_FINCH = :not_supported_by_finch
