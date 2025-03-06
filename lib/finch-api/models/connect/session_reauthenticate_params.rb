@@ -49,24 +49,6 @@ module FinchAPI
         # @abstract
         #
         # The Finch products that can be requested during the Connect flow.
-        #
-        # @example
-        # ```ruby
-        # case product
-        # in :company
-        #   # ...
-        # in :directory
-        #   # ...
-        # in :individual
-        #   # ...
-        # in :employment
-        #   # ...
-        # in :payment
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Product < FinchAPI::Enum
           COMPANY = :company
           DIRECTORY = :directory

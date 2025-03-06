@@ -88,24 +88,6 @@ module FinchAPI
         # @abstract
         #
         # The Finch products that can be requested during the Connect flow.
-        #
-        # @example
-        # ```ruby
-        # case product
-        # in :company
-        #   # ...
-        # in :directory
-        #   # ...
-        # in :individual
-        #   # ...
-        # in :employment
-        #   # ...
-        # in :payment
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Product < FinchAPI::Enum
           COMPANY = :company
           DIRECTORY = :directory
@@ -147,19 +129,6 @@ module FinchAPI
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case auth_method
-          # in :assisted
-          #   # ...
-          # in :credential
-          #   # ...
-          # in :oauth
-          #   # ...
-          # in :api_token
-          #   # ...
-          # end
-          # ```
           class AuthMethod < FinchAPI::Enum
             ASSISTED = :assisted
             CREDENTIAL = :credential
@@ -177,15 +146,6 @@ module FinchAPI
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case sandbox
-        # in :finch
-        #   # ...
-        # in :provider
-        #   # ...
-        # end
-        # ```
         class Sandbox < FinchAPI::Enum
           FINCH = :finch
           PROVIDER = :provider

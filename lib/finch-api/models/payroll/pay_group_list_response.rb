@@ -46,23 +46,6 @@ module FinchAPI
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case pay_frequency
-        # in :annually
-        #   # ...
-        # in :semi_annually
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :semi_monthly
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class PayFrequency < FinchAPI::Enum
           ANNUALLY = :annually
           SEMI_ANNUALLY = :semi_annually

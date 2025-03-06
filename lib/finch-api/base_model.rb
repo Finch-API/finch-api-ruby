@@ -294,6 +294,35 @@ module FinchAPI
   #
   #   We can therefore convert string values to Symbols, but can't convert other
   #   values safely.
+  #
+  # @example
+  # ```ruby
+  # # `connection_status_type` is a `FinchAPI::Models::ConnectionStatusType`
+  # case connection_status_type
+  # when FinchAPI::Models::ConnectionStatusType::PENDING
+  #   # ...
+  # when FinchAPI::Models::ConnectionStatusType::PROCESSING
+  #   # ...
+  # when FinchAPI::Models::ConnectionStatusType::CONNECTED
+  #   # ...
+  # else
+  #   # ...
+  # end
+  # ```
+  #
+  # @example
+  # ```ruby
+  # case connection_status_type
+  # in :pending
+  #   # ...
+  # in :processing
+  #   # ...
+  # in :connected
+  #   # ...
+  # else
+  #   # ...
+  # end
+  # ```
   class Enum
     extend FinchAPI::Converter
 
@@ -369,6 +398,30 @@ module FinchAPI
   #
   # @abstract
   #
+  # @example
+  # ```ruby
+  # # `document_retreive_response` is a `FinchAPI::Models::HRIS::DocumentRetreiveResponse`
+  # case document_retreive_response
+  # when FinchAPI::Models::HRIS::W42020
+  #   # ...
+  # when FinchAPI::Models::HRIS::W42005
+  #   # ...
+  # else
+  #   # ...
+  # end
+  # ```
+  #
+  # @example
+  # ```ruby
+  # case document_retreive_response
+  # in {type: :w4_2020, data: data, year: year}
+  #   # ...
+  # in {type: :w4_2005, data: data, year: year}
+  #   # ...
+  # else
+  #   # ...
+  # end
+  # ```
   class Union
     extend FinchAPI::Converter
 
@@ -839,6 +892,15 @@ module FinchAPI
   #
   # @abstract
   #
+  # @example
+  # ```ruby
+  # # `operation_support_matrix` is a `FinchAPI::Models::OperationSupportMatrix`
+  # operation_support_matrix => {
+  #   create: create,
+  #   delete: delete,
+  #   read: read
+  # }
+  # ```
   class BaseModel
     extend FinchAPI::Converter
 

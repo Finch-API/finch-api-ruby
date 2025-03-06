@@ -27,13 +27,6 @@ module FinchAPI
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case event_type
-      # in :"company.updated"
-      #   # ...
-      # end
-      # ```
       class EventType < FinchAPI::Enum
         COMPANY_UPDATED = :"company.updated"
 

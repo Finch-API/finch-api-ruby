@@ -130,16 +130,6 @@ module FinchAPI
               #
               # For HSA benefits only - whether the contribution limit is for an individual or
               #   family
-              #
-              # @example
-              # ```ruby
-              # case annual_contribution_limit
-              # in :individual
-              #   # ...
-              # in :family
-              #   # ...
-              # end
-              # ```
               class AnnualContributionLimit < FinchAPI::Enum
                 INDIVIDUAL = :individual
                 FAMILY = :family
@@ -184,15 +174,6 @@ module FinchAPI
 
                 # @abstract
                 #
-                # @example
-                # ```ruby
-                # case type
-                # in :fixed
-                #   # ...
-                # in :percent
-                #   # ...
-                # end
-                # ```
                 class Type < FinchAPI::Enum
                   FIXED = :fixed
                   PERCENT = :percent
@@ -238,15 +219,6 @@ module FinchAPI
 
                 # @abstract
                 #
-                # @example
-                # ```ruby
-                # case type
-                # in :fixed
-                #   # ...
-                # in :percent
-                #   # ...
-                # end
-                # ```
                 class Type < FinchAPI::Enum
                   FIXED = :fixed
                   PERCENT = :percent

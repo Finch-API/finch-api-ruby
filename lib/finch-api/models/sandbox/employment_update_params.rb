@@ -248,24 +248,6 @@ module FinchAPI
           #
           # The secondary employment type of the individual. Options: `full_time`,
           #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
-          #
-          # @example
-          # ```ruby
-          # case subtype
-          # in :full_time
-          #   # ...
-          # in :intern
-          #   # ...
-          # in :part_time
-          #   # ...
-          # in :temp
-          #   # ...
-          # in :seasonal
-          #   # ...
-          # in ...
-          #   #...
-          # end
-          # ```
           class Subtype < FinchAPI::Enum
             FULL_TIME = :full_time
             INTERN = :intern
@@ -285,16 +267,6 @@ module FinchAPI
           # @abstract
           #
           # The main employment type of the individual.
-          #
-          # @example
-          # ```ruby
-          # case type
-          # in :employee
-          #   # ...
-          # in :contractor
-          #   # ...
-          # end
-          # ```
           class Type < FinchAPI::Enum
             EMPLOYEE = :employee
             CONTRACTOR = :contractor
@@ -311,24 +283,6 @@ module FinchAPI
         # @abstract
         #
         # The detailed employment status of the individual.
-        #
-        # @example
-        # ```ruby
-        # case employment_status
-        # in :active
-        #   # ...
-        # in :deceased
-        #   # ...
-        # in :leave
-        #   # ...
-        # in :onboarding
-        #   # ...
-        # in :prehire
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class EmploymentStatus < FinchAPI::Enum
           ACTIVE = :active
           DECEASED = :deceased
