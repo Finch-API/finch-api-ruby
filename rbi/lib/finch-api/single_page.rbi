@@ -11,11 +11,11 @@ module FinchAPI
         client: FinchAPI::BaseClient,
         req: FinchAPI::BaseClient::RequestComponentsShape,
         headers: T.any(T::Hash[String, String], Net::HTTPHeader),
-        unwrapped: T::Array[T.anything]
+        page_data: T::Array[T.anything]
       )
         .void
     end
-    def initialize(client:, req:, headers:, unwrapped:)
+    def initialize(client:, req:, headers:, page_data:)
     end
 
     sig { override.returns(T::Boolean) }
