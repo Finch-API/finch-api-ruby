@@ -16,15 +16,10 @@ module FinchAPI
         end
 
         sig do
-          params(
-            type: Symbol,
-            request_options: T.any(
-              FinchAPI::RequestOptions,
-              T::Hash[Symbol, T.anything]
-            )
-          ).void
+          params(type: Symbol, request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
+            .returns(T.attached_class)
         end
-        def initialize(type:, request_options: {})
+        def self.new(type:, request_options: {})
         end
 
         sig { override.returns({type: Symbol, request_options: FinchAPI::RequestOptions}) }

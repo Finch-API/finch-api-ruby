@@ -21,9 +21,9 @@ module FinchAPI
               individual_ids: String,
               request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(individual_ids: nil, request_options: {})
+          def self.new(individual_ids: nil, request_options: {})
           end
 
           sig { override.returns({individual_ids: String, request_options: FinchAPI::RequestOptions}) }

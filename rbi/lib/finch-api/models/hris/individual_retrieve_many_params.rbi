@@ -35,9 +35,9 @@ module FinchAPI
             requests: T::Array[FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request],
             request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(options: nil, requests: nil, request_options: {})
+        def self.new(options: nil, requests: nil, request_options: {})
         end
 
         sig do
@@ -62,8 +62,8 @@ module FinchAPI
           def include=(_)
           end
 
-          sig { params(include: T::Array[String]).void }
-          def initialize(include: nil)
+          sig { params(include: T::Array[String]).returns(T.attached_class) }
+          def self.new(include: nil)
           end
 
           sig { override.returns({include: T::Array[String]}) }
@@ -80,8 +80,8 @@ module FinchAPI
           def individual_id=(_)
           end
 
-          sig { params(individual_id: String).void }
-          def initialize(individual_id: nil)
+          sig { params(individual_id: String).returns(T.attached_class) }
+          def self.new(individual_id: nil)
           end
 
           sig { override.returns({individual_id: String}) }

@@ -21,8 +21,10 @@ module FinchAPI
       def event_type=(_)
       end
 
-      sig { params(data: T.nilable(T::Hash[Symbol, T.anything]), event_type: Symbol).void }
-      def initialize(data: nil, event_type: nil)
+      sig do
+        params(data: T.nilable(T::Hash[Symbol, T.anything]), event_type: Symbol).returns(T.attached_class)
+      end
+      def self.new(data: nil, event_type: nil)
       end
 
       sig { override.returns({data: T.nilable(T::Hash[Symbol, T.anything]), event_type: Symbol}) }

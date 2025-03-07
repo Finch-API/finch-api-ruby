@@ -19,8 +19,8 @@ module FinchAPI
       def event_type=(_)
       end
 
-      sig { params(data: FinchAPI::Models::IndividualEvent::Data, event_type: Symbol).void }
-      def initialize(data: nil, event_type: nil)
+      sig { params(data: FinchAPI::Models::IndividualEvent::Data, event_type: Symbol).returns(T.attached_class) }
+      def self.new(data: nil, event_type: nil)
       end
 
       sig { override.returns({data: FinchAPI::Models::IndividualEvent::Data, event_type: Symbol}) }
@@ -36,8 +36,8 @@ module FinchAPI
         def individual_id=(_)
         end
 
-        sig { params(individual_id: String).void }
-        def initialize(individual_id: nil)
+        sig { params(individual_id: String).returns(T.attached_class) }
+        def self.new(individual_id: nil)
         end
 
         sig { override.returns({individual_id: String}) }

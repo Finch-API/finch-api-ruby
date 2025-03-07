@@ -99,9 +99,9 @@ module FinchAPI
           primary_color: String,
           products: T::Array[String]
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id: nil,
         authentication_methods: nil,
         beta: nil,
@@ -172,9 +172,9 @@ module FinchAPI
             supported_fields: T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields),
             type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(benefits_support: nil, supported_fields: nil, type: nil)
+        def self.new(benefits_support: nil, supported_fields: nil, type: nil)
         end
 
         sig do
@@ -278,9 +278,9 @@ module FinchAPI
               pay_statement: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement,
               payment: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             company: nil,
             directory: nil,
             employment: nil,
@@ -409,9 +409,9 @@ module FinchAPI
                 primary_email: T::Boolean,
                 primary_phone_number: T::Boolean
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id: nil,
               accounts: nil,
               departments: nil,
@@ -492,15 +492,9 @@ module FinchAPI
                   institution_name: T::Boolean,
                   routing_number: T::Boolean
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(
-                account_name: nil,
-                account_number: nil,
-                account_type: nil,
-                institution_name: nil,
-                routing_number: nil
-              )
+              def self.new(account_name: nil, account_number: nil, account_type: nil, institution_name: nil, routing_number: nil)
               end
 
               sig do
@@ -548,9 +542,9 @@ module FinchAPI
                   name: T::Boolean,
                   parent: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments::Parent
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(name: nil, parent: nil)
+              def self.new(name: nil, parent: nil)
               end
 
               sig do
@@ -574,8 +568,8 @@ module FinchAPI
                 def name=(_)
                 end
 
-                sig { params(name: T::Boolean).void }
-                def initialize(name: nil)
+                sig { params(name: T::Boolean).returns(T.attached_class) }
+                def self.new(name: nil)
                 end
 
                 sig { override.returns({name: T::Boolean}) }
@@ -601,8 +595,8 @@ module FinchAPI
               def type=(_)
               end
 
-              sig { params(subtype: T::Boolean, type: T::Boolean).void }
-              def initialize(subtype: nil, type: nil)
+              sig { params(subtype: T::Boolean, type: T::Boolean).returns(T.attached_class) }
+              def self.new(subtype: nil, type: nil)
               end
 
               sig { override.returns({subtype: T::Boolean, type: T::Boolean}) }
@@ -668,9 +662,9 @@ module FinchAPI
                   postal_code: T::Boolean,
                   state: T::Boolean
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(city: nil, country: nil, line1: nil, line2: nil, postal_code: nil, state: nil)
+              def self.new(city: nil, country: nil, line1: nil, line2: nil, postal_code: nil, state: nil)
               end
 
               sig do
@@ -723,9 +717,9 @@ module FinchAPI
                 individuals: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals,
                 paging: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Paging
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(individuals: nil, paging: nil)
+            def self.new(individuals: nil, paging: nil)
             end
 
             sig do
@@ -820,17 +814,9 @@ module FinchAPI
                   manager: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager,
                   middle_name: T::Boolean
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(
-                id: nil,
-                department: nil,
-                first_name: nil,
-                is_active: nil,
-                last_name: nil,
-                manager: nil,
-                middle_name: nil
-              )
+              def self.new(id: nil, department: nil, first_name: nil, is_active: nil, last_name: nil, manager: nil, middle_name: nil)
               end
 
               sig do
@@ -859,8 +845,8 @@ module FinchAPI
                 def id=(_)
                 end
 
-                sig { params(id: T::Boolean).void }
-                def initialize(id: nil)
+                sig { params(id: T::Boolean).returns(T.attached_class) }
+                def self.new(id: nil)
                 end
 
                 sig { override.returns({id: T::Boolean}) }
@@ -886,8 +872,8 @@ module FinchAPI
               def offset=(_)
               end
 
-              sig { params(count: T::Boolean, offset: T::Boolean).void }
-              def initialize(count: nil, offset: nil)
+              sig { params(count: T::Boolean, offset: T::Boolean).returns(T.attached_class) }
+              def self.new(count: nil, offset: nil)
               end
 
               sig { override.returns({count: T::Boolean, offset: T::Boolean}) }
@@ -1080,9 +1066,9 @@ module FinchAPI
                 start_date: T::Boolean,
                 title: T::Boolean
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id: nil,
               class_code: nil,
               custom_fields: nil,
@@ -1139,8 +1125,8 @@ module FinchAPI
               def name=(_)
               end
 
-              sig { params(name: T::Boolean).void }
-              def initialize(name: nil)
+              sig { params(name: T::Boolean).returns(T.attached_class) }
+              def self.new(name: nil)
               end
 
               sig { override.returns({name: T::Boolean}) }
@@ -1165,8 +1151,8 @@ module FinchAPI
               def type=(_)
               end
 
-              sig { params(subtype: T::Boolean, type: T::Boolean).void }
-              def initialize(subtype: nil, type: nil)
+              sig { params(subtype: T::Boolean, type: T::Boolean).returns(T.attached_class) }
+              def self.new(subtype: nil, type: nil)
               end
 
               sig { override.returns({subtype: T::Boolean, type: T::Boolean}) }
@@ -1199,8 +1185,10 @@ module FinchAPI
               def unit=(_)
               end
 
-              sig { params(amount: T::Boolean, currency: T::Boolean, unit: T::Boolean).void }
-              def initialize(amount: nil, currency: nil, unit: nil)
+              sig do
+                params(amount: T::Boolean, currency: T::Boolean, unit: T::Boolean).returns(T.attached_class)
+              end
+              def self.new(amount: nil, currency: nil, unit: nil)
               end
 
               sig { override.returns({amount: T::Boolean, currency: T::Boolean, unit: T::Boolean}) }
@@ -1266,9 +1254,9 @@ module FinchAPI
                   postal_code: T::Boolean,
                   state: T::Boolean
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(city: nil, country: nil, line1: nil, line2: nil, postal_code: nil, state: nil)
+              def self.new(city: nil, country: nil, line1: nil, line2: nil, postal_code: nil, state: nil)
               end
 
               sig do
@@ -1297,8 +1285,8 @@ module FinchAPI
               def id=(_)
               end
 
-              sig { params(id: T::Boolean).void }
-              def initialize(id: nil)
+              sig { params(id: T::Boolean).returns(T.attached_class) }
+              def self.new(id: nil)
               end
 
               sig { override.returns({id: T::Boolean}) }
@@ -1445,9 +1433,9 @@ module FinchAPI
                 residence: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::Residence,
                 ssn: T::Boolean
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id: nil,
               dob: nil,
               emails: nil,
@@ -1504,8 +1492,8 @@ module FinchAPI
               def type=(_)
               end
 
-              sig { params(data: T::Boolean, type: T::Boolean).void }
-              def initialize(data: nil, type: nil)
+              sig { params(data: T::Boolean, type: T::Boolean).returns(T.attached_class) }
+              def self.new(data: nil, type: nil)
               end
 
               sig { override.returns({data: T::Boolean, type: T::Boolean}) }
@@ -1530,8 +1518,8 @@ module FinchAPI
               def type=(_)
               end
 
-              sig { params(data: T::Boolean, type: T::Boolean).void }
-              def initialize(data: nil, type: nil)
+              sig { params(data: T::Boolean, type: T::Boolean).returns(T.attached_class) }
+              def self.new(data: nil, type: nil)
               end
 
               sig { override.returns({data: T::Boolean, type: T::Boolean}) }
@@ -1597,9 +1585,9 @@ module FinchAPI
                   postal_code: T::Boolean,
                   state: T::Boolean
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(city: nil, country: nil, line1: nil, line2: nil, postal_code: nil, state: nil)
+              def self.new(city: nil, country: nil, line1: nil, line2: nil, postal_code: nil, state: nil)
               end
 
               sig do
@@ -1659,9 +1647,10 @@ module FinchAPI
                 individual_ids: T::Boolean,
                 name: T::Boolean,
                 pay_frequencies: T::Boolean
-              ).void
+              )
+                .returns(T.attached_class)
             end
-            def initialize(id: nil, individual_ids: nil, name: nil, pay_frequencies: nil)
+            def self.new(id: nil, individual_ids: nil, name: nil, pay_frequencies: nil)
             end
 
             sig do
@@ -1713,9 +1702,9 @@ module FinchAPI
                 paging: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::Paging,
                 pay_statements: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(paging: nil, pay_statements: nil)
+            def self.new(paging: nil, pay_statements: nil)
             end
 
             sig do
@@ -1747,8 +1736,8 @@ module FinchAPI
               def offset=(_)
               end
 
-              sig { params(count: T::Boolean, offset: T::Boolean).void }
-              def initialize(count:, offset:)
+              sig { params(count: T::Boolean, offset: T::Boolean).returns(T.attached_class) }
+              def self.new(count:, offset:)
               end
 
               sig { override.returns({count: T::Boolean, offset: T::Boolean}) }
@@ -1902,9 +1891,9 @@ module FinchAPI
                   total_hours: T::Boolean,
                   type: T::Boolean
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(
+              def self.new(
                 earnings: nil,
                 employee_deductions: nil,
                 employer_contributions: nil,
@@ -1972,9 +1961,10 @@ module FinchAPI
                 end
 
                 sig do
-                  params(amount: T::Boolean, currency: T::Boolean, name: T::Boolean, type: T::Boolean).void
+                  params(amount: T::Boolean, currency: T::Boolean, name: T::Boolean, type: T::Boolean)
+                    .returns(T.attached_class)
                 end
-                def initialize(amount: nil, currency: nil, name: nil, type: nil)
+                def self.new(amount: nil, currency: nil, name: nil, type: nil)
                 end
 
                 sig do
@@ -2040,9 +2030,9 @@ module FinchAPI
                     pre_tax: T::Boolean,
                     type: T::Boolean
                   )
-                    .void
+                    .returns(T.attached_class)
                 end
-                def initialize(amount: nil, currency: nil, name: nil, pre_tax: nil, type: nil)
+                def self.new(amount: nil, currency: nil, name: nil, pre_tax: nil, type: nil)
                 end
 
                 sig do
@@ -2086,8 +2076,10 @@ module FinchAPI
                 def name=(_)
                 end
 
-                sig { params(amount: T::Boolean, currency: T::Boolean, name: T::Boolean).void }
-                def initialize(amount: nil, currency: nil, name: nil)
+                sig do
+                  params(amount: T::Boolean, currency: T::Boolean, name: T::Boolean).returns(T.attached_class)
+                end
+                def self.new(amount: nil, currency: nil, name: nil)
                 end
 
                 sig { override.returns({amount: T::Boolean, currency: T::Boolean, name: T::Boolean}) }
@@ -2144,9 +2136,9 @@ module FinchAPI
                     name: T::Boolean,
                     type: T::Boolean
                   )
-                    .void
+                    .returns(T.attached_class)
                 end
-                def initialize(amount: nil, currency: nil, employer: nil, name: nil, type: nil)
+                def self.new(amount: nil, currency: nil, employer: nil, name: nil, type: nil)
                 end
 
                 sig do
@@ -2282,9 +2274,9 @@ module FinchAPI
                 pay_group_ids: T::Boolean,
                 pay_period: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment::PayPeriod
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id: nil,
               company_debit: nil,
               debit_date: nil,
@@ -2339,8 +2331,8 @@ module FinchAPI
               def start_date=(_)
               end
 
-              sig { params(end_date: T::Boolean, start_date: T::Boolean).void }
-              def initialize(end_date: nil, start_date: nil)
+              sig { params(end_date: T::Boolean, start_date: T::Boolean).returns(T.attached_class) }
+              def self.new(end_date: nil, start_date: nil)
               end
 
               sig { override.returns({end_date: T::Boolean, start_date: T::Boolean}) }

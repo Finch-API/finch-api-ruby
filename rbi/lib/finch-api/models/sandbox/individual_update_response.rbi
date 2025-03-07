@@ -132,9 +132,9 @@ module FinchAPI
             residence: T.nilable(FinchAPI::Models::Location),
             ssn: T.nilable(String)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id: nil,
           dob: nil,
           emails: nil,
@@ -191,8 +191,8 @@ module FinchAPI
           def type=(_)
           end
 
-          sig { params(data: String, type: T.nilable(Symbol)).void }
-          def initialize(data: nil, type: nil)
+          sig { params(data: String, type: T.nilable(Symbol)).returns(T.attached_class) }
+          def self.new(data: nil, type: nil)
           end
 
           sig { override.returns({data: String, type: T.nilable(Symbol)}) }
@@ -264,8 +264,8 @@ module FinchAPI
           def type=(_)
           end
 
-          sig { params(data: String, type: T.nilable(Symbol)).void }
-          def initialize(data: nil, type: nil)
+          sig { params(data: String, type: T.nilable(Symbol)).returns(T.attached_class) }
+          def self.new(data: nil, type: nil)
           end
 
           sig { override.returns({data: String, type: T.nilable(Symbol)}) }

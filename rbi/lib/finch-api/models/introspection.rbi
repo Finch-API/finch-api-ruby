@@ -156,9 +156,9 @@ module FinchAPI
           provider_id: String,
           username: String
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         account_id:,
         authentication_methods:,
         client_id:,
@@ -238,9 +238,9 @@ module FinchAPI
             products: T::Array[String],
             type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(connection_status: nil, products: nil, type: nil)
+        def self.new(connection_status: nil, products: nil, type: nil)
         end
 
         sig do
@@ -273,8 +273,8 @@ module FinchAPI
           def status=(_)
           end
 
-          sig { params(message: String, status: Symbol).void }
-          def initialize(message: nil, status: nil)
+          sig { params(message: String, status: Symbol).returns(T.attached_class) }
+          def self.new(message: nil, status: nil)
           end
 
           sig { override.returns({message: String, status: Symbol}) }
@@ -330,8 +330,8 @@ module FinchAPI
         def status=(_)
         end
 
-        sig { params(message: String, status: Symbol).void }
-        def initialize(message: nil, status: nil)
+        sig { params(message: String, status: Symbol).returns(T.attached_class) }
+        def self.new(message: nil, status: nil)
         end
 
         sig { override.returns({message: String, status: Symbol}) }

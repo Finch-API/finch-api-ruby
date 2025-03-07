@@ -42,9 +42,9 @@ module FinchAPI
           effective_date: T.nilable(String),
           unit: T.nilable(Symbol)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(amount: nil, currency: nil, effective_date: nil, unit: nil)
+      def self.new(amount: nil, currency: nil, effective_date: nil, unit: nil)
       end
 
       sig do

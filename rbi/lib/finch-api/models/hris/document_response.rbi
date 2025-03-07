@@ -52,9 +52,9 @@ module FinchAPI
             url: String,
             year: T.nilable(Float)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(id: nil, individual_id: nil, type: nil, url: nil, year: nil)
+        def self.new(id: nil, individual_id: nil, type: nil, url: nil, year: nil)
         end
 
         sig do
