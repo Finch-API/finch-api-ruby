@@ -73,8 +73,10 @@ module FinchAPI
           W4_2020 = :w4_2020
           W4_2005 = :w4_2005
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

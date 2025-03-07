@@ -400,8 +400,10 @@ module FinchAPI
               NUMBER_1099 = T.let(:"1099", T.nilable(Symbol))
               OTHER = T.let(:other, T.nilable(Symbol))
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
@@ -706,8 +708,10 @@ module FinchAPI
             CHECK = T.let(:check, T.nilable(Symbol))
             DIRECT_DEPOSIT = T.let(:direct_deposit, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -852,8 +856,10 @@ module FinchAPI
               LOCAL = T.let(:local, T.nilable(Symbol))
               FICA = T.let(:fica, T.nilable(Symbol))
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
@@ -865,8 +871,10 @@ module FinchAPI
             OFF_CYCLE_PAYROLL = T.let(:off_cycle_payroll, T.nilable(Symbol))
             ONE_TIME_PAYMENT = T.let(:one_time_payment, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end

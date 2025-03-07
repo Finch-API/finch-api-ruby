@@ -204,8 +204,10 @@ module FinchAPI
             CHECKING = T.let(:checking, T.nilable(Symbol))
             SAVINGS = T.let(:savings, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -303,8 +305,10 @@ module FinchAPI
             C_CORPORATION = T.let(:c_corporation, T.nilable(Symbol))
             B_CORPORATION = T.let(:b_corporation, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -319,8 +323,10 @@ module FinchAPI
             PARTNERSHIP = T.let(:partnership, T.nilable(Symbol))
             COOPERATIVE = T.let(:cooperative, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end

@@ -56,11 +56,6 @@ module FinchAPI
         INDIVIDUAL_DELETED = :"individual.deleted"
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

@@ -155,11 +155,6 @@ module FinchAPI
             PERSONAL = :personal
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -177,11 +172,6 @@ module FinchAPI
           DECLINE_TO_SPECIFY = :decline_to_specify
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         # @abstract
@@ -194,11 +184,6 @@ module FinchAPI
           DECLINE_TO_SPECIFY = :decline_to_specify
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class PhoneNumber < FinchAPI::BaseModel
@@ -227,11 +212,6 @@ module FinchAPI
             PERSONAL = :personal
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
       end

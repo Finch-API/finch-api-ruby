@@ -33,11 +33,6 @@ module FinchAPI
             ERROR = :error
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
@@ -46,11 +41,6 @@ module FinchAPI
             DATA_SYNC_ALL = :data_sync_all
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
       end

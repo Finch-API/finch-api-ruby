@@ -123,11 +123,6 @@ module FinchAPI
           OTHER = :other
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class PayPeriod < FinchAPI::BaseModel

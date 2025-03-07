@@ -153,8 +153,10 @@ module FinchAPI
           REAUTH_ERROR = :reauth_error
           PERMISSIONS_ERROR = :permissions_error
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -164,8 +166,10 @@ module FinchAPI
           DATA_SYNC_ALL = :data_sync_all
           W4_FORM_EMPLOYEE_SYNC = :w4_form_employee_sync
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

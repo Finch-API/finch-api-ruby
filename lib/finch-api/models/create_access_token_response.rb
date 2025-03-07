@@ -112,11 +112,6 @@ module FinchAPI
         SANDBOX = :sandbox
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -130,11 +125,6 @@ module FinchAPI
         FINCH = :finch
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

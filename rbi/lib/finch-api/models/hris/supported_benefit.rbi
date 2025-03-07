@@ -123,8 +123,10 @@ module FinchAPI
           FIXED = T.let(:fixed, T.nilable(Symbol))
           PERCENT = T.let(:percent, T.nilable(Symbol))
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -134,8 +136,10 @@ module FinchAPI
           FIXED = T.let(:fixed, T.nilable(Symbol))
           PERCENT = T.let(:percent, T.nilable(Symbol))
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -145,8 +149,10 @@ module FinchAPI
           INDIVIDUAL = T.let(:individual, T.nilable(Symbol))
           FAMILY = T.let(:family, T.nilable(Symbol))
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

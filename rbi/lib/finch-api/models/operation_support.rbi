@@ -10,8 +10,10 @@ module FinchAPI
       NOT_SUPPORTED_BY_PROVIDER = :not_supported_by_provider
       CLIENT_ACCESS_ONLY = :client_access_only
 
-      sig { override.returns(T::Array[Symbol]) }
-      def self.values
+      class << self
+        sig { override.returns(T::Array[Symbol]) }
+        def values
+        end
       end
     end
   end

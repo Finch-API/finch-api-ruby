@@ -264,11 +264,6 @@ module FinchAPI
             INDIVIDUAL_CONTRACTOR = :individual_contractor
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
@@ -279,11 +274,6 @@ module FinchAPI
             CONTRACTOR = :contractor
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -301,11 +291,6 @@ module FinchAPI
           TERMINATED = :terminated
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class Manager < FinchAPI::BaseModel
