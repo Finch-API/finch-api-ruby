@@ -63,8 +63,10 @@ module FinchAPI
         JOB_BENEFIT_UPDATE_COMPLETED = :"job.benefit_update.completed"
         JOB_DATA_SYNC_ALL_COMPLETED = :"job.data_sync_all.completed"
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

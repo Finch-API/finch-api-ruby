@@ -156,8 +156,10 @@ module FinchAPI
               T.nilable(Symbol)
             )
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -167,8 +169,10 @@ module FinchAPI
 
           W4_2020 = :w4_2020
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

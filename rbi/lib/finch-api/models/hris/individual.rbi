@@ -203,8 +203,10 @@ module FinchAPI
             WORK = T.let(:work, T.nilable(Symbol))
             PERSONAL = T.let(:personal, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -221,8 +223,10 @@ module FinchAPI
           TWO_OR_MORE_RACES = T.let(:two_or_more_races, T.nilable(Symbol))
           DECLINE_TO_SPECIFY = T.let(:decline_to_specify, T.nilable(Symbol))
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -234,8 +238,10 @@ module FinchAPI
           OTHER = T.let(:other, T.nilable(Symbol))
           DECLINE_TO_SPECIFY = T.let(:decline_to_specify, T.nilable(Symbol))
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -270,8 +276,10 @@ module FinchAPI
             WORK = T.let(:work, T.nilable(Symbol))
             PERSONAL = T.let(:personal, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end

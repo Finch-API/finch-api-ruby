@@ -38,11 +38,6 @@ module FinchAPI
           COMPLETE = :complete
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
     end

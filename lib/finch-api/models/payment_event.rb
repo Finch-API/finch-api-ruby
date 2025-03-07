@@ -59,11 +59,6 @@ module FinchAPI
         PAYMENT_DELETED = :"payment.deleted"
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

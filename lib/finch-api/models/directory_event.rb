@@ -56,11 +56,6 @@ module FinchAPI
         DIRECTORY_DELETED = :"directory.deleted"
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

@@ -2359,8 +2359,10 @@ module FinchAPI
           API_CREDENTIAL = :api_credential
           OAUTH = :oauth
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

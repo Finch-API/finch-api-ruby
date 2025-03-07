@@ -81,11 +81,6 @@ module FinchAPI
             FORBIDDEN = 403
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Integer>]
-            #   #
-            #   def self.values; end
           end
         end
       end

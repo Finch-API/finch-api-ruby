@@ -55,8 +55,10 @@ module FinchAPI
 
           W4_FORM_EMPLOYEE_SYNC = :w4_form_employee_sync
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 

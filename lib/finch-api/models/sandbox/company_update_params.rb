@@ -140,11 +140,6 @@ module FinchAPI
             SAVINGS = :savings
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -221,11 +216,6 @@ module FinchAPI
             B_CORPORATION = :b_corporation
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
@@ -241,11 +231,6 @@ module FinchAPI
             COOPERATIVE = :cooperative
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
       end

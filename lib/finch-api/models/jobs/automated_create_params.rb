@@ -35,11 +35,6 @@ module FinchAPI
           W4_FORM_EMPLOYEE_SYNC = :w4_form_employee_sync
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class Params < FinchAPI::BaseModel
