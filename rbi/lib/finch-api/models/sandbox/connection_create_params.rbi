@@ -47,15 +47,9 @@ module FinchAPI
             products: T::Array[String],
             request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
-          provider_id:,
-          authentication_type: nil,
-          employee_size: nil,
-          products: nil,
-          request_options: {}
-        )
+        def self.new(provider_id:, authentication_type: nil, employee_size: nil, products: nil, request_options: {})
         end
 
         sig do

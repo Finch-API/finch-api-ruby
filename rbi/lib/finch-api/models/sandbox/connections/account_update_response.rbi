@@ -62,16 +62,9 @@ module FinchAPI
               provider_id: String,
               connection_id: String
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
-            account_id:,
-            authentication_type:,
-            company_id:,
-            products:,
-            provider_id:,
-            connection_id: nil
-          )
+          def self.new(account_id:, authentication_type:, company_id:, products:, provider_id:, connection_id: nil)
           end
 
           sig do

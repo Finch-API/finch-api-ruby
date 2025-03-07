@@ -40,9 +40,9 @@ module FinchAPI
               code: Integer,
               individual_id: String
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(body: nil, code: nil, individual_id: nil)
+          def self.new(body: nil, code: nil, individual_id: nil)
           end
 
           sig do
@@ -109,9 +109,9 @@ module FinchAPI
                 employee_deduction: T.nilable(FinchAPI::Models::HRIS::BenefitContribution),
                 hsa_contribution_limit: T.nilable(Symbol)
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               annual_maximum: nil,
               catch_up: nil,
               company_contribution: nil,

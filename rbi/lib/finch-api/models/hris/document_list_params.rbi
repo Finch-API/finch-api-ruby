@@ -47,9 +47,9 @@ module FinchAPI
             types: T::Array[Symbol],
             request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(individual_ids: nil, limit: nil, offset: nil, types: nil, request_options: {})
+        def self.new(individual_ids: nil, limit: nil, offset: nil, types: nil, request_options: {})
         end
 
         sig do

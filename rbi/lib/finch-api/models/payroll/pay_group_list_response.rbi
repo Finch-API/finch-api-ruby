@@ -28,8 +28,8 @@ module FinchAPI
         def pay_frequencies=(_)
         end
 
-        sig { params(id: String, name: String, pay_frequencies: T::Array[Symbol]).void }
-        def initialize(id: nil, name: nil, pay_frequencies: nil)
+        sig { params(id: String, name: String, pay_frequencies: T::Array[Symbol]).returns(T.attached_class) }
+        def self.new(id: nil, name: nil, pay_frequencies: nil)
         end
 
         sig { override.returns({id: String, name: String, pay_frequencies: T::Array[Symbol]}) }

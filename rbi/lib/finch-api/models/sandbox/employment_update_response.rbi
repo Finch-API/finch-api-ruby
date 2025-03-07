@@ -193,9 +193,9 @@ module FinchAPI
             start_date: T.nilable(String),
             title: T.nilable(String)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id: nil,
           class_code: nil,
           custom_fields: nil,
@@ -264,8 +264,8 @@ module FinchAPI
           def value=(_)
           end
 
-          sig { params(name: T.nilable(String), value: T.anything).void }
-          def initialize(name: nil, value: nil)
+          sig { params(name: T.nilable(String), value: T.anything).returns(T.attached_class) }
+          def self.new(name: nil, value: nil)
           end
 
           sig { override.returns({name: T.nilable(String), value: T.anything}) }
@@ -282,8 +282,8 @@ module FinchAPI
           def name=(_)
           end
 
-          sig { params(name: T.nilable(String)).void }
-          def initialize(name: nil)
+          sig { params(name: T.nilable(String)).returns(T.attached_class) }
+          def self.new(name: nil)
           end
 
           sig { override.returns({name: T.nilable(String)}) }
@@ -308,8 +308,8 @@ module FinchAPI
           def type=(_)
           end
 
-          sig { params(subtype: T.nilable(Symbol), type: T.nilable(Symbol)).void }
-          def initialize(subtype: nil, type: nil)
+          sig { params(subtype: T.nilable(Symbol), type: T.nilable(Symbol)).returns(T.attached_class) }
+          def self.new(subtype: nil, type: nil)
           end
 
           sig { override.returns({subtype: T.nilable(Symbol), type: T.nilable(Symbol)}) }
@@ -374,8 +374,8 @@ module FinchAPI
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id: nil)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id: nil)
           end
 
           sig { override.returns({id: String}) }

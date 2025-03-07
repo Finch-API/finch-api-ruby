@@ -21,9 +21,9 @@ module FinchAPI
               connection_status: Symbol,
               request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(connection_status: nil, request_options: {})
+          def self.new(connection_status: nil, request_options: {})
           end
 
           sig { override.returns({connection_status: Symbol, request_options: FinchAPI::RequestOptions}) }

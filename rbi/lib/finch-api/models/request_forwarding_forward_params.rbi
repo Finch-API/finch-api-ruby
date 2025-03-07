@@ -55,9 +55,9 @@ module FinchAPI
           params: T.nilable(T.anything),
           request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(method_:, route:, data: nil, headers: nil, params: nil, request_options: {})
+      def self.new(method_:, route:, data: nil, headers: nil, params: nil, request_options: {})
       end
 
       sig do

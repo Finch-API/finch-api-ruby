@@ -17,8 +17,8 @@ module FinchAPI
       def forward(method_:, route:, data: nil, headers: nil, params: nil, request_options: {})
       end
 
-      sig { params(client: FinchAPI::Client).void }
-      def initialize(client:)
+      sig { params(client: FinchAPI::Client).returns(T.attached_class) }
+      def self.new(client:)
       end
     end
   end

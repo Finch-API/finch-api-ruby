@@ -85,9 +85,9 @@ module FinchAPI
             hsa_contribution_limit: T.nilable(T::Array[T.nilable(Symbol)]),
             type: T.nilable(Symbol)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           annual_maximum: nil,
           catch_up: nil,
           company_contribution: nil,

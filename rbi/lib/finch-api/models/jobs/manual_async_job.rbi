@@ -28,8 +28,14 @@ module FinchAPI
         def status=(_)
         end
 
-        sig { params(body: T.nilable(T::Array[T.anything]), job_id: String, status: Symbol).void }
-        def initialize(body:, job_id:, status:)
+        sig do
+          params(
+            body: T.nilable(T::Array[T.anything]),
+            job_id: String,
+            status: Symbol
+          ).returns(T.attached_class)
+        end
+        def self.new(body:, job_id:, status:)
         end
 
         sig { override.returns({body: T.nilable(T::Array[T.anything]), job_id: String, status: Symbol}) }

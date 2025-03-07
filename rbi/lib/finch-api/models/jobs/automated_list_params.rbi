@@ -29,9 +29,9 @@ module FinchAPI
             offset: Integer,
             request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(limit: nil, offset: nil, request_options: {})
+        def self.new(limit: nil, offset: nil, request_options: {})
         end
 
         sig { override.returns({limit: Integer, offset: Integer, request_options: FinchAPI::RequestOptions}) }

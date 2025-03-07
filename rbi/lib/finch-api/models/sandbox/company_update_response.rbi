@@ -91,18 +91,9 @@ module FinchAPI
             primary_email: T.nilable(String),
             primary_phone_number: T.nilable(String)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
-          accounts:,
-          departments:,
-          ein:,
-          entity:,
-          legal_name:,
-          locations:,
-          primary_email:,
-          primary_phone_number:
-        )
+        def self.new(accounts:, departments:, ein:, entity:, legal_name:, locations:, primary_email:, primary_phone_number:)
         end
 
         sig do
@@ -172,15 +163,9 @@ module FinchAPI
               institution_name: T.nilable(String),
               routing_number: T.nilable(String)
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
-            account_name: nil,
-            account_number: nil,
-            account_type: nil,
-            institution_name: nil,
-            routing_number: nil
-          )
+          def self.new(account_name: nil, account_number: nil, account_type: nil, institution_name: nil, routing_number: nil)
           end
 
           sig do
@@ -237,9 +222,9 @@ module FinchAPI
               name: T.nilable(String),
               parent: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department::Parent)
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(name: nil, parent: nil)
+          def self.new(name: nil, parent: nil)
           end
 
           sig do
@@ -263,8 +248,8 @@ module FinchAPI
             def name=(_)
             end
 
-            sig { params(name: T.nilable(String)).void }
-            def initialize(name: nil)
+            sig { params(name: T.nilable(String)).returns(T.attached_class) }
+            def self.new(name: nil)
             end
 
             sig { override.returns({name: T.nilable(String)}) }
@@ -290,8 +275,8 @@ module FinchAPI
           def type=(_)
           end
 
-          sig { params(subtype: T.nilable(Symbol), type: T.nilable(Symbol)).void }
-          def initialize(subtype: nil, type: nil)
+          sig { params(subtype: T.nilable(Symbol), type: T.nilable(Symbol)).returns(T.attached_class) }
+          def self.new(subtype: nil, type: nil)
           end
 
           sig { override.returns({subtype: T.nilable(Symbol), type: T.nilable(Symbol)}) }

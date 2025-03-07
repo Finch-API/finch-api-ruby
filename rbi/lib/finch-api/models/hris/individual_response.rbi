@@ -28,8 +28,11 @@ module FinchAPI
         def individual_id=(_)
         end
 
-        sig { params(body: FinchAPI::Models::HRIS::Individual, code: Integer, individual_id: String).void }
-        def initialize(body: nil, code: nil, individual_id: nil)
+        sig do
+          params(body: FinchAPI::Models::HRIS::Individual, code: Integer, individual_id: String)
+            .returns(T.attached_class)
+        end
+        def self.new(body: nil, code: nil, individual_id: nil)
         end
 
         sig { override.returns({body: FinchAPI::Models::HRIS::Individual, code: Integer, individual_id: String}) }

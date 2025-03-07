@@ -20,8 +20,8 @@ module FinchAPI
         def session_id=(_)
         end
 
-        sig { params(connect_url: String, session_id: String).void }
-        def initialize(connect_url:, session_id:)
+        sig { params(connect_url: String, session_id: String).returns(T.attached_class) }
+        def self.new(connect_url:, session_id:)
         end
 
         sig { override.returns({connect_url: String, session_id: String}) }
