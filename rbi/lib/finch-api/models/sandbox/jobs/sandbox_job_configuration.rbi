@@ -21,8 +21,8 @@ module FinchAPI
           def type=(_)
           end
 
-          sig { params(completion_status: Symbol, type: Symbol).void }
-          def initialize(completion_status:, type:)
+          sig { params(completion_status: Symbol, type: Symbol).returns(T.attached_class) }
+          def self.new(completion_status:, type:)
           end
 
           sig { override.returns({completion_status: Symbol, type: Symbol}) }

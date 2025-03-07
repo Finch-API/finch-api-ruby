@@ -91,19 +91,9 @@ module FinchAPI
             status: Symbol,
             type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
-          completed_at:,
-          created_at:,
-          job_id:,
-          job_url:,
-          params:,
-          scheduled_at:,
-          started_at:,
-          status:,
-          type:
-        )
+        def self.new(completed_at:, created_at:, job_id:, job_url:, params:, scheduled_at:, started_at:, status:, type:)
         end
 
         sig do
@@ -134,8 +124,8 @@ module FinchAPI
           def individual_id=(_)
           end
 
-          sig { params(individual_id: String).void }
-          def initialize(individual_id: nil)
+          sig { params(individual_id: String).returns(T.attached_class) }
+          def self.new(individual_id: nil)
           end
 
           sig { override.returns({individual_id: String}) }

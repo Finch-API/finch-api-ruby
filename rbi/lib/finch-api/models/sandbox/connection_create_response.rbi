@@ -79,9 +79,9 @@ module FinchAPI
             provider_id: String,
             token_type: String
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           access_token:,
           account_id:,
           authentication_type:,

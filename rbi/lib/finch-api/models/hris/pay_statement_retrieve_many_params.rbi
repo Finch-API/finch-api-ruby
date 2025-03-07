@@ -23,9 +23,9 @@ module FinchAPI
             requests: T::Array[FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request],
             request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(requests:, request_options: {})
+        def self.new(requests:, request_options: {})
         end
 
         sig do
@@ -65,8 +65,8 @@ module FinchAPI
           def offset=(_)
           end
 
-          sig { params(payment_id: String, limit: Integer, offset: Integer).void }
-          def initialize(payment_id:, limit: nil, offset: nil)
+          sig { params(payment_id: String, limit: Integer, offset: Integer).returns(T.attached_class) }
+          def self.new(payment_id:, limit: nil, offset: nil)
           end
 
           sig { override.returns({payment_id: String, limit: Integer, offset: Integer}) }

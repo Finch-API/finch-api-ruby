@@ -76,17 +76,9 @@ module FinchAPI
             manager: T.nilable(FinchAPI::Models::HRIS::IndividualInDirectory::Manager),
             middle_name: T.nilable(String)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
-          id: nil,
-          department: nil,
-          first_name: nil,
-          is_active: nil,
-          last_name: nil,
-          manager: nil,
-          middle_name: nil
-        )
+        def self.new(id: nil, department: nil, first_name: nil, is_active: nil, last_name: nil, manager: nil, middle_name: nil)
         end
 
         sig do
@@ -115,8 +107,8 @@ module FinchAPI
           def name=(_)
           end
 
-          sig { params(name: T.nilable(String)).void }
-          def initialize(name: nil)
+          sig { params(name: T.nilable(String)).returns(T.attached_class) }
+          def self.new(name: nil)
           end
 
           sig { override.returns({name: T.nilable(String)}) }
@@ -133,8 +125,8 @@ module FinchAPI
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id: nil)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id: nil)
           end
 
           sig { override.returns({id: String}) }

@@ -151,9 +151,9 @@ module FinchAPI
             simple: T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations),
             simple_ira: T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           commuter: nil,
           custom_post_tax: nil,
           custom_pre_tax: nil,

@@ -25,9 +25,9 @@ module FinchAPI
             company_benefits: FinchAPI::Models::OperationSupportMatrix,
             individual_benefits: FinchAPI::Models::OperationSupportMatrix
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(company_benefits: nil, individual_benefits: nil)
+        def self.new(company_benefits: nil, individual_benefits: nil)
         end
 
         sig do

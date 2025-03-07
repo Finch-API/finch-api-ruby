@@ -28,8 +28,11 @@ module FinchAPI
         def year=(_)
         end
 
-        sig { params(data: FinchAPI::Models::HRIS::W42005::Data, type: Symbol, year: T.nilable(Float)).void }
-        def initialize(data: nil, type: nil, year: nil)
+        sig do
+          params(data: FinchAPI::Models::HRIS::W42005::Data, type: Symbol, year: T.nilable(Float))
+            .returns(T.attached_class)
+        end
+        def self.new(data: nil, type: nil, year: nil)
         end
 
         sig { override.returns({data: FinchAPI::Models::HRIS::W42005::Data, type: Symbol, year: T.nilable(Float)}) }
@@ -85,9 +88,9 @@ module FinchAPI
               individual_id: String,
               total_number_of_allowances: T.nilable(Integer)
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             additional_withholding: nil,
             exemption: nil,
             filing_status: nil,

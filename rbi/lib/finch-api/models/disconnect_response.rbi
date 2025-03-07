@@ -11,8 +11,8 @@ module FinchAPI
       def status=(_)
       end
 
-      sig { params(status: String).void }
-      def initialize(status:)
+      sig { params(status: String).returns(T.attached_class) }
+      def self.new(status:)
       end
 
       sig { override.returns({status: String}) }

@@ -19,8 +19,8 @@ module FinchAPI
       def event_type=(_)
       end
 
-      sig { params(data: FinchAPI::Models::PaymentEvent::Data, event_type: Symbol).void }
-      def initialize(data: nil, event_type: nil)
+      sig { params(data: FinchAPI::Models::PaymentEvent::Data, event_type: Symbol).returns(T.attached_class) }
+      def self.new(data: nil, event_type: nil)
       end
 
       sig { override.returns({data: FinchAPI::Models::PaymentEvent::Data, event_type: Symbol}) }
@@ -44,8 +44,8 @@ module FinchAPI
         def payment_id=(_)
         end
 
-        sig { params(pay_date: String, payment_id: String).void }
-        def initialize(pay_date:, payment_id:)
+        sig { params(pay_date: String, payment_id: String).returns(T.attached_class) }
+        def self.new(pay_date:, payment_id:)
         end
 
         sig { override.returns({pay_date: String, payment_id: String}) }

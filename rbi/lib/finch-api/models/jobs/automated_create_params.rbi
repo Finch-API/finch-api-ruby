@@ -32,9 +32,9 @@ module FinchAPI
             params: FinchAPI::Models::Jobs::AutomatedCreateParams::Params,
             request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(type:, params:, request_options: {})
+        def self.new(type:, params:, request_options: {})
         end
 
         sig do
@@ -71,8 +71,8 @@ module FinchAPI
           def individual_id=(_)
           end
 
-          sig { params(individual_id: String).void }
-          def initialize(individual_id:)
+          sig { params(individual_id: String).returns(T.attached_class) }
+          def self.new(individual_id:)
           end
 
           sig { override.returns({individual_id: String}) }
