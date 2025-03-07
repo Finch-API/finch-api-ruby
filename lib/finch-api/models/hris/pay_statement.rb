@@ -210,11 +210,6 @@ module FinchAPI
             OTHER = :other
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -400,11 +395,6 @@ module FinchAPI
           DIRECT_DEPOSIT = :direct_deposit
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class Tax < FinchAPI::BaseModel
@@ -504,11 +494,6 @@ module FinchAPI
             FICA = :fica
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -521,11 +506,6 @@ module FinchAPI
           ONE_TIME_PAYMENT = :one_time_payment
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
     end

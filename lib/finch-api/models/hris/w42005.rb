@@ -115,11 +115,6 @@ module FinchAPI
             NON_EXEMPT = :non_exempt
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
@@ -131,11 +126,6 @@ module FinchAPI
             SINGLE = :single
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -146,11 +136,6 @@ module FinchAPI
           W4_2005 = :w4_2005
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
     end

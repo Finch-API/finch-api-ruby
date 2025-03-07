@@ -52,8 +52,10 @@ module FinchAPI
         DIRECTORY_UPDATED = :"directory.updated"
         DIRECTORY_DELETED = :"directory.deleted"
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

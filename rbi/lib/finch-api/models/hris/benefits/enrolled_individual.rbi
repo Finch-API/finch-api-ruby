@@ -104,8 +104,10 @@ module FinchAPI
             NOT_FOUND = 404
             FORBIDDEN = 403
 
-            sig { override.returns(T::Array[Integer]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Integer]) }
+              def values
+              end
             end
           end
         end

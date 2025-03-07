@@ -18,11 +18,6 @@ module FinchAPI
       CLIENT_ACCESS_ONLY = :client_access_only
 
       finalize!
-
-      # @!parse
-      #   # @return [Array<Symbol>]
-      #   #
-      #   def self.values; end
     end
   end
 end

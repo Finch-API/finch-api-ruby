@@ -56,11 +56,6 @@ module FinchAPI
         EMPLOYMENT_DELETED = :"employment.deleted"
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

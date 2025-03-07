@@ -60,8 +60,10 @@ module FinchAPI
         PAYMENT_UPDATED = :"payment.updated"
         PAYMENT_DELETED = :"payment.deleted"
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

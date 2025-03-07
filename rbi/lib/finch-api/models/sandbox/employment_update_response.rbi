@@ -326,8 +326,10 @@ module FinchAPI
             SEASONAL = T.let(:seasonal, T.nilable(Symbol))
             INDIVIDUAL_CONTRACTOR = T.let(:individual_contractor, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -337,8 +339,10 @@ module FinchAPI
             EMPLOYEE = T.let(:employee, T.nilable(Symbol))
             CONTRACTOR = T.let(:contractor, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -354,8 +358,10 @@ module FinchAPI
           RETIRED = T.let(:retired, T.nilable(Symbol))
           TERMINATED = T.let(:terminated, T.nilable(Symbol))
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 

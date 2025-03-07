@@ -52,8 +52,10 @@ module FinchAPI
         INDIVIDUAL_UPDATED = :"individual.updated"
         INDIVIDUAL_DELETED = :"individual.deleted"
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

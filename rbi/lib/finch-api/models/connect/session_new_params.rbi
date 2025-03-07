@@ -143,8 +143,10 @@ module FinchAPI
           BENEFITS = :benefits
           SSN = :ssn
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -181,8 +183,10 @@ module FinchAPI
             OAUTH = T.let(:oauth, T.nilable(Symbol))
             API_TOKEN = T.let(:api_token, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -193,8 +197,10 @@ module FinchAPI
           FINCH = T.let(:finch, T.nilable(Symbol))
           PROVIDER = T.let(:provider, T.nilable(Symbol))
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
