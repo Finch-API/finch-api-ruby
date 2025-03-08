@@ -54,19 +54,6 @@ module FinchAPI
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case authentication_type
-          # in :credential
-          #   # ...
-          # in :api_token
-          #   # ...
-          # in :oauth
-          #   # ...
-          # in :assisted
-          #   # ...
-          # end
-          # ```
           class AuthenticationType < FinchAPI::Enum
             CREDENTIAL = :credential
             API_TOKEN = :api_token
@@ -74,11 +61,6 @@ module FinchAPI
             ASSISTED = :assisted
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
       end

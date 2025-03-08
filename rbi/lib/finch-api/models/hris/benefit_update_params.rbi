@@ -23,9 +23,9 @@ module FinchAPI
               T::Hash[Symbol, T.anything]
             )
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(description: nil, request_options: {})
+        def self.new(description: nil, request_options: {})
         end
 
         sig { override.returns({description: String, request_options: FinchAPI::RequestOptions}) }

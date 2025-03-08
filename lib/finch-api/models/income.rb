@@ -46,24 +46,6 @@ module FinchAPI
       #
       # The income unit of payment. Options: `yearly`, `quarterly`, `monthly`,
       #   `semi_monthly`, `bi_weekly`, `weekly`, `daily`, `hourly`, and `fixed`.
-      #
-      # @example
-      # ```ruby
-      # case unit
-      # in :yearly
-      #   # ...
-      # in :quarterly
-      #   # ...
-      # in :monthly
-      #   # ...
-      # in :semi_monthly
-      #   # ...
-      # in :bi_weekly
-      #   # ...
-      # in ...
-      #   #...
-      # end
-      # ```
       class Unit < FinchAPI::Enum
         YEARLY = :yearly
         QUARTERLY = :quarterly
@@ -76,11 +58,6 @@ module FinchAPI
         FIXED = :fixed
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

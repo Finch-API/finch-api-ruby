@@ -99,23 +99,6 @@ module FinchAPI
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case status
-        # in :pending
-        #   # ...
-        # in :in_progress
-        #   # ...
-        # in :complete
-        #   # ...
-        # in :error
-        #   # ...
-        # in :reauth_error
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Status < FinchAPI::Enum
           PENDING = :pending
           IN_PROGRESS = :in_progress
@@ -125,36 +108,16 @@ module FinchAPI
           PERMISSIONS_ERROR = :permissions_error
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         # @abstract
         #
         # The type of automated job
-        #
-        # @example
-        # ```ruby
-        # case type
-        # in :data_sync_all
-        #   # ...
-        # in :w4_form_employee_sync
-        #   # ...
-        # end
-        # ```
         class Type < FinchAPI::Enum
           DATA_SYNC_ALL = :data_sync_all
           W4_FORM_EMPLOYEE_SYNC = :w4_form_employee_sync
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
     end

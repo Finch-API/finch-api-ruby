@@ -96,9 +96,9 @@ module FinchAPI
           customer_id: T.nilable(String),
           token_type: String
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         access_token:,
         account_id:,
         client_type:,
@@ -139,8 +139,10 @@ module FinchAPI
         DEVELOPMENT = :development
         SANDBOX = :sandbox
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -150,8 +152,10 @@ module FinchAPI
         PROVIDER = :provider
         FINCH = :finch
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

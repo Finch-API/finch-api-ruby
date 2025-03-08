@@ -21,8 +21,8 @@ module FinchAPI
           def type=(_)
           end
 
-          sig { params(completion_status: Symbol, type: Symbol).void }
-          def initialize(completion_status:, type:)
+          sig { params(completion_status: Symbol, type: Symbol).returns(T.attached_class) }
+          def self.new(completion_status:, type:)
           end
 
           sig { override.returns({completion_status: Symbol, type: Symbol}) }
@@ -37,8 +37,10 @@ module FinchAPI
             PERMISSIONS_ERROR = :permissions_error
             ERROR = :error
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -47,8 +49,10 @@ module FinchAPI
 
             DATA_SYNC_ALL = :data_sync_all
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end

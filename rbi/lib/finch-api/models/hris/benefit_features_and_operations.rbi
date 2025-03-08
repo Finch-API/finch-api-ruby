@@ -31,9 +31,9 @@ module FinchAPI
             supported_features: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures,
             supported_operations: FinchAPI::Models::HRIS::SupportPerBenefitType
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(supported_features: nil, supported_operations: nil)
+        def self.new(supported_features: nil, supported_operations: nil)
         end
 
         sig do
@@ -121,9 +121,9 @@ module FinchAPI
               frequencies: T::Array[T.nilable(Symbol)],
               hsa_contribution_limit: T.nilable(T::Array[T.nilable(Symbol)])
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             annual_maximum: nil,
             catch_up: nil,
             company_contribution: nil,
@@ -157,8 +157,10 @@ module FinchAPI
             FIXED = T.let(:fixed, T.nilable(Symbol))
             PERCENT = T.let(:percent, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -168,8 +170,10 @@ module FinchAPI
             FIXED = T.let(:fixed, T.nilable(Symbol))
             PERCENT = T.let(:percent, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -179,8 +183,10 @@ module FinchAPI
             INDIVIDUAL = T.let(:individual, T.nilable(Symbol))
             FAMILY = T.let(:family, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end

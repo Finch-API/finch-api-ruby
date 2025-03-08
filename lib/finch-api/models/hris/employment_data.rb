@@ -255,24 +255,6 @@ module FinchAPI
           #
           # The secondary employment type of the individual. Options: `full_time`,
           #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
-          #
-          # @example
-          # ```ruby
-          # case subtype
-          # in :full_time
-          #   # ...
-          # in :intern
-          #   # ...
-          # in :part_time
-          #   # ...
-          # in :temp
-          #   # ...
-          # in :seasonal
-          #   # ...
-          # in ...
-          #   #...
-          # end
-          # ```
           class Subtype < FinchAPI::Enum
             FULL_TIME = :full_time
             INTERN = :intern
@@ -282,36 +264,16 @@ module FinchAPI
             INDIVIDUAL_CONTRACTOR = :individual_contractor
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
           #
           # The main employment type of the individual.
-          #
-          # @example
-          # ```ruby
-          # case type
-          # in :employee
-          #   # ...
-          # in :contractor
-          #   # ...
-          # end
-          # ```
           class Type < FinchAPI::Enum
             EMPLOYEE = :employee
             CONTRACTOR = :contractor
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -319,24 +281,6 @@ module FinchAPI
         #
         # The detailed employment status of the individual. Available options: `active`,
         #   `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
-        #
-        # @example
-        # ```ruby
-        # case employment_status
-        # in :active
-        #   # ...
-        # in :deceased
-        #   # ...
-        # in :leave
-        #   # ...
-        # in :onboarding
-        #   # ...
-        # in :prehire
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class EmploymentStatus < FinchAPI::Enum
           ACTIVE = :active
           DECEASED = :deceased
@@ -347,11 +291,6 @@ module FinchAPI
           TERMINATED = :terminated
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class Manager < FinchAPI::BaseModel

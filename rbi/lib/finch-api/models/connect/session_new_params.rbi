@@ -95,9 +95,9 @@ module FinchAPI
             sandbox: T.nilable(Symbol),
             request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           customer_id:,
           customer_name:,
           products:,
@@ -143,8 +143,10 @@ module FinchAPI
           BENEFITS = :benefits
           SSN = :ssn
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -165,8 +167,10 @@ module FinchAPI
           def provider=(_)
           end
 
-          sig { params(auth_method: T.nilable(Symbol), provider: T.nilable(String)).void }
-          def initialize(auth_method: nil, provider: nil)
+          sig do
+            params(auth_method: T.nilable(Symbol), provider: T.nilable(String)).returns(T.attached_class)
+          end
+          def self.new(auth_method: nil, provider: nil)
           end
 
           sig { override.returns({auth_method: T.nilable(Symbol), provider: T.nilable(String)}) }
@@ -181,8 +185,10 @@ module FinchAPI
             OAUTH = T.let(:oauth, T.nilable(Symbol))
             API_TOKEN = T.let(:api_token, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -193,8 +199,10 @@ module FinchAPI
           FINCH = T.let(:finch, T.nilable(Symbol))
           PROVIDER = T.let(:provider, T.nilable(Symbol))
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

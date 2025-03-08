@@ -12,8 +12,8 @@ module FinchAPI
         def benefit_id=(_)
         end
 
-        sig { params(benefit_id: String).void }
-        def initialize(benefit_id:)
+        sig { params(benefit_id: String).returns(T.attached_class) }
+        def self.new(benefit_id:)
         end
 
         sig { override.returns({benefit_id: String}) }

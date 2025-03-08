@@ -6,8 +6,10 @@ module FinchAPI
       class DocumentRetreiveResponse < FinchAPI::Union
         abstract!
 
-        sig { override.returns([[Symbol, FinchAPI::Models::HRIS::W42020], [Symbol, FinchAPI::Models::HRIS::W42005]]) }
-        private_class_method def self.variants
+        class << self
+          sig { override.returns([[Symbol, FinchAPI::Models::HRIS::W42020], [Symbol, FinchAPI::Models::HRIS::W42005]]) }
+          private def variants
+          end
         end
       end
     end

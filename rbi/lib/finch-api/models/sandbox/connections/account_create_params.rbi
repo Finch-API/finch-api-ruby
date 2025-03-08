@@ -48,15 +48,9 @@ module FinchAPI
               products: T::Array[String],
               request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
-            company_id:,
-            provider_id:,
-            authentication_type: nil,
-            products: nil,
-            request_options: {}
-          )
+          def self.new(company_id:, provider_id:, authentication_type: nil, products: nil, request_options: {})
           end
 
           sig do
@@ -82,8 +76,10 @@ module FinchAPI
             OAUTH = :oauth
             ASSISTED = :assisted
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end

@@ -79,9 +79,9 @@ module FinchAPI
             provider_id: String,
             token_type: String
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           access_token:,
           account_id:,
           authentication_type:,
@@ -119,8 +119,10 @@ module FinchAPI
           OAUTH = :oauth
           ASSISTED = :assisted
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

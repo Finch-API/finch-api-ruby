@@ -28,8 +28,11 @@ module FinchAPI
         def year=(_)
         end
 
-        sig { params(data: FinchAPI::Models::HRIS::W42005::Data, type: Symbol, year: T.nilable(Float)).void }
-        def initialize(data: nil, type: nil, year: nil)
+        sig do
+          params(data: FinchAPI::Models::HRIS::W42005::Data, type: Symbol, year: T.nilable(Float))
+            .returns(T.attached_class)
+        end
+        def self.new(data: nil, type: nil, year: nil)
         end
 
         sig { override.returns({data: FinchAPI::Models::HRIS::W42005::Data, type: Symbol, year: T.nilable(Float)}) }
@@ -85,9 +88,9 @@ module FinchAPI
               individual_id: String,
               total_number_of_allowances: T.nilable(Integer)
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             additional_withholding: nil,
             exemption: nil,
             filing_status: nil,
@@ -117,8 +120,10 @@ module FinchAPI
             EXEMPT = :exempt
             NON_EXEMPT = :non_exempt
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -129,8 +134,10 @@ module FinchAPI
             MARRIED_BUT_WITHHOLD_AT_HIGHER_SINGLE_RATE = :married_but_withhold_at_higher_single_rate
             SINGLE = :single
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -140,8 +147,10 @@ module FinchAPI
 
           W4_2005 = :w4_2005
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

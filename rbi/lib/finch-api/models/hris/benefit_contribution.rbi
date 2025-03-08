@@ -20,8 +20,8 @@ module FinchAPI
         def type=(_)
         end
 
-        sig { params(amount: T.nilable(Integer), type: T.nilable(Symbol)).void }
-        def initialize(amount: nil, type: nil)
+        sig { params(amount: T.nilable(Integer), type: T.nilable(Symbol)).returns(T.attached_class) }
+        def self.new(amount: nil, type: nil)
         end
 
         sig { override.returns({amount: T.nilable(Integer), type: T.nilable(Symbol)}) }
@@ -34,8 +34,10 @@ module FinchAPI
           FIXED = T.let(:fixed, T.nilable(Symbol))
           PERCENT = T.let(:percent, T.nilable(Symbol))
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

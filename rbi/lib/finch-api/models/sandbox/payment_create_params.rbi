@@ -41,9 +41,9 @@ module FinchAPI
             start_date: String,
             request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(end_date: nil, pay_statements: nil, start_date: nil, request_options: {})
+        def self.new(end_date: nil, pay_statements: nil, start_date: nil, request_options: {})
         end
 
         sig do
@@ -208,9 +208,9 @@ module FinchAPI
               total_hours: T.nilable(Float),
               type: T.nilable(Symbol)
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             earnings: nil,
             employee_deductions: nil,
             employer_contributions: nil,
@@ -309,9 +309,9 @@ module FinchAPI
                 name: T.nilable(String),
                 type: T.nilable(Symbol)
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(amount: nil, attributes: nil, currency: nil, hours: nil, name: nil, type: nil)
+            def self.new(amount: nil, attributes: nil, currency: nil, hours: nil, name: nil, type: nil)
             end
 
             sig do
@@ -350,9 +350,9 @@ module FinchAPI
                 params(
                   metadata: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::Metadata
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(metadata: nil)
+              def self.new(metadata: nil)
               end
 
               sig do
@@ -373,8 +373,8 @@ module FinchAPI
                 def metadata=(_)
                 end
 
-                sig { params(metadata: T::Hash[Symbol, T.anything]).void }
-                def initialize(metadata: nil)
+                sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
+                def self.new(metadata: nil)
                 end
 
                 sig { override.returns({metadata: T::Hash[Symbol, T.anything]}) }
@@ -400,8 +400,10 @@ module FinchAPI
               NUMBER_1099 = T.let(:"1099", T.nilable(Symbol))
               OTHER = T.let(:other, T.nilable(Symbol))
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
@@ -475,9 +477,9 @@ module FinchAPI
                 pre_tax: T.nilable(T::Boolean),
                 type: T.nilable(Symbol)
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(amount: nil, attributes: nil, currency: nil, name: nil, pre_tax: nil, type: nil)
+            def self.new(amount: nil, attributes: nil, currency: nil, name: nil, pre_tax: nil, type: nil)
             end
 
             sig do
@@ -522,9 +524,9 @@ module FinchAPI
                 params(
                   metadata: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes::Metadata
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(metadata: nil)
+              def self.new(metadata: nil)
               end
 
               sig do
@@ -547,8 +549,8 @@ module FinchAPI
                 def metadata=(_)
                 end
 
-                sig { params(metadata: T::Hash[Symbol, T.anything]).void }
-                def initialize(metadata: nil)
+                sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
+                def self.new(metadata: nil)
                 end
 
                 sig { override.returns({metadata: T::Hash[Symbol, T.anything]}) }
@@ -618,9 +620,9 @@ module FinchAPI
                 name: T.nilable(String),
                 type: T.nilable(Symbol)
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(amount: nil, attributes: nil, currency: nil, name: nil, type: nil)
+            def self.new(amount: nil, attributes: nil, currency: nil, name: nil, type: nil)
             end
 
             sig do
@@ -664,9 +666,9 @@ module FinchAPI
                 params(
                   metadata: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes::Metadata
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(metadata: nil)
+              def self.new(metadata: nil)
               end
 
               sig do
@@ -689,8 +691,8 @@ module FinchAPI
                 def metadata=(_)
                 end
 
-                sig { params(metadata: T::Hash[Symbol, T.anything]).void }
-                def initialize(metadata: nil)
+                sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
+                def self.new(metadata: nil)
                 end
 
                 sig { override.returns({metadata: T::Hash[Symbol, T.anything]}) }
@@ -706,8 +708,10 @@ module FinchAPI
             CHECK = T.let(:check, T.nilable(Symbol))
             DIRECT_DEPOSIT = T.let(:direct_deposit, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -772,9 +776,9 @@ module FinchAPI
                 name: T.nilable(String),
                 type: T.nilable(Symbol)
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(amount: nil, attributes: nil, currency: nil, employer: nil, name: nil, type: nil)
+            def self.new(amount: nil, attributes: nil, currency: nil, employer: nil, name: nil, type: nil)
             end
 
             sig do
@@ -811,9 +815,9 @@ module FinchAPI
 
               sig do
                 params(metadata: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::Metadata)
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(metadata: nil)
+              def self.new(metadata: nil)
               end
 
               sig do
@@ -834,8 +838,8 @@ module FinchAPI
                 def metadata=(_)
                 end
 
-                sig { params(metadata: T::Hash[Symbol, T.anything]).void }
-                def initialize(metadata: nil)
+                sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
+                def self.new(metadata: nil)
                 end
 
                 sig { override.returns({metadata: T::Hash[Symbol, T.anything]}) }
@@ -852,8 +856,10 @@ module FinchAPI
               LOCAL = T.let(:local, T.nilable(Symbol))
               FICA = T.let(:fica, T.nilable(Symbol))
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
@@ -865,8 +871,10 @@ module FinchAPI
             OFF_CYCLE_PAYROLL = T.let(:off_cycle_payroll, T.nilable(Symbol))
             ONE_TIME_PAYMENT = T.let(:one_time_payment, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end

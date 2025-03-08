@@ -25,23 +25,10 @@ module FinchAPI
         # @abstract
         #
         # The type of job to start. Currently the only supported type is `data_sync_all`
-        #
-        # @example
-        # ```ruby
-        # case type
-        # in :data_sync_all
-        #   # ...
-        # end
-        # ```
         class Type < FinchAPI::Enum
           DATA_SYNC_ALL = :data_sync_all
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
     end

@@ -29,9 +29,9 @@ module FinchAPI
             pay_frequencies: T::Array[String],
             request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(individual_id: nil, pay_frequencies: nil, request_options: {})
+        def self.new(individual_id: nil, pay_frequencies: nil, request_options: {})
         end
 
         sig do

@@ -21,8 +21,8 @@ module FinchAPI
           def individual_ids=(_)
           end
 
-          sig { params(benefit_id: String, individual_ids: T::Array[String]).void }
-          def initialize(benefit_id:, individual_ids:)
+          sig { params(benefit_id: String, individual_ids: T::Array[String]).returns(T.attached_class) }
+          def self.new(benefit_id:, individual_ids:)
           end
 
           sig { override.returns({benefit_id: String, individual_ids: T::Array[String]}) }

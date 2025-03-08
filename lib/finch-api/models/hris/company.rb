@@ -133,26 +133,11 @@ module FinchAPI
           # @abstract
           #
           # The type of bank account.
-          #
-          # @example
-          # ```ruby
-          # case account_type
-          # in :checking
-          #   # ...
-          # in :savings
-          #   # ...
-          # end
-          # ```
           class AccountType < FinchAPI::Enum
             CHECKING = :checking
             SAVINGS = :savings
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -221,52 +206,17 @@ module FinchAPI
           # @abstract
           #
           # The tax payer subtype of the company.
-          #
-          # @example
-          # ```ruby
-          # case subtype
-          # in :s_corporation
-          #   # ...
-          # in :c_corporation
-          #   # ...
-          # in :b_corporation
-          #   # ...
-          # end
-          # ```
           class Subtype < FinchAPI::Enum
             S_CORPORATION = :s_corporation
             C_CORPORATION = :c_corporation
             B_CORPORATION = :b_corporation
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
           #
           # The tax payer type of the company.
-          #
-          # @example
-          # ```ruby
-          # case type
-          # in :llc
-          #   # ...
-          # in :lp
-          #   # ...
-          # in :corporation
-          #   # ...
-          # in :sole_proprietor
-          #   # ...
-          # in :non_profit
-          #   # ...
-          # in ...
-          #   #...
-          # end
-          # ```
           class Type < FinchAPI::Enum
             LLC = :llc
             LP = :lp
@@ -277,11 +227,6 @@ module FinchAPI
             COOPERATIVE = :cooperative
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
       end

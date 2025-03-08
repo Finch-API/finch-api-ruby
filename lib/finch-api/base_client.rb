@@ -246,8 +246,8 @@ module FinchAPI
       end
 
       timeout = opts.fetch(:timeout, @timeout).to_f.clamp((0..))
-      unless headers.key?("x-stainless-read-timeout") || timeout.zero?
-        headers["x-stainless-read-timeout"] = timeout.to_s
+      unless headers.key?("x-stainless-timeout") || timeout.zero?
+        headers["x-stainless-timeout"] = timeout.to_s
       end
 
       headers.reject! { |_, v| v.to_s.empty? }
@@ -447,7 +447,7 @@ module FinchAPI
       in { stream: Class => st }
         st.new(model: model, url: url, status: status, response: response, messages: decoded)
       in { page: Class => page }
-        page.new(client: self, req: req, headers: response, unwrapped: decoded)
+        page.new(client: self, req: req, headers: response, page_data: decoded)
       else
         unwrapped = FinchAPI::Util.dig(decoded, req[:unwrap])
         FinchAPI::Converter.coerce(model, unwrapped)

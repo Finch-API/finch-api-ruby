@@ -47,9 +47,9 @@ module FinchAPI
             types: T::Array[Symbol],
             request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(individual_ids: nil, limit: nil, offset: nil, types: nil, request_options: {})
+        def self.new(individual_ids: nil, limit: nil, offset: nil, types: nil, request_options: {})
         end
 
         sig do
@@ -73,8 +73,10 @@ module FinchAPI
           W4_2020 = :w4_2020
           W4_2005 = :w4_2005
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

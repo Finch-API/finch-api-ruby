@@ -29,9 +29,9 @@ module FinchAPI
             start_date: Date,
             request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(end_date:, start_date:, request_options: {})
+        def self.new(end_date:, start_date:, request_options: {})
         end
 
         sig do

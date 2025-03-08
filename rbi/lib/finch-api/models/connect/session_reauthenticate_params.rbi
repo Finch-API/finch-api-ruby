@@ -47,15 +47,9 @@ module FinchAPI
             redirect_uri: T.nilable(String),
             request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
-          connection_id:,
-          minutes_to_expire: nil,
-          products: nil,
-          redirect_uri: nil,
-          request_options: {}
-        )
+        def self.new(connection_id:, minutes_to_expire: nil, products: nil, redirect_uri: nil, request_options: {})
         end
 
         sig do
@@ -85,8 +79,10 @@ module FinchAPI
           BENEFITS = :benefits
           SSN = :ssn
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
