@@ -40,9 +40,26 @@ finch = FinchAPI::Client.new(access_token: "My Access Token")
 
 page = finch.hris.directory.list
 
-item = page.individuals[0]
+puts(page.id)
+```
 
-puts(item.id)
+## Pagination
+
+List methods in the Finch API are paginated.
+
+This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
+
+```ruby
+page = finch.hris.directory.list
+
+# Fetch single item from page.
+directory = page.individuals[0]
+puts(directory.id)
+
+# Automatically fetches more pages as needed.
+page.auto_paging_each do |directory|
+  puts(directory.id)
+end
 ```
 
 ### Errors
@@ -111,9 +128,9 @@ finch.hris.directory.list(request_options: {timeout: 5})
 
 ## Sorbet Support
 
-This library is written with [Sorbet type definitions](https://sorbet.org/docs/rbi). However, there is no runtime dependency on the Sorbet runtime.
+This library is written with [Sorbet type definitions](https://sorbet.org/docs/rbi). However, there is no runtime dependency on the `sorbet-runtime`.
 
-What this means is that while you can use Sorbet to type check your code statically, and benefit from the [Sorbet Language Server](https://sorbet.org/docs/lsp) in your editor, there is no runtime type checking and execution overhead from Sorbet.
+What this means is that while you can use Sorbet to type check your code statically, and benefit from the [Sorbet Language Server](https://sorbet.org/docs/lsp) in your editor, there is no runtime type checking and execution overhead from Sorbet itself.
 
 Due to limitations with the Sorbet type system, where a method otherwise can take an instance of `FinchAPI::BaseModel` class, you will need to use the `**` splat operator to pass the arguments:
 
