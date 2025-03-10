@@ -2,8 +2,8 @@ module FinchAPI
   module Models
     type webhook_event =
       FinchAPI::Models::AccountUpdateEvent
-      | FinchAPI::Models::JobCompletionEvent
       | FinchAPI::Models::CompanyEvent
+      | FinchAPI::Models::JobCompletionEvent
       | FinchAPI::Models::DirectoryEvent
       | FinchAPI::Models::EmploymentEvent
       | FinchAPI::Models::IndividualEvent
@@ -11,7 +11,7 @@ module FinchAPI
       | FinchAPI::Models::PayStatementEvent
 
     class WebhookEvent < FinchAPI::Union
-      private def self.variants: -> [[nil, FinchAPI::Models::AccountUpdateEvent], [nil, FinchAPI::Models::JobCompletionEvent], [nil, FinchAPI::Models::CompanyEvent], [nil, FinchAPI::Models::DirectoryEvent], [nil, FinchAPI::Models::EmploymentEvent], [nil, FinchAPI::Models::IndividualEvent], [nil, FinchAPI::Models::PaymentEvent], [nil, FinchAPI::Models::PayStatementEvent]]
+      private def self.variants: -> [[:"account.updated", FinchAPI::Models::AccountUpdateEvent], [:"company.updated", FinchAPI::Models::CompanyEvent], [nil, FinchAPI::Models::JobCompletionEvent], [nil, FinchAPI::Models::DirectoryEvent], [nil, FinchAPI::Models::EmploymentEvent], [nil, FinchAPI::Models::IndividualEvent], [nil, FinchAPI::Models::PaymentEvent], [nil, FinchAPI::Models::PayStatementEvent]]
     end
   end
 end
