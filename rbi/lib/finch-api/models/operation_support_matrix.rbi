@@ -35,8 +35,8 @@ module FinchAPI
       def update=(_)
       end
 
-      sig { params(create: Symbol, delete: Symbol, read: Symbol, update: Symbol).void }
-      def initialize(create: nil, delete: nil, read: nil, update: nil)
+      sig { params(create: Symbol, delete: Symbol, read: Symbol, update: Symbol).returns(T.attached_class) }
+      def self.new(create: nil, delete: nil, read: nil, update: nil)
       end
 
       sig { override.returns({create: Symbol, delete: Symbol, read: Symbol, update: Symbol}) }

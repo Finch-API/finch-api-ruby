@@ -24,9 +24,9 @@ module FinchAPI
               individuals: T::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual],
               request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(individuals: nil, request_options: {})
+          def self.new(individuals: nil, request_options: {})
           end
 
           sig do
@@ -70,9 +70,9 @@ module FinchAPI
                 configuration: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration,
                 individual_id: String
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(configuration: nil, individual_id: nil)
+            def self.new(configuration: nil, individual_id: nil)
             end
 
             sig do
@@ -162,9 +162,9 @@ module FinchAPI
                   company_contribution: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution,
                   employee_deduction: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(
+              def self.new(
                 annual_contribution_limit: nil,
                 annual_maximum: nil,
                 catch_up: nil,
@@ -194,8 +194,10 @@ module FinchAPI
                 INDIVIDUAL = :individual
                 FAMILY = :family
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
 
@@ -216,8 +218,8 @@ module FinchAPI
                 def type=(_)
                 end
 
-                sig { params(amount: Integer, type: Symbol).void }
-                def initialize(amount: nil, type: nil)
+                sig { params(amount: Integer, type: Symbol).returns(T.attached_class) }
+                def self.new(amount: nil, type: nil)
                 end
 
                 sig { override.returns({amount: Integer, type: Symbol}) }
@@ -230,8 +232,10 @@ module FinchAPI
                   FIXED = :fixed
                   PERCENT = :percent
 
-                  sig { override.returns(T::Array[Symbol]) }
-                  def self.values
+                  class << self
+                    sig { override.returns(T::Array[Symbol]) }
+                    def values
+                    end
                   end
                 end
               end
@@ -253,8 +257,8 @@ module FinchAPI
                 def type=(_)
                 end
 
-                sig { params(amount: Integer, type: Symbol).void }
-                def initialize(amount: nil, type: nil)
+                sig { params(amount: Integer, type: Symbol).returns(T.attached_class) }
+                def self.new(amount: nil, type: nil)
                 end
 
                 sig { override.returns({amount: Integer, type: Symbol}) }
@@ -267,8 +271,10 @@ module FinchAPI
                   FIXED = :fixed
                   PERCENT = :percent
 
-                  sig { override.returns(T::Array[Symbol]) }
-                  def self.values
+                  class << self
+                    sig { override.returns(T::Array[Symbol]) }
+                    def values
+                    end
                   end
                 end
               end

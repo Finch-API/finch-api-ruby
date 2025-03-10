@@ -37,14 +37,10 @@ module FinchAPI
         end
 
         sig do
-          params(
-            allowed_refreshes: Integer,
-            job_id: String,
-            job_url: String,
-            remaining_refreshes: Integer
-          ).void
+          params(allowed_refreshes: Integer, job_id: String, job_url: String, remaining_refreshes: Integer)
+            .returns(T.attached_class)
         end
-        def initialize(allowed_refreshes:, job_id:, job_url:, remaining_refreshes:)
+        def self.new(allowed_refreshes:, job_id:, job_url:, remaining_refreshes:)
         end
 
         sig do

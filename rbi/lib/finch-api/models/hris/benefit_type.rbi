@@ -26,8 +26,10 @@ module FinchAPI
         CUSTOM_POST_TAX = T.let(:custom_post_tax, T.nilable(Symbol))
         CUSTOM_PRE_TAX = T.let(:custom_pre_tax, T.nilable(Symbol))
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

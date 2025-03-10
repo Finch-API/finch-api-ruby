@@ -33,14 +33,14 @@ module FinchAPI
     # @param client [FinchAPI::BaseClient]
     # @param req [Hash{Symbol=>Object}]
     # @param headers [Hash{String=>String}, Net::HTTPHeader]
-    # @param unwrapped [Array<Object>]
+    # @param page_data [Array<Object>]
     #
-    def initialize(client:, req:, headers:, unwrapped:)
+    def initialize(client:, req:, headers:, page_data:)
       @client = client
       @req = req
       model = req.fetch(:model)
 
-      case unwrapped
+      case page_data
       in {responses: Array | nil => responses}
         @responses = responses&.map { model.coerce(_1) }
       else

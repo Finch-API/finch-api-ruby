@@ -31,19 +31,6 @@ module FinchAPI
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case status
-        # in :pending
-        #   # ...
-        # in :in_progress
-        #   # ...
-        # in :error
-        #   # ...
-        # in :complete
-        #   # ...
-        # end
-        # ```
         class Status < FinchAPI::Enum
           PENDING = :pending
           IN_PROGRESS = :in_progress
@@ -51,11 +38,6 @@ module FinchAPI
           COMPLETE = :complete
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
     end

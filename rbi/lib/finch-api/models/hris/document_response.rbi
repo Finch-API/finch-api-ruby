@@ -52,9 +52,9 @@ module FinchAPI
             url: String,
             year: T.nilable(Float)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(id: nil, individual_id: nil, type: nil, url: nil, year: nil)
+        def self.new(id: nil, individual_id: nil, type: nil, url: nil, year: nil)
         end
 
         sig do
@@ -76,8 +76,10 @@ module FinchAPI
           W4_2020 = :w4_2020
           W4_2005 = :w4_2005
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

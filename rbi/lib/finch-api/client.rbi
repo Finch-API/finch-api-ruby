@@ -85,9 +85,9 @@ module FinchAPI
         initial_retry_delay: Float,
         max_retry_delay: Float
       )
-        .void
+        .returns(T.attached_class)
     end
-    def initialize(
+    def self.new(
       base_url: nil,
       access_token: nil,
       client_id: ENV["FINCH_CLIENT_ID"],

@@ -96,26 +96,11 @@ module FinchAPI
             # @abstract
             #
             # Type for HSA contribution limit if the benefit is a HSA.
-            #
-            # @example
-            # ```ruby
-            # case hsa_contribution_limit
-            # in :individual
-            #   # ...
-            # in :family
-            #   # ...
-            # end
-            # ```
             class HsaContributionLimit < FinchAPI::Enum
               INDIVIDUAL = :individual
               FAMILY = :family
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
           end
         end

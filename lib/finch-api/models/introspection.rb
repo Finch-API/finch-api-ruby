@@ -222,22 +222,6 @@ module FinchAPI
         # @abstract
         #
         # The type of authentication method.
-        #
-        # @example
-        # ```ruby
-        # case type
-        # in :assisted
-        #   # ...
-        # in :credential
-        #   # ...
-        # in :api_token
-        #   # ...
-        # in :api_credential
-        #   # ...
-        # in :oauth
-        #   # ...
-        # end
-        # ```
         class Type < FinchAPI::Enum
           ASSISTED = :assisted
           CREDENTIAL = :credential
@@ -246,40 +230,18 @@ module FinchAPI
           OAUTH = :oauth
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
 
       # @abstract
       #
       # The type of application associated with a token.
-      #
-      # @example
-      # ```ruby
-      # case client_type
-      # in :production
-      #   # ...
-      # in :development
-      #   # ...
-      # in :sandbox
-      #   # ...
-      # end
-      # ```
       class ClientType < FinchAPI::Enum
         PRODUCTION = :production
         DEVELOPMENT = :development
         SANDBOX = :sandbox
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       class ConnectionStatus < FinchAPI::BaseModel
@@ -316,26 +278,11 @@ module FinchAPI
       #
       #   - `provider` - connection to an external provider
       #   - `finch` - finch-generated data.
-      #
-      # @example
-      # ```ruby
-      # case connection_type
-      # in :provider
-      #   # ...
-      # in :finch
-      #   # ...
-      # end
-      # ```
       class ConnectionType < FinchAPI::Enum
         PROVIDER = :provider
         FINCH = :finch
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

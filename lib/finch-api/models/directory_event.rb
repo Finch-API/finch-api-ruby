@@ -50,28 +50,12 @@ module FinchAPI
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case event_type
-      # in :"directory.created"
-      #   # ...
-      # in :"directory.updated"
-      #   # ...
-      # in :"directory.deleted"
-      #   # ...
-      # end
-      # ```
       class EventType < FinchAPI::Enum
         DIRECTORY_CREATED = :"directory.created"
         DIRECTORY_UPDATED = :"directory.updated"
         DIRECTORY_DELETED = :"directory.deleted"
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

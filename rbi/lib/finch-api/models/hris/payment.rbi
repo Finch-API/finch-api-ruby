@@ -118,9 +118,9 @@ module FinchAPI
             pay_group_ids: T.nilable(T::Array[String]),
             pay_period: T.nilable(FinchAPI::Models::HRIS::Payment::PayPeriod)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id: nil,
           company_debit: nil,
           debit_date: nil,
@@ -171,8 +171,10 @@ module FinchAPI
           DAILY = :daily
           OTHER = :other
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -193,8 +195,8 @@ module FinchAPI
           def start_date=(_)
           end
 
-          sig { params(end_date: T.nilable(String), start_date: T.nilable(String)).void }
-          def initialize(end_date: nil, start_date: nil)
+          sig { params(end_date: T.nilable(String), start_date: T.nilable(String)).returns(T.attached_class) }
+          def self.new(end_date: nil, start_date: nil)
           end
 
           sig { override.returns({end_date: T.nilable(String), start_date: T.nilable(String)}) }

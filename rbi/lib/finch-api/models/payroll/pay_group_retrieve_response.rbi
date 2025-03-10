@@ -42,9 +42,10 @@ module FinchAPI
             individual_ids: T::Array[String],
             name: String,
             pay_frequencies: T::Array[Symbol]
-          ).void
+          )
+            .returns(T.attached_class)
         end
-        def initialize(id:, individual_ids:, name:, pay_frequencies:)
+        def self.new(id:, individual_ids:, name:, pay_frequencies:)
         end
 
         sig do
@@ -72,8 +73,10 @@ module FinchAPI
           DAILY = :daily
           OTHER = :other
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

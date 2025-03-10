@@ -43,9 +43,9 @@ module FinchAPI
             frequency: T.nilable(Symbol),
             type: T.nilable(Symbol)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(benefit_id:, description:, frequency:, type:)
+        def self.new(benefit_id:, description:, frequency:, type:)
         end
 
         sig do

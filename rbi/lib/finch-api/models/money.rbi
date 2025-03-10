@@ -19,8 +19,8 @@ module FinchAPI
       def currency=(_)
       end
 
-      sig { params(amount: T.nilable(Integer), currency: String).void }
-      def initialize(amount: nil, currency: nil)
+      sig { params(amount: T.nilable(Integer), currency: String).returns(T.attached_class) }
+      def self.new(amount: nil, currency: nil)
       end
 
       sig { override.returns({amount: T.nilable(Integer), currency: String}) }

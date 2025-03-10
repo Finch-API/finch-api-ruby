@@ -146,49 +146,17 @@ module FinchAPI
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case type
-          # in :work
-          #   # ...
-          # in :personal
-          #   # ...
-          # end
-          # ```
           class Type < FinchAPI::Enum
             WORK = :work
             PERSONAL = :personal
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
         # @abstract
         #
         # The EEOC-defined ethnicity of the individual.
-        #
-        # @example
-        # ```ruby
-        # case ethnicity
-        # in :asian
-        #   # ...
-        # in :white
-        #   # ...
-        # in :black_or_african_american
-        #   # ...
-        # in :native_hawaiian_or_pacific_islander
-        #   # ...
-        # in :american_indian_or_alaska_native
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Ethnicity < FinchAPI::Enum
           ASIAN = :asian
           WHITE = :white
@@ -200,30 +168,11 @@ module FinchAPI
           DECLINE_TO_SPECIFY = :decline_to_specify
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         # @abstract
         #
         # The gender of the individual.
-        #
-        # @example
-        # ```ruby
-        # case gender
-        # in :female
-        #   # ...
-        # in :male
-        #   # ...
-        # in :other
-        #   # ...
-        # in :decline_to_specify
-        #   # ...
-        # end
-        # ```
         class Gender < FinchAPI::Enum
           FEMALE = :female
           MALE = :male
@@ -231,11 +180,6 @@ module FinchAPI
           DECLINE_TO_SPECIFY = :decline_to_specify
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class PhoneNumber < FinchAPI::BaseModel
@@ -265,25 +209,11 @@ module FinchAPI
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case type
-          # in :work
-          #   # ...
-          # in :personal
-          #   # ...
-          # end
-          # ```
           class Type < FinchAPI::Enum
             WORK = :work
             PERSONAL = :personal
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
       end

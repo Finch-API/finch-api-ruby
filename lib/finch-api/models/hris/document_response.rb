@@ -62,26 +62,11 @@ module FinchAPI
         # @abstract
         #
         # The type of document.
-        #
-        # @example
-        # ```ruby
-        # case type
-        # in :w4_2020
-        #   # ...
-        # in :w4_2005
-        #   # ...
-        # end
-        # ```
         class Type < FinchAPI::Enum
           W4_2020 = :w4_2020
           W4_2005 = :w4_2005
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
     end

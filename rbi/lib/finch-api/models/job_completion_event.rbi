@@ -19,8 +19,8 @@ module FinchAPI
       def event_type=(_)
       end
 
-      sig { params(data: FinchAPI::Models::JobCompletionEvent::Data, event_type: Symbol).void }
-      def initialize(data: nil, event_type: nil)
+      sig { params(data: FinchAPI::Models::JobCompletionEvent::Data, event_type: Symbol).returns(T.attached_class) }
+      def self.new(data: nil, event_type: nil)
       end
 
       sig { override.returns({data: FinchAPI::Models::JobCompletionEvent::Data, event_type: Symbol}) }
@@ -44,8 +44,8 @@ module FinchAPI
         def job_url=(_)
         end
 
-        sig { params(job_id: String, job_url: String).void }
-        def initialize(job_id:, job_url:)
+        sig { params(job_id: String, job_url: String).returns(T.attached_class) }
+        def self.new(job_id:, job_url:)
         end
 
         sig { override.returns({job_id: String, job_url: String}) }
@@ -63,8 +63,10 @@ module FinchAPI
         JOB_BENEFIT_UPDATE_COMPLETED = :"job.benefit_update.completed"
         JOB_DATA_SYNC_ALL_COMPLETED = :"job.data_sync_all.completed"
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

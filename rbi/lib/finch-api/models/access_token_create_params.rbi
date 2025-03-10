@@ -46,9 +46,9 @@ module FinchAPI
           redirect_uri: String,
           request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(code:, client_id: nil, client_secret: nil, redirect_uri: nil, request_options: {})
+      def self.new(code:, client_id: nil, client_secret: nil, redirect_uri: nil, request_options: {})
       end
 
       sig do

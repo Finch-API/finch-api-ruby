@@ -130,26 +130,11 @@ module FinchAPI
               #
               # For HSA benefits only - whether the contribution limit is for an individual or
               #   family
-              #
-              # @example
-              # ```ruby
-              # case annual_contribution_limit
-              # in :individual
-              #   # ...
-              # in :family
-              #   # ...
-              # end
-              # ```
               class AnnualContributionLimit < FinchAPI::Enum
                 INDIVIDUAL = :individual
                 FAMILY = :family
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
 
               class CompanyContribution < FinchAPI::BaseModel
@@ -184,25 +169,11 @@ module FinchAPI
 
                 # @abstract
                 #
-                # @example
-                # ```ruby
-                # case type
-                # in :fixed
-                #   # ...
-                # in :percent
-                #   # ...
-                # end
-                # ```
                 class Type < FinchAPI::Enum
                   FIXED = :fixed
                   PERCENT = :percent
 
                   finalize!
-
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   #
-                  #   def self.values; end
                 end
               end
 
@@ -238,25 +209,11 @@ module FinchAPI
 
                 # @abstract
                 #
-                # @example
-                # ```ruby
-                # case type
-                # in :fixed
-                #   # ...
-                # in :percent
-                #   # ...
-                # end
-                # ```
                 class Type < FinchAPI::Enum
                   FIXED = :fixed
                   PERCENT = :percent
 
                   finalize!
-
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   #
-                  #   def self.values; end
                 end
               end
             end

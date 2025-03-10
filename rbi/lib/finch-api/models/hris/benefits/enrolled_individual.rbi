@@ -38,9 +38,9 @@ module FinchAPI
               code: Integer,
               individual_id: String
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(body: nil, code: nil, individual_id: nil)
+          def self.new(body: nil, code: nil, individual_id: nil)
           end
 
           sig do
@@ -78,9 +78,10 @@ module FinchAPI
             end
 
             sig do
-              params(finch_code: T.nilable(String), message: T.nilable(String), name: T.nilable(String)).void
+              params(finch_code: T.nilable(String), message: T.nilable(String), name: T.nilable(String))
+                .returns(T.attached_class)
             end
-            def initialize(finch_code: nil, message: nil, name: nil)
+            def self.new(finch_code: nil, message: nil, name: nil)
             end
 
             sig do
@@ -104,8 +105,10 @@ module FinchAPI
             NOT_FOUND = 404
             FORBIDDEN = 403
 
-            sig { override.returns(T::Array[Integer]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Integer]) }
+              def values
+              end
             end
           end
         end

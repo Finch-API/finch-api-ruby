@@ -19,8 +19,8 @@ module FinchAPI
       def offset=(_)
       end
 
-      sig { params(count: Integer, offset: Integer).void }
-      def initialize(count: nil, offset: nil)
+      sig { params(count: Integer, offset: Integer).returns(T.attached_class) }
+      def self.new(count: nil, offset: nil)
       end
 
       sig { override.returns({count: Integer, offset: Integer}) }

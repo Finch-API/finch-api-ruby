@@ -20,8 +20,8 @@ module FinchAPI
         def payment_id=(_)
         end
 
-        sig { params(pay_date: String, payment_id: String).void }
-        def initialize(pay_date:, payment_id:)
+        sig { params(pay_date: String, payment_id: String).returns(T.attached_class) }
+        def self.new(pay_date:, payment_id:)
         end
 
         sig { override.returns({pay_date: String, payment_id: String}) }

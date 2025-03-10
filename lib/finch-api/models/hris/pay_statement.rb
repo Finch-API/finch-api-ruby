@@ -194,24 +194,6 @@ module FinchAPI
           # @abstract
           #
           # The type of earning.
-          #
-          # @example
-          # ```ruby
-          # case type
-          # in :salary
-          #   # ...
-          # in :wage
-          #   # ...
-          # in :reimbursement
-          #   # ...
-          # in :overtime
-          #   # ...
-          # in :severance
-          #   # ...
-          # in ...
-          #   #...
-          # end
-          # ```
           class Type < FinchAPI::Enum
             SALARY = :salary
             WAGE = :wage
@@ -228,11 +210,6 @@ module FinchAPI
             OTHER = :other
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -413,26 +390,11 @@ module FinchAPI
         # @abstract
         #
         # The payment method.
-        #
-        # @example
-        # ```ruby
-        # case payment_method
-        # in :check
-        #   # ...
-        # in :direct_deposit
-        #   # ...
-        # end
-        # ```
         class PaymentMethod < FinchAPI::Enum
           CHECK = :check
           DIRECT_DEPOSIT = :direct_deposit
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class Tax < FinchAPI::BaseModel
@@ -525,20 +487,6 @@ module FinchAPI
           # @abstract
           #
           # The type of taxes.
-          #
-          # @example
-          # ```ruby
-          # case type
-          # in :state
-          #   # ...
-          # in :federal
-          #   # ...
-          # in :local
-          #   # ...
-          # in :fica
-          #   # ...
-          # end
-          # ```
           class Type < FinchAPI::Enum
             STATE = :state
             FEDERAL = :federal
@@ -546,40 +494,18 @@ module FinchAPI
             FICA = :fica
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
         # @abstract
         #
         # The type of the payment associated with the pay statement.
-        #
-        # @example
-        # ```ruby
-        # case type
-        # in :regular_payroll
-        #   # ...
-        # in :off_cycle_payroll
-        #   # ...
-        # in :one_time_payment
-        #   # ...
-        # end
-        # ```
         class Type < FinchAPI::Enum
           REGULAR_PAYROLL = :regular_payroll
           OFF_CYCLE_PAYROLL = :off_cycle_payroll
           ONE_TIME_PAYMENT = :one_time_payment
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
     end

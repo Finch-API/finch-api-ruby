@@ -132,9 +132,9 @@ module FinchAPI
             residence: T.nilable(FinchAPI::Models::Location),
             ssn: T.nilable(String)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id: nil,
           dob: nil,
           emails: nil,
@@ -191,8 +191,8 @@ module FinchAPI
           def type=(_)
           end
 
-          sig { params(data: String, type: T.nilable(Symbol)).void }
-          def initialize(data: nil, type: nil)
+          sig { params(data: String, type: T.nilable(Symbol)).returns(T.attached_class) }
+          def self.new(data: nil, type: nil)
           end
 
           sig { override.returns({data: String, type: T.nilable(Symbol)}) }
@@ -205,8 +205,10 @@ module FinchAPI
             WORK = T.let(:work, T.nilable(Symbol))
             PERSONAL = T.let(:personal, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -223,8 +225,10 @@ module FinchAPI
           TWO_OR_MORE_RACES = T.let(:two_or_more_races, T.nilable(Symbol))
           DECLINE_TO_SPECIFY = T.let(:decline_to_specify, T.nilable(Symbol))
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -236,8 +240,10 @@ module FinchAPI
           OTHER = T.let(:other, T.nilable(Symbol))
           DECLINE_TO_SPECIFY = T.let(:decline_to_specify, T.nilable(Symbol))
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -258,8 +264,8 @@ module FinchAPI
           def type=(_)
           end
 
-          sig { params(data: String, type: T.nilable(Symbol)).void }
-          def initialize(data: nil, type: nil)
+          sig { params(data: String, type: T.nilable(Symbol)).returns(T.attached_class) }
+          def self.new(data: nil, type: nil)
           end
 
           sig { override.returns({data: String, type: T.nilable(Symbol)}) }
@@ -272,8 +278,10 @@ module FinchAPI
             WORK = T.let(:work, T.nilable(Symbol))
             PERSONAL = T.let(:personal, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end

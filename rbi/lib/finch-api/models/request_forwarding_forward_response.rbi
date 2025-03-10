@@ -45,9 +45,9 @@ module FinchAPI
           request: FinchAPI::Models::RequestForwardingForwardResponse::Request,
           status_code: Integer
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(data:, headers:, request:, status_code:)
+      def self.new(data:, headers:, request:, status_code:)
       end
 
       sig do
@@ -113,9 +113,9 @@ module FinchAPI
             params: T.nilable(T.anything),
             route: String
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(data:, headers:, method_:, params:, route:)
+        def self.new(data:, headers:, method_:, params:, route:)
         end
 
         sig do

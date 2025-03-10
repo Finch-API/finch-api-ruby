@@ -25,9 +25,9 @@ module FinchAPI
 
         sig do
           params(paging: FinchAPI::Models::Paging, pay_statements: T::Array[FinchAPI::Models::HRIS::PayStatement])
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(paging: nil, pay_statements: nil)
+        def self.new(paging: nil, pay_statements: nil)
         end
 
         sig do

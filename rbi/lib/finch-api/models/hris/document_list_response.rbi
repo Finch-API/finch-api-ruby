@@ -25,9 +25,9 @@ module FinchAPI
 
         sig do
           params(documents: T::Array[FinchAPI::Models::HRIS::DocumentResponse], paging: FinchAPI::Models::Paging)
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(documents:, paging:)
+        def self.new(documents:, paging:)
         end
 
         sig do
