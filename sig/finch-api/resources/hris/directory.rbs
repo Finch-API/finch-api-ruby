@@ -13,16 +13,7 @@ module FinchAPI
             request_options: FinchAPI::request_opts
           ) -> FinchAPI::IndividualsPage[FinchAPI::Models::HRIS::IndividualInDirectory]
 
-        def list_individuals:
-          (
-            ?FinchAPI::Models::HRIS::DirectoryListIndividualsParams
-            | ::Hash[Symbol, top] params
-          ) -> FinchAPI::IndividualsPage[FinchAPI::Models::HRIS::IndividualInDirectory]
-          | (
-            limit: Integer,
-            offset: Integer,
-            request_options: FinchAPI::request_opts
-          ) -> FinchAPI::IndividualsPage[FinchAPI::Models::HRIS::IndividualInDirectory]
+        alias list_individuals list
 
         def initialize: (client: FinchAPI::Client) -> void
       end
