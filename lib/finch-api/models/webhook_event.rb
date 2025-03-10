@@ -7,11 +7,11 @@ module FinchAPI
     class WebhookEvent < FinchAPI::Union
       discriminator :event_type
 
-      variant -> { FinchAPI::Models::AccountUpdateEvent }
+      variant :"account.updated", -> { FinchAPI::Models::AccountUpdateEvent }
+
+      variant :"company.updated", -> { FinchAPI::Models::CompanyEvent }
 
       variant -> { FinchAPI::Models::JobCompletionEvent }
-
-      variant -> { FinchAPI::Models::CompanyEvent }
 
       variant -> { FinchAPI::Models::DirectoryEvent }
 
