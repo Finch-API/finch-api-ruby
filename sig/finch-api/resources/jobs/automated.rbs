@@ -28,12 +28,12 @@ module FinchAPI
           (
             ?FinchAPI::Models::Jobs::AutomatedListParams
             | ::Hash[Symbol, top] params
-          ) -> FinchAPI::Page[FinchAPI::Models::Jobs::AutomatedAsyncJob]
+          ) -> FinchAPI::Models::Jobs::AutomatedListResponse
           | (
             limit: Integer,
             offset: Integer,
             request_options: FinchAPI::request_opts
-          ) -> FinchAPI::Page[FinchAPI::Models::Jobs::AutomatedAsyncJob]
+          ) -> FinchAPI::Models::Jobs::AutomatedListResponse
 
         def initialize: (client: FinchAPI::Client) -> void
       end

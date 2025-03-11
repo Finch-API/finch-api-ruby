@@ -31,7 +31,7 @@ module FinchAPI
             offset: Integer,
             request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
           )
-            .returns(FinchAPI::Page[FinchAPI::Models::Jobs::AutomatedAsyncJob])
+            .returns(FinchAPI::Models::Jobs::AutomatedListResponse)
         end
         def list(limit: nil, offset: nil, request_options: {})
         end
