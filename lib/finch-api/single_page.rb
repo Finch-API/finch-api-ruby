@@ -56,14 +56,14 @@ module FinchAPI
     # @return [FinchAPI::SinglePage]
     #
     def next_page
-      raise NotImplementedError
+      RuntimeError.new("No more pages available.")
     end
 
     # @param blk [Proc]
     #
     def auto_paging_each(&blk)
       unless block_given?
-        raise ArgumentError.new("A block must be given to #auto_paging_each")
+        raise ArgumentError.new("A block must be given to ##{__method__}")
       end
       page = self
       loop do
