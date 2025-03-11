@@ -71,7 +71,7 @@ module FinchAPI
         #
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
-        # @return [FinchAPI::Page<FinchAPI::Models::Jobs::AutomatedAsyncJob>]
+        # @return [FinchAPI::Models::Jobs::AutomatedListResponse]
         #
         def list(params = {})
           parsed, options = FinchAPI::Models::Jobs::AutomatedListParams.dump_request(params)
@@ -79,8 +79,7 @@ module FinchAPI
             method: :get,
             path: "jobs/automated",
             query: parsed,
-            page: FinchAPI::Page,
-            model: FinchAPI::Models::Jobs::AutomatedAsyncJob,
+            model: FinchAPI::Models::Jobs::AutomatedListResponse,
             options: options
           )
         end
