@@ -43,7 +43,7 @@ page = finch.hris.directory.list
 puts(page.id)
 ```
 
-## Pagination
+### Pagination
 
 List methods in the Finch API are paginated.
 
