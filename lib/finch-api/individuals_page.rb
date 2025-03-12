@@ -4,22 +4,22 @@ module FinchAPI
   # @example
   # ```ruby
   # if individuals_page.has_next?
-  #   page = individuals_page.next_page
+  #   individuals_page = individuals_page.next_page
   # end
   # ```
   #
   # @example
   # ```ruby
-  # individuals_page.auto_paging_each do |item|
-  # #   item ...
+  # individuals_page.auto_paging_each do |directory|
+  #   puts(directory)
   # end
   # ```
   #
   # @example
   # ```ruby
-  # items = individuals_page.to_enum.take(2)
+  # directories = individuals_page.to_enum.take(2)
   #
-  # items => Array
+  # directories => Array
   # ```
   class IndividualsPage
     include FinchAPI::BasePage
