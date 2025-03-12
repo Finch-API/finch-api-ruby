@@ -5,6 +5,26 @@ module FinchAPI
   #
   # @abstract
   #
+  # @example
+  # ```ruby
+  # if page.has_next?
+  #   page = page.next_page
+  # end
+  # ```
+  #
+  # @example
+  # ```ruby
+  # page.auto_paging_each do |access_token|
+  #   puts(access_token)
+  # end
+  # ```
+  #
+  # @example
+  # ```ruby
+  # access_tokens = page.to_enum.take(2)
+  #
+  # access_tokens => Array
+  # ```
   module BasePage
     # @return [Boolean]
     #

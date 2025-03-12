@@ -11,7 +11,7 @@ module FinchAPI
   # @example
   # ```ruby
   # page.auto_paging_each do |item|
-  # #   item ...
+  #   puts(item)
   # end
   # ```
   #
