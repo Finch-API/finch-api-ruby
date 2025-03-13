@@ -24,7 +24,6 @@ module FinchAPI
   class SinglePage < ::Array
     include FinchAPI::BasePage
 
-    # rubocop:disable Lint/UnusedMethodArgument
     # @private
     #
     # @param client [FinchAPI::BaseClient]
@@ -33,21 +32,17 @@ module FinchAPI
     # @param page_data [Array<Object>]
     #
     def initialize(client:, req:, headers:, page_data:)
-      @client = client
-      @req = req
+      super
       model = req.fetch(:model)
 
       case page_data
       in Array
-        super(page_data&.map { model.coerce(_1) })
+        replace(page_data&.map { model.coerce(_1) })
       else
-        super([])
       end
     end
-    # rubocop:enable Lint/UnusedMethodArgument
 
     # @return [Boolean]
-    #
     def next_page?
       false
     end
