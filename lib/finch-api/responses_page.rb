@@ -27,7 +27,6 @@ module FinchAPI
     # @return [Array<Object>]
     attr_accessor :responses
 
-    # rubocop:disable Lint/UnusedMethodArgument
     # @private
     #
     # @param client [FinchAPI::BaseClient]
@@ -36,8 +35,7 @@ module FinchAPI
     # @param page_data [Array<Object>]
     #
     def initialize(client:, req:, headers:, page_data:)
-      @client = client
-      @req = req
+      super
       model = req.fetch(:model)
 
       case page_data
@@ -46,10 +44,8 @@ module FinchAPI
       else
       end
     end
-    # rubocop:enable Lint/UnusedMethodArgument
 
     # @return [Boolean]
-    #
     def next_page?
       false
     end

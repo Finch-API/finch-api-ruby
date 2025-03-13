@@ -30,7 +30,6 @@ module FinchAPI
     # @return [FinchAPI::Models::Paging]
     attr_accessor :paging
 
-    # rubocop:disable Lint/UnusedMethodArgument
     # @private
     #
     # @param client [FinchAPI::BaseClient]
@@ -39,8 +38,7 @@ module FinchAPI
     # @param page_data [Hash{Symbol=>Object}]
     #
     def initialize(client:, req:, headers:, page_data:)
-      @client = client
-      @req = req
+      super
       model = req.fetch(:model)
 
       case page_data
@@ -55,10 +53,8 @@ module FinchAPI
       else
       end
     end
-    # rubocop:enable Lint/UnusedMethodArgument
 
     # @return [Boolean]
-    #
     def next_page?
       paging&.offset.to_i + data.to_a.size < paging&.count.to_i
     end
