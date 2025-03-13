@@ -2,13 +2,6 @@ module FinchAPI
   class SinglePage[Elem] < ::Array[Elem]
     include FinchAPI::BasePage[Elem]
 
-    def initialize: (
-      client: FinchAPI::BaseClient,
-      req: FinchAPI::BaseClient::request_components,
-      headers: ::Hash[String, String],
-      page_data: ::Array[top]
-    ) -> void
-
     def next_page?: -> bool
 
     def next_page: -> self
