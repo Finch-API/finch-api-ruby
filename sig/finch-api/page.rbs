@@ -5,12 +5,5 @@ module FinchAPI
     attr_accessor data: ::Array[Elem]
 
     attr_accessor paging: FinchAPI::Models::Paging
-
-    def initialize: (
-      client: FinchAPI::BaseClient,
-      req: FinchAPI::BaseClient::request_components,
-      headers: ::Hash[String, String],
-      page_data: ::Hash[Symbol, top]
-    ) -> void
   end
 end
