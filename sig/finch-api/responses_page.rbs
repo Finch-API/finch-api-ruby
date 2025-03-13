@@ -3,12 +3,5 @@ module FinchAPI
     include FinchAPI::BasePage[Elem]
 
     attr_accessor responses: ::Array[Elem]
-
-    def initialize: (
-      client: FinchAPI::BaseClient,
-      req: FinchAPI::BaseClient::request_components,
-      headers: ::Hash[String, String],
-      page_data: ::Array[top]
-    ) -> void
   end
 end
