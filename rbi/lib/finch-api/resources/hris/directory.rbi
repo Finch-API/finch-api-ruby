@@ -13,7 +13,13 @@ module FinchAPI
           )
             .returns(FinchAPI::IndividualsPage[FinchAPI::Models::HRIS::IndividualInDirectory])
         end
-        def list(limit: nil, offset: nil, request_options: {})
+        def list(
+          # Number of employees to return (defaults to all)
+          limit: nil,
+          # Index to start from (defaults to 0)
+          offset: nil,
+          request_options: {}
+        )
         end
 
         # Read company directory and organization structure

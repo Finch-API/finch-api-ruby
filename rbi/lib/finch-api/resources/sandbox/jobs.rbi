@@ -16,7 +16,11 @@ module FinchAPI
           )
             .returns(FinchAPI::Models::Sandbox::JobCreateResponse)
         end
-        def create(type:, request_options: {})
+        def create(
+          # The type of job to start. Currently the only supported type is `data_sync_all`
+          type:,
+          request_options: {}
+        )
         end
 
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }

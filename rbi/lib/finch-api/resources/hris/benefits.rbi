@@ -19,7 +19,16 @@ module FinchAPI
           )
             .returns(FinchAPI::Models::HRIS::CreateCompanyBenefitsResponse)
         end
-        def create(description: nil, frequency: nil, type: nil, request_options: {})
+        def create(
+          # Name of the benefit as it appears in the provider and pay statements. Recommend
+          #   limiting this to <30 characters due to limitations in specific providers (e.g.
+          #   Justworks).
+          description: nil,
+          frequency: nil,
+          # Type of benefit.
+          type: nil,
+          request_options: {}
+        )
         end
 
         # Lists deductions and contributions information for a given item
@@ -42,7 +51,12 @@ module FinchAPI
           )
             .returns(FinchAPI::Models::HRIS::UpdateCompanyBenefitResponse)
         end
-        def update(benefit_id, description: nil, request_options: {})
+        def update(
+          benefit_id,
+          # Updated name or description.
+          description: nil,
+          request_options: {}
+        )
         end
 
         # List all company-wide deductions and contributions.

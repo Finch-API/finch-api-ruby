@@ -27,6 +27,8 @@ module FinchAPI
           customer_email: nil,
           integration: nil,
           manual: nil,
+          # The number of minutes until the session expires (defaults to 43,200, which is 30
+          #   days)
           minutes_to_expire: nil,
           redirect_uri: nil,
           sandbox: nil,
@@ -46,9 +48,14 @@ module FinchAPI
             .returns(FinchAPI::Models::Connect::SessionReauthenticateResponse)
         end
         def reauthenticate(
+          # The ID of the existing connection to reauthenticate
           connection_id:,
+          # The number of minutes until the session expires (defaults to 43,200, which is 30
+          #   days)
           minutes_to_expire: nil,
+          # The products to request access to (optional for reauthentication)
           products: nil,
+          # The URI to redirect to after the Connect flow is completed
           redirect_uri: nil,
           request_options: {}
         )

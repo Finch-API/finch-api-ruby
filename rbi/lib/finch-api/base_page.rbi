@@ -1,7 +1,6 @@
 # typed: strong
 
 module FinchAPI
-  # @api private
   module BasePage
     abstract!
 

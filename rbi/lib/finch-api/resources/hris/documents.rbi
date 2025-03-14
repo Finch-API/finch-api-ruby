@@ -16,7 +16,19 @@ module FinchAPI
           )
             .returns(FinchAPI::Models::HRIS::DocumentListResponse)
         end
-        def list(individual_ids: nil, limit: nil, offset: nil, types: nil, request_options: {})
+        def list(
+          # Comma-delimited list of stable Finch uuids for each individual. If empty,
+          #   defaults to all individuals
+          individual_ids: nil,
+          # Number of documents to return (defaults to all)
+          limit: nil,
+          # Index to start from (defaults to 0)
+          offset: nil,
+          # Comma-delimited list of document types to filter on. If empty, defaults to all
+          #   types
+          types: nil,
+          request_options: {}
+        )
         end
 
         # **Beta:** This endpoint is in beta and may change.
@@ -28,7 +40,11 @@ module FinchAPI
           )
             .returns(T.any(FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005))
         end
-        def retreive(document_id, request_options: {})
+        def retreive(
+          # The unique identifier of the document.
+          document_id,
+          request_options: {}
+        )
         end
 
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }
