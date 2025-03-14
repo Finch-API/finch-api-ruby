@@ -80,9 +80,9 @@ module FinchAPI
 
   # When we don't know what to expect for the value.
   class Unknown
-    abstract!
-
     extend FinchAPI::Converter
+
+    abstract!
 
     sig { params(other: T.anything).returns(T::Boolean) }
     def self.===(other)
@@ -116,9 +116,9 @@ module FinchAPI
 
   # Ruby has no Boolean class; this is something for models to refer to.
   class BooleanModel
-    abstract!
-
     extend FinchAPI::Converter
+
+    abstract!
 
     sig { params(other: T.anything).returns(T::Boolean) }
     def self.===(other)
@@ -161,9 +161,9 @@ module FinchAPI
   #   We can therefore convert string values to Symbols, but can't convert other
   #   values safely.
   class Enum
-    abstract!
-
     extend FinchAPI::Converter
+
+    abstract!
 
     class << self
       # All of the valid Symbol values for this enum.
@@ -210,9 +210,9 @@ module FinchAPI
   end
 
   class Union
-    abstract!
-
     extend FinchAPI::Converter
+
+    abstract!
 
     class << self
       # @api private
@@ -295,9 +295,9 @@ module FinchAPI
 
   # Array of items of a given type.
   class ArrayOf
-    abstract!
-
     include FinchAPI::Converter
+
+    abstract!
 
     sig { params(other: T.anything).returns(T::Boolean) }
     def ===(other)
@@ -357,9 +357,9 @@ module FinchAPI
 
   # Hash of items of a given type.
   class HashOf
-    abstract!
-
     include FinchAPI::Converter
+
+    abstract!
 
     sig { params(other: T.anything).returns(T::Boolean) }
     def ===(other)
@@ -418,9 +418,9 @@ module FinchAPI
   end
 
   class BaseModel
-    abstract!
-
     extend FinchAPI::Converter
+
+    abstract!
 
     KnownFieldShape = T.type_alias { {mode: T.nilable(Symbol), required: T::Boolean} }
 
