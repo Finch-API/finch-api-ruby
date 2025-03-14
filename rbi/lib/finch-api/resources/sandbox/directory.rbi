@@ -4,6 +4,7 @@ module FinchAPI
   module Resources
     class Sandbox
       class Directory
+        # Add new individuals to a sandbox company
         sig do
           params(
             body: T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body],

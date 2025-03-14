@@ -3,6 +3,7 @@
 module FinchAPI
   module Resources
     class AccessTokens
+      # Exchange the authorization code for an access token
       sig do
         params(
           code: String,

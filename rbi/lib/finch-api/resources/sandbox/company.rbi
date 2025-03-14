@@ -4,6 +4,7 @@ module FinchAPI
   module Resources
     class Sandbox
       class Company
+        # Update a sandbox company's data
         sig do
           params(
             accounts: T.nilable(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Account]),

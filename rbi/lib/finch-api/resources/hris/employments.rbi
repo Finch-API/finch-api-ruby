@@ -4,6 +4,7 @@ module FinchAPI
   module Resources
     class HRIS
       class Employments
+        # Read individual employment and income data
         sig do
           params(
             requests: T::Array[FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request],

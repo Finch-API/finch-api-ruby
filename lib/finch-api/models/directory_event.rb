@@ -49,7 +49,6 @@ module FinchAPI
       end
 
       # @abstract
-      #
       class EventType < FinchAPI::Enum
         DIRECTORY_CREATED = :"directory.created"
         DIRECTORY_UPDATED = :"directory.updated"

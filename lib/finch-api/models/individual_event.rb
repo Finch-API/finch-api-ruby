@@ -49,7 +49,6 @@ module FinchAPI
       end
 
       # @abstract
-      #
       class EventType < FinchAPI::Enum
         INDIVIDUAL_CREATED = :"individual.created"
         INDIVIDUAL_UPDATED = :"individual.updated"

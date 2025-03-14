@@ -53,7 +53,6 @@ module FinchAPI
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
           # @abstract
-          #
           class AuthenticationType < FinchAPI::Enum
             CREDENTIAL = :credential
             API_TOKEN = :api_token

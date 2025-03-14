@@ -8,6 +8,7 @@ module FinchAPI
           extend FinchAPI::RequestParameters::Converter
           include FinchAPI::RequestParameters
 
+          # Array of the individual_id to enroll and a configuration object.
           sig { returns(T.nilable(T::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual])) }
           def individuals
           end
@@ -57,6 +58,7 @@ module FinchAPI
             def configuration=(_)
             end
 
+            # Finch id (uuidv4) for the individual to enroll
             sig { returns(T.nilable(String)) }
             def individual_id
             end
@@ -88,6 +90,8 @@ module FinchAPI
             end
 
             class Configuration < FinchAPI::BaseModel
+              # For HSA benefits only - whether the contribution limit is for an individual or
+              #   family
               sig { returns(T.nilable(Symbol)) }
               def annual_contribution_limit
               end
@@ -96,6 +100,7 @@ module FinchAPI
               def annual_contribution_limit=(_)
               end
 
+              # Maximum annual amount in cents
               sig { returns(T.nilable(Integer)) }
               def annual_maximum
               end
@@ -104,6 +109,7 @@ module FinchAPI
               def annual_maximum=(_)
               end
 
+              # For retirement benefits only - whether catch up contributions are enabled
               sig { returns(T.nilable(T::Boolean)) }
               def catch_up
               end
@@ -188,6 +194,8 @@ module FinchAPI
               def to_hash
               end
 
+              # For HSA benefits only - whether the contribution limit is for an individual or
+              #   family
               class AnnualContributionLimit < FinchAPI::Enum
                 abstract!
 
@@ -202,6 +210,8 @@ module FinchAPI
               end
 
               class CompanyContribution < FinchAPI::BaseModel
+                # Amount in cents for fixed type or basis points (1/100th of a percent) for
+                #   percent type
                 sig { returns(T.nilable(Integer)) }
                 def amount
                 end
@@ -241,6 +251,8 @@ module FinchAPI
               end
 
               class EmployeeDeduction < FinchAPI::BaseModel
+                # Amount in cents for fixed type or basis points (1/100th of a percent) for
+                #   percent type
                 sig { returns(T.nilable(Integer)) }
                 def amount
                 end

@@ -26,7 +26,6 @@ module FinchAPI
       # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
       # @abstract
-      #
       class EventType < FinchAPI::Enum
         COMPANY_UPDATED = :"company.updated"
 

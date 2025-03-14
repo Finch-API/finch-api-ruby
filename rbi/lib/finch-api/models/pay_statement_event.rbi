@@ -28,6 +28,7 @@ module FinchAPI
       end
 
       class Data < FinchAPI::BaseModel
+        # The ID of the individual associated with the pay statement.
         sig { returns(T.nilable(String)) }
         def individual_id
         end
@@ -36,6 +37,7 @@ module FinchAPI
         def individual_id=(_)
         end
 
+        # The ID of the payment associated with the pay statement.
         sig { returns(T.nilable(String)) }
         def payment_id
         end

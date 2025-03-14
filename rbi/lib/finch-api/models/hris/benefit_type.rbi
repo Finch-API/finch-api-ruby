@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
+      # Type of benefit.
       class BenefitType < FinchAPI::Enum
         abstract!
 

@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     class DisconnectResponse < FinchAPI::BaseModel
+      # If the request is successful, Finch will return “success” (HTTP 200 status).
       sig { returns(String) }
       def status
       end

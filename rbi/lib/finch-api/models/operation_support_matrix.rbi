@@ -3,6 +3,13 @@
 module FinchAPI
   module Models
     class OperationSupportMatrix < FinchAPI::BaseModel
+      # - `supported`: This operation is supported by both the provider and Finch
+      #   - `not_supported_by_finch`: This operation is not supported by Finch but
+      #     supported by the provider
+      #   - `not_supported_by_provider`: This operation is not supported by the provider,
+      #     so Finch cannot support
+      #   - `client_access_only`: This behavior is supported by the provider, but only
+      #     available to the client and not to Finch
       sig { returns(T.nilable(Symbol)) }
       def create
       end
@@ -11,6 +18,13 @@ module FinchAPI
       def create=(_)
       end
 
+      # - `supported`: This operation is supported by both the provider and Finch
+      #   - `not_supported_by_finch`: This operation is not supported by Finch but
+      #     supported by the provider
+      #   - `not_supported_by_provider`: This operation is not supported by the provider,
+      #     so Finch cannot support
+      #   - `client_access_only`: This behavior is supported by the provider, but only
+      #     available to the client and not to Finch
       sig { returns(T.nilable(Symbol)) }
       def delete
       end
@@ -19,6 +33,13 @@ module FinchAPI
       def delete=(_)
       end
 
+      # - `supported`: This operation is supported by both the provider and Finch
+      #   - `not_supported_by_finch`: This operation is not supported by Finch but
+      #     supported by the provider
+      #   - `not_supported_by_provider`: This operation is not supported by the provider,
+      #     so Finch cannot support
+      #   - `client_access_only`: This behavior is supported by the provider, but only
+      #     available to the client and not to Finch
       sig { returns(T.nilable(Symbol)) }
       def read
       end
@@ -27,6 +48,13 @@ module FinchAPI
       def read=(_)
       end
 
+      # - `supported`: This operation is supported by both the provider and Finch
+      #   - `not_supported_by_finch`: This operation is not supported by Finch but
+      #     supported by the provider
+      #   - `not_supported_by_provider`: This operation is not supported by the provider,
+      #     so Finch cannot support
+      #   - `client_access_only`: This behavior is supported by the provider, but only
+      #     available to the client and not to Finch
       sig { returns(T.nilable(Symbol)) }
       def update
       end

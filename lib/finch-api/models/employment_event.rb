@@ -49,7 +49,6 @@ module FinchAPI
       end
 
       # @abstract
-      #
       class EventType < FinchAPI::Enum
         EMPLOYMENT_CREATED = :"employment.created"
         EMPLOYMENT_UPDATED = :"employment.updated"

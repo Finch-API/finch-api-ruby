@@ -5,6 +5,7 @@ module FinchAPI
     class Sandbox
       class Connections
         class Accounts
+          # Create a new account for an existing connection (company/provider pair)
           sig do
             params(
               company_id: String,
@@ -18,6 +19,8 @@ module FinchAPI
           def create(company_id:, provider_id:, authentication_type: nil, products: nil, request_options: {})
           end
 
+          # Update an existing sandbox account. Change the connection status to understand
+          #   how the Finch API responds.
           sig do
             params(
               connection_status: Symbol,

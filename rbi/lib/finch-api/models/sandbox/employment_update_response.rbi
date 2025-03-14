@@ -4,6 +4,7 @@ module FinchAPI
   module Models
     module Sandbox
       class EmploymentUpdateResponse < FinchAPI::BaseModel
+        # A stable Finch `id` (UUID v4) for an individual in the company.
         sig { returns(T.nilable(String)) }
         def id
         end
@@ -12,6 +13,7 @@ module FinchAPI
         def id=(_)
         end
 
+        # Worker's compensation classification code for this employee
         sig { returns(T.nilable(String)) }
         def class_code
         end
@@ -20,6 +22,9 @@ module FinchAPI
         def class_code=(_)
         end
 
+        # Custom fields for the individual. These are fields which are defined by the
+        #   employer in the system. Custom fields are not currently supported for assisted
+        #   connections.
         sig { returns(T.nilable(T::Array[FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField])) }
         def custom_fields
         end
@@ -31,6 +36,7 @@ module FinchAPI
         def custom_fields=(_)
         end
 
+        # The department object.
         sig { returns(T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Department)) }
         def department
         end
@@ -42,6 +48,7 @@ module FinchAPI
         def department=(_)
         end
 
+        # The employment object.
         sig { returns(T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment)) }
         def employment
         end
@@ -53,6 +60,7 @@ module FinchAPI
         def employment=(_)
         end
 
+        # The detailed employment status of the individual.
         sig { returns(T.nilable(Symbol)) }
         def employment_status
         end
@@ -69,6 +77,7 @@ module FinchAPI
         def end_date=(_)
         end
 
+        # The legal first name of the individual.
         sig { returns(T.nilable(String)) }
         def first_name
         end
@@ -77,6 +86,9 @@ module FinchAPI
         def first_name=(_)
         end
 
+        # The employee's income as reported by the provider. This may not always be
+        #   annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
+        #   depending on what information the provider returns.
         sig { returns(T.nilable(FinchAPI::Models::Income)) }
         def income
         end
@@ -85,6 +97,7 @@ module FinchAPI
         def income=(_)
         end
 
+        # The array of income history.
         sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::Income)])) }
         def income_history
         end
@@ -96,6 +109,7 @@ module FinchAPI
         def income_history=(_)
         end
 
+        # `true` if the individual an an active employee or contractor at the company.
         sig { returns(T.nilable(T::Boolean)) }
         def is_active
         end
@@ -104,6 +118,7 @@ module FinchAPI
         def is_active=(_)
         end
 
+        # The legal last name of the individual.
         sig { returns(T.nilable(String)) }
         def last_name
         end
@@ -128,6 +143,7 @@ module FinchAPI
         def location=(_)
         end
 
+        # The manager object representing the manager of the individual within the org.
         sig { returns(T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Manager)) }
         def manager
         end
@@ -139,6 +155,7 @@ module FinchAPI
         def manager=(_)
         end
 
+        # The legal middle name of the individual.
         sig { returns(T.nilable(String)) }
         def middle_name
         end
@@ -147,6 +164,7 @@ module FinchAPI
         def middle_name=(_)
         end
 
+        # The source system's unique employment identifier for this individual
         sig { returns(T.nilable(String)) }
         def source_id
         end
@@ -163,6 +181,7 @@ module FinchAPI
         def start_date=(_)
         end
 
+        # The current title of the individual.
         sig { returns(T.nilable(String)) }
         def title
         end
@@ -274,6 +293,7 @@ module FinchAPI
         end
 
         class Department < FinchAPI::BaseModel
+          # The name of the department associated with the individual.
           sig { returns(T.nilable(String)) }
           def name
           end
@@ -282,6 +302,7 @@ module FinchAPI
           def name=(_)
           end
 
+          # The department object.
           sig { params(name: T.nilable(String)).returns(T.attached_class) }
           def self.new(name: nil)
           end
@@ -292,6 +313,8 @@ module FinchAPI
         end
 
         class Employment < FinchAPI::BaseModel
+          # The secondary employment type of the individual. Options: `full_time`,
+          #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
           sig { returns(T.nilable(Symbol)) }
           def subtype
           end
@@ -300,6 +323,7 @@ module FinchAPI
           def subtype=(_)
           end
 
+          # The main employment type of the individual.
           sig { returns(T.nilable(Symbol)) }
           def type
           end
@@ -308,6 +332,7 @@ module FinchAPI
           def type=(_)
           end
 
+          # The employment object.
           sig { params(subtype: T.nilable(Symbol), type: T.nilable(Symbol)).returns(T.attached_class) }
           def self.new(subtype: nil, type: nil)
           end
@@ -316,6 +341,8 @@ module FinchAPI
           def to_hash
           end
 
+          # The secondary employment type of the individual. Options: `full_time`,
+          #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
           class Subtype < FinchAPI::Enum
             abstract!
 
@@ -333,6 +360,7 @@ module FinchAPI
             end
           end
 
+          # The main employment type of the individual.
           class Type < FinchAPI::Enum
             abstract!
 
@@ -347,6 +375,7 @@ module FinchAPI
           end
         end
 
+        # The detailed employment status of the individual.
         class EmploymentStatus < FinchAPI::Enum
           abstract!
 
@@ -366,6 +395,7 @@ module FinchAPI
         end
 
         class Manager < FinchAPI::BaseModel
+          # A stable Finch `id` (UUID v4) for an individual in the company.
           sig { returns(T.nilable(String)) }
           def id
           end
@@ -374,6 +404,7 @@ module FinchAPI
           def id=(_)
           end
 
+          # The manager object representing the manager of the individual within the org.
           sig { params(id: String).returns(T.attached_class) }
           def self.new(id: nil)
           end

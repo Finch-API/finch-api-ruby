@@ -54,28 +54,25 @@ module FinchAPI
     # @return [FinchAPI::Resources::Connect]
     attr_reader :connect
 
-    # @private
+    # @api private
     #
     # @return [Hash{String=>String}]
-    #
     private def auth_headers
       {**bearer_auth, **basic_auth}
     end
 
-    # @private
+    # @api private
     #
     # @return [Hash{String=>String}]
-    #
     private def bearer_auth
       return {} if @access_token.nil?
 
       {"authorization" => "Bearer #{@access_token}"}
     end
 
-    # @private
+    # @api private
     #
     # @return [Hash{String=>String}]
-    #
     private def basic_auth
       return {} if @client_id.nil? || @client_secret.nil?
 
@@ -100,7 +97,6 @@ module FinchAPI
     # @param initial_retry_delay [Float]
     #
     # @param max_retry_delay [Float]
-    #
     def initialize(
       base_url: nil,
       access_token: nil,

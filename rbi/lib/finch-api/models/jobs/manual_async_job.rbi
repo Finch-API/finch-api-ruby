@@ -4,6 +4,7 @@ module FinchAPI
   module Models
     module Jobs
       class ManualAsyncJob < FinchAPI::BaseModel
+        # Specific information about the job, such as individual statuses for batch jobs.
         sig { returns(T.nilable(T::Array[T.anything])) }
         def body
         end

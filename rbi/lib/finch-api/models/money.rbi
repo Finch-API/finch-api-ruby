@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     class Money < FinchAPI::BaseModel
+      # Amount for money object (in cents)
       sig { returns(T.nilable(Integer)) }
       def amount
       end

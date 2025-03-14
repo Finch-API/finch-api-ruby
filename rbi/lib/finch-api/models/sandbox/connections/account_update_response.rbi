@@ -5,6 +5,7 @@ module FinchAPI
     module Sandbox
       module Connections
         class AccountUpdateResponse < FinchAPI::BaseModel
+          # [DEPRECATED] Use `connection_id` to associate a connection with an access token
           sig { returns(String) }
           def account_id
           end
@@ -21,6 +22,7 @@ module FinchAPI
           def authentication_type=(_)
           end
 
+          # [DEPRECATED] Use `connection_id` to associate a connection with an access token
           sig { returns(String) }
           def company_id
           end
@@ -37,6 +39,7 @@ module FinchAPI
           def products=(_)
           end
 
+          # The ID of the provider associated with the `access_token`
           sig { returns(String) }
           def provider_id
           end
@@ -45,6 +48,7 @@ module FinchAPI
           def provider_id=(_)
           end
 
+          # The ID of the new connection
           sig { returns(T.nilable(String)) }
           def connection_id
           end

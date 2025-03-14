@@ -30,13 +30,12 @@ module FinchAPI
     # @return [FinchAPI::Models::Paging]
     attr_accessor :paging
 
-    # @private
+    # @api private
     #
     # @param client [FinchAPI::BaseClient]
     # @param req [Hash{Symbol=>Object}]
     # @param headers [Hash{String=>String}, Net::HTTPHeader]
     # @param page_data [Hash{Symbol=>Object}]
-    #
     def initialize(client:, req:, headers:, page_data:)
       super
       model = req.fetch(:model)
@@ -61,7 +60,6 @@ module FinchAPI
 
     # @raise [FinchAPI::HTTP::Error]
     # @return [FinchAPI::Page]
-    #
     def next_page
       unless next_page?
         raise RuntimeError.new("No more pages available. Please check #next_page? before calling ##{__method__}")
@@ -72,7 +70,6 @@ module FinchAPI
     end
 
     # @param blk [Proc]
-    #
     def auto_paging_each(&blk)
       unless block_given?
         raise ArgumentError.new("A block must be given to ##{__method__}")
@@ -86,7 +83,6 @@ module FinchAPI
     end
 
     # @return [String]
-    #
     def inspect
       "#<#{self.class}:0x#{object_id.to_s(16)} data=#{data.inspect} paging=#{paging.inspect}>"
     end

@@ -7,6 +7,7 @@ module FinchAPI
         extend FinchAPI::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
+        # The array of batch requests.
         sig { returns(T::Array[FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request]) }
         def requests
         end
@@ -41,6 +42,7 @@ module FinchAPI
         end
 
         class Request < FinchAPI::BaseModel
+          # A stable Finch `id` (UUID v4) for a payment.
           sig { returns(String) }
           def payment_id
           end
@@ -49,6 +51,7 @@ module FinchAPI
           def payment_id=(_)
           end
 
+          # Number of pay statements to return (defaults to all).
           sig { returns(T.nilable(Integer)) }
           def limit
           end
@@ -57,6 +60,7 @@ module FinchAPI
           def limit=(_)
           end
 
+          # Index to start from.
           sig { returns(T.nilable(Integer)) }
           def offset
           end

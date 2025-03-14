@@ -4,6 +4,8 @@ module FinchAPI
   module Resources
     class HRIS
       class Documents
+        # **Beta:** This endpoint is in beta and may change.
+        #   Retrieve a list of company-wide documents.
         sig do
           params(
             individual_ids: T::Array[String],
@@ -17,6 +19,8 @@ module FinchAPI
         def list(individual_ids: nil, limit: nil, offset: nil, types: nil, request_options: {})
         end
 
+        # **Beta:** This endpoint is in beta and may change.
+        #   Retrieve details of a specific document by its ID.
         sig do
           params(
             document_id: String,

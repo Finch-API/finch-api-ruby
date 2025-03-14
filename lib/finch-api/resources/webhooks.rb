@@ -4,7 +4,6 @@ module FinchAPI
   module Resources
     class Webhooks
       # @param client [FinchAPI::Client]
-      #
       def initialize(client:)
         @client = client
       end

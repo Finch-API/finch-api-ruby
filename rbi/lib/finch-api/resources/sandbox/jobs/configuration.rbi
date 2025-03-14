@@ -5,6 +5,7 @@ module FinchAPI
     class Sandbox
       class Jobs
         class Configuration
+          # Get configurations for sandbox jobs
           sig do
             params(request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])))
               .returns(FinchAPI::Models::Sandbox::Jobs::ConfigurationRetrieveResponse)
@@ -12,6 +13,7 @@ module FinchAPI
           def retrieve(request_options: {})
           end
 
+          # Update configurations for sandbox jobs
           sig do
             params(
               completion_status: Symbol,

@@ -4,6 +4,7 @@ module FinchAPI
   module Models
     module Sandbox
       class CompanyUpdateResponse < FinchAPI::BaseModel
+        # An array of bank account objects associated with the payroll/HRIS system.
         sig { returns(T.nilable(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account])) }
         def accounts
         end
@@ -15,6 +16,7 @@ module FinchAPI
         def accounts=(_)
         end
 
+        # The array of company departments.
         sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department)])) }
         def departments
         end
@@ -26,6 +28,7 @@ module FinchAPI
         def departments=(_)
         end
 
+        # The employer identification number.
         sig { returns(T.nilable(String)) }
         def ein
         end
@@ -34,6 +37,7 @@ module FinchAPI
         def ein=(_)
         end
 
+        # The entity type object.
         sig { returns(T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity)) }
         def entity
         end
@@ -45,6 +49,7 @@ module FinchAPI
         def entity=(_)
         end
 
+        # The legal name of the company.
         sig { returns(T.nilable(String)) }
         def legal_name
         end
@@ -64,6 +69,7 @@ module FinchAPI
         def locations=(_)
         end
 
+        # The email of the main administrator on the account.
         sig { returns(T.nilable(String)) }
         def primary_email
         end
@@ -72,6 +78,7 @@ module FinchAPI
         def primary_email=(_)
         end
 
+        # The phone number of the main administrator on the account. Format: `XXXXXXXXXX`
         sig { returns(T.nilable(String)) }
         def primary_phone_number
         end
@@ -115,6 +122,7 @@ module FinchAPI
         end
 
         class Account < FinchAPI::BaseModel
+          # The name of the bank associated in the payroll/HRIS system.
           sig { returns(T.nilable(String)) }
           def account_name
           end
@@ -123,6 +131,7 @@ module FinchAPI
           def account_name=(_)
           end
 
+          # 10-12 digit number to specify the bank account
           sig { returns(T.nilable(String)) }
           def account_number
           end
@@ -131,6 +140,7 @@ module FinchAPI
           def account_number=(_)
           end
 
+          # The type of bank account.
           sig { returns(T.nilable(Symbol)) }
           def account_type
           end
@@ -139,6 +149,7 @@ module FinchAPI
           def account_type=(_)
           end
 
+          # Name of the banking institution.
           sig { returns(T.nilable(String)) }
           def institution_name
           end
@@ -147,6 +158,8 @@ module FinchAPI
           def institution_name=(_)
           end
 
+          # A nine-digit code that's based on the U.S. Bank location where your account was
+          #   opened.
           sig { returns(T.nilable(String)) }
           def routing_number
           end
@@ -183,6 +196,7 @@ module FinchAPI
           def to_hash
           end
 
+          # The type of bank account.
           class AccountType < FinchAPI::Enum
             abstract!
 
@@ -198,6 +212,7 @@ module FinchAPI
         end
 
         class Department < FinchAPI::BaseModel
+          # The department name.
           sig { returns(T.nilable(String)) }
           def name
           end
@@ -206,6 +221,7 @@ module FinchAPI
           def name=(_)
           end
 
+          # The parent department, if present.
           sig { returns(T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department::Parent)) }
           def parent
           end
@@ -240,6 +256,7 @@ module FinchAPI
           end
 
           class Parent < FinchAPI::BaseModel
+            # The parent department's name.
             sig { returns(T.nilable(String)) }
             def name
             end
@@ -248,6 +265,7 @@ module FinchAPI
             def name=(_)
             end
 
+            # The parent department, if present.
             sig { params(name: T.nilable(String)).returns(T.attached_class) }
             def self.new(name: nil)
             end
@@ -259,6 +277,7 @@ module FinchAPI
         end
 
         class Entity < FinchAPI::BaseModel
+          # The tax payer subtype of the company.
           sig { returns(T.nilable(Symbol)) }
           def subtype
           end
@@ -267,6 +286,7 @@ module FinchAPI
           def subtype=(_)
           end
 
+          # The tax payer type of the company.
           sig { returns(T.nilable(Symbol)) }
           def type
           end
@@ -275,6 +295,7 @@ module FinchAPI
           def type=(_)
           end
 
+          # The entity type object.
           sig { params(subtype: T.nilable(Symbol), type: T.nilable(Symbol)).returns(T.attached_class) }
           def self.new(subtype: nil, type: nil)
           end
@@ -283,6 +304,7 @@ module FinchAPI
           def to_hash
           end
 
+          # The tax payer subtype of the company.
           class Subtype < FinchAPI::Enum
             abstract!
 
@@ -297,6 +319,7 @@ module FinchAPI
             end
           end
 
+          # The tax payer type of the company.
           class Type < FinchAPI::Enum
             abstract!
 

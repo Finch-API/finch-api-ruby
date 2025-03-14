@@ -7,7 +7,6 @@ module FinchAPI
       attr_reader :sessions
 
       # @param client [FinchAPI::Client]
-      #
       def initialize(client:)
         @client = client
         @sessions = FinchAPI::Resources::Connect::Sessions.new(client: client)

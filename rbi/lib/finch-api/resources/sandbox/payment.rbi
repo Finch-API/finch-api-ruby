@@ -4,6 +4,7 @@ module FinchAPI
   module Resources
     class Sandbox
       class Payment
+        # Add a new sandbox payment
         sig do
           params(
             end_date: String,

@@ -7,6 +7,7 @@ module FinchAPI
         extend FinchAPI::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
+        # Updated name or description.
         sig { returns(T.nilable(String)) }
         def description
         end

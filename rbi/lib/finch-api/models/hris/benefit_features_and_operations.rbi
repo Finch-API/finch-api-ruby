@@ -49,6 +49,7 @@ module FinchAPI
         end
 
         class SupportedFeatures < FinchAPI::BaseModel
+          # Whether the provider supports an annual maximum for this benefit.
           sig { returns(T.nilable(T::Boolean)) }
           def annual_maximum
           end
@@ -57,6 +58,8 @@ module FinchAPI
           def annual_maximum=(_)
           end
 
+          # Whether the provider supports catch up for this benefit. This field will only be
+          #   true for retirement benefits.
           sig { returns(T.nilable(T::Boolean)) }
           def catch_up
           end
@@ -65,6 +68,8 @@ module FinchAPI
           def catch_up=(_)
           end
 
+          # Supported contribution types. An empty array indicates contributions are not
+          #   supported.
           sig { returns(T.nilable(T::Array[T.nilable(Symbol)])) }
           def company_contribution
           end
@@ -83,6 +88,8 @@ module FinchAPI
           def description=(_)
           end
 
+          # Supported deduction types. An empty array indicates deductions are not
+          #   supported.
           sig { returns(T.nilable(T::Array[T.nilable(Symbol)])) }
           def employee_deduction
           end
@@ -93,6 +100,7 @@ module FinchAPI
           def employee_deduction=(_)
           end
 
+          # The list of frequencies supported by the provider for this benefit
           sig { returns(T.nilable(T::Array[T.nilable(Symbol)])) }
           def frequencies
           end
@@ -101,6 +109,8 @@ module FinchAPI
           def frequencies=(_)
           end
 
+          # Whether the provider supports HSA contribution limits. Empty if this feature is
+          #   not supported for the benefit. This array only has values for HSA benefits.
           sig { returns(T.nilable(T::Array[T.nilable(Symbol)])) }
           def hsa_contribution_limit
           end

@@ -4,6 +4,7 @@ module FinchAPI
   module Models
     module Connect
       class SessionNewResponse < FinchAPI::BaseModel
+        # The Connect URL to redirect the user to for authentication
         sig { returns(String) }
         def connect_url
         end
@@ -12,6 +13,7 @@ module FinchAPI
         def connect_url=(_)
         end
 
+        # The unique identifier for the created connect session
         sig { returns(String) }
         def session_id
         end

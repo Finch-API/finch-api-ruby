@@ -25,7 +25,6 @@ module FinchAPI
       attr_reader :jobs
 
       # @param client [FinchAPI::Client]
-      #
       def initialize(client:)
         @client = client
         @connections = FinchAPI::Resources::Sandbox::Connections.new(client: client)
