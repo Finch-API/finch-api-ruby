@@ -6,14 +6,13 @@ module FinchAPI
       abstract!
 
       class << self
-        # @api private
         sig do
           override
             .returns(
-              [[Symbol, FinchAPI::Models::AccountUpdateEvent], [Symbol, FinchAPI::Models::CompanyEvent], [NilClass, FinchAPI::Models::JobCompletionEvent], [NilClass, FinchAPI::Models::DirectoryEvent], [NilClass, FinchAPI::Models::EmploymentEvent], [NilClass, FinchAPI::Models::IndividualEvent], [NilClass, FinchAPI::Models::PaymentEvent], [NilClass, FinchAPI::Models::PayStatementEvent]]
+              [FinchAPI::Models::AccountUpdateEvent, FinchAPI::Models::CompanyEvent, FinchAPI::Models::JobCompletionEvent, FinchAPI::Models::DirectoryEvent, FinchAPI::Models::EmploymentEvent, FinchAPI::Models::IndividualEvent, FinchAPI::Models::PaymentEvent, FinchAPI::Models::PayStatementEvent]
             )
         end
-        private def variants
+        def variants
         end
       end
     end
