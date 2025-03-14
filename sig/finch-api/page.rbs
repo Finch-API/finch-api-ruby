@@ -2,7 +2,7 @@ module FinchAPI
   class Page[Elem]
     include FinchAPI::BasePage[Elem]
 
-    attr_accessor data: ::Array[Elem]
+    attr_accessor data: ::Array[Elem]?
 
     attr_accessor paging: FinchAPI::Models::Paging
   end

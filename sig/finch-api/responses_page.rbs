@@ -2,6 +2,6 @@ module FinchAPI
   class ResponsesPage[Elem]
     include FinchAPI::BasePage[Elem]
 
-    attr_accessor responses: ::Array[Elem]
+    attr_accessor responses: ::Array[Elem]?
   end
 end
