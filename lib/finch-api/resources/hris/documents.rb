@@ -22,7 +22,6 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::Models::HRIS::DocumentListResponse]
-        #
         def list(params = {})
           parsed, options = FinchAPI::Models::HRIS::DocumentListParams.dump_request(params)
           @client.request(
@@ -44,7 +43,6 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005]
-        #
         def retreive(document_id, params = {})
           @client.request(
             method: :get,
@@ -55,7 +53,6 @@ module FinchAPI
         end
 
         # @param client [FinchAPI::Client]
-        #
         def initialize(client:)
           @client = client
         end

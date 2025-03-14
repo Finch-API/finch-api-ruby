@@ -7,6 +7,7 @@ module FinchAPI
         extend FinchAPI::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
+        # Number of employees to return (defaults to all)
         sig { returns(T.nilable(Integer)) }
         def limit
         end
@@ -15,6 +16,7 @@ module FinchAPI
         def limit=(_)
         end
 
+        # Index to start from (defaults to 0)
         sig { returns(T.nilable(Integer)) }
         def offset
         end

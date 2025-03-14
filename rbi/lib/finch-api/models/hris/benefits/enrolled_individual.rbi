@@ -16,6 +16,7 @@ module FinchAPI
           def body=(_)
           end
 
+          # HTTP status code. Either 201 or 200
           sig { returns(T.nilable(Integer)) }
           def code
           end
@@ -53,6 +54,7 @@ module FinchAPI
           end
 
           class Body < FinchAPI::BaseModel
+            # A descriptive identifier for the response
             sig { returns(T.nilable(String)) }
             def finch_code
             end
@@ -61,6 +63,7 @@ module FinchAPI
             def finch_code=(_)
             end
 
+            # Short description in English that provides more information about the response.
             sig { returns(T.nilable(String)) }
             def message
             end
@@ -69,6 +72,7 @@ module FinchAPI
             def message=(_)
             end
 
+            # Identifier indicating whether the benefit was newly enrolled or updated.
             sig { returns(T.nilable(String)) }
             def name
             end
@@ -97,6 +101,7 @@ module FinchAPI
             end
           end
 
+          # HTTP status code. Either 201 or 200
           class Code < FinchAPI::Enum
             abstract!
 

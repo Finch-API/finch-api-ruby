@@ -16,6 +16,7 @@ module FinchAPI
           def company_id=(_)
           end
 
+          # The provider associated with the `access_token`
           sig { returns(String) }
           def provider_id
           end
@@ -32,6 +33,8 @@ module FinchAPI
           def authentication_type=(_)
           end
 
+          # Optional, defaults to Organization products (`company`, `directory`,
+          #   `employment`, `individual`)
           sig { returns(T.nilable(T::Array[String])) }
           def products
           end

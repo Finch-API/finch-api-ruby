@@ -24,7 +24,6 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::Models::Sandbox::ConnectionCreateResponse]
-        #
         def create(params)
           parsed, options = FinchAPI::Models::Sandbox::ConnectionCreateParams.dump_request(params)
           @client.request(
@@ -37,7 +36,6 @@ module FinchAPI
         end
 
         # @param client [FinchAPI::Client]
-        #
         def initialize(client:)
           @client = client
           @accounts = FinchAPI::Resources::Sandbox::Connections::Accounts.new(client: client)

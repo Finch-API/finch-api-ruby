@@ -10,7 +10,6 @@ module FinchAPI
       #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [FinchAPI::SinglePage<FinchAPI::Models::Provider>]
-      #
       def list(params = {})
         @client.request(
           method: :get,
@@ -22,7 +21,6 @@ module FinchAPI
       end
 
       # @param client [FinchAPI::Client]
-      #
       def initialize(client:)
         @client = client
       end

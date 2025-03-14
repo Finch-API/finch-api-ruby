@@ -8,6 +8,7 @@ module FinchAPI
           extend FinchAPI::RequestParameters::Converter
           include FinchAPI::RequestParameters
 
+          # Array of individual_ids to unenroll.
           sig { returns(T.nilable(T::Array[String])) }
           def individual_ids
           end

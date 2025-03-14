@@ -136,6 +136,8 @@ module FinchAPI
         def simple_ira=(_)
         end
 
+        # Each benefit type and their supported features. If the benefit type is not
+        #   supported, the property will be null
         sig do
           params(
             commuter: T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations),

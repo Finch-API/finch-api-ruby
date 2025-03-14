@@ -10,7 +10,6 @@ module FinchAPI
       attr_reader :manual
 
       # @param client [FinchAPI::Client]
-      #
       def initialize(client:)
         @client = client
         @automated = FinchAPI::Resources::Jobs::Automated.new(client: client)

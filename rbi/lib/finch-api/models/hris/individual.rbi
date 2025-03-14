@@ -4,6 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       class Individual < FinchAPI::BaseModel
+        # A stable Finch `id` (UUID v4) for an individual in the company.
         sig { returns(T.nilable(String)) }
         def id
         end
@@ -31,6 +32,9 @@ module FinchAPI
         def emails=(_)
         end
 
+        # Social Security Number of the individual in **encrypted** format. This field is
+        #   only available with the `ssn` scope enabled and the
+        #   `options: { include: ['ssn'] }` param set in the body.
         sig { returns(T.nilable(String)) }
         def encrypted_ssn
         end
@@ -39,6 +43,7 @@ module FinchAPI
         def encrypted_ssn=(_)
         end
 
+        # The EEOC-defined ethnicity of the individual.
         sig { returns(T.nilable(Symbol)) }
         def ethnicity
         end
@@ -47,6 +52,7 @@ module FinchAPI
         def ethnicity=(_)
         end
 
+        # The legal first name of the individual.
         sig { returns(T.nilable(String)) }
         def first_name
         end
@@ -55,6 +61,7 @@ module FinchAPI
         def first_name=(_)
         end
 
+        # The gender of the individual.
         sig { returns(T.nilable(Symbol)) }
         def gender
         end
@@ -63,6 +70,7 @@ module FinchAPI
         def gender=(_)
         end
 
+        # The legal last name of the individual.
         sig { returns(T.nilable(String)) }
         def last_name
         end
@@ -71,6 +79,7 @@ module FinchAPI
         def last_name=(_)
         end
 
+        # The legal middle name of the individual.
         sig { returns(T.nilable(String)) }
         def middle_name
         end
@@ -90,6 +99,7 @@ module FinchAPI
         def phone_numbers=(_)
         end
 
+        # The preferred name of the individual.
         sig { returns(T.nilable(String)) }
         def preferred_name
         end
@@ -106,6 +116,10 @@ module FinchAPI
         def residence=(_)
         end
 
+        # Social Security Number of the individual. This field is only available with the
+        #   `ssn` scope enabled and the `options: { include: ['ssn'] }` param set in the
+        #   body.
+        #   [Click here to learn more about enabling the SSN field](/developer-resources/Enable-SSN-Field).
         sig { returns(T.nilable(String)) }
         def ssn
         end
@@ -211,6 +225,7 @@ module FinchAPI
           end
         end
 
+        # The EEOC-defined ethnicity of the individual.
         class Ethnicity < FinchAPI::Enum
           abstract!
 
@@ -230,6 +245,7 @@ module FinchAPI
           end
         end
 
+        # The gender of the individual.
         class Gender < FinchAPI::Enum
           abstract!
 

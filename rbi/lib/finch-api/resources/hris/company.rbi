@@ -4,6 +4,7 @@ module FinchAPI
   module Resources
     class HRIS
       class Company
+        # Read basic company data
         sig do
           params(request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])))
             .returns(FinchAPI::Models::HRIS::HRISCompany)

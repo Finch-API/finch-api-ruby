@@ -4,6 +4,7 @@ module FinchAPI
   module Resources
     class HRIS
       class Payments
+        # Read payroll and contractor related payments by the company.
         sig do
           params(
             end_date: Date,

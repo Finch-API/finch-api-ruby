@@ -7,6 +7,7 @@ module FinchAPI
         extend FinchAPI::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
+        # The type of job to start.
         sig { returns(Symbol) }
         def type
         end
@@ -50,6 +51,7 @@ module FinchAPI
         def to_hash
         end
 
+        # The type of job to start.
         class Type < FinchAPI::Enum
           abstract!
 
@@ -63,6 +65,7 @@ module FinchAPI
         end
 
         class Params < FinchAPI::BaseModel
+          # The unique ID of the individual for W-4 data sync.
           sig { returns(String) }
           def individual_id
           end

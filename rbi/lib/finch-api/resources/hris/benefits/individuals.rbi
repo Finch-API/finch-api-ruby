@@ -5,6 +5,10 @@ module FinchAPI
     class HRIS
       class Benefits
         class Individuals
+          # Enroll an individual into a deduction or contribution. This is an overwrite
+          #   operation. If the employee is already enrolled, the enrollment amounts will be
+          #   adjusted. Making the same request multiple times will not create new
+          #   enrollments, but will continue to set the state of the existing enrollment.
           sig do
             params(
               benefit_id: String,
@@ -16,6 +20,7 @@ module FinchAPI
           def enroll_many(benefit_id, individuals: nil, request_options: {})
           end
 
+          # Lists individuals currently enrolled in a given deduction.
           sig do
             params(
               benefit_id: String,
@@ -26,6 +31,7 @@ module FinchAPI
           def enrolled_ids(benefit_id, request_options: {})
           end
 
+          # Get enrollment information for the given individuals.
           sig do
             params(
               benefit_id: String,
@@ -37,6 +43,7 @@ module FinchAPI
           def retrieve_many_benefits(benefit_id, individual_ids: nil, request_options: {})
           end
 
+          # Unenroll individuals from a deduction or contribution
           sig do
             params(
               benefit_id: String,

@@ -4,6 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       class W42005 < FinchAPI::BaseModel
+        # Detailed information specific to the 2005 W4 form.
         sig { returns(T.nilable(FinchAPI::Models::HRIS::W42005::Data)) }
         def data
         end
@@ -12,6 +13,7 @@ module FinchAPI
         def data=(_)
         end
 
+        # Specifies the form type, indicating that this document is a 2005 W4 form.
         sig { returns(T.nilable(Symbol)) }
         def type
         end
@@ -20,6 +22,7 @@ module FinchAPI
         def type=(_)
         end
 
+        # The tax year this W4 document applies to.
         sig { returns(T.nilable(Float)) }
         def year
         end
@@ -28,6 +31,8 @@ module FinchAPI
         def year=(_)
         end
 
+        # A 2005 version of the W-4 tax form containing information on an individual's
+        #   filing status, dependents, and withholding details.
         sig do
           params(data: FinchAPI::Models::HRIS::W42005::Data, type: Symbol, year: T.nilable(Float))
             .returns(T.attached_class)
@@ -40,6 +45,7 @@ module FinchAPI
         end
 
         class Data < FinchAPI::BaseModel
+          # Additional withholding amount (in cents).
           sig { returns(T.nilable(Integer)) }
           def additional_withholding
           end
@@ -48,6 +54,7 @@ module FinchAPI
           def additional_withholding=(_)
           end
 
+          # Indicates exemption status from federal tax withholding.
           sig { returns(T.nilable(Symbol)) }
           def exemption
           end
@@ -56,6 +63,7 @@ module FinchAPI
           def exemption=(_)
           end
 
+          # The individual's filing status for tax purposes.
           sig { returns(T.nilable(Symbol)) }
           def filing_status
           end
@@ -64,6 +72,7 @@ module FinchAPI
           def filing_status=(_)
           end
 
+          # The unique identifier for the individual associated with this 2005 W4 form.
           sig { returns(T.nilable(String)) }
           def individual_id
           end
@@ -72,6 +81,7 @@ module FinchAPI
           def individual_id=(_)
           end
 
+          # Total number of allowances claimed (in cents).
           sig { returns(T.nilable(Integer)) }
           def total_number_of_allowances
           end
@@ -80,6 +90,7 @@ module FinchAPI
           def total_number_of_allowances=(_)
           end
 
+          # Detailed information specific to the 2005 W4 form.
           sig do
             params(
               additional_withholding: T.nilable(Integer),
@@ -114,6 +125,7 @@ module FinchAPI
           def to_hash
           end
 
+          # Indicates exemption status from federal tax withholding.
           class Exemption < FinchAPI::Enum
             abstract!
 
@@ -127,6 +139,7 @@ module FinchAPI
             end
           end
 
+          # The individual's filing status for tax purposes.
           class FilingStatus < FinchAPI::Enum
             abstract!
 
@@ -142,6 +155,7 @@ module FinchAPI
           end
         end
 
+        # Specifies the form type, indicating that this document is a 2005 W4 form.
         class Type < FinchAPI::Enum
           abstract!
 

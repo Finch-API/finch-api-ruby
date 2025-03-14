@@ -4,6 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       class Payment < FinchAPI::BaseModel
+        # The unique id for the payment.
         sig { returns(T.nilable(String)) }
         def id
         end
@@ -52,6 +53,7 @@ module FinchAPI
         def gross_pay=(_)
         end
 
+        # Array of every individual on this payment.
         sig { returns(T.nilable(T::Array[String])) }
         def individual_ids
         end
@@ -76,6 +78,7 @@ module FinchAPI
         def pay_date=(_)
         end
 
+        # List of pay frequencies associated with this payment.
         sig { returns(T.nilable(T::Array[Symbol])) }
         def pay_frequencies
         end
@@ -84,6 +87,7 @@ module FinchAPI
         def pay_frequencies=(_)
         end
 
+        # Array of the Finch id (uuidv4) of every pay group associated with this payment.
         sig { returns(T.nilable(T::Array[String])) }
         def pay_group_ids
         end
@@ -92,6 +96,7 @@ module FinchAPI
         def pay_group_ids=(_)
         end
 
+        # The pay period object.
         sig { returns(T.nilable(FinchAPI::Models::HRIS::Payment::PayPeriod)) }
         def pay_period
         end
@@ -195,6 +200,7 @@ module FinchAPI
           def start_date=(_)
           end
 
+          # The pay period object.
           sig { params(end_date: T.nilable(String), start_date: T.nilable(String)).returns(T.attached_class) }
           def self.new(end_date: nil, start_date: nil)
           end

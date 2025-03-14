@@ -28,6 +28,7 @@ module FinchAPI
         def frequency=(_)
         end
 
+        # Type of benefit.
         sig { returns(T.nilable(Symbol)) }
         def type
         end

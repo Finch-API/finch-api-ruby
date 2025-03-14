@@ -4,6 +4,7 @@ module FinchAPI
   module Resources
     class HRIS
       class Directory
+        # Read company directory and organization structure
         sig do
           params(
             limit: Integer,
@@ -15,6 +16,7 @@ module FinchAPI
         def list(limit: nil, offset: nil, request_options: {})
         end
 
+        # Read company directory and organization structure
         alias_method :list_individuals, :list
 
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }

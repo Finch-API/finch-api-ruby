@@ -4,6 +4,8 @@ module FinchAPI
   module Resources
     class Jobs
       class Manual
+        # Get a manual job by `job_id`. Manual jobs are completed by a human and include
+        #   Assisted Benefits jobs.
         sig do
           params(
             job_id: String,

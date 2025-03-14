@@ -1934,7 +1934,6 @@ module FinchAPI
       end
 
       # @abstract
-      #
       class EventType < FinchAPI::Enum
         ACCOUNT_UPDATED = :"account.updated"
 

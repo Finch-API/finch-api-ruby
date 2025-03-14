@@ -52,7 +52,6 @@ module FinchAPI
       end
 
       # @abstract
-      #
       class EventType < FinchAPI::Enum
         JOB_BENEFIT_CREATE_COMPLETED = :"job.benefit_create.completed"
         JOB_BENEFIT_ENROLL_COMPLETED = :"job.benefit_enroll.completed"

@@ -28,7 +28,6 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::Models::Jobs::AutomatedCreateResponse]
-        #
         def create(params)
           parsed, options = FinchAPI::Models::Jobs::AutomatedCreateParams.dump_request(params)
           @client.request(
@@ -49,7 +48,6 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::Models::Jobs::AutomatedAsyncJob]
-        #
         def retrieve(job_id, params = {})
           @client.request(
             method: :get,
@@ -72,7 +70,6 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::Models::Jobs::AutomatedListResponse]
-        #
         def list(params = {})
           parsed, options = FinchAPI::Models::Jobs::AutomatedListParams.dump_request(params)
           @client.request(
@@ -85,7 +82,6 @@ module FinchAPI
         end
 
         # @param client [FinchAPI::Client]
-        #
         def initialize(client:)
           @client = client
         end

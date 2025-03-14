@@ -4,6 +4,10 @@ module FinchAPI
   module Resources
     class HRIS
       class PayStatements
+        # Read detailed pay statements for each individual.
+        #
+        #   Deduction and contribution types are supported by the payroll systems that
+        #   supports Benefits.
         sig do
           params(
             requests: T::Array[FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request],

@@ -12,6 +12,7 @@ module FinchAPI
         def paging=(_)
         end
 
+        # The array of pay statements for the current payment.
         sig { returns(T.nilable(T::Array[FinchAPI::Models::HRIS::PayStatement])) }
         def pay_statements
         end

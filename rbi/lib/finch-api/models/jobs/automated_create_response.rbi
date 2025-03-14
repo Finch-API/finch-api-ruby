@@ -4,6 +4,7 @@ module FinchAPI
   module Models
     module Jobs
       class AutomatedCreateResponse < FinchAPI::BaseModel
+        # The number of allowed refreshes per hour (per hour, fixed window)
         sig { returns(Integer) }
         def allowed_refreshes
         end
@@ -12,6 +13,7 @@ module FinchAPI
         def allowed_refreshes=(_)
         end
 
+        # The id of the job that has been created.
         sig { returns(String) }
         def job_id
         end
@@ -20,6 +22,7 @@ module FinchAPI
         def job_id=(_)
         end
 
+        # The url that can be used to retrieve the job status
         sig { returns(String) }
         def job_url
         end
@@ -28,6 +31,7 @@ module FinchAPI
         def job_url=(_)
         end
 
+        # The number of remaining refreshes available (per hour, fixed window)
         sig { returns(Integer) }
         def remaining_refreshes
         end

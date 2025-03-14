@@ -7,6 +7,7 @@ module FinchAPI
         extend FinchAPI::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
+        # The type of job to start. Currently the only supported type is `data_sync_all`
         sig { returns(Symbol) }
         def type
         end
@@ -26,6 +27,7 @@ module FinchAPI
         def to_hash
         end
 
+        # The type of job to start. Currently the only supported type is `data_sync_all`
         class Type < FinchAPI::Enum
           abstract!
 

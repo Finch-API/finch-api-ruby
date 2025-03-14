@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     class Location < FinchAPI::BaseModel
+      # City, district, suburb, town, or village.
       sig { returns(T.nilable(String)) }
       def city
       end
@@ -11,6 +12,7 @@ module FinchAPI
       def city=(_)
       end
 
+      # The 2-letter ISO 3166 country code.
       sig { returns(T.nilable(String)) }
       def country
       end
@@ -19,6 +21,7 @@ module FinchAPI
       def country=(_)
       end
 
+      # Street address or PO box.
       sig { returns(T.nilable(String)) }
       def line1
       end
@@ -27,6 +30,7 @@ module FinchAPI
       def line1=(_)
       end
 
+      # Apartment, suite, unit, or building.
       sig { returns(T.nilable(String)) }
       def line2
       end
@@ -43,6 +47,7 @@ module FinchAPI
       def name=(_)
       end
 
+      # The postal code or zip code.
       sig { returns(T.nilable(String)) }
       def postal_code
       end
@@ -59,6 +64,7 @@ module FinchAPI
       def source_id=(_)
       end
 
+      # The state code.
       sig { returns(T.nilable(String)) }
       def state
       end

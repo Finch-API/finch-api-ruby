@@ -7,6 +7,8 @@ module FinchAPI
         extend FinchAPI::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
+        # The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
+        #   format.
         sig { returns(Date) }
         def end_date
         end
@@ -15,6 +17,8 @@ module FinchAPI
         def end_date=(_)
         end
 
+        # The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
+        #   format.
         sig { returns(Date) }
         def start_date
         end

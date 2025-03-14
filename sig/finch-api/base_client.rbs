@@ -43,7 +43,7 @@ module FinchAPI
       response_headers: ::Hash[String, String]
     ) -> FinchAPI::BaseClient::request_input
 
-    # @private
+    # @api private
     attr_accessor requester: top
 
     def initialize: (

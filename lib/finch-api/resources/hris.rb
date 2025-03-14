@@ -28,7 +28,6 @@ module FinchAPI
       attr_reader :benefits
 
       # @param client [FinchAPI::Client]
-      #
       def initialize(client:)
         @client = client
         @company = FinchAPI::Resources::HRIS::Company.new(client: client)

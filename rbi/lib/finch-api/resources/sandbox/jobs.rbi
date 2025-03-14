@@ -8,6 +8,7 @@ module FinchAPI
         def configuration
         end
 
+        # Enqueue a new sandbox job
         sig do
           params(
             type: Symbol,

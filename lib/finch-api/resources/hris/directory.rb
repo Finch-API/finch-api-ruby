@@ -15,7 +15,6 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::IndividualsPage<FinchAPI::Models::HRIS::IndividualInDirectory>]
-        #
         def list(params = {})
           parsed, options = FinchAPI::Models::HRIS::DirectoryListParams.dump_request(params)
           @client.request(
@@ -34,7 +33,6 @@ module FinchAPI
         alias_method :list_individuals, :list
 
         # @param client [FinchAPI::Client]
-        #
         def initialize(client:)
           @client = client
         end

@@ -98,7 +98,6 @@ module FinchAPI
         end
 
         # @abstract
-        #
         class Status < FinchAPI::Enum
           PENDING = :pending
           IN_PROGRESS = :in_progress

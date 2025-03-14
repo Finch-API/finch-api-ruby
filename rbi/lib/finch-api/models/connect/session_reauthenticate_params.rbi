@@ -7,6 +7,7 @@ module FinchAPI
         extend FinchAPI::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
+        # The ID of the existing connection to reauthenticate
         sig { returns(String) }
         def connection_id
         end
@@ -15,6 +16,8 @@ module FinchAPI
         def connection_id=(_)
         end
 
+        # The number of minutes until the session expires (defaults to 43,200, which is 30
+        #   days)
         sig { returns(T.nilable(Integer)) }
         def minutes_to_expire
         end
@@ -23,6 +26,7 @@ module FinchAPI
         def minutes_to_expire=(_)
         end
 
+        # The products to request access to (optional for reauthentication)
         sig { returns(T.nilable(T::Array[Symbol])) }
         def products
         end
@@ -31,6 +35,7 @@ module FinchAPI
         def products=(_)
         end
 
+        # The URI to redirect to after the Connect flow is completed
         sig { returns(T.nilable(String)) }
         def redirect_uri
         end
@@ -67,6 +72,7 @@ module FinchAPI
         def to_hash
         end
 
+        # The Finch products that can be requested during the Connect flow.
         class Product < FinchAPI::Enum
           abstract!
 
