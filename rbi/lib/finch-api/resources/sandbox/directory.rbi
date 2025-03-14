@@ -12,7 +12,12 @@ module FinchAPI
           )
             .returns(FinchAPI::Models::Sandbox::DirectoryCreateResponse)
         end
-        def create(body: nil, request_options: {})
+        def create(
+          # Array of individuals to create. Takes all combined fields from `/individual` and
+          #   `/employment` endpoints. All fields are optional.
+          body: nil,
+          request_options: {}
+        )
         end
 
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }

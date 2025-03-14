@@ -17,7 +17,12 @@ module FinchAPI
             )
               .returns(FinchAPI::SinglePage[FinchAPI::Models::HRIS::Benefits::EnrolledIndividual])
           end
-          def enroll_many(benefit_id, individuals: nil, request_options: {})
+          def enroll_many(
+            benefit_id,
+            # Array of the individual_id to enroll and a configuration object.
+            individuals: nil,
+            request_options: {}
+          )
           end
 
           # Lists individuals currently enrolled in a given deduction.
@@ -40,7 +45,13 @@ module FinchAPI
             )
               .returns(FinchAPI::SinglePage[FinchAPI::Models::HRIS::Benefits::IndividualBenefit])
           end
-          def retrieve_many_benefits(benefit_id, individual_ids: nil, request_options: {})
+          def retrieve_many_benefits(
+            benefit_id,
+            # comma-delimited list of stable Finch uuids for each individual. If empty,
+            #   defaults to all individuals
+            individual_ids: nil,
+            request_options: {}
+          )
           end
 
           # Unenroll individuals from a deduction or contribution
@@ -52,7 +63,12 @@ module FinchAPI
             )
               .returns(FinchAPI::SinglePage[FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual])
           end
-          def unenroll_many(benefit_id, individual_ids: nil, request_options: {})
+          def unenroll_many(
+            benefit_id,
+            # Array of individual_ids to unenroll.
+            individual_ids: nil,
+            request_options: {}
+          )
           end
 
           sig { params(client: FinchAPI::Client).returns(T.attached_class) }

@@ -13,7 +13,15 @@ module FinchAPI
           )
             .returns(FinchAPI::SinglePage[FinchAPI::Models::HRIS::Payment])
         end
-        def list(end_date:, start_date:, request_options: {})
+        def list(
+          # The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
+          #   format.
+          end_date:,
+          # The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
+          #   format.
+          start_date:,
+          request_options: {}
+        )
         end
 
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }

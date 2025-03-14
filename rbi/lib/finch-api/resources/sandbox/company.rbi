@@ -20,13 +20,20 @@ module FinchAPI
             .returns(FinchAPI::Models::Sandbox::CompanyUpdateResponse)
         end
         def update(
+          # An array of bank account objects associated with the payroll/HRIS system.
           accounts:,
+          # The array of company departments.
           departments:,
+          # The employer identification number.
           ein:,
+          # The entity type object.
           entity:,
+          # The legal name of the company.
           legal_name:,
           locations:,
+          # The email of the main administrator on the account.
           primary_email:,
+          # The phone number of the main administrator on the account. Format: `XXXXXXXXXX`
           primary_phone_number:,
           request_options: {}
         )

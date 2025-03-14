@@ -16,7 +16,16 @@ module FinchAPI
             )
               .returns(FinchAPI::Models::Sandbox::Connections::AccountCreateResponse)
           end
-          def create(company_id:, provider_id:, authentication_type: nil, products: nil, request_options: {})
+          def create(
+            company_id:,
+            # The provider associated with the `access_token`
+            provider_id:,
+            authentication_type: nil,
+            # Optional, defaults to Organization products (`company`, `directory`,
+            #   `employment`, `individual`)
+            products: nil,
+            request_options: {}
+          )
           end
 
           # Update an existing sandbox account. Change the connection status to understand
