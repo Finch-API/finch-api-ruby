@@ -19,7 +19,13 @@ module FinchAPI
   #
   # @example
   # ```ruby
-  # access_tokens = page.to_enum.take(2)
+  # access_tokens = page
+  #   .to_enum
+  #   .lazy
+  #   .select { _1.object_id.even? }
+  #   .map(&:itself)
+  #   .take(2)
+  #   .to_a
   #
   # access_tokens => Array
   # ```
