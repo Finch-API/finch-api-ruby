@@ -30,7 +30,7 @@ module FinchAPI
   class ResponsesPage
     include FinchAPI::BasePage
 
-    # @return [Array<Object>]
+    # @return [Array<Object>, nil]
     attr_accessor :responses
 
     # @api private

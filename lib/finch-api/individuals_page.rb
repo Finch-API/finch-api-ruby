@@ -30,7 +30,7 @@ module FinchAPI
   class IndividualsPage
     include FinchAPI::BasePage
 
-    # @return [Array<Object>]
+    # @return [Array<Object>, nil]
     attr_accessor :individuals
 
     # @return [FinchAPI::Models::Paging]
