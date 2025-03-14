@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 module FinchAPI
-  # @api private
-  #
   # @abstract
   #
   # @example

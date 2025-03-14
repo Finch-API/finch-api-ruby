@@ -12,7 +12,11 @@ module FinchAPI
           )
             .returns(FinchAPI::ResponsesPage[FinchAPI::Models::HRIS::EmploymentDataResponse])
         end
-        def retrieve_many(requests:, request_options: {})
+        def retrieve_many(
+          # The array of batch requests.
+          requests:,
+          request_options: {}
+        )
         end
 
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }

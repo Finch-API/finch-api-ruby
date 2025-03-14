@@ -26,7 +26,12 @@ module FinchAPI
           )
             .returns(FinchAPI::Models::Jobs::AutomatedCreateResponse)
         end
-        def create(type:, params:, request_options: {})
+        def create(
+          # The type of job to start.
+          type:,
+          params:,
+          request_options: {}
+        )
         end
 
         # Get an automated job by `job_id`.
@@ -51,7 +56,13 @@ module FinchAPI
           )
             .returns(FinchAPI::Models::Jobs::AutomatedListResponse)
         end
-        def list(limit: nil, offset: nil, request_options: {})
+        def list(
+          # Number of items to return
+          limit: nil,
+          # Index to start from (defaults to 0)
+          offset: nil,
+          request_options: {}
+        )
         end
 
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }
