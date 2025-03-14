@@ -9,9 +9,8 @@ module FinchAPI
         abstract!
 
         class << self
-          # @api private
-          sig { override.returns([[Symbol, FinchAPI::Models::HRIS::W42020], [Symbol, FinchAPI::Models::HRIS::W42005]]) }
-          private def variants
+          sig { override.returns([FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005]) }
+          def variants
           end
         end
       end
