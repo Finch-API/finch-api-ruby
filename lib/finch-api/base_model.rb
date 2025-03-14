@@ -306,7 +306,7 @@ module FinchAPI
   # when FinchAPI::Models::ConnectionStatusType::CONNECTED
   #   # ...
   # else
-  #   # ...
+  #   puts(connection_status_type)
   # end
   # ```
   #
@@ -320,7 +320,7 @@ module FinchAPI
   # in :connected
   #   # ...
   # else
-  #   # ...
+  #   puts(connection_status_type)
   # end
   # ```
   class Enum
@@ -407,11 +407,11 @@ module FinchAPI
   # # `document_retreive_response` is a `FinchAPI::Models::HRIS::DocumentRetreiveResponse`
   # case document_retreive_response
   # when FinchAPI::Models::HRIS::W42020
-  #   # ...
+  #   puts(document_retreive_response.data)
   # when FinchAPI::Models::HRIS::W42005
-  #   # ...
+  #   puts(document_retreive_response.type)
   # else
-  #   # ...
+  #   puts(document_retreive_response)
   # end
   # ```
   #
@@ -419,11 +419,11 @@ module FinchAPI
   # ```ruby
   # case document_retreive_response
   # in {type: :w4_2020, data: data, year: year}
-  #   # ...
+  #   puts(data)
   # in {type: :w4_2005, data: data, year: year}
-  #   # ...
+  #   puts(year)
   # else
-  #   # ...
+  #   puts(document_retreive_response)
   # end
   # ```
   class Union
