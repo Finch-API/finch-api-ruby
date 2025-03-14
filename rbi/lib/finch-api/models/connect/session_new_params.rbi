@@ -58,6 +58,8 @@ module FinchAPI
         def manual=(_)
         end
 
+        # The number of minutes until the session expires (defaults to 43,200, which is 30
+        #   days)
         sig { returns(T.nilable(Float)) }
         def minutes_to_expire
         end
@@ -131,6 +133,7 @@ module FinchAPI
         def to_hash
         end
 
+        # The Finch products that can be requested during the Connect flow.
         class Product < FinchAPI::Enum
           abstract!
 

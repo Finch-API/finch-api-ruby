@@ -8,6 +8,8 @@ module FinchAPI
           extend FinchAPI::RequestParameters::Converter
           include FinchAPI::RequestParameters
 
+          # comma-delimited list of stable Finch uuids for each individual. If empty,
+          #   defaults to all individuals
           sig { returns(T.nilable(String)) }
           def individual_ids
           end

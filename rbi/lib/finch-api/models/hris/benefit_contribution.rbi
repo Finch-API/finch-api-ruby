@@ -4,6 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       class BenefitContribution < FinchAPI::BaseModel
+        # Contribution amount in cents (if `fixed`) or basis points (if `percent`).
         sig { returns(T.nilable(Integer)) }
         def amount
         end
@@ -12,6 +13,7 @@ module FinchAPI
         def amount=(_)
         end
 
+        # Contribution type.
         sig { returns(T.nilable(Symbol)) }
         def type
         end
@@ -28,6 +30,7 @@ module FinchAPI
         def to_hash
         end
 
+        # Contribution type.
         class Type < FinchAPI::Enum
           abstract!
 

@@ -25,7 +25,6 @@ module FinchAPI
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
           # @abstract
-          #
           class CompletionStatus < FinchAPI::Enum
             COMPLETE = :complete
             REAUTH_ERROR = :reauth_error
@@ -36,7 +35,6 @@ module FinchAPI
           end
 
           # @abstract
-          #
           class Type < FinchAPI::Enum
             DATA_SYNC_ALL = :data_sync_all
 

@@ -149,7 +149,6 @@ module FinchAPI
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
           # @abstract
-          #
           class Type < FinchAPI::Enum
             WORK = :work
             PERSONAL = :personal
@@ -206,7 +205,6 @@ module FinchAPI
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
           # @abstract
-          #
           class Type < FinchAPI::Enum
             WORK = :work
             PERSONAL = :personal

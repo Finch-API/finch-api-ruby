@@ -55,6 +55,7 @@ module FinchAPI
           end
 
           class Body < FinchAPI::BaseModel
+            # If the benefit supports annual maximum, the amount in cents for this individual.
             sig { returns(T.nilable(Integer)) }
             def annual_maximum
             end
@@ -63,6 +64,8 @@ module FinchAPI
             def annual_maximum=(_)
             end
 
+            # If the benefit supports catch up (401k, 403b, etc.), whether catch up is enabled
+            #   for this individual.
             sig { returns(T.nilable(T::Boolean)) }
             def catch_up
             end
@@ -93,6 +96,7 @@ module FinchAPI
             def employee_deduction=(_)
             end
 
+            # Type for HSA contribution limit if the benefit is a HSA.
             sig { returns(T.nilable(Symbol)) }
             def hsa_contribution_limit
             end
@@ -135,6 +139,7 @@ module FinchAPI
             def to_hash
             end
 
+            # Type for HSA contribution limit if the benefit is a HSA.
             class HsaContributionLimit < FinchAPI::Enum
               abstract!
 

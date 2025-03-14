@@ -4,6 +4,7 @@ module FinchAPI
   module Resources
     class Payroll
       class PayGroups
+        # Read information from a single pay group
         sig do
           params(
             pay_group_id: String,
@@ -14,6 +15,7 @@ module FinchAPI
         def retrieve(pay_group_id, request_options: {})
         end
 
+        # Read company pay groups and frequencies
         sig do
           params(
             individual_id: String,

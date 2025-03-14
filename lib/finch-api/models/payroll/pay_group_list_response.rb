@@ -45,7 +45,6 @@ module FinchAPI
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
         # @abstract
-        #
         class PayFrequency < FinchAPI::Enum
           ANNUALLY = :annually
           SEMI_ANNUALLY = :semi_annually

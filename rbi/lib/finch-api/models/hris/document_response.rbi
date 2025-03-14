@@ -4,6 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       class DocumentResponse < FinchAPI::BaseModel
+        # A stable Finch id for the document.
         sig { returns(T.nilable(String)) }
         def id
         end
@@ -12,6 +13,8 @@ module FinchAPI
         def id=(_)
         end
 
+        # The ID of the individual associated with the document. This will be null for
+        #   employer-level documents.
         sig { returns(T.nilable(String)) }
         def individual_id
         end
@@ -20,6 +23,7 @@ module FinchAPI
         def individual_id=(_)
         end
 
+        # The type of document.
         sig { returns(T.nilable(Symbol)) }
         def type
         end
@@ -28,6 +32,8 @@ module FinchAPI
         def type=(_)
         end
 
+        # A URL to access the document. Format:
+        #   `https://api.tryfinch.com/employer/documents/:document_id`.
         sig { returns(T.nilable(String)) }
         def url
         end
@@ -36,6 +42,7 @@ module FinchAPI
         def url=(_)
         end
 
+        # The year the document applies to, if available.
         sig { returns(T.nilable(Float)) }
         def year
         end
@@ -70,6 +77,7 @@ module FinchAPI
         def to_hash
         end
 
+        # The type of document.
         class Type < FinchAPI::Enum
           abstract!
 

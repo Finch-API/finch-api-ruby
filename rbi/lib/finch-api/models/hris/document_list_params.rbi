@@ -7,6 +7,8 @@ module FinchAPI
         extend FinchAPI::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
+        # Comma-delimited list of stable Finch uuids for each individual. If empty,
+        #   defaults to all individuals
         sig { returns(T.nilable(T::Array[String])) }
         def individual_ids
         end
@@ -15,6 +17,7 @@ module FinchAPI
         def individual_ids=(_)
         end
 
+        # Number of documents to return (defaults to all)
         sig { returns(T.nilable(Integer)) }
         def limit
         end
@@ -23,6 +26,7 @@ module FinchAPI
         def limit=(_)
         end
 
+        # Index to start from (defaults to 0)
         sig { returns(T.nilable(Integer)) }
         def offset
         end
@@ -31,6 +35,8 @@ module FinchAPI
         def offset=(_)
         end
 
+        # Comma-delimited list of document types to filter on. If empty, defaults to all
+        #   types
         sig { returns(T.nilable(T::Array[Symbol])) }
         def types
         end

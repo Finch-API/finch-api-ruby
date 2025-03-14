@@ -4,6 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       class PayStatement < FinchAPI::BaseModel
+        # The array of earnings objects associated with this pay statement
         sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::Earning)])) }
         def earnings
         end
@@ -15,6 +16,7 @@ module FinchAPI
         def earnings=(_)
         end
 
+        # The array of deductions objects associated with this pay statement.
         sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction)])) }
         def employee_deductions
         end
@@ -45,6 +47,7 @@ module FinchAPI
         def gross_pay=(_)
         end
 
+        # A stable Finch `id` (UUID v4) for an individual in the company
         sig { returns(T.nilable(String)) }
         def individual_id
         end
@@ -61,6 +64,7 @@ module FinchAPI
         def net_pay=(_)
         end
 
+        # The payment method.
         sig { returns(T.nilable(Symbol)) }
         def payment_method
         end
@@ -69,6 +73,7 @@ module FinchAPI
         def payment_method=(_)
         end
 
+        # The array of taxes objects associated with this pay statement.
         sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax)])) }
         def taxes
         end
@@ -80,6 +85,7 @@ module FinchAPI
         def taxes=(_)
         end
 
+        # The number of hours worked for this pay period
         sig { returns(T.nilable(Float)) }
         def total_hours
         end
@@ -88,6 +94,7 @@ module FinchAPI
         def total_hours=(_)
         end
 
+        # The type of the payment associated with the pay statement.
         sig { returns(T.nilable(Symbol)) }
         def type
         end
@@ -146,6 +153,7 @@ module FinchAPI
         end
 
         class Earning < FinchAPI::BaseModel
+          # The earnings amount in cents.
           sig { returns(T.nilable(Integer)) }
           def amount
           end
@@ -165,6 +173,7 @@ module FinchAPI
           def attributes=(_)
           end
 
+          # The earnings currency code.
           sig { returns(T.nilable(String)) }
           def currency
           end
@@ -173,6 +182,8 @@ module FinchAPI
           def currency=(_)
           end
 
+          # The number of hours associated with this earning. (For salaried employees, this
+          #   could be hours per pay period, `0` or `null`, depending on the provider).
           sig { returns(T.nilable(Float)) }
           def hours
           end
@@ -181,6 +192,7 @@ module FinchAPI
           def hours=(_)
           end
 
+          # The exact name of the deduction from the pay statement.
           sig { returns(T.nilable(String)) }
           def name
           end
@@ -189,6 +201,7 @@ module FinchAPI
           def name=(_)
           end
 
+          # The type of earning.
           sig { returns(T.nilable(Symbol)) }
           def type
           end
@@ -251,6 +264,9 @@ module FinchAPI
             end
 
             class Metadata < FinchAPI::BaseModel
+              # The metadata to be attached to the entity by existing rules. It is a key-value
+              #   pairs where the values can be of any type (string, number, boolean, object,
+              #   array, etc.).
               sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
               def metadata
               end
@@ -269,6 +285,7 @@ module FinchAPI
             end
           end
 
+          # The type of earning.
           class Type < FinchAPI::Enum
             abstract!
 
@@ -295,6 +312,7 @@ module FinchAPI
         end
 
         class EmployeeDeduction < FinchAPI::BaseModel
+          # The deduction amount in cents.
           sig { returns(T.nilable(Integer)) }
           def amount
           end
@@ -314,6 +332,7 @@ module FinchAPI
           def attributes=(_)
           end
 
+          # The deduction currency.
           sig { returns(T.nilable(String)) }
           def currency
           end
@@ -322,6 +341,7 @@ module FinchAPI
           def currency=(_)
           end
 
+          # The deduction name from the pay statement.
           sig { returns(T.nilable(String)) }
           def name
           end
@@ -330,6 +350,7 @@ module FinchAPI
           def name=(_)
           end
 
+          # Boolean indicating if the deduction is pre-tax.
           sig { returns(T.nilable(T::Boolean)) }
           def pre_tax
           end
@@ -338,6 +359,7 @@ module FinchAPI
           def pre_tax=(_)
           end
 
+          # Type of benefit.
           sig { returns(T.nilable(Symbol)) }
           def type
           end
@@ -402,6 +424,9 @@ module FinchAPI
             end
 
             class Metadata < FinchAPI::BaseModel
+              # The metadata to be attached to the entity by existing rules. It is a key-value
+              #   pairs where the values can be of any type (string, number, boolean, object,
+              #   array, etc.).
               sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
               def metadata
               end
@@ -422,6 +447,7 @@ module FinchAPI
         end
 
         class EmployerContribution < FinchAPI::BaseModel
+          # The contribution amount in cents.
           sig { returns(T.nilable(Integer)) }
           def amount
           end
@@ -441,6 +467,7 @@ module FinchAPI
           def attributes=(_)
           end
 
+          # The contribution currency.
           sig { returns(T.nilable(String)) }
           def currency
           end
@@ -449,6 +476,7 @@ module FinchAPI
           def currency=(_)
           end
 
+          # The contribution name from the pay statement.
           sig { returns(T.nilable(String)) }
           def name
           end
@@ -457,6 +485,7 @@ module FinchAPI
           def name=(_)
           end
 
+          # Type of benefit.
           sig { returns(T.nilable(Symbol)) }
           def type
           end
@@ -520,6 +549,9 @@ module FinchAPI
             end
 
             class Metadata < FinchAPI::BaseModel
+              # The metadata to be attached to the entity by existing rules. It is a key-value
+              #   pairs where the values can be of any type (string, number, boolean, object,
+              #   array, etc.).
               sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
               def metadata
               end
@@ -539,6 +571,7 @@ module FinchAPI
           end
         end
 
+        # The payment method.
         class PaymentMethod < FinchAPI::Enum
           abstract!
 
@@ -553,6 +586,7 @@ module FinchAPI
         end
 
         class Tax < FinchAPI::BaseModel
+          # The tax amount in cents.
           sig { returns(T.nilable(Integer)) }
           def amount
           end
@@ -572,6 +606,7 @@ module FinchAPI
           def attributes=(_)
           end
 
+          # The currency code.
           sig { returns(T.nilable(String)) }
           def currency
           end
@@ -580,6 +615,7 @@ module FinchAPI
           def currency=(_)
           end
 
+          # `true` if the amount is paid by the employers.
           sig { returns(T.nilable(T::Boolean)) }
           def employer
           end
@@ -588,6 +624,7 @@ module FinchAPI
           def employer=(_)
           end
 
+          # The exact name of tax from the pay statement.
           sig { returns(T.nilable(String)) }
           def name
           end
@@ -596,6 +633,7 @@ module FinchAPI
           def name=(_)
           end
 
+          # The type of taxes.
           sig { returns(T.nilable(Symbol)) }
           def type
           end
@@ -657,6 +695,9 @@ module FinchAPI
             end
 
             class Metadata < FinchAPI::BaseModel
+              # The metadata to be attached to the entity by existing rules. It is a key-value
+              #   pairs where the values can be of any type (string, number, boolean, object,
+              #   array, etc.).
               sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
               def metadata
               end
@@ -675,6 +716,7 @@ module FinchAPI
             end
           end
 
+          # The type of taxes.
           class Type < FinchAPI::Enum
             abstract!
 
@@ -691,6 +733,7 @@ module FinchAPI
           end
         end
 
+        # The type of the payment associated with the pay statement.
         class Type < FinchAPI::Enum
           abstract!
 

@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     class Income < FinchAPI::BaseModel
+      # The income amount in cents.
       sig { returns(T.nilable(Integer)) }
       def amount
       end
@@ -11,6 +12,7 @@ module FinchAPI
       def amount=(_)
       end
 
+      # The currency code.
       sig { returns(T.nilable(String)) }
       def currency
       end
@@ -19,6 +21,7 @@ module FinchAPI
       def currency=(_)
       end
 
+      # The date the income amount went into effect.
       sig { returns(T.nilable(String)) }
       def effective_date
       end
@@ -27,6 +30,8 @@ module FinchAPI
       def effective_date=(_)
       end
 
+      # The income unit of payment. Options: `yearly`, `quarterly`, `monthly`,
+      #   `semi_monthly`, `bi_weekly`, `weekly`, `daily`, `hourly`, and `fixed`.
       sig { returns(T.nilable(Symbol)) }
       def unit
       end
@@ -35,6 +40,9 @@ module FinchAPI
       def unit=(_)
       end
 
+      # The employee's income as reported by the provider. This may not always be
+      #   annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
+      #   depending on what information the provider returns.
       sig do
         params(
           amount: T.nilable(Integer),
@@ -61,6 +69,8 @@ module FinchAPI
       def to_hash
       end
 
+      # The income unit of payment. Options: `yearly`, `quarterly`, `monthly`,
+      #   `semi_monthly`, `bi_weekly`, `weekly`, `daily`, `hourly`, and `fixed`.
       class Unit < FinchAPI::Enum
         abstract!
 

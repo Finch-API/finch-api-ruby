@@ -3,6 +3,9 @@
 module FinchAPI
   module Models
     class RequestForwardingForwardResponse < FinchAPI::BaseModel
+      # A string representation of the HTTP response body of the forwarded request’s
+      #   response received from the underlying integration’s API. This field may be null
+      #   in the case where the upstream system’s response is empty.
       sig { returns(T.nilable(String)) }
       def data
       end
@@ -11,6 +14,8 @@ module FinchAPI
       def data=(_)
       end
 
+      # The HTTP headers of the forwarded request’s response, exactly as received from
+      #   the underlying integration’s API.
       sig { returns(T.nilable(T.anything)) }
       def headers
       end
@@ -19,6 +24,8 @@ module FinchAPI
       def headers=(_)
       end
 
+      # An object containing details of your original forwarded request, for your ease
+      #   of reference.
       sig { returns(FinchAPI::Models::RequestForwardingForwardResponse::Request) }
       def request
       end
@@ -30,6 +37,8 @@ module FinchAPI
       def request=(_)
       end
 
+      # The HTTP status code of the forwarded request’s response, exactly received from
+      #   the underlying integration’s API. This value will be returned as an integer.
       sig { returns(Integer) }
       def status_code
       end
@@ -65,6 +74,9 @@ module FinchAPI
       end
 
       class Request < FinchAPI::BaseModel
+        # The body that was specified for the forwarded request. If a value was not
+        #   specified in the original request, this value will be returned as null ;
+        #   otherwise, this value will always be returned as a string.
         sig { returns(T.nilable(String)) }
         def data
         end
@@ -73,6 +85,8 @@ module FinchAPI
         def data=(_)
         end
 
+        # The specified HTTP headers that were included in the forwarded request. If no
+        #   headers were specified, this will be returned as `null`.
         sig { returns(T.nilable(T.anything)) }
         def headers
         end
@@ -81,6 +95,8 @@ module FinchAPI
         def headers=(_)
         end
 
+        # The HTTP method that was specified for the forwarded request. Valid values
+        #   include: `GET` , `POST` , `PUT` , `DELETE` , and `PATCH`.
         sig { returns(String) }
         def method_
         end
@@ -89,6 +105,8 @@ module FinchAPI
         def method_=(_)
         end
 
+        # The query parameters that were included in the forwarded request. If no query
+        #   parameters were specified, this will be returned as `null`.
         sig { returns(T.nilable(T.anything)) }
         def params
         end
@@ -97,6 +115,7 @@ module FinchAPI
         def params=(_)
         end
 
+        # The URL route path that was specified for the forwarded request.
         sig { returns(String) }
         def route
         end
@@ -105,6 +124,8 @@ module FinchAPI
         def route=(_)
         end
 
+        # An object containing details of your original forwarded request, for your ease
+        #   of reference.
         sig do
           params(
             data: T.nilable(String),

@@ -24,13 +24,12 @@ module FinchAPI
   class SinglePage < ::Array
     include FinchAPI::BasePage
 
-    # @private
+    # @api private
     #
     # @param client [FinchAPI::BaseClient]
     # @param req [Hash{Symbol=>Object}]
     # @param headers [Hash{String=>String}, Net::HTTPHeader]
     # @param page_data [Array<Object>]
-    #
     def initialize(client:, req:, headers:, page_data:)
       super
       model = req.fetch(:model)
@@ -49,13 +48,11 @@ module FinchAPI
 
     # @raise [FinchAPI::HTTP::Error]
     # @return [FinchAPI::SinglePage]
-    #
     def next_page
       RuntimeError.new("No more pages available.")
     end
 
     # @param blk [Proc]
-    #
     def auto_paging_each(&blk)
       unless block_given?
         raise ArgumentError.new("A block must be given to ##{__method__}")
@@ -69,7 +66,6 @@ module FinchAPI
     end
 
     # @return [String]
-    #
     def inspect
       "#<#{self.class}:0x#{object_id.to_s(16)}>"
     end

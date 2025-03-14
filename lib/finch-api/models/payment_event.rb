@@ -52,7 +52,6 @@ module FinchAPI
       end
 
       # @abstract
-      #
       class EventType < FinchAPI::Enum
         PAYMENT_CREATED = :"payment.created"
         PAYMENT_UPDATED = :"payment.updated"

@@ -28,6 +28,7 @@ module FinchAPI
       end
 
       class Data < FinchAPI::BaseModel
+        # The id of the job which has completed.
         sig { returns(String) }
         def job_id
         end
@@ -36,6 +37,7 @@ module FinchAPI
         def job_id=(_)
         end
 
+        # The url to query the result of the job.
         sig { returns(String) }
         def job_url
         end

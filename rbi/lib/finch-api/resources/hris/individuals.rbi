@@ -4,6 +4,7 @@ module FinchAPI
   module Resources
     class HRIS
       class Individuals
+        # Read individual data, excluding income and employment data
         sig do
           params(
             options: T.nilable(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options),

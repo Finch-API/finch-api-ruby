@@ -8,6 +8,7 @@ module FinchAPI
         def accounts
         end
 
+        # Create a new connection (new company/provider pair) with a new account
         sig do
           params(
             provider_id: String,

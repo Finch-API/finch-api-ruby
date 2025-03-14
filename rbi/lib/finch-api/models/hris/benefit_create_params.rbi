@@ -7,6 +7,9 @@ module FinchAPI
         extend FinchAPI::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
+        # Name of the benefit as it appears in the provider and pay statements. Recommend
+        #   limiting this to <30 characters due to limitations in specific providers (e.g.
+        #   Justworks).
         sig { returns(T.nilable(String)) }
         def description
         end
@@ -23,6 +26,7 @@ module FinchAPI
         def frequency=(_)
         end
 
+        # Type of benefit.
         sig { returns(T.nilable(Symbol)) }
         def type
         end

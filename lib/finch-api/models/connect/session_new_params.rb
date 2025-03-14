@@ -123,7 +123,6 @@ module FinchAPI
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
           # @abstract
-          #
           class AuthMethod < FinchAPI::Enum
             ASSISTED = :assisted
             CREDENTIAL = :credential
@@ -135,7 +134,6 @@ module FinchAPI
         end
 
         # @abstract
-        #
         class Sandbox < FinchAPI::Enum
           FINCH = :finch
           PROVIDER = :provider

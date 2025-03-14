@@ -3,7 +3,6 @@
 module FinchAPI
   module Models
     # @abstract
-    #
     class WebhookEvent < FinchAPI::Union
       discriminator :event_type
 

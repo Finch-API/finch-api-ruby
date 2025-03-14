@@ -4,6 +4,7 @@ module FinchAPI
   module Resources
     class Connect
       class Sessions
+        # Create a new connect session for an employer
         sig do
           params(
             customer_id: String,
@@ -33,6 +34,7 @@ module FinchAPI
         )
         end
 
+        # Create a new Connect session for reauthenticating an existing connection
         sig do
           params(
             connection_id: String,

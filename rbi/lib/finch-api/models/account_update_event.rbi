@@ -67,6 +67,8 @@ module FinchAPI
         end
 
         class AuthenticationMethod < FinchAPI::BaseModel
+          # Each benefit type and their supported features. If the benefit type is not
+          #   supported, the property will be null
           sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitsSupport)) }
           def benefits_support
           end
@@ -78,6 +80,7 @@ module FinchAPI
           def benefits_support=(_)
           end
 
+          # The supported data fields returned by our HR and payroll endpoints
           sig { returns(T.nilable(FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields)) }
           def supported_fields
           end
@@ -89,6 +92,7 @@ module FinchAPI
           def supported_fields=(_)
           end
 
+          # The type of authentication method.
           sig { returns(T.nilable(Symbol)) }
           def type
           end
@@ -227,6 +231,7 @@ module FinchAPI
             def payment=(_)
             end
 
+            # The supported data fields returned by our HR and payroll endpoints
             sig do
               params(
                 company: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company,
@@ -2445,6 +2450,7 @@ module FinchAPI
             end
           end
 
+          # The type of authentication method.
           class Type < FinchAPI::Enum
             abstract!
 

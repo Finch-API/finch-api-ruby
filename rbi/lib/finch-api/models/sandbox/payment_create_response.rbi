@@ -4,6 +4,7 @@ module FinchAPI
   module Models
     module Sandbox
       class PaymentCreateResponse < FinchAPI::BaseModel
+        # The date of the payment.
         sig { returns(String) }
         def pay_date
         end
@@ -12,6 +13,7 @@ module FinchAPI
         def pay_date=(_)
         end
 
+        # The ID of the payment.
         sig { returns(String) }
         def payment_id
         end

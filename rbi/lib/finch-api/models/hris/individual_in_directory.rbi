@@ -4,6 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       class IndividualInDirectory < FinchAPI::BaseModel
+        # A stable Finch id (UUID v4) for an individual in the company.
         sig { returns(T.nilable(String)) }
         def id
         end
@@ -12,6 +13,7 @@ module FinchAPI
         def id=(_)
         end
 
+        # The department object.
         sig { returns(T.nilable(FinchAPI::Models::HRIS::IndividualInDirectory::Department)) }
         def department
         end
@@ -23,6 +25,7 @@ module FinchAPI
         def department=(_)
         end
 
+        # The legal first name of the individual.
         sig { returns(T.nilable(String)) }
         def first_name
         end
@@ -31,6 +34,7 @@ module FinchAPI
         def first_name=(_)
         end
 
+        # `true` if the individual is an active employee or contractor at the company.
         sig { returns(T.nilable(T::Boolean)) }
         def is_active
         end
@@ -39,6 +43,7 @@ module FinchAPI
         def is_active=(_)
         end
 
+        # The legal last name of the individual.
         sig { returns(T.nilable(String)) }
         def last_name
         end
@@ -47,6 +52,7 @@ module FinchAPI
         def last_name=(_)
         end
 
+        # The manager object.
         sig { returns(T.nilable(FinchAPI::Models::HRIS::IndividualInDirectory::Manager)) }
         def manager
         end
@@ -58,6 +64,7 @@ module FinchAPI
         def manager=(_)
         end
 
+        # The legal middle name of the individual.
         sig { returns(T.nilable(String)) }
         def middle_name
         end
@@ -99,6 +106,7 @@ module FinchAPI
         end
 
         class Department < FinchAPI::BaseModel
+          # The name of the department.
           sig { returns(T.nilable(String)) }
           def name
           end
@@ -107,6 +115,7 @@ module FinchAPI
           def name=(_)
           end
 
+          # The department object.
           sig { params(name: T.nilable(String)).returns(T.attached_class) }
           def self.new(name: nil)
           end
@@ -117,6 +126,7 @@ module FinchAPI
         end
 
         class Manager < FinchAPI::BaseModel
+          # A stable Finch `id` (UUID v4) for an individual in the company.
           sig { returns(T.nilable(String)) }
           def id
           end
@@ -125,6 +135,7 @@ module FinchAPI
           def id=(_)
           end
 
+          # The manager object.
           sig { params(id: String).returns(T.attached_class) }
           def self.new(id: nil)
           end

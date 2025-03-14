@@ -4,6 +4,7 @@ module FinchAPI
   module Models
     module Payroll
       class PayGroupRetrieveResponse < FinchAPI::BaseModel
+        # Finch id (uuidv4) for the pay group
         sig { returns(String) }
         def id
         end
@@ -20,6 +21,7 @@ module FinchAPI
         def individual_ids=(_)
         end
 
+        # Name of the pay group
         sig { returns(String) }
         def name
         end
@@ -28,6 +30,7 @@ module FinchAPI
         def name=(_)
         end
 
+        # List of pay frequencies associated with this pay group
         sig { returns(T::Array[Symbol]) }
         def pay_frequencies
         end

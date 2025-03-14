@@ -4,6 +4,7 @@ module FinchAPI
   module Resources
     class Sandbox
       class Employment
+        # Update sandbox employment
         sig do
           params(
             individual_id: String,

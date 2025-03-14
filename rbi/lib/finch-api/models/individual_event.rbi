@@ -28,6 +28,7 @@ module FinchAPI
       end
 
       class Data < FinchAPI::BaseModel
+        # The ID of the individual related to the event.
         sig { returns(T.nilable(String)) }
         def individual_id
         end

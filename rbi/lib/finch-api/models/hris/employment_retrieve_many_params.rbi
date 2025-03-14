@@ -7,6 +7,7 @@ module FinchAPI
         extend FinchAPI::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
+        # The array of batch requests.
         sig { returns(T::Array[FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request]) }
         def requests
         end
@@ -41,6 +42,9 @@ module FinchAPI
         end
 
         class Request < FinchAPI::BaseModel
+          # A stable Finch `id` (UUID v4) for an individual in the company. There is no
+          #   limit to the number of `individual_id` to send per request. It is preferantial
+          #   to send all ids in a single request for Finch to optimize provider rate-limits.
           sig { returns(String) }
           def individual_id
           end

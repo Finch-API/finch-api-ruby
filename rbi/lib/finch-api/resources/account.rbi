@@ -3,6 +3,7 @@
 module FinchAPI
   module Resources
     class Account
+      # Disconnect one or more `access_token`s from your application.
       sig do
         params(request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])))
           .returns(FinchAPI::Models::DisconnectResponse)
@@ -10,6 +11,7 @@ module FinchAPI
       def disconnect(request_options: {})
       end
 
+      # Read account information associated with an `access_token`
       sig do
         params(request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])))
           .returns(FinchAPI::Models::Introspection)

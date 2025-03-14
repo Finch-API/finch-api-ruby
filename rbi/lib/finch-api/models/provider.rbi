@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     class Provider < FinchAPI::BaseModel
+      # The id of the payroll provider used in Connect.
       sig { returns(T.nilable(String)) }
       def id
       end
@@ -11,6 +12,7 @@ module FinchAPI
       def id=(_)
       end
 
+      # The list of authentication methods supported by the provider.
       sig { returns(T.nilable(T::Array[FinchAPI::Models::Provider::AuthenticationMethod])) }
       def authentication_methods
       end
@@ -22,6 +24,7 @@ module FinchAPI
       def authentication_methods=(_)
       end
 
+      # `true` if the integration is in a beta state, `false` otherwise
       sig { returns(T.nilable(T::Boolean)) }
       def beta
       end
@@ -30,6 +33,7 @@ module FinchAPI
       def beta=(_)
       end
 
+      # The display name of the payroll provider.
       sig { returns(T.nilable(String)) }
       def display_name
       end
@@ -38,6 +42,7 @@ module FinchAPI
       def display_name=(_)
       end
 
+      # The url to the official icon of the payroll provider.
       sig { returns(T.nilable(String)) }
       def icon
       end
@@ -46,6 +51,7 @@ module FinchAPI
       def icon=(_)
       end
 
+      # The url to the official logo of the payroll provider.
       sig { returns(T.nilable(String)) }
       def logo
       end
@@ -54,6 +60,9 @@ module FinchAPI
       def logo=(_)
       end
 
+      # [DEPRECATED] Whether the Finch integration with this provider uses the Assisted
+      #   Connect Flow by default. This field is now deprecated. Please check for a `type`
+      #   of `assisted` in the `authentication_methods` field instead.
       sig { returns(T.nilable(T::Boolean)) }
       def manual
       end
@@ -62,6 +71,7 @@ module FinchAPI
       def manual=(_)
       end
 
+      # whether MFA is required for the provider.
       sig { returns(T.nilable(T::Boolean)) }
       def mfa_required
       end
@@ -70,6 +80,7 @@ module FinchAPI
       def mfa_required=(_)
       end
 
+      # The hex code for the primary color of the payroll provider.
       sig { returns(T.nilable(String)) }
       def primary_color
       end
@@ -78,6 +89,7 @@ module FinchAPI
       def primary_color=(_)
       end
 
+      # The list of Finch products supported on this payroll provider.
       sig { returns(T.nilable(T::Array[String])) }
       def products
       end
@@ -136,6 +148,8 @@ module FinchAPI
       end
 
       class AuthenticationMethod < FinchAPI::BaseModel
+        # Each benefit type and their supported features. If the benefit type is not
+        #   supported, the property will be null
         sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitsSupport)) }
         def benefits_support
         end
@@ -147,6 +161,7 @@ module FinchAPI
         def benefits_support=(_)
         end
 
+        # The supported data fields returned by our HR and payroll endpoints
         sig { returns(T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields)) }
         def supported_fields
         end
@@ -158,6 +173,7 @@ module FinchAPI
         def supported_fields=(_)
         end
 
+        # The type of authentication method.
         sig { returns(T.nilable(Symbol)) }
         def type
         end
@@ -268,6 +284,7 @@ module FinchAPI
           def payment=(_)
           end
 
+          # The supported data fields returned by our HR and payroll endpoints
           sig do
             params(
               company: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company,
@@ -2342,6 +2359,7 @@ module FinchAPI
           end
         end
 
+        # The type of authentication method.
         class Type < FinchAPI::Enum
           abstract!
 

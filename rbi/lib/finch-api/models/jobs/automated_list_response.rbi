@@ -49,6 +49,10 @@ module FinchAPI
         end
 
         class Meta < FinchAPI::BaseModel
+          # Information about remaining quotas for this connection. Only applicable for
+          #   customers opted in to use Finch's Data Sync Refresh endpoint
+          #   (`POST /jobs/automated`). Please contact a Finch representative for more
+          #   details.
           sig { returns(T.nilable(FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas)) }
           def quotas
           end
@@ -80,6 +84,10 @@ module FinchAPI
             def data_sync_all=(_)
             end
 
+            # Information about remaining quotas for this connection. Only applicable for
+            #   customers opted in to use Finch's Data Sync Refresh endpoint
+            #   (`POST /jobs/automated`). Please contact a Finch representative for more
+            #   details.
             sig do
               params(data_sync_all: FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll)
                 .returns(T.attached_class)

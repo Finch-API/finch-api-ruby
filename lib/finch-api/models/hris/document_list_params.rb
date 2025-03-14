@@ -62,7 +62,6 @@ module FinchAPI
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
         # @abstract
-        #
         class Type < FinchAPI::Enum
           W4_2020 = :w4_2020
           W4_2005 = :w4_2005

@@ -4,6 +4,7 @@ module FinchAPI
   module Models
     module Jobs
       class AutomatedAsyncJob < FinchAPI::BaseModel
+        # The datetime the job completed.
         sig { returns(T.nilable(Time)) }
         def completed_at
         end
@@ -12,6 +13,9 @@ module FinchAPI
         def completed_at=(_)
         end
 
+        # The datetime when the job was created. for scheduled jobs, this will be the
+        #   initial connection time. For ad-hoc jobs, this will be the time the creation
+        #   request was received.
         sig { returns(Time) }
         def created_at
         end
@@ -20,6 +24,7 @@ module FinchAPI
         def created_at=(_)
         end
 
+        # The id of the job that has been created.
         sig { returns(String) }
         def job_id
         end
@@ -28,6 +33,7 @@ module FinchAPI
         def job_id=(_)
         end
 
+        # The url that can be used to retrieve the job status
         sig { returns(String) }
         def job_url
         end
@@ -36,6 +42,7 @@ module FinchAPI
         def job_url=(_)
         end
 
+        # The input parameters for the job.
         sig { returns(T.nilable(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params)) }
         def params
         end
@@ -47,6 +54,9 @@ module FinchAPI
         def params=(_)
         end
 
+        # The datetime a job is scheduled to be run. For scheduled jobs, this datetime can
+        #   be in the future if the job has not yet been enqueued. For ad-hoc jobs, this
+        #   field will be null.
         sig { returns(T.nilable(Time)) }
         def scheduled_at
         end
@@ -55,6 +65,7 @@ module FinchAPI
         def scheduled_at=(_)
         end
 
+        # The datetime a job entered into the job queue.
         sig { returns(T.nilable(Time)) }
         def started_at
         end
@@ -71,6 +82,7 @@ module FinchAPI
         def status=(_)
         end
 
+        # The type of automated job
         sig { returns(Symbol) }
         def type
         end
@@ -116,6 +128,7 @@ module FinchAPI
         end
 
         class Params < FinchAPI::BaseModel
+          # The ID of the individual that the job was completed for.
           sig { returns(T.nilable(String)) }
           def individual_id
           end
@@ -124,6 +137,7 @@ module FinchAPI
           def individual_id=(_)
           end
 
+          # The input parameters for the job.
           sig { params(individual_id: String).returns(T.attached_class) }
           def self.new(individual_id: nil)
           end
@@ -150,6 +164,7 @@ module FinchAPI
           end
         end
 
+        # The type of automated job
         class Type < FinchAPI::Enum
           abstract!
 

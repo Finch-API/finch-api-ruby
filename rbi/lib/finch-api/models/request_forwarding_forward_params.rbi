@@ -6,6 +6,8 @@ module FinchAPI
       extend FinchAPI::RequestParameters::Converter
       include FinchAPI::RequestParameters
 
+      # The HTTP method for the forwarded request. Valid values include: `GET` , `POST`
+      #   , `PUT` , `DELETE` , and `PATCH`.
       sig { returns(String) }
       def method_
       end
@@ -14,6 +16,9 @@ module FinchAPI
       def method_=(_)
       end
 
+      # The URL route path for the forwarded request. This value must begin with a
+      #   forward-slash ( / ) and may only contain alphanumeric characters, hyphens, and
+      #   underscores.
       sig { returns(String) }
       def route
       end
@@ -22,6 +27,8 @@ module FinchAPI
       def route=(_)
       end
 
+      # The body for the forwarded request. This value must be specified as either a
+      #   string or a valid JSON object.
       sig { returns(T.nilable(String)) }
       def data
       end
@@ -30,6 +37,9 @@ module FinchAPI
       def data=(_)
       end
 
+      # The HTTP headers to include on the forwarded request. This value must be
+      #   specified as an object of key-value pairs. Example:
+      #   `{"Content-Type": "application/xml", "X-API-Version": "v1" }`
       sig { returns(T.nilable(T.anything)) }
       def headers
       end
@@ -38,6 +48,8 @@ module FinchAPI
       def headers=(_)
       end
 
+      # The query parameters for the forwarded request. This value must be specified as
+      #   a valid JSON object rather than a query string.
       sig { returns(T.nilable(T.anything)) }
       def params
       end
