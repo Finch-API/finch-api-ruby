@@ -118,7 +118,7 @@ module FinchAPI
     ) -> ([true, top, nil] | [false, bool, Integer])
   end
 
-  class ArrayOf
+  class ArrayOf[Elem]
     include FinchAPI::Converter
 
     def ===: (top other) -> bool
@@ -133,7 +133,7 @@ module FinchAPI
       top value
     ) -> ([true, top, nil] | [false, bool, Integer])
 
-    def item_type: -> FinchAPI::Converter::input
+    def item_type: -> Elem
 
     def initialize: (
       ::Hash[Symbol, top]
@@ -143,7 +143,7 @@ module FinchAPI
     ) -> void
   end
 
-  class HashOf
+  class HashOf[Elem]
     include FinchAPI::Converter
 
     def ===: (top other) -> bool
@@ -158,7 +158,7 @@ module FinchAPI
       top value
     ) -> ([true, top, nil] | [false, bool, Integer])
 
-    def item_type: -> FinchAPI::Converter::input
+    def item_type: -> Elem
 
     def initialize: (
       ::Hash[Symbol, top]

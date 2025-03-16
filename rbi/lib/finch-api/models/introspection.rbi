@@ -313,17 +313,13 @@ module FinchAPI
         class Type < FinchAPI::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           ASSISTED = :assisted
           CREDENTIAL = :credential
           API_TOKEN = :api_token
           API_CREDENTIAL = :api_credential
           OAUTH = :oauth
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
 
@@ -331,15 +327,11 @@ module FinchAPI
       class ClientType < FinchAPI::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         PRODUCTION = :production
         DEVELOPMENT = :development
         SANDBOX = :sandbox
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       class ConnectionStatus < FinchAPI::BaseModel
@@ -375,14 +367,10 @@ module FinchAPI
       class ConnectionType < FinchAPI::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         PROVIDER = :provider
         FINCH = :finch
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
     end
   end

@@ -221,14 +221,10 @@ module FinchAPI
           class AccountType < FinchAPI::Enum
             abstract!
 
-            CHECKING = T.let(:checking, T.nilable(Symbol))
-            SAVINGS = T.let(:savings, T.nilable(Symbol))
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            CHECKING = :checking
+            SAVINGS = :savings
           end
         end
 
@@ -326,34 +322,26 @@ module FinchAPI
           class Subtype < FinchAPI::Enum
             abstract!
 
-            S_CORPORATION = T.let(:s_corporation, T.nilable(Symbol))
-            C_CORPORATION = T.let(:c_corporation, T.nilable(Symbol))
-            B_CORPORATION = T.let(:b_corporation, T.nilable(Symbol))
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            S_CORPORATION = :s_corporation
+            C_CORPORATION = :c_corporation
+            B_CORPORATION = :b_corporation
           end
 
           # The tax payer type of the company.
           class Type < FinchAPI::Enum
             abstract!
 
-            LLC = T.let(:llc, T.nilable(Symbol))
-            LP = T.let(:lp, T.nilable(Symbol))
-            CORPORATION = T.let(:corporation, T.nilable(Symbol))
-            SOLE_PROPRIETOR = T.let(:sole_proprietor, T.nilable(Symbol))
-            NON_PROFIT = T.let(:non_profit, T.nilable(Symbol))
-            PARTNERSHIP = T.let(:partnership, T.nilable(Symbol))
-            COOPERATIVE = T.let(:cooperative, T.nilable(Symbol))
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            LLC = :llc
+            LP = :lp
+            CORPORATION = :corporation
+            SOLE_PROPRIETOR = :sole_proprietor
+            NON_PROFIT = :non_profit
+            PARTNERSHIP = :partnership
+            COOPERATIVE = :cooperative
           end
         end
       end

@@ -76,14 +76,10 @@ module FinchAPI
         class Type < FinchAPI::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           W4_2020 = :w4_2020
           W4_2005 = :w4_2005
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
     end

@@ -74,21 +74,17 @@ module FinchAPI
       class Unit < FinchAPI::Enum
         abstract!
 
-        YEARLY = T.let(:yearly, T.nilable(Symbol))
-        QUARTERLY = T.let(:quarterly, T.nilable(Symbol))
-        MONTHLY = T.let(:monthly, T.nilable(Symbol))
-        SEMI_MONTHLY = T.let(:semi_monthly, T.nilable(Symbol))
-        BI_WEEKLY = T.let(:bi_weekly, T.nilable(Symbol))
-        WEEKLY = T.let(:weekly, T.nilable(Symbol))
-        DAILY = T.let(:daily, T.nilable(Symbol))
-        HOURLY = T.let(:hourly, T.nilable(Symbol))
-        FIXED = T.let(:fixed, T.nilable(Symbol))
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        YEARLY = :yearly
+        QUARTERLY = :quarterly
+        MONTHLY = :monthly
+        SEMI_MONTHLY = :semi_monthly
+        BI_WEEKLY = :bi_weekly
+        WEEKLY = :weekly
+        DAILY = :daily
+        HOURLY = :hourly
+        FIXED = :fixed
       end
     end
   end

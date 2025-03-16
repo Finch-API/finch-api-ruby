@@ -403,25 +403,21 @@ module FinchAPI
             class Type < FinchAPI::Enum
               abstract!
 
-              SALARY = T.let(:salary, T.nilable(Symbol))
-              WAGE = T.let(:wage, T.nilable(Symbol))
-              REIMBURSEMENT = T.let(:reimbursement, T.nilable(Symbol))
-              OVERTIME = T.let(:overtime, T.nilable(Symbol))
-              SEVERANCE = T.let(:severance, T.nilable(Symbol))
-              DOUBLE_OVERTIME = T.let(:double_overtime, T.nilable(Symbol))
-              PTO = T.let(:pto, T.nilable(Symbol))
-              SICK = T.let(:sick, T.nilable(Symbol))
-              BONUS = T.let(:bonus, T.nilable(Symbol))
-              COMMISSION = T.let(:commission, T.nilable(Symbol))
-              TIPS = T.let(:tips, T.nilable(Symbol))
-              NUMBER_1099 = T.let(:"1099", T.nilable(Symbol))
-              OTHER = T.let(:other, T.nilable(Symbol))
+              Value = type_template(:out) { {fixed: Symbol} }
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
-              end
+              SALARY = :salary
+              WAGE = :wage
+              REIMBURSEMENT = :reimbursement
+              OVERTIME = :overtime
+              SEVERANCE = :severance
+              DOUBLE_OVERTIME = :double_overtime
+              PTO = :pto
+              SICK = :sick
+              BONUS = :bonus
+              COMMISSION = :commission
+              TIPS = :tips
+              NUMBER_1099 = :"1099"
+              OTHER = :other
             end
           end
 
@@ -738,14 +734,10 @@ module FinchAPI
           class PaymentMethod < FinchAPI::Enum
             abstract!
 
-            CHECK = T.let(:check, T.nilable(Symbol))
-            DIRECT_DEPOSIT = T.let(:direct_deposit, T.nilable(Symbol))
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            CHECK = :check
+            DIRECT_DEPOSIT = :direct_deposit
           end
 
           class Tax < FinchAPI::BaseModel
@@ -893,16 +885,12 @@ module FinchAPI
             class Type < FinchAPI::Enum
               abstract!
 
-              STATE = T.let(:state, T.nilable(Symbol))
-              FEDERAL = T.let(:federal, T.nilable(Symbol))
-              LOCAL = T.let(:local, T.nilable(Symbol))
-              FICA = T.let(:fica, T.nilable(Symbol))
+              Value = type_template(:out) { {fixed: Symbol} }
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
-              end
+              STATE = :state
+              FEDERAL = :federal
+              LOCAL = :local
+              FICA = :fica
             end
           end
 
@@ -910,15 +898,11 @@ module FinchAPI
           class Type < FinchAPI::Enum
             abstract!
 
-            REGULAR_PAYROLL = T.let(:regular_payroll, T.nilable(Symbol))
-            OFF_CYCLE_PAYROLL = T.let(:off_cycle_payroll, T.nilable(Symbol))
-            ONE_TIME_PAYMENT = T.let(:one_time_payment, T.nilable(Symbol))
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            REGULAR_PAYROLL = :regular_payroll
+            OFF_CYCLE_PAYROLL = :off_cycle_payroll
+            ONE_TIME_PAYMENT = :one_time_payment
           end
         end
       end

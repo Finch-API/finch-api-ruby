@@ -34,13 +34,9 @@ module FinchAPI
       class EventType < FinchAPI::Enum
         abstract!
 
-        COMPANY_UPDATED = :"company.updated"
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        COMPANY_UPDATED = :"company.updated"
       end
     end
   end

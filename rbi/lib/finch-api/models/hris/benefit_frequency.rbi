@@ -6,15 +6,11 @@ module FinchAPI
       class BenefitFrequency < FinchAPI::Enum
         abstract!
 
-        ONE_TIME = T.let(:one_time, T.nilable(Symbol))
-        EVERY_PAYCHECK = T.let(:every_paycheck, T.nilable(Symbol))
-        MONTHLY = T.let(:monthly, T.nilable(Symbol))
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        ONE_TIME = :one_time
+        EVERY_PAYCHECK = :every_paycheck
+        MONTHLY = :monthly
       end
     end
   end

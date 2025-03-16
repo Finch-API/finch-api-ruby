@@ -199,14 +199,10 @@ module FinchAPI
               class AnnualContributionLimit < FinchAPI::Enum
                 abstract!
 
+                Value = type_template(:out) { {fixed: Symbol} }
+
                 INDIVIDUAL = :individual
                 FAMILY = :family
-
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
-                end
               end
 
               class CompanyContribution < FinchAPI::BaseModel
@@ -239,14 +235,10 @@ module FinchAPI
                 class Type < FinchAPI::Enum
                   abstract!
 
+                  Value = type_template(:out) { {fixed: Symbol} }
+
                   FIXED = :fixed
                   PERCENT = :percent
-
-                  class << self
-                    sig { override.returns(T::Array[Symbol]) }
-                    def values
-                    end
-                  end
                 end
               end
 
@@ -280,14 +272,10 @@ module FinchAPI
                 class Type < FinchAPI::Enum
                   abstract!
 
+                  Value = type_template(:out) { {fixed: Symbol} }
+
                   FIXED = :fixed
                   PERCENT = :percent
-
-                  class << self
-                    sig { override.returns(T::Array[Symbol]) }
-                    def values
-                    end
-                  end
                 end
               end
             end

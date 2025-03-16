@@ -58,15 +58,11 @@ module FinchAPI
       class EventType < FinchAPI::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         PAYMENT_CREATED = :"payment.created"
         PAYMENT_UPDATED = :"payment.updated"
         PAYMENT_DELETED = :"payment.deleted"
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
     end
   end

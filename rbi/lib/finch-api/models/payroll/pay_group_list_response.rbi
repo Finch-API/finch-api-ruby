@@ -42,6 +42,8 @@ module FinchAPI
         class PayFrequency < FinchAPI::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           ANNUALLY = :annually
           SEMI_ANNUALLY = :semi_annually
           QUARTERLY = :quarterly
@@ -51,12 +53,6 @@ module FinchAPI
           WEEKLY = :weekly
           DAILY = :daily
           OTHER = :other
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
     end
