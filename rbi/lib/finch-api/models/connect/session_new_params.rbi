@@ -137,6 +137,8 @@ module FinchAPI
         class Product < FinchAPI::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           COMPANY = :company
           DIRECTORY = :directory
           INDIVIDUAL = :individual
@@ -145,12 +147,6 @@ module FinchAPI
           PAY_STATEMENT = :pay_statement
           BENEFITS = :benefits
           SSN = :ssn
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class Integration < FinchAPI::BaseModel
@@ -183,30 +179,22 @@ module FinchAPI
           class AuthMethod < FinchAPI::Enum
             abstract!
 
-            ASSISTED = T.let(:assisted, T.nilable(Symbol))
-            CREDENTIAL = T.let(:credential, T.nilable(Symbol))
-            OAUTH = T.let(:oauth, T.nilable(Symbol))
-            API_TOKEN = T.let(:api_token, T.nilable(Symbol))
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            ASSISTED = :assisted
+            CREDENTIAL = :credential
+            OAUTH = :oauth
+            API_TOKEN = :api_token
           end
         end
 
         class Sandbox < FinchAPI::Enum
           abstract!
 
-          FINCH = T.let(:finch, T.nilable(Symbol))
-          PROVIDER = T.let(:provider, T.nilable(Symbol))
+          Value = type_template(:out) { {fixed: Symbol} }
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
+          FINCH = :finch
+          PROVIDER = :provider
         end
       end
     end

@@ -34,14 +34,10 @@ module FinchAPI
         class Type < FinchAPI::Enum
           abstract!
 
-          FIXED = T.let(:fixed, T.nilable(Symbol))
-          PERCENT = T.let(:percent, T.nilable(Symbol))
+          Value = type_template(:out) { {fixed: Symbol} }
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
+          FIXED = :fixed
+          PERCENT = :percent
         end
       end
     end

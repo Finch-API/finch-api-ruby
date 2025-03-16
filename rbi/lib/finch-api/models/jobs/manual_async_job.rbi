@@ -46,16 +46,12 @@ module FinchAPI
         class Status < FinchAPI::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           PENDING = :pending
           IN_PROGRESS = :in_progress
           ERROR = :error
           COMPLETE = :complete
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
     end

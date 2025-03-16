@@ -49,15 +49,11 @@ module FinchAPI
       class EventType < FinchAPI::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         DIRECTORY_CREATED = :"directory.created"
         DIRECTORY_UPDATED = :"directory.updated"
         DIRECTORY_DELETED = :"directory.deleted"
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
     end
   end

@@ -358,32 +358,24 @@ module FinchAPI
           class Subtype < FinchAPI::Enum
             abstract!
 
-            FULL_TIME = T.let(:full_time, T.nilable(Symbol))
-            INTERN = T.let(:intern, T.nilable(Symbol))
-            PART_TIME = T.let(:part_time, T.nilable(Symbol))
-            TEMP = T.let(:temp, T.nilable(Symbol))
-            SEASONAL = T.let(:seasonal, T.nilable(Symbol))
-            INDIVIDUAL_CONTRACTOR = T.let(:individual_contractor, T.nilable(Symbol))
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            FULL_TIME = :full_time
+            INTERN = :intern
+            PART_TIME = :part_time
+            TEMP = :temp
+            SEASONAL = :seasonal
+            INDIVIDUAL_CONTRACTOR = :individual_contractor
           end
 
           # The main employment type of the individual.
           class Type < FinchAPI::Enum
             abstract!
 
-            EMPLOYEE = T.let(:employee, T.nilable(Symbol))
-            CONTRACTOR = T.let(:contractor, T.nilable(Symbol))
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            EMPLOYEE = :employee
+            CONTRACTOR = :contractor
           end
         end
 
@@ -392,19 +384,15 @@ module FinchAPI
         class EmploymentStatus < FinchAPI::Enum
           abstract!
 
-          ACTIVE = T.let(:active, T.nilable(Symbol))
-          DECEASED = T.let(:deceased, T.nilable(Symbol))
-          LEAVE = T.let(:leave, T.nilable(Symbol))
-          ONBOARDING = T.let(:onboarding, T.nilable(Symbol))
-          PREHIRE = T.let(:prehire, T.nilable(Symbol))
-          RETIRED = T.let(:retired, T.nilable(Symbol))
-          TERMINATED = T.let(:terminated, T.nilable(Symbol))
+          Value = type_template(:out) { {fixed: Symbol} }
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
+          ACTIVE = :active
+          DECEASED = :deceased
+          LEAVE = :leave
+          ONBOARDING = :onboarding
+          PREHIRE = :prehire
+          RETIRED = :retired
+          TERMINATED = :terminated
         end
 
         class Manager < FinchAPI::BaseModel

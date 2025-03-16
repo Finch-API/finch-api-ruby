@@ -90,16 +90,12 @@ module FinchAPI
           class AuthenticationType < FinchAPI::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             CREDENTIAL = :credential
             API_TOKEN = :api_token
             OAUTH = :oauth
             ASSISTED = :assisted
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
       end

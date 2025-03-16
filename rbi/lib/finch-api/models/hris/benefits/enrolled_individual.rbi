@@ -105,16 +105,12 @@ module FinchAPI
           class Code < FinchAPI::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Integer} }
+
             OK = 200
             CREATED = 201
             NOT_FOUND = 404
             FORBIDDEN = 403
-
-            class << self
-              sig { override.returns(T::Array[Integer]) }
-              def values
-              end
-            end
           end
         end
       end

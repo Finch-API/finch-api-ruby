@@ -143,14 +143,10 @@ module FinchAPI
             class HsaContributionLimit < FinchAPI::Enum
               abstract!
 
-              INDIVIDUAL = T.let(:individual, T.nilable(Symbol))
-              FAMILY = T.let(:family, T.nilable(Symbol))
+              Value = type_template(:out) { {fixed: Symbol} }
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
-              end
+              INDIVIDUAL = :individual
+              FAMILY = :family
             end
           end
         end
