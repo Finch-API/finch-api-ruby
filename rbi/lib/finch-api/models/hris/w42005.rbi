@@ -129,29 +129,21 @@ module FinchAPI
           class Exemption < FinchAPI::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             EXEMPT = :exempt
             NON_EXEMPT = :non_exempt
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
 
           # The individual's filing status for tax purposes.
           class FilingStatus < FinchAPI::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             MARRIED = :married
             MARRIED_BUT_WITHHOLD_AT_HIGHER_SINGLE_RATE = :married_but_withhold_at_higher_single_rate
             SINGLE = :single
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -159,13 +151,9 @@ module FinchAPI
         class Type < FinchAPI::Enum
           abstract!
 
-          W4_2005 = :w4_2005
+          Value = type_template(:out) { {fixed: Symbol} }
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
+          W4_2005 = :w4_2005
         end
       end
     end

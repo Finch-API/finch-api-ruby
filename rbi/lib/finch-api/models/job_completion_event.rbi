@@ -58,18 +58,14 @@ module FinchAPI
       class EventType < FinchAPI::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         JOB_BENEFIT_CREATE_COMPLETED = :"job.benefit_create.completed"
         JOB_BENEFIT_ENROLL_COMPLETED = :"job.benefit_enroll.completed"
         JOB_BENEFIT_REGISTER_COMPLETED = :"job.benefit_register.completed"
         JOB_BENEFIT_UNENROLL_COMPLETED = :"job.benefit_unenroll.completed"
         JOB_BENEFIT_UPDATE_COMPLETED = :"job.benefit_update.completed"
         JOB_DATA_SYNC_ALL_COMPLETED = :"job.data_sync_all.completed"
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
     end
   end

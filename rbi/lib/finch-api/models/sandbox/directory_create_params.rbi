@@ -490,14 +490,10 @@ module FinchAPI
             class Type < FinchAPI::Enum
               abstract!
 
-              WORK = T.let(:work, T.nilable(Symbol))
-              PERSONAL = T.let(:personal, T.nilable(Symbol))
+              Value = type_template(:out) { {fixed: Symbol} }
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
-              end
+              WORK = :work
+              PERSONAL = :personal
             end
           end
 
@@ -535,32 +531,24 @@ module FinchAPI
             class Subtype < FinchAPI::Enum
               abstract!
 
-              FULL_TIME = T.let(:full_time, T.nilable(Symbol))
-              INTERN = T.let(:intern, T.nilable(Symbol))
-              PART_TIME = T.let(:part_time, T.nilable(Symbol))
-              TEMP = T.let(:temp, T.nilable(Symbol))
-              SEASONAL = T.let(:seasonal, T.nilable(Symbol))
-              INDIVIDUAL_CONTRACTOR = T.let(:individual_contractor, T.nilable(Symbol))
+              Value = type_template(:out) { {fixed: Symbol} }
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
-              end
+              FULL_TIME = :full_time
+              INTERN = :intern
+              PART_TIME = :part_time
+              TEMP = :temp
+              SEASONAL = :seasonal
+              INDIVIDUAL_CONTRACTOR = :individual_contractor
             end
 
             # The main employment type of the individual.
             class Type < FinchAPI::Enum
               abstract!
 
-              EMPLOYEE = T.let(:employee, T.nilable(Symbol))
-              CONTRACTOR = T.let(:contractor, T.nilable(Symbol))
+              Value = type_template(:out) { {fixed: Symbol} }
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
-              end
+              EMPLOYEE = :employee
+              CONTRACTOR = :contractor
             end
           end
 
@@ -568,58 +556,43 @@ module FinchAPI
           class EmploymentStatus < FinchAPI::Enum
             abstract!
 
-            ACTIVE = T.let(:active, T.nilable(Symbol))
-            DECEASED = T.let(:deceased, T.nilable(Symbol))
-            LEAVE = T.let(:leave, T.nilable(Symbol))
-            ONBOARDING = T.let(:onboarding, T.nilable(Symbol))
-            PREHIRE = T.let(:prehire, T.nilable(Symbol))
-            RETIRED = T.let(:retired, T.nilable(Symbol))
-            TERMINATED = T.let(:terminated, T.nilable(Symbol))
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            ACTIVE = :active
+            DECEASED = :deceased
+            LEAVE = :leave
+            ONBOARDING = :onboarding
+            PREHIRE = :prehire
+            RETIRED = :retired
+            TERMINATED = :terminated
           end
 
           # The EEOC-defined ethnicity of the individual.
           class Ethnicity < FinchAPI::Enum
             abstract!
 
-            ASIAN = T.let(:asian, T.nilable(Symbol))
-            WHITE = T.let(:white, T.nilable(Symbol))
-            BLACK_OR_AFRICAN_AMERICAN = T.let(:black_or_african_american, T.nilable(Symbol))
-            NATIVE_HAWAIIAN_OR_PACIFIC_ISLANDER = T.let(
-              :native_hawaiian_or_pacific_islander,
-              T.nilable(Symbol)
-            )
-            AMERICAN_INDIAN_OR_ALASKA_NATIVE = T.let(:american_indian_or_alaska_native, T.nilable(Symbol))
-            HISPANIC_OR_LATINO = T.let(:hispanic_or_latino, T.nilable(Symbol))
-            TWO_OR_MORE_RACES = T.let(:two_or_more_races, T.nilable(Symbol))
-            DECLINE_TO_SPECIFY = T.let(:decline_to_specify, T.nilable(Symbol))
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            ASIAN = :asian
+            WHITE = :white
+            BLACK_OR_AFRICAN_AMERICAN = :black_or_african_american
+            NATIVE_HAWAIIAN_OR_PACIFIC_ISLANDER = :native_hawaiian_or_pacific_islander
+            AMERICAN_INDIAN_OR_ALASKA_NATIVE = :american_indian_or_alaska_native
+            HISPANIC_OR_LATINO = :hispanic_or_latino
+            TWO_OR_MORE_RACES = :two_or_more_races
+            DECLINE_TO_SPECIFY = :decline_to_specify
           end
 
           # The gender of the individual.
           class Gender < FinchAPI::Enum
             abstract!
 
-            FEMALE = T.let(:female, T.nilable(Symbol))
-            MALE = T.let(:male, T.nilable(Symbol))
-            OTHER = T.let(:other, T.nilable(Symbol))
-            DECLINE_TO_SPECIFY = T.let(:decline_to_specify, T.nilable(Symbol))
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            FEMALE = :female
+            MALE = :male
+            OTHER = :other
+            DECLINE_TO_SPECIFY = :decline_to_specify
           end
 
           class Manager < FinchAPI::BaseModel
@@ -670,14 +643,10 @@ module FinchAPI
             class Type < FinchAPI::Enum
               abstract!
 
-              WORK = T.let(:work, T.nilable(Symbol))
-              PERSONAL = T.let(:personal, T.nilable(Symbol))
+              Value = type_template(:out) { {fixed: Symbol} }
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
-              end
+              WORK = :work
+              PERSONAL = :personal
             end
           end
         end

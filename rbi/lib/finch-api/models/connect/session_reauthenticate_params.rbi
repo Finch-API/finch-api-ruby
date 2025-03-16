@@ -76,6 +76,8 @@ module FinchAPI
         class Product < FinchAPI::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           COMPANY = :company
           DIRECTORY = :directory
           INDIVIDUAL = :individual
@@ -84,12 +86,6 @@ module FinchAPI
           PAY_STATEMENT = :pay_statement
           BENEFITS = :benefits
           SSN = :ssn
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
     end

@@ -152,15 +152,11 @@ module FinchAPI
       class ClientType < FinchAPI::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         PRODUCTION = :production
         DEVELOPMENT = :development
         SANDBOX = :sandbox
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # The type of the connection associated with the token.
@@ -170,14 +166,10 @@ module FinchAPI
       class ConnectionType < FinchAPI::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         PROVIDER = :provider
         FINCH = :finch
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
     end
   end

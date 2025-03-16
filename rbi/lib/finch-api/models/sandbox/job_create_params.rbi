@@ -31,13 +31,9 @@ module FinchAPI
         class Type < FinchAPI::Enum
           abstract!
 
-          DATA_SYNC_ALL = :data_sync_all
+          Value = type_template(:out) { {fixed: Symbol} }
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
+          DATA_SYNC_ALL = :data_sync_all
         end
       end
     end

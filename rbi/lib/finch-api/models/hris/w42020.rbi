@@ -166,20 +166,11 @@ module FinchAPI
           class FilingStatus < FinchAPI::Enum
             abstract!
 
-            HEAD_OF_HOUSEHOLD = T.let(:head_of_household, T.nilable(Symbol))
-            MARRIED_FILING_JOINTLY_OR_QUALIFYING_SURVIVING_SPOUSE = T.let(
-              :married_filing_jointly_or_qualifying_surviving_spouse, T.nilable(Symbol)
-            )
-            SINGLE_OR_MARRIED_FILING_SEPARATELY = T.let(
-              :single_or_married_filing_separately,
-              T.nilable(Symbol)
-            )
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            HEAD_OF_HOUSEHOLD = :head_of_household
+            MARRIED_FILING_JOINTLY_OR_QUALIFYING_SURVIVING_SPOUSE = :married_filing_jointly_or_qualifying_surviving_spouse
+            SINGLE_OR_MARRIED_FILING_SEPARATELY = :single_or_married_filing_separately
           end
         end
 
@@ -187,13 +178,9 @@ module FinchAPI
         class Type < FinchAPI::Enum
           abstract!
 
-          W4_2020 = :w4_2020
+          Value = type_template(:out) { {fixed: Symbol} }
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
+          W4_2020 = :w4_2020
         end
       end
     end

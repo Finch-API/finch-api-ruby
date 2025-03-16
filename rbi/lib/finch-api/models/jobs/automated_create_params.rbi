@@ -55,13 +55,9 @@ module FinchAPI
         class Type < FinchAPI::Enum
           abstract!
 
-          W4_FORM_EMPLOYEE_SYNC = :w4_form_employee_sync
+          Value = type_template(:out) { {fixed: Symbol} }
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
+          W4_FORM_EMPLOYEE_SYNC = :w4_form_employee_sync
         end
 
         class Params < FinchAPI::BaseModel

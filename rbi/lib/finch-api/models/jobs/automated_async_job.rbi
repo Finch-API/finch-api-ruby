@@ -150,32 +150,24 @@ module FinchAPI
         class Status < FinchAPI::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           PENDING = :pending
           IN_PROGRESS = :in_progress
           COMPLETE = :complete
           ERROR = :error
           REAUTH_ERROR = :reauth_error
           PERMISSIONS_ERROR = :permissions_error
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         # The type of automated job
         class Type < FinchAPI::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           DATA_SYNC_ALL = :data_sync_all
           W4_FORM_EMPLOYEE_SYNC = :w4_form_employee_sync
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
     end
