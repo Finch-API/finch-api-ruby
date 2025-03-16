@@ -2,8 +2,6 @@
 
 module FinchAPI
   # @api private
-  #
-  # @abstract
   module Converter
     # rubocop:disable Lint/UnusedMethodArgument
 

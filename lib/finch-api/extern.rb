@@ -2,8 +2,6 @@
 
 module FinchAPI
   # @api private
-  #
-  # @abstract
   module Extern
   end
 end

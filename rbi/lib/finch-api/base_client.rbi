@@ -1,6 +1,7 @@
 # typed: strong
 
 module FinchAPI
+  # @api private
   class BaseClient
     abstract!
 

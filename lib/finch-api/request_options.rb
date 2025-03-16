@@ -2,8 +2,6 @@
 
 module FinchAPI
   # @api private
-  #
-  # @abstract
   module RequestParameters
     # @!parse
     #   # Options to specify HTTP behaviour for this request.
