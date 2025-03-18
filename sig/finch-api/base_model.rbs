@@ -176,6 +176,8 @@ module FinchAPI
     def self.known_fields: -> ::Hash[Symbol, (FinchAPI::BaseModel::known_field
     & { type_fn: (^-> FinchAPI::Converter::input) })]
 
+    def self.reverse_map: -> ::Hash[Symbol, Symbol]
+
     def self.fields: -> ::Hash[Symbol, (FinchAPI::BaseModel::known_field
     & { type: FinchAPI::Converter::input })]
 
