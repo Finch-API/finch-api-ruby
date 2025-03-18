@@ -3,5 +3,7 @@ module FinchAPI
     include FinchAPI::BasePage[Elem]
 
     attr_accessor responses: ::Array[Elem]?
+
+    def inspect: -> String
   end
 end

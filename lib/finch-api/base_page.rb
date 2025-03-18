@@ -28,6 +28,8 @@ module FinchAPI
   # access_tokens => Array
   # ```
   module BasePage
+    # rubocop:disable Lint/UnusedMethodArgument
+
     # @return [Boolean]
     def next_page? = (raise NotImplementedError)
 
@@ -56,5 +58,7 @@ module FinchAPI
       @req = req
       super()
     end
+
+    # rubocop:enable Lint/UnusedMethodArgument
   end
 end

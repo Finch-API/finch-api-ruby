@@ -5,5 +5,7 @@ module FinchAPI
     attr_accessor data: ::Array[Elem]?
 
     attr_accessor paging: FinchAPI::Models::Paging
+
+    def inspect: -> String
   end
 end

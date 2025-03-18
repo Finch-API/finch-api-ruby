@@ -121,6 +121,13 @@ module FinchAPI
   class ArrayOf[Elem]
     include FinchAPI::Converter
 
+    def self.[]: (
+      ::Hash[Symbol, top]
+      | ^-> FinchAPI::Converter::input
+      | FinchAPI::Converter::input type_info,
+      ?::Hash[Symbol, top] spec
+    ) -> instance
+
     def ===: (top other) -> bool
 
     def ==: (top other) -> bool
@@ -145,6 +152,13 @@ module FinchAPI
 
   class HashOf[Elem]
     include FinchAPI::Converter
+
+    def self.[]: (
+      ::Hash[Symbol, top]
+      | ^-> FinchAPI::Converter::input
+      | FinchAPI::Converter::input type_info,
+      ?::Hash[Symbol, top] spec
+    ) -> instance
 
     def ===: (top other) -> bool
 
