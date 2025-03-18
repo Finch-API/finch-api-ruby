@@ -7,16 +7,16 @@ module FinchAPI
       }
 
     class JobCompletionEvent < FinchAPI::Models::BaseWebhookEvent
-      attr_reader data: FinchAPI::Models::JobCompletionEvent::Data?
+      def data: -> FinchAPI::Models::JobCompletionEvent::Data?
 
       def data=: (
-        FinchAPI::Models::JobCompletionEvent::Data
+        FinchAPI::Models::JobCompletionEvent::Data _
       ) -> FinchAPI::Models::JobCompletionEvent::Data
 
-      attr_reader event_type: FinchAPI::Models::JobCompletionEvent::event_type?
+      def event_type: -> FinchAPI::Models::JobCompletionEvent::event_type?
 
       def event_type=: (
-        FinchAPI::Models::JobCompletionEvent::event_type
+        FinchAPI::Models::JobCompletionEvent::event_type _
       ) -> FinchAPI::Models::JobCompletionEvent::event_type
 
       def initialize:
