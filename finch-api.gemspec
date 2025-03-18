@@ -15,5 +15,5 @@ Gem::Specification.new do |s|
   s.homepage = "https://gemdocs.org/gems/finch-api"
   s.metadata["homepage_uri"] = s.homepage
   s.metadata["source_code_uri"] = "https://github.com/Finch-API/finch-api-ruby"
-  s.metadata["rubygems_mfa_required"] = "false"
+  s.metadata["rubygems_mfa_required"] = false.to_s
 end

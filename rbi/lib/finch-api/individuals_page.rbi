@@ -21,5 +21,9 @@ module FinchAPI
     sig { params(_: FinchAPI::Models::Paging).returns(FinchAPI::Models::Paging) }
     def paging=(_)
     end
+
+    sig { returns(String) }
+    def inspect
+    end
   end
 end
