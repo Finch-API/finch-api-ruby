@@ -16,7 +16,7 @@ module FinchAPI
         def initialize:
           (
             requests: ::Array[FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request],
-            request_options: FinchAPI::request_opts
+            ?request_options: FinchAPI::request_opts
           ) -> void
           | (
             ?FinchAPI::Models::HRIS::employment_retrieve_many_params

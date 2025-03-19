@@ -30,10 +30,10 @@ module FinchAPI
       def initialize:
         (
           code: String,
-          client_id: String,
-          client_secret: String,
-          redirect_uri: String,
-          request_options: FinchAPI::request_opts
+          ?client_id: String,
+          ?client_secret: String,
+          ?redirect_uri: String,
+          ?request_options: FinchAPI::request_opts
         ) -> void
         | (
           ?FinchAPI::Models::access_token_create_params

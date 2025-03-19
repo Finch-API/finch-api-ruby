@@ -10,19 +10,19 @@ module FinchAPI
           ) -> FinchAPI::Models::Sandbox::IndividualUpdateResponse
           | (
             String individual_id,
-            dob: String?,
-            emails: ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::Email]?,
-            encrypted_ssn: String?,
-            ethnicity: FinchAPI::Models::Sandbox::IndividualUpdateParams::ethnicity?,
-            first_name: String?,
-            gender: FinchAPI::Models::Sandbox::IndividualUpdateParams::gender?,
-            last_name: String?,
-            middle_name: String?,
-            phone_numbers: ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber?]?,
-            preferred_name: String?,
-            residence: FinchAPI::Models::Location?,
-            ssn: String?,
-            request_options: FinchAPI::request_opts
+            ?dob: String?,
+            ?emails: ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::Email]?,
+            ?encrypted_ssn: String?,
+            ?ethnicity: FinchAPI::Models::Sandbox::IndividualUpdateParams::ethnicity?,
+            ?first_name: String?,
+            ?gender: FinchAPI::Models::Sandbox::IndividualUpdateParams::gender?,
+            ?last_name: String?,
+            ?middle_name: String?,
+            ?phone_numbers: ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber?]?,
+            ?preferred_name: String?,
+            ?residence: FinchAPI::Models::Location?,
+            ?ssn: String?,
+            ?request_options: FinchAPI::request_opts
           ) -> FinchAPI::Models::Sandbox::IndividualUpdateResponse
 
         def initialize: (client: FinchAPI::Client) -> void

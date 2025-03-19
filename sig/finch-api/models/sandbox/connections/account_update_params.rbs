@@ -18,8 +18,8 @@ module FinchAPI
 
           def initialize:
             (
-              connection_status: FinchAPI::Models::connection_status_type,
-              request_options: FinchAPI::request_opts
+              ?connection_status: FinchAPI::Models::connection_status_type,
+              ?request_options: FinchAPI::request_opts
             ) -> void
             | (
               ?FinchAPI::Models::Sandbox::Connections::account_update_params

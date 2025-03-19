@@ -7,7 +7,7 @@ module FinchAPI
       include FinchAPI::RequestParameters
 
       def initialize:
-        (request_options: FinchAPI::request_opts) -> void
+        (?request_options: FinchAPI::request_opts) -> void
         | (
           ?FinchAPI::Models::account_disconnect_params
           | FinchAPI::BaseModel data

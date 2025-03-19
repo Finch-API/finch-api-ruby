@@ -15,8 +15,8 @@ module FinchAPI
 
           def initialize:
             (
-              individual_ids: String,
-              request_options: FinchAPI::request_opts
+              ?individual_ids: String,
+              ?request_options: FinchAPI::request_opts
             ) -> void
             | (
               ?FinchAPI::Models::HRIS::Benefits::individual_retrieve_many_benefits_params

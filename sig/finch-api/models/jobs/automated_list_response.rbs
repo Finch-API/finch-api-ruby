@@ -38,7 +38,7 @@ module FinchAPI
 
           def initialize:
             (
-              quotas: FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas
+              ?quotas: FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas
             ) -> void
             | (
               ?FinchAPI::Models::Jobs::AutomatedListResponse::meta
@@ -61,7 +61,7 @@ module FinchAPI
 
             def initialize:
               (
-                data_sync_all: FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll
+                ?data_sync_all: FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll
               ) -> void
               | (
                 ?FinchAPI::Models::Jobs::AutomatedListResponse::Meta::quotas
@@ -84,8 +84,8 @@ module FinchAPI
 
               def initialize:
                 (
-                  allowed_refreshes: Integer,
-                  remaining_refreshes: Integer
+                  ?allowed_refreshes: Integer,
+                  ?remaining_refreshes: Integer
                 ) -> void
                 | (
                   ?FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::data_sync_all

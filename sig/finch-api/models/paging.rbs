@@ -12,7 +12,7 @@ module FinchAPI
       def offset=: (Integer) -> Integer
 
       def initialize:
-        (count: Integer, offset: Integer) -> void
+        (?count: Integer, ?offset: Integer) -> void
         | (?FinchAPI::Models::paging | FinchAPI::BaseModel data) -> void
 
       def to_hash: -> FinchAPI::Models::paging

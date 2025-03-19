@@ -16,7 +16,7 @@ module FinchAPI
           (
             end_date: Date,
             start_date: Date,
-            request_options: FinchAPI::request_opts
+            ?request_options: FinchAPI::request_opts
           ) -> void
           | (
             ?FinchAPI::Models::HRIS::payment_list_params

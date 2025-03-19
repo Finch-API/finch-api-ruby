@@ -9,7 +9,7 @@ module FinchAPI
           ) -> FinchAPI::ResponsesPage[FinchAPI::Models::HRIS::PayStatementResponse]
           | (
             requests: ::Array[FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request],
-            request_options: FinchAPI::request_opts
+            ?request_options: FinchAPI::request_opts
           ) -> FinchAPI::ResponsesPage[FinchAPI::Models::HRIS::PayStatementResponse]
 
         def initialize: (client: FinchAPI::Client) -> void

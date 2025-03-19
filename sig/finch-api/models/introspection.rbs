@@ -102,9 +102,9 @@ module FinchAPI
 
         def initialize:
           (
-            connection_status: FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus,
-            products: ::Array[String],
-            type: FinchAPI::Models::Introspection::AuthenticationMethod::type_
+            ?connection_status: FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus,
+            ?products: ::Array[String],
+            ?type: FinchAPI::Models::Introspection::AuthenticationMethod::type_
           ) -> void
           | (
             ?FinchAPI::Models::Introspection::authentication_method
@@ -129,8 +129,8 @@ module FinchAPI
 
           def initialize:
             (
-              message: String,
-              status: FinchAPI::Models::connection_status_type
+              ?message: String,
+              ?status: FinchAPI::Models::connection_status_type
             ) -> void
             | (
               ?FinchAPI::Models::Introspection::AuthenticationMethod::connection_status
@@ -180,8 +180,8 @@ module FinchAPI
 
         def initialize:
           (
-            message: String,
-            status: FinchAPI::Models::connection_status_type
+            ?message: String,
+            ?status: FinchAPI::Models::connection_status_type
           ) -> void
           | (
             ?FinchAPI::Models::Introspection::connection_status

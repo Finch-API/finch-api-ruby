@@ -25,9 +25,9 @@ module FinchAPI
 
         def initialize:
           (
-            data: FinchAPI::Models::HRIS::W42020::Data,
-            type: FinchAPI::Models::HRIS::W42020::type_,
-            year: Float?
+            ?data: FinchAPI::Models::HRIS::W42020::Data,
+            ?type: FinchAPI::Models::HRIS::W42020::type_,
+            ?year: Float?
           ) -> void
           | (?FinchAPI::Models::HRIS::w42020 | FinchAPI::BaseModel data) -> void
 
@@ -66,14 +66,14 @@ module FinchAPI
 
           def initialize:
             (
-              amount_for_other_dependents: Integer?,
-              amount_for_qualifying_children_under_17: Integer?,
-              deductions: Integer?,
-              extra_withholding: Integer?,
-              filing_status: FinchAPI::Models::HRIS::W42020::Data::filing_status?,
-              individual_id: String,
-              other_income: Integer?,
-              total_claim_dependent_and_other_credits: Integer?
+              ?amount_for_other_dependents: Integer?,
+              ?amount_for_qualifying_children_under_17: Integer?,
+              ?deductions: Integer?,
+              ?extra_withholding: Integer?,
+              ?filing_status: FinchAPI::Models::HRIS::W42020::Data::filing_status?,
+              ?individual_id: String,
+              ?other_income: Integer?,
+              ?total_claim_dependent_and_other_credits: Integer?
             ) -> void
             | (
               ?FinchAPI::Models::HRIS::W42020::data | FinchAPI::BaseModel data

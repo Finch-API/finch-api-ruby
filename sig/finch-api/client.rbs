@@ -41,14 +41,14 @@ module FinchAPI
     private def basic_auth: -> ::Hash[String, String]
 
     def initialize: (
-      base_url: String?,
-      access_token: String?,
-      client_id: String?,
-      client_secret: String?,
-      max_retries: Integer,
-      timeout: Float,
-      initial_retry_delay: Float,
-      max_retry_delay: Float
+      ?base_url: String?,
+      ?access_token: String?,
+      ?client_id: String?,
+      ?client_secret: String?,
+      ?max_retries: Integer,
+      ?timeout: Float,
+      ?initial_retry_delay: Float,
+      ?max_retry_delay: Float
     ) -> void
   end
 end

@@ -20,8 +20,8 @@ module FinchAPI
 
           def initialize:
             (
-              individuals: ::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual],
-              request_options: FinchAPI::request_opts
+              ?individuals: ::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual],
+              ?request_options: FinchAPI::request_opts
             ) -> void
             | (
               ?FinchAPI::Models::HRIS::Benefits::individual_enroll_many_params
@@ -49,8 +49,8 @@ module FinchAPI
 
             def initialize:
               (
-                configuration: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration,
-                individual_id: String
+                ?configuration: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration,
+                ?individual_id: String
               ) -> void
               | (
                 ?FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::individual
@@ -95,11 +95,11 @@ module FinchAPI
 
               def initialize:
                 (
-                  annual_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::annual_contribution_limit,
-                  annual_maximum: Integer?,
-                  catch_up: bool,
-                  company_contribution: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution,
-                  employee_deduction: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction
+                  ?annual_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::annual_contribution_limit,
+                  ?annual_maximum: Integer?,
+                  ?catch_up: bool,
+                  ?company_contribution: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution,
+                  ?employee_deduction: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction
                 ) -> void
                 | (
                   ?FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::configuration
@@ -136,8 +136,8 @@ module FinchAPI
 
                 def initialize:
                   (
-                    amount: Integer,
-                    type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::type_
+                    ?amount: Integer,
+                    ?type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::type_
                   ) -> void
                   | (
                     ?FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::company_contribution
@@ -175,8 +175,8 @@ module FinchAPI
 
                 def initialize:
                   (
-                    amount: Integer,
-                    type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::type_
+                    ?amount: Integer,
+                    ?type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::type_
                   ) -> void
                   | (
                     ?FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::employee_deduction

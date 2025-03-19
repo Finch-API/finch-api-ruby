@@ -19,9 +19,9 @@ module FinchAPI
 
         def initialize:
           (
-            individual_id: String,
-            pay_frequencies: ::Array[String],
-            request_options: FinchAPI::request_opts
+            ?individual_id: String,
+            ?pay_frequencies: ::Array[String],
+            ?request_options: FinchAPI::request_opts
           ) -> void
           | (
             ?FinchAPI::Models::Payroll::pay_group_list_params

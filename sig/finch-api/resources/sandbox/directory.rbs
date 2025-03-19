@@ -8,8 +8,8 @@ module FinchAPI
             | ::Hash[Symbol, top] params
           ) -> FinchAPI::Models::Sandbox::directory_create_response
           | (
-            body: ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body],
-            request_options: FinchAPI::request_opts
+            ?body: ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body],
+            ?request_options: FinchAPI::request_opts
           ) -> FinchAPI::Models::Sandbox::directory_create_response
 
         def initialize: (client: FinchAPI::Client) -> void

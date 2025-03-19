@@ -10,7 +10,7 @@ module FinchAPI
           ) -> FinchAPI::Models::Jobs::ManualAsyncJob
           | (
             String job_id,
-            request_options: FinchAPI::request_opts
+            ?request_options: FinchAPI::request_opts
           ) -> FinchAPI::Models::Jobs::ManualAsyncJob
 
         def initialize: (client: FinchAPI::Client) -> void

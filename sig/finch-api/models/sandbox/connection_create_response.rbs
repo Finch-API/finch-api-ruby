@@ -41,7 +41,7 @@ module FinchAPI
             connection_id: String,
             products: ::Array[String],
             provider_id: String,
-            token_type: String
+            ?token_type: String
           ) -> void
           | (
             ?FinchAPI::Models::Sandbox::connection_create_response

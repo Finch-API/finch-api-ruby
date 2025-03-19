@@ -13,7 +13,7 @@ module FinchAPI
       def connection_id=: (String) -> String
 
       def initialize:
-        (account_id: String, company_id: String, connection_id: String) -> void
+        (account_id: String, company_id: String, ?connection_id: String) -> void
         | (
           ?FinchAPI::Models::base_webhook_event | FinchAPI::BaseModel data
         ) -> void

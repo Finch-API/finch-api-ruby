@@ -21,8 +21,8 @@ module FinchAPI
 
       def initialize:
         (
-          data: FinchAPI::Models::JobCompletionEvent::Data,
-          event_type: FinchAPI::Models::JobCompletionEvent::event_type
+          ?data: FinchAPI::Models::JobCompletionEvent::Data,
+          ?event_type: FinchAPI::Models::JobCompletionEvent::event_type
         ) -> void
         | (
           ?FinchAPI::Models::job_completion_event | FinchAPI::BaseModel data

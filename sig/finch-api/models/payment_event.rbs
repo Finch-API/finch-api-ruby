@@ -21,8 +21,8 @@ module FinchAPI
 
       def initialize:
         (
-          data: FinchAPI::Models::PaymentEvent::Data,
-          event_type: FinchAPI::Models::PaymentEvent::event_type
+          ?data: FinchAPI::Models::PaymentEvent::Data,
+          ?event_type: FinchAPI::Models::PaymentEvent::event_type
         ) -> void
         | (?FinchAPI::Models::payment_event | FinchAPI::BaseModel data) -> void
 

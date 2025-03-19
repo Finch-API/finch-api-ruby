@@ -20,7 +20,7 @@ module FinchAPI
           (
             type: FinchAPI::Models::Jobs::AutomatedCreateParams::type_,
             params: FinchAPI::Models::Jobs::AutomatedCreateParams::Params,
-            request_options: FinchAPI::request_opts
+            ?request_options: FinchAPI::request_opts
           ) -> void
           | (
             ?FinchAPI::Models::Jobs::automated_create_params

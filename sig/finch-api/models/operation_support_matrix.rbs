@@ -35,10 +35,10 @@ module FinchAPI
 
       def initialize:
         (
-          create: FinchAPI::Models::operation_support,
-          delete: FinchAPI::Models::operation_support,
-          read: FinchAPI::Models::operation_support,
-          update: FinchAPI::Models::operation_support
+          ?create: FinchAPI::Models::operation_support,
+          ?delete: FinchAPI::Models::operation_support,
+          ?read: FinchAPI::Models::operation_support,
+          ?update: FinchAPI::Models::operation_support
         ) -> void
         | (
           ?FinchAPI::Models::operation_support_matrix | FinchAPI::BaseModel data

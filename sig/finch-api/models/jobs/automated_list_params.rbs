@@ -18,9 +18,9 @@ module FinchAPI
 
         def initialize:
           (
-            limit: Integer,
-            offset: Integer,
-            request_options: FinchAPI::request_opts
+            ?limit: Integer,
+            ?offset: Integer,
+            ?request_options: FinchAPI::request_opts
           ) -> void
           | (
             ?FinchAPI::Models::Jobs::automated_list_params

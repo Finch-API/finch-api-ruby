@@ -25,9 +25,9 @@ module FinchAPI
 
         def initialize:
           (
-            body: FinchAPI::Models::HRIS::PayStatementResponseBody,
-            code: Integer,
-            payment_id: String
+            ?body: FinchAPI::Models::HRIS::PayStatementResponseBody,
+            ?code: Integer,
+            ?payment_id: String
           ) -> void
           | (
             ?FinchAPI::Models::HRIS::pay_statement_response

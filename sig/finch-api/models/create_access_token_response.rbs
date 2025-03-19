@@ -47,8 +47,8 @@ module FinchAPI
           connection_type: FinchAPI::Models::CreateAccessTokenResponse::connection_type,
           products: ::Array[String],
           provider_id: String,
-          customer_id: String?,
-          token_type: String
+          ?customer_id: String?,
+          ?token_type: String
         ) -> void
         | (
           ?FinchAPI::Models::create_access_token_response

@@ -8,9 +8,9 @@ module FinchAPI
             | ::Hash[Symbol, top] params
           ) -> FinchAPI::IndividualsPage[FinchAPI::Models::HRIS::IndividualInDirectory]
           | (
-            limit: Integer,
-            offset: Integer,
-            request_options: FinchAPI::request_opts
+            ?limit: Integer,
+            ?offset: Integer,
+            ?request_options: FinchAPI::request_opts
           ) -> FinchAPI::IndividualsPage[FinchAPI::Models::HRIS::IndividualInDirectory]
 
         alias list_individuals list
