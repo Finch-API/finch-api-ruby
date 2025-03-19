@@ -13,15 +13,10 @@ module FinchAPI
 
         attr_accessor requests: ::Array[FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request]
 
-        def initialize:
-          (
-            requests: ::Array[FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request],
-            ?request_options: FinchAPI::request_opts
-          ) -> void
-          | (
-            ?FinchAPI::Models::HRIS::pay_statement_retrieve_many_params
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          requests: ::Array[FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request],
+          ?request_options: FinchAPI::request_opts
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::pay_statement_retrieve_many_params
 
@@ -38,12 +33,11 @@ module FinchAPI
 
           def offset=: (Integer) -> Integer
 
-          def initialize:
-            (payment_id: String, ?limit: Integer, ?offset: Integer) -> void
-            | (
-              ?FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::request
-              | FinchAPI::BaseModel data
-            ) -> void
+          def initialize: (
+            payment_id: String,
+            ?limit: Integer,
+            ?offset: Integer
+          ) -> void
 
           def to_hash: -> FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::request
         end

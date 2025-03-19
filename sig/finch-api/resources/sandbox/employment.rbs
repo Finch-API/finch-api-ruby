@@ -2,34 +2,28 @@ module FinchAPI
   module Resources
     class Sandbox
       class Employment
-        def update:
-          (
-            String individual_id,
-            ?FinchAPI::Models::Sandbox::EmploymentUpdateParams
-            | ::Hash[Symbol, top] params
-          ) -> FinchAPI::Models::Sandbox::EmploymentUpdateResponse
-          | (
-            String individual_id,
-            ?class_code: String?,
-            ?custom_fields: ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField],
-            ?department: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Department?,
-            ?employment: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment?,
-            ?employment_status: FinchAPI::Models::Sandbox::EmploymentUpdateParams::employment_status?,
-            ?end_date: String?,
-            ?first_name: String?,
-            ?income: FinchAPI::Models::Income?,
-            ?income_history: ::Array[FinchAPI::Models::Income?]?,
-            ?is_active: bool?,
-            ?last_name: String?,
-            ?latest_rehire_date: String?,
-            ?location: FinchAPI::Models::Location?,
-            ?manager: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Manager?,
-            ?middle_name: String?,
-            ?source_id: String,
-            ?start_date: String?,
-            ?title: String?,
-            ?request_options: FinchAPI::request_opts
-          ) -> FinchAPI::Models::Sandbox::EmploymentUpdateResponse
+        def update: (
+          String individual_id,
+          ?class_code: String?,
+          ?custom_fields: ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField],
+          ?department: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Department?,
+          ?employment: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment?,
+          ?employment_status: FinchAPI::Models::Sandbox::EmploymentUpdateParams::employment_status?,
+          ?end_date: String?,
+          ?first_name: String?,
+          ?income: FinchAPI::Models::Income?,
+          ?income_history: ::Array[FinchAPI::Models::Income?]?,
+          ?is_active: bool?,
+          ?last_name: String?,
+          ?latest_rehire_date: String?,
+          ?location: FinchAPI::Models::Location?,
+          ?manager: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Manager?,
+          ?middle_name: String?,
+          ?source_id: String,
+          ?start_date: String?,
+          ?title: String?,
+          ?request_options: FinchAPI::request_opts
+        ) -> FinchAPI::Models::Sandbox::EmploymentUpdateResponse
 
         def initialize: (client: FinchAPI::Client) -> void
       end

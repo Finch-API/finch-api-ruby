@@ -18,15 +18,10 @@ module FinchAPI
           ::Array[FinchAPI::Models::HRIS::PayStatement]
         ) -> ::Array[FinchAPI::Models::HRIS::PayStatement]
 
-        def initialize:
-          (
-            ?paging: FinchAPI::Models::Paging,
-            ?pay_statements: ::Array[FinchAPI::Models::HRIS::PayStatement]
-          ) -> void
-          | (
-            ?FinchAPI::Models::HRIS::pay_statement_response_body
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          ?paging: FinchAPI::Models::Paging,
+          ?pay_statements: ::Array[FinchAPI::Models::HRIS::PayStatement]
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::pay_statement_response_body
       end

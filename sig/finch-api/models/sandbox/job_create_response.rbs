@@ -18,17 +18,12 @@ module FinchAPI
 
         attr_accessor remaining_refreshes: Integer
 
-        def initialize:
-          (
-            allowed_refreshes: Integer,
-            job_id: String,
-            job_url: String,
-            remaining_refreshes: Integer
-          ) -> void
-          | (
-            ?FinchAPI::Models::Sandbox::job_create_response
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          allowed_refreshes: Integer,
+          job_id: String,
+          job_url: String,
+          remaining_refreshes: Integer
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::Sandbox::job_create_response
       end

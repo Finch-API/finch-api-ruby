@@ -8,12 +8,7 @@ module FinchAPI
         extend FinchAPI::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
-        def initialize:
-          (?request_options: FinchAPI::request_opts) -> void
-          | (
-            ?FinchAPI::Models::HRIS::benefit_list_supported_benefits_params
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (?request_options: FinchAPI::request_opts) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::benefit_list_supported_benefits_params
       end

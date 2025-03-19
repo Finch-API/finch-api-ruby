@@ -15,15 +15,11 @@ module FinchAPI
 
         attr_accessor status: FinchAPI::Models::Jobs::ManualAsyncJob::status
 
-        def initialize:
-          (
-            body: ::Array[top]?,
-            job_id: String,
-            status: FinchAPI::Models::Jobs::ManualAsyncJob::status
-          ) -> void
-          | (
-            ?FinchAPI::Models::Jobs::manual_async_job | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          body: ::Array[top]?,
+          job_id: String,
+          status: FinchAPI::Models::Jobs::ManualAsyncJob::status
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::Jobs::manual_async_job
 

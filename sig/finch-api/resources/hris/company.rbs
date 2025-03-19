@@ -2,14 +2,9 @@ module FinchAPI
   module Resources
     class HRIS
       class Company
-        def retrieve:
-          (
-            ?FinchAPI::Models::HRIS::CompanyRetrieveParams
-            | ::Hash[Symbol, top] params
-          ) -> FinchAPI::Models::HRIS::HRISCompany
-          | (
-            ?request_options: FinchAPI::request_opts
-          ) -> FinchAPI::Models::HRIS::HRISCompany
+        def retrieve: (
+          ?request_options: FinchAPI::request_opts
+        ) -> FinchAPI::Models::HRIS::HRISCompany
 
         def initialize: (client: FinchAPI::Client) -> void
       end

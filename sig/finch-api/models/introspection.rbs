@@ -53,26 +53,24 @@ module FinchAPI
 
       attr_accessor username: String
 
-      def initialize:
-        (
-          account_id: String,
-          authentication_methods: ::Array[FinchAPI::Models::Introspection::AuthenticationMethod],
-          client_id: String,
-          client_type: FinchAPI::Models::Introspection::client_type,
-          company_id: String,
-          connection_id: String,
-          connection_status: FinchAPI::Models::Introspection::ConnectionStatus,
-          connection_type: FinchAPI::Models::Introspection::connection_type,
-          customer_email: String?,
-          customer_id: String?,
-          customer_name: String?,
-          manual: bool,
-          payroll_provider_id: String,
-          products: ::Array[String],
-          provider_id: String,
-          username: String
-        ) -> void
-        | (?FinchAPI::Models::introspection | FinchAPI::BaseModel data) -> void
+      def initialize: (
+        account_id: String,
+        authentication_methods: ::Array[FinchAPI::Models::Introspection::AuthenticationMethod],
+        client_id: String,
+        client_type: FinchAPI::Models::Introspection::client_type,
+        company_id: String,
+        connection_id: String,
+        connection_status: FinchAPI::Models::Introspection::ConnectionStatus,
+        connection_type: FinchAPI::Models::Introspection::connection_type,
+        customer_email: String?,
+        customer_id: String?,
+        customer_name: String?,
+        manual: bool,
+        payroll_provider_id: String,
+        products: ::Array[String],
+        provider_id: String,
+        username: String
+      ) -> void
 
       def to_hash: -> FinchAPI::Models::introspection
 
@@ -100,16 +98,11 @@ module FinchAPI
           FinchAPI::Models::Introspection::AuthenticationMethod::type_
         ) -> FinchAPI::Models::Introspection::AuthenticationMethod::type_
 
-        def initialize:
-          (
-            ?connection_status: FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus,
-            ?products: ::Array[String],
-            ?type: FinchAPI::Models::Introspection::AuthenticationMethod::type_
-          ) -> void
-          | (
-            ?FinchAPI::Models::Introspection::authentication_method
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          ?connection_status: FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus,
+          ?products: ::Array[String],
+          ?type: FinchAPI::Models::Introspection::AuthenticationMethod::type_
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::Introspection::authentication_method
 
@@ -127,15 +120,10 @@ module FinchAPI
             FinchAPI::Models::connection_status_type
           ) -> FinchAPI::Models::connection_status_type
 
-          def initialize:
-            (
-              ?message: String,
-              ?status: FinchAPI::Models::connection_status_type
-            ) -> void
-            | (
-              ?FinchAPI::Models::Introspection::AuthenticationMethod::connection_status
-              | FinchAPI::BaseModel data
-            ) -> void
+          def initialize: (
+            ?message: String,
+            ?status: FinchAPI::Models::connection_status_type
+          ) -> void
 
           def to_hash: -> FinchAPI::Models::Introspection::AuthenticationMethod::connection_status
         end
@@ -178,15 +166,10 @@ module FinchAPI
           FinchAPI::Models::connection_status_type
         ) -> FinchAPI::Models::connection_status_type
 
-        def initialize:
-          (
-            ?message: String,
-            ?status: FinchAPI::Models::connection_status_type
-          ) -> void
-          | (
-            ?FinchAPI::Models::Introspection::connection_status
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          ?message: String,
+          ?status: FinchAPI::Models::connection_status_type
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::Introspection::connection_status
       end

@@ -29,18 +29,13 @@ module FinchAPI
 
         attr_accessor year: Float?
 
-        def initialize:
-          (
-            ?id: String,
-            ?individual_id: String?,
-            ?type: FinchAPI::Models::HRIS::DocumentResponse::type_,
-            ?url: String,
-            ?year: Float?
-          ) -> void
-          | (
-            ?FinchAPI::Models::HRIS::document_response
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          ?id: String,
+          ?individual_id: String?,
+          ?type: FinchAPI::Models::HRIS::DocumentResponse::type_,
+          ?url: String,
+          ?year: Float?
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::document_response
 

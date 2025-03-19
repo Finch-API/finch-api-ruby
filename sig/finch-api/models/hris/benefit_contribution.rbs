@@ -12,15 +12,10 @@ module FinchAPI
 
         attr_accessor type: FinchAPI::Models::HRIS::BenefitContribution::type_?
 
-        def initialize:
-          (
-            ?amount: Integer?,
-            ?type: FinchAPI::Models::HRIS::BenefitContribution::type_?
-          ) -> void
-          | (
-            ?FinchAPI::Models::HRIS::benefit_contribution
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          ?amount: Integer?,
+          ?type: FinchAPI::Models::HRIS::BenefitContribution::type_?
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::benefit_contribution
 

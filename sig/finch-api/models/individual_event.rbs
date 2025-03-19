@@ -19,14 +19,10 @@ module FinchAPI
         FinchAPI::Models::IndividualEvent::event_type _
       ) -> FinchAPI::Models::IndividualEvent::event_type
 
-      def initialize:
-        (
-          ?data: FinchAPI::Models::IndividualEvent::Data,
-          ?event_type: FinchAPI::Models::IndividualEvent::event_type
-        ) -> void
-        | (
-          ?FinchAPI::Models::individual_event | FinchAPI::BaseModel data
-        ) -> void
+      def initialize: (
+        ?data: FinchAPI::Models::IndividualEvent::Data,
+        ?event_type: FinchAPI::Models::IndividualEvent::event_type
+      ) -> void
 
       def to_hash: -> FinchAPI::Models::individual_event
 
@@ -37,11 +33,7 @@ module FinchAPI
 
         def individual_id=: (String) -> String
 
-        def initialize:
-          (?individual_id: String) -> void
-          | (
-            ?FinchAPI::Models::IndividualEvent::data | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (?individual_id: String) -> void
 
         def to_hash: -> FinchAPI::Models::IndividualEvent::data
       end

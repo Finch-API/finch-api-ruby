@@ -18,16 +18,12 @@ module FinchAPI
 
         attr_accessor type: FinchAPI::Models::HRIS::benefit_type?
 
-        def initialize:
-          (
-            benefit_id: String,
-            description: String?,
-            frequency: FinchAPI::Models::HRIS::benefit_frequency?,
-            type: FinchAPI::Models::HRIS::benefit_type?
-          ) -> void
-          | (
-            ?FinchAPI::Models::HRIS::company_benefit | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          benefit_id: String,
+          description: String?,
+          frequency: FinchAPI::Models::HRIS::benefit_frequency?,
+          type: FinchAPI::Models::HRIS::benefit_type?
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::company_benefit
       end

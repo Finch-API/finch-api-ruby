@@ -5,11 +5,7 @@ module FinchAPI
     class DisconnectResponse < FinchAPI::BaseModel
       attr_accessor status: String
 
-      def initialize:
-        (status: String) -> void
-        | (
-          ?FinchAPI::Models::disconnect_response | FinchAPI::BaseModel data
-        ) -> void
+      def initialize: (status: String) -> void
 
       def to_hash: -> FinchAPI::Models::disconnect_response
     end

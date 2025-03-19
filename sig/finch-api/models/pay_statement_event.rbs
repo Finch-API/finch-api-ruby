@@ -19,14 +19,10 @@ module FinchAPI
         FinchAPI::Models::PayStatementEvent::event_type _
       ) -> FinchAPI::Models::PayStatementEvent::event_type
 
-      def initialize:
-        (
-          ?data: FinchAPI::Models::PayStatementEvent::Data,
-          ?event_type: FinchAPI::Models::PayStatementEvent::event_type
-        ) -> void
-        | (
-          ?FinchAPI::Models::pay_statement_event | FinchAPI::BaseModel data
-        ) -> void
+      def initialize: (
+        ?data: FinchAPI::Models::PayStatementEvent::Data,
+        ?event_type: FinchAPI::Models::PayStatementEvent::event_type
+      ) -> void
 
       def to_hash: -> FinchAPI::Models::pay_statement_event
 
@@ -41,12 +37,7 @@ module FinchAPI
 
         def payment_id=: (String) -> String
 
-        def initialize:
-          (?individual_id: String, ?payment_id: String) -> void
-          | (
-            ?FinchAPI::Models::PayStatementEvent::data
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (?individual_id: String, ?payment_id: String) -> void
 
         def to_hash: -> FinchAPI::Models::PayStatementEvent::data
       end

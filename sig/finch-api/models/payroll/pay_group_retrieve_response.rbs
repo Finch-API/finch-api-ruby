@@ -18,17 +18,12 @@ module FinchAPI
 
         attr_accessor pay_frequencies: ::Array[FinchAPI::Models::Payroll::PayGroupRetrieveResponse::pay_frequency]
 
-        def initialize:
-          (
-            id: String,
-            individual_ids: ::Array[String],
-            name: String,
-            pay_frequencies: ::Array[FinchAPI::Models::Payroll::PayGroupRetrieveResponse::pay_frequency]
-          ) -> void
-          | (
-            ?FinchAPI::Models::Payroll::pay_group_retrieve_response
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          id: String,
+          individual_ids: ::Array[String],
+          name: String,
+          pay_frequencies: ::Array[FinchAPI::Models::Payroll::PayGroupRetrieveResponse::pay_frequency]
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::Payroll::pay_group_retrieve_response
 

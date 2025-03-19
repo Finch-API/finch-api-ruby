@@ -29,18 +29,16 @@ module FinchAPI
 
       attr_accessor state: String?
 
-      def initialize:
-        (
-          ?city: String?,
-          ?country: String?,
-          ?line1: String?,
-          ?line2: String?,
-          ?name: String?,
-          ?postal_code: String?,
-          ?source_id: String?,
-          ?state: String?
-        ) -> void
-        | (?FinchAPI::Models::location | FinchAPI::BaseModel data) -> void
+      def initialize: (
+        ?city: String?,
+        ?country: String?,
+        ?line1: String?,
+        ?line2: String?,
+        ?name: String?,
+        ?postal_code: String?,
+        ?source_id: String?,
+        ?state: String?
+      ) -> void
 
       def to_hash: -> FinchAPI::Models::location
     end

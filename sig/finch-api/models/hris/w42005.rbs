@@ -23,13 +23,11 @@ module FinchAPI
 
         attr_accessor year: Float?
 
-        def initialize:
-          (
-            ?data: FinchAPI::Models::HRIS::W42005::Data,
-            ?type: FinchAPI::Models::HRIS::W42005::type_,
-            ?year: Float?
-          ) -> void
-          | (?FinchAPI::Models::HRIS::w42005 | FinchAPI::BaseModel data) -> void
+        def initialize: (
+          ?data: FinchAPI::Models::HRIS::W42005::Data,
+          ?type: FinchAPI::Models::HRIS::W42005::type_,
+          ?year: Float?
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::w42005
 
@@ -63,17 +61,13 @@ module FinchAPI
 
           attr_accessor total_number_of_allowances: Integer?
 
-          def initialize:
-            (
-              ?additional_withholding: Integer?,
-              ?exemption: FinchAPI::Models::HRIS::W42005::Data::exemption,
-              ?filing_status: FinchAPI::Models::HRIS::W42005::Data::filing_status,
-              ?individual_id: String,
-              ?total_number_of_allowances: Integer?
-            ) -> void
-            | (
-              ?FinchAPI::Models::HRIS::W42005::data | FinchAPI::BaseModel data
-            ) -> void
+          def initialize: (
+            ?additional_withholding: Integer?,
+            ?exemption: FinchAPI::Models::HRIS::W42005::Data::exemption,
+            ?filing_status: FinchAPI::Models::HRIS::W42005::Data::filing_status,
+            ?individual_id: String,
+            ?total_number_of_allowances: Integer?
+          ) -> void
 
           def to_hash: -> FinchAPI::Models::HRIS::W42005::data
 
