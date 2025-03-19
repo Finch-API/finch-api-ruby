@@ -2,16 +2,11 @@ module FinchAPI
   module Resources
     class HRIS
       class Directory
-        def list:
-          (
-            ?FinchAPI::Models::HRIS::DirectoryListParams
-            | ::Hash[Symbol, top] params
-          ) -> FinchAPI::IndividualsPage[FinchAPI::Models::HRIS::IndividualInDirectory]
-          | (
-            ?limit: Integer,
-            ?offset: Integer,
-            ?request_options: FinchAPI::request_opts
-          ) -> FinchAPI::IndividualsPage[FinchAPI::Models::HRIS::IndividualInDirectory]
+        def list: (
+          ?limit: Integer,
+          ?offset: Integer,
+          ?request_options: FinchAPI::request_opts
+        ) -> FinchAPI::IndividualsPage[FinchAPI::Models::HRIS::IndividualInDirectory]
 
         alias list_individuals list
 

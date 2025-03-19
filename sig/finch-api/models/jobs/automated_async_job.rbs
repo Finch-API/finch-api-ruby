@@ -33,22 +33,17 @@ module FinchAPI
 
         attr_accessor type: FinchAPI::Models::Jobs::AutomatedAsyncJob::type_
 
-        def initialize:
-          (
-            completed_at: Time?,
-            created_at: Time,
-            job_id: String,
-            job_url: String,
-            params: FinchAPI::Models::Jobs::AutomatedAsyncJob::Params?,
-            scheduled_at: Time?,
-            started_at: Time?,
-            status: FinchAPI::Models::Jobs::AutomatedAsyncJob::status,
-            type: FinchAPI::Models::Jobs::AutomatedAsyncJob::type_
-          ) -> void
-          | (
-            ?FinchAPI::Models::Jobs::automated_async_job
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          completed_at: Time?,
+          created_at: Time,
+          job_id: String,
+          job_url: String,
+          params: FinchAPI::Models::Jobs::AutomatedAsyncJob::Params?,
+          scheduled_at: Time?,
+          started_at: Time?,
+          status: FinchAPI::Models::Jobs::AutomatedAsyncJob::status,
+          type: FinchAPI::Models::Jobs::AutomatedAsyncJob::type_
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::Jobs::automated_async_job
 
@@ -59,12 +54,7 @@ module FinchAPI
 
           def individual_id=: (String) -> String
 
-          def initialize:
-            (?individual_id: String) -> void
-            | (
-              ?FinchAPI::Models::Jobs::AutomatedAsyncJob::params
-              | FinchAPI::BaseModel data
-            ) -> void
+          def initialize: (?individual_id: String) -> void
 
           def to_hash: -> FinchAPI::Models::Jobs::AutomatedAsyncJob::params
         end

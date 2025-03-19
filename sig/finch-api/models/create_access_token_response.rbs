@@ -37,23 +37,18 @@ module FinchAPI
 
       def token_type=: (String) -> String
 
-      def initialize:
-        (
-          access_token: String,
-          account_id: String,
-          client_type: FinchAPI::Models::CreateAccessTokenResponse::client_type,
-          company_id: String,
-          connection_id: String,
-          connection_type: FinchAPI::Models::CreateAccessTokenResponse::connection_type,
-          products: ::Array[String],
-          provider_id: String,
-          ?customer_id: String?,
-          ?token_type: String
-        ) -> void
-        | (
-          ?FinchAPI::Models::create_access_token_response
-          | FinchAPI::BaseModel data
-        ) -> void
+      def initialize: (
+        access_token: String,
+        account_id: String,
+        client_type: FinchAPI::Models::CreateAccessTokenResponse::client_type,
+        company_id: String,
+        connection_id: String,
+        connection_type: FinchAPI::Models::CreateAccessTokenResponse::connection_type,
+        products: ::Array[String],
+        provider_id: String,
+        ?customer_id: String?,
+        ?token_type: String
+      ) -> void
 
       def to_hash: -> FinchAPI::Models::create_access_token_response
 

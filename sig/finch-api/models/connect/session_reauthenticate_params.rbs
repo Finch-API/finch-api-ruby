@@ -22,18 +22,13 @@ module FinchAPI
 
         attr_accessor redirect_uri: String?
 
-        def initialize:
-          (
-            connection_id: String,
-            ?minutes_to_expire: Integer?,
-            ?products: ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]?,
-            ?redirect_uri: String?,
-            ?request_options: FinchAPI::request_opts
-          ) -> void
-          | (
-            ?FinchAPI::Models::Connect::session_reauthenticate_params
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          connection_id: String,
+          ?minutes_to_expire: Integer?,
+          ?products: ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]?,
+          ?redirect_uri: String?,
+          ?request_options: FinchAPI::request_opts
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::Connect::session_reauthenticate_params
 

@@ -46,26 +46,21 @@ module FinchAPI
 
         attr_accessor ssn: String?
 
-        def initialize:
-          (
-            ?dob: String?,
-            ?emails: ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::Email]?,
-            ?encrypted_ssn: String?,
-            ?ethnicity: FinchAPI::Models::Sandbox::IndividualUpdateParams::ethnicity?,
-            ?first_name: String?,
-            ?gender: FinchAPI::Models::Sandbox::IndividualUpdateParams::gender?,
-            ?last_name: String?,
-            ?middle_name: String?,
-            ?phone_numbers: ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber?]?,
-            ?preferred_name: String?,
-            ?residence: FinchAPI::Models::Location?,
-            ?ssn: String?,
-            ?request_options: FinchAPI::request_opts
-          ) -> void
-          | (
-            ?FinchAPI::Models::Sandbox::individual_update_params
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          ?dob: String?,
+          ?emails: ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::Email]?,
+          ?encrypted_ssn: String?,
+          ?ethnicity: FinchAPI::Models::Sandbox::IndividualUpdateParams::ethnicity?,
+          ?first_name: String?,
+          ?gender: FinchAPI::Models::Sandbox::IndividualUpdateParams::gender?,
+          ?last_name: String?,
+          ?middle_name: String?,
+          ?phone_numbers: ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber?]?,
+          ?preferred_name: String?,
+          ?residence: FinchAPI::Models::Location?,
+          ?ssn: String?,
+          ?request_options: FinchAPI::request_opts
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::Sandbox::individual_update_params
 
@@ -82,15 +77,10 @@ module FinchAPI
 
           attr_accessor type: FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::type_?
 
-          def initialize:
-            (
-              ?data: String,
-              ?type: FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::type_?
-            ) -> void
-            | (
-              ?FinchAPI::Models::Sandbox::IndividualUpdateParams::email
-              | FinchAPI::BaseModel data
-            ) -> void
+          def initialize: (
+            ?data: String,
+            ?type: FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::type_?
+          ) -> void
 
           def to_hash: -> FinchAPI::Models::Sandbox::IndividualUpdateParams::email
 
@@ -151,15 +141,10 @@ module FinchAPI
 
           attr_accessor type: FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::type_?
 
-          def initialize:
-            (
-              ?data: String,
-              ?type: FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::type_?
-            ) -> void
-            | (
-              ?FinchAPI::Models::Sandbox::IndividualUpdateParams::phone_number
-              | FinchAPI::BaseModel data
-            ) -> void
+          def initialize: (
+            ?data: String,
+            ?type: FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::type_?
+          ) -> void
 
           def to_hash: -> FinchAPI::Models::Sandbox::IndividualUpdateParams::phone_number
 

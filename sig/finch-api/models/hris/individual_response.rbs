@@ -23,16 +23,11 @@ module FinchAPI
 
         def individual_id=: (String) -> String
 
-        def initialize:
-          (
-            ?body: FinchAPI::Models::HRIS::Individual,
-            ?code: Integer,
-            ?individual_id: String
-          ) -> void
-          | (
-            ?FinchAPI::Models::HRIS::individual_response
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          ?body: FinchAPI::Models::HRIS::Individual,
+          ?code: Integer,
+          ?individual_id: String
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::individual_response
       end

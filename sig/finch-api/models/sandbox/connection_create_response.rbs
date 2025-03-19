@@ -32,21 +32,16 @@ module FinchAPI
 
         def token_type=: (String) -> String
 
-        def initialize:
-          (
-            access_token: String,
-            account_id: String,
-            authentication_type: FinchAPI::Models::Sandbox::ConnectionCreateResponse::authentication_type,
-            company_id: String,
-            connection_id: String,
-            products: ::Array[String],
-            provider_id: String,
-            ?token_type: String
-          ) -> void
-          | (
-            ?FinchAPI::Models::Sandbox::connection_create_response
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          access_token: String,
+          account_id: String,
+          authentication_type: FinchAPI::Models::Sandbox::ConnectionCreateResponse::authentication_type,
+          company_id: String,
+          connection_id: String,
+          products: ::Array[String],
+          provider_id: String,
+          ?token_type: String
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::Sandbox::connection_create_response
 

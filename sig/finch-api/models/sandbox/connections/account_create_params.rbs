@@ -29,18 +29,13 @@ module FinchAPI
 
           def products=: (::Array[String]) -> ::Array[String]
 
-          def initialize:
-            (
-              company_id: String,
-              provider_id: String,
-              ?authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::authentication_type,
-              ?products: ::Array[String],
-              ?request_options: FinchAPI::request_opts
-            ) -> void
-            | (
-              ?FinchAPI::Models::Sandbox::Connections::account_create_params
-              | FinchAPI::BaseModel data
-            ) -> void
+          def initialize: (
+            company_id: String,
+            provider_id: String,
+            ?authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::authentication_type,
+            ?products: ::Array[String],
+            ?request_options: FinchAPI::request_opts
+          ) -> void
 
           def to_hash: -> FinchAPI::Models::Sandbox::Connections::account_create_params
 

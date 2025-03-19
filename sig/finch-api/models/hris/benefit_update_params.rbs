@@ -12,15 +12,10 @@ module FinchAPI
 
         def description=: (String) -> String
 
-        def initialize:
-          (
-            ?description: String,
-            ?request_options: FinchAPI::request_opts
-          ) -> void
-          | (
-            ?FinchAPI::Models::HRIS::benefit_update_params
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          ?description: String,
+          ?request_options: FinchAPI::request_opts
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::benefit_update_params
       end

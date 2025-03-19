@@ -1,13 +1,9 @@
 module FinchAPI
   module Resources
     class Providers
-      def list:
-        (
-          ?FinchAPI::Models::ProviderListParams | ::Hash[Symbol, top] params
-        ) -> FinchAPI::SinglePage[FinchAPI::Models::Provider]
-        | (
-          ?request_options: FinchAPI::request_opts
-        ) -> FinchAPI::SinglePage[FinchAPI::Models::Provider]
+      def list: (
+        ?request_options: FinchAPI::request_opts
+      ) -> FinchAPI::SinglePage[FinchAPI::Models::Provider]
 
       def initialize: (client: FinchAPI::Client) -> void
     end

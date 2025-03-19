@@ -6,12 +6,7 @@ module FinchAPI
       extend FinchAPI::RequestParameters::Converter
       include FinchAPI::RequestParameters
 
-      def initialize:
-        (?request_options: FinchAPI::request_opts) -> void
-        | (
-          ?FinchAPI::Models::account_introspect_params
-          | FinchAPI::BaseModel data
-        ) -> void
+      def initialize: (?request_options: FinchAPI::request_opts) -> void
 
       def to_hash: -> FinchAPI::Models::account_introspect_params
     end

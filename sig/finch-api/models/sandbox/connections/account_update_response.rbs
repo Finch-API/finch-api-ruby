@@ -27,19 +27,14 @@ module FinchAPI
 
           def connection_id=: (String) -> String
 
-          def initialize:
-            (
-              account_id: String,
-              authentication_type: FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::authentication_type,
-              company_id: String,
-              products: ::Array[String],
-              provider_id: String,
-              ?connection_id: String
-            ) -> void
-            | (
-              ?FinchAPI::Models::Sandbox::Connections::account_update_response
-              | FinchAPI::BaseModel data
-            ) -> void
+          def initialize: (
+            account_id: String,
+            authentication_type: FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::authentication_type,
+            company_id: String,
+            products: ::Array[String],
+            provider_id: String,
+            ?connection_id: String
+          ) -> void
 
           def to_hash: -> FinchAPI::Models::Sandbox::Connections::account_update_response
 
