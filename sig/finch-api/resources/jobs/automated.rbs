@@ -2,38 +2,22 @@ module FinchAPI
   module Resources
     class Jobs
       class Automated
-        def create:
-          (
-            FinchAPI::Models::Jobs::AutomatedCreateParams
-            | ::Hash[Symbol, top] params
-          ) -> FinchAPI::Models::Jobs::AutomatedCreateResponse
-          | (
-            type: FinchAPI::Models::Jobs::AutomatedCreateParams::type_,
-            params: FinchAPI::Models::Jobs::AutomatedCreateParams::Params,
-            ?request_options: FinchAPI::request_opts
-          ) -> FinchAPI::Models::Jobs::AutomatedCreateResponse
+        def create: (
+          type: FinchAPI::Models::Jobs::AutomatedCreateParams::type_,
+          params: FinchAPI::Models::Jobs::AutomatedCreateParams::Params,
+          ?request_options: FinchAPI::request_opts
+        ) -> FinchAPI::Models::Jobs::AutomatedCreateResponse
 
-        def retrieve:
-          (
-            String job_id,
-            ?FinchAPI::Models::Jobs::AutomatedRetrieveParams
-            | ::Hash[Symbol, top] params
-          ) -> FinchAPI::Models::Jobs::AutomatedAsyncJob
-          | (
-            String job_id,
-            ?request_options: FinchAPI::request_opts
-          ) -> FinchAPI::Models::Jobs::AutomatedAsyncJob
+        def retrieve: (
+          String job_id,
+          ?request_options: FinchAPI::request_opts
+        ) -> FinchAPI::Models::Jobs::AutomatedAsyncJob
 
-        def list:
-          (
-            ?FinchAPI::Models::Jobs::AutomatedListParams
-            | ::Hash[Symbol, top] params
-          ) -> FinchAPI::Models::Jobs::AutomatedListResponse
-          | (
-            ?limit: Integer,
-            ?offset: Integer,
-            ?request_options: FinchAPI::request_opts
-          ) -> FinchAPI::Models::Jobs::AutomatedListResponse
+        def list: (
+          ?limit: Integer,
+          ?offset: Integer,
+          ?request_options: FinchAPI::request_opts
+        ) -> FinchAPI::Models::Jobs::AutomatedListResponse
 
         def initialize: (client: FinchAPI::Client) -> void
       end

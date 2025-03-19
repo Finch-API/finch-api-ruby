@@ -1,17 +1,13 @@
 module FinchAPI
   module Resources
     class AccessTokens
-      def create:
-        (
-          FinchAPI::Models::AccessTokenCreateParams | ::Hash[Symbol, top] params
-        ) -> FinchAPI::Models::CreateAccessTokenResponse
-        | (
-          code: String,
-          ?client_id: String,
-          ?client_secret: String,
-          ?redirect_uri: String,
-          ?request_options: FinchAPI::request_opts
-        ) -> FinchAPI::Models::CreateAccessTokenResponse
+      def create: (
+        code: String,
+        ?client_id: String,
+        ?client_secret: String,
+        ?redirect_uri: String,
+        ?request_options: FinchAPI::request_opts
+      ) -> FinchAPI::Models::CreateAccessTokenResponse
 
       def initialize: (client: FinchAPI::Client) -> void
     end

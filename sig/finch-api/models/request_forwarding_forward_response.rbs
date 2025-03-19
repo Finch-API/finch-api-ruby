@@ -17,17 +17,12 @@ module FinchAPI
 
       attr_accessor status_code: Integer
 
-      def initialize:
-        (
-          data: String?,
-          headers: top?,
-          request: FinchAPI::Models::RequestForwardingForwardResponse::Request,
-          status_code: Integer
-        ) -> void
-        | (
-          ?FinchAPI::Models::request_forwarding_forward_response
-          | FinchAPI::BaseModel data
-        ) -> void
+      def initialize: (
+        data: String?,
+        headers: top?,
+        request: FinchAPI::Models::RequestForwardingForwardResponse::Request,
+        status_code: Integer
+      ) -> void
 
       def to_hash: -> FinchAPI::Models::request_forwarding_forward_response
 
@@ -51,18 +46,13 @@ module FinchAPI
 
         attr_accessor route: String
 
-        def initialize:
-          (
-            data: String?,
-            headers: top?,
-            method_: String,
-            params: top?,
-            route: String
-          ) -> void
-          | (
-            ?FinchAPI::Models::RequestForwardingForwardResponse::request
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          data: String?,
+          headers: top?,
+          method_: String,
+          params: top?,
+          route: String
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::RequestForwardingForwardResponse::request
       end

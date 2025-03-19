@@ -16,16 +16,11 @@ module FinchAPI
 
         def offset=: (Integer) -> Integer
 
-        def initialize:
-          (
-            ?limit: Integer,
-            ?offset: Integer,
-            ?request_options: FinchAPI::request_opts
-          ) -> void
-          | (
-            ?FinchAPI::Models::HRIS::directory_list_individuals_params
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          ?limit: Integer,
+          ?offset: Integer,
+          ?request_options: FinchAPI::request_opts
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::directory_list_individuals_params
       end

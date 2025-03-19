@@ -20,15 +20,10 @@ module FinchAPI
           FinchAPI::Models::HRIS::SupportPerBenefitType
         ) -> FinchAPI::Models::HRIS::SupportPerBenefitType
 
-        def initialize:
-          (
-            ?supported_features: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures,
-            ?supported_operations: FinchAPI::Models::HRIS::SupportPerBenefitType
-          ) -> void
-          | (
-            ?FinchAPI::Models::HRIS::benefit_features_and_operations
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          ?supported_features: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures,
+          ?supported_operations: FinchAPI::Models::HRIS::SupportPerBenefitType
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::benefit_features_and_operations
 
@@ -62,20 +57,15 @@ module FinchAPI
 
           attr_accessor hsa_contribution_limit: ::Array[FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::hsa_contribution_limit?]?
 
-          def initialize:
-            (
-              ?annual_maximum: bool?,
-              ?catch_up: bool?,
-              ?company_contribution: ::Array[FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::company_contribution?]?,
-              ?description: String?,
-              ?employee_deduction: ::Array[FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::employee_deduction?]?,
-              ?frequencies: ::Array[FinchAPI::Models::HRIS::benefit_frequency?],
-              ?hsa_contribution_limit: ::Array[FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::hsa_contribution_limit?]?
-            ) -> void
-            | (
-              ?FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::supported_features
-              | FinchAPI::BaseModel data
-            ) -> void
+          def initialize: (
+            ?annual_maximum: bool?,
+            ?catch_up: bool?,
+            ?company_contribution: ::Array[FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::company_contribution?]?,
+            ?description: String?,
+            ?employee_deduction: ::Array[FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::employee_deduction?]?,
+            ?frequencies: ::Array[FinchAPI::Models::HRIS::benefit_frequency?],
+            ?hsa_contribution_limit: ::Array[FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::hsa_contribution_limit?]?
+          ) -> void
 
           def to_hash: -> FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::supported_features
 

@@ -33,16 +33,12 @@ module FinchAPI
         FinchAPI::Models::operation_support
       ) -> FinchAPI::Models::operation_support
 
-      def initialize:
-        (
-          ?create: FinchAPI::Models::operation_support,
-          ?delete: FinchAPI::Models::operation_support,
-          ?read: FinchAPI::Models::operation_support,
-          ?update: FinchAPI::Models::operation_support
-        ) -> void
-        | (
-          ?FinchAPI::Models::operation_support_matrix | FinchAPI::BaseModel data
-        ) -> void
+      def initialize: (
+        ?create: FinchAPI::Models::operation_support,
+        ?delete: FinchAPI::Models::operation_support,
+        ?read: FinchAPI::Models::operation_support,
+        ?update: FinchAPI::Models::operation_support
+      ) -> void
 
       def to_hash: -> FinchAPI::Models::operation_support_matrix
     end

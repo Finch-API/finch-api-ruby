@@ -3,28 +3,18 @@ module FinchAPI
     class Sandbox
       class Connections
         class Accounts
-          def create:
-            (
-              FinchAPI::Models::Sandbox::Connections::AccountCreateParams
-              | ::Hash[Symbol, top] params
-            ) -> FinchAPI::Models::Sandbox::Connections::AccountCreateResponse
-            | (
-              company_id: String,
-              provider_id: String,
-              ?authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::authentication_type,
-              ?products: ::Array[String],
-              ?request_options: FinchAPI::request_opts
-            ) -> FinchAPI::Models::Sandbox::Connections::AccountCreateResponse
+          def create: (
+            company_id: String,
+            provider_id: String,
+            ?authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::authentication_type,
+            ?products: ::Array[String],
+            ?request_options: FinchAPI::request_opts
+          ) -> FinchAPI::Models::Sandbox::Connections::AccountCreateResponse
 
-          def update:
-            (
-              ?FinchAPI::Models::Sandbox::Connections::AccountUpdateParams
-              | ::Hash[Symbol, top] params
-            ) -> FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse
-            | (
-              ?connection_status: FinchAPI::Models::connection_status_type,
-              ?request_options: FinchAPI::request_opts
-            ) -> FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse
+          def update: (
+            ?connection_status: FinchAPI::Models::connection_status_type,
+            ?request_options: FinchAPI::request_opts
+          ) -> FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse
 
           def initialize: (client: FinchAPI::Client) -> void
         end

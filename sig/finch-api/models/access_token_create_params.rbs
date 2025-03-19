@@ -27,18 +27,13 @@ module FinchAPI
 
       def redirect_uri=: (String) -> String
 
-      def initialize:
-        (
-          code: String,
-          ?client_id: String,
-          ?client_secret: String,
-          ?redirect_uri: String,
-          ?request_options: FinchAPI::request_opts
-        ) -> void
-        | (
-          ?FinchAPI::Models::access_token_create_params
-          | FinchAPI::BaseModel data
-        ) -> void
+      def initialize: (
+        code: String,
+        ?client_id: String,
+        ?client_secret: String,
+        ?redirect_uri: String,
+        ?request_options: FinchAPI::request_opts
+      ) -> void
 
       def to_hash: -> FinchAPI::Models::access_token_create_params
     end

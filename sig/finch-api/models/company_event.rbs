@@ -17,12 +17,10 @@ module FinchAPI
         FinchAPI::Models::CompanyEvent::event_type _
       ) -> FinchAPI::Models::CompanyEvent::event_type
 
-      def initialize:
-        (
-          ?data: ::Hash[Symbol, top]?,
-          ?event_type: FinchAPI::Models::CompanyEvent::event_type
-        ) -> void
-        | (?FinchAPI::Models::company_event | FinchAPI::BaseModel data) -> void
+      def initialize: (
+        ?data: ::Hash[Symbol, top]?,
+        ?event_type: FinchAPI::Models::CompanyEvent::event_type
+      ) -> void
 
       def to_hash: -> FinchAPI::Models::company_event
 

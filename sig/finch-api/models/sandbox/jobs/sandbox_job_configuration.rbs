@@ -13,15 +13,10 @@ module FinchAPI
 
           attr_accessor type: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::type_
 
-          def initialize:
-            (
-              completion_status: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::completion_status,
-              type: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::type_
-            ) -> void
-            | (
-              ?FinchAPI::Models::Sandbox::Jobs::sandbox_job_configuration
-              | FinchAPI::BaseModel data
-            ) -> void
+          def initialize: (
+            completion_status: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::completion_status,
+            type: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::type_
+          ) -> void
 
           def to_hash: -> FinchAPI::Models::Sandbox::Jobs::sandbox_job_configuration
 

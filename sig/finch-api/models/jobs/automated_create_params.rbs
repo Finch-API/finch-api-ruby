@@ -16,16 +16,11 @@ module FinchAPI
 
         attr_accessor params: FinchAPI::Models::Jobs::AutomatedCreateParams::Params
 
-        def initialize:
-          (
-            type: FinchAPI::Models::Jobs::AutomatedCreateParams::type_,
-            params: FinchAPI::Models::Jobs::AutomatedCreateParams::Params,
-            ?request_options: FinchAPI::request_opts
-          ) -> void
-          | (
-            ?FinchAPI::Models::Jobs::automated_create_params
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          type: FinchAPI::Models::Jobs::AutomatedCreateParams::type_,
+          params: FinchAPI::Models::Jobs::AutomatedCreateParams::Params,
+          ?request_options: FinchAPI::request_opts
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::Jobs::automated_create_params
 
@@ -42,12 +37,7 @@ module FinchAPI
         class Params < FinchAPI::BaseModel
           attr_accessor individual_id: String
 
-          def initialize:
-            (individual_id: String) -> void
-            | (
-              ?FinchAPI::Models::Jobs::AutomatedCreateParams::params
-              | FinchAPI::BaseModel data
-            ) -> void
+          def initialize: (individual_id: String) -> void
 
           def to_hash: -> FinchAPI::Models::Jobs::AutomatedCreateParams::params
         end
