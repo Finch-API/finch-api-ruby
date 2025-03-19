@@ -3,8 +3,6 @@
 module FinchAPI
   module Models
     module HRIS
-      IndividualBenefit = T.type_alias { Benefits::IndividualBenefit }
-
       module Benefits
         class IndividualBenefit < FinchAPI::BaseModel
           sig { returns(T.nilable(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body)) }
@@ -151,6 +149,8 @@ module FinchAPI
           end
         end
       end
+
+      IndividualBenefit = Benefits::IndividualBenefit
     end
   end
 end
