@@ -25,9 +25,9 @@ module FinchAPI
 
         def initialize:
           (
-            data: FinchAPI::Models::HRIS::W42005::Data,
-            type: FinchAPI::Models::HRIS::W42005::type_,
-            year: Float?
+            ?data: FinchAPI::Models::HRIS::W42005::Data,
+            ?type: FinchAPI::Models::HRIS::W42005::type_,
+            ?year: Float?
           ) -> void
           | (?FinchAPI::Models::HRIS::w42005 | FinchAPI::BaseModel data) -> void
 
@@ -65,11 +65,11 @@ module FinchAPI
 
           def initialize:
             (
-              additional_withholding: Integer?,
-              exemption: FinchAPI::Models::HRIS::W42005::Data::exemption,
-              filing_status: FinchAPI::Models::HRIS::W42005::Data::filing_status,
-              individual_id: String,
-              total_number_of_allowances: Integer?
+              ?additional_withholding: Integer?,
+              ?exemption: FinchAPI::Models::HRIS::W42005::Data::exemption,
+              ?filing_status: FinchAPI::Models::HRIS::W42005::Data::filing_status,
+              ?individual_id: String,
+              ?total_number_of_allowances: Integer?
             ) -> void
             | (
               ?FinchAPI::Models::HRIS::W42005::data | FinchAPI::BaseModel data

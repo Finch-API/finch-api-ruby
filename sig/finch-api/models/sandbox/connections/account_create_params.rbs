@@ -33,9 +33,9 @@ module FinchAPI
             (
               company_id: String,
               provider_id: String,
-              authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::authentication_type,
-              products: ::Array[String],
-              request_options: FinchAPI::request_opts
+              ?authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::authentication_type,
+              ?products: ::Array[String],
+              ?request_options: FinchAPI::request_opts
             ) -> void
             | (
               ?FinchAPI::Models::Sandbox::Connections::account_create_params

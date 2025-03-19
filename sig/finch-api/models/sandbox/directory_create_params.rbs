@@ -19,8 +19,8 @@ module FinchAPI
 
         def initialize:
           (
-            body: ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body],
-            request_options: FinchAPI::request_opts
+            ?body: ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body],
+            ?request_options: FinchAPI::request_opts
           ) -> void
           | (
             ?FinchAPI::Models::Sandbox::directory_create_params
@@ -123,33 +123,33 @@ module FinchAPI
 
           def initialize:
             (
-              class_code: String?,
-              custom_fields: ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField],
-              department: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Department?,
-              dob: String?,
-              emails: ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email]?,
-              employment: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment?,
-              employment_status: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::employment_status?,
-              encrypted_ssn: String?,
-              end_date: String?,
-              ethnicity: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::ethnicity?,
-              first_name: String?,
-              gender: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::gender?,
-              income: FinchAPI::Models::Income?,
-              income_history: ::Array[FinchAPI::Models::Income?]?,
-              is_active: bool?,
-              last_name: String?,
-              latest_rehire_date: String?,
-              location: FinchAPI::Models::Location?,
-              manager: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Manager?,
-              middle_name: String?,
-              phone_numbers: ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber?]?,
-              preferred_name: String?,
-              residence: FinchAPI::Models::Location?,
-              source_id: String,
-              ssn: String?,
-              start_date: String?,
-              title: String?
+              ?class_code: String?,
+              ?custom_fields: ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField],
+              ?department: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Department?,
+              ?dob: String?,
+              ?emails: ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email]?,
+              ?employment: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment?,
+              ?employment_status: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::employment_status?,
+              ?encrypted_ssn: String?,
+              ?end_date: String?,
+              ?ethnicity: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::ethnicity?,
+              ?first_name: String?,
+              ?gender: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::gender?,
+              ?income: FinchAPI::Models::Income?,
+              ?income_history: ::Array[FinchAPI::Models::Income?]?,
+              ?is_active: bool?,
+              ?last_name: String?,
+              ?latest_rehire_date: String?,
+              ?location: FinchAPI::Models::Location?,
+              ?manager: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Manager?,
+              ?middle_name: String?,
+              ?phone_numbers: ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber?]?,
+              ?preferred_name: String?,
+              ?residence: FinchAPI::Models::Location?,
+              ?source_id: String,
+              ?ssn: String?,
+              ?start_date: String?,
+              ?title: String?
             ) -> void
             | (
               ?FinchAPI::Models::Sandbox::DirectoryCreateParams::body
@@ -168,7 +168,7 @@ module FinchAPI
             def value=: (top) -> top
 
             def initialize:
-              (name: String?, value: top) -> void
+              (?name: String?, ?value: top) -> void
               | (
                 ?FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::custom_field
                 | FinchAPI::BaseModel data
@@ -183,7 +183,7 @@ module FinchAPI
             attr_accessor name: String?
 
             def initialize:
-              (name: String?) -> void
+              (?name: String?) -> void
               | (
                 ?FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::department
                 | FinchAPI::BaseModel data
@@ -207,8 +207,8 @@ module FinchAPI
 
             def initialize:
               (
-                data: String,
-                type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::type_?
+                ?data: String,
+                ?type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::type_?
               ) -> void
               | (
                 ?FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::email
@@ -240,8 +240,8 @@ module FinchAPI
 
             def initialize:
               (
-                subtype: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::subtype?,
-                type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::type_?
+                ?subtype: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::subtype?,
+                ?type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::type_?
               ) -> void
               | (
                 ?FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::employment
@@ -342,7 +342,7 @@ module FinchAPI
             def id=: (String) -> String
 
             def initialize:
-              (id: String) -> void
+              (?id: String) -> void
               | (
                 ?FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::manager
                 | FinchAPI::BaseModel data
@@ -366,8 +366,8 @@ module FinchAPI
 
             def initialize:
               (
-                data: String,
-                type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::type_?
+                ?data: String,
+                ?type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::type_?
               ) -> void
               | (
                 ?FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::phone_number

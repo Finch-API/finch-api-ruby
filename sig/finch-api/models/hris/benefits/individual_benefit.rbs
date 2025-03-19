@@ -29,9 +29,9 @@ module FinchAPI
 
           def initialize:
             (
-              body: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body,
-              code: Integer,
-              individual_id: String
+              ?body: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body,
+              ?code: Integer,
+              ?individual_id: String
             ) -> void
             | (
               ?FinchAPI::Models::HRIS::Benefits::individual_benefit
@@ -62,11 +62,11 @@ module FinchAPI
 
             def initialize:
               (
-                annual_maximum: Integer?,
-                catch_up: bool?,
-                company_contribution: FinchAPI::Models::HRIS::BenefitContribution?,
-                employee_deduction: FinchAPI::Models::HRIS::BenefitContribution?,
-                hsa_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::hsa_contribution_limit?
+                ?annual_maximum: Integer?,
+                ?catch_up: bool?,
+                ?company_contribution: FinchAPI::Models::HRIS::BenefitContribution?,
+                ?employee_deduction: FinchAPI::Models::HRIS::BenefitContribution?,
+                ?hsa_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::hsa_contribution_limit?
               ) -> void
               | (
                 ?FinchAPI::Models::HRIS::Benefits::IndividualBenefit::body

@@ -34,11 +34,11 @@ module FinchAPI
 
         def initialize:
           (
-            individual_ids: ::Array[String],
-            limit: Integer,
-            offset: Integer,
-            types: ::Array[FinchAPI::Models::HRIS::DocumentListParams::type_],
-            request_options: FinchAPI::request_opts
+            ?individual_ids: ::Array[String],
+            ?limit: Integer,
+            ?offset: Integer,
+            ?types: ::Array[FinchAPI::Models::HRIS::DocumentListParams::type_],
+            ?request_options: FinchAPI::request_opts
           ) -> void
           | (
             ?FinchAPI::Models::HRIS::document_list_params

@@ -20,8 +20,8 @@ module FinchAPI
 
         def initialize:
           (
-            paging: FinchAPI::Models::Paging,
-            pay_statements: ::Array[FinchAPI::Models::HRIS::PayStatement]
+            ?paging: FinchAPI::Models::Paging,
+            ?pay_statements: ::Array[FinchAPI::Models::HRIS::PayStatement]
           ) -> void
           | (
             ?FinchAPI::Models::HRIS::pay_statement_response_body

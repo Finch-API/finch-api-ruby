@@ -14,7 +14,7 @@ module FinchAPI
         def initialize:
           (
             type: FinchAPI::Models::Sandbox::JobCreateParams::type_,
-            request_options: FinchAPI::request_opts
+            ?request_options: FinchAPI::request_opts
           ) -> void
           | (
             ?FinchAPI::Models::Sandbox::job_create_params

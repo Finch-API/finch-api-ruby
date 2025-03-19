@@ -22,8 +22,8 @@ module FinchAPI
 
         def initialize:
           (
-            company_benefits: FinchAPI::Models::OperationSupportMatrix,
-            individual_benefits: FinchAPI::Models::OperationSupportMatrix
+            ?company_benefits: FinchAPI::Models::OperationSupportMatrix,
+            ?individual_benefits: FinchAPI::Models::OperationSupportMatrix
           ) -> void
           | (
             ?FinchAPI::Models::HRIS::support_per_benefit_type

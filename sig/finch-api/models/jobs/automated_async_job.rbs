@@ -60,7 +60,7 @@ module FinchAPI
           def individual_id=: (String) -> String
 
           def initialize:
-            (individual_id: String) -> void
+            (?individual_id: String) -> void
             | (
               ?FinchAPI::Models::Jobs::AutomatedAsyncJob::params
               | FinchAPI::BaseModel data

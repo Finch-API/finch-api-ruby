@@ -11,8 +11,8 @@ module FinchAPI
             ) -> FinchAPI::SinglePage[FinchAPI::Models::HRIS::Benefits::EnrolledIndividual]
             | (
               String benefit_id,
-              individuals: ::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual],
-              request_options: FinchAPI::request_opts
+              ?individuals: ::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual],
+              ?request_options: FinchAPI::request_opts
             ) -> FinchAPI::SinglePage[FinchAPI::Models::HRIS::Benefits::EnrolledIndividual]
 
           def enrolled_ids:
@@ -23,7 +23,7 @@ module FinchAPI
             ) -> FinchAPI::Models::HRIS::Benefits::IndividualEnrolledIDsResponse
             | (
               String benefit_id,
-              request_options: FinchAPI::request_opts
+              ?request_options: FinchAPI::request_opts
             ) -> FinchAPI::Models::HRIS::Benefits::IndividualEnrolledIDsResponse
 
           def retrieve_many_benefits:
@@ -34,8 +34,8 @@ module FinchAPI
             ) -> FinchAPI::SinglePage[FinchAPI::Models::HRIS::Benefits::IndividualBenefit]
             | (
               String benefit_id,
-              individual_ids: String,
-              request_options: FinchAPI::request_opts
+              ?individual_ids: String,
+              ?request_options: FinchAPI::request_opts
             ) -> FinchAPI::SinglePage[FinchAPI::Models::HRIS::Benefits::IndividualBenefit]
 
           def unenroll_many:
@@ -46,8 +46,8 @@ module FinchAPI
             ) -> FinchAPI::SinglePage[FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual]
             | (
               String benefit_id,
-              individual_ids: ::Array[String],
-              request_options: FinchAPI::request_opts
+              ?individual_ids: ::Array[String],
+              ?request_options: FinchAPI::request_opts
             ) -> FinchAPI::SinglePage[FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual]
 
           def initialize: (client: FinchAPI::Client) -> void

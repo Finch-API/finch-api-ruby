@@ -28,10 +28,10 @@ module FinchAPI
         (
           method_: String,
           route: String,
-          data: String?,
-          headers: top?,
-          params: top?,
-          request_options: FinchAPI::request_opts
+          ?data: String?,
+          ?headers: top?,
+          ?params: top?,
+          ?request_options: FinchAPI::request_opts
         ) -> void
         | (
           ?FinchAPI::Models::request_forwarding_forward_params

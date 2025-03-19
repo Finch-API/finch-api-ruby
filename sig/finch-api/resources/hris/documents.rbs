@@ -8,11 +8,11 @@ module FinchAPI
             | ::Hash[Symbol, top] params
           ) -> FinchAPI::Models::HRIS::DocumentListResponse
           | (
-            individual_ids: ::Array[String],
-            limit: Integer,
-            offset: Integer,
-            types: ::Array[FinchAPI::Models::HRIS::DocumentListParams::type_],
-            request_options: FinchAPI::request_opts
+            ?individual_ids: ::Array[String],
+            ?limit: Integer,
+            ?offset: Integer,
+            ?types: ::Array[FinchAPI::Models::HRIS::DocumentListParams::type_],
+            ?request_options: FinchAPI::request_opts
           ) -> FinchAPI::Models::HRIS::DocumentListResponse
 
         def retreive:
@@ -23,7 +23,7 @@ module FinchAPI
           ) -> FinchAPI::Models::HRIS::document_retreive_response
           | (
             String document_id,
-            request_options: FinchAPI::request_opts
+            ?request_options: FinchAPI::request_opts
           ) -> FinchAPI::Models::HRIS::document_retreive_response
 
         def initialize: (client: FinchAPI::Client) -> void

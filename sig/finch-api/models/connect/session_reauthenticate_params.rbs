@@ -25,10 +25,10 @@ module FinchAPI
         def initialize:
           (
             connection_id: String,
-            minutes_to_expire: Integer?,
-            products: ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]?,
-            redirect_uri: String?,
-            request_options: FinchAPI::request_opts
+            ?minutes_to_expire: Integer?,
+            ?products: ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]?,
+            ?redirect_uri: String?,
+            ?request_options: FinchAPI::request_opts
           ) -> void
           | (
             ?FinchAPI::Models::Connect::session_reauthenticate_params

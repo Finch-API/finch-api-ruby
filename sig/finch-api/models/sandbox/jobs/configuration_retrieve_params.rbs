@@ -9,7 +9,7 @@ module FinchAPI
           include FinchAPI::RequestParameters
 
           def initialize:
-            (request_options: FinchAPI::request_opts) -> void
+            (?request_options: FinchAPI::request_opts) -> void
             | (
               ?FinchAPI::Models::Sandbox::Jobs::configuration_retrieve_params
               | FinchAPI::BaseModel data

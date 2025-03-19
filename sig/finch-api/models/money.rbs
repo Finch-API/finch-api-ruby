@@ -10,7 +10,7 @@ module FinchAPI
       def currency=: (String) -> String
 
       def initialize:
-        (amount: Integer?, currency: String) -> void
+        (?amount: Integer?, ?currency: String) -> void
         | (?FinchAPI::Models::money | FinchAPI::BaseModel data) -> void
 
       def to_hash: -> FinchAPI::Models::money

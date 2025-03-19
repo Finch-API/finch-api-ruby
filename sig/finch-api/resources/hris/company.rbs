@@ -8,7 +8,7 @@ module FinchAPI
             | ::Hash[Symbol, top] params
           ) -> FinchAPI::Models::HRIS::HRISCompany
           | (
-            request_options: FinchAPI::request_opts
+            ?request_options: FinchAPI::request_opts
           ) -> FinchAPI::Models::HRIS::HRISCompany
 
         def initialize: (client: FinchAPI::Client) -> void
