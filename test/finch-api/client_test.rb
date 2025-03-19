@@ -56,11 +56,8 @@ class FinchAPITest < Minitest::Test
   end
 
   def test_client_given_request_default_retry_attempts
-    finch = FinchAPI::Client.new(
-      base_url: "http://localhost:4010",
-      access_token: "My Access Token",
-      max_retries: 3
-    )
+    finch =
+      FinchAPI::Client.new(base_url: "http://localhost:4010", access_token: "My Access Token", max_retries: 3)
     requester = MockRequester.new(500, {}, {})
     finch.requester = requester
 
@@ -84,11 +81,8 @@ class FinchAPITest < Minitest::Test
   end
 
   def test_client_given_request_given_retry_attempts
-    finch = FinchAPI::Client.new(
-      base_url: "http://localhost:4010",
-      access_token: "My Access Token",
-      max_retries: 3
-    )
+    finch =
+      FinchAPI::Client.new(base_url: "http://localhost:4010", access_token: "My Access Token", max_retries: 3)
     requester = MockRequester.new(500, {}, {})
     finch.requester = requester
 
@@ -100,11 +94,8 @@ class FinchAPITest < Minitest::Test
   end
 
   def test_client_retry_after_seconds
-    finch = FinchAPI::Client.new(
-      base_url: "http://localhost:4010",
-      access_token: "My Access Token",
-      max_retries: 1
-    )
+    finch =
+      FinchAPI::Client.new(base_url: "http://localhost:4010", access_token: "My Access Token", max_retries: 1)
     requester = MockRequester.new(500, {"retry-after" => "1.3"}, {})
     finch.requester = requester
 
@@ -117,11 +108,8 @@ class FinchAPITest < Minitest::Test
   end
 
   def test_client_retry_after_date
-    finch = FinchAPI::Client.new(
-      base_url: "http://localhost:4010",
-      access_token: "My Access Token",
-      max_retries: 1
-    )
+    finch =
+      FinchAPI::Client.new(base_url: "http://localhost:4010", access_token: "My Access Token", max_retries: 1)
     requester = MockRequester.new(500, {"retry-after" => (Time.now + 10).httpdate}, {})
     finch.requester = requester
 
@@ -136,11 +124,8 @@ class FinchAPITest < Minitest::Test
   end
 
   def test_client_retry_after_ms
-    finch = FinchAPI::Client.new(
-      base_url: "http://localhost:4010",
-      access_token: "My Access Token",
-      max_retries: 1
-    )
+    finch =
+      FinchAPI::Client.new(base_url: "http://localhost:4010", access_token: "My Access Token", max_retries: 1)
     requester = MockRequester.new(500, {"retry-after-ms" => "1300"}, {})
     finch.requester = requester
 
