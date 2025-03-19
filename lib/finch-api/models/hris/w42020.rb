@@ -129,7 +129,8 @@ module FinchAPI
           # The individual's filing status for tax purposes.
           class FilingStatus < FinchAPI::Enum
             HEAD_OF_HOUSEHOLD = :head_of_household
-            MARRIED_FILING_JOINTLY_OR_QUALIFYING_SURVIVING_SPOUSE = :married_filing_jointly_or_qualifying_surviving_spouse
+            MARRIED_FILING_JOINTLY_OR_QUALIFYING_SURVIVING_SPOUSE =
+              :married_filing_jointly_or_qualifying_surviving_spouse
             SINGLE_OR_MARRIED_FILING_SEPARATELY = :single_or_married_filing_separately
 
             finalize!

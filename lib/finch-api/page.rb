@@ -17,7 +17,8 @@ module FinchAPI
   #
   # @example
   # ```ruby
-  # items = page
+  # items =
+  #   page
   #   .to_enum
   #   .lazy
   #   .select { _1.object_id.even? }

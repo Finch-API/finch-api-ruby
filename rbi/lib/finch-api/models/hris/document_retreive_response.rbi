@@ -8,7 +8,8 @@ module FinchAPI
       class DocumentRetreiveResponse < FinchAPI::Union
         abstract!
 
-        Variants = type_template(:out) { {fixed: T.any(FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005)} }
+        Variants =
+          type_template(:out) { {fixed: T.any(FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005)} }
       end
     end
   end
