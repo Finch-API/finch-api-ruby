@@ -46,18 +46,18 @@ module FinchAPI
 
         def initialize:
           (
-            id: String,
-            company_debit: FinchAPI::Models::Money?,
-            debit_date: String?,
-            employee_taxes: FinchAPI::Models::Money?,
-            employer_taxes: FinchAPI::Models::Money?,
-            gross_pay: FinchAPI::Models::Money?,
-            individual_ids: ::Array[String]?,
-            net_pay: FinchAPI::Models::Money?,
-            pay_date: String?,
-            pay_frequencies: ::Array[FinchAPI::Models::HRIS::Payment::pay_frequency]?,
-            pay_group_ids: ::Array[String]?,
-            pay_period: FinchAPI::Models::HRIS::Payment::PayPeriod?
+            ?id: String,
+            ?company_debit: FinchAPI::Models::Money?,
+            ?debit_date: String?,
+            ?employee_taxes: FinchAPI::Models::Money?,
+            ?employer_taxes: FinchAPI::Models::Money?,
+            ?gross_pay: FinchAPI::Models::Money?,
+            ?individual_ids: ::Array[String]?,
+            ?net_pay: FinchAPI::Models::Money?,
+            ?pay_date: String?,
+            ?pay_frequencies: ::Array[FinchAPI::Models::HRIS::Payment::pay_frequency]?,
+            ?pay_group_ids: ::Array[String]?,
+            ?pay_period: FinchAPI::Models::HRIS::Payment::PayPeriod?
           ) -> void
           | (
             ?FinchAPI::Models::HRIS::payment | FinchAPI::BaseModel data
@@ -98,7 +98,7 @@ module FinchAPI
           attr_accessor start_date: String?
 
           def initialize:
-            (end_date: String?, start_date: String?) -> void
+            (?end_date: String?, ?start_date: String?) -> void
             | (
               ?FinchAPI::Models::HRIS::Payment::pay_period
               | FinchAPI::BaseModel data

@@ -10,10 +10,10 @@ module FinchAPI
             | ::Hash[Symbol, top] params
           ) -> FinchAPI::Models::HRIS::CreateCompanyBenefitsResponse
           | (
-            description: String,
-            frequency: FinchAPI::Models::HRIS::benefit_frequency?,
-            type: FinchAPI::Models::HRIS::benefit_type?,
-            request_options: FinchAPI::request_opts
+            ?description: String,
+            ?frequency: FinchAPI::Models::HRIS::benefit_frequency?,
+            ?type: FinchAPI::Models::HRIS::benefit_type?,
+            ?request_options: FinchAPI::request_opts
           ) -> FinchAPI::Models::HRIS::CreateCompanyBenefitsResponse
 
         def retrieve:
@@ -24,7 +24,7 @@ module FinchAPI
           ) -> FinchAPI::Models::HRIS::CompanyBenefit
           | (
             String benefit_id,
-            request_options: FinchAPI::request_opts
+            ?request_options: FinchAPI::request_opts
           ) -> FinchAPI::Models::HRIS::CompanyBenefit
 
         def update:
@@ -35,8 +35,8 @@ module FinchAPI
           ) -> FinchAPI::Models::HRIS::UpdateCompanyBenefitResponse
           | (
             String benefit_id,
-            description: String,
-            request_options: FinchAPI::request_opts
+            ?description: String,
+            ?request_options: FinchAPI::request_opts
           ) -> FinchAPI::Models::HRIS::UpdateCompanyBenefitResponse
 
         def list:
@@ -45,7 +45,7 @@ module FinchAPI
             | ::Hash[Symbol, top] params
           ) -> FinchAPI::SinglePage[FinchAPI::Models::HRIS::CompanyBenefit]
           | (
-            request_options: FinchAPI::request_opts
+            ?request_options: FinchAPI::request_opts
           ) -> FinchAPI::SinglePage[FinchAPI::Models::HRIS::CompanyBenefit]
 
         def list_supported_benefits:
@@ -54,7 +54,7 @@ module FinchAPI
             | ::Hash[Symbol, top] params
           ) -> FinchAPI::SinglePage[FinchAPI::Models::HRIS::SupportedBenefit]
           | (
-            request_options: FinchAPI::request_opts
+            ?request_options: FinchAPI::request_opts
           ) -> FinchAPI::SinglePage[FinchAPI::Models::HRIS::SupportedBenefit]
 
         def initialize: (client: FinchAPI::Client) -> void

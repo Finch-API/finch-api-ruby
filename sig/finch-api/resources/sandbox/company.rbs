@@ -16,7 +16,7 @@ module FinchAPI
             locations: ::Array[FinchAPI::Models::Location?]?,
             primary_email: String?,
             primary_phone_number: String?,
-            request_options: FinchAPI::request_opts
+            ?request_options: FinchAPI::request_opts
           ) -> FinchAPI::Models::Sandbox::CompanyUpdateResponse
 
         def initialize: (client: FinchAPI::Client) -> void

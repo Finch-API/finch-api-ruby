@@ -31,13 +31,13 @@ module FinchAPI
 
         def initialize:
           (
-            id: String,
-            department: FinchAPI::Models::HRIS::IndividualInDirectory::Department?,
-            first_name: String?,
-            is_active: bool?,
-            last_name: String?,
-            manager: FinchAPI::Models::HRIS::IndividualInDirectory::Manager?,
-            middle_name: String?
+            ?id: String,
+            ?department: FinchAPI::Models::HRIS::IndividualInDirectory::Department?,
+            ?first_name: String?,
+            ?is_active: bool?,
+            ?last_name: String?,
+            ?manager: FinchAPI::Models::HRIS::IndividualInDirectory::Manager?,
+            ?middle_name: String?
           ) -> void
           | (
             ?FinchAPI::Models::HRIS::individual_in_directory
@@ -52,7 +52,7 @@ module FinchAPI
           attr_accessor name: String?
 
           def initialize:
-            (name: String?) -> void
+            (?name: String?) -> void
             | (
               ?FinchAPI::Models::HRIS::IndividualInDirectory::department
               | FinchAPI::BaseModel data
@@ -69,7 +69,7 @@ module FinchAPI
           def id=: (String) -> String
 
           def initialize:
-            (id: String) -> void
+            (?id: String) -> void
             | (
               ?FinchAPI::Models::HRIS::IndividualInDirectory::manager
               | FinchAPI::BaseModel data

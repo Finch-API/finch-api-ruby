@@ -11,10 +11,10 @@ module FinchAPI
           ) -> FinchAPI::Models::Sandbox::ConnectionCreateResponse
           | (
             provider_id: String,
-            authentication_type: FinchAPI::Models::Sandbox::ConnectionCreateParams::authentication_type,
-            employee_size: Integer,
-            products: ::Array[String],
-            request_options: FinchAPI::request_opts
+            ?authentication_type: FinchAPI::Models::Sandbox::ConnectionCreateParams::authentication_type,
+            ?employee_size: Integer,
+            ?products: ::Array[String],
+            ?request_options: FinchAPI::request_opts
           ) -> FinchAPI::Models::Sandbox::ConnectionCreateResponse
 
         def initialize: (client: FinchAPI::Client) -> void

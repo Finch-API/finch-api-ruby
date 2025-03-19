@@ -11,9 +11,9 @@ module FinchAPI
             | (
               company_id: String,
               provider_id: String,
-              authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::authentication_type,
-              products: ::Array[String],
-              request_options: FinchAPI::request_opts
+              ?authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::authentication_type,
+              ?products: ::Array[String],
+              ?request_options: FinchAPI::request_opts
             ) -> FinchAPI::Models::Sandbox::Connections::AccountCreateResponse
 
           def update:
@@ -22,8 +22,8 @@ module FinchAPI
               | ::Hash[Symbol, top] params
             ) -> FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse
             | (
-              connection_status: FinchAPI::Models::connection_status_type,
-              request_options: FinchAPI::request_opts
+              ?connection_status: FinchAPI::Models::connection_status_type,
+              ?request_options: FinchAPI::request_opts
             ) -> FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse
 
           def initialize: (client: FinchAPI::Client) -> void

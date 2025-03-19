@@ -42,13 +42,13 @@ module FinchAPI
             customer_id: String,
             customer_name: String,
             products: ::Array[FinchAPI::Models::Connect::SessionNewParams::product],
-            customer_email: String?,
-            integration: FinchAPI::Models::Connect::SessionNewParams::Integration?,
-            manual: bool?,
-            minutes_to_expire: Float?,
-            redirect_uri: String?,
-            sandbox: FinchAPI::Models::Connect::SessionNewParams::sandbox?,
-            request_options: FinchAPI::request_opts
+            ?customer_email: String?,
+            ?integration: FinchAPI::Models::Connect::SessionNewParams::Integration?,
+            ?manual: bool?,
+            ?minutes_to_expire: Float?,
+            ?redirect_uri: String?,
+            ?sandbox: FinchAPI::Models::Connect::SessionNewParams::sandbox?,
+            ?request_options: FinchAPI::request_opts
           ) -> void
           | (
             ?FinchAPI::Models::Connect::session_new_params
@@ -93,8 +93,8 @@ module FinchAPI
 
           def initialize:
             (
-              auth_method: FinchAPI::Models::Connect::SessionNewParams::Integration::auth_method?,
-              provider: String?
+              ?auth_method: FinchAPI::Models::Connect::SessionNewParams::Integration::auth_method?,
+              ?provider: String?
             ) -> void
             | (
               ?FinchAPI::Models::Connect::SessionNewParams::integration

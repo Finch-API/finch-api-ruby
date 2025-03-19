@@ -10,7 +10,7 @@ module FinchAPI
           | (
             type: FinchAPI::Models::Jobs::AutomatedCreateParams::type_,
             params: FinchAPI::Models::Jobs::AutomatedCreateParams::Params,
-            request_options: FinchAPI::request_opts
+            ?request_options: FinchAPI::request_opts
           ) -> FinchAPI::Models::Jobs::AutomatedCreateResponse
 
         def retrieve:
@@ -21,7 +21,7 @@ module FinchAPI
           ) -> FinchAPI::Models::Jobs::AutomatedAsyncJob
           | (
             String job_id,
-            request_options: FinchAPI::request_opts
+            ?request_options: FinchAPI::request_opts
           ) -> FinchAPI::Models::Jobs::AutomatedAsyncJob
 
         def list:
@@ -30,9 +30,9 @@ module FinchAPI
             | ::Hash[Symbol, top] params
           ) -> FinchAPI::Models::Jobs::AutomatedListResponse
           | (
-            limit: Integer,
-            offset: Integer,
-            request_options: FinchAPI::request_opts
+            ?limit: Integer,
+            ?offset: Integer,
+            ?request_options: FinchAPI::request_opts
           ) -> FinchAPI::Models::Jobs::AutomatedListResponse
 
         def initialize: (client: FinchAPI::Client) -> void

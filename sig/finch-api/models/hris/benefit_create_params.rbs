@@ -23,10 +23,10 @@ module FinchAPI
 
         def initialize:
           (
-            description: String,
-            frequency: FinchAPI::Models::HRIS::benefit_frequency?,
-            type: FinchAPI::Models::HRIS::benefit_type?,
-            request_options: FinchAPI::request_opts
+            ?description: String,
+            ?frequency: FinchAPI::Models::HRIS::benefit_frequency?,
+            ?type: FinchAPI::Models::HRIS::benefit_type?,
+            ?request_options: FinchAPI::request_opts
           ) -> void
           | (
             ?FinchAPI::Models::HRIS::benefit_create_params

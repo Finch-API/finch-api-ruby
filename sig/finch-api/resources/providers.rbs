@@ -6,7 +6,7 @@ module FinchAPI
           ?FinchAPI::Models::ProviderListParams | ::Hash[Symbol, top] params
         ) -> FinchAPI::SinglePage[FinchAPI::Models::Provider]
         | (
-          request_options: FinchAPI::request_opts
+          ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::SinglePage[FinchAPI::Models::Provider]
 
       def initialize: (client: FinchAPI::Client) -> void

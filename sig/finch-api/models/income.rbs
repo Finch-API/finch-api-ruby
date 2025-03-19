@@ -19,10 +19,10 @@ module FinchAPI
 
       def initialize:
         (
-          amount: Integer?,
-          currency: String?,
-          effective_date: String?,
-          unit: FinchAPI::Models::Income::unit?
+          ?amount: Integer?,
+          ?currency: String?,
+          ?effective_date: String?,
+          ?unit: FinchAPI::Models::Income::unit?
         ) -> void
         | (?FinchAPI::Models::income | FinchAPI::BaseModel data) -> void
 

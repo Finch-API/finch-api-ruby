@@ -59,16 +59,16 @@ module FinchAPI
 
       def initialize:
         (
-          id: String,
-          authentication_methods: ::Array[FinchAPI::Models::Provider::AuthenticationMethod],
-          beta: bool,
-          display_name: String,
-          icon: String,
-          logo: String,
-          manual: bool,
-          mfa_required: bool,
-          primary_color: String,
-          products: ::Array[String]
+          ?id: String,
+          ?authentication_methods: ::Array[FinchAPI::Models::Provider::AuthenticationMethod],
+          ?beta: bool,
+          ?display_name: String,
+          ?icon: String,
+          ?logo: String,
+          ?manual: bool,
+          ?mfa_required: bool,
+          ?primary_color: String,
+          ?products: ::Array[String]
         ) -> void
         | (?FinchAPI::Models::provider | FinchAPI::BaseModel data) -> void
 
@@ -94,9 +94,9 @@ module FinchAPI
 
         def initialize:
           (
-            benefits_support: FinchAPI::Models::HRIS::BenefitsSupport?,
-            supported_fields: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields?,
-            type: FinchAPI::Models::Provider::AuthenticationMethod::type_
+            ?benefits_support: FinchAPI::Models::HRIS::BenefitsSupport?,
+            ?supported_fields: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields?,
+            ?type: FinchAPI::Models::Provider::AuthenticationMethod::type_
           ) -> void
           | (
             ?FinchAPI::Models::Provider::authentication_method
@@ -161,13 +161,13 @@ module FinchAPI
 
           def initialize:
             (
-              company: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company,
-              directory: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory,
-              employment: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment,
-              individual: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual,
-              pay_group: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayGroup,
-              pay_statement: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement,
-              payment: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment
+              ?company: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company,
+              ?directory: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory,
+              ?employment: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment,
+              ?individual: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual,
+              ?pay_group: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayGroup,
+              ?pay_statement: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement,
+              ?payment: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment
             ) -> void
             | (
               ?FinchAPI::Models::Provider::AuthenticationMethod::supported_fields
@@ -236,15 +236,15 @@ module FinchAPI
 
             def initialize:
               (
-                id: bool,
-                accounts: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Accounts,
-                departments: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments,
-                ein: bool,
-                entity: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Entity,
-                legal_name: bool,
-                locations: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Locations,
-                primary_email: bool,
-                primary_phone_number: bool
+                ?id: bool,
+                ?accounts: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Accounts,
+                ?departments: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments,
+                ?ein: bool,
+                ?entity: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Entity,
+                ?legal_name: bool,
+                ?locations: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Locations,
+                ?primary_email: bool,
+                ?primary_phone_number: bool
               ) -> void
               | (
                 ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::company
@@ -285,11 +285,11 @@ module FinchAPI
 
               def initialize:
                 (
-                  account_name: bool,
-                  account_number: bool,
-                  account_type: bool,
-                  institution_name: bool,
-                  routing_number: bool
+                  ?account_name: bool,
+                  ?account_number: bool,
+                  ?account_type: bool,
+                  ?institution_name: bool,
+                  ?routing_number: bool
                 ) -> void
                 | (
                   ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::accounts
@@ -318,8 +318,8 @@ module FinchAPI
 
               def initialize:
                 (
-                  name: bool,
-                  parent: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments::Parent
+                  ?name: bool,
+                  ?parent: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments::Parent
                 ) -> void
                 | (
                   ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::departments
@@ -336,7 +336,7 @@ module FinchAPI
                 def name=: (bool) -> bool
 
                 def initialize:
-                  (name: bool) -> void
+                  (?name: bool) -> void
                   | (
                     ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments::parent
                     | FinchAPI::BaseModel data
@@ -358,7 +358,7 @@ module FinchAPI
               def type=: (bool) -> bool
 
               def initialize:
-                (subtype: bool, type: bool) -> void
+                (?subtype: bool, ?type: bool) -> void
                 | (
                   ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::entity
                   | FinchAPI::BaseModel data
@@ -404,12 +404,12 @@ module FinchAPI
 
               def initialize:
                 (
-                  city: bool,
-                  country: bool,
-                  line1: bool,
-                  line2: bool,
-                  postal_code: bool,
-                  state: bool
+                  ?city: bool,
+                  ?country: bool,
+                  ?line1: bool,
+                  ?line2: bool,
+                  ?postal_code: bool,
+                  ?state: bool
                 ) -> void
                 | (
                   ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::locations
@@ -441,8 +441,8 @@ module FinchAPI
 
             def initialize:
               (
-                individuals: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals,
-                paging: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Paging
+                ?individuals: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals,
+                ?paging: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Paging
               ) -> void
               | (
                 ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::directory
@@ -495,13 +495,13 @@ module FinchAPI
 
               def initialize:
                 (
-                  id: bool,
-                  department: bool,
-                  first_name: bool,
-                  is_active: bool,
-                  last_name: bool,
-                  manager: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager,
-                  middle_name: bool
+                  ?id: bool,
+                  ?department: bool,
+                  ?first_name: bool,
+                  ?is_active: bool,
+                  ?last_name: bool,
+                  ?manager: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager,
+                  ?middle_name: bool
                 ) -> void
                 | (
                   ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::individuals
@@ -518,7 +518,7 @@ module FinchAPI
                 def id=: (bool) -> bool
 
                 def initialize:
-                  (id: bool) -> void
+                  (?id: bool) -> void
                   | (
                     ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals::manager
                     | FinchAPI::BaseModel data
@@ -540,7 +540,7 @@ module FinchAPI
               def offset=: (bool) -> bool
 
               def initialize:
-                (count: bool, offset: bool) -> void
+                (?count: bool, ?offset: bool) -> void
                 | (
                   ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::paging
                   | FinchAPI::BaseModel data
@@ -652,23 +652,23 @@ module FinchAPI
 
             def initialize:
               (
-                id: bool,
-                class_code: bool,
-                custom_fields: bool,
-                department: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Department,
-                employment: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Employment,
-                employment_status: bool,
-                end_date: bool,
-                first_name: bool,
-                income: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Income,
-                income_history: bool,
-                is_active: bool,
-                last_name: bool,
-                location: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Location,
-                manager: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Manager,
-                middle_name: bool,
-                start_date: bool,
-                title: bool
+                ?id: bool,
+                ?class_code: bool,
+                ?custom_fields: bool,
+                ?department: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Department,
+                ?employment: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Employment,
+                ?employment_status: bool,
+                ?end_date: bool,
+                ?first_name: bool,
+                ?income: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Income,
+                ?income_history: bool,
+                ?is_active: bool,
+                ?last_name: bool,
+                ?location: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Location,
+                ?manager: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Manager,
+                ?middle_name: bool,
+                ?start_date: bool,
+                ?title: bool
               ) -> void
               | (
                 ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::employment
@@ -685,7 +685,7 @@ module FinchAPI
               def name=: (bool) -> bool
 
               def initialize:
-                (name: bool) -> void
+                (?name: bool) -> void
                 | (
                   ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::department
                   | FinchAPI::BaseModel data
@@ -706,7 +706,7 @@ module FinchAPI
               def type=: (bool) -> bool
 
               def initialize:
-                (subtype: bool, type: bool) -> void
+                (?subtype: bool, ?type: bool) -> void
                 | (
                   ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::employment
                   | FinchAPI::BaseModel data
@@ -731,7 +731,7 @@ module FinchAPI
               def unit=: (bool) -> bool
 
               def initialize:
-                (amount: bool, currency: bool, unit: bool) -> void
+                (?amount: bool, ?currency: bool, ?unit: bool) -> void
                 | (
                   ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::income
                   | FinchAPI::BaseModel data
@@ -777,12 +777,12 @@ module FinchAPI
 
               def initialize:
                 (
-                  city: bool,
-                  country: bool,
-                  line1: bool,
-                  line2: bool,
-                  postal_code: bool,
-                  state: bool
+                  ?city: bool,
+                  ?country: bool,
+                  ?line1: bool,
+                  ?line2: bool,
+                  ?postal_code: bool,
+                  ?state: bool
                 ) -> void
                 | (
                   ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::location
@@ -800,7 +800,7 @@ module FinchAPI
               def id=: (bool) -> bool
 
               def initialize:
-                (id: bool) -> void
+                (?id: bool) -> void
                 | (
                   ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::manager
                   | FinchAPI::BaseModel data
@@ -888,19 +888,19 @@ module FinchAPI
 
             def initialize:
               (
-                id: bool,
-                dob: bool,
-                emails: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::Emails,
-                encrypted_ssn: bool,
-                ethnicity: bool,
-                first_name: bool,
-                gender: bool,
-                last_name: bool,
-                middle_name: bool,
-                phone_numbers: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers,
-                preferred_name: bool,
-                residence: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::Residence,
-                ssn: bool
+                ?id: bool,
+                ?dob: bool,
+                ?emails: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::Emails,
+                ?encrypted_ssn: bool,
+                ?ethnicity: bool,
+                ?first_name: bool,
+                ?gender: bool,
+                ?last_name: bool,
+                ?middle_name: bool,
+                ?phone_numbers: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers,
+                ?preferred_name: bool,
+                ?residence: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::Residence,
+                ?ssn: bool
               ) -> void
               | (
                 ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::individual
@@ -921,7 +921,7 @@ module FinchAPI
               def type=: (bool) -> bool
 
               def initialize:
-                (data: bool, type: bool) -> void
+                (?data: bool, ?type: bool) -> void
                 | (
                   ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::emails
                   | FinchAPI::BaseModel data
@@ -942,7 +942,7 @@ module FinchAPI
               def type=: (bool) -> bool
 
               def initialize:
-                (data: bool, type: bool) -> void
+                (?data: bool, ?type: bool) -> void
                 | (
                   ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::phone_numbers
                   | FinchAPI::BaseModel data
@@ -988,12 +988,12 @@ module FinchAPI
 
               def initialize:
                 (
-                  city: bool,
-                  country: bool,
-                  line1: bool,
-                  line2: bool,
-                  postal_code: bool,
-                  state: bool
+                  ?city: bool,
+                  ?country: bool,
+                  ?line1: bool,
+                  ?line2: bool,
+                  ?postal_code: bool,
+                  ?state: bool
                 ) -> void
                 | (
                   ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::residence
@@ -1031,10 +1031,10 @@ module FinchAPI
 
             def initialize:
               (
-                id: bool,
-                individual_ids: bool,
-                name: bool,
-                pay_frequencies: bool
+                ?id: bool,
+                ?individual_ids: bool,
+                ?name: bool,
+                ?pay_frequencies: bool
               ) -> void
               | (
                 ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::pay_group
@@ -1065,8 +1065,8 @@ module FinchAPI
 
             def initialize:
               (
-                paging: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::Paging,
-                pay_statements: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements
+                ?paging: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::Paging,
+                ?pay_statements: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements
               ) -> void
               | (
                 ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::pay_statement
@@ -1157,16 +1157,16 @@ module FinchAPI
 
               def initialize:
                 (
-                  earnings: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings,
-                  employee_deductions: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions,
-                  employer_contributions: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions,
-                  gross_pay: bool,
-                  individual_id: bool,
-                  net_pay: bool,
-                  payment_method: bool,
-                  taxes: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes,
-                  total_hours: bool,
-                  type: bool
+                  ?earnings: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings,
+                  ?employee_deductions: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions,
+                  ?employer_contributions: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions,
+                  ?gross_pay: bool,
+                  ?individual_id: bool,
+                  ?net_pay: bool,
+                  ?payment_method: bool,
+                  ?taxes: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes,
+                  ?total_hours: bool,
+                  ?type: bool
                 ) -> void
                 | (
                   ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::pay_statements
@@ -1196,7 +1196,12 @@ module FinchAPI
                 def type=: (bool) -> bool
 
                 def initialize:
-                  (amount: bool, currency: bool, name: bool, type: bool) -> void
+                  (
+                    ?amount: bool,
+                    ?currency: bool,
+                    ?name: bool,
+                    ?type: bool
+                  ) -> void
                   | (
                     ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::earnings
                     | FinchAPI::BaseModel data
@@ -1237,11 +1242,11 @@ module FinchAPI
 
                 def initialize:
                   (
-                    amount: bool,
-                    currency: bool,
-                    name: bool,
-                    pre_tax: bool,
-                    type: bool
+                    ?amount: bool,
+                    ?currency: bool,
+                    ?name: bool,
+                    ?pre_tax: bool,
+                    ?type: bool
                   ) -> void
                   | (
                     ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::employee_deductions
@@ -1268,7 +1273,7 @@ module FinchAPI
                 def name=: (bool) -> bool
 
                 def initialize:
-                  (amount: bool, currency: bool, name: bool) -> void
+                  (?amount: bool, ?currency: bool, ?name: bool) -> void
                   | (
                     ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::employer_contributions
                     | FinchAPI::BaseModel data
@@ -1309,11 +1314,11 @@ module FinchAPI
 
                 def initialize:
                   (
-                    amount: bool,
-                    currency: bool,
-                    employer: bool,
-                    name: bool,
-                    type: bool
+                    ?amount: bool,
+                    ?currency: bool,
+                    ?employer: bool,
+                    ?name: bool,
+                    ?type: bool
                   ) -> void
                   | (
                     ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::taxes
@@ -1394,18 +1399,18 @@ module FinchAPI
 
             def initialize:
               (
-                id: bool,
-                company_debit: bool,
-                debit_date: bool,
-                employee_taxes: bool,
-                employer_taxes: bool,
-                gross_pay: bool,
-                individual_ids: bool,
-                net_pay: bool,
-                pay_date: bool,
-                pay_frequencies: bool,
-                pay_group_ids: bool,
-                pay_period: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment::PayPeriod
+                ?id: bool,
+                ?company_debit: bool,
+                ?debit_date: bool,
+                ?employee_taxes: bool,
+                ?employer_taxes: bool,
+                ?gross_pay: bool,
+                ?individual_ids: bool,
+                ?net_pay: bool,
+                ?pay_date: bool,
+                ?pay_frequencies: bool,
+                ?pay_group_ids: bool,
+                ?pay_period: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment::PayPeriod
               ) -> void
               | (
                 ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::payment
@@ -1426,7 +1431,7 @@ module FinchAPI
               def start_date=: (bool) -> bool
 
               def initialize:
-                (end_date: bool, start_date: bool) -> void
+                (?end_date: bool, ?start_date: bool) -> void
                 | (
                   ?FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment::pay_period
                   | FinchAPI::BaseModel data

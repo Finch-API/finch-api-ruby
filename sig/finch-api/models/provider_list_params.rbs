@@ -7,7 +7,7 @@ module FinchAPI
       include FinchAPI::RequestParameters
 
       def initialize:
-        (request_options: FinchAPI::request_opts) -> void
+        (?request_options: FinchAPI::request_opts) -> void
         | (
           ?FinchAPI::Models::provider_list_params | FinchAPI::BaseModel data
         ) -> void

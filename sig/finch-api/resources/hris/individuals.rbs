@@ -8,9 +8,9 @@ module FinchAPI
             | ::Hash[Symbol, top] params
           ) -> FinchAPI::ResponsesPage[FinchAPI::Models::HRIS::IndividualResponse]
           | (
-            options: FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options?,
-            requests: ::Array[FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request],
-            request_options: FinchAPI::request_opts
+            ?options: FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options?,
+            ?requests: ::Array[FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request],
+            ?request_options: FinchAPI::request_opts
           ) -> FinchAPI::ResponsesPage[FinchAPI::Models::HRIS::IndividualResponse]
 
         def initialize: (client: FinchAPI::Client) -> void

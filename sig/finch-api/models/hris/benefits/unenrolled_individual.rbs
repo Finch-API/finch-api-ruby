@@ -26,9 +26,9 @@ module FinchAPI
 
           def initialize:
             (
-              body: FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual::Body,
-              code: Integer,
-              individual_id: String
+              ?body: FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual::Body,
+              ?code: Integer,
+              ?individual_id: String
             ) -> void
             | (
               ?FinchAPI::Models::HRIS::Benefits::unenrolled_individual
@@ -47,7 +47,7 @@ module FinchAPI
             attr_accessor name: String?
 
             def initialize:
-              (finch_code: String?, message: String?, name: String?) -> void
+              (?finch_code: String?, ?message: String?, ?name: String?) -> void
               | (
                 ?FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual::body
                 | FinchAPI::BaseModel data

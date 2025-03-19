@@ -9,10 +9,10 @@ module FinchAPI
         | (
           method_: String,
           route: String,
-          data: String?,
-          headers: top?,
-          params: top?,
-          request_options: FinchAPI::request_opts
+          ?data: String?,
+          ?headers: top?,
+          ?params: top?,
+          ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::Models::RequestForwardingForwardResponse
 
       def initialize: (client: FinchAPI::Client) -> void

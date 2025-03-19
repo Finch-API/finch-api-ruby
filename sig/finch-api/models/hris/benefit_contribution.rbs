@@ -14,8 +14,8 @@ module FinchAPI
 
         def initialize:
           (
-            amount: Integer?,
-            type: FinchAPI::Models::HRIS::BenefitContribution::type_?
+            ?amount: Integer?,
+            ?type: FinchAPI::Models::HRIS::BenefitContribution::type_?
           ) -> void
           | (
             ?FinchAPI::Models::HRIS::benefit_contribution

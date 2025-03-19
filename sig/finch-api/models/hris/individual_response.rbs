@@ -25,9 +25,9 @@ module FinchAPI
 
         def initialize:
           (
-            body: FinchAPI::Models::HRIS::Individual,
-            code: Integer,
-            individual_id: String
+            ?body: FinchAPI::Models::HRIS::Individual,
+            ?code: Integer,
+            ?individual_id: String
           ) -> void
           | (
             ?FinchAPI::Models::HRIS::individual_response

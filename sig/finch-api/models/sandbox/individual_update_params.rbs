@@ -48,19 +48,19 @@ module FinchAPI
 
         def initialize:
           (
-            dob: String?,
-            emails: ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::Email]?,
-            encrypted_ssn: String?,
-            ethnicity: FinchAPI::Models::Sandbox::IndividualUpdateParams::ethnicity?,
-            first_name: String?,
-            gender: FinchAPI::Models::Sandbox::IndividualUpdateParams::gender?,
-            last_name: String?,
-            middle_name: String?,
-            phone_numbers: ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber?]?,
-            preferred_name: String?,
-            residence: FinchAPI::Models::Location?,
-            ssn: String?,
-            request_options: FinchAPI::request_opts
+            ?dob: String?,
+            ?emails: ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::Email]?,
+            ?encrypted_ssn: String?,
+            ?ethnicity: FinchAPI::Models::Sandbox::IndividualUpdateParams::ethnicity?,
+            ?first_name: String?,
+            ?gender: FinchAPI::Models::Sandbox::IndividualUpdateParams::gender?,
+            ?last_name: String?,
+            ?middle_name: String?,
+            ?phone_numbers: ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber?]?,
+            ?preferred_name: String?,
+            ?residence: FinchAPI::Models::Location?,
+            ?ssn: String?,
+            ?request_options: FinchAPI::request_opts
           ) -> void
           | (
             ?FinchAPI::Models::Sandbox::individual_update_params
@@ -84,8 +84,8 @@ module FinchAPI
 
           def initialize:
             (
-              data: String,
-              type: FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::type_?
+              ?data: String,
+              ?type: FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::type_?
             ) -> void
             | (
               ?FinchAPI::Models::Sandbox::IndividualUpdateParams::email
@@ -153,8 +153,8 @@ module FinchAPI
 
           def initialize:
             (
-              data: String,
-              type: FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::type_?
+              ?data: String,
+              ?type: FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::type_?
             ) -> void
             | (
               ?FinchAPI::Models::Sandbox::IndividualUpdateParams::phone_number

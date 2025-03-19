@@ -9,7 +9,7 @@ module FinchAPI
               | ::Hash[Symbol, top] params
             ) -> FinchAPI::Models::Sandbox::Jobs::configuration_retrieve_response
             | (
-              request_options: FinchAPI::request_opts
+              ?request_options: FinchAPI::request_opts
             ) -> FinchAPI::Models::Sandbox::Jobs::configuration_retrieve_response
 
           def update:
@@ -20,7 +20,7 @@ module FinchAPI
             | (
               completion_status: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::completion_status,
               type: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::type_,
-              request_options: FinchAPI::request_opts
+              ?request_options: FinchAPI::request_opts
             ) -> FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration
 
           def initialize: (client: FinchAPI::Client) -> void

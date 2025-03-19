@@ -7,7 +7,7 @@ module FinchAPI
           | ::Hash[Symbol, top] params
         ) -> FinchAPI::Models::DisconnectResponse
         | (
-          request_options: FinchAPI::request_opts
+          ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::Models::DisconnectResponse
 
       def introspect:
@@ -16,7 +16,7 @@ module FinchAPI
           | ::Hash[Symbol, top] params
         ) -> FinchAPI::Models::Introspection
         | (
-          request_options: FinchAPI::request_opts
+          ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::Models::Introspection
 
       def initialize: (client: FinchAPI::Client) -> void

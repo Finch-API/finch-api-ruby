@@ -49,19 +49,19 @@ module FinchAPI
 
         def initialize:
           (
-            id: String,
-            dob: String?,
-            emails: ::Array[FinchAPI::Models::HRIS::Individual::Email]?,
-            encrypted_ssn: String?,
-            ethnicity: FinchAPI::Models::HRIS::Individual::ethnicity?,
-            first_name: String?,
-            gender: FinchAPI::Models::HRIS::Individual::gender?,
-            last_name: String?,
-            middle_name: String?,
-            phone_numbers: ::Array[FinchAPI::Models::HRIS::Individual::PhoneNumber?]?,
-            preferred_name: String?,
-            residence: FinchAPI::Models::Location?,
-            ssn: String?
+            ?id: String,
+            ?dob: String?,
+            ?emails: ::Array[FinchAPI::Models::HRIS::Individual::Email]?,
+            ?encrypted_ssn: String?,
+            ?ethnicity: FinchAPI::Models::HRIS::Individual::ethnicity?,
+            ?first_name: String?,
+            ?gender: FinchAPI::Models::HRIS::Individual::gender?,
+            ?last_name: String?,
+            ?middle_name: String?,
+            ?phone_numbers: ::Array[FinchAPI::Models::HRIS::Individual::PhoneNumber?]?,
+            ?preferred_name: String?,
+            ?residence: FinchAPI::Models::Location?,
+            ?ssn: String?
           ) -> void
           | (
             ?FinchAPI::Models::HRIS::individual | FinchAPI::BaseModel data
@@ -84,8 +84,8 @@ module FinchAPI
 
           def initialize:
             (
-              data: String,
-              type: FinchAPI::Models::HRIS::Individual::Email::type_?
+              ?data: String,
+              ?type: FinchAPI::Models::HRIS::Individual::Email::type_?
             ) -> void
             | (
               ?FinchAPI::Models::HRIS::Individual::email
@@ -151,8 +151,8 @@ module FinchAPI
 
           def initialize:
             (
-              data: String?,
-              type: FinchAPI::Models::HRIS::Individual::PhoneNumber::type_?
+              ?data: String?,
+              ?type: FinchAPI::Models::HRIS::Individual::PhoneNumber::type_?
             ) -> void
             | (
               ?FinchAPI::Models::HRIS::Individual::phone_number

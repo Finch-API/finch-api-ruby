@@ -70,26 +70,26 @@ module FinchAPI
 
         def initialize:
           (
-            id: String,
-            class_code: String?,
-            custom_fields: ::Array[FinchAPI::Models::HRIS::EmploymentData::CustomField]?,
-            department: FinchAPI::Models::HRIS::EmploymentData::Department?,
-            employment: FinchAPI::Models::HRIS::EmploymentData::Employment?,
-            employment_status: FinchAPI::Models::HRIS::EmploymentData::employment_status?,
-            end_date: String?,
-            first_name: String?,
-            income: FinchAPI::Models::Income?,
-            income_history: ::Array[FinchAPI::Models::Income?]?,
-            is_active: bool?,
-            last_name: String?,
-            latest_rehire_date: String?,
-            location: FinchAPI::Models::Location?,
-            manager: FinchAPI::Models::HRIS::EmploymentData::Manager?,
-            middle_name: String?,
-            source_id: String?,
-            start_date: String?,
-            title: String?,
-            work_id: String?
+            ?id: String,
+            ?class_code: String?,
+            ?custom_fields: ::Array[FinchAPI::Models::HRIS::EmploymentData::CustomField]?,
+            ?department: FinchAPI::Models::HRIS::EmploymentData::Department?,
+            ?employment: FinchAPI::Models::HRIS::EmploymentData::Employment?,
+            ?employment_status: FinchAPI::Models::HRIS::EmploymentData::employment_status?,
+            ?end_date: String?,
+            ?first_name: String?,
+            ?income: FinchAPI::Models::Income?,
+            ?income_history: ::Array[FinchAPI::Models::Income?]?,
+            ?is_active: bool?,
+            ?last_name: String?,
+            ?latest_rehire_date: String?,
+            ?location: FinchAPI::Models::Location?,
+            ?manager: FinchAPI::Models::HRIS::EmploymentData::Manager?,
+            ?middle_name: String?,
+            ?source_id: String?,
+            ?start_date: String?,
+            ?title: String?,
+            ?work_id: String?
           ) -> void
           | (
             ?FinchAPI::Models::HRIS::employment_data | FinchAPI::BaseModel data
@@ -109,7 +109,7 @@ module FinchAPI
           def value=: (top) -> top
 
           def initialize:
-            (name: String, value: top) -> void
+            (?name: String, ?value: top) -> void
             | (
               ?FinchAPI::Models::HRIS::EmploymentData::custom_field
               | FinchAPI::BaseModel data
@@ -124,7 +124,7 @@ module FinchAPI
           attr_accessor name: String?
 
           def initialize:
-            (name: String?) -> void
+            (?name: String?) -> void
             | (
               ?FinchAPI::Models::HRIS::EmploymentData::department
               | FinchAPI::BaseModel data
@@ -146,8 +146,8 @@ module FinchAPI
 
           def initialize:
             (
-              subtype: FinchAPI::Models::HRIS::EmploymentData::Employment::subtype?,
-              type: FinchAPI::Models::HRIS::EmploymentData::Employment::type_?
+              ?subtype: FinchAPI::Models::HRIS::EmploymentData::Employment::subtype?,
+              ?type: FinchAPI::Models::HRIS::EmploymentData::Employment::type_?
             ) -> void
             | (
               ?FinchAPI::Models::HRIS::EmploymentData::employment
@@ -214,7 +214,7 @@ module FinchAPI
           def id=: (String) -> String
 
           def initialize:
-            (id: String) -> void
+            (?id: String) -> void
             | (
               ?FinchAPI::Models::HRIS::EmploymentData::manager
               | FinchAPI::BaseModel data

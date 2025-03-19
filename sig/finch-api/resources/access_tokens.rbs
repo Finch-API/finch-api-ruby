@@ -7,10 +7,10 @@ module FinchAPI
         ) -> FinchAPI::Models::CreateAccessTokenResponse
         | (
           code: String,
-          client_id: String,
-          client_secret: String,
-          redirect_uri: String,
-          request_options: FinchAPI::request_opts
+          ?client_id: String,
+          ?client_secret: String,
+          ?redirect_uri: String,
+          ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::Models::CreateAccessTokenResponse
 
       def initialize: (client: FinchAPI::Client) -> void

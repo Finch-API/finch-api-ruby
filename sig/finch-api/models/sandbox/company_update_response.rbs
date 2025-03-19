@@ -70,11 +70,11 @@ module FinchAPI
 
           def initialize:
             (
-              account_name: String?,
-              account_number: String?,
-              account_type: FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::account_type?,
-              institution_name: String?,
-              routing_number: String?
+              ?account_name: String?,
+              ?account_number: String?,
+              ?account_type: FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::account_type?,
+              ?institution_name: String?,
+              ?routing_number: String?
             ) -> void
             | (
               ?FinchAPI::Models::Sandbox::CompanyUpdateResponse::account
@@ -106,8 +106,8 @@ module FinchAPI
 
           def initialize:
             (
-              name: String?,
-              parent: FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department::Parent?
+              ?name: String?,
+              ?parent: FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department::Parent?
             ) -> void
             | (
               ?FinchAPI::Models::Sandbox::CompanyUpdateResponse::department
@@ -122,7 +122,7 @@ module FinchAPI
             attr_accessor name: String?
 
             def initialize:
-              (name: String?) -> void
+              (?name: String?) -> void
               | (
                 ?FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department::parent
                 | FinchAPI::BaseModel data
@@ -145,8 +145,8 @@ module FinchAPI
 
           def initialize:
             (
-              subtype: FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::subtype?,
-              type: FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::type_?
+              ?subtype: FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::subtype?,
+              ?type: FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::type_?
             ) -> void
             | (
               ?FinchAPI::Models::Sandbox::CompanyUpdateResponse::entity

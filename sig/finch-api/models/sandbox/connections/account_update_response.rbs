@@ -34,7 +34,7 @@ module FinchAPI
               company_id: String,
               products: ::Array[String],
               provider_id: String,
-              connection_id: String
+              ?connection_id: String
             ) -> void
             | (
               ?FinchAPI::Models::Sandbox::Connections::account_update_response

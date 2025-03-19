@@ -44,7 +44,7 @@ module FinchAPI
             locations: ::Array[FinchAPI::Models::Location?]?,
             primary_email: String?,
             primary_phone_number: String?,
-            request_options: FinchAPI::request_opts
+            ?request_options: FinchAPI::request_opts
           ) -> void
           | (
             ?FinchAPI::Models::Sandbox::company_update_params
@@ -75,11 +75,11 @@ module FinchAPI
 
           def initialize:
             (
-              account_name: String?,
-              account_number: String?,
-              account_type: FinchAPI::Models::Sandbox::CompanyUpdateParams::Account::account_type?,
-              institution_name: String?,
-              routing_number: String?
+              ?account_name: String?,
+              ?account_number: String?,
+              ?account_type: FinchAPI::Models::Sandbox::CompanyUpdateParams::Account::account_type?,
+              ?institution_name: String?,
+              ?routing_number: String?
             ) -> void
             | (
               ?FinchAPI::Models::Sandbox::CompanyUpdateParams::account
@@ -111,8 +111,8 @@ module FinchAPI
 
           def initialize:
             (
-              name: String?,
-              parent: FinchAPI::Models::Sandbox::CompanyUpdateParams::Department::Parent?
+              ?name: String?,
+              ?parent: FinchAPI::Models::Sandbox::CompanyUpdateParams::Department::Parent?
             ) -> void
             | (
               ?FinchAPI::Models::Sandbox::CompanyUpdateParams::department
@@ -127,7 +127,7 @@ module FinchAPI
             attr_accessor name: String?
 
             def initialize:
-              (name: String?) -> void
+              (?name: String?) -> void
               | (
                 ?FinchAPI::Models::Sandbox::CompanyUpdateParams::Department::parent
                 | FinchAPI::BaseModel data
@@ -150,8 +150,8 @@ module FinchAPI
 
           def initialize:
             (
-              subtype: FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::subtype?,
-              type: FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::type_?
+              ?subtype: FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::subtype?,
+              ?type: FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::type_?
             ) -> void
             | (
               ?FinchAPI::Models::Sandbox::CompanyUpdateParams::entity
