@@ -62,7 +62,8 @@ module FinchAPI
           #
           # @return [FinchAPI::SinglePage<FinchAPI::Models::HRIS::Benefits::IndividualBenefit>]
           def retrieve_many_benefits(benefit_id, params = {})
-            parsed, options = FinchAPI::Models::HRIS::Benefits::IndividualRetrieveManyBenefitsParams.dump_request(params)
+            parsed, options =
+              FinchAPI::Models::HRIS::Benefits::IndividualRetrieveManyBenefitsParams.dump_request(params)
             @client.request(
               method: :get,
               path: ["employer/benefits/%0s/individuals", benefit_id],
