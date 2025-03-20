@@ -409,6 +409,15 @@ module FinchAPI
                 :individual_contractor,
                 FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::Subtype::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::Subtype::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
 
           # The main employment type of the individual.
@@ -424,6 +433,15 @@ module FinchAPI
               T.let(:employee, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::Type::TaggedSymbol)
             CONTRACTOR =
               T.let(:contractor, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::Type::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::Type::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -450,6 +468,15 @@ module FinchAPI
             T.let(:retired, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::EmploymentStatus::TaggedSymbol)
           TERMINATED =
             T.let(:terminated, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::EmploymentStatus::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[FinchAPI::Models::Sandbox::EmploymentUpdateResponse::EmploymentStatus::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
 
         class Manager < FinchAPI::BaseModel

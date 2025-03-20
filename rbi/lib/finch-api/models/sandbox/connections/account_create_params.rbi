@@ -94,20 +94,34 @@ module FinchAPI
             CREDENTIAL =
               T.let(
                 :credential,
-                FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol
+                FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::TaggedSymbol
               )
             API_TOKEN =
               T.let(
                 :api_token,
-                FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol
+                FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::TaggedSymbol
               )
             OAUTH =
-              T.let(:oauth, FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol)
+              T.let(
+                :oauth,
+                FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::TaggedSymbol
+              )
             ASSISTED =
               T.let(
                 :assisted,
-                FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol
+                FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
         end
       end

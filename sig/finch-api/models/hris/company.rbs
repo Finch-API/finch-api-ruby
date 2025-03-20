@@ -85,7 +85,7 @@ module FinchAPI
             CHECKING: :checking
             SAVINGS: :savings
 
-            def self.values: -> ::Array[FinchAPI::Models::HRIS::HRISCompany::Account::account_type]
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::HRISCompany::Account::account_type]
           end
         end
 
@@ -145,7 +145,7 @@ module FinchAPI
             C_CORPORATION: :c_corporation
             B_CORPORATION: :b_corporation
 
-            def self.values: -> ::Array[FinchAPI::Models::HRIS::HRISCompany::Entity::subtype]
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::HRISCompany::Entity::subtype]
           end
 
           type type_ =
@@ -168,7 +168,7 @@ module FinchAPI
             PARTNERSHIP: :partnership
             COOPERATIVE: :cooperative
 
-            def self.values: -> ::Array[FinchAPI::Models::HRIS::HRISCompany::Entity::type_]
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::HRISCompany::Entity::type_]
           end
         end
       end

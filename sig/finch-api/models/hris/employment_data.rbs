@@ -155,7 +155,7 @@ module FinchAPI
             SEASONAL: :seasonal
             INDIVIDUAL_CONTRACTOR: :individual_contractor
 
-            def self.values: -> ::Array[FinchAPI::Models::HRIS::EmploymentData::Employment::subtype]
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::EmploymentData::Employment::subtype]
           end
 
           type type_ = :employee | :contractor
@@ -166,7 +166,7 @@ module FinchAPI
             EMPLOYEE: :employee
             CONTRACTOR: :contractor
 
-            def self.values: -> ::Array[FinchAPI::Models::HRIS::EmploymentData::Employment::type_]
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::EmploymentData::Employment::type_]
           end
         end
 
@@ -190,7 +190,7 @@ module FinchAPI
           RETIRED: :retired
           TERMINATED: :terminated
 
-          def self.values: -> ::Array[FinchAPI::Models::HRIS::EmploymentData::employment_status]
+          def self?.values: -> ::Array[FinchAPI::Models::HRIS::EmploymentData::employment_status]
         end
 
         type manager = { id: String }

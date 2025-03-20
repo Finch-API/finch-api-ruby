@@ -99,6 +99,12 @@ module FinchAPI
           SSN = :ssn
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class Integration < FinchAPI::BaseModel
@@ -131,6 +137,12 @@ module FinchAPI
             API_TOKEN = :api_token
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -141,6 +153,12 @@ module FinchAPI
           PROVIDER = :provider
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

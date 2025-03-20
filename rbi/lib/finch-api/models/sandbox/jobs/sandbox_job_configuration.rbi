@@ -71,6 +71,17 @@ module FinchAPI
               )
             ERROR =
               T.let(:error, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
 
           module Type
@@ -83,6 +94,12 @@ module FinchAPI
 
             DATA_SYNC_ALL =
               T.let(:data_sync_all, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
       end

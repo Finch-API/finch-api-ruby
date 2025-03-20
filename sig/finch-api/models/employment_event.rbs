@@ -48,7 +48,7 @@ module FinchAPI
         EMPLOYMENT_UPDATED: :"employment.updated"
         EMPLOYMENT_DELETED: :"employment.deleted"
 
-        def self.values: -> ::Array[FinchAPI::Models::EmploymentEvent::event_type]
+        def self?.values: -> ::Array[FinchAPI::Models::EmploymentEvent::event_type]
       end
     end
   end

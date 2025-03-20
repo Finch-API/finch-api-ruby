@@ -45,7 +45,7 @@ module FinchAPI
         CUSTOM_POST_TAX: :custom_post_tax
         CUSTOM_PRE_TAX: :custom_pre_tax
 
-        def self.values: -> ::Array[FinchAPI::Models::HRIS::benefit_type]
+        def self?.values: -> ::Array[FinchAPI::Models::HRIS::benefit_type]
       end
     end
   end

@@ -134,6 +134,12 @@ module FinchAPI
             SINGLE_OR_MARRIED_FILING_SEPARATELY = :single_or_married_filing_separately
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -144,6 +150,12 @@ module FinchAPI
           W4_2020 = :w4_2020
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

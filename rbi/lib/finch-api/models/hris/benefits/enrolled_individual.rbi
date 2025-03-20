@@ -121,6 +121,12 @@ module FinchAPI
             CREATED = T.let(201, FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code::TaggedInteger)
             NOT_FOUND = T.let(404, FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code::TaggedInteger)
             FORBIDDEN = T.let(403, FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code::TaggedInteger)
+
+            class << self
+              sig { override.returns(T::Array[FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code::TaggedInteger]) }
+              def values
+              end
+            end
           end
         end
       end

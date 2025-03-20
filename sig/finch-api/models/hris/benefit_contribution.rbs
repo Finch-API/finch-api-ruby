@@ -27,7 +27,7 @@ module FinchAPI
           FIXED: :fixed
           PERCENT: :percent
 
-          def self.values: -> ::Array[FinchAPI::Models::HRIS::BenefitContribution::type_]
+          def self?.values: -> ::Array[FinchAPI::Models::HRIS::BenefitContribution::type_]
         end
       end
     end

@@ -1929,6 +1929,12 @@ module FinchAPI
             OAUTH = :oauth
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
       end
@@ -1939,6 +1945,12 @@ module FinchAPI
         ACCOUNT_UPDATED = :"account.updated"
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

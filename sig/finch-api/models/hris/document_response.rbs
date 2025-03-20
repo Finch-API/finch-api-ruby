@@ -47,7 +47,7 @@ module FinchAPI
           W4_2020: :w4_2020
           W4_2005: :w4_2005
 
-          def self.values: -> ::Array[FinchAPI::Models::HRIS::DocumentResponse::type_]
+          def self?.values: -> ::Array[FinchAPI::Models::HRIS::DocumentResponse::type_]
         end
       end
     end

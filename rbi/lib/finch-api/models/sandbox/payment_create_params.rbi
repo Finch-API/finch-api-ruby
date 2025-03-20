@@ -452,36 +452,57 @@ module FinchAPI
                 T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol) }
 
               SALARY =
-                T.let(:salary, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
+                T.let(:salary, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol)
               WAGE =
-                T.let(:wage, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
+                T.let(:wage, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol)
               REIMBURSEMENT =
                 T.let(
                   :reimbursement,
-                  FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol
+                  FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol
                 )
               OVERTIME =
-                T.let(:overtime, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
+                T.let(
+                  :overtime,
+                  FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol
+                )
               SEVERANCE =
-                T.let(:severance, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
+                T.let(
+                  :severance,
+                  FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol
+                )
               DOUBLE_OVERTIME =
                 T.let(
                   :double_overtime,
-                  FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol
+                  FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol
                 )
-              PTO = T.let(:pto, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
+              PTO =
+                T.let(:pto, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol)
               SICK =
-                T.let(:sick, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
+                T.let(:sick, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol)
               BONUS =
-                T.let(:bonus, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
+                T.let(:bonus, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol)
               COMMISSION =
-                T.let(:commission, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
+                T.let(
+                  :commission,
+                  FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol
+                )
               TIPS =
-                T.let(:tips, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
+                T.let(:tips, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol)
               NUMBER_1099 =
-                T.let(:"1099", FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
+                T.let(:"1099", FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol)
               OTHER =
-                T.let(:other, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
+                T.let(:other, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol)
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol]
+                    )
+                end
+                def values
+                end
+              end
             end
           end
 
@@ -842,12 +863,23 @@ module FinchAPI
               T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::TaggedSymbol) }
 
             CHECK =
-              T.let(:check, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::OrSymbol)
+              T.let(:check, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::TaggedSymbol)
             DIRECT_DEPOSIT =
               T.let(
                 :direct_deposit,
-                FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::OrSymbol
+                FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
 
           class Tax < FinchAPI::BaseModel
@@ -1027,11 +1059,23 @@ module FinchAPI
               OrSymbol =
                 T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::TaggedSymbol) }
 
-              STATE = T.let(:state, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::OrSymbol)
+              STATE =
+                T.let(:state, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::TaggedSymbol)
               FEDERAL =
-                T.let(:federal, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::OrSymbol)
-              LOCAL = T.let(:local, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::OrSymbol)
-              FICA = T.let(:fica, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::OrSymbol)
+                T.let(:federal, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::TaggedSymbol)
+              LOCAL =
+                T.let(:local, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::TaggedSymbol)
+              FICA =
+                T.let(:fica, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::TaggedSymbol)
+
+              class << self
+                sig do
+                  override
+                    .returns(T::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::TaggedSymbol])
+                end
+                def values
+                end
+              end
             end
           end
 
@@ -1045,11 +1089,23 @@ module FinchAPI
               T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::TaggedSymbol) }
 
             REGULAR_PAYROLL =
-              T.let(:regular_payroll, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::OrSymbol)
+              T.let(:regular_payroll, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::TaggedSymbol)
             OFF_CYCLE_PAYROLL =
-              T.let(:off_cycle_payroll, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::OrSymbol)
+              T.let(
+                :off_cycle_payroll,
+                FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::TaggedSymbol
+              )
             ONE_TIME_PAYMENT =
-              T.let(:one_time_payment, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::OrSymbol)
+              T.let(:one_time_payment, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
       end

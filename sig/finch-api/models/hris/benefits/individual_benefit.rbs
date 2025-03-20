@@ -72,7 +72,7 @@ module FinchAPI
               INDIVIDUAL: :individual
               FAMILY: :family
 
-              def self.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::hsa_contribution_limit]
+              def self?.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::hsa_contribution_limit]
             end
           end
         end

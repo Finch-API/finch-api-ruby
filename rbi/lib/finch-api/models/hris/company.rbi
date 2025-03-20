@@ -230,6 +230,12 @@ module FinchAPI
 
             CHECKING = T.let(:checking, FinchAPI::Models::HRIS::HRISCompany::Account::AccountType::TaggedSymbol)
             SAVINGS = T.let(:savings, FinchAPI::Models::HRIS::HRISCompany::Account::AccountType::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[FinchAPI::Models::HRIS::HRISCompany::Account::AccountType::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
 
@@ -358,6 +364,12 @@ module FinchAPI
             S_CORPORATION = T.let(:s_corporation, FinchAPI::Models::HRIS::HRISCompany::Entity::Subtype::TaggedSymbol)
             C_CORPORATION = T.let(:c_corporation, FinchAPI::Models::HRIS::HRISCompany::Entity::Subtype::TaggedSymbol)
             B_CORPORATION = T.let(:b_corporation, FinchAPI::Models::HRIS::HRISCompany::Entity::Subtype::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[FinchAPI::Models::HRIS::HRISCompany::Entity::Subtype::TaggedSymbol]) }
+              def values
+              end
+            end
           end
 
           # The tax payer type of the company.
@@ -376,6 +388,12 @@ module FinchAPI
             NON_PROFIT = T.let(:non_profit, FinchAPI::Models::HRIS::HRISCompany::Entity::Type::TaggedSymbol)
             PARTNERSHIP = T.let(:partnership, FinchAPI::Models::HRIS::HRISCompany::Entity::Type::TaggedSymbol)
             COOPERATIVE = T.let(:cooperative, FinchAPI::Models::HRIS::HRISCompany::Entity::Type::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[FinchAPI::Models::HRIS::HRISCompany::Entity::Type::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
       end

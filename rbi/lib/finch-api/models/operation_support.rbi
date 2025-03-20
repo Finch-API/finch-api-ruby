@@ -20,6 +20,12 @@ module FinchAPI
       NOT_SUPPORTED_BY_PROVIDER =
         T.let(:not_supported_by_provider, FinchAPI::Models::OperationSupport::TaggedSymbol)
       CLIENT_ACCESS_ONLY = T.let(:client_access_only, FinchAPI::Models::OperationSupport::TaggedSymbol)
+
+      class << self
+        sig { override.returns(T::Array[FinchAPI::Models::OperationSupport::TaggedSymbol]) }
+        def values
+        end
+      end
     end
   end
 end

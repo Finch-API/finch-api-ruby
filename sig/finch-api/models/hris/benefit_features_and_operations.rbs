@@ -77,7 +77,7 @@ module FinchAPI
             FIXED: :fixed
             PERCENT: :percent
 
-            def self.values: -> ::Array[FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::company_contribution]
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::company_contribution]
           end
 
           type employee_deduction = :fixed | :percent
@@ -88,7 +88,7 @@ module FinchAPI
             FIXED: :fixed
             PERCENT: :percent
 
-            def self.values: -> ::Array[FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::employee_deduction]
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::employee_deduction]
           end
 
           type hsa_contribution_limit = :individual | :family
@@ -99,7 +99,7 @@ module FinchAPI
             INDIVIDUAL: :individual
             FAMILY: :family
 
-            def self.values: -> ::Array[FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::hsa_contribution_limit]
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::hsa_contribution_limit]
           end
         end
       end

@@ -74,7 +74,7 @@ module FinchAPI
           BENEFITS: :benefits
           SSN: :ssn
 
-          def self.values: -> ::Array[FinchAPI::Models::Connect::SessionNewParams::product]
+          def self?.values: -> ::Array[FinchAPI::Models::Connect::SessionNewParams::product]
         end
 
         type integration =
@@ -105,7 +105,7 @@ module FinchAPI
             OAUTH: :oauth
             API_TOKEN: :api_token
 
-            def self.values: -> ::Array[FinchAPI::Models::Connect::SessionNewParams::Integration::auth_method]
+            def self?.values: -> ::Array[FinchAPI::Models::Connect::SessionNewParams::Integration::auth_method]
           end
         end
 
@@ -117,7 +117,7 @@ module FinchAPI
           FINCH: :finch
           PROVIDER: :provider
 
-          def self.values: -> ::Array[FinchAPI::Models::Connect::SessionNewParams::sandbox]
+          def self?.values: -> ::Array[FinchAPI::Models::Connect::SessionNewParams::sandbox]
         end
       end
     end

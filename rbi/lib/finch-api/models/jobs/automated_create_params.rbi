@@ -63,7 +63,13 @@ module FinchAPI
             T.type_alias { T.any(Symbol, FinchAPI::Models::Jobs::AutomatedCreateParams::Type::TaggedSymbol) }
 
           W4_FORM_EMPLOYEE_SYNC =
-            T.let(:w4_form_employee_sync, FinchAPI::Models::Jobs::AutomatedCreateParams::Type::OrSymbol)
+            T.let(:w4_form_employee_sync, FinchAPI::Models::Jobs::AutomatedCreateParams::Type::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[FinchAPI::Models::Jobs::AutomatedCreateParams::Type::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class Params < FinchAPI::BaseModel

@@ -54,7 +54,7 @@ module FinchAPI
           BENEFITS: :benefits
           SSN: :ssn
 
-          def self.values: -> ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]
+          def self?.values: -> ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]
         end
       end
     end

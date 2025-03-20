@@ -67,6 +67,12 @@ module FinchAPI
           W4_2005 = :w4_2005
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

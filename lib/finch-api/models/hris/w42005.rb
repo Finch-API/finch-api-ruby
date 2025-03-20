@@ -115,6 +115,12 @@ module FinchAPI
             NON_EXEMPT = :non_exempt
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # The individual's filing status for tax purposes.
@@ -126,6 +132,12 @@ module FinchAPI
             SINGLE = :single
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -136,6 +148,12 @@ module FinchAPI
           W4_2005 = :w4_2005
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

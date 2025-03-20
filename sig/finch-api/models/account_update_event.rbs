@@ -1272,7 +1272,7 @@ module FinchAPI
             API_CREDENTIAL: :api_credential
             OAUTH: :oauth
 
-            def self.values: -> ::Array[FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::type_]
+            def self?.values: -> ::Array[FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::type_]
           end
         end
       end
@@ -1284,7 +1284,7 @@ module FinchAPI
 
         ACCOUNT_UPDATED: :"account.updated"
 
-        def self.values: -> ::Array[FinchAPI::Models::AccountUpdateEvent::event_type]
+        def self?.values: -> ::Array[FinchAPI::Models::AccountUpdateEvent::event_type]
       end
     end
   end

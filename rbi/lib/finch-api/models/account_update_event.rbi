@@ -2725,6 +2725,15 @@ module FinchAPI
               )
             OAUTH =
               T.let(:oauth, FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
       end
@@ -2737,6 +2746,12 @@ module FinchAPI
 
         ACCOUNT_UPDATED =
           T.let(:"account.updated", FinchAPI::Models::AccountUpdateEvent::EventType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[FinchAPI::Models::AccountUpdateEvent::EventType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

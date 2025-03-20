@@ -226,8 +226,18 @@ module FinchAPI
               T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::CompanyUpdateParams::Account::AccountType::TaggedSymbol) }
 
             CHECKING =
-              T.let(:checking, FinchAPI::Models::Sandbox::CompanyUpdateParams::Account::AccountType::OrSymbol)
-            SAVINGS = T.let(:savings, FinchAPI::Models::Sandbox::CompanyUpdateParams::Account::AccountType::OrSymbol)
+              T.let(:checking, FinchAPI::Models::Sandbox::CompanyUpdateParams::Account::AccountType::TaggedSymbol)
+            SAVINGS =
+              T.let(:savings, FinchAPI::Models::Sandbox::CompanyUpdateParams::Account::AccountType::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Account::AccountType::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -362,11 +372,17 @@ module FinchAPI
               T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Subtype::TaggedSymbol) }
 
             S_CORPORATION =
-              T.let(:s_corporation, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Subtype::OrSymbol)
+              T.let(:s_corporation, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Subtype::TaggedSymbol)
             C_CORPORATION =
-              T.let(:c_corporation, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Subtype::OrSymbol)
+              T.let(:c_corporation, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Subtype::TaggedSymbol)
             B_CORPORATION =
-              T.let(:b_corporation, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Subtype::OrSymbol)
+              T.let(:b_corporation, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Subtype::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Subtype::TaggedSymbol]) }
+              def values
+              end
+            end
           end
 
           # The tax payer type of the company.
@@ -378,14 +394,24 @@ module FinchAPI
             OrSymbol =
               T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type::TaggedSymbol) }
 
-            LLC = T.let(:llc, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type::OrSymbol)
-            LP = T.let(:lp, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type::OrSymbol)
-            CORPORATION = T.let(:corporation, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type::OrSymbol)
+            LLC = T.let(:llc, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type::TaggedSymbol)
+            LP = T.let(:lp, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type::TaggedSymbol)
+            CORPORATION =
+              T.let(:corporation, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type::TaggedSymbol)
             SOLE_PROPRIETOR =
-              T.let(:sole_proprietor, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type::OrSymbol)
-            NON_PROFIT = T.let(:non_profit, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type::OrSymbol)
-            PARTNERSHIP = T.let(:partnership, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type::OrSymbol)
-            COOPERATIVE = T.let(:cooperative, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type::OrSymbol)
+              T.let(:sole_proprietor, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type::TaggedSymbol)
+            NON_PROFIT =
+              T.let(:non_profit, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type::TaggedSymbol)
+            PARTNERSHIP =
+              T.let(:partnership, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type::TaggedSymbol)
+            COOPERATIVE =
+              T.let(:cooperative, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
       end

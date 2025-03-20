@@ -29,6 +29,12 @@ module FinchAPI
           DATA_SYNC_ALL = :data_sync_all
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end
