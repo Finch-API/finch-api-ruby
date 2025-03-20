@@ -349,6 +349,12 @@ module FinchAPI
               PERSONAL = :personal
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
 
@@ -393,6 +399,12 @@ module FinchAPI
               INDIVIDUAL_CONTRACTOR = :individual_contractor
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
 
             # The main employment type of the individual.
@@ -403,6 +415,12 @@ module FinchAPI
               CONTRACTOR = :contractor
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
 
@@ -419,6 +437,12 @@ module FinchAPI
             TERMINATED = :terminated
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # The EEOC-defined ethnicity of the individual.
@@ -435,6 +459,12 @@ module FinchAPI
             DECLINE_TO_SPECIFY = :decline_to_specify
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # The gender of the individual.
@@ -447,6 +477,12 @@ module FinchAPI
             DECLINE_TO_SPECIFY = :decline_to_specify
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           class Manager < FinchAPI::BaseModel
@@ -502,6 +538,12 @@ module FinchAPI
               PERSONAL = :personal
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
         end

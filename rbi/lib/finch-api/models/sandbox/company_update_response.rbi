@@ -216,6 +216,15 @@ module FinchAPI
               T.let(:checking, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol)
             SAVINGS =
               T.let(:savings, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -355,6 +364,14 @@ module FinchAPI
               T.let(:c_corporation, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol)
             B_CORPORATION =
               T.let(:b_corporation, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol)
+
+            class << self
+              sig do
+                override.returns(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
 
           # The tax payer type of the company.
@@ -378,6 +395,12 @@ module FinchAPI
               T.let(:partnership, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)
             COOPERATIVE =
               T.let(:cooperative, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
       end

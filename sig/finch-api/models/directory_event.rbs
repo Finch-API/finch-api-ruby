@@ -48,7 +48,7 @@ module FinchAPI
         DIRECTORY_UPDATED: :"directory.updated"
         DIRECTORY_DELETED: :"directory.deleted"
 
-        def self.values: -> ::Array[FinchAPI::Models::DirectoryEvent::event_type]
+        def self?.values: -> ::Array[FinchAPI::Models::DirectoryEvent::event_type]
       end
     end
   end

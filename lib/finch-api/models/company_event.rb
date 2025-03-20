@@ -31,6 +31,12 @@ module FinchAPI
         COMPANY_UPDATED = :"company.updated"
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

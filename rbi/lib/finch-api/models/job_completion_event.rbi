@@ -93,6 +93,12 @@ module FinchAPI
           T.let(:"job.benefit_update.completed", FinchAPI::Models::JobCompletionEvent::EventType::TaggedSymbol)
         JOB_DATA_SYNC_ALL_COMPLETED =
           T.let(:"job.data_sync_all.completed", FinchAPI::Models::JobCompletionEvent::EventType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[FinchAPI::Models::JobCompletionEvent::EventType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

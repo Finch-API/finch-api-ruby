@@ -79,7 +79,7 @@ module FinchAPI
             EXEMPT: :exempt
             NON_EXEMPT: :non_exempt
 
-            def self.values: -> ::Array[FinchAPI::Models::HRIS::W42005::Data::exemption]
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::W42005::Data::exemption]
           end
 
           type filing_status =
@@ -92,7 +92,7 @@ module FinchAPI
             MARRIED_BUT_WITHHOLD_AT_HIGHER_SINGLE_RATE: :married_but_withhold_at_higher_single_rate
             SINGLE: :single
 
-            def self.values: -> ::Array[FinchAPI::Models::HRIS::W42005::Data::filing_status]
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::W42005::Data::filing_status]
           end
         end
 
@@ -103,7 +103,7 @@ module FinchAPI
 
           W4_2005: :w4_2005
 
-          def self.values: -> ::Array[FinchAPI::Models::HRIS::W42005::type_]
+          def self?.values: -> ::Array[FinchAPI::Models::HRIS::W42005::type_]
         end
       end
     end

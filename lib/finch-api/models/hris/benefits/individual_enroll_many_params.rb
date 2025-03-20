@@ -135,6 +135,12 @@ module FinchAPI
                 FAMILY = :family
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               class CompanyContribution < FinchAPI::BaseModel
@@ -174,6 +180,12 @@ module FinchAPI
                   PERCENT = :percent
 
                   finalize!
+
+                  class << self
+                    # @!parse
+                    #   # @return [Array<Symbol>]
+                    #   def values; end
+                  end
                 end
               end
 
@@ -214,6 +226,12 @@ module FinchAPI
                   PERCENT = :percent
 
                   finalize!
+
+                  class << self
+                    # @!parse
+                    #   # @return [Array<Symbol>]
+                    #   def values; end
+                  end
                 end
               end
             end

@@ -48,7 +48,7 @@ module FinchAPI
         INDIVIDUAL_UPDATED: :"individual.updated"
         INDIVIDUAL_DELETED: :"individual.deleted"
 
-        def self.values: -> ::Array[FinchAPI::Models::IndividualEvent::event_type]
+        def self?.values: -> ::Array[FinchAPI::Models::IndividualEvent::event_type]
       end
     end
   end

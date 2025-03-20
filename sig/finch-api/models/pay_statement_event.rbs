@@ -54,7 +54,7 @@ module FinchAPI
         PAY_STATEMENT_UPDATED: :"pay_statement.updated"
         PAY_STATEMENT_DELETED: :"pay_statement.deleted"
 
-        def self.values: -> ::Array[FinchAPI::Models::PayStatementEvent::event_type]
+        def self?.values: -> ::Array[FinchAPI::Models::PayStatementEvent::event_type]
       end
     end
   end

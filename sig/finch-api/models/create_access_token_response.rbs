@@ -61,7 +61,7 @@ module FinchAPI
         DEVELOPMENT: :development
         SANDBOX: :sandbox
 
-        def self.values: -> ::Array[FinchAPI::Models::CreateAccessTokenResponse::client_type]
+        def self?.values: -> ::Array[FinchAPI::Models::CreateAccessTokenResponse::client_type]
       end
 
       type connection_type = :provider | :finch
@@ -72,7 +72,7 @@ module FinchAPI
         PROVIDER: :provider
         FINCH: :finch
 
-        def self.values: -> ::Array[FinchAPI::Models::CreateAccessTokenResponse::connection_type]
+        def self?.values: -> ::Array[FinchAPI::Models::CreateAccessTokenResponse::connection_type]
       end
     end
   end

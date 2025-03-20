@@ -51,7 +51,7 @@ module FinchAPI
           DAILY: :daily
           OTHER: :other
 
-          def self.values: -> ::Array[FinchAPI::Models::Payroll::PayGroupRetrieveResponse::pay_frequency]
+          def self?.values: -> ::Array[FinchAPI::Models::Payroll::PayGroupRetrieveResponse::pay_frequency]
         end
       end
     end

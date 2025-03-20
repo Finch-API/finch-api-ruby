@@ -112,6 +112,12 @@ module FinchAPI
         SANDBOX = :sandbox
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The type of the connection associated with the token.
@@ -125,6 +131,12 @@ module FinchAPI
         FINCH = :finch
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

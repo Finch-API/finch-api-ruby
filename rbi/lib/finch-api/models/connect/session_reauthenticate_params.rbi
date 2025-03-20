@@ -84,17 +84,25 @@ module FinchAPI
           OrSymbol =
             T.type_alias { T.any(Symbol, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol) }
 
-          COMPANY = T.let(:company, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol)
-          DIRECTORY = T.let(:directory, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol)
+          COMPANY = T.let(:company, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
+          DIRECTORY =
+            T.let(:directory, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
           INDIVIDUAL =
-            T.let(:individual, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol)
+            T.let(:individual, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
           EMPLOYMENT =
-            T.let(:employment, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol)
-          PAYMENT = T.let(:payment, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol)
+            T.let(:employment, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
+          PAYMENT = T.let(:payment, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
           PAY_STATEMENT =
-            T.let(:pay_statement, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol)
-          BENEFITS = T.let(:benefits, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol)
-          SSN = T.let(:ssn, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol)
+            T.let(:pay_statement, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
+          BENEFITS =
+            T.let(:benefits, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
+          SSN = T.let(:ssn, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

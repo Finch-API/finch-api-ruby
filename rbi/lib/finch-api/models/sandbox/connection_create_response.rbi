@@ -134,6 +134,15 @@ module FinchAPI
             T.let(:oauth, FinchAPI::Models::Sandbox::ConnectionCreateResponse::AuthenticationType::TaggedSymbol)
           ASSISTED =
             T.let(:assisted, FinchAPI::Models::Sandbox::ConnectionCreateResponse::AuthenticationType::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[FinchAPI::Models::Sandbox::ConnectionCreateResponse::AuthenticationType::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
       end
     end

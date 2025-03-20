@@ -53,6 +53,12 @@ module FinchAPI
         OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::CompanyEvent::EventType::TaggedSymbol) }
 
         COMPANY_UPDATED = T.let(:"company.updated", FinchAPI::Models::CompanyEvent::EventType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[FinchAPI::Models::CompanyEvent::EventType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

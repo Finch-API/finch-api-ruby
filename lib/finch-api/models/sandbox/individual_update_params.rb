@@ -151,6 +151,12 @@ module FinchAPI
             PERSONAL = :personal
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -168,6 +174,12 @@ module FinchAPI
           DECLINE_TO_SPECIFY = :decline_to_specify
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # The gender of the individual.
@@ -180,6 +192,12 @@ module FinchAPI
           DECLINE_TO_SPECIFY = :decline_to_specify
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class PhoneNumber < FinchAPI::BaseModel
@@ -214,6 +232,12 @@ module FinchAPI
             PERSONAL = :personal
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
       end

@@ -92,7 +92,7 @@ module FinchAPI
             WORK: :work
             PERSONAL: :personal
 
-            def self.values: -> ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::type_]
+            def self?.values: -> ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::type_]
           end
         end
 
@@ -118,7 +118,7 @@ module FinchAPI
           TWO_OR_MORE_RACES: :two_or_more_races
           DECLINE_TO_SPECIFY: :decline_to_specify
 
-          def self.values: -> ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::ethnicity]
+          def self?.values: -> ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::ethnicity]
         end
 
         type gender = :female | :male | :other | :decline_to_specify
@@ -131,7 +131,7 @@ module FinchAPI
           OTHER: :other
           DECLINE_TO_SPECIFY: :decline_to_specify
 
-          def self.values: -> ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::gender]
+          def self?.values: -> ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::gender]
         end
 
         type phone_number =
@@ -162,7 +162,7 @@ module FinchAPI
             WORK: :work
             PERSONAL: :personal
 
-            def self.values: -> ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::type_]
+            def self?.values: -> ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::type_]
           end
         end
       end

@@ -159,6 +159,12 @@ module FinchAPI
 
             EXEMPT = T.let(:exempt, FinchAPI::Models::HRIS::W42005::Data::Exemption::TaggedSymbol)
             NON_EXEMPT = T.let(:non_exempt, FinchAPI::Models::HRIS::W42005::Data::Exemption::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[FinchAPI::Models::HRIS::W42005::Data::Exemption::TaggedSymbol]) }
+              def values
+              end
+            end
           end
 
           # The individual's filing status for tax purposes.
@@ -176,6 +182,12 @@ module FinchAPI
                 FinchAPI::Models::HRIS::W42005::Data::FilingStatus::TaggedSymbol
               )
             SINGLE = T.let(:single, FinchAPI::Models::HRIS::W42005::Data::FilingStatus::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[FinchAPI::Models::HRIS::W42005::Data::FilingStatus::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
 
@@ -187,6 +199,12 @@ module FinchAPI
           OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::W42005::Type::TaggedSymbol) }
 
           W4_2005 = T.let(:w4_2005, FinchAPI::Models::HRIS::W42005::Type::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[FinchAPI::Models::HRIS::W42005::Type::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

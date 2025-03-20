@@ -28,6 +28,12 @@ module FinchAPI
         CUSTOM_PRE_TAX = :custom_pre_tax
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

@@ -123,6 +123,17 @@ module FinchAPI
                 :assisted,
                 FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
         end
       end

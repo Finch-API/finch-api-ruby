@@ -78,6 +78,12 @@ module FinchAPI
           T.let(:"individual.updated", FinchAPI::Models::IndividualEvent::EventType::TaggedSymbol)
         INDIVIDUAL_DELETED =
           T.let(:"individual.deleted", FinchAPI::Models::IndividualEvent::EventType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[FinchAPI::Models::IndividualEvent::EventType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

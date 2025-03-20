@@ -31,7 +31,7 @@ module FinchAPI
 
         COMPANY_UPDATED: :"company.updated"
 
-        def self.values: -> ::Array[FinchAPI::Models::CompanyEvent::event_type]
+        def self?.values: -> ::Array[FinchAPI::Models::CompanyEvent::event_type]
       end
     end
   end

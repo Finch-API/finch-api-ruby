@@ -62,7 +62,7 @@ module FinchAPI
             NOT_FOUND: 404
             FORBIDDEN: 403
 
-            def self.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::code]
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::code]
           end
         end
       end
