@@ -73,7 +73,9 @@ module FinchAPI
 
           type exemption = :exempt | :non_exempt
 
-          class Exemption < FinchAPI::Enum
+          module Exemption
+            extend FinchAPI::Enum
+
             EXEMPT: :exempt
             NON_EXEMPT: :non_exempt
 
@@ -83,7 +85,9 @@ module FinchAPI
           type filing_status =
             :married | :married_but_withhold_at_higher_single_rate | :single
 
-          class FilingStatus < FinchAPI::Enum
+          module FilingStatus
+            extend FinchAPI::Enum
+
             MARRIED: :married
             MARRIED_BUT_WITHHOLD_AT_HIGHER_SINGLE_RATE: :married_but_withhold_at_higher_single_rate
             SINGLE: :single
@@ -94,7 +98,9 @@ module FinchAPI
 
         type type_ = :w4_2005
 
-        class Type < FinchAPI::Enum
+        module Type
+          extend FinchAPI::Enum
+
           W4_2005: :w4_2005
 
           def self.values: -> ::Array[FinchAPI::Models::HRIS::W42005::type_]

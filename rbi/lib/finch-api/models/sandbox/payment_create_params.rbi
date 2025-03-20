@@ -158,11 +158,16 @@ module FinchAPI
           end
 
           # The payment method.
-          sig { returns(T.nilable(Symbol)) }
+          sig { returns(T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::OrSymbol)) }
           def payment_method
           end
 
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          sig do
+            params(
+              _: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::OrSymbol)
+            )
+              .returns(T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::OrSymbol))
+          end
           def payment_method=(_)
           end
 
@@ -190,11 +195,14 @@ module FinchAPI
           end
 
           # The type of the payment associated with the pay statement.
-          sig { returns(T.nilable(Symbol)) }
+          sig { returns(T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::OrSymbol)) }
           def type
           end
 
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          sig do
+            params(_: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::OrSymbol))
+              .returns(T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::OrSymbol))
+          end
           def type=(_)
           end
 
@@ -210,10 +218,10 @@ module FinchAPI
               gross_pay: T.nilable(FinchAPI::Models::Money),
               individual_id: String,
               net_pay: T.nilable(FinchAPI::Models::Money),
-              payment_method: T.nilable(Symbol),
+              payment_method: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::OrSymbol),
               taxes: T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax)]),
               total_hours: T.nilable(Float),
-              type: T.nilable(Symbol)
+              type: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::OrSymbol)
             )
               .returns(T.attached_class)
           end
@@ -245,10 +253,10 @@ module FinchAPI
                   gross_pay: T.nilable(FinchAPI::Models::Money),
                   individual_id: String,
                   net_pay: T.nilable(FinchAPI::Models::Money),
-                  payment_method: T.nilable(Symbol),
+                  payment_method: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::OrSymbol),
                   taxes: T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax)]),
                   total_hours: T.nilable(Float),
-                  type: T.nilable(Symbol)
+                  type: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::OrSymbol)
                 }
               )
           end
@@ -305,11 +313,16 @@ module FinchAPI
             end
 
             # The type of earning.
-            sig { returns(T.nilable(Symbol)) }
+            sig { returns(T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)) }
             def type
             end
 
-            sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+            sig do
+              params(
+                _: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
+              )
+                .returns(T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol))
+            end
             def type=(_)
             end
 
@@ -320,7 +333,7 @@ module FinchAPI
                 currency: T.nilable(String),
                 hours: T.nilable(Float),
                 name: T.nilable(String),
-                type: T.nilable(Symbol)
+                type: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
               )
                 .returns(T.attached_class)
             end
@@ -336,7 +349,7 @@ module FinchAPI
                     currency: T.nilable(String),
                     hours: T.nilable(Float),
                     name: T.nilable(String),
-                    type: T.nilable(Symbol)
+                    type: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
                   }
                 )
             end
@@ -400,24 +413,45 @@ module FinchAPI
             end
 
             # The type of earning.
-            class Type < FinchAPI::Enum
-              abstract!
+            module Type
+              extend FinchAPI::Enum
 
-              Value = type_template(:out) { {fixed: Symbol} }
+              TaggedSymbol =
+                T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type) }
+              OrSymbol =
+                T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol) }
 
-              SALARY = :salary
-              WAGE = :wage
-              REIMBURSEMENT = :reimbursement
-              OVERTIME = :overtime
-              SEVERANCE = :severance
-              DOUBLE_OVERTIME = :double_overtime
-              PTO = :pto
-              SICK = :sick
-              BONUS = :bonus
-              COMMISSION = :commission
-              TIPS = :tips
-              NUMBER_1099 = :"1099"
-              OTHER = :other
+              SALARY =
+                T.let(:salary, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
+              WAGE =
+                T.let(:wage, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
+              REIMBURSEMENT =
+                T.let(
+                  :reimbursement,
+                  FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol
+                )
+              OVERTIME =
+                T.let(:overtime, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
+              SEVERANCE =
+                T.let(:severance, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
+              DOUBLE_OVERTIME =
+                T.let(
+                  :double_overtime,
+                  FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol
+                )
+              PTO = T.let(:pto, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
+              SICK =
+                T.let(:sick, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
+              BONUS =
+                T.let(:bonus, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
+              COMMISSION =
+                T.let(:commission, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
+              TIPS =
+                T.let(:tips, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
+              NUMBER_1099 =
+                T.let(:"1099", FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
+              OTHER =
+                T.let(:other, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
             end
           end
 
@@ -478,11 +512,14 @@ module FinchAPI
             end
 
             # Type of benefit.
-            sig { returns(T.nilable(Symbol)) }
+            sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol)) }
             def type
             end
 
-            sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+            sig do
+              params(_: T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol))
+                .returns(T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol))
+            end
             def type=(_)
             end
 
@@ -493,7 +530,7 @@ module FinchAPI
                 currency: T.nilable(String),
                 name: T.nilable(String),
                 pre_tax: T.nilable(T::Boolean),
-                type: T.nilable(Symbol)
+                type: T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol)
               )
                 .returns(T.attached_class)
             end
@@ -509,7 +546,7 @@ module FinchAPI
                     currency: T.nilable(String),
                     name: T.nilable(String),
                     pre_tax: T.nilable(T::Boolean),
-                    type: T.nilable(Symbol)
+                    type: T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol)
                   }
                 )
             end
@@ -629,11 +666,14 @@ module FinchAPI
             end
 
             # Type of benefit.
-            sig { returns(T.nilable(Symbol)) }
+            sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol)) }
             def type
             end
 
-            sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+            sig do
+              params(_: T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol))
+                .returns(T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol))
+            end
             def type=(_)
             end
 
@@ -643,7 +683,7 @@ module FinchAPI
                 attributes: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes),
                 currency: T.nilable(String),
                 name: T.nilable(String),
-                type: T.nilable(Symbol)
+                type: T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol)
               )
                 .returns(T.attached_class)
             end
@@ -658,7 +698,7 @@ module FinchAPI
                     attributes: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes),
                     currency: T.nilable(String),
                     name: T.nilable(String),
-                    type: T.nilable(Symbol)
+                    type: T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol)
                   }
                 )
             end
@@ -731,13 +771,21 @@ module FinchAPI
           end
 
           # The payment method.
-          class PaymentMethod < FinchAPI::Enum
-            abstract!
+          module PaymentMethod
+            extend FinchAPI::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::TaggedSymbol) }
 
-            CHECK = :check
-            DIRECT_DEPOSIT = :direct_deposit
+            CHECK =
+              T.let(:check, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::OrSymbol)
+            DIRECT_DEPOSIT =
+              T.let(
+                :direct_deposit,
+                FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::OrSymbol
+              )
           end
 
           class Tax < FinchAPI::BaseModel
@@ -789,11 +837,14 @@ module FinchAPI
             end
 
             # The type of taxes.
-            sig { returns(T.nilable(Symbol)) }
+            sig { returns(T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::OrSymbol)) }
             def type
             end
 
-            sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+            sig do
+              params(_: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::OrSymbol))
+                .returns(T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::OrSymbol))
+            end
             def type=(_)
             end
 
@@ -804,7 +855,7 @@ module FinchAPI
                 currency: T.nilable(String),
                 employer: T.nilable(T::Boolean),
                 name: T.nilable(String),
-                type: T.nilable(Symbol)
+                type: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::OrSymbol)
               )
                 .returns(T.attached_class)
             end
@@ -820,7 +871,7 @@ module FinchAPI
                     currency: T.nilable(String),
                     employer: T.nilable(T::Boolean),
                     name: T.nilable(String),
-                    type: T.nilable(Symbol)
+                    type: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::OrSymbol)
                   }
                 )
             end
@@ -882,27 +933,37 @@ module FinchAPI
             end
 
             # The type of taxes.
-            class Type < FinchAPI::Enum
-              abstract!
+            module Type
+              extend FinchAPI::Enum
 
-              Value = type_template(:out) { {fixed: Symbol} }
+              TaggedSymbol =
+                T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type) }
+              OrSymbol =
+                T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::TaggedSymbol) }
 
-              STATE = :state
-              FEDERAL = :federal
-              LOCAL = :local
-              FICA = :fica
+              STATE = T.let(:state, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::OrSymbol)
+              FEDERAL =
+                T.let(:federal, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::OrSymbol)
+              LOCAL = T.let(:local, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::OrSymbol)
+              FICA = T.let(:fica, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::OrSymbol)
             end
           end
 
           # The type of the payment associated with the pay statement.
-          class Type < FinchAPI::Enum
-            abstract!
+          module Type
+            extend FinchAPI::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::TaggedSymbol) }
 
-            REGULAR_PAYROLL = :regular_payroll
-            OFF_CYCLE_PAYROLL = :off_cycle_payroll
-            ONE_TIME_PAYMENT = :one_time_payment
+            REGULAR_PAYROLL =
+              T.let(:regular_payroll, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::OrSymbol)
+            OFF_CYCLE_PAYROLL =
+              T.let(:off_cycle_payroll, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::OrSymbol)
+            ONE_TIME_PAYMENT =
+              T.let(:one_time_payment, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::OrSymbol)
           end
         end
       end

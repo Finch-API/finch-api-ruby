@@ -71,10 +71,10 @@ module FinchAPI
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
           end
 
-          # @abstract
-          #
           # HTTP status code. Either 201 or 200
-          class Code < FinchAPI::Enum
+          module Code
+            extend FinchAPI::Enum
+
             OK = 200
             CREATED = 201
             NOT_FOUND = 404

@@ -8,7 +8,9 @@ module FinchAPI
       | :error_permissions
       | :reauth
 
-    class ConnectionStatusType < FinchAPI::Enum
+    module ConnectionStatusType
+      extend FinchAPI::Enum
+
       PENDING: :pending
       PROCESSING: :processing
       CONNECTED: :connected

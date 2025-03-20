@@ -10,7 +10,7 @@ module FinchAPI
             params(
               company_id: String,
               provider_id: String,
-              authentication_type: Symbol,
+              authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol,
               products: T::Array[String],
               request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
             )
@@ -32,7 +32,7 @@ module FinchAPI
           #   how the Finch API responds.
           sig do
             params(
-              connection_status: Symbol,
+              connection_status: FinchAPI::Models::ConnectionStatusType::OrSymbol,
               request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
             )
               .returns(FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse)

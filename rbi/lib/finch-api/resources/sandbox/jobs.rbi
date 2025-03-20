@@ -11,7 +11,7 @@ module FinchAPI
         # Enqueue a new sandbox job
         sig do
           params(
-            type: Symbol,
+            type: FinchAPI::Models::Sandbox::JobCreateParams::Type::OrSymbol,
             request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
           )
             .returns(FinchAPI::Models::Sandbox::JobCreateResponse)

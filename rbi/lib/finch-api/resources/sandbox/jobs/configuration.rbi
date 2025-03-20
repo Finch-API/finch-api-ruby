@@ -16,8 +16,8 @@ module FinchAPI
           # Update configurations for sandbox jobs
           sig do
             params(
-              completion_status: Symbol,
-              type: Symbol,
+              completion_status: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::OrSymbol,
+              type: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type::OrSymbol,
               request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
             )
               .returns(FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration)

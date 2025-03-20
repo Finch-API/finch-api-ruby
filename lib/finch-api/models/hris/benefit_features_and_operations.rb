@@ -124,24 +124,27 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-          # @abstract
-          class CompanyContribution < FinchAPI::Enum
+          module CompanyContribution
+            extend FinchAPI::Enum
+
             FIXED = :fixed
             PERCENT = :percent
 
             finalize!
           end
 
-          # @abstract
-          class EmployeeDeduction < FinchAPI::Enum
+          module EmployeeDeduction
+            extend FinchAPI::Enum
+
             FIXED = :fixed
             PERCENT = :percent
 
             finalize!
           end
 
-          # @abstract
-          class HsaContributionLimit < FinchAPI::Enum
+          module HsaContributionLimit
+            extend FinchAPI::Enum
+
             INDIVIDUAL = :individual
             FAMILY = :family
 

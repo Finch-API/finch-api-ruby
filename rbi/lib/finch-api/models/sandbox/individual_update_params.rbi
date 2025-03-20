@@ -38,11 +38,14 @@ module FinchAPI
         end
 
         # The EEOC-defined ethnicity of the individual.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol)) }
         def ethnicity
         end
 
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        sig do
+          params(_: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol))
+            .returns(T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol))
+        end
         def ethnicity=(_)
         end
 
@@ -56,11 +59,14 @@ module FinchAPI
         end
 
         # The gender of the individual.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::OrSymbol)) }
         def gender
         end
 
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        sig do
+          params(_: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::OrSymbol))
+            .returns(T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::OrSymbol))
+        end
         def gender=(_)
         end
 
@@ -127,9 +133,9 @@ module FinchAPI
             dob: T.nilable(String),
             emails: T.nilable(T::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::Email]),
             encrypted_ssn: T.nilable(String),
-            ethnicity: T.nilable(Symbol),
+            ethnicity: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol),
             first_name: T.nilable(String),
-            gender: T.nilable(Symbol),
+            gender: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::OrSymbol),
             last_name: T.nilable(String),
             middle_name: T.nilable(String),
             phone_numbers: T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber)]),
@@ -164,9 +170,9 @@ module FinchAPI
                 dob: T.nilable(String),
                 emails: T.nilable(T::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::Email]),
                 encrypted_ssn: T.nilable(String),
-                ethnicity: T.nilable(Symbol),
+                ethnicity: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol),
                 first_name: T.nilable(String),
-                gender: T.nilable(Symbol),
+                gender: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::OrSymbol),
                 last_name: T.nilable(String),
                 middle_name: T.nilable(String),
                 phone_numbers: T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber)]),
@@ -189,58 +195,93 @@ module FinchAPI
           def data=(_)
           end
 
-          sig { returns(T.nilable(Symbol)) }
+          sig { returns(T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type::OrSymbol)) }
           def type
           end
 
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          sig do
+            params(_: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type::OrSymbol))
+              .returns(T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type::OrSymbol))
+          end
           def type=(_)
           end
 
-          sig { params(data: String, type: T.nilable(Symbol)).returns(T.attached_class) }
+          sig do
+            params(
+              data: String,
+              type: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type::OrSymbol)
+            )
+              .returns(T.attached_class)
+          end
           def self.new(data: nil, type: nil)
           end
 
-          sig { override.returns({data: String, type: T.nilable(Symbol)}) }
+          sig do
+            override
+              .returns(
+                {data: String, type: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type::OrSymbol)}
+              )
+          end
           def to_hash
           end
 
-          class Type < FinchAPI::Enum
-            abstract!
+          module Type
+            extend FinchAPI::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type::TaggedSymbol) }
 
-            WORK = :work
-            PERSONAL = :personal
+            WORK = T.let(:work, FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type::OrSymbol)
+            PERSONAL = T.let(:personal, FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type::OrSymbol)
           end
         end
 
         # The EEOC-defined ethnicity of the individual.
-        class Ethnicity < FinchAPI::Enum
-          abstract!
+        module Ethnicity
+          extend FinchAPI::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::TaggedSymbol) }
 
-          ASIAN = :asian
-          WHITE = :white
-          BLACK_OR_AFRICAN_AMERICAN = :black_or_african_american
-          NATIVE_HAWAIIAN_OR_PACIFIC_ISLANDER = :native_hawaiian_or_pacific_islander
-          AMERICAN_INDIAN_OR_ALASKA_NATIVE = :american_indian_or_alaska_native
-          HISPANIC_OR_LATINO = :hispanic_or_latino
-          TWO_OR_MORE_RACES = :two_or_more_races
-          DECLINE_TO_SPECIFY = :decline_to_specify
+          ASIAN = T.let(:asian, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol)
+          WHITE = T.let(:white, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol)
+          BLACK_OR_AFRICAN_AMERICAN =
+            T.let(:black_or_african_american, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol)
+          NATIVE_HAWAIIAN_OR_PACIFIC_ISLANDER =
+            T.let(
+              :native_hawaiian_or_pacific_islander,
+              FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol
+            )
+          AMERICAN_INDIAN_OR_ALASKA_NATIVE =
+            T.let(
+              :american_indian_or_alaska_native,
+              FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol
+            )
+          HISPANIC_OR_LATINO =
+            T.let(:hispanic_or_latino, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol)
+          TWO_OR_MORE_RACES =
+            T.let(:two_or_more_races, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol)
+          DECLINE_TO_SPECIFY =
+            T.let(:decline_to_specify, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol)
         end
 
         # The gender of the individual.
-        class Gender < FinchAPI::Enum
-          abstract!
+        module Gender
+          extend FinchAPI::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::TaggedSymbol) }
 
-          FEMALE = :female
-          MALE = :male
-          OTHER = :other
-          DECLINE_TO_SPECIFY = :decline_to_specify
+          FEMALE = T.let(:female, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::OrSymbol)
+          MALE = T.let(:male, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::OrSymbol)
+          OTHER = T.let(:other, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::OrSymbol)
+          DECLINE_TO_SPECIFY =
+            T.let(:decline_to_specify, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::OrSymbol)
         end
 
         class PhoneNumber < FinchAPI::BaseModel
@@ -252,29 +293,50 @@ module FinchAPI
           def data=(_)
           end
 
-          sig { returns(T.nilable(Symbol)) }
+          sig { returns(T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type::OrSymbol)) }
           def type
           end
 
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          sig do
+            params(_: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type::OrSymbol))
+              .returns(T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type::OrSymbol))
+          end
           def type=(_)
           end
 
-          sig { params(data: String, type: T.nilable(Symbol)).returns(T.attached_class) }
+          sig do
+            params(
+              data: String,
+              type: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type::OrSymbol)
+            )
+              .returns(T.attached_class)
+          end
           def self.new(data: nil, type: nil)
           end
 
-          sig { override.returns({data: String, type: T.nilable(Symbol)}) }
+          sig do
+            override
+              .returns(
+                {
+                  data: String,
+                  type: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type::OrSymbol)
+                }
+              )
+          end
           def to_hash
           end
 
-          class Type < FinchAPI::Enum
-            abstract!
+          module Type
+            extend FinchAPI::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type::TaggedSymbol) }
 
-            WORK = :work
-            PERSONAL = :personal
+            WORK = T.let(:work, FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type::OrSymbol)
+            PERSONAL =
+              T.let(:personal, FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type::OrSymbol)
           end
         end
       end

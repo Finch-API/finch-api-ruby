@@ -250,11 +250,11 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-          # @abstract
-          #
           # The secondary employment type of the individual. Options: `full_time`,
           #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
-          class Subtype < FinchAPI::Enum
+          module Subtype
+            extend FinchAPI::Enum
+
             FULL_TIME = :full_time
             INTERN = :intern
             PART_TIME = :part_time
@@ -265,10 +265,10 @@ module FinchAPI
             finalize!
           end
 
-          # @abstract
-          #
           # The main employment type of the individual.
-          class Type < FinchAPI::Enum
+          module Type
+            extend FinchAPI::Enum
+
             EMPLOYEE = :employee
             CONTRACTOR = :contractor
 
@@ -276,10 +276,10 @@ module FinchAPI
           end
         end
 
-        # @abstract
-        #
         # The detailed employment status of the individual.
-        class EmploymentStatus < FinchAPI::Enum
+        module EmploymentStatus
+          extend FinchAPI::Enum
+
           ACTIVE = :active
           DECEASED = :deceased
           LEAVE = :leave

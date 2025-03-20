@@ -42,7 +42,9 @@ module FinchAPI
           | :benefits
           | :ssn
 
-        class Product < FinchAPI::Enum
+        module Product
+          extend FinchAPI::Enum
+
           COMPANY: :company
           DIRECTORY: :directory
           INDIVIDUAL: :individual

@@ -219,10 +219,10 @@ module FinchAPI
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
         end
 
-        # @abstract
-        #
         # The type of authentication method.
-        class Type < FinchAPI::Enum
+        module Type
+          extend FinchAPI::Enum
+
           ASSISTED = :assisted
           CREDENTIAL = :credential
           API_TOKEN = :api_token
@@ -233,10 +233,10 @@ module FinchAPI
         end
       end
 
-      # @abstract
-      #
       # The type of application associated with a token.
-      class ClientType < FinchAPI::Enum
+      module ClientType
+        extend FinchAPI::Enum
+
         PRODUCTION = :production
         DEVELOPMENT = :development
         SANDBOX = :sandbox
@@ -272,13 +272,13 @@ module FinchAPI
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
       end
 
-      # @abstract
-      #
       # The type of the connection associated with the token.
       #
       #   - `provider` - connection to an external provider
       #   - `finch` - finch-generated data.
-      class ConnectionType < FinchAPI::Enum
+      module ConnectionType
+        extend FinchAPI::Enum
+
         PROVIDER = :provider
         FINCH = :finch
 

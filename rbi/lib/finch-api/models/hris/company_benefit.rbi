@@ -20,20 +20,26 @@ module FinchAPI
         def description=(_)
         end
 
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol)) }
         def frequency
         end
 
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        sig do
+          params(_: T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol))
+            .returns(T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol))
+        end
         def frequency=(_)
         end
 
         # Type of benefit.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)) }
         def type
         end
 
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        sig do
+          params(_: T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol))
+            .returns(T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol))
+        end
         def type=(_)
         end
 
@@ -41,8 +47,8 @@ module FinchAPI
           params(
             benefit_id: String,
             description: T.nilable(String),
-            frequency: T.nilable(Symbol),
-            type: T.nilable(Symbol)
+            frequency: T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol),
+            type: T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
           )
             .returns(T.attached_class)
         end
@@ -55,8 +61,8 @@ module FinchAPI
               {
                 benefit_id: String,
                 description: T.nilable(String),
-                frequency: T.nilable(Symbol),
-                type: T.nilable(Symbol)
+                frequency: T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol),
+                type: T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
               }
             )
         end

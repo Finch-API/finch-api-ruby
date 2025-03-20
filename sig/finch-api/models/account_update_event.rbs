@@ -1263,7 +1263,9 @@ module FinchAPI
           type type_ =
             :assisted | :credential | :api_token | :api_credential | :oauth
 
-          class Type < FinchAPI::Enum
+          module Type
+            extend FinchAPI::Enum
+
             ASSISTED: :assisted
             CREDENTIAL: :credential
             API_TOKEN: :api_token
@@ -1277,7 +1279,9 @@ module FinchAPI
 
       type event_type = :"account.updated"
 
-      class EventType < FinchAPI::Enum
+      module EventType
+        extend FinchAPI::Enum
+
         ACCOUNT_UPDATED: :"account.updated"
 
         def self.values: -> ::Array[FinchAPI::Models::AccountUpdateEvent::event_type]

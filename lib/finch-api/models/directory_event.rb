@@ -48,8 +48,9 @@ module FinchAPI
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
       end
 
-      # @abstract
-      class EventType < FinchAPI::Enum
+      module EventType
+        extend FinchAPI::Enum
+
         DIRECTORY_CREATED = :"directory.created"
         DIRECTORY_UPDATED = :"directory.updated"
         DIRECTORY_DELETED = :"directory.deleted"

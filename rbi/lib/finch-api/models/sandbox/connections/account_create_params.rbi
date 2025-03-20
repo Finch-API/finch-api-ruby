@@ -25,11 +25,18 @@ module FinchAPI
           def provider_id=(_)
           end
 
-          sig { returns(T.nilable(Symbol)) }
+          sig do
+            returns(
+              T.nilable(FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol)
+            )
+          end
           def authentication_type
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol)
+              .returns(FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol)
+          end
           def authentication_type=(_)
           end
 
@@ -47,7 +54,7 @@ module FinchAPI
             params(
               company_id: String,
               provider_id: String,
-              authentication_type: Symbol,
+              authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol,
               products: T::Array[String],
               request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
             )
@@ -62,7 +69,7 @@ module FinchAPI
                 {
                   company_id: String,
                   provider_id: String,
-                  authentication_type: Symbol,
+                  authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol,
                   products: T::Array[String],
                   request_options: FinchAPI::RequestOptions
                 }
@@ -71,15 +78,36 @@ module FinchAPI
           def to_hash
           end
 
-          class AuthenticationType < FinchAPI::Enum
-            abstract!
+          module AuthenticationType
+            extend FinchAPI::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType) }
+            OrSymbol =
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::TaggedSymbol
+                )
+              end
 
-            CREDENTIAL = :credential
-            API_TOKEN = :api_token
-            OAUTH = :oauth
-            ASSISTED = :assisted
+            CREDENTIAL =
+              T.let(
+                :credential,
+                FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol
+              )
+            API_TOKEN =
+              T.let(
+                :api_token,
+                FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol
+              )
+            OAUTH =
+              T.let(:oauth, FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol)
+            ASSISTED =
+              T.let(
+                :assisted,
+                FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol
+              )
           end
         end
       end

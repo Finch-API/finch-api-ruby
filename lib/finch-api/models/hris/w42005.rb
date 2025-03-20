@@ -107,20 +107,20 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-          # @abstract
-          #
           # Indicates exemption status from federal tax withholding.
-          class Exemption < FinchAPI::Enum
+          module Exemption
+            extend FinchAPI::Enum
+
             EXEMPT = :exempt
             NON_EXEMPT = :non_exempt
 
             finalize!
           end
 
-          # @abstract
-          #
           # The individual's filing status for tax purposes.
-          class FilingStatus < FinchAPI::Enum
+          module FilingStatus
+            extend FinchAPI::Enum
+
             MARRIED = :married
             MARRIED_BUT_WITHHOLD_AT_HIGHER_SINGLE_RATE = :married_but_withhold_at_higher_single_rate
             SINGLE = :single
@@ -129,10 +129,10 @@ module FinchAPI
           end
         end
 
-        # @abstract
-        #
         # Specifies the form type, indicating that this document is a 2005 W4 form.
-        class Type < FinchAPI::Enum
+        module Type
+          extend FinchAPI::Enum
+
           W4_2005 = :w4_2005
 
           finalize!

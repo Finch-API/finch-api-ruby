@@ -11,7 +11,7 @@ module FinchAPI
             individual_ids: T::Array[String],
             limit: Integer,
             offset: Integer,
-            types: T::Array[Symbol],
+            types: T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol],
             request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
           )
             .returns(FinchAPI::Models::HRIS::DocumentListResponse)

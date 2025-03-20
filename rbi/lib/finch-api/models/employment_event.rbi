@@ -11,19 +11,36 @@ module FinchAPI
       def data=(_)
       end
 
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(FinchAPI::Models::EmploymentEvent::EventType::TaggedSymbol)) }
       def event_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: FinchAPI::Models::EmploymentEvent::EventType::TaggedSymbol)
+          .returns(FinchAPI::Models::EmploymentEvent::EventType::TaggedSymbol)
+      end
       def event_type=(_)
       end
 
-      sig { params(data: FinchAPI::Models::EmploymentEvent::Data, event_type: Symbol).returns(T.attached_class) }
+      sig do
+        params(
+          data: FinchAPI::Models::EmploymentEvent::Data,
+          event_type: FinchAPI::Models::EmploymentEvent::EventType::TaggedSymbol
+        )
+          .returns(T.attached_class)
+      end
       def self.new(data: nil, event_type: nil)
       end
 
-      sig { override.returns({data: FinchAPI::Models::EmploymentEvent::Data, event_type: Symbol}) }
+      sig do
+        override
+          .returns(
+            {
+              data: FinchAPI::Models::EmploymentEvent::Data,
+              event_type: FinchAPI::Models::EmploymentEvent::EventType::TaggedSymbol
+            }
+          )
+      end
       def to_hash
       end
 
@@ -46,14 +63,18 @@ module FinchAPI
         end
       end
 
-      class EventType < FinchAPI::Enum
-        abstract!
+      module EventType
+        extend FinchAPI::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::EmploymentEvent::EventType) }
+        OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::EmploymentEvent::EventType::TaggedSymbol) }
 
-        EMPLOYMENT_CREATED = :"employment.created"
-        EMPLOYMENT_UPDATED = :"employment.updated"
-        EMPLOYMENT_DELETED = :"employment.deleted"
+        EMPLOYMENT_CREATED =
+          T.let(:"employment.created", FinchAPI::Models::EmploymentEvent::EventType::TaggedSymbol)
+        EMPLOYMENT_UPDATED =
+          T.let(:"employment.updated", FinchAPI::Models::EmploymentEvent::EventType::TaggedSymbol)
+        EMPLOYMENT_DELETED =
+          T.let(:"employment.deleted", FinchAPI::Models::EmploymentEvent::EventType::TaggedSymbol)
       end
     end
   end

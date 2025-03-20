@@ -26,7 +26,9 @@ module FinchAPI
 
         type type_ = :w4_form_employee_sync
 
-        class Type < FinchAPI::Enum
+        module Type
+          extend FinchAPI::Enum
+
           W4_FORM_EMPLOYEE_SYNC: :w4_form_employee_sync
 
           def self.values: -> ::Array[FinchAPI::Models::Jobs::AutomatedCreateParams::type_]

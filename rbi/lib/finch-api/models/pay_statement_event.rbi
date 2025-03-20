@@ -11,19 +11,36 @@ module FinchAPI
       def data=(_)
       end
 
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(FinchAPI::Models::PayStatementEvent::EventType::TaggedSymbol)) }
       def event_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: FinchAPI::Models::PayStatementEvent::EventType::TaggedSymbol)
+          .returns(FinchAPI::Models::PayStatementEvent::EventType::TaggedSymbol)
+      end
       def event_type=(_)
       end
 
-      sig { params(data: FinchAPI::Models::PayStatementEvent::Data, event_type: Symbol).returns(T.attached_class) }
+      sig do
+        params(
+          data: FinchAPI::Models::PayStatementEvent::Data,
+          event_type: FinchAPI::Models::PayStatementEvent::EventType::TaggedSymbol
+        )
+          .returns(T.attached_class)
+      end
       def self.new(data: nil, event_type: nil)
       end
 
-      sig { override.returns({data: FinchAPI::Models::PayStatementEvent::Data, event_type: Symbol}) }
+      sig do
+        override
+          .returns(
+            {
+              data: FinchAPI::Models::PayStatementEvent::Data,
+              event_type: FinchAPI::Models::PayStatementEvent::EventType::TaggedSymbol
+            }
+          )
+      end
       def to_hash
       end
 
@@ -55,14 +72,18 @@ module FinchAPI
         end
       end
 
-      class EventType < FinchAPI::Enum
-        abstract!
+      module EventType
+        extend FinchAPI::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::PayStatementEvent::EventType) }
+        OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::PayStatementEvent::EventType::TaggedSymbol) }
 
-        PAY_STATEMENT_CREATED = :"pay_statement.created"
-        PAY_STATEMENT_UPDATED = :"pay_statement.updated"
-        PAY_STATEMENT_DELETED = :"pay_statement.deleted"
+        PAY_STATEMENT_CREATED =
+          T.let(:"pay_statement.created", FinchAPI::Models::PayStatementEvent::EventType::TaggedSymbol)
+        PAY_STATEMENT_UPDATED =
+          T.let(:"pay_statement.updated", FinchAPI::Models::PayStatementEvent::EventType::TaggedSymbol)
+        PAY_STATEMENT_DELETED =
+          T.let(:"pay_statement.deleted", FinchAPI::Models::PayStatementEvent::EventType::TaggedSymbol)
       end
     end
   end

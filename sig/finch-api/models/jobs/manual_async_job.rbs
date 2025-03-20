@@ -25,7 +25,9 @@ module FinchAPI
 
         type status = :pending | :in_progress | :error | :complete
 
-        class Status < FinchAPI::Enum
+        module Status
+          extend FinchAPI::Enum
+
           PENDING: :pending
           IN_PROGRESS: :in_progress
           ERROR: :error

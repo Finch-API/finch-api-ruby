@@ -12,7 +12,7 @@ module FinchAPI
             custom_fields: T::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField],
             department: T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::Department),
             employment: T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment),
-            employment_status: T.nilable(Symbol),
+            employment_status: T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus::OrSymbol),
             end_date: T.nilable(String),
             first_name: T.nilable(String),
             income: T.nilable(FinchAPI::Models::Income),

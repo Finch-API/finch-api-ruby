@@ -6,7 +6,9 @@ module FinchAPI
       | :not_supported_by_provider
       | :client_access_only
 
-    class OperationSupport < FinchAPI::Enum
+    module OperationSupport
+      extend FinchAPI::Enum
+
       SUPPORTED: :supported
       NOT_SUPPORTED_BY_FINCH: :not_supported_by_finch
       NOT_SUPPORTED_BY_PROVIDER: :not_supported_by_provider

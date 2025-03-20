@@ -141,11 +141,14 @@ module FinchAPI
           end
 
           # The type of bank account.
-          sig { returns(T.nilable(Symbol)) }
+          sig { returns(T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol)) }
           def account_type
           end
 
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          sig do
+            params(_: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol))
+              .returns(T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol))
+          end
           def account_type=(_)
           end
 
@@ -172,7 +175,7 @@ module FinchAPI
             params(
               account_name: T.nilable(String),
               account_number: T.nilable(String),
-              account_type: T.nilable(Symbol),
+              account_type: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol),
               institution_name: T.nilable(String),
               routing_number: T.nilable(String)
             )
@@ -187,7 +190,7 @@ module FinchAPI
                 {
                   account_name: T.nilable(String),
                   account_number: T.nilable(String),
-                  account_type: T.nilable(Symbol),
+                  account_type: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol),
                   institution_name: T.nilable(String),
                   routing_number: T.nilable(String)
                 }
@@ -197,13 +200,18 @@ module FinchAPI
           end
 
           # The type of bank account.
-          class AccountType < FinchAPI::Enum
-            abstract!
+          module AccountType
+            extend FinchAPI::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol) }
 
-            CHECKING = :checking
-            SAVINGS = :savings
+            CHECKING =
+              T.let(:checking, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol)
+            SAVINGS =
+              T.let(:savings, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol)
           end
         end
 
@@ -274,56 +282,90 @@ module FinchAPI
 
         class Entity < FinchAPI::BaseModel
           # The tax payer subtype of the company.
-          sig { returns(T.nilable(Symbol)) }
+          sig { returns(T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol)) }
           def subtype
           end
 
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          sig do
+            params(_: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol))
+              .returns(T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol))
+          end
           def subtype=(_)
           end
 
           # The tax payer type of the company.
-          sig { returns(T.nilable(Symbol)) }
+          sig { returns(T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)) }
           def type
           end
 
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          sig do
+            params(_: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol))
+              .returns(T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol))
+          end
           def type=(_)
           end
 
           # The entity type object.
-          sig { params(subtype: T.nilable(Symbol), type: T.nilable(Symbol)).returns(T.attached_class) }
+          sig do
+            params(
+              subtype: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol),
+              type: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)
+            )
+              .returns(T.attached_class)
+          end
           def self.new(subtype: nil, type: nil)
           end
 
-          sig { override.returns({subtype: T.nilable(Symbol), type: T.nilable(Symbol)}) }
+          sig do
+            override
+              .returns(
+                {
+                  subtype: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol),
+                  type: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)
+                }
+              )
+          end
           def to_hash
           end
 
           # The tax payer subtype of the company.
-          class Subtype < FinchAPI::Enum
-            abstract!
+          module Subtype
+            extend FinchAPI::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol) }
 
-            S_CORPORATION = :s_corporation
-            C_CORPORATION = :c_corporation
-            B_CORPORATION = :b_corporation
+            S_CORPORATION =
+              T.let(:s_corporation, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol)
+            C_CORPORATION =
+              T.let(:c_corporation, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol)
+            B_CORPORATION =
+              T.let(:b_corporation, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol)
           end
 
           # The tax payer type of the company.
-          class Type < FinchAPI::Enum
-            abstract!
+          module Type
+            extend FinchAPI::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol) }
 
-            LLC = :llc
-            LP = :lp
-            CORPORATION = :corporation
-            SOLE_PROPRIETOR = :sole_proprietor
-            NON_PROFIT = :non_profit
-            PARTNERSHIP = :partnership
-            COOPERATIVE = :cooperative
+            LLC = T.let(:llc, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)
+            LP = T.let(:lp, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)
+            CORPORATION =
+              T.let(:corporation, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)
+            SOLE_PROPRIETOR =
+              T.let(:sole_proprietor, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)
+            NON_PROFIT =
+              T.let(:non_profit, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)
+            PARTNERSHIP =
+              T.let(:partnership, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)
+            COOPERATIVE =
+              T.let(:cooperative, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)
           end
         end
       end

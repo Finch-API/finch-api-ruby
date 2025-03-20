@@ -194,7 +194,9 @@ module FinchAPI
 
             type type_ = :work | :personal
 
-            class Type < FinchAPI::Enum
+            module Type
+              extend FinchAPI::Enum
+
               WORK: :work
               PERSONAL: :personal
 
@@ -228,7 +230,9 @@ module FinchAPI
               | :seasonal
               | :individual_contractor
 
-            class Subtype < FinchAPI::Enum
+            module Subtype
+              extend FinchAPI::Enum
+
               FULL_TIME: :full_time
               INTERN: :intern
               PART_TIME: :part_time
@@ -241,7 +245,9 @@ module FinchAPI
 
             type type_ = :employee | :contractor
 
-            class Type < FinchAPI::Enum
+            module Type
+              extend FinchAPI::Enum
+
               EMPLOYEE: :employee
               CONTRACTOR: :contractor
 
@@ -258,7 +264,9 @@ module FinchAPI
             | :retired
             | :terminated
 
-          class EmploymentStatus < FinchAPI::Enum
+          module EmploymentStatus
+            extend FinchAPI::Enum
+
             ACTIVE: :active
             DECEASED: :deceased
             LEAVE: :leave
@@ -280,7 +288,9 @@ module FinchAPI
             | :two_or_more_races
             | :decline_to_specify
 
-          class Ethnicity < FinchAPI::Enum
+          module Ethnicity
+            extend FinchAPI::Enum
+
             ASIAN: :asian
             WHITE: :white
             BLACK_OR_AFRICAN_AMERICAN: :black_or_african_american
@@ -295,7 +305,9 @@ module FinchAPI
 
           type gender = :female | :male | :other | :decline_to_specify
 
-          class Gender < FinchAPI::Enum
+          module Gender
+            extend FinchAPI::Enum
+
             FEMALE: :female
             MALE: :male
             OTHER: :other
@@ -338,7 +350,9 @@ module FinchAPI
 
             type type_ = :work | :personal
 
-            class Type < FinchAPI::Enum
+            module Type
+              extend FinchAPI::Enum
+
               WORK: :work
               PERSONAL: :personal
 

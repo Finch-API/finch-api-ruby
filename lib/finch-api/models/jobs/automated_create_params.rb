@@ -28,10 +28,10 @@ module FinchAPI
 
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-        # @abstract
-        #
         # The type of job to start.
-        class Type < FinchAPI::Enum
+        module Type
+          extend FinchAPI::Enum
+
           W4_FORM_EMPLOYEE_SYNC = :w4_form_employee_sync
 
           finalize!

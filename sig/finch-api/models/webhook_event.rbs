@@ -10,7 +10,9 @@ module FinchAPI
       | FinchAPI::Models::PaymentEvent
       | FinchAPI::Models::PayStatementEvent
 
-    class WebhookEvent < FinchAPI::Union
+    module WebhookEvent
+      extend FinchAPI::Union
+
       def self.variants: -> [FinchAPI::Models::AccountUpdateEvent, FinchAPI::Models::CompanyEvent, FinchAPI::Models::JobCompletionEvent, FinchAPI::Models::DirectoryEvent, FinchAPI::Models::EmploymentEvent, FinchAPI::Models::IndividualEvent, FinchAPI::Models::PaymentEvent, FinchAPI::Models::PayStatementEvent]
     end
   end

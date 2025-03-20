@@ -41,7 +41,9 @@ module FinchAPI
       type event_type =
         :"individual.created" | :"individual.updated" | :"individual.deleted"
 
-      class EventType < FinchAPI::Enum
+      module EventType
+        extend FinchAPI::Enum
+
         INDIVIDUAL_CREATED: :"individual.created"
         INDIVIDUAL_UPDATED: :"individual.updated"
         INDIVIDUAL_DELETED: :"individual.deleted"
