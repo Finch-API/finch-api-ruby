@@ -10,7 +10,7 @@ module FinchAPI
             body: T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body],
             request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
           )
-            .returns(FinchAPI::Models::Sandbox::DirectoryCreateResponse)
+            .returns(T::Array[T.anything])
         end
         def create(
           # Array of individuals to create. Takes all combined fields from `/individual` and
