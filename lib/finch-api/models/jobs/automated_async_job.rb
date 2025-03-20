@@ -108,6 +108,12 @@ module FinchAPI
           PERMISSIONS_ERROR = :permissions_error
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # The type of automated job
@@ -118,6 +124,12 @@ module FinchAPI
           W4_FORM_EMPLOYEE_SYNC = :w4_form_employee_sync
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

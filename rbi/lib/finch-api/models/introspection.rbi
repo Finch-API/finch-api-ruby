@@ -344,6 +344,12 @@ module FinchAPI
           API_CREDENTIAL =
             T.let(:api_credential, FinchAPI::Models::Introspection::AuthenticationMethod::Type::TaggedSymbol)
           OAUTH = T.let(:oauth, FinchAPI::Models::Introspection::AuthenticationMethod::Type::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[FinchAPI::Models::Introspection::AuthenticationMethod::Type::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -357,6 +363,12 @@ module FinchAPI
         PRODUCTION = T.let(:production, FinchAPI::Models::Introspection::ClientType::TaggedSymbol)
         DEVELOPMENT = T.let(:development, FinchAPI::Models::Introspection::ClientType::TaggedSymbol)
         SANDBOX = T.let(:sandbox, FinchAPI::Models::Introspection::ClientType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[FinchAPI::Models::Introspection::ClientType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class ConnectionStatus < FinchAPI::BaseModel
@@ -403,6 +415,12 @@ module FinchAPI
 
         PROVIDER = T.let(:provider, FinchAPI::Models::Introspection::ConnectionType::TaggedSymbol)
         FINCH = T.let(:finch, FinchAPI::Models::Introspection::ConnectionType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[FinchAPI::Models::Introspection::ConnectionType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

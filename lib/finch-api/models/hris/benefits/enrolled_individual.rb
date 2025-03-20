@@ -81,6 +81,12 @@ module FinchAPI
             FORBIDDEN = 403
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Integer>]
+              #   def values; end
+            end
           end
         end
       end

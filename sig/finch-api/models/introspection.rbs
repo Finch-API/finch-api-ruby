@@ -140,7 +140,7 @@ module FinchAPI
           API_CREDENTIAL: :api_credential
           OAUTH: :oauth
 
-          def self.values: -> ::Array[FinchAPI::Models::Introspection::AuthenticationMethod::type_]
+          def self?.values: -> ::Array[FinchAPI::Models::Introspection::AuthenticationMethod::type_]
         end
       end
 
@@ -153,7 +153,7 @@ module FinchAPI
         DEVELOPMENT: :development
         SANDBOX: :sandbox
 
-        def self.values: -> ::Array[FinchAPI::Models::Introspection::client_type]
+        def self?.values: -> ::Array[FinchAPI::Models::Introspection::client_type]
       end
 
       type connection_status =
@@ -186,7 +186,7 @@ module FinchAPI
         PROVIDER: :provider
         FINCH: :finch
 
-        def self.values: -> ::Array[FinchAPI::Models::Introspection::connection_type]
+        def self?.values: -> ::Array[FinchAPI::Models::Introspection::connection_type]
       end
     end
   end

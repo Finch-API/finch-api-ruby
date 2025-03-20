@@ -264,6 +264,12 @@ module FinchAPI
             INDIVIDUAL_CONTRACTOR = :individual_contractor
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # The main employment type of the individual.
@@ -274,6 +280,12 @@ module FinchAPI
             CONTRACTOR = :contractor
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -291,6 +303,12 @@ module FinchAPI
           TERMINATED = :terminated
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class Manager < FinchAPI::BaseModel

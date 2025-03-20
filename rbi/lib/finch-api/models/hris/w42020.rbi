@@ -204,6 +204,12 @@ module FinchAPI
                 :single_or_married_filing_separately,
                 FinchAPI::Models::HRIS::W42020::Data::FilingStatus::TaggedSymbol
               )
+
+            class << self
+              sig { override.returns(T::Array[FinchAPI::Models::HRIS::W42020::Data::FilingStatus::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
 
@@ -215,6 +221,12 @@ module FinchAPI
           OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::W42020::Type::TaggedSymbol) }
 
           W4_2020 = T.let(:w4_2020, FinchAPI::Models::HRIS::W42020::Type::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[FinchAPI::Models::HRIS::W42020::Type::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

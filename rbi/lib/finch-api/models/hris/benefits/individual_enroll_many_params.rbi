@@ -249,13 +249,26 @@ module FinchAPI
                 INDIVIDUAL =
                   T.let(
                     :individual,
-                    FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit::OrSymbol
+                    FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit::TaggedSymbol
                   )
                 FAMILY =
                   T.let(
                     :family,
-                    FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit::OrSymbol
+                    FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
 
               class CompanyContribution < FinchAPI::BaseModel
@@ -330,13 +343,26 @@ module FinchAPI
                   FIXED =
                     T.let(
                       :fixed,
-                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::OrSymbol
+                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::TaggedSymbol
                     )
                   PERCENT =
                     T.let(
                       :percent,
-                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::OrSymbol
+                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::TaggedSymbol
                     )
+
+                  class << self
+                    sig do
+                      override
+                        .returns(
+                          T::Array[
+                          FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::TaggedSymbol
+                          ]
+                        )
+                    end
+                    def values
+                    end
+                  end
                 end
               end
 
@@ -412,13 +438,26 @@ module FinchAPI
                   FIXED =
                     T.let(
                       :fixed,
-                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type::OrSymbol
+                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type::TaggedSymbol
                     )
                   PERCENT =
                     T.let(
                       :percent,
-                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type::OrSymbol
+                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type::TaggedSymbol
                     )
+
+                  class << self
+                    sig do
+                      override
+                        .returns(
+                          T::Array[
+                          FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type::TaggedSymbol
+                          ]
+                        )
+                    end
+                    def values
+                    end
+                  end
                 end
               end
             end

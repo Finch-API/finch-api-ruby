@@ -62,6 +62,12 @@ module FinchAPI
         JOB_DATA_SYNC_ALL_COMPLETED = :"job.data_sync_all.completed"
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

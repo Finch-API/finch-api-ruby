@@ -80,15 +80,21 @@ module FinchAPI
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Income::Unit) }
         OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::Income::Unit::TaggedSymbol) }
 
-        YEARLY = T.let(:yearly, FinchAPI::Models::Income::Unit::OrSymbol)
-        QUARTERLY = T.let(:quarterly, FinchAPI::Models::Income::Unit::OrSymbol)
-        MONTHLY = T.let(:monthly, FinchAPI::Models::Income::Unit::OrSymbol)
-        SEMI_MONTHLY = T.let(:semi_monthly, FinchAPI::Models::Income::Unit::OrSymbol)
-        BI_WEEKLY = T.let(:bi_weekly, FinchAPI::Models::Income::Unit::OrSymbol)
-        WEEKLY = T.let(:weekly, FinchAPI::Models::Income::Unit::OrSymbol)
-        DAILY = T.let(:daily, FinchAPI::Models::Income::Unit::OrSymbol)
-        HOURLY = T.let(:hourly, FinchAPI::Models::Income::Unit::OrSymbol)
-        FIXED = T.let(:fixed, FinchAPI::Models::Income::Unit::OrSymbol)
+        YEARLY = T.let(:yearly, FinchAPI::Models::Income::Unit::TaggedSymbol)
+        QUARTERLY = T.let(:quarterly, FinchAPI::Models::Income::Unit::TaggedSymbol)
+        MONTHLY = T.let(:monthly, FinchAPI::Models::Income::Unit::TaggedSymbol)
+        SEMI_MONTHLY = T.let(:semi_monthly, FinchAPI::Models::Income::Unit::TaggedSymbol)
+        BI_WEEKLY = T.let(:bi_weekly, FinchAPI::Models::Income::Unit::TaggedSymbol)
+        WEEKLY = T.let(:weekly, FinchAPI::Models::Income::Unit::TaggedSymbol)
+        DAILY = T.let(:daily, FinchAPI::Models::Income::Unit::TaggedSymbol)
+        HOURLY = T.let(:hourly, FinchAPI::Models::Income::Unit::TaggedSymbol)
+        FIXED = T.let(:fixed, FinchAPI::Models::Income::Unit::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[FinchAPI::Models::Income::Unit::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

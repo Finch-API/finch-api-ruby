@@ -230,6 +230,12 @@ module FinchAPI
           OAUTH = :oauth
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -242,6 +248,12 @@ module FinchAPI
         SANDBOX = :sandbox
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class ConnectionStatus < FinchAPI::BaseModel
@@ -283,6 +295,12 @@ module FinchAPI
         FINCH = :finch
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

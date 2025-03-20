@@ -33,7 +33,7 @@ module FinchAPI
           ERROR: :error
           COMPLETE: :complete
 
-          def self.values: -> ::Array[FinchAPI::Models::Jobs::ManualAsyncJob::status]
+          def self?.values: -> ::Array[FinchAPI::Models::Jobs::ManualAsyncJob::status]
         end
       end
     end

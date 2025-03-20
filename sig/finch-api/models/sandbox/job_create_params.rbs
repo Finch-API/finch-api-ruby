@@ -25,7 +25,7 @@ module FinchAPI
 
           DATA_SYNC_ALL: :data_sync_all
 
-          def self.values: -> ::Array[FinchAPI::Models::Sandbox::JobCreateParams::type_]
+          def self?.values: -> ::Array[FinchAPI::Models::Sandbox::JobCreateParams::type_]
         end
       end
     end

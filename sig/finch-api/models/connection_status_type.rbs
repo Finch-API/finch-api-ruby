@@ -18,7 +18,7 @@ module FinchAPI
       ERROR_PERMISSIONS: :error_permissions
       REAUTH: :reauth
 
-      def self.values: -> ::Array[FinchAPI::Models::connection_status_type]
+      def self?.values: -> ::Array[FinchAPI::Models::connection_status_type]
     end
   end
 end

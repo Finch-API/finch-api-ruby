@@ -237,6 +237,12 @@ module FinchAPI
 
             WORK = T.let(:work, FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol)
             PERSONAL = T.let(:personal, FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
 
@@ -261,6 +267,12 @@ module FinchAPI
             T.let(:two_or_more_races, FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol)
           DECLINE_TO_SPECIFY =
             T.let(:decline_to_specify, FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         # The gender of the individual.
@@ -274,6 +286,12 @@ module FinchAPI
           MALE = T.let(:male, FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol)
           OTHER = T.let(:other, FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol)
           DECLINE_TO_SPECIFY = T.let(:decline_to_specify, FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class PhoneNumber < FinchAPI::BaseModel
@@ -327,6 +345,12 @@ module FinchAPI
 
             WORK = T.let(:work, FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::TaggedSymbol)
             PERSONAL = T.let(:personal, FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
       end

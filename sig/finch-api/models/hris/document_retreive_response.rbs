@@ -7,7 +7,7 @@ module FinchAPI
       module DocumentRetreiveResponse
         extend FinchAPI::Union
 
-        def self.variants: -> [FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005]
+        def self?.variants: -> [FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005]
       end
     end
   end

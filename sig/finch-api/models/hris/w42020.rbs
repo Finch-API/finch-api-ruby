@@ -87,7 +87,7 @@ module FinchAPI
             MARRIED_FILING_JOINTLY_OR_QUALIFYING_SURVIVING_SPOUSE: :married_filing_jointly_or_qualifying_surviving_spouse
             SINGLE_OR_MARRIED_FILING_SEPARATELY: :single_or_married_filing_separately
 
-            def self.values: -> ::Array[FinchAPI::Models::HRIS::W42020::Data::filing_status]
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::W42020::Data::filing_status]
           end
         end
 
@@ -98,7 +98,7 @@ module FinchAPI
 
           W4_2020: :w4_2020
 
-          def self.values: -> ::Array[FinchAPI::Models::HRIS::W42020::type_]
+          def self?.values: -> ::Array[FinchAPI::Models::HRIS::W42020::type_]
         end
       end
     end

@@ -2652,6 +2652,12 @@ module FinchAPI
           API_CREDENTIAL =
             T.let(:api_credential, FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol)
           OAUTH = T.let(:oauth, FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

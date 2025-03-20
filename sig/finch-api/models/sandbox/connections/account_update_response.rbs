@@ -49,7 +49,7 @@ module FinchAPI
             OAUTH: :oauth
             ASSISTED: :assisted
 
-            def self.values: -> ::Array[FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::authentication_type]
+            def self?.values: -> ::Array[FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::authentication_type]
           end
         end
       end

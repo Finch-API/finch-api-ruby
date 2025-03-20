@@ -50,7 +50,7 @@ module FinchAPI
         HOURLY: :hourly
         FIXED: :fixed
 
-        def self.values: -> ::Array[FinchAPI::Models::Income::unit]
+        def self?.values: -> ::Array[FinchAPI::Models::Income::unit]
       end
     end
   end

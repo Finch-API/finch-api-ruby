@@ -250,6 +250,12 @@ module FinchAPI
             WORK = T.let(:work, FinchAPI::Models::Sandbox::IndividualUpdateResponse::Email::Type::TaggedSymbol)
             PERSONAL =
               T.let(:personal, FinchAPI::Models::Sandbox::IndividualUpdateResponse::Email::Type::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[FinchAPI::Models::Sandbox::IndividualUpdateResponse::Email::Type::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
 
@@ -285,6 +291,12 @@ module FinchAPI
             T.let(:two_or_more_races, FinchAPI::Models::Sandbox::IndividualUpdateResponse::Ethnicity::TaggedSymbol)
           DECLINE_TO_SPECIFY =
             T.let(:decline_to_specify, FinchAPI::Models::Sandbox::IndividualUpdateResponse::Ethnicity::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[FinchAPI::Models::Sandbox::IndividualUpdateResponse::Ethnicity::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         # The gender of the individual.
@@ -301,6 +313,12 @@ module FinchAPI
           OTHER = T.let(:other, FinchAPI::Models::Sandbox::IndividualUpdateResponse::Gender::TaggedSymbol)
           DECLINE_TO_SPECIFY =
             T.let(:decline_to_specify, FinchAPI::Models::Sandbox::IndividualUpdateResponse::Gender::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[FinchAPI::Models::Sandbox::IndividualUpdateResponse::Gender::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class PhoneNumber < FinchAPI::BaseModel
@@ -356,6 +374,15 @@ module FinchAPI
             WORK = T.let(:work, FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber::Type::TaggedSymbol)
             PERSONAL =
               T.let(:personal, FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber::Type::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber::Type::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
       end

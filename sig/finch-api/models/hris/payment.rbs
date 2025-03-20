@@ -85,7 +85,7 @@ module FinchAPI
           DAILY: :daily
           OTHER: :other
 
-          def self.values: -> ::Array[FinchAPI::Models::HRIS::Payment::pay_frequency]
+          def self?.values: -> ::Array[FinchAPI::Models::HRIS::Payment::pay_frequency]
         end
 
         type pay_period = { end_date: String?, start_date: String? }

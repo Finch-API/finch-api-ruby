@@ -50,7 +50,7 @@ module FinchAPI
           OAUTH: :oauth
           ASSISTED: :assisted
 
-          def self.values: -> ::Array[FinchAPI::Models::Sandbox::ConnectionCreateParams::authentication_type]
+          def self?.values: -> ::Array[FinchAPI::Models::Sandbox::ConnectionCreateParams::authentication_type]
         end
       end
     end

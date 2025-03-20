@@ -151,14 +151,20 @@ module FinchAPI
           OrSymbol =
             T.type_alias { T.any(Symbol, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol) }
 
-          COMPANY = T.let(:company, FinchAPI::Models::Connect::SessionNewParams::Product::OrSymbol)
-          DIRECTORY = T.let(:directory, FinchAPI::Models::Connect::SessionNewParams::Product::OrSymbol)
-          INDIVIDUAL = T.let(:individual, FinchAPI::Models::Connect::SessionNewParams::Product::OrSymbol)
-          EMPLOYMENT = T.let(:employment, FinchAPI::Models::Connect::SessionNewParams::Product::OrSymbol)
-          PAYMENT = T.let(:payment, FinchAPI::Models::Connect::SessionNewParams::Product::OrSymbol)
-          PAY_STATEMENT = T.let(:pay_statement, FinchAPI::Models::Connect::SessionNewParams::Product::OrSymbol)
-          BENEFITS = T.let(:benefits, FinchAPI::Models::Connect::SessionNewParams::Product::OrSymbol)
-          SSN = T.let(:ssn, FinchAPI::Models::Connect::SessionNewParams::Product::OrSymbol)
+          COMPANY = T.let(:company, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
+          DIRECTORY = T.let(:directory, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
+          INDIVIDUAL = T.let(:individual, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
+          EMPLOYMENT = T.let(:employment, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
+          PAYMENT = T.let(:payment, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
+          PAY_STATEMENT = T.let(:pay_statement, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
+          BENEFITS = T.let(:benefits, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
+          SSN = T.let(:ssn, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class Integration < FinchAPI::BaseModel
@@ -212,12 +218,21 @@ module FinchAPI
               T.type_alias { T.any(Symbol, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::TaggedSymbol) }
 
             ASSISTED =
-              T.let(:assisted, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::OrSymbol)
+              T.let(:assisted, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::TaggedSymbol)
             CREDENTIAL =
-              T.let(:credential, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::OrSymbol)
-            OAUTH = T.let(:oauth, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::OrSymbol)
+              T.let(:credential, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::TaggedSymbol)
+            OAUTH = T.let(:oauth, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::TaggedSymbol)
             API_TOKEN =
-              T.let(:api_token, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::OrSymbol)
+              T.let(:api_token, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -228,8 +243,14 @@ module FinchAPI
           OrSymbol =
             T.type_alias { T.any(Symbol, FinchAPI::Models::Connect::SessionNewParams::Sandbox::TaggedSymbol) }
 
-          FINCH = T.let(:finch, FinchAPI::Models::Connect::SessionNewParams::Sandbox::OrSymbol)
-          PROVIDER = T.let(:provider, FinchAPI::Models::Connect::SessionNewParams::Sandbox::OrSymbol)
+          FINCH = T.let(:finch, FinchAPI::Models::Connect::SessionNewParams::Sandbox::TaggedSymbol)
+          PROVIDER = T.let(:provider, FinchAPI::Models::Connect::SessionNewParams::Sandbox::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[FinchAPI::Models::Connect::SessionNewParams::Sandbox::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

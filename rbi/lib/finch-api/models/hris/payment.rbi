@@ -196,6 +196,12 @@ module FinchAPI
           WEEKLY = T.let(:weekly, FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol)
           DAILY = T.let(:daily, FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol)
           OTHER = T.let(:other, FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class PayPeriod < FinchAPI::BaseModel

@@ -82,8 +82,14 @@ module FinchAPI
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::DocumentListParams::Type) }
           OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::DocumentListParams::Type::TaggedSymbol) }
 
-          W4_2020 = T.let(:w4_2020, FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol)
-          W4_2005 = T.let(:w4_2005, FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol)
+          W4_2020 = T.let(:w4_2020, FinchAPI::Models::HRIS::DocumentListParams::Type::TaggedSymbol)
+          W4_2005 = T.let(:w4_2005, FinchAPI::Models::HRIS::DocumentListParams::Type::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

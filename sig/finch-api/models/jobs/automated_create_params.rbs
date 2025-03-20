@@ -31,7 +31,7 @@ module FinchAPI
 
           W4_FORM_EMPLOYEE_SYNC: :w4_form_employee_sync
 
-          def self.values: -> ::Array[FinchAPI::Models::Jobs::AutomatedCreateParams::type_]
+          def self?.values: -> ::Array[FinchAPI::Models::Jobs::AutomatedCreateParams::type_]
         end
 
         type params = { individual_id: String }

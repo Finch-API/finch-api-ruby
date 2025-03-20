@@ -236,8 +236,14 @@ module FinchAPI
             OrSymbol =
               T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type::TaggedSymbol) }
 
-            WORK = T.let(:work, FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type::OrSymbol)
-            PERSONAL = T.let(:personal, FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type::OrSymbol)
+            WORK = T.let(:work, FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type::TaggedSymbol)
+            PERSONAL = T.let(:personal, FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
 
@@ -250,26 +256,35 @@ module FinchAPI
           OrSymbol =
             T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::TaggedSymbol) }
 
-          ASIAN = T.let(:asian, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol)
-          WHITE = T.let(:white, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol)
+          ASIAN = T.let(:asian, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::TaggedSymbol)
+          WHITE = T.let(:white, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::TaggedSymbol)
           BLACK_OR_AFRICAN_AMERICAN =
-            T.let(:black_or_african_american, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol)
+            T.let(
+              :black_or_african_american,
+              FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::TaggedSymbol
+            )
           NATIVE_HAWAIIAN_OR_PACIFIC_ISLANDER =
             T.let(
               :native_hawaiian_or_pacific_islander,
-              FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol
+              FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::TaggedSymbol
             )
           AMERICAN_INDIAN_OR_ALASKA_NATIVE =
             T.let(
               :american_indian_or_alaska_native,
-              FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol
+              FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::TaggedSymbol
             )
           HISPANIC_OR_LATINO =
-            T.let(:hispanic_or_latino, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol)
+            T.let(:hispanic_or_latino, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::TaggedSymbol)
           TWO_OR_MORE_RACES =
-            T.let(:two_or_more_races, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol)
+            T.let(:two_or_more_races, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::TaggedSymbol)
           DECLINE_TO_SPECIFY =
-            T.let(:decline_to_specify, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol)
+            T.let(:decline_to_specify, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         # The gender of the individual.
@@ -280,11 +295,17 @@ module FinchAPI
           OrSymbol =
             T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::TaggedSymbol) }
 
-          FEMALE = T.let(:female, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::OrSymbol)
-          MALE = T.let(:male, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::OrSymbol)
-          OTHER = T.let(:other, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::OrSymbol)
+          FEMALE = T.let(:female, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::TaggedSymbol)
+          MALE = T.let(:male, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::TaggedSymbol)
+          OTHER = T.let(:other, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::TaggedSymbol)
           DECLINE_TO_SPECIFY =
-            T.let(:decline_to_specify, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::OrSymbol)
+            T.let(:decline_to_specify, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class PhoneNumber < FinchAPI::BaseModel
@@ -337,9 +358,18 @@ module FinchAPI
             OrSymbol =
               T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type::TaggedSymbol) }
 
-            WORK = T.let(:work, FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type::OrSymbol)
+            WORK = T.let(:work, FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type::TaggedSymbol)
             PERSONAL =
-              T.let(:personal, FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type::OrSymbol)
+              T.let(:personal, FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
       end

@@ -185,7 +185,7 @@ module FinchAPI
               NUMBER_1099: :"1099"
               OTHER: :other
 
-              def self.values: -> ::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::type_]
+              def self?.values: -> ::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::type_]
             end
           end
 
@@ -325,7 +325,7 @@ module FinchAPI
             CHECK: :check
             DIRECT_DEPOSIT: :direct_deposit
 
-            def self.values: -> ::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::payment_method]
+            def self?.values: -> ::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::payment_method]
           end
 
           type tax =
@@ -403,7 +403,7 @@ module FinchAPI
               LOCAL: :local
               FICA: :fica
 
-              def self.values: -> ::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::type_]
+              def self?.values: -> ::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::type_]
             end
           end
 
@@ -416,7 +416,7 @@ module FinchAPI
             OFF_CYCLE_PAYROLL: :off_cycle_payroll
             ONE_TIME_PAYMENT: :one_time_payment
 
-            def self.values: -> ::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::type_]
+            def self?.values: -> ::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::type_]
           end
         end
       end

@@ -140,6 +140,12 @@ module FinchAPI
             SAVINGS = :savings
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -216,6 +222,12 @@ module FinchAPI
             B_CORPORATION = :b_corporation
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # The tax payer type of the company.
@@ -231,6 +243,12 @@ module FinchAPI
             COOPERATIVE = :cooperative
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
       end
