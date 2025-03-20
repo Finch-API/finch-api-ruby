@@ -288,33 +288,29 @@ module FinchAPI
   #   values safely.
   #
   # @example
-  # ```ruby
-  # # `connection_status_type` is a `FinchAPI::Models::ConnectionStatusType`
-  # case connection_status_type
-  # when FinchAPI::Models::ConnectionStatusType::PENDING
-  #   # ...
-  # when FinchAPI::Models::ConnectionStatusType::PROCESSING
-  #   # ...
-  # when FinchAPI::Models::ConnectionStatusType::CONNECTED
-  #   # ...
-  # else
-  #   puts(connection_status_type)
-  # end
-  # ```
+  #   # `connection_status_type` is a `FinchAPI::Models::ConnectionStatusType`
+  #   case connection_status_type
+  #   when FinchAPI::Models::ConnectionStatusType::PENDING
+  #     # ...
+  #   when FinchAPI::Models::ConnectionStatusType::PROCESSING
+  #     # ...
+  #   when FinchAPI::Models::ConnectionStatusType::CONNECTED
+  #     # ...
+  #   else
+  #     puts(connection_status_type)
+  #   end
   #
   # @example
-  # ```ruby
-  # case connection_status_type
-  # in :pending
-  #   # ...
-  # in :processing
-  #   # ...
-  # in :connected
-  #   # ...
-  # else
-  #   puts(connection_status_type)
-  # end
-  # ```
+  #   case connection_status_type
+  #   in :pending
+  #     # ...
+  #   in :processing
+  #     # ...
+  #   in :connected
+  #     # ...
+  #   else
+  #     puts(connection_status_type)
+  #   end
   module Enum
     include FinchAPI::Converter
 
@@ -387,29 +383,25 @@ module FinchAPI
   # @api private
   #
   # @example
-  # ```ruby
-  # # `document_retreive_response` is a `FinchAPI::Models::HRIS::DocumentRetreiveResponse`
-  # case document_retreive_response
-  # when FinchAPI::Models::HRIS::W42020
-  #   puts(document_retreive_response.data)
-  # when FinchAPI::Models::HRIS::W42005
-  #   puts(document_retreive_response.type)
-  # else
-  #   puts(document_retreive_response)
-  # end
-  # ```
+  #   # `document_retreive_response` is a `FinchAPI::Models::HRIS::DocumentRetreiveResponse`
+  #   case document_retreive_response
+  #   when FinchAPI::Models::HRIS::W42020
+  #     puts(document_retreive_response.data)
+  #   when FinchAPI::Models::HRIS::W42005
+  #     puts(document_retreive_response.type)
+  #   else
+  #     puts(document_retreive_response)
+  #   end
   #
   # @example
-  # ```ruby
-  # case document_retreive_response
-  # in {type: :w4_2020, data: data, year: year}
-  #   puts(data)
-  # in {type: :w4_2005, data: data, year: year}
-  #   puts(year)
-  # else
-  #   puts(document_retreive_response)
-  # end
-  # ```
+  #   case document_retreive_response
+  #   in {type: :w4_2020, data: data, year: year}
+  #     puts(data)
+  #   in {type: :w4_2005, data: data, year: year}
+  #     puts(year)
+  #   else
+  #     puts(document_retreive_response)
+  #   end
   module Union
     include FinchAPI::Converter
 
@@ -874,14 +866,12 @@ module FinchAPI
   # @abstract
   #
   # @example
-  # ```ruby
-  # # `operation_support_matrix` is a `FinchAPI::Models::OperationSupportMatrix`
-  # operation_support_matrix => {
-  #   create: create,
-  #   delete: delete,
-  #   read: read
-  # }
-  # ```
+  #   # `operation_support_matrix` is a `FinchAPI::Models::OperationSupportMatrix`
+  #   operation_support_matrix => {
+  #     create: create,
+  #     delete: delete,
+  #     read: read
+  #   }
   class BaseModel
     extend FinchAPI::Converter
 

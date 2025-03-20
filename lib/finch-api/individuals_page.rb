@@ -2,32 +2,26 @@
 
 module FinchAPI
   # @example
-  # ```ruby
-  # if individuals_page.has_next?
-  #   individuals_page = individuals_page.next_page
-  # end
-  # ```
+  #   if individuals_page.has_next?
+  #     individuals_page = individuals_page.next_page
+  #   end
   #
   # @example
-  # ```ruby
-  # individuals_page.auto_paging_each do |directory|
-  #   puts(directory)
-  # end
-  # ```
+  #   individuals_page.auto_paging_each do |directory|
+  #     puts(directory)
+  #   end
   #
   # @example
-  # ```ruby
-  # directories =
-  #   individuals_page
-  #   .to_enum
-  #   .lazy
-  #   .select { _1.object_id.even? }
-  #   .map(&:itself)
-  #   .take(2)
-  #   .to_a
+  #   directories =
+  #     individuals_page
+  #     .to_enum
+  #     .lazy
+  #     .select { _1.object_id.even? }
+  #     .map(&:itself)
+  #     .take(2)
+  #     .to_a
   #
-  # directories => Array
-  # ```
+  #   directories => Array
   class IndividualsPage
     include FinchAPI::BasePage
 
