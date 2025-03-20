@@ -11,19 +11,36 @@ module FinchAPI
       def data=(_)
       end
 
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(FinchAPI::Models::AccountUpdateEvent::EventType::TaggedSymbol)) }
       def event_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: FinchAPI::Models::AccountUpdateEvent::EventType::TaggedSymbol)
+          .returns(FinchAPI::Models::AccountUpdateEvent::EventType::TaggedSymbol)
+      end
       def event_type=(_)
       end
 
-      sig { params(data: FinchAPI::Models::AccountUpdateEvent::Data, event_type: Symbol).returns(T.attached_class) }
+      sig do
+        params(
+          data: FinchAPI::Models::AccountUpdateEvent::Data,
+          event_type: FinchAPI::Models::AccountUpdateEvent::EventType::TaggedSymbol
+        )
+          .returns(T.attached_class)
+      end
       def self.new(data: nil, event_type: nil)
       end
 
-      sig { override.returns({data: FinchAPI::Models::AccountUpdateEvent::Data, event_type: Symbol}) }
+      sig do
+        override
+          .returns(
+            {
+              data: FinchAPI::Models::AccountUpdateEvent::Data,
+              event_type: FinchAPI::Models::AccountUpdateEvent::EventType::TaggedSymbol
+            }
+          )
+      end
       def to_hash
       end
 
@@ -39,18 +56,21 @@ module FinchAPI
         def authentication_method=(_)
         end
 
-        sig { returns(Symbol) }
+        sig { returns(FinchAPI::Models::ConnectionStatusType::TaggedSymbol) }
         def status
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: FinchAPI::Models::ConnectionStatusType::TaggedSymbol)
+            .returns(FinchAPI::Models::ConnectionStatusType::TaggedSymbol)
+        end
         def status=(_)
         end
 
         sig do
           params(
             authentication_method: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod,
-            status: Symbol
+            status: FinchAPI::Models::ConnectionStatusType::TaggedSymbol
           )
             .returns(T.attached_class)
         end
@@ -60,7 +80,10 @@ module FinchAPI
         sig do
           override
             .returns(
-              {authentication_method: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod, status: Symbol}
+              {
+                authentication_method: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod,
+                status: FinchAPI::Models::ConnectionStatusType::TaggedSymbol
+              }
             )
         end
         def to_hash
@@ -93,11 +116,14 @@ module FinchAPI
           end
 
           # The type of authentication method.
-          sig { returns(T.nilable(Symbol)) }
+          sig { returns(T.nilable(FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::TaggedSymbol)) }
           def type
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::TaggedSymbol)
+              .returns(FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::TaggedSymbol)
+          end
           def type=(_)
           end
 
@@ -105,7 +131,7 @@ module FinchAPI
             params(
               benefits_support: T.nilable(FinchAPI::Models::HRIS::BenefitsSupport),
               supported_fields: T.nilable(FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields),
-              type: Symbol
+              type: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::TaggedSymbol
             )
               .returns(T.attached_class)
           end
@@ -118,7 +144,7 @@ module FinchAPI
                 {
                   benefits_support: T.nilable(FinchAPI::Models::HRIS::BenefitsSupport),
                   supported_fields: T.nilable(FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields),
-                  type: Symbol
+                  type: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::TaggedSymbol
                 }
               )
           end
@@ -2451,26 +2477,39 @@ module FinchAPI
           end
 
           # The type of authentication method.
-          class Type < FinchAPI::Enum
-            abstract!
+          module Type
+            extend FinchAPI::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::TaggedSymbol) }
 
-            ASSISTED = :assisted
-            CREDENTIAL = :credential
-            API_TOKEN = :api_token
-            API_CREDENTIAL = :api_credential
-            OAUTH = :oauth
+            ASSISTED =
+              T.let(:assisted, FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::TaggedSymbol)
+            CREDENTIAL =
+              T.let(:credential, FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::TaggedSymbol)
+            API_TOKEN =
+              T.let(:api_token, FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::TaggedSymbol)
+            API_CREDENTIAL =
+              T.let(
+                :api_credential,
+                FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::TaggedSymbol
+              )
+            OAUTH =
+              T.let(:oauth, FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::TaggedSymbol)
           end
         end
       end
 
-      class EventType < FinchAPI::Enum
-        abstract!
+      module EventType
+        extend FinchAPI::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::AccountUpdateEvent::EventType) }
+        OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::AccountUpdateEvent::EventType::TaggedSymbol) }
 
-        ACCOUNT_UPDATED = :"account.updated"
+        ACCOUNT_UPDATED =
+          T.let(:"account.updated", FinchAPI::Models::AccountUpdateEvent::EventType::TaggedSymbol)
       end
     end
   end

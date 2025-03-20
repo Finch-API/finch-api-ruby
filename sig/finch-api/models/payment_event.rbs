@@ -41,7 +41,9 @@ module FinchAPI
       type event_type =
         :"payment.created" | :"payment.updated" | :"payment.deleted"
 
-      class EventType < FinchAPI::Enum
+      module EventType
+        extend FinchAPI::Enum
+
         PAYMENT_CREATED: :"payment.created"
         PAYMENT_UPDATED: :"payment.updated"
         PAYMENT_DELETED: :"payment.deleted"

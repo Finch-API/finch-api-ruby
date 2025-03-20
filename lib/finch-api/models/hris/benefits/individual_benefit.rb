@@ -93,10 +93,10 @@ module FinchAPI
 
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-            # @abstract
-            #
             # Type for HSA contribution limit if the benefit is a HSA.
-            class HsaContributionLimit < FinchAPI::Enum
+            module HsaContributionLimit
+              extend FinchAPI::Enum
+
               INDIVIDUAL = :individual
               FAMILY = :family
 

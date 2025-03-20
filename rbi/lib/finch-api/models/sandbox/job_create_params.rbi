@@ -8,32 +8,44 @@ module FinchAPI
         include FinchAPI::RequestParameters
 
         # The type of job to start. Currently the only supported type is `data_sync_all`
-        sig { returns(Symbol) }
+        sig { returns(FinchAPI::Models::Sandbox::JobCreateParams::Type::OrSymbol) }
         def type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: FinchAPI::Models::Sandbox::JobCreateParams::Type::OrSymbol)
+            .returns(FinchAPI::Models::Sandbox::JobCreateParams::Type::OrSymbol)
+        end
         def type=(_)
         end
 
         sig do
-          params(type: Symbol, request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
+          params(
+            type: FinchAPI::Models::Sandbox::JobCreateParams::Type::OrSymbol,
+            request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+          )
             .returns(T.attached_class)
         end
         def self.new(type:, request_options: {})
         end
 
-        sig { override.returns({type: Symbol, request_options: FinchAPI::RequestOptions}) }
+        sig do
+          override
+            .returns(
+              {type: FinchAPI::Models::Sandbox::JobCreateParams::Type::OrSymbol, request_options: FinchAPI::RequestOptions}
+            )
+        end
         def to_hash
         end
 
         # The type of job to start. Currently the only supported type is `data_sync_all`
-        class Type < FinchAPI::Enum
-          abstract!
+        module Type
+          extend FinchAPI::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::JobCreateParams::Type) }
+          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::JobCreateParams::Type::TaggedSymbol) }
 
-          DATA_SYNC_ALL = :data_sync_all
+          DATA_SYNC_ALL = T.let(:data_sync_all, FinchAPI::Models::Sandbox::JobCreateParams::Type::OrSymbol)
         end
       end
     end

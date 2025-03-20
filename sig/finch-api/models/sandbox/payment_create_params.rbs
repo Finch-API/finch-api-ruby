@@ -168,7 +168,9 @@ module FinchAPI
               | :"1099"
               | :other
 
-            class Type < FinchAPI::Enum
+            module Type
+              extend FinchAPI::Enum
+
               SALARY: :salary
               WAGE: :wage
               REIMBURSEMENT: :reimbursement
@@ -317,7 +319,9 @@ module FinchAPI
 
           type payment_method = :check | :direct_deposit
 
-          class PaymentMethod < FinchAPI::Enum
+          module PaymentMethod
+            extend FinchAPI::Enum
+
             CHECK: :check
             DIRECT_DEPOSIT: :direct_deposit
 
@@ -391,7 +395,9 @@ module FinchAPI
 
             type type_ = :state | :federal | :local | :fica
 
-            class Type < FinchAPI::Enum
+            module Type
+              extend FinchAPI::Enum
+
               STATE: :state
               FEDERAL: :federal
               LOCAL: :local
@@ -403,7 +409,9 @@ module FinchAPI
 
           type type_ = :regular_payroll | :off_cycle_payroll | :one_time_payment
 
-          class Type < FinchAPI::Enum
+          module Type
+            extend FinchAPI::Enum
+
             REGULAR_PAYROLL: :regular_payroll
             OFF_CYCLE_PAYROLL: :off_cycle_payroll
             ONE_TIME_PAYMENT: :one_time_payment

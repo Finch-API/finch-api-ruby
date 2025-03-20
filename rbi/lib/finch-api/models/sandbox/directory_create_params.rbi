@@ -110,11 +110,14 @@ module FinchAPI
           end
 
           # The detailed employment status of the individual.
-          sig { returns(T.nilable(Symbol)) }
+          sig { returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::OrSymbol)) }
           def employment_status
           end
 
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          sig do
+            params(_: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::OrSymbol))
+              .returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::OrSymbol))
+          end
           def employment_status=(_)
           end
 
@@ -138,11 +141,14 @@ module FinchAPI
           end
 
           # The EEOC-defined ethnicity of the individual.
-          sig { returns(T.nilable(Symbol)) }
+          sig { returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::OrSymbol)) }
           def ethnicity
           end
 
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          sig do
+            params(_: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::OrSymbol))
+              .returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::OrSymbol))
+          end
           def ethnicity=(_)
           end
 
@@ -156,11 +162,14 @@ module FinchAPI
           end
 
           # The gender of the individual.
-          sig { returns(T.nilable(Symbol)) }
+          sig { returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::OrSymbol)) }
           def gender
           end
 
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          sig do
+            params(_: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::OrSymbol))
+              .returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::OrSymbol))
+          end
           def gender=(_)
           end
 
@@ -324,12 +333,12 @@ module FinchAPI
               dob: T.nilable(String),
               emails: T.nilable(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email]),
               employment: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment),
-              employment_status: T.nilable(Symbol),
+              employment_status: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::OrSymbol),
               encrypted_ssn: T.nilable(String),
               end_date: T.nilable(String),
-              ethnicity: T.nilable(Symbol),
+              ethnicity: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::OrSymbol),
               first_name: T.nilable(String),
-              gender: T.nilable(Symbol),
+              gender: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::OrSymbol),
               income: T.nilable(FinchAPI::Models::Income),
               income_history: T.nilable(T::Array[T.nilable(FinchAPI::Models::Income)]),
               is_active: T.nilable(T::Boolean),
@@ -389,12 +398,12 @@ module FinchAPI
                   dob: T.nilable(String),
                   emails: T.nilable(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email]),
                   employment: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment),
-                  employment_status: T.nilable(Symbol),
+                  employment_status: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::OrSymbol),
                   encrypted_ssn: T.nilable(String),
                   end_date: T.nilable(String),
-                  ethnicity: T.nilable(Symbol),
+                  ethnicity: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::OrSymbol),
                   first_name: T.nilable(String),
-                  gender: T.nilable(Symbol),
+                  gender: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::OrSymbol),
                   income: T.nilable(FinchAPI::Models::Income),
                   income_history: T.nilable(T::Array[T.nilable(FinchAPI::Models::Income)]),
                   is_active: T.nilable(T::Boolean),
@@ -471,128 +480,216 @@ module FinchAPI
             def data=(_)
             end
 
-            sig { returns(T.nilable(Symbol)) }
+            sig { returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type::OrSymbol)) }
             def type
             end
 
-            sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+            sig do
+              params(_: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type::OrSymbol))
+                .returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type::OrSymbol))
+            end
             def type=(_)
             end
 
-            sig { params(data: String, type: T.nilable(Symbol)).returns(T.attached_class) }
+            sig do
+              params(
+                data: String,
+                type: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type::OrSymbol)
+              )
+                .returns(T.attached_class)
+            end
             def self.new(data: nil, type: nil)
             end
 
-            sig { override.returns({data: String, type: T.nilable(Symbol)}) }
+            sig do
+              override
+                .returns(
+                  {data: String, type: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type::OrSymbol)}
+                )
+            end
             def to_hash
             end
 
-            class Type < FinchAPI::Enum
-              abstract!
+            module Type
+              extend FinchAPI::Enum
 
-              Value = type_template(:out) { {fixed: Symbol} }
+              TaggedSymbol =
+                T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type) }
+              OrSymbol =
+                T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type::TaggedSymbol) }
 
-              WORK = :work
-              PERSONAL = :personal
+              WORK = T.let(:work, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type::OrSymbol)
+              PERSONAL =
+                T.let(:personal, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type::OrSymbol)
             end
           end
 
           class Employment < FinchAPI::BaseModel
             # The secondary employment type of the individual. Options: `full_time`,
             #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
-            sig { returns(T.nilable(Symbol)) }
+            sig { returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::OrSymbol)) }
             def subtype
             end
 
-            sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+            sig do
+              params(
+                _: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::OrSymbol)
+              )
+                .returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::OrSymbol))
+            end
             def subtype=(_)
             end
 
             # The main employment type of the individual.
-            sig { returns(T.nilable(Symbol)) }
+            sig { returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type::OrSymbol)) }
             def type
             end
 
-            sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+            sig do
+              params(_: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type::OrSymbol))
+                .returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type::OrSymbol))
+            end
             def type=(_)
             end
 
             # The employment object.
-            sig { params(subtype: T.nilable(Symbol), type: T.nilable(Symbol)).returns(T.attached_class) }
+            sig do
+              params(
+                subtype: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::OrSymbol),
+                type: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type::OrSymbol)
+              )
+                .returns(T.attached_class)
+            end
             def self.new(subtype: nil, type: nil)
             end
 
-            sig { override.returns({subtype: T.nilable(Symbol), type: T.nilable(Symbol)}) }
+            sig do
+              override
+                .returns(
+                  {
+                    subtype: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::OrSymbol),
+                    type: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type::OrSymbol)
+                  }
+                )
+            end
             def to_hash
             end
 
             # The secondary employment type of the individual. Options: `full_time`,
             #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
-            class Subtype < FinchAPI::Enum
-              abstract!
+            module Subtype
+              extend FinchAPI::Enum
 
-              Value = type_template(:out) { {fixed: Symbol} }
+              TaggedSymbol =
+                T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype) }
+              OrSymbol =
+                T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::TaggedSymbol) }
 
-              FULL_TIME = :full_time
-              INTERN = :intern
-              PART_TIME = :part_time
-              TEMP = :temp
-              SEASONAL = :seasonal
-              INDIVIDUAL_CONTRACTOR = :individual_contractor
+              FULL_TIME =
+                T.let(:full_time, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::OrSymbol)
+              INTERN =
+                T.let(:intern, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::OrSymbol)
+              PART_TIME =
+                T.let(:part_time, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::OrSymbol)
+              TEMP =
+                T.let(:temp, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::OrSymbol)
+              SEASONAL =
+                T.let(:seasonal, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::OrSymbol)
+              INDIVIDUAL_CONTRACTOR =
+                T.let(
+                  :individual_contractor,
+                  FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::OrSymbol
+                )
             end
 
             # The main employment type of the individual.
-            class Type < FinchAPI::Enum
-              abstract!
+            module Type
+              extend FinchAPI::Enum
 
-              Value = type_template(:out) { {fixed: Symbol} }
+              TaggedSymbol =
+                T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type) }
+              OrSymbol =
+                T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type::TaggedSymbol) }
 
-              EMPLOYEE = :employee
-              CONTRACTOR = :contractor
+              EMPLOYEE =
+                T.let(:employee, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type::OrSymbol)
+              CONTRACTOR =
+                T.let(:contractor, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type::OrSymbol)
             end
           end
 
           # The detailed employment status of the individual.
-          class EmploymentStatus < FinchAPI::Enum
-            abstract!
+          module EmploymentStatus
+            extend FinchAPI::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::TaggedSymbol) }
 
-            ACTIVE = :active
-            DECEASED = :deceased
-            LEAVE = :leave
-            ONBOARDING = :onboarding
-            PREHIRE = :prehire
-            RETIRED = :retired
-            TERMINATED = :terminated
+            ACTIVE =
+              T.let(:active, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::OrSymbol)
+            DECEASED =
+              T.let(:deceased, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::OrSymbol)
+            LEAVE = T.let(:leave, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::OrSymbol)
+            ONBOARDING =
+              T.let(:onboarding, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::OrSymbol)
+            PREHIRE =
+              T.let(:prehire, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::OrSymbol)
+            RETIRED =
+              T.let(:retired, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::OrSymbol)
+            TERMINATED =
+              T.let(:terminated, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::OrSymbol)
           end
 
           # The EEOC-defined ethnicity of the individual.
-          class Ethnicity < FinchAPI::Enum
-            abstract!
+          module Ethnicity
+            extend FinchAPI::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol) }
 
-            ASIAN = :asian
-            WHITE = :white
-            BLACK_OR_AFRICAN_AMERICAN = :black_or_african_american
-            NATIVE_HAWAIIAN_OR_PACIFIC_ISLANDER = :native_hawaiian_or_pacific_islander
-            AMERICAN_INDIAN_OR_ALASKA_NATIVE = :american_indian_or_alaska_native
-            HISPANIC_OR_LATINO = :hispanic_or_latino
-            TWO_OR_MORE_RACES = :two_or_more_races
-            DECLINE_TO_SPECIFY = :decline_to_specify
+            ASIAN = T.let(:asian, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::OrSymbol)
+            WHITE = T.let(:white, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::OrSymbol)
+            BLACK_OR_AFRICAN_AMERICAN =
+              T.let(
+                :black_or_african_american,
+                FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::OrSymbol
+              )
+            NATIVE_HAWAIIAN_OR_PACIFIC_ISLANDER =
+              T.let(
+                :native_hawaiian_or_pacific_islander,
+                FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::OrSymbol
+              )
+            AMERICAN_INDIAN_OR_ALASKA_NATIVE =
+              T.let(
+                :american_indian_or_alaska_native,
+                FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::OrSymbol
+              )
+            HISPANIC_OR_LATINO =
+              T.let(:hispanic_or_latino, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::OrSymbol)
+            TWO_OR_MORE_RACES =
+              T.let(:two_or_more_races, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::OrSymbol)
+            DECLINE_TO_SPECIFY =
+              T.let(:decline_to_specify, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::OrSymbol)
           end
 
           # The gender of the individual.
-          class Gender < FinchAPI::Enum
-            abstract!
+          module Gender
+            extend FinchAPI::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::TaggedSymbol) }
 
-            FEMALE = :female
-            MALE = :male
-            OTHER = :other
-            DECLINE_TO_SPECIFY = :decline_to_specify
+            FEMALE = T.let(:female, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::OrSymbol)
+            MALE = T.let(:male, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::OrSymbol)
+            OTHER = T.let(:other, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::OrSymbol)
+            DECLINE_TO_SPECIFY =
+              T.let(:decline_to_specify, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::OrSymbol)
           end
 
           class Manager < FinchAPI::BaseModel
@@ -624,29 +721,50 @@ module FinchAPI
             def data=(_)
             end
 
-            sig { returns(T.nilable(Symbol)) }
+            sig { returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::OrSymbol)) }
             def type
             end
 
-            sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+            sig do
+              params(_: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::OrSymbol))
+                .returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::OrSymbol))
+            end
             def type=(_)
             end
 
-            sig { params(data: String, type: T.nilable(Symbol)).returns(T.attached_class) }
+            sig do
+              params(
+                data: String,
+                type: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::OrSymbol)
+              )
+                .returns(T.attached_class)
+            end
             def self.new(data: nil, type: nil)
             end
 
-            sig { override.returns({data: String, type: T.nilable(Symbol)}) }
+            sig do
+              override
+                .returns(
+                  {
+                    data: String,
+                    type: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::OrSymbol)
+                  }
+                )
+            end
             def to_hash
             end
 
-            class Type < FinchAPI::Enum
-              abstract!
+            module Type
+              extend FinchAPI::Enum
 
-              Value = type_template(:out) { {fixed: Symbol} }
+              TaggedSymbol =
+                T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type) }
+              OrSymbol =
+                T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::TaggedSymbol) }
 
-              WORK = :work
-              PERSONAL = :personal
+              WORK = T.let(:work, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::OrSymbol)
+              PERSONAL =
+                T.let(:personal, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::OrSymbol)
             end
           end
         end

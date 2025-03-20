@@ -59,10 +59,10 @@ module FinchAPI
 
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-        # @abstract
-        #
         # The type of document.
-        class Type < FinchAPI::Enum
+        module Type
+          extend FinchAPI::Enum
+
           W4_2020 = :w4_2020
           W4_2005 = :w4_2005
 

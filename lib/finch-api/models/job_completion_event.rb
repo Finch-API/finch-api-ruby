@@ -51,8 +51,9 @@ module FinchAPI
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
       end
 
-      # @abstract
-      class EventType < FinchAPI::Enum
+      module EventType
+        extend FinchAPI::Enum
+
         JOB_BENEFIT_CREATE_COMPLETED = :"job.benefit_create.completed"
         JOB_BENEFIT_ENROLL_COMPLETED = :"job.benefit_enroll.completed"
         JOB_BENEFIT_REGISTER_COMPLETED = :"job.benefit_register.completed"

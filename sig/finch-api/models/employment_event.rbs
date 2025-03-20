@@ -41,7 +41,9 @@ module FinchAPI
       type event_type =
         :"employment.created" | :"employment.updated" | :"employment.deleted"
 
-      class EventType < FinchAPI::Enum
+      module EventType
+        extend FinchAPI::Enum
+
         EMPLOYMENT_CREATED: :"employment.created"
         EMPLOYMENT_UPDATED: :"employment.updated"
         EMPLOYMENT_DELETED: :"employment.deleted"

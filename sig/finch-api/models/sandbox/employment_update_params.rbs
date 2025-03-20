@@ -144,7 +144,9 @@ module FinchAPI
             | :seasonal
             | :individual_contractor
 
-          class Subtype < FinchAPI::Enum
+          module Subtype
+            extend FinchAPI::Enum
+
             FULL_TIME: :full_time
             INTERN: :intern
             PART_TIME: :part_time
@@ -157,7 +159,9 @@ module FinchAPI
 
           type type_ = :employee | :contractor
 
-          class Type < FinchAPI::Enum
+          module Type
+            extend FinchAPI::Enum
+
             EMPLOYEE: :employee
             CONTRACTOR: :contractor
 
@@ -174,7 +178,9 @@ module FinchAPI
           | :retired
           | :terminated
 
-        class EmploymentStatus < FinchAPI::Enum
+        module EmploymentStatus
+          extend FinchAPI::Enum
+
           ACTIVE: :active
           DECEASED: :deceased
           LEAVE: :leave

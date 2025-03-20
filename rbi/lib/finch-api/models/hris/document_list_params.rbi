@@ -37,11 +37,14 @@ module FinchAPI
 
         # Comma-delimited list of document types to filter on. If empty, defaults to all
         #   types
-        sig { returns(T.nilable(T::Array[Symbol])) }
+        sig { returns(T.nilable(T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol])) }
         def types
         end
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        sig do
+          params(_: T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol])
+            .returns(T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol])
+        end
         def types=(_)
         end
 
@@ -50,7 +53,7 @@ module FinchAPI
             individual_ids: T::Array[String],
             limit: Integer,
             offset: Integer,
-            types: T::Array[Symbol],
+            types: T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol],
             request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
           )
             .returns(T.attached_class)
@@ -65,7 +68,7 @@ module FinchAPI
                 individual_ids: T::Array[String],
                 limit: Integer,
                 offset: Integer,
-                types: T::Array[Symbol],
+                types: T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol],
                 request_options: FinchAPI::RequestOptions
               }
             )
@@ -73,13 +76,14 @@ module FinchAPI
         def to_hash
         end
 
-        class Type < FinchAPI::Enum
-          abstract!
+        module Type
+          extend FinchAPI::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::DocumentListParams::Type) }
+          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::DocumentListParams::Type::TaggedSymbol) }
 
-          W4_2020 = :w4_2020
-          W4_2005 = :w4_2005
+          W4_2020 = T.let(:w4_2020, FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol)
+          W4_2005 = T.let(:w4_2005, FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol)
         end
       end
     end

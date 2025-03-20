@@ -14,30 +14,46 @@ module FinchAPI
         end
 
         # Contribution type.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitContribution::Type::TaggedSymbol)) }
         def type
         end
 
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        sig do
+          params(_: T.nilable(FinchAPI::Models::HRIS::BenefitContribution::Type::TaggedSymbol))
+            .returns(T.nilable(FinchAPI::Models::HRIS::BenefitContribution::Type::TaggedSymbol))
+        end
         def type=(_)
         end
 
-        sig { params(amount: T.nilable(Integer), type: T.nilable(Symbol)).returns(T.attached_class) }
+        sig do
+          params(
+            amount: T.nilable(Integer),
+            type: T.nilable(FinchAPI::Models::HRIS::BenefitContribution::Type::TaggedSymbol)
+          )
+            .returns(T.attached_class)
+        end
         def self.new(amount: nil, type: nil)
         end
 
-        sig { override.returns({amount: T.nilable(Integer), type: T.nilable(Symbol)}) }
+        sig do
+          override
+            .returns(
+              {amount: T.nilable(Integer), type: T.nilable(FinchAPI::Models::HRIS::BenefitContribution::Type::TaggedSymbol)}
+            )
+        end
         def to_hash
         end
 
         # Contribution type.
-        class Type < FinchAPI::Enum
-          abstract!
+        module Type
+          extend FinchAPI::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::BenefitContribution::Type) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::BenefitContribution::Type::TaggedSymbol) }
 
-          FIXED = :fixed
-          PERCENT = :percent
+          FIXED = T.let(:fixed, FinchAPI::Models::HRIS::BenefitContribution::Type::TaggedSymbol)
+          PERCENT = T.let(:percent, FinchAPI::Models::HRIS::BenefitContribution::Type::TaggedSymbol)
         end
       end
     end

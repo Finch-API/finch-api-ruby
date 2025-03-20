@@ -2,8 +2,9 @@
 
 module FinchAPI
   module Models
-    # @abstract
-    class ConnectionStatusType < FinchAPI::Enum
+    module ConnectionStatusType
+      extend FinchAPI::Enum
+
       PENDING = :pending
       PROCESSING = :processing
       CONNECTED = :connected

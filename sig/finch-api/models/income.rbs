@@ -37,7 +37,9 @@ module FinchAPI
         | :hourly
         | :fixed
 
-      class Unit < FinchAPI::Enum
+      module Unit
+        extend FinchAPI::Enum
+
         YEARLY: :yearly
         QUARTERLY: :quarterly
         MONTHLY: :monthly

@@ -2,17 +2,18 @@
 
 module FinchAPI
   module Models
-    class ConnectionStatusType < FinchAPI::Enum
-      abstract!
+    module ConnectionStatusType
+      extend FinchAPI::Enum
 
-      Value = type_template(:out) { {fixed: Symbol} }
+      TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::ConnectionStatusType) }
+      OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::ConnectionStatusType::TaggedSymbol) }
 
-      PENDING = :pending
-      PROCESSING = :processing
-      CONNECTED = :connected
-      ERROR_NO_ACCOUNT_SETUP = :error_no_account_setup
-      ERROR_PERMISSIONS = :error_permissions
-      REAUTH = :reauth
+      PENDING = T.let(:pending, FinchAPI::Models::ConnectionStatusType::OrSymbol)
+      PROCESSING = T.let(:processing, FinchAPI::Models::ConnectionStatusType::OrSymbol)
+      CONNECTED = T.let(:connected, FinchAPI::Models::ConnectionStatusType::OrSymbol)
+      ERROR_NO_ACCOUNT_SETUP = T.let(:error_no_account_setup, FinchAPI::Models::ConnectionStatusType::OrSymbol)
+      ERROR_PERMISSIONS = T.let(:error_permissions, FinchAPI::Models::ConnectionStatusType::OrSymbol)
+      REAUTH = T.let(:reauth, FinchAPI::Models::ConnectionStatusType::OrSymbol)
     end
   end
 end

@@ -23,36 +23,62 @@ module FinchAPI
         end
 
         # List of pay frequencies associated with this pay group
-        sig { returns(T.nilable(T::Array[Symbol])) }
+        sig { returns(T.nilable(T::Array[FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol])) }
         def pay_frequencies
         end
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        sig do
+          params(_: T::Array[FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol])
+            .returns(T::Array[FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol])
+        end
         def pay_frequencies=(_)
         end
 
-        sig { params(id: String, name: String, pay_frequencies: T::Array[Symbol]).returns(T.attached_class) }
+        sig do
+          params(
+            id: String,
+            name: String,
+            pay_frequencies: T::Array[FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol]
+          )
+            .returns(T.attached_class)
+        end
         def self.new(id: nil, name: nil, pay_frequencies: nil)
         end
 
-        sig { override.returns({id: String, name: String, pay_frequencies: T::Array[Symbol]}) }
+        sig do
+          override
+            .returns(
+              {
+                id: String,
+                name: String,
+                pay_frequencies: T::Array[FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol]
+              }
+            )
+        end
         def to_hash
         end
 
-        class PayFrequency < FinchAPI::Enum
-          abstract!
+        module PayFrequency
+          extend FinchAPI::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol) }
 
-          ANNUALLY = :annually
-          SEMI_ANNUALLY = :semi_annually
-          QUARTERLY = :quarterly
-          MONTHLY = :monthly
-          SEMI_MONTHLY = :semi_monthly
-          BI_WEEKLY = :bi_weekly
-          WEEKLY = :weekly
-          DAILY = :daily
-          OTHER = :other
+          ANNUALLY = T.let(:annually, FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol)
+          SEMI_ANNUALLY =
+            T.let(:semi_annually, FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol)
+          QUARTERLY =
+            T.let(:quarterly, FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol)
+          MONTHLY = T.let(:monthly, FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol)
+          SEMI_MONTHLY =
+            T.let(:semi_monthly, FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol)
+          BI_WEEKLY =
+            T.let(:bi_weekly, FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol)
+          WEEKLY = T.let(:weekly, FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol)
+          DAILY = T.let(:daily, FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol)
+          OTHER = T.let(:other, FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol)
         end
       end
     end

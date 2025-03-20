@@ -342,8 +342,9 @@ module FinchAPI
 
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-            # @abstract
-            class Type < FinchAPI::Enum
+            module Type
+              extend FinchAPI::Enum
+
               WORK = :work
               PERSONAL = :personal
 
@@ -379,11 +380,11 @@ module FinchAPI
 
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-            # @abstract
-            #
             # The secondary employment type of the individual. Options: `full_time`,
             #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
-            class Subtype < FinchAPI::Enum
+            module Subtype
+              extend FinchAPI::Enum
+
               FULL_TIME = :full_time
               INTERN = :intern
               PART_TIME = :part_time
@@ -394,10 +395,10 @@ module FinchAPI
               finalize!
             end
 
-            # @abstract
-            #
             # The main employment type of the individual.
-            class Type < FinchAPI::Enum
+            module Type
+              extend FinchAPI::Enum
+
               EMPLOYEE = :employee
               CONTRACTOR = :contractor
 
@@ -405,10 +406,10 @@ module FinchAPI
             end
           end
 
-          # @abstract
-          #
           # The detailed employment status of the individual.
-          class EmploymentStatus < FinchAPI::Enum
+          module EmploymentStatus
+            extend FinchAPI::Enum
+
             ACTIVE = :active
             DECEASED = :deceased
             LEAVE = :leave
@@ -420,10 +421,10 @@ module FinchAPI
             finalize!
           end
 
-          # @abstract
-          #
           # The EEOC-defined ethnicity of the individual.
-          class Ethnicity < FinchAPI::Enum
+          module Ethnicity
+            extend FinchAPI::Enum
+
             ASIAN = :asian
             WHITE = :white
             BLACK_OR_AFRICAN_AMERICAN = :black_or_african_american
@@ -436,10 +437,10 @@ module FinchAPI
             finalize!
           end
 
-          # @abstract
-          #
           # The gender of the individual.
-          class Gender < FinchAPI::Enum
+          module Gender
+            extend FinchAPI::Enum
+
             FEMALE = :female
             MALE = :male
             OTHER = :other
@@ -494,8 +495,9 @@ module FinchAPI
 
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-            # @abstract
-            class Type < FinchAPI::Enum
+            module Type
+              extend FinchAPI::Enum
+
               WORK = :work
               PERSONAL = :personal
 

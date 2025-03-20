@@ -3,10 +3,10 @@
 module FinchAPI
   module Models
     module HRIS
-      # @abstract
-      #
       # Type of benefit.
-      class BenefitType < FinchAPI::Enum
+      module BenefitType
+        extend FinchAPI::Enum
+
         NUMBER_401K = :"401k"
         NUMBER_401K_ROTH = :"401k_roth"
         NUMBER_401K_LOAN = :"401k_loan"

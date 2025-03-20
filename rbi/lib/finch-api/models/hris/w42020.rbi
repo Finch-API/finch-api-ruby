@@ -14,11 +14,14 @@ module FinchAPI
         end
 
         # Specifies the form type, indicating that this document is a 2020 W4 form.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(FinchAPI::Models::HRIS::W42020::Type::TaggedSymbol)) }
         def type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: FinchAPI::Models::HRIS::W42020::Type::TaggedSymbol)
+            .returns(FinchAPI::Models::HRIS::W42020::Type::TaggedSymbol)
+        end
         def type=(_)
         end
 
@@ -34,13 +37,26 @@ module FinchAPI
         # A 2020 version of the W-4 tax form containing information on an individual's
         #   filing status, dependents, and withholding details.
         sig do
-          params(data: FinchAPI::Models::HRIS::W42020::Data, type: Symbol, year: T.nilable(Float))
+          params(
+            data: FinchAPI::Models::HRIS::W42020::Data,
+            type: FinchAPI::Models::HRIS::W42020::Type::TaggedSymbol,
+            year: T.nilable(Float)
+          )
             .returns(T.attached_class)
         end
         def self.new(data: nil, type: nil, year: nil)
         end
 
-        sig { override.returns({data: FinchAPI::Models::HRIS::W42020::Data, type: Symbol, year: T.nilable(Float)}) }
+        sig do
+          override
+            .returns(
+              {
+                data: FinchAPI::Models::HRIS::W42020::Data,
+                type: FinchAPI::Models::HRIS::W42020::Type::TaggedSymbol,
+                year: T.nilable(Float)
+              }
+            )
+        end
         def to_hash
         end
 
@@ -83,11 +99,14 @@ module FinchAPI
           end
 
           # The individual's filing status for tax purposes.
-          sig { returns(T.nilable(Symbol)) }
+          sig { returns(T.nilable(FinchAPI::Models::HRIS::W42020::Data::FilingStatus::TaggedSymbol)) }
           def filing_status
           end
 
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          sig do
+            params(_: T.nilable(FinchAPI::Models::HRIS::W42020::Data::FilingStatus::TaggedSymbol))
+              .returns(T.nilable(FinchAPI::Models::HRIS::W42020::Data::FilingStatus::TaggedSymbol))
+          end
           def filing_status=(_)
           end
 
@@ -125,7 +144,7 @@ module FinchAPI
               amount_for_qualifying_children_under_17: T.nilable(Integer),
               deductions: T.nilable(Integer),
               extra_withholding: T.nilable(Integer),
-              filing_status: T.nilable(Symbol),
+              filing_status: T.nilable(FinchAPI::Models::HRIS::W42020::Data::FilingStatus::TaggedSymbol),
               individual_id: String,
               other_income: T.nilable(Integer),
               total_claim_dependent_and_other_credits: T.nilable(Integer)
@@ -152,7 +171,7 @@ module FinchAPI
                   amount_for_qualifying_children_under_17: T.nilable(Integer),
                   deductions: T.nilable(Integer),
                   extra_withholding: T.nilable(Integer),
-                  filing_status: T.nilable(Symbol),
+                  filing_status: T.nilable(FinchAPI::Models::HRIS::W42020::Data::FilingStatus::TaggedSymbol),
                   individual_id: String,
                   other_income: T.nilable(Integer),
                   total_claim_dependent_and_other_credits: T.nilable(Integer)
@@ -163,25 +182,36 @@ module FinchAPI
           end
 
           # The individual's filing status for tax purposes.
-          class FilingStatus < FinchAPI::Enum
-            abstract!
+          module FilingStatus
+            extend FinchAPI::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::W42020::Data::FilingStatus) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::W42020::Data::FilingStatus::TaggedSymbol) }
 
-            HEAD_OF_HOUSEHOLD = :head_of_household
+            HEAD_OF_HOUSEHOLD =
+              T.let(:head_of_household, FinchAPI::Models::HRIS::W42020::Data::FilingStatus::TaggedSymbol)
             MARRIED_FILING_JOINTLY_OR_QUALIFYING_SURVIVING_SPOUSE =
-              :married_filing_jointly_or_qualifying_surviving_spouse
-            SINGLE_OR_MARRIED_FILING_SEPARATELY = :single_or_married_filing_separately
+              T.let(
+                :married_filing_jointly_or_qualifying_surviving_spouse,
+                FinchAPI::Models::HRIS::W42020::Data::FilingStatus::TaggedSymbol
+              )
+            SINGLE_OR_MARRIED_FILING_SEPARATELY =
+              T.let(
+                :single_or_married_filing_separately,
+                FinchAPI::Models::HRIS::W42020::Data::FilingStatus::TaggedSymbol
+              )
           end
         end
 
         # Specifies the form type, indicating that this document is a 2020 W4 form.
-        class Type < FinchAPI::Enum
-          abstract!
+        module Type
+          extend FinchAPI::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::W42020::Type) }
+          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::W42020::Type::TaggedSymbol) }
 
-          W4_2020 = :w4_2020
+          W4_2020 = T.let(:w4_2020, FinchAPI::Models::HRIS::W42020::Type::TaggedSymbol)
         end
       end
     end

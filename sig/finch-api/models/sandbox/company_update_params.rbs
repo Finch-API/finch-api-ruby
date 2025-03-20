@@ -80,7 +80,9 @@ module FinchAPI
 
           type account_type = :checking | :savings
 
-          class AccountType < FinchAPI::Enum
+          module AccountType
+            extend FinchAPI::Enum
+
             CHECKING: :checking
             SAVINGS: :savings
 
@@ -137,7 +139,9 @@ module FinchAPI
 
           type subtype = :s_corporation | :c_corporation | :b_corporation
 
-          class Subtype < FinchAPI::Enum
+          module Subtype
+            extend FinchAPI::Enum
+
             S_CORPORATION: :s_corporation
             C_CORPORATION: :c_corporation
             B_CORPORATION: :b_corporation
@@ -154,7 +158,9 @@ module FinchAPI
             | :partnership
             | :cooperative
 
-          class Type < FinchAPI::Enum
+          module Type
+            extend FinchAPI::Enum
+
             LLC: :llc
             LP: :lp
             CORPORATION: :corporation

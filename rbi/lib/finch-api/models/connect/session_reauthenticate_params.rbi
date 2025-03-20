@@ -27,11 +27,14 @@ module FinchAPI
         end
 
         # The products to request access to (optional for reauthentication)
-        sig { returns(T.nilable(T::Array[Symbol])) }
+        sig { returns(T.nilable(T::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol])) }
         def products
         end
 
-        sig { params(_: T.nilable(T::Array[Symbol])).returns(T.nilable(T::Array[Symbol])) }
+        sig do
+          params(_: T.nilable(T::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol]))
+            .returns(T.nilable(T::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol]))
+        end
         def products=(_)
         end
 
@@ -48,7 +51,7 @@ module FinchAPI
           params(
             connection_id: String,
             minutes_to_expire: T.nilable(Integer),
-            products: T.nilable(T::Array[Symbol]),
+            products: T.nilable(T::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol]),
             redirect_uri: T.nilable(String),
             request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
           )
@@ -63,7 +66,7 @@ module FinchAPI
               {
                 connection_id: String,
                 minutes_to_expire: T.nilable(Integer),
-                products: T.nilable(T::Array[Symbol]),
+                products: T.nilable(T::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol]),
                 redirect_uri: T.nilable(String),
                 request_options: FinchAPI::RequestOptions
               }
@@ -73,19 +76,25 @@ module FinchAPI
         end
 
         # The Finch products that can be requested during the Connect flow.
-        class Product < FinchAPI::Enum
-          abstract!
+        module Product
+          extend FinchAPI::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, FinchAPI::Models::Connect::SessionReauthenticateParams::Product) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol) }
 
-          COMPANY = :company
-          DIRECTORY = :directory
-          INDIVIDUAL = :individual
-          EMPLOYMENT = :employment
-          PAYMENT = :payment
-          PAY_STATEMENT = :pay_statement
-          BENEFITS = :benefits
-          SSN = :ssn
+          COMPANY = T.let(:company, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol)
+          DIRECTORY = T.let(:directory, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol)
+          INDIVIDUAL =
+            T.let(:individual, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol)
+          EMPLOYMENT =
+            T.let(:employment, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol)
+          PAYMENT = T.let(:payment, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol)
+          PAY_STATEMENT =
+            T.let(:pay_statement, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol)
+          BENEFITS = T.let(:benefits, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol)
+          SSN = T.let(:ssn, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol)
         end
       end
     end

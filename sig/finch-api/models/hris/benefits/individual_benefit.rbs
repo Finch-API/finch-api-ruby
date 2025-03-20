@@ -1,7 +1,6 @@
 module FinchAPI
   module Models
     module HRIS
-      
       class IndividualBenefit = Benefits::IndividualBenefit
 
       module Benefits
@@ -67,7 +66,9 @@ module FinchAPI
 
             type hsa_contribution_limit = :individual | :family
 
-            class HsaContributionLimit < FinchAPI::Enum
+            module HsaContributionLimit
+              extend FinchAPI::Enum
+
               INDIVIDUAL: :individual
               FAMILY: :family
 

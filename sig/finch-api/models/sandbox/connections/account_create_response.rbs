@@ -43,7 +43,9 @@ module FinchAPI
           type authentication_type =
             :credential | :api_token | :oauth | :assisted
 
-          class AuthenticationType < FinchAPI::Enum
+          module AuthenticationType
+            extend FinchAPI::Enum
+
             CREDENTIAL: :credential
             API_TOKEN: :api_token
             OAUTH: :oauth

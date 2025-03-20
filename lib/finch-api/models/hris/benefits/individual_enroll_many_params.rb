@@ -126,11 +126,11 @@ module FinchAPI
 
               # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-              # @abstract
-              #
               # For HSA benefits only - whether the contribution limit is for an individual or
               #   family
-              class AnnualContributionLimit < FinchAPI::Enum
+              module AnnualContributionLimit
+                extend FinchAPI::Enum
+
                 INDIVIDUAL = :individual
                 FAMILY = :family
 
@@ -167,8 +167,9 @@ module FinchAPI
 
                 # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-                # @abstract
-                class Type < FinchAPI::Enum
+                module Type
+                  extend FinchAPI::Enum
+
                   FIXED = :fixed
                   PERCENT = :percent
 
@@ -206,8 +207,9 @@ module FinchAPI
 
                 # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-                # @abstract
-                class Type < FinchAPI::Enum
+                module Type
+                  extend FinchAPI::Enum
+
                   FIXED = :fixed
                   PERCENT = :percent
 

@@ -9,15 +9,17 @@ module FinchAPI
     #     so Finch cannot support
     #   - `client_access_only`: This behavior is supported by the provider, but only
     #     available to the client and not to Finch
-    class OperationSupport < FinchAPI::Enum
-      abstract!
+    module OperationSupport
+      extend FinchAPI::Enum
 
-      Value = type_template(:out) { {fixed: Symbol} }
+      TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::OperationSupport) }
+      OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::OperationSupport::TaggedSymbol) }
 
-      SUPPORTED = :supported
-      NOT_SUPPORTED_BY_FINCH = :not_supported_by_finch
-      NOT_SUPPORTED_BY_PROVIDER = :not_supported_by_provider
-      CLIENT_ACCESS_ONLY = :client_access_only
+      SUPPORTED = T.let(:supported, FinchAPI::Models::OperationSupport::TaggedSymbol)
+      NOT_SUPPORTED_BY_FINCH = T.let(:not_supported_by_finch, FinchAPI::Models::OperationSupport::TaggedSymbol)
+      NOT_SUPPORTED_BY_PROVIDER =
+        T.let(:not_supported_by_provider, FinchAPI::Models::OperationSupport::TaggedSymbol)
+      CLIENT_ACCESS_ONLY = T.let(:client_access_only, FinchAPI::Models::OperationSupport::TaggedSymbol)
     end
   end
 end

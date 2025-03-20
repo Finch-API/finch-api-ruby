@@ -114,10 +114,10 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-          # @abstract
-          #
           # The type of bank account.
-          class AccountType < FinchAPI::Enum
+          module AccountType
+            extend FinchAPI::Enum
+
             CHECKING = :checking
             SAVINGS = :savings
 
@@ -189,10 +189,10 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-          # @abstract
-          #
           # The tax payer subtype of the company.
-          class Subtype < FinchAPI::Enum
+          module Subtype
+            extend FinchAPI::Enum
+
             S_CORPORATION = :s_corporation
             C_CORPORATION = :c_corporation
             B_CORPORATION = :b_corporation
@@ -200,10 +200,10 @@ module FinchAPI
             finalize!
           end
 
-          # @abstract
-          #
           # The tax payer type of the company.
-          class Type < FinchAPI::Enum
+          module Type
+            extend FinchAPI::Enum
+
             LLC = :llc
             LP = :lp
             CORPORATION = :corporation

@@ -3,7 +3,9 @@
 require_relative "test_helper"
 
 class FinchAPI::Test::BaseModelTest < Minitest::Test
-  class E1 < FinchAPI::Enum
+  module E1
+    extend FinchAPI::Enum
+
     A = :a
     B = :b
   end
@@ -242,13 +244,17 @@ class FinchAPI::Test::BaseModelTest < Minitest::Test
     optional :b, E1, api_name: :renamed_again
   end
 
-  class U1 < FinchAPI::Union
+  module U1
+    extend FinchAPI::Union
+
     discriminator :type
     variant :a, M1
     variant :b, M3
   end
 
-  class U2 < FinchAPI::Union
+  module U2
+    extend FinchAPI::Union
+
     variant A1
     variant A3
   end
@@ -330,12 +336,16 @@ class FinchAPI::Test::BaseModelTest < Minitest::Test
     end
   end
 
-  class E2 < FinchAPI::Enum
+  module E2
+    extend FinchAPI::Enum
+
     A = :a
     B = :b
   end
 
-  class U3 < FinchAPI::Union
+  module U3
+    extend FinchAPI::Union
+
     discriminator :type
     variant :a, M1
     variant :b, M3
@@ -353,7 +363,9 @@ class FinchAPI::Test::BaseModelTest < Minitest::Test
     assert_equal(U1, U3)
   end
 
-  class U4 < FinchAPI::Union
+  module U4
+    extend FinchAPI::Union
+
     variant :a, const: :a
     variant :b, const: :b
   end
