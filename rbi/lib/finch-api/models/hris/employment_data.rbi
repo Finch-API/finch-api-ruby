@@ -41,8 +41,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::EmploymentData::Department))
-            .returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::Department))
+          params(_: T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Department, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Department, FinchAPI::Util::AnyHash)))
         end
         def department=(_)
         end
@@ -53,8 +53,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment))
-            .returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment))
+          params(_: T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Employment, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Employment, FinchAPI::Util::AnyHash)))
         end
         def employment=(_)
         end
@@ -96,7 +96,10 @@ module FinchAPI
         def income
         end
 
-        sig { params(_: T.nilable(FinchAPI::Models::Income)).returns(T.nilable(FinchAPI::Models::Income)) }
+        sig do
+          params(_: T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Util::AnyHash)))
+        end
         def income=(_)
         end
 
@@ -142,7 +145,10 @@ module FinchAPI
         def location
         end
 
-        sig { params(_: T.nilable(FinchAPI::Models::Location)).returns(T.nilable(FinchAPI::Models::Location)) }
+        sig do
+          params(_: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash)))
+        end
         def location=(_)
         end
 
@@ -152,8 +158,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::EmploymentData::Manager))
-            .returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::Manager))
+          params(_: T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Manager, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Manager, FinchAPI::Util::AnyHash)))
         end
         def manager=(_)
         end

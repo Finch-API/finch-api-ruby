@@ -20,8 +20,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: FinchAPI::Models::Jobs::AutomatedListResponse::Meta)
-            .returns(FinchAPI::Models::Jobs::AutomatedListResponse::Meta)
+          params(_: T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta, FinchAPI::Util::AnyHash))
+            .returns(T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta, FinchAPI::Util::AnyHash))
         end
         def meta=(_)
         end
@@ -58,8 +58,8 @@ module FinchAPI
           end
 
           sig do
-            params(_: FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas)
-              .returns(FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas)
+            params(_: T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas, FinchAPI::Util::AnyHash))
+              .returns(T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas, FinchAPI::Util::AnyHash))
           end
           def quotas=(_)
           end
@@ -78,8 +78,12 @@ module FinchAPI
             end
 
             sig do
-              params(_: FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll)
-                .returns(FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll)
+              params(
+                _: T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll, FinchAPI::Util::AnyHash)
+              )
+                .returns(
+                  T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll, FinchAPI::Util::AnyHash)
+                )
             end
             def data_sync_all=(_)
             end

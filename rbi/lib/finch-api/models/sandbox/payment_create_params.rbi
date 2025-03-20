@@ -136,7 +136,10 @@ module FinchAPI
           def gross_pay
           end
 
-          sig { params(_: T.nilable(FinchAPI::Models::Money)).returns(T.nilable(FinchAPI::Models::Money)) }
+          sig do
+            params(_: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)))
+              .returns(T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)))
+          end
           def gross_pay=(_)
           end
 
@@ -153,7 +156,10 @@ module FinchAPI
           def net_pay
           end
 
-          sig { params(_: T.nilable(FinchAPI::Models::Money)).returns(T.nilable(FinchAPI::Models::Money)) }
+          sig do
+            params(_: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)))
+              .returns(T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)))
+          end
           def net_pay=(_)
           end
 
@@ -278,8 +284,22 @@ module FinchAPI
             end
 
             sig do
-              params(_: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes))
-                .returns(T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes))
+              params(
+                _: T.nilable(
+                  T.any(
+                    FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
+              )
+                .returns(
+                  T.nilable(
+                    T.any(
+                      FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes,
+                      FinchAPI::Util::AnyHash
+                    )
+                  )
+                )
             end
             def attributes=(_)
             end
@@ -366,8 +386,18 @@ module FinchAPI
               end
 
               sig do
-                params(_: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::Metadata)
-                  .returns(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::Metadata)
+                params(
+                  _: T.any(
+                    FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::Metadata,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
+                  .returns(
+                    T.any(
+                      FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::Metadata,
+                      FinchAPI::Util::AnyHash
+                    )
+                  )
               end
               def metadata=(_)
               end
@@ -475,10 +505,20 @@ module FinchAPI
 
             sig do
               params(
-                _: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes)
+                _: T.nilable(
+                  T.any(
+                    FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
               )
                 .returns(
-                  T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes)
+                  T.nilable(
+                    T.any(
+                      FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes,
+                      FinchAPI::Util::AnyHash
+                    )
+                  )
                 )
             end
             def attributes=(_)
@@ -566,10 +606,16 @@ module FinchAPI
 
               sig do
                 params(
-                  _: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes::Metadata
+                  _: T.any(
+                    FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes::Metadata,
+                    FinchAPI::Util::AnyHash
+                  )
                 )
                   .returns(
-                    FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes::Metadata
+                    T.any(
+                      FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes::Metadata,
+                      FinchAPI::Util::AnyHash
+                    )
                   )
               end
               def metadata=(_)
@@ -638,10 +684,20 @@ module FinchAPI
 
             sig do
               params(
-                _: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes)
+                _: T.nilable(
+                  T.any(
+                    FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
               )
                 .returns(
-                  T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes)
+                  T.nilable(
+                    T.any(
+                      FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes,
+                      FinchAPI::Util::AnyHash
+                    )
+                  )
                 )
             end
             def attributes=(_)
@@ -718,10 +774,16 @@ module FinchAPI
 
               sig do
                 params(
-                  _: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes::Metadata
+                  _: T.any(
+                    FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes::Metadata,
+                    FinchAPI::Util::AnyHash
+                  )
                 )
                   .returns(
-                    FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes::Metadata
+                    T.any(
+                      FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes::Metadata,
+                      FinchAPI::Util::AnyHash
+                    )
                   )
               end
               def metadata=(_)
@@ -803,8 +865,22 @@ module FinchAPI
             end
 
             sig do
-              params(_: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes))
-                .returns(T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes))
+              params(
+                _: T.nilable(
+                  T.any(
+                    FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
+              )
+                .returns(
+                  T.nilable(
+                    T.any(
+                      FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes,
+                      FinchAPI::Util::AnyHash
+                    )
+                  )
+                )
             end
             def attributes=(_)
             end
@@ -888,8 +964,18 @@ module FinchAPI
               end
 
               sig do
-                params(_: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::Metadata)
-                  .returns(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::Metadata)
+                params(
+                  _: T.any(
+                    FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::Metadata,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
+                  .returns(
+                    T.any(
+                      FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::Metadata,
+                      FinchAPI::Util::AnyHash
+                    )
+                  )
               end
               def metadata=(_)
               end

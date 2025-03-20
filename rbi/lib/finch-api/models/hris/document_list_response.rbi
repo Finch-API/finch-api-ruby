@@ -19,7 +19,10 @@ module FinchAPI
         def paging
         end
 
-        sig { params(_: FinchAPI::Models::Paging).returns(FinchAPI::Models::Paging) }
+        sig do
+          params(_: T.any(FinchAPI::Models::Paging, FinchAPI::Util::AnyHash))
+            .returns(T.any(FinchAPI::Models::Paging, FinchAPI::Util::AnyHash))
+        end
         def paging=(_)
         end
 

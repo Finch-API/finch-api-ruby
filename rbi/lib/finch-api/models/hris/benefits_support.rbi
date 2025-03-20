@@ -9,8 +9,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations))
-            .returns(T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations))
+          params(_: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Util::AnyHash)))
         end
         def commuter=(_)
         end
@@ -20,8 +20,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations))
-            .returns(T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations))
+          params(_: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Util::AnyHash)))
         end
         def custom_post_tax=(_)
         end
@@ -31,8 +31,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations))
-            .returns(T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations))
+          params(_: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Util::AnyHash)))
         end
         def custom_pre_tax=(_)
         end
@@ -42,8 +42,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations))
-            .returns(T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations))
+          params(_: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Util::AnyHash)))
         end
         def fsa_dependent_care=(_)
         end
@@ -53,8 +53,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations))
-            .returns(T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations))
+          params(_: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Util::AnyHash)))
         end
         def fsa_medical=(_)
         end
@@ -64,8 +64,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations))
-            .returns(T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations))
+          params(_: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Util::AnyHash)))
         end
         def hsa_post=(_)
         end
@@ -75,8 +75,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations))
-            .returns(T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations))
+          params(_: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Util::AnyHash)))
         end
         def hsa_pre=(_)
         end
@@ -86,8 +86,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations))
-            .returns(T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations))
+          params(_: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Util::AnyHash)))
         end
         def s125_dental=(_)
         end
@@ -97,8 +97,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations))
-            .returns(T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations))
+          params(_: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Util::AnyHash)))
         end
         def s125_medical=(_)
         end
@@ -108,8 +108,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations))
-            .returns(T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations))
+          params(_: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Util::AnyHash)))
         end
         def s125_vision=(_)
         end
@@ -119,8 +119,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations))
-            .returns(T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations))
+          params(_: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Util::AnyHash)))
         end
         def simple=(_)
         end
@@ -130,8 +130,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations))
-            .returns(T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations))
+          params(_: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Util::AnyHash)))
         end
         def simple_ira=(_)
         end

@@ -9,7 +9,10 @@ module FinchAPI
         def data
         end
 
-        sig { params(_: FinchAPI::Models::HRIS::W42020::Data).returns(FinchAPI::Models::HRIS::W42020::Data) }
+        sig do
+          params(_: T.any(FinchAPI::Models::HRIS::W42020::Data, FinchAPI::Util::AnyHash))
+            .returns(T.any(FinchAPI::Models::HRIS::W42020::Data, FinchAPI::Util::AnyHash))
+        end
         def data=(_)
         end
 

@@ -17,7 +17,10 @@ module FinchAPI
         def company_debit
         end
 
-        sig { params(_: T.nilable(FinchAPI::Models::Money)).returns(T.nilable(FinchAPI::Models::Money)) }
+        sig do
+          params(_: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)))
+        end
         def company_debit=(_)
         end
 
@@ -33,7 +36,10 @@ module FinchAPI
         def employee_taxes
         end
 
-        sig { params(_: T.nilable(FinchAPI::Models::Money)).returns(T.nilable(FinchAPI::Models::Money)) }
+        sig do
+          params(_: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)))
+        end
         def employee_taxes=(_)
         end
 
@@ -41,7 +47,10 @@ module FinchAPI
         def employer_taxes
         end
 
-        sig { params(_: T.nilable(FinchAPI::Models::Money)).returns(T.nilable(FinchAPI::Models::Money)) }
+        sig do
+          params(_: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)))
+        end
         def employer_taxes=(_)
         end
 
@@ -49,7 +58,10 @@ module FinchAPI
         def gross_pay
         end
 
-        sig { params(_: T.nilable(FinchAPI::Models::Money)).returns(T.nilable(FinchAPI::Models::Money)) }
+        sig do
+          params(_: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)))
+        end
         def gross_pay=(_)
         end
 
@@ -66,7 +78,10 @@ module FinchAPI
         def net_pay
         end
 
-        sig { params(_: T.nilable(FinchAPI::Models::Money)).returns(T.nilable(FinchAPI::Models::Money)) }
+        sig do
+          params(_: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)))
+        end
         def net_pay=(_)
         end
 
@@ -105,8 +120,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::Payment::PayPeriod))
-            .returns(T.nilable(FinchAPI::Models::HRIS::Payment::PayPeriod))
+          params(_: T.nilable(T.any(FinchAPI::Models::HRIS::Payment::PayPeriod, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::HRIS::Payment::PayPeriod, FinchAPI::Util::AnyHash)))
         end
         def pay_period=(_)
         end

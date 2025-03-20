@@ -19,8 +19,12 @@ module FinchAPI
         end
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::IndividualInDirectory::Department))
-            .returns(T.nilable(FinchAPI::Models::HRIS::IndividualInDirectory::Department))
+          params(
+            _: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Department, FinchAPI::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Department, FinchAPI::Util::AnyHash))
+            )
         end
         def department=(_)
         end
@@ -58,8 +62,10 @@ module FinchAPI
         end
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::IndividualInDirectory::Manager))
-            .returns(T.nilable(FinchAPI::Models::HRIS::IndividualInDirectory::Manager))
+          params(
+            _: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Manager, FinchAPI::Util::AnyHash))
+          )
+            .returns(T.nilable(T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Manager, FinchAPI::Util::AnyHash)))
         end
         def manager=(_)
         end

@@ -31,8 +31,8 @@ module FinchAPI
       end
 
       sig do
-        params(_: FinchAPI::Models::RequestForwardingForwardResponse::Request)
-          .returns(FinchAPI::Models::RequestForwardingForwardResponse::Request)
+        params(_: T.any(FinchAPI::Models::RequestForwardingForwardResponse::Request, FinchAPI::Util::AnyHash))
+          .returns(T.any(FinchAPI::Models::RequestForwardingForwardResponse::Request, FinchAPI::Util::AnyHash))
       end
       def request=(_)
       end
