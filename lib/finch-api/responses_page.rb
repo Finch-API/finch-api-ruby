@@ -2,32 +2,26 @@
 
 module FinchAPI
   # @example
-  # ```ruby
-  # if responses_page.has_next?
-  #   responses_page = responses_page.next_page
-  # end
-  # ```
+  #   if responses_page.has_next?
+  #     responses_page = responses_page.next_page
+  #   end
   #
   # @example
-  # ```ruby
-  # responses_page.auto_paging_each do |individual|
-  #   puts(individual)
-  # end
-  # ```
+  #   responses_page.auto_paging_each do |individual|
+  #     puts(individual)
+  #   end
   #
   # @example
-  # ```ruby
-  # individuals =
-  #   responses_page
-  #   .to_enum
-  #   .lazy
-  #   .select { _1.object_id.even? }
-  #   .map(&:itself)
-  #   .take(2)
-  #   .to_a
+  #   individuals =
+  #     responses_page
+  #     .to_enum
+  #     .lazy
+  #     .select { _1.object_id.even? }
+  #     .map(&:itself)
+  #     .take(2)
+  #     .to_a
   #
-  # individuals => Array
-  # ```
+  #   individuals => Array
   class ResponsesPage
     include FinchAPI::BasePage
 
