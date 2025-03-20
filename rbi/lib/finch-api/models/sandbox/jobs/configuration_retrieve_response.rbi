@@ -5,7 +5,7 @@ module FinchAPI
     module Sandbox
       module Jobs
         ConfigurationRetrieveResponse =
-          T.type_alias { T::Array[FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration] }
+          T.let(FinchAPI::ArrayOf[FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration], FinchAPI::Converter)
       end
     end
   end

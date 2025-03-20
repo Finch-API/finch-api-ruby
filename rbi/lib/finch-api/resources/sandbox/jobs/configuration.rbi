@@ -8,7 +8,7 @@ module FinchAPI
           # Get configurations for sandbox jobs
           sig do
             params(request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])))
-              .returns(FinchAPI::Models::Sandbox::Jobs::ConfigurationRetrieveResponse)
+              .returns(T::Array[FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration])
           end
           def retrieve(request_options: {})
           end

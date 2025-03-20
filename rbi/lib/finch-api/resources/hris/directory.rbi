@@ -22,9 +22,6 @@ module FinchAPI
         )
         end
 
-        # Read company directory and organization structure
-        alias_method :list_individuals, :list
-
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }
         def self.new(client:)
         end
