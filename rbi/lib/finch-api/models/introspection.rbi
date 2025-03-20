@@ -69,8 +69,8 @@ module FinchAPI
       end
 
       sig do
-        params(_: FinchAPI::Models::Introspection::ConnectionStatus)
-          .returns(FinchAPI::Models::Introspection::ConnectionStatus)
+        params(_: T.any(FinchAPI::Models::Introspection::ConnectionStatus, FinchAPI::Util::AnyHash))
+          .returns(T.any(FinchAPI::Models::Introspection::ConnectionStatus, FinchAPI::Util::AnyHash))
       end
       def connection_status=(_)
       end
@@ -241,8 +241,12 @@ module FinchAPI
         end
 
         sig do
-          params(_: FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus)
-            .returns(FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus)
+          params(
+            _: T.any(FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus, FinchAPI::Util::AnyHash)
+          )
+            .returns(
+              T.any(FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus, FinchAPI::Util::AnyHash)
+            )
         end
         def connection_status=(_)
         end

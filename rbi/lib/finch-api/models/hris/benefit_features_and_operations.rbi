@@ -9,8 +9,12 @@ module FinchAPI
         end
 
         sig do
-          params(_: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures)
-            .returns(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures)
+          params(
+            _: T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures, FinchAPI::Util::AnyHash)
+          )
+            .returns(
+              T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures, FinchAPI::Util::AnyHash)
+            )
         end
         def supported_features=(_)
         end
@@ -20,8 +24,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: FinchAPI::Models::HRIS::SupportPerBenefitType)
-            .returns(FinchAPI::Models::HRIS::SupportPerBenefitType)
+          params(_: T.any(FinchAPI::Models::HRIS::SupportPerBenefitType, FinchAPI::Util::AnyHash))
+            .returns(T.any(FinchAPI::Models::HRIS::SupportPerBenefitType, FinchAPI::Util::AnyHash))
         end
         def supported_operations=(_)
         end

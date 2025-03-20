@@ -8,7 +8,10 @@ module FinchAPI
         def company_benefits
         end
 
-        sig { params(_: FinchAPI::Models::OperationSupportMatrix).returns(FinchAPI::Models::OperationSupportMatrix) }
+        sig do
+          params(_: T.any(FinchAPI::Models::OperationSupportMatrix, FinchAPI::Util::AnyHash))
+            .returns(T.any(FinchAPI::Models::OperationSupportMatrix, FinchAPI::Util::AnyHash))
+        end
         def company_benefits=(_)
         end
 
@@ -16,7 +19,10 @@ module FinchAPI
         def individual_benefits
         end
 
-        sig { params(_: FinchAPI::Models::OperationSupportMatrix).returns(FinchAPI::Models::OperationSupportMatrix) }
+        sig do
+          params(_: T.any(FinchAPI::Models::OperationSupportMatrix, FinchAPI::Util::AnyHash))
+            .returns(T.any(FinchAPI::Models::OperationSupportMatrix, FinchAPI::Util::AnyHash))
+        end
         def individual_benefits=(_)
         end
 

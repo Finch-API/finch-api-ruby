@@ -46,8 +46,10 @@ module FinchAPI
         end
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity))
-            .returns(T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity))
+          params(
+            _: T.nilable(T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity, FinchAPI::Util::AnyHash))
+          )
+            .returns(T.nilable(T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity, FinchAPI::Util::AnyHash)))
         end
         def entity=(_)
         end
@@ -245,8 +247,16 @@ module FinchAPI
           end
 
           sig do
-            params(_: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateParams::Department::Parent))
-              .returns(T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateParams::Department::Parent))
+            params(
+              _: T.nilable(
+                T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Department::Parent, FinchAPI::Util::AnyHash)
+              )
+            )
+              .returns(
+                T.nilable(
+                  T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Department::Parent, FinchAPI::Util::AnyHash)
+                )
+              )
           end
           def parent=(_)
           end

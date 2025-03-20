@@ -10,8 +10,8 @@ module FinchAPI
           end
 
           sig do
-            params(_: FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual::Body)
-              .returns(FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual::Body)
+            params(_: T.any(FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual::Body, FinchAPI::Util::AnyHash))
+              .returns(T.any(FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual::Body, FinchAPI::Util::AnyHash))
           end
           def body=(_)
           end

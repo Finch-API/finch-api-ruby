@@ -47,8 +47,12 @@ module FinchAPI
         end
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::Connect::SessionNewParams::Integration))
-            .returns(T.nilable(FinchAPI::Models::Connect::SessionNewParams::Integration))
+          params(
+            _: T.nilable(T.any(FinchAPI::Models::Connect::SessionNewParams::Integration, FinchAPI::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(FinchAPI::Models::Connect::SessionNewParams::Integration, FinchAPI::Util::AnyHash))
+            )
         end
         def integration=(_)
         end

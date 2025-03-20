@@ -43,7 +43,10 @@ module FinchAPI
         def gross_pay
         end
 
-        sig { params(_: T.nilable(FinchAPI::Models::Money)).returns(T.nilable(FinchAPI::Models::Money)) }
+        sig do
+          params(_: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)))
+        end
         def gross_pay=(_)
         end
 
@@ -60,7 +63,10 @@ module FinchAPI
         def net_pay
         end
 
-        sig { params(_: T.nilable(FinchAPI::Models::Money)).returns(T.nilable(FinchAPI::Models::Money)) }
+        sig do
+          params(_: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)))
+        end
         def net_pay=(_)
         end
 
@@ -173,8 +179,12 @@ module FinchAPI
           end
 
           sig do
-            params(_: T.nilable(FinchAPI::Models::HRIS::PayStatement::Earning::Attributes))
-              .returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::Earning::Attributes))
+            params(
+              _: T.nilable(T.any(FinchAPI::Models::HRIS::PayStatement::Earning::Attributes, FinchAPI::Util::AnyHash))
+            )
+              .returns(
+                T.nilable(T.any(FinchAPI::Models::HRIS::PayStatement::Earning::Attributes, FinchAPI::Util::AnyHash))
+              )
           end
           def attributes=(_)
           end
@@ -255,8 +265,12 @@ module FinchAPI
             end
 
             sig do
-              params(_: FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata)
-                .returns(FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata)
+              params(
+                _: T.any(FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata, FinchAPI::Util::AnyHash)
+              )
+                .returns(
+                  T.any(FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata, FinchAPI::Util::AnyHash)
+                )
             end
             def metadata=(_)
             end
@@ -334,8 +348,16 @@ module FinchAPI
           end
 
           sig do
-            params(_: T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes))
-              .returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes))
+            params(
+              _: T.nilable(
+                T.any(FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes, FinchAPI::Util::AnyHash)
+              )
+            )
+              .returns(
+                T.nilable(
+                  T.any(FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes, FinchAPI::Util::AnyHash)
+                )
+              )
           end
           def attributes=(_)
           end
@@ -415,8 +437,18 @@ module FinchAPI
             end
 
             sig do
-              params(_: FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata)
-                .returns(FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata)
+              params(
+                _: T.any(
+                  FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata,
+                  FinchAPI::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
             end
             def metadata=(_)
             end
@@ -472,8 +504,16 @@ module FinchAPI
           end
 
           sig do
-            params(_: T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes))
-              .returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes))
+            params(
+              _: T.nilable(
+                T.any(FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes, FinchAPI::Util::AnyHash)
+              )
+            )
+              .returns(
+                T.nilable(
+                  T.any(FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes, FinchAPI::Util::AnyHash)
+                )
+              )
           end
           def attributes=(_)
           end
@@ -542,8 +582,18 @@ module FinchAPI
             end
 
             sig do
-              params(_: FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata)
-                .returns(FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata)
+              params(
+                _: T.any(
+                  FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata,
+                  FinchAPI::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
             end
             def metadata=(_)
             end
@@ -613,8 +663,10 @@ module FinchAPI
           end
 
           sig do
-            params(_: T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax::Attributes))
-              .returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax::Attributes))
+            params(
+              _: T.nilable(T.any(FinchAPI::Models::HRIS::PayStatement::Tax::Attributes, FinchAPI::Util::AnyHash))
+            )
+              .returns(T.nilable(T.any(FinchAPI::Models::HRIS::PayStatement::Tax::Attributes, FinchAPI::Util::AnyHash)))
           end
           def attributes=(_)
           end
@@ -694,8 +746,8 @@ module FinchAPI
             end
 
             sig do
-              params(_: FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata)
-                .returns(FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata)
+              params(_: T.any(FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata, FinchAPI::Util::AnyHash))
+                .returns(T.any(FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata, FinchAPI::Util::AnyHash))
             end
             def metadata=(_)
             end

@@ -10,8 +10,8 @@ module FinchAPI
           end
 
           sig do
-            params(_: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body)
-              .returns(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body)
+            params(_: T.any(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body, FinchAPI::Util::AnyHash))
+              .returns(T.any(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body, FinchAPI::Util::AnyHash))
           end
           def body=(_)
           end
@@ -77,8 +77,8 @@ module FinchAPI
             end
 
             sig do
-              params(_: T.nilable(FinchAPI::Models::HRIS::BenefitContribution))
-                .returns(T.nilable(FinchAPI::Models::HRIS::BenefitContribution))
+              params(_: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitContribution, FinchAPI::Util::AnyHash)))
+                .returns(T.nilable(T.any(FinchAPI::Models::HRIS::BenefitContribution, FinchAPI::Util::AnyHash)))
             end
             def company_contribution=(_)
             end
@@ -88,8 +88,8 @@ module FinchAPI
             end
 
             sig do
-              params(_: T.nilable(FinchAPI::Models::HRIS::BenefitContribution))
-                .returns(T.nilable(FinchAPI::Models::HRIS::BenefitContribution))
+              params(_: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitContribution, FinchAPI::Util::AnyHash)))
+                .returns(T.nilable(T.any(FinchAPI::Models::HRIS::BenefitContribution, FinchAPI::Util::AnyHash)))
             end
             def employee_deduction=(_)
             end

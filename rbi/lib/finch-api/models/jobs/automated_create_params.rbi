@@ -24,8 +24,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: FinchAPI::Models::Jobs::AutomatedCreateParams::Params)
-            .returns(FinchAPI::Models::Jobs::AutomatedCreateParams::Params)
+          params(_: T.any(FinchAPI::Models::Jobs::AutomatedCreateParams::Params, FinchAPI::Util::AnyHash))
+            .returns(T.any(FinchAPI::Models::Jobs::AutomatedCreateParams::Params, FinchAPI::Util::AnyHash))
         end
         def params=(_)
         end
