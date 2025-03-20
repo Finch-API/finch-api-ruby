@@ -11,19 +11,36 @@ module FinchAPI
       def data=(_)
       end
 
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(FinchAPI::Models::IndividualEvent::EventType::TaggedSymbol)) }
       def event_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: FinchAPI::Models::IndividualEvent::EventType::TaggedSymbol)
+          .returns(FinchAPI::Models::IndividualEvent::EventType::TaggedSymbol)
+      end
       def event_type=(_)
       end
 
-      sig { params(data: FinchAPI::Models::IndividualEvent::Data, event_type: Symbol).returns(T.attached_class) }
+      sig do
+        params(
+          data: FinchAPI::Models::IndividualEvent::Data,
+          event_type: FinchAPI::Models::IndividualEvent::EventType::TaggedSymbol
+        )
+          .returns(T.attached_class)
+      end
       def self.new(data: nil, event_type: nil)
       end
 
-      sig { override.returns({data: FinchAPI::Models::IndividualEvent::Data, event_type: Symbol}) }
+      sig do
+        override
+          .returns(
+            {
+              data: FinchAPI::Models::IndividualEvent::Data,
+              event_type: FinchAPI::Models::IndividualEvent::EventType::TaggedSymbol
+            }
+          )
+      end
       def to_hash
       end
 
@@ -46,14 +63,18 @@ module FinchAPI
         end
       end
 
-      class EventType < FinchAPI::Enum
-        abstract!
+      module EventType
+        extend FinchAPI::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::IndividualEvent::EventType) }
+        OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::IndividualEvent::EventType::TaggedSymbol) }
 
-        INDIVIDUAL_CREATED = :"individual.created"
-        INDIVIDUAL_UPDATED = :"individual.updated"
-        INDIVIDUAL_DELETED = :"individual.deleted"
+        INDIVIDUAL_CREATED =
+          T.let(:"individual.created", FinchAPI::Models::IndividualEvent::EventType::TaggedSymbol)
+        INDIVIDUAL_UPDATED =
+          T.let(:"individual.updated", FinchAPI::Models::IndividualEvent::EventType::TaggedSymbol)
+        INDIVIDUAL_DELETED =
+          T.let(:"individual.deleted", FinchAPI::Models::IndividualEvent::EventType::TaggedSymbol)
       end
     end
   end

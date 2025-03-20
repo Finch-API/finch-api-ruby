@@ -95,11 +95,22 @@ module FinchAPI
             end
 
             # Type for HSA contribution limit if the benefit is a HSA.
-            sig { returns(T.nilable(Symbol)) }
+            sig do
+              returns(
+                T.nilable(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol)
+              )
+            end
             def hsa_contribution_limit
             end
 
-            sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+            sig do
+              params(
+                _: T.nilable(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol)
+              )
+                .returns(
+                  T.nilable(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol)
+                )
+            end
             def hsa_contribution_limit=(_)
             end
 
@@ -109,7 +120,7 @@ module FinchAPI
                 catch_up: T.nilable(T::Boolean),
                 company_contribution: T.nilable(FinchAPI::Models::HRIS::BenefitContribution),
                 employee_deduction: T.nilable(FinchAPI::Models::HRIS::BenefitContribution),
-                hsa_contribution_limit: T.nilable(Symbol)
+                hsa_contribution_limit: T.nilable(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol)
               )
                 .returns(T.attached_class)
             end
@@ -130,7 +141,7 @@ module FinchAPI
                     catch_up: T.nilable(T::Boolean),
                     company_contribution: T.nilable(FinchAPI::Models::HRIS::BenefitContribution),
                     employee_deduction: T.nilable(FinchAPI::Models::HRIS::BenefitContribution),
-                    hsa_contribution_limit: T.nilable(Symbol)
+                    hsa_contribution_limit: T.nilable(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol)
                   }
                 )
             end
@@ -138,13 +149,29 @@ module FinchAPI
             end
 
             # Type for HSA contribution limit if the benefit is a HSA.
-            class HsaContributionLimit < FinchAPI::Enum
-              abstract!
+            module HsaContributionLimit
+              extend FinchAPI::Enum
 
-              Value = type_template(:out) { {fixed: Symbol} }
+              TaggedSymbol =
+                T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit) }
+              OrSymbol =
+                T.type_alias do
+                  T.any(
+                    Symbol,
+                    FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol
+                  )
+                end
 
-              INDIVIDUAL = :individual
-              FAMILY = :family
+              INDIVIDUAL =
+                T.let(
+                  :individual,
+                  FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol
+                )
+              FAMILY =
+                T.let(
+                  :family,
+                  FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol
+                )
             end
           end
         end

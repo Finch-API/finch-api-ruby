@@ -61,11 +61,14 @@ module FinchAPI
 
         # The detailed employment status of the individual. Available options: `active`,
         #   `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol)) }
         def employment_status
         end
 
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        sig do
+          params(_: T.nilable(FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol))
+            .returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol))
+        end
         def employment_status=(_)
         end
 
@@ -206,7 +209,7 @@ module FinchAPI
             custom_fields: T.nilable(T::Array[FinchAPI::Models::HRIS::EmploymentData::CustomField]),
             department: T.nilable(FinchAPI::Models::HRIS::EmploymentData::Department),
             employment: T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment),
-            employment_status: T.nilable(Symbol),
+            employment_status: T.nilable(FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol),
             end_date: T.nilable(String),
             first_name: T.nilable(String),
             income: T.nilable(FinchAPI::Models::Income),
@@ -257,7 +260,7 @@ module FinchAPI
                 custom_fields: T.nilable(T::Array[FinchAPI::Models::HRIS::EmploymentData::CustomField]),
                 department: T.nilable(FinchAPI::Models::HRIS::EmploymentData::Department),
                 employment: T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment),
-                employment_status: T.nilable(Symbol),
+                employment_status: T.nilable(FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol),
                 end_date: T.nilable(String),
                 first_name: T.nilable(String),
                 income: T.nilable(FinchAPI::Models::Income),
@@ -327,72 +330,100 @@ module FinchAPI
         class Employment < FinchAPI::BaseModel
           # The secondary employment type of the individual. Options: `full_time`,
           #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
-          sig { returns(T.nilable(Symbol)) }
+          sig { returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::TaggedSymbol)) }
           def subtype
           end
 
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          sig do
+            params(_: T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::TaggedSymbol))
+              .returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::TaggedSymbol))
+          end
           def subtype=(_)
           end
 
           # The main employment type of the individual.
-          sig { returns(T.nilable(Symbol)) }
+          sig { returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment::Type::TaggedSymbol)) }
           def type
           end
 
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          sig do
+            params(_: T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment::Type::TaggedSymbol))
+              .returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment::Type::TaggedSymbol))
+          end
           def type=(_)
           end
 
           # The employment object.
-          sig { params(subtype: T.nilable(Symbol), type: T.nilable(Symbol)).returns(T.attached_class) }
+          sig do
+            params(
+              subtype: T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::TaggedSymbol),
+              type: T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment::Type::TaggedSymbol)
+            )
+              .returns(T.attached_class)
+          end
           def self.new(subtype: nil, type: nil)
           end
 
-          sig { override.returns({subtype: T.nilable(Symbol), type: T.nilable(Symbol)}) }
+          sig do
+            override
+              .returns(
+                {
+                  subtype: T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::TaggedSymbol),
+                  type: T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment::Type::TaggedSymbol)
+                }
+              )
+          end
           def to_hash
           end
 
           # The secondary employment type of the individual. Options: `full_time`,
           #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
-          class Subtype < FinchAPI::Enum
-            abstract!
+          module Subtype
+            extend FinchAPI::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::TaggedSymbol) }
 
-            FULL_TIME = :full_time
-            INTERN = :intern
-            PART_TIME = :part_time
-            TEMP = :temp
-            SEASONAL = :seasonal
-            INDIVIDUAL_CONTRACTOR = :individual_contractor
+            FULL_TIME = T.let(:full_time, FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::TaggedSymbol)
+            INTERN = T.let(:intern, FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::TaggedSymbol)
+            PART_TIME = T.let(:part_time, FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::TaggedSymbol)
+            TEMP = T.let(:temp, FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::TaggedSymbol)
+            SEASONAL = T.let(:seasonal, FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::TaggedSymbol)
+            INDIVIDUAL_CONTRACTOR =
+              T.let(:individual_contractor, FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::TaggedSymbol)
           end
 
           # The main employment type of the individual.
-          class Type < FinchAPI::Enum
-            abstract!
+          module Type
+            extend FinchAPI::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::EmploymentData::Employment::Type) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::EmploymentData::Employment::Type::TaggedSymbol) }
 
-            EMPLOYEE = :employee
-            CONTRACTOR = :contractor
+            EMPLOYEE = T.let(:employee, FinchAPI::Models::HRIS::EmploymentData::Employment::Type::TaggedSymbol)
+            CONTRACTOR = T.let(:contractor, FinchAPI::Models::HRIS::EmploymentData::Employment::Type::TaggedSymbol)
           end
         end
 
         # The detailed employment status of the individual. Available options: `active`,
         #   `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
-        class EmploymentStatus < FinchAPI::Enum
-          abstract!
+        module EmploymentStatus
+          extend FinchAPI::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol) }
 
-          ACTIVE = :active
-          DECEASED = :deceased
-          LEAVE = :leave
-          ONBOARDING = :onboarding
-          PREHIRE = :prehire
-          RETIRED = :retired
-          TERMINATED = :terminated
+          ACTIVE = T.let(:active, FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol)
+          DECEASED = T.let(:deceased, FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol)
+          LEAVE = T.let(:leave, FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol)
+          ONBOARDING = T.let(:onboarding, FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol)
+          PREHIRE = T.let(:prehire, FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol)
+          RETIRED = T.let(:retired, FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol)
+          TERMINATED = T.let(:terminated, FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol)
         end
 
         class Manager < FinchAPI::BaseModel

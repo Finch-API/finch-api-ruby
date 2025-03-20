@@ -49,7 +49,9 @@ module FinchAPI
 
         type company_contribution = :fixed | :percent
 
-        class CompanyContribution < FinchAPI::Enum
+        module CompanyContribution
+          extend FinchAPI::Enum
+
           FIXED: :fixed
           PERCENT: :percent
 
@@ -58,7 +60,9 @@ module FinchAPI
 
         type employee_deduction = :fixed | :percent
 
-        class EmployeeDeduction < FinchAPI::Enum
+        module EmployeeDeduction
+          extend FinchAPI::Enum
+
           FIXED: :fixed
           PERCENT: :percent
 
@@ -67,7 +71,9 @@ module FinchAPI
 
         type hsa_contribution_limit = :individual | :family
 
-        class HsaContributionLimit < FinchAPI::Enum
+        module HsaContributionLimit
+          extend FinchAPI::Enum
+
           INDIVIDUAL: :individual
           FAMILY: :family
 

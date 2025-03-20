@@ -92,11 +92,24 @@ module FinchAPI
             class Configuration < FinchAPI::BaseModel
               # For HSA benefits only - whether the contribution limit is for an individual or
               #   family
-              sig { returns(T.nilable(Symbol)) }
+              sig do
+                returns(
+                  T.nilable(
+                    FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit::OrSymbol
+                  )
+                )
+              end
               def annual_contribution_limit
               end
 
-              sig { params(_: Symbol).returns(Symbol) }
+              sig do
+                params(
+                  _: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit::OrSymbol
+                )
+                  .returns(
+                    FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit::OrSymbol
+                  )
+              end
               def annual_contribution_limit=(_)
               end
 
@@ -162,7 +175,7 @@ module FinchAPI
 
               sig do
                 params(
-                  annual_contribution_limit: Symbol,
+                  annual_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit::OrSymbol,
                   annual_maximum: T.nilable(Integer),
                   catch_up: T::Boolean,
                   company_contribution: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution,
@@ -183,7 +196,7 @@ module FinchAPI
                 override
                   .returns(
                     {
-                      annual_contribution_limit: Symbol,
+                      annual_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit::OrSymbol,
                       annual_maximum: T.nilable(Integer),
                       catch_up: T::Boolean,
                       company_contribution: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution,
@@ -196,13 +209,31 @@ module FinchAPI
 
               # For HSA benefits only - whether the contribution limit is for an individual or
               #   family
-              class AnnualContributionLimit < FinchAPI::Enum
-                abstract!
+              module AnnualContributionLimit
+                extend FinchAPI::Enum
 
-                Value = type_template(:out) { {fixed: Symbol} }
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit)
+                  end
+                OrSymbol =
+                  T.type_alias do
+                    T.any(
+                      Symbol,
+                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit::TaggedSymbol
+                    )
+                  end
 
-                INDIVIDUAL = :individual
-                FAMILY = :family
+                INDIVIDUAL =
+                  T.let(
+                    :individual,
+                    FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit::OrSymbol
+                  )
+                FAMILY =
+                  T.let(
+                    :family,
+                    FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit::OrSymbol
+                  )
               end
 
               class CompanyContribution < FinchAPI::BaseModel
@@ -216,29 +247,74 @@ module FinchAPI
                 def amount=(_)
                 end
 
-                sig { returns(T.nilable(Symbol)) }
+                sig do
+                  returns(
+                    T.nilable(
+                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::OrSymbol
+                    )
+                  )
+                end
                 def type
                 end
 
-                sig { params(_: Symbol).returns(Symbol) }
+                sig do
+                  params(
+                    _: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::OrSymbol
+                  )
+                    .returns(
+                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::OrSymbol
+                    )
+                end
                 def type=(_)
                 end
 
-                sig { params(amount: Integer, type: Symbol).returns(T.attached_class) }
+                sig do
+                  params(
+                    amount: Integer,
+                    type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::OrSymbol
+                  )
+                    .returns(T.attached_class)
+                end
                 def self.new(amount: nil, type: nil)
                 end
 
-                sig { override.returns({amount: Integer, type: Symbol}) }
+                sig do
+                  override
+                    .returns(
+                      {
+                        amount: Integer,
+                        type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::OrSymbol
+                      }
+                    )
+                end
                 def to_hash
                 end
 
-                class Type < FinchAPI::Enum
-                  abstract!
+                module Type
+                  extend FinchAPI::Enum
 
-                  Value = type_template(:out) { {fixed: Symbol} }
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type)
+                    end
+                  OrSymbol =
+                    T.type_alias do
+                      T.any(
+                        Symbol,
+                        FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::TaggedSymbol
+                      )
+                    end
 
-                  FIXED = :fixed
-                  PERCENT = :percent
+                  FIXED =
+                    T.let(
+                      :fixed,
+                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::OrSymbol
+                    )
+                  PERCENT =
+                    T.let(
+                      :percent,
+                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::OrSymbol
+                    )
                 end
               end
 
@@ -253,29 +329,74 @@ module FinchAPI
                 def amount=(_)
                 end
 
-                sig { returns(T.nilable(Symbol)) }
+                sig do
+                  returns(
+                    T.nilable(
+                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type::OrSymbol
+                    )
+                  )
+                end
                 def type
                 end
 
-                sig { params(_: Symbol).returns(Symbol) }
+                sig do
+                  params(
+                    _: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type::OrSymbol
+                  )
+                    .returns(
+                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type::OrSymbol
+                    )
+                end
                 def type=(_)
                 end
 
-                sig { params(amount: Integer, type: Symbol).returns(T.attached_class) }
+                sig do
+                  params(
+                    amount: Integer,
+                    type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type::OrSymbol
+                  )
+                    .returns(T.attached_class)
+                end
                 def self.new(amount: nil, type: nil)
                 end
 
-                sig { override.returns({amount: Integer, type: Symbol}) }
+                sig do
+                  override
+                    .returns(
+                      {
+                        amount: Integer,
+                        type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type::OrSymbol
+                      }
+                    )
+                end
                 def to_hash
                 end
 
-                class Type < FinchAPI::Enum
-                  abstract!
+                module Type
+                  extend FinchAPI::Enum
 
-                  Value = type_template(:out) { {fixed: Symbol} }
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type)
+                    end
+                  OrSymbol =
+                    T.type_alias do
+                      T.any(
+                        Symbol,
+                        FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type::TaggedSymbol
+                      )
+                    end
 
-                  FIXED = :fixed
-                  PERCENT = :percent
+                  FIXED =
+                    T.let(
+                      :fixed,
+                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type::OrSymbol
+                    )
+                  PERCENT =
+                    T.let(
+                      :percent,
+                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type::OrSymbol
+                    )
                 end
               end
             end

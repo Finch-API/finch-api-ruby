@@ -24,10 +24,10 @@ module FinchAPI
 
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-        # @abstract
-        #
         # Contribution type.
-        class Type < FinchAPI::Enum
+        module Type
+          extend FinchAPI::Enum
+
           FIXED = :fixed
           PERCENT = :percent
 

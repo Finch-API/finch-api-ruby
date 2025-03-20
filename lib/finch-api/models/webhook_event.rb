@@ -2,8 +2,9 @@
 
 module FinchAPI
   module Models
-    # @abstract
-    class WebhookEvent < FinchAPI::Union
+    module WebhookEvent
+      extend FinchAPI::Union
+
       discriminator :event_type
 
       variant :"account.updated", -> { FinchAPI::Models::AccountUpdateEvent }

@@ -41,7 +41,9 @@ module FinchAPI
       type event_type =
         :"directory.created" | :"directory.updated" | :"directory.deleted"
 
-      class EventType < FinchAPI::Enum
+      module EventType
+        extend FinchAPI::Enum
+
         DIRECTORY_CREATED: :"directory.created"
         DIRECTORY_UPDATED: :"directory.updated"
         DIRECTORY_DELETED: :"directory.deleted"

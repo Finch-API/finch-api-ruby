@@ -17,11 +17,14 @@ module FinchAPI
           end
 
           # HTTP status code. Either 201 or 200
-          sig { returns(T.nilable(Integer)) }
+          sig { returns(T.nilable(FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code::TaggedInteger)) }
           def code
           end
 
-          sig { params(_: Integer).returns(Integer) }
+          sig do
+            params(_: FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code::TaggedInteger)
+              .returns(FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code::TaggedInteger)
+          end
           def code=(_)
           end
 
@@ -36,7 +39,7 @@ module FinchAPI
           sig do
             params(
               body: FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Body,
-              code: Integer,
+              code: FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code::TaggedInteger,
               individual_id: String
             )
               .returns(T.attached_class)
@@ -47,7 +50,11 @@ module FinchAPI
           sig do
             override
               .returns(
-                {body: FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Body, code: Integer, individual_id: String}
+                {
+                  body: FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Body,
+                  code: FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code::TaggedInteger,
+                  individual_id: String
+                }
               )
           end
           def to_hash
@@ -102,15 +109,18 @@ module FinchAPI
           end
 
           # HTTP status code. Either 201 or 200
-          class Code < FinchAPI::Enum
-            abstract!
+          module Code
+            extend FinchAPI::Enum
 
-            Value = type_template(:out) { {fixed: Integer} }
+            TaggedInteger =
+              T.type_alias { T.all(Integer, FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code) }
+            OrInteger =
+              T.type_alias { T.any(Integer, FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code::TaggedInteger) }
 
-            OK = 200
-            CREATED = 201
-            NOT_FOUND = 404
-            FORBIDDEN = 403
+            OK = T.let(200, FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code::TaggedInteger)
+            CREATED = T.let(201, FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code::TaggedInteger)
+            NOT_FOUND = T.let(404, FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code::TaggedInteger)
+            FORBIDDEN = T.let(403, FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code::TaggedInteger)
           end
         end
       end

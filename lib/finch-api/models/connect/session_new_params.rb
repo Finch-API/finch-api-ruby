@@ -85,10 +85,10 @@ module FinchAPI
 
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-        # @abstract
-        #
         # The Finch products that can be requested during the Connect flow.
-        class Product < FinchAPI::Enum
+        module Product
+          extend FinchAPI::Enum
+
           COMPANY = :company
           DIRECTORY = :directory
           INDIVIDUAL = :individual
@@ -122,8 +122,9 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-          # @abstract
-          class AuthMethod < FinchAPI::Enum
+          module AuthMethod
+            extend FinchAPI::Enum
+
             ASSISTED = :assisted
             CREDENTIAL = :credential
             OAUTH = :oauth
@@ -133,8 +134,9 @@ module FinchAPI
           end
         end
 
-        # @abstract
-        class Sandbox < FinchAPI::Enum
+        module Sandbox
+          extend FinchAPI::Enum
+
           FINCH = :finch
           PROVIDER = :provider
 

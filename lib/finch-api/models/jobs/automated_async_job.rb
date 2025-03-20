@@ -97,8 +97,9 @@ module FinchAPI
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
         end
 
-        # @abstract
-        class Status < FinchAPI::Enum
+        module Status
+          extend FinchAPI::Enum
+
           PENDING = :pending
           IN_PROGRESS = :in_progress
           COMPLETE = :complete
@@ -109,10 +110,10 @@ module FinchAPI
           finalize!
         end
 
-        # @abstract
-        #
         # The type of automated job
-        class Type < FinchAPI::Enum
+        module Type
+          extend FinchAPI::Enum
+
           DATA_SYNC_ALL = :data_sync_all
           W4_FORM_EMPLOYEE_SYNC = :w4_form_employee_sync
 

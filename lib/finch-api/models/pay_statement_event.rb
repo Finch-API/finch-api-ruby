@@ -59,8 +59,9 @@ module FinchAPI
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
       end
 
-      # @abstract
-      class EventType < FinchAPI::Enum
+      module EventType
+        extend FinchAPI::Enum
+
         PAY_STATEMENT_CREATED = :"pay_statement.created"
         PAY_STATEMENT_UPDATED = :"pay_statement.updated"
         PAY_STATEMENT_DELETED = :"pay_statement.deleted"

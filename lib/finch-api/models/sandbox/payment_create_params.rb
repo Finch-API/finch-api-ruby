@@ -243,10 +243,10 @@ module FinchAPI
               end
             end
 
-            # @abstract
-            #
             # The type of earning.
-            class Type < FinchAPI::Enum
+            module Type
+              extend FinchAPI::Enum
+
               SALARY = :salary
               WAGE = :wage
               REIMBURSEMENT = :reimbursement
@@ -440,10 +440,10 @@ module FinchAPI
             end
           end
 
-          # @abstract
-          #
           # The payment method.
-          class PaymentMethod < FinchAPI::Enum
+          module PaymentMethod
+            extend FinchAPI::Enum
+
             CHECK = :check
             DIRECT_DEPOSIT = :direct_deposit
 
@@ -542,10 +542,10 @@ module FinchAPI
               end
             end
 
-            # @abstract
-            #
             # The type of taxes.
-            class Type < FinchAPI::Enum
+            module Type
+              extend FinchAPI::Enum
+
               STATE = :state
               FEDERAL = :federal
               LOCAL = :local
@@ -555,10 +555,10 @@ module FinchAPI
             end
           end
 
-          # @abstract
-          #
           # The type of the payment associated with the pay statement.
-          class Type < FinchAPI::Enum
+          module Type
+            extend FinchAPI::Enum
+
             REGULAR_PAYROLL = :regular_payroll
             OFF_CYCLE_PAYROLL = :off_cycle_payroll
             ONE_TIME_PAYMENT = :one_time_payment

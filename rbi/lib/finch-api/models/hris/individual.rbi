@@ -44,11 +44,14 @@ module FinchAPI
         end
 
         # The EEOC-defined ethnicity of the individual.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol)) }
         def ethnicity
         end
 
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        sig do
+          params(_: T.nilable(FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol))
+            .returns(T.nilable(FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol))
+        end
         def ethnicity=(_)
         end
 
@@ -62,11 +65,14 @@ module FinchAPI
         end
 
         # The gender of the individual.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol)) }
         def gender
         end
 
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        sig do
+          params(_: T.nilable(FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol))
+            .returns(T.nilable(FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol))
+        end
         def gender=(_)
         end
 
@@ -134,9 +140,9 @@ module FinchAPI
             dob: T.nilable(String),
             emails: T.nilable(T::Array[FinchAPI::Models::HRIS::Individual::Email]),
             encrypted_ssn: T.nilable(String),
-            ethnicity: T.nilable(Symbol),
+            ethnicity: T.nilable(FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol),
             first_name: T.nilable(String),
-            gender: T.nilable(Symbol),
+            gender: T.nilable(FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol),
             last_name: T.nilable(String),
             middle_name: T.nilable(String),
             phone_numbers: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::Individual::PhoneNumber)]),
@@ -171,9 +177,9 @@ module FinchAPI
                 dob: T.nilable(String),
                 emails: T.nilable(T::Array[FinchAPI::Models::HRIS::Individual::Email]),
                 encrypted_ssn: T.nilable(String),
-                ethnicity: T.nilable(Symbol),
+                ethnicity: T.nilable(FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol),
                 first_name: T.nilable(String),
-                gender: T.nilable(Symbol),
+                gender: T.nilable(FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol),
                 last_name: T.nilable(String),
                 middle_name: T.nilable(String),
                 phone_numbers: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::Individual::PhoneNumber)]),
@@ -195,58 +201,76 @@ module FinchAPI
           def data=(_)
           end
 
-          sig { returns(T.nilable(Symbol)) }
+          sig { returns(T.nilable(FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol)) }
           def type
           end
 
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          sig do
+            params(_: T.nilable(FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol))
+              .returns(T.nilable(FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol))
+          end
           def type=(_)
           end
 
-          sig { params(data: String, type: T.nilable(Symbol)).returns(T.attached_class) }
+          sig do
+            params(data: String, type: T.nilable(FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol))
+              .returns(T.attached_class)
+          end
           def self.new(data: nil, type: nil)
           end
 
-          sig { override.returns({data: String, type: T.nilable(Symbol)}) }
+          sig do
+            override
+              .returns({data: String, type: T.nilable(FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol)})
+          end
           def to_hash
           end
 
-          class Type < FinchAPI::Enum
-            abstract!
+          module Type
+            extend FinchAPI::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Individual::Email::Type) }
+            OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol) }
 
-            WORK = :work
-            PERSONAL = :personal
+            WORK = T.let(:work, FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol)
+            PERSONAL = T.let(:personal, FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol)
           end
         end
 
         # The EEOC-defined ethnicity of the individual.
-        class Ethnicity < FinchAPI::Enum
-          abstract!
+        module Ethnicity
+          extend FinchAPI::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Individual::Ethnicity) }
+          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol) }
 
-          ASIAN = :asian
-          WHITE = :white
-          BLACK_OR_AFRICAN_AMERICAN = :black_or_african_american
-          NATIVE_HAWAIIAN_OR_PACIFIC_ISLANDER = :native_hawaiian_or_pacific_islander
-          AMERICAN_INDIAN_OR_ALASKA_NATIVE = :american_indian_or_alaska_native
-          HISPANIC_OR_LATINO = :hispanic_or_latino
-          TWO_OR_MORE_RACES = :two_or_more_races
-          DECLINE_TO_SPECIFY = :decline_to_specify
+          ASIAN = T.let(:asian, FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol)
+          WHITE = T.let(:white, FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol)
+          BLACK_OR_AFRICAN_AMERICAN =
+            T.let(:black_or_african_american, FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol)
+          NATIVE_HAWAIIAN_OR_PACIFIC_ISLANDER =
+            T.let(:native_hawaiian_or_pacific_islander, FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol)
+          AMERICAN_INDIAN_OR_ALASKA_NATIVE =
+            T.let(:american_indian_or_alaska_native, FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol)
+          HISPANIC_OR_LATINO =
+            T.let(:hispanic_or_latino, FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol)
+          TWO_OR_MORE_RACES =
+            T.let(:two_or_more_races, FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol)
+          DECLINE_TO_SPECIFY =
+            T.let(:decline_to_specify, FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol)
         end
 
         # The gender of the individual.
-        class Gender < FinchAPI::Enum
-          abstract!
+        module Gender
+          extend FinchAPI::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Individual::Gender) }
+          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol) }
 
-          FEMALE = :female
-          MALE = :male
-          OTHER = :other
-          DECLINE_TO_SPECIFY = :decline_to_specify
+          FEMALE = T.let(:female, FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol)
+          MALE = T.let(:male, FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol)
+          OTHER = T.let(:other, FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol)
+          DECLINE_TO_SPECIFY = T.let(:decline_to_specify, FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol)
         end
 
         class PhoneNumber < FinchAPI::BaseModel
@@ -258,29 +282,48 @@ module FinchAPI
           def data=(_)
           end
 
-          sig { returns(T.nilable(Symbol)) }
+          sig { returns(T.nilable(FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::TaggedSymbol)) }
           def type
           end
 
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          sig do
+            params(_: T.nilable(FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::TaggedSymbol))
+              .returns(T.nilable(FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::TaggedSymbol))
+          end
           def type=(_)
           end
 
-          sig { params(data: T.nilable(String), type: T.nilable(Symbol)).returns(T.attached_class) }
+          sig do
+            params(
+              data: T.nilable(String),
+              type: T.nilable(FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::TaggedSymbol)
+            )
+              .returns(T.attached_class)
+          end
           def self.new(data: nil, type: nil)
           end
 
-          sig { override.returns({data: T.nilable(String), type: T.nilable(Symbol)}) }
+          sig do
+            override
+              .returns(
+                {
+                  data: T.nilable(String),
+                  type: T.nilable(FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::TaggedSymbol)
+                }
+              )
+          end
           def to_hash
           end
 
-          class Type < FinchAPI::Enum
-            abstract!
+          module Type
+            extend FinchAPI::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Individual::PhoneNumber::Type) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::TaggedSymbol) }
 
-            WORK = :work
-            PERSONAL = :personal
+            WORK = T.let(:work, FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::TaggedSymbol)
+            PERSONAL = T.let(:personal, FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::TaggedSymbol)
           end
         end
       end

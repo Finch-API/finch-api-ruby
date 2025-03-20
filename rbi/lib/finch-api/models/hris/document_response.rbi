@@ -24,11 +24,14 @@ module FinchAPI
         end
 
         # The type of document.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol)) }
         def type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol)
+            .returns(FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol)
+        end
         def type=(_)
         end
 
@@ -55,7 +58,7 @@ module FinchAPI
           params(
             id: String,
             individual_id: T.nilable(String),
-            type: Symbol,
+            type: FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol,
             url: String,
             year: T.nilable(Float)
           )
@@ -66,25 +69,28 @@ module FinchAPI
 
         sig do
           override
-            .returns({
-                       id: String,
-                       individual_id: T.nilable(String),
-                       type: Symbol,
-                       url: String,
-                       year: T.nilable(Float)
-                     })
+            .returns(
+              {
+                id: String,
+                individual_id: T.nilable(String),
+                type: FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol,
+                url: String,
+                year: T.nilable(Float)
+              }
+            )
         end
         def to_hash
         end
 
         # The type of document.
-        class Type < FinchAPI::Enum
-          abstract!
+        module Type
+          extend FinchAPI::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::DocumentResponse::Type) }
+          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol) }
 
-          W4_2020 = :w4_2020
-          W4_2005 = :w4_2005
+          W4_2020 = T.let(:w4_2020, FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol)
+          W4_2005 = T.let(:w4_2005, FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol)
         end
       end
     end

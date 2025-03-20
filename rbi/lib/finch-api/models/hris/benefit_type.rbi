@@ -4,30 +4,31 @@ module FinchAPI
   module Models
     module HRIS
       # Type of benefit.
-      class BenefitType < FinchAPI::Enum
-        abstract!
+      module BenefitType
+        extend FinchAPI::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::BenefitType) }
+        OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::BenefitType::TaggedSymbol) }
 
-        NUMBER_401K = :"401k"
-        NUMBER_401K_ROTH = :"401k_roth"
-        NUMBER_401K_LOAN = :"401k_loan"
-        NUMBER_403B = :"403b"
-        NUMBER_403B_ROTH = :"403b_roth"
-        NUMBER_457 = :"457"
-        NUMBER_457_ROTH = :"457_roth"
-        S125_MEDICAL = :s125_medical
-        S125_DENTAL = :s125_dental
-        S125_VISION = :s125_vision
-        HSA_PRE = :hsa_pre
-        HSA_POST = :hsa_post
-        FSA_MEDICAL = :fsa_medical
-        FSA_DEPENDENT_CARE = :fsa_dependent_care
-        SIMPLE_IRA = :simple_ira
-        SIMPLE = :simple
-        COMMUTER = :commuter
-        CUSTOM_POST_TAX = :custom_post_tax
-        CUSTOM_PRE_TAX = :custom_pre_tax
+        NUMBER_401K = T.let(:"401k", FinchAPI::Models::HRIS::BenefitType::OrSymbol)
+        NUMBER_401K_ROTH = T.let(:"401k_roth", FinchAPI::Models::HRIS::BenefitType::OrSymbol)
+        NUMBER_401K_LOAN = T.let(:"401k_loan", FinchAPI::Models::HRIS::BenefitType::OrSymbol)
+        NUMBER_403B = T.let(:"403b", FinchAPI::Models::HRIS::BenefitType::OrSymbol)
+        NUMBER_403B_ROTH = T.let(:"403b_roth", FinchAPI::Models::HRIS::BenefitType::OrSymbol)
+        NUMBER_457 = T.let(:"457", FinchAPI::Models::HRIS::BenefitType::OrSymbol)
+        NUMBER_457_ROTH = T.let(:"457_roth", FinchAPI::Models::HRIS::BenefitType::OrSymbol)
+        S125_MEDICAL = T.let(:s125_medical, FinchAPI::Models::HRIS::BenefitType::OrSymbol)
+        S125_DENTAL = T.let(:s125_dental, FinchAPI::Models::HRIS::BenefitType::OrSymbol)
+        S125_VISION = T.let(:s125_vision, FinchAPI::Models::HRIS::BenefitType::OrSymbol)
+        HSA_PRE = T.let(:hsa_pre, FinchAPI::Models::HRIS::BenefitType::OrSymbol)
+        HSA_POST = T.let(:hsa_post, FinchAPI::Models::HRIS::BenefitType::OrSymbol)
+        FSA_MEDICAL = T.let(:fsa_medical, FinchAPI::Models::HRIS::BenefitType::OrSymbol)
+        FSA_DEPENDENT_CARE = T.let(:fsa_dependent_care, FinchAPI::Models::HRIS::BenefitType::OrSymbol)
+        SIMPLE_IRA = T.let(:simple_ira, FinchAPI::Models::HRIS::BenefitType::OrSymbol)
+        SIMPLE = T.let(:simple, FinchAPI::Models::HRIS::BenefitType::OrSymbol)
+        COMMUTER = T.let(:commuter, FinchAPI::Models::HRIS::BenefitType::OrSymbol)
+        CUSTOM_POST_TAX = T.let(:custom_post_tax, FinchAPI::Models::HRIS::BenefitType::OrSymbol)
+        CUSTOM_PRE_TAX = T.let(:custom_pre_tax, FinchAPI::Models::HRIS::BenefitType::OrSymbol)
       end
     end
   end

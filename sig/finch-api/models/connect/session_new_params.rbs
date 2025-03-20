@@ -62,7 +62,9 @@ module FinchAPI
           | :benefits
           | :ssn
 
-        class Product < FinchAPI::Enum
+        module Product
+          extend FinchAPI::Enum
+
           COMPANY: :company
           DIRECTORY: :directory
           INDIVIDUAL: :individual
@@ -95,7 +97,9 @@ module FinchAPI
 
           type auth_method = :assisted | :credential | :oauth | :api_token
 
-          class AuthMethod < FinchAPI::Enum
+          module AuthMethod
+            extend FinchAPI::Enum
+
             ASSISTED: :assisted
             CREDENTIAL: :credential
             OAUTH: :oauth
@@ -107,7 +111,9 @@ module FinchAPI
 
         type sandbox = :finch | :provider
 
-        class Sandbox < FinchAPI::Enum
+        module Sandbox
+          extend FinchAPI::Enum
+
           FINCH: :finch
           PROVIDER: :provider
 

@@ -74,20 +74,26 @@ module FinchAPI
         def started_at=(_)
         end
 
-        sig { returns(Symbol) }
+        sig { returns(FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol) }
         def status
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
+            .returns(FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
+        end
         def status=(_)
         end
 
         # The type of automated job
-        sig { returns(Symbol) }
+        sig { returns(FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol) }
         def type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol)
+            .returns(FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol)
+        end
         def type=(_)
         end
 
@@ -100,8 +106,8 @@ module FinchAPI
             params: T.nilable(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params),
             scheduled_at: T.nilable(Time),
             started_at: T.nilable(Time),
-            status: Symbol,
-            type: Symbol
+            status: FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol,
+            type: FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol
           )
             .returns(T.attached_class)
         end
@@ -119,8 +125,8 @@ module FinchAPI
                 params: T.nilable(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params),
                 scheduled_at: T.nilable(Time),
                 started_at: T.nilable(Time),
-                status: Symbol,
-                type: Symbol
+                status: FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol,
+                type: FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol
               }
             )
         end
@@ -147,27 +153,32 @@ module FinchAPI
           end
         end
 
-        class Status < FinchAPI::Enum
-          abstract!
+        module Status
+          extend FinchAPI::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol) }
 
-          PENDING = :pending
-          IN_PROGRESS = :in_progress
-          COMPLETE = :complete
-          ERROR = :error
-          REAUTH_ERROR = :reauth_error
-          PERMISSIONS_ERROR = :permissions_error
+          PENDING = T.let(:pending, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
+          IN_PROGRESS = T.let(:in_progress, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
+          COMPLETE = T.let(:complete, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
+          ERROR = T.let(:error, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
+          REAUTH_ERROR = T.let(:reauth_error, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
+          PERMISSIONS_ERROR =
+            T.let(:permissions_error, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
         end
 
         # The type of automated job
-        class Type < FinchAPI::Enum
-          abstract!
+        module Type
+          extend FinchAPI::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type) }
+          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol) }
 
-          DATA_SYNC_ALL = :data_sync_all
-          W4_FORM_EMPLOYEE_SYNC = :w4_form_employee_sync
+          DATA_SYNC_ALL = T.let(:data_sync_all, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol)
+          W4_FORM_EMPLOYEE_SYNC =
+            T.let(:w4_form_employee_sync, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol)
         end
       end
     end

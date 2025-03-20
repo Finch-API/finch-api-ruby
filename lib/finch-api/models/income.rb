@@ -42,11 +42,11 @@ module FinchAPI
 
       # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-      # @abstract
-      #
       # The income unit of payment. Options: `yearly`, `quarterly`, `monthly`,
       #   `semi_monthly`, `bi_weekly`, `weekly`, `daily`, `hourly`, and `fixed`.
-      class Unit < FinchAPI::Enum
+      module Unit
+        extend FinchAPI::Enum
+
         YEARLY = :yearly
         QUARTERLY = :quarterly
         MONTHLY = :monthly

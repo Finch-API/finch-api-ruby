@@ -174,11 +174,14 @@ module FinchAPI
         end
 
         # The type of authentication method.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol)) }
         def type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol)
+            .returns(FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol)
+        end
         def type=(_)
         end
 
@@ -186,7 +189,7 @@ module FinchAPI
           params(
             benefits_support: T.nilable(FinchAPI::Models::HRIS::BenefitsSupport),
             supported_fields: T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields),
-            type: Symbol
+            type: FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol
           )
             .returns(T.attached_class)
         end
@@ -199,7 +202,7 @@ module FinchAPI
               {
                 benefits_support: T.nilable(FinchAPI::Models::HRIS::BenefitsSupport),
                 supported_fields: T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields),
-                type: Symbol
+                type: FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol
               }
             )
         end
@@ -2360,16 +2363,19 @@ module FinchAPI
         end
 
         # The type of authentication method.
-        class Type < FinchAPI::Enum
-          abstract!
+        module Type
+          extend FinchAPI::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Provider::AuthenticationMethod::Type) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol) }
 
-          ASSISTED = :assisted
-          CREDENTIAL = :credential
-          API_TOKEN = :api_token
-          API_CREDENTIAL = :api_credential
-          OAUTH = :oauth
+          ASSISTED = T.let(:assisted, FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol)
+          CREDENTIAL = T.let(:credential, FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol)
+          API_TOKEN = T.let(:api_token, FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol)
+          API_CREDENTIAL =
+            T.let(:api_credential, FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol)
+          OAUTH = T.let(:oauth, FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol)
         end
       end
     end

@@ -3,8 +3,9 @@
 module FinchAPI
   module Models
     module HRIS
-      # @abstract
-      class BenefitFrequency < FinchAPI::Enum
+      module BenefitFrequency
+        extend FinchAPI::Enum
+
         ONE_TIME = :one_time
         EVERY_PAYCHECK = :every_paycheck
         MONTHLY = :monthly

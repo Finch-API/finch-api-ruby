@@ -21,7 +21,9 @@ module FinchAPI
 
         type type_ = :fixed | :percent
 
-        class Type < FinchAPI::Enum
+        module Type
+          extend FinchAPI::Enum
+
           FIXED: :fixed
           PERCENT: :percent
 

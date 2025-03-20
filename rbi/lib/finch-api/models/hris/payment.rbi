@@ -79,11 +79,14 @@ module FinchAPI
         end
 
         # List of pay frequencies associated with this payment.
-        sig { returns(T.nilable(T::Array[Symbol])) }
+        sig { returns(T.nilable(T::Array[FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol])) }
         def pay_frequencies
         end
 
-        sig { params(_: T.nilable(T::Array[Symbol])).returns(T.nilable(T::Array[Symbol])) }
+        sig do
+          params(_: T.nilable(T::Array[FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol]))
+            .returns(T.nilable(T::Array[FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol]))
+        end
         def pay_frequencies=(_)
         end
 
@@ -119,7 +122,7 @@ module FinchAPI
             individual_ids: T.nilable(T::Array[String]),
             net_pay: T.nilable(FinchAPI::Models::Money),
             pay_date: T.nilable(String),
-            pay_frequencies: T.nilable(T::Array[Symbol]),
+            pay_frequencies: T.nilable(T::Array[FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol]),
             pay_group_ids: T.nilable(T::Array[String]),
             pay_period: T.nilable(FinchAPI::Models::HRIS::Payment::PayPeriod)
           )
@@ -154,7 +157,7 @@ module FinchAPI
                 individual_ids: T.nilable(T::Array[String]),
                 net_pay: T.nilable(FinchAPI::Models::Money),
                 pay_date: T.nilable(String),
-                pay_frequencies: T.nilable(T::Array[Symbol]),
+                pay_frequencies: T.nilable(T::Array[FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol]),
                 pay_group_ids: T.nilable(T::Array[String]),
                 pay_period: T.nilable(FinchAPI::Models::HRIS::Payment::PayPeriod)
               }
@@ -163,20 +166,21 @@ module FinchAPI
         def to_hash
         end
 
-        class PayFrequency < FinchAPI::Enum
-          abstract!
+        module PayFrequency
+          extend FinchAPI::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Payment::PayFrequency) }
+          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol) }
 
-          ANNUALLY = :annually
-          SEMI_ANNUALLY = :semi_annually
-          QUARTERLY = :quarterly
-          MONTHLY = :monthly
-          SEMI_MONTHLY = :semi_monthly
-          BI_WEEKLY = :bi_weekly
-          WEEKLY = :weekly
-          DAILY = :daily
-          OTHER = :other
+          ANNUALLY = T.let(:annually, FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol)
+          SEMI_ANNUALLY = T.let(:semi_annually, FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol)
+          QUARTERLY = T.let(:quarterly, FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol)
+          MONTHLY = T.let(:monthly, FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol)
+          SEMI_MONTHLY = T.let(:semi_monthly, FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol)
+          BI_WEEKLY = T.let(:bi_weekly, FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol)
+          WEEKLY = T.let(:weekly, FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol)
+          DAILY = T.let(:daily, FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol)
+          OTHER = T.let(:other, FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol)
         end
 
         class PayPeriod < FinchAPI::BaseModel

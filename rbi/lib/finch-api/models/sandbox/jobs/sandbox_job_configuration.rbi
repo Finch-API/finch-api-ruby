@@ -5,47 +5,84 @@ module FinchAPI
     module Sandbox
       module Jobs
         class SandboxJobConfiguration < FinchAPI::BaseModel
-          sig { returns(Symbol) }
+          sig { returns(FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol) }
           def completion_status
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol)
+              .returns(FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol)
+          end
           def completion_status=(_)
           end
 
-          sig { returns(Symbol) }
+          sig { returns(FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type::TaggedSymbol) }
           def type
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type::TaggedSymbol)
+              .returns(FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type::TaggedSymbol)
+          end
           def type=(_)
           end
 
-          sig { params(completion_status: Symbol, type: Symbol).returns(T.attached_class) }
+          sig do
+            params(
+              completion_status: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol,
+              type: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type::TaggedSymbol
+            )
+              .returns(T.attached_class)
+          end
           def self.new(completion_status:, type:)
           end
 
-          sig { override.returns({completion_status: Symbol, type: Symbol}) }
+          sig do
+            override
+              .returns(
+                {
+                  completion_status: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol,
+                  type: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type::TaggedSymbol
+                }
+              )
+          end
           def to_hash
           end
 
-          class CompletionStatus < FinchAPI::Enum
-            abstract!
+          module CompletionStatus
+            extend FinchAPI::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol) }
 
-            COMPLETE = :complete
-            REAUTH_ERROR = :reauth_error
-            PERMISSIONS_ERROR = :permissions_error
-            ERROR = :error
+            COMPLETE =
+              T.let(:complete, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol)
+            REAUTH_ERROR =
+              T.let(
+                :reauth_error,
+                FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol
+              )
+            PERMISSIONS_ERROR =
+              T.let(
+                :permissions_error,
+                FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol
+              )
+            ERROR =
+              T.let(:error, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol)
           end
 
-          class Type < FinchAPI::Enum
-            abstract!
+          module Type
+            extend FinchAPI::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type::TaggedSymbol) }
 
-            DATA_SYNC_ALL = :data_sync_all
+            DATA_SYNC_ALL =
+              T.let(:data_sync_all, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type::TaggedSymbol)
           end
         end
       end

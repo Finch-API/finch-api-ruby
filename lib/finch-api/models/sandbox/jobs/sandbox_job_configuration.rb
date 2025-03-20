@@ -24,8 +24,9 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-          # @abstract
-          class CompletionStatus < FinchAPI::Enum
+          module CompletionStatus
+            extend FinchAPI::Enum
+
             COMPLETE = :complete
             REAUTH_ERROR = :reauth_error
             PERMISSIONS_ERROR = :permissions_error
@@ -34,8 +35,9 @@ module FinchAPI
             finalize!
           end
 
-          # @abstract
-          class Type < FinchAPI::Enum
+          module Type
+            extend FinchAPI::Enum
+
             DATA_SYNC_ALL = :data_sync_all
 
             finalize!

@@ -55,11 +55,14 @@ module FinchAPI
         end
 
         # The detailed employment status of the individual.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus::OrSymbol)) }
         def employment_status
         end
 
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        sig do
+          params(_: T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus::OrSymbol))
+            .returns(T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus::OrSymbol))
+        end
         def employment_status=(_)
         end
 
@@ -190,7 +193,7 @@ module FinchAPI
             custom_fields: T::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField],
             department: T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::Department),
             employment: T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment),
-            employment_status: T.nilable(Symbol),
+            employment_status: T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus::OrSymbol),
             end_date: T.nilable(String),
             first_name: T.nilable(String),
             income: T.nilable(FinchAPI::Models::Income),
@@ -239,7 +242,7 @@ module FinchAPI
                 custom_fields: T::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField],
                 department: T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::Department),
                 employment: T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment),
-                employment_status: T.nilable(Symbol),
+                employment_status: T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus::OrSymbol),
                 end_date: T.nilable(String),
                 first_name: T.nilable(String),
                 income: T.nilable(FinchAPI::Models::Income),
@@ -309,71 +312,112 @@ module FinchAPI
         class Employment < FinchAPI::BaseModel
           # The secondary employment type of the individual. Options: `full_time`,
           #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
-          sig { returns(T.nilable(Symbol)) }
+          sig { returns(T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Subtype::OrSymbol)) }
           def subtype
           end
 
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          sig do
+            params(_: T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Subtype::OrSymbol))
+              .returns(T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Subtype::OrSymbol))
+          end
           def subtype=(_)
           end
 
           # The main employment type of the individual.
-          sig { returns(T.nilable(Symbol)) }
+          sig { returns(T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Type::OrSymbol)) }
           def type
           end
 
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          sig do
+            params(_: T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Type::OrSymbol))
+              .returns(T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Type::OrSymbol))
+          end
           def type=(_)
           end
 
           # The employment object.
-          sig { params(subtype: T.nilable(Symbol), type: T.nilable(Symbol)).returns(T.attached_class) }
+          sig do
+            params(
+              subtype: T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Subtype::OrSymbol),
+              type: T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Type::OrSymbol)
+            )
+              .returns(T.attached_class)
+          end
           def self.new(subtype: nil, type: nil)
           end
 
-          sig { override.returns({subtype: T.nilable(Symbol), type: T.nilable(Symbol)}) }
+          sig do
+            override
+              .returns(
+                {
+                  subtype: T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Subtype::OrSymbol),
+                  type: T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Type::OrSymbol)
+                }
+              )
+          end
           def to_hash
           end
 
           # The secondary employment type of the individual. Options: `full_time`,
           #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
-          class Subtype < FinchAPI::Enum
-            abstract!
+          module Subtype
+            extend FinchAPI::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Subtype) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Subtype::TaggedSymbol) }
 
-            FULL_TIME = :full_time
-            INTERN = :intern
-            PART_TIME = :part_time
-            TEMP = :temp
-            SEASONAL = :seasonal
-            INDIVIDUAL_CONTRACTOR = :individual_contractor
+            FULL_TIME =
+              T.let(:full_time, FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Subtype::OrSymbol)
+            INTERN = T.let(:intern, FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Subtype::OrSymbol)
+            PART_TIME =
+              T.let(:part_time, FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Subtype::OrSymbol)
+            TEMP = T.let(:temp, FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Subtype::OrSymbol)
+            SEASONAL =
+              T.let(:seasonal, FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Subtype::OrSymbol)
+            INDIVIDUAL_CONTRACTOR =
+              T.let(
+                :individual_contractor,
+                FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Subtype::OrSymbol
+              )
           end
 
           # The main employment type of the individual.
-          class Type < FinchAPI::Enum
-            abstract!
+          module Type
+            extend FinchAPI::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Type) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Type::TaggedSymbol) }
 
-            EMPLOYEE = :employee
-            CONTRACTOR = :contractor
+            EMPLOYEE =
+              T.let(:employee, FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Type::OrSymbol)
+            CONTRACTOR =
+              T.let(:contractor, FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Type::OrSymbol)
           end
         end
 
         # The detailed employment status of the individual.
-        class EmploymentStatus < FinchAPI::Enum
-          abstract!
+        module EmploymentStatus
+          extend FinchAPI::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus::TaggedSymbol) }
 
-          ACTIVE = :active
-          DECEASED = :deceased
-          LEAVE = :leave
-          ONBOARDING = :onboarding
-          PREHIRE = :prehire
-          RETIRED = :retired
-          TERMINATED = :terminated
+          ACTIVE = T.let(:active, FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus::OrSymbol)
+          DECEASED =
+            T.let(:deceased, FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus::OrSymbol)
+          LEAVE = T.let(:leave, FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus::OrSymbol)
+          ONBOARDING =
+            T.let(:onboarding, FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus::OrSymbol)
+          PREHIRE = T.let(:prehire, FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus::OrSymbol)
+          RETIRED = T.let(:retired, FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus::OrSymbol)
+          TERMINATED =
+            T.let(:terminated, FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus::OrSymbol)
         end
 
         class Manager < FinchAPI::BaseModel

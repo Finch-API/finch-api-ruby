@@ -48,8 +48,9 @@ module FinchAPI
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
       end
 
-      # @abstract
-      class EventType < FinchAPI::Enum
+      module EventType
+        extend FinchAPI::Enum
+
         INDIVIDUAL_CREATED = :"individual.created"
         INDIVIDUAL_UPDATED = :"individual.updated"
         INDIVIDUAL_DELETED = :"individual.deleted"

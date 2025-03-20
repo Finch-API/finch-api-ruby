@@ -12,7 +12,7 @@ module FinchAPI
         sig do
           params(
             provider_id: String,
-            authentication_type: Symbol,
+            authentication_type: FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType::OrSymbol,
             employee_size: Integer,
             products: T::Array[String],
             request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))

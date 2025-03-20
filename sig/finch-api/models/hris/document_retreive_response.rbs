@@ -4,7 +4,9 @@ module FinchAPI
       type document_retreive_response =
         FinchAPI::Models::HRIS::W42020 | FinchAPI::Models::HRIS::W42005
 
-      class DocumentRetreiveResponse < FinchAPI::Union
+      module DocumentRetreiveResponse
+        extend FinchAPI::Union
+
         def self.variants: -> [FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005]
       end
     end

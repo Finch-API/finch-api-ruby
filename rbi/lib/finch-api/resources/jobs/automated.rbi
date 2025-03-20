@@ -20,7 +20,7 @@ module FinchAPI
         #   access to this endpoint, please contact your Finch account manager.
         sig do
           params(
-            type: Symbol,
+            type: FinchAPI::Models::Jobs::AutomatedCreateParams::Type::OrSymbol,
             params: FinchAPI::Models::Jobs::AutomatedCreateParams::Params,
             request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
           )

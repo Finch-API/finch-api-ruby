@@ -8,11 +8,14 @@ module FinchAPI
         include FinchAPI::RequestParameters
 
         # The type of job to start.
-        sig { returns(Symbol) }
+        sig { returns(FinchAPI::Models::Jobs::AutomatedCreateParams::Type::OrSymbol) }
         def type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: FinchAPI::Models::Jobs::AutomatedCreateParams::Type::OrSymbol)
+            .returns(FinchAPI::Models::Jobs::AutomatedCreateParams::Type::OrSymbol)
+        end
         def type=(_)
         end
 
@@ -29,7 +32,7 @@ module FinchAPI
 
         sig do
           params(
-            type: Symbol,
+            type: FinchAPI::Models::Jobs::AutomatedCreateParams::Type::OrSymbol,
             params: FinchAPI::Models::Jobs::AutomatedCreateParams::Params,
             request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
           )
@@ -42,7 +45,7 @@ module FinchAPI
           override
             .returns(
               {
-                type: Symbol,
+                type: FinchAPI::Models::Jobs::AutomatedCreateParams::Type::OrSymbol,
                 params: FinchAPI::Models::Jobs::AutomatedCreateParams::Params,
                 request_options: FinchAPI::RequestOptions
               }
@@ -52,12 +55,15 @@ module FinchAPI
         end
 
         # The type of job to start.
-        class Type < FinchAPI::Enum
-          abstract!
+        module Type
+          extend FinchAPI::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Jobs::AutomatedCreateParams::Type) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, FinchAPI::Models::Jobs::AutomatedCreateParams::Type::TaggedSymbol) }
 
-          W4_FORM_EMPLOYEE_SYNC = :w4_form_employee_sync
+          W4_FORM_EMPLOYEE_SYNC =
+            T.let(:w4_form_employee_sync, FinchAPI::Models::Jobs::AutomatedCreateParams::Type::OrSymbol)
         end
 
         class Params < FinchAPI::BaseModel

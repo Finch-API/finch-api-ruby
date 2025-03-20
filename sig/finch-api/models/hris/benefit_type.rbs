@@ -22,7 +22,9 @@ module FinchAPI
         | :custom_post_tax
         | :custom_pre_tax
 
-      class BenefitType < FinchAPI::Enum
+      module BenefitType
+        extend FinchAPI::Enum
+
         NUMBER_401K: :"401k"
         NUMBER_401K_ROTH: :"401k_roth"
         NUMBER_401K_LOAN: :"401k_loan"

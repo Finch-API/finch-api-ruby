@@ -20,7 +20,9 @@ module FinchAPI
 
         type type_ = :data_sync_all
 
-        class Type < FinchAPI::Enum
+        module Type
+          extend FinchAPI::Enum
+
           DATA_SYNC_ALL: :data_sync_all
 
           def self.values: -> ::Array[FinchAPI::Models::Sandbox::JobCreateParams::type_]

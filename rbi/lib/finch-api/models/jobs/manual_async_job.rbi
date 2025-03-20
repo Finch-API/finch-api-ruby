@@ -21,11 +21,14 @@ module FinchAPI
         def job_id=(_)
         end
 
-        sig { returns(Symbol) }
+        sig { returns(FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol) }
         def status
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol)
+            .returns(FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol)
+        end
         def status=(_)
         end
 
@@ -33,25 +36,36 @@ module FinchAPI
           params(
             body: T.nilable(T::Array[T.anything]),
             job_id: String,
-            status: Symbol
-          ).returns(T.attached_class)
+            status: FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol
+          )
+            .returns(T.attached_class)
         end
         def self.new(body:, job_id:, status:)
         end
 
-        sig { override.returns({body: T.nilable(T::Array[T.anything]), job_id: String, status: Symbol}) }
+        sig do
+          override
+            .returns(
+              {
+                body: T.nilable(T::Array[T.anything]),
+                job_id: String,
+                status: FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol
+              }
+            )
+        end
         def to_hash
         end
 
-        class Status < FinchAPI::Enum
-          abstract!
+        module Status
+          extend FinchAPI::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Jobs::ManualAsyncJob::Status) }
+          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol) }
 
-          PENDING = :pending
-          IN_PROGRESS = :in_progress
-          ERROR = :error
-          COMPLETE = :complete
+          PENDING = T.let(:pending, FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol)
+          IN_PROGRESS = T.let(:in_progress, FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol)
+          ERROR = T.let(:error, FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol)
+          COMPLETE = T.let(:complete, FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol)
         end
       end
     end

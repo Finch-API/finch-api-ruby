@@ -11,19 +11,36 @@ module FinchAPI
       def data=(_)
       end
 
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol)) }
       def event_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol)
+          .returns(FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol)
+      end
       def event_type=(_)
       end
 
-      sig { params(data: FinchAPI::Models::PaymentEvent::Data, event_type: Symbol).returns(T.attached_class) }
+      sig do
+        params(
+          data: FinchAPI::Models::PaymentEvent::Data,
+          event_type: FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol
+        )
+          .returns(T.attached_class)
+      end
       def self.new(data: nil, event_type: nil)
       end
 
-      sig { override.returns({data: FinchAPI::Models::PaymentEvent::Data, event_type: Symbol}) }
+      sig do
+        override
+          .returns(
+            {
+              data: FinchAPI::Models::PaymentEvent::Data,
+              event_type: FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol
+            }
+          )
+      end
       def to_hash
       end
 
@@ -55,14 +72,15 @@ module FinchAPI
         end
       end
 
-      class EventType < FinchAPI::Enum
-        abstract!
+      module EventType
+        extend FinchAPI::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::PaymentEvent::EventType) }
+        OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol) }
 
-        PAYMENT_CREATED = :"payment.created"
-        PAYMENT_UPDATED = :"payment.updated"
-        PAYMENT_DELETED = :"payment.deleted"
+        PAYMENT_CREATED = T.let(:"payment.created", FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol)
+        PAYMENT_UPDATED = T.let(:"payment.updated", FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol)
+        PAYMENT_DELETED = T.let(:"payment.deleted", FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol)
       end
     end
   end

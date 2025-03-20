@@ -65,11 +65,14 @@ module FinchAPI
         end
 
         # The payment method.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::PaymentMethod::TaggedSymbol)) }
         def payment_method
         end
 
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        sig do
+          params(_: T.nilable(FinchAPI::Models::HRIS::PayStatement::PaymentMethod::TaggedSymbol))
+            .returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::PaymentMethod::TaggedSymbol))
+        end
         def payment_method=(_)
         end
 
@@ -95,11 +98,14 @@ module FinchAPI
         end
 
         # The type of the payment associated with the pay statement.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol)) }
         def type
         end
 
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        sig do
+          params(_: T.nilable(FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol))
+            .returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol))
+        end
         def type=(_)
         end
 
@@ -111,10 +117,10 @@ module FinchAPI
             gross_pay: T.nilable(FinchAPI::Models::Money),
             individual_id: String,
             net_pay: T.nilable(FinchAPI::Models::Money),
-            payment_method: T.nilable(Symbol),
+            payment_method: T.nilable(FinchAPI::Models::HRIS::PayStatement::PaymentMethod::TaggedSymbol),
             taxes: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax)]),
             total_hours: T.nilable(Float),
-            type: T.nilable(Symbol)
+            type: T.nilable(FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol)
           )
             .returns(T.attached_class)
         end
@@ -142,10 +148,10 @@ module FinchAPI
                 gross_pay: T.nilable(FinchAPI::Models::Money),
                 individual_id: String,
                 net_pay: T.nilable(FinchAPI::Models::Money),
-                payment_method: T.nilable(Symbol),
+                payment_method: T.nilable(FinchAPI::Models::HRIS::PayStatement::PaymentMethod::TaggedSymbol),
                 taxes: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax)]),
                 total_hours: T.nilable(Float),
-                type: T.nilable(Symbol)
+                type: T.nilable(FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol)
               }
             )
         end
@@ -202,11 +208,14 @@ module FinchAPI
           end
 
           # The type of earning.
-          sig { returns(T.nilable(Symbol)) }
+          sig { returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)) }
           def type
           end
 
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          sig do
+            params(_: T.nilable(FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol))
+              .returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol))
+          end
           def type=(_)
           end
 
@@ -217,7 +226,7 @@ module FinchAPI
               currency: T.nilable(String),
               hours: T.nilable(Float),
               name: T.nilable(String),
-              type: T.nilable(Symbol)
+              type: T.nilable(FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
             )
               .returns(T.attached_class)
           end
@@ -233,7 +242,7 @@ module FinchAPI
                   currency: T.nilable(String),
                   hours: T.nilable(Float),
                   name: T.nilable(String),
-                  type: T.nilable(Symbol)
+                  type: T.nilable(FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
                 }
               )
           end
@@ -286,24 +295,27 @@ module FinchAPI
           end
 
           # The type of earning.
-          class Type < FinchAPI::Enum
-            abstract!
+          module Type
+            extend FinchAPI::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::PayStatement::Earning::Type) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol) }
 
-            SALARY = :salary
-            WAGE = :wage
-            REIMBURSEMENT = :reimbursement
-            OVERTIME = :overtime
-            SEVERANCE = :severance
-            DOUBLE_OVERTIME = :double_overtime
-            PTO = :pto
-            SICK = :sick
-            BONUS = :bonus
-            COMMISSION = :commission
-            TIPS = :tips
-            NUMBER_1099 = :"1099"
-            OTHER = :other
+            SALARY = T.let(:salary, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            WAGE = T.let(:wage, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            REIMBURSEMENT = T.let(:reimbursement, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            OVERTIME = T.let(:overtime, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            SEVERANCE = T.let(:severance, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            DOUBLE_OVERTIME =
+              T.let(:double_overtime, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            PTO = T.let(:pto, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            SICK = T.let(:sick, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            BONUS = T.let(:bonus, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            COMMISSION = T.let(:commission, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            TIPS = T.let(:tips, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            NUMBER_1099 = T.let(:"1099", FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            OTHER = T.let(:other, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
           end
         end
 
@@ -356,11 +368,14 @@ module FinchAPI
           end
 
           # Type of benefit.
-          sig { returns(T.nilable(Symbol)) }
+          sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)) }
           def type
           end
 
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          sig do
+            params(_: T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol))
+              .returns(T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol))
+          end
           def type=(_)
           end
 
@@ -371,7 +386,7 @@ module FinchAPI
               currency: T.nilable(String),
               name: T.nilable(String),
               pre_tax: T.nilable(T::Boolean),
-              type: T.nilable(Symbol)
+              type: T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
             )
               .returns(T.attached_class)
           end
@@ -387,7 +402,7 @@ module FinchAPI
                   currency: T.nilable(String),
                   name: T.nilable(String),
                   pre_tax: T.nilable(T::Boolean),
-                  type: T.nilable(Symbol)
+                  type: T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
                 }
               )
           end
@@ -482,11 +497,14 @@ module FinchAPI
           end
 
           # Type of benefit.
-          sig { returns(T.nilable(Symbol)) }
+          sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)) }
           def type
           end
 
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          sig do
+            params(_: T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol))
+              .returns(T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol))
+          end
           def type=(_)
           end
 
@@ -496,7 +514,7 @@ module FinchAPI
               attributes: T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes),
               currency: T.nilable(String),
               name: T.nilable(String),
-              type: T.nilable(Symbol)
+              type: T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
             )
               .returns(T.attached_class)
           end
@@ -511,7 +529,7 @@ module FinchAPI
                   attributes: T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes),
                   currency: T.nilable(String),
                   name: T.nilable(String),
-                  type: T.nilable(Symbol)
+                  type: T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
                 }
               )
           end
@@ -568,13 +586,16 @@ module FinchAPI
         end
 
         # The payment method.
-        class PaymentMethod < FinchAPI::Enum
-          abstract!
+        module PaymentMethod
+          extend FinchAPI::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::PayStatement::PaymentMethod) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::PayStatement::PaymentMethod::TaggedSymbol) }
 
-          CHECK = :check
-          DIRECT_DEPOSIT = :direct_deposit
+          CHECK = T.let(:check, FinchAPI::Models::HRIS::PayStatement::PaymentMethod::TaggedSymbol)
+          DIRECT_DEPOSIT =
+            T.let(:direct_deposit, FinchAPI::Models::HRIS::PayStatement::PaymentMethod::TaggedSymbol)
         end
 
         class Tax < FinchAPI::BaseModel
@@ -626,11 +647,14 @@ module FinchAPI
           end
 
           # The type of taxes.
-          sig { returns(T.nilable(Symbol)) }
+          sig { returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol)) }
           def type
           end
 
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          sig do
+            params(_: T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol))
+              .returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol))
+          end
           def type=(_)
           end
 
@@ -641,7 +665,7 @@ module FinchAPI
               currency: T.nilable(String),
               employer: T.nilable(T::Boolean),
               name: T.nilable(String),
-              type: T.nilable(Symbol)
+              type: T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol)
             )
               .returns(T.attached_class)
           end
@@ -657,7 +681,7 @@ module FinchAPI
                   currency: T.nilable(String),
                   employer: T.nilable(T::Boolean),
                   name: T.nilable(String),
-                  type: T.nilable(Symbol)
+                  type: T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol)
                 }
               )
           end
@@ -709,27 +733,29 @@ module FinchAPI
           end
 
           # The type of taxes.
-          class Type < FinchAPI::Enum
-            abstract!
+          module Type
+            extend FinchAPI::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::PayStatement::Tax::Type) }
+            OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol) }
 
-            STATE = :state
-            FEDERAL = :federal
-            LOCAL = :local
-            FICA = :fica
+            STATE = T.let(:state, FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol)
+            FEDERAL = T.let(:federal, FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol)
+            LOCAL = T.let(:local, FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol)
+            FICA = T.let(:fica, FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol)
           end
         end
 
         # The type of the payment associated with the pay statement.
-        class Type < FinchAPI::Enum
-          abstract!
+        module Type
+          extend FinchAPI::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::PayStatement::Type) }
+          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol) }
 
-          REGULAR_PAYROLL = :regular_payroll
-          OFF_CYCLE_PAYROLL = :off_cycle_payroll
-          ONE_TIME_PAYMENT = :one_time_payment
+          REGULAR_PAYROLL = T.let(:regular_payroll, FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol)
+          OFF_CYCLE_PAYROLL = T.let(:off_cycle_payroll, FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol)
+          ONE_TIME_PAYMENT = T.let(:one_time_payment, FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol)
         end
       end
     end

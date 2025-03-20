@@ -42,7 +42,9 @@ module FinchAPI
           | :daily
           | :other
 
-        class PayFrequency < FinchAPI::Enum
+        module PayFrequency
+          extend FinchAPI::Enum
+
           ANNUALLY: :annually
           SEMI_ANNUALLY: :semi_annually
           QUARTERLY: :quarterly

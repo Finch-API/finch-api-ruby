@@ -148,8 +148,9 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-          # @abstract
-          class Type < FinchAPI::Enum
+          module Type
+            extend FinchAPI::Enum
+
             WORK = :work
             PERSONAL = :personal
 
@@ -157,10 +158,10 @@ module FinchAPI
           end
         end
 
-        # @abstract
-        #
         # The EEOC-defined ethnicity of the individual.
-        class Ethnicity < FinchAPI::Enum
+        module Ethnicity
+          extend FinchAPI::Enum
+
           ASIAN = :asian
           WHITE = :white
           BLACK_OR_AFRICAN_AMERICAN = :black_or_african_american
@@ -173,10 +174,10 @@ module FinchAPI
           finalize!
         end
 
-        # @abstract
-        #
         # The gender of the individual.
-        class Gender < FinchAPI::Enum
+        module Gender
+          extend FinchAPI::Enum
+
           FEMALE = :female
           MALE = :male
           OTHER = :other
@@ -204,8 +205,9 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-          # @abstract
-          class Type < FinchAPI::Enum
+          module Type
+            extend FinchAPI::Enum
+
             WORK = :work
             PERSONAL = :personal
 

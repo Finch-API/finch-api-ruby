@@ -124,10 +124,10 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-          # @abstract
-          #
           # The individual's filing status for tax purposes.
-          class FilingStatus < FinchAPI::Enum
+          module FilingStatus
+            extend FinchAPI::Enum
+
             HEAD_OF_HOUSEHOLD = :head_of_household
             MARRIED_FILING_JOINTLY_OR_QUALIFYING_SURVIVING_SPOUSE =
               :married_filing_jointly_or_qualifying_surviving_spouse
@@ -137,10 +137,10 @@ module FinchAPI
           end
         end
 
-        # @abstract
-        #
         # Specifies the form type, indicating that this document is a 2020 W4 form.
-        class Type < FinchAPI::Enum
+        module Type
+          extend FinchAPI::Enum
+
           W4_2020 = :w4_2020
 
           finalize!

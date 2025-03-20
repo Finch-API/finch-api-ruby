@@ -54,7 +54,9 @@ module FinchAPI
 
       type client_type = :production | :development | :sandbox
 
-      class ClientType < FinchAPI::Enum
+      module ClientType
+        extend FinchAPI::Enum
+
         PRODUCTION: :production
         DEVELOPMENT: :development
         SANDBOX: :sandbox
@@ -64,7 +66,9 @@ module FinchAPI
 
       type connection_type = :provider | :finch
 
-      class ConnectionType < FinchAPI::Enum
+      module ConnectionType
+        extend FinchAPI::Enum
+
         PROVIDER: :provider
         FINCH: :finch
 

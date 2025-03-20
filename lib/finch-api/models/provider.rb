@@ -2000,10 +2000,10 @@ module FinchAPI
           end
         end
 
-        # @abstract
-        #
         # The type of authentication method.
-        class Type < FinchAPI::Enum
+        module Type
+          extend FinchAPI::Enum
+
           ASSISTED = :assisted
           CREDENTIAL = :credential
           API_TOKEN = :api_token

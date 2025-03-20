@@ -2,8 +2,8 @@
 
 module FinchAPI
   module Models
-    class WebhookEvent < FinchAPI::Union
-      abstract!
+    module WebhookEvent
+      extend FinchAPI::Union
 
       Variants =
         type_template(:out) do

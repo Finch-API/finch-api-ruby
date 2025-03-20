@@ -95,7 +95,9 @@ module FinchAPI
 
               type annual_contribution_limit = :individual | :family
 
-              class AnnualContributionLimit < FinchAPI::Enum
+              module AnnualContributionLimit
+                extend FinchAPI::Enum
+
                 INDIVIDUAL: :individual
                 FAMILY: :family
 
@@ -128,7 +130,9 @@ module FinchAPI
 
                 type type_ = :fixed | :percent
 
-                class Type < FinchAPI::Enum
+                module Type
+                  extend FinchAPI::Enum
+
                   FIXED: :fixed
                   PERCENT: :percent
 
@@ -162,7 +166,9 @@ module FinchAPI
 
                 type type_ = :fixed | :percent
 
-                class Type < FinchAPI::Enum
+                module Type
+                  extend FinchAPI::Enum
+
                   FIXED: :fixed
                   PERCENT: :percent
 
