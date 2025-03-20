@@ -9,8 +9,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: FinchAPI::Models::HRIS::PayStatementResponseBody)
-            .returns(FinchAPI::Models::HRIS::PayStatementResponseBody)
+          params(_: T.any(FinchAPI::Models::HRIS::PayStatementResponseBody, FinchAPI::Util::AnyHash))
+            .returns(T.any(FinchAPI::Models::HRIS::PayStatementResponseBody, FinchAPI::Util::AnyHash))
         end
         def body=(_)
         end

@@ -8,7 +8,10 @@ module FinchAPI
         def body
         end
 
-        sig { params(_: FinchAPI::Models::HRIS::EmploymentData).returns(FinchAPI::Models::HRIS::EmploymentData) }
+        sig do
+          params(_: T.any(FinchAPI::Models::HRIS::EmploymentData, FinchAPI::Util::AnyHash))
+            .returns(T.any(FinchAPI::Models::HRIS::EmploymentData, FinchAPI::Util::AnyHash))
+        end
         def body=(_)
         end
 

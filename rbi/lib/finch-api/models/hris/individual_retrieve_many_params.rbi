@@ -12,8 +12,12 @@ module FinchAPI
         end
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options))
-            .returns(T.nilable(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options))
+          params(
+            _: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, FinchAPI::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, FinchAPI::Util::AnyHash))
+            )
         end
         def options=(_)
         end

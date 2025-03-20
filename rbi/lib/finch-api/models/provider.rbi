@@ -155,8 +155,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::BenefitsSupport))
-            .returns(T.nilable(FinchAPI::Models::HRIS::BenefitsSupport))
+          params(_: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitsSupport, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::HRIS::BenefitsSupport, FinchAPI::Util::AnyHash)))
         end
         def benefits_support=(_)
         end
@@ -167,8 +167,16 @@ module FinchAPI
         end
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields))
-            .returns(T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields))
+          params(
+            _: T.nilable(
+              T.any(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields, FinchAPI::Util::AnyHash)
+            )
+          )
+            .returns(
+              T.nilable(
+                T.any(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields, FinchAPI::Util::AnyHash)
+              )
+            )
         end
         def supported_fields=(_)
         end
@@ -215,8 +223,12 @@ module FinchAPI
           end
 
           sig do
-            params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company)
-              .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company)
+            params(
+              _: T.any(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company, FinchAPI::Util::AnyHash)
+            )
+              .returns(
+                T.any(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company, FinchAPI::Util::AnyHash)
+              )
           end
           def company=(_)
           end
@@ -226,8 +238,18 @@ module FinchAPI
           end
 
           sig do
-            params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory)
-              .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory)
+            params(
+              _: T.any(
+                FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory,
+                FinchAPI::Util::AnyHash
+              )
+            )
+              .returns(
+                T.any(
+                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory,
+                  FinchAPI::Util::AnyHash
+                )
+              )
           end
           def directory=(_)
           end
@@ -237,8 +259,18 @@ module FinchAPI
           end
 
           sig do
-            params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment)
-              .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment)
+            params(
+              _: T.any(
+                FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment,
+                FinchAPI::Util::AnyHash
+              )
+            )
+              .returns(
+                T.any(
+                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment,
+                  FinchAPI::Util::AnyHash
+                )
+              )
           end
           def employment=(_)
           end
@@ -248,8 +280,18 @@ module FinchAPI
           end
 
           sig do
-            params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual)
-              .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual)
+            params(
+              _: T.any(
+                FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual,
+                FinchAPI::Util::AnyHash
+              )
+            )
+              .returns(
+                T.any(
+                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual,
+                  FinchAPI::Util::AnyHash
+                )
+              )
           end
           def individual=(_)
           end
@@ -259,8 +301,18 @@ module FinchAPI
           end
 
           sig do
-            params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayGroup)
-              .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayGroup)
+            params(
+              _: T.any(
+                FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayGroup,
+                FinchAPI::Util::AnyHash
+              )
+            )
+              .returns(
+                T.any(
+                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayGroup,
+                  FinchAPI::Util::AnyHash
+                )
+              )
           end
           def pay_group=(_)
           end
@@ -270,8 +322,18 @@ module FinchAPI
           end
 
           sig do
-            params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement)
-              .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement)
+            params(
+              _: T.any(
+                FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement,
+                FinchAPI::Util::AnyHash
+              )
+            )
+              .returns(
+                T.any(
+                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement,
+                  FinchAPI::Util::AnyHash
+                )
+              )
           end
           def pay_statement=(_)
           end
@@ -281,8 +343,12 @@ module FinchAPI
           end
 
           sig do
-            params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment)
-              .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment)
+            params(
+              _: T.any(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment, FinchAPI::Util::AnyHash)
+            )
+              .returns(
+                T.any(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment, FinchAPI::Util::AnyHash)
+              )
           end
           def payment=(_)
           end
@@ -342,8 +408,18 @@ module FinchAPI
             end
 
             sig do
-              params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Accounts)
-                .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Accounts)
+              params(
+                _: T.any(
+                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Accounts,
+                  FinchAPI::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Accounts,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
             end
             def accounts=(_)
             end
@@ -357,8 +433,18 @@ module FinchAPI
             end
 
             sig do
-              params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments)
-                .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments)
+              params(
+                _: T.any(
+                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments,
+                  FinchAPI::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
             end
             def departments=(_)
             end
@@ -376,8 +462,18 @@ module FinchAPI
             end
 
             sig do
-              params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Entity)
-                .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Entity)
+              params(
+                _: T.any(
+                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Entity,
+                  FinchAPI::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Entity,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
             end
             def entity=(_)
             end
@@ -395,8 +491,18 @@ module FinchAPI
             end
 
             sig do
-              params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Locations)
-                .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Locations)
+              params(
+                _: T.any(
+                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Locations,
+                  FinchAPI::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Locations,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
             end
             def locations=(_)
             end
@@ -551,8 +657,18 @@ module FinchAPI
               end
 
               sig do
-                params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments::Parent)
-                  .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments::Parent)
+                params(
+                  _: T.any(
+                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments::Parent,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
+                  .returns(
+                    T.any(
+                      FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments::Parent,
+                      FinchAPI::Util::AnyHash
+                    )
+                  )
               end
               def parent=(_)
               end
@@ -715,8 +831,18 @@ module FinchAPI
             end
 
             sig do
-              params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals)
-                .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals)
+              params(
+                _: T.any(
+                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals,
+                  FinchAPI::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
             end
             def individuals=(_)
             end
@@ -726,8 +852,18 @@ module FinchAPI
             end
 
             sig do
-              params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Paging)
-                .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Paging)
+              params(
+                _: T.any(
+                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Paging,
+                  FinchAPI::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Paging,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
             end
             def paging=(_)
             end
@@ -807,10 +943,16 @@ module FinchAPI
 
               sig do
                 params(
-                  _: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager
+                  _: T.any(
+                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager,
+                    FinchAPI::Util::AnyHash
+                  )
                 )
                   .returns(
-                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager
+                    T.any(
+                      FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager,
+                      FinchAPI::Util::AnyHash
+                    )
                   )
               end
               def manager=(_)
@@ -936,8 +1078,18 @@ module FinchAPI
             end
 
             sig do
-              params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Department)
-                .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Department)
+              params(
+                _: T.any(
+                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Department,
+                  FinchAPI::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Department,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
             end
             def department=(_)
             end
@@ -951,8 +1103,18 @@ module FinchAPI
             end
 
             sig do
-              params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Employment)
-                .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Employment)
+              params(
+                _: T.any(
+                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Employment,
+                  FinchAPI::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Employment,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
             end
             def employment=(_)
             end
@@ -986,8 +1148,18 @@ module FinchAPI
             end
 
             sig do
-              params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Income)
-                .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Income)
+              params(
+                _: T.any(
+                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Income,
+                  FinchAPI::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Income,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
             end
             def income=(_)
             end
@@ -1025,8 +1197,18 @@ module FinchAPI
             end
 
             sig do
-              params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Location)
-                .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Location)
+              params(
+                _: T.any(
+                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Location,
+                  FinchAPI::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Location,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
             end
             def location=(_)
             end
@@ -1036,8 +1218,18 @@ module FinchAPI
             end
 
             sig do
-              params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Manager)
-                .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Manager)
+              params(
+                _: T.any(
+                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Manager,
+                  FinchAPI::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Manager,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
             end
             def manager=(_)
             end
@@ -1337,8 +1529,18 @@ module FinchAPI
             end
 
             sig do
-              params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::Emails)
-                .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::Emails)
+              params(
+                _: T.any(
+                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::Emails,
+                  FinchAPI::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::Emails,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
             end
             def emails=(_)
             end
@@ -1400,8 +1602,18 @@ module FinchAPI
             end
 
             sig do
-              params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers)
-                .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers)
+              params(
+                _: T.any(
+                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers,
+                  FinchAPI::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
             end
             def phone_numbers=(_)
             end
@@ -1423,8 +1635,18 @@ module FinchAPI
             end
 
             sig do
-              params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::Residence)
-                .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::Residence)
+              params(
+                _: T.any(
+                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::Residence,
+                  FinchAPI::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::Residence,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
             end
             def residence=(_)
             end
@@ -1696,8 +1918,18 @@ module FinchAPI
             end
 
             sig do
-              params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::Paging)
-                .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::Paging)
+              params(
+                _: T.any(
+                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::Paging,
+                  FinchAPI::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::Paging,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
             end
             def paging=(_)
             end
@@ -1711,8 +1943,18 @@ module FinchAPI
             end
 
             sig do
-              params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements)
-                .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements)
+              params(
+                _: T.any(
+                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements,
+                  FinchAPI::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
             end
             def pay_statements=(_)
             end
@@ -1778,10 +2020,16 @@ module FinchAPI
 
               sig do
                 params(
-                  _: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings
+                  _: T.any(
+                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings,
+                    FinchAPI::Util::AnyHash
+                  )
                 )
                   .returns(
-                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings
+                    T.any(
+                      FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings,
+                      FinchAPI::Util::AnyHash
+                    )
                   )
               end
               def earnings=(_)
@@ -1799,10 +2047,16 @@ module FinchAPI
 
               sig do
                 params(
-                  _: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions
+                  _: T.any(
+                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions,
+                    FinchAPI::Util::AnyHash
+                  )
                 )
                   .returns(
-                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions
+                    T.any(
+                      FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions,
+                      FinchAPI::Util::AnyHash
+                    )
                   )
               end
               def employee_deductions=(_)
@@ -1820,10 +2074,16 @@ module FinchAPI
 
               sig do
                 params(
-                  _: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions
+                  _: T.any(
+                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions,
+                    FinchAPI::Util::AnyHash
+                  )
                 )
                   .returns(
-                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions
+                    T.any(
+                      FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions,
+                      FinchAPI::Util::AnyHash
+                    )
                   )
               end
               def employer_contributions=(_)
@@ -1873,10 +2133,16 @@ module FinchAPI
 
               sig do
                 params(
-                  _: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes
+                  _: T.any(
+                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes,
+                    FinchAPI::Util::AnyHash
+                  )
                 )
                   .returns(
-                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes
+                    T.any(
+                      FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes,
+                      FinchAPI::Util::AnyHash
+                    )
                   )
               end
               def taxes=(_)
@@ -2273,8 +2539,18 @@ module FinchAPI
             end
 
             sig do
-              params(_: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment::PayPeriod)
-                .returns(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment::PayPeriod)
+              params(
+                _: T.any(
+                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment::PayPeriod,
+                  FinchAPI::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment::PayPeriod,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
             end
             def pay_period=(_)
             end

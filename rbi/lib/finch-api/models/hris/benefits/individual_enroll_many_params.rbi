@@ -52,8 +52,18 @@ module FinchAPI
             end
 
             sig do
-              params(_: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration)
-                .returns(FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration)
+              params(
+                _: T.any(
+                  FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration,
+                  FinchAPI::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
             end
             def configuration=(_)
             end
@@ -143,10 +153,16 @@ module FinchAPI
 
               sig do
                 params(
-                  _: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution
+                  _: T.any(
+                    FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution,
+                    FinchAPI::Util::AnyHash
+                  )
                 )
                   .returns(
-                    FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution
+                    T.any(
+                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution,
+                      FinchAPI::Util::AnyHash
+                    )
                   )
               end
               def company_contribution=(_)
@@ -164,10 +180,16 @@ module FinchAPI
 
               sig do
                 params(
-                  _: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction
+                  _: T.any(
+                    FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction,
+                    FinchAPI::Util::AnyHash
+                  )
                 )
                   .returns(
-                    FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction
+                    T.any(
+                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction,
+                      FinchAPI::Util::AnyHash
+                    )
                   )
               end
               def employee_deduction=(_)

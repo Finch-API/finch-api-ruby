@@ -72,8 +72,16 @@ module FinchAPI
           end
 
           sig do
-            params(_: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Department))
-              .returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Department))
+            params(
+              _: T.nilable(
+                T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Department, FinchAPI::Util::AnyHash)
+              )
+            )
+              .returns(
+                T.nilable(
+                  T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Department, FinchAPI::Util::AnyHash)
+                )
+              )
           end
           def department=(_)
           end
@@ -103,8 +111,16 @@ module FinchAPI
           end
 
           sig do
-            params(_: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment))
-              .returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment))
+            params(
+              _: T.nilable(
+                T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment, FinchAPI::Util::AnyHash)
+              )
+            )
+              .returns(
+                T.nilable(
+                  T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment, FinchAPI::Util::AnyHash)
+                )
+              )
           end
           def employment=(_)
           end
@@ -180,7 +196,10 @@ module FinchAPI
           def income
           end
 
-          sig { params(_: T.nilable(FinchAPI::Models::Income)).returns(T.nilable(FinchAPI::Models::Income)) }
+          sig do
+            params(_: T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Util::AnyHash)))
+              .returns(T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Util::AnyHash)))
+          end
           def income=(_)
           end
 
@@ -226,7 +245,10 @@ module FinchAPI
           def location
           end
 
-          sig { params(_: T.nilable(FinchAPI::Models::Location)).returns(T.nilable(FinchAPI::Models::Location)) }
+          sig do
+            params(_: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash)))
+              .returns(T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash)))
+          end
           def location=(_)
           end
 
@@ -236,8 +258,12 @@ module FinchAPI
           end
 
           sig do
-            params(_: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Manager))
-              .returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Manager))
+            params(
+              _: T.nilable(T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Manager, FinchAPI::Util::AnyHash))
+            )
+              .returns(
+                T.nilable(T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Manager, FinchAPI::Util::AnyHash))
+              )
           end
           def manager=(_)
           end
@@ -283,7 +309,10 @@ module FinchAPI
           def residence
           end
 
-          sig { params(_: T.nilable(FinchAPI::Models::Location)).returns(T.nilable(FinchAPI::Models::Location)) }
+          sig do
+            params(_: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash)))
+              .returns(T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash)))
+          end
           def residence=(_)
           end
 

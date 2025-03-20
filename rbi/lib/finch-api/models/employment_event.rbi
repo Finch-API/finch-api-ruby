@@ -7,7 +7,10 @@ module FinchAPI
       def data
       end
 
-      sig { params(_: FinchAPI::Models::EmploymentEvent::Data).returns(FinchAPI::Models::EmploymentEvent::Data) }
+      sig do
+        params(_: T.any(FinchAPI::Models::EmploymentEvent::Data, FinchAPI::Util::AnyHash))
+          .returns(T.any(FinchAPI::Models::EmploymentEvent::Data, FinchAPI::Util::AnyHash))
+      end
       def data=(_)
       end
 

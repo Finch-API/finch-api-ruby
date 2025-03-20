@@ -48,8 +48,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params))
-            .returns(T.nilable(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params))
+          params(_: T.nilable(T.any(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params, FinchAPI::Util::AnyHash)))
+            .returns(T.nilable(T.any(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params, FinchAPI::Util::AnyHash)))
         end
         def params=(_)
         end
