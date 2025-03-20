@@ -2,32 +2,26 @@
 
 module FinchAPI
   # @example
-  # ```ruby
-  # if page.has_next?
-  #   page = page.next_page
-  # end
-  # ```
+  #   if page.has_next?
+  #     page = page.next_page
+  #   end
   #
   # @example
-  # ```ruby
-  # page.auto_paging_each do |access_token|
-  #   puts(access_token)
-  # end
-  # ```
+  #   page.auto_paging_each do |access_token|
+  #     puts(access_token)
+  #   end
   #
   # @example
-  # ```ruby
-  # access_tokens =
-  #   page
-  #   .to_enum
-  #   .lazy
-  #   .select { _1.object_id.even? }
-  #   .map(&:itself)
-  #   .take(2)
-  #   .to_a
+  #   access_tokens =
+  #     page
+  #     .to_enum
+  #     .lazy
+  #     .select { _1.object_id.even? }
+  #     .map(&:itself)
+  #     .take(2)
+  #     .to_a
   #
-  # access_tokens => Array
-  # ```
+  #   access_tokens => Array
   module BasePage
     # rubocop:disable Lint/UnusedMethodArgument
 
