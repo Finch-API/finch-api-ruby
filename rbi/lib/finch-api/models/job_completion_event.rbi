@@ -19,8 +19,8 @@ module FinchAPI
       end
 
       sig do
-        params(_: FinchAPI::Models::JobCompletionEvent::EventType::TaggedSymbol)
-          .returns(FinchAPI::Models::JobCompletionEvent::EventType::TaggedSymbol)
+        params(_: FinchAPI::Models::JobCompletionEvent::EventType::OrSymbol)
+          .returns(FinchAPI::Models::JobCompletionEvent::EventType::OrSymbol)
       end
       def event_type=(_)
       end
@@ -28,7 +28,7 @@ module FinchAPI
       sig do
         params(
           data: T.any(FinchAPI::Models::JobCompletionEvent::Data, FinchAPI::Util::AnyHash),
-          event_type: FinchAPI::Models::JobCompletionEvent::EventType::TaggedSymbol
+          event_type: FinchAPI::Models::JobCompletionEvent::EventType::OrSymbol
         )
           .returns(T.attached_class)
       end

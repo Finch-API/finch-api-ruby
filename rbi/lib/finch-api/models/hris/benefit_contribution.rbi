@@ -28,7 +28,7 @@ module FinchAPI
         sig do
           params(
             amount: T.nilable(Integer),
-            type: T.nilable(FinchAPI::Models::HRIS::BenefitContribution::Type::TaggedSymbol)
+            type: T.nilable(FinchAPI::Models::HRIS::BenefitContribution::Type::OrSymbol)
           )
             .returns(T.attached_class)
         end

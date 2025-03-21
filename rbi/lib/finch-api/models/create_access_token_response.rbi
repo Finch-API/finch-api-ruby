@@ -109,10 +109,10 @@ module FinchAPI
         params(
           access_token: String,
           account_id: String,
-          client_type: FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol,
+          client_type: FinchAPI::Models::CreateAccessTokenResponse::ClientType::OrSymbol,
           company_id: String,
           connection_id: String,
-          connection_type: FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol,
+          connection_type: FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::OrSymbol,
           products: T::Array[String],
           provider_id: String,
           customer_id: T.nilable(String),

@@ -47,7 +47,7 @@ module FinchAPI
             id: String,
             individual_ids: T::Array[String],
             name: String,
-            pay_frequencies: T::Array[FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol]
+            pay_frequencies: T::Array[FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::OrSymbol]
           )
             .returns(T.attached_class)
         end

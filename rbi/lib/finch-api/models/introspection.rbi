@@ -171,13 +171,13 @@ module FinchAPI
       sig do
         params(
           account_id: String,
-          authentication_methods: T::Array[FinchAPI::Models::Introspection::AuthenticationMethod],
+          authentication_methods: T::Array[T.any(FinchAPI::Models::Introspection::AuthenticationMethod, FinchAPI::Util::AnyHash)],
           client_id: String,
-          client_type: FinchAPI::Models::Introspection::ClientType::TaggedSymbol,
+          client_type: FinchAPI::Models::Introspection::ClientType::OrSymbol,
           company_id: String,
           connection_id: String,
           connection_status: T.any(FinchAPI::Models::Introspection::ConnectionStatus, FinchAPI::Util::AnyHash),
-          connection_type: FinchAPI::Models::Introspection::ConnectionType::TaggedSymbol,
+          connection_type: FinchAPI::Models::Introspection::ConnectionType::OrSymbol,
           customer_email: T.nilable(String),
           customer_id: T.nilable(String),
           customer_name: T.nilable(String),
@@ -266,8 +266,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: FinchAPI::Models::Introspection::AuthenticationMethod::Type::TaggedSymbol)
-            .returns(FinchAPI::Models::Introspection::AuthenticationMethod::Type::TaggedSymbol)
+          params(_: FinchAPI::Models::Introspection::AuthenticationMethod::Type::OrSymbol)
+            .returns(FinchAPI::Models::Introspection::AuthenticationMethod::Type::OrSymbol)
         end
         def type=(_)
         end
@@ -276,7 +276,7 @@ module FinchAPI
           params(
             connection_status: T.any(FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus, FinchAPI::Util::AnyHash),
             products: T::Array[String],
-            type: FinchAPI::Models::Introspection::AuthenticationMethod::Type::TaggedSymbol
+            type: FinchAPI::Models::Introspection::AuthenticationMethod::Type::OrSymbol
           )
             .returns(T.attached_class)
         end
@@ -310,15 +310,14 @@ module FinchAPI
           end
 
           sig do
-            params(_: FinchAPI::Models::ConnectionStatusType::TaggedSymbol)
-              .returns(FinchAPI::Models::ConnectionStatusType::TaggedSymbol)
+            params(_: FinchAPI::Models::ConnectionStatusType::OrSymbol)
+              .returns(FinchAPI::Models::ConnectionStatusType::OrSymbol)
           end
           def status=(_)
           end
 
           sig do
-            params(message: String, status: FinchAPI::Models::ConnectionStatusType::TaggedSymbol)
-              .returns(T.attached_class)
+            params(message: String, status: FinchAPI::Models::ConnectionStatusType::OrSymbol).returns(T.attached_class)
           end
           def self.new(message: nil, status: nil)
           end
@@ -385,15 +384,14 @@ module FinchAPI
         end
 
         sig do
-          params(_: FinchAPI::Models::ConnectionStatusType::TaggedSymbol)
-            .returns(FinchAPI::Models::ConnectionStatusType::TaggedSymbol)
+          params(_: FinchAPI::Models::ConnectionStatusType::OrSymbol)
+            .returns(FinchAPI::Models::ConnectionStatusType::OrSymbol)
         end
         def status=(_)
         end
 
         sig do
-          params(message: String, status: FinchAPI::Models::ConnectionStatusType::TaggedSymbol)
-            .returns(T.attached_class)
+          params(message: String, status: FinchAPI::Models::ConnectionStatusType::OrSymbol).returns(T.attached_class)
         end
         def self.new(message: nil, status: nil)
         end

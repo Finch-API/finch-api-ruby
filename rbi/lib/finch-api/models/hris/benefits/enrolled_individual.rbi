@@ -22,8 +22,8 @@ module FinchAPI
           end
 
           sig do
-            params(_: FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code::TaggedInteger)
-              .returns(FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code::TaggedInteger)
+            params(_: FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code::OrInteger)
+              .returns(FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code::OrInteger)
           end
           def code=(_)
           end
@@ -39,7 +39,7 @@ module FinchAPI
           sig do
             params(
               body: T.any(FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Body, FinchAPI::Util::AnyHash),
-              code: FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code::TaggedInteger,
+              code: FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code::OrInteger,
               individual_id: String
             )
               .returns(T.attached_class)

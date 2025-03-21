@@ -22,8 +22,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: FinchAPI::Models::HRIS::W42020::Type::TaggedSymbol)
-            .returns(FinchAPI::Models::HRIS::W42020::Type::TaggedSymbol)
+          params(_: FinchAPI::Models::HRIS::W42020::Type::OrSymbol)
+            .returns(FinchAPI::Models::HRIS::W42020::Type::OrSymbol)
         end
         def type=(_)
         end
@@ -42,7 +42,7 @@ module FinchAPI
         sig do
           params(
             data: T.any(FinchAPI::Models::HRIS::W42020::Data, FinchAPI::Util::AnyHash),
-            type: FinchAPI::Models::HRIS::W42020::Type::TaggedSymbol,
+            type: FinchAPI::Models::HRIS::W42020::Type::OrSymbol,
             year: T.nilable(Float)
           )
             .returns(T.attached_class)
@@ -147,7 +147,7 @@ module FinchAPI
               amount_for_qualifying_children_under_17: T.nilable(Integer),
               deductions: T.nilable(Integer),
               extra_withholding: T.nilable(Integer),
-              filing_status: T.nilable(FinchAPI::Models::HRIS::W42020::Data::FilingStatus::TaggedSymbol),
+              filing_status: T.nilable(FinchAPI::Models::HRIS::W42020::Data::FilingStatus::OrSymbol),
               individual_id: String,
               other_income: T.nilable(Integer),
               total_claim_dependent_and_other_credits: T.nilable(Integer)

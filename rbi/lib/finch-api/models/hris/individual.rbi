@@ -141,14 +141,16 @@ module FinchAPI
           params(
             id: String,
             dob: T.nilable(String),
-            emails: T.nilable(T::Array[FinchAPI::Models::HRIS::Individual::Email]),
+            emails: T.nilable(T::Array[T.any(FinchAPI::Models::HRIS::Individual::Email, FinchAPI::Util::AnyHash)]),
             encrypted_ssn: T.nilable(String),
-            ethnicity: T.nilable(FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol),
+            ethnicity: T.nilable(FinchAPI::Models::HRIS::Individual::Ethnicity::OrSymbol),
             first_name: T.nilable(String),
-            gender: T.nilable(FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol),
+            gender: T.nilable(FinchAPI::Models::HRIS::Individual::Gender::OrSymbol),
             last_name: T.nilable(String),
             middle_name: T.nilable(String),
-            phone_numbers: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::Individual::PhoneNumber)]),
+            phone_numbers: T.nilable(
+              T::Array[T.nilable(T.any(FinchAPI::Models::HRIS::Individual::PhoneNumber, FinchAPI::Util::AnyHash))]
+            ),
             preferred_name: T.nilable(String),
             residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash)),
             ssn: T.nilable(String)
@@ -216,7 +218,7 @@ module FinchAPI
           end
 
           sig do
-            params(data: String, type: T.nilable(FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol))
+            params(data: String, type: T.nilable(FinchAPI::Models::HRIS::Individual::Email::Type::OrSymbol))
               .returns(T.attached_class)
           end
           def self.new(data: nil, type: nil)
@@ -317,7 +319,7 @@ module FinchAPI
           sig do
             params(
               data: T.nilable(String),
-              type: T.nilable(FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::TaggedSymbol)
+              type: T.nilable(FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::OrSymbol)
             )
               .returns(T.attached_class)
           end

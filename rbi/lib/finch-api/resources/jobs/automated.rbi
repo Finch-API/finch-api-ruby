@@ -21,7 +21,7 @@ module FinchAPI
         sig do
           params(
             type: FinchAPI::Models::Jobs::AutomatedCreateParams::Type::OrSymbol,
-            params: FinchAPI::Models::Jobs::AutomatedCreateParams::Params,
+            params: T.any(FinchAPI::Models::Jobs::AutomatedCreateParams::Params, FinchAPI::Util::AnyHash),
             request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
           )
             .returns(FinchAPI::Models::Jobs::AutomatedCreateResponse)

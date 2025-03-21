@@ -18,8 +18,8 @@ module FinchAPI
       end
 
       sig do
-        params(_: FinchAPI::Models::CompanyEvent::EventType::TaggedSymbol)
-          .returns(FinchAPI::Models::CompanyEvent::EventType::TaggedSymbol)
+        params(_: FinchAPI::Models::CompanyEvent::EventType::OrSymbol)
+          .returns(FinchAPI::Models::CompanyEvent::EventType::OrSymbol)
       end
       def event_type=(_)
       end
@@ -27,7 +27,7 @@ module FinchAPI
       sig do
         params(
           data: T.nilable(T::Hash[Symbol, T.anything]),
-          event_type: FinchAPI::Models::CompanyEvent::EventType::TaggedSymbol
+          event_type: FinchAPI::Models::CompanyEvent::EventType::OrSymbol
         )
           .returns(T.attached_class)
       end

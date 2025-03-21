@@ -18,8 +18,8 @@ module FinchAPI
       end
 
       sig do
-        params(_: T::Array[FinchAPI::Models::Provider::AuthenticationMethod])
-          .returns(T::Array[FinchAPI::Models::Provider::AuthenticationMethod])
+        params(_: T::Array[T.any(FinchAPI::Models::Provider::AuthenticationMethod, FinchAPI::Util::AnyHash)])
+          .returns(T::Array[T.any(FinchAPI::Models::Provider::AuthenticationMethod, FinchAPI::Util::AnyHash)])
       end
       def authentication_methods=(_)
       end
@@ -101,7 +101,7 @@ module FinchAPI
       sig do
         params(
           id: String,
-          authentication_methods: T::Array[FinchAPI::Models::Provider::AuthenticationMethod],
+          authentication_methods: T::Array[T.any(FinchAPI::Models::Provider::AuthenticationMethod, FinchAPI::Util::AnyHash)],
           beta: T::Boolean,
           display_name: String,
           icon: String,
@@ -187,8 +187,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol)
-            .returns(FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol)
+          params(_: FinchAPI::Models::Provider::AuthenticationMethod::Type::OrSymbol)
+            .returns(FinchAPI::Models::Provider::AuthenticationMethod::Type::OrSymbol)
         end
         def type=(_)
         end
@@ -199,7 +199,7 @@ module FinchAPI
             supported_fields: T.nilable(
               T.any(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields, FinchAPI::Util::AnyHash)
             ),
-            type: FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol
+            type: FinchAPI::Models::Provider::AuthenticationMethod::Type::OrSymbol
           )
             .returns(T.attached_class)
         end

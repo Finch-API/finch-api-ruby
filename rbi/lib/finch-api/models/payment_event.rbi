@@ -19,8 +19,8 @@ module FinchAPI
       end
 
       sig do
-        params(_: FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol)
-          .returns(FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol)
+        params(_: FinchAPI::Models::PaymentEvent::EventType::OrSymbol)
+          .returns(FinchAPI::Models::PaymentEvent::EventType::OrSymbol)
       end
       def event_type=(_)
       end
@@ -28,7 +28,7 @@ module FinchAPI
       sig do
         params(
           data: T.any(FinchAPI::Models::PaymentEvent::Data, FinchAPI::Util::AnyHash),
-          event_type: FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol
+          event_type: FinchAPI::Models::PaymentEvent::EventType::OrSymbol
         )
           .returns(T.attached_class)
       end
