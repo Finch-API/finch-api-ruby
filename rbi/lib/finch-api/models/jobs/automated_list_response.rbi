@@ -29,7 +29,7 @@ module FinchAPI
         sig do
           params(
             data: T::Array[FinchAPI::Models::Jobs::AutomatedAsyncJob],
-            meta: FinchAPI::Models::Jobs::AutomatedListResponse::Meta
+            meta: T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta, FinchAPI::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -64,7 +64,12 @@ module FinchAPI
           def quotas=(_)
           end
 
-          sig { params(quotas: FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas).returns(T.attached_class) }
+          sig do
+            params(
+              quotas: T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas, FinchAPI::Util::AnyHash)
+            )
+              .returns(T.attached_class)
+          end
           def self.new(quotas: nil)
           end
 
@@ -93,7 +98,9 @@ module FinchAPI
             #   (`POST /jobs/automated`). Please contact a Finch representative for more
             #   details.
             sig do
-              params(data_sync_all: FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll)
+              params(
+                data_sync_all: T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll, FinchAPI::Util::AnyHash)
+              )
                 .returns(T.attached_class)
             end
             def self.new(data_sync_all: nil)

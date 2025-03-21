@@ -28,8 +28,8 @@ module FinchAPI
 
         sig do
           params(
-            company_benefits: FinchAPI::Models::OperationSupportMatrix,
-            individual_benefits: FinchAPI::Models::OperationSupportMatrix
+            company_benefits: T.any(FinchAPI::Models::OperationSupportMatrix, FinchAPI::Util::AnyHash),
+            individual_benefits: T.any(FinchAPI::Models::OperationSupportMatrix, FinchAPI::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

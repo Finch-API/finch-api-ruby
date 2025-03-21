@@ -32,7 +32,11 @@ module FinchAPI
         end
 
         sig do
-          params(body: FinchAPI::Models::HRIS::PayStatementResponseBody, code: Integer, payment_id: String)
+          params(
+            body: T.any(FinchAPI::Models::HRIS::PayStatementResponseBody, FinchAPI::Util::AnyHash),
+            code: Integer,
+            payment_id: String
+          )
             .returns(T.attached_class)
         end
         def self.new(body: nil, code: nil, payment_id: nil)

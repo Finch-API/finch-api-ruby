@@ -82,11 +82,11 @@ module FinchAPI
         sig do
           params(
             id: String,
-            department: T.nilable(FinchAPI::Models::HRIS::IndividualInDirectory::Department),
+            department: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Department, FinchAPI::Util::AnyHash)),
             first_name: T.nilable(String),
             is_active: T.nilable(T::Boolean),
             last_name: T.nilable(String),
-            manager: T.nilable(FinchAPI::Models::HRIS::IndividualInDirectory::Manager),
+            manager: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Manager, FinchAPI::Util::AnyHash)),
             middle_name: T.nilable(String)
           )
             .returns(T.attached_class)

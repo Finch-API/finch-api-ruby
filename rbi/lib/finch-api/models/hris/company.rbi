@@ -102,7 +102,7 @@ module FinchAPI
             accounts: T.nilable(T::Array[FinchAPI::Models::HRIS::HRISCompany::Account]),
             departments: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::HRISCompany::Department)]),
             ein: T.nilable(String),
-            entity: T.nilable(FinchAPI::Models::HRIS::HRISCompany::Entity),
+            entity: T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Entity, FinchAPI::Util::AnyHash)),
             legal_name: T.nilable(String),
             locations: T.nilable(T::Array[T.nilable(FinchAPI::Models::Location)]),
             primary_email: T.nilable(String),
@@ -268,7 +268,7 @@ module FinchAPI
           sig do
             params(
               name: T.nilable(String),
-              parent: T.nilable(FinchAPI::Models::HRIS::HRISCompany::Department::Parent)
+              parent: T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Department::Parent, FinchAPI::Util::AnyHash))
             )
               .returns(T.attached_class)
           end

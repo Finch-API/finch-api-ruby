@@ -22,7 +22,7 @@ module FinchAPI
           params(
             type: FinchAPI::Models::Jobs::AutomatedCreateParams::Type::OrSymbol,
             params: FinchAPI::Models::Jobs::AutomatedCreateParams::Params,
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
           )
             .returns(FinchAPI::Models::Jobs::AutomatedCreateResponse)
         end
@@ -38,7 +38,7 @@ module FinchAPI
         sig do
           params(
             job_id: String,
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
           )
             .returns(FinchAPI::Models::Jobs::AutomatedAsyncJob)
         end
@@ -52,7 +52,7 @@ module FinchAPI
           params(
             limit: Integer,
             offset: Integer,
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
           )
             .returns(FinchAPI::Models::Jobs::AutomatedListResponse)
         end

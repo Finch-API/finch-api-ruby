@@ -32,7 +32,11 @@ module FinchAPI
         end
 
         sig do
-          params(body: FinchAPI::Models::HRIS::EmploymentData, code: Integer, individual_id: String)
+          params(
+            body: T.any(FinchAPI::Models::HRIS::EmploymentData, FinchAPI::Util::AnyHash),
+            code: Integer,
+            individual_id: String
+          )
             .returns(T.attached_class)
         end
         def self.new(body: nil, code: nil, individual_id: nil)

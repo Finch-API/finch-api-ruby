@@ -28,7 +28,10 @@ module FinchAPI
         end
 
         sig do
-          params(paging: FinchAPI::Models::Paging, pay_statements: T::Array[FinchAPI::Models::HRIS::PayStatement])
+          params(
+            paging: T.any(FinchAPI::Models::Paging, FinchAPI::Util::AnyHash),
+            pay_statements: T::Array[FinchAPI::Models::HRIS::PayStatement]
+          )
             .returns(T.attached_class)
         end
         def self.new(paging: nil, pay_statements: nil)

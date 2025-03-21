@@ -44,7 +44,7 @@ module FinchAPI
           client_id: String,
           client_secret: String,
           redirect_uri: String,
-          request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

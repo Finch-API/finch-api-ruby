@@ -15,7 +15,7 @@ module FinchAPI
             locations: T.nilable(T::Array[T.nilable(FinchAPI::Models::Location)]),
             primary_email: T.nilable(String),
             primary_phone_number: T.nilable(String),
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
           )
             .returns(FinchAPI::Models::Sandbox::CompanyUpdateResponse)
         end

@@ -33,8 +33,8 @@ module FinchAPI
         sig do
           params(
             type: FinchAPI::Models::Jobs::AutomatedCreateParams::Type::OrSymbol,
-            params: FinchAPI::Models::Jobs::AutomatedCreateParams::Params,
-            request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+            params: T.any(FinchAPI::Models::Jobs::AutomatedCreateParams::Params, FinchAPI::Util::AnyHash),
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

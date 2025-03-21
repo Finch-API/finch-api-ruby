@@ -19,10 +19,7 @@ module FinchAPI
         sig do
           params(
             description: String,
-            request_options: T.any(
-              FinchAPI::RequestOptions,
-              T::Hash[Symbol, T.anything]
-            )
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

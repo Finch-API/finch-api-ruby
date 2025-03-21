@@ -22,7 +22,7 @@ module FinchAPI
         sig do
           params(
             type: FinchAPI::Models::Sandbox::JobCreateParams::Type::OrSymbol,
-            request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
