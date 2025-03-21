@@ -212,14 +212,14 @@ module FinchAPI
           params(
             id: String,
             class_code: T.nilable(String),
-            custom_fields: T.nilable(T::Array[FinchAPI::Models::HRIS::EmploymentData::CustomField]),
+            custom_fields: T.nilable(T::Array[T.any(FinchAPI::Models::HRIS::EmploymentData::CustomField, FinchAPI::Util::AnyHash)]),
             department: T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Department, FinchAPI::Util::AnyHash)),
             employment: T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Employment, FinchAPI::Util::AnyHash)),
-            employment_status: T.nilable(FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol),
+            employment_status: T.nilable(FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::OrSymbol),
             end_date: T.nilable(String),
             first_name: T.nilable(String),
             income: T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Util::AnyHash)),
-            income_history: T.nilable(T::Array[T.nilable(FinchAPI::Models::Income)]),
+            income_history: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Util::AnyHash))]),
             is_active: T.nilable(T::Boolean),
             last_name: T.nilable(String),
             latest_rehire_date: T.nilable(String),
@@ -362,8 +362,8 @@ module FinchAPI
           # The employment object.
           sig do
             params(
-              subtype: T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::TaggedSymbol),
-              type: T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment::Type::TaggedSymbol)
+              subtype: T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::OrSymbol),
+              type: T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment::Type::OrSymbol)
             )
               .returns(T.attached_class)
           end

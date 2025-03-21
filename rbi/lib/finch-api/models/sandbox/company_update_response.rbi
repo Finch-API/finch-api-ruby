@@ -93,12 +93,16 @@ module FinchAPI
 
         sig do
           params(
-            accounts: T.nilable(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account]),
-            departments: T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department)]),
+            accounts: T.nilable(
+              T::Array[T.any(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account, FinchAPI::Util::AnyHash)]
+            ),
+            departments: T.nilable(
+              T::Array[T.nilable(T.any(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department, FinchAPI::Util::AnyHash))]
+            ),
             ein: T.nilable(String),
             entity: T.nilable(T.any(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity, FinchAPI::Util::AnyHash)),
             legal_name: T.nilable(String),
-            locations: T.nilable(T::Array[T.nilable(FinchAPI::Models::Location)]),
+            locations: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash))]),
             primary_email: T.nilable(String),
             primary_phone_number: T.nilable(String)
           )
@@ -179,7 +183,7 @@ module FinchAPI
             params(
               account_name: T.nilable(String),
               account_number: T.nilable(String),
-              account_type: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol),
+              account_type: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::OrSymbol),
               institution_name: T.nilable(String),
               routing_number: T.nilable(String)
             )
@@ -331,8 +335,8 @@ module FinchAPI
           # The entity type object.
           sig do
             params(
-              subtype: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol),
-              type: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)
+              subtype: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::OrSymbol),
+              type: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::OrSymbol)
             )
               .returns(T.attached_class)
           end

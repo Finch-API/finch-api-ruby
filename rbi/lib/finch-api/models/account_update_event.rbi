@@ -19,8 +19,8 @@ module FinchAPI
       end
 
       sig do
-        params(_: FinchAPI::Models::AccountUpdateEvent::EventType::TaggedSymbol)
-          .returns(FinchAPI::Models::AccountUpdateEvent::EventType::TaggedSymbol)
+        params(_: FinchAPI::Models::AccountUpdateEvent::EventType::OrSymbol)
+          .returns(FinchAPI::Models::AccountUpdateEvent::EventType::OrSymbol)
       end
       def event_type=(_)
       end
@@ -28,7 +28,7 @@ module FinchAPI
       sig do
         params(
           data: T.any(FinchAPI::Models::AccountUpdateEvent::Data, FinchAPI::Util::AnyHash),
-          event_type: FinchAPI::Models::AccountUpdateEvent::EventType::TaggedSymbol
+          event_type: FinchAPI::Models::AccountUpdateEvent::EventType::OrSymbol
         )
           .returns(T.attached_class)
       end
@@ -75,7 +75,7 @@ module FinchAPI
         sig do
           params(
             authentication_method: T.any(FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod, FinchAPI::Util::AnyHash),
-            status: FinchAPI::Models::ConnectionStatusType::TaggedSymbol
+            status: FinchAPI::Models::ConnectionStatusType::OrSymbol
           )
             .returns(T.attached_class)
         end
@@ -140,8 +140,8 @@ module FinchAPI
           end
 
           sig do
-            params(_: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::TaggedSymbol)
-              .returns(FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::TaggedSymbol)
+            params(_: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::OrSymbol)
+              .returns(FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::OrSymbol)
           end
           def type=(_)
           end
@@ -155,7 +155,7 @@ module FinchAPI
                   FinchAPI::Util::AnyHash
                 )
               ),
-              type: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::TaggedSymbol
+              type: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::OrSymbol
             )
               .returns(T.attached_class)
           end

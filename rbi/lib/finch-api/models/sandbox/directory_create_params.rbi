@@ -14,15 +14,17 @@ module FinchAPI
         end
 
         sig do
-          params(_: T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body])
-            .returns(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body])
+          params(
+            _: T::Array[T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body, FinchAPI::Util::AnyHash)]
+          )
+            .returns(T::Array[T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body, FinchAPI::Util::AnyHash)])
         end
         def body=(_)
         end
 
         sig do
           params(
-            body: T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body],
+            body: T::Array[T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body, FinchAPI::Util::AnyHash)],
             request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
           )
             .returns(T.attached_class)
@@ -60,8 +62,12 @@ module FinchAPI
           end
 
           sig do
-            params(_: T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField])
-              .returns(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField])
+            params(
+              _: T::Array[T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField, FinchAPI::Util::AnyHash)]
+            )
+              .returns(
+                T::Array[T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField, FinchAPI::Util::AnyHash)]
+              )
           end
           def custom_fields=(_)
           end
@@ -357,12 +363,14 @@ module FinchAPI
           sig do
             params(
               class_code: T.nilable(String),
-              custom_fields: T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField],
+              custom_fields: T::Array[T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField, FinchAPI::Util::AnyHash)],
               department: T.nilable(
                 T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Department, FinchAPI::Util::AnyHash)
               ),
               dob: T.nilable(String),
-              emails: T.nilable(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email]),
+              emails: T.nilable(
+                T::Array[T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email, FinchAPI::Util::AnyHash)]
+              ),
               employment: T.nilable(
                 T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment, FinchAPI::Util::AnyHash)
               ),
@@ -373,14 +381,20 @@ module FinchAPI
               first_name: T.nilable(String),
               gender: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::OrSymbol),
               income: T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Util::AnyHash)),
-              income_history: T.nilable(T::Array[T.nilable(FinchAPI::Models::Income)]),
+              income_history: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Util::AnyHash))]),
               is_active: T.nilable(T::Boolean),
               last_name: T.nilable(String),
               latest_rehire_date: T.nilable(String),
               location: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash)),
               manager: T.nilable(T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Manager, FinchAPI::Util::AnyHash)),
               middle_name: T.nilable(String),
-              phone_numbers: T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber)]),
+              phone_numbers: T.nilable(
+                T::Array[
+                T.nilable(
+                  T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber, FinchAPI::Util::AnyHash)
+                )
+                ]
+              ),
               preferred_name: T.nilable(String),
               residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash)),
               source_id: String,

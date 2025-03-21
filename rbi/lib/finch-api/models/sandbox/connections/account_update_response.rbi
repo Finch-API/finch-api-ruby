@@ -63,7 +63,7 @@ module FinchAPI
           sig do
             params(
               account_id: String,
-              authentication_type: FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType::TaggedSymbol,
+              authentication_type: FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType::OrSymbol,
               company_id: String,
               products: T::Array[String],
               provider_id: String,

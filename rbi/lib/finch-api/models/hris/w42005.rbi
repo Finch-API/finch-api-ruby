@@ -22,8 +22,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: FinchAPI::Models::HRIS::W42005::Type::TaggedSymbol)
-            .returns(FinchAPI::Models::HRIS::W42005::Type::TaggedSymbol)
+          params(_: FinchAPI::Models::HRIS::W42005::Type::OrSymbol)
+            .returns(FinchAPI::Models::HRIS::W42005::Type::OrSymbol)
         end
         def type=(_)
         end
@@ -42,7 +42,7 @@ module FinchAPI
         sig do
           params(
             data: T.any(FinchAPI::Models::HRIS::W42005::Data, FinchAPI::Util::AnyHash),
-            type: FinchAPI::Models::HRIS::W42005::Type::TaggedSymbol,
+            type: FinchAPI::Models::HRIS::W42005::Type::OrSymbol,
             year: T.nilable(Float)
           )
             .returns(T.attached_class)
@@ -79,8 +79,8 @@ module FinchAPI
           end
 
           sig do
-            params(_: FinchAPI::Models::HRIS::W42005::Data::Exemption::TaggedSymbol)
-              .returns(FinchAPI::Models::HRIS::W42005::Data::Exemption::TaggedSymbol)
+            params(_: FinchAPI::Models::HRIS::W42005::Data::Exemption::OrSymbol)
+              .returns(FinchAPI::Models::HRIS::W42005::Data::Exemption::OrSymbol)
           end
           def exemption=(_)
           end
@@ -91,8 +91,8 @@ module FinchAPI
           end
 
           sig do
-            params(_: FinchAPI::Models::HRIS::W42005::Data::FilingStatus::TaggedSymbol)
-              .returns(FinchAPI::Models::HRIS::W42005::Data::FilingStatus::TaggedSymbol)
+            params(_: FinchAPI::Models::HRIS::W42005::Data::FilingStatus::OrSymbol)
+              .returns(FinchAPI::Models::HRIS::W42005::Data::FilingStatus::OrSymbol)
           end
           def filing_status=(_)
           end
@@ -119,8 +119,8 @@ module FinchAPI
           sig do
             params(
               additional_withholding: T.nilable(Integer),
-              exemption: FinchAPI::Models::HRIS::W42005::Data::Exemption::TaggedSymbol,
-              filing_status: FinchAPI::Models::HRIS::W42005::Data::FilingStatus::TaggedSymbol,
+              exemption: FinchAPI::Models::HRIS::W42005::Data::Exemption::OrSymbol,
+              filing_status: FinchAPI::Models::HRIS::W42005::Data::FilingStatus::OrSymbol,
               individual_id: String,
               total_number_of_allowances: T.nilable(Integer)
             )

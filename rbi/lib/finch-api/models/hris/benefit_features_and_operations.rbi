@@ -164,8 +164,8 @@ module FinchAPI
           end
 
           sig do
-            params(_: T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol)])
-              .returns(T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol)])
+            params(_: T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::OrSymbol)])
+              .returns(T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::OrSymbol)])
           end
           def frequencies=(_)
           end
@@ -216,7 +216,7 @@ module FinchAPI
               company_contribution: T.nilable(
                 T::Array[
                 T.nilable(
-                  FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::CompanyContribution::TaggedSymbol
+                  FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::CompanyContribution::OrSymbol
                 )
                 ]
               ),
@@ -224,15 +224,15 @@ module FinchAPI
               employee_deduction: T.nilable(
                 T::Array[
                 T.nilable(
-                  FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::EmployeeDeduction::TaggedSymbol
+                  FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::EmployeeDeduction::OrSymbol
                 )
                 ]
               ),
-              frequencies: T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol)],
+              frequencies: T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::OrSymbol)],
               hsa_contribution_limit: T.nilable(
                 T::Array[
                 T.nilable(
-                  FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::HsaContributionLimit::TaggedSymbol
+                  FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::HsaContributionLimit::OrSymbol
                 )
                 ]
               )

@@ -7,12 +7,16 @@ module FinchAPI
         # Update a sandbox company's data
         sig do
           params(
-            accounts: T.nilable(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Account]),
-            departments: T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateParams::Department)]),
+            accounts: T.nilable(
+              T::Array[T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Account, FinchAPI::Util::AnyHash)]
+            ),
+            departments: T.nilable(
+              T::Array[T.nilable(T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Department, FinchAPI::Util::AnyHash))]
+            ),
             ein: T.nilable(String),
-            entity: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity),
+            entity: T.nilable(T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity, FinchAPI::Util::AnyHash)),
             legal_name: T.nilable(String),
-            locations: T.nilable(T::Array[T.nilable(FinchAPI::Models::Location)]),
+            locations: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash))]),
             primary_email: T.nilable(String),
             primary_phone_number: T.nilable(String),
             request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))

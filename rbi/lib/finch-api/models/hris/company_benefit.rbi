@@ -47,8 +47,8 @@ module FinchAPI
           params(
             benefit_id: String,
             description: T.nilable(String),
-            frequency: T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol),
-            type: T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
+            frequency: T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::OrSymbol),
+            type: T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol)
           )
             .returns(T.attached_class)
         end

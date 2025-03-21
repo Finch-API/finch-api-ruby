@@ -143,14 +143,22 @@ module FinchAPI
           params(
             id: String,
             dob: T.nilable(String),
-            emails: T.nilable(T::Array[FinchAPI::Models::Sandbox::IndividualUpdateResponse::Email]),
+            emails: T.nilable(
+              T::Array[T.any(FinchAPI::Models::Sandbox::IndividualUpdateResponse::Email, FinchAPI::Util::AnyHash)]
+            ),
             encrypted_ssn: T.nilable(String),
-            ethnicity: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateResponse::Ethnicity::TaggedSymbol),
+            ethnicity: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateResponse::Ethnicity::OrSymbol),
             first_name: T.nilable(String),
-            gender: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateResponse::Gender::TaggedSymbol),
+            gender: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateResponse::Gender::OrSymbol),
             last_name: T.nilable(String),
             middle_name: T.nilable(String),
-            phone_numbers: T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber)]),
+            phone_numbers: T.nilable(
+              T::Array[
+              T.nilable(
+                T.any(FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber, FinchAPI::Util::AnyHash)
+              )
+              ]
+            ),
             preferred_name: T.nilable(String),
             residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash)),
             ssn: T.nilable(String)
@@ -220,7 +228,7 @@ module FinchAPI
           sig do
             params(
               data: String,
-              type: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateResponse::Email::Type::TaggedSymbol)
+              type: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateResponse::Email::Type::OrSymbol)
             )
               .returns(T.attached_class)
           end
@@ -344,7 +352,7 @@ module FinchAPI
           sig do
             params(
               data: String,
-              type: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber::Type::TaggedSymbol)
+              type: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber::Type::OrSymbol)
             )
               .returns(T.attached_class)
           end

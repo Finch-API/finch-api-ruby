@@ -28,8 +28,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: T::Array[FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol])
-            .returns(T::Array[FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol])
+          params(_: T::Array[FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::OrSymbol])
+            .returns(T::Array[FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::OrSymbol])
         end
         def pay_frequencies=(_)
         end
@@ -38,7 +38,7 @@ module FinchAPI
           params(
             id: String,
             name: String,
-            pay_frequencies: T::Array[FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol]
+            pay_frequencies: T::Array[FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::OrSymbol]
           )
             .returns(T.attached_class)
         end

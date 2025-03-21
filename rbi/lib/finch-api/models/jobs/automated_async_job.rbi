@@ -106,8 +106,8 @@ module FinchAPI
             params: T.nilable(T.any(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params, FinchAPI::Util::AnyHash)),
             scheduled_at: T.nilable(Time),
             started_at: T.nilable(Time),
-            status: FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol,
-            type: FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol
+            status: FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::OrSymbol,
+            type: FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::OrSymbol
           )
             .returns(T.attached_class)
         end

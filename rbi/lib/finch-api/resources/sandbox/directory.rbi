@@ -7,7 +7,7 @@ module FinchAPI
         # Add new individuals to a sandbox company
         sig do
           params(
-            body: T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body],
+            body: T::Array[T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body, FinchAPI::Util::AnyHash)],
             request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
           )
             .returns(T::Array[T.anything])

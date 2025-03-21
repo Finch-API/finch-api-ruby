@@ -15,8 +15,8 @@ module FinchAPI
       end
 
       sig do
-        params(_: FinchAPI::Models::OperationSupport::TaggedSymbol)
-          .returns(FinchAPI::Models::OperationSupport::TaggedSymbol)
+        params(_: FinchAPI::Models::OperationSupport::OrSymbol)
+          .returns(FinchAPI::Models::OperationSupport::OrSymbol)
       end
       def create=(_)
       end
@@ -33,8 +33,8 @@ module FinchAPI
       end
 
       sig do
-        params(_: FinchAPI::Models::OperationSupport::TaggedSymbol)
-          .returns(FinchAPI::Models::OperationSupport::TaggedSymbol)
+        params(_: FinchAPI::Models::OperationSupport::OrSymbol)
+          .returns(FinchAPI::Models::OperationSupport::OrSymbol)
       end
       def delete=(_)
       end
@@ -51,8 +51,8 @@ module FinchAPI
       end
 
       sig do
-        params(_: FinchAPI::Models::OperationSupport::TaggedSymbol)
-          .returns(FinchAPI::Models::OperationSupport::TaggedSymbol)
+        params(_: FinchAPI::Models::OperationSupport::OrSymbol)
+          .returns(FinchAPI::Models::OperationSupport::OrSymbol)
       end
       def read=(_)
       end
@@ -69,18 +69,18 @@ module FinchAPI
       end
 
       sig do
-        params(_: FinchAPI::Models::OperationSupport::TaggedSymbol)
-          .returns(FinchAPI::Models::OperationSupport::TaggedSymbol)
+        params(_: FinchAPI::Models::OperationSupport::OrSymbol)
+          .returns(FinchAPI::Models::OperationSupport::OrSymbol)
       end
       def update=(_)
       end
 
       sig do
         params(
-          create: FinchAPI::Models::OperationSupport::TaggedSymbol,
-          delete: FinchAPI::Models::OperationSupport::TaggedSymbol,
-          read: FinchAPI::Models::OperationSupport::TaggedSymbol,
-          update: FinchAPI::Models::OperationSupport::TaggedSymbol
+          create: FinchAPI::Models::OperationSupport::OrSymbol,
+          delete: FinchAPI::Models::OperationSupport::OrSymbol,
+          read: FinchAPI::Models::OperationSupport::OrSymbol,
+          update: FinchAPI::Models::OperationSupport::OrSymbol
         )
           .returns(T.attached_class)
       end

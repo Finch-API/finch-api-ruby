@@ -14,15 +14,19 @@ module FinchAPI
           end
 
           sig do
-            params(_: T::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual])
-              .returns(T::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual])
+            params(
+              _: T::Array[T.any(FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual, FinchAPI::Util::AnyHash)]
+            )
+              .returns(
+                T::Array[T.any(FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual, FinchAPI::Util::AnyHash)]
+              )
           end
           def individuals=(_)
           end
 
           sig do
             params(
-              individuals: T::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual],
+              individuals: T::Array[T.any(FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual, FinchAPI::Util::AnyHash)],
               request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
             )
               .returns(T.attached_class)
