@@ -120,7 +120,7 @@ module FinchAPI
                 catch_up: T.nilable(T::Boolean),
                 company_contribution: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitContribution, FinchAPI::Util::AnyHash)),
                 employee_deduction: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitContribution, FinchAPI::Util::AnyHash)),
-                hsa_contribution_limit: T.nilable(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol)
+                hsa_contribution_limit: T.nilable(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::OrSymbol)
               )
                 .returns(T.attached_class)
             end

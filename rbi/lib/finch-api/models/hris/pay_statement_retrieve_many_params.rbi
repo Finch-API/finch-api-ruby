@@ -21,7 +21,7 @@ module FinchAPI
 
         sig do
           params(
-            requests: T::Array[FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request],
+            requests: T::Array[T.any(FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request, FinchAPI::Util::AnyHash)],
             request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
           )
             .returns(T.attached_class)

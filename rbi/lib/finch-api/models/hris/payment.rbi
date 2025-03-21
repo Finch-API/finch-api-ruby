@@ -137,7 +137,7 @@ module FinchAPI
             individual_ids: T.nilable(T::Array[String]),
             net_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)),
             pay_date: T.nilable(String),
-            pay_frequencies: T.nilable(T::Array[FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol]),
+            pay_frequencies: T.nilable(T::Array[FinchAPI::Models::HRIS::Payment::PayFrequency::OrSymbol]),
             pay_group_ids: T.nilable(T::Array[String]),
             pay_period: T.nilable(T.any(FinchAPI::Models::HRIS::Payment::PayPeriod, FinchAPI::Util::AnyHash))
           )

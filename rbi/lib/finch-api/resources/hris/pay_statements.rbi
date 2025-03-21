@@ -10,7 +10,7 @@ module FinchAPI
         #   supports Benefits.
         sig do
           params(
-            requests: T::Array[FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request],
+            requests: T::Array[T.any(FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request, FinchAPI::Util::AnyHash)],
             request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
           )
             .returns(FinchAPI::ResponsesPage[FinchAPI::Models::HRIS::PayStatementResponse])

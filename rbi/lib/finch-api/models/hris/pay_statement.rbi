@@ -117,16 +117,22 @@ module FinchAPI
 
         sig do
           params(
-            earnings: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::Earning)]),
-            employee_deductions: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction)]),
-            employer_contributions: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployerContribution)]),
+            earnings: T.nilable(
+              T::Array[T.nilable(T.any(FinchAPI::Models::HRIS::PayStatement::Earning, FinchAPI::Util::AnyHash))]
+            ),
+            employee_deductions: T.nilable(
+              T::Array[T.nilable(T.any(FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction, FinchAPI::Util::AnyHash))]
+            ),
+            employer_contributions: T.nilable(
+              T::Array[T.nilable(T.any(FinchAPI::Models::HRIS::PayStatement::EmployerContribution, FinchAPI::Util::AnyHash))]
+            ),
             gross_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)),
             individual_id: String,
             net_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)),
-            payment_method: T.nilable(FinchAPI::Models::HRIS::PayStatement::PaymentMethod::TaggedSymbol),
-            taxes: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax)]),
+            payment_method: T.nilable(FinchAPI::Models::HRIS::PayStatement::PaymentMethod::OrSymbol),
+            taxes: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::HRIS::PayStatement::Tax, FinchAPI::Util::AnyHash))]),
             total_hours: T.nilable(Float),
-            type: T.nilable(FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol)
+            type: T.nilable(FinchAPI::Models::HRIS::PayStatement::Type::OrSymbol)
           )
             .returns(T.attached_class)
         end
@@ -236,7 +242,7 @@ module FinchAPI
               currency: T.nilable(String),
               hours: T.nilable(Float),
               name: T.nilable(String),
-              type: T.nilable(FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+              type: T.nilable(FinchAPI::Models::HRIS::PayStatement::Earning::Type::OrSymbol)
             )
               .returns(T.attached_class)
           end
@@ -418,7 +424,7 @@ module FinchAPI
               currency: T.nilable(String),
               name: T.nilable(String),
               pre_tax: T.nilable(T::Boolean),
-              type: T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
+              type: T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol)
             )
               .returns(T.attached_class)
           end
@@ -571,7 +577,7 @@ module FinchAPI
               ),
               currency: T.nilable(String),
               name: T.nilable(String),
-              type: T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
+              type: T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol)
             )
               .returns(T.attached_class)
           end
@@ -745,7 +751,7 @@ module FinchAPI
               currency: T.nilable(String),
               employer: T.nilable(T::Boolean),
               name: T.nilable(String),
-              type: T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol)
+              type: T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax::Type::OrSymbol)
             )
               .returns(T.attached_class)
           end

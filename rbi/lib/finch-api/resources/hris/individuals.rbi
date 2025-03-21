@@ -7,8 +7,8 @@ module FinchAPI
         # Read individual data, excluding income and employment data
         sig do
           params(
-            options: T.nilable(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options),
-            requests: T::Array[FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request],
+            options: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, FinchAPI::Util::AnyHash)),
+            requests: T::Array[T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request, FinchAPI::Util::AnyHash)],
             request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
           )
             .returns(FinchAPI::ResponsesPage[FinchAPI::Models::HRIS::IndividualResponse])

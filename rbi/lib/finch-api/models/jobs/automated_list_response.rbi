@@ -28,7 +28,7 @@ module FinchAPI
 
         sig do
           params(
-            data: T::Array[FinchAPI::Models::Jobs::AutomatedAsyncJob],
+            data: T::Array[T.any(FinchAPI::Models::Jobs::AutomatedAsyncJob, FinchAPI::Util::AnyHash)],
             meta: T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta, FinchAPI::Util::AnyHash)
           )
             .returns(T.attached_class)

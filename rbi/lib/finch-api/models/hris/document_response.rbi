@@ -29,8 +29,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol)
-            .returns(FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol)
+          params(_: FinchAPI::Models::HRIS::DocumentResponse::Type::OrSymbol)
+            .returns(FinchAPI::Models::HRIS::DocumentResponse::Type::OrSymbol)
         end
         def type=(_)
         end
@@ -58,7 +58,7 @@ module FinchAPI
           params(
             id: String,
             individual_id: T.nilable(String),
-            type: FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol,
+            type: FinchAPI::Models::HRIS::DocumentResponse::Type::OrSymbol,
             url: String,
             year: T.nilable(Float)
           )

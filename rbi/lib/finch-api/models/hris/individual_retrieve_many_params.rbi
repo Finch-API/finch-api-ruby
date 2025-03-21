@@ -27,8 +27,12 @@ module FinchAPI
         end
 
         sig do
-          params(_: T::Array[FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request])
-            .returns(T::Array[FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request])
+          params(
+            _: T::Array[T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request, FinchAPI::Util::AnyHash)]
+          )
+            .returns(
+              T::Array[T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request, FinchAPI::Util::AnyHash)]
+            )
         end
         def requests=(_)
         end
@@ -36,7 +40,7 @@ module FinchAPI
         sig do
           params(
             options: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, FinchAPI::Util::AnyHash)),
-            requests: T::Array[FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request],
+            requests: T::Array[T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request, FinchAPI::Util::AnyHash)],
             request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
           )
             .returns(T.attached_class)

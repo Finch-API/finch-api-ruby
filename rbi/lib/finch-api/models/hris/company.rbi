@@ -99,12 +99,14 @@ module FinchAPI
         sig do
           params(
             id: String,
-            accounts: T.nilable(T::Array[FinchAPI::Models::HRIS::HRISCompany::Account]),
-            departments: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::HRISCompany::Department)]),
+            accounts: T.nilable(T::Array[T.any(FinchAPI::Models::HRIS::HRISCompany::Account, FinchAPI::Util::AnyHash)]),
+            departments: T.nilable(
+              T::Array[T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Department, FinchAPI::Util::AnyHash))]
+            ),
             ein: T.nilable(String),
             entity: T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Entity, FinchAPI::Util::AnyHash)),
             legal_name: T.nilable(String),
-            locations: T.nilable(T::Array[T.nilable(FinchAPI::Models::Location)]),
+            locations: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash))]),
             primary_email: T.nilable(String),
             primary_phone_number: T.nilable(String)
           )
@@ -196,7 +198,7 @@ module FinchAPI
             params(
               account_name: T.nilable(String),
               account_number: T.nilable(String),
-              account_type: T.nilable(FinchAPI::Models::HRIS::HRISCompany::Account::AccountType::TaggedSymbol),
+              account_type: T.nilable(FinchAPI::Models::HRIS::HRISCompany::Account::AccountType::OrSymbol),
               institution_name: T.nilable(String),
               routing_number: T.nilable(String)
             )
@@ -333,8 +335,8 @@ module FinchAPI
           # The entity type object.
           sig do
             params(
-              subtype: T.nilable(FinchAPI::Models::HRIS::HRISCompany::Entity::Subtype::TaggedSymbol),
-              type: T.nilable(FinchAPI::Models::HRIS::HRISCompany::Entity::Type::TaggedSymbol)
+              subtype: T.nilable(FinchAPI::Models::HRIS::HRISCompany::Entity::Subtype::OrSymbol),
+              type: T.nilable(FinchAPI::Models::HRIS::HRISCompany::Entity::Type::OrSymbol)
             )
               .returns(T.attached_class)
           end

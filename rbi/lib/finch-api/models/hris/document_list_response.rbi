@@ -28,7 +28,7 @@ module FinchAPI
 
         sig do
           params(
-            documents: T::Array[FinchAPI::Models::HRIS::DocumentResponse],
+            documents: T::Array[T.any(FinchAPI::Models::HRIS::DocumentResponse, FinchAPI::Util::AnyHash)],
             paging: T.any(FinchAPI::Models::Paging, FinchAPI::Util::AnyHash)
           )
             .returns(T.attached_class)

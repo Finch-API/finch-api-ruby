@@ -21,8 +21,8 @@ module FinchAPI
         end
 
         sig do
-          params(_: T::Array[FinchAPI::Models::HRIS::PayStatement])
-            .returns(T::Array[FinchAPI::Models::HRIS::PayStatement])
+          params(_: T::Array[T.any(FinchAPI::Models::HRIS::PayStatement, FinchAPI::Util::AnyHash)])
+            .returns(T::Array[T.any(FinchAPI::Models::HRIS::PayStatement, FinchAPI::Util::AnyHash)])
         end
         def pay_statements=(_)
         end
@@ -30,7 +30,7 @@ module FinchAPI
         sig do
           params(
             paging: T.any(FinchAPI::Models::Paging, FinchAPI::Util::AnyHash),
-            pay_statements: T::Array[FinchAPI::Models::HRIS::PayStatement]
+            pay_statements: T::Array[T.any(FinchAPI::Models::HRIS::PayStatement, FinchAPI::Util::AnyHash)]
           )
             .returns(T.attached_class)
         end

@@ -36,7 +36,7 @@ module FinchAPI
           params(
             body: T.nilable(T::Array[T.anything]),
             job_id: String,
-            status: FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol
+            status: FinchAPI::Models::Jobs::ManualAsyncJob::Status::OrSymbol
           )
             .returns(T.attached_class)
         end

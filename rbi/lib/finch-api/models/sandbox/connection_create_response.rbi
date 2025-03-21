@@ -79,7 +79,7 @@ module FinchAPI
           params(
             access_token: String,
             account_id: String,
-            authentication_type: FinchAPI::Models::Sandbox::ConnectionCreateResponse::AuthenticationType::TaggedSymbol,
+            authentication_type: FinchAPI::Models::Sandbox::ConnectionCreateResponse::AuthenticationType::OrSymbol,
             company_id: String,
             connection_id: String,
             products: T::Array[String],

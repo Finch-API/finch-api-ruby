@@ -20,8 +20,12 @@ module FinchAPI
         end
 
         sig do
-          params(_: T::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement])
-            .returns(T::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement])
+          params(
+            _: T::Array[T.any(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement, FinchAPI::Util::AnyHash)]
+          )
+            .returns(
+              T::Array[T.any(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement, FinchAPI::Util::AnyHash)]
+            )
         end
         def pay_statements=(_)
         end
@@ -37,7 +41,7 @@ module FinchAPI
         sig do
           params(
             end_date: String,
-            pay_statements: T::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement],
+            pay_statements: T::Array[T.any(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement, FinchAPI::Util::AnyHash)],
             start_date: String,
             request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
           )
@@ -214,18 +218,44 @@ module FinchAPI
 
           sig do
             params(
-              earnings: T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning)]),
+              earnings: T.nilable(
+                T::Array[
+                T.nilable(
+                  T.any(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning, FinchAPI::Util::AnyHash)
+                )
+                ]
+              ),
               employee_deductions: T.nilable(
-                T::Array[T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction)]
+                T::Array[
+                T.nilable(
+                  T.any(
+                    FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
+                ]
               ),
               employer_contributions: T.nilable(
-                T::Array[T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution)]
+                T::Array[
+                T.nilable(
+                  T.any(
+                    FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution,
+                    FinchAPI::Util::AnyHash
+                  )
+                )
+                ]
               ),
               gross_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)),
               individual_id: String,
               net_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)),
               payment_method: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::OrSymbol),
-              taxes: T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax)]),
+              taxes: T.nilable(
+                T::Array[
+                T.nilable(
+                  T.any(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax, FinchAPI::Util::AnyHash)
+                )
+                ]
+              ),
               total_hours: T.nilable(Float),
               type: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::OrSymbol)
             )

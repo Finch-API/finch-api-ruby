@@ -12,7 +12,7 @@ module FinchAPI
           sig do
             params(
               benefit_id: String,
-              individuals: T::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual],
+              individuals: T::Array[T.any(FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual, FinchAPI::Util::AnyHash)],
               request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
             )
               .returns(FinchAPI::SinglePage[FinchAPI::Models::HRIS::Benefits::EnrolledIndividual])
