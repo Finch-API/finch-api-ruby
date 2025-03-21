@@ -75,10 +75,8 @@ module FinchAPI
             T.let(:benefits, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
           SSN = T.let(:ssn, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol]) }
+          def self.values
           end
         end
       end

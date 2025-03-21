@@ -100,15 +100,13 @@ module FinchAPI
                 FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end

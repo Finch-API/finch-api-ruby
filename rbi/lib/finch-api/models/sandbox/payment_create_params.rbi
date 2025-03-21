@@ -386,15 +386,13 @@ module FinchAPI
               OTHER =
                 T.let(:other, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol)
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol]
+                  )
+              end
+              def self.values
               end
             end
           end
@@ -692,15 +690,13 @@ module FinchAPI
                 FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
 
@@ -854,13 +850,11 @@ module FinchAPI
               FICA =
                 T.let(:fica, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::TaggedSymbol)
 
-              class << self
-                sig do
-                  override
-                    .returns(T::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::TaggedSymbol])
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(T::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::TaggedSymbol])
+              end
+              def self.values
               end
             end
           end
@@ -884,13 +878,11 @@ module FinchAPI
             ONE_TIME_PAYMENT =
               T.let(:one_time_payment, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end

@@ -67,10 +67,8 @@ module FinchAPI
         DIRECTORY_DELETED =
           T.let(:"directory.deleted", FinchAPI::Models::DirectoryEvent::EventType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[FinchAPI::Models::DirectoryEvent::EventType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[FinchAPI::Models::DirectoryEvent::EventType::TaggedSymbol]) }
+        def self.values
         end
       end
     end

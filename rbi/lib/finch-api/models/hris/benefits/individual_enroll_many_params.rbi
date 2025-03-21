@@ -232,17 +232,15 @@ module FinchAPI
                     FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
 
@@ -320,17 +318,15 @@ module FinchAPI
                       FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::TaggedSymbol
                     )
 
-                  class << self
-                    sig do
-                      override
-                        .returns(
-                          T::Array[
-                          FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::TaggedSymbol
-                          ]
-                        )
-                    end
-                    def values
-                    end
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def self.values
                   end
                 end
               end
@@ -409,17 +405,15 @@ module FinchAPI
                       FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type::TaggedSymbol
                     )
 
-                  class << self
-                    sig do
-                      override
-                        .returns(
-                          T::Array[
-                          FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type::TaggedSymbol
-                          ]
-                        )
-                    end
-                    def values
-                    end
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def self.values
                   end
                 end
               end

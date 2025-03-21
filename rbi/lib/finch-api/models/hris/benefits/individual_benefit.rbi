@@ -145,15 +145,13 @@ module FinchAPI
                   FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol]
+                  )
+              end
+              def self.values
               end
             end
           end

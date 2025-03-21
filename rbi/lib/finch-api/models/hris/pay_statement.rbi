@@ -236,10 +236,8 @@ module FinchAPI
             NUMBER_1099 = T.let(:"1099", FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
             OTHER = T.let(:other, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol]) }
+            def self.values
             end
           end
         end
@@ -491,10 +489,8 @@ module FinchAPI
           DIRECT_DEPOSIT =
             T.let(:direct_deposit, FinchAPI::Models::HRIS::PayStatement::PaymentMethod::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[FinchAPI::Models::HRIS::PayStatement::PaymentMethod::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[FinchAPI::Models::HRIS::PayStatement::PaymentMethod::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -617,10 +613,8 @@ module FinchAPI
             LOCAL = T.let(:local, FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol)
             FICA = T.let(:fica, FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol]) }
+            def self.values
             end
           end
         end
@@ -636,10 +630,8 @@ module FinchAPI
           OFF_CYCLE_PAYROLL = T.let(:off_cycle_payroll, FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol)
           ONE_TIME_PAYMENT = T.let(:one_time_payment, FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol]) }
+          def self.values
           end
         end
       end

@@ -391,13 +391,11 @@ module FinchAPI
               PERSONAL =
                 T.let(:personal, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type::TaggedSymbol)
 
-              class << self
-                sig do
-                  override
-                    .returns(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type::TaggedSymbol])
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type::TaggedSymbol])
+              end
+              def self.values
               end
             end
           end
@@ -470,15 +468,13 @@ module FinchAPI
                   FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::TaggedSymbol]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::TaggedSymbol]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -496,13 +492,11 @@ module FinchAPI
               CONTRACTOR =
                 T.let(:contractor, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type::TaggedSymbol)
 
-              class << self
-                sig do
-                  override
-                    .returns(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type::TaggedSymbol])
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type::TaggedSymbol])
+              end
+              def self.values
               end
             end
           end
@@ -531,13 +525,11 @@ module FinchAPI
             TERMINATED =
               T.let(:terminated, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::TaggedSymbol])
+            end
+            def self.values
             end
           end
 
@@ -580,12 +572,10 @@ module FinchAPI
                 FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override.returns(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override.returns(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol])
+            end
+            def self.values
             end
           end
 
@@ -604,10 +594,8 @@ module FinchAPI
             DECLINE_TO_SPECIFY =
               T.let(:decline_to_specify, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::TaggedSymbol]) }
+            def self.values
             end
           end
 
@@ -674,13 +662,11 @@ module FinchAPI
               PERSONAL =
                 T.let(:personal, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::TaggedSymbol)
 
-              class << self
-                sig do
-                  override
-                    .returns(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::TaggedSymbol])
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::TaggedSymbol])
+              end
+              def self.values
               end
             end
           end

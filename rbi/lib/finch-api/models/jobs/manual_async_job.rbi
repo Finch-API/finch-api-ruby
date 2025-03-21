@@ -49,10 +49,8 @@ module FinchAPI
           ERROR = T.let(:error, FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol)
           COMPLETE = T.let(:complete, FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol]) }
+          def self.values
           end
         end
       end

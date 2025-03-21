@@ -30,10 +30,8 @@ module FinchAPI
         CUSTOM_POST_TAX = T.let(:custom_post_tax, FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
         CUSTOM_PRE_TAX = T.let(:custom_pre_tax, FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[FinchAPI::Models::HRIS::BenefitType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[FinchAPI::Models::HRIS::BenefitType::TaggedSymbol]) }
+        def self.values
         end
       end
     end
