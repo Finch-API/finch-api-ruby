@@ -9,21 +9,17 @@ module FinchAPI
 
         # Number of employees to return (defaults to all)
         sig { returns(T.nilable(Integer)) }
-        def limit
-        end
+        attr_reader :limit
 
-        sig { params(_: Integer).returns(Integer) }
-        def limit=(_)
-        end
+        sig { params(limit: Integer).void }
+        attr_writer :limit
 
         # Index to start from (defaults to 0)
         sig { returns(T.nilable(Integer)) }
-        def offset
-        end
+        attr_reader :offset
 
-        sig { params(_: Integer).returns(Integer) }
-        def offset=(_)
-        end
+        sig { params(offset: Integer).void }
+        attr_writer :offset
 
         sig do
           params(

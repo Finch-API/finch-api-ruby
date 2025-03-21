@@ -6,167 +6,83 @@ module FinchAPI
       # [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection
       #   instead of this account ID.
       sig { returns(String) }
-      def account_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      attr_accessor :account_id
 
       sig { returns(T::Array[FinchAPI::Models::Introspection::AuthenticationMethod]) }
-      def authentication_methods
-      end
-
-      sig do
-        params(_: T::Array[FinchAPI::Models::Introspection::AuthenticationMethod])
-          .returns(T::Array[FinchAPI::Models::Introspection::AuthenticationMethod])
-      end
-      def authentication_methods=(_)
-      end
+      attr_accessor :authentication_methods
 
       # The client ID of the application associated with the `access_token`.
       sig { returns(String) }
-      def client_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def client_id=(_)
-      end
+      attr_accessor :client_id
 
       # The type of application associated with a token.
       sig { returns(FinchAPI::Models::Introspection::ClientType::TaggedSymbol) }
-      def client_type
-      end
-
-      sig do
-        params(_: FinchAPI::Models::Introspection::ClientType::TaggedSymbol)
-          .returns(FinchAPI::Models::Introspection::ClientType::TaggedSymbol)
-      end
-      def client_type=(_)
-      end
+      attr_accessor :client_type
 
       # [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection
       #   instead of this company ID.
       sig { returns(String) }
-      def company_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def company_id=(_)
-      end
+      attr_accessor :company_id
 
       # The Finch UUID of the connection associated with the `access_token`.
       sig { returns(String) }
-      def connection_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def connection_id=(_)
-      end
+      attr_accessor :connection_id
 
       sig { returns(FinchAPI::Models::Introspection::ConnectionStatus) }
-      def connection_status
-      end
+      attr_reader :connection_status
 
       sig do
-        params(_: T.any(FinchAPI::Models::Introspection::ConnectionStatus, FinchAPI::Util::AnyHash))
-          .returns(T.any(FinchAPI::Models::Introspection::ConnectionStatus, FinchAPI::Util::AnyHash))
+        params(
+          connection_status: T.any(FinchAPI::Models::Introspection::ConnectionStatus, FinchAPI::Util::AnyHash)
+        )
+          .void
       end
-      def connection_status=(_)
-      end
+      attr_writer :connection_status
 
       # The type of the connection associated with the token.
       #
       #   - `provider` - connection to an external provider
       #   - `finch` - finch-generated data.
       sig { returns(FinchAPI::Models::Introspection::ConnectionType::TaggedSymbol) }
-      def connection_type
-      end
-
-      sig do
-        params(_: FinchAPI::Models::Introspection::ConnectionType::TaggedSymbol)
-          .returns(FinchAPI::Models::Introspection::ConnectionType::TaggedSymbol)
-      end
-      def connection_type=(_)
-      end
+      attr_accessor :connection_type
 
       # The email of your customer you provided to Finch when a connect session was
       #   created for this connection.
       sig { returns(T.nilable(String)) }
-      def customer_email
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def customer_email=(_)
-      end
+      attr_accessor :customer_email
 
       # The ID of your customer you provided to Finch when a connect session was created
       #   for this connection.
       sig { returns(T.nilable(String)) }
-      def customer_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def customer_id=(_)
-      end
+      attr_accessor :customer_id
 
       # The name of your customer you provided to Finch when a connect session was
       #   created for this connection.
       sig { returns(T.nilable(String)) }
-      def customer_name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def customer_name=(_)
-      end
+      attr_accessor :customer_name
 
       # Whether the connection associated with the `access_token` uses the Assisted
       #   Connect Flow. (`true` if using Assisted Connect, `false` if connection is
       #   automated)
       sig { returns(T::Boolean) }
-      def manual
-      end
-
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def manual=(_)
-      end
+      attr_accessor :manual
 
       # [DEPRECATED] Use `provider_id` to identify the provider instead of this payroll
       #   provider ID.
       sig { returns(String) }
-      def payroll_provider_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def payroll_provider_id=(_)
-      end
+      attr_accessor :payroll_provider_id
 
       # An array of the authorized products associated with the `access_token`.
       sig { returns(T::Array[String]) }
-      def products
-      end
-
-      sig { params(_: T::Array[String]).returns(T::Array[String]) }
-      def products=(_)
-      end
+      attr_accessor :products
 
       # The ID of the provider associated with the `access_token`.
       sig { returns(String) }
-      def provider_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def provider_id=(_)
-      end
+      attr_accessor :provider_id
 
       # The account username used for login associated with the `access_token`.
       sig { returns(String) }
-      def username
-      end
-
-      sig { params(_: String).returns(String) }
-      def username=(_)
-      end
+      attr_accessor :username
 
       sig do
         params(
@@ -237,40 +153,29 @@ module FinchAPI
 
       class AuthenticationMethod < FinchAPI::BaseModel
         sig { returns(T.nilable(FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus)) }
-        def connection_status
-        end
+        attr_reader :connection_status
 
         sig do
           params(
-            _: T.any(FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus, FinchAPI::Util::AnyHash)
+            connection_status: T.any(FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus, FinchAPI::Util::AnyHash)
           )
-            .returns(
-              T.any(FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus, FinchAPI::Util::AnyHash)
-            )
+            .void
         end
-        def connection_status=(_)
-        end
+        attr_writer :connection_status
 
         # An array of the authorized products associated with the `access_token`.
         sig { returns(T.nilable(T::Array[String])) }
-        def products
-        end
+        attr_reader :products
 
-        sig { params(_: T::Array[String]).returns(T::Array[String]) }
-        def products=(_)
-        end
+        sig { params(products: T::Array[String]).void }
+        attr_writer :products
 
         # The type of authentication method.
         sig { returns(T.nilable(FinchAPI::Models::Introspection::AuthenticationMethod::Type::TaggedSymbol)) }
-        def type
-        end
+        attr_reader :type
 
-        sig do
-          params(_: FinchAPI::Models::Introspection::AuthenticationMethod::Type::OrSymbol)
-            .returns(FinchAPI::Models::Introspection::AuthenticationMethod::Type::OrSymbol)
-        end
-        def type=(_)
-        end
+        sig { params(type: FinchAPI::Models::Introspection::AuthenticationMethod::Type::OrSymbol).void }
+        attr_writer :type
 
         sig do
           params(
@@ -298,23 +203,16 @@ module FinchAPI
 
         class ConnectionStatus < FinchAPI::BaseModel
           sig { returns(T.nilable(String)) }
-          def message
-          end
+          attr_reader :message
 
-          sig { params(_: String).returns(String) }
-          def message=(_)
-          end
+          sig { params(message: String).void }
+          attr_writer :message
 
           sig { returns(T.nilable(FinchAPI::Models::ConnectionStatusType::TaggedSymbol)) }
-          def status
-          end
+          attr_reader :status
 
-          sig do
-            params(_: FinchAPI::Models::ConnectionStatusType::OrSymbol)
-              .returns(FinchAPI::Models::ConnectionStatusType::OrSymbol)
-          end
-          def status=(_)
-          end
+          sig { params(status: FinchAPI::Models::ConnectionStatusType::OrSymbol).void }
+          attr_writer :status
 
           sig do
             params(message: String, status: FinchAPI::Models::ConnectionStatusType::OrSymbol).returns(T.attached_class)
@@ -372,23 +270,16 @@ module FinchAPI
 
       class ConnectionStatus < FinchAPI::BaseModel
         sig { returns(T.nilable(String)) }
-        def message
-        end
+        attr_reader :message
 
-        sig { params(_: String).returns(String) }
-        def message=(_)
-        end
+        sig { params(message: String).void }
+        attr_writer :message
 
         sig { returns(T.nilable(FinchAPI::Models::ConnectionStatusType::TaggedSymbol)) }
-        def status
-        end
+        attr_reader :status
 
-        sig do
-          params(_: FinchAPI::Models::ConnectionStatusType::OrSymbol)
-            .returns(FinchAPI::Models::ConnectionStatusType::OrSymbol)
-        end
-        def status=(_)
-        end
+        sig { params(status: FinchAPI::Models::ConnectionStatusType::OrSymbol).void }
+        attr_writer :status
 
         sig do
           params(message: String, status: FinchAPI::Models::ConnectionStatusType::OrSymbol).returns(T.attached_class)

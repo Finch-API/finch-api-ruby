@@ -9,15 +9,10 @@ module FinchAPI
           include FinchAPI::RequestParameters
 
           sig { returns(T.nilable(FinchAPI::Models::ConnectionStatusType::OrSymbol)) }
-          def connection_status
-          end
+          attr_reader :connection_status
 
-          sig do
-            params(_: FinchAPI::Models::ConnectionStatusType::OrSymbol)
-              .returns(FinchAPI::Models::ConnectionStatusType::OrSymbol)
-          end
-          def connection_status=(_)
-          end
+          sig { params(connection_status: FinchAPI::Models::ConnectionStatusType::OrSymbol).void }
+          attr_writer :connection_status
 
           sig do
             params(

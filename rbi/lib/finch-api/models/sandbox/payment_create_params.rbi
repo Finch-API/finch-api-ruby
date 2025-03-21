@@ -8,35 +8,27 @@ module FinchAPI
         include FinchAPI::RequestParameters
 
         sig { returns(T.nilable(String)) }
-        def end_date
-        end
+        attr_reader :end_date
 
-        sig { params(_: String).returns(String) }
-        def end_date=(_)
-        end
+        sig { params(end_date: String).void }
+        attr_writer :end_date
 
         sig { returns(T.nilable(T::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement])) }
-        def pay_statements
-        end
+        attr_reader :pay_statements
 
         sig do
           params(
-            _: T::Array[T.any(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement, FinchAPI::Util::AnyHash)]
+            pay_statements: T::Array[T.any(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement, FinchAPI::Util::AnyHash)]
           )
-            .returns(
-              T::Array[T.any(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement, FinchAPI::Util::AnyHash)]
-            )
+            .void
         end
-        def pay_statements=(_)
-        end
+        attr_writer :pay_statements
 
         sig { returns(T.nilable(String)) }
-        def start_date
-        end
+        attr_reader :start_date
 
-        sig { params(_: String).returns(String) }
-        def start_date=(_)
-        end
+        sig { params(start_date: String).void }
+        attr_writer :start_date
 
         sig do
           params(
@@ -71,19 +63,7 @@ module FinchAPI
               T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning)])
             )
           end
-          def earnings
-          end
-
-          sig do
-            params(
-              _: T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning)])
-            )
-              .returns(
-                T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning)])
-              )
-          end
-          def earnings=(_)
-          end
+          attr_accessor :earnings
 
           # The array of deductions objects associated with this pay statement.
           sig do
@@ -93,23 +73,7 @@ module FinchAPI
               )
             )
           end
-          def employee_deductions
-          end
-
-          sig do
-            params(
-              _: T.nilable(
-                T::Array[T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction)]
-              )
-            )
-              .returns(
-                T.nilable(
-                  T::Array[T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction)]
-                )
-              )
-          end
-          def employee_deductions=(_)
-          end
+          attr_accessor :employee_deductions
 
           sig do
             returns(
@@ -118,103 +82,42 @@ module FinchAPI
               )
             )
           end
-          def employer_contributions
-          end
-
-          sig do
-            params(
-              _: T.nilable(
-                T::Array[T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution)]
-              )
-            )
-              .returns(
-                T.nilable(
-                  T::Array[T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution)]
-                )
-              )
-          end
-          def employer_contributions=(_)
-          end
+          attr_accessor :employer_contributions
 
           sig { returns(T.nilable(FinchAPI::Models::Money)) }
-          def gross_pay
-          end
+          attr_reader :gross_pay
 
-          sig do
-            params(_: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)))
-              .returns(T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)))
-          end
-          def gross_pay=(_)
-          end
+          sig { params(gross_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash))).void }
+          attr_writer :gross_pay
 
           # A stable Finch `id` (UUID v4) for an individual in the company
           sig { returns(T.nilable(String)) }
-          def individual_id
-          end
+          attr_reader :individual_id
 
-          sig { params(_: String).returns(String) }
-          def individual_id=(_)
-          end
+          sig { params(individual_id: String).void }
+          attr_writer :individual_id
 
           sig { returns(T.nilable(FinchAPI::Models::Money)) }
-          def net_pay
-          end
+          attr_reader :net_pay
 
-          sig do
-            params(_: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)))
-              .returns(T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)))
-          end
-          def net_pay=(_)
-          end
+          sig { params(net_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash))).void }
+          attr_writer :net_pay
 
           # The payment method.
           sig { returns(T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::OrSymbol)) }
-          def payment_method
-          end
-
-          sig do
-            params(
-              _: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::OrSymbol)
-            )
-              .returns(T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::OrSymbol))
-          end
-          def payment_method=(_)
-          end
+          attr_accessor :payment_method
 
           # The array of taxes objects associated with this pay statement.
           sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax)])) }
-          def taxes
-          end
-
-          sig do
-            params(
-              _: T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax)])
-            )
-              .returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax)]))
-          end
-          def taxes=(_)
-          end
+          attr_accessor :taxes
 
           # The number of hours worked for this pay period
           sig { returns(T.nilable(Float)) }
-          def total_hours
-          end
-
-          sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
-          def total_hours=(_)
-          end
+          attr_accessor :total_hours
 
           # The type of the payment associated with the pay statement.
           sig { returns(T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::OrSymbol)) }
-          def type
-          end
-
-          sig do
-            params(_: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::OrSymbol))
-              .returns(T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::OrSymbol))
-          end
-          def type=(_)
-          end
+          attr_accessor :type
 
           sig do
             params(
@@ -302,79 +205,40 @@ module FinchAPI
           class Earning < FinchAPI::BaseModel
             # The earnings amount in cents.
             sig { returns(T.nilable(Integer)) }
-            def amount
-            end
-
-            sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-            def amount=(_)
-            end
+            attr_accessor :amount
 
             sig { returns(T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes)) }
-            def attributes
-            end
+            attr_reader :attributes
 
             sig do
               params(
-                _: T.nilable(
+                attributes: T.nilable(
                   T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes,
                     FinchAPI::Util::AnyHash
                   )
                 )
               )
-                .returns(
-                  T.nilable(
-                    T.any(
-                      FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes,
-                      FinchAPI::Util::AnyHash
-                    )
-                  )
-                )
+                .void
             end
-            def attributes=(_)
-            end
+            attr_writer :attributes
 
             # The earnings currency code.
             sig { returns(T.nilable(String)) }
-            def currency
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def currency=(_)
-            end
+            attr_accessor :currency
 
             # The number of hours associated with this earning. (For salaried employees, this
             #   could be hours per pay period, `0` or `null`, depending on the provider).
             sig { returns(T.nilable(Float)) }
-            def hours
-            end
-
-            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
-            def hours=(_)
-            end
+            attr_accessor :hours
 
             # The exact name of the deduction from the pay statement.
             sig { returns(T.nilable(String)) }
-            def name
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def name=(_)
-            end
+            attr_accessor :name
 
             # The type of earning.
             sig { returns(T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)) }
-            def type
-            end
-
-            sig do
-              params(
-                _: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol)
-              )
-                .returns(T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::OrSymbol))
-            end
-            def type=(_)
-            end
+            attr_accessor :type
 
             sig do
               params(
@@ -417,25 +281,18 @@ module FinchAPI
                   T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::Metadata)
                 )
               end
-              def metadata
-              end
+              attr_reader :metadata
 
               sig do
                 params(
-                  _: T.any(
+                  metadata: T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::Metadata,
                     FinchAPI::Util::AnyHash
                   )
                 )
-                  .returns(
-                    T.any(
-                      FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::Metadata,
-                      FinchAPI::Util::AnyHash
-                    )
-                  )
+                  .void
               end
-              def metadata=(_)
-              end
+              attr_writer :metadata
 
               sig do
                 params(
@@ -463,12 +320,10 @@ module FinchAPI
                 #   pairs where the values can be of any type (string, number, boolean, object,
                 #   array, etc.).
                 sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-                def metadata
-                end
+                attr_reader :metadata
 
-                sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
-                def metadata=(_)
-                end
+                sig { params(metadata: T::Hash[Symbol, T.anything]).void }
+                attr_writer :metadata
 
                 sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
                 def self.new(metadata: nil)
@@ -547,80 +402,43 @@ module FinchAPI
           class EmployeeDeduction < FinchAPI::BaseModel
             # The deduction amount in cents.
             sig { returns(T.nilable(Integer)) }
-            def amount
-            end
-
-            sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-            def amount=(_)
-            end
+            attr_accessor :amount
 
             sig do
               returns(
                 T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes)
               )
             end
-            def attributes
-            end
+            attr_reader :attributes
 
             sig do
               params(
-                _: T.nilable(
+                attributes: T.nilable(
                   T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes,
                     FinchAPI::Util::AnyHash
                   )
                 )
               )
-                .returns(
-                  T.nilable(
-                    T.any(
-                      FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes,
-                      FinchAPI::Util::AnyHash
-                    )
-                  )
-                )
+                .void
             end
-            def attributes=(_)
-            end
+            attr_writer :attributes
 
             # The deduction currency.
             sig { returns(T.nilable(String)) }
-            def currency
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def currency=(_)
-            end
+            attr_accessor :currency
 
             # The deduction name from the pay statement.
             sig { returns(T.nilable(String)) }
-            def name
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def name=(_)
-            end
+            attr_accessor :name
 
             # Boolean indicating if the deduction is pre-tax.
             sig { returns(T.nilable(T::Boolean)) }
-            def pre_tax
-            end
-
-            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-            def pre_tax=(_)
-            end
+            attr_accessor :pre_tax
 
             # Type of benefit.
             sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol)) }
-            def type
-            end
-
-            sig do
-              params(_: T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol))
-                .returns(T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol))
-            end
-            def type=(_)
-            end
+            attr_accessor :type
 
             sig do
               params(
@@ -665,25 +483,18 @@ module FinchAPI
                   )
                 )
               end
-              def metadata
-              end
+              attr_reader :metadata
 
               sig do
                 params(
-                  _: T.any(
+                  metadata: T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes::Metadata,
                     FinchAPI::Util::AnyHash
                   )
                 )
-                  .returns(
-                    T.any(
-                      FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes::Metadata,
-                      FinchAPI::Util::AnyHash
-                    )
-                  )
+                  .void
               end
-              def metadata=(_)
-              end
+              attr_writer :metadata
 
               sig do
                 params(
@@ -713,12 +524,10 @@ module FinchAPI
                 #   pairs where the values can be of any type (string, number, boolean, object,
                 #   array, etc.).
                 sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-                def metadata
-                end
+                attr_reader :metadata
 
-                sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
-                def metadata=(_)
-                end
+                sig { params(metadata: T::Hash[Symbol, T.anything]).void }
+                attr_writer :metadata
 
                 sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
                 def self.new(metadata: nil)
@@ -734,71 +543,39 @@ module FinchAPI
           class EmployerContribution < FinchAPI::BaseModel
             # The contribution amount in cents.
             sig { returns(T.nilable(Integer)) }
-            def amount
-            end
-
-            sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-            def amount=(_)
-            end
+            attr_accessor :amount
 
             sig do
               returns(
                 T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes)
               )
             end
-            def attributes
-            end
+            attr_reader :attributes
 
             sig do
               params(
-                _: T.nilable(
+                attributes: T.nilable(
                   T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes,
                     FinchAPI::Util::AnyHash
                   )
                 )
               )
-                .returns(
-                  T.nilable(
-                    T.any(
-                      FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes,
-                      FinchAPI::Util::AnyHash
-                    )
-                  )
-                )
+                .void
             end
-            def attributes=(_)
-            end
+            attr_writer :attributes
 
             # The contribution currency.
             sig { returns(T.nilable(String)) }
-            def currency
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def currency=(_)
-            end
+            attr_accessor :currency
 
             # The contribution name from the pay statement.
             sig { returns(T.nilable(String)) }
-            def name
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def name=(_)
-            end
+            attr_accessor :name
 
             # Type of benefit.
             sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol)) }
-            def type
-            end
-
-            sig do
-              params(_: T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol))
-                .returns(T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol))
-            end
-            def type=(_)
-            end
+            attr_accessor :type
 
             sig do
               params(
@@ -841,25 +618,18 @@ module FinchAPI
                   )
                 )
               end
-              def metadata
-              end
+              attr_reader :metadata
 
               sig do
                 params(
-                  _: T.any(
+                  metadata: T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes::Metadata,
                     FinchAPI::Util::AnyHash
                   )
                 )
-                  .returns(
-                    T.any(
-                      FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes::Metadata,
-                      FinchAPI::Util::AnyHash
-                    )
-                  )
+                  .void
               end
-              def metadata=(_)
-              end
+              attr_writer :metadata
 
               sig do
                 params(
@@ -889,12 +659,10 @@ module FinchAPI
                 #   pairs where the values can be of any type (string, number, boolean, object,
                 #   array, etc.).
                 sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-                def metadata
-                end
+                attr_reader :metadata
 
-                sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
-                def metadata=(_)
-                end
+                sig { params(metadata: T::Hash[Symbol, T.anything]).void }
+                attr_writer :metadata
 
                 sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
                 def self.new(metadata: nil)
@@ -939,76 +707,39 @@ module FinchAPI
           class Tax < FinchAPI::BaseModel
             # The tax amount in cents.
             sig { returns(T.nilable(Integer)) }
-            def amount
-            end
-
-            sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-            def amount=(_)
-            end
+            attr_accessor :amount
 
             sig { returns(T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes)) }
-            def attributes
-            end
+            attr_reader :attributes
 
             sig do
               params(
-                _: T.nilable(
+                attributes: T.nilable(
                   T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes,
                     FinchAPI::Util::AnyHash
                   )
                 )
               )
-                .returns(
-                  T.nilable(
-                    T.any(
-                      FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes,
-                      FinchAPI::Util::AnyHash
-                    )
-                  )
-                )
+                .void
             end
-            def attributes=(_)
-            end
+            attr_writer :attributes
 
             # The currency code.
             sig { returns(T.nilable(String)) }
-            def currency
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def currency=(_)
-            end
+            attr_accessor :currency
 
             # `true` if the amount is paid by the employers.
             sig { returns(T.nilable(T::Boolean)) }
-            def employer
-            end
-
-            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-            def employer=(_)
-            end
+            attr_accessor :employer
 
             # The exact name of tax from the pay statement.
             sig { returns(T.nilable(String)) }
-            def name
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def name=(_)
-            end
+            attr_accessor :name
 
             # The type of taxes.
             sig { returns(T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::OrSymbol)) }
-            def type
-            end
-
-            sig do
-              params(_: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::OrSymbol))
-                .returns(T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::OrSymbol))
-            end
-            def type=(_)
-            end
+            attr_accessor :type
 
             sig do
               params(
@@ -1051,25 +782,18 @@ module FinchAPI
                   T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::Metadata)
                 )
               end
-              def metadata
-              end
+              attr_reader :metadata
 
               sig do
                 params(
-                  _: T.any(
+                  metadata: T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::Metadata,
                     FinchAPI::Util::AnyHash
                   )
                 )
-                  .returns(
-                    T.any(
-                      FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::Metadata,
-                      FinchAPI::Util::AnyHash
-                    )
-                  )
+                  .void
               end
-              def metadata=(_)
-              end
+              attr_writer :metadata
 
               sig do
                 params(
@@ -1097,12 +821,10 @@ module FinchAPI
                 #   pairs where the values can be of any type (string, number, boolean, object,
                 #   array, etc.).
                 sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-                def metadata
-                end
+                attr_reader :metadata
 
-                sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
-                def metadata=(_)
-                end
+                sig { params(metadata: T::Hash[Symbol, T.anything]).void }
+                attr_writer :metadata
 
                 sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
                 def self.new(metadata: nil)

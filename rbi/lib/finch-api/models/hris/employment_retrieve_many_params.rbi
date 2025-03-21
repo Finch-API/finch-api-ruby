@@ -9,15 +9,7 @@ module FinchAPI
 
         # The array of batch requests.
         sig { returns(T::Array[FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request]) }
-        def requests
-        end
-
-        sig do
-          params(_: T::Array[FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request])
-            .returns(T::Array[FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request])
-        end
-        def requests=(_)
-        end
+        attr_accessor :requests
 
         sig do
           params(
@@ -46,12 +38,7 @@ module FinchAPI
           #   limit to the number of `individual_id` to send per request. It is preferantial
           #   to send all ids in a single request for Finch to optimize provider rate-limits.
           sig { returns(String) }
-          def individual_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def individual_id=(_)
-          end
+          attr_accessor :individual_id
 
           sig { params(individual_id: String).returns(T.attached_class) }
           def self.new(individual_id:)

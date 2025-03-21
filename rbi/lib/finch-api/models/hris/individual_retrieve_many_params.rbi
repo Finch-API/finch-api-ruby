@@ -8,34 +8,26 @@ module FinchAPI
         include FinchAPI::RequestParameters
 
         sig { returns(T.nilable(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options)) }
-        def options
-        end
+        attr_reader :options
 
         sig do
           params(
-            _: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, FinchAPI::Util::AnyHash))
+            options: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, FinchAPI::Util::AnyHash))
           )
-            .returns(
-              T.nilable(T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, FinchAPI::Util::AnyHash))
-            )
+            .void
         end
-        def options=(_)
-        end
+        attr_writer :options
 
         sig { returns(T.nilable(T::Array[FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request])) }
-        def requests
-        end
+        attr_reader :requests
 
         sig do
           params(
-            _: T::Array[T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request, FinchAPI::Util::AnyHash)]
+            requests: T::Array[T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request, FinchAPI::Util::AnyHash)]
           )
-            .returns(
-              T::Array[T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request, FinchAPI::Util::AnyHash)]
-            )
+            .void
         end
-        def requests=(_)
-        end
+        attr_writer :requests
 
         sig do
           params(
@@ -63,12 +55,10 @@ module FinchAPI
 
         class Options < FinchAPI::BaseModel
           sig { returns(T.nilable(T::Array[String])) }
-          def include
-          end
+          attr_reader :include
 
-          sig { params(_: T::Array[String]).returns(T::Array[String]) }
-          def include=(_)
-          end
+          sig { params(include: T::Array[String]).void }
+          attr_writer :include
 
           sig { params(include: T::Array[String]).returns(T.attached_class) }
           def self.new(include: nil)
@@ -81,12 +71,10 @@ module FinchAPI
 
         class Request < FinchAPI::BaseModel
           sig { returns(T.nilable(String)) }
-          def individual_id
-          end
+          attr_reader :individual_id
 
-          sig { params(_: String).returns(String) }
-          def individual_id=(_)
-          end
+          sig { params(individual_id: String).void }
+          attr_writer :individual_id
 
           sig { params(individual_id: String).returns(T.attached_class) }
           def self.new(individual_id: nil)

@@ -10,19 +10,15 @@ module FinchAPI
 
           # Array of the individual_id to enroll and a configuration object.
           sig { returns(T.nilable(T::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual])) }
-          def individuals
-          end
+          attr_reader :individuals
 
           sig do
             params(
-              _: T::Array[T.any(FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual, FinchAPI::Util::AnyHash)]
+              individuals: T::Array[T.any(FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual, FinchAPI::Util::AnyHash)]
             )
-              .returns(
-                T::Array[T.any(FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual, FinchAPI::Util::AnyHash)]
-              )
+              .void
           end
-          def individuals=(_)
-          end
+          attr_writer :individuals
 
           sig do
             params(
@@ -52,34 +48,25 @@ module FinchAPI
                 T.nilable(FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration)
               )
             end
-            def configuration
-            end
+            attr_reader :configuration
 
             sig do
               params(
-                _: T.any(
+                configuration: T.any(
                   FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration,
                   FinchAPI::Util::AnyHash
                 )
               )
-                .returns(
-                  T.any(
-                    FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration,
-                    FinchAPI::Util::AnyHash
-                  )
-                )
+                .void
             end
-            def configuration=(_)
-            end
+            attr_writer :configuration
 
             # Finch id (uuidv4) for the individual to enroll
             sig { returns(T.nilable(String)) }
-            def individual_id
-            end
+            attr_reader :individual_id
 
-            sig { params(_: String).returns(String) }
-            def individual_id=(_)
-            end
+            sig { params(individual_id: String).void }
+            attr_writer :individual_id
 
             sig do
               params(
@@ -116,37 +103,26 @@ module FinchAPI
                   )
                 )
               end
-              def annual_contribution_limit
-              end
+              attr_reader :annual_contribution_limit
 
               sig do
                 params(
-                  _: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit::OrSymbol
+                  annual_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit::OrSymbol
                 )
-                  .returns(
-                    FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit::OrSymbol
-                  )
+                  .void
               end
-              def annual_contribution_limit=(_)
-              end
+              attr_writer :annual_contribution_limit
 
               # Maximum annual amount in cents
               sig { returns(T.nilable(Integer)) }
-              def annual_maximum
-              end
-
-              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-              def annual_maximum=(_)
-              end
+              attr_accessor :annual_maximum
 
               # For retirement benefits only - whether catch up contributions are enabled
               sig { returns(T.nilable(T::Boolean)) }
-              def catch_up
-              end
+              attr_reader :catch_up
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def catch_up=(_)
-              end
+              sig { params(catch_up: T::Boolean).void }
+              attr_writer :catch_up
 
               sig do
                 returns(
@@ -155,25 +131,18 @@ module FinchAPI
                   )
                 )
               end
-              def company_contribution
-              end
+              attr_reader :company_contribution
 
               sig do
                 params(
-                  _: T.any(
+                  company_contribution: T.any(
                     FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution,
                     FinchAPI::Util::AnyHash
                   )
                 )
-                  .returns(
-                    T.any(
-                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution,
-                      FinchAPI::Util::AnyHash
-                    )
-                  )
+                  .void
               end
-              def company_contribution=(_)
-              end
+              attr_writer :company_contribution
 
               sig do
                 returns(
@@ -182,25 +151,18 @@ module FinchAPI
                   )
                 )
               end
-              def employee_deduction
-              end
+              attr_reader :employee_deduction
 
               sig do
                 params(
-                  _: T.any(
+                  employee_deduction: T.any(
                     FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction,
                     FinchAPI::Util::AnyHash
                   )
                 )
-                  .returns(
-                    T.any(
-                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction,
-                      FinchAPI::Util::AnyHash
-                    )
-                  )
+                  .void
               end
-              def employee_deduction=(_)
-              end
+              attr_writer :employee_deduction
 
               sig do
                 params(
@@ -288,12 +250,10 @@ module FinchAPI
                 # Amount in cents for fixed type or basis points (1/100th of a percent) for
                 #   percent type
                 sig { returns(T.nilable(Integer)) }
-                def amount
-                end
+                attr_reader :amount
 
-                sig { params(_: Integer).returns(Integer) }
-                def amount=(_)
-                end
+                sig { params(amount: Integer).void }
+                attr_writer :amount
 
                 sig do
                   returns(
@@ -302,19 +262,15 @@ module FinchAPI
                     )
                   )
                 end
-                def type
-                end
+                attr_reader :type
 
                 sig do
                   params(
-                    _: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::OrSymbol
+                    type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::OrSymbol
                   )
-                    .returns(
-                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::OrSymbol
-                    )
+                    .void
                 end
-                def type=(_)
-                end
+                attr_writer :type
 
                 sig do
                   params(
@@ -383,12 +339,10 @@ module FinchAPI
                 # Amount in cents for fixed type or basis points (1/100th of a percent) for
                 #   percent type
                 sig { returns(T.nilable(Integer)) }
-                def amount
-                end
+                attr_reader :amount
 
-                sig { params(_: Integer).returns(Integer) }
-                def amount=(_)
-                end
+                sig { params(amount: Integer).void }
+                attr_writer :amount
 
                 sig do
                   returns(
@@ -397,19 +351,15 @@ module FinchAPI
                     )
                   )
                 end
-                def type
-                end
+                attr_reader :type
 
                 sig do
                   params(
-                    _: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type::OrSymbol
+                    type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type::OrSymbol
                   )
-                    .returns(
-                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type::OrSymbol
-                    )
+                    .void
                 end
-                def type=(_)
-                end
+                attr_writer :type
 
                 sig do
                   params(

@@ -5,31 +5,22 @@ module FinchAPI
     module HRIS
       class PayStatementResponse < FinchAPI::BaseModel
         sig { returns(T.nilable(FinchAPI::Models::HRIS::PayStatementResponseBody)) }
-        def body
-        end
+        attr_reader :body
 
-        sig do
-          params(_: T.any(FinchAPI::Models::HRIS::PayStatementResponseBody, FinchAPI::Util::AnyHash))
-            .returns(T.any(FinchAPI::Models::HRIS::PayStatementResponseBody, FinchAPI::Util::AnyHash))
-        end
-        def body=(_)
-        end
+        sig { params(body: T.any(FinchAPI::Models::HRIS::PayStatementResponseBody, FinchAPI::Util::AnyHash)).void }
+        attr_writer :body
 
         sig { returns(T.nilable(Integer)) }
-        def code
-        end
+        attr_reader :code
 
-        sig { params(_: Integer).returns(Integer) }
-        def code=(_)
-        end
+        sig { params(code: Integer).void }
+        attr_writer :code
 
         sig { returns(T.nilable(String)) }
-        def payment_id
-        end
+        attr_reader :payment_id
 
-        sig { params(_: String).returns(String) }
-        def payment_id=(_)
-        end
+        sig { params(payment_id: String).void }
+        attr_writer :payment_id
 
         sig do
           params(

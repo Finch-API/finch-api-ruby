@@ -5,105 +5,52 @@ module FinchAPI
     class CreateAccessTokenResponse < FinchAPI::BaseModel
       # The access token for the connection.
       sig { returns(String) }
-      def access_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def access_token=(_)
-      end
+      attr_accessor :access_token
 
       # [DEPRECATED] Use `connection_id` to identify the connection instead of this
       #   account ID.
       sig { returns(String) }
-      def account_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      attr_accessor :account_id
 
       # The type of application associated with a token.
       sig { returns(FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol) }
-      def client_type
-      end
-
-      sig do
-        params(_: FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol)
-          .returns(FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol)
-      end
-      def client_type=(_)
-      end
+      attr_accessor :client_type
 
       # [DEPRECATED] Use `connection_id` to identify the connection instead of this
       #   company ID.
       sig { returns(String) }
-      def company_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def company_id=(_)
-      end
+      attr_accessor :company_id
 
       # The Finch UUID of the connection associated with the `access_token`.
       sig { returns(String) }
-      def connection_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def connection_id=(_)
-      end
+      attr_accessor :connection_id
 
       # The type of the connection associated with the token.
       #
       #   - `provider` - connection to an external provider
       #   - `finch` - finch-generated data.
       sig { returns(FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol) }
-      def connection_type
-      end
-
-      sig do
-        params(_: FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol)
-          .returns(FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol)
-      end
-      def connection_type=(_)
-      end
+      attr_accessor :connection_type
 
       # An array of the authorized products associated with the `access_token`.
       sig { returns(T::Array[String]) }
-      def products
-      end
-
-      sig { params(_: T::Array[String]).returns(T::Array[String]) }
-      def products=(_)
-      end
+      attr_accessor :products
 
       # The ID of the provider associated with the `access_token`.
       sig { returns(String) }
-      def provider_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def provider_id=(_)
-      end
+      attr_accessor :provider_id
 
       # The ID of your customer you provided to Finch when a connect session was created
       #   for this connection.
       sig { returns(T.nilable(String)) }
-      def customer_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def customer_id=(_)
-      end
+      attr_accessor :customer_id
 
       # The RFC 8693 token type (Finch uses `bearer` tokens)
       sig { returns(T.nilable(String)) }
-      def token_type
-      end
+      attr_reader :token_type
 
-      sig { params(_: String).returns(String) }
-      def token_type=(_)
-      end
+      sig { params(token_type: String).void }
+      attr_writer :token_type
 
       sig do
         params(

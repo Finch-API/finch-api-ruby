@@ -5,98 +5,80 @@ module FinchAPI
     class Provider < FinchAPI::BaseModel
       # The id of the payroll provider used in Connect.
       sig { returns(T.nilable(String)) }
-      def id
-      end
+      attr_reader :id
 
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      sig { params(id: String).void }
+      attr_writer :id
 
       # The list of authentication methods supported by the provider.
       sig { returns(T.nilable(T::Array[FinchAPI::Models::Provider::AuthenticationMethod])) }
-      def authentication_methods
-      end
+      attr_reader :authentication_methods
 
       sig do
-        params(_: T::Array[T.any(FinchAPI::Models::Provider::AuthenticationMethod, FinchAPI::Util::AnyHash)])
-          .returns(T::Array[T.any(FinchAPI::Models::Provider::AuthenticationMethod, FinchAPI::Util::AnyHash)])
+        params(
+          authentication_methods: T::Array[T.any(FinchAPI::Models::Provider::AuthenticationMethod, FinchAPI::Util::AnyHash)]
+        )
+          .void
       end
-      def authentication_methods=(_)
-      end
+      attr_writer :authentication_methods
 
       # `true` if the integration is in a beta state, `false` otherwise
       sig { returns(T.nilable(T::Boolean)) }
-      def beta
-      end
+      attr_reader :beta
 
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def beta=(_)
-      end
+      sig { params(beta: T::Boolean).void }
+      attr_writer :beta
 
       # The display name of the payroll provider.
       sig { returns(T.nilable(String)) }
-      def display_name
-      end
+      attr_reader :display_name
 
-      sig { params(_: String).returns(String) }
-      def display_name=(_)
-      end
+      sig { params(display_name: String).void }
+      attr_writer :display_name
 
       # The url to the official icon of the payroll provider.
       sig { returns(T.nilable(String)) }
-      def icon
-      end
+      attr_reader :icon
 
-      sig { params(_: String).returns(String) }
-      def icon=(_)
-      end
+      sig { params(icon: String).void }
+      attr_writer :icon
 
       # The url to the official logo of the payroll provider.
       sig { returns(T.nilable(String)) }
-      def logo
-      end
+      attr_reader :logo
 
-      sig { params(_: String).returns(String) }
-      def logo=(_)
-      end
+      sig { params(logo: String).void }
+      attr_writer :logo
 
       # [DEPRECATED] Whether the Finch integration with this provider uses the Assisted
       #   Connect Flow by default. This field is now deprecated. Please check for a `type`
       #   of `assisted` in the `authentication_methods` field instead.
       sig { returns(T.nilable(T::Boolean)) }
-      def manual
-      end
+      attr_reader :manual
 
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def manual=(_)
-      end
+      sig { params(manual: T::Boolean).void }
+      attr_writer :manual
 
       # whether MFA is required for the provider.
       sig { returns(T.nilable(T::Boolean)) }
-      def mfa_required
-      end
+      attr_reader :mfa_required
 
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def mfa_required=(_)
-      end
+      sig { params(mfa_required: T::Boolean).void }
+      attr_writer :mfa_required
 
       # The hex code for the primary color of the payroll provider.
       sig { returns(T.nilable(String)) }
-      def primary_color
-      end
+      attr_reader :primary_color
 
-      sig { params(_: String).returns(String) }
-      def primary_color=(_)
-      end
+      sig { params(primary_color: String).void }
+      attr_writer :primary_color
 
       # The list of Finch products supported on this payroll provider.
       sig { returns(T.nilable(T::Array[String])) }
-      def products
-      end
+      attr_reader :products
 
-      sig { params(_: T::Array[String]).returns(T::Array[String]) }
-      def products=(_)
-      end
+      sig { params(products: T::Array[String]).void }
+      attr_writer :products
 
       sig do
         params(
@@ -151,47 +133,36 @@ module FinchAPI
         # Each benefit type and their supported features. If the benefit type is not
         #   supported, the property will be null
         sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitsSupport)) }
-        def benefits_support
-        end
-
-        sig do
-          params(_: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitsSupport, FinchAPI::Util::AnyHash)))
-            .returns(T.nilable(T.any(FinchAPI::Models::HRIS::BenefitsSupport, FinchAPI::Util::AnyHash)))
-        end
-        def benefits_support=(_)
-        end
-
-        # The supported data fields returned by our HR and payroll endpoints
-        sig { returns(T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields)) }
-        def supported_fields
-        end
+        attr_reader :benefits_support
 
         sig do
           params(
-            _: T.nilable(
+            benefits_support: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitsSupport, FinchAPI::Util::AnyHash))
+          )
+            .void
+        end
+        attr_writer :benefits_support
+
+        # The supported data fields returned by our HR and payroll endpoints
+        sig { returns(T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields)) }
+        attr_reader :supported_fields
+
+        sig do
+          params(
+            supported_fields: T.nilable(
               T.any(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields, FinchAPI::Util::AnyHash)
             )
           )
-            .returns(
-              T.nilable(
-                T.any(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields, FinchAPI::Util::AnyHash)
-              )
-            )
+            .void
         end
-        def supported_fields=(_)
-        end
+        attr_writer :supported_fields
 
         # The type of authentication method.
         sig { returns(T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol)) }
-        def type
-        end
+        attr_reader :type
 
-        sig do
-          params(_: FinchAPI::Models::Provider::AuthenticationMethod::Type::OrSymbol)
-            .returns(FinchAPI::Models::Provider::AuthenticationMethod::Type::OrSymbol)
-        end
-        def type=(_)
-        end
+        sig { params(type: FinchAPI::Models::Provider::AuthenticationMethod::Type::OrSymbol).void }
+        attr_writer :type
 
         sig do
           params(
@@ -221,139 +192,96 @@ module FinchAPI
 
         class SupportedFields < FinchAPI::BaseModel
           sig { returns(T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company)) }
-          def company
-          end
+          attr_reader :company
 
           sig do
             params(
-              _: T.any(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company, FinchAPI::Util::AnyHash)
+              company: T.any(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company, FinchAPI::Util::AnyHash)
             )
-              .returns(
-                T.any(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company, FinchAPI::Util::AnyHash)
-              )
+              .void
           end
-          def company=(_)
-          end
+          attr_writer :company
 
           sig { returns(T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory)) }
-          def directory
-          end
+          attr_reader :directory
 
           sig do
             params(
-              _: T.any(
+              directory: T.any(
                 FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory,
                 FinchAPI::Util::AnyHash
               )
             )
-              .returns(
-                T.any(
-                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory,
-                  FinchAPI::Util::AnyHash
-                )
-              )
+              .void
           end
-          def directory=(_)
-          end
+          attr_writer :directory
 
           sig { returns(T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment)) }
-          def employment
-          end
+          attr_reader :employment
 
           sig do
             params(
-              _: T.any(
+              employment: T.any(
                 FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment,
                 FinchAPI::Util::AnyHash
               )
             )
-              .returns(
-                T.any(
-                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment,
-                  FinchAPI::Util::AnyHash
-                )
-              )
+              .void
           end
-          def employment=(_)
-          end
+          attr_writer :employment
 
           sig { returns(T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual)) }
-          def individual
-          end
+          attr_reader :individual
 
           sig do
             params(
-              _: T.any(
+              individual: T.any(
                 FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual,
                 FinchAPI::Util::AnyHash
               )
             )
-              .returns(
-                T.any(
-                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual,
-                  FinchAPI::Util::AnyHash
-                )
-              )
+              .void
           end
-          def individual=(_)
-          end
+          attr_writer :individual
 
           sig { returns(T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayGroup)) }
-          def pay_group
-          end
+          attr_reader :pay_group
 
           sig do
             params(
-              _: T.any(
+              pay_group: T.any(
                 FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayGroup,
                 FinchAPI::Util::AnyHash
               )
             )
-              .returns(
-                T.any(
-                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayGroup,
-                  FinchAPI::Util::AnyHash
-                )
-              )
+              .void
           end
-          def pay_group=(_)
-          end
+          attr_writer :pay_group
 
           sig { returns(T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement)) }
-          def pay_statement
-          end
+          attr_reader :pay_statement
 
           sig do
             params(
-              _: T.any(
+              pay_statement: T.any(
                 FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement,
                 FinchAPI::Util::AnyHash
               )
             )
-              .returns(
-                T.any(
-                  FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement,
-                  FinchAPI::Util::AnyHash
-                )
-              )
+              .void
           end
-          def pay_statement=(_)
-          end
+          attr_writer :pay_statement
 
           sig { returns(T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment)) }
-          def payment
-          end
+          attr_reader :payment
 
           sig do
             params(
-              _: T.any(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment, FinchAPI::Util::AnyHash)
+              payment: T.any(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment, FinchAPI::Util::AnyHash)
             )
-              .returns(
-                T.any(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment, FinchAPI::Util::AnyHash)
-              )
+              .void
           end
-          def payment=(_)
-          end
+          attr_writer :payment
 
           # The supported data fields returned by our HR and payroll endpoints
           sig do
@@ -413,132 +341,94 @@ module FinchAPI
 
           class Company < FinchAPI::BaseModel
             sig { returns(T.nilable(T::Boolean)) }
-            def id
-            end
+            attr_reader :id
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def id=(_)
-            end
+            sig { params(id: T::Boolean).void }
+            attr_writer :id
 
             sig { returns(T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Accounts)) }
-            def accounts
-            end
+            attr_reader :accounts
 
             sig do
               params(
-                _: T.any(
+                accounts: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Accounts,
                   FinchAPI::Util::AnyHash
                 )
               )
-                .returns(
-                  T.any(
-                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Accounts,
-                    FinchAPI::Util::AnyHash
-                  )
-                )
+                .void
             end
-            def accounts=(_)
-            end
+            attr_writer :accounts
 
             sig do
               returns(
                 T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments)
               )
             end
-            def departments
-            end
+            attr_reader :departments
 
             sig do
               params(
-                _: T.any(
+                departments: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments,
                   FinchAPI::Util::AnyHash
                 )
               )
-                .returns(
-                  T.any(
-                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments,
-                    FinchAPI::Util::AnyHash
-                  )
-                )
+                .void
             end
-            def departments=(_)
-            end
+            attr_writer :departments
 
             sig { returns(T.nilable(T::Boolean)) }
-            def ein
-            end
+            attr_reader :ein
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def ein=(_)
-            end
+            sig { params(ein: T::Boolean).void }
+            attr_writer :ein
 
             sig { returns(T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Entity)) }
-            def entity
-            end
+            attr_reader :entity
 
             sig do
               params(
-                _: T.any(
+                entity: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Entity,
                   FinchAPI::Util::AnyHash
                 )
               )
-                .returns(
-                  T.any(
-                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Entity,
-                    FinchAPI::Util::AnyHash
-                  )
-                )
+                .void
             end
-            def entity=(_)
-            end
+            attr_writer :entity
 
             sig { returns(T.nilable(T::Boolean)) }
-            def legal_name
-            end
+            attr_reader :legal_name
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def legal_name=(_)
-            end
+            sig { params(legal_name: T::Boolean).void }
+            attr_writer :legal_name
 
             sig { returns(T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Locations)) }
-            def locations
-            end
+            attr_reader :locations
 
             sig do
               params(
-                _: T.any(
+                locations: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Locations,
                   FinchAPI::Util::AnyHash
                 )
               )
-                .returns(
-                  T.any(
-                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Locations,
-                    FinchAPI::Util::AnyHash
-                  )
-                )
+                .void
             end
-            def locations=(_)
-            end
+            attr_writer :locations
 
             sig { returns(T.nilable(T::Boolean)) }
-            def primary_email
-            end
+            attr_reader :primary_email
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def primary_email=(_)
-            end
+            sig { params(primary_email: T::Boolean).void }
+            attr_writer :primary_email
 
             sig { returns(T.nilable(T::Boolean)) }
-            def primary_phone_number
-            end
+            attr_reader :primary_phone_number
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def primary_phone_number=(_)
-            end
+            sig { params(primary_phone_number: T::Boolean).void }
+            attr_writer :primary_phone_number
 
             sig do
               params(
@@ -600,44 +490,34 @@ module FinchAPI
 
             class Accounts < FinchAPI::BaseModel
               sig { returns(T.nilable(T::Boolean)) }
-              def account_name
-              end
+              attr_reader :account_name
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def account_name=(_)
-              end
+              sig { params(account_name: T::Boolean).void }
+              attr_writer :account_name
 
               sig { returns(T.nilable(T::Boolean)) }
-              def account_number
-              end
+              attr_reader :account_number
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def account_number=(_)
-              end
+              sig { params(account_number: T::Boolean).void }
+              attr_writer :account_number
 
               sig { returns(T.nilable(T::Boolean)) }
-              def account_type
-              end
+              attr_reader :account_type
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def account_type=(_)
-              end
+              sig { params(account_type: T::Boolean).void }
+              attr_writer :account_type
 
               sig { returns(T.nilable(T::Boolean)) }
-              def institution_name
-              end
+              attr_reader :institution_name
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def institution_name=(_)
-              end
+              sig { params(institution_name: T::Boolean).void }
+              attr_writer :institution_name
 
               sig { returns(T.nilable(T::Boolean)) }
-              def routing_number
-              end
+              attr_reader :routing_number
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def routing_number=(_)
-              end
+              sig { params(routing_number: T::Boolean).void }
+              attr_writer :routing_number
 
               sig do
                 params(
@@ -670,37 +550,28 @@ module FinchAPI
 
             class Departments < FinchAPI::BaseModel
               sig { returns(T.nilable(T::Boolean)) }
-              def name
-              end
+              attr_reader :name
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def name=(_)
-              end
+              sig { params(name: T::Boolean).void }
+              attr_writer :name
 
               sig do
                 returns(
                   T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments::Parent)
                 )
               end
-              def parent
-              end
+              attr_reader :parent
 
               sig do
                 params(
-                  _: T.any(
+                  parent: T.any(
                     FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments::Parent,
                     FinchAPI::Util::AnyHash
                   )
                 )
-                  .returns(
-                    T.any(
-                      FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments::Parent,
-                      FinchAPI::Util::AnyHash
-                    )
-                  )
+                  .void
               end
-              def parent=(_)
-              end
+              attr_writer :parent
 
               sig do
                 params(
@@ -729,12 +600,10 @@ module FinchAPI
 
               class Parent < FinchAPI::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
-                def name
-                end
+                attr_reader :name
 
-                sig { params(_: T::Boolean).returns(T::Boolean) }
-                def name=(_)
-                end
+                sig { params(name: T::Boolean).void }
+                attr_writer :name
 
                 sig { params(name: T::Boolean).returns(T.attached_class) }
                 def self.new(name: nil)
@@ -748,20 +617,16 @@ module FinchAPI
 
             class Entity < FinchAPI::BaseModel
               sig { returns(T.nilable(T::Boolean)) }
-              def subtype
-              end
+              attr_reader :subtype
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def subtype=(_)
-              end
+              sig { params(subtype: T::Boolean).void }
+              attr_writer :subtype
 
               sig { returns(T.nilable(T::Boolean)) }
-              def type
-              end
+              attr_reader :type
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def type=(_)
-              end
+              sig { params(type: T::Boolean).void }
+              attr_writer :type
 
               sig { params(subtype: T::Boolean, type: T::Boolean).returns(T.attached_class) }
               def self.new(subtype: nil, type: nil)
@@ -774,52 +639,40 @@ module FinchAPI
 
             class Locations < FinchAPI::BaseModel
               sig { returns(T.nilable(T::Boolean)) }
-              def city
-              end
+              attr_reader :city
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def city=(_)
-              end
+              sig { params(city: T::Boolean).void }
+              attr_writer :city
 
               sig { returns(T.nilable(T::Boolean)) }
-              def country
-              end
+              attr_reader :country
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def country=(_)
-              end
+              sig { params(country: T::Boolean).void }
+              attr_writer :country
 
               sig { returns(T.nilable(T::Boolean)) }
-              def line1
-              end
+              attr_reader :line1
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def line1=(_)
-              end
+              sig { params(line1: T::Boolean).void }
+              attr_writer :line1
 
               sig { returns(T.nilable(T::Boolean)) }
-              def line2
-              end
+              attr_reader :line2
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def line2=(_)
-              end
+              sig { params(line2: T::Boolean).void }
+              attr_writer :line2
 
               sig { returns(T.nilable(T::Boolean)) }
-              def postal_code
-              end
+              attr_reader :postal_code
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def postal_code=(_)
-              end
+              sig { params(postal_code: T::Boolean).void }
+              attr_writer :postal_code
 
               sig { returns(T.nilable(T::Boolean)) }
-              def state
-              end
+              attr_reader :state
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def state=(_)
-              end
+              sig { params(state: T::Boolean).void }
+              attr_writer :state
 
               sig do
                 params(
@@ -859,46 +712,32 @@ module FinchAPI
                 T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals)
               )
             end
-            def individuals
-            end
+            attr_reader :individuals
 
             sig do
               params(
-                _: T.any(
+                individuals: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals,
                   FinchAPI::Util::AnyHash
                 )
               )
-                .returns(
-                  T.any(
-                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals,
-                    FinchAPI::Util::AnyHash
-                  )
-                )
+                .void
             end
-            def individuals=(_)
-            end
+            attr_writer :individuals
 
             sig { returns(T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Paging)) }
-            def paging
-            end
+            attr_reader :paging
 
             sig do
               params(
-                _: T.any(
+                paging: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Paging,
                   FinchAPI::Util::AnyHash
                 )
               )
-                .returns(
-                  T.any(
-                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Paging,
-                    FinchAPI::Util::AnyHash
-                  )
-                )
+                .void
             end
-            def paging=(_)
-            end
+            attr_writer :paging
 
             sig do
               params(
@@ -930,44 +769,34 @@ module FinchAPI
 
             class Individuals < FinchAPI::BaseModel
               sig { returns(T.nilable(T::Boolean)) }
-              def id
-              end
+              attr_reader :id
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def id=(_)
-              end
+              sig { params(id: T::Boolean).void }
+              attr_writer :id
 
               sig { returns(T.nilable(T::Boolean)) }
-              def department
-              end
+              attr_reader :department
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def department=(_)
-              end
+              sig { params(department: T::Boolean).void }
+              attr_writer :department
 
               sig { returns(T.nilable(T::Boolean)) }
-              def first_name
-              end
+              attr_reader :first_name
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def first_name=(_)
-              end
+              sig { params(first_name: T::Boolean).void }
+              attr_writer :first_name
 
               sig { returns(T.nilable(T::Boolean)) }
-              def is_active
-              end
+              attr_reader :is_active
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def is_active=(_)
-              end
+              sig { params(is_active: T::Boolean).void }
+              attr_writer :is_active
 
               sig { returns(T.nilable(T::Boolean)) }
-              def last_name
-              end
+              attr_reader :last_name
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def last_name=(_)
-              end
+              sig { params(last_name: T::Boolean).void }
+              attr_writer :last_name
 
               sig do
                 returns(
@@ -976,33 +805,24 @@ module FinchAPI
                   )
                 )
               end
-              def manager
-              end
+              attr_reader :manager
 
               sig do
                 params(
-                  _: T.any(
+                  manager: T.any(
                     FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager,
                     FinchAPI::Util::AnyHash
                   )
                 )
-                  .returns(
-                    T.any(
-                      FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager,
-                      FinchAPI::Util::AnyHash
-                    )
-                  )
+                  .void
               end
-              def manager=(_)
-              end
+              attr_writer :manager
 
               sig { returns(T.nilable(T::Boolean)) }
-              def middle_name
-              end
+              attr_reader :middle_name
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def middle_name=(_)
-              end
+              sig { params(middle_name: T::Boolean).void }
+              attr_writer :middle_name
 
               sig do
                 params(
@@ -1041,12 +861,10 @@ module FinchAPI
 
               class Manager < FinchAPI::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
-                def id
-                end
+                attr_reader :id
 
-                sig { params(_: T::Boolean).returns(T::Boolean) }
-                def id=(_)
-                end
+                sig { params(id: T::Boolean).void }
+                attr_writer :id
 
                 sig { params(id: T::Boolean).returns(T.attached_class) }
                 def self.new(id: nil)
@@ -1060,20 +878,16 @@ module FinchAPI
 
             class Paging < FinchAPI::BaseModel
               sig { returns(T.nilable(T::Boolean)) }
-              def count
-              end
+              attr_reader :count
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def count=(_)
-              end
+              sig { params(count: T::Boolean).void }
+              attr_writer :count
 
               sig { returns(T.nilable(T::Boolean)) }
-              def offset
-              end
+              attr_reader :offset
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def offset=(_)
-              end
+              sig { params(offset: T::Boolean).void }
+              attr_writer :offset
 
               sig { params(count: T::Boolean, offset: T::Boolean).returns(T.attached_class) }
               def self.new(count: nil, offset: nil)
@@ -1087,217 +901,158 @@ module FinchAPI
 
           class Employment < FinchAPI::BaseModel
             sig { returns(T.nilable(T::Boolean)) }
-            def id
-            end
+            attr_reader :id
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def id=(_)
-            end
+            sig { params(id: T::Boolean).void }
+            attr_writer :id
 
             sig { returns(T.nilable(T::Boolean)) }
-            def class_code
-            end
+            attr_reader :class_code
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def class_code=(_)
-            end
+            sig { params(class_code: T::Boolean).void }
+            attr_writer :class_code
 
             sig { returns(T.nilable(T::Boolean)) }
-            def custom_fields
-            end
+            attr_reader :custom_fields
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def custom_fields=(_)
-            end
+            sig { params(custom_fields: T::Boolean).void }
+            attr_writer :custom_fields
 
             sig do
               returns(
                 T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Department)
               )
             end
-            def department
-            end
+            attr_reader :department
 
             sig do
               params(
-                _: T.any(
+                department: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Department,
                   FinchAPI::Util::AnyHash
                 )
               )
-                .returns(
-                  T.any(
-                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Department,
-                    FinchAPI::Util::AnyHash
-                  )
-                )
+                .void
             end
-            def department=(_)
-            end
+            attr_writer :department
 
             sig do
               returns(
                 T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Employment)
               )
             end
-            def employment
-            end
+            attr_reader :employment
 
             sig do
               params(
-                _: T.any(
+                employment: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Employment,
                   FinchAPI::Util::AnyHash
                 )
               )
-                .returns(
-                  T.any(
-                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Employment,
-                    FinchAPI::Util::AnyHash
-                  )
-                )
+                .void
             end
-            def employment=(_)
-            end
+            attr_writer :employment
 
             sig { returns(T.nilable(T::Boolean)) }
-            def employment_status
-            end
+            attr_reader :employment_status
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def employment_status=(_)
-            end
+            sig { params(employment_status: T::Boolean).void }
+            attr_writer :employment_status
 
             sig { returns(T.nilable(T::Boolean)) }
-            def end_date
-            end
+            attr_reader :end_date
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def end_date=(_)
-            end
+            sig { params(end_date: T::Boolean).void }
+            attr_writer :end_date
 
             sig { returns(T.nilable(T::Boolean)) }
-            def first_name
-            end
+            attr_reader :first_name
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def first_name=(_)
-            end
+            sig { params(first_name: T::Boolean).void }
+            attr_writer :first_name
 
             sig { returns(T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Income)) }
-            def income
-            end
+            attr_reader :income
 
             sig do
               params(
-                _: T.any(
+                income: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Income,
                   FinchAPI::Util::AnyHash
                 )
               )
-                .returns(
-                  T.any(
-                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Income,
-                    FinchAPI::Util::AnyHash
-                  )
-                )
+                .void
             end
-            def income=(_)
-            end
+            attr_writer :income
 
             sig { returns(T.nilable(T::Boolean)) }
-            def income_history
-            end
+            attr_reader :income_history
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def income_history=(_)
-            end
+            sig { params(income_history: T::Boolean).void }
+            attr_writer :income_history
 
             sig { returns(T.nilable(T::Boolean)) }
-            def is_active
-            end
+            attr_reader :is_active
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def is_active=(_)
-            end
+            sig { params(is_active: T::Boolean).void }
+            attr_writer :is_active
 
             sig { returns(T.nilable(T::Boolean)) }
-            def last_name
-            end
+            attr_reader :last_name
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def last_name=(_)
-            end
+            sig { params(last_name: T::Boolean).void }
+            attr_writer :last_name
 
             sig do
               returns(
                 T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Location)
               )
             end
-            def location
-            end
+            attr_reader :location
 
             sig do
               params(
-                _: T.any(
+                location: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Location,
                   FinchAPI::Util::AnyHash
                 )
               )
-                .returns(
-                  T.any(
-                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Location,
-                    FinchAPI::Util::AnyHash
-                  )
-                )
+                .void
             end
-            def location=(_)
-            end
+            attr_writer :location
 
             sig { returns(T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Manager)) }
-            def manager
-            end
+            attr_reader :manager
 
             sig do
               params(
-                _: T.any(
+                manager: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Manager,
                   FinchAPI::Util::AnyHash
                 )
               )
-                .returns(
-                  T.any(
-                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Manager,
-                    FinchAPI::Util::AnyHash
-                  )
-                )
+                .void
             end
-            def manager=(_)
-            end
+            attr_writer :manager
 
             sig { returns(T.nilable(T::Boolean)) }
-            def middle_name
-            end
+            attr_reader :middle_name
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def middle_name=(_)
-            end
+            sig { params(middle_name: T::Boolean).void }
+            attr_writer :middle_name
 
             sig { returns(T.nilable(T::Boolean)) }
-            def start_date
-            end
+            attr_reader :start_date
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def start_date=(_)
-            end
+            sig { params(start_date: T::Boolean).void }
+            attr_writer :start_date
 
             sig { returns(T.nilable(T::Boolean)) }
-            def title
-            end
+            attr_reader :title
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def title=(_)
-            end
+            sig { params(title: T::Boolean).void }
+            attr_writer :title
 
             sig do
               params(
@@ -1386,12 +1141,10 @@ module FinchAPI
 
             class Department < FinchAPI::BaseModel
               sig { returns(T.nilable(T::Boolean)) }
-              def name
-              end
+              attr_reader :name
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def name=(_)
-              end
+              sig { params(name: T::Boolean).void }
+              attr_writer :name
 
               sig { params(name: T::Boolean).returns(T.attached_class) }
               def self.new(name: nil)
@@ -1404,20 +1157,16 @@ module FinchAPI
 
             class Employment < FinchAPI::BaseModel
               sig { returns(T.nilable(T::Boolean)) }
-              def subtype
-              end
+              attr_reader :subtype
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def subtype=(_)
-              end
+              sig { params(subtype: T::Boolean).void }
+              attr_writer :subtype
 
               sig { returns(T.nilable(T::Boolean)) }
-              def type
-              end
+              attr_reader :type
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def type=(_)
-              end
+              sig { params(type: T::Boolean).void }
+              attr_writer :type
 
               sig { params(subtype: T::Boolean, type: T::Boolean).returns(T.attached_class) }
               def self.new(subtype: nil, type: nil)
@@ -1430,28 +1179,22 @@ module FinchAPI
 
             class Income < FinchAPI::BaseModel
               sig { returns(T.nilable(T::Boolean)) }
-              def amount
-              end
+              attr_reader :amount
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def amount=(_)
-              end
+              sig { params(amount: T::Boolean).void }
+              attr_writer :amount
 
               sig { returns(T.nilable(T::Boolean)) }
-              def currency
-              end
+              attr_reader :currency
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def currency=(_)
-              end
+              sig { params(currency: T::Boolean).void }
+              attr_writer :currency
 
               sig { returns(T.nilable(T::Boolean)) }
-              def unit
-              end
+              attr_reader :unit
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def unit=(_)
-              end
+              sig { params(unit: T::Boolean).void }
+              attr_writer :unit
 
               sig do
                 params(amount: T::Boolean, currency: T::Boolean, unit: T::Boolean).returns(T.attached_class)
@@ -1466,52 +1209,40 @@ module FinchAPI
 
             class Location < FinchAPI::BaseModel
               sig { returns(T.nilable(T::Boolean)) }
-              def city
-              end
+              attr_reader :city
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def city=(_)
-              end
+              sig { params(city: T::Boolean).void }
+              attr_writer :city
 
               sig { returns(T.nilable(T::Boolean)) }
-              def country
-              end
+              attr_reader :country
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def country=(_)
-              end
+              sig { params(country: T::Boolean).void }
+              attr_writer :country
 
               sig { returns(T.nilable(T::Boolean)) }
-              def line1
-              end
+              attr_reader :line1
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def line1=(_)
-              end
+              sig { params(line1: T::Boolean).void }
+              attr_writer :line1
 
               sig { returns(T.nilable(T::Boolean)) }
-              def line2
-              end
+              attr_reader :line2
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def line2=(_)
-              end
+              sig { params(line2: T::Boolean).void }
+              attr_writer :line2
 
               sig { returns(T.nilable(T::Boolean)) }
-              def postal_code
-              end
+              attr_reader :postal_code
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def postal_code=(_)
-              end
+              sig { params(postal_code: T::Boolean).void }
+              attr_writer :postal_code
 
               sig { returns(T.nilable(T::Boolean)) }
-              def state
-              end
+              attr_reader :state
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def state=(_)
-              end
+              sig { params(state: T::Boolean).void }
+              attr_writer :state
 
               sig do
                 params(
@@ -1546,12 +1277,10 @@ module FinchAPI
 
             class Manager < FinchAPI::BaseModel
               sig { returns(T.nilable(T::Boolean)) }
-              def id
-              end
+              attr_reader :id
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def id=(_)
-              end
+              sig { params(id: T::Boolean).void }
+              attr_writer :id
 
               sig { params(id: T::Boolean).returns(T.attached_class) }
               def self.new(id: nil)
@@ -1565,155 +1294,114 @@ module FinchAPI
 
           class Individual < FinchAPI::BaseModel
             sig { returns(T.nilable(T::Boolean)) }
-            def id
-            end
+            attr_reader :id
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def id=(_)
-            end
+            sig { params(id: T::Boolean).void }
+            attr_writer :id
 
             sig { returns(T.nilable(T::Boolean)) }
-            def dob
-            end
+            attr_reader :dob
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def dob=(_)
-            end
+            sig { params(dob: T::Boolean).void }
+            attr_writer :dob
 
             sig { returns(T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::Emails)) }
-            def emails
-            end
+            attr_reader :emails
 
             sig do
               params(
-                _: T.any(
+                emails: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::Emails,
                   FinchAPI::Util::AnyHash
                 )
               )
-                .returns(
-                  T.any(
-                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::Emails,
-                    FinchAPI::Util::AnyHash
-                  )
-                )
+                .void
             end
-            def emails=(_)
-            end
+            attr_writer :emails
 
             sig { returns(T.nilable(T::Boolean)) }
-            def encrypted_ssn
-            end
+            attr_reader :encrypted_ssn
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def encrypted_ssn=(_)
-            end
+            sig { params(encrypted_ssn: T::Boolean).void }
+            attr_writer :encrypted_ssn
 
             sig { returns(T.nilable(T::Boolean)) }
-            def ethnicity
-            end
+            attr_reader :ethnicity
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def ethnicity=(_)
-            end
+            sig { params(ethnicity: T::Boolean).void }
+            attr_writer :ethnicity
 
             sig { returns(T.nilable(T::Boolean)) }
-            def first_name
-            end
+            attr_reader :first_name
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def first_name=(_)
-            end
+            sig { params(first_name: T::Boolean).void }
+            attr_writer :first_name
 
             sig { returns(T.nilable(T::Boolean)) }
-            def gender
-            end
+            attr_reader :gender
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def gender=(_)
-            end
+            sig { params(gender: T::Boolean).void }
+            attr_writer :gender
 
             sig { returns(T.nilable(T::Boolean)) }
-            def last_name
-            end
+            attr_reader :last_name
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def last_name=(_)
-            end
+            sig { params(last_name: T::Boolean).void }
+            attr_writer :last_name
 
             sig { returns(T.nilable(T::Boolean)) }
-            def middle_name
-            end
+            attr_reader :middle_name
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def middle_name=(_)
-            end
+            sig { params(middle_name: T::Boolean).void }
+            attr_writer :middle_name
 
             sig do
               returns(
                 T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers)
               )
             end
-            def phone_numbers
-            end
+            attr_reader :phone_numbers
 
             sig do
               params(
-                _: T.any(
+                phone_numbers: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers,
                   FinchAPI::Util::AnyHash
                 )
               )
-                .returns(
-                  T.any(
-                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers,
-                    FinchAPI::Util::AnyHash
-                  )
-                )
+                .void
             end
-            def phone_numbers=(_)
-            end
+            attr_writer :phone_numbers
 
             sig { returns(T.nilable(T::Boolean)) }
-            def preferred_name
-            end
+            attr_reader :preferred_name
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def preferred_name=(_)
-            end
+            sig { params(preferred_name: T::Boolean).void }
+            attr_writer :preferred_name
 
             sig do
               returns(
                 T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::Residence)
               )
             end
-            def residence
-            end
+            attr_reader :residence
 
             sig do
               params(
-                _: T.any(
+                residence: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::Residence,
                   FinchAPI::Util::AnyHash
                 )
               )
-                .returns(
-                  T.any(
-                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::Residence,
-                    FinchAPI::Util::AnyHash
-                  )
-                )
+                .void
             end
-            def residence=(_)
-            end
+            attr_writer :residence
 
             sig { returns(T.nilable(T::Boolean)) }
-            def ssn
-            end
+            attr_reader :ssn
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def ssn=(_)
-            end
+            sig { params(ssn: T::Boolean).void }
+            attr_writer :ssn
 
             sig do
               params(
@@ -1784,20 +1472,16 @@ module FinchAPI
 
             class Emails < FinchAPI::BaseModel
               sig { returns(T.nilable(T::Boolean)) }
-              def data
-              end
+              attr_reader :data
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def data=(_)
-              end
+              sig { params(data: T::Boolean).void }
+              attr_writer :data
 
               sig { returns(T.nilable(T::Boolean)) }
-              def type
-              end
+              attr_reader :type
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def type=(_)
-              end
+              sig { params(type: T::Boolean).void }
+              attr_writer :type
 
               sig { params(data: T::Boolean, type: T::Boolean).returns(T.attached_class) }
               def self.new(data: nil, type: nil)
@@ -1810,20 +1494,16 @@ module FinchAPI
 
             class PhoneNumbers < FinchAPI::BaseModel
               sig { returns(T.nilable(T::Boolean)) }
-              def data
-              end
+              attr_reader :data
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def data=(_)
-              end
+              sig { params(data: T::Boolean).void }
+              attr_writer :data
 
               sig { returns(T.nilable(T::Boolean)) }
-              def type
-              end
+              attr_reader :type
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def type=(_)
-              end
+              sig { params(type: T::Boolean).void }
+              attr_writer :type
 
               sig { params(data: T::Boolean, type: T::Boolean).returns(T.attached_class) }
               def self.new(data: nil, type: nil)
@@ -1836,52 +1516,40 @@ module FinchAPI
 
             class Residence < FinchAPI::BaseModel
               sig { returns(T.nilable(T::Boolean)) }
-              def city
-              end
+              attr_reader :city
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def city=(_)
-              end
+              sig { params(city: T::Boolean).void }
+              attr_writer :city
 
               sig { returns(T.nilable(T::Boolean)) }
-              def country
-              end
+              attr_reader :country
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def country=(_)
-              end
+              sig { params(country: T::Boolean).void }
+              attr_writer :country
 
               sig { returns(T.nilable(T::Boolean)) }
-              def line1
-              end
+              attr_reader :line1
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def line1=(_)
-              end
+              sig { params(line1: T::Boolean).void }
+              attr_writer :line1
 
               sig { returns(T.nilable(T::Boolean)) }
-              def line2
-              end
+              attr_reader :line2
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def line2=(_)
-              end
+              sig { params(line2: T::Boolean).void }
+              attr_writer :line2
 
               sig { returns(T.nilable(T::Boolean)) }
-              def postal_code
-              end
+              attr_reader :postal_code
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def postal_code=(_)
-              end
+              sig { params(postal_code: T::Boolean).void }
+              attr_writer :postal_code
 
               sig { returns(T.nilable(T::Boolean)) }
-              def state
-              end
+              attr_reader :state
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def state=(_)
-              end
+              sig { params(state: T::Boolean).void }
+              attr_writer :state
 
               sig do
                 params(
@@ -1917,36 +1585,28 @@ module FinchAPI
 
           class PayGroup < FinchAPI::BaseModel
             sig { returns(T.nilable(T::Boolean)) }
-            def id
-            end
+            attr_reader :id
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def id=(_)
-            end
+            sig { params(id: T::Boolean).void }
+            attr_writer :id
 
             sig { returns(T.nilable(T::Boolean)) }
-            def individual_ids
-            end
+            attr_reader :individual_ids
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def individual_ids=(_)
-            end
+            sig { params(individual_ids: T::Boolean).void }
+            attr_writer :individual_ids
 
             sig { returns(T.nilable(T::Boolean)) }
-            def name
-            end
+            attr_reader :name
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def name=(_)
-            end
+            sig { params(name: T::Boolean).void }
+            attr_writer :name
 
             sig { returns(T.nilable(T::Boolean)) }
-            def pay_frequencies
-            end
+            attr_reader :pay_frequencies
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def pay_frequencies=(_)
-            end
+            sig { params(pay_frequencies: T::Boolean).void }
+            attr_writer :pay_frequencies
 
             sig do
               params(
@@ -1979,50 +1639,36 @@ module FinchAPI
                 T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::Paging)
               )
             end
-            def paging
-            end
+            attr_reader :paging
 
             sig do
               params(
-                _: T.any(
+                paging: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::Paging,
                   FinchAPI::Util::AnyHash
                 )
               )
-                .returns(
-                  T.any(
-                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::Paging,
-                    FinchAPI::Util::AnyHash
-                  )
-                )
+                .void
             end
-            def paging=(_)
-            end
+            attr_writer :paging
 
             sig do
               returns(
                 T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements)
               )
             end
-            def pay_statements
-            end
+            attr_reader :pay_statements
 
             sig do
               params(
-                _: T.any(
+                pay_statements: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements,
                   FinchAPI::Util::AnyHash
                 )
               )
-                .returns(
-                  T.any(
-                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements,
-                    FinchAPI::Util::AnyHash
-                  )
-                )
+                .void
             end
-            def pay_statements=(_)
-            end
+            attr_writer :pay_statements
 
             sig do
               params(
@@ -2054,20 +1700,10 @@ module FinchAPI
 
             class Paging < FinchAPI::BaseModel
               sig { returns(T::Boolean) }
-              def count
-              end
-
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def count=(_)
-              end
+              attr_accessor :count
 
               sig { returns(T::Boolean) }
-              def offset
-              end
-
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def offset=(_)
-              end
+              attr_accessor :offset
 
               sig { params(count: T::Boolean, offset: T::Boolean).returns(T.attached_class) }
               def self.new(count:, offset:)
@@ -2086,25 +1722,18 @@ module FinchAPI
                   )
                 )
               end
-              def earnings
-              end
+              attr_reader :earnings
 
               sig do
                 params(
-                  _: T.any(
+                  earnings: T.any(
                     FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings,
                     FinchAPI::Util::AnyHash
                   )
                 )
-                  .returns(
-                    T.any(
-                      FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings,
-                      FinchAPI::Util::AnyHash
-                    )
-                  )
+                  .void
               end
-              def earnings=(_)
-              end
+              attr_writer :earnings
 
               sig do
                 returns(
@@ -2113,25 +1742,18 @@ module FinchAPI
                   )
                 )
               end
-              def employee_deductions
-              end
+              attr_reader :employee_deductions
 
               sig do
                 params(
-                  _: T.any(
+                  employee_deductions: T.any(
                     FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions,
                     FinchAPI::Util::AnyHash
                   )
                 )
-                  .returns(
-                    T.any(
-                      FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions,
-                      FinchAPI::Util::AnyHash
-                    )
-                  )
+                  .void
               end
-              def employee_deductions=(_)
-              end
+              attr_writer :employee_deductions
 
               sig do
                 returns(
@@ -2140,57 +1762,42 @@ module FinchAPI
                   )
                 )
               end
-              def employer_contributions
-              end
+              attr_reader :employer_contributions
 
               sig do
                 params(
-                  _: T.any(
+                  employer_contributions: T.any(
                     FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions,
                     FinchAPI::Util::AnyHash
                   )
                 )
-                  .returns(
-                    T.any(
-                      FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions,
-                      FinchAPI::Util::AnyHash
-                    )
-                  )
+                  .void
               end
-              def employer_contributions=(_)
-              end
+              attr_writer :employer_contributions
 
               sig { returns(T.nilable(T::Boolean)) }
-              def gross_pay
-              end
+              attr_reader :gross_pay
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def gross_pay=(_)
-              end
+              sig { params(gross_pay: T::Boolean).void }
+              attr_writer :gross_pay
 
               sig { returns(T.nilable(T::Boolean)) }
-              def individual_id
-              end
+              attr_reader :individual_id
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def individual_id=(_)
-              end
+              sig { params(individual_id: T::Boolean).void }
+              attr_writer :individual_id
 
               sig { returns(T.nilable(T::Boolean)) }
-              def net_pay
-              end
+              attr_reader :net_pay
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def net_pay=(_)
-              end
+              sig { params(net_pay: T::Boolean).void }
+              attr_writer :net_pay
 
               sig { returns(T.nilable(T::Boolean)) }
-              def payment_method
-              end
+              attr_reader :payment_method
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def payment_method=(_)
-              end
+              sig { params(payment_method: T::Boolean).void }
+              attr_writer :payment_method
 
               sig do
                 returns(
@@ -2199,41 +1806,30 @@ module FinchAPI
                   )
                 )
               end
-              def taxes
-              end
+              attr_reader :taxes
 
               sig do
                 params(
-                  _: T.any(
+                  taxes: T.any(
                     FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes,
                     FinchAPI::Util::AnyHash
                   )
                 )
-                  .returns(
-                    T.any(
-                      FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes,
-                      FinchAPI::Util::AnyHash
-                    )
-                  )
+                  .void
               end
-              def taxes=(_)
-              end
+              attr_writer :taxes
 
               sig { returns(T.nilable(T::Boolean)) }
-              def total_hours
-              end
+              attr_reader :total_hours
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def total_hours=(_)
-              end
+              sig { params(total_hours: T::Boolean).void }
+              attr_writer :total_hours
 
               sig { returns(T.nilable(T::Boolean)) }
-              def type
-              end
+              attr_reader :type
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def type=(_)
-              end
+              sig { params(type: T::Boolean).void }
+              attr_writer :type
 
               sig do
                 params(
@@ -2298,36 +1894,28 @@ module FinchAPI
 
               class Earnings < FinchAPI::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
-                def amount
-                end
+                attr_reader :amount
 
-                sig { params(_: T::Boolean).returns(T::Boolean) }
-                def amount=(_)
-                end
+                sig { params(amount: T::Boolean).void }
+                attr_writer :amount
 
                 sig { returns(T.nilable(T::Boolean)) }
-                def currency
-                end
+                attr_reader :currency
 
-                sig { params(_: T::Boolean).returns(T::Boolean) }
-                def currency=(_)
-                end
+                sig { params(currency: T::Boolean).void }
+                attr_writer :currency
 
                 sig { returns(T.nilable(T::Boolean)) }
-                def name
-                end
+                attr_reader :name
 
-                sig { params(_: T::Boolean).returns(T::Boolean) }
-                def name=(_)
-                end
+                sig { params(name: T::Boolean).void }
+                attr_writer :name
 
                 sig { returns(T.nilable(T::Boolean)) }
-                def type
-                end
+                attr_reader :type
 
-                sig { params(_: T::Boolean).returns(T::Boolean) }
-                def type=(_)
-                end
+                sig { params(type: T::Boolean).void }
+                attr_writer :type
 
                 sig do
                   params(amount: T::Boolean, currency: T::Boolean, name: T::Boolean, type: T::Boolean)
@@ -2352,44 +1940,34 @@ module FinchAPI
 
               class EmployeeDeductions < FinchAPI::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
-                def amount
-                end
+                attr_reader :amount
 
-                sig { params(_: T::Boolean).returns(T::Boolean) }
-                def amount=(_)
-                end
+                sig { params(amount: T::Boolean).void }
+                attr_writer :amount
 
                 sig { returns(T.nilable(T::Boolean)) }
-                def currency
-                end
+                attr_reader :currency
 
-                sig { params(_: T::Boolean).returns(T::Boolean) }
-                def currency=(_)
-                end
+                sig { params(currency: T::Boolean).void }
+                attr_writer :currency
 
                 sig { returns(T.nilable(T::Boolean)) }
-                def name
-                end
+                attr_reader :name
 
-                sig { params(_: T::Boolean).returns(T::Boolean) }
-                def name=(_)
-                end
+                sig { params(name: T::Boolean).void }
+                attr_writer :name
 
                 sig { returns(T.nilable(T::Boolean)) }
-                def pre_tax
-                end
+                attr_reader :pre_tax
 
-                sig { params(_: T::Boolean).returns(T::Boolean) }
-                def pre_tax=(_)
-                end
+                sig { params(pre_tax: T::Boolean).void }
+                attr_writer :pre_tax
 
                 sig { returns(T.nilable(T::Boolean)) }
-                def type
-                end
+                attr_reader :type
 
-                sig { params(_: T::Boolean).returns(T::Boolean) }
-                def type=(_)
-                end
+                sig { params(type: T::Boolean).void }
+                attr_writer :type
 
                 sig do
                   params(
@@ -2422,28 +2000,22 @@ module FinchAPI
 
               class EmployerContributions < FinchAPI::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
-                def amount
-                end
+                attr_reader :amount
 
-                sig { params(_: T::Boolean).returns(T::Boolean) }
-                def amount=(_)
-                end
+                sig { params(amount: T::Boolean).void }
+                attr_writer :amount
 
                 sig { returns(T.nilable(T::Boolean)) }
-                def currency
-                end
+                attr_reader :currency
 
-                sig { params(_: T::Boolean).returns(T::Boolean) }
-                def currency=(_)
-                end
+                sig { params(currency: T::Boolean).void }
+                attr_writer :currency
 
                 sig { returns(T.nilable(T::Boolean)) }
-                def name
-                end
+                attr_reader :name
 
-                sig { params(_: T::Boolean).returns(T::Boolean) }
-                def name=(_)
-                end
+                sig { params(name: T::Boolean).void }
+                attr_writer :name
 
                 sig do
                   params(amount: T::Boolean, currency: T::Boolean, name: T::Boolean).returns(T.attached_class)
@@ -2458,44 +2030,34 @@ module FinchAPI
 
               class Taxes < FinchAPI::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
-                def amount
-                end
+                attr_reader :amount
 
-                sig { params(_: T::Boolean).returns(T::Boolean) }
-                def amount=(_)
-                end
+                sig { params(amount: T::Boolean).void }
+                attr_writer :amount
 
                 sig { returns(T.nilable(T::Boolean)) }
-                def currency
-                end
+                attr_reader :currency
 
-                sig { params(_: T::Boolean).returns(T::Boolean) }
-                def currency=(_)
-                end
+                sig { params(currency: T::Boolean).void }
+                attr_writer :currency
 
                 sig { returns(T.nilable(T::Boolean)) }
-                def employer
-                end
+                attr_reader :employer
 
-                sig { params(_: T::Boolean).returns(T::Boolean) }
-                def employer=(_)
-                end
+                sig { params(employer: T::Boolean).void }
+                attr_writer :employer
 
                 sig { returns(T.nilable(T::Boolean)) }
-                def name
-                end
+                attr_reader :name
 
-                sig { params(_: T::Boolean).returns(T::Boolean) }
-                def name=(_)
-                end
+                sig { params(name: T::Boolean).void }
+                attr_writer :name
 
                 sig { returns(T.nilable(T::Boolean)) }
-                def type
-                end
+                attr_reader :type
 
-                sig { params(_: T::Boolean).returns(T::Boolean) }
-                def type=(_)
-                end
+                sig { params(type: T::Boolean).void }
+                attr_writer :type
 
                 sig do
                   params(
@@ -2530,113 +2092,84 @@ module FinchAPI
 
           class Payment < FinchAPI::BaseModel
             sig { returns(T.nilable(T::Boolean)) }
-            def id
-            end
+            attr_reader :id
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def id=(_)
-            end
+            sig { params(id: T::Boolean).void }
+            attr_writer :id
 
             sig { returns(T.nilable(T::Boolean)) }
-            def company_debit
-            end
+            attr_reader :company_debit
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def company_debit=(_)
-            end
+            sig { params(company_debit: T::Boolean).void }
+            attr_writer :company_debit
 
             sig { returns(T.nilable(T::Boolean)) }
-            def debit_date
-            end
+            attr_reader :debit_date
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def debit_date=(_)
-            end
+            sig { params(debit_date: T::Boolean).void }
+            attr_writer :debit_date
 
             sig { returns(T.nilable(T::Boolean)) }
-            def employee_taxes
-            end
+            attr_reader :employee_taxes
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def employee_taxes=(_)
-            end
+            sig { params(employee_taxes: T::Boolean).void }
+            attr_writer :employee_taxes
 
             sig { returns(T.nilable(T::Boolean)) }
-            def employer_taxes
-            end
+            attr_reader :employer_taxes
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def employer_taxes=(_)
-            end
+            sig { params(employer_taxes: T::Boolean).void }
+            attr_writer :employer_taxes
 
             sig { returns(T.nilable(T::Boolean)) }
-            def gross_pay
-            end
+            attr_reader :gross_pay
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def gross_pay=(_)
-            end
+            sig { params(gross_pay: T::Boolean).void }
+            attr_writer :gross_pay
 
             sig { returns(T.nilable(T::Boolean)) }
-            def individual_ids
-            end
+            attr_reader :individual_ids
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def individual_ids=(_)
-            end
+            sig { params(individual_ids: T::Boolean).void }
+            attr_writer :individual_ids
 
             sig { returns(T.nilable(T::Boolean)) }
-            def net_pay
-            end
+            attr_reader :net_pay
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def net_pay=(_)
-            end
+            sig { params(net_pay: T::Boolean).void }
+            attr_writer :net_pay
 
             sig { returns(T.nilable(T::Boolean)) }
-            def pay_date
-            end
+            attr_reader :pay_date
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def pay_date=(_)
-            end
+            sig { params(pay_date: T::Boolean).void }
+            attr_writer :pay_date
 
             sig { returns(T.nilable(T::Boolean)) }
-            def pay_frequencies
-            end
+            attr_reader :pay_frequencies
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def pay_frequencies=(_)
-            end
+            sig { params(pay_frequencies: T::Boolean).void }
+            attr_writer :pay_frequencies
 
             sig { returns(T.nilable(T::Boolean)) }
-            def pay_group_ids
-            end
+            attr_reader :pay_group_ids
 
-            sig { params(_: T::Boolean).returns(T::Boolean) }
-            def pay_group_ids=(_)
-            end
+            sig { params(pay_group_ids: T::Boolean).void }
+            attr_writer :pay_group_ids
 
             sig { returns(T.nilable(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment::PayPeriod)) }
-            def pay_period
-            end
+            attr_reader :pay_period
 
             sig do
               params(
-                _: T.any(
+                pay_period: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment::PayPeriod,
                   FinchAPI::Util::AnyHash
                 )
               )
-                .returns(
-                  T.any(
-                    FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment::PayPeriod,
-                    FinchAPI::Util::AnyHash
-                  )
-                )
+                .void
             end
-            def pay_period=(_)
-            end
+            attr_writer :pay_period
 
             sig do
               params(
@@ -2698,20 +2231,16 @@ module FinchAPI
 
             class PayPeriod < FinchAPI::BaseModel
               sig { returns(T.nilable(T::Boolean)) }
-              def end_date
-              end
+              attr_reader :end_date
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def end_date=(_)
-              end
+              sig { params(end_date: T::Boolean).void }
+              attr_writer :end_date
 
               sig { returns(T.nilable(T::Boolean)) }
-              def start_date
-              end
+              attr_reader :start_date
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def start_date=(_)
-              end
+              sig { params(start_date: T::Boolean).void }
+              attr_writer :start_date
 
               sig { params(end_date: T::Boolean, start_date: T::Boolean).returns(T.attached_class) }
               def self.new(end_date: nil, start_date: nil)

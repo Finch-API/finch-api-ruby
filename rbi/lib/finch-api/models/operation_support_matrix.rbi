@@ -11,15 +11,10 @@ module FinchAPI
       #   - `client_access_only`: This behavior is supported by the provider, but only
       #     available to the client and not to Finch
       sig { returns(T.nilable(FinchAPI::Models::OperationSupport::TaggedSymbol)) }
-      def create
-      end
+      attr_reader :create
 
-      sig do
-        params(_: FinchAPI::Models::OperationSupport::OrSymbol)
-          .returns(FinchAPI::Models::OperationSupport::OrSymbol)
-      end
-      def create=(_)
-      end
+      sig { params(create: FinchAPI::Models::OperationSupport::OrSymbol).void }
+      attr_writer :create
 
       # - `supported`: This operation is supported by both the provider and Finch
       #   - `not_supported_by_finch`: This operation is not supported by Finch but
@@ -29,15 +24,10 @@ module FinchAPI
       #   - `client_access_only`: This behavior is supported by the provider, but only
       #     available to the client and not to Finch
       sig { returns(T.nilable(FinchAPI::Models::OperationSupport::TaggedSymbol)) }
-      def delete
-      end
+      attr_reader :delete
 
-      sig do
-        params(_: FinchAPI::Models::OperationSupport::OrSymbol)
-          .returns(FinchAPI::Models::OperationSupport::OrSymbol)
-      end
-      def delete=(_)
-      end
+      sig { params(delete: FinchAPI::Models::OperationSupport::OrSymbol).void }
+      attr_writer :delete
 
       # - `supported`: This operation is supported by both the provider and Finch
       #   - `not_supported_by_finch`: This operation is not supported by Finch but
@@ -47,15 +37,10 @@ module FinchAPI
       #   - `client_access_only`: This behavior is supported by the provider, but only
       #     available to the client and not to Finch
       sig { returns(T.nilable(FinchAPI::Models::OperationSupport::TaggedSymbol)) }
-      def read
-      end
+      attr_reader :read
 
-      sig do
-        params(_: FinchAPI::Models::OperationSupport::OrSymbol)
-          .returns(FinchAPI::Models::OperationSupport::OrSymbol)
-      end
-      def read=(_)
-      end
+      sig { params(read: FinchAPI::Models::OperationSupport::OrSymbol).void }
+      attr_writer :read
 
       # - `supported`: This operation is supported by both the provider and Finch
       #   - `not_supported_by_finch`: This operation is not supported by Finch but
@@ -65,15 +50,10 @@ module FinchAPI
       #   - `client_access_only`: This behavior is supported by the provider, but only
       #     available to the client and not to Finch
       sig { returns(T.nilable(FinchAPI::Models::OperationSupport::TaggedSymbol)) }
-      def update
-      end
+      attr_reader :update
 
-      sig do
-        params(_: FinchAPI::Models::OperationSupport::OrSymbol)
-          .returns(FinchAPI::Models::OperationSupport::OrSymbol)
-      end
-      def update=(_)
-      end
+      sig { params(update: FinchAPI::Models::OperationSupport::OrSymbol).void }
+      attr_writer :update
 
       sig do
         params(

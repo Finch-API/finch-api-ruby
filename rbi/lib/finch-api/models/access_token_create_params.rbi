@@ -7,36 +7,25 @@ module FinchAPI
       include FinchAPI::RequestParameters
 
       sig { returns(String) }
-      def code
-      end
-
-      sig { params(_: String).returns(String) }
-      def code=(_)
-      end
+      attr_accessor :code
 
       sig { returns(T.nilable(String)) }
-      def client_id
-      end
+      attr_reader :client_id
 
-      sig { params(_: String).returns(String) }
-      def client_id=(_)
-      end
+      sig { params(client_id: String).void }
+      attr_writer :client_id
 
       sig { returns(T.nilable(String)) }
-      def client_secret
-      end
+      attr_reader :client_secret
 
-      sig { params(_: String).returns(String) }
-      def client_secret=(_)
-      end
+      sig { params(client_secret: String).void }
+      attr_writer :client_secret
 
       sig { returns(T.nilable(String)) }
-      def redirect_uri
-      end
+      attr_reader :redirect_uri
 
-      sig { params(_: String).returns(String) }
-      def redirect_uri=(_)
-      end
+      sig { params(redirect_uri: String).void }
+      attr_writer :redirect_uri
 
       sig do
         params(

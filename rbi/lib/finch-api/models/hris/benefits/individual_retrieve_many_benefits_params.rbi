@@ -11,12 +11,10 @@ module FinchAPI
           # comma-delimited list of stable Finch uuids for each individual. If empty,
           #   defaults to all individuals
           sig { returns(T.nilable(String)) }
-          def individual_ids
-          end
+          attr_reader :individual_ids
 
-          sig { params(_: String).returns(String) }
-          def individual_ids=(_)
-          end
+          sig { params(individual_ids: String).void }
+          attr_writer :individual_ids
 
           sig do
             params(

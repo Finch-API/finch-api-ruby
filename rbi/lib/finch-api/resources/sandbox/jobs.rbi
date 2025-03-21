@@ -5,8 +5,7 @@ module FinchAPI
     class Sandbox
       class Jobs
         sig { returns(FinchAPI::Resources::Sandbox::Jobs::Configuration) }
-        def configuration
-        end
+        attr_reader :configuration
 
         # Enqueue a new sandbox job
         sig do

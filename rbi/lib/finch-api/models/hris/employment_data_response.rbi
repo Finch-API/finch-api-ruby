@@ -5,31 +5,22 @@ module FinchAPI
     module HRIS
       class EmploymentDataResponse < FinchAPI::BaseModel
         sig { returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData)) }
-        def body
-        end
+        attr_reader :body
 
-        sig do
-          params(_: T.any(FinchAPI::Models::HRIS::EmploymentData, FinchAPI::Util::AnyHash))
-            .returns(T.any(FinchAPI::Models::HRIS::EmploymentData, FinchAPI::Util::AnyHash))
-        end
-        def body=(_)
-        end
+        sig { params(body: T.any(FinchAPI::Models::HRIS::EmploymentData, FinchAPI::Util::AnyHash)).void }
+        attr_writer :body
 
         sig { returns(T.nilable(Integer)) }
-        def code
-        end
+        attr_reader :code
 
-        sig { params(_: Integer).returns(Integer) }
-        def code=(_)
-        end
+        sig { params(code: Integer).void }
+        attr_writer :code
 
         sig { returns(T.nilable(String)) }
-        def individual_id
-        end
+        attr_reader :individual_id
 
-        sig { params(_: String).returns(String) }
-        def individual_id=(_)
-        end
+        sig { params(individual_id: String).void }
+        attr_writer :individual_id
 
         sig do
           params(

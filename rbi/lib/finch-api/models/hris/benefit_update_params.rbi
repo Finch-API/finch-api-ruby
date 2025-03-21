@@ -9,12 +9,10 @@ module FinchAPI
 
         # Updated name or description.
         sig { returns(T.nilable(String)) }
-        def description
-        end
+        attr_reader :description
 
-        sig { params(_: String).returns(String) }
-        def description=(_)
-        end
+        sig { params(description: String).void }
+        attr_writer :description
 
         sig do
           params(

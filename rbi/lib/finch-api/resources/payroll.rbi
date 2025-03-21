@@ -4,8 +4,7 @@ module FinchAPI
   module Resources
     class Payroll
       sig { returns(FinchAPI::Resources::Payroll::PayGroups) }
-      def pay_groups
-      end
+      attr_reader :pay_groups
 
       sig { params(client: FinchAPI::Client).returns(T.attached_class) }
       def self.new(client:)

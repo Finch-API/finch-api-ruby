@@ -10,22 +10,12 @@ module FinchAPI
         # The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
         #   format.
         sig { returns(Date) }
-        def end_date
-        end
-
-        sig { params(_: Date).returns(Date) }
-        def end_date=(_)
-        end
+        attr_accessor :end_date
 
         # The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
         #   format.
         sig { returns(Date) }
-        def start_date
-        end
-
-        sig { params(_: Date).returns(Date) }
-        def start_date=(_)
-        end
+        attr_accessor :start_date
 
         sig do
           params(

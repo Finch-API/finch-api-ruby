@@ -6,96 +6,50 @@ module FinchAPI
       class AutomatedAsyncJob < FinchAPI::BaseModel
         # The datetime the job completed.
         sig { returns(T.nilable(Time)) }
-        def completed_at
-        end
-
-        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-        def completed_at=(_)
-        end
+        attr_accessor :completed_at
 
         # The datetime when the job was created. for scheduled jobs, this will be the
         #   initial connection time. For ad-hoc jobs, this will be the time the creation
         #   request was received.
         sig { returns(Time) }
-        def created_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def created_at=(_)
-        end
+        attr_accessor :created_at
 
         # The id of the job that has been created.
         sig { returns(String) }
-        def job_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def job_id=(_)
-        end
+        attr_accessor :job_id
 
         # The url that can be used to retrieve the job status
         sig { returns(String) }
-        def job_url
-        end
-
-        sig { params(_: String).returns(String) }
-        def job_url=(_)
-        end
+        attr_accessor :job_url
 
         # The input parameters for the job.
         sig { returns(T.nilable(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params)) }
-        def params
-        end
+        attr_reader :params
 
         sig do
-          params(_: T.nilable(T.any(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params, FinchAPI::Util::AnyHash)))
-            .returns(T.nilable(T.any(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params, FinchAPI::Util::AnyHash)))
+          params(
+            params: T.nilable(T.any(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params, FinchAPI::Util::AnyHash))
+          )
+            .void
         end
-        def params=(_)
-        end
+        attr_writer :params
 
         # The datetime a job is scheduled to be run. For scheduled jobs, this datetime can
         #   be in the future if the job has not yet been enqueued. For ad-hoc jobs, this
         #   field will be null.
         sig { returns(T.nilable(Time)) }
-        def scheduled_at
-        end
-
-        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-        def scheduled_at=(_)
-        end
+        attr_accessor :scheduled_at
 
         # The datetime a job entered into the job queue.
         sig { returns(T.nilable(Time)) }
-        def started_at
-        end
-
-        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-        def started_at=(_)
-        end
+        attr_accessor :started_at
 
         sig { returns(FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol) }
-        def status
-        end
-
-        sig do
-          params(_: FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
-            .returns(FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
-        end
-        def status=(_)
-        end
+        attr_accessor :status
 
         # The type of automated job
         sig { returns(FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol) }
-        def type
-        end
-
-        sig do
-          params(_: FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol)
-            .returns(FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol)
-        end
-        def type=(_)
-        end
+        attr_accessor :type
 
         sig do
           params(
@@ -136,12 +90,10 @@ module FinchAPI
         class Params < FinchAPI::BaseModel
           # The ID of the individual that the job was completed for.
           sig { returns(T.nilable(String)) }
-          def individual_id
-          end
+          attr_reader :individual_id
 
-          sig { params(_: String).returns(String) }
-          def individual_id=(_)
-          end
+          sig { params(individual_id: String).void }
+          attr_writer :individual_id
 
           # The input parameters for the job.
           sig { params(individual_id: String).returns(T.attached_class) }

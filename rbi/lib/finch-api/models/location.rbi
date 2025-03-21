@@ -5,73 +5,33 @@ module FinchAPI
     class Location < FinchAPI::BaseModel
       # City, district, suburb, town, or village.
       sig { returns(T.nilable(String)) }
-      def city
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def city=(_)
-      end
+      attr_accessor :city
 
       # The 2-letter ISO 3166 country code.
       sig { returns(T.nilable(String)) }
-      def country
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def country=(_)
-      end
+      attr_accessor :country
 
       # Street address or PO box.
       sig { returns(T.nilable(String)) }
-      def line1
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def line1=(_)
-      end
+      attr_accessor :line1
 
       # Apartment, suite, unit, or building.
       sig { returns(T.nilable(String)) }
-      def line2
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def line2=(_)
-      end
+      attr_accessor :line2
 
       sig { returns(T.nilable(String)) }
-      def name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # The postal code or zip code.
       sig { returns(T.nilable(String)) }
-      def postal_code
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def postal_code=(_)
-      end
+      attr_accessor :postal_code
 
       sig { returns(T.nilable(String)) }
-      def source_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def source_id=(_)
-      end
+      attr_accessor :source_id
 
       # The state code.
       sig { returns(T.nilable(String)) }
-      def state
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def state=(_)
-      end
+      attr_accessor :state
 
       sig do
         params(
