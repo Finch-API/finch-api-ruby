@@ -27,7 +27,7 @@ module FinchAPI
 
       sig do
         params(
-          data: FinchAPI::Models::AccountUpdateEvent::Data,
+          data: T.any(FinchAPI::Models::AccountUpdateEvent::Data, FinchAPI::Util::AnyHash),
           event_type: FinchAPI::Models::AccountUpdateEvent::EventType::TaggedSymbol
         )
           .returns(T.attached_class)
@@ -74,7 +74,7 @@ module FinchAPI
 
         sig do
           params(
-            authentication_method: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod,
+            authentication_method: T.any(FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod, FinchAPI::Util::AnyHash),
             status: FinchAPI::Models::ConnectionStatusType::TaggedSymbol
           )
             .returns(T.attached_class)
@@ -148,8 +148,13 @@ module FinchAPI
 
           sig do
             params(
-              benefits_support: T.nilable(FinchAPI::Models::HRIS::BenefitsSupport),
-              supported_fields: T.nilable(FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields),
+              benefits_support: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitsSupport, FinchAPI::Util::AnyHash)),
+              supported_fields: T.nilable(
+                T.any(
+                  FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields,
+                  FinchAPI::Util::AnyHash
+                )
+              ),
               type: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::TaggedSymbol
             )
               .returns(T.attached_class)
@@ -349,13 +354,34 @@ module FinchAPI
             # The supported data fields returned by our HR and payroll endpoints
             sig do
               params(
-                company: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company,
-                directory: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory,
-                employment: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment,
-                individual: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual,
-                pay_group: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayGroup,
-                pay_statement: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement,
-                payment: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment
+                company: T.any(
+                  FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company,
+                  FinchAPI::Util::AnyHash
+                ),
+                directory: T.any(
+                  FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory,
+                  FinchAPI::Util::AnyHash
+                ),
+                employment: T.any(
+                  FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment,
+                  FinchAPI::Util::AnyHash
+                ),
+                individual: T.any(
+                  FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual,
+                  FinchAPI::Util::AnyHash
+                ),
+                pay_group: T.any(
+                  FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayGroup,
+                  FinchAPI::Util::AnyHash
+                ),
+                pay_statement: T.any(
+                  FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement,
+                  FinchAPI::Util::AnyHash
+                ),
+                payment: T.any(
+                  FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment,
+                  FinchAPI::Util::AnyHash
+                )
               )
                 .returns(T.attached_class)
             end
@@ -539,12 +565,24 @@ module FinchAPI
               sig do
                 params(
                   id: T::Boolean,
-                  accounts: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Accounts,
-                  departments: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments,
+                  accounts: T.any(
+                    FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Accounts,
+                    FinchAPI::Util::AnyHash
+                  ),
+                  departments: T.any(
+                    FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments,
+                    FinchAPI::Util::AnyHash
+                  ),
                   ein: T::Boolean,
-                  entity: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Entity,
+                  entity: T.any(
+                    FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Entity,
+                    FinchAPI::Util::AnyHash
+                  ),
                   legal_name: T::Boolean,
-                  locations: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Locations,
+                  locations: T.any(
+                    FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Locations,
+                    FinchAPI::Util::AnyHash
+                  ),
                   primary_email: T::Boolean,
                   primary_phone_number: T::Boolean
                 )
@@ -691,7 +729,10 @@ module FinchAPI
                 sig do
                   params(
                     name: T::Boolean,
-                    parent: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments::Parent
+                    parent: T.any(
+                      FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments::Parent,
+                      FinchAPI::Util::AnyHash
+                    )
                   )
                     .returns(T.attached_class)
                 end
@@ -893,8 +934,14 @@ module FinchAPI
 
               sig do
                 params(
-                  individuals: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals,
-                  paging: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Paging
+                  individuals: T.any(
+                    FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals,
+                    FinchAPI::Util::AnyHash
+                  ),
+                  paging: T.any(
+                    FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Paging,
+                    FinchAPI::Util::AnyHash
+                  )
                 )
                   .returns(T.attached_class)
               end
@@ -996,7 +1043,10 @@ module FinchAPI
                     first_name: T::Boolean,
                     is_active: T::Boolean,
                     last_name: T::Boolean,
-                    manager: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager,
+                    manager: T.any(
+                      FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager,
+                      FinchAPI::Util::AnyHash
+                    ),
                     middle_name: T::Boolean
                   )
                     .returns(T.attached_class)
@@ -1304,17 +1354,32 @@ module FinchAPI
                   id: T::Boolean,
                   class_code: T::Boolean,
                   custom_fields: T::Boolean,
-                  department: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Department,
-                  employment: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Employment,
+                  department: T.any(
+                    FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Department,
+                    FinchAPI::Util::AnyHash
+                  ),
+                  employment: T.any(
+                    FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Employment,
+                    FinchAPI::Util::AnyHash
+                  ),
                   employment_status: T::Boolean,
                   end_date: T::Boolean,
                   first_name: T::Boolean,
-                  income: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Income,
+                  income: T.any(
+                    FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Income,
+                    FinchAPI::Util::AnyHash
+                  ),
                   income_history: T::Boolean,
                   is_active: T::Boolean,
                   last_name: T::Boolean,
-                  location: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Location,
-                  manager: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager,
+                  location: T.any(
+                    FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Location,
+                    FinchAPI::Util::AnyHash
+                  ),
+                  manager: T.any(
+                    FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager,
+                    FinchAPI::Util::AnyHash
+                  ),
                   middle_name: T::Boolean,
                   start_date: T::Boolean,
                   title: T::Boolean
@@ -1714,16 +1779,25 @@ module FinchAPI
                 params(
                   id: T::Boolean,
                   dob: T::Boolean,
-                  emails: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Emails,
+                  emails: T.any(
+                    FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Emails,
+                    FinchAPI::Util::AnyHash
+                  ),
                   encrypted_ssn: T::Boolean,
                   ethnicity: T::Boolean,
                   first_name: T::Boolean,
                   gender: T::Boolean,
                   last_name: T::Boolean,
                   middle_name: T::Boolean,
-                  phone_numbers: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers,
+                  phone_numbers: T.any(
+                    FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers,
+                    FinchAPI::Util::AnyHash
+                  ),
                   preferred_name: T::Boolean,
-                  residence: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Residence,
+                  residence: T.any(
+                    FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Residence,
+                    FinchAPI::Util::AnyHash
+                  ),
                   ssn: T::Boolean
                 )
                   .returns(T.attached_class)
@@ -2016,8 +2090,14 @@ module FinchAPI
 
               sig do
                 params(
-                  paging: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::Paging,
-                  pay_statements: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements
+                  paging: T.any(
+                    FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::Paging,
+                    FinchAPI::Util::AnyHash
+                  ),
+                  pay_statements: T.any(
+                    FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements,
+                    FinchAPI::Util::AnyHash
+                  )
                 )
                   .returns(T.attached_class)
               end
@@ -2221,14 +2301,26 @@ module FinchAPI
 
                 sig do
                   params(
-                    earnings: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings,
-                    employee_deductions: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions,
-                    employer_contributions: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions,
+                    earnings: T.any(
+                      FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings,
+                      FinchAPI::Util::AnyHash
+                    ),
+                    employee_deductions: T.any(
+                      FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions,
+                      FinchAPI::Util::AnyHash
+                    ),
+                    employer_contributions: T.any(
+                      FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions,
+                      FinchAPI::Util::AnyHash
+                    ),
                     gross_pay: T::Boolean,
                     individual_id: T::Boolean,
                     net_pay: T::Boolean,
                     payment_method: T::Boolean,
-                    taxes: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes,
+                    taxes: T.any(
+                      FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes,
+                      FinchAPI::Util::AnyHash
+                    ),
                     total_hours: T::Boolean,
                     type: T::Boolean
                   )
@@ -2633,7 +2725,10 @@ module FinchAPI
                   pay_date: T::Boolean,
                   pay_frequencies: T::Boolean,
                   pay_group_ids: T::Boolean,
-                  pay_period: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment::PayPeriod
+                  pay_period: T.any(
+                    FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment::PayPeriod,
+                    FinchAPI::Util::AnyHash
+                  )
                 )
                   .returns(T.attached_class)
               end

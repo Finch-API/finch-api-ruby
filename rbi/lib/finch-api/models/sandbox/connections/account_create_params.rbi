@@ -56,7 +56,7 @@ module FinchAPI
               provider_id: String,
               authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol,
               products: T::Array[String],
-              request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+              request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
             )
               .returns(T.attached_class)
           end

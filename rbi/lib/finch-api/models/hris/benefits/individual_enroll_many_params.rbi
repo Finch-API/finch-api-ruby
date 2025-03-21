@@ -23,7 +23,7 @@ module FinchAPI
           sig do
             params(
               individuals: T::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual],
-              request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+              request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
             )
               .returns(T.attached_class)
           end
@@ -79,7 +79,10 @@ module FinchAPI
 
             sig do
               params(
-                configuration: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration,
+                configuration: T.any(
+                  FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration,
+                  FinchAPI::Util::AnyHash
+                ),
                 individual_id: String
               )
                 .returns(T.attached_class)
@@ -200,8 +203,14 @@ module FinchAPI
                   annual_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit::OrSymbol,
                   annual_maximum: T.nilable(Integer),
                   catch_up: T::Boolean,
-                  company_contribution: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution,
-                  employee_deduction: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction
+                  company_contribution: T.any(
+                    FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution,
+                    FinchAPI::Util::AnyHash
+                  ),
+                  employee_deduction: T.any(
+                    FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction,
+                    FinchAPI::Util::AnyHash
+                  )
                 )
                   .returns(T.attached_class)
               end

@@ -27,7 +27,7 @@ module FinchAPI
 
       sig do
         params(
-          data: FinchAPI::Models::DirectoryEvent::Data,
+          data: T.any(FinchAPI::Models::DirectoryEvent::Data, FinchAPI::Util::AnyHash),
           event_type: FinchAPI::Models::DirectoryEvent::EventType::TaggedSymbol
         )
           .returns(T.attached_class)

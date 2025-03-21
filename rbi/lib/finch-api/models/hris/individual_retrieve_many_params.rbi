@@ -35,9 +35,9 @@ module FinchAPI
 
         sig do
           params(
-            options: T.nilable(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options),
+            options: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, FinchAPI::Util::AnyHash)),
             requests: T::Array[FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request],
-            request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

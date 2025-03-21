@@ -8,7 +8,7 @@ module FinchAPI
         sig do
           params(
             body: T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body],
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
           )
             .returns(T::Array[T.anything])
         end

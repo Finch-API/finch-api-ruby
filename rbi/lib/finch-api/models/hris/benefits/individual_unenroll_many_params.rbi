@@ -20,7 +20,7 @@ module FinchAPI
           sig do
             params(
               individual_ids: T::Array[String],
-              request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+              request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
             )
               .returns(T.attached_class)
           end

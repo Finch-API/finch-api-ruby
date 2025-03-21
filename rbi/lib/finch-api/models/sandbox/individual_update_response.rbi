@@ -152,7 +152,7 @@ module FinchAPI
             middle_name: T.nilable(String),
             phone_numbers: T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber)]),
             preferred_name: T.nilable(String),
-            residence: T.nilable(FinchAPI::Models::Location),
+            residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash)),
             ssn: T.nilable(String)
           )
             .returns(T.attached_class)

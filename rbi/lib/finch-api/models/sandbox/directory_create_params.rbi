@@ -23,7 +23,7 @@ module FinchAPI
         sig do
           params(
             body: T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body],
-            request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -358,27 +358,31 @@ module FinchAPI
             params(
               class_code: T.nilable(String),
               custom_fields: T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField],
-              department: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Department),
+              department: T.nilable(
+                T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Department, FinchAPI::Util::AnyHash)
+              ),
               dob: T.nilable(String),
               emails: T.nilable(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email]),
-              employment: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment),
+              employment: T.nilable(
+                T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment, FinchAPI::Util::AnyHash)
+              ),
               employment_status: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::OrSymbol),
               encrypted_ssn: T.nilable(String),
               end_date: T.nilable(String),
               ethnicity: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::OrSymbol),
               first_name: T.nilable(String),
               gender: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::OrSymbol),
-              income: T.nilable(FinchAPI::Models::Income),
+              income: T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Util::AnyHash)),
               income_history: T.nilable(T::Array[T.nilable(FinchAPI::Models::Income)]),
               is_active: T.nilable(T::Boolean),
               last_name: T.nilable(String),
               latest_rehire_date: T.nilable(String),
-              location: T.nilable(FinchAPI::Models::Location),
-              manager: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Manager),
+              location: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash)),
+              manager: T.nilable(T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Manager, FinchAPI::Util::AnyHash)),
               middle_name: T.nilable(String),
               phone_numbers: T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber)]),
               preferred_name: T.nilable(String),
-              residence: T.nilable(FinchAPI::Models::Location),
+              residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash)),
               source_id: String,
               ssn: T.nilable(String),
               start_date: T.nilable(String),

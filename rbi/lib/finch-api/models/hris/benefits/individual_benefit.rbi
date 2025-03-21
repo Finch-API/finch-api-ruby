@@ -34,7 +34,7 @@ module FinchAPI
 
           sig do
             params(
-              body: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body,
+              body: T.any(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body, FinchAPI::Util::AnyHash),
               code: Integer,
               individual_id: String
             )
@@ -118,8 +118,8 @@ module FinchAPI
               params(
                 annual_maximum: T.nilable(Integer),
                 catch_up: T.nilable(T::Boolean),
-                company_contribution: T.nilable(FinchAPI::Models::HRIS::BenefitContribution),
-                employee_deduction: T.nilable(FinchAPI::Models::HRIS::BenefitContribution),
+                company_contribution: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitContribution, FinchAPI::Util::AnyHash)),
+                employee_deduction: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitContribution, FinchAPI::Util::AnyHash)),
                 hsa_contribution_limit: T.nilable(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol)
               )
                 .returns(T.attached_class)

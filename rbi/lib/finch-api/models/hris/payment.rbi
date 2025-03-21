@@ -129,17 +129,17 @@ module FinchAPI
         sig do
           params(
             id: String,
-            company_debit: T.nilable(FinchAPI::Models::Money),
+            company_debit: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)),
             debit_date: T.nilable(String),
-            employee_taxes: T.nilable(FinchAPI::Models::Money),
-            employer_taxes: T.nilable(FinchAPI::Models::Money),
-            gross_pay: T.nilable(FinchAPI::Models::Money),
+            employee_taxes: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)),
+            employer_taxes: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)),
+            gross_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)),
             individual_ids: T.nilable(T::Array[String]),
-            net_pay: T.nilable(FinchAPI::Models::Money),
+            net_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)),
             pay_date: T.nilable(String),
             pay_frequencies: T.nilable(T::Array[FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol]),
             pay_group_ids: T.nilable(T::Array[String]),
-            pay_period: T.nilable(FinchAPI::Models::HRIS::Payment::PayPeriod)
+            pay_period: T.nilable(T.any(FinchAPI::Models::HRIS::Payment::PayPeriod, FinchAPI::Util::AnyHash))
           )
             .returns(T.attached_class)
         end

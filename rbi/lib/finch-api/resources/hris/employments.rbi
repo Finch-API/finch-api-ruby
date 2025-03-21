@@ -8,7 +8,7 @@ module FinchAPI
         sig do
           params(
             requests: T::Array[FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request],
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
           )
             .returns(FinchAPI::ResponsesPage[FinchAPI::Models::HRIS::EmploymentDataResponse])
         end

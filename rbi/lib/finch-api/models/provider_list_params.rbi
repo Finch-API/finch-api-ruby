@@ -7,8 +7,12 @@ module FinchAPI
       include FinchAPI::RequestParameters
 
       sig do
-        params(request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
-          .returns(T.attached_class)
+        params(
+          request_options: T.any(
+            FinchAPI::RequestOptions,
+            FinchAPI::Util::AnyHash
+          )
+        ).returns(T.attached_class)
       end
       def self.new(request_options: {})
       end

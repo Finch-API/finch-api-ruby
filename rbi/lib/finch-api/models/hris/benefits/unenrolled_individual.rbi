@@ -35,7 +35,7 @@ module FinchAPI
 
           sig do
             params(
-              body: FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual::Body,
+              body: T.any(FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual::Body, FinchAPI::Util::AnyHash),
               code: Integer,
               individual_id: String
             )

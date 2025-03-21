@@ -26,7 +26,7 @@ module FinchAPI
           page: T.nilable(T::Class[FinchAPI::BasePage[FinchAPI::BaseModel]]),
           stream: T.nilable(T::Class[T.anything]),
           model: T.nilable(FinchAPI::Converter::Input),
-          options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
+          options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
         }
       end
 
@@ -129,7 +129,7 @@ module FinchAPI
     # @api private
     sig do
       overridable
-        .params(req: FinchAPI::BaseClient::RequestComponentsShape, opts: T::Hash[Symbol, T.anything])
+        .params(req: FinchAPI::BaseClient::RequestComponentsShape, opts: FinchAPI::Util::AnyHash)
         .returns(FinchAPI::BaseClient::RequestInputShape)
     end
     private def build_request(req, opts)
@@ -175,7 +175,7 @@ module FinchAPI
         page: T.nilable(T::Class[FinchAPI::BasePage[FinchAPI::BaseModel]]),
         stream: T.nilable(T::Class[T.anything]),
         model: T.nilable(FinchAPI::Converter::Input),
-        options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
+        options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
       )
         .returns(T.anything)
     end

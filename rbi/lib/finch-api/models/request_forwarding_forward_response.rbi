@@ -51,7 +51,7 @@ module FinchAPI
         params(
           data: T.nilable(String),
           headers: T.nilable(T.anything),
-          request: FinchAPI::Models::RequestForwardingForwardResponse::Request,
+          request: T.any(FinchAPI::Models::RequestForwardingForwardResponse::Request, FinchAPI::Util::AnyHash),
           status_code: Integer
         )
           .returns(T.attached_class)
