@@ -9,42 +9,33 @@ module FinchAPI
 
         # The provider associated with the connection
         sig { returns(String) }
-        def provider_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def provider_id=(_)
-        end
+        attr_accessor :provider_id
 
         sig { returns(T.nilable(FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType::OrSymbol)) }
-        def authentication_type
-        end
+        attr_reader :authentication_type
 
         sig do
-          params(_: FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType::OrSymbol)
-            .returns(FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType::OrSymbol)
+          params(
+            authentication_type: FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType::OrSymbol
+          )
+            .void
         end
-        def authentication_type=(_)
-        end
+        attr_writer :authentication_type
 
         # Optional: the size of the employer to be created with this connection. Defaults
         #   to 20. Note that if this is higher than 100, historical payroll data will not be
         #   generated, and instead only one pay period will be created.
         sig { returns(T.nilable(Integer)) }
-        def employee_size
-        end
+        attr_reader :employee_size
 
-        sig { params(_: Integer).returns(Integer) }
-        def employee_size=(_)
-        end
+        sig { params(employee_size: Integer).void }
+        attr_writer :employee_size
 
         sig { returns(T.nilable(T::Array[String])) }
-        def products
-        end
+        attr_reader :products
 
-        sig { params(_: T::Array[String]).returns(T::Array[String]) }
-        def products=(_)
-        end
+        sig { params(products: T::Array[String]).void }
+        attr_writer :products
 
         sig do
           params(

@@ -5,43 +5,17 @@ module FinchAPI
     module HRIS
       class CompanyBenefit < FinchAPI::BaseModel
         sig { returns(String) }
-        def benefit_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def benefit_id=(_)
-        end
+        attr_accessor :benefit_id
 
         sig { returns(T.nilable(String)) }
-        def description
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def description=(_)
-        end
+        attr_accessor :description
 
         sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol)) }
-        def frequency
-        end
-
-        sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol))
-            .returns(T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol))
-        end
-        def frequency=(_)
-        end
+        attr_accessor :frequency
 
         # Type of benefit.
         sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)) }
-        def type
-        end
-
-        sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol))
-            .returns(T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol))
-        end
-        def type=(_)
-        end
+        attr_accessor :type
 
         sig do
           params(

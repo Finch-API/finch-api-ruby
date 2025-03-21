@@ -5,12 +5,7 @@ module FinchAPI
     module HRIS
       class CreateCompanyBenefitsResponse < FinchAPI::BaseModel
         sig { returns(String) }
-        def benefit_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def benefit_id=(_)
-        end
+        attr_accessor :benefit_id
 
         sig { params(benefit_id: String).returns(T.attached_class) }
         def self.new(benefit_id:)

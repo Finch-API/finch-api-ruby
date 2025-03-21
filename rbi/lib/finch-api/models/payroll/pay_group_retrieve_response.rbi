@@ -6,41 +6,18 @@ module FinchAPI
       class PayGroupRetrieveResponse < FinchAPI::BaseModel
         # Finch id (uuidv4) for the pay group
         sig { returns(String) }
-        def id
-        end
-
-        sig { params(_: String).returns(String) }
-        def id=(_)
-        end
+        attr_accessor :id
 
         sig { returns(T::Array[String]) }
-        def individual_ids
-        end
-
-        sig { params(_: T::Array[String]).returns(T::Array[String]) }
-        def individual_ids=(_)
-        end
+        attr_accessor :individual_ids
 
         # Name of the pay group
         sig { returns(String) }
-        def name
-        end
-
-        sig { params(_: String).returns(String) }
-        def name=(_)
-        end
+        attr_accessor :name
 
         # List of pay frequencies associated with this pay group
         sig { returns(T::Array[FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol]) }
-        def pay_frequencies
-        end
-
-        sig do
-          params(_: T::Array[FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol])
-            .returns(T::Array[FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol])
-        end
-        def pay_frequencies=(_)
-        end
+        attr_accessor :pay_frequencies
 
         sig do
           params(

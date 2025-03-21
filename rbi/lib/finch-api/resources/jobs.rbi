@@ -4,12 +4,10 @@ module FinchAPI
   module Resources
     class Jobs
       sig { returns(FinchAPI::Resources::Jobs::Automated) }
-      def automated
-      end
+      attr_reader :automated
 
       sig { returns(FinchAPI::Resources::Jobs::Manual) }
-      def manual
-      end
+      attr_reader :manual
 
       sig { params(client: FinchAPI::Client).returns(T.attached_class) }
       def self.new(client:)

@@ -6,36 +6,21 @@ module FinchAPI
       class W42005 < FinchAPI::BaseModel
         # Detailed information specific to the 2005 W4 form.
         sig { returns(T.nilable(FinchAPI::Models::HRIS::W42005::Data)) }
-        def data
-        end
+        attr_reader :data
 
-        sig do
-          params(_: T.any(FinchAPI::Models::HRIS::W42005::Data, FinchAPI::Util::AnyHash))
-            .returns(T.any(FinchAPI::Models::HRIS::W42005::Data, FinchAPI::Util::AnyHash))
-        end
-        def data=(_)
-        end
+        sig { params(data: T.any(FinchAPI::Models::HRIS::W42005::Data, FinchAPI::Util::AnyHash)).void }
+        attr_writer :data
 
         # Specifies the form type, indicating that this document is a 2005 W4 form.
         sig { returns(T.nilable(FinchAPI::Models::HRIS::W42005::Type::TaggedSymbol)) }
-        def type
-        end
+        attr_reader :type
 
-        sig do
-          params(_: FinchAPI::Models::HRIS::W42005::Type::OrSymbol)
-            .returns(FinchAPI::Models::HRIS::W42005::Type::OrSymbol)
-        end
-        def type=(_)
-        end
+        sig { params(type: FinchAPI::Models::HRIS::W42005::Type::OrSymbol).void }
+        attr_writer :type
 
         # The tax year this W4 document applies to.
         sig { returns(T.nilable(Float)) }
-        def year
-        end
-
-        sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
-        def year=(_)
-        end
+        attr_accessor :year
 
         # A 2005 version of the W-4 tax form containing information on an individual's
         #   filing status, dependents, and withholding details.
@@ -66,54 +51,32 @@ module FinchAPI
         class Data < FinchAPI::BaseModel
           # Additional withholding amount (in cents).
           sig { returns(T.nilable(Integer)) }
-          def additional_withholding
-          end
-
-          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-          def additional_withholding=(_)
-          end
+          attr_accessor :additional_withholding
 
           # Indicates exemption status from federal tax withholding.
           sig { returns(T.nilable(FinchAPI::Models::HRIS::W42005::Data::Exemption::TaggedSymbol)) }
-          def exemption
-          end
+          attr_reader :exemption
 
-          sig do
-            params(_: FinchAPI::Models::HRIS::W42005::Data::Exemption::OrSymbol)
-              .returns(FinchAPI::Models::HRIS::W42005::Data::Exemption::OrSymbol)
-          end
-          def exemption=(_)
-          end
+          sig { params(exemption: FinchAPI::Models::HRIS::W42005::Data::Exemption::OrSymbol).void }
+          attr_writer :exemption
 
           # The individual's filing status for tax purposes.
           sig { returns(T.nilable(FinchAPI::Models::HRIS::W42005::Data::FilingStatus::TaggedSymbol)) }
-          def filing_status
-          end
+          attr_reader :filing_status
 
-          sig do
-            params(_: FinchAPI::Models::HRIS::W42005::Data::FilingStatus::OrSymbol)
-              .returns(FinchAPI::Models::HRIS::W42005::Data::FilingStatus::OrSymbol)
-          end
-          def filing_status=(_)
-          end
+          sig { params(filing_status: FinchAPI::Models::HRIS::W42005::Data::FilingStatus::OrSymbol).void }
+          attr_writer :filing_status
 
           # The unique identifier for the individual associated with this 2005 W4 form.
           sig { returns(T.nilable(String)) }
-          def individual_id
-          end
+          attr_reader :individual_id
 
-          sig { params(_: String).returns(String) }
-          def individual_id=(_)
-          end
+          sig { params(individual_id: String).void }
+          attr_writer :individual_id
 
           # Total number of allowances claimed (in cents).
           sig { returns(T.nilable(Integer)) }
-          def total_number_of_allowances
-          end
-
-          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-          def total_number_of_allowances=(_)
-          end
+          attr_accessor :total_number_of_allowances
 
           # Detailed information specific to the 2005 W4 form.
           sig do

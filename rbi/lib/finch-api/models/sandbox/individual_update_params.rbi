@@ -8,128 +8,56 @@ module FinchAPI
         include FinchAPI::RequestParameters
 
         sig { returns(T.nilable(String)) }
-        def dob
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def dob=(_)
-        end
+        attr_accessor :dob
 
         sig { returns(T.nilable(T::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::Email])) }
-        def emails
-        end
-
-        sig do
-          params(_: T.nilable(T::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::Email]))
-            .returns(T.nilable(T::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::Email]))
-        end
-        def emails=(_)
-        end
+        attr_accessor :emails
 
         # Social Security Number of the individual in **encrypted** format. This field is
         #   only available with the `ssn` scope enabled and the
         #   `options: { include: ['ssn'] }` param set in the body.
         sig { returns(T.nilable(String)) }
-        def encrypted_ssn
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def encrypted_ssn=(_)
-        end
+        attr_accessor :encrypted_ssn
 
         # The EEOC-defined ethnicity of the individual.
         sig { returns(T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol)) }
-        def ethnicity
-        end
-
-        sig do
-          params(_: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol))
-            .returns(T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol))
-        end
-        def ethnicity=(_)
-        end
+        attr_accessor :ethnicity
 
         # The legal first name of the individual.
         sig { returns(T.nilable(String)) }
-        def first_name
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def first_name=(_)
-        end
+        attr_accessor :first_name
 
         # The gender of the individual.
         sig { returns(T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::OrSymbol)) }
-        def gender
-        end
-
-        sig do
-          params(_: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::OrSymbol))
-            .returns(T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::OrSymbol))
-        end
-        def gender=(_)
-        end
+        attr_accessor :gender
 
         # The legal last name of the individual.
         sig { returns(T.nilable(String)) }
-        def last_name
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def last_name=(_)
-        end
+        attr_accessor :last_name
 
         # The legal middle name of the individual.
         sig { returns(T.nilable(String)) }
-        def middle_name
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def middle_name=(_)
-        end
+        attr_accessor :middle_name
 
         sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber)])) }
-        def phone_numbers
-        end
-
-        sig do
-          params(_: T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber)]))
-            .returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber)]))
-        end
-        def phone_numbers=(_)
-        end
+        attr_accessor :phone_numbers
 
         # The preferred name of the individual.
         sig { returns(T.nilable(String)) }
-        def preferred_name
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def preferred_name=(_)
-        end
+        attr_accessor :preferred_name
 
         sig { returns(T.nilable(FinchAPI::Models::Location)) }
-        def residence
-        end
+        attr_reader :residence
 
-        sig do
-          params(_: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash)))
-            .returns(T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash)))
-        end
-        def residence=(_)
-        end
+        sig { params(residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash))).void }
+        attr_writer :residence
 
         # Social Security Number of the individual. This field is only available with the
         #   `ssn` scope enabled and the `options: { include: ['ssn'] }` param set in the
         #   body.
         #   [Click here to learn more about enabling the SSN field](/developer-resources/Enable-SSN-Field).
         sig { returns(T.nilable(String)) }
-        def ssn
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def ssn=(_)
-        end
+        attr_accessor :ssn
 
         sig do
           params(
@@ -195,23 +123,13 @@ module FinchAPI
 
         class Email < FinchAPI::BaseModel
           sig { returns(T.nilable(String)) }
-          def data
-          end
+          attr_reader :data
 
-          sig { params(_: String).returns(String) }
-          def data=(_)
-          end
+          sig { params(data: String).void }
+          attr_writer :data
 
           sig { returns(T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type::OrSymbol)) }
-          def type
-          end
-
-          sig do
-            params(_: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type::OrSymbol))
-              .returns(T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type::OrSymbol))
-          end
-          def type=(_)
-          end
+          attr_accessor :type
 
           sig do
             params(
@@ -314,23 +232,13 @@ module FinchAPI
 
         class PhoneNumber < FinchAPI::BaseModel
           sig { returns(T.nilable(String)) }
-          def data
-          end
+          attr_reader :data
 
-          sig { params(_: String).returns(String) }
-          def data=(_)
-          end
+          sig { params(data: String).void }
+          attr_writer :data
 
           sig { returns(T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type::OrSymbol)) }
-          def type
-          end
-
-          sig do
-            params(_: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type::OrSymbol))
-              .returns(T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type::OrSymbol))
-          end
-          def type=(_)
-          end
+          attr_accessor :type
 
           sig do
             params(

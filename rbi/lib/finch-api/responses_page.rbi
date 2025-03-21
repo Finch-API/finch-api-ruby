@@ -7,12 +7,7 @@ module FinchAPI
     Elem = type_member
 
     sig { returns(T.nilable(T::Array[Elem])) }
-    def responses
-    end
-
-    sig { params(_: T.nilable(T::Array[Elem])).returns(T.nilable(T::Array[Elem])) }
-    def responses=(_)
-    end
+    attr_accessor :responses
 
     sig { returns(String) }
     def inspect

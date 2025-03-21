@@ -9,26 +9,13 @@ module FinchAPI
 
         # The type of job to start.
         sig { returns(FinchAPI::Models::Jobs::AutomatedCreateParams::Type::OrSymbol) }
-        def type
-        end
-
-        sig do
-          params(_: FinchAPI::Models::Jobs::AutomatedCreateParams::Type::OrSymbol)
-            .returns(FinchAPI::Models::Jobs::AutomatedCreateParams::Type::OrSymbol)
-        end
-        def type=(_)
-        end
+        attr_accessor :type
 
         sig { returns(FinchAPI::Models::Jobs::AutomatedCreateParams::Params) }
-        def params
-        end
+        attr_reader :params
 
-        sig do
-          params(_: T.any(FinchAPI::Models::Jobs::AutomatedCreateParams::Params, FinchAPI::Util::AnyHash))
-            .returns(T.any(FinchAPI::Models::Jobs::AutomatedCreateParams::Params, FinchAPI::Util::AnyHash))
-        end
-        def params=(_)
-        end
+        sig { params(params: T.any(FinchAPI::Models::Jobs::AutomatedCreateParams::Params, FinchAPI::Util::AnyHash)).void }
+        attr_writer :params
 
         sig do
           params(
@@ -75,12 +62,7 @@ module FinchAPI
         class Params < FinchAPI::BaseModel
           # The unique ID of the individual for W-4 data sync.
           sig { returns(String) }
-          def individual_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def individual_id=(_)
-          end
+          attr_accessor :individual_id
 
           sig { params(individual_id: String).returns(T.attached_class) }
           def self.new(individual_id:)

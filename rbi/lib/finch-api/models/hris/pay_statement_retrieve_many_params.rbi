@@ -9,15 +9,7 @@ module FinchAPI
 
         # The array of batch requests.
         sig { returns(T::Array[FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request]) }
-        def requests
-        end
-
-        sig do
-          params(_: T::Array[FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request])
-            .returns(T::Array[FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request])
-        end
-        def requests=(_)
-        end
+        attr_accessor :requests
 
         sig do
           params(
@@ -44,30 +36,21 @@ module FinchAPI
         class Request < FinchAPI::BaseModel
           # A stable Finch `id` (UUID v4) for a payment.
           sig { returns(String) }
-          def payment_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def payment_id=(_)
-          end
+          attr_accessor :payment_id
 
           # Number of pay statements to return (defaults to all).
           sig { returns(T.nilable(Integer)) }
-          def limit
-          end
+          attr_reader :limit
 
-          sig { params(_: Integer).returns(Integer) }
-          def limit=(_)
-          end
+          sig { params(limit: Integer).void }
+          attr_writer :limit
 
           # Index to start from.
           sig { returns(T.nilable(Integer)) }
-          def offset
-          end
+          attr_reader :offset
 
-          sig { params(_: Integer).returns(Integer) }
-          def offset=(_)
-          end
+          sig { params(offset: Integer).void }
+          attr_writer :offset
 
           sig { params(payment_id: String, limit: Integer, offset: Integer).returns(T.attached_class) }
           def self.new(payment_id:, limit: nil, offset: nil)

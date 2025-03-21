@@ -8,91 +8,41 @@ module FinchAPI
         include FinchAPI::RequestParameters
 
         sig { returns(String) }
-        def customer_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def customer_id=(_)
-        end
+        attr_accessor :customer_id
 
         sig { returns(String) }
-        def customer_name
-        end
-
-        sig { params(_: String).returns(String) }
-        def customer_name=(_)
-        end
+        attr_accessor :customer_name
 
         sig { returns(T::Array[FinchAPI::Models::Connect::SessionNewParams::Product::OrSymbol]) }
-        def products
-        end
-
-        sig do
-          params(_: T::Array[FinchAPI::Models::Connect::SessionNewParams::Product::OrSymbol])
-            .returns(T::Array[FinchAPI::Models::Connect::SessionNewParams::Product::OrSymbol])
-        end
-        def products=(_)
-        end
+        attr_accessor :products
 
         sig { returns(T.nilable(String)) }
-        def customer_email
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def customer_email=(_)
-        end
+        attr_accessor :customer_email
 
         sig { returns(T.nilable(FinchAPI::Models::Connect::SessionNewParams::Integration)) }
-        def integration
-        end
+        attr_reader :integration
 
         sig do
           params(
-            _: T.nilable(T.any(FinchAPI::Models::Connect::SessionNewParams::Integration, FinchAPI::Util::AnyHash))
+            integration: T.nilable(T.any(FinchAPI::Models::Connect::SessionNewParams::Integration, FinchAPI::Util::AnyHash))
           )
-            .returns(
-              T.nilable(T.any(FinchAPI::Models::Connect::SessionNewParams::Integration, FinchAPI::Util::AnyHash))
-            )
+            .void
         end
-        def integration=(_)
-        end
+        attr_writer :integration
 
         sig { returns(T.nilable(T::Boolean)) }
-        def manual
-        end
-
-        sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-        def manual=(_)
-        end
+        attr_accessor :manual
 
         # The number of minutes until the session expires (defaults to 43,200, which is 30
         #   days)
         sig { returns(T.nilable(Float)) }
-        def minutes_to_expire
-        end
-
-        sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
-        def minutes_to_expire=(_)
-        end
+        attr_accessor :minutes_to_expire
 
         sig { returns(T.nilable(String)) }
-        def redirect_uri
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def redirect_uri=(_)
-        end
+        attr_accessor :redirect_uri
 
         sig { returns(T.nilable(FinchAPI::Models::Connect::SessionNewParams::Sandbox::OrSymbol)) }
-        def sandbox
-        end
-
-        sig do
-          params(_: T.nilable(FinchAPI::Models::Connect::SessionNewParams::Sandbox::OrSymbol))
-            .returns(T.nilable(FinchAPI::Models::Connect::SessionNewParams::Sandbox::OrSymbol))
-        end
-        def sandbox=(_)
-        end
+        attr_accessor :sandbox
 
         sig do
           params(
@@ -169,23 +119,10 @@ module FinchAPI
 
         class Integration < FinchAPI::BaseModel
           sig { returns(T.nilable(FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::OrSymbol)) }
-          def auth_method
-          end
-
-          sig do
-            params(_: T.nilable(FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::OrSymbol))
-              .returns(T.nilable(FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::OrSymbol))
-          end
-          def auth_method=(_)
-          end
+          attr_accessor :auth_method
 
           sig { returns(T.nilable(String)) }
-          def provider
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def provider=(_)
-          end
+          attr_accessor :provider
 
           sig do
             params(

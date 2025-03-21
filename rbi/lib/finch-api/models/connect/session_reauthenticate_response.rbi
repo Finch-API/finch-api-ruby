@@ -6,21 +6,11 @@ module FinchAPI
       class SessionReauthenticateResponse < FinchAPI::BaseModel
         # The Connect URL to redirect the user to for reauthentication
         sig { returns(String) }
-        def connect_url
-        end
-
-        sig { params(_: String).returns(String) }
-        def connect_url=(_)
-        end
+        attr_accessor :connect_url
 
         # The unique identifier for the created connect session
         sig { returns(String) }
-        def session_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def session_id=(_)
-        end
+        attr_accessor :session_id
 
         sig { params(connect_url: String, session_id: String).returns(T.attached_class) }
         def self.new(connect_url:, session_id:)

@@ -5,21 +5,17 @@ module FinchAPI
     class Paging < FinchAPI::BaseModel
       # The total number of elements for the entire query (not just the given page)
       sig { returns(T.nilable(Integer)) }
-      def count
-      end
+      attr_reader :count
 
-      sig { params(_: Integer).returns(Integer) }
-      def count=(_)
-      end
+      sig { params(count: Integer).void }
+      attr_writer :count
 
       # The current start index of the returned list of elements
       sig { returns(T.nilable(Integer)) }
-      def offset
-      end
+      attr_reader :offset
 
-      sig { params(_: Integer).returns(Integer) }
-      def offset=(_)
-      end
+      sig { params(offset: Integer).void }
+      attr_writer :offset
 
       sig { params(count: Integer, offset: Integer).returns(T.attached_class) }
       def self.new(count: nil, offset: nil)

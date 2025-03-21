@@ -11,35 +11,17 @@ module FinchAPI
         #   limiting this to <30 characters due to limitations in specific providers (e.g.
         #   Justworks).
         sig { returns(T.nilable(String)) }
-        def description
-        end
+        attr_reader :description
 
-        sig { params(_: String).returns(String) }
-        def description=(_)
-        end
+        sig { params(description: String).void }
+        attr_writer :description
 
         sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::OrSymbol)) }
-        def frequency
-        end
-
-        sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::OrSymbol))
-            .returns(T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::OrSymbol))
-        end
-        def frequency=(_)
-        end
+        attr_accessor :frequency
 
         # Type of benefit.
         sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol)) }
-        def type
-        end
-
-        sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol))
-            .returns(T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol))
-        end
-        def type=(_)
-        end
+        attr_accessor :type
 
         sig do
           params(

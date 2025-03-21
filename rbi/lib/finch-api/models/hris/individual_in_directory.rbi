@@ -6,78 +6,50 @@ module FinchAPI
       class IndividualInDirectory < FinchAPI::BaseModel
         # A stable Finch id (UUID v4) for an individual in the company.
         sig { returns(T.nilable(String)) }
-        def id
-        end
+        attr_reader :id
 
-        sig { params(_: String).returns(String) }
-        def id=(_)
-        end
+        sig { params(id: String).void }
+        attr_writer :id
 
         # The department object.
         sig { returns(T.nilable(FinchAPI::Models::HRIS::IndividualInDirectory::Department)) }
-        def department
-        end
+        attr_reader :department
 
         sig do
           params(
-            _: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Department, FinchAPI::Util::AnyHash))
+            department: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Department, FinchAPI::Util::AnyHash))
           )
-            .returns(
-              T.nilable(T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Department, FinchAPI::Util::AnyHash))
-            )
+            .void
         end
-        def department=(_)
-        end
+        attr_writer :department
 
         # The legal first name of the individual.
         sig { returns(T.nilable(String)) }
-        def first_name
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def first_name=(_)
-        end
+        attr_accessor :first_name
 
         # `true` if the individual is an active employee or contractor at the company.
         sig { returns(T.nilable(T::Boolean)) }
-        def is_active
-        end
-
-        sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-        def is_active=(_)
-        end
+        attr_accessor :is_active
 
         # The legal last name of the individual.
         sig { returns(T.nilable(String)) }
-        def last_name
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def last_name=(_)
-        end
+        attr_accessor :last_name
 
         # The manager object.
         sig { returns(T.nilable(FinchAPI::Models::HRIS::IndividualInDirectory::Manager)) }
-        def manager
-        end
+        attr_reader :manager
 
         sig do
           params(
-            _: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Manager, FinchAPI::Util::AnyHash))
+            manager: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Manager, FinchAPI::Util::AnyHash))
           )
-            .returns(T.nilable(T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Manager, FinchAPI::Util::AnyHash)))
+            .void
         end
-        def manager=(_)
-        end
+        attr_writer :manager
 
         # The legal middle name of the individual.
         sig { returns(T.nilable(String)) }
-        def middle_name
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def middle_name=(_)
-        end
+        attr_accessor :middle_name
 
         sig do
           params(
@@ -114,12 +86,7 @@ module FinchAPI
         class Department < FinchAPI::BaseModel
           # The name of the department.
           sig { returns(T.nilable(String)) }
-          def name
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           # The department object.
           sig { params(name: T.nilable(String)).returns(T.attached_class) }
@@ -134,12 +101,10 @@ module FinchAPI
         class Manager < FinchAPI::BaseModel
           # A stable Finch `id` (UUID v4) for an individual in the company.
           sig { returns(T.nilable(String)) }
-          def id
-          end
+          attr_reader :id
 
-          sig { params(_: String).returns(String) }
-          def id=(_)
-          end
+          sig { params(id: String).void }
+          attr_writer :id
 
           # The manager object.
           sig { params(id: String).returns(T.attached_class) }

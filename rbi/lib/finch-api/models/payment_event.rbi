@@ -4,26 +4,16 @@ module FinchAPI
   module Models
     class PaymentEvent < FinchAPI::Models::BaseWebhookEvent
       sig { returns(T.nilable(FinchAPI::Models::PaymentEvent::Data)) }
-      def data
-      end
+      attr_reader :data
 
-      sig do
-        params(_: T.any(FinchAPI::Models::PaymentEvent::Data, FinchAPI::Util::AnyHash))
-          .returns(T.any(FinchAPI::Models::PaymentEvent::Data, FinchAPI::Util::AnyHash))
-      end
-      def data=(_)
-      end
+      sig { params(data: T.any(FinchAPI::Models::PaymentEvent::Data, FinchAPI::Util::AnyHash)).void }
+      attr_writer :data
 
       sig { returns(T.nilable(FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol)) }
-      def event_type
-      end
+      attr_reader :event_type
 
-      sig do
-        params(_: FinchAPI::Models::PaymentEvent::EventType::OrSymbol)
-          .returns(FinchAPI::Models::PaymentEvent::EventType::OrSymbol)
-      end
-      def event_type=(_)
-      end
+      sig { params(event_type: FinchAPI::Models::PaymentEvent::EventType::OrSymbol).void }
+      attr_writer :event_type
 
       sig do
         params(
@@ -50,21 +40,11 @@ module FinchAPI
       class Data < FinchAPI::BaseModel
         # The date of the payment.
         sig { returns(String) }
-        def pay_date
-        end
-
-        sig { params(_: String).returns(String) }
-        def pay_date=(_)
-        end
+        attr_accessor :pay_date
 
         # The ID of the payment.
         sig { returns(String) }
-        def payment_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def payment_id=(_)
-        end
+        attr_accessor :payment_id
 
         sig { params(pay_date: String, payment_id: String).returns(T.attached_class) }
         def self.new(pay_date:, payment_id:)

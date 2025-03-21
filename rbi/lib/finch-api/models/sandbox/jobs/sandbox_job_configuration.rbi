@@ -6,26 +6,10 @@ module FinchAPI
       module Jobs
         class SandboxJobConfiguration < FinchAPI::BaseModel
           sig { returns(FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol) }
-          def completion_status
-          end
-
-          sig do
-            params(_: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol)
-              .returns(FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol)
-          end
-          def completion_status=(_)
-          end
+          attr_accessor :completion_status
 
           sig { returns(FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type::TaggedSymbol) }
-          def type
-          end
-
-          sig do
-            params(_: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type::TaggedSymbol)
-              .returns(FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type::TaggedSymbol)
-          end
-          def type=(_)
-          end
+          attr_accessor :type
 
           sig do
             params(

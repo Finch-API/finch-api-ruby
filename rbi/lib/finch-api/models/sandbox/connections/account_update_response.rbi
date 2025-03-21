@@ -7,58 +7,28 @@ module FinchAPI
         class AccountUpdateResponse < FinchAPI::BaseModel
           # [DEPRECATED] Use `connection_id` to associate a connection with an access token
           sig { returns(String) }
-          def account_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def account_id=(_)
-          end
+          attr_accessor :account_id
 
           sig { returns(FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType::TaggedSymbol) }
-          def authentication_type
-          end
-
-          sig do
-            params(_: FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType::TaggedSymbol)
-              .returns(FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType::TaggedSymbol)
-          end
-          def authentication_type=(_)
-          end
+          attr_accessor :authentication_type
 
           # [DEPRECATED] Use `connection_id` to associate a connection with an access token
           sig { returns(String) }
-          def company_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def company_id=(_)
-          end
+          attr_accessor :company_id
 
           sig { returns(T::Array[String]) }
-          def products
-          end
-
-          sig { params(_: T::Array[String]).returns(T::Array[String]) }
-          def products=(_)
-          end
+          attr_accessor :products
 
           # The ID of the provider associated with the `access_token`
           sig { returns(String) }
-          def provider_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def provider_id=(_)
-          end
+          attr_accessor :provider_id
 
           # The ID of the new connection
           sig { returns(T.nilable(String)) }
-          def connection_id
-          end
+          attr_reader :connection_id
 
-          sig { params(_: String).returns(String) }
-          def connection_id=(_)
-          end
+          sig { params(connection_id: String).void }
+          attr_writer :connection_id
 
           sig do
             params(

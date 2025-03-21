@@ -9,46 +9,34 @@ module FinchAPI
           include FinchAPI::RequestParameters
 
           sig { returns(String) }
-          def company_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def company_id=(_)
-          end
+          attr_accessor :company_id
 
           # The provider associated with the `access_token`
           sig { returns(String) }
-          def provider_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def provider_id=(_)
-          end
+          attr_accessor :provider_id
 
           sig do
             returns(
               T.nilable(FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol)
             )
           end
-          def authentication_type
-          end
+          attr_reader :authentication_type
 
           sig do
-            params(_: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol)
-              .returns(FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol)
+            params(
+              authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol
+            )
+              .void
           end
-          def authentication_type=(_)
-          end
+          attr_writer :authentication_type
 
           # Optional, defaults to Organization products (`company`, `directory`,
           #   `employment`, `individual`)
           sig { returns(T.nilable(T::Array[String])) }
-          def products
-          end
+          attr_reader :products
 
-          sig { params(_: T::Array[String]).returns(T::Array[String]) }
-          def products=(_)
-          end
+          sig { params(products: T::Array[String]).void }
+          attr_writer :products
 
           sig do
             params(

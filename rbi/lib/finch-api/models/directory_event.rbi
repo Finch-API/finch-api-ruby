@@ -4,26 +4,16 @@ module FinchAPI
   module Models
     class DirectoryEvent < FinchAPI::Models::BaseWebhookEvent
       sig { returns(T.nilable(FinchAPI::Models::DirectoryEvent::Data)) }
-      def data
-      end
+      attr_reader :data
 
-      sig do
-        params(_: T.any(FinchAPI::Models::DirectoryEvent::Data, FinchAPI::Util::AnyHash))
-          .returns(T.any(FinchAPI::Models::DirectoryEvent::Data, FinchAPI::Util::AnyHash))
-      end
-      def data=(_)
-      end
+      sig { params(data: T.any(FinchAPI::Models::DirectoryEvent::Data, FinchAPI::Util::AnyHash)).void }
+      attr_writer :data
 
       sig { returns(T.nilable(FinchAPI::Models::DirectoryEvent::EventType::TaggedSymbol)) }
-      def event_type
-      end
+      attr_reader :event_type
 
-      sig do
-        params(_: FinchAPI::Models::DirectoryEvent::EventType::OrSymbol)
-          .returns(FinchAPI::Models::DirectoryEvent::EventType::OrSymbol)
-      end
-      def event_type=(_)
-      end
+      sig { params(event_type: FinchAPI::Models::DirectoryEvent::EventType::OrSymbol).void }
+      attr_writer :event_type
 
       sig do
         params(
@@ -50,12 +40,10 @@ module FinchAPI
       class Data < FinchAPI::BaseModel
         # The ID of the individual related to the event.
         sig { returns(T.nilable(String)) }
-        def individual_id
-        end
+        attr_reader :individual_id
 
-        sig { params(_: String).returns(String) }
-        def individual_id=(_)
-        end
+        sig { params(individual_id: String).void }
+        attr_writer :individual_id
 
         sig { params(individual_id: String).returns(T.attached_class) }
         def self.new(individual_id: nil)

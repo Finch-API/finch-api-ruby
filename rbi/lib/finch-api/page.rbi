@@ -7,20 +7,10 @@ module FinchAPI
     Elem = type_member
 
     sig { returns(T.nilable(T::Array[Elem])) }
-    def data
-    end
-
-    sig { params(_: T.nilable(T::Array[Elem])).returns(T.nilable(T::Array[Elem])) }
-    def data=(_)
-    end
+    attr_accessor :data
 
     sig { returns(FinchAPI::Models::Paging) }
-    def paging
-    end
-
-    sig { params(_: FinchAPI::Models::Paging).returns(FinchAPI::Models::Paging) }
-    def paging=(_)
-    end
+    attr_accessor :paging
 
     sig { returns(String) }
     def inspect

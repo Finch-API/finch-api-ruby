@@ -5,26 +5,13 @@ module FinchAPI
     module Jobs
       class AutomatedListResponse < FinchAPI::BaseModel
         sig { returns(T::Array[FinchAPI::Models::Jobs::AutomatedAsyncJob]) }
-        def data
-        end
-
-        sig do
-          params(_: T::Array[FinchAPI::Models::Jobs::AutomatedAsyncJob])
-            .returns(T::Array[FinchAPI::Models::Jobs::AutomatedAsyncJob])
-        end
-        def data=(_)
-        end
+        attr_accessor :data
 
         sig { returns(FinchAPI::Models::Jobs::AutomatedListResponse::Meta) }
-        def meta
-        end
+        attr_reader :meta
 
-        sig do
-          params(_: T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta, FinchAPI::Util::AnyHash))
-            .returns(T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta, FinchAPI::Util::AnyHash))
-        end
-        def meta=(_)
-        end
+        sig { params(meta: T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta, FinchAPI::Util::AnyHash)).void }
+        attr_writer :meta
 
         sig do
           params(
@@ -54,15 +41,15 @@ module FinchAPI
           #   (`POST /jobs/automated`). Please contact a Finch representative for more
           #   details.
           sig { returns(T.nilable(FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas)) }
-          def quotas
-          end
+          attr_reader :quotas
 
           sig do
-            params(_: T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas, FinchAPI::Util::AnyHash))
-              .returns(T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas, FinchAPI::Util::AnyHash))
+            params(
+              quotas: T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas, FinchAPI::Util::AnyHash)
+            )
+              .void
           end
-          def quotas=(_)
-          end
+          attr_writer :quotas
 
           sig do
             params(
@@ -79,19 +66,15 @@ module FinchAPI
 
           class Quotas < FinchAPI::BaseModel
             sig { returns(T.nilable(FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll)) }
-            def data_sync_all
-            end
+            attr_reader :data_sync_all
 
             sig do
               params(
-                _: T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll, FinchAPI::Util::AnyHash)
+                data_sync_all: T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll, FinchAPI::Util::AnyHash)
               )
-                .returns(
-                  T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll, FinchAPI::Util::AnyHash)
-                )
+                .void
             end
-            def data_sync_all=(_)
-            end
+            attr_writer :data_sync_all
 
             # Information about remaining quotas for this connection. Only applicable for
             #   customers opted in to use Finch's Data Sync Refresh endpoint
@@ -114,20 +97,16 @@ module FinchAPI
 
             class DataSyncAll < FinchAPI::BaseModel
               sig { returns(T.nilable(Integer)) }
-              def allowed_refreshes
-              end
+              attr_reader :allowed_refreshes
 
-              sig { params(_: Integer).returns(Integer) }
-              def allowed_refreshes=(_)
-              end
+              sig { params(allowed_refreshes: Integer).void }
+              attr_writer :allowed_refreshes
 
               sig { returns(T.nilable(Integer)) }
-              def remaining_refreshes
-              end
+              attr_reader :remaining_refreshes
 
-              sig { params(_: Integer).returns(Integer) }
-              def remaining_refreshes=(_)
-              end
+              sig { params(remaining_refreshes: Integer).void }
+              attr_writer :remaining_refreshes
 
               sig do
                 params(allowed_refreshes: Integer, remaining_refreshes: Integer).returns(T.attached_class)

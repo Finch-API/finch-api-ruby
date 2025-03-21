@@ -6,36 +6,21 @@ module FinchAPI
       class W42020 < FinchAPI::BaseModel
         # Detailed information specific to the 2020 W4 form.
         sig { returns(T.nilable(FinchAPI::Models::HRIS::W42020::Data)) }
-        def data
-        end
+        attr_reader :data
 
-        sig do
-          params(_: T.any(FinchAPI::Models::HRIS::W42020::Data, FinchAPI::Util::AnyHash))
-            .returns(T.any(FinchAPI::Models::HRIS::W42020::Data, FinchAPI::Util::AnyHash))
-        end
-        def data=(_)
-        end
+        sig { params(data: T.any(FinchAPI::Models::HRIS::W42020::Data, FinchAPI::Util::AnyHash)).void }
+        attr_writer :data
 
         # Specifies the form type, indicating that this document is a 2020 W4 form.
         sig { returns(T.nilable(FinchAPI::Models::HRIS::W42020::Type::TaggedSymbol)) }
-        def type
-        end
+        attr_reader :type
 
-        sig do
-          params(_: FinchAPI::Models::HRIS::W42020::Type::OrSymbol)
-            .returns(FinchAPI::Models::HRIS::W42020::Type::OrSymbol)
-        end
-        def type=(_)
-        end
+        sig { params(type: FinchAPI::Models::HRIS::W42020::Type::OrSymbol).void }
+        attr_writer :type
 
         # The tax year this W4 document applies to.
         sig { returns(T.nilable(Float)) }
-        def year
-        end
-
-        sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
-        def year=(_)
-        end
+        attr_accessor :year
 
         # A 2020 version of the W-4 tax form containing information on an individual's
         #   filing status, dependents, and withholding details.
@@ -67,78 +52,38 @@ module FinchAPI
           # Amount claimed for dependents other than qualifying children under 17 (in
           #   cents).
           sig { returns(T.nilable(Integer)) }
-          def amount_for_other_dependents
-          end
-
-          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-          def amount_for_other_dependents=(_)
-          end
+          attr_accessor :amount_for_other_dependents
 
           # Amount claimed for dependents under 17 years old (in cents).
           sig { returns(T.nilable(Integer)) }
-          def amount_for_qualifying_children_under_17
-          end
-
-          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-          def amount_for_qualifying_children_under_17=(_)
-          end
+          attr_accessor :amount_for_qualifying_children_under_17
 
           # Deductible expenses (in cents).
           sig { returns(T.nilable(Integer)) }
-          def deductions
-          end
-
-          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-          def deductions=(_)
-          end
+          attr_accessor :deductions
 
           # Additional withholding amount (in cents).
           sig { returns(T.nilable(Integer)) }
-          def extra_withholding
-          end
-
-          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-          def extra_withholding=(_)
-          end
+          attr_accessor :extra_withholding
 
           # The individual's filing status for tax purposes.
           sig { returns(T.nilable(FinchAPI::Models::HRIS::W42020::Data::FilingStatus::TaggedSymbol)) }
-          def filing_status
-          end
-
-          sig do
-            params(_: T.nilable(FinchAPI::Models::HRIS::W42020::Data::FilingStatus::TaggedSymbol))
-              .returns(T.nilable(FinchAPI::Models::HRIS::W42020::Data::FilingStatus::TaggedSymbol))
-          end
-          def filing_status=(_)
-          end
+          attr_accessor :filing_status
 
           # The unique identifier for the individual associated with this document.
           sig { returns(T.nilable(String)) }
-          def individual_id
-          end
+          attr_reader :individual_id
 
-          sig { params(_: String).returns(String) }
-          def individual_id=(_)
-          end
+          sig { params(individual_id: String).void }
+          attr_writer :individual_id
 
           # Additional income from sources outside of primary employment (in cents).
           sig { returns(T.nilable(Integer)) }
-          def other_income
-          end
-
-          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-          def other_income=(_)
-          end
+          attr_accessor :other_income
 
           # Total amount claimed for dependents and other credits (in cents).
           sig { returns(T.nilable(Integer)) }
-          def total_claim_dependent_and_other_credits
-          end
-
-          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-          def total_claim_dependent_and_other_credits=(_)
-          end
+          attr_accessor :total_claim_dependent_and_other_credits
 
           # Detailed information specific to the 2020 W4 form.
           sig do

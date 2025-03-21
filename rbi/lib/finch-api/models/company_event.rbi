@@ -4,25 +4,13 @@ module FinchAPI
   module Models
     class CompanyEvent < FinchAPI::Models::BaseWebhookEvent
       sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-      def data
-      end
-
-      sig do
-        params(_: T.nilable(T::Hash[Symbol, T.anything])).returns(T.nilable(T::Hash[Symbol, T.anything]))
-      end
-      def data=(_)
-      end
+      attr_accessor :data
 
       sig { returns(T.nilable(FinchAPI::Models::CompanyEvent::EventType::TaggedSymbol)) }
-      def event_type
-      end
+      attr_reader :event_type
 
-      sig do
-        params(_: FinchAPI::Models::CompanyEvent::EventType::OrSymbol)
-          .returns(FinchAPI::Models::CompanyEvent::EventType::OrSymbol)
-      end
-      def event_type=(_)
-      end
+      sig { params(event_type: FinchAPI::Models::CompanyEvent::EventType::OrSymbol).void }
+      attr_writer :event_type
 
       sig do
         params(

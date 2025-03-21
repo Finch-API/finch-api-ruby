@@ -10,43 +10,32 @@ module FinchAPI
         # Comma-delimited list of stable Finch uuids for each individual. If empty,
         #   defaults to all individuals
         sig { returns(T.nilable(T::Array[String])) }
-        def individual_ids
-        end
+        attr_reader :individual_ids
 
-        sig { params(_: T::Array[String]).returns(T::Array[String]) }
-        def individual_ids=(_)
-        end
+        sig { params(individual_ids: T::Array[String]).void }
+        attr_writer :individual_ids
 
         # Number of documents to return (defaults to all)
         sig { returns(T.nilable(Integer)) }
-        def limit
-        end
+        attr_reader :limit
 
-        sig { params(_: Integer).returns(Integer) }
-        def limit=(_)
-        end
+        sig { params(limit: Integer).void }
+        attr_writer :limit
 
         # Index to start from (defaults to 0)
         sig { returns(T.nilable(Integer)) }
-        def offset
-        end
+        attr_reader :offset
 
-        sig { params(_: Integer).returns(Integer) }
-        def offset=(_)
-        end
+        sig { params(offset: Integer).void }
+        attr_writer :offset
 
         # Comma-delimited list of document types to filter on. If empty, defaults to all
         #   types
         sig { returns(T.nilable(T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol])) }
-        def types
-        end
+        attr_reader :types
 
-        sig do
-          params(_: T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol])
-            .returns(T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol])
-        end
-        def types=(_)
-        end
+        sig { params(types: T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol]).void }
+        attr_writer :types
 
         sig do
           params(

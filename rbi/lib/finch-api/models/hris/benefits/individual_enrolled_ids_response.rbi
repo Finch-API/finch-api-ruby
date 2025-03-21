@@ -6,20 +6,10 @@ module FinchAPI
       module Benefits
         class IndividualEnrolledIDsResponse < FinchAPI::BaseModel
           sig { returns(String) }
-          def benefit_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def benefit_id=(_)
-          end
+          attr_accessor :benefit_id
 
           sig { returns(T::Array[String]) }
-          def individual_ids
-          end
-
-          sig { params(_: T::Array[String]).returns(T::Array[String]) }
-          def individual_ids=(_)
-          end
+          attr_accessor :individual_ids
 
           sig { params(benefit_id: String, individual_ids: T::Array[String]).returns(T.attached_class) }
           def self.new(benefit_id:, individual_ids:)
