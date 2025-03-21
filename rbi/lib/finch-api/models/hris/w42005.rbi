@@ -123,10 +123,8 @@ module FinchAPI
             EXEMPT = T.let(:exempt, FinchAPI::Models::HRIS::W42005::Data::Exemption::TaggedSymbol)
             NON_EXEMPT = T.let(:non_exempt, FinchAPI::Models::HRIS::W42005::Data::Exemption::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[FinchAPI::Models::HRIS::W42005::Data::Exemption::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[FinchAPI::Models::HRIS::W42005::Data::Exemption::TaggedSymbol]) }
+            def self.values
             end
           end
 
@@ -146,10 +144,8 @@ module FinchAPI
               )
             SINGLE = T.let(:single, FinchAPI::Models::HRIS::W42005::Data::FilingStatus::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[FinchAPI::Models::HRIS::W42005::Data::FilingStatus::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[FinchAPI::Models::HRIS::W42005::Data::FilingStatus::TaggedSymbol]) }
+            def self.values
             end
           end
         end
@@ -163,10 +159,8 @@ module FinchAPI
 
           W4_2005 = T.let(:w4_2005, FinchAPI::Models::HRIS::W42005::Type::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[FinchAPI::Models::HRIS::W42005::Type::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[FinchAPI::Models::HRIS::W42005::Type::TaggedSymbol]) }
+          def self.values
           end
         end
       end

@@ -113,10 +113,8 @@ module FinchAPI
         DEVELOPMENT = T.let(:development, FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol)
         SANDBOX = T.let(:sandbox, FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -135,10 +133,8 @@ module FinchAPI
         PROVIDER = T.let(:provider, FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol)
         FINCH = T.let(:finch, FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol]) }
+        def self.values
         end
       end
     end

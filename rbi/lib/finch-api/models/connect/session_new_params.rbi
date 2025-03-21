@@ -110,10 +110,8 @@ module FinchAPI
           BENEFITS = T.let(:benefits, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
           SSN = T.let(:ssn, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -162,13 +160,11 @@ module FinchAPI
             API_TOKEN =
               T.let(:api_token, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end
@@ -183,10 +179,8 @@ module FinchAPI
           FINCH = T.let(:finch, FinchAPI::Models::Connect::SessionNewParams::Sandbox::TaggedSymbol)
           PROVIDER = T.let(:provider, FinchAPI::Models::Connect::SessionNewParams::Sandbox::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[FinchAPI::Models::Connect::SessionNewParams::Sandbox::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[FinchAPI::Models::Connect::SessionNewParams::Sandbox::TaggedSymbol]) }
+          def self.values
           end
         end
       end

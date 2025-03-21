@@ -65,10 +65,8 @@ module FinchAPI
         PAYMENT_UPDATED = T.let(:"payment.updated", FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol)
         PAYMENT_DELETED = T.let(:"payment.deleted", FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol]) }
+        def self.values
         end
       end
     end

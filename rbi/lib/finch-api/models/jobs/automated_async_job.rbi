@@ -120,10 +120,8 @@ module FinchAPI
           PERMISSIONS_ERROR =
             T.let(:permissions_error, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -138,10 +136,8 @@ module FinchAPI
           W4_FORM_EMPLOYEE_SYNC =
             T.let(:w4_form_employee_sync, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol]) }
+          def self.values
           end
         end
       end

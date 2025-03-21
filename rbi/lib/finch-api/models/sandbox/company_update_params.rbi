@@ -160,13 +160,11 @@ module FinchAPI
             SAVINGS =
               T.let(:savings, FinchAPI::Models::Sandbox::CompanyUpdateParams::Account::AccountType::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Account::AccountType::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Account::AccountType::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end
@@ -278,10 +276,8 @@ module FinchAPI
             B_CORPORATION =
               T.let(:b_corporation, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Subtype::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Subtype::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Subtype::TaggedSymbol]) }
+            def self.values
             end
           end
 
@@ -307,10 +303,8 @@ module FinchAPI
             COOPERATIVE =
               T.let(:cooperative, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type::TaggedSymbol]) }
+            def self.values
             end
           end
         end

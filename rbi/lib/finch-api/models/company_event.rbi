@@ -42,10 +42,8 @@ module FinchAPI
 
         COMPANY_UPDATED = T.let(:"company.updated", FinchAPI::Models::CompanyEvent::EventType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[FinchAPI::Models::CompanyEvent::EventType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[FinchAPI::Models::CompanyEvent::EventType::TaggedSymbol]) }
+        def self.values
         end
       end
     end

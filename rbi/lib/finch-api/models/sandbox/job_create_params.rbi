@@ -39,10 +39,8 @@ module FinchAPI
 
           DATA_SYNC_ALL = T.let(:data_sync_all, FinchAPI::Models::Sandbox::JobCreateParams::Type::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[FinchAPI::Models::Sandbox::JobCreateParams::Type::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[FinchAPI::Models::Sandbox::JobCreateParams::Type::TaggedSymbol]) }
+          def self.values
           end
         end
       end

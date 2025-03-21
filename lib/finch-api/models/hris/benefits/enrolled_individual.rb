@@ -82,11 +82,9 @@ module FinchAPI
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Integer>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Integer>]
+            #   def self.values; end
           end
         end
       end

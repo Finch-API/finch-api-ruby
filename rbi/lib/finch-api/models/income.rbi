@@ -67,10 +67,8 @@ module FinchAPI
         HOURLY = T.let(:hourly, FinchAPI::Models::Income::Unit::TaggedSymbol)
         FIXED = T.let(:fixed, FinchAPI::Models::Income::Unit::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[FinchAPI::Models::Income::Unit::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[FinchAPI::Models::Income::Unit::TaggedSymbol]) }
+        def self.values
         end
       end
     end

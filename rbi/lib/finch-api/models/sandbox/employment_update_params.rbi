@@ -288,13 +288,11 @@ module FinchAPI
                 FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Subtype::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Subtype::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Subtype::TaggedSymbol])
+            end
+            def self.values
             end
           end
 
@@ -312,13 +310,11 @@ module FinchAPI
             CONTRACTOR =
               T.let(:contractor, FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Type::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Type::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Type::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end
@@ -346,13 +342,11 @@ module FinchAPI
           TERMINATED =
             T.let(:terminated, FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus::TaggedSymbol])
+          end
+          def self.values
           end
         end
 

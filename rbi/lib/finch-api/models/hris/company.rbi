@@ -151,10 +151,8 @@ module FinchAPI
             CHECKING = T.let(:checking, FinchAPI::Models::HRIS::HRISCompany::Account::AccountType::TaggedSymbol)
             SAVINGS = T.let(:savings, FinchAPI::Models::HRIS::HRISCompany::Account::AccountType::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[FinchAPI::Models::HRIS::HRISCompany::Account::AccountType::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[FinchAPI::Models::HRIS::HRISCompany::Account::AccountType::TaggedSymbol]) }
+            def self.values
             end
           end
         end
@@ -255,10 +253,8 @@ module FinchAPI
             C_CORPORATION = T.let(:c_corporation, FinchAPI::Models::HRIS::HRISCompany::Entity::Subtype::TaggedSymbol)
             B_CORPORATION = T.let(:b_corporation, FinchAPI::Models::HRIS::HRISCompany::Entity::Subtype::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[FinchAPI::Models::HRIS::HRISCompany::Entity::Subtype::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[FinchAPI::Models::HRIS::HRISCompany::Entity::Subtype::TaggedSymbol]) }
+            def self.values
             end
           end
 
@@ -279,10 +275,8 @@ module FinchAPI
             PARTNERSHIP = T.let(:partnership, FinchAPI::Models::HRIS::HRISCompany::Entity::Type::TaggedSymbol)
             COOPERATIVE = T.let(:cooperative, FinchAPI::Models::HRIS::HRISCompany::Entity::Type::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[FinchAPI::Models::HRIS::HRISCompany::Entity::Type::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[FinchAPI::Models::HRIS::HRISCompany::Entity::Type::TaggedSymbol]) }
+            def self.values
             end
           end
         end
