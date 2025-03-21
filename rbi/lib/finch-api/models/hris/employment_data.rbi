@@ -284,10 +284,8 @@ module FinchAPI
             INDIVIDUAL_CONTRACTOR =
               T.let(:individual_contractor, FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::TaggedSymbol]) }
+            def self.values
             end
           end
 
@@ -302,10 +300,8 @@ module FinchAPI
             EMPLOYEE = T.let(:employee, FinchAPI::Models::HRIS::EmploymentData::Employment::Type::TaggedSymbol)
             CONTRACTOR = T.let(:contractor, FinchAPI::Models::HRIS::EmploymentData::Employment::Type::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[FinchAPI::Models::HRIS::EmploymentData::Employment::Type::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[FinchAPI::Models::HRIS::EmploymentData::Employment::Type::TaggedSymbol]) }
+            def self.values
             end
           end
         end
@@ -327,10 +323,8 @@ module FinchAPI
           RETIRED = T.let(:retired, FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol)
           TERMINATED = T.let(:terminated, FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol]) }
+          def self.values
           end
         end
 

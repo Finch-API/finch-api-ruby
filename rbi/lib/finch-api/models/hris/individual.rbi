@@ -156,10 +156,8 @@ module FinchAPI
             WORK = T.let(:work, FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol)
             PERSONAL = T.let(:personal, FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol]) }
+            def self.values
             end
           end
         end
@@ -186,10 +184,8 @@ module FinchAPI
           DECLINE_TO_SPECIFY =
             T.let(:decline_to_specify, FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -205,10 +201,8 @@ module FinchAPI
           OTHER = T.let(:other, FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol)
           DECLINE_TO_SPECIFY = T.let(:decline_to_specify, FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -251,10 +245,8 @@ module FinchAPI
             WORK = T.let(:work, FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::TaggedSymbol)
             PERSONAL = T.let(:personal, FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::TaggedSymbol]) }
+            def self.values
             end
           end
         end

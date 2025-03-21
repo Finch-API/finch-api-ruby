@@ -67,10 +67,8 @@ module FinchAPI
         EMPLOYMENT_DELETED =
           T.let(:"employment.deleted", FinchAPI::Models::EmploymentEvent::EventType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[FinchAPI::Models::EmploymentEvent::EventType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[FinchAPI::Models::EmploymentEvent::EventType::TaggedSymbol]) }
+        def self.values
         end
       end
     end

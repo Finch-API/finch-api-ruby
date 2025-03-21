@@ -116,10 +116,8 @@ module FinchAPI
           FIXED = T.let(:fixed, FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution::TaggedSymbol)
           PERCENT = T.let(:percent, FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -134,10 +132,8 @@ module FinchAPI
           FIXED = T.let(:fixed, FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction::TaggedSymbol)
           PERCENT = T.let(:percent, FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -153,10 +149,8 @@ module FinchAPI
             T.let(:individual, FinchAPI::Models::HRIS::SupportedBenefit::HsaContributionLimit::TaggedSymbol)
           FAMILY = T.let(:family, FinchAPI::Models::HRIS::SupportedBenefit::HsaContributionLimit::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[FinchAPI::Models::HRIS::SupportedBenefit::HsaContributionLimit::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[FinchAPI::Models::HRIS::SupportedBenefit::HsaContributionLimit::TaggedSymbol]) }
+          def self.values
           end
         end
       end

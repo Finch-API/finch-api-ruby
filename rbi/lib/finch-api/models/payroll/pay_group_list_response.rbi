@@ -74,10 +74,8 @@ module FinchAPI
           DAILY = T.let(:daily, FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol)
           OTHER = T.let(:other, FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol]) }
+          def self.values
           end
         end
       end

@@ -13,10 +13,8 @@ module FinchAPI
         EVERY_PAYCHECK = T.let(:every_paycheck, FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol)
         MONTHLY = T.let(:monthly, FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol]) }
+        def self.values
         end
       end
     end

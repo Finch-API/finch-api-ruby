@@ -17,10 +17,8 @@ module FinchAPI
         variant :w4_2005, -> { FinchAPI::Models::HRIS::W42005 }
 
         # @!parse
-        #   class << self
-        #     # @return [Array(FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005)]
-        #     def variants; end
-        #   end
+        #   # @return [Array(FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005)]
+        #   def self.variants; end
       end
     end
   end

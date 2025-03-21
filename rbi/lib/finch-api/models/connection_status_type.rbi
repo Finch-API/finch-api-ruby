@@ -16,10 +16,8 @@ module FinchAPI
       ERROR_PERMISSIONS = T.let(:error_permissions, FinchAPI::Models::ConnectionStatusType::TaggedSymbol)
       REAUTH = T.let(:reauth, FinchAPI::Models::ConnectionStatusType::TaggedSymbol)
 
-      class << self
-        sig { override.returns(T::Array[FinchAPI::Models::ConnectionStatusType::TaggedSymbol]) }
-        def values
-        end
+      sig { override.returns(T::Array[FinchAPI::Models::ConnectionStatusType::TaggedSymbol]) }
+      def self.values
       end
     end
   end

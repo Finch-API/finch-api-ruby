@@ -74,10 +74,8 @@ module FinchAPI
         PAY_STATEMENT_DELETED =
           T.let(:"pay_statement.deleted", FinchAPI::Models::PayStatementEvent::EventType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[FinchAPI::Models::PayStatementEvent::EventType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[FinchAPI::Models::PayStatementEvent::EventType::TaggedSymbol]) }
+        def self.values
         end
       end
     end

@@ -150,10 +150,8 @@ module FinchAPI
                 FinchAPI::Models::HRIS::W42020::Data::FilingStatus::TaggedSymbol
               )
 
-            class << self
-              sig { override.returns(T::Array[FinchAPI::Models::HRIS::W42020::Data::FilingStatus::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[FinchAPI::Models::HRIS::W42020::Data::FilingStatus::TaggedSymbol]) }
+            def self.values
             end
           end
         end
@@ -167,10 +165,8 @@ module FinchAPI
 
           W4_2020 = T.let(:w4_2020, FinchAPI::Models::HRIS::W42020::Type::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[FinchAPI::Models::HRIS::W42020::Type::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[FinchAPI::Models::HRIS::W42020::Type::TaggedSymbol]) }
+          def self.values
           end
         end
       end
