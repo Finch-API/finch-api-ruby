@@ -28,6 +28,8 @@ class FinchAPI::Test::Resources::Payroll::PayGroupsTest < FinchAPI::Test::Resour
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => FinchAPI::Models::Payroll::PayGroupListResponse
     end

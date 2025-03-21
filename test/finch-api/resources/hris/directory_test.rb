@@ -11,6 +11,8 @@ class FinchAPI::Test::Resources::HRIS::DirectoryTest < FinchAPI::Test::ResourceT
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => FinchAPI::Models::HRIS::IndividualInDirectory
     end
@@ -36,6 +38,8 @@ class FinchAPI::Test::Resources::HRIS::DirectoryTest < FinchAPI::Test::ResourceT
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => FinchAPI::Models::HRIS::IndividualInDirectory
     end

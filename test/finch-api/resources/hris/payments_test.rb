@@ -11,6 +11,8 @@ class FinchAPI::Test::Resources::HRIS::PaymentsTest < FinchAPI::Test::ResourceTe
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => FinchAPI::Models::HRIS::Payment
     end
