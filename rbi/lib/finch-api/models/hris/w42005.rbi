@@ -41,7 +41,7 @@ module FinchAPI
         #   filing status, dependents, and withholding details.
         sig do
           params(
-            data: FinchAPI::Models::HRIS::W42005::Data,
+            data: T.any(FinchAPI::Models::HRIS::W42005::Data, FinchAPI::Util::AnyHash),
             type: FinchAPI::Models::HRIS::W42005::Type::TaggedSymbol,
             year: T.nilable(Float)
           )

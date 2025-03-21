@@ -9,7 +9,7 @@ module FinchAPI
           params(
             end_date: Date,
             start_date: Date,
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
           )
             .returns(FinchAPI::SinglePage[FinchAPI::Models::HRIS::Payment])
         end

@@ -10,7 +10,7 @@ module FinchAPI
             end_date: String,
             pay_statements: T::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement],
             start_date: String,
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
           )
             .returns(FinchAPI::Models::Sandbox::PaymentCreateResponse)
         end

@@ -209,23 +209,23 @@ module FinchAPI
           params(
             class_code: T.nilable(String),
             custom_fields: T::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField],
-            department: T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::Department),
-            employment: T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment),
+            department: T.nilable(T.any(FinchAPI::Models::Sandbox::EmploymentUpdateParams::Department, FinchAPI::Util::AnyHash)),
+            employment: T.nilable(T.any(FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment, FinchAPI::Util::AnyHash)),
             employment_status: T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus::OrSymbol),
             end_date: T.nilable(String),
             first_name: T.nilable(String),
-            income: T.nilable(FinchAPI::Models::Income),
+            income: T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Util::AnyHash)),
             income_history: T.nilable(T::Array[T.nilable(FinchAPI::Models::Income)]),
             is_active: T.nilable(T::Boolean),
             last_name: T.nilable(String),
             latest_rehire_date: T.nilable(String),
-            location: T.nilable(FinchAPI::Models::Location),
-            manager: T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::Manager),
+            location: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash)),
+            manager: T.nilable(T.any(FinchAPI::Models::Sandbox::EmploymentUpdateParams::Manager, FinchAPI::Util::AnyHash)),
             middle_name: T.nilable(String),
             source_id: String,
             start_date: T.nilable(String),
             title: T.nilable(String),
-            request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

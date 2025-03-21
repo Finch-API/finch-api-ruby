@@ -54,7 +54,7 @@ module FinchAPI
             limit: Integer,
             offset: Integer,
             types: T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol],
-            request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

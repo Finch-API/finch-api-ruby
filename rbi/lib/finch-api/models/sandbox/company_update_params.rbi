@@ -97,12 +97,12 @@ module FinchAPI
             accounts: T.nilable(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Account]),
             departments: T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateParams::Department)]),
             ein: T.nilable(String),
-            entity: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity),
+            entity: T.nilable(T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity, FinchAPI::Util::AnyHash)),
             legal_name: T.nilable(String),
             locations: T.nilable(T::Array[T.nilable(FinchAPI::Models::Location)]),
             primary_email: T.nilable(String),
             primary_phone_number: T.nilable(String),
-            request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -274,7 +274,9 @@ module FinchAPI
           sig do
             params(
               name: T.nilable(String),
-              parent: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateParams::Department::Parent)
+              parent: T.nilable(
+                T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Department::Parent, FinchAPI::Util::AnyHash)
+              )
             )
               .returns(T.attached_class)
           end

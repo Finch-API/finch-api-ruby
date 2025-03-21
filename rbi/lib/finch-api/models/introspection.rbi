@@ -176,7 +176,7 @@ module FinchAPI
           client_type: FinchAPI::Models::Introspection::ClientType::TaggedSymbol,
           company_id: String,
           connection_id: String,
-          connection_status: FinchAPI::Models::Introspection::ConnectionStatus,
+          connection_status: T.any(FinchAPI::Models::Introspection::ConnectionStatus, FinchAPI::Util::AnyHash),
           connection_type: FinchAPI::Models::Introspection::ConnectionType::TaggedSymbol,
           customer_email: T.nilable(String),
           customer_id: T.nilable(String),
@@ -274,7 +274,7 @@ module FinchAPI
 
         sig do
           params(
-            connection_status: FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus,
+            connection_status: T.any(FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus, FinchAPI::Util::AnyHash),
             products: T::Array[String],
             type: FinchAPI::Models::Introspection::AuthenticationMethod::Type::TaggedSymbol
           )

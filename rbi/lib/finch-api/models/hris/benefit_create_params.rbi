@@ -46,7 +46,7 @@ module FinchAPI
             description: String,
             frequency: T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::OrSymbol),
             type: T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol),
-            request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

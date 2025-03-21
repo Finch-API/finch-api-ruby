@@ -26,7 +26,7 @@ module FinchAPI
             source_id: String,
             start_date: T.nilable(String),
             title: T.nilable(String),
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
           )
             .returns(FinchAPI::Models::Sandbox::EmploymentUpdateResponse)
         end

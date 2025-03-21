@@ -27,7 +27,7 @@ module FinchAPI
 
       sig do
         params(
-          data: FinchAPI::Models::PaymentEvent::Data,
+          data: T.any(FinchAPI::Models::PaymentEvent::Data, FinchAPI::Util::AnyHash),
           event_type: FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol
         )
           .returns(T.attached_class)

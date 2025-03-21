@@ -143,9 +143,9 @@ module FinchAPI
             middle_name: T.nilable(String),
             phone_numbers: T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber)]),
             preferred_name: T.nilable(String),
-            residence: T.nilable(FinchAPI::Models::Location),
+            residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash)),
             ssn: T.nilable(String),
-            request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

@@ -32,8 +32,8 @@ module FinchAPI
 
         sig do
           params(
-            supported_features: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures,
-            supported_operations: FinchAPI::Models::HRIS::SupportPerBenefitType
+            supported_features: T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures, FinchAPI::Util::AnyHash),
+            supported_operations: T.any(FinchAPI::Models::HRIS::SupportPerBenefitType, FinchAPI::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

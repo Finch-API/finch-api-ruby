@@ -65,7 +65,7 @@ module FinchAPI
           data: T.nilable(String),
           headers: T.nilable(T.anything),
           params: T.nilable(T.anything),
-          request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -20,7 +20,7 @@ module FinchAPI
             preferred_name: T.nilable(String),
             residence: T.nilable(FinchAPI::Models::Location),
             ssn: T.nilable(String),
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
           )
             .returns(FinchAPI::Models::Sandbox::IndividualUpdateResponse)
         end
