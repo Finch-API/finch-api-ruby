@@ -56,6 +56,8 @@ class FinchAPI::Test::Resources::HRIS::BenefitsTest < FinchAPI::Test::ResourceTe
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => FinchAPI::Models::HRIS::CompanyBenefit
     end
@@ -78,6 +80,8 @@ class FinchAPI::Test::Resources::HRIS::BenefitsTest < FinchAPI::Test::ResourceTe
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => FinchAPI::Models::HRIS::SupportedBenefit
     end

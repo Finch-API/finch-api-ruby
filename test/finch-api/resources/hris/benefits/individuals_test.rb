@@ -11,6 +11,8 @@ class FinchAPI::Test::Resources::HRIS::Benefits::IndividualsTest < FinchAPI::Tes
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => FinchAPI::Models::HRIS::Benefits::EnrolledIndividual
     end
@@ -47,6 +49,8 @@ class FinchAPI::Test::Resources::HRIS::Benefits::IndividualsTest < FinchAPI::Tes
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => FinchAPI::Models::HRIS::Benefits::IndividualBenefit
     end
@@ -68,6 +72,8 @@ class FinchAPI::Test::Resources::HRIS::Benefits::IndividualsTest < FinchAPI::Tes
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual
     end

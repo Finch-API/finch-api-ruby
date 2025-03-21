@@ -43,7 +43,7 @@ module FinchAPI
 
       case page_data
       in {individuals: Array | nil => individuals}
-        @individuals = individuals&.map { model.coerce(_1) }
+        @individuals = individuals&.map { FinchAPI::Converter.coerce(model, _1) }
       else
       end
 

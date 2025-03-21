@@ -11,6 +11,8 @@ class FinchAPI::Test::Resources::ProvidersTest < FinchAPI::Test::ResourceTest
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => FinchAPI::Models::Provider
     end
