@@ -6,207 +6,116 @@ module FinchAPI
       class EmploymentData < FinchAPI::BaseModel
         # string A stable Finch `id` (UUID v4) for an individual in the company.
         sig { returns(T.nilable(String)) }
-        def id
-        end
+        attr_reader :id
 
-        sig { params(_: String).returns(String) }
-        def id=(_)
-        end
+        sig { params(id: String).void }
+        attr_writer :id
 
         # Worker's compensation classification code for this employee
         sig { returns(T.nilable(String)) }
-        def class_code
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def class_code=(_)
-        end
+        attr_accessor :class_code
 
         # Custom fields for the individual. These are fields which are defined by the
         #   employer in the system.
         sig { returns(T.nilable(T::Array[FinchAPI::Models::HRIS::EmploymentData::CustomField])) }
-        def custom_fields
-        end
-
-        sig do
-          params(_: T.nilable(T::Array[FinchAPI::Models::HRIS::EmploymentData::CustomField]))
-            .returns(T.nilable(T::Array[FinchAPI::Models::HRIS::EmploymentData::CustomField]))
-        end
-        def custom_fields=(_)
-        end
+        attr_accessor :custom_fields
 
         # The department object.
         sig { returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::Department)) }
-        def department
-        end
+        attr_reader :department
 
         sig do
-          params(_: T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Department, FinchAPI::Util::AnyHash)))
-            .returns(T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Department, FinchAPI::Util::AnyHash)))
+          params(
+            department: T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Department, FinchAPI::Util::AnyHash))
+          )
+            .void
         end
-        def department=(_)
-        end
+        attr_writer :department
 
         # The employment object.
         sig { returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment)) }
-        def employment
-        end
+        attr_reader :employment
 
         sig do
-          params(_: T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Employment, FinchAPI::Util::AnyHash)))
-            .returns(T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Employment, FinchAPI::Util::AnyHash)))
+          params(
+            employment: T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Employment, FinchAPI::Util::AnyHash))
+          )
+            .void
         end
-        def employment=(_)
-        end
+        attr_writer :employment
 
         # The detailed employment status of the individual. Available options: `active`,
         #   `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
         sig { returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol)) }
-        def employment_status
-        end
-
-        sig do
-          params(_: T.nilable(FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol))
-            .returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol))
-        end
-        def employment_status=(_)
-        end
+        attr_accessor :employment_status
 
         sig { returns(T.nilable(String)) }
-        def end_date
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def end_date=(_)
-        end
+        attr_accessor :end_date
 
         # The legal first name of the individual.
         sig { returns(T.nilable(String)) }
-        def first_name
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def first_name=(_)
-        end
+        attr_accessor :first_name
 
         # The employee's income as reported by the provider. This may not always be
         #   annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
         #   depending on what information the provider returns.
         sig { returns(T.nilable(FinchAPI::Models::Income)) }
-        def income
-        end
+        attr_reader :income
 
-        sig do
-          params(_: T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Util::AnyHash)))
-            .returns(T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Util::AnyHash)))
-        end
-        def income=(_)
-        end
+        sig { params(income: T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Util::AnyHash))).void }
+        attr_writer :income
 
         # The array of income history.
         sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::Income)])) }
-        def income_history
-        end
-
-        sig do
-          params(_: T.nilable(T::Array[T.nilable(FinchAPI::Models::Income)]))
-            .returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::Income)]))
-        end
-        def income_history=(_)
-        end
+        attr_accessor :income_history
 
         # `true` if the individual an an active employee or contractor at the company.
         sig { returns(T.nilable(T::Boolean)) }
-        def is_active
-        end
-
-        sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-        def is_active=(_)
-        end
+        attr_accessor :is_active
 
         # The legal last name of the individual.
         sig { returns(T.nilable(String)) }
-        def last_name
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def last_name=(_)
-        end
+        attr_accessor :last_name
 
         sig { returns(T.nilable(String)) }
-        def latest_rehire_date
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def latest_rehire_date=(_)
-        end
+        attr_accessor :latest_rehire_date
 
         sig { returns(T.nilable(FinchAPI::Models::Location)) }
-        def location
-        end
+        attr_reader :location
 
-        sig do
-          params(_: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash)))
-            .returns(T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash)))
-        end
-        def location=(_)
-        end
+        sig { params(location: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash))).void }
+        attr_writer :location
 
         # The manager object representing the manager of the individual within the org.
         sig { returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::Manager)) }
-        def manager
-        end
+        attr_reader :manager
 
         sig do
-          params(_: T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Manager, FinchAPI::Util::AnyHash)))
-            .returns(T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Manager, FinchAPI::Util::AnyHash)))
+          params(
+            manager: T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Manager, FinchAPI::Util::AnyHash))
+          )
+            .void
         end
-        def manager=(_)
-        end
+        attr_writer :manager
 
         # The legal middle name of the individual.
         sig { returns(T.nilable(String)) }
-        def middle_name
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def middle_name=(_)
-        end
+        attr_accessor :middle_name
 
         # The source system's unique employment identifier for this individual
         sig { returns(T.nilable(String)) }
-        def source_id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def source_id=(_)
-        end
+        attr_accessor :source_id
 
         sig { returns(T.nilable(String)) }
-        def start_date
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def start_date=(_)
-        end
+        attr_accessor :start_date
 
         # The current title of the individual.
         sig { returns(T.nilable(String)) }
-        def title
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def title=(_)
-        end
+        attr_accessor :title
 
         # This field is deprecated in favour of `source_id`
         sig { returns(T.nilable(String)) }
-        def work_id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def work_id=(_)
-        end
+        attr_accessor :work_id
 
         sig do
           params(
@@ -289,20 +198,16 @@ module FinchAPI
 
         class CustomField < FinchAPI::BaseModel
           sig { returns(T.nilable(String)) }
-          def name
-          end
+          attr_reader :name
 
-          sig { params(_: String).returns(String) }
-          def name=(_)
-          end
+          sig { params(name: String).void }
+          attr_writer :name
 
           sig { returns(T.nilable(T.anything)) }
-          def value
-          end
+          attr_reader :value
 
-          sig { params(_: T.anything).returns(T.anything) }
-          def value=(_)
-          end
+          sig { params(value: T.anything).void }
+          attr_writer :value
 
           sig { params(name: String, value: T.anything).returns(T.attached_class) }
           def self.new(name: nil, value: nil)
@@ -316,12 +221,7 @@ module FinchAPI
         class Department < FinchAPI::BaseModel
           # The name of the department associated with the individual.
           sig { returns(T.nilable(String)) }
-          def name
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           # The department object.
           sig { params(name: T.nilable(String)).returns(T.attached_class) }
@@ -337,27 +237,11 @@ module FinchAPI
           # The secondary employment type of the individual. Options: `full_time`,
           #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
           sig { returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::TaggedSymbol)) }
-          def subtype
-          end
-
-          sig do
-            params(_: T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::TaggedSymbol))
-              .returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::TaggedSymbol))
-          end
-          def subtype=(_)
-          end
+          attr_accessor :subtype
 
           # The main employment type of the individual.
           sig { returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment::Type::TaggedSymbol)) }
-          def type
-          end
-
-          sig do
-            params(_: T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment::Type::TaggedSymbol))
-              .returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment::Type::TaggedSymbol))
-          end
-          def type=(_)
-          end
+          attr_accessor :type
 
           # The employment object.
           sig do
@@ -453,12 +337,10 @@ module FinchAPI
         class Manager < FinchAPI::BaseModel
           # A stable Finch `id` (UUID v4) for an individual in the company.
           sig { returns(T.nilable(String)) }
-          def id
-          end
+          attr_reader :id
 
-          sig { params(_: String).returns(String) }
-          def id=(_)
-          end
+          sig { params(id: String).void }
+          attr_writer :id
 
           # The manager object representing the manager of the individual within the org.
           sig { params(id: String).returns(T.attached_class) }

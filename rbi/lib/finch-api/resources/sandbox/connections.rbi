@@ -5,8 +5,7 @@ module FinchAPI
     class Sandbox
       class Connections
         sig { returns(FinchAPI::Resources::Sandbox::Connections::Accounts) }
-        def accounts
-        end
+        attr_reader :accounts
 
         # Create a new connection (new company/provider pair) with a new account
         sig do

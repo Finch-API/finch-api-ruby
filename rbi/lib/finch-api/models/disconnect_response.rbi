@@ -5,12 +5,7 @@ module FinchAPI
     class DisconnectResponse < FinchAPI::BaseModel
       # If the request is successful, Finch will return “success” (HTTP 200 status).
       sig { returns(String) }
-      def status
-      end
-
-      sig { params(_: String).returns(String) }
-      def status=(_)
-      end
+      attr_accessor :status
 
       sig { params(status: String).returns(T.attached_class) }
       def self.new(status:)

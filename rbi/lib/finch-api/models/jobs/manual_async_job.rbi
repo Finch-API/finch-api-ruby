@@ -6,31 +6,13 @@ module FinchAPI
       class ManualAsyncJob < FinchAPI::BaseModel
         # Specific information about the job, such as individual statuses for batch jobs.
         sig { returns(T.nilable(T::Array[T.anything])) }
-        def body
-        end
-
-        sig { params(_: T.nilable(T::Array[T.anything])).returns(T.nilable(T::Array[T.anything])) }
-        def body=(_)
-        end
+        attr_accessor :body
 
         sig { returns(String) }
-        def job_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def job_id=(_)
-        end
+        attr_accessor :job_id
 
         sig { returns(FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol) }
-        def status
-        end
-
-        sig do
-          params(_: FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol)
-            .returns(FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol)
-        end
-        def status=(_)
-        end
+        attr_accessor :status
 
         sig do
           params(

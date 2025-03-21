@@ -10,12 +10,10 @@ module FinchAPI
 
           # Array of individual_ids to unenroll.
           sig { returns(T.nilable(T::Array[String])) }
-          def individual_ids
-          end
+          attr_reader :individual_ids
 
-          sig { params(_: T::Array[String]).returns(T::Array[String]) }
-          def individual_ids=(_)
-          end
+          sig { params(individual_ids: T::Array[String]).void }
+          attr_writer :individual_ids
 
           sig do
             params(

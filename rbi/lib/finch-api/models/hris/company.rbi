@@ -6,95 +6,41 @@ module FinchAPI
       class HRISCompany < FinchAPI::BaseModel
         # A stable Finch `id` (UUID v4) for the company.
         sig { returns(String) }
-        def id
-        end
-
-        sig { params(_: String).returns(String) }
-        def id=(_)
-        end
+        attr_accessor :id
 
         # An array of bank account objects associated with the payroll/HRIS system.
         sig { returns(T.nilable(T::Array[FinchAPI::Models::HRIS::HRISCompany::Account])) }
-        def accounts
-        end
-
-        sig do
-          params(_: T.nilable(T::Array[FinchAPI::Models::HRIS::HRISCompany::Account]))
-            .returns(T.nilable(T::Array[FinchAPI::Models::HRIS::HRISCompany::Account]))
-        end
-        def accounts=(_)
-        end
+        attr_accessor :accounts
 
         # The array of company departments.
         sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::HRISCompany::Department)])) }
-        def departments
-        end
-
-        sig do
-          params(_: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::HRISCompany::Department)]))
-            .returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::HRISCompany::Department)]))
-        end
-        def departments=(_)
-        end
+        attr_accessor :departments
 
         # The employer identification number.
         sig { returns(T.nilable(String)) }
-        def ein
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def ein=(_)
-        end
+        attr_accessor :ein
 
         # The entity type object.
         sig { returns(T.nilable(FinchAPI::Models::HRIS::HRISCompany::Entity)) }
-        def entity
-        end
+        attr_reader :entity
 
-        sig do
-          params(_: T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Entity, FinchAPI::Util::AnyHash)))
-            .returns(T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Entity, FinchAPI::Util::AnyHash)))
-        end
-        def entity=(_)
-        end
+        sig { params(entity: T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Entity, FinchAPI::Util::AnyHash))).void }
+        attr_writer :entity
 
         # The legal name of the company.
         sig { returns(T.nilable(String)) }
-        def legal_name
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def legal_name=(_)
-        end
+        attr_accessor :legal_name
 
         sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::Location)])) }
-        def locations
-        end
-
-        sig do
-          params(_: T.nilable(T::Array[T.nilable(FinchAPI::Models::Location)]))
-            .returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::Location)]))
-        end
-        def locations=(_)
-        end
+        attr_accessor :locations
 
         # The email of the main administrator on the account.
         sig { returns(T.nilable(String)) }
-        def primary_email
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def primary_email=(_)
-        end
+        attr_accessor :primary_email
 
         # The phone number of the main administrator on the account. Format: `XXXXXXXXXX`
         sig { returns(T.nilable(String)) }
-        def primary_phone_number
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def primary_phone_number=(_)
-        end
+        attr_accessor :primary_phone_number
 
         sig do
           params(
@@ -147,52 +93,24 @@ module FinchAPI
         class Account < FinchAPI::BaseModel
           # The name of the bank associated in the payroll/HRIS system.
           sig { returns(T.nilable(String)) }
-          def account_name
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def account_name=(_)
-          end
+          attr_accessor :account_name
 
           # 10-12 digit number to specify the bank account
           sig { returns(T.nilable(String)) }
-          def account_number
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def account_number=(_)
-          end
+          attr_accessor :account_number
 
           # The type of bank account.
           sig { returns(T.nilable(FinchAPI::Models::HRIS::HRISCompany::Account::AccountType::TaggedSymbol)) }
-          def account_type
-          end
-
-          sig do
-            params(_: T.nilable(FinchAPI::Models::HRIS::HRISCompany::Account::AccountType::TaggedSymbol))
-              .returns(T.nilable(FinchAPI::Models::HRIS::HRISCompany::Account::AccountType::TaggedSymbol))
-          end
-          def account_type=(_)
-          end
+          attr_accessor :account_type
 
           # Name of the banking institution.
           sig { returns(T.nilable(String)) }
-          def institution_name
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def institution_name=(_)
-          end
+          attr_accessor :institution_name
 
           # A nine-digit code that's based on the U.S. Bank location where your account was
           #   opened.
           sig { returns(T.nilable(String)) }
-          def routing_number
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def routing_number=(_)
-          end
+          attr_accessor :routing_number
 
           sig do
             params(
@@ -244,28 +162,19 @@ module FinchAPI
         class Department < FinchAPI::BaseModel
           # The department name.
           sig { returns(T.nilable(String)) }
-          def name
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           # The parent department, if present.
           sig { returns(T.nilable(FinchAPI::Models::HRIS::HRISCompany::Department::Parent)) }
-          def parent
-          end
+          attr_reader :parent
 
           sig do
             params(
-              _: T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Department::Parent, FinchAPI::Util::AnyHash))
+              parent: T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Department::Parent, FinchAPI::Util::AnyHash))
             )
-              .returns(
-                T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Department::Parent, FinchAPI::Util::AnyHash))
-              )
+              .void
           end
-          def parent=(_)
-          end
+          attr_writer :parent
 
           sig do
             params(
@@ -289,12 +198,7 @@ module FinchAPI
           class Parent < FinchAPI::BaseModel
             # The parent department's name.
             sig { returns(T.nilable(String)) }
-            def name
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def name=(_)
-            end
+            attr_accessor :name
 
             # The parent department, if present.
             sig { params(name: T.nilable(String)).returns(T.attached_class) }
@@ -310,27 +214,11 @@ module FinchAPI
         class Entity < FinchAPI::BaseModel
           # The tax payer subtype of the company.
           sig { returns(T.nilable(FinchAPI::Models::HRIS::HRISCompany::Entity::Subtype::TaggedSymbol)) }
-          def subtype
-          end
-
-          sig do
-            params(_: T.nilable(FinchAPI::Models::HRIS::HRISCompany::Entity::Subtype::TaggedSymbol))
-              .returns(T.nilable(FinchAPI::Models::HRIS::HRISCompany::Entity::Subtype::TaggedSymbol))
-          end
-          def subtype=(_)
-          end
+          attr_accessor :subtype
 
           # The tax payer type of the company.
           sig { returns(T.nilable(FinchAPI::Models::HRIS::HRISCompany::Entity::Type::TaggedSymbol)) }
-          def type
-          end
-
-          sig do
-            params(_: T.nilable(FinchAPI::Models::HRIS::HRISCompany::Entity::Type::TaggedSymbol))
-              .returns(T.nilable(FinchAPI::Models::HRIS::HRISCompany::Entity::Type::TaggedSymbol))
-          end
-          def type=(_)
-          end
+          attr_accessor :type
 
           # The entity type object.
           sig do

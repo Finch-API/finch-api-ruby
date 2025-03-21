@@ -9,43 +9,20 @@ module FinchAPI
 
         # The ID of the existing connection to reauthenticate
         sig { returns(String) }
-        def connection_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def connection_id=(_)
-        end
+        attr_accessor :connection_id
 
         # The number of minutes until the session expires (defaults to 43,200, which is 30
         #   days)
         sig { returns(T.nilable(Integer)) }
-        def minutes_to_expire
-        end
-
-        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-        def minutes_to_expire=(_)
-        end
+        attr_accessor :minutes_to_expire
 
         # The products to request access to (optional for reauthentication)
         sig { returns(T.nilable(T::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol])) }
-        def products
-        end
-
-        sig do
-          params(_: T.nilable(T::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol]))
-            .returns(T.nilable(T::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol]))
-        end
-        def products=(_)
-        end
+        attr_accessor :products
 
         # The URI to redirect to after the Connect flow is completed
         sig { returns(T.nilable(String)) }
-        def redirect_uri
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def redirect_uri=(_)
-        end
+        attr_accessor :redirect_uri
 
         sig do
           params(

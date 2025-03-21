@@ -9,15 +9,7 @@ module FinchAPI
 
         # The type of job to start. Currently the only supported type is `data_sync_all`
         sig { returns(FinchAPI::Models::Sandbox::JobCreateParams::Type::OrSymbol) }
-        def type
-        end
-
-        sig do
-          params(_: FinchAPI::Models::Sandbox::JobCreateParams::Type::OrSymbol)
-            .returns(FinchAPI::Models::Sandbox::JobCreateParams::Type::OrSymbol)
-        end
-        def type=(_)
-        end
+        attr_accessor :type
 
         sig do
           params(

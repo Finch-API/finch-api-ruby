@@ -5,26 +5,16 @@ module FinchAPI
     module HRIS
       class SupportPerBenefitType < FinchAPI::BaseModel
         sig { returns(T.nilable(FinchAPI::Models::OperationSupportMatrix)) }
-        def company_benefits
-        end
+        attr_reader :company_benefits
 
-        sig do
-          params(_: T.any(FinchAPI::Models::OperationSupportMatrix, FinchAPI::Util::AnyHash))
-            .returns(T.any(FinchAPI::Models::OperationSupportMatrix, FinchAPI::Util::AnyHash))
-        end
-        def company_benefits=(_)
-        end
+        sig { params(company_benefits: T.any(FinchAPI::Models::OperationSupportMatrix, FinchAPI::Util::AnyHash)).void }
+        attr_writer :company_benefits
 
         sig { returns(T.nilable(FinchAPI::Models::OperationSupportMatrix)) }
-        def individual_benefits
-        end
+        attr_reader :individual_benefits
 
-        sig do
-          params(_: T.any(FinchAPI::Models::OperationSupportMatrix, FinchAPI::Util::AnyHash))
-            .returns(T.any(FinchAPI::Models::OperationSupportMatrix, FinchAPI::Util::AnyHash))
-        end
-        def individual_benefits=(_)
-        end
+        sig { params(individual_benefits: T.any(FinchAPI::Models::OperationSupportMatrix, FinchAPI::Util::AnyHash)).void }
+        attr_writer :individual_benefits
 
         sig do
           params(

@@ -6,67 +6,29 @@ module FinchAPI
       module Connections
         class AccountCreateResponse < FinchAPI::BaseModel
           sig { returns(String) }
-          def access_token
-          end
-
-          sig { params(_: String).returns(String) }
-          def access_token=(_)
-          end
+          attr_accessor :access_token
 
           # [DEPRECATED] Use `connection_id` to associate a connection with an access token
           sig { returns(String) }
-          def account_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def account_id=(_)
-          end
+          attr_accessor :account_id
 
           sig { returns(FinchAPI::Models::Sandbox::Connections::AccountCreateResponse::AuthenticationType::TaggedSymbol) }
-          def authentication_type
-          end
-
-          sig do
-            params(_: FinchAPI::Models::Sandbox::Connections::AccountCreateResponse::AuthenticationType::TaggedSymbol)
-              .returns(FinchAPI::Models::Sandbox::Connections::AccountCreateResponse::AuthenticationType::TaggedSymbol)
-          end
-          def authentication_type=(_)
-          end
+          attr_accessor :authentication_type
 
           # [DEPRECATED] Use `connection_id` to associate a connection with an access token
           sig { returns(String) }
-          def company_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def company_id=(_)
-          end
+          attr_accessor :company_id
 
           # The ID of the new connection
           sig { returns(String) }
-          def connection_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def connection_id=(_)
-          end
+          attr_accessor :connection_id
 
           sig { returns(T::Array[String]) }
-          def products
-          end
-
-          sig { params(_: T::Array[String]).returns(T::Array[String]) }
-          def products=(_)
-          end
+          attr_accessor :products
 
           # The ID of the provider associated with the `access_token`
           sig { returns(String) }
-          def provider_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def provider_id=(_)
-          end
+          attr_accessor :provider_id
 
           sig do
             params(

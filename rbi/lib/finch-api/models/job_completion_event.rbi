@@ -4,26 +4,16 @@ module FinchAPI
   module Models
     class JobCompletionEvent < FinchAPI::Models::BaseWebhookEvent
       sig { returns(T.nilable(FinchAPI::Models::JobCompletionEvent::Data)) }
-      def data
-      end
+      attr_reader :data
 
-      sig do
-        params(_: T.any(FinchAPI::Models::JobCompletionEvent::Data, FinchAPI::Util::AnyHash))
-          .returns(T.any(FinchAPI::Models::JobCompletionEvent::Data, FinchAPI::Util::AnyHash))
-      end
-      def data=(_)
-      end
+      sig { params(data: T.any(FinchAPI::Models::JobCompletionEvent::Data, FinchAPI::Util::AnyHash)).void }
+      attr_writer :data
 
       sig { returns(T.nilable(FinchAPI::Models::JobCompletionEvent::EventType::TaggedSymbol)) }
-      def event_type
-      end
+      attr_reader :event_type
 
-      sig do
-        params(_: FinchAPI::Models::JobCompletionEvent::EventType::OrSymbol)
-          .returns(FinchAPI::Models::JobCompletionEvent::EventType::OrSymbol)
-      end
-      def event_type=(_)
-      end
+      sig { params(event_type: FinchAPI::Models::JobCompletionEvent::EventType::OrSymbol).void }
+      attr_writer :event_type
 
       sig do
         params(
@@ -50,21 +40,11 @@ module FinchAPI
       class Data < FinchAPI::BaseModel
         # The id of the job which has completed.
         sig { returns(String) }
-        def job_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def job_id=(_)
-        end
+        attr_accessor :job_id
 
         # The url to query the result of the job.
         sig { returns(String) }
-        def job_url
-        end
-
-        sig { params(_: String).returns(String) }
-        def job_url=(_)
-        end
+        attr_accessor :job_url
 
         sig { params(job_id: String, job_url: String).returns(T.attached_class) }
         def self.new(job_id:, job_url:)

@@ -4,8 +4,7 @@ module FinchAPI
   module Resources
     class Connect
       sig { returns(FinchAPI::Resources::Connect::Sessions) }
-      def sessions
-      end
+      attr_reader :sessions
 
       sig { params(client: FinchAPI::Client).returns(T.attached_class) }
       def self.new(client:)

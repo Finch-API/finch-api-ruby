@@ -7,45 +7,30 @@ module FinchAPI
       #   response received from the underlying integration’s API. This field may be null
       #   in the case where the upstream system’s response is empty.
       sig { returns(T.nilable(String)) }
-      def data
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def data=(_)
-      end
+      attr_accessor :data
 
       # The HTTP headers of the forwarded request’s response, exactly as received from
       #   the underlying integration’s API.
       sig { returns(T.nilable(T.anything)) }
-      def headers
-      end
-
-      sig { params(_: T.nilable(T.anything)).returns(T.nilable(T.anything)) }
-      def headers=(_)
-      end
+      attr_accessor :headers
 
       # An object containing details of your original forwarded request, for your ease
       #   of reference.
       sig { returns(FinchAPI::Models::RequestForwardingForwardResponse::Request) }
-      def request
-      end
+      attr_reader :request
 
       sig do
-        params(_: T.any(FinchAPI::Models::RequestForwardingForwardResponse::Request, FinchAPI::Util::AnyHash))
-          .returns(T.any(FinchAPI::Models::RequestForwardingForwardResponse::Request, FinchAPI::Util::AnyHash))
+        params(
+          request: T.any(FinchAPI::Models::RequestForwardingForwardResponse::Request, FinchAPI::Util::AnyHash)
+        )
+          .void
       end
-      def request=(_)
-      end
+      attr_writer :request
 
       # The HTTP status code of the forwarded request’s response, exactly received from
       #   the underlying integration’s API. This value will be returned as an integer.
       sig { returns(Integer) }
-      def status_code
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def status_code=(_)
-      end
+      attr_accessor :status_code
 
       sig do
         params(
@@ -78,51 +63,26 @@ module FinchAPI
         #   specified in the original request, this value will be returned as null ;
         #   otherwise, this value will always be returned as a string.
         sig { returns(T.nilable(String)) }
-        def data
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def data=(_)
-        end
+        attr_accessor :data
 
         # The specified HTTP headers that were included in the forwarded request. If no
         #   headers were specified, this will be returned as `null`.
         sig { returns(T.nilable(T.anything)) }
-        def headers
-        end
-
-        sig { params(_: T.nilable(T.anything)).returns(T.nilable(T.anything)) }
-        def headers=(_)
-        end
+        attr_accessor :headers
 
         # The HTTP method that was specified for the forwarded request. Valid values
         #   include: `GET` , `POST` , `PUT` , `DELETE` , and `PATCH`.
         sig { returns(String) }
-        def method_
-        end
-
-        sig { params(_: String).returns(String) }
-        def method_=(_)
-        end
+        attr_accessor :method_
 
         # The query parameters that were included in the forwarded request. If no query
         #   parameters were specified, this will be returned as `null`.
         sig { returns(T.nilable(T.anything)) }
-        def params
-        end
-
-        sig { params(_: T.nilable(T.anything)).returns(T.nilable(T.anything)) }
-        def params=(_)
-        end
+        attr_accessor :params
 
         # The URL route path that was specified for the forwarded request.
         sig { returns(String) }
-        def route
-        end
-
-        sig { params(_: String).returns(String) }
-        def route=(_)
-        end
+        attr_accessor :route
 
         # An object containing details of your original forwarded request, for your ease
         #   of reference.

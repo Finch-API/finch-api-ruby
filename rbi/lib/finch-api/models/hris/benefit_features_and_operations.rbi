@@ -5,30 +5,26 @@ module FinchAPI
     module HRIS
       class BenefitFeaturesAndOperations < FinchAPI::BaseModel
         sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures)) }
-        def supported_features
-        end
+        attr_reader :supported_features
 
         sig do
           params(
-            _: T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures, FinchAPI::Util::AnyHash)
+            supported_features: T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures, FinchAPI::Util::AnyHash)
           )
-            .returns(
-              T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures, FinchAPI::Util::AnyHash)
-            )
+            .void
         end
-        def supported_features=(_)
-        end
+        attr_writer :supported_features
 
         sig { returns(T.nilable(FinchAPI::Models::HRIS::SupportPerBenefitType)) }
-        def supported_operations
-        end
+        attr_reader :supported_operations
 
         sig do
-          params(_: T.any(FinchAPI::Models::HRIS::SupportPerBenefitType, FinchAPI::Util::AnyHash))
-            .returns(T.any(FinchAPI::Models::HRIS::SupportPerBenefitType, FinchAPI::Util::AnyHash))
+          params(
+            supported_operations: T.any(FinchAPI::Models::HRIS::SupportPerBenefitType, FinchAPI::Util::AnyHash)
+          )
+            .void
         end
-        def supported_operations=(_)
-        end
+        attr_writer :supported_operations
 
         sig do
           params(
@@ -55,22 +51,12 @@ module FinchAPI
         class SupportedFeatures < FinchAPI::BaseModel
           # Whether the provider supports an annual maximum for this benefit.
           sig { returns(T.nilable(T::Boolean)) }
-          def annual_maximum
-          end
-
-          sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-          def annual_maximum=(_)
-          end
+          attr_accessor :annual_maximum
 
           # Whether the provider supports catch up for this benefit. This field will only be
           #   true for retirement benefits.
           sig { returns(T.nilable(T::Boolean)) }
-          def catch_up
-          end
-
-          sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-          def catch_up=(_)
-          end
+          attr_accessor :catch_up
 
           # Supported contribution types. An empty array indicates contributions are not
           #   supported.
@@ -85,39 +71,10 @@ module FinchAPI
               )
             )
           end
-          def company_contribution
-          end
-
-          sig do
-            params(
-              _: T.nilable(
-                T::Array[
-                T.nilable(
-                  FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::CompanyContribution::TaggedSymbol
-                )
-                ]
-              )
-            )
-              .returns(
-                T.nilable(
-                  T::Array[
-                  T.nilable(
-                    FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::CompanyContribution::TaggedSymbol
-                  )
-                  ]
-                )
-              )
-          end
-          def company_contribution=(_)
-          end
+          attr_accessor :company_contribution
 
           sig { returns(T.nilable(String)) }
-          def description
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def description=(_)
-          end
+          attr_accessor :description
 
           # Supported deduction types. An empty array indicates deductions are not
           #   supported.
@@ -132,43 +89,14 @@ module FinchAPI
               )
             )
           end
-          def employee_deduction
-          end
-
-          sig do
-            params(
-              _: T.nilable(
-                T::Array[
-                T.nilable(
-                  FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::EmployeeDeduction::TaggedSymbol
-                )
-                ]
-              )
-            )
-              .returns(
-                T.nilable(
-                  T::Array[
-                  T.nilable(
-                    FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::EmployeeDeduction::TaggedSymbol
-                  )
-                  ]
-                )
-              )
-          end
-          def employee_deduction=(_)
-          end
+          attr_accessor :employee_deduction
 
           # The list of frequencies supported by the provider for this benefit
           sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol)])) }
-          def frequencies
-          end
+          attr_reader :frequencies
 
-          sig do
-            params(_: T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::OrSymbol)])
-              .returns(T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::OrSymbol)])
-          end
-          def frequencies=(_)
-          end
+          sig { params(frequencies: T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::OrSymbol)]).void }
+          attr_writer :frequencies
 
           # Whether the provider supports HSA contribution limits. Empty if this feature is
           #   not supported for the benefit. This array only has values for HSA benefits.
@@ -183,31 +111,7 @@ module FinchAPI
               )
             )
           end
-          def hsa_contribution_limit
-          end
-
-          sig do
-            params(
-              _: T.nilable(
-                T::Array[
-                T.nilable(
-                  FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::HsaContributionLimit::TaggedSymbol
-                )
-                ]
-              )
-            )
-              .returns(
-                T.nilable(
-                  T::Array[
-                  T.nilable(
-                    FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::HsaContributionLimit::TaggedSymbol
-                  )
-                  ]
-                )
-              )
-          end
-          def hsa_contribution_limit=(_)
-          end
+          attr_accessor :hsa_contribution_limit
 
           sig do
             params(

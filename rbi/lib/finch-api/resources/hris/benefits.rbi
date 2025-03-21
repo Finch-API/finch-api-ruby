@@ -5,8 +5,7 @@ module FinchAPI
     class HRIS
       class Benefits
         sig { returns(FinchAPI::Resources::HRIS::Benefits::Individuals) }
-        def individuals
-        end
+        attr_reader :individuals
 
         # Creates a new company-wide deduction or contribution. Please use the
         #   `/providers` endpoint to view available types for each provider.

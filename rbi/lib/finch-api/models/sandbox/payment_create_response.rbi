@@ -6,21 +6,11 @@ module FinchAPI
       class PaymentCreateResponse < FinchAPI::BaseModel
         # The date of the payment.
         sig { returns(String) }
-        def pay_date
-        end
-
-        sig { params(_: String).returns(String) }
-        def pay_date=(_)
-        end
+        attr_accessor :pay_date
 
         # The ID of the payment.
         sig { returns(String) }
-        def payment_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def payment_id=(_)
-        end
+        attr_accessor :payment_id
 
         sig { params(pay_date: String, payment_id: String).returns(T.attached_class) }
         def self.new(pay_date:, payment_id:)
