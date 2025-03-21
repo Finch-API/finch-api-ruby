@@ -40,7 +40,7 @@ module FinchAPI
 
       case page_data
       in {responses: Array | nil => responses}
-        @responses = responses&.map { model.coerce(_1) }
+        @responses = responses&.map { FinchAPI::Converter.coerce(model, _1) }
       else
       end
     end
