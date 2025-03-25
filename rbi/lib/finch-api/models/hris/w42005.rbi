@@ -62,10 +62,7 @@ module FinchAPI
 
           # The individual's filing status for tax purposes.
           sig { returns(T.nilable(FinchAPI::Models::HRIS::W42005::Data::FilingStatus::TaggedSymbol)) }
-          attr_reader :filing_status
-
-          sig { params(filing_status: FinchAPI::Models::HRIS::W42005::Data::FilingStatus::OrSymbol).void }
-          attr_writer :filing_status
+          attr_accessor :filing_status
 
           # The unique identifier for the individual associated with this 2005 W4 form.
           sig { returns(T.nilable(String)) }
@@ -83,7 +80,7 @@ module FinchAPI
             params(
               additional_withholding: T.nilable(Integer),
               exemption: FinchAPI::Models::HRIS::W42005::Data::Exemption::OrSymbol,
-              filing_status: FinchAPI::Models::HRIS::W42005::Data::FilingStatus::OrSymbol,
+              filing_status: T.nilable(FinchAPI::Models::HRIS::W42005::Data::FilingStatus::OrSymbol),
               individual_id: String,
               total_number_of_allowances: T.nilable(Integer)
             )
@@ -104,7 +101,7 @@ module FinchAPI
                 {
                   additional_withholding: T.nilable(Integer),
                   exemption: FinchAPI::Models::HRIS::W42005::Data::Exemption::TaggedSymbol,
-                  filing_status: FinchAPI::Models::HRIS::W42005::Data::FilingStatus::TaggedSymbol,
+                  filing_status: T.nilable(FinchAPI::Models::HRIS::W42005::Data::FilingStatus::TaggedSymbol),
                   individual_id: String,
                   total_number_of_allowances: T.nilable(Integer)
                 }
