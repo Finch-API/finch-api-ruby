@@ -1,19 +1,14 @@
 module FinchAPI
   module Resources
     class RequestForwarding
-      def forward:
-        (
-          FinchAPI::Models::RequestForwardingForwardParams
-          | ::Hash[Symbol, top] params
-        ) -> FinchAPI::Models::RequestForwardingForwardResponse
-        | (
-          method_: String,
-          route: String,
-          data: String?,
-          headers: top?,
-          params: top?,
-          request_options: FinchAPI::request_opts
-        ) -> FinchAPI::Models::RequestForwardingForwardResponse
+      def forward: (
+        method_: String,
+        route: String,
+        ?data: String?,
+        ?headers: top?,
+        ?params: top?,
+        ?request_options: FinchAPI::request_opts
+      ) -> FinchAPI::Models::RequestForwardingForwardResponse
 
       def initialize: (client: FinchAPI::Client) -> void
     end

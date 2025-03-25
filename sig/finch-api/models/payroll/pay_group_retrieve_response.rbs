@@ -18,17 +18,12 @@ module FinchAPI
 
         attr_accessor pay_frequencies: ::Array[FinchAPI::Models::Payroll::PayGroupRetrieveResponse::pay_frequency]
 
-        def initialize:
-          (
-            id: String,
-            individual_ids: ::Array[String],
-            name: String,
-            pay_frequencies: ::Array[FinchAPI::Models::Payroll::PayGroupRetrieveResponse::pay_frequency]
-          ) -> void
-          | (
-            ?FinchAPI::Models::Payroll::pay_group_retrieve_response
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          id: String,
+          individual_ids: ::Array[String],
+          name: String,
+          pay_frequencies: ::Array[FinchAPI::Models::Payroll::PayGroupRetrieveResponse::pay_frequency]
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::Payroll::pay_group_retrieve_response
 
@@ -43,7 +38,9 @@ module FinchAPI
           | :daily
           | :other
 
-        class PayFrequency < FinchAPI::Enum
+        module PayFrequency
+          extend FinchAPI::Enum
+
           ANNUALLY: :annually
           SEMI_ANNUALLY: :semi_annually
           QUARTERLY: :quarterly
@@ -54,7 +51,7 @@ module FinchAPI
           DAILY: :daily
           OTHER: :other
 
-          def self.values: -> ::Array[FinchAPI::Models::Payroll::PayGroupRetrieveResponse::pay_frequency]
+          def self?.values: -> ::Array[FinchAPI::Models::Payroll::PayGroupRetrieveResponse::pay_frequency]
         end
       end
     end

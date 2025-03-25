@@ -8,30 +8,26 @@ module FinchAPI
         include FinchAPI::RequestParameters
 
         sig { returns(T.nilable(String)) }
-        def individual_id
-        end
+        attr_reader :individual_id
 
-        sig { params(_: String).returns(String) }
-        def individual_id=(_)
-        end
+        sig { params(individual_id: String).void }
+        attr_writer :individual_id
 
         sig { returns(T.nilable(T::Array[String])) }
-        def pay_frequencies
-        end
+        attr_reader :pay_frequencies
 
-        sig { params(_: T::Array[String]).returns(T::Array[String]) }
-        def pay_frequencies=(_)
-        end
+        sig { params(pay_frequencies: T::Array[String]).void }
+        attr_writer :pay_frequencies
 
         sig do
           params(
             individual_id: String,
             pay_frequencies: T::Array[String],
-            request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(individual_id: nil, pay_frequencies: nil, request_options: {})
+        def self.new(individual_id: nil, pay_frequencies: nil, request_options: {})
         end
 
         sig do

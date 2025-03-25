@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module Sandbox
-      DirectoryCreateResponse = T.type_alias { T::Array[T.anything] }
+      DirectoryCreateResponse = T.let(FinchAPI::ArrayOf[FinchAPI::Unknown], FinchAPI::Converter)
     end
   end
 end

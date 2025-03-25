@@ -1,10 +1,7 @@
 # frozen_string_literal: true
 
 module FinchAPI
-  # @private
-  #
-  # @abstract
-  #
+  # @api private
   module Extern
   end
 end

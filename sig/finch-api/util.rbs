@@ -6,7 +6,7 @@ module FinchAPI
 
     def self?.os: -> String
 
-    def self?.primitive?: (top input) -> (bool | top)
+    def self?.primitive?: (top input) -> bool
 
     def self?.coerce_boolean: (top input) -> (bool | top)
 
@@ -20,12 +20,12 @@ module FinchAPI
 
     OMIT: top
 
-    def self?.deep_merge_lr: (top lhs, top rhs, concat: bool) -> top
+    def self?.deep_merge_lr: (top lhs, top rhs, ?concat: bool) -> top
 
     def self?.deep_merge: (
       *::Array[top] values,
-      sentinel: top?,
-      concat: bool
+      ?sentinel: top?,
+      ?concat: bool
     ) -> top
 
     def self?.dig: (
@@ -72,22 +72,47 @@ module FinchAPI
       | ::Array[(String | Integer)?])?] headers
     ) -> ::Hash[String, String]
 
+    class ReadIOAdapter
+      private def read_enum: (Integer? max_len) -> String
+
+      def read: (?Integer? max_len, ?String? out_string) -> String?
+
+      def initialize: (
+        String | IO | StringIO | Enumerable[String] stream
+      ) {
+        (String arg0) -> void
+      } -> void
+    end
+
+    def self?.string_io: {
+      (Enumerator::Yielder y) -> void
+    } -> Enumerable[String]
+
     def self?.encode_multipart_formdata: (
-      StringIO io,
+      Enumerator::Yielder y,
       boundary: String,
       key: Symbol | String,
       val: top
     ) -> void
+
+    def self?.encode_multipart_streaming: (
+      top body
+    ) -> [String, Enumerable[String]]
 
     def self?.encode_content: (::Hash[String, String] headers, top body) -> top
 
     def self?.decode_content: (
       ::Hash[String, String] headers,
       stream: Enumerable[String],
-      suppress_error: bool
+      ?suppress_error: bool
     ) -> top
 
-    def self?.fused_enum: (Enumerable[top] enum) { -> void } -> Enumerable[top]
+    def self?.fused_enum: (
+      Enumerable[top] enum,
+      ?external: bool
+    ) {
+      -> void
+    } -> Enumerable[top]
 
     def self?.close_fused!: (Enumerable[top]? enum) -> void
 
@@ -95,15 +120,15 @@ module FinchAPI
       Enumerable[top]? enum
     ) {
       (Enumerator::Yielder arg0) -> void
-    } -> void
+    } -> Enumerable[top]
 
-    type sse_message =
+    type server_sent_event =
       { event: String?, data: String?, id: String?, retry: Integer? }
 
-    def self?.enum_lines: (Enumerable[String] enum) -> Enumerable[String]
+    def self?.decode_lines: (Enumerable[String] enum) -> Enumerable[String]
 
-    def self?.parse_sse: (
+    def self?.decode_sse: (
       Enumerable[String] lines
-    ) -> FinchAPI::Util::sse_message
+    ) -> FinchAPI::Util::server_sent_event
   end
 end

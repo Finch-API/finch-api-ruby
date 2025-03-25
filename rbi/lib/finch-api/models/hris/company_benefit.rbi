@@ -5,47 +5,28 @@ module FinchAPI
     module HRIS
       class CompanyBenefit < FinchAPI::BaseModel
         sig { returns(String) }
-        def benefit_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def benefit_id=(_)
-        end
+        attr_accessor :benefit_id
 
         sig { returns(T.nilable(String)) }
-        def description
-        end
+        attr_accessor :description
 
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def description=(_)
-        end
+        sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol)) }
+        attr_accessor :frequency
 
-        sig { returns(T.nilable(Symbol)) }
-        def frequency
-        end
-
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
-        def frequency=(_)
-        end
-
-        sig { returns(T.nilable(Symbol)) }
-        def type
-        end
-
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
-        def type=(_)
-        end
+        # Type of benefit.
+        sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)) }
+        attr_accessor :type
 
         sig do
           params(
             benefit_id: String,
             description: T.nilable(String),
-            frequency: T.nilable(Symbol),
-            type: T.nilable(Symbol)
+            frequency: T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::OrSymbol),
+            type: T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(benefit_id:, description:, frequency:, type:)
+        def self.new(benefit_id:, description:, frequency:, type:)
         end
 
         sig do
@@ -54,8 +35,8 @@ module FinchAPI
               {
                 benefit_id: String,
                 description: T.nilable(String),
-                frequency: T.nilable(Symbol),
-                type: T.nilable(Symbol)
+                frequency: T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol),
+                type: T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
               }
             )
         end

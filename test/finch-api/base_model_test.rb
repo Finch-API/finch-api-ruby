@@ -3,7 +3,9 @@
 require_relative "test_helper"
 
 class FinchAPI::Test::BaseModelTest < Minitest::Test
-  class E1 < FinchAPI::Enum
+  module E1
+    extend FinchAPI::Enum
+
     A = :a
     B = :b
   end
@@ -22,7 +24,7 @@ class FinchAPI::Test::BaseModelTest < Minitest::Test
     end
 
     assert_pattern do
-      FinchAPI::Converter.coerce(A2, %w[a b c]) => [:a, :b, :c]
+      FinchAPI::Converter.coerce(A2, %w[a b c]) => [:a, :b, "c"]
     end
   end
 
@@ -222,19 +224,37 @@ class FinchAPI::Test::BaseModelTest < Minitest::Test
     end
   end
 
+  class M4 < M2
+    required :c, M1
+    required :d, FinchAPI::ArrayOf[M4]
+    required :e, M2, api_name: :f
+  end
+
+  def test_model_to_h
+    model = M4.new(a: "wow", c: {}, d: [{}, 2, {c: {}}], f: {})
+    assert_pattern do
+      model.to_h => {a: "wow", c: M1, d: [M4, 2, M4 => child], f: M2}
+      assert_equal({c: M1.new}, child.to_h)
+    end
+  end
+
   A3 = FinchAPI::ArrayOf[A1]
 
   class M3 < M1
     optional :b, E1, api_name: :renamed_again
   end
 
-  class U1 < FinchAPI::Union
+  module U1
+    extend FinchAPI::Union
+
     discriminator :type
     variant :a, M1
     variant :b, M3
   end
 
-  class U2 < FinchAPI::Union
+  module U2
+    extend FinchAPI::Union
+
     variant A1
     variant A3
   end
@@ -316,12 +336,16 @@ class FinchAPI::Test::BaseModelTest < Minitest::Test
     end
   end
 
-  class E2 < FinchAPI::Enum
+  module E2
+    extend FinchAPI::Enum
+
     A = :a
     B = :b
   end
 
-  class U3 < FinchAPI::Union
+  module U3
+    extend FinchAPI::Union
+
     discriminator :type
     variant :a, M1
     variant :b, M3
@@ -337,5 +361,21 @@ class FinchAPI::Test::BaseModelTest < Minitest::Test
 
     refute_equal(U1, U2)
     assert_equal(U1, U3)
+  end
+
+  module U4
+    extend FinchAPI::Union
+
+    variant :a, const: :a
+    variant :b, const: :b
+  end
+
+  def test_basic_const_union
+    assert_pattern do
+      U4.coerce(nil) => nil
+      U4.coerce("") => ""
+      U4.coerce(:a) => :a
+      U4.coerce("a") => :a
+    end
   end
 end

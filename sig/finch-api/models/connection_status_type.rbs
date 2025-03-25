@@ -8,7 +8,9 @@ module FinchAPI
       | :error_permissions
       | :reauth
 
-    class ConnectionStatusType < FinchAPI::Enum
+    module ConnectionStatusType
+      extend FinchAPI::Enum
+
       PENDING: :pending
       PROCESSING: :processing
       CONNECTED: :connected
@@ -16,7 +18,7 @@ module FinchAPI
       ERROR_PERMISSIONS: :error_permissions
       REAUTH: :reauth
 
-      def self.values: -> ::Array[FinchAPI::Models::connection_status_type]
+      def self?.values: -> ::Array[FinchAPI::Models::connection_status_type]
     end
   end
 end

@@ -148,18 +148,9 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-          # @abstract
-          #
-          # @example
-          # ```ruby
-          # case type
-          # in :work
-          #   # ...
-          # in :personal
-          #   # ...
-          # end
-          # ```
-          class Type < FinchAPI::Enum
+          module Type
+            extend FinchAPI::Enum
+
             WORK = :work
             PERSONAL = :personal
 
@@ -167,33 +158,14 @@ module FinchAPI
 
             # @!parse
             #   # @return [Array<Symbol>]
-            #   #
             #   def self.values; end
           end
         end
 
-        # @abstract
-        #
         # The EEOC-defined ethnicity of the individual.
-        #
-        # @example
-        # ```ruby
-        # case ethnicity
-        # in :asian
-        #   # ...
-        # in :white
-        #   # ...
-        # in :black_or_african_american
-        #   # ...
-        # in :native_hawaiian_or_pacific_islander
-        #   # ...
-        # in :american_indian_or_alaska_native
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
-        class Ethnicity < FinchAPI::Enum
+        module Ethnicity
+          extend FinchAPI::Enum
+
           ASIAN = :asian
           WHITE = :white
           BLACK_OR_AFRICAN_AMERICAN = :black_or_african_american
@@ -207,28 +179,13 @@ module FinchAPI
 
           # @!parse
           #   # @return [Array<Symbol>]
-          #   #
           #   def self.values; end
         end
 
-        # @abstract
-        #
         # The gender of the individual.
-        #
-        # @example
-        # ```ruby
-        # case gender
-        # in :female
-        #   # ...
-        # in :male
-        #   # ...
-        # in :other
-        #   # ...
-        # in :decline_to_specify
-        #   # ...
-        # end
-        # ```
-        class Gender < FinchAPI::Enum
+        module Gender
+          extend FinchAPI::Enum
+
           FEMALE = :female
           MALE = :male
           OTHER = :other
@@ -238,7 +195,6 @@ module FinchAPI
 
           # @!parse
           #   # @return [Array<Symbol>]
-          #   #
           #   def self.values; end
         end
 
@@ -261,18 +217,9 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-          # @abstract
-          #
-          # @example
-          # ```ruby
-          # case type
-          # in :work
-          #   # ...
-          # in :personal
-          #   # ...
-          # end
-          # ```
-          class Type < FinchAPI::Enum
+          module Type
+            extend FinchAPI::Enum
+
             WORK = :work
             PERSONAL = :personal
 
@@ -280,7 +227,6 @@ module FinchAPI
 
             # @!parse
             #   # @return [Array<Symbol>]
-            #   #
             #   def self.values; end
           end
         end

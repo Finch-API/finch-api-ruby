@@ -6,45 +6,32 @@ module FinchAPI
       extend FinchAPI::RequestParameters::Converter
       include FinchAPI::RequestParameters
 
+      # The HTTP method for the forwarded request. Valid values include: `GET` , `POST`
+      #   , `PUT` , `DELETE` , and `PATCH`.
       sig { returns(String) }
-      def method_
-      end
+      attr_accessor :method_
 
-      sig { params(_: String).returns(String) }
-      def method_=(_)
-      end
-
+      # The URL route path for the forwarded request. This value must begin with a
+      #   forward-slash ( / ) and may only contain alphanumeric characters, hyphens, and
+      #   underscores.
       sig { returns(String) }
-      def route
-      end
+      attr_accessor :route
 
-      sig { params(_: String).returns(String) }
-      def route=(_)
-      end
-
+      # The body for the forwarded request. This value must be specified as either a
+      #   string or a valid JSON object.
       sig { returns(T.nilable(String)) }
-      def data
-      end
+      attr_accessor :data
 
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def data=(_)
-      end
-
+      # The HTTP headers to include on the forwarded request. This value must be
+      #   specified as an object of key-value pairs. Example:
+      #   `{"Content-Type": "application/xml", "X-API-Version": "v1" }`
       sig { returns(T.nilable(T.anything)) }
-      def headers
-      end
+      attr_accessor :headers
 
-      sig { params(_: T.nilable(T.anything)).returns(T.nilable(T.anything)) }
-      def headers=(_)
-      end
-
+      # The query parameters for the forwarded request. This value must be specified as
+      #   a valid JSON object rather than a query string.
       sig { returns(T.nilable(T.anything)) }
-      def params
-      end
-
-      sig { params(_: T.nilable(T.anything)).returns(T.nilable(T.anything)) }
-      def params=(_)
-      end
+      attr_accessor :params
 
       sig do
         params(
@@ -53,11 +40,11 @@ module FinchAPI
           data: T.nilable(String),
           headers: T.nilable(T.anything),
           params: T.nilable(T.anything),
-          request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(method_:, route:, data: nil, headers: nil, params: nil, request_options: {})
+      def self.new(method_:, route:, data: nil, headers: nil, params: nil, request_options: {})
       end
 
       sig do

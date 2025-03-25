@@ -6,82 +6,43 @@ module FinchAPI
       module Connections
         class AccountCreateResponse < FinchAPI::BaseModel
           sig { returns(String) }
-          def access_token
-          end
+          attr_accessor :access_token
 
-          sig { params(_: String).returns(String) }
-          def access_token=(_)
-          end
-
+          # [DEPRECATED] Use `connection_id` to associate a connection with an access token
           sig { returns(String) }
-          def account_id
-          end
+          attr_accessor :account_id
 
-          sig { params(_: String).returns(String) }
-          def account_id=(_)
-          end
+          sig { returns(FinchAPI::Models::Sandbox::Connections::AccountCreateResponse::AuthenticationType::TaggedSymbol) }
+          attr_accessor :authentication_type
 
-          sig { returns(Symbol) }
-          def authentication_type
-          end
-
-          sig { params(_: Symbol).returns(Symbol) }
-          def authentication_type=(_)
-          end
-
+          # [DEPRECATED] Use `connection_id` to associate a connection with an access token
           sig { returns(String) }
-          def company_id
-          end
+          attr_accessor :company_id
 
-          sig { params(_: String).returns(String) }
-          def company_id=(_)
-          end
-
+          # The ID of the new connection
           sig { returns(String) }
-          def connection_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def connection_id=(_)
-          end
+          attr_accessor :connection_id
 
           sig { returns(T::Array[String]) }
-          def products
-          end
+          attr_accessor :products
 
-          sig { params(_: T::Array[String]).returns(T::Array[String]) }
-          def products=(_)
-          end
-
+          # The ID of the provider associated with the `access_token`
           sig { returns(String) }
-          def provider_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def provider_id=(_)
-          end
+          attr_accessor :provider_id
 
           sig do
             params(
               access_token: String,
               account_id: String,
-              authentication_type: Symbol,
+              authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateResponse::AuthenticationType::OrSymbol,
               company_id: String,
               connection_id: String,
               products: T::Array[String],
               provider_id: String
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
-            access_token:,
-            account_id:,
-            authentication_type:,
-            company_id:,
-            connection_id:,
-            products:,
-            provider_id:
-          )
+          def self.new(access_token:, account_id:, authentication_type:, company_id:, connection_id:, products:, provider_id:)
           end
 
           sig do
@@ -90,7 +51,7 @@ module FinchAPI
                 {
                   access_token: String,
                   account_id: String,
-                  authentication_type: Symbol,
+                  authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateResponse::AuthenticationType::TaggedSymbol,
                   company_id: String,
                   connection_id: String,
                   products: T::Array[String],
@@ -101,15 +62,46 @@ module FinchAPI
           def to_hash
           end
 
-          class AuthenticationType < FinchAPI::Enum
-            abstract!
+          module AuthenticationType
+            extend FinchAPI::Enum
 
-            CREDENTIAL = :credential
-            API_TOKEN = :api_token
-            OAUTH = :oauth
-            ASSISTED = :assisted
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::Connections::AccountCreateResponse::AuthenticationType) }
+            OrSymbol =
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  FinchAPI::Models::Sandbox::Connections::AccountCreateResponse::AuthenticationType::TaggedSymbol
+                )
+              end
 
-            sig { override.returns(T::Array[Symbol]) }
+            CREDENTIAL =
+              T.let(
+                :credential,
+                FinchAPI::Models::Sandbox::Connections::AccountCreateResponse::AuthenticationType::TaggedSymbol
+              )
+            API_TOKEN =
+              T.let(
+                :api_token,
+                FinchAPI::Models::Sandbox::Connections::AccountCreateResponse::AuthenticationType::TaggedSymbol
+              )
+            OAUTH =
+              T.let(
+                :oauth,
+                FinchAPI::Models::Sandbox::Connections::AccountCreateResponse::AuthenticationType::TaggedSymbol
+              )
+            ASSISTED =
+              T.let(
+                :assisted,
+                FinchAPI::Models::Sandbox::Connections::AccountCreateResponse::AuthenticationType::TaggedSymbol
+              )
+
+            sig do
+              override
+                .returns(
+                  T::Array[FinchAPI::Models::Sandbox::Connections::AccountCreateResponse::AuthenticationType::TaggedSymbol]
+                )
+            end
             def self.values
             end
           end

@@ -6,24 +6,11 @@ module FinchAPI
 
     Elem = type_member
 
-    sig { returns(T::Array[Elem]) }
-    def responses
-    end
+    sig { returns(T.nilable(T::Array[Elem])) }
+    attr_accessor :responses
 
-    sig { params(_: T::Array[Elem]).returns(T::Array[Elem]) }
-    def responses=(_)
-    end
-
-    sig do
-      params(
-        client: FinchAPI::BaseClient,
-        req: FinchAPI::BaseClient::RequestComponentsShape,
-        headers: T.any(T::Hash[String, String], Net::HTTPHeader),
-        unwrapped: T::Array[T.anything]
-      )
-        .void
-    end
-    def initialize(client:, req:, headers:, unwrapped:)
+    sig { returns(String) }
+    def inspect
     end
   end
 end

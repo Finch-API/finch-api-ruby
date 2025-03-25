@@ -30,7 +30,6 @@ module FinchAPI
       #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [FinchAPI::Models::RequestForwardingForwardResponse]
-      #
       def forward(params)
         parsed, options = FinchAPI::Models::RequestForwardingForwardParams.dump_request(params)
         @client.request(
@@ -43,7 +42,6 @@ module FinchAPI
       end
 
       # @param client [FinchAPI::Client]
-      #
       def initialize(client:)
         @client = client
       end

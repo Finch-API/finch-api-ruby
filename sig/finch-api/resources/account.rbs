@@ -1,23 +1,13 @@
 module FinchAPI
   module Resources
     class Account
-      def disconnect:
-        (
-          ?FinchAPI::Models::AccountDisconnectParams
-          | ::Hash[Symbol, top] params
-        ) -> FinchAPI::Models::DisconnectResponse
-        | (
-          request_options: FinchAPI::request_opts
-        ) -> FinchAPI::Models::DisconnectResponse
+      def disconnect: (
+        ?request_options: FinchAPI::request_opts
+      ) -> FinchAPI::Models::DisconnectResponse
 
-      def introspect:
-        (
-          ?FinchAPI::Models::AccountIntrospectParams
-          | ::Hash[Symbol, top] params
-        ) -> FinchAPI::Models::Introspection
-        | (
-          request_options: FinchAPI::request_opts
-        ) -> FinchAPI::Models::Introspection
+      def introspect: (
+        ?request_options: FinchAPI::request_opts
+      ) -> FinchAPI::Models::Introspection
 
       def initialize: (client: FinchAPI::Client) -> void
     end

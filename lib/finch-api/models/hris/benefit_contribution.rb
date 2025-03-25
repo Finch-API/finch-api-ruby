@@ -24,20 +24,10 @@ module FinchAPI
 
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-        # @abstract
-        #
         # Contribution type.
-        #
-        # @example
-        # ```ruby
-        # case type
-        # in :fixed
-        #   # ...
-        # in :percent
-        #   # ...
-        # end
-        # ```
-        class Type < FinchAPI::Enum
+        module Type
+          extend FinchAPI::Enum
+
           FIXED = :fixed
           PERCENT = :percent
 
@@ -45,7 +35,6 @@ module FinchAPI
 
           # @!parse
           #   # @return [Array<Symbol>]
-          #   #
           #   def self.values; end
         end
       end

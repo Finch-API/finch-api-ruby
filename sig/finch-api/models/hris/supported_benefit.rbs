@@ -34,49 +34,50 @@ module FinchAPI
 
         attr_accessor type: FinchAPI::Models::HRIS::benefit_type?
 
-        def initialize:
-          (
-            annual_maximum: bool?,
-            catch_up: bool?,
-            company_contribution: ::Array[FinchAPI::Models::HRIS::SupportedBenefit::company_contribution?]?,
-            description: String?,
-            employee_deduction: ::Array[FinchAPI::Models::HRIS::SupportedBenefit::employee_deduction?]?,
-            frequencies: ::Array[FinchAPI::Models::HRIS::benefit_frequency?],
-            hsa_contribution_limit: ::Array[FinchAPI::Models::HRIS::SupportedBenefit::hsa_contribution_limit?]?,
-            type: FinchAPI::Models::HRIS::benefit_type?
-          ) -> void
-          | (
-            ?FinchAPI::Models::HRIS::supported_benefit
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          ?annual_maximum: bool?,
+          ?catch_up: bool?,
+          ?company_contribution: ::Array[FinchAPI::Models::HRIS::SupportedBenefit::company_contribution?]?,
+          ?description: String?,
+          ?employee_deduction: ::Array[FinchAPI::Models::HRIS::SupportedBenefit::employee_deduction?]?,
+          ?frequencies: ::Array[FinchAPI::Models::HRIS::benefit_frequency?],
+          ?hsa_contribution_limit: ::Array[FinchAPI::Models::HRIS::SupportedBenefit::hsa_contribution_limit?]?,
+          ?type: FinchAPI::Models::HRIS::benefit_type?
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::supported_benefit
 
         type company_contribution = :fixed | :percent
 
-        class CompanyContribution < FinchAPI::Enum
+        module CompanyContribution
+          extend FinchAPI::Enum
+
           FIXED: :fixed
           PERCENT: :percent
 
-          def self.values: -> ::Array[FinchAPI::Models::HRIS::SupportedBenefit::company_contribution]
+          def self?.values: -> ::Array[FinchAPI::Models::HRIS::SupportedBenefit::company_contribution]
         end
 
         type employee_deduction = :fixed | :percent
 
-        class EmployeeDeduction < FinchAPI::Enum
+        module EmployeeDeduction
+          extend FinchAPI::Enum
+
           FIXED: :fixed
           PERCENT: :percent
 
-          def self.values: -> ::Array[FinchAPI::Models::HRIS::SupportedBenefit::employee_deduction]
+          def self?.values: -> ::Array[FinchAPI::Models::HRIS::SupportedBenefit::employee_deduction]
         end
 
         type hsa_contribution_limit = :individual | :family
 
-        class HsaContributionLimit < FinchAPI::Enum
+        module HsaContributionLimit
+          extend FinchAPI::Enum
+
           INDIVIDUAL: :individual
           FAMILY: :family
 
-          def self.values: -> ::Array[FinchAPI::Models::HRIS::SupportedBenefit::hsa_contribution_limit]
+          def self?.values: -> ::Array[FinchAPI::Models::HRIS::SupportedBenefit::hsa_contribution_limit]
         end
       end
     end

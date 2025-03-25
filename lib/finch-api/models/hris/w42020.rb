@@ -124,54 +124,33 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-          # @abstract
-          #
           # The individual's filing status for tax purposes.
-          #
-          # @example
-          # ```ruby
-          # case filing_status
-          # in :head_of_household
-          #   # ...
-          # in :married_filing_jointly_or_qualifying_surviving_spouse
-          #   # ...
-          # in :single_or_married_filing_separately
-          #   # ...
-          # end
-          # ```
-          class FilingStatus < FinchAPI::Enum
+          module FilingStatus
+            extend FinchAPI::Enum
+
             HEAD_OF_HOUSEHOLD = :head_of_household
-            MARRIED_FILING_JOINTLY_OR_QUALIFYING_SURVIVING_SPOUSE = :married_filing_jointly_or_qualifying_surviving_spouse
+            MARRIED_FILING_JOINTLY_OR_QUALIFYING_SURVIVING_SPOUSE =
+              :married_filing_jointly_or_qualifying_surviving_spouse
             SINGLE_OR_MARRIED_FILING_SEPARATELY = :single_or_married_filing_separately
 
             finalize!
 
             # @!parse
             #   # @return [Array<Symbol>]
-            #   #
             #   def self.values; end
           end
         end
 
-        # @abstract
-        #
         # Specifies the form type, indicating that this document is a 2020 W4 form.
-        #
-        # @example
-        # ```ruby
-        # case type
-        # in :w4_2020
-        #   # ...
-        # end
-        # ```
-        class Type < FinchAPI::Enum
+        module Type
+          extend FinchAPI::Enum
+
           W4_2020 = :w4_2020
 
           finalize!
 
           # @!parse
           #   # @return [Array<Symbol>]
-          #   #
           #   def self.values; end
         end
       end

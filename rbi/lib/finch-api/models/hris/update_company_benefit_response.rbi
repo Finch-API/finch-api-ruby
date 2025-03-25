@@ -5,15 +5,10 @@ module FinchAPI
     module HRIS
       class UpdateCompanyBenefitResponse < FinchAPI::BaseModel
         sig { returns(String) }
-        def benefit_id
-        end
+        attr_accessor :benefit_id
 
-        sig { params(_: String).returns(String) }
-        def benefit_id=(_)
-        end
-
-        sig { params(benefit_id: String).void }
-        def initialize(benefit_id:)
+        sig { params(benefit_id: String).returns(T.attached_class) }
+        def self.new(benefit_id:)
         end
 
         sig { override.returns({benefit_id: String}) }

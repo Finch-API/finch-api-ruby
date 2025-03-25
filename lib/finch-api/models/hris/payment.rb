@@ -109,26 +109,9 @@ module FinchAPI
 
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-        # @abstract
-        #
-        # @example
-        # ```ruby
-        # case pay_frequency
-        # in :annually
-        #   # ...
-        # in :semi_annually
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :semi_monthly
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
-        class PayFrequency < FinchAPI::Enum
+        module PayFrequency
+          extend FinchAPI::Enum
+
           ANNUALLY = :annually
           SEMI_ANNUALLY = :semi_annually
           QUARTERLY = :quarterly
@@ -143,7 +126,6 @@ module FinchAPI
 
           # @!parse
           #   # @return [Array<Symbol>]
-          #   #
           #   def self.values; end
         end
 

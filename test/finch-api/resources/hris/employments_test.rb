@@ -11,6 +11,8 @@ class FinchAPI::Test::Resources::HRIS::EmploymentsTest < FinchAPI::Test::Resourc
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => FinchAPI::Models::HRIS::EmploymentDataResponse
     end

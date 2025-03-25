@@ -25,23 +25,15 @@ module FinchAPI
 
       # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-      # @abstract
-      #
-      # @example
-      # ```ruby
-      # case event_type
-      # in :"company.updated"
-      #   # ...
-      # end
-      # ```
-      class EventType < FinchAPI::Enum
+      module EventType
+        extend FinchAPI::Enum
+
         COMPANY_UPDATED = :"company.updated"
 
         finalize!
 
         # @!parse
         #   # @return [Array<Symbol>]
-        #   #
         #   def self.values; end
       end
     end

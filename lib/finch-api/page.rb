@@ -2,84 +2,79 @@
 
 module FinchAPI
   # @example
-  # ```ruby
-  # if page.has_next?
-  #   page = page.next_page
-  # end
-  # ```
+  #   if page.has_next?
+  #     page = page.next_page
+  #   end
   #
   # @example
-  # ```ruby
-  # page.auto_paging_each do |item|
-  # #   item ...
-  # end
-  # ```
+  #   page.auto_paging_each do |item|
+  #     puts(item)
+  #   end
   #
   # @example
-  # ```ruby
-  # items = page.to_enum.take(2)
+  #   items =
+  #     page
+  #     .to_enum
+  #     .lazy
+  #     .select { _1.object_id.even? }
+  #     .map(&:itself)
+  #     .take(2)
+  #     .to_a
   #
-  # items => Array
-  # ```
+  #   items => Array
   class Page
     include FinchAPI::BasePage
 
-    # @return [Array<Object>]
+    # @return [Array<Object>, nil]
     attr_accessor :data
 
     # @return [FinchAPI::Models::Paging]
     attr_accessor :paging
 
-    # rubocop:disable Lint/UnusedMethodArgument
-    # @private
+    # @api private
     #
     # @param client [FinchAPI::BaseClient]
     # @param req [Hash{Symbol=>Object}]
     # @param headers [Hash{String=>String}, Net::HTTPHeader]
-    # @param unwrapped [Hash{Symbol=>Object}]
-    #
-    def initialize(client:, req:, headers:, unwrapped:)
-      @client = client
-      @req = req
+    # @param page_data [Hash{Symbol=>Object}]
+    def initialize(client:, req:, headers:, page_data:)
+      super
       model = req.fetch(:model)
 
-      case unwrapped
+      case page_data
       in {data: Array | nil => data}
-        @data = data&.map { model.coerce(_1) }
+        @data = data&.map { FinchAPI::Converter.coerce(model, _1) }
       else
       end
 
-      case unwrapped
+      case page_data
       in {paging: Hash | nil => paging}
         @paging = FinchAPI::Models::Paging.coerce(paging)
       else
       end
     end
-    # rubocop:enable Lint/UnusedMethodArgument
 
     # @return [Boolean]
-    #
     def next_page?
-      paging&.offset.to_i + data.size < paging&.count.to_i
+      paging&.offset.to_i + data.to_a.size < paging&.count.to_i
     end
 
     # @raise [FinchAPI::HTTP::Error]
     # @return [FinchAPI::Page]
-    #
     def next_page
       unless next_page?
-        raise RuntimeError.new("No more pages available; please check #next_page? before calling #next_page")
+        message = "No more pages available. Please check #next_page? before calling ##{__method__}"
+        raise RuntimeError.new(message)
       end
 
-      req = FinchAPI::Util.deep_merge(@req, {query: {offset: paging&.offset.to_i + data.size}})
+      req = FinchAPI::Util.deep_merge(@req, {query: {offset: paging&.offset.to_i + data.to_a.size}})
       @client.request(req)
     end
 
     # @param blk [Proc]
-    #
     def auto_paging_each(&blk)
       unless block_given?
-        raise ArgumentError.new("A block must be given to #auto_paging_each")
+        raise ArgumentError.new("A block must be given to ##{__method__}")
       end
       page = self
       loop do
@@ -90,7 +85,6 @@ module FinchAPI
     end
 
     # @return [String]
-    #
     def inspect
       "#<#{self.class}:0x#{object_id.to_s(16)} data=#{data.inspect} paging=#{paging.inspect}>"
     end

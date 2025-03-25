@@ -12,15 +12,10 @@ module FinchAPI
 
         attr_accessor paging: FinchAPI::Models::Paging
 
-        def initialize:
-          (
-            documents: ::Array[FinchAPI::Models::HRIS::DocumentResponse],
-            paging: FinchAPI::Models::Paging
-          ) -> void
-          | (
-            ?FinchAPI::Models::HRIS::document_list_response
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          documents: ::Array[FinchAPI::Models::HRIS::DocumentResponse],
+          paging: FinchAPI::Models::Paging
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::document_list_response
       end

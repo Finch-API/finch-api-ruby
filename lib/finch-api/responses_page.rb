@@ -2,70 +2,64 @@
 
 module FinchAPI
   # @example
-  # ```ruby
-  # if responses_page.has_next?
-  #   page = responses_page.next_page
-  # end
-  # ```
+  #   if responses_page.has_next?
+  #     responses_page = responses_page.next_page
+  #   end
   #
   # @example
-  # ```ruby
-  # responses_page.auto_paging_each do |item|
-  # #   item ...
-  # end
-  # ```
+  #   responses_page.auto_paging_each do |individual|
+  #     puts(individual)
+  #   end
   #
   # @example
-  # ```ruby
-  # items = responses_page.to_enum.take(2)
+  #   individuals =
+  #     responses_page
+  #     .to_enum
+  #     .lazy
+  #     .select { _1.object_id.even? }
+  #     .map(&:itself)
+  #     .take(2)
+  #     .to_a
   #
-  # items => Array
-  # ```
+  #   individuals => Array
   class ResponsesPage
     include FinchAPI::BasePage
 
-    # @return [Array<Object>]
+    # @return [Array<Object>, nil]
     attr_accessor :responses
 
-    # rubocop:disable Lint/UnusedMethodArgument
-    # @private
+    # @api private
     #
     # @param client [FinchAPI::BaseClient]
     # @param req [Hash{Symbol=>Object}]
     # @param headers [Hash{String=>String}, Net::HTTPHeader]
-    # @param unwrapped [Array<Object>]
-    #
-    def initialize(client:, req:, headers:, unwrapped:)
-      @client = client
-      @req = req
+    # @param page_data [Array<Object>]
+    def initialize(client:, req:, headers:, page_data:)
+      super
       model = req.fetch(:model)
 
-      case unwrapped
+      case page_data
       in {responses: Array | nil => responses}
-        @responses = responses&.map { model.coerce(_1) }
+        @responses = responses&.map { FinchAPI::Converter.coerce(model, _1) }
       else
       end
     end
-    # rubocop:enable Lint/UnusedMethodArgument
 
     # @return [Boolean]
-    #
     def next_page?
       false
     end
 
     # @raise [FinchAPI::HTTP::Error]
     # @return [FinchAPI::ResponsesPage]
-    #
     def next_page
-      raise NotImplementedError
+      RuntimeError.new("No more pages available.")
     end
 
     # @param blk [Proc]
-    #
     def auto_paging_each(&blk)
       unless block_given?
-        raise ArgumentError.new("A block must be given to #auto_paging_each")
+        raise ArgumentError.new("A block must be given to ##{__method__}")
       end
       page = self
       loop do
@@ -76,7 +70,6 @@ module FinchAPI
     end
 
     # @return [String]
-    #
     def inspect
       "#<#{self.class}:0x#{object_id.to_s(16)} responses=#{responses.inspect}>"
     end

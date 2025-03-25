@@ -5,29 +5,22 @@ module FinchAPI
     module HRIS
       class DocumentListResponse < FinchAPI::BaseModel
         sig { returns(T::Array[FinchAPI::Models::HRIS::DocumentResponse]) }
-        def documents
-        end
-
-        sig do
-          params(_: T::Array[FinchAPI::Models::HRIS::DocumentResponse])
-            .returns(T::Array[FinchAPI::Models::HRIS::DocumentResponse])
-        end
-        def documents=(_)
-        end
+        attr_accessor :documents
 
         sig { returns(FinchAPI::Models::Paging) }
-        def paging
-        end
+        attr_reader :paging
 
-        sig { params(_: FinchAPI::Models::Paging).returns(FinchAPI::Models::Paging) }
-        def paging=(_)
-        end
+        sig { params(paging: T.any(FinchAPI::Models::Paging, FinchAPI::Util::AnyHash)).void }
+        attr_writer :paging
 
         sig do
-          params(documents: T::Array[FinchAPI::Models::HRIS::DocumentResponse], paging: FinchAPI::Models::Paging)
-            .void
+          params(
+            documents: T::Array[T.any(FinchAPI::Models::HRIS::DocumentResponse, FinchAPI::Util::AnyHash)],
+            paging: T.any(FinchAPI::Models::Paging, FinchAPI::Util::AnyHash)
+          )
+            .returns(T.attached_class)
         end
-        def initialize(documents:, paging:)
+        def self.new(documents:, paging:)
         end
 
         sig do

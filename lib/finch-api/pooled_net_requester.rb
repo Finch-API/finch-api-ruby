@@ -1,16 +1,18 @@
 # frozen_string_literal: true
 
 module FinchAPI
-  # @private
-  #
+  # @api private
   class PooledNetRequester
+    # from the golang stdlib
+    #   https://github.com/golang/go/blob/c8eced8580028328fde7c03cbfcb720ce15b2358/src/net/http/transport.go#L49
+    KEEP_ALIVE_TIMEOUT = 30
+
     class << self
-      # @private
+      # @api private
       #
       # @param url [URI::Generic]
       #
       # @return [Net::HTTP]
-      #
       def connect(url)
         port =
           case [url.port, url.scheme]
@@ -28,17 +30,16 @@ module FinchAPI
         end
       end
 
-      # @private
+      # @api private
       #
       # @param conn [Net::HTTP]
       # @param deadline [Float]
-      #
       def calibrate_socket_timeout(conn, deadline)
         timeout = deadline - FinchAPI::Util.monotonic_secs
         conn.open_timeout = conn.read_timeout = conn.write_timeout = conn.continue_timeout = timeout
       end
 
-      # @private
+      # @api private
       #
       # @param request [Hash{Symbol=>Object}] .
       #
@@ -48,9 +49,11 @@ module FinchAPI
       #
       #   @option request [Hash{String=>String}] :headers
       #
-      # @return [Net::HTTPGenericRequest]
+      # @param blk [Proc]
       #
-      def build_request(request)
+      # @yieldparam [String]
+      # @return [Net::HTTPGenericRequest]
+      def build_request(request, &)
         method, url, headers, body = request.fetch_values(:method, :url, :headers, :body)
         req = Net::HTTPGenericRequest.new(
           method.to_s.upcase,
@@ -63,54 +66,44 @@ module FinchAPI
 
         case body
         in nil
+          nil
         in String
-          req.body = body
+          req["content-length"] ||= body.bytesize.to_s unless req["transfer-encoding"]
+          req.body_stream = FinchAPI::Util::ReadIOAdapter.new(body, &)
         in StringIO
-          req.body = body.string
-        in IO
-          body.rewind
-          req.body_stream = body
+          req["content-length"] ||= body.size.to_s unless req["transfer-encoding"]
+          req.body_stream = FinchAPI::Util::ReadIOAdapter.new(body, &)
+        in IO | Enumerator
+          req["transfer-encoding"] ||= "chunked" unless req["content-length"]
+          req.body_stream = FinchAPI::Util::ReadIOAdapter.new(body, &)
         end
 
         req
       end
     end
 
-    # @private
+    # @api private
     #
     # @param url [URI::Generic]
+    # @param deadline [Float]
     # @param blk [Proc]
     #
-    private def with_pool(url, &blk)
+    # @raise [Timeout::Error]
+    # @yieldparam [Net::HTTP]
+    private def with_pool(url, deadline:, &blk)
       origin = FinchAPI::Util.uri_origin(url)
-      th = Thread.current
-      key = :"#{object_id}-#{self.class.name}-connection_in_use_for_#{origin}"
-
-      if th[key]
-        tap do
-          conn = self.class.connect(url)
-          return blk.call(conn)
-        ensure
-          conn.finish if conn&.started?
-        end
-      end
-
+      timeout = deadline - FinchAPI::Util.monotonic_secs
       pool =
         @mutex.synchronize do
-          @pools[origin] ||= ConnectionPool.new(size: Etc.nprocessors) do
+          @pools[origin] ||= ConnectionPool.new(size: @size) do
             self.class.connect(url)
           end
         end
 
-      pool.with do |conn|
-        th[key] = true
-        blk.call(conn)
-      ensure
-        th[key] = nil
-      end
+      pool.with(timeout: timeout, &blk)
     end
 
-    # @private
+    # @api private
     #
     # @param request [Hash{Symbol=>Object}] .
     #
@@ -124,24 +117,29 @@ module FinchAPI
     #
     #   @option request [Float] :deadline
     #
-    # @return [Array(Net::HTTPResponse, Enumerable)]
-    #
+    # @return [Array(Integer, Net::HTTPResponse, Enumerable)]
     def execute(request)
       url, deadline = request.fetch_values(:url, :deadline)
-      req = self.class.build_request(request)
 
       eof = false
       finished = false
       enum = Enumerator.new do |y|
-        with_pool(url) do |conn|
+        with_pool(url, deadline: deadline) do |conn|
           next if finished
 
+          req = self.class.build_request(request) do
+            self.class.calibrate_socket_timeout(conn, deadline)
+          end
+
           self.class.calibrate_socket_timeout(conn, deadline)
-          conn.start unless conn.started?
+          unless conn.started?
+            conn.keep_alive_timeout = self.class::KEEP_ALIVE_TIMEOUT
+            conn.start
+          end
 
           self.class.calibrate_socket_timeout(conn, deadline)
           conn.request(req) do |rsp|
-            y << [conn, rsp]
+            y << [conn, req, rsp]
             break if finished
 
             rsp.read_body do |bytes|
@@ -153,22 +151,29 @@ module FinchAPI
             eof = true
           end
         end
+      rescue Timeout::Error
+        raise FinchAPI::APITimeoutError
       end
 
-      conn, response = enum.next
-      body = FinchAPI::Util.fused_enum(enum) do
+      conn, _, response = enum.next
+      body = FinchAPI::Util.fused_enum(enum, external: true) do
         finished = true
         tap do
           enum.next
         rescue StopIteration
+          nil
         end
         conn.finish if !eof && conn&.started?
       end
-      [response, (response.body = body)]
+      [Integer(response.code), response, (response.body = body)]
     end
 
-    def initialize
+    # @api private
+    #
+    # @param size [Integer]
+    def initialize(size: Etc.nprocessors)
       @mutex = Mutex.new
+      @size = size
       @pools = {}
     end
   end

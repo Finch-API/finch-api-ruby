@@ -51,26 +51,9 @@ module FinchAPI
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
       end
 
-      # @abstract
-      #
-      # @example
-      # ```ruby
-      # case event_type
-      # in :"job.benefit_create.completed"
-      #   # ...
-      # in :"job.benefit_enroll.completed"
-      #   # ...
-      # in :"job.benefit_register.completed"
-      #   # ...
-      # in :"job.benefit_unenroll.completed"
-      #   # ...
-      # in :"job.benefit_update.completed"
-      #   # ...
-      # in ...
-      #   #...
-      # end
-      # ```
-      class EventType < FinchAPI::Enum
+      module EventType
+        extend FinchAPI::Enum
+
         JOB_BENEFIT_CREATE_COMPLETED = :"job.benefit_create.completed"
         JOB_BENEFIT_ENROLL_COMPLETED = :"job.benefit_enroll.completed"
         JOB_BENEFIT_REGISTER_COMPLETED = :"job.benefit_register.completed"
@@ -82,7 +65,6 @@ module FinchAPI
 
         # @!parse
         #   # @return [Array<Symbol>]
-        #   #
         #   def self.values; end
       end
     end

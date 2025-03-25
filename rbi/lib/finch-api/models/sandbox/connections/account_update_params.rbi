@@ -8,25 +8,31 @@ module FinchAPI
           extend FinchAPI::RequestParameters::Converter
           include FinchAPI::RequestParameters
 
-          sig { returns(T.nilable(Symbol)) }
-          def connection_status
-          end
+          sig { returns(T.nilable(FinchAPI::Models::ConnectionStatusType::OrSymbol)) }
+          attr_reader :connection_status
 
-          sig { params(_: Symbol).returns(Symbol) }
-          def connection_status=(_)
-          end
+          sig { params(connection_status: FinchAPI::Models::ConnectionStatusType::OrSymbol).void }
+          attr_writer :connection_status
 
           sig do
             params(
-              connection_status: Symbol,
-              request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+              connection_status: FinchAPI::Models::ConnectionStatusType::OrSymbol,
+              request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(connection_status: nil, request_options: {})
+          def self.new(connection_status: nil, request_options: {})
           end
 
-          sig { override.returns({connection_status: Symbol, request_options: FinchAPI::RequestOptions}) }
+          sig do
+            override
+              .returns(
+                {
+                  connection_status: FinchAPI::Models::ConnectionStatusType::OrSymbol,
+                  request_options: FinchAPI::RequestOptions
+                }
+              )
+          end
           def to_hash
           end
         end

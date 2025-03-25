@@ -4,24 +4,16 @@ module FinchAPI
   module Models
     module Connect
       class SessionNewResponse < FinchAPI::BaseModel
+        # The Connect URL to redirect the user to for authentication
         sig { returns(String) }
-        def connect_url
-        end
+        attr_accessor :connect_url
 
-        sig { params(_: String).returns(String) }
-        def connect_url=(_)
-        end
-
+        # The unique identifier for the created connect session
         sig { returns(String) }
-        def session_id
-        end
+        attr_accessor :session_id
 
-        sig { params(_: String).returns(String) }
-        def session_id=(_)
-        end
-
-        sig { params(connect_url: String, session_id: String).void }
-        def initialize(connect_url:, session_id:)
+        sig { params(connect_url: String, session_id: String).returns(T.attached_class) }
+        def self.new(connect_url:, session_id:)
         end
 
         sig { override.returns({connect_url: String, session_id: String}) }

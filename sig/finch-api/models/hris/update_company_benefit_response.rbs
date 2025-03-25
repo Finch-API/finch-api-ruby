@@ -6,12 +6,7 @@ module FinchAPI
       class UpdateCompanyBenefitResponse < FinchAPI::BaseModel
         attr_accessor benefit_id: String
 
-        def initialize:
-          (benefit_id: String) -> void
-          | (
-            ?FinchAPI::Models::HRIS::update_company_benefit_response
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (benefit_id: String) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::update_company_benefit_response
       end

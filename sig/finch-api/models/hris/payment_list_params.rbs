@@ -12,16 +12,11 @@ module FinchAPI
 
         attr_accessor start_date: Date
 
-        def initialize:
-          (
-            end_date: Date,
-            start_date: Date,
-            request_options: FinchAPI::request_opts
-          ) -> void
-          | (
-            ?FinchAPI::Models::HRIS::payment_list_params
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          end_date: Date,
+          start_date: Date,
+          ?request_options: FinchAPI::request_opts
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::payment_list_params
       end

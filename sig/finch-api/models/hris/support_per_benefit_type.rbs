@@ -20,15 +20,10 @@ module FinchAPI
           FinchAPI::Models::OperationSupportMatrix
         ) -> FinchAPI::Models::OperationSupportMatrix
 
-        def initialize:
-          (
-            company_benefits: FinchAPI::Models::OperationSupportMatrix,
-            individual_benefits: FinchAPI::Models::OperationSupportMatrix
-          ) -> void
-          | (
-            ?FinchAPI::Models::HRIS::support_per_benefit_type
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          ?company_benefits: FinchAPI::Models::OperationSupportMatrix,
+          ?individual_benefits: FinchAPI::Models::OperationSupportMatrix
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::support_per_benefit_type
       end

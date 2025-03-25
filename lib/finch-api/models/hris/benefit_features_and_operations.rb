@@ -124,18 +124,9 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-          # @abstract
-          #
-          # @example
-          # ```ruby
-          # case company_contribution
-          # in :fixed
-          #   # ...
-          # in :percent
-          #   # ...
-          # end
-          # ```
-          class CompanyContribution < FinchAPI::Enum
+          module CompanyContribution
+            extend FinchAPI::Enum
+
             FIXED = :fixed
             PERCENT = :percent
 
@@ -143,22 +134,12 @@ module FinchAPI
 
             # @!parse
             #   # @return [Array<Symbol>]
-            #   #
             #   def self.values; end
           end
 
-          # @abstract
-          #
-          # @example
-          # ```ruby
-          # case employee_deduction
-          # in :fixed
-          #   # ...
-          # in :percent
-          #   # ...
-          # end
-          # ```
-          class EmployeeDeduction < FinchAPI::Enum
+          module EmployeeDeduction
+            extend FinchAPI::Enum
+
             FIXED = :fixed
             PERCENT = :percent
 
@@ -166,22 +147,12 @@ module FinchAPI
 
             # @!parse
             #   # @return [Array<Symbol>]
-            #   #
             #   def self.values; end
           end
 
-          # @abstract
-          #
-          # @example
-          # ```ruby
-          # case hsa_contribution_limit
-          # in :individual
-          #   # ...
-          # in :family
-          #   # ...
-          # end
-          # ```
-          class HsaContributionLimit < FinchAPI::Enum
+          module HsaContributionLimit
+            extend FinchAPI::Enum
+
             INDIVIDUAL = :individual
             FAMILY = :family
 
@@ -189,7 +160,6 @@ module FinchAPI
 
             # @!parse
             #   # @return [Array<Symbol>]
-            #   #
             #   def self.values; end
           end
         end

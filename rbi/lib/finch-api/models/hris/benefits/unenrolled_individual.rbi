@@ -6,41 +6,36 @@ module FinchAPI
       module Benefits
         class UnenrolledIndividual < FinchAPI::BaseModel
           sig { returns(T.nilable(FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual::Body)) }
-          def body
-          end
+          attr_reader :body
 
           sig do
-            params(_: FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual::Body)
-              .returns(FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual::Body)
+            params(body: T.any(FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual::Body, FinchAPI::Util::AnyHash))
+              .void
           end
-          def body=(_)
-          end
+          attr_writer :body
 
+          # HTTP status code
           sig { returns(T.nilable(Integer)) }
-          def code
-          end
+          attr_reader :code
 
-          sig { params(_: Integer).returns(Integer) }
-          def code=(_)
-          end
+          sig { params(code: Integer).void }
+          attr_writer :code
 
           sig { returns(T.nilable(String)) }
-          def individual_id
-          end
+          attr_reader :individual_id
 
-          sig { params(_: String).returns(String) }
-          def individual_id=(_)
-          end
+          sig { params(individual_id: String).void }
+          attr_writer :individual_id
 
           sig do
             params(
-              body: FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual::Body,
+              body: T.any(FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual::Body, FinchAPI::Util::AnyHash),
               code: Integer,
               individual_id: String
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(body: nil, code: nil, individual_id: nil)
+          def self.new(body: nil, code: nil, individual_id: nil)
           end
 
           sig do
@@ -53,34 +48,23 @@ module FinchAPI
           end
 
           class Body < FinchAPI::BaseModel
+            # A descriptive identifier for the response.
             sig { returns(T.nilable(String)) }
-            def finch_code
-            end
+            attr_accessor :finch_code
 
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def finch_code=(_)
-            end
-
+            # Short description in English that provides more information about the response.
             sig { returns(T.nilable(String)) }
-            def message
-            end
+            attr_accessor :message
 
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def message=(_)
-            end
-
+            # Identifier indicating whether the benefit was newly enrolled or updated.
             sig { returns(T.nilable(String)) }
-            def name
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def name=(_)
-            end
+            attr_accessor :name
 
             sig do
-              params(finch_code: T.nilable(String), message: T.nilable(String), name: T.nilable(String)).void
+              params(finch_code: T.nilable(String), message: T.nilable(String), name: T.nilable(String))
+                .returns(T.attached_class)
             end
-            def initialize(finch_code: nil, message: nil, name: nil)
+            def self.new(finch_code: nil, message: nil, name: nil)
             end
 
             sig do

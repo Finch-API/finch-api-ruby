@@ -126,21 +126,11 @@ module FinchAPI
 
               # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-              # @abstract
-              #
               # For HSA benefits only - whether the contribution limit is for an individual or
               #   family
-              #
-              # @example
-              # ```ruby
-              # case annual_contribution_limit
-              # in :individual
-              #   # ...
-              # in :family
-              #   # ...
-              # end
-              # ```
-              class AnnualContributionLimit < FinchAPI::Enum
+              module AnnualContributionLimit
+                extend FinchAPI::Enum
+
                 INDIVIDUAL = :individual
                 FAMILY = :family
 
@@ -148,7 +138,6 @@ module FinchAPI
 
                 # @!parse
                 #   # @return [Array<Symbol>]
-                #   #
                 #   def self.values; end
               end
 
@@ -182,18 +171,9 @@ module FinchAPI
 
                 # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-                # @abstract
-                #
-                # @example
-                # ```ruby
-                # case type
-                # in :fixed
-                #   # ...
-                # in :percent
-                #   # ...
-                # end
-                # ```
-                class Type < FinchAPI::Enum
+                module Type
+                  extend FinchAPI::Enum
+
                   FIXED = :fixed
                   PERCENT = :percent
 
@@ -201,7 +181,6 @@ module FinchAPI
 
                   # @!parse
                   #   # @return [Array<Symbol>]
-                  #   #
                   #   def self.values; end
                 end
               end
@@ -236,18 +215,9 @@ module FinchAPI
 
                 # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-                # @abstract
-                #
-                # @example
-                # ```ruby
-                # case type
-                # in :fixed
-                #   # ...
-                # in :percent
-                #   # ...
-                # end
-                # ```
-                class Type < FinchAPI::Enum
+                module Type
+                  extend FinchAPI::Enum
+
                   FIXED = :fixed
                   PERCENT = :percent
 
@@ -255,7 +225,6 @@ module FinchAPI
 
                   # @!parse
                   #   # @return [Array<Symbol>]
-                  #   #
                   #   def self.values; end
                 end
               end

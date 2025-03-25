@@ -8,96 +8,58 @@ module FinchAPI
         include FinchAPI::RequestParameters
 
         sig { returns(String) }
-        def customer_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def customer_id=(_)
-        end
+        attr_accessor :customer_id
 
         sig { returns(String) }
-        def customer_name
-        end
+        attr_accessor :customer_name
 
-        sig { params(_: String).returns(String) }
-        def customer_name=(_)
-        end
-
-        sig { returns(T::Array[Symbol]) }
-        def products
-        end
-
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
-        def products=(_)
-        end
+        sig { returns(T::Array[FinchAPI::Models::Connect::SessionNewParams::Product::OrSymbol]) }
+        attr_accessor :products
 
         sig { returns(T.nilable(String)) }
-        def customer_email
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def customer_email=(_)
-        end
+        attr_accessor :customer_email
 
         sig { returns(T.nilable(FinchAPI::Models::Connect::SessionNewParams::Integration)) }
-        def integration
-        end
+        attr_reader :integration
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::Connect::SessionNewParams::Integration))
-            .returns(T.nilable(FinchAPI::Models::Connect::SessionNewParams::Integration))
+          params(
+            integration: T.nilable(T.any(FinchAPI::Models::Connect::SessionNewParams::Integration, FinchAPI::Util::AnyHash))
+          )
+            .void
         end
-        def integration=(_)
-        end
+        attr_writer :integration
 
         sig { returns(T.nilable(T::Boolean)) }
-        def manual
-        end
+        attr_accessor :manual
 
-        sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-        def manual=(_)
-        end
-
+        # The number of minutes until the session expires (defaults to 43,200, which is 30
+        #   days)
         sig { returns(T.nilable(Float)) }
-        def minutes_to_expire
-        end
-
-        sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
-        def minutes_to_expire=(_)
-        end
+        attr_accessor :minutes_to_expire
 
         sig { returns(T.nilable(String)) }
-        def redirect_uri
-        end
+        attr_accessor :redirect_uri
 
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def redirect_uri=(_)
-        end
-
-        sig { returns(T.nilable(Symbol)) }
-        def sandbox
-        end
-
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
-        def sandbox=(_)
-        end
+        sig { returns(T.nilable(FinchAPI::Models::Connect::SessionNewParams::Sandbox::OrSymbol)) }
+        attr_accessor :sandbox
 
         sig do
           params(
             customer_id: String,
             customer_name: String,
-            products: T::Array[Symbol],
+            products: T::Array[FinchAPI::Models::Connect::SessionNewParams::Product::OrSymbol],
             customer_email: T.nilable(String),
-            integration: T.nilable(FinchAPI::Models::Connect::SessionNewParams::Integration),
+            integration: T.nilable(T.any(FinchAPI::Models::Connect::SessionNewParams::Integration, FinchAPI::Util::AnyHash)),
             manual: T.nilable(T::Boolean),
             minutes_to_expire: T.nilable(Float),
             redirect_uri: T.nilable(String),
-            sandbox: T.nilable(Symbol),
-            request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+            sandbox: T.nilable(FinchAPI::Models::Connect::SessionNewParams::Sandbox::OrSymbol),
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           customer_id:,
           customer_name:,
           products:,
@@ -117,13 +79,13 @@ module FinchAPI
               {
                 customer_id: String,
                 customer_name: String,
-                products: T::Array[Symbol],
+                products: T::Array[FinchAPI::Models::Connect::SessionNewParams::Product::OrSymbol],
                 customer_email: T.nilable(String),
                 integration: T.nilable(FinchAPI::Models::Connect::SessionNewParams::Integration),
                 manual: T.nilable(T::Boolean),
                 minutes_to_expire: T.nilable(Float),
                 redirect_uri: T.nilable(String),
-                sandbox: T.nilable(Symbol),
+                sandbox: T.nilable(FinchAPI::Models::Connect::SessionNewParams::Sandbox::OrSymbol),
                 request_options: FinchAPI::RequestOptions
               }
             )
@@ -131,69 +93,93 @@ module FinchAPI
         def to_hash
         end
 
-        class Product < FinchAPI::Enum
-          abstract!
+        # The Finch products that can be requested during the Connect flow.
+        module Product
+          extend FinchAPI::Enum
 
-          COMPANY = :company
-          DIRECTORY = :directory
-          INDIVIDUAL = :individual
-          EMPLOYMENT = :employment
-          PAYMENT = :payment
-          PAY_STATEMENT = :pay_statement
-          BENEFITS = :benefits
-          SSN = :ssn
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Connect::SessionNewParams::Product) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol) }
 
-          sig { override.returns(T::Array[Symbol]) }
+          COMPANY = T.let(:company, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
+          DIRECTORY = T.let(:directory, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
+          INDIVIDUAL = T.let(:individual, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
+          EMPLOYMENT = T.let(:employment, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
+          PAYMENT = T.let(:payment, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
+          PAY_STATEMENT = T.let(:pay_statement, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
+          BENEFITS = T.let(:benefits, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
+          SSN = T.let(:ssn, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
+
+          sig { override.returns(T::Array[FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol]) }
           def self.values
           end
         end
 
         class Integration < FinchAPI::BaseModel
-          sig { returns(T.nilable(Symbol)) }
-          def auth_method
-          end
-
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
-          def auth_method=(_)
-          end
+          sig { returns(T.nilable(FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::OrSymbol)) }
+          attr_accessor :auth_method
 
           sig { returns(T.nilable(String)) }
-          def provider
+          attr_accessor :provider
+
+          sig do
+            params(
+              auth_method: T.nilable(FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::OrSymbol),
+              provider: T.nilable(String)
+            )
+              .returns(T.attached_class)
+          end
+          def self.new(auth_method: nil, provider: nil)
           end
 
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def provider=(_)
+          sig do
+            override
+              .returns(
+                {
+                  auth_method: T.nilable(FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::OrSymbol),
+                  provider: T.nilable(String)
+                }
+              )
           end
-
-          sig { params(auth_method: T.nilable(Symbol), provider: T.nilable(String)).void }
-          def initialize(auth_method: nil, provider: nil)
-          end
-
-          sig { override.returns({auth_method: T.nilable(Symbol), provider: T.nilable(String)}) }
           def to_hash
           end
 
-          class AuthMethod < FinchAPI::Enum
-            abstract!
+          module AuthMethod
+            extend FinchAPI::Enum
 
-            ASSISTED = T.let(:assisted, T.nilable(Symbol))
-            CREDENTIAL = T.let(:credential, T.nilable(Symbol))
-            OAUTH = T.let(:oauth, T.nilable(Symbol))
-            API_TOKEN = T.let(:api_token, T.nilable(Symbol))
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::TaggedSymbol) }
 
-            sig { override.returns(T::Array[Symbol]) }
+            ASSISTED =
+              T.let(:assisted, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::TaggedSymbol)
+            CREDENTIAL =
+              T.let(:credential, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::TaggedSymbol)
+            OAUTH = T.let(:oauth, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::TaggedSymbol)
+            API_TOKEN =
+              T.let(:api_token, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::TaggedSymbol)
+
+            sig do
+              override
+                .returns(T::Array[FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::TaggedSymbol])
+            end
             def self.values
             end
           end
         end
 
-        class Sandbox < FinchAPI::Enum
-          abstract!
+        module Sandbox
+          extend FinchAPI::Enum
 
-          FINCH = T.let(:finch, T.nilable(Symbol))
-          PROVIDER = T.let(:provider, T.nilable(Symbol))
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Connect::SessionNewParams::Sandbox) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, FinchAPI::Models::Connect::SessionNewParams::Sandbox::TaggedSymbol) }
 
-          sig { override.returns(T::Array[Symbol]) }
+          FINCH = T.let(:finch, FinchAPI::Models::Connect::SessionNewParams::Sandbox::TaggedSymbol)
+          PROVIDER = T.let(:provider, FinchAPI::Models::Connect::SessionNewParams::Sandbox::TaggedSymbol)
+
+          sig { override.returns(T::Array[FinchAPI::Models::Connect::SessionNewParams::Sandbox::TaggedSymbol]) }
           def self.values
           end
         end

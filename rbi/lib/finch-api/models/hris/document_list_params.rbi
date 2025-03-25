@@ -7,49 +7,47 @@ module FinchAPI
         extend FinchAPI::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
+        # Comma-delimited list of stable Finch uuids for each individual. If empty,
+        #   defaults to all individuals
         sig { returns(T.nilable(T::Array[String])) }
-        def individual_ids
-        end
+        attr_reader :individual_ids
 
-        sig { params(_: T::Array[String]).returns(T::Array[String]) }
-        def individual_ids=(_)
-        end
+        sig { params(individual_ids: T::Array[String]).void }
+        attr_writer :individual_ids
 
+        # Number of documents to return (defaults to all)
         sig { returns(T.nilable(Integer)) }
-        def limit
-        end
+        attr_reader :limit
 
-        sig { params(_: Integer).returns(Integer) }
-        def limit=(_)
-        end
+        sig { params(limit: Integer).void }
+        attr_writer :limit
 
+        # Index to start from (defaults to 0)
         sig { returns(T.nilable(Integer)) }
-        def offset
-        end
+        attr_reader :offset
 
-        sig { params(_: Integer).returns(Integer) }
-        def offset=(_)
-        end
+        sig { params(offset: Integer).void }
+        attr_writer :offset
 
-        sig { returns(T.nilable(T::Array[Symbol])) }
-        def types
-        end
+        # Comma-delimited list of document types to filter on. If empty, defaults to all
+        #   types
+        sig { returns(T.nilable(T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol])) }
+        attr_reader :types
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
-        def types=(_)
-        end
+        sig { params(types: T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol]).void }
+        attr_writer :types
 
         sig do
           params(
             individual_ids: T::Array[String],
             limit: Integer,
             offset: Integer,
-            types: T::Array[Symbol],
-            request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+            types: T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol],
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(individual_ids: nil, limit: nil, offset: nil, types: nil, request_options: {})
+        def self.new(individual_ids: nil, limit: nil, offset: nil, types: nil, request_options: {})
         end
 
         sig do
@@ -59,7 +57,7 @@ module FinchAPI
                 individual_ids: T::Array[String],
                 limit: Integer,
                 offset: Integer,
-                types: T::Array[Symbol],
+                types: T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol],
                 request_options: FinchAPI::RequestOptions
               }
             )
@@ -67,13 +65,16 @@ module FinchAPI
         def to_hash
         end
 
-        class Type < FinchAPI::Enum
-          abstract!
+        module Type
+          extend FinchAPI::Enum
 
-          W4_2020 = :w4_2020
-          W4_2005 = :w4_2005
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::DocumentListParams::Type) }
+          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::DocumentListParams::Type::TaggedSymbol) }
 
-          sig { override.returns(T::Array[Symbol]) }
+          W4_2020 = T.let(:w4_2020, FinchAPI::Models::HRIS::DocumentListParams::Type::TaggedSymbol)
+          W4_2005 = T.let(:w4_2005, FinchAPI::Models::HRIS::DocumentListParams::Type::TaggedSymbol)
+
+          sig { override.returns(T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::TaggedSymbol]) }
           def self.values
           end
         end

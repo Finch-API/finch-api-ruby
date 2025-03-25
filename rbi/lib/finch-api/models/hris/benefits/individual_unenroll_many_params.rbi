@@ -8,22 +8,21 @@ module FinchAPI
           extend FinchAPI::RequestParameters::Converter
           include FinchAPI::RequestParameters
 
+          # Array of individual_ids to unenroll.
           sig { returns(T.nilable(T::Array[String])) }
-          def individual_ids
-          end
+          attr_reader :individual_ids
 
-          sig { params(_: T::Array[String]).returns(T::Array[String]) }
-          def individual_ids=(_)
-          end
+          sig { params(individual_ids: T::Array[String]).void }
+          attr_writer :individual_ids
 
           sig do
             params(
               individual_ids: T::Array[String],
-              request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+              request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(individual_ids: nil, request_options: {})
+          def self.new(individual_ids: nil, request_options: {})
           end
 
           sig do

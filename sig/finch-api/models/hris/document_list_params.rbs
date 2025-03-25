@@ -32,28 +32,25 @@ module FinchAPI
           ::Array[FinchAPI::Models::HRIS::DocumentListParams::type_]
         ) -> ::Array[FinchAPI::Models::HRIS::DocumentListParams::type_]
 
-        def initialize:
-          (
-            individual_ids: ::Array[String],
-            limit: Integer,
-            offset: Integer,
-            types: ::Array[FinchAPI::Models::HRIS::DocumentListParams::type_],
-            request_options: FinchAPI::request_opts
-          ) -> void
-          | (
-            ?FinchAPI::Models::HRIS::document_list_params
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          ?individual_ids: ::Array[String],
+          ?limit: Integer,
+          ?offset: Integer,
+          ?types: ::Array[FinchAPI::Models::HRIS::DocumentListParams::type_],
+          ?request_options: FinchAPI::request_opts
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::document_list_params
 
         type type_ = :w4_2020 | :w4_2005
 
-        class Type < FinchAPI::Enum
+        module Type
+          extend FinchAPI::Enum
+
           W4_2020: :w4_2020
           W4_2005: :w4_2005
 
-          def self.values: -> ::Array[FinchAPI::Models::HRIS::DocumentListParams::type_]
+          def self?.values: -> ::Array[FinchAPI::Models::HRIS::DocumentListParams::type_]
         end
       end
     end

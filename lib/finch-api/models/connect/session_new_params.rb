@@ -85,28 +85,10 @@ module FinchAPI
 
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-        # @abstract
-        #
         # The Finch products that can be requested during the Connect flow.
-        #
-        # @example
-        # ```ruby
-        # case product
-        # in :company
-        #   # ...
-        # in :directory
-        #   # ...
-        # in :individual
-        #   # ...
-        # in :employment
-        #   # ...
-        # in :payment
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
-        class Product < FinchAPI::Enum
+        module Product
+          extend FinchAPI::Enum
+
           COMPANY = :company
           DIRECTORY = :directory
           INDIVIDUAL = :individual
@@ -120,7 +102,6 @@ module FinchAPI
 
           # @!parse
           #   # @return [Array<Symbol>]
-          #   #
           #   def self.values; end
         end
 
@@ -145,22 +126,9 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-          # @abstract
-          #
-          # @example
-          # ```ruby
-          # case auth_method
-          # in :assisted
-          #   # ...
-          # in :credential
-          #   # ...
-          # in :oauth
-          #   # ...
-          # in :api_token
-          #   # ...
-          # end
-          # ```
-          class AuthMethod < FinchAPI::Enum
+          module AuthMethod
+            extend FinchAPI::Enum
+
             ASSISTED = :assisted
             CREDENTIAL = :credential
             OAUTH = :oauth
@@ -170,23 +138,13 @@ module FinchAPI
 
             # @!parse
             #   # @return [Array<Symbol>]
-            #   #
             #   def self.values; end
           end
         end
 
-        # @abstract
-        #
-        # @example
-        # ```ruby
-        # case sandbox
-        # in :finch
-        #   # ...
-        # in :provider
-        #   # ...
-        # end
-        # ```
-        class Sandbox < FinchAPI::Enum
+        module Sandbox
+          extend FinchAPI::Enum
+
           FINCH = :finch
           PROVIDER = :provider
 
@@ -194,7 +152,6 @@ module FinchAPI
 
           # @!parse
           #   # @return [Array<Symbol>]
-          #   #
           #   def self.values; end
         end
       end

@@ -19,7 +19,6 @@ module FinchAPI
           #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [FinchAPI::SinglePage<FinchAPI::Models::HRIS::Benefits::EnrolledIndividual>]
-          #
           def enroll_many(benefit_id, params = {})
             parsed, options = FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams.dump_request(params)
             @client.request(
@@ -41,7 +40,6 @@ module FinchAPI
           #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [FinchAPI::Models::HRIS::Benefits::IndividualEnrolledIDsResponse]
-          #
           def enrolled_ids(benefit_id, params = {})
             @client.request(
               method: :get,
@@ -63,9 +61,9 @@ module FinchAPI
           #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [FinchAPI::SinglePage<FinchAPI::Models::HRIS::Benefits::IndividualBenefit>]
-          #
           def retrieve_many_benefits(benefit_id, params = {})
-            parsed, options = FinchAPI::Models::HRIS::Benefits::IndividualRetrieveManyBenefitsParams.dump_request(params)
+            parsed, options =
+              FinchAPI::Models::HRIS::Benefits::IndividualRetrieveManyBenefitsParams.dump_request(params)
             @client.request(
               method: :get,
               path: ["employer/benefits/%0s/individuals", benefit_id],
@@ -87,7 +85,6 @@ module FinchAPI
           #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [FinchAPI::SinglePage<FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual>]
-          #
           def unenroll_many(benefit_id, params = {})
             parsed, options = FinchAPI::Models::HRIS::Benefits::IndividualUnenrollManyParams.dump_request(params)
             @client.request(
@@ -101,7 +98,6 @@ module FinchAPI
           end
 
           # @param client [FinchAPI::Client]
-          #
           def initialize(client:)
             @client = client
           end

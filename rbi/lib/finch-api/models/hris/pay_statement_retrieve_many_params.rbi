@@ -7,25 +7,18 @@ module FinchAPI
         extend FinchAPI::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
+        # The array of batch requests.
         sig { returns(T::Array[FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request]) }
-        def requests
-        end
-
-        sig do
-          params(_: T::Array[FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request])
-            .returns(T::Array[FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request])
-        end
-        def requests=(_)
-        end
+        attr_accessor :requests
 
         sig do
           params(
-            requests: T::Array[FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request],
-            request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+            requests: T::Array[T.any(FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request, FinchAPI::Util::AnyHash)],
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(requests:, request_options: {})
+        def self.new(requests:, request_options: {})
         end
 
         sig do
@@ -41,32 +34,26 @@ module FinchAPI
         end
 
         class Request < FinchAPI::BaseModel
+          # A stable Finch `id` (UUID v4) for a payment.
           sig { returns(String) }
-          def payment_id
-          end
+          attr_accessor :payment_id
 
-          sig { params(_: String).returns(String) }
-          def payment_id=(_)
-          end
-
+          # Number of pay statements to return (defaults to all).
           sig { returns(T.nilable(Integer)) }
-          def limit
-          end
+          attr_reader :limit
 
-          sig { params(_: Integer).returns(Integer) }
-          def limit=(_)
-          end
+          sig { params(limit: Integer).void }
+          attr_writer :limit
 
+          # Index to start from.
           sig { returns(T.nilable(Integer)) }
-          def offset
-          end
+          attr_reader :offset
 
-          sig { params(_: Integer).returns(Integer) }
-          def offset=(_)
-          end
+          sig { params(offset: Integer).void }
+          attr_writer :offset
 
-          sig { params(payment_id: String, limit: Integer, offset: Integer).void }
-          def initialize(payment_id:, limit: nil, offset: nil)
+          sig { params(payment_id: String, limit: Integer, offset: Integer).returns(T.attached_class) }
+          def self.new(payment_id:, limit: nil, offset: nil)
           end
 
           sig { override.returns({payment_id: String, limit: Integer, offset: Integer}) }

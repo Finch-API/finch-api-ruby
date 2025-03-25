@@ -132,20 +132,10 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-          # @abstract
-          #
           # The type of bank account.
-          #
-          # @example
-          # ```ruby
-          # case account_type
-          # in :checking
-          #   # ...
-          # in :savings
-          #   # ...
-          # end
-          # ```
-          class AccountType < FinchAPI::Enum
+          module AccountType
+            extend FinchAPI::Enum
+
             CHECKING = :checking
             SAVINGS = :savings
 
@@ -153,7 +143,6 @@ module FinchAPI
 
             # @!parse
             #   # @return [Array<Symbol>]
-            #   #
             #   def self.values; end
           end
         end
@@ -222,22 +211,10 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-          # @abstract
-          #
           # The tax payer subtype of the company.
-          #
-          # @example
-          # ```ruby
-          # case subtype
-          # in :s_corporation
-          #   # ...
-          # in :c_corporation
-          #   # ...
-          # in :b_corporation
-          #   # ...
-          # end
-          # ```
-          class Subtype < FinchAPI::Enum
+          module Subtype
+            extend FinchAPI::Enum
+
             S_CORPORATION = :s_corporation
             C_CORPORATION = :c_corporation
             B_CORPORATION = :b_corporation
@@ -246,32 +223,13 @@ module FinchAPI
 
             # @!parse
             #   # @return [Array<Symbol>]
-            #   #
             #   def self.values; end
           end
 
-          # @abstract
-          #
           # The tax payer type of the company.
-          #
-          # @example
-          # ```ruby
-          # case type
-          # in :llc
-          #   # ...
-          # in :lp
-          #   # ...
-          # in :corporation
-          #   # ...
-          # in :sole_proprietor
-          #   # ...
-          # in :non_profit
-          #   # ...
-          # in ...
-          #   #...
-          # end
-          # ```
-          class Type < FinchAPI::Enum
+          module Type
+            extend FinchAPI::Enum
+
             LLC = :llc
             LP = :lp
             CORPORATION = :corporation
@@ -284,7 +242,6 @@ module FinchAPI
 
             # @!parse
             #   # @return [Array<Symbol>]
-            #   #
             #   def self.values; end
           end
         end

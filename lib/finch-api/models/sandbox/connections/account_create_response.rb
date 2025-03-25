@@ -58,22 +58,9 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-          # @abstract
-          #
-          # @example
-          # ```ruby
-          # case authentication_type
-          # in :credential
-          #   # ...
-          # in :api_token
-          #   # ...
-          # in :oauth
-          #   # ...
-          # in :assisted
-          #   # ...
-          # end
-          # ```
-          class AuthenticationType < FinchAPI::Enum
+          module AuthenticationType
+            extend FinchAPI::Enum
+
             CREDENTIAL = :credential
             API_TOKEN = :api_token
             OAUTH = :oauth
@@ -83,7 +70,6 @@ module FinchAPI
 
             # @!parse
             #   # @return [Array<Symbol>]
-            #   #
             #   def self.values; end
           end
         end

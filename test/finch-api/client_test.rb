@@ -11,35 +11,6 @@ class FinchAPITest < Minitest::Test
     Thread.current.thread_variable_set(:mock_sleep, nil)
   end
 
-  class MockResponse
-    # @return [Integer]
-    attr_reader :code
-
-    # @param code [Integer]
-    # @param headers [Hash{String=>String}]
-    #
-    def initialize(code, headers)
-      @code = code
-      @headers = {"content-type" => "application/json", **headers}
-    end
-
-    # @param header [String]
-    #
-    # @return [String, nil]
-    #
-    def [](header)
-      @headers[header]
-    end
-
-    # @param header [String]
-    #
-    # @return [Boolean]
-    #
-    def key?(header)
-      @headers.key?(header)
-    end
-  end
-
   class MockRequester
     # @return [Integer]
     attr_reader :response_code
@@ -56,7 +27,6 @@ class FinchAPITest < Minitest::Test
     # @param response_code [Integer]
     # @param response_headers [Hash{String=>String}]
     # @param response_data [Object]
-    #
     def initialize(response_code, response_headers, response_data)
       @response_code = response_code
       @response_headers = response_headers
@@ -65,11 +35,11 @@ class FinchAPITest < Minitest::Test
     end
 
     # @param req [Hash{Symbol=>Object}]
-    #
     def execute(req)
       # Deep copy the request because it is mutated on each retry.
       attempts.push(Marshal.load(Marshal.dump(req)))
-      [MockResponse.new(response_code, response_headers), response_data.grapheme_clusters]
+      headers = {"content-type" => "application/json", **response_headers}
+      [response_code, headers, response_data.grapheme_clusters]
     end
   end
 
@@ -86,11 +56,8 @@ class FinchAPITest < Minitest::Test
   end
 
   def test_client_given_request_default_retry_attempts
-    finch = FinchAPI::Client.new(
-      base_url: "http://localhost:4010",
-      access_token: "My Access Token",
-      max_retries: 3
-    )
+    finch =
+      FinchAPI::Client.new(base_url: "http://localhost:4010", access_token: "My Access Token", max_retries: 3)
     requester = MockRequester.new(500, {}, {})
     finch.requester = requester
 
@@ -114,11 +81,8 @@ class FinchAPITest < Minitest::Test
   end
 
   def test_client_given_request_given_retry_attempts
-    finch = FinchAPI::Client.new(
-      base_url: "http://localhost:4010",
-      access_token: "My Access Token",
-      max_retries: 3
-    )
+    finch =
+      FinchAPI::Client.new(base_url: "http://localhost:4010", access_token: "My Access Token", max_retries: 3)
     requester = MockRequester.new(500, {}, {})
     finch.requester = requester
 
@@ -130,11 +94,8 @@ class FinchAPITest < Minitest::Test
   end
 
   def test_client_retry_after_seconds
-    finch = FinchAPI::Client.new(
-      base_url: "http://localhost:4010",
-      access_token: "My Access Token",
-      max_retries: 1
-    )
+    finch =
+      FinchAPI::Client.new(base_url: "http://localhost:4010", access_token: "My Access Token", max_retries: 1)
     requester = MockRequester.new(500, {"retry-after" => "1.3"}, {})
     finch.requester = requester
 
@@ -147,11 +108,8 @@ class FinchAPITest < Minitest::Test
   end
 
   def test_client_retry_after_date
-    finch = FinchAPI::Client.new(
-      base_url: "http://localhost:4010",
-      access_token: "My Access Token",
-      max_retries: 1
-    )
+    finch =
+      FinchAPI::Client.new(base_url: "http://localhost:4010", access_token: "My Access Token", max_retries: 1)
     requester = MockRequester.new(500, {"retry-after" => (Time.now + 10).httpdate}, {})
     finch.requester = requester
 
@@ -166,11 +124,8 @@ class FinchAPITest < Minitest::Test
   end
 
   def test_client_retry_after_ms
-    finch = FinchAPI::Client.new(
-      base_url: "http://localhost:4010",
-      access_token: "My Access Token",
-      max_retries: 1
-    )
+    finch =
+      FinchAPI::Client.new(base_url: "http://localhost:4010", access_token: "My Access Token", max_retries: 1)
     requester = MockRequester.new(500, {"retry-after-ms" => "1300"}, {})
     finch.requester = requester
 

@@ -29,22 +29,9 @@ module FinchAPI
 
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-        # @abstract
-        #
-        # @example
-        # ```ruby
-        # case status
-        # in :pending
-        #   # ...
-        # in :in_progress
-        #   # ...
-        # in :error
-        #   # ...
-        # in :complete
-        #   # ...
-        # end
-        # ```
-        class Status < FinchAPI::Enum
+        module Status
+          extend FinchAPI::Enum
+
           PENDING = :pending
           IN_PROGRESS = :in_progress
           ERROR = :error
@@ -54,7 +41,6 @@ module FinchAPI
 
           # @!parse
           #   # @return [Array<Symbol>]
-          #   #
           #   def self.values; end
         end
       end

@@ -4,114 +4,74 @@ module FinchAPI
   module Models
     module HRIS
       class PayStatement < FinchAPI::BaseModel
+        # The array of earnings objects associated with this pay statement
         sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::Earning)])) }
-        def earnings
-        end
+        attr_accessor :earnings
 
-        sig do
-          params(_: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::Earning)]))
-            .returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::Earning)]))
-        end
-        def earnings=(_)
-        end
-
+        # The array of deductions objects associated with this pay statement.
         sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction)])) }
-        def employee_deductions
-        end
-
-        sig do
-          params(_: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction)]))
-            .returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction)]))
-        end
-        def employee_deductions=(_)
-        end
+        attr_accessor :employee_deductions
 
         sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployerContribution)])) }
-        def employer_contributions
-        end
-
-        sig do
-          params(_: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployerContribution)]))
-            .returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployerContribution)]))
-        end
-        def employer_contributions=(_)
-        end
+        attr_accessor :employer_contributions
 
         sig { returns(T.nilable(FinchAPI::Models::Money)) }
-        def gross_pay
-        end
+        attr_reader :gross_pay
 
-        sig { params(_: T.nilable(FinchAPI::Models::Money)).returns(T.nilable(FinchAPI::Models::Money)) }
-        def gross_pay=(_)
-        end
+        sig { params(gross_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash))).void }
+        attr_writer :gross_pay
 
+        # A stable Finch `id` (UUID v4) for an individual in the company
         sig { returns(T.nilable(String)) }
-        def individual_id
-        end
+        attr_reader :individual_id
 
-        sig { params(_: String).returns(String) }
-        def individual_id=(_)
-        end
+        sig { params(individual_id: String).void }
+        attr_writer :individual_id
 
         sig { returns(T.nilable(FinchAPI::Models::Money)) }
-        def net_pay
-        end
+        attr_reader :net_pay
 
-        sig { params(_: T.nilable(FinchAPI::Models::Money)).returns(T.nilable(FinchAPI::Models::Money)) }
-        def net_pay=(_)
-        end
+        sig { params(net_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash))).void }
+        attr_writer :net_pay
 
-        sig { returns(T.nilable(Symbol)) }
-        def payment_method
-        end
+        # The payment method.
+        sig { returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::PaymentMethod::TaggedSymbol)) }
+        attr_accessor :payment_method
 
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
-        def payment_method=(_)
-        end
-
+        # The array of taxes objects associated with this pay statement.
         sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax)])) }
-        def taxes
-        end
+        attr_accessor :taxes
 
-        sig do
-          params(_: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax)]))
-            .returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax)]))
-        end
-        def taxes=(_)
-        end
-
+        # The number of hours worked for this pay period
         sig { returns(T.nilable(Float)) }
-        def total_hours
-        end
+        attr_accessor :total_hours
 
-        sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
-        def total_hours=(_)
-        end
-
-        sig { returns(T.nilable(Symbol)) }
-        def type
-        end
-
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
-        def type=(_)
-        end
+        # The type of the payment associated with the pay statement.
+        sig { returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol)) }
+        attr_accessor :type
 
         sig do
           params(
-            earnings: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::Earning)]),
-            employee_deductions: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction)]),
-            employer_contributions: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployerContribution)]),
-            gross_pay: T.nilable(FinchAPI::Models::Money),
+            earnings: T.nilable(
+              T::Array[T.nilable(T.any(FinchAPI::Models::HRIS::PayStatement::Earning, FinchAPI::Util::AnyHash))]
+            ),
+            employee_deductions: T.nilable(
+              T::Array[T.nilable(T.any(FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction, FinchAPI::Util::AnyHash))]
+            ),
+            employer_contributions: T.nilable(
+              T::Array[T.nilable(T.any(FinchAPI::Models::HRIS::PayStatement::EmployerContribution, FinchAPI::Util::AnyHash))]
+            ),
+            gross_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)),
             individual_id: String,
-            net_pay: T.nilable(FinchAPI::Models::Money),
-            payment_method: T.nilable(Symbol),
-            taxes: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax)]),
+            net_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)),
+            payment_method: T.nilable(FinchAPI::Models::HRIS::PayStatement::PaymentMethod::OrSymbol),
+            taxes: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::HRIS::PayStatement::Tax, FinchAPI::Util::AnyHash))]),
             total_hours: T.nilable(Float),
-            type: T.nilable(Symbol)
+            type: T.nilable(FinchAPI::Models::HRIS::PayStatement::Type::OrSymbol)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           earnings: nil,
           employee_deductions: nil,
           employer_contributions: nil,
@@ -135,10 +95,10 @@ module FinchAPI
                 gross_pay: T.nilable(FinchAPI::Models::Money),
                 individual_id: String,
                 net_pay: T.nilable(FinchAPI::Models::Money),
-                payment_method: T.nilable(Symbol),
+                payment_method: T.nilable(FinchAPI::Models::HRIS::PayStatement::PaymentMethod::TaggedSymbol),
                 taxes: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax)]),
                 total_hours: T.nilable(Float),
-                type: T.nilable(Symbol)
+                type: T.nilable(FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol)
               }
             )
         end
@@ -146,69 +106,50 @@ module FinchAPI
         end
 
         class Earning < FinchAPI::BaseModel
+          # The earnings amount in cents.
           sig { returns(T.nilable(Integer)) }
-          def amount
-          end
-
-          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-          def amount=(_)
-          end
+          attr_accessor :amount
 
           sig { returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::Earning::Attributes)) }
-          def attributes
-          end
+          attr_reader :attributes
 
           sig do
-            params(_: T.nilable(FinchAPI::Models::HRIS::PayStatement::Earning::Attributes))
-              .returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::Earning::Attributes))
+            params(
+              attributes: T.nilable(T.any(FinchAPI::Models::HRIS::PayStatement::Earning::Attributes, FinchAPI::Util::AnyHash))
+            )
+              .void
           end
-          def attributes=(_)
-          end
+          attr_writer :attributes
 
+          # The earnings currency code.
           sig { returns(T.nilable(String)) }
-          def currency
-          end
+          attr_accessor :currency
 
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def currency=(_)
-          end
-
+          # The number of hours associated with this earning. (For salaried employees, this
+          #   could be hours per pay period, `0` or `null`, depending on the provider).
           sig { returns(T.nilable(Float)) }
-          def hours
-          end
+          attr_accessor :hours
 
-          sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
-          def hours=(_)
-          end
-
+          # The exact name of the deduction from the pay statement.
           sig { returns(T.nilable(String)) }
-          def name
-          end
+          attr_accessor :name
 
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def name=(_)
-          end
-
-          sig { returns(T.nilable(Symbol)) }
-          def type
-          end
-
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
-          def type=(_)
-          end
+          # The type of earning.
+          sig { returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)) }
+          attr_accessor :type
 
           sig do
             params(
               amount: T.nilable(Integer),
-              attributes: T.nilable(FinchAPI::Models::HRIS::PayStatement::Earning::Attributes),
+              attributes: T.nilable(T.any(FinchAPI::Models::HRIS::PayStatement::Earning::Attributes, FinchAPI::Util::AnyHash)),
               currency: T.nilable(String),
               hours: T.nilable(Float),
               name: T.nilable(String),
-              type: T.nilable(Symbol)
+              type: T.nilable(FinchAPI::Models::HRIS::PayStatement::Earning::Type::OrSymbol)
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(amount: nil, attributes: nil, currency: nil, hours: nil, name: nil, type: nil)
+          def self.new(amount: nil, attributes: nil, currency: nil, hours: nil, name: nil, type: nil)
           end
 
           sig do
@@ -220,7 +161,7 @@ module FinchAPI
                   currency: T.nilable(String),
                   hours: T.nilable(Float),
                   name: T.nilable(String),
-                  type: T.nilable(Symbol)
+                  type: T.nilable(FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
                 }
               )
           end
@@ -229,18 +170,23 @@ module FinchAPI
 
           class Attributes < FinchAPI::BaseModel
             sig { returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata)) }
-            def metadata
-            end
+            attr_reader :metadata
 
             sig do
-              params(_: FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata)
-                .returns(FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata)
+              params(
+                metadata: T.any(FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata, FinchAPI::Util::AnyHash)
+              )
+                .void
             end
-            def metadata=(_)
-            end
+            attr_writer :metadata
 
-            sig { params(metadata: FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata).void }
-            def initialize(metadata: nil)
+            sig do
+              params(
+                metadata: T.any(FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata, FinchAPI::Util::AnyHash)
+              )
+                .returns(T.attached_class)
+            end
+            def self.new(metadata: nil)
             end
 
             sig { override.returns({metadata: FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata}) }
@@ -248,16 +194,17 @@ module FinchAPI
             end
 
             class Metadata < FinchAPI::BaseModel
+              # The metadata to be attached to the entity by existing rules. It is a key-value
+              #   pairs where the values can be of any type (string, number, boolean, object,
+              #   array, etc.).
               sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-              def metadata
-              end
-
-              sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
-              def metadata=(_)
-              end
+              attr_reader :metadata
 
               sig { params(metadata: T::Hash[Symbol, T.anything]).void }
-              def initialize(metadata: nil)
+              attr_writer :metadata
+
+              sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
+              def self.new(metadata: nil)
               end
 
               sig { override.returns({metadata: T::Hash[Symbol, T.anything]}) }
@@ -266,93 +213,83 @@ module FinchAPI
             end
           end
 
-          class Type < FinchAPI::Enum
-            abstract!
+          # The type of earning.
+          module Type
+            extend FinchAPI::Enum
 
-            SALARY = T.let(:salary, T.nilable(Symbol))
-            WAGE = T.let(:wage, T.nilable(Symbol))
-            REIMBURSEMENT = T.let(:reimbursement, T.nilable(Symbol))
-            OVERTIME = T.let(:overtime, T.nilable(Symbol))
-            SEVERANCE = T.let(:severance, T.nilable(Symbol))
-            DOUBLE_OVERTIME = T.let(:double_overtime, T.nilable(Symbol))
-            PTO = T.let(:pto, T.nilable(Symbol))
-            SICK = T.let(:sick, T.nilable(Symbol))
-            BONUS = T.let(:bonus, T.nilable(Symbol))
-            COMMISSION = T.let(:commission, T.nilable(Symbol))
-            TIPS = T.let(:tips, T.nilable(Symbol))
-            NUMBER_1099 = T.let(:"1099", T.nilable(Symbol))
-            OTHER = T.let(:other, T.nilable(Symbol))
+            TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::PayStatement::Earning::Type) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol) }
 
-            sig { override.returns(T::Array[Symbol]) }
+            SALARY = T.let(:salary, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            WAGE = T.let(:wage, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            REIMBURSEMENT = T.let(:reimbursement, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            OVERTIME = T.let(:overtime, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            SEVERANCE = T.let(:severance, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            DOUBLE_OVERTIME =
+              T.let(:double_overtime, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            PTO = T.let(:pto, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            SICK = T.let(:sick, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            BONUS = T.let(:bonus, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            COMMISSION = T.let(:commission, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            TIPS = T.let(:tips, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            NUMBER_1099 = T.let(:"1099", FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            OTHER = T.let(:other, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+
+            sig { override.returns(T::Array[FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol]) }
             def self.values
             end
           end
         end
 
         class EmployeeDeduction < FinchAPI::BaseModel
+          # The deduction amount in cents.
           sig { returns(T.nilable(Integer)) }
-          def amount
-          end
-
-          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-          def amount=(_)
-          end
+          attr_accessor :amount
 
           sig { returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes)) }
-          def attributes
-          end
+          attr_reader :attributes
 
           sig do
-            params(_: T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes))
-              .returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes))
+            params(
+              attributes: T.nilable(
+                T.any(FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes, FinchAPI::Util::AnyHash)
+              )
+            )
+              .void
           end
-          def attributes=(_)
-          end
+          attr_writer :attributes
 
+          # The deduction currency.
           sig { returns(T.nilable(String)) }
-          def currency
-          end
+          attr_accessor :currency
 
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def currency=(_)
-          end
-
+          # The deduction name from the pay statement.
           sig { returns(T.nilable(String)) }
-          def name
-          end
+          attr_accessor :name
 
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def name=(_)
-          end
-
+          # Boolean indicating if the deduction is pre-tax.
           sig { returns(T.nilable(T::Boolean)) }
-          def pre_tax
-          end
+          attr_accessor :pre_tax
 
-          sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-          def pre_tax=(_)
-          end
-
-          sig { returns(T.nilable(Symbol)) }
-          def type
-          end
-
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
-          def type=(_)
-          end
+          # Type of benefit.
+          sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)) }
+          attr_accessor :type
 
           sig do
             params(
               amount: T.nilable(Integer),
-              attributes: T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes),
+              attributes: T.nilable(
+                T.any(FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes, FinchAPI::Util::AnyHash)
+              ),
               currency: T.nilable(String),
               name: T.nilable(String),
               pre_tax: T.nilable(T::Boolean),
-              type: T.nilable(Symbol)
+              type: T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol)
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(amount: nil, attributes: nil, currency: nil, name: nil, pre_tax: nil, type: nil)
+          def self.new(amount: nil, attributes: nil, currency: nil, name: nil, pre_tax: nil, type: nil)
           end
 
           sig do
@@ -364,7 +301,7 @@ module FinchAPI
                   currency: T.nilable(String),
                   name: T.nilable(String),
                   pre_tax: T.nilable(T::Boolean),
-                  type: T.nilable(Symbol)
+                  type: T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
                 }
               )
           end
@@ -373,18 +310,29 @@ module FinchAPI
 
           class Attributes < FinchAPI::BaseModel
             sig { returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata)) }
-            def metadata
-            end
+            attr_reader :metadata
 
             sig do
-              params(_: FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata)
-                .returns(FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata)
+              params(
+                metadata: T.any(
+                  FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata,
+                  FinchAPI::Util::AnyHash
+                )
+              )
+                .void
             end
-            def metadata=(_)
-            end
+            attr_writer :metadata
 
-            sig { params(metadata: FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata).void }
-            def initialize(metadata: nil)
+            sig do
+              params(
+                metadata: T.any(
+                  FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata,
+                  FinchAPI::Util::AnyHash
+                )
+              )
+                .returns(T.attached_class)
+            end
+            def self.new(metadata: nil)
             end
 
             sig do
@@ -394,16 +342,17 @@ module FinchAPI
             end
 
             class Metadata < FinchAPI::BaseModel
+              # The metadata to be attached to the entity by existing rules. It is a key-value
+              #   pairs where the values can be of any type (string, number, boolean, object,
+              #   array, etc.).
               sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-              def metadata
-              end
-
-              sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
-              def metadata=(_)
-              end
+              attr_reader :metadata
 
               sig { params(metadata: T::Hash[Symbol, T.anything]).void }
-              def initialize(metadata: nil)
+              attr_writer :metadata
+
+              sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
+              def self.new(metadata: nil)
               end
 
               sig { override.returns({metadata: T::Hash[Symbol, T.anything]}) }
@@ -414,60 +363,48 @@ module FinchAPI
         end
 
         class EmployerContribution < FinchAPI::BaseModel
+          # The contribution amount in cents.
           sig { returns(T.nilable(Integer)) }
-          def amount
-          end
-
-          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-          def amount=(_)
-          end
+          attr_accessor :amount
 
           sig { returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes)) }
-          def attributes
-          end
+          attr_reader :attributes
 
           sig do
-            params(_: T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes))
-              .returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes))
+            params(
+              attributes: T.nilable(
+                T.any(FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes, FinchAPI::Util::AnyHash)
+              )
+            )
+              .void
           end
-          def attributes=(_)
-          end
+          attr_writer :attributes
 
+          # The contribution currency.
           sig { returns(T.nilable(String)) }
-          def currency
-          end
+          attr_accessor :currency
 
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def currency=(_)
-          end
-
+          # The contribution name from the pay statement.
           sig { returns(T.nilable(String)) }
-          def name
-          end
+          attr_accessor :name
 
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def name=(_)
-          end
-
-          sig { returns(T.nilable(Symbol)) }
-          def type
-          end
-
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
-          def type=(_)
-          end
+          # Type of benefit.
+          sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)) }
+          attr_accessor :type
 
           sig do
             params(
               amount: T.nilable(Integer),
-              attributes: T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes),
+              attributes: T.nilable(
+                T.any(FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes, FinchAPI::Util::AnyHash)
+              ),
               currency: T.nilable(String),
               name: T.nilable(String),
-              type: T.nilable(Symbol)
+              type: T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol)
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(amount: nil, attributes: nil, currency: nil, name: nil, type: nil)
+          def self.new(amount: nil, attributes: nil, currency: nil, name: nil, type: nil)
           end
 
           sig do
@@ -478,7 +415,7 @@ module FinchAPI
                   attributes: T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes),
                   currency: T.nilable(String),
                   name: T.nilable(String),
-                  type: T.nilable(Symbol)
+                  type: T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
                 }
               )
           end
@@ -487,18 +424,29 @@ module FinchAPI
 
           class Attributes < FinchAPI::BaseModel
             sig { returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata)) }
-            def metadata
-            end
+            attr_reader :metadata
 
             sig do
-              params(_: FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata)
-                .returns(FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata)
+              params(
+                metadata: T.any(
+                  FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata,
+                  FinchAPI::Util::AnyHash
+                )
+              )
+                .void
             end
-            def metadata=(_)
-            end
+            attr_writer :metadata
 
-            sig { params(metadata: FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata).void }
-            def initialize(metadata: nil)
+            sig do
+              params(
+                metadata: T.any(
+                  FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata,
+                  FinchAPI::Util::AnyHash
+                )
+              )
+                .returns(T.attached_class)
+            end
+            def self.new(metadata: nil)
             end
 
             sig do
@@ -509,16 +457,17 @@ module FinchAPI
             end
 
             class Metadata < FinchAPI::BaseModel
+              # The metadata to be attached to the entity by existing rules. It is a key-value
+              #   pairs where the values can be of any type (string, number, boolean, object,
+              #   array, etc.).
               sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-              def metadata
-              end
-
-              sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
-              def metadata=(_)
-              end
+              attr_reader :metadata
 
               sig { params(metadata: T::Hash[Symbol, T.anything]).void }
-              def initialize(metadata: nil)
+              attr_writer :metadata
+
+              sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
+              def self.new(metadata: nil)
               end
 
               sig { override.returns({metadata: T::Hash[Symbol, T.anything]}) }
@@ -528,81 +477,67 @@ module FinchAPI
           end
         end
 
-        class PaymentMethod < FinchAPI::Enum
-          abstract!
+        # The payment method.
+        module PaymentMethod
+          extend FinchAPI::Enum
 
-          CHECK = T.let(:check, T.nilable(Symbol))
-          DIRECT_DEPOSIT = T.let(:direct_deposit, T.nilable(Symbol))
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::PayStatement::PaymentMethod) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::PayStatement::PaymentMethod::TaggedSymbol) }
 
-          sig { override.returns(T::Array[Symbol]) }
+          CHECK = T.let(:check, FinchAPI::Models::HRIS::PayStatement::PaymentMethod::TaggedSymbol)
+          DIRECT_DEPOSIT =
+            T.let(:direct_deposit, FinchAPI::Models::HRIS::PayStatement::PaymentMethod::TaggedSymbol)
+
+          sig { override.returns(T::Array[FinchAPI::Models::HRIS::PayStatement::PaymentMethod::TaggedSymbol]) }
           def self.values
           end
         end
 
         class Tax < FinchAPI::BaseModel
+          # The tax amount in cents.
           sig { returns(T.nilable(Integer)) }
-          def amount
-          end
-
-          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-          def amount=(_)
-          end
+          attr_accessor :amount
 
           sig { returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax::Attributes)) }
-          def attributes
-          end
+          attr_reader :attributes
 
           sig do
-            params(_: T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax::Attributes))
-              .returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax::Attributes))
+            params(
+              attributes: T.nilable(T.any(FinchAPI::Models::HRIS::PayStatement::Tax::Attributes, FinchAPI::Util::AnyHash))
+            )
+              .void
           end
-          def attributes=(_)
-          end
+          attr_writer :attributes
 
+          # The currency code.
           sig { returns(T.nilable(String)) }
-          def currency
-          end
+          attr_accessor :currency
 
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def currency=(_)
-          end
-
+          # `true` if the amount is paid by the employers.
           sig { returns(T.nilable(T::Boolean)) }
-          def employer
-          end
+          attr_accessor :employer
 
-          sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-          def employer=(_)
-          end
-
+          # The exact name of tax from the pay statement.
           sig { returns(T.nilable(String)) }
-          def name
-          end
+          attr_accessor :name
 
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def name=(_)
-          end
-
-          sig { returns(T.nilable(Symbol)) }
-          def type
-          end
-
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
-          def type=(_)
-          end
+          # The type of taxes.
+          sig { returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol)) }
+          attr_accessor :type
 
           sig do
             params(
               amount: T.nilable(Integer),
-              attributes: T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax::Attributes),
+              attributes: T.nilable(T.any(FinchAPI::Models::HRIS::PayStatement::Tax::Attributes, FinchAPI::Util::AnyHash)),
               currency: T.nilable(String),
               employer: T.nilable(T::Boolean),
               name: T.nilable(String),
-              type: T.nilable(Symbol)
+              type: T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax::Type::OrSymbol)
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(amount: nil, attributes: nil, currency: nil, employer: nil, name: nil, type: nil)
+          def self.new(amount: nil, attributes: nil, currency: nil, employer: nil, name: nil, type: nil)
           end
 
           sig do
@@ -614,7 +549,7 @@ module FinchAPI
                   currency: T.nilable(String),
                   employer: T.nilable(T::Boolean),
                   name: T.nilable(String),
-                  type: T.nilable(Symbol)
+                  type: T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol)
                 }
               )
           end
@@ -623,18 +558,23 @@ module FinchAPI
 
           class Attributes < FinchAPI::BaseModel
             sig { returns(T.nilable(FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata)) }
-            def metadata
-            end
+            attr_reader :metadata
 
             sig do
-              params(_: FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata)
-                .returns(FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata)
+              params(
+                metadata: T.any(FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata, FinchAPI::Util::AnyHash)
+              )
+                .void
             end
-            def metadata=(_)
-            end
+            attr_writer :metadata
 
-            sig { params(metadata: FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata).void }
-            def initialize(metadata: nil)
+            sig do
+              params(
+                metadata: T.any(FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata, FinchAPI::Util::AnyHash)
+              )
+                .returns(T.attached_class)
+            end
+            def self.new(metadata: nil)
             end
 
             sig { override.returns({metadata: FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata}) }
@@ -642,16 +582,17 @@ module FinchAPI
             end
 
             class Metadata < FinchAPI::BaseModel
+              # The metadata to be attached to the entity by existing rules. It is a key-value
+              #   pairs where the values can be of any type (string, number, boolean, object,
+              #   array, etc.).
               sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-              def metadata
-              end
-
-              sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
-              def metadata=(_)
-              end
+              attr_reader :metadata
 
               sig { params(metadata: T::Hash[Symbol, T.anything]).void }
-              def initialize(metadata: nil)
+              attr_writer :metadata
+
+              sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
+              def self.new(metadata: nil)
               end
 
               sig { override.returns({metadata: T::Hash[Symbol, T.anything]}) }
@@ -660,28 +601,36 @@ module FinchAPI
             end
           end
 
-          class Type < FinchAPI::Enum
-            abstract!
+          # The type of taxes.
+          module Type
+            extend FinchAPI::Enum
 
-            STATE = T.let(:state, T.nilable(Symbol))
-            FEDERAL = T.let(:federal, T.nilable(Symbol))
-            LOCAL = T.let(:local, T.nilable(Symbol))
-            FICA = T.let(:fica, T.nilable(Symbol))
+            TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::PayStatement::Tax::Type) }
+            OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol) }
 
-            sig { override.returns(T::Array[Symbol]) }
+            STATE = T.let(:state, FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol)
+            FEDERAL = T.let(:federal, FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol)
+            LOCAL = T.let(:local, FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol)
+            FICA = T.let(:fica, FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol)
+
+            sig { override.returns(T::Array[FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol]) }
             def self.values
             end
           end
         end
 
-        class Type < FinchAPI::Enum
-          abstract!
+        # The type of the payment associated with the pay statement.
+        module Type
+          extend FinchAPI::Enum
 
-          REGULAR_PAYROLL = T.let(:regular_payroll, T.nilable(Symbol))
-          OFF_CYCLE_PAYROLL = T.let(:off_cycle_payroll, T.nilable(Symbol))
-          ONE_TIME_PAYMENT = T.let(:one_time_payment, T.nilable(Symbol))
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::PayStatement::Type) }
+          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol) }
 
-          sig { override.returns(T::Array[Symbol]) }
+          REGULAR_PAYROLL = T.let(:regular_payroll, FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol)
+          OFF_CYCLE_PAYROLL = T.let(:off_cycle_payroll, FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol)
+          ONE_TIME_PAYMENT = T.let(:one_time_payment, FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol)
+
+          sig { override.returns(T::Array[FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol]) }
           def self.values
           end
         end

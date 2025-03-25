@@ -10,7 +10,6 @@ module FinchAPI
       #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [FinchAPI::Models::DisconnectResponse]
-      #
       def disconnect(params = {})
         @client.request(
           method: :post,
@@ -27,7 +26,6 @@ module FinchAPI
       #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [FinchAPI::Models::Introspection]
-      #
       def introspect(params = {})
         @client.request(
           method: :get,
@@ -38,7 +36,6 @@ module FinchAPI
       end
 
       # @param client [FinchAPI::Client]
-      #
       def initialize(client:)
         @client = client
       end

@@ -7,8 +7,15 @@ module FinchAPI
         extend FinchAPI::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
-        sig { params(request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])).void }
-        def initialize(request_options: {})
+        sig do
+          params(
+            request_options: T.any(
+              FinchAPI::RequestOptions,
+              FinchAPI::Util::AnyHash
+            )
+          ).returns(T.attached_class)
+        end
+        def self.new(request_options: {})
         end
 
         sig { override.returns({request_options: FinchAPI::RequestOptions}) }

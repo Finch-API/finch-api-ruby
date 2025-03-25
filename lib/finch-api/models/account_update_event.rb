@@ -1918,26 +1918,10 @@ module FinchAPI
             end
           end
 
-          # @abstract
-          #
           # The type of authentication method.
-          #
-          # @example
-          # ```ruby
-          # case type
-          # in :assisted
-          #   # ...
-          # in :credential
-          #   # ...
-          # in :api_token
-          #   # ...
-          # in :api_credential
-          #   # ...
-          # in :oauth
-          #   # ...
-          # end
-          # ```
-          class Type < FinchAPI::Enum
+          module Type
+            extend FinchAPI::Enum
+
             ASSISTED = :assisted
             CREDENTIAL = :credential
             API_TOKEN = :api_token
@@ -1948,29 +1932,20 @@ module FinchAPI
 
             # @!parse
             #   # @return [Array<Symbol>]
-            #   #
             #   def self.values; end
           end
         end
       end
 
-      # @abstract
-      #
-      # @example
-      # ```ruby
-      # case event_type
-      # in :"account.updated"
-      #   # ...
-      # end
-      # ```
-      class EventType < FinchAPI::Enum
+      module EventType
+        extend FinchAPI::Enum
+
         ACCOUNT_UPDATED = :"account.updated"
 
         finalize!
 
         # @!parse
         #   # @return [Array<Symbol>]
-        #   #
         #   def self.values; end
       end
     end

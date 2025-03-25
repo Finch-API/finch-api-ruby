@@ -7,55 +7,34 @@ module FinchAPI
         extend FinchAPI::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
+        # The ID of the existing connection to reauthenticate
         sig { returns(String) }
-        def connection_id
-        end
+        attr_accessor :connection_id
 
-        sig { params(_: String).returns(String) }
-        def connection_id=(_)
-        end
-
+        # The number of minutes until the session expires (defaults to 43,200, which is 30
+        #   days)
         sig { returns(T.nilable(Integer)) }
-        def minutes_to_expire
-        end
+        attr_accessor :minutes_to_expire
 
-        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-        def minutes_to_expire=(_)
-        end
+        # The products to request access to (optional for reauthentication)
+        sig { returns(T.nilable(T::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol])) }
+        attr_accessor :products
 
-        sig { returns(T.nilable(T::Array[Symbol])) }
-        def products
-        end
-
-        sig { params(_: T.nilable(T::Array[Symbol])).returns(T.nilable(T::Array[Symbol])) }
-        def products=(_)
-        end
-
+        # The URI to redirect to after the Connect flow is completed
         sig { returns(T.nilable(String)) }
-        def redirect_uri
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def redirect_uri=(_)
-        end
+        attr_accessor :redirect_uri
 
         sig do
           params(
             connection_id: String,
             minutes_to_expire: T.nilable(Integer),
-            products: T.nilable(T::Array[Symbol]),
+            products: T.nilable(T::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol]),
             redirect_uri: T.nilable(String),
-            request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
-          connection_id:,
-          minutes_to_expire: nil,
-          products: nil,
-          redirect_uri: nil,
-          request_options: {}
-        )
+        def self.new(connection_id:, minutes_to_expire: nil, products: nil, redirect_uri: nil, request_options: {})
         end
 
         sig do
@@ -64,7 +43,7 @@ module FinchAPI
               {
                 connection_id: String,
                 minutes_to_expire: T.nilable(Integer),
-                products: T.nilable(T::Array[Symbol]),
+                products: T.nilable(T::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol]),
                 redirect_uri: T.nilable(String),
                 request_options: FinchAPI::RequestOptions
               }
@@ -73,19 +52,30 @@ module FinchAPI
         def to_hash
         end
 
-        class Product < FinchAPI::Enum
-          abstract!
+        # The Finch products that can be requested during the Connect flow.
+        module Product
+          extend FinchAPI::Enum
 
-          COMPANY = :company
-          DIRECTORY = :directory
-          INDIVIDUAL = :individual
-          EMPLOYMENT = :employment
-          PAYMENT = :payment
-          PAY_STATEMENT = :pay_statement
-          BENEFITS = :benefits
-          SSN = :ssn
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, FinchAPI::Models::Connect::SessionReauthenticateParams::Product) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol) }
 
-          sig { override.returns(T::Array[Symbol]) }
+          COMPANY = T.let(:company, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
+          DIRECTORY =
+            T.let(:directory, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
+          INDIVIDUAL =
+            T.let(:individual, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
+          EMPLOYMENT =
+            T.let(:employment, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
+          PAYMENT = T.let(:payment, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
+          PAY_STATEMENT =
+            T.let(:pay_statement, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
+          BENEFITS =
+            T.let(:benefits, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
+          SSN = T.let(:ssn, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
+
+          sig { override.returns(T::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol]) }
           def self.values
           end
         end

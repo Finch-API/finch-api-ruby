@@ -3,28 +3,10 @@
 module FinchAPI
   module Models
     module HRIS
-      # @abstract
-      #
       # Type of benefit.
-      #
-      # @example
-      # ```ruby
-      # case benefit_type
-      # in :"401k"
-      #   # ...
-      # in :"401k_roth"
-      #   # ...
-      # in :"401k_loan"
-      #   # ...
-      # in :"403b"
-      #   # ...
-      # in :"403b_roth"
-      #   # ...
-      # in ...
-      #   #...
-      # end
-      # ```
-      class BenefitType < FinchAPI::Enum
+      module BenefitType
+        extend FinchAPI::Enum
+
         NUMBER_401K = :"401k"
         NUMBER_401K_ROTH = :"401k_roth"
         NUMBER_401K_LOAN = :"401k_loan"
@@ -49,7 +31,6 @@ module FinchAPI
 
         # @!parse
         #   # @return [Array<Symbol>]
-        #   #
         #   def self.values; end
       end
     end

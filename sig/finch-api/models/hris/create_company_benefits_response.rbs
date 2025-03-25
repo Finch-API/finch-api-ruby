@@ -6,12 +6,7 @@ module FinchAPI
       class CreateCompanyBenefitsResponse < FinchAPI::BaseModel
         attr_accessor benefit_id: String
 
-        def initialize:
-          (benefit_id: String) -> void
-          | (
-            ?FinchAPI::Models::HRIS::create_company_benefits_response
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (benefit_id: String) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::create_company_benefits_response
       end

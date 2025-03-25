@@ -8,22 +8,25 @@ module FinchAPI
           extend FinchAPI::RequestParameters::Converter
           include FinchAPI::RequestParameters
 
+          # comma-delimited list of stable Finch uuids for each individual. If empty,
+          #   defaults to all individuals
           sig { returns(T.nilable(String)) }
-          def individual_ids
-          end
+          attr_reader :individual_ids
 
-          sig { params(_: String).returns(String) }
-          def individual_ids=(_)
-          end
+          sig { params(individual_ids: String).void }
+          attr_writer :individual_ids
 
           sig do
             params(
               individual_ids: String,
-              request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+              request_options: T.any(
+                FinchAPI::RequestOptions,
+                FinchAPI::Util::AnyHash
+              )
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(individual_ids: nil, request_options: {})
+          def self.new(individual_ids: nil, request_options: {})
           end
 
           sig { override.returns({individual_ids: String, request_options: FinchAPI::RequestOptions}) }

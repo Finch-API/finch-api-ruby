@@ -4,80 +4,52 @@ module FinchAPI
   module Models
     module Jobs
       class AutomatedAsyncJob < FinchAPI::BaseModel
+        # The datetime the job completed.
         sig { returns(T.nilable(Time)) }
-        def completed_at
-        end
+        attr_accessor :completed_at
 
-        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-        def completed_at=(_)
-        end
-
+        # The datetime when the job was created. for scheduled jobs, this will be the
+        #   initial connection time. For ad-hoc jobs, this will be the time the creation
+        #   request was received.
         sig { returns(Time) }
-        def created_at
-        end
+        attr_accessor :created_at
 
-        sig { params(_: Time).returns(Time) }
-        def created_at=(_)
-        end
-
+        # The id of the job that has been created.
         sig { returns(String) }
-        def job_id
-        end
+        attr_accessor :job_id
 
-        sig { params(_: String).returns(String) }
-        def job_id=(_)
-        end
-
+        # The url that can be used to retrieve the job status
         sig { returns(String) }
-        def job_url
-        end
+        attr_accessor :job_url
 
-        sig { params(_: String).returns(String) }
-        def job_url=(_)
-        end
-
+        # The input parameters for the job.
         sig { returns(T.nilable(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params)) }
-        def params
-        end
+        attr_reader :params
 
         sig do
-          params(_: T.nilable(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params))
-            .returns(T.nilable(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params))
+          params(
+            params: T.nilable(T.any(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params, FinchAPI::Util::AnyHash))
+          )
+            .void
         end
-        def params=(_)
-        end
+        attr_writer :params
 
+        # The datetime a job is scheduled to be run. For scheduled jobs, this datetime can
+        #   be in the future if the job has not yet been enqueued. For ad-hoc jobs, this
+        #   field will be null.
         sig { returns(T.nilable(Time)) }
-        def scheduled_at
-        end
+        attr_accessor :scheduled_at
 
-        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-        def scheduled_at=(_)
-        end
-
+        # The datetime a job entered into the job queue.
         sig { returns(T.nilable(Time)) }
-        def started_at
-        end
+        attr_accessor :started_at
 
-        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-        def started_at=(_)
-        end
+        sig { returns(FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol) }
+        attr_accessor :status
 
-        sig { returns(Symbol) }
-        def status
-        end
-
-        sig { params(_: Symbol).returns(Symbol) }
-        def status=(_)
-        end
-
-        sig { returns(Symbol) }
-        def type
-        end
-
-        sig { params(_: Symbol).returns(Symbol) }
-        def type=(_)
-        end
+        # The type of automated job
+        sig { returns(FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol) }
+        attr_accessor :type
 
         sig do
           params(
@@ -85,25 +57,15 @@ module FinchAPI
             created_at: Time,
             job_id: String,
             job_url: String,
-            params: T.nilable(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params),
+            params: T.nilable(T.any(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params, FinchAPI::Util::AnyHash)),
             scheduled_at: T.nilable(Time),
             started_at: T.nilable(Time),
-            status: Symbol,
-            type: Symbol
+            status: FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::OrSymbol,
+            type: FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::OrSymbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
-          completed_at:,
-          created_at:,
-          job_id:,
-          job_url:,
-          params:,
-          scheduled_at:,
-          started_at:,
-          status:,
-          type:
-        )
+        def self.new(completed_at:, created_at:, job_id:, job_url:, params:, scheduled_at:, started_at:, status:, type:)
         end
 
         sig do
@@ -117,8 +79,8 @@ module FinchAPI
                 params: T.nilable(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params),
                 scheduled_at: T.nilable(Time),
                 started_at: T.nilable(Time),
-                status: Symbol,
-                type: Symbol
+                status: FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol,
+                type: FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol
               }
             )
         end
@@ -126,16 +88,16 @@ module FinchAPI
         end
 
         class Params < FinchAPI::BaseModel
+          # The ID of the individual that the job was completed for.
           sig { returns(T.nilable(String)) }
-          def individual_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def individual_id=(_)
-          end
+          attr_reader :individual_id
 
           sig { params(individual_id: String).void }
-          def initialize(individual_id: nil)
+          attr_writer :individual_id
+
+          # The input parameters for the job.
+          sig { params(individual_id: String).returns(T.attached_class) }
+          def self.new(individual_id: nil)
           end
 
           sig { override.returns({individual_id: String}) }
@@ -143,28 +105,38 @@ module FinchAPI
           end
         end
 
-        class Status < FinchAPI::Enum
-          abstract!
+        module Status
+          extend FinchAPI::Enum
 
-          PENDING = :pending
-          IN_PROGRESS = :in_progress
-          COMPLETE = :complete
-          ERROR = :error
-          REAUTH_ERROR = :reauth_error
-          PERMISSIONS_ERROR = :permissions_error
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol) }
 
-          sig { override.returns(T::Array[Symbol]) }
+          PENDING = T.let(:pending, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
+          IN_PROGRESS = T.let(:in_progress, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
+          COMPLETE = T.let(:complete, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
+          ERROR = T.let(:error, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
+          REAUTH_ERROR = T.let(:reauth_error, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
+          PERMISSIONS_ERROR =
+            T.let(:permissions_error, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
+
+          sig { override.returns(T::Array[FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol]) }
           def self.values
           end
         end
 
-        class Type < FinchAPI::Enum
-          abstract!
+        # The type of automated job
+        module Type
+          extend FinchAPI::Enum
 
-          DATA_SYNC_ALL = :data_sync_all
-          W4_FORM_EMPLOYEE_SYNC = :w4_form_employee_sync
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type) }
+          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol) }
 
-          sig { override.returns(T::Array[Symbol]) }
+          DATA_SYNC_ALL = T.let(:data_sync_all, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol)
+          W4_FORM_EMPLOYEE_SYNC =
+            T.let(:w4_form_employee_sync, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol)
+
+          sig { override.returns(T::Array[FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol]) }
           def self.values
           end
         end

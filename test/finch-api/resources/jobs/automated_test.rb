@@ -4,10 +4,8 @@ require_relative "../../test_helper"
 
 class FinchAPI::Test::Resources::Jobs::AutomatedTest < FinchAPI::Test::ResourceTest
   def test_create_required_params
-    response = @finch.jobs.automated.create(
-      params: {individual_id: "individual_id"},
-      type: :w4_form_employee_sync
-    )
+    response =
+      @finch.jobs.automated.create(params: {individual_id: "individual_id"}, type: :w4_form_employee_sync)
 
     assert_pattern do
       response => FinchAPI::Models::Jobs::AutomatedCreateResponse
@@ -49,25 +47,13 @@ class FinchAPI::Test::Resources::Jobs::AutomatedTest < FinchAPI::Test::ResourceT
     response = @finch.jobs.automated.list
 
     assert_pattern do
-      response => FinchAPI::Page
-    end
-
-    row = response.to_enum.first
-    assert_pattern do
-      row => FinchAPI::Models::Jobs::AutomatedAsyncJob
+      response => FinchAPI::Models::Jobs::AutomatedListResponse
     end
 
     assert_pattern do
-      row => {
-        completed_at: Time | nil,
-        created_at: Time,
-        job_id: String,
-        job_url: String,
-        params: FinchAPI::Models::Jobs::AutomatedAsyncJob::Params | nil,
-        scheduled_at: Time | nil,
-        started_at: Time | nil,
-        status: FinchAPI::Models::Jobs::AutomatedAsyncJob::Status,
-        type: FinchAPI::Models::Jobs::AutomatedAsyncJob::Type
+      response => {
+        data: ^(FinchAPI::ArrayOf[FinchAPI::Models::Jobs::AutomatedAsyncJob]),
+        meta: FinchAPI::Models::Jobs::AutomatedListResponse::Meta
       }
     end
   end

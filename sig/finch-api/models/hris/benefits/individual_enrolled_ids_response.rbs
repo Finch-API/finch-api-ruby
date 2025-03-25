@@ -10,12 +10,10 @@ module FinchAPI
 
           attr_accessor individual_ids: ::Array[String]
 
-          def initialize:
-            (benefit_id: String, individual_ids: ::Array[String]) -> void
-            | (
-              ?FinchAPI::Models::HRIS::Benefits::individual_enrolled_ids_response
-              | FinchAPI::BaseModel data
-            ) -> void
+          def initialize: (
+            benefit_id: String,
+            individual_ids: ::Array[String]
+          ) -> void
 
           def to_hash: -> FinchAPI::Models::HRIS::Benefits::individual_enrolled_ids_response
         end

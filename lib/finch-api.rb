@@ -1,5 +1,20 @@
 # frozen_string_literal: true
 
+# We already ship the preferred sorbet manifests in the package itself.
+# `tapioca` currently does not offer us a way to opt out of unnecessary compilation.
+if Object.const_defined?(:Tapioca) && caller_locations.any? { _1.path.end_with?("tapioca/cli.rb") }
+  Warning.warn(
+    <<~WARN
+      \n
+      ⚠️ skipped loading of "finch-api" gem under `tapioca`.
+
+      This message is normal and expected if you are running a `tapioca` command, and does not impact `.rbi` generation.
+      \n
+    WARN
+  )
+  return
+end
+
 # Standard libraries.
 require "cgi"
 require "date"
@@ -7,6 +22,7 @@ require "erb"
 require "etc"
 require "json"
 require "net/http"
+require "pathname"
 require "rbconfig"
 require "securerandom"
 require "set"
@@ -104,6 +120,7 @@ require_relative "finch-api/models/jobs/automated_async_job"
 require_relative "finch-api/models/jobs/automated_create_params"
 require_relative "finch-api/models/jobs/automated_create_response"
 require_relative "finch-api/models/jobs/automated_list_params"
+require_relative "finch-api/models/jobs/automated_list_response"
 require_relative "finch-api/models/jobs/automated_retrieve_params"
 require_relative "finch-api/models/jobs/manual_async_job"
 require_relative "finch-api/models/jobs/manual_retrieve_params"

@@ -5,49 +5,79 @@ module FinchAPI
     module Sandbox
       module Jobs
         class SandboxJobConfiguration < FinchAPI::BaseModel
-          sig { returns(Symbol) }
-          def completion_status
+          sig { returns(FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol) }
+          attr_accessor :completion_status
+
+          sig { returns(FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type::TaggedSymbol) }
+          attr_accessor :type
+
+          sig do
+            params(
+              completion_status: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::OrSymbol,
+              type: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type::OrSymbol
+            )
+              .returns(T.attached_class)
+          end
+          def self.new(completion_status:, type:)
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
-          def completion_status=(_)
+          sig do
+            override
+              .returns(
+                {
+                  completion_status: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol,
+                  type: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type::TaggedSymbol
+                }
+              )
           end
-
-          sig { returns(Symbol) }
-          def type
-          end
-
-          sig { params(_: Symbol).returns(Symbol) }
-          def type=(_)
-          end
-
-          sig { params(completion_status: Symbol, type: Symbol).void }
-          def initialize(completion_status:, type:)
-          end
-
-          sig { override.returns({completion_status: Symbol, type: Symbol}) }
           def to_hash
           end
 
-          class CompletionStatus < FinchAPI::Enum
-            abstract!
+          module CompletionStatus
+            extend FinchAPI::Enum
 
-            COMPLETE = :complete
-            REAUTH_ERROR = :reauth_error
-            PERMISSIONS_ERROR = :permissions_error
-            ERROR = :error
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol) }
 
-            sig { override.returns(T::Array[Symbol]) }
+            COMPLETE =
+              T.let(:complete, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol)
+            REAUTH_ERROR =
+              T.let(
+                :reauth_error,
+                FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol
+              )
+            PERMISSIONS_ERROR =
+              T.let(
+                :permissions_error,
+                FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol
+              )
+            ERROR =
+              T.let(:error, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol)
+
+            sig do
+              override
+                .returns(
+                  T::Array[FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol]
+                )
+            end
             def self.values
             end
           end
 
-          class Type < FinchAPI::Enum
-            abstract!
+          module Type
+            extend FinchAPI::Enum
 
-            DATA_SYNC_ALL = :data_sync_all
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type::TaggedSymbol) }
 
-            sig { override.returns(T::Array[Symbol]) }
+            DATA_SYNC_ALL =
+              T.let(:data_sync_all, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type::TaggedSymbol)
+
+            sig { override.returns(T::Array[FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type::TaggedSymbol]) }
             def self.values
             end
           end

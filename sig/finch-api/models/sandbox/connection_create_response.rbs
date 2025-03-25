@@ -32,33 +32,30 @@ module FinchAPI
 
         def token_type=: (String) -> String
 
-        def initialize:
-          (
-            access_token: String,
-            account_id: String,
-            authentication_type: FinchAPI::Models::Sandbox::ConnectionCreateResponse::authentication_type,
-            company_id: String,
-            connection_id: String,
-            products: ::Array[String],
-            provider_id: String,
-            token_type: String
-          ) -> void
-          | (
-            ?FinchAPI::Models::Sandbox::connection_create_response
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          access_token: String,
+          account_id: String,
+          authentication_type: FinchAPI::Models::Sandbox::ConnectionCreateResponse::authentication_type,
+          company_id: String,
+          connection_id: String,
+          products: ::Array[String],
+          provider_id: String,
+          ?token_type: String
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::Sandbox::connection_create_response
 
         type authentication_type = :credential | :api_token | :oauth | :assisted
 
-        class AuthenticationType < FinchAPI::Enum
+        module AuthenticationType
+          extend FinchAPI::Enum
+
           CREDENTIAL: :credential
           API_TOKEN: :api_token
           OAUTH: :oauth
           ASSISTED: :assisted
 
-          def self.values: -> ::Array[FinchAPI::Models::Sandbox::ConnectionCreateResponse::authentication_type]
+          def self?.values: -> ::Array[FinchAPI::Models::Sandbox::ConnectionCreateResponse::authentication_type]
         end
       end
     end

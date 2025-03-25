@@ -7,25 +7,18 @@ module FinchAPI
         extend FinchAPI::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
+        # The array of batch requests.
         sig { returns(T::Array[FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request]) }
-        def requests
-        end
-
-        sig do
-          params(_: T::Array[FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request])
-            .returns(T::Array[FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request])
-        end
-        def requests=(_)
-        end
+        attr_accessor :requests
 
         sig do
           params(
-            requests: T::Array[FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request],
-            request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+            requests: T::Array[T.any(FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request, FinchAPI::Util::AnyHash)],
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(requests:, request_options: {})
+        def self.new(requests:, request_options: {})
         end
 
         sig do
@@ -41,16 +34,14 @@ module FinchAPI
         end
 
         class Request < FinchAPI::BaseModel
+          # A stable Finch `id` (UUID v4) for an individual in the company. There is no
+          #   limit to the number of `individual_id` to send per request. It is preferantial
+          #   to send all ids in a single request for Finch to optimize provider rate-limits.
           sig { returns(String) }
-          def individual_id
-          end
+          attr_accessor :individual_id
 
-          sig { params(_: String).returns(String) }
-          def individual_id=(_)
-          end
-
-          sig { params(individual_id: String).void }
-          def initialize(individual_id:)
+          sig { params(individual_id: String).returns(T.attached_class) }
+          def self.new(individual_id:)
           end
 
           sig { override.returns({individual_id: String}) }

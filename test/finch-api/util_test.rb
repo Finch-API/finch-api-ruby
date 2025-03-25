@@ -161,7 +161,10 @@ class FinchAPI::Test::UtilFormDataEncodingTest < Minitest::Test
   class FakeCGI < CGI
     def initialize(headers, io)
       @ctype = headers["content-type"]
-      @io = io
+      # rubocop:disable Lint/EmptyBlock
+      @io = FinchAPI::Util::ReadIOAdapter.new(io) {}
+      # rubocop:enable Lint/EmptyBlock
+      @c_len = io.to_a.join.bytesize.to_s
       super()
     end
 
@@ -171,7 +174,7 @@ class FinchAPI::Test::UtilFormDataEncodingTest < Minitest::Test
       {
         "REQUEST_METHOD" => "POST",
         "CONTENT_TYPE" => @ctype,
-        "CONTENT_LENGTH" => stdinput.string.length
+        "CONTENT_LENGTH" => @c_len
       }
     end
   end
@@ -204,6 +207,36 @@ class FinchAPI::Test::UtilFormDataEncodingTest < Minitest::Test
       testcase.each do |key, val|
         assert_equal(val, cgi[key])
       end
+    end
+  end
+end
+
+class FinchAPI::Test::UtilIOAdapterTest < Minitest::Test
+  def test_copy_read
+    cases = {
+      StringIO.new("abc") => "abc",
+      Enumerator.new { _1 << "abc" } => "abc"
+    }
+    cases.each do |input, expected|
+      io = StringIO.new
+      # rubocop:disable Lint/EmptyBlock
+      adapter = FinchAPI::Util::ReadIOAdapter.new(input) {}
+      # rubocop:enable Lint/EmptyBlock
+      IO.copy_stream(adapter, io)
+      assert_equal(expected, io.string)
+    end
+  end
+
+  def test_copy_write
+    cases = {
+      StringIO.new => "",
+      StringIO.new("abc") => "abc"
+    }
+    cases.each do |input, expected|
+      enum = FinchAPI::Util.string_io do |y|
+        IO.copy_stream(input, y)
+      end
+      assert_equal(expected, enum.to_a.join)
     end
   end
 end
@@ -244,7 +277,7 @@ class FinchAPI::Test::UtilFusedEnumTest < Minitest::Test
   def test_external_iteration
     it = [1, 2, 3].to_enum
     first = it.next
-    fused = FinchAPI::Util.fused_enum(it)
+    fused = FinchAPI::Util.fused_enum(it, external: true)
 
     assert_equal(1, first)
     assert_equal([2, 3], fused.to_a)
@@ -320,8 +353,8 @@ class FinchAPI::Test::UtilFusedEnumTest < Minitest::Test
       .map(&:to_s)
 
     fused_1 = FinchAPI::Util.fused_enum(enum)
-    fused_2 = FinchAPI::Util.enum_lines(fused_1)
-    fused_3 = FinchAPI::Util.parse_sse(fused_2)
+    fused_2 = FinchAPI::Util.decode_lines(fused_1)
+    fused_3 = FinchAPI::Util.decode_sse(fused_2)
 
     assert_equal(0, taken)
     FinchAPI::Util.close_fused!(fused_3)
@@ -330,7 +363,7 @@ class FinchAPI::Test::UtilFusedEnumTest < Minitest::Test
 end
 
 class FinchAPI::Test::UtilSseTest < Minitest::Test
-  def test_enum_lines
+  def test_decode_lines
     cases = {
       %w[] => %w[],
       %W[\n\n] => %W[\n \n],
@@ -340,15 +373,37 @@ class FinchAPI::Test::UtilSseTest < Minitest::Test
       %W[a\nb\n] => %W[a\n b\n],
       %W[\na b\n] => %W[\n ab\n],
       %W[\na b\n\n] => %W[\n ab\n \n],
-      %W[\na b] => %W[\n ab]
+      %W[\na b] => %W[\n ab],
+      %W[\u1F62E\u200D\u1F4A8] => %W[\u1F62E\u200D\u1F4A8],
+      %W[\u1F62E \u200D \u1F4A8] => %W[\u1F62E\u200D\u1F4A8]
+    }
+    eols = %W[\n \r \r\n]
+    cases.each do |enum, expected|
+      eols.each do |eol|
+        lines = FinchAPI::Util.decode_lines(enum.map { _1.gsub("\n", eol) })
+        assert_equal(expected.map { _1.gsub("\n", eol) }, lines.to_a, "eol=#{JSON.generate(eol)}")
+      end
+    end
+  end
+
+  def test_mixed_decode_lines
+    cases = {
+      %w[] => %w[],
+      %W[\r\r] => %W[\r \r],
+      %W[\r \r] => %W[\r \r],
+      %W[\r\r\r] => %W[\r \r \r],
+      %W[\r\r \r] => %W[\r \r \r],
+      %W[\r \n] => %W[\r\n],
+      %W[\r\r\n] => %W[\r \r\n],
+      %W[\n\r] => %W[\n \r]
     }
     cases.each do |enum, expected|
-      lines = FinchAPI::Util.enum_lines(enum)
+      lines = FinchAPI::Util.decode_lines(enum)
       assert_equal(expected, lines.to_a)
     end
   end
 
-  def test_parse_sse
+  def test_decode_sse
     cases = {
       "empty input" => {
         [] => []
@@ -372,8 +427,8 @@ class FinchAPI::Test::UtilSseTest < Minitest::Test
       },
       "complete event" => {
         [
-          "event: update\n",
           "id: 123\n",
+          "event: update\n",
           "data: hello world\n",
           "retry: 5000\n",
           "\n"
@@ -454,12 +509,19 @@ class FinchAPI::Test::UtilSseTest < Minitest::Test
           {data: "first\n"},
           {data: "second\n"}
         ]
+      },
+      "multibyte unicode" => {
+        [
+          "data: \u1F62E\u200D\u1F4A8\n"
+        ] => [
+          {data: "\u1F62E\u200D\u1F4A8\n"}
+        ]
       }
     }
 
     cases.each do |name, test_cases|
       test_cases.each do |input, expected|
-        actual = FinchAPI::Util.parse_sse(input).map(&:compact)
+        actual = FinchAPI::Util.decode_sse(input).map(&:compact)
         assert_equal(expected, actual, name)
       end
     end

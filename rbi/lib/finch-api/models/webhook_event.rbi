@@ -2,16 +2,16 @@
 
 module FinchAPI
   module Models
-    class WebhookEvent < FinchAPI::Union
-      abstract!
+    module WebhookEvent
+      extend FinchAPI::Union
 
       sig do
         override
           .returns(
-            [[NilClass, FinchAPI::Models::AccountUpdateEvent], [NilClass, FinchAPI::Models::JobCompletionEvent], [NilClass, FinchAPI::Models::CompanyEvent], [NilClass, FinchAPI::Models::DirectoryEvent], [NilClass, FinchAPI::Models::EmploymentEvent], [NilClass, FinchAPI::Models::IndividualEvent], [NilClass, FinchAPI::Models::PaymentEvent], [NilClass, FinchAPI::Models::PayStatementEvent]]
+            [FinchAPI::Models::AccountUpdateEvent, FinchAPI::Models::CompanyEvent, FinchAPI::Models::JobCompletionEvent, FinchAPI::Models::DirectoryEvent, FinchAPI::Models::EmploymentEvent, FinchAPI::Models::IndividualEvent, FinchAPI::Models::PaymentEvent, FinchAPI::Models::PayStatementEvent]
           )
       end
-      private_class_method def self.variants
+      def self.variants
       end
     end
   end

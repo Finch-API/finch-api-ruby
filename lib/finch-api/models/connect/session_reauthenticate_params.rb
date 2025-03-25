@@ -46,28 +46,10 @@ module FinchAPI
 
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-        # @abstract
-        #
         # The Finch products that can be requested during the Connect flow.
-        #
-        # @example
-        # ```ruby
-        # case product
-        # in :company
-        #   # ...
-        # in :directory
-        #   # ...
-        # in :individual
-        #   # ...
-        # in :employment
-        #   # ...
-        # in :payment
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
-        class Product < FinchAPI::Enum
+        module Product
+          extend FinchAPI::Enum
+
           COMPANY = :company
           DIRECTORY = :directory
           INDIVIDUAL = :individual
@@ -81,7 +63,6 @@ module FinchAPI
 
           # @!parse
           #   # @return [Array<Symbol>]
-          #   #
           #   def self.values; end
         end
       end

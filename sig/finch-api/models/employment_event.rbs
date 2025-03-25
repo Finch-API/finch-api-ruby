@@ -7,26 +7,22 @@ module FinchAPI
       }
 
     class EmploymentEvent < FinchAPI::Models::BaseWebhookEvent
-      attr_reader data: FinchAPI::Models::EmploymentEvent::Data?
+      def data: -> FinchAPI::Models::EmploymentEvent::Data?
 
       def data=: (
-        FinchAPI::Models::EmploymentEvent::Data
+        FinchAPI::Models::EmploymentEvent::Data _
       ) -> FinchAPI::Models::EmploymentEvent::Data
 
-      attr_reader event_type: FinchAPI::Models::EmploymentEvent::event_type?
+      def event_type: -> FinchAPI::Models::EmploymentEvent::event_type?
 
       def event_type=: (
-        FinchAPI::Models::EmploymentEvent::event_type
+        FinchAPI::Models::EmploymentEvent::event_type _
       ) -> FinchAPI::Models::EmploymentEvent::event_type
 
-      def initialize:
-        (
-          data: FinchAPI::Models::EmploymentEvent::Data,
-          event_type: FinchAPI::Models::EmploymentEvent::event_type
-        ) -> void
-        | (
-          ?FinchAPI::Models::employment_event | FinchAPI::BaseModel data
-        ) -> void
+      def initialize: (
+        ?data: FinchAPI::Models::EmploymentEvent::Data,
+        ?event_type: FinchAPI::Models::EmploymentEvent::event_type
+      ) -> void
 
       def to_hash: -> FinchAPI::Models::employment_event
 
@@ -37,11 +33,7 @@ module FinchAPI
 
         def individual_id=: (String) -> String
 
-        def initialize:
-          (individual_id: String) -> void
-          | (
-            ?FinchAPI::Models::EmploymentEvent::data | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (?individual_id: String) -> void
 
         def to_hash: -> FinchAPI::Models::EmploymentEvent::data
       end
@@ -49,12 +41,14 @@ module FinchAPI
       type event_type =
         :"employment.created" | :"employment.updated" | :"employment.deleted"
 
-      class EventType < FinchAPI::Enum
+      module EventType
+        extend FinchAPI::Enum
+
         EMPLOYMENT_CREATED: :"employment.created"
         EMPLOYMENT_UPDATED: :"employment.updated"
         EMPLOYMENT_DELETED: :"employment.deleted"
 
-        def self.values: -> ::Array[FinchAPI::Models::EmploymentEvent::event_type]
+        def self?.values: -> ::Array[FinchAPI::Models::EmploymentEvent::event_type]
       end
     end
   end

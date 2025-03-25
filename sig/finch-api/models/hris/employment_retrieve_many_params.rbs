@@ -13,15 +13,10 @@ module FinchAPI
 
         attr_accessor requests: ::Array[FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request]
 
-        def initialize:
-          (
-            requests: ::Array[FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request],
-            request_options: FinchAPI::request_opts
-          ) -> void
-          | (
-            ?FinchAPI::Models::HRIS::employment_retrieve_many_params
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          requests: ::Array[FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request],
+          ?request_options: FinchAPI::request_opts
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::employment_retrieve_many_params
 
@@ -30,12 +25,7 @@ module FinchAPI
         class Request < FinchAPI::BaseModel
           attr_accessor individual_id: String
 
-          def initialize:
-            (individual_id: String) -> void
-            | (
-              ?FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::request
-              | FinchAPI::BaseModel data
-            ) -> void
+          def initialize: (individual_id: String) -> void
 
           def to_hash: -> FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::request
         end

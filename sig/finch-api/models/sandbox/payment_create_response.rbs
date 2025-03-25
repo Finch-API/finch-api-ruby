@@ -8,12 +8,7 @@ module FinchAPI
 
         attr_accessor payment_id: String
 
-        def initialize:
-          (pay_date: String, payment_id: String) -> void
-          | (
-            ?FinchAPI::Models::Sandbox::payment_create_response
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (pay_date: String, payment_id: String) -> void
 
         def to_hash: -> FinchAPI::Models::Sandbox::payment_create_response
       end

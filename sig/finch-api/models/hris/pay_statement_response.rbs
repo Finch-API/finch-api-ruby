@@ -23,16 +23,11 @@ module FinchAPI
 
         def payment_id=: (String) -> String
 
-        def initialize:
-          (
-            body: FinchAPI::Models::HRIS::PayStatementResponseBody,
-            code: Integer,
-            payment_id: String
-          ) -> void
-          | (
-            ?FinchAPI::Models::HRIS::pay_statement_response
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          ?body: FinchAPI::Models::HRIS::PayStatementResponseBody,
+          ?code: Integer,
+          ?payment_id: String
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::pay_statement_response
       end

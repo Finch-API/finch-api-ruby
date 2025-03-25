@@ -38,22 +38,18 @@ module FinchAPI
 
         attr_accessor type: FinchAPI::Models::HRIS::PayStatement::type_?
 
-        def initialize:
-          (
-            earnings: ::Array[FinchAPI::Models::HRIS::PayStatement::Earning?]?,
-            employee_deductions: ::Array[FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction?]?,
-            employer_contributions: ::Array[FinchAPI::Models::HRIS::PayStatement::EmployerContribution?]?,
-            gross_pay: FinchAPI::Models::Money?,
-            individual_id: String,
-            net_pay: FinchAPI::Models::Money?,
-            payment_method: FinchAPI::Models::HRIS::PayStatement::payment_method?,
-            taxes: ::Array[FinchAPI::Models::HRIS::PayStatement::Tax?]?,
-            total_hours: Float?,
-            type: FinchAPI::Models::HRIS::PayStatement::type_?
-          ) -> void
-          | (
-            ?FinchAPI::Models::HRIS::pay_statement | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          ?earnings: ::Array[FinchAPI::Models::HRIS::PayStatement::Earning?]?,
+          ?employee_deductions: ::Array[FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction?]?,
+          ?employer_contributions: ::Array[FinchAPI::Models::HRIS::PayStatement::EmployerContribution?]?,
+          ?gross_pay: FinchAPI::Models::Money?,
+          ?individual_id: String,
+          ?net_pay: FinchAPI::Models::Money?,
+          ?payment_method: FinchAPI::Models::HRIS::PayStatement::payment_method?,
+          ?taxes: ::Array[FinchAPI::Models::HRIS::PayStatement::Tax?]?,
+          ?total_hours: Float?,
+          ?type: FinchAPI::Models::HRIS::PayStatement::type_?
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::pay_statement
 
@@ -80,19 +76,14 @@ module FinchAPI
 
           attr_accessor type: FinchAPI::Models::HRIS::PayStatement::Earning::type_?
 
-          def initialize:
-            (
-              amount: Integer?,
-              attributes: FinchAPI::Models::HRIS::PayStatement::Earning::Attributes?,
-              currency: String?,
-              hours: Float?,
-              name: String?,
-              type: FinchAPI::Models::HRIS::PayStatement::Earning::type_?
-            ) -> void
-            | (
-              ?FinchAPI::Models::HRIS::PayStatement::earning
-              | FinchAPI::BaseModel data
-            ) -> void
+          def initialize: (
+            ?amount: Integer?,
+            ?attributes: FinchAPI::Models::HRIS::PayStatement::Earning::Attributes?,
+            ?currency: String?,
+            ?hours: Float?,
+            ?name: String?,
+            ?type: FinchAPI::Models::HRIS::PayStatement::Earning::type_?
+          ) -> void
 
           def to_hash: -> FinchAPI::Models::HRIS::PayStatement::earning
 
@@ -108,14 +99,9 @@ module FinchAPI
               FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata
             ) -> FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata
 
-            def initialize:
-              (
-                metadata: FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata
-              ) -> void
-              | (
-                ?FinchAPI::Models::HRIS::PayStatement::Earning::attributes
-                | FinchAPI::BaseModel data
-              ) -> void
+            def initialize: (
+              ?metadata: FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata
+            ) -> void
 
             def to_hash: -> FinchAPI::Models::HRIS::PayStatement::Earning::attributes
 
@@ -126,12 +112,7 @@ module FinchAPI
 
               def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
-              def initialize:
-                (metadata: ::Hash[Symbol, top]) -> void
-                | (
-                  ?FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::metadata
-                  | FinchAPI::BaseModel data
-                ) -> void
+              def initialize: (?metadata: ::Hash[Symbol, top]) -> void
 
               def to_hash: -> FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::metadata
             end
@@ -152,7 +133,9 @@ module FinchAPI
             | :"1099"
             | :other
 
-          class Type < FinchAPI::Enum
+          module Type
+            extend FinchAPI::Enum
+
             SALARY: :salary
             WAGE: :wage
             REIMBURSEMENT: :reimbursement
@@ -167,7 +150,7 @@ module FinchAPI
             NUMBER_1099: :"1099"
             OTHER: :other
 
-            def self.values: -> ::Array[FinchAPI::Models::HRIS::PayStatement::Earning::type_]
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::PayStatement::Earning::type_]
           end
         end
 
@@ -194,19 +177,14 @@ module FinchAPI
 
           attr_accessor type: FinchAPI::Models::HRIS::benefit_type?
 
-          def initialize:
-            (
-              amount: Integer?,
-              attributes: FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes?,
-              currency: String?,
-              name: String?,
-              pre_tax: bool?,
-              type: FinchAPI::Models::HRIS::benefit_type?
-            ) -> void
-            | (
-              ?FinchAPI::Models::HRIS::PayStatement::employee_deduction
-              | FinchAPI::BaseModel data
-            ) -> void
+          def initialize: (
+            ?amount: Integer?,
+            ?attributes: FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes?,
+            ?currency: String?,
+            ?name: String?,
+            ?pre_tax: bool?,
+            ?type: FinchAPI::Models::HRIS::benefit_type?
+          ) -> void
 
           def to_hash: -> FinchAPI::Models::HRIS::PayStatement::employee_deduction
 
@@ -222,14 +200,9 @@ module FinchAPI
               FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata
             ) -> FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata
 
-            def initialize:
-              (
-                metadata: FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata
-              ) -> void
-              | (
-                ?FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::attributes
-                | FinchAPI::BaseModel data
-              ) -> void
+            def initialize: (
+              ?metadata: FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata
+            ) -> void
 
             def to_hash: -> FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::attributes
 
@@ -240,12 +213,7 @@ module FinchAPI
 
               def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
-              def initialize:
-                (metadata: ::Hash[Symbol, top]) -> void
-                | (
-                  ?FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::metadata
-                  | FinchAPI::BaseModel data
-                ) -> void
+              def initialize: (?metadata: ::Hash[Symbol, top]) -> void
 
               def to_hash: -> FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::metadata
             end
@@ -272,18 +240,13 @@ module FinchAPI
 
           attr_accessor type: FinchAPI::Models::HRIS::benefit_type?
 
-          def initialize:
-            (
-              amount: Integer?,
-              attributes: FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes?,
-              currency: String?,
-              name: String?,
-              type: FinchAPI::Models::HRIS::benefit_type?
-            ) -> void
-            | (
-              ?FinchAPI::Models::HRIS::PayStatement::employer_contribution
-              | FinchAPI::BaseModel data
-            ) -> void
+          def initialize: (
+            ?amount: Integer?,
+            ?attributes: FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes?,
+            ?currency: String?,
+            ?name: String?,
+            ?type: FinchAPI::Models::HRIS::benefit_type?
+          ) -> void
 
           def to_hash: -> FinchAPI::Models::HRIS::PayStatement::employer_contribution
 
@@ -299,14 +262,9 @@ module FinchAPI
               FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata
             ) -> FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata
 
-            def initialize:
-              (
-                metadata: FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata
-              ) -> void
-              | (
-                ?FinchAPI::Models::HRIS::PayStatement::EmployerContribution::attributes
-                | FinchAPI::BaseModel data
-              ) -> void
+            def initialize: (
+              ?metadata: FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata
+            ) -> void
 
             def to_hash: -> FinchAPI::Models::HRIS::PayStatement::EmployerContribution::attributes
 
@@ -317,12 +275,7 @@ module FinchAPI
 
               def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
-              def initialize:
-                (metadata: ::Hash[Symbol, top]) -> void
-                | (
-                  ?FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::metadata
-                  | FinchAPI::BaseModel data
-                ) -> void
+              def initialize: (?metadata: ::Hash[Symbol, top]) -> void
 
               def to_hash: -> FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::metadata
             end
@@ -331,11 +284,13 @@ module FinchAPI
 
         type payment_method = :check | :direct_deposit
 
-        class PaymentMethod < FinchAPI::Enum
+        module PaymentMethod
+          extend FinchAPI::Enum
+
           CHECK: :check
           DIRECT_DEPOSIT: :direct_deposit
 
-          def self.values: -> ::Array[FinchAPI::Models::HRIS::PayStatement::payment_method]
+          def self?.values: -> ::Array[FinchAPI::Models::HRIS::PayStatement::payment_method]
         end
 
         type tax =
@@ -361,19 +316,14 @@ module FinchAPI
 
           attr_accessor type: FinchAPI::Models::HRIS::PayStatement::Tax::type_?
 
-          def initialize:
-            (
-              amount: Integer?,
-              attributes: FinchAPI::Models::HRIS::PayStatement::Tax::Attributes?,
-              currency: String?,
-              employer: bool?,
-              name: String?,
-              type: FinchAPI::Models::HRIS::PayStatement::Tax::type_?
-            ) -> void
-            | (
-              ?FinchAPI::Models::HRIS::PayStatement::tax
-              | FinchAPI::BaseModel data
-            ) -> void
+          def initialize: (
+            ?amount: Integer?,
+            ?attributes: FinchAPI::Models::HRIS::PayStatement::Tax::Attributes?,
+            ?currency: String?,
+            ?employer: bool?,
+            ?name: String?,
+            ?type: FinchAPI::Models::HRIS::PayStatement::Tax::type_?
+          ) -> void
 
           def to_hash: -> FinchAPI::Models::HRIS::PayStatement::tax
 
@@ -389,14 +339,9 @@ module FinchAPI
               FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata
             ) -> FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata
 
-            def initialize:
-              (
-                metadata: FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata
-              ) -> void
-              | (
-                ?FinchAPI::Models::HRIS::PayStatement::Tax::attributes
-                | FinchAPI::BaseModel data
-              ) -> void
+            def initialize: (
+              ?metadata: FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata
+            ) -> void
 
             def to_hash: -> FinchAPI::Models::HRIS::PayStatement::Tax::attributes
 
@@ -407,12 +352,7 @@ module FinchAPI
 
               def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
-              def initialize:
-                (metadata: ::Hash[Symbol, top]) -> void
-                | (
-                  ?FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::metadata
-                  | FinchAPI::BaseModel data
-                ) -> void
+              def initialize: (?metadata: ::Hash[Symbol, top]) -> void
 
               def to_hash: -> FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::metadata
             end
@@ -420,24 +360,28 @@ module FinchAPI
 
           type type_ = :state | :federal | :local | :fica
 
-          class Type < FinchAPI::Enum
+          module Type
+            extend FinchAPI::Enum
+
             STATE: :state
             FEDERAL: :federal
             LOCAL: :local
             FICA: :fica
 
-            def self.values: -> ::Array[FinchAPI::Models::HRIS::PayStatement::Tax::type_]
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::PayStatement::Tax::type_]
           end
         end
 
         type type_ = :regular_payroll | :off_cycle_payroll | :one_time_payment
 
-        class Type < FinchAPI::Enum
+        module Type
+          extend FinchAPI::Enum
+
           REGULAR_PAYROLL: :regular_payroll
           OFF_CYCLE_PAYROLL: :off_cycle_payroll
           ONE_TIME_PAYMENT: :one_time_payment
 
-          def self.values: -> ::Array[FinchAPI::Models::HRIS::PayStatement::type_]
+          def self?.values: -> ::Array[FinchAPI::Models::HRIS::PayStatement::type_]
         end
       end
     end

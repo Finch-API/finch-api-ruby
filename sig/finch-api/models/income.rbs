@@ -17,14 +17,12 @@ module FinchAPI
 
       attr_accessor unit: FinchAPI::Models::Income::unit?
 
-      def initialize:
-        (
-          amount: Integer?,
-          currency: String?,
-          effective_date: String?,
-          unit: FinchAPI::Models::Income::unit?
-        ) -> void
-        | (?FinchAPI::Models::income | FinchAPI::BaseModel data) -> void
+      def initialize: (
+        ?amount: Integer?,
+        ?currency: String?,
+        ?effective_date: String?,
+        ?unit: FinchAPI::Models::Income::unit?
+      ) -> void
 
       def to_hash: -> FinchAPI::Models::income
 
@@ -39,7 +37,9 @@ module FinchAPI
         | :hourly
         | :fixed
 
-      class Unit < FinchAPI::Enum
+      module Unit
+        extend FinchAPI::Enum
+
         YEARLY: :yearly
         QUARTERLY: :quarterly
         MONTHLY: :monthly
@@ -50,7 +50,7 @@ module FinchAPI
         HOURLY: :hourly
         FIXED: :fixed
 
-        def self.values: -> ::Array[FinchAPI::Models::Income::unit]
+        def self?.values: -> ::Array[FinchAPI::Models::Income::unit]
       end
     end
   end

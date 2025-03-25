@@ -4,47 +4,52 @@ module FinchAPI
   module Models
     module Jobs
       class ManualAsyncJob < FinchAPI::BaseModel
+        # Specific information about the job, such as individual statuses for batch jobs.
         sig { returns(T.nilable(T::Array[T.anything])) }
-        def body
-        end
-
-        sig { params(_: T.nilable(T::Array[T.anything])).returns(T.nilable(T::Array[T.anything])) }
-        def body=(_)
-        end
+        attr_accessor :body
 
         sig { returns(String) }
-        def job_id
+        attr_accessor :job_id
+
+        sig { returns(FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol) }
+        attr_accessor :status
+
+        sig do
+          params(
+            body: T.nilable(T::Array[T.anything]),
+            job_id: String,
+            status: FinchAPI::Models::Jobs::ManualAsyncJob::Status::OrSymbol
+          )
+            .returns(T.attached_class)
+        end
+        def self.new(body:, job_id:, status:)
         end
 
-        sig { params(_: String).returns(String) }
-        def job_id=(_)
+        sig do
+          override
+            .returns(
+              {
+                body: T.nilable(T::Array[T.anything]),
+                job_id: String,
+                status: FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol
+              }
+            )
         end
-
-        sig { returns(Symbol) }
-        def status
-        end
-
-        sig { params(_: Symbol).returns(Symbol) }
-        def status=(_)
-        end
-
-        sig { params(body: T.nilable(T::Array[T.anything]), job_id: String, status: Symbol).void }
-        def initialize(body:, job_id:, status:)
-        end
-
-        sig { override.returns({body: T.nilable(T::Array[T.anything]), job_id: String, status: Symbol}) }
         def to_hash
         end
 
-        class Status < FinchAPI::Enum
-          abstract!
+        module Status
+          extend FinchAPI::Enum
 
-          PENDING = :pending
-          IN_PROGRESS = :in_progress
-          ERROR = :error
-          COMPLETE = :complete
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Jobs::ManualAsyncJob::Status) }
+          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol) }
 
-          sig { override.returns(T::Array[Symbol]) }
+          PENDING = T.let(:pending, FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol)
+          IN_PROGRESS = T.let(:in_progress, FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol)
+          ERROR = T.let(:error, FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol)
+          COMPLETE = T.let(:complete, FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol)
+
+          sig { override.returns(T::Array[FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol]) }
           def self.values
           end
         end

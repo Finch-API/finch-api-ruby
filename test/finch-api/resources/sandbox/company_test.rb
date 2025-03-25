@@ -4,16 +4,17 @@ require_relative "../../test_helper"
 
 class FinchAPI::Test::Resources::Sandbox::CompanyTest < FinchAPI::Test::ResourceTest
   def test_update_required_params
-    response = @finch.sandbox.company.update(
-      accounts: [{}],
-      departments: [{}],
-      ein: "ein",
-      entity: {},
-      legal_name: "legal_name",
-      locations: [{}],
-      primary_email: "primary_email",
-      primary_phone_number: "primary_phone_number"
-    )
+    response =
+      @finch.sandbox.company.update(
+        accounts: [{}],
+        departments: [{}],
+        ein: "ein",
+        entity: {},
+        legal_name: "legal_name",
+        locations: [{}],
+        primary_email: "dev@stainless.com",
+        primary_phone_number: "primary_phone_number"
+      )
 
     assert_pattern do
       response => FinchAPI::Models::Sandbox::CompanyUpdateResponse

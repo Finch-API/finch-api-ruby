@@ -219,26 +219,10 @@ module FinchAPI
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
         end
 
-        # @abstract
-        #
         # The type of authentication method.
-        #
-        # @example
-        # ```ruby
-        # case type
-        # in :assisted
-        #   # ...
-        # in :credential
-        #   # ...
-        # in :api_token
-        #   # ...
-        # in :api_credential
-        #   # ...
-        # in :oauth
-        #   # ...
-        # end
-        # ```
-        class Type < FinchAPI::Enum
+        module Type
+          extend FinchAPI::Enum
+
           ASSISTED = :assisted
           CREDENTIAL = :credential
           API_TOKEN = :api_token
@@ -249,27 +233,14 @@ module FinchAPI
 
           # @!parse
           #   # @return [Array<Symbol>]
-          #   #
           #   def self.values; end
         end
       end
 
-      # @abstract
-      #
       # The type of application associated with a token.
-      #
-      # @example
-      # ```ruby
-      # case client_type
-      # in :production
-      #   # ...
-      # in :development
-      #   # ...
-      # in :sandbox
-      #   # ...
-      # end
-      # ```
-      class ClientType < FinchAPI::Enum
+      module ClientType
+        extend FinchAPI::Enum
+
         PRODUCTION = :production
         DEVELOPMENT = :development
         SANDBOX = :sandbox
@@ -278,7 +249,6 @@ module FinchAPI
 
         # @!parse
         #   # @return [Array<Symbol>]
-        #   #
         #   def self.values; end
       end
 
@@ -310,23 +280,13 @@ module FinchAPI
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
       end
 
-      # @abstract
-      #
       # The type of the connection associated with the token.
       #
       #   - `provider` - connection to an external provider
       #   - `finch` - finch-generated data.
-      #
-      # @example
-      # ```ruby
-      # case connection_type
-      # in :provider
-      #   # ...
-      # in :finch
-      #   # ...
-      # end
-      # ```
-      class ConnectionType < FinchAPI::Enum
+      module ConnectionType
+        extend FinchAPI::Enum
+
         PROVIDER = :provider
         FINCH = :finch
 
@@ -334,7 +294,6 @@ module FinchAPI
 
         # @!parse
         #   # @return [Array<Symbol>]
-        #   #
         #   def self.values; end
       end
     end

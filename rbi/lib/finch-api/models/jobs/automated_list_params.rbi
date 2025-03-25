@@ -7,31 +7,29 @@ module FinchAPI
         extend FinchAPI::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
+        # Number of items to return
         sig { returns(T.nilable(Integer)) }
-        def limit
-        end
+        attr_reader :limit
 
-        sig { params(_: Integer).returns(Integer) }
-        def limit=(_)
-        end
+        sig { params(limit: Integer).void }
+        attr_writer :limit
 
+        # Index to start from (defaults to 0)
         sig { returns(T.nilable(Integer)) }
-        def offset
-        end
+        attr_reader :offset
 
-        sig { params(_: Integer).returns(Integer) }
-        def offset=(_)
-        end
+        sig { params(offset: Integer).void }
+        attr_writer :offset
 
         sig do
           params(
             limit: Integer,
             offset: Integer,
-            request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(limit: nil, offset: nil, request_options: {})
+        def self.new(limit: nil, offset: nil, request_options: {})
         end
 
         sig { override.returns({limit: Integer, offset: Integer, request_options: FinchAPI::RequestOptions}) }

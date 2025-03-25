@@ -59,15 +59,11 @@ module FinchAPI
           #   # @return [Symbol, FinchAPI::Models::HRIS::W42005::Data::Exemption]
           #   attr_writer :exemption
 
-          # @!attribute [r] filing_status
+          # @!attribute filing_status
           #   The individual's filing status for tax purposes.
           #
           #   @return [Symbol, FinchAPI::Models::HRIS::W42005::Data::FilingStatus, nil]
-          optional :filing_status, enum: -> { FinchAPI::Models::HRIS::W42005::Data::FilingStatus }
-
-          # @!parse
-          #   # @return [Symbol, FinchAPI::Models::HRIS::W42005::Data::FilingStatus]
-          #   attr_writer :filing_status
+          optional :filing_status, enum: -> { FinchAPI::Models::HRIS::W42005::Data::FilingStatus }, nil?: true
 
           # @!attribute [r] individual_id
           #   The unique identifier for the individual associated with this 2005 W4 form.
@@ -90,7 +86,7 @@ module FinchAPI
           #   #
           #   # @param additional_withholding [Integer, nil]
           #   # @param exemption [Symbol, FinchAPI::Models::HRIS::W42005::Data::Exemption]
-          #   # @param filing_status [Symbol, FinchAPI::Models::HRIS::W42005::Data::FilingStatus]
+          #   # @param filing_status [Symbol, FinchAPI::Models::HRIS::W42005::Data::FilingStatus, nil]
           #   # @param individual_id [String]
           #   # @param total_number_of_allowances [Integer, nil]
           #   #
@@ -107,20 +103,10 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-          # @abstract
-          #
           # Indicates exemption status from federal tax withholding.
-          #
-          # @example
-          # ```ruby
-          # case exemption
-          # in :exempt
-          #   # ...
-          # in :non_exempt
-          #   # ...
-          # end
-          # ```
-          class Exemption < FinchAPI::Enum
+          module Exemption
+            extend FinchAPI::Enum
+
             EXEMPT = :exempt
             NON_EXEMPT = :non_exempt
 
@@ -128,26 +114,13 @@ module FinchAPI
 
             # @!parse
             #   # @return [Array<Symbol>]
-            #   #
             #   def self.values; end
           end
 
-          # @abstract
-          #
           # The individual's filing status for tax purposes.
-          #
-          # @example
-          # ```ruby
-          # case filing_status
-          # in :married
-          #   # ...
-          # in :married_but_withhold_at_higher_single_rate
-          #   # ...
-          # in :single
-          #   # ...
-          # end
-          # ```
-          class FilingStatus < FinchAPI::Enum
+          module FilingStatus
+            extend FinchAPI::Enum
+
             MARRIED = :married
             MARRIED_BUT_WITHHOLD_AT_HIGHER_SINGLE_RATE = :married_but_withhold_at_higher_single_rate
             SINGLE = :single
@@ -156,30 +129,20 @@ module FinchAPI
 
             # @!parse
             #   # @return [Array<Symbol>]
-            #   #
             #   def self.values; end
           end
         end
 
-        # @abstract
-        #
         # Specifies the form type, indicating that this document is a 2005 W4 form.
-        #
-        # @example
-        # ```ruby
-        # case type
-        # in :w4_2005
-        #   # ...
-        # end
-        # ```
-        class Type < FinchAPI::Enum
+        module Type
+          extend FinchAPI::Enum
+
           W4_2005 = :w4_2005
 
           finalize!
 
           # @!parse
           #   # @return [Array<Symbol>]
-          #   #
           #   def self.values; end
         end
       end

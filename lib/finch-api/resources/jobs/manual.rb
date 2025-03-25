@@ -14,7 +14,6 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::Models::Jobs::ManualAsyncJob]
-        #
         def retrieve(job_id, params = {})
           @client.request(
             method: :get,
@@ -25,7 +24,6 @@ module FinchAPI
         end
 
         # @param client [FinchAPI::Client]
-        #
         def initialize(client:)
           @client = client
         end

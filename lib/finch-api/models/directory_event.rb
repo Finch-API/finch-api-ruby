@@ -48,20 +48,9 @@ module FinchAPI
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
       end
 
-      # @abstract
-      #
-      # @example
-      # ```ruby
-      # case event_type
-      # in :"directory.created"
-      #   # ...
-      # in :"directory.updated"
-      #   # ...
-      # in :"directory.deleted"
-      #   # ...
-      # end
-      # ```
-      class EventType < FinchAPI::Enum
+      module EventType
+        extend FinchAPI::Enum
+
         DIRECTORY_CREATED = :"directory.created"
         DIRECTORY_UPDATED = :"directory.updated"
         DIRECTORY_DELETED = :"directory.deleted"
@@ -70,7 +59,6 @@ module FinchAPI
 
         # @!parse
         #   # @return [Array<Symbol>]
-        #   #
         #   def self.values; end
       end
     end

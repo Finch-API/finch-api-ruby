@@ -4,8 +4,8 @@ module FinchAPI
   module Resources
     class HRIS
       class Documents
-        # **Beta:** This endpoint is in beta and may change.
-        #   Retrieve a list of company-wide documents.
+        # **Beta:** This endpoint is in beta and may change. Retrieve a list of
+        #   company-wide documents.
         #
         # @param params [FinchAPI::Models::HRIS::DocumentListParams, Hash{Symbol=>Object}] .
         #
@@ -22,7 +22,6 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::Models::HRIS::DocumentListResponse]
-        #
         def list(params = {})
           parsed, options = FinchAPI::Models::HRIS::DocumentListParams.dump_request(params)
           @client.request(
@@ -34,8 +33,8 @@ module FinchAPI
           )
         end
 
-        # **Beta:** This endpoint is in beta and may change.
-        #   Retrieve details of a specific document by its ID.
+        # **Beta:** This endpoint is in beta and may change. Retrieve details of a
+        #   specific document by its ID.
         #
         # @param document_id [String] The unique identifier of the document.
         #
@@ -44,7 +43,6 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005]
-        #
         def retreive(document_id, params = {})
           @client.request(
             method: :get,
@@ -55,7 +53,6 @@ module FinchAPI
         end
 
         # @param client [FinchAPI::Client]
-        #
         def initialize(client:)
           @client = client
         end

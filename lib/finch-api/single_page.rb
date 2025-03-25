@@ -2,68 +2,61 @@
 
 module FinchAPI
   # @example
-  # ```ruby
-  # if single_page.has_next?
-  #   page = single_page.next_page
-  # end
-  # ```
+  #   if single_page.has_next?
+  #     single_page = single_page.next_page
+  #   end
   #
   # @example
-  # ```ruby
-  # single_page.auto_paging_each do |item|
-  # #   item ...
-  # end
-  # ```
+  #   single_page.auto_paging_each do |payment|
+  #     puts(payment)
+  #   end
   #
   # @example
-  # ```ruby
-  # items = single_page.to_enum.take(2)
+  #   payments =
+  #     single_page
+  #     .to_enum
+  #     .lazy
+  #     .select { _1.object_id.even? }
+  #     .map(&:itself)
+  #     .take(2)
+  #     .to_a
   #
-  # items => Array
-  # ```
+  #   payments => Array
   class SinglePage < ::Array
     include FinchAPI::BasePage
 
-    # rubocop:disable Lint/UnusedMethodArgument
-    # @private
+    # @api private
     #
     # @param client [FinchAPI::BaseClient]
     # @param req [Hash{Symbol=>Object}]
     # @param headers [Hash{String=>String}, Net::HTTPHeader]
-    # @param unwrapped [Array<Object>]
-    #
-    def initialize(client:, req:, headers:, unwrapped:)
-      @client = client
-      @req = req
+    # @param page_data [Array<Object>]
+    def initialize(client:, req:, headers:, page_data:)
+      super
       model = req.fetch(:model)
 
-      case unwrapped
+      case page_data
       in Array
-        super(unwrapped&.map { model.coerce(_1) })
+        replace(page_data.map { model.coerce(_1) })
       else
-        super([])
       end
     end
-    # rubocop:enable Lint/UnusedMethodArgument
 
     # @return [Boolean]
-    #
     def next_page?
       false
     end
 
     # @raise [FinchAPI::HTTP::Error]
     # @return [FinchAPI::SinglePage]
-    #
     def next_page
-      raise NotImplementedError
+      RuntimeError.new("No more pages available.")
     end
 
     # @param blk [Proc]
-    #
     def auto_paging_each(&blk)
       unless block_given?
-        raise ArgumentError.new("A block must be given to #auto_paging_each")
+        raise ArgumentError.new("A block must be given to ##{__method__}")
       end
       page = self
       loop do
@@ -74,7 +67,6 @@ module FinchAPI
     end
 
     # @return [String]
-    #
     def inspect
       "#<#{self.class}:0x#{object_id.to_s(16)}>"
     end

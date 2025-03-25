@@ -6,18 +6,6 @@ module FinchAPI
 
     Elem = type_member
 
-    sig do
-      params(
-        client: FinchAPI::BaseClient,
-        req: FinchAPI::BaseClient::RequestComponentsShape,
-        headers: T.any(T::Hash[String, String], Net::HTTPHeader),
-        unwrapped: T::Array[T.anything]
-      )
-        .void
-    end
-    def initialize(client:, req:, headers:, unwrapped:)
-    end
-
     sig { override.returns(T::Boolean) }
     def next_page?
     end
@@ -28,6 +16,10 @@ module FinchAPI
 
     sig { override.params(blk: T.proc.params(arg0: Elem).void).void }
     def auto_paging_each(&blk)
+    end
+
+    sig { returns(String) }
+    def inspect
     end
   end
 end

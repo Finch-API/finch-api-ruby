@@ -12,25 +12,22 @@ module FinchAPI
 
         attr_accessor type: FinchAPI::Models::HRIS::BenefitContribution::type_?
 
-        def initialize:
-          (
-            amount: Integer?,
-            type: FinchAPI::Models::HRIS::BenefitContribution::type_?
-          ) -> void
-          | (
-            ?FinchAPI::Models::HRIS::benefit_contribution
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          ?amount: Integer?,
+          ?type: FinchAPI::Models::HRIS::BenefitContribution::type_?
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::benefit_contribution
 
         type type_ = :fixed | :percent
 
-        class Type < FinchAPI::Enum
+        module Type
+          extend FinchAPI::Enum
+
           FIXED: :fixed
           PERCENT: :percent
 
-          def self.values: -> ::Array[FinchAPI::Models::HRIS::BenefitContribution::type_]
+          def self?.values: -> ::Array[FinchAPI::Models::HRIS::BenefitContribution::type_]
         end
       end
     end

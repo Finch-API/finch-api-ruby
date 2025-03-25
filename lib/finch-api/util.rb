@@ -3,20 +3,17 @@
 module FinchAPI
   # rubocop:disable Metrics/ModuleLength
 
-  # @private
-  #
+  # @api private
   module Util
-    # @private
+    # @api private
     #
     # @return [Float]
-    #
     def self.monotonic_secs = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 
     class << self
-      # @private
+      # @api private
       #
       # @return [String]
-      #
       def arch
         case (arch = RbConfig::CONFIG["arch"])&.downcase
         in nil
@@ -32,10 +29,9 @@ module FinchAPI
         end
       end
 
-      # @private
+      # @api private
       #
       # @return [String]
-      #
       def os
         case (host = RbConfig::CONFIG["host_os"])&.downcase
         in nil
@@ -57,12 +53,11 @@ module FinchAPI
     end
 
     class << self
-      # @private
+      # @api private
       #
       # @param input [Object]
       #
-      # @return [Boolean, Object]
-      #
+      # @return [Boolean]
       def primitive?(input)
         case input
         in true | false | Integer | Float | Symbol | String
@@ -72,12 +67,11 @@ module FinchAPI
         end
       end
 
-      # @private
+      # @api private
       #
       # @param input [Object]
       #
       # @return [Boolean, Object]
-      #
       def coerce_boolean(input)
         case input.is_a?(String) ? input.downcase : input
         in Numeric
@@ -91,13 +85,12 @@ module FinchAPI
         end
       end
 
-      # @private
+      # @api private
       #
       # @param input [Object]
       #
       # @raise [ArgumentError]
       # @return [Boolean, nil]
-      #
       def coerce_boolean!(input)
         case coerce_boolean(input)
         in true | false | nil => coerced
@@ -107,12 +100,11 @@ module FinchAPI
         end
       end
 
-      # @private
+      # @api private
       #
       # @param input [Object]
       #
       # @return [Integer, Object]
-      #
       def coerce_integer(input)
         case input
         in true
@@ -124,12 +116,11 @@ module FinchAPI
         end
       end
 
-      # @private
+      # @api private
       #
       # @param input [Object]
       #
       # @return [Float, Object]
-      #
       def coerce_float(input)
         case input
         in true
@@ -141,12 +132,11 @@ module FinchAPI
         end
       end
 
-      # @private
+      # @api private
       #
       # @param input [Object]
       #
       # @return [Hash{Object=>Object}, Object]
-      #
       def coerce_hash(input)
         case input
         in NilClass | Array | Set | Enumerator
@@ -165,14 +155,13 @@ module FinchAPI
     OMIT = Object.new.freeze
 
     class << self
-      # @private
+      # @api private
       #
       # @param lhs [Object]
       # @param rhs [Object]
       # @param concat [Boolean]
       #
       # @return [Object]
-      #
       private def deep_merge_lr(lhs, rhs, concat: false)
         case [lhs, rhs, concat]
         in [Hash, Hash, _]
@@ -191,7 +180,7 @@ module FinchAPI
         end
       end
 
-      # @private
+      # @api private
       #
       # Recursively merge one hash with another. If the values at a given key are not
       #   both hashes, just take the new value.
@@ -203,7 +192,6 @@ module FinchAPI
       # @param concat [Boolean] whether to merge sequences by concatenation.
       #
       # @return [Object]
-      #
       def deep_merge(*values, sentinel: nil, concat: false)
         case values
         in [value, *values]
@@ -215,7 +203,7 @@ module FinchAPI
         end
       end
 
-      # @private
+      # @api private
       #
       # @param data [Hash{Symbol=>Object}, Array<Object>, Object]
       # @param pick [Symbol, Integer, Array<Symbol, Integer>, nil]
@@ -223,7 +211,6 @@ module FinchAPI
       # @param blk [Proc, nil]
       #
       # @return [Object, nil]
-      #
       def dig(data, pick, sentinel = nil, &blk)
         case [data, pick, blk]
         in [_, nil, nil]
@@ -248,22 +235,20 @@ module FinchAPI
     end
 
     class << self
-      # @private
+      # @api private
       #
       # @param uri [URI::Generic]
       #
       # @return [String]
-      #
       def uri_origin(uri)
         "#{uri.scheme}://#{uri.host}#{uri.port == uri.default_port ? '' : ":#{uri.port}"}"
       end
 
-      # @private
+      # @api private
       #
       # @param path [String, Array<String>]
       #
       # @return [String]
-      #
       def interpolate_path(path)
         case path
         in String
@@ -278,40 +263,37 @@ module FinchAPI
     end
 
     class << self
-      # @private
+      # @api private
       #
       # @param query [String, nil]
       #
       # @return [Hash{String=>Array<String>}]
-      #
       def decode_query(query)
         CGI.parse(query.to_s)
       end
 
-      # @private
+      # @api private
       #
       # @param query [Hash{String=>Array<String>, String, nil}, nil]
       #
       # @return [String, nil]
-      #
       def encode_query(query)
         query.to_h.empty? ? nil : URI.encode_www_form(query)
       end
     end
 
     class << self
-      # @private
+      # @api private
       #
       # @param url [URI::Generic, String]
       #
       # @return [Hash{Symbol=>String, Integer, nil}]
-      #
       def parse_uri(url)
         parsed = URI::Generic.component.zip(URI.split(url)).to_h
         {**parsed, query: decode_query(parsed.fetch(:query))}
       end
 
-      # @private
+      # @api private
       #
       # @param parsed [Hash{Symbol=>String, Integer, nil}] .
       #
@@ -326,12 +308,11 @@ module FinchAPI
       #   @option parsed [Hash{String=>Array<String>}] :query
       #
       # @return [URI::Generic]
-      #
       def unparse_uri(parsed)
         URI::Generic.build(**parsed, query: encode_query(parsed.fetch(:query)))
       end
 
-      # @private
+      # @api private
       #
       # @param lhs [Hash{Symbol=>String, Integer, nil}] .
       #
@@ -358,7 +339,6 @@ module FinchAPI
       #   @option rhs [Hash{String=>Array<String>}] :query
       #
       # @return [URI::Generic]
-      #
       def join_parsed_uri(lhs, rhs)
         base_path, base_query = lhs.fetch_values(:path, :query)
         slashed = base_path.end_with?("/") ? base_path : "#{base_path}/"
@@ -380,112 +360,199 @@ module FinchAPI
     end
 
     class << self
-      # @private
+      # @api private
       #
       # @param headers [Hash{String=>String, Integer, Array<String, Integer, nil>, nil}]
       #
       # @return [Hash{String=>String}]
-      #
       def normalized_headers(*headers)
         {}.merge(*headers.compact).to_h do |key, val|
-          case val
-          in Array
-            val.map { _1.to_s.strip }.join(", ")
-          else
-            val&.to_s&.strip
+          value =
+            case val
+            in Array
+              val.map { _1.to_s.strip }.join(", ")
+            else
+              val&.to_s&.strip
+            end
+          [key.downcase, value]
+        end
+      end
+    end
+
+    # @api private
+    #
+    # An adapter that satisfies the IO interface required by `::IO.copy_stream`
+    class ReadIOAdapter
+      # @api private
+      #
+      # @param max_len [Integer, nil]
+      #
+      # @return [String]
+      private def read_enum(max_len)
+        case max_len
+        in nil
+          @stream.to_a.join
+        in Integer
+          @buf << @stream.next while @buf.length < max_len
+          @buf.slice!(..max_len)
+        end
+      rescue StopIteration
+        @stream = nil
+        @buf.slice!(0..)
+      end
+
+      # @api private
+      #
+      # @param max_len [Integer, nil]
+      # @param out_string [String, nil]
+      #
+      # @return [String, nil]
+      def read(max_len = nil, out_string = nil)
+        case @stream
+        in nil
+          nil
+        in IO | StringIO
+          @stream.read(max_len, out_string)
+        in Enumerator
+          read = read_enum(max_len)
+          case out_string
+          in String
+            out_string.replace(read)
+          in nil
+            read
           end
-          [key.downcase, val]
+        end
+          .tap(&@blk)
+      end
+
+      # @api private
+      #
+      # @param stream [String, IO, StringIO, Enumerable]
+      # @param blk [Proc]
+      #
+      # @yieldparam [String]
+      def initialize(stream, &blk)
+        @stream = stream.is_a?(String) ? StringIO.new(stream) : stream
+        @buf = String.new.b
+        @blk = blk
+      end
+    end
+
+    class << self
+      # @param blk [Proc]
+      #
+      # @yieldparam [Enumerator::Yielder]
+      # @return [Enumerable]
+      def string_io(&blk)
+        Enumerator.new do |y|
+          y.define_singleton_method(:write) do
+            self << _1.clone
+            _1.bytesize
+          end
+
+          blk.call(y)
         end
       end
     end
 
     class << self
-      # @private
+      # rubocop:disable Naming/MethodParameterName
+
+      # @api private
       #
-      # @param io [StringIO]
+      # @param y [Enumerator::Yielder]
       # @param boundary [String]
       # @param key [Symbol, String]
       # @param val [Object]
-      #
-      private def encode_multipart_formdata(io, boundary:, key:, val:)
-        io << "--#{boundary}\r\n"
-        io << "Content-Disposition: form-data"
+      private def encode_multipart_formdata(y, boundary:, key:, val:)
+        y << "--#{boundary}\r\n"
+        y << "Content-Disposition: form-data"
         unless key.nil?
           name = ERB::Util.url_encode(key.to_s)
-          io << "; name=\"#{name}\""
+          y << "; name=\"#{name}\""
         end
         if val.is_a?(IO)
           filename = ERB::Util.url_encode(File.basename(val.to_path))
-          io << "; filename=\"#{filename}\""
+          y << "; filename=\"#{filename}\""
         end
-        io << "\r\n"
+        y << "\r\n"
         case val
-        in IO | StringIO
-          io << "Content-Type: application/octet-stream\r\n\r\n"
-          IO.copy_stream(val, io)
+        in IO
+          y << "Content-Type: application/octet-stream\r\n\r\n"
+          IO.copy_stream(val, y)
+        in StringIO
+          y << "Content-Type: application/octet-stream\r\n\r\n"
+          y << val.string
         in String
-          io << "Content-Type: application/octet-stream\r\n\r\n"
-          io << val.to_s
+          y << "Content-Type: application/octet-stream\r\n\r\n"
+          y << val.to_s
         in true | false | Integer | Float | Symbol
-          io << "Content-Type: text/plain\r\n\r\n"
-          io << val.to_s
+          y << "Content-Type: text/plain\r\n\r\n"
+          y << val.to_s
         else
-          io << "Content-Type: application/json\r\n\r\n"
-          io << JSON.fast_generate(val)
+          y << "Content-Type: application/json\r\n\r\n"
+          y << JSON.fast_generate(val)
         end
-        io << "\r\n"
+        y << "\r\n"
       end
 
-      # @private
+      # rubocop:enable Naming/MethodParameterName
+
+      # @api private
+      #
+      # @param body [Object]
+      #
+      # @return [Array(String, Enumerable)]
+      private def encode_multipart_streaming(body)
+        boundary = SecureRandom.urlsafe_base64(60)
+
+        strio = string_io do |y|
+          case body
+          in Hash
+            body.each do |key, val|
+              case val
+              in Array if val.all? { primitive?(_1) }
+                val.each do |v|
+                  encode_multipart_formdata(y, boundary: boundary, key: key, val: v)
+                end
+              else
+                encode_multipart_formdata(y, boundary: boundary, key: key, val: val)
+              end
+            end
+          else
+            encode_multipart_formdata(y, boundary: boundary, key: nil, val: body)
+          end
+          y << "--#{boundary}--\r\n"
+        end
+
+        [boundary, strio]
+      end
+
+      # @api private
       #
       # @param headers [Hash{String=>String}]
       # @param body [Object]
       #
       # @return [Object]
-      #
       def encode_content(headers, body)
         content_type = headers["content-type"]
         case [content_type, body]
-        in ["application/json", Hash | Array]
+        in [%r{^application/(?:vnd\.api\+)?json}, Hash | Array]
           [headers, JSON.fast_generate(body)]
+        in [%r{^application/(?:x-)?jsonl}, Enumerable]
+          [headers, body.lazy.map { JSON.fast_generate(_1) }]
         in [%r{^multipart/form-data}, Hash | IO | StringIO]
-          boundary = SecureRandom.urlsafe_base64(60)
-          strio = StringIO.new.tap do |io|
-            case body
-            in Hash
-              body.each do |key, val|
-                case val
-                in Array if val.all? { primitive?(_1) }
-                  val.each do |v|
-                    encode_multipart_formdata(io, boundary: boundary, key: key, val: v)
-                  end
-                else
-                  encode_multipart_formdata(io, boundary: boundary, key: key, val: val)
-                end
-              end
-            else
-              encode_multipart_formdata(io, boundary: boundary, key: nil, val: body)
-            end
-            io << "--#{boundary}--\r\n"
-            io.rewind
-          end
-          headers = {
-            **headers,
-            "content-type" => "#{content_type}; boundary=#{boundary}",
-            "transfer-encoding" => "chunked"
-          }
+          boundary, strio = encode_multipart_streaming(body)
+          headers = {**headers, "content-type" => "#{content_type}; boundary=#{boundary}"}
           [headers, strio]
         in [_, StringIO]
           [headers, body.string]
-        in [_, IO]
-          headers = {**headers, "transfer-encoding" => "chunked"}
-          [headers, body]
         else
           [headers, body]
         end
       end
 
-      # @private
+      # @api private
       #
       # @param headers [Hash{String=>String}, Net::HTTPHeader]
       # @param stream [Enumerable]
@@ -493,13 +560,9 @@ module FinchAPI
       #
       # @raise [JSON::ParserError]
       # @return [Object]
-      #
       def decode_content(headers, stream:, suppress_error: false)
         case headers["content-type"]
-        in %r{^text/event-stream}
-          lines = enum_lines(stream)
-          parse_sse(lines)
-        in %r{^application/json}
+        in %r{^application/(?:vnd\.api\+)?json}
           json = stream.to_a.join
           begin
             JSON.parse(json, symbolize_names: true)
@@ -507,6 +570,14 @@ module FinchAPI
             raise e unless suppress_error
             json
           end
+        in %r{^application/(?:x-)?jsonl}
+          lines = decode_lines(stream)
+          chain_fused(lines) do |y|
+            lines.each { y << JSON.parse(_1, symbolize_names: true) }
+          end
+        in %r{^text/event-stream}
+          lines = decode_lines(stream)
+          decode_sse(lines)
         in %r{^text/}
           stream.to_a.join
         else
@@ -517,22 +588,26 @@ module FinchAPI
     end
 
     class << self
-      # @private
+      # @api private
       #
       # https://doc.rust-lang.org/std/iter/trait.FusedIterator.html
       #
       # @param enum [Enumerable]
+      # @param external [Boolean]
       # @param close [Proc]
       #
       # @return [Enumerable]
-      #
-      def fused_enum(enum, &close)
+      def fused_enum(enum, external: false, &close)
         fused = false
         iter = Enumerator.new do |y|
           next if fused
 
           fused = true
-          loop { y << enum.next }
+          if external
+            loop { y << enum.next }
+          else
+            enum.each(&y)
+          end
         ensure
           close&.call
           close = nil
@@ -545,10 +620,9 @@ module FinchAPI
         iter
       end
 
-      # @private
+      # @api private
       #
       # @param enum [Enumerable, nil]
-      #
       def close_fused!(enum)
         return unless enum.is_a?(Enumerator)
 
@@ -557,11 +631,13 @@ module FinchAPI
         # rubocop:enable Lint/UnreachableLoop
       end
 
-      # @private
+      # @api private
       #
       # @param enum [Enumerable, nil]
       # @param blk [Proc]
       #
+      # @yieldparam [Enumerator::Yielder]
+      # @return [Enumerable]
       def chain_fused(enum, &blk)
         iter = Enumerator.new { blk.call(_1) }
         fused_enum(iter) { close_fused!(enum) }
@@ -569,40 +645,55 @@ module FinchAPI
     end
 
     class << self
-      # @private
+      # @api private
       #
       # @param enum [Enumerable]
       #
       # @return [Enumerable]
-      #
-      def enum_lines(enum)
+      def decode_lines(enum)
+        re = /(\r\n|\r|\n)/
+        buffer = String.new.b
+        cr_seen = nil
+
         chain_fused(enum) do |y|
-          buffer = String.new
           enum.each do |row|
+            offset = buffer.bytesize
             buffer << row
-            while (idx = buffer.index("\n"))
-              y << buffer.slice!(..idx)
+            while (match = re.match(buffer, cr_seen&.to_i || offset))
+              case [match.captures.first, cr_seen]
+              in ["\r", nil]
+                cr_seen = match.end(1)
+                next
+              in ["\r" | "\r\n", Integer]
+                y << buffer.slice!(..(cr_seen.pred))
+              else
+                y << buffer.slice!(..(match.end(1).pred))
+              end
+              offset = 0
+              cr_seen = nil
             end
           end
+
+          y << buffer.slice!(..(cr_seen.pred)) unless cr_seen.nil?
           y << buffer unless buffer.empty?
         end
       end
 
-      # @private
+      # @api private
       #
       # https://html.spec.whatwg.org/multipage/server-sent-events.html#parsing-an-event-stream
       #
       # @param lines [Enumerable]
       #
       # @return [Hash{Symbol=>Object}]
-      #
-      def parse_sse(lines)
+      def decode_sse(lines)
+        # rubocop:disable Metrics/BlockLength
         chain_fused(lines) do |y|
           blank = {event: nil, data: nil, id: nil, retry: nil}
           current = {}
 
           lines.each do |line|
-            case line.strip
+            case line.sub(/\R$/, "")
             in ""
               next if current.empty?
               y << {**blank, **current}
@@ -610,12 +701,12 @@ module FinchAPI
             in /^:/
               next
             in /^([^:]+):\s?(.*)$/
-              _, field, value = Regexp.last_match.to_a
+              field, value = Regexp.last_match.captures
               case field
               in "event"
                 current.merge!(event: value)
               in "data"
-                (current[:data] ||= String.new) << value << "\n"
+                (current[:data] ||= String.new.b) << (value << "\n")
               in "id" unless value.include?("\0")
                 current.merge!(id: value)
               in "retry" if /^\d+$/ =~ value
@@ -625,6 +716,7 @@ module FinchAPI
             else
             end
           end
+          # rubocop:enable Metrics/BlockLength
 
           y << {**blank, **current} unless current.empty?
         end

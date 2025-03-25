@@ -3,11 +3,13 @@
 module FinchAPI
   module Models
     module HRIS
-      class DocumentRetreiveResponse < FinchAPI::Union
-        abstract!
+      # A 2020 version of the W-4 tax form containing information on an individual's
+      #   filing status, dependents, and withholding details.
+      module DocumentRetreiveResponse
+        extend FinchAPI::Union
 
-        sig { override.returns([[Symbol, FinchAPI::Models::HRIS::W42020], [Symbol, FinchAPI::Models::HRIS::W42005]]) }
-        private_class_method def self.variants
+        sig { override.returns([FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005]) }
+        def self.variants
         end
       end
     end

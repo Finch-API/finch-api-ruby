@@ -4,40 +4,49 @@ module FinchAPI
   module Models
     class DirectoryEvent < FinchAPI::Models::BaseWebhookEvent
       sig { returns(T.nilable(FinchAPI::Models::DirectoryEvent::Data)) }
-      def data
+      attr_reader :data
+
+      sig { params(data: T.any(FinchAPI::Models::DirectoryEvent::Data, FinchAPI::Util::AnyHash)).void }
+      attr_writer :data
+
+      sig { returns(T.nilable(FinchAPI::Models::DirectoryEvent::EventType::TaggedSymbol)) }
+      attr_reader :event_type
+
+      sig { params(event_type: FinchAPI::Models::DirectoryEvent::EventType::OrSymbol).void }
+      attr_writer :event_type
+
+      sig do
+        params(
+          data: T.any(FinchAPI::Models::DirectoryEvent::Data, FinchAPI::Util::AnyHash),
+          event_type: FinchAPI::Models::DirectoryEvent::EventType::OrSymbol
+        )
+          .returns(T.attached_class)
+      end
+      def self.new(data: nil, event_type: nil)
       end
 
-      sig { params(_: FinchAPI::Models::DirectoryEvent::Data).returns(FinchAPI::Models::DirectoryEvent::Data) }
-      def data=(_)
+      sig do
+        override
+          .returns(
+            {
+              data: FinchAPI::Models::DirectoryEvent::Data,
+              event_type: FinchAPI::Models::DirectoryEvent::EventType::TaggedSymbol
+            }
+          )
       end
-
-      sig { returns(T.nilable(Symbol)) }
-      def event_type
-      end
-
-      sig { params(_: Symbol).returns(Symbol) }
-      def event_type=(_)
-      end
-
-      sig { params(data: FinchAPI::Models::DirectoryEvent::Data, event_type: Symbol).void }
-      def initialize(data: nil, event_type: nil)
-      end
-
-      sig { override.returns({data: FinchAPI::Models::DirectoryEvent::Data, event_type: Symbol}) }
       def to_hash
       end
 
       class Data < FinchAPI::BaseModel
+        # The ID of the individual related to the event.
         sig { returns(T.nilable(String)) }
-        def individual_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def individual_id=(_)
-        end
+        attr_reader :individual_id
 
         sig { params(individual_id: String).void }
-        def initialize(individual_id: nil)
+        attr_writer :individual_id
+
+        sig { params(individual_id: String).returns(T.attached_class) }
+        def self.new(individual_id: nil)
         end
 
         sig { override.returns({individual_id: String}) }
@@ -45,14 +54,20 @@ module FinchAPI
         end
       end
 
-      class EventType < FinchAPI::Enum
-        abstract!
+      module EventType
+        extend FinchAPI::Enum
 
-        DIRECTORY_CREATED = :"directory.created"
-        DIRECTORY_UPDATED = :"directory.updated"
-        DIRECTORY_DELETED = :"directory.deleted"
+        TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::DirectoryEvent::EventType) }
+        OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::DirectoryEvent::EventType::TaggedSymbol) }
 
-        sig { override.returns(T::Array[Symbol]) }
+        DIRECTORY_CREATED =
+          T.let(:"directory.created", FinchAPI::Models::DirectoryEvent::EventType::TaggedSymbol)
+        DIRECTORY_UPDATED =
+          T.let(:"directory.updated", FinchAPI::Models::DirectoryEvent::EventType::TaggedSymbol)
+        DIRECTORY_DELETED =
+          T.let(:"directory.deleted", FinchAPI::Models::DirectoryEvent::EventType::TaggedSymbol)
+
+        sig { override.returns(T::Array[FinchAPI::Models::DirectoryEvent::EventType::TaggedSymbol]) }
         def self.values
         end
       end

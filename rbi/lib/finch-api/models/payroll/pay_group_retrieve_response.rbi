@@ -4,75 +4,74 @@ module FinchAPI
   module Models
     module Payroll
       class PayGroupRetrieveResponse < FinchAPI::BaseModel
+        # Finch id (uuidv4) for the pay group
         sig { returns(String) }
-        def id
-        end
-
-        sig { params(_: String).returns(String) }
-        def id=(_)
-        end
+        attr_accessor :id
 
         sig { returns(T::Array[String]) }
-        def individual_ids
-        end
+        attr_accessor :individual_ids
 
-        sig { params(_: T::Array[String]).returns(T::Array[String]) }
-        def individual_ids=(_)
-        end
-
+        # Name of the pay group
         sig { returns(String) }
-        def name
-        end
+        attr_accessor :name
 
-        sig { params(_: String).returns(String) }
-        def name=(_)
-        end
-
-        sig { returns(T::Array[Symbol]) }
-        def pay_frequencies
-        end
-
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
-        def pay_frequencies=(_)
-        end
+        # List of pay frequencies associated with this pay group
+        sig { returns(T::Array[FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol]) }
+        attr_accessor :pay_frequencies
 
         sig do
           params(
             id: String,
             individual_ids: T::Array[String],
             name: String,
-            pay_frequencies: T::Array[Symbol]
-          ).void
+            pay_frequencies: T::Array[FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::OrSymbol]
+          )
+            .returns(T.attached_class)
         end
-        def initialize(id:, individual_ids:, name:, pay_frequencies:)
+        def self.new(id:, individual_ids:, name:, pay_frequencies:)
         end
 
         sig do
           override
-            .returns({
-                       id: String,
-                       individual_ids: T::Array[String],
-                       name: String,
-                       pay_frequencies: T::Array[Symbol]
-                     })
+            .returns(
+              {
+                id: String,
+                individual_ids: T::Array[String],
+                name: String,
+                pay_frequencies: T::Array[FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol]
+              }
+            )
         end
         def to_hash
         end
 
-        class PayFrequency < FinchAPI::Enum
-          abstract!
+        module PayFrequency
+          extend FinchAPI::Enum
 
-          ANNUALLY = :annually
-          SEMI_ANNUALLY = :semi_annually
-          QUARTERLY = :quarterly
-          MONTHLY = :monthly
-          SEMI_MONTHLY = :semi_monthly
-          BI_WEEKLY = :bi_weekly
-          WEEKLY = :weekly
-          DAILY = :daily
-          OTHER = :other
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol) }
 
-          sig { override.returns(T::Array[Symbol]) }
+          ANNUALLY =
+            T.let(:annually, FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol)
+          SEMI_ANNUALLY =
+            T.let(:semi_annually, FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol)
+          QUARTERLY =
+            T.let(:quarterly, FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol)
+          MONTHLY =
+            T.let(:monthly, FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol)
+          SEMI_MONTHLY =
+            T.let(:semi_monthly, FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol)
+          BI_WEEKLY =
+            T.let(:bi_weekly, FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol)
+          WEEKLY = T.let(:weekly, FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol)
+          DAILY = T.let(:daily, FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol)
+          OTHER = T.let(:other, FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol)
+
+          sig do
+            override.returns(T::Array[FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol])
+          end
           def self.values
           end
         end

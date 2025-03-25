@@ -7,24 +7,22 @@ module FinchAPI
       }
 
     class PaymentEvent < FinchAPI::Models::BaseWebhookEvent
-      attr_reader data: FinchAPI::Models::PaymentEvent::Data?
+      def data: -> FinchAPI::Models::PaymentEvent::Data?
 
       def data=: (
-        FinchAPI::Models::PaymentEvent::Data
+        FinchAPI::Models::PaymentEvent::Data _
       ) -> FinchAPI::Models::PaymentEvent::Data
 
-      attr_reader event_type: FinchAPI::Models::PaymentEvent::event_type?
+      def event_type: -> FinchAPI::Models::PaymentEvent::event_type?
 
       def event_type=: (
-        FinchAPI::Models::PaymentEvent::event_type
+        FinchAPI::Models::PaymentEvent::event_type _
       ) -> FinchAPI::Models::PaymentEvent::event_type
 
-      def initialize:
-        (
-          data: FinchAPI::Models::PaymentEvent::Data,
-          event_type: FinchAPI::Models::PaymentEvent::event_type
-        ) -> void
-        | (?FinchAPI::Models::payment_event | FinchAPI::BaseModel data) -> void
+      def initialize: (
+        ?data: FinchAPI::Models::PaymentEvent::Data,
+        ?event_type: FinchAPI::Models::PaymentEvent::event_type
+      ) -> void
 
       def to_hash: -> FinchAPI::Models::payment_event
 
@@ -35,11 +33,7 @@ module FinchAPI
 
         attr_accessor payment_id: String
 
-        def initialize:
-          (pay_date: String, payment_id: String) -> void
-          | (
-            ?FinchAPI::Models::PaymentEvent::data | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (pay_date: String, payment_id: String) -> void
 
         def to_hash: -> FinchAPI::Models::PaymentEvent::data
       end
@@ -47,12 +41,14 @@ module FinchAPI
       type event_type =
         :"payment.created" | :"payment.updated" | :"payment.deleted"
 
-      class EventType < FinchAPI::Enum
+      module EventType
+        extend FinchAPI::Enum
+
         PAYMENT_CREATED: :"payment.created"
         PAYMENT_UPDATED: :"payment.updated"
         PAYMENT_DELETED: :"payment.deleted"
 
-        def self.values: -> ::Array[FinchAPI::Models::PaymentEvent::event_type]
+        def self?.values: -> ::Array[FinchAPI::Models::PaymentEvent::event_type]
       end
     end
   end

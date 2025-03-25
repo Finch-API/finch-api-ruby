@@ -15,7 +15,6 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::IndividualsPage<FinchAPI::Models::HRIS::IndividualInDirectory>]
-        #
         def list(params = {})
           parsed, options = FinchAPI::Models::HRIS::DirectoryListParams.dump_request(params)
           @client.request(
@@ -31,31 +30,9 @@ module FinchAPI
         # @deprecated use `list` instead
         #
         # Read company directory and organization structure
-        #
-        # @param params [FinchAPI::Models::HRIS::DirectoryListIndividualsParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Integer] :limit Number of employees to return (defaults to all)
-        #
-        #   @option params [Integer] :offset Index to start from (defaults to 0)
-        #
-        #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
-        #
-        # @return [FinchAPI::IndividualsPage<FinchAPI::Models::HRIS::IndividualInDirectory>]
-        #
-        def list_individuals(params = {})
-          parsed, options = FinchAPI::Models::HRIS::DirectoryListIndividualsParams.dump_request(params)
-          @client.request(
-            method: :get,
-            path: "employer/directory",
-            query: parsed,
-            page: FinchAPI::IndividualsPage,
-            model: FinchAPI::Models::HRIS::IndividualInDirectory,
-            options: options
-          )
-        end
+        alias_method :list_individuals, :list
 
         # @param client [FinchAPI::Client]
-        #
         def initialize(client:)
           @client = client
         end

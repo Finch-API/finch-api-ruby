@@ -7,36 +7,39 @@ module FinchAPI
         extend FinchAPI::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
-        sig { returns(Symbol) }
-        def type
-        end
-
-        sig { params(_: Symbol).returns(Symbol) }
-        def type=(_)
-        end
+        # The type of job to start. Currently the only supported type is `data_sync_all`
+        sig { returns(FinchAPI::Models::Sandbox::JobCreateParams::Type::OrSymbol) }
+        attr_accessor :type
 
         sig do
           params(
-            type: Symbol,
-            request_options: T.any(
-              FinchAPI::RequestOptions,
-              T::Hash[Symbol, T.anything]
-            )
-          ).void
+            type: FinchAPI::Models::Sandbox::JobCreateParams::Type::OrSymbol,
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
+          )
+            .returns(T.attached_class)
         end
-        def initialize(type:, request_options: {})
+        def self.new(type:, request_options: {})
         end
 
-        sig { override.returns({type: Symbol, request_options: FinchAPI::RequestOptions}) }
+        sig do
+          override
+            .returns(
+              {type: FinchAPI::Models::Sandbox::JobCreateParams::Type::OrSymbol, request_options: FinchAPI::RequestOptions}
+            )
+        end
         def to_hash
         end
 
-        class Type < FinchAPI::Enum
-          abstract!
+        # The type of job to start. Currently the only supported type is `data_sync_all`
+        module Type
+          extend FinchAPI::Enum
 
-          DATA_SYNC_ALL = :data_sync_all
+          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::JobCreateParams::Type) }
+          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::JobCreateParams::Type::TaggedSymbol) }
 
-          sig { override.returns(T::Array[Symbol]) }
+          DATA_SYNC_ALL = T.let(:data_sync_all, FinchAPI::Models::Sandbox::JobCreateParams::Type::TaggedSymbol)
+
+          sig { override.returns(T::Array[FinchAPI::Models::Sandbox::JobCreateParams::Type::TaggedSymbol]) }
           def self.values
           end
         end

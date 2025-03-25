@@ -11,24 +11,21 @@ module FinchAPI
 
         attr_accessor type: FinchAPI::Models::Sandbox::JobCreateParams::type_
 
-        def initialize:
-          (
-            type: FinchAPI::Models::Sandbox::JobCreateParams::type_,
-            request_options: FinchAPI::request_opts
-          ) -> void
-          | (
-            ?FinchAPI::Models::Sandbox::job_create_params
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          type: FinchAPI::Models::Sandbox::JobCreateParams::type_,
+          ?request_options: FinchAPI::request_opts
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::Sandbox::job_create_params
 
         type type_ = :data_sync_all
 
-        class Type < FinchAPI::Enum
+        module Type
+          extend FinchAPI::Enum
+
           DATA_SYNC_ALL: :data_sync_all
 
-          def self.values: -> ::Array[FinchAPI::Models::Sandbox::JobCreateParams::type_]
+          def self?.values: -> ::Array[FinchAPI::Models::Sandbox::JobCreateParams::type_]
         end
       end
     end

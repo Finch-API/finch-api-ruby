@@ -3,8 +3,7 @@
 module FinchAPI
   class Error < StandardError
     sig { returns(T.nilable(StandardError)) }
-    def cause
-    end
+    attr_accessor :cause
   end
 
   class ConversionError < FinchAPI::Error
@@ -12,17 +11,15 @@ module FinchAPI
 
   class APIError < FinchAPI::Error
     sig { returns(URI::Generic) }
-    def url
-    end
+    attr_accessor :url
 
     sig { returns(T.nilable(Integer)) }
-    def status
-    end
+    attr_accessor :status
 
     sig { returns(T.nilable(T.anything)) }
-    def body
-    end
+    attr_accessor :body
 
+    # @api private
     sig do
       params(
         url: URI::Generic,
@@ -32,21 +29,20 @@ module FinchAPI
         response: NilClass,
         message: T.nilable(String)
       )
-        .void
+        .returns(T.attached_class)
     end
-    def initialize(url:, status: nil, body: nil, request: nil, response: nil, message: nil)
+    def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: nil)
     end
   end
 
   class APIConnectionError < FinchAPI::APIError
     sig { void }
-    def status
-    end
+    attr_accessor :status
 
     sig { void }
-    def body
-    end
+    attr_accessor :body
 
+    # @api private
     sig do
       params(
         url: URI::Generic,
@@ -56,13 +52,14 @@ module FinchAPI
         response: NilClass,
         message: T.nilable(String)
       )
-        .void
+        .returns(T.attached_class)
     end
-    def initialize(url:, status: nil, body: nil, request: nil, response: nil, message: "Connection error.")
+    def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: "Connection error.")
     end
   end
 
   class APITimeoutError < FinchAPI::APIConnectionError
+    # @api private
     sig do
       params(
         url: URI::Generic,
@@ -72,13 +69,14 @@ module FinchAPI
         response: NilClass,
         message: T.nilable(String)
       )
-        .void
+        .returns(T.attached_class)
     end
-    def initialize(url:, status: nil, body: nil, request: nil, response: nil, message: "Request timed out.")
+    def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: "Request timed out.")
     end
   end
 
   class APIStatusError < FinchAPI::APIError
+    # @api private
     sig do
       params(
         url: URI::Generic,
@@ -94,9 +92,9 @@ module FinchAPI
     end
 
     sig { returns(Integer) }
-    def status
-    end
+    attr_accessor :status
 
+    # @api private
     sig do
       params(
         url: URI::Generic,
@@ -106,9 +104,9 @@ module FinchAPI
         response: NilClass,
         message: T.nilable(String)
       )
-        .void
+        .returns(T.attached_class)
     end
-    def initialize(url:, status:, body:, request:, response:, message: nil)
+    def self.new(url:, status:, body:, request:, response:, message: nil)
     end
   end
 

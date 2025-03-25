@@ -1,10 +1,7 @@
 # frozen_string_literal: true
 
 module FinchAPI
-  # @private
-  #
-  # @abstract
-  #
+  # @api private
   module RequestParameters
     # @!parse
     #   # Options to specify HTTP behaviour for this request.
@@ -12,7 +9,6 @@ module FinchAPI
     #   attr_accessor :request_options
 
     # @param mod [Module]
-    #
     def self.included(mod)
       return unless mod <= FinchAPI::BaseModel
 
@@ -20,15 +16,13 @@ module FinchAPI
       mod.optional(:request_options, FinchAPI::RequestOptions)
     end
 
-    # @private
-    #
+    # @api private
     module Converter
-      # @private
+      # @api private
       #
       # @param params [Object]
       #
       # @return [Array(Object, Hash{Symbol=>Object})]
-      #
       def dump_request(params)
         case (dumped = dump(params))
         in Hash
@@ -46,12 +40,11 @@ module FinchAPI
   #   When making a request, you can pass an actual {RequestOptions} instance, or
   #   simply pass a Hash with symbol keys matching the attributes on this class.
   class RequestOptions < FinchAPI::BaseModel
-    # @private
+    # @api private
     #
     # @param opts [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
     #
     # @raise [ArgumentError]
-    #
     def self.validate!(opts)
       case opts
       in FinchAPI::RequestOptions | Hash
@@ -90,7 +83,7 @@ module FinchAPI
     #   Extra data to send with the request. These are deep merged into any data
     #     generated as part of the normal request.
     #
-    #   @return [Hash{Symbol=>Object}, nil]
+    #   @return [Object, nil]
     optional :extra_body, FinchAPI::HashOf[FinchAPI::Unknown]
 
     # @!attribute max_retries

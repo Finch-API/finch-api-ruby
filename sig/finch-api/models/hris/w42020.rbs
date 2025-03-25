@@ -23,13 +23,11 @@ module FinchAPI
 
         attr_accessor year: Float?
 
-        def initialize:
-          (
-            data: FinchAPI::Models::HRIS::W42020::Data,
-            type: FinchAPI::Models::HRIS::W42020::type_,
-            year: Float?
-          ) -> void
-          | (?FinchAPI::Models::HRIS::w42020 | FinchAPI::BaseModel data) -> void
+        def initialize: (
+          ?data: FinchAPI::Models::HRIS::W42020::Data,
+          ?type: FinchAPI::Models::HRIS::W42020::type_,
+          ?year: Float?
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::w42020
 
@@ -64,20 +62,16 @@ module FinchAPI
 
           attr_accessor total_claim_dependent_and_other_credits: Integer?
 
-          def initialize:
-            (
-              amount_for_other_dependents: Integer?,
-              amount_for_qualifying_children_under_17: Integer?,
-              deductions: Integer?,
-              extra_withholding: Integer?,
-              filing_status: FinchAPI::Models::HRIS::W42020::Data::filing_status?,
-              individual_id: String,
-              other_income: Integer?,
-              total_claim_dependent_and_other_credits: Integer?
-            ) -> void
-            | (
-              ?FinchAPI::Models::HRIS::W42020::data | FinchAPI::BaseModel data
-            ) -> void
+          def initialize: (
+            ?amount_for_other_dependents: Integer?,
+            ?amount_for_qualifying_children_under_17: Integer?,
+            ?deductions: Integer?,
+            ?extra_withholding: Integer?,
+            ?filing_status: FinchAPI::Models::HRIS::W42020::Data::filing_status?,
+            ?individual_id: String,
+            ?other_income: Integer?,
+            ?total_claim_dependent_and_other_credits: Integer?
+          ) -> void
 
           def to_hash: -> FinchAPI::Models::HRIS::W42020::data
 
@@ -86,21 +80,25 @@ module FinchAPI
             | :married_filing_jointly_or_qualifying_surviving_spouse
             | :single_or_married_filing_separately
 
-          class FilingStatus < FinchAPI::Enum
+          module FilingStatus
+            extend FinchAPI::Enum
+
             HEAD_OF_HOUSEHOLD: :head_of_household
             MARRIED_FILING_JOINTLY_OR_QUALIFYING_SURVIVING_SPOUSE: :married_filing_jointly_or_qualifying_surviving_spouse
             SINGLE_OR_MARRIED_FILING_SEPARATELY: :single_or_married_filing_separately
 
-            def self.values: -> ::Array[FinchAPI::Models::HRIS::W42020::Data::filing_status]
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::W42020::Data::filing_status]
           end
         end
 
         type type_ = :w4_2020
 
-        class Type < FinchAPI::Enum
+        module Type
+          extend FinchAPI::Enum
+
           W4_2020: :w4_2020
 
-          def self.values: -> ::Array[FinchAPI::Models::HRIS::W42020::type_]
+          def self?.values: -> ::Array[FinchAPI::Models::HRIS::W42020::type_]
         end
       end
     end

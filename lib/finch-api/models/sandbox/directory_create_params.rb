@@ -342,18 +342,9 @@ module FinchAPI
 
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-            # @abstract
-            #
-            # @example
-            # ```ruby
-            # case type
-            # in :work
-            #   # ...
-            # in :personal
-            #   # ...
-            # end
-            # ```
-            class Type < FinchAPI::Enum
+            module Type
+              extend FinchAPI::Enum
+
               WORK = :work
               PERSONAL = :personal
 
@@ -361,7 +352,6 @@ module FinchAPI
 
               # @!parse
               #   # @return [Array<Symbol>]
-              #   #
               #   def self.values; end
             end
           end
@@ -394,29 +384,11 @@ module FinchAPI
 
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-            # @abstract
-            #
             # The secondary employment type of the individual. Options: `full_time`,
             #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
-            #
-            # @example
-            # ```ruby
-            # case subtype
-            # in :full_time
-            #   # ...
-            # in :intern
-            #   # ...
-            # in :part_time
-            #   # ...
-            # in :temp
-            #   # ...
-            # in :seasonal
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
-            class Subtype < FinchAPI::Enum
+            module Subtype
+              extend FinchAPI::Enum
+
               FULL_TIME = :full_time
               INTERN = :intern
               PART_TIME = :part_time
@@ -428,24 +400,13 @@ module FinchAPI
 
               # @!parse
               #   # @return [Array<Symbol>]
-              #   #
               #   def self.values; end
             end
 
-            # @abstract
-            #
             # The main employment type of the individual.
-            #
-            # @example
-            # ```ruby
-            # case type
-            # in :employee
-            #   # ...
-            # in :contractor
-            #   # ...
-            # end
-            # ```
-            class Type < FinchAPI::Enum
+            module Type
+              extend FinchAPI::Enum
+
               EMPLOYEE = :employee
               CONTRACTOR = :contractor
 
@@ -453,33 +414,14 @@ module FinchAPI
 
               # @!parse
               #   # @return [Array<Symbol>]
-              #   #
               #   def self.values; end
             end
           end
 
-          # @abstract
-          #
           # The detailed employment status of the individual.
-          #
-          # @example
-          # ```ruby
-          # case employment_status
-          # in :active
-          #   # ...
-          # in :deceased
-          #   # ...
-          # in :leave
-          #   # ...
-          # in :onboarding
-          #   # ...
-          # in :prehire
-          #   # ...
-          # in ...
-          #   #...
-          # end
-          # ```
-          class EmploymentStatus < FinchAPI::Enum
+          module EmploymentStatus
+            extend FinchAPI::Enum
+
             ACTIVE = :active
             DECEASED = :deceased
             LEAVE = :leave
@@ -492,32 +434,13 @@ module FinchAPI
 
             # @!parse
             #   # @return [Array<Symbol>]
-            #   #
             #   def self.values; end
           end
 
-          # @abstract
-          #
           # The EEOC-defined ethnicity of the individual.
-          #
-          # @example
-          # ```ruby
-          # case ethnicity
-          # in :asian
-          #   # ...
-          # in :white
-          #   # ...
-          # in :black_or_african_american
-          #   # ...
-          # in :native_hawaiian_or_pacific_islander
-          #   # ...
-          # in :american_indian_or_alaska_native
-          #   # ...
-          # in ...
-          #   #...
-          # end
-          # ```
-          class Ethnicity < FinchAPI::Enum
+          module Ethnicity
+            extend FinchAPI::Enum
+
             ASIAN = :asian
             WHITE = :white
             BLACK_OR_AFRICAN_AMERICAN = :black_or_african_american
@@ -531,28 +454,13 @@ module FinchAPI
 
             # @!parse
             #   # @return [Array<Symbol>]
-            #   #
             #   def self.values; end
           end
 
-          # @abstract
-          #
           # The gender of the individual.
-          #
-          # @example
-          # ```ruby
-          # case gender
-          # in :female
-          #   # ...
-          # in :male
-          #   # ...
-          # in :other
-          #   # ...
-          # in :decline_to_specify
-          #   # ...
-          # end
-          # ```
-          class Gender < FinchAPI::Enum
+          module Gender
+            extend FinchAPI::Enum
+
             FEMALE = :female
             MALE = :male
             OTHER = :other
@@ -562,7 +470,6 @@ module FinchAPI
 
             # @!parse
             #   # @return [Array<Symbol>]
-            #   #
             #   def self.values; end
           end
 
@@ -612,18 +519,9 @@ module FinchAPI
 
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
-            # @abstract
-            #
-            # @example
-            # ```ruby
-            # case type
-            # in :work
-            #   # ...
-            # in :personal
-            #   # ...
-            # end
-            # ```
-            class Type < FinchAPI::Enum
+            module Type
+              extend FinchAPI::Enum
+
               WORK = :work
               PERSONAL = :personal
 
@@ -631,7 +529,6 @@ module FinchAPI
 
               # @!parse
               #   # @return [Array<Symbol>]
-              #   #
               #   def self.values; end
             end
           end

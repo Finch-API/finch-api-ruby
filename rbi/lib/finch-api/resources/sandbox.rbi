@@ -4,35 +4,28 @@ module FinchAPI
   module Resources
     class Sandbox
       sig { returns(FinchAPI::Resources::Sandbox::Connections) }
-      def connections
-      end
+      attr_reader :connections
 
       sig { returns(FinchAPI::Resources::Sandbox::Company) }
-      def company
-      end
+      attr_reader :company
 
       sig { returns(FinchAPI::Resources::Sandbox::Directory) }
-      def directory
-      end
+      attr_reader :directory
 
       sig { returns(FinchAPI::Resources::Sandbox::Individual) }
-      def individual
-      end
+      attr_reader :individual
 
       sig { returns(FinchAPI::Resources::Sandbox::Employment) }
-      def employment
-      end
+      attr_reader :employment
 
       sig { returns(FinchAPI::Resources::Sandbox::Payment) }
-      def payment
-      end
+      attr_reader :payment
 
       sig { returns(FinchAPI::Resources::Sandbox::Jobs) }
-      def jobs
-      end
+      attr_reader :jobs
 
-      sig { params(client: FinchAPI::Client).void }
-      def initialize(client:)
+      sig { params(client: FinchAPI::Client).returns(T.attached_class) }
+      def self.new(client:)
       end
     end
   end

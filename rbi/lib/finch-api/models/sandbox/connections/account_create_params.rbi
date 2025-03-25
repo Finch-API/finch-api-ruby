@@ -9,54 +9,46 @@ module FinchAPI
           include FinchAPI::RequestParameters
 
           sig { returns(String) }
-          def company_id
-          end
+          attr_accessor :company_id
 
-          sig { params(_: String).returns(String) }
-          def company_id=(_)
-          end
-
+          # The provider associated with the `access_token`
           sig { returns(String) }
-          def provider_id
-          end
+          attr_accessor :provider_id
 
-          sig { params(_: String).returns(String) }
-          def provider_id=(_)
+          sig do
+            returns(
+              T.nilable(FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol)
+            )
           end
+          attr_reader :authentication_type
 
-          sig { returns(T.nilable(Symbol)) }
-          def authentication_type
+          sig do
+            params(
+              authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol
+            )
+              .void
           end
+          attr_writer :authentication_type
 
-          sig { params(_: Symbol).returns(Symbol) }
-          def authentication_type=(_)
-          end
-
+          # Optional, defaults to Organization products (`company`, `directory`,
+          #   `employment`, `individual`)
           sig { returns(T.nilable(T::Array[String])) }
-          def products
-          end
+          attr_reader :products
 
-          sig { params(_: T::Array[String]).returns(T::Array[String]) }
-          def products=(_)
-          end
+          sig { params(products: T::Array[String]).void }
+          attr_writer :products
 
           sig do
             params(
               company_id: String,
               provider_id: String,
-              authentication_type: Symbol,
+              authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol,
               products: T::Array[String],
-              request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+              request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
-            company_id:,
-            provider_id:,
-            authentication_type: nil,
-            products: nil,
-            request_options: {}
-          )
+          def self.new(company_id:, provider_id:, authentication_type: nil, products: nil, request_options: {})
           end
 
           sig do
@@ -65,7 +57,7 @@ module FinchAPI
                 {
                   company_id: String,
                   provider_id: String,
-                  authentication_type: Symbol,
+                  authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol,
                   products: T::Array[String],
                   request_options: FinchAPI::RequestOptions
                 }
@@ -74,15 +66,46 @@ module FinchAPI
           def to_hash
           end
 
-          class AuthenticationType < FinchAPI::Enum
-            abstract!
+          module AuthenticationType
+            extend FinchAPI::Enum
 
-            CREDENTIAL = :credential
-            API_TOKEN = :api_token
-            OAUTH = :oauth
-            ASSISTED = :assisted
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType) }
+            OrSymbol =
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::TaggedSymbol
+                )
+              end
 
-            sig { override.returns(T::Array[Symbol]) }
+            CREDENTIAL =
+              T.let(
+                :credential,
+                FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::TaggedSymbol
+              )
+            API_TOKEN =
+              T.let(
+                :api_token,
+                FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::TaggedSymbol
+              )
+            OAUTH =
+              T.let(
+                :oauth,
+                FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::TaggedSymbol
+              )
+            ASSISTED =
+              T.let(
+                :assisted,
+                FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::TaggedSymbol
+              )
+
+            sig do
+              override
+                .returns(
+                  T::Array[FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::TaggedSymbol]
+                )
+            end
             def self.values
             end
           end

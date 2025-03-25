@@ -4,18 +4,19 @@ module FinchAPI
   module Resources
     class Connect
       class Sessions
+        # Create a new connect session for an employer
         sig do
           params(
             customer_id: String,
             customer_name: String,
-            products: T::Array[Symbol],
+            products: T::Array[FinchAPI::Models::Connect::SessionNewParams::Product::OrSymbol],
             customer_email: T.nilable(String),
-            integration: T.nilable(FinchAPI::Models::Connect::SessionNewParams::Integration),
+            integration: T.nilable(T.any(FinchAPI::Models::Connect::SessionNewParams::Integration, FinchAPI::Util::AnyHash)),
             manual: T.nilable(T::Boolean),
             minutes_to_expire: T.nilable(Float),
             redirect_uri: T.nilable(String),
-            sandbox: T.nilable(Symbol),
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
+            sandbox: T.nilable(FinchAPI::Models::Connect::SessionNewParams::Sandbox::OrSymbol),
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
           )
             .returns(FinchAPI::Models::Connect::SessionNewResponse)
         end
@@ -26,6 +27,8 @@ module FinchAPI
           customer_email: nil,
           integration: nil,
           manual: nil,
+          # The number of minutes until the session expires (defaults to 43,200, which is 30
+          #   days)
           minutes_to_expire: nil,
           redirect_uri: nil,
           sandbox: nil,
@@ -33,27 +36,33 @@ module FinchAPI
         )
         end
 
+        # Create a new Connect session for reauthenticating an existing connection
         sig do
           params(
             connection_id: String,
             minutes_to_expire: T.nilable(Integer),
-            products: T.nilable(T::Array[Symbol]),
+            products: T.nilable(T::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol]),
             redirect_uri: T.nilable(String),
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
           )
             .returns(FinchAPI::Models::Connect::SessionReauthenticateResponse)
         end
         def reauthenticate(
+          # The ID of the existing connection to reauthenticate
           connection_id:,
+          # The number of minutes until the session expires (defaults to 43,200, which is 30
+          #   days)
           minutes_to_expire: nil,
+          # The products to request access to (optional for reauthentication)
           products: nil,
+          # The URI to redirect to after the Connect flow is completed
           redirect_uri: nil,
           request_options: {}
         )
         end
 
-        sig { params(client: FinchAPI::Client).void }
-        def initialize(client:)
+        sig { params(client: FinchAPI::Client).returns(T.attached_class) }
+        def self.new(client:)
         end
       end
     end

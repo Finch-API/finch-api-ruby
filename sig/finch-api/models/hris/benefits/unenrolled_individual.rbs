@@ -24,16 +24,11 @@ module FinchAPI
 
           def individual_id=: (String) -> String
 
-          def initialize:
-            (
-              body: FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual::Body,
-              code: Integer,
-              individual_id: String
-            ) -> void
-            | (
-              ?FinchAPI::Models::HRIS::Benefits::unenrolled_individual
-              | FinchAPI::BaseModel data
-            ) -> void
+          def initialize: (
+            ?body: FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual::Body,
+            ?code: Integer,
+            ?individual_id: String
+          ) -> void
 
           def to_hash: -> FinchAPI::Models::HRIS::Benefits::unenrolled_individual
 
@@ -46,12 +41,11 @@ module FinchAPI
 
             attr_accessor name: String?
 
-            def initialize:
-              (finch_code: String?, message: String?, name: String?) -> void
-              | (
-                ?FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual::body
-                | FinchAPI::BaseModel data
-              ) -> void
+            def initialize: (
+              ?finch_code: String?,
+              ?message: String?,
+              ?name: String?
+            ) -> void
 
             def to_hash: -> FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual::body
           end

@@ -27,32 +27,29 @@ module FinchAPI
 
           def connection_id=: (String) -> String
 
-          def initialize:
-            (
-              account_id: String,
-              authentication_type: FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::authentication_type,
-              company_id: String,
-              products: ::Array[String],
-              provider_id: String,
-              connection_id: String
-            ) -> void
-            | (
-              ?FinchAPI::Models::Sandbox::Connections::account_update_response
-              | FinchAPI::BaseModel data
-            ) -> void
+          def initialize: (
+            account_id: String,
+            authentication_type: FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::authentication_type,
+            company_id: String,
+            products: ::Array[String],
+            provider_id: String,
+            ?connection_id: String
+          ) -> void
 
           def to_hash: -> FinchAPI::Models::Sandbox::Connections::account_update_response
 
           type authentication_type =
             :credential | :api_token | :oauth | :assisted
 
-          class AuthenticationType < FinchAPI::Enum
+          module AuthenticationType
+            extend FinchAPI::Enum
+
             CREDENTIAL: :credential
             API_TOKEN: :api_token
             OAUTH: :oauth
             ASSISTED: :assisted
 
-            def self.values: -> ::Array[FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::authentication_type]
+            def self?.values: -> ::Array[FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::authentication_type]
           end
         end
       end

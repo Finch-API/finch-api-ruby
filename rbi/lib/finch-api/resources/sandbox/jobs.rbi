@@ -5,21 +5,25 @@ module FinchAPI
     class Sandbox
       class Jobs
         sig { returns(FinchAPI::Resources::Sandbox::Jobs::Configuration) }
-        def configuration
-        end
+        attr_reader :configuration
 
+        # Enqueue a new sandbox job
         sig do
           params(
-            type: Symbol,
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything]))
+            type: FinchAPI::Models::Sandbox::JobCreateParams::Type::OrSymbol,
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
           )
             .returns(FinchAPI::Models::Sandbox::JobCreateResponse)
         end
-        def create(type:, request_options: {})
+        def create(
+          # The type of job to start. Currently the only supported type is `data_sync_all`
+          type:,
+          request_options: {}
+        )
         end
 
-        sig { params(client: FinchAPI::Client).void }
-        def initialize(client:)
+        sig { params(client: FinchAPI::Client).returns(T.attached_class) }
+        def self.new(client:)
         end
       end
     end

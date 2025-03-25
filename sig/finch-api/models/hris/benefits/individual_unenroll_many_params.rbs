@@ -13,15 +13,10 @@ module FinchAPI
 
           def individual_ids=: (::Array[String]) -> ::Array[String]
 
-          def initialize:
-            (
-              individual_ids: ::Array[String],
-              request_options: FinchAPI::request_opts
-            ) -> void
-            | (
-              ?FinchAPI::Models::HRIS::Benefits::individual_unenroll_many_params
-              | FinchAPI::BaseModel data
-            ) -> void
+          def initialize: (
+            ?individual_ids: ::Array[String],
+            ?request_options: FinchAPI::request_opts
+          ) -> void
 
           def to_hash: -> FinchAPI::Models::HRIS::Benefits::individual_unenroll_many_params
         end

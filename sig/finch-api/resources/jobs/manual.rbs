@@ -2,16 +2,10 @@ module FinchAPI
   module Resources
     class Jobs
       class Manual
-        def retrieve:
-          (
-            String job_id,
-            ?FinchAPI::Models::Jobs::ManualRetrieveParams
-            | ::Hash[Symbol, top] params
-          ) -> FinchAPI::Models::Jobs::ManualAsyncJob
-          | (
-            String job_id,
-            request_options: FinchAPI::request_opts
-          ) -> FinchAPI::Models::Jobs::ManualAsyncJob
+        def retrieve: (
+          String job_id,
+          ?request_options: FinchAPI::request_opts
+        ) -> FinchAPI::Models::Jobs::ManualAsyncJob
 
         def initialize: (client: FinchAPI::Client) -> void
       end

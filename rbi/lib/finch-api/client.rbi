@@ -11,69 +11,60 @@ module FinchAPI
     DEFAULT_MAX_RETRY_DELAY = T.let(8.0, Float)
 
     sig { returns(T.nilable(String)) }
-    def access_token
-    end
+    attr_reader :access_token
 
     sig { returns(T.nilable(String)) }
-    def client_id
-    end
+    attr_reader :client_id
 
     sig { returns(T.nilable(String)) }
-    def client_secret
-    end
+    attr_reader :client_secret
 
     sig { returns(FinchAPI::Resources::AccessTokens) }
-    def access_tokens
-    end
+    attr_reader :access_tokens
 
     sig { returns(FinchAPI::Resources::HRIS) }
-    def hris
-    end
+    attr_reader :hris
 
     sig { returns(FinchAPI::Resources::Providers) }
-    def providers
-    end
+    attr_reader :providers
 
     sig { returns(FinchAPI::Resources::Account) }
-    def account
-    end
+    attr_reader :account
 
     sig { returns(FinchAPI::Resources::Webhooks) }
-    def webhooks
-    end
+    attr_reader :webhooks
 
     sig { returns(FinchAPI::Resources::RequestForwarding) }
-    def request_forwarding
-    end
+    attr_reader :request_forwarding
 
     sig { returns(FinchAPI::Resources::Jobs) }
-    def jobs
-    end
+    attr_reader :jobs
 
     sig { returns(FinchAPI::Resources::Sandbox) }
-    def sandbox
-    end
+    attr_reader :sandbox
 
     sig { returns(FinchAPI::Resources::Payroll) }
-    def payroll
-    end
+    attr_reader :payroll
 
     sig { returns(FinchAPI::Resources::Connect) }
-    def connect
-    end
+    attr_reader :connect
 
+    # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers
     end
 
+    # @api private
     sig { returns(T::Hash[String, String]) }
     private def bearer_auth
     end
 
+    # @api private
     sig { returns(T::Hash[String, String]) }
     private def basic_auth
     end
 
+    # Creates and returns a new client for interacting with the API.
     sig do
       params(
         base_url: T.nilable(String),
@@ -85,13 +76,17 @@ module FinchAPI
         initial_retry_delay: Float,
         max_retry_delay: Float
       )
-        .void
+        .returns(T.attached_class)
     end
-    def initialize(
+    def self.new(
+      # Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
       base_url: nil,
       access_token: nil,
+      # Defaults to `ENV["FINCH_CLIENT_ID"]`
       client_id: ENV["FINCH_CLIENT_ID"],
+      # Defaults to `ENV["FINCH_CLIENT_SECRET"]`
       client_secret: ENV["FINCH_CLIENT_SECRET"],
+      # Max number of retries to attempt after a failed retryable request.
       max_retries: DEFAULT_MAX_RETRIES,
       timeout: DEFAULT_TIMEOUT_IN_SECONDS,
       initial_retry_delay: DEFAULT_INITIAL_RETRY_DELAY,

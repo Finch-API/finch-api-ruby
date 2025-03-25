@@ -7,25 +7,21 @@ module FinchAPI
         extend FinchAPI::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
+        # Updated name or description.
         sig { returns(T.nilable(String)) }
-        def description
-        end
+        attr_reader :description
 
-        sig { params(_: String).returns(String) }
-        def description=(_)
-        end
+        sig { params(description: String).void }
+        attr_writer :description
 
         sig do
           params(
             description: String,
-            request_options: T.any(
-              FinchAPI::RequestOptions,
-              T::Hash[Symbol, T.anything]
-            )
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(description: nil, request_options: {})
+        def self.new(description: nil, request_options: {})
         end
 
         sig { override.returns({description: String, request_options: FinchAPI::RequestOptions}) }

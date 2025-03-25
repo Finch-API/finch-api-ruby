@@ -62,32 +62,34 @@ module FinchAPI
     ) -> ([true, top, nil] | [false, bool, Integer])
   end
 
-  class Enum
-    extend FinchAPI::Converter
+  module Enum
+    include FinchAPI::Converter
 
     def self.values: -> ::Array[(nil | bool | Integer | Float | Symbol)]
 
     private def self.finalize!: -> void
 
-    def self.===: (top other) -> bool
+    def ===: (top other) -> bool
 
-    def self.==: (top other) -> bool
+    def ==: (top other) -> bool
 
-    def self.coerce: (String | Symbol | top value) -> (Symbol | top)
+    def coerce: (String | Symbol | top value) -> (Symbol | top)
 
-    def self.dump: (Symbol | top value) -> (Symbol | top)
+    def dump: (Symbol | top value) -> (Symbol | top)
 
-    def self.try_strict_coerce: (
+    def try_strict_coerce: (
       top value
     ) -> ([true, top, nil] | [false, bool, Integer])
   end
 
-  class Union
-    extend FinchAPI::Converter
+  module Union
+    include FinchAPI::Converter
 
-    private def self.known_variants: -> ::Array[[Symbol?, Proc]]
+    private def self.known_variants: -> ::Array[[Symbol?, (^-> FinchAPI::Converter::input)]]
 
-    def self.variants: -> ::Array[[Symbol?, top]]
+    def self.derefed_variants: -> ::Array[[Symbol?, top]]
+
+    def self.variants: -> ::Array[top]
 
     private def self.discriminator: (Symbol property) -> void
 
@@ -103,21 +105,28 @@ module FinchAPI
 
     private def self.resolve_variant: (top value) -> FinchAPI::Converter::input?
 
-    def self.===: (top other) -> bool
+    def ===: (top other) -> bool
 
-    def self.==: (top other) -> bool
+    def ==: (top other) -> bool
 
-    def self.coerce: (top value) -> top
+    def coerce: (top value) -> top
 
-    def self.dump: (top value) -> top
+    def dump: (top value) -> top
 
-    def self.try_strict_coerce: (
+    def try_strict_coerce: (
       top value
     ) -> ([true, top, nil] | [false, bool, Integer])
   end
 
   class ArrayOf
     include FinchAPI::Converter
+
+    def self.[]: (
+      ::Hash[Symbol, top]
+      | ^-> FinchAPI::Converter::input
+      | FinchAPI::Converter::input type_info,
+      ?::Hash[Symbol, top] spec
+    ) -> instance
 
     def ===: (top other) -> bool
 
@@ -131,7 +140,7 @@ module FinchAPI
       top value
     ) -> ([true, top, nil] | [false, bool, Integer])
 
-    def item_type: -> FinchAPI::Converter::input
+    def item_type: -> top
 
     def initialize: (
       ::Hash[Symbol, top]
@@ -143,6 +152,13 @@ module FinchAPI
 
   class HashOf
     include FinchAPI::Converter
+
+    def self.[]: (
+      ::Hash[Symbol, top]
+      | ^-> FinchAPI::Converter::input
+      | FinchAPI::Converter::input type_info,
+      ?::Hash[Symbol, top] spec
+    ) -> instance
 
     def ===: (top other) -> bool
 
@@ -156,7 +172,7 @@ module FinchAPI
       top value
     ) -> ([true, top, nil] | [false, bool, Integer])
 
-    def item_type: -> FinchAPI::Converter::input
+    def item_type: -> top
 
     def initialize: (
       ::Hash[Symbol, top]
@@ -173,6 +189,8 @@ module FinchAPI
 
     def self.known_fields: -> ::Hash[Symbol, (FinchAPI::BaseModel::known_field
     & { type_fn: (^-> FinchAPI::Converter::input) })]
+
+    def self.reverse_map: -> ::Hash[Symbol, Symbol]
 
     def self.fields: -> ::Hash[Symbol, (FinchAPI::BaseModel::known_field
     & { type: FinchAPI::Converter::input })]

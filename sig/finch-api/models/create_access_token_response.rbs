@@ -37,43 +37,42 @@ module FinchAPI
 
       def token_type=: (String) -> String
 
-      def initialize:
-        (
-          access_token: String,
-          account_id: String,
-          client_type: FinchAPI::Models::CreateAccessTokenResponse::client_type,
-          company_id: String,
-          connection_id: String,
-          connection_type: FinchAPI::Models::CreateAccessTokenResponse::connection_type,
-          products: ::Array[String],
-          provider_id: String,
-          customer_id: String?,
-          token_type: String
-        ) -> void
-        | (
-          ?FinchAPI::Models::create_access_token_response
-          | FinchAPI::BaseModel data
-        ) -> void
+      def initialize: (
+        access_token: String,
+        account_id: String,
+        client_type: FinchAPI::Models::CreateAccessTokenResponse::client_type,
+        company_id: String,
+        connection_id: String,
+        connection_type: FinchAPI::Models::CreateAccessTokenResponse::connection_type,
+        products: ::Array[String],
+        provider_id: String,
+        ?customer_id: String?,
+        ?token_type: String
+      ) -> void
 
       def to_hash: -> FinchAPI::Models::create_access_token_response
 
       type client_type = :production | :development | :sandbox
 
-      class ClientType < FinchAPI::Enum
+      module ClientType
+        extend FinchAPI::Enum
+
         PRODUCTION: :production
         DEVELOPMENT: :development
         SANDBOX: :sandbox
 
-        def self.values: -> ::Array[FinchAPI::Models::CreateAccessTokenResponse::client_type]
+        def self?.values: -> ::Array[FinchAPI::Models::CreateAccessTokenResponse::client_type]
       end
 
       type connection_type = :provider | :finch
 
-      class ConnectionType < FinchAPI::Enum
+      module ConnectionType
+        extend FinchAPI::Enum
+
         PROVIDER: :provider
         FINCH: :finch
 
-        def self.values: -> ::Array[FinchAPI::Models::CreateAccessTokenResponse::connection_type]
+        def self?.values: -> ::Array[FinchAPI::Models::CreateAccessTokenResponse::connection_type]
       end
     end
   end

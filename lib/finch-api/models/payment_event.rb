@@ -51,20 +51,9 @@ module FinchAPI
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
       end
 
-      # @abstract
-      #
-      # @example
-      # ```ruby
-      # case event_type
-      # in :"payment.created"
-      #   # ...
-      # in :"payment.updated"
-      #   # ...
-      # in :"payment.deleted"
-      #   # ...
-      # end
-      # ```
-      class EventType < FinchAPI::Enum
+      module EventType
+        extend FinchAPI::Enum
+
         PAYMENT_CREATED = :"payment.created"
         PAYMENT_UPDATED = :"payment.updated"
         PAYMENT_DELETED = :"payment.deleted"
@@ -73,7 +62,6 @@ module FinchAPI
 
         # @!parse
         #   # @return [Array<Symbol>]
-        #   #
         #   def self.values; end
       end
     end

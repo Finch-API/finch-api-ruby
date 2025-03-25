@@ -5,29 +5,26 @@ module FinchAPI
     module HRIS
       class PayStatementResponseBody < FinchAPI::BaseModel
         sig { returns(T.nilable(FinchAPI::Models::Paging)) }
-        def paging
-        end
+        attr_reader :paging
 
-        sig { params(_: FinchAPI::Models::Paging).returns(FinchAPI::Models::Paging) }
-        def paging=(_)
-        end
+        sig { params(paging: T.any(FinchAPI::Models::Paging, FinchAPI::Util::AnyHash)).void }
+        attr_writer :paging
 
+        # The array of pay statements for the current payment.
         sig { returns(T.nilable(T::Array[FinchAPI::Models::HRIS::PayStatement])) }
-        def pay_statements
-        end
+        attr_reader :pay_statements
+
+        sig { params(pay_statements: T::Array[T.any(FinchAPI::Models::HRIS::PayStatement, FinchAPI::Util::AnyHash)]).void }
+        attr_writer :pay_statements
 
         sig do
-          params(_: T::Array[FinchAPI::Models::HRIS::PayStatement])
-            .returns(T::Array[FinchAPI::Models::HRIS::PayStatement])
+          params(
+            paging: T.any(FinchAPI::Models::Paging, FinchAPI::Util::AnyHash),
+            pay_statements: T::Array[T.any(FinchAPI::Models::HRIS::PayStatement, FinchAPI::Util::AnyHash)]
+          )
+            .returns(T.attached_class)
         end
-        def pay_statements=(_)
-        end
-
-        sig do
-          params(paging: FinchAPI::Models::Paging, pay_statements: T::Array[FinchAPI::Models::HRIS::PayStatement])
-            .void
-        end
-        def initialize(paging: nil, pay_statements: nil)
+        def self.new(paging: nil, pay_statements: nil)
         end
 
         sig do

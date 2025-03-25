@@ -7,31 +7,25 @@ module FinchAPI
         extend FinchAPI::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
+        # The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
+        #   format.
         sig { returns(Date) }
-        def end_date
-        end
+        attr_accessor :end_date
 
-        sig { params(_: Date).returns(Date) }
-        def end_date=(_)
-        end
-
+        # The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
+        #   format.
         sig { returns(Date) }
-        def start_date
-        end
-
-        sig { params(_: Date).returns(Date) }
-        def start_date=(_)
-        end
+        attr_accessor :start_date
 
         sig do
           params(
             end_date: Date,
             start_date: Date,
-            request_options: T.any(FinchAPI::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(end_date:, start_date:, request_options: {})
+        def self.new(end_date:, start_date:, request_options: {})
         end
 
         sig do

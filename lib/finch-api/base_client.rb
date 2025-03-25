@@ -1,32 +1,31 @@
 # frozen_string_literal: true
 
 module FinchAPI
-  # @private
+  # @api private
   #
   # @abstract
-  #
   class BaseClient
     # from whatwg fetch spec
     MAX_REDIRECTS = 20
 
     # rubocop:disable Style/MutableConstant
-    PLATFORM_HEADERS = {
-      "x-stainless-arch" => FinchAPI::Util.arch,
-      "x-stainless-lang" => "ruby",
-      "x-stainless-os" => FinchAPI::Util.os,
-      "x-stainless-package-version" => FinchAPI::VERSION,
-      "x-stainless-runtime" => ::RUBY_ENGINE,
-      "x-stainless-runtime-version" => ::RUBY_ENGINE_VERSION
-    }
+    PLATFORM_HEADERS =
+      {
+        "x-stainless-arch" => FinchAPI::Util.arch,
+        "x-stainless-lang" => "ruby",
+        "x-stainless-os" => FinchAPI::Util.os,
+        "x-stainless-package-version" => FinchAPI::VERSION,
+        "x-stainless-runtime" => ::RUBY_ENGINE,
+        "x-stainless-runtime-version" => ::RUBY_ENGINE_VERSION
+      }
     # rubocop:enable Style/MutableConstant
 
     class << self
-      # @private
+      # @api private
       #
       # @param req [Hash{Symbol=>Object}]
       #
       # @raise [ArgumentError]
-      #
       def validate!(req)
         keys = [:method, :path, :query, :headers, :body, :unwrap, :page, :stream, :model, :options]
         case req
@@ -41,13 +40,12 @@ module FinchAPI
         end
       end
 
-      # @private
+      # @api private
       #
       # @param status [Integer]
       # @param headers [Hash{String=>String}, Net::HTTPHeader]
       #
       # @return [Boolean]
-      #
       def should_retry?(status, headers:)
         coerced = FinchAPI::Util.coerce_boolean(headers["x-should-retry"])
         case [coerced, status]
@@ -65,7 +63,7 @@ module FinchAPI
         end
       end
 
-      # @private
+      # @api private
       #
       # @param request [Hash{Symbol=>Object}] .
       #
@@ -86,7 +84,6 @@ module FinchAPI
       # @param response_headers [Hash{String=>String}, Net::HTTPHeader]
       #
       # @return [Hash{Symbol=>Object}]
-      #
       def follow_redirect(request, status:, response_headers:)
         method, url, headers = request.fetch_values(:method, :url, :headers)
         location =
@@ -128,14 +125,27 @@ module FinchAPI
 
         request
       end
+
+      # @api private
+      #
+      # @param status [Integer, FinchAPI::APIConnectionError]
+      # @param stream [Enumerable, nil]
+      def reap_connection!(status, stream:)
+        case status
+        in (..199) | (300..499)
+          stream&.each { next }
+        in FinchAPI::APIConnectionError | (500..)
+          FinchAPI::Util.close_fused!(stream)
+        else
+        end
+      end
     end
 
-    # @private
-    #
+    # @api private
     # @return [FinchAPI::PooledNetRequester]
     attr_accessor :requester
 
-    # @private
+    # @api private
     #
     # @param base_url [String]
     # @param timeout [Float]
@@ -144,7 +154,6 @@ module FinchAPI
     # @param max_retry_delay [Float]
     # @param headers [Hash{String=>String, Integer, Array<String, Integer, nil>, nil}]
     # @param idempotency_header [String, nil]
-    #
     def initialize(
       base_url:,
       timeout: 0.0,
@@ -171,19 +180,17 @@ module FinchAPI
       @max_retry_delay = max_retry_delay
     end
 
-    # @private
+    # @api private
     #
     # @return [Hash{String=>String}]
-    #
     private def auth_headers = {}
 
-    # @private
+    # @api private
     #
     # @return [String]
-    #
     private def generate_idempotency_key = "stainless-ruby-retry-#{SecureRandom.uuid}"
 
-    # @private
+    # @api private
     #
     # @param req [Hash{Symbol=>Object}] .
     #
@@ -213,14 +220,13 @@ module FinchAPI
     #
     #   @option opts [Hash{String=>String, nil}, nil] :extra_headers
     #
-    #   @option opts [Hash{Symbol=>Object}, nil] :extra_body
+    #   @option opts [Object, nil] :extra_body
     #
     #   @option opts [Integer, nil] :max_retries
     #
     #   @option opts [Float, nil] :timeout
     #
     # @return [Hash{Symbol=>Object}]
-    #
     private def build_request(req, opts)
       method, uninterpolated_path = req.fetch_values(:method, :path)
 
@@ -246,8 +252,8 @@ module FinchAPI
       end
 
       timeout = opts.fetch(:timeout, @timeout).to_f.clamp((0..))
-      unless headers.key?("x-stainless-read-timeout") || timeout.zero?
-        headers["x-stainless-read-timeout"] = timeout.to_s
+      unless headers.key?("x-stainless-timeout") || timeout.zero?
+        headers["x-stainless-timeout"] = timeout.to_s
       end
 
       headers.reject! { |_, v| v.to_s.empty? }
@@ -271,13 +277,12 @@ module FinchAPI
       }
     end
 
-    # @private
+    # @api private
     #
     # @param headers [Hash{String=>String}]
     # @param retry_count [Integer]
     #
     # @return [Float]
-    #
     private def retry_delay(headers, retry_count:)
       # Non-standard extension
       span = Float(headers["retry-after-ms"], exception: false)&.then { _1 / 1000 }
@@ -298,7 +303,7 @@ module FinchAPI
       (@initial_retry_delay * scale * jitter).clamp(0, @max_retry_delay)
     end
 
-    # @private
+    # @api private
     #
     # @param request [Hash{Symbol=>Object}] .
     #
@@ -322,7 +327,6 @@ module FinchAPI
     #
     # @raise [FinchAPI::APIError]
     # @return [Array(Integer, Net::HTTPResponse, Enumerable)]
-    #
     private def send_request(request, redirect_count:, retry_count:, send_retry_header:)
       url, headers, max_retries, timeout = request.fetch_values(:url, :headers, :max_retries, :timeout)
       input = {**request.except(:timeout), deadline: FinchAPI::Util.monotonic_secs + timeout}
@@ -332,28 +336,23 @@ module FinchAPI
       end
 
       begin
-        response, stream = @requester.execute(input)
-        status = Integer(response.code)
+        status, response, stream = @requester.execute(input)
       rescue FinchAPI::APIConnectionError => e
         status = e
       end
-
-      # normally we want to drain the response body and reuse the HTTP session by clearing the socket buffers
-      # unless we hit a server error
-      srv_fault = (500...).include?(status)
 
       case status
       in ..299
         [status, response, stream]
       in 300..399 if redirect_count >= self.class::MAX_REDIRECTS
-        message = "Failed to complete the request within #{self.class::MAX_REDIRECTS} redirects."
+        self.class.reap_connection!(status, stream: stream)
 
-        stream.each { next }
+        message = "Failed to complete the request within #{self.class::MAX_REDIRECTS} redirects."
         raise FinchAPI::APIConnectionError.new(url: url, message: message)
       in 300..399
-        request = self.class.follow_redirect(request, status: status, response_headers: response)
+        self.class.reap_connection!(status, stream: stream)
 
-        stream.each { next }
+        request = self.class.follow_redirect(request, status: status, response_headers: response)
         send_request(
           request,
           redirect_count: redirect_count + 1,
@@ -363,12 +362,10 @@ module FinchAPI
       in FinchAPI::APIConnectionError if retry_count >= max_retries
         raise status
       in (400..) if retry_count >= max_retries || !self.class.should_retry?(status, headers: response)
-        decoded = FinchAPI::Util.decode_content(response, stream: stream, suppress_error: true)
-
-        if srv_fault
-          FinchAPI::Util.close_fused!(stream)
-        else
-          stream.each { next }
+        decoded = Kernel.then do
+          FinchAPI::Util.decode_content(response, stream: stream, suppress_error: true)
+        ensure
+          self.class.reap_connection!(status, stream: stream)
         end
 
         raise FinchAPI::APIStatusError.for(
@@ -379,13 +376,9 @@ module FinchAPI
           response: response
         )
       in (400..) | FinchAPI::APIConnectionError
-        delay = retry_delay(response, retry_count: retry_count)
+        self.class.reap_connection!(status, stream: stream)
 
-        if srv_fault
-          FinchAPI::Util.close_fused!(stream)
-        else
-          stream&.each { next }
-        end
+        delay = retry_delay(response, retry_count: retry_count)
         sleep(delay)
 
         send_request(
@@ -424,7 +417,6 @@ module FinchAPI
     #
     # @raise [FinchAPI::APIError]
     # @return [Object]
-    #
     def request(req)
       self.class.validate!(req)
       model = req.fetch(:model) { FinchAPI::Unknown }
@@ -445,9 +437,9 @@ module FinchAPI
       decoded = FinchAPI::Util.decode_content(response, stream: stream)
       case req
       in { stream: Class => st }
-        st.new(model: model, url: url, status: status, response: response, messages: decoded)
+        st.new(model: model, url: url, status: status, response: response, stream: decoded)
       in { page: Class => page }
-        page.new(client: self, req: req, headers: response, unwrapped: decoded)
+        page.new(client: self, req: req, headers: response, page_data: decoded)
       else
         unwrapped = FinchAPI::Util.dig(decoded, req[:unwrap])
         FinchAPI::Converter.coerce(model, unwrapped)
@@ -455,10 +447,11 @@ module FinchAPI
     end
 
     # @return [String]
-    #
     def inspect
+      # rubocop:disable Layout/LineLength
       base_url = FinchAPI::Util.unparse_uri(@base_url)
       "#<#{self.class.name}:0x#{object_id.to_s(16)} base_url=#{base_url} max_retries=#{@max_retries} timeout=#{@timeout}>"
+      # rubocop:enable Layout/LineLength
     end
   end
 end

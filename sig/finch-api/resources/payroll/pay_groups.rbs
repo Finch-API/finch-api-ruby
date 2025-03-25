@@ -2,27 +2,16 @@ module FinchAPI
   module Resources
     class Payroll
       class PayGroups
-        def retrieve:
-          (
-            String pay_group_id,
-            ?FinchAPI::Models::Payroll::PayGroupRetrieveParams
-            | ::Hash[Symbol, top] params
-          ) -> FinchAPI::Models::Payroll::PayGroupRetrieveResponse
-          | (
-            String pay_group_id,
-            request_options: FinchAPI::request_opts
-          ) -> FinchAPI::Models::Payroll::PayGroupRetrieveResponse
+        def retrieve: (
+          String pay_group_id,
+          ?request_options: FinchAPI::request_opts
+        ) -> FinchAPI::Models::Payroll::PayGroupRetrieveResponse
 
-        def list:
-          (
-            ?FinchAPI::Models::Payroll::PayGroupListParams
-            | ::Hash[Symbol, top] params
-          ) -> FinchAPI::SinglePage[FinchAPI::Models::Payroll::PayGroupListResponse]
-          | (
-            individual_id: String,
-            pay_frequencies: ::Array[String],
-            request_options: FinchAPI::request_opts
-          ) -> FinchAPI::SinglePage[FinchAPI::Models::Payroll::PayGroupListResponse]
+        def list: (
+          ?individual_id: String,
+          ?pay_frequencies: ::Array[String],
+          ?request_options: FinchAPI::request_opts
+        ) -> FinchAPI::SinglePage[FinchAPI::Models::Payroll::PayGroupListResponse]
 
         def initialize: (client: FinchAPI::Client) -> void
       end

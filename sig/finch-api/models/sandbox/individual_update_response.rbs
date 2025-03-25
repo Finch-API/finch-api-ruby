@@ -47,26 +47,21 @@ module FinchAPI
 
         attr_accessor ssn: String?
 
-        def initialize:
-          (
-            id: String,
-            dob: String?,
-            emails: ::Array[FinchAPI::Models::Sandbox::IndividualUpdateResponse::Email]?,
-            encrypted_ssn: String?,
-            ethnicity: FinchAPI::Models::Sandbox::IndividualUpdateResponse::ethnicity?,
-            first_name: String?,
-            gender: FinchAPI::Models::Sandbox::IndividualUpdateResponse::gender?,
-            last_name: String?,
-            middle_name: String?,
-            phone_numbers: ::Array[FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber?]?,
-            preferred_name: String?,
-            residence: FinchAPI::Models::Location?,
-            ssn: String?
-          ) -> void
-          | (
-            ?FinchAPI::Models::Sandbox::individual_update_response
-            | FinchAPI::BaseModel data
-          ) -> void
+        def initialize: (
+          ?id: String,
+          ?dob: String?,
+          ?emails: ::Array[FinchAPI::Models::Sandbox::IndividualUpdateResponse::Email]?,
+          ?encrypted_ssn: String?,
+          ?ethnicity: FinchAPI::Models::Sandbox::IndividualUpdateResponse::ethnicity?,
+          ?first_name: String?,
+          ?gender: FinchAPI::Models::Sandbox::IndividualUpdateResponse::gender?,
+          ?last_name: String?,
+          ?middle_name: String?,
+          ?phone_numbers: ::Array[FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber?]?,
+          ?preferred_name: String?,
+          ?residence: FinchAPI::Models::Location?,
+          ?ssn: String?
+        ) -> void
 
         def to_hash: -> FinchAPI::Models::Sandbox::individual_update_response
 
@@ -83,25 +78,22 @@ module FinchAPI
 
           attr_accessor type: FinchAPI::Models::Sandbox::IndividualUpdateResponse::Email::type_?
 
-          def initialize:
-            (
-              data: String,
-              type: FinchAPI::Models::Sandbox::IndividualUpdateResponse::Email::type_?
-            ) -> void
-            | (
-              ?FinchAPI::Models::Sandbox::IndividualUpdateResponse::email
-              | FinchAPI::BaseModel data
-            ) -> void
+          def initialize: (
+            ?data: String,
+            ?type: FinchAPI::Models::Sandbox::IndividualUpdateResponse::Email::type_?
+          ) -> void
 
           def to_hash: -> FinchAPI::Models::Sandbox::IndividualUpdateResponse::email
 
           type type_ = :work | :personal
 
-          class Type < FinchAPI::Enum
+          module Type
+            extend FinchAPI::Enum
+
             WORK: :work
             PERSONAL: :personal
 
-            def self.values: -> ::Array[FinchAPI::Models::Sandbox::IndividualUpdateResponse::Email::type_]
+            def self?.values: -> ::Array[FinchAPI::Models::Sandbox::IndividualUpdateResponse::Email::type_]
           end
         end
 
@@ -115,7 +107,9 @@ module FinchAPI
           | :two_or_more_races
           | :decline_to_specify
 
-        class Ethnicity < FinchAPI::Enum
+        module Ethnicity
+          extend FinchAPI::Enum
+
           ASIAN: :asian
           WHITE: :white
           BLACK_OR_AFRICAN_AMERICAN: :black_or_african_american
@@ -125,18 +119,20 @@ module FinchAPI
           TWO_OR_MORE_RACES: :two_or_more_races
           DECLINE_TO_SPECIFY: :decline_to_specify
 
-          def self.values: -> ::Array[FinchAPI::Models::Sandbox::IndividualUpdateResponse::ethnicity]
+          def self?.values: -> ::Array[FinchAPI::Models::Sandbox::IndividualUpdateResponse::ethnicity]
         end
 
         type gender = :female | :male | :other | :decline_to_specify
 
-        class Gender < FinchAPI::Enum
+        module Gender
+          extend FinchAPI::Enum
+
           FEMALE: :female
           MALE: :male
           OTHER: :other
           DECLINE_TO_SPECIFY: :decline_to_specify
 
-          def self.values: -> ::Array[FinchAPI::Models::Sandbox::IndividualUpdateResponse::gender]
+          def self?.values: -> ::Array[FinchAPI::Models::Sandbox::IndividualUpdateResponse::gender]
         end
 
         type phone_number =
@@ -152,25 +148,22 @@ module FinchAPI
 
           attr_accessor type: FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber::type_?
 
-          def initialize:
-            (
-              data: String,
-              type: FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber::type_?
-            ) -> void
-            | (
-              ?FinchAPI::Models::Sandbox::IndividualUpdateResponse::phone_number
-              | FinchAPI::BaseModel data
-            ) -> void
+          def initialize: (
+            ?data: String,
+            ?type: FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber::type_?
+          ) -> void
 
           def to_hash: -> FinchAPI::Models::Sandbox::IndividualUpdateResponse::phone_number
 
           type type_ = :work | :personal
 
-          class Type < FinchAPI::Enum
+          module Type
+            extend FinchAPI::Enum
+
             WORK: :work
             PERSONAL: :personal
 
-            def self.values: -> ::Array[FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber::type_]
+            def self?.values: -> ::Array[FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber::type_]
           end
         end
       end

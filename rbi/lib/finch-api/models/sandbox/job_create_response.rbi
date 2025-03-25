@@ -4,47 +4,27 @@ module FinchAPI
   module Models
     module Sandbox
       class JobCreateResponse < FinchAPI::BaseModel
+        # The number of allowed refreshes per hour (per hour, fixed window)
         sig { returns(Integer) }
-        def allowed_refreshes
-        end
+        attr_accessor :allowed_refreshes
 
-        sig { params(_: Integer).returns(Integer) }
-        def allowed_refreshes=(_)
-        end
-
+        # The id of the job that has been created.
         sig { returns(String) }
-        def job_id
-        end
+        attr_accessor :job_id
 
-        sig { params(_: String).returns(String) }
-        def job_id=(_)
-        end
-
+        # The url that can be used to retrieve the job status
         sig { returns(String) }
-        def job_url
-        end
+        attr_accessor :job_url
 
-        sig { params(_: String).returns(String) }
-        def job_url=(_)
-        end
-
+        # The number of remaining refreshes available (per hour, fixed window)
         sig { returns(Integer) }
-        def remaining_refreshes
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def remaining_refreshes=(_)
-        end
+        attr_accessor :remaining_refreshes
 
         sig do
-          params(
-            allowed_refreshes: Integer,
-            job_id: String,
-            job_url: String,
-            remaining_refreshes: Integer
-          ).void
+          params(allowed_refreshes: Integer, job_id: String, job_url: String, remaining_refreshes: Integer)
+            .returns(T.attached_class)
         end
-        def initialize(allowed_refreshes:, job_id:, job_url:, remaining_refreshes:)
+        def self.new(allowed_refreshes:, job_id:, job_url:, remaining_refreshes:)
         end
 
         sig do
