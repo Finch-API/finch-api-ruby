@@ -59,15 +59,11 @@ module FinchAPI
           #   # @return [Symbol, FinchAPI::Models::HRIS::W42005::Data::Exemption]
           #   attr_writer :exemption
 
-          # @!attribute [r] filing_status
+          # @!attribute filing_status
           #   The individual's filing status for tax purposes.
           #
           #   @return [Symbol, FinchAPI::Models::HRIS::W42005::Data::FilingStatus, nil]
-          optional :filing_status, enum: -> { FinchAPI::Models::HRIS::W42005::Data::FilingStatus }
-
-          # @!parse
-          #   # @return [Symbol, FinchAPI::Models::HRIS::W42005::Data::FilingStatus]
-          #   attr_writer :filing_status
+          optional :filing_status, enum: -> { FinchAPI::Models::HRIS::W42005::Data::FilingStatus }, nil?: true
 
           # @!attribute [r] individual_id
           #   The unique identifier for the individual associated with this 2005 W4 form.
@@ -90,7 +86,7 @@ module FinchAPI
           #   #
           #   # @param additional_withholding [Integer, nil]
           #   # @param exemption [Symbol, FinchAPI::Models::HRIS::W42005::Data::Exemption]
-          #   # @param filing_status [Symbol, FinchAPI::Models::HRIS::W42005::Data::FilingStatus]
+          #   # @param filing_status [Symbol, FinchAPI::Models::HRIS::W42005::Data::FilingStatus, nil]
           #   # @param individual_id [String]
           #   # @param total_number_of_allowances [Integer, nil]
           #   #

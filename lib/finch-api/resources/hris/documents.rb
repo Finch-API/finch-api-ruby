@@ -4,8 +4,8 @@ module FinchAPI
   module Resources
     class HRIS
       class Documents
-        # **Beta:** This endpoint is in beta and may change.
-        #   Retrieve a list of company-wide documents.
+        # **Beta:** This endpoint is in beta and may change. Retrieve a list of
+        #   company-wide documents.
         #
         # @param params [FinchAPI::Models::HRIS::DocumentListParams, Hash{Symbol=>Object}] .
         #
@@ -33,8 +33,8 @@ module FinchAPI
           )
         end
 
-        # **Beta:** This endpoint is in beta and may change.
-        #   Retrieve details of a specific document by its ID.
+        # **Beta:** This endpoint is in beta and may change. Retrieve details of a
+        #   specific document by its ID.
         #
         # @param document_id [String] The unique identifier of the document.
         #
