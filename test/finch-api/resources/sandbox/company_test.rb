@@ -12,7 +12,7 @@ class FinchAPI::Test::Resources::Sandbox::CompanyTest < FinchAPI::Test::Resource
         entity: {},
         legal_name: "legal_name",
         locations: [{}],
-        primary_email: "primary_email",
+        primary_email: "dev@stainless.com",
         primary_phone_number: "primary_phone_number"
       )
 
