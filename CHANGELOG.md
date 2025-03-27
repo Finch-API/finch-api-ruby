@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2025-03-27)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Features
+
+* **api:** api update ([#73](https://github.com/Finch-API/finch-api-ruby/issues/73)) ([425d0dc](https://github.com/Finch-API/finch-api-ruby/commit/425d0dc12f2a7d5460eb2141eb7e616a96db6ef5))
+
+
+### Chores
+
+* **internal:** version bump ([#70](https://github.com/Finch-API/finch-api-ruby/issues/70)) ([36c3b7e](https://github.com/Finch-API/finch-api-ruby/commit/36c3b7eb4f2d332351e23b41707c871b44fa064d))
+* more aggressive tapioca detection logic for skipping compiler introspection ([#72](https://github.com/Finch-API/finch-api-ruby/issues/72)) ([20b843f](https://github.com/Finch-API/finch-api-ruby/commit/20b843f39d94b09c124db19abf6e931017cdef58))
+
 ## 0.1.0-alpha.2 (2025-03-25)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
