@@ -330,19 +330,17 @@ module FinchAPI
 
           type phone_number =
             {
-              data: String,
+              data: String?,
               type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::type_?
             }
 
           class PhoneNumber < FinchAPI::BaseModel
-            attr_reader data: String?
-
-            def data=: (String) -> String
+            attr_accessor data: String?
 
             attr_accessor type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::type_?
 
             def initialize: (
-              ?data: String,
+              ?data: String?,
               ?type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::type_?
             ) -> void
 
