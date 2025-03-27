@@ -203,14 +203,10 @@ module FinchAPI
         end
 
         class PhoneNumber < FinchAPI::BaseModel
-          # @!attribute [r] data
+          # @!attribute data
           #
           #   @return [String, nil]
-          optional :data, String
-
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :data
+          optional :data, String, nil?: true
 
           # @!attribute type
           #
@@ -220,7 +216,7 @@ module FinchAPI
                    nil?: true
 
           # @!parse
-          #   # @param data [String]
+          #   # @param data [String, nil]
           #   # @param type [Symbol, FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber::Type, nil]
           #   #
           #   def initialize(data: nil, type: nil, **) = super
