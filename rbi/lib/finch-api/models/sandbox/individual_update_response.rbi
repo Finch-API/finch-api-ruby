@@ -239,17 +239,14 @@ module FinchAPI
 
         class PhoneNumber < FinchAPI::BaseModel
           sig { returns(T.nilable(String)) }
-          attr_reader :data
-
-          sig { params(data: String).void }
-          attr_writer :data
+          attr_accessor :data
 
           sig { returns(T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber::Type::TaggedSymbol)) }
           attr_accessor :type
 
           sig do
             params(
-              data: String,
+              data: T.nilable(String),
               type: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber::Type::OrSymbol)
             )
               .returns(T.attached_class)
@@ -261,7 +258,7 @@ module FinchAPI
             override
               .returns(
                 {
-                  data: String,
+                  data: T.nilable(String),
                   type: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber::Type::TaggedSymbol)
                 }
               )
