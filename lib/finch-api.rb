@@ -36,7 +36,6 @@ require "connection_pool"
 # Package files.
 require_relative "finch-api/version"
 require_relative "finch-api/util"
-require_relative "finch-api/extern"
 require_relative "finch-api/base_model"
 require_relative "finch-api/base_page"
 require_relative "finch-api/request_options"
