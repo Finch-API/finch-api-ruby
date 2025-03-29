@@ -84,7 +84,7 @@ module FinchAPI
     end
 
     # @api private
-    sig { returns(T.anything) }
+    sig { returns(FinchAPI::PooledNetRequester) }
     attr_accessor :requester
 
     # @api private

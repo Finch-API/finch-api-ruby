@@ -49,7 +49,7 @@ module FinchAPI
 
       case page_data
       in {paging: Hash | nil => paging}
-        @paging = FinchAPI::Models::Paging.coerce(paging)
+        @paging = FinchAPI::Converter.coerce(FinchAPI::Models::Paging, paging)
       else
       end
     end
