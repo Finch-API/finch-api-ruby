@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2025-03-29)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Features
+
+* **internal:** converter interface should recurse without schema ([#77](https://github.com/Finch-API/finch-api-ruby/issues/77)) ([54c0c14](https://github.com/Finch-API/finch-api-ruby/commit/54c0c146c432894dafd73fbe17ad2fe7a931a2d5))
+
+
+### Chores
+
+* **internal:** minor refactoring of utils ([#76](https://github.com/Finch-API/finch-api-ruby/issues/76)) ([9b88b83](https://github.com/Finch-API/finch-api-ruby/commit/9b88b83a6775fb547dceb5ed3c54c67f47587609))
+* **internal:** version bump ([#74](https://github.com/Finch-API/finch-api-ruby/issues/74)) ([5b79b2c](https://github.com/Finch-API/finch-api-ruby/commit/5b79b2c834848a5e4413f52e9e3383205f51b5d7))
+* remove unnecessary & confusing module ([#78](https://github.com/Finch-API/finch-api-ruby/issues/78)) ([c8fe96f](https://github.com/Finch-API/finch-api-ruby/commit/c8fe96f6528184a2d15385e2607be024329c5c6d))
+
 ## 0.1.0-alpha.3 (2025-03-27)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
