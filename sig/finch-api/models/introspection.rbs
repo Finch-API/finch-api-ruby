@@ -157,9 +157,17 @@ module FinchAPI
       end
 
       type connection_status =
-        { message: String, status: FinchAPI::Models::connection_status_type }
+        {
+          last_successful_sync: Time,
+          message: String,
+          status: FinchAPI::Models::connection_status_type
+        }
 
       class ConnectionStatus < FinchAPI::BaseModel
+        attr_reader last_successful_sync: Time?
+
+        def last_successful_sync=: (Time) -> Time
+
         attr_reader message: String?
 
         def message=: (String) -> String
@@ -171,6 +179,7 @@ module FinchAPI
         ) -> FinchAPI::Models::connection_status_type
 
         def initialize: (
+          ?last_successful_sync: Time,
           ?message: String,
           ?status: FinchAPI::Models::connection_status_type
         ) -> void
