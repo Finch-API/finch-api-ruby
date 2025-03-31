@@ -15,7 +15,7 @@ The underlying REST API documentation can be found on [developer.tryfinch.com](h
 To use this gem, install via Bundler by adding the following to your application's `Gemfile`:
 
 ```ruby
-gem "finch-api", "~> 0.1.0.pre.alpha.4"
+gem "finch-api", "~> 0.1.0.pre.alpha.5"
 ```
 
 To fetch an initial copy of the gem:
