@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       class EmploymentRetrieveManyParams < FinchAPI::BaseModel
-        extend FinchAPI::RequestParameters::Converter
+        extend FinchAPI::Type::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
         # The array of batch requests.

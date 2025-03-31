@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.0-alpha.5 (2025-03-31)
+
+Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
+
+### Chores
+
+* **internal:** version bump ([#80](https://github.com/Finch-API/finch-api-ruby/issues/80)) ([9dc9569](https://github.com/Finch-API/finch-api-ruby/commit/9dc9569385307fa31597a0da5ca0f5819925b3f7))
+* more accurate type annotations for SDK internals ([#83](https://github.com/Finch-API/finch-api-ruby/issues/83)) ([9cfaabd](https://github.com/Finch-API/finch-api-ruby/commit/9cfaabdde3e58f17d09edbc304f3810618d722af))
+* relocate internal modules ([#82](https://github.com/Finch-API/finch-api-ruby/issues/82)) ([899a7c0](https://github.com/Finch-API/finch-api-ruby/commit/899a7c0fdf4968dcc552fb5dedfb0c5809562b06))
+* update readme ([#84](https://github.com/Finch-API/finch-api-ruby/issues/84)) ([e868827](https://github.com/Finch-API/finch-api-ruby/commit/e868827d1be8683eaa7fb677e32dd189b2ec08c3))
+
 ## 0.1.0-alpha.4 (2025-03-31)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)

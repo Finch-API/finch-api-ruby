@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Sandbox
       class ConnectionCreateParams < FinchAPI::BaseModel
-        extend FinchAPI::RequestParameters::Converter
+        extend FinchAPI::Type::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
         # The provider associated with the connection

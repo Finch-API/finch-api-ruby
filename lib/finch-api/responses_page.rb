@@ -23,14 +23,14 @@ module FinchAPI
   #
   #   individuals => Array
   class ResponsesPage
-    include FinchAPI::BasePage
+    include FinchAPI::Type::BasePage
 
     # @return [Array<Object>, nil]
     attr_accessor :responses
 
     # @api private
     #
-    # @param client [FinchAPI::BaseClient]
+    # @param client [FinchAPI::Transport::BaseClient]
     # @param req [Hash{Symbol=>Object}]
     # @param headers [Hash{String=>String}, Net::HTTPHeader]
     # @param page_data [Array<Object>]
@@ -40,7 +40,7 @@ module FinchAPI
 
       case page_data
       in {responses: Array | nil => responses}
-        @responses = responses&.map { FinchAPI::Converter.coerce(model, _1) }
+        @responses = responses&.map { FinchAPI::Type::Converter.coerce(model, _1) }
       else
       end
     end

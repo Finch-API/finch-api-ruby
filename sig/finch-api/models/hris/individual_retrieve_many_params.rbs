@@ -9,7 +9,7 @@ module FinchAPI
         & FinchAPI::request_parameters
 
       class IndividualRetrieveManyParams < FinchAPI::BaseModel
-        extend FinchAPI::RequestParameters::Converter
+        extend FinchAPI::Type::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
         attr_accessor options: FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options?

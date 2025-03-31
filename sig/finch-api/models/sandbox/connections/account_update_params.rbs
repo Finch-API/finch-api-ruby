@@ -7,7 +7,7 @@ module FinchAPI
           & FinchAPI::request_parameters
 
         class AccountUpdateParams < FinchAPI::BaseModel
-          extend FinchAPI::RequestParameters::Converter
+          extend FinchAPI::Type::RequestParameters::Converter
           include FinchAPI::RequestParameters
 
           attr_reader connection_status: FinchAPI::Models::connection_status_type?

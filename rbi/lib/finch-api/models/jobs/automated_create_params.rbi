@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Jobs
       class AutomatedCreateParams < FinchAPI::BaseModel
-        extend FinchAPI::RequestParameters::Converter
+        extend FinchAPI::Type::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
         # The type of job to start.
