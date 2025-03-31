@@ -253,6 +253,16 @@ module FinchAPI
       end
 
       class ConnectionStatus < FinchAPI::BaseModel
+        # @!attribute [r] last_successful_sync
+        #   The datetime when the connection was last successfully synced.
+        #
+        #   @return [Time, nil]
+        optional :last_successful_sync, Time
+
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :last_successful_sync
+
         # @!attribute [r] message
         #
         #   @return [String, nil]
@@ -272,10 +282,11 @@ module FinchAPI
         #   attr_writer :status
 
         # @!parse
+        #   # @param last_successful_sync [Time]
         #   # @param message [String]
         #   # @param status [Symbol, FinchAPI::Models::ConnectionStatusType]
         #   #
-        #   def initialize(message: nil, status: nil, **) = super
+        #   def initialize(last_successful_sync: nil, message: nil, status: nil, **) = super
 
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
       end
