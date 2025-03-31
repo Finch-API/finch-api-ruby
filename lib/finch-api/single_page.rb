@@ -23,11 +23,11 @@ module FinchAPI
   #
   #   payments => Array
   class SinglePage < ::Array
-    include FinchAPI::BasePage
+    include FinchAPI::Type::BasePage
 
     # @api private
     #
-    # @param client [FinchAPI::BaseClient]
+    # @param client [FinchAPI::Transport::BaseClient]
     # @param req [Hash{Symbol=>Object}]
     # @param headers [Hash{String=>String}, Net::HTTPHeader]
     # @param page_data [Array<Object>]
@@ -37,7 +37,7 @@ module FinchAPI
 
       case page_data
       in Array
-        replace(page_data.map { FinchAPI::Converter.coerce(model, _1) })
+        replace(page_data.map { FinchAPI::Type::Converter.coerce(model, _1) })
       else
       end
     end

@@ -11,7 +11,7 @@ module FinchAPI
         & FinchAPI::request_parameters
 
       class DocumentListParams < FinchAPI::BaseModel
-        extend FinchAPI::RequestParameters::Converter
+        extend FinchAPI::Type::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
         attr_reader individual_ids: ::Array[String]?

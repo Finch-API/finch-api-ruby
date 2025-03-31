@@ -25,7 +25,7 @@ module FinchAPI
         & FinchAPI::request_parameters
 
       class EmploymentUpdateParams < FinchAPI::BaseModel
-        extend FinchAPI::RequestParameters::Converter
+        extend FinchAPI::Type::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
         attr_accessor class_code: String?

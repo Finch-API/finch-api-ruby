@@ -4,7 +4,7 @@ module FinchAPI
       type document_retreive_params = {  } & FinchAPI::request_parameters
 
       class DocumentRetreiveParams < FinchAPI::BaseModel
-        extend FinchAPI::RequestParameters::Converter
+        extend FinchAPI::Type::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
         def initialize: (?request_options: FinchAPI::request_opts) -> void

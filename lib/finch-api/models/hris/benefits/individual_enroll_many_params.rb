@@ -6,7 +6,7 @@ module FinchAPI
       module Benefits
         class IndividualEnrollManyParams < FinchAPI::BaseModel
           # @!parse
-          #   extend FinchAPI::RequestParameters::Converter
+          #   extend FinchAPI::Type::RequestParameters::Converter
           include FinchAPI::RequestParameters
 
           # @!attribute [r] individuals

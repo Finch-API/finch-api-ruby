@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Sandbox
       class DirectoryCreateParams < FinchAPI::BaseModel
-        extend FinchAPI::RequestParameters::Converter
+        extend FinchAPI::Type::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
         # Array of individuals to create. Takes all combined fields from `/individual` and

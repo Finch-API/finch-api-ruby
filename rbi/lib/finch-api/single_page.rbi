@@ -2,7 +2,7 @@
 
 module FinchAPI
   class SinglePage < ::Array
-    include FinchAPI::BasePage
+    include FinchAPI::Type::BasePage
 
     Elem = type_member
 

@@ -5,7 +5,7 @@ module FinchAPI
     module HRIS
       class DirectoryListParams < FinchAPI::BaseModel
         # @!parse
-        #   extend FinchAPI::RequestParameters::Converter
+        #   extend FinchAPI::Type::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
         # @!attribute [r] limit
