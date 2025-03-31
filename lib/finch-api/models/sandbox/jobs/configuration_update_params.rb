@@ -6,7 +6,7 @@ module FinchAPI
       module Jobs
         class ConfigurationUpdateParams < FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration
           # @!parse
-          #   extend FinchAPI::RequestParameters::Converter
+          #   extend FinchAPI::Type::RequestParameters::Converter
           include FinchAPI::RequestParameters
 
           # @!parse

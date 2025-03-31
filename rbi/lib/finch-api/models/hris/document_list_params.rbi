@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       class DocumentListParams < FinchAPI::BaseModel
-        extend FinchAPI::RequestParameters::Converter
+        extend FinchAPI::Type::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
         # Comma-delimited list of stable Finch uuids for each individual. If empty,

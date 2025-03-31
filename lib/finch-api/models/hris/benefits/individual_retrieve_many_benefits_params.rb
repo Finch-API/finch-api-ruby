@@ -6,7 +6,7 @@ module FinchAPI
       module Benefits
         class IndividualRetrieveManyBenefitsParams < FinchAPI::BaseModel
           # @!parse
-          #   extend FinchAPI::RequestParameters::Converter
+          #   extend FinchAPI::Type::RequestParameters::Converter
           include FinchAPI::RequestParameters
 
           # @!attribute [r] individual_ids

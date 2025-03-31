@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Jobs
       class AutomatedListParams < FinchAPI::BaseModel
-        extend FinchAPI::RequestParameters::Converter
+        extend FinchAPI::Type::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
         # Number of items to return

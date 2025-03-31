@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       class BenefitListParams < FinchAPI::BaseModel
-        extend FinchAPI::RequestParameters::Converter
+        extend FinchAPI::Type::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
         sig do

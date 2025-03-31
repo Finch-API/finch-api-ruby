@@ -5,7 +5,7 @@ module FinchAPI
     module HRIS
       module Benefits
         class IndividualRetrieveManyBenefitsParams < FinchAPI::BaseModel
-          extend FinchAPI::RequestParameters::Converter
+          extend FinchAPI::Type::RequestParameters::Converter
           include FinchAPI::RequestParameters
 
           # comma-delimited list of stable Finch uuids for each individual. If empty,

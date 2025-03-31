@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       class CompanyRetrieveParams < FinchAPI::BaseModel
-        extend FinchAPI::RequestParameters::Converter
+        extend FinchAPI::Type::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
         sig do

@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       class BenefitUpdateParams < FinchAPI::BaseModel
-        extend FinchAPI::RequestParameters::Converter
+        extend FinchAPI::Type::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
         # Updated name or description.

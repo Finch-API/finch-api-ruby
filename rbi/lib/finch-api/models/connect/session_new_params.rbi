@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Connect
       class SessionNewParams < FinchAPI::BaseModel
-        extend FinchAPI::RequestParameters::Converter
+        extend FinchAPI::Type::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
         sig { returns(String) }

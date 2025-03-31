@@ -5,7 +5,7 @@ module FinchAPI
     module HRIS
       module Benefits
         class IndividualUnenrollManyParams < FinchAPI::BaseModel
-          extend FinchAPI::RequestParameters::Converter
+          extend FinchAPI::Type::RequestParameters::Converter
           include FinchAPI::RequestParameters
 
           # Array of individual_ids to unenroll.

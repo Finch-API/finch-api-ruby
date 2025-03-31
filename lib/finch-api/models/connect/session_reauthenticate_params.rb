@@ -5,7 +5,7 @@ module FinchAPI
     module Connect
       class SessionReauthenticateParams < FinchAPI::BaseModel
         # @!parse
-        #   extend FinchAPI::RequestParameters::Converter
+        #   extend FinchAPI::Type::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
         # @!attribute connection_id

@@ -1,6 +1,6 @@
 module FinchAPI
   class SinglePage[Elem] < ::Array[Elem]
-    include FinchAPI::BasePage[Elem]
+    include FinchAPI::Type::BasePage[Elem]
 
     def next_page?: -> bool
 

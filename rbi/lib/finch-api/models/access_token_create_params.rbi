@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     class AccessTokenCreateParams < FinchAPI::BaseModel
-      extend FinchAPI::RequestParameters::Converter
+      extend FinchAPI::Type::RequestParameters::Converter
       include FinchAPI::RequestParameters
 
       sig { returns(String) }

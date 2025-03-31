@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       class BenefitCreateParams < FinchAPI::BaseModel
-        extend FinchAPI::RequestParameters::Converter
+        extend FinchAPI::Type::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
         # Name of the benefit as it appears in the provider and pay statements. Recommend

@@ -8,7 +8,7 @@ module FinchAPI
         & FinchAPI::request_parameters
 
       class EmploymentRetrieveManyParams < FinchAPI::BaseModel
-        extend FinchAPI::RequestParameters::Converter
+        extend FinchAPI::Type::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
         attr_accessor requests: ::Array[FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request]
