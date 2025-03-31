@@ -3,7 +3,7 @@ module FinchAPI
     type account_disconnect_params = {  } & FinchAPI::request_parameters
 
     class AccountDisconnectParams < FinchAPI::BaseModel
-      extend FinchAPI::RequestParameters::Converter
+      extend FinchAPI::Type::RequestParameters::Converter
       include FinchAPI::RequestParameters
 
       def initialize: (?request_options: FinchAPI::request_opts) -> void

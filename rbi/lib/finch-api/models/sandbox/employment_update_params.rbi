@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Sandbox
       class EmploymentUpdateParams < FinchAPI::BaseModel
-        extend FinchAPI::RequestParameters::Converter
+        extend FinchAPI::Type::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
         # Worker's compensation classification code for this employee

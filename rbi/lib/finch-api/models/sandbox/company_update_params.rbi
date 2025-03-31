@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Sandbox
       class CompanyUpdateParams < FinchAPI::BaseModel
-        extend FinchAPI::RequestParameters::Converter
+        extend FinchAPI::Type::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
         # An array of bank account objects associated with the payroll/HRIS system.

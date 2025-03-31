@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Sandbox
       class PaymentCreateParams < FinchAPI::BaseModel
-        extend FinchAPI::RequestParameters::Converter
+        extend FinchAPI::Type::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
         sig { returns(T.nilable(String)) }

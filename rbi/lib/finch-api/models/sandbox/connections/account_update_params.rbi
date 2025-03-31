@@ -5,7 +5,7 @@ module FinchAPI
     module Sandbox
       module Connections
         class AccountUpdateParams < FinchAPI::BaseModel
-          extend FinchAPI::RequestParameters::Converter
+          extend FinchAPI::Type::RequestParameters::Converter
           include FinchAPI::RequestParameters
 
           sig { returns(T.nilable(FinchAPI::Models::ConnectionStatusType::OrSymbol)) }

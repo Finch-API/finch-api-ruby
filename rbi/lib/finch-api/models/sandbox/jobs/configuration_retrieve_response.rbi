@@ -5,7 +5,10 @@ module FinchAPI
     module Sandbox
       module Jobs
         ConfigurationRetrieveResponse =
-          T.let(FinchAPI::ArrayOf[FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration], FinchAPI::Converter)
+          T.let(
+            FinchAPI::ArrayOf[FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration],
+            FinchAPI::Type::Converter
+          )
       end
     end
   end

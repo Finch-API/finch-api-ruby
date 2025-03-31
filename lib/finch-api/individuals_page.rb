@@ -23,7 +23,7 @@ module FinchAPI
   #
   #   directories => Array
   class IndividualsPage
-    include FinchAPI::BasePage
+    include FinchAPI::Type::BasePage
 
     # @return [Array<Object>, nil]
     attr_accessor :individuals
@@ -33,7 +33,7 @@ module FinchAPI
 
     # @api private
     #
-    # @param client [FinchAPI::BaseClient]
+    # @param client [FinchAPI::Transport::BaseClient]
     # @param req [Hash{Symbol=>Object}]
     # @param headers [Hash{String=>String}, Net::HTTPHeader]
     # @param page_data [Hash{Symbol=>Object}]
@@ -43,13 +43,13 @@ module FinchAPI
 
       case page_data
       in {individuals: Array | nil => individuals}
-        @individuals = individuals&.map { FinchAPI::Converter.coerce(model, _1) }
+        @individuals = individuals&.map { FinchAPI::Type::Converter.coerce(model, _1) }
       else
       end
 
       case page_data
       in {paging: Hash | nil => paging}
-        @paging = FinchAPI::Converter.coerce(FinchAPI::Models::Paging, paging)
+        @paging = FinchAPI::Type::Converter.coerce(FinchAPI::Models::Paging, paging)
       else
       end
     end

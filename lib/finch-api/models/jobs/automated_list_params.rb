@@ -5,7 +5,7 @@ module FinchAPI
     module Jobs
       class AutomatedListParams < FinchAPI::BaseModel
         # @!parse
-        #   extend FinchAPI::RequestParameters::Converter
+        #   extend FinchAPI::Type::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
         # @!attribute [r] limit

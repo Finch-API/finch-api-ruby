@@ -5,7 +5,7 @@ module FinchAPI
     module HRIS
       module Benefits
         class IndividualEnrolledIDsParams < FinchAPI::BaseModel
-          extend FinchAPI::RequestParameters::Converter
+          extend FinchAPI::Type::RequestParameters::Converter
           include FinchAPI::RequestParameters
 
           sig do

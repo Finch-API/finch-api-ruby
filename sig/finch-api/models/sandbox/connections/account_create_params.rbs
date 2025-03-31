@@ -12,7 +12,7 @@ module FinchAPI
           & FinchAPI::request_parameters
 
         class AccountCreateParams < FinchAPI::BaseModel
-          extend FinchAPI::RequestParameters::Converter
+          extend FinchAPI::Type::RequestParameters::Converter
           include FinchAPI::RequestParameters
 
           attr_accessor company_id: String

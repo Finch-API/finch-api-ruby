@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     class RequestForwardingForwardParams < FinchAPI::BaseModel
       # @!parse
-      #   extend FinchAPI::RequestParameters::Converter
+      #   extend FinchAPI::Type::RequestParameters::Converter
       include FinchAPI::RequestParameters
 
       # @!attribute method_

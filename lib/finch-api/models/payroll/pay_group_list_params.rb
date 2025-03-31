@@ -5,7 +5,7 @@ module FinchAPI
     module Payroll
       class PayGroupListParams < FinchAPI::BaseModel
         # @!parse
-        #   extend FinchAPI::RequestParameters::Converter
+        #   extend FinchAPI::Type::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
         # @!attribute [r] individual_id

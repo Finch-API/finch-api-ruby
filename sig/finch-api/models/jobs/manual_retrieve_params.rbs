@@ -4,7 +4,7 @@ module FinchAPI
       type manual_retrieve_params = {  } & FinchAPI::request_parameters
 
       class ManualRetrieveParams < FinchAPI::BaseModel
-        extend FinchAPI::RequestParameters::Converter
+        extend FinchAPI::Type::RequestParameters::Converter
         include FinchAPI::RequestParameters
 
         def initialize: (?request_options: FinchAPI::request_opts) -> void
