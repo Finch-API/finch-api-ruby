@@ -265,6 +265,13 @@ module FinchAPI
       end
 
       class ConnectionStatus < FinchAPI::BaseModel
+        # The datetime when the connection was last successfully synced.
+        sig { returns(T.nilable(Time)) }
+        attr_reader :last_successful_sync
+
+        sig { params(last_successful_sync: Time).void }
+        attr_writer :last_successful_sync
+
         sig { returns(T.nilable(String)) }
         attr_reader :message
 
@@ -278,12 +285,22 @@ module FinchAPI
         attr_writer :status
 
         sig do
-          params(message: String, status: FinchAPI::Models::ConnectionStatusType::OrSymbol).returns(T.attached_class)
+          params(
+            last_successful_sync: Time,
+            message: String,
+            status: FinchAPI::Models::ConnectionStatusType::OrSymbol
+          )
+            .returns(T.attached_class)
         end
-        def self.new(message: nil, status: nil)
+        def self.new(last_successful_sync: nil, message: nil, status: nil)
         end
 
-        sig { override.returns({message: String, status: FinchAPI::Models::ConnectionStatusType::TaggedSymbol}) }
+        sig do
+          override
+            .returns(
+              {last_successful_sync: Time, message: String, status: FinchAPI::Models::ConnectionStatusType::TaggedSymbol}
+            )
+        end
         def to_hash
         end
       end
