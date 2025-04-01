@@ -81,6 +81,7 @@ module FinchAPI
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::TaggedSymbol
                 )
               end

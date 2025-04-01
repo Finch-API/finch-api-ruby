@@ -232,7 +232,7 @@ module FinchAPI
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::Introspection::AuthenticationMethod::Type) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, FinchAPI::Models::Introspection::AuthenticationMethod::Type::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Introspection::AuthenticationMethod::Type::TaggedSymbol) }
 
           ASSISTED = T.let(:assisted, FinchAPI::Models::Introspection::AuthenticationMethod::Type::TaggedSymbol)
           CREDENTIAL =
@@ -253,7 +253,8 @@ module FinchAPI
         extend FinchAPI::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Introspection::ClientType) }
-        OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::Introspection::ClientType::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, FinchAPI::Models::Introspection::ClientType::TaggedSymbol) }
 
         PRODUCTION = T.let(:production, FinchAPI::Models::Introspection::ClientType::TaggedSymbol)
         DEVELOPMENT = T.let(:development, FinchAPI::Models::Introspection::ClientType::TaggedSymbol)
@@ -313,7 +314,8 @@ module FinchAPI
         extend FinchAPI::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Introspection::ConnectionType) }
-        OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::Introspection::ConnectionType::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, FinchAPI::Models::Introspection::ConnectionType::TaggedSymbol) }
 
         PROVIDER = T.let(:provider, FinchAPI::Models::Introspection::ConnectionType::TaggedSymbol)
         FINCH = T.let(:finch, FinchAPI::Models::Introspection::ConnectionType::TaggedSymbol)

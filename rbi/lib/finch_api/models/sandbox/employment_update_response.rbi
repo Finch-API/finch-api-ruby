@@ -275,7 +275,13 @@ module FinchAPI
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::Subtype) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::Subtype::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::Subtype::TaggedSymbol
+                )
+              end
 
             FULL_TIME =
               T.let(:full_time, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::Subtype::TaggedSymbol)
@@ -308,7 +314,7 @@ module FinchAPI
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::Type) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::Type::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::Type::TaggedSymbol) }
 
             EMPLOYEE =
               T.let(:employee, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::Type::TaggedSymbol)
@@ -331,7 +337,7 @@ module FinchAPI
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::EmploymentStatus) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::EmploymentStatus::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::EmploymentStatus::TaggedSymbol) }
 
           ACTIVE =
             T.let(:active, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::EmploymentStatus::TaggedSymbol)

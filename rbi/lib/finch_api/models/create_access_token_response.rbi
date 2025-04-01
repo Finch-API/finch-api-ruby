@@ -107,7 +107,7 @@ module FinchAPI
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::CreateAccessTokenResponse::ClientType) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol) }
 
         PRODUCTION = T.let(:production, FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol)
         DEVELOPMENT = T.let(:development, FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol)
@@ -128,7 +128,7 @@ module FinchAPI
         TaggedSymbol =
           T.type_alias { T.all(Symbol, FinchAPI::Models::CreateAccessTokenResponse::ConnectionType) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol) }
 
         PROVIDER = T.let(:provider, FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol)
         FINCH = T.let(:finch, FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol)

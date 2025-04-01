@@ -58,7 +58,8 @@ module FinchAPI
         extend FinchAPI::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::EmploymentEvent::EventType) }
-        OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::EmploymentEvent::EventType::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, FinchAPI::Models::EmploymentEvent::EventType::TaggedSymbol) }
 
         EMPLOYMENT_CREATED =
           T.let(:"employment.created", FinchAPI::Models::EmploymentEvent::EventType::TaggedSymbol)

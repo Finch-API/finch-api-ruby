@@ -115,7 +115,8 @@ module FinchAPI
             extend FinchAPI::Enum
 
             TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::W42005::Data::Exemption) }
-            OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::W42005::Data::Exemption::TaggedSymbol) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::W42005::Data::Exemption::TaggedSymbol) }
 
             EXEMPT = T.let(:exempt, FinchAPI::Models::HRIS::W42005::Data::Exemption::TaggedSymbol)
             NON_EXEMPT = T.let(:non_exempt, FinchAPI::Models::HRIS::W42005::Data::Exemption::TaggedSymbol)
@@ -131,7 +132,7 @@ module FinchAPI
 
             TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::W42005::Data::FilingStatus) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::W42005::Data::FilingStatus::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::W42005::Data::FilingStatus::TaggedSymbol) }
 
             MARRIED = T.let(:married, FinchAPI::Models::HRIS::W42005::Data::FilingStatus::TaggedSymbol)
             MARRIED_BUT_WITHHOLD_AT_HIGHER_SINGLE_RATE =
@@ -152,7 +153,7 @@ module FinchAPI
           extend FinchAPI::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::W42005::Type) }
-          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::W42005::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::W42005::Type::TaggedSymbol) }
 
           W4_2005 = T.let(:w4_2005, FinchAPI::Models::HRIS::W42005::Type::TaggedSymbol)
 

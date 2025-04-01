@@ -167,7 +167,7 @@ module FinchAPI
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateResponse::Email::Type) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateResponse::Email::Type::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, FinchAPI::Models::Sandbox::IndividualUpdateResponse::Email::Type::TaggedSymbol) }
 
             WORK = T.let(:work, FinchAPI::Models::Sandbox::IndividualUpdateResponse::Email::Type::TaggedSymbol)
             PERSONAL =
@@ -186,7 +186,7 @@ module FinchAPI
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateResponse::Ethnicity) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateResponse::Ethnicity::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Sandbox::IndividualUpdateResponse::Ethnicity::TaggedSymbol) }
 
           ASIAN = T.let(:asian, FinchAPI::Models::Sandbox::IndividualUpdateResponse::Ethnicity::TaggedSymbol)
           WHITE = T.let(:white, FinchAPI::Models::Sandbox::IndividualUpdateResponse::Ethnicity::TaggedSymbol)
@@ -224,7 +224,7 @@ module FinchAPI
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateResponse::Gender) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateResponse::Gender::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Sandbox::IndividualUpdateResponse::Gender::TaggedSymbol) }
 
           FEMALE = T.let(:female, FinchAPI::Models::Sandbox::IndividualUpdateResponse::Gender::TaggedSymbol)
           MALE = T.let(:male, FinchAPI::Models::Sandbox::IndividualUpdateResponse::Gender::TaggedSymbol)
@@ -272,7 +272,13 @@ module FinchAPI
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber::Type) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber::Type::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber::Type::TaggedSymbol
+                )
+              end
 
             WORK = T.let(:work, FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber::Type::TaggedSymbol)
             PERSONAL =

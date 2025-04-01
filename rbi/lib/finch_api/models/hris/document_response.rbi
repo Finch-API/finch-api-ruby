@@ -68,7 +68,8 @@ module FinchAPI
           extend FinchAPI::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::DocumentResponse::Type) }
-          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol) }
 
           W4_2020 = T.let(:w4_2020, FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol)
           W4_2005 = T.let(:w4_2005, FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol)

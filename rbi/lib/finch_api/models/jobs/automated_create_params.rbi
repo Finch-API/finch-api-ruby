@@ -47,7 +47,7 @@ module FinchAPI
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Jobs::AutomatedCreateParams::Type) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, FinchAPI::Models::Jobs::AutomatedCreateParams::Type::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Jobs::AutomatedCreateParams::Type::TaggedSymbol) }
 
           W4_FORM_EMPLOYEE_SYNC =
             T.let(:w4_form_employee_sync, FinchAPI::Models::Jobs::AutomatedCreateParams::Type::TaggedSymbol)
