@@ -16,7 +16,7 @@ require "minitest/hooks/test"
 require "minitest/proveit"
 require "minitest/rg"
 
-require_relative "../../lib/finch-api"
+require_relative "../../lib/finch_api"
 require_relative "resource_namespaces"
 
 module Kernel

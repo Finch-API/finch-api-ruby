@@ -87,9 +87,9 @@ multitask(typecheck: [:steep, :sorbet])
 multitask(lint: [:rubocop, :typecheck])
 
 multitask(:build) do
-  sh(*%w[gem build -- finch-api.gemspec])
+  sh(*%w[gem build -- finch_api.gemspec])
 end
 
 multitask(release: [:build]) do
-  sh(*%w[gem push], *FileList["finch-api-*.gem"])
+  sh(*%w[gem push], *FileList["finch_api-*.gem"])
 end
