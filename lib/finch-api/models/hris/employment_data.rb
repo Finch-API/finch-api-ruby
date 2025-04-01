@@ -210,6 +210,7 @@ module FinchAPI
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
         end
 
+        # @see FinchAPI::Models::HRIS::EmploymentData#department
         class Department < FinchAPI::BaseModel
           # @!attribute name
           #   The name of the department associated with the individual.
@@ -227,6 +228,7 @@ module FinchAPI
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
         end
 
+        # @see FinchAPI::Models::HRIS::EmploymentData#employment
         class Employment < FinchAPI::BaseModel
           # @!attribute subtype
           #   The secondary employment type of the individual. Options: `full_time`,
@@ -253,6 +255,8 @@ module FinchAPI
 
           # The secondary employment type of the individual. Options: `full_time`,
           #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
+          #
+          # @see FinchAPI::Models::HRIS::EmploymentData::Employment#subtype
           module Subtype
             extend FinchAPI::Enum
 
@@ -271,6 +275,8 @@ module FinchAPI
           end
 
           # The main employment type of the individual.
+          #
+          # @see FinchAPI::Models::HRIS::EmploymentData::Employment#type
           module Type
             extend FinchAPI::Enum
 
@@ -287,6 +293,8 @@ module FinchAPI
 
         # The detailed employment status of the individual. Available options: `active`,
         #   `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
+        #
+        # @see FinchAPI::Models::HRIS::EmploymentData#employment_status
         module EmploymentStatus
           extend FinchAPI::Enum
 
@@ -305,6 +313,7 @@ module FinchAPI
           #   def self.values; end
         end
 
+        # @see FinchAPI::Models::HRIS::EmploymentData#manager
         class Manager < FinchAPI::BaseModel
           # @!attribute [r] id
           #   A stable Finch `id` (UUID v4) for an individual in the company.

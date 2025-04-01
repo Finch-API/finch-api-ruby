@@ -2,6 +2,7 @@
 
 module FinchAPI
   module Models
+    # @see FinchAPI::Resources::Account#introspect
     class AccountIntrospectParams < FinchAPI::BaseModel
       # @!parse
       #   extend FinchAPI::Type::RequestParameters::Converter

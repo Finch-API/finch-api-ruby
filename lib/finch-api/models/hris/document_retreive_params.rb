@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
+      # @see FinchAPI::Resources::HRIS::Documents#retreive
       class DocumentRetreiveParams < FinchAPI::BaseModel
         # @!parse
         #   extend FinchAPI::Type::RequestParameters::Converter

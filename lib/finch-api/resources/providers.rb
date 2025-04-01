@@ -10,6 +10,8 @@ module FinchAPI
       #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [FinchAPI::SinglePage<FinchAPI::Models::Provider>]
+      #
+      # @see FinchAPI::Models::ProviderListParams
       def list(params = {})
         @client.request(
           method: :get,
@@ -20,6 +22,8 @@ module FinchAPI
         )
       end
 
+      # @api private
+      #
       # @param client [FinchAPI::Client]
       def initialize(client:)
         @client = client

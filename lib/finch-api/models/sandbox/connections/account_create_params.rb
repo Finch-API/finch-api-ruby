@@ -4,6 +4,7 @@ module FinchAPI
   module Models
     module Sandbox
       module Connections
+        # @see FinchAPI::Resources::Sandbox::Connections::Accounts#create
         class AccountCreateParams < FinchAPI::BaseModel
           # @!parse
           #   extend FinchAPI::Type::RequestParameters::Converter

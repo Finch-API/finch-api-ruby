@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module Sandbox
+      # @see FinchAPI::Resources::Sandbox::Directory#create
       class DirectoryCreateParams < FinchAPI::BaseModel
         # @!parse
         #   extend FinchAPI::Type::RequestParameters::Converter
@@ -300,6 +301,7 @@ module FinchAPI
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
           end
 
+          # @see FinchAPI::Models::Sandbox::DirectoryCreateParams::Body#department
           class Department < FinchAPI::BaseModel
             # @!attribute name
             #   The name of the department associated with the individual.
@@ -342,6 +344,7 @@ module FinchAPI
 
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+            # @see FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email#type
             module Type
               extend FinchAPI::Enum
 
@@ -356,6 +359,7 @@ module FinchAPI
             end
           end
 
+          # @see FinchAPI::Models::Sandbox::DirectoryCreateParams::Body#employment
           class Employment < FinchAPI::BaseModel
             # @!attribute subtype
             #   The secondary employment type of the individual. Options: `full_time`,
@@ -386,6 +390,8 @@ module FinchAPI
 
             # The secondary employment type of the individual. Options: `full_time`,
             #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
+            #
+            # @see FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment#subtype
             module Subtype
               extend FinchAPI::Enum
 
@@ -404,6 +410,8 @@ module FinchAPI
             end
 
             # The main employment type of the individual.
+            #
+            # @see FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment#type
             module Type
               extend FinchAPI::Enum
 
@@ -419,6 +427,8 @@ module FinchAPI
           end
 
           # The detailed employment status of the individual.
+          #
+          # @see FinchAPI::Models::Sandbox::DirectoryCreateParams::Body#employment_status
           module EmploymentStatus
             extend FinchAPI::Enum
 
@@ -438,6 +448,8 @@ module FinchAPI
           end
 
           # The EEOC-defined ethnicity of the individual.
+          #
+          # @see FinchAPI::Models::Sandbox::DirectoryCreateParams::Body#ethnicity
           module Ethnicity
             extend FinchAPI::Enum
 
@@ -458,6 +470,8 @@ module FinchAPI
           end
 
           # The gender of the individual.
+          #
+          # @see FinchAPI::Models::Sandbox::DirectoryCreateParams::Body#gender
           module Gender
             extend FinchAPI::Enum
 
@@ -473,6 +487,7 @@ module FinchAPI
             #   def self.values; end
           end
 
+          # @see FinchAPI::Models::Sandbox::DirectoryCreateParams::Body#manager
           class Manager < FinchAPI::BaseModel
             # @!attribute [r] id
             #   A stable Finch `id` (UUID v4) for an individual in the company.
@@ -515,6 +530,7 @@ module FinchAPI
 
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+            # @see FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber#type
             module Type
               extend FinchAPI::Enum
 

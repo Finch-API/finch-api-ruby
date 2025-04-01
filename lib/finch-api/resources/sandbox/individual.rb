@@ -42,6 +42,8 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::Models::Sandbox::IndividualUpdateResponse]
+        #
+        # @see FinchAPI::Models::Sandbox::IndividualUpdateParams
         def update(individual_id, params = {})
           parsed, options = FinchAPI::Models::Sandbox::IndividualUpdateParams.dump_request(params)
           @client.request(
@@ -53,6 +55,8 @@ module FinchAPI
           )
         end
 
+        # @api private
+        #
         # @param client [FinchAPI::Client]
         def initialize(client:)
           @client = client

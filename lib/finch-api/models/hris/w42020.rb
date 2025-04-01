@@ -42,6 +42,7 @@ module FinchAPI
 
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+        # @see FinchAPI::Models::HRIS::W42020#data
         class Data < FinchAPI::BaseModel
           # @!attribute amount_for_other_dependents
           #   Amount claimed for dependents other than qualifying children under 17 (in
@@ -125,6 +126,8 @@ module FinchAPI
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
           # The individual's filing status for tax purposes.
+          #
+          # @see FinchAPI::Models::HRIS::W42020::Data#filing_status
           module FilingStatus
             extend FinchAPI::Enum
 
@@ -142,6 +145,8 @@ module FinchAPI
         end
 
         # Specifies the form type, indicating that this document is a 2020 W4 form.
+        #
+        # @see FinchAPI::Models::HRIS::W42020#type
         module Type
           extend FinchAPI::Enum
 

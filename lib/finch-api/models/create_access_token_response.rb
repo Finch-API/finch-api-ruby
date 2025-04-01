@@ -104,6 +104,8 @@ module FinchAPI
       # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
       # The type of application associated with a token.
+      #
+      # @see FinchAPI::Models::CreateAccessTokenResponse#client_type
       module ClientType
         extend FinchAPI::Enum
 
@@ -122,6 +124,8 @@ module FinchAPI
       #
       #   - `provider` - connection to an external provider
       #   - `finch` - finch-generated data.
+      #
+      # @see FinchAPI::Models::CreateAccessTokenResponse#connection_type
       module ConnectionType
         extend FinchAPI::Enum
 

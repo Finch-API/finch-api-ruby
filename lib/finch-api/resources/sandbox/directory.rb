@@ -14,6 +14,8 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Array<Object>]
+        #
+        # @see FinchAPI::Models::Sandbox::DirectoryCreateParams
         def create(params = {})
           parsed, options = FinchAPI::Models::Sandbox::DirectoryCreateParams.dump_request(params)
           @client.request(
@@ -25,6 +27,8 @@ module FinchAPI
           )
         end
 
+        # @api private
+        #
         # @param client [FinchAPI::Client]
         def initialize(client:)
           @client = client

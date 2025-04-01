@@ -76,6 +76,7 @@ module FinchAPI
 
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+        # @see FinchAPI::Models::Jobs::AutomatedAsyncJob#params
         class Params < FinchAPI::BaseModel
           # @!attribute [r] individual_id
           #   The ID of the individual that the job was completed for.
@@ -97,6 +98,7 @@ module FinchAPI
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
         end
 
+        # @see FinchAPI::Models::Jobs::AutomatedAsyncJob#status
         module Status
           extend FinchAPI::Enum
 
@@ -115,6 +117,8 @@ module FinchAPI
         end
 
         # The type of automated job
+        #
+        # @see FinchAPI::Models::Jobs::AutomatedAsyncJob#type
         module Type
           extend FinchAPI::Enum
 

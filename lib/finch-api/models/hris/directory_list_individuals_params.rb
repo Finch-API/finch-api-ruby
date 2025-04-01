@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
+      # @see FinchAPI::Resources::HRIS::Directory#list_individuals
       class DirectoryListIndividualsParams < FinchAPI::BaseModel
         # @!parse
         #   extend FinchAPI::Type::RequestParameters::Converter

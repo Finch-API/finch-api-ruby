@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module Sandbox
+      # @see FinchAPI::Resources::Sandbox::Individual#update
       class IndividualUpdateParams < FinchAPI::BaseModel
         # @!parse
         #   extend FinchAPI::Type::RequestParameters::Converter
@@ -144,6 +145,7 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+          # @see FinchAPI::Models::Sandbox::IndividualUpdateParams::Email#type
           module Type
             extend FinchAPI::Enum
 
@@ -215,6 +217,7 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+          # @see FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber#type
           module Type
             extend FinchAPI::Enum
 

@@ -21,6 +21,8 @@ module FinchAPI
           #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [FinchAPI::Models::Sandbox::Connections::AccountCreateResponse]
+          #
+          # @see FinchAPI::Models::Sandbox::Connections::AccountCreateParams
           def create(params)
             parsed, options = FinchAPI::Models::Sandbox::Connections::AccountCreateParams.dump_request(params)
             @client.request(
@@ -42,6 +44,8 @@ module FinchAPI
           #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse]
+          #
+          # @see FinchAPI::Models::Sandbox::Connections::AccountUpdateParams
           def update(params = {})
             parsed, options = FinchAPI::Models::Sandbox::Connections::AccountUpdateParams.dump_request(params)
             @client.request(
@@ -53,6 +57,8 @@ module FinchAPI
             )
           end
 
+          # @api private
+          #
           # @param client [FinchAPI::Client]
           def initialize(client:)
             @client = client

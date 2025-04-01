@@ -12,6 +12,8 @@ module FinchAPI
           #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Array<FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration>]
+          #
+          # @see FinchAPI::Models::Sandbox::Jobs::ConfigurationRetrieveParams
           def retrieve(params = {})
             @client.request(
               method: :get,
@@ -32,6 +34,8 @@ module FinchAPI
           #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration]
+          #
+          # @see FinchAPI::Models::Sandbox::Jobs::ConfigurationUpdateParams
           def update(params)
             parsed, options = FinchAPI::Models::Sandbox::Jobs::ConfigurationUpdateParams.dump_request(params)
             @client.request(
@@ -43,6 +47,8 @@ module FinchAPI
             )
           end
 
+          # @api private
+          #
           # @param client [FinchAPI::Client]
           def initialize(client:)
             @client = client

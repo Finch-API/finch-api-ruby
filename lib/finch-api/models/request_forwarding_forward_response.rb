@@ -42,6 +42,7 @@ module FinchAPI
 
       # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+      # @see FinchAPI::Models::RequestForwardingForwardResponse#request
       class Request < FinchAPI::BaseModel
         # @!attribute data
         #   The body that was specified for the forwarded request. If a value was not

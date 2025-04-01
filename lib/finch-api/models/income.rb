@@ -44,6 +44,8 @@ module FinchAPI
 
       # The income unit of payment. Options: `yearly`, `quarterly`, `monthly`,
       #   `semi_monthly`, `bi_weekly`, `weekly`, `daily`, `hourly`, and `fixed`.
+      #
+      # @see FinchAPI::Models::Income#unit
       module Unit
         extend FinchAPI::Enum
 
