@@ -5,17 +5,13 @@ module FinchAPI
     class AccessTokens
       # Exchange the authorization code for an access token
       #
-      # @param params [FinchAPI::Models::AccessTokenCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(code:, client_id: nil, client_secret: nil, redirect_uri: nil, request_options: {})
       #
-      #   @option params [String] :code
-      #
-      #   @option params [String] :client_id
-      #
-      #   @option params [String] :client_secret
-      #
-      #   @option params [String] :redirect_uri
-      #
-      #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param code [String]
+      # @param client_id [String]
+      # @param client_secret [String]
+      # @param redirect_uri [String]
+      # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [FinchAPI::Models::CreateAccessTokenResponse]
       #

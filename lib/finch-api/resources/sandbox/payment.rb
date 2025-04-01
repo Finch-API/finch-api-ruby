@@ -6,15 +6,12 @@ module FinchAPI
       class Payment
         # Add a new sandbox payment
         #
-        # @param params [FinchAPI::Models::Sandbox::PaymentCreateParams, Hash{Symbol=>Object}] .
+        # @overload create(end_date: nil, pay_statements: nil, start_date: nil, request_options: {})
         #
-        #   @option params [String] :end_date
-        #
-        #   @option params [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement>] :pay_statements
-        #
-        #   @option params [String] :start_date
-        #
-        #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param end_date [String]
+        # @param pay_statements [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement>]
+        # @param start_date [String]
+        # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Models::Sandbox::PaymentCreateResponse]
         #

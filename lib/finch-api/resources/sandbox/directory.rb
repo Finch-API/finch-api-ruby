@@ -6,12 +6,10 @@ module FinchAPI
       class Directory
         # Add new individuals to a sandbox company
         #
-        # @param params [FinchAPI::Models::Sandbox::DirectoryCreateParams, Hash{Symbol=>Object}] .
+        # @overload create(body: nil, request_options: {})
         #
-        #   @option params [Array<FinchAPI::Models::Sandbox::DirectoryCreateParams::Body>] :body Array of individuals to create. Takes all combined fields from `/individual` and
-        #     `/employment` endpoints. All fields are optional.
-        #
-        #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param body [Array<FinchAPI::Models::Sandbox::DirectoryCreateParams::Body>]
+        # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Array<Object>]
         #

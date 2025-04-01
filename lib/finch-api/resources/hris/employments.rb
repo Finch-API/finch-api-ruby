@@ -6,11 +6,10 @@ module FinchAPI
       class Employments
         # Read individual employment and income data
         #
-        # @param params [FinchAPI::Models::HRIS::EmploymentRetrieveManyParams, Hash{Symbol=>Object}] .
+        # @overload retrieve_many(requests:, request_options: {})
         #
-        #   @option params [Array<FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request>] :requests The array of batch requests.
-        #
-        #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param requests [Array<FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request>]
+        # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::ResponsesPage<FinchAPI::Models::HRIS::EmploymentDataResponse>]
         #

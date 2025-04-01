@@ -10,13 +10,11 @@ module FinchAPI
           #   adjusted. Making the same request multiple times will not create new
           #   enrollments, but will continue to set the state of the existing enrollment.
           #
+          # @overload enroll_many(benefit_id, individuals: nil, request_options: {})
+          #
           # @param benefit_id [String]
-          #
-          # @param params [FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams, Hash{Symbol=>Object}] .
-          #
-          #   @option params [Array<FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual>] :individuals Array of the individual_id to enroll and a configuration object.
-          #
-          #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+          # @param individuals [Array<FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual>]
+          # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [FinchAPI::SinglePage<FinchAPI::Models::HRIS::Benefits::EnrolledIndividual>]
           #
@@ -35,11 +33,10 @@ module FinchAPI
 
           # Lists individuals currently enrolled in a given deduction.
           #
+          # @overload enrolled_ids(benefit_id, request_options: {})
+          #
           # @param benefit_id [String]
-          #
-          # @param params [FinchAPI::Models::HRIS::Benefits::IndividualEnrolledIDsParams, Hash{Symbol=>Object}] .
-          #
-          #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+          # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [FinchAPI::Models::HRIS::Benefits::IndividualEnrolledIDsResponse]
           #
@@ -55,14 +52,11 @@ module FinchAPI
 
           # Get enrollment information for the given individuals.
           #
+          # @overload retrieve_many_benefits(benefit_id, individual_ids: nil, request_options: {})
+          #
           # @param benefit_id [String]
-          #
-          # @param params [FinchAPI::Models::HRIS::Benefits::IndividualRetrieveManyBenefitsParams, Hash{Symbol=>Object}] .
-          #
-          #   @option params [String] :individual_ids comma-delimited list of stable Finch uuids for each individual. If empty,
-          #     defaults to all individuals
-          #
-          #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+          # @param individual_ids [String]
+          # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [FinchAPI::SinglePage<FinchAPI::Models::HRIS::Benefits::IndividualBenefit>]
           #
@@ -82,13 +76,11 @@ module FinchAPI
 
           # Unenroll individuals from a deduction or contribution
           #
+          # @overload unenroll_many(benefit_id, individual_ids: nil, request_options: {})
+          #
           # @param benefit_id [String]
-          #
-          # @param params [FinchAPI::Models::HRIS::Benefits::IndividualUnenrollManyParams, Hash{Symbol=>Object}] .
-          #
-          #   @option params [Array<String>] :individual_ids Array of individual_ids to unenroll.
-          #
-          #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+          # @param individual_ids [Array<String>]
+          # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [FinchAPI::SinglePage<FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual>]
           #

@@ -6,15 +6,11 @@ module FinchAPI
       class Payments
         # Read payroll and contractor related payments by the company.
         #
-        # @param params [FinchAPI::Models::HRIS::PaymentListParams, Hash{Symbol=>Object}] .
+        # @overload list(end_date:, start_date:, request_options: {})
         #
-        #   @option params [Date] :end_date The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
-        #     format.
-        #
-        #   @option params [Date] :start_date The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
-        #     format.
-        #
-        #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param end_date [Date]
+        # @param start_date [Date]
+        # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::SinglePage<FinchAPI::Models::HRIS::Payment>]
         #
