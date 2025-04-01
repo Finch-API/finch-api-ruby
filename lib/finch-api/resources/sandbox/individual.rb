@@ -46,7 +46,7 @@ module FinchAPI
           parsed, options = FinchAPI::Models::Sandbox::IndividualUpdateParams.dump_request(params)
           @client.request(
             method: :put,
-            path: ["sandbox/individual/%0s", individual_id],
+            path: ["sandbox/individual/%1$s", individual_id],
             body: parsed,
             model: FinchAPI::Models::Sandbox::IndividualUpdateResponse,
             options: options

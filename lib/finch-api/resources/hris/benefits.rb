@@ -46,7 +46,7 @@ module FinchAPI
         def retrieve(benefit_id, params = {})
           @client.request(
             method: :get,
-            path: ["employer/benefits/%0s", benefit_id],
+            path: ["employer/benefits/%1$s", benefit_id],
             model: FinchAPI::Models::HRIS::CompanyBenefit,
             options: params[:request_options]
           )
@@ -67,7 +67,7 @@ module FinchAPI
           parsed, options = FinchAPI::Models::HRIS::BenefitUpdateParams.dump_request(params)
           @client.request(
             method: :post,
-            path: ["employer/benefits/%0s", benefit_id],
+            path: ["employer/benefits/%1$s", benefit_id],
             body: parsed,
             model: FinchAPI::Models::HRIS::UpdateCompanyBenefitResponse,
             options: options

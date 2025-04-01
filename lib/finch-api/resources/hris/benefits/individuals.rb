@@ -23,7 +23,7 @@ module FinchAPI
             parsed, options = FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams.dump_request(params)
             @client.request(
               method: :post,
-              path: ["employer/benefits/%0s/individuals", benefit_id],
+              path: ["employer/benefits/%1$s/individuals", benefit_id],
               body: parsed[:individuals],
               page: FinchAPI::SinglePage,
               model: FinchAPI::Models::HRIS::Benefits::EnrolledIndividual,
@@ -43,7 +43,7 @@ module FinchAPI
           def enrolled_ids(benefit_id, params = {})
             @client.request(
               method: :get,
-              path: ["employer/benefits/%0s/enrolled", benefit_id],
+              path: ["employer/benefits/%1$s/enrolled", benefit_id],
               model: FinchAPI::Models::HRIS::Benefits::IndividualEnrolledIDsResponse,
               options: params[:request_options]
             )
@@ -66,7 +66,7 @@ module FinchAPI
               FinchAPI::Models::HRIS::Benefits::IndividualRetrieveManyBenefitsParams.dump_request(params)
             @client.request(
               method: :get,
-              path: ["employer/benefits/%0s/individuals", benefit_id],
+              path: ["employer/benefits/%1$s/individuals", benefit_id],
               query: parsed,
               page: FinchAPI::SinglePage,
               model: FinchAPI::Models::HRIS::Benefits::IndividualBenefit,
@@ -89,7 +89,7 @@ module FinchAPI
             parsed, options = FinchAPI::Models::HRIS::Benefits::IndividualUnenrollManyParams.dump_request(params)
             @client.request(
               method: :delete,
-              path: ["employer/benefits/%0s/individuals", benefit_id],
+              path: ["employer/benefits/%1$s/individuals", benefit_id],
               body: parsed,
               page: FinchAPI::SinglePage,
               model: FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual,
