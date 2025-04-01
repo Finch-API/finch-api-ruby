@@ -16,6 +16,7 @@ module FinchAPI
         sig { params(code: Integer).void }
         attr_writer :code
 
+        # A stable Finch `id` (UUID v4) for an individual in the company.
         sig { returns(T.nilable(String)) }
         attr_reader :individual_id
 
