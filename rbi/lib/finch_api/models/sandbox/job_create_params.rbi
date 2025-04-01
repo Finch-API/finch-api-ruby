@@ -35,7 +35,8 @@ module FinchAPI
           extend FinchAPI::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::JobCreateParams::Type) }
-          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::JobCreateParams::Type::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Sandbox::JobCreateParams::Type::TaggedSymbol) }
 
           DATA_SYNC_ALL = T.let(:data_sync_all, FinchAPI::Models::Sandbox::JobCreateParams::Type::TaggedSymbol)
 

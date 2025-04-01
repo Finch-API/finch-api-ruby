@@ -77,7 +77,7 @@ module FinchAPI
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType::TaggedSymbol) }
 
           CREDENTIAL =
             T.let(:credential, FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType::TaggedSymbol)

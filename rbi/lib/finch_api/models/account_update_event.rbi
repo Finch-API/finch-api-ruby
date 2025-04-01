@@ -2337,7 +2337,13 @@ module FinchAPI
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::TaggedSymbol
+                )
+              end
 
             ASSISTED =
               T.let(:assisted, FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::TaggedSymbol)
@@ -2367,7 +2373,8 @@ module FinchAPI
         extend FinchAPI::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::AccountUpdateEvent::EventType) }
-        OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::AccountUpdateEvent::EventType::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, FinchAPI::Models::AccountUpdateEvent::EventType::TaggedSymbol) }
 
         ACCOUNT_UPDATED =
           T.let(:"account.updated", FinchAPI::Models::AccountUpdateEvent::EventType::TaggedSymbol)

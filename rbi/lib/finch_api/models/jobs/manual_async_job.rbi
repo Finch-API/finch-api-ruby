@@ -42,7 +42,8 @@ module FinchAPI
           extend FinchAPI::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Jobs::ManualAsyncJob::Status) }
-          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol) }
 
           PENDING = T.let(:pending, FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol)
           IN_PROGRESS = T.let(:in_progress, FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol)

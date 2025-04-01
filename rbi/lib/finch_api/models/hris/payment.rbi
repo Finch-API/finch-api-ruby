@@ -128,7 +128,8 @@ module FinchAPI
           extend FinchAPI::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Payment::PayFrequency) }
-          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol) }
 
           ANNUALLY = T.let(:annually, FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol)
           SEMI_ANNUALLY = T.let(:semi_annually, FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol)

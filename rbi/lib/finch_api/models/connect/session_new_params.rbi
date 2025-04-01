@@ -99,7 +99,7 @@ module FinchAPI
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Connect::SessionNewParams::Product) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol) }
 
           COMPANY = T.let(:company, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
           DIRECTORY = T.let(:directory, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
@@ -150,7 +150,7 @@ module FinchAPI
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::TaggedSymbol) }
 
             ASSISTED =
               T.let(:assisted, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::TaggedSymbol)
@@ -174,7 +174,7 @@ module FinchAPI
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Connect::SessionNewParams::Sandbox) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, FinchAPI::Models::Connect::SessionNewParams::Sandbox::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Connect::SessionNewParams::Sandbox::TaggedSymbol) }
 
           FINCH = T.let(:finch, FinchAPI::Models::Connect::SessionNewParams::Sandbox::TaggedSymbol)
           PROVIDER = T.let(:provider, FinchAPI::Models::Connect::SessionNewParams::Sandbox::TaggedSymbol)

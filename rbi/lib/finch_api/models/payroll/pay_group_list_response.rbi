@@ -58,7 +58,7 @@ module FinchAPI
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol) }
 
           ANNUALLY = T.let(:annually, FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency::TaggedSymbol)
           SEMI_ANNUALLY =

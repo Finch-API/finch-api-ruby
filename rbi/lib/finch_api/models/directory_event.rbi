@@ -58,7 +58,8 @@ module FinchAPI
         extend FinchAPI::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::DirectoryEvent::EventType) }
-        OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::DirectoryEvent::EventType::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, FinchAPI::Models::DirectoryEvent::EventType::TaggedSymbol) }
 
         DIRECTORY_CREATED =
           T.let(:"directory.created", FinchAPI::Models::DirectoryEvent::EventType::TaggedSymbol)

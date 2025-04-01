@@ -38,7 +38,8 @@ module FinchAPI
         extend FinchAPI::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::CompanyEvent::EventType) }
-        OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::CompanyEvent::EventType::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, FinchAPI::Models::CompanyEvent::EventType::TaggedSymbol) }
 
         COMPANY_UPDATED = T.let(:"company.updated", FinchAPI::Models::CompanyEvent::EventType::TaggedSymbol)
 

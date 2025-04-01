@@ -37,7 +37,7 @@ module FinchAPI
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::BenefitContribution::Type) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::BenefitContribution::Type::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::BenefitContribution::Type::TaggedSymbol) }
 
           FIXED = T.let(:fixed, FinchAPI::Models::HRIS::BenefitContribution::Type::TaggedSymbol)
           PERCENT = T.let(:percent, FinchAPI::Models::HRIS::BenefitContribution::Type::TaggedSymbol)

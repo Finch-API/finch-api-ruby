@@ -120,7 +120,7 @@ module FinchAPI
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol) }
 
           PENDING = T.let(:pending, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
           IN_PROGRESS = T.let(:in_progress, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
@@ -140,7 +140,8 @@ module FinchAPI
           extend FinchAPI::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type) }
-          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol) }
 
           DATA_SYNC_ALL = T.let(:data_sync_all, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol)
           W4_FORM_EMPLOYEE_SYNC =

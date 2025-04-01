@@ -385,7 +385,7 @@ module FinchAPI
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type) }
               OrSymbol =
-                T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type::TaggedSymbol) }
+                T.type_alias { T.any(Symbol, String, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type::TaggedSymbol) }
 
               WORK = T.let(:work, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type::TaggedSymbol)
               PERSONAL =
@@ -441,7 +441,13 @@ module FinchAPI
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype) }
               OrSymbol =
-                T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::TaggedSymbol) }
+                T.type_alias do
+                  T.any(
+                    Symbol,
+                    String,
+                    FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::TaggedSymbol
+                  )
+                end
 
               FULL_TIME =
                 T.let(
@@ -485,7 +491,13 @@ module FinchAPI
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type) }
               OrSymbol =
-                T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type::TaggedSymbol) }
+                T.type_alias do
+                  T.any(
+                    Symbol,
+                    String,
+                    FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type::TaggedSymbol
+                  )
+                end
 
               EMPLOYEE =
                 T.let(:employee, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type::TaggedSymbol)
@@ -508,7 +520,13 @@ module FinchAPI
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::TaggedSymbol
+                )
+              end
 
             ACTIVE =
               T.let(:active, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::TaggedSymbol)
@@ -540,7 +558,7 @@ module FinchAPI
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol) }
 
             ASIAN = T.let(:asian, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol)
             WHITE = T.let(:white, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol)
@@ -586,7 +604,7 @@ module FinchAPI
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::TaggedSymbol) }
 
             FEMALE = T.let(:female, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::TaggedSymbol)
             MALE = T.let(:male, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::TaggedSymbol)
@@ -652,7 +670,13 @@ module FinchAPI
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type) }
               OrSymbol =
-                T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::TaggedSymbol) }
+                T.type_alias do
+                  T.any(
+                    Symbol,
+                    String,
+                    FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::TaggedSymbol
+                  )
+                end
 
               WORK =
                 T.let(:work, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::TaggedSymbol)
