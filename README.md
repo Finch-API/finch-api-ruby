@@ -133,7 +133,7 @@ Due to limitations with the Sorbet type system, where a method otherwise can tak
 Please follow Sorbet's [setup guides](https://sorbet.org/docs/adopting) for best experience.
 
 ```ruby
-model = DirectoryListParams.new
+model = FinchAPI::Models::HRIS::DirectoryListParams.new
 
 finch.hris.directory.list(**model)
 ```
