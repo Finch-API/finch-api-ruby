@@ -17,7 +17,7 @@ module FinchAPI
         def retrieve(job_id, params = {})
           @client.request(
             method: :get,
-            path: ["jobs/manual/%0s", job_id],
+            path: ["jobs/manual/%1$s", job_id],
             model: FinchAPI::Models::Jobs::ManualAsyncJob,
             options: params[:request_options]
           )

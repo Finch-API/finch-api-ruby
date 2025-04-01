@@ -57,7 +57,7 @@ module FinchAPI
           parsed, options = FinchAPI::Models::Sandbox::EmploymentUpdateParams.dump_request(params)
           @client.request(
             method: :put,
-            path: ["sandbox/employment/%0s", individual_id],
+            path: ["sandbox/employment/%1$s", individual_id],
             body: parsed,
             model: FinchAPI::Models::Sandbox::EmploymentUpdateResponse,
             options: options

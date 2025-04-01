@@ -16,7 +16,7 @@ module FinchAPI
         def retrieve(pay_group_id, params = {})
           @client.request(
             method: :get,
-            path: ["employer/pay-groups/%0s", pay_group_id],
+            path: ["employer/pay-groups/%1$s", pay_group_id],
             model: FinchAPI::Models::Payroll::PayGroupRetrieveResponse,
             options: params[:request_options]
           )
