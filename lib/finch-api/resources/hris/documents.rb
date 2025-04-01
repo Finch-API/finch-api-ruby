@@ -46,7 +46,7 @@ module FinchAPI
         def retreive(document_id, params = {})
           @client.request(
             method: :get,
-            path: ["employer/documents/%0s", document_id],
+            path: ["employer/documents/%1$s", document_id],
             model: FinchAPI::Models::HRIS::DocumentRetreiveResponse,
             options: params[:request_options]
           )
