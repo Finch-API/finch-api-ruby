@@ -529,7 +529,13 @@ module FinchAPI
                 )
                   .returns(T.attached_class)
               end
-              def self.new(account_name: nil, account_number: nil, account_type: nil, institution_name: nil, routing_number: nil)
+              def self.new(
+                account_name: nil,
+                account_number: nil,
+                account_type: nil,
+                institution_name: nil,
+                routing_number: nil
+              )
               end
 
               sig do
@@ -839,7 +845,15 @@ module FinchAPI
                 )
                   .returns(T.attached_class)
               end
-              def self.new(id: nil, department: nil, first_name: nil, is_active: nil, last_name: nil, manager: nil, middle_name: nil)
+              def self.new(
+                id: nil,
+                department: nil,
+                first_name: nil,
+                is_active: nil,
+                last_name: nil,
+                manager: nil,
+                middle_name: nil
+              )
               end
 
               sig do
