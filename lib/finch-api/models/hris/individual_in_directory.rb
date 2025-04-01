@@ -74,6 +74,7 @@ module FinchAPI
 
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+        # @see FinchAPI::Models::HRIS::IndividualInDirectory#department
         class Department < FinchAPI::BaseModel
           # @!attribute name
           #   The name of the department.
@@ -91,6 +92,7 @@ module FinchAPI
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
         end
 
+        # @see FinchAPI::Models::HRIS::IndividualInDirectory#manager
         class Manager < FinchAPI::BaseModel
           # @!attribute [r] id
           #   A stable Finch `id` (UUID v4) for an individual in the company.

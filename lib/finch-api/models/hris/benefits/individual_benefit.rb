@@ -41,6 +41,7 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+          # @see FinchAPI::Models::HRIS::Benefits::IndividualBenefit#body
           class Body < FinchAPI::BaseModel
             # @!attribute annual_maximum
             #   If the benefit supports annual maximum, the amount in cents for this individual.
@@ -94,6 +95,8 @@ module FinchAPI
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
             # Type for HSA contribution limit if the benefit is a HSA.
+            #
+            # @see FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body#hsa_contribution_limit
             module HsaContributionLimit
               extend FinchAPI::Enum
 

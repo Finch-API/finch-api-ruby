@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module Sandbox
+      # @see FinchAPI::Resources::Sandbox::Employment#update
       class EmploymentUpdateParams < FinchAPI::BaseModel
         # @!parse
         #   extend FinchAPI::Type::RequestParameters::Converter
@@ -246,6 +247,8 @@ module FinchAPI
 
           # The secondary employment type of the individual. Options: `full_time`,
           #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
+          #
+          # @see FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment#subtype
           module Subtype
             extend FinchAPI::Enum
 
@@ -264,6 +267,8 @@ module FinchAPI
           end
 
           # The main employment type of the individual.
+          #
+          # @see FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment#type
           module Type
             extend FinchAPI::Enum
 

@@ -19,6 +19,8 @@ module FinchAPI
           #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [FinchAPI::SinglePage<FinchAPI::Models::HRIS::Benefits::EnrolledIndividual>]
+          #
+          # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams
           def enroll_many(benefit_id, params = {})
             parsed, options = FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams.dump_request(params)
             @client.request(
@@ -40,6 +42,8 @@ module FinchAPI
           #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [FinchAPI::Models::HRIS::Benefits::IndividualEnrolledIDsResponse]
+          #
+          # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrolledIDsParams
           def enrolled_ids(benefit_id, params = {})
             @client.request(
               method: :get,
@@ -61,6 +65,8 @@ module FinchAPI
           #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [FinchAPI::SinglePage<FinchAPI::Models::HRIS::Benefits::IndividualBenefit>]
+          #
+          # @see FinchAPI::Models::HRIS::Benefits::IndividualRetrieveManyBenefitsParams
           def retrieve_many_benefits(benefit_id, params = {})
             parsed, options =
               FinchAPI::Models::HRIS::Benefits::IndividualRetrieveManyBenefitsParams.dump_request(params)
@@ -85,6 +91,8 @@ module FinchAPI
           #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [FinchAPI::SinglePage<FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual>]
+          #
+          # @see FinchAPI::Models::HRIS::Benefits::IndividualUnenrollManyParams
           def unenroll_many(benefit_id, params = {})
             parsed, options = FinchAPI::Models::HRIS::Benefits::IndividualUnenrollManyParams.dump_request(params)
             @client.request(
@@ -97,6 +105,8 @@ module FinchAPI
             )
           end
 
+          # @api private
+          #
           # @param client [FinchAPI::Client]
           def initialize(client:)
             @client = client

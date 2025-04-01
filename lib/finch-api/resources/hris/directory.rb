@@ -15,6 +15,8 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::IndividualsPage<FinchAPI::Models::HRIS::IndividualInDirectory>]
+        #
+        # @see FinchAPI::Models::HRIS::DirectoryListParams
         def list(params = {})
           parsed, options = FinchAPI::Models::HRIS::DirectoryListParams.dump_request(params)
           @client.request(
@@ -32,6 +34,8 @@ module FinchAPI
         # Read company directory and organization structure
         alias_method :list_individuals, :list
 
+        # @api private
+        #
         # @param client [FinchAPI::Client]
         def initialize(client:)
           @client = client

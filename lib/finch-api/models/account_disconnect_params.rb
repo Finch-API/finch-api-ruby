@@ -2,6 +2,7 @@
 
 module FinchAPI
   module Models
+    # @see FinchAPI::Resources::Account#disconnect
     class AccountDisconnectParams < FinchAPI::BaseModel
       # @!parse
       #   extend FinchAPI::Type::RequestParameters::Converter

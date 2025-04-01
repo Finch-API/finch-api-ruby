@@ -27,6 +27,7 @@ module FinchAPI
         def list(individual_id: nil, pay_frequencies: nil, request_options: {})
         end
 
+        # @api private
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }
         def self.new(client:)
         end

@@ -27,6 +27,7 @@ module FinchAPI
       sig { returns(FinchAPI::Resources::HRIS::Benefits) }
       attr_reader :benefits
 
+      # @api private
       sig { params(client: FinchAPI::Client).returns(T.attached_class) }
       def self.new(client:)
       end

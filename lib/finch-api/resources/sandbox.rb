@@ -24,6 +24,8 @@ module FinchAPI
       # @return [FinchAPI::Resources::Sandbox::Jobs]
       attr_reader :jobs
 
+      # @api private
+      #
       # @param client [FinchAPI::Client]
       def initialize(client:)
         @client = client

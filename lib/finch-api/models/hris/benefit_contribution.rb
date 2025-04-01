@@ -25,6 +25,8 @@ module FinchAPI
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
         # Contribution type.
+        #
+        # @see FinchAPI::Models::HRIS::BenefitContribution#type
         module Type
           extend FinchAPI::Enum
 

@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module Jobs
+      # @see FinchAPI::Resources::Jobs::Manual#retrieve
       class ManualRetrieveParams < FinchAPI::BaseModel
         # @!parse
         #   extend FinchAPI::Type::RequestParameters::Converter

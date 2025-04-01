@@ -24,6 +24,7 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+          # @see FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration#completion_status
           module CompletionStatus
             extend FinchAPI::Enum
 
@@ -39,6 +40,7 @@ module FinchAPI
             #   def self.values; end
           end
 
+          # @see FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration#type
           module Type
             extend FinchAPI::Enum
 

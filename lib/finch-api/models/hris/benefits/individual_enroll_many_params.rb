@@ -4,6 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       module Benefits
+        # @see FinchAPI::Resources::HRIS::Benefits::Individuals#enroll_many
         class IndividualEnrollManyParams < FinchAPI::BaseModel
           # @!parse
           #   extend FinchAPI::Type::RequestParameters::Converter
@@ -57,6 +58,7 @@ module FinchAPI
 
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+            # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual#configuration
             class Configuration < FinchAPI::BaseModel
               # @!attribute [r] annual_contribution_limit
               #   For HSA benefits only - whether the contribution limit is for an individual or
@@ -128,6 +130,8 @@ module FinchAPI
 
               # For HSA benefits only - whether the contribution limit is for an individual or
               #   family
+              #
+              # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration#annual_contribution_limit
               module AnnualContributionLimit
                 extend FinchAPI::Enum
 
@@ -141,6 +145,7 @@ module FinchAPI
                 #   def self.values; end
               end
 
+              # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration#company_contribution
               class CompanyContribution < FinchAPI::BaseModel
                 # @!attribute [r] amount
                 #   Amount in cents for fixed type or basis points (1/100th of a percent) for
@@ -171,6 +176,7 @@ module FinchAPI
 
                 # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+                # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution#type
                 module Type
                   extend FinchAPI::Enum
 
@@ -185,6 +191,7 @@ module FinchAPI
                 end
               end
 
+              # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration#employee_deduction
               class EmployeeDeduction < FinchAPI::BaseModel
                 # @!attribute [r] amount
                 #   Amount in cents for fixed type or basis points (1/100th of a percent) for
@@ -215,6 +222,7 @@ module FinchAPI
 
                 # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+                # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction#type
                 module Type
                   extend FinchAPI::Enum
 

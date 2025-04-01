@@ -115,6 +115,8 @@ module FinchAPI
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
           # The type of bank account.
+          #
+          # @see FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account#account_type
           module AccountType
             extend FinchAPI::Enum
 
@@ -150,6 +152,7 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+          # @see FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department#parent
           class Parent < FinchAPI::BaseModel
             # @!attribute name
             #   The parent department's name.
@@ -168,6 +171,7 @@ module FinchAPI
           end
         end
 
+        # @see FinchAPI::Models::Sandbox::CompanyUpdateResponse#entity
         class Entity < FinchAPI::BaseModel
           # @!attribute subtype
           #   The tax payer subtype of the company.
@@ -194,6 +198,8 @@ module FinchAPI
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
           # The tax payer subtype of the company.
+          #
+          # @see FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity#subtype
           module Subtype
             extend FinchAPI::Enum
 
@@ -209,6 +215,8 @@ module FinchAPI
           end
 
           # The tax payer type of the company.
+          #
+          # @see FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity#type
           module Type
             extend FinchAPI::Enum
 

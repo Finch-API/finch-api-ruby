@@ -30,6 +30,8 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::Models::Connect::SessionNewResponse]
+        #
+        # @see FinchAPI::Models::Connect::SessionNewParams
         def new(params)
           parsed, options = FinchAPI::Models::Connect::SessionNewParams.dump_request(params)
           @client.request(
@@ -57,6 +59,8 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::Models::Connect::SessionReauthenticateResponse]
+        #
+        # @see FinchAPI::Models::Connect::SessionReauthenticateParams
         def reauthenticate(params)
           parsed, options = FinchAPI::Models::Connect::SessionReauthenticateParams.dump_request(params)
           @client.request(
@@ -68,6 +72,8 @@ module FinchAPI
           )
         end
 
+        # @api private
+        #
         # @param client [FinchAPI::Client]
         def initialize(client:)
           @client = client

@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module Payroll
+      # @see FinchAPI::Resources::Payroll::PayGroups#retrieve
       class PayGroupRetrieveParams < FinchAPI::BaseModel
         # @!parse
         #   extend FinchAPI::Type::RequestParameters::Converter

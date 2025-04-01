@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module Connect
+      # @see FinchAPI::Resources::Connect::Sessions#new
       class SessionNewParams < FinchAPI::BaseModel
         # @!parse
         #   extend FinchAPI::Type::RequestParameters::Converter
@@ -126,6 +127,7 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+          # @see FinchAPI::Models::Connect::SessionNewParams::Integration#auth_method
           module AuthMethod
             extend FinchAPI::Enum
 

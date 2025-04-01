@@ -205,6 +205,7 @@ module FinchAPI
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
         end
 
+        # @see FinchAPI::Models::Sandbox::EmploymentUpdateResponse#department
         class Department < FinchAPI::BaseModel
           # @!attribute name
           #   The name of the department associated with the individual.
@@ -222,6 +223,7 @@ module FinchAPI
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
         end
 
+        # @see FinchAPI::Models::Sandbox::EmploymentUpdateResponse#employment
         class Employment < FinchAPI::BaseModel
           # @!attribute subtype
           #   The secondary employment type of the individual. Options: `full_time`,
@@ -252,6 +254,8 @@ module FinchAPI
 
           # The secondary employment type of the individual. Options: `full_time`,
           #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
+          #
+          # @see FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment#subtype
           module Subtype
             extend FinchAPI::Enum
 
@@ -270,6 +274,8 @@ module FinchAPI
           end
 
           # The main employment type of the individual.
+          #
+          # @see FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment#type
           module Type
             extend FinchAPI::Enum
 
@@ -285,6 +291,8 @@ module FinchAPI
         end
 
         # The detailed employment status of the individual.
+        #
+        # @see FinchAPI::Models::Sandbox::EmploymentUpdateResponse#employment_status
         module EmploymentStatus
           extend FinchAPI::Enum
 
@@ -303,6 +311,7 @@ module FinchAPI
           #   def self.values; end
         end
 
+        # @see FinchAPI::Models::Sandbox::EmploymentUpdateResponse#manager
         class Manager < FinchAPI::BaseModel
           # @!attribute [r] id
           #   A stable Finch `id` (UUID v4) for an individual in the company.

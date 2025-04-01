@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module Sandbox
+      # @see FinchAPI::Resources::Sandbox::Payment#create
       class PaymentCreateParams < FinchAPI::BaseModel
         # @!parse
         #   extend FinchAPI::Type::RequestParameters::Converter
@@ -203,6 +204,7 @@ module FinchAPI
 
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+            # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning#attributes
             class Attributes < FinchAPI::BaseModel
               # @!attribute [r] metadata
               #
@@ -221,6 +223,7 @@ module FinchAPI
 
               # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+              # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes#metadata
               class Metadata < FinchAPI::BaseModel
                 # @!attribute [r] metadata
                 #   The metadata to be attached to the entity by existing rules. It is a key-value
@@ -244,6 +247,8 @@ module FinchAPI
             end
 
             # The type of earning.
+            #
+            # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning#type
             module Type
               extend FinchAPI::Enum
 
@@ -319,6 +324,7 @@ module FinchAPI
 
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+            # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction#attributes
             class Attributes < FinchAPI::BaseModel
               # @!attribute [r] metadata
               #
@@ -337,6 +343,7 @@ module FinchAPI
 
               # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+              # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes#metadata
               class Metadata < FinchAPI::BaseModel
                 # @!attribute [r] metadata
                 #   The metadata to be attached to the entity by existing rules. It is a key-value
@@ -403,6 +410,7 @@ module FinchAPI
 
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+            # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution#attributes
             class Attributes < FinchAPI::BaseModel
               # @!attribute [r] metadata
               #
@@ -421,6 +429,7 @@ module FinchAPI
 
               # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+              # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes#metadata
               class Metadata < FinchAPI::BaseModel
                 # @!attribute [r] metadata
                 #   The metadata to be attached to the entity by existing rules. It is a key-value
@@ -445,6 +454,8 @@ module FinchAPI
           end
 
           # The payment method.
+          #
+          # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement#payment_method
           module PaymentMethod
             extend FinchAPI::Enum
 
@@ -510,6 +521,7 @@ module FinchAPI
 
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+            # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax#attributes
             class Attributes < FinchAPI::BaseModel
               # @!attribute [r] metadata
               #
@@ -528,6 +540,7 @@ module FinchAPI
 
               # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+              # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes#metadata
               class Metadata < FinchAPI::BaseModel
                 # @!attribute [r] metadata
                 #   The metadata to be attached to the entity by existing rules. It is a key-value
@@ -551,6 +564,8 @@ module FinchAPI
             end
 
             # The type of taxes.
+            #
+            # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax#type
             module Type
               extend FinchAPI::Enum
 
@@ -568,6 +583,8 @@ module FinchAPI
           end
 
           # The type of the payment associated with the pay statement.
+          #
+          # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement#type
           module Type
             extend FinchAPI::Enum
 

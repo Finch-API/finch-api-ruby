@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module Jobs
+      # @see FinchAPI::Resources::Jobs::Automated#list
       class AutomatedListParams < FinchAPI::BaseModel
         # @!parse
         #   extend FinchAPI::Type::RequestParameters::Converter
