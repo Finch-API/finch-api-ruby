@@ -48,7 +48,13 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(company_id:, provider_id:, authentication_type: nil, products: nil, request_options: {})
+          def self.new(
+            company_id:,
+            provider_id:,
+            authentication_type: nil,
+            products: nil,
+            request_options: {}
+          )
           end
 
           sig do

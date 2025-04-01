@@ -46,7 +46,16 @@ module FinchAPI
         )
           .returns(T.attached_class)
       end
-      def self.new(city: nil, country: nil, line1: nil, line2: nil, name: nil, postal_code: nil, source_id: nil, state: nil)
+      def self.new(
+        city: nil,
+        country: nil,
+        line1: nil,
+        line2: nil,
+        name: nil,
+        postal_code: nil,
+        source_id: nil,
+        state: nil
+      )
       end
 
       sig do
