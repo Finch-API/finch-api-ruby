@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "lib/finch-api/version"
+require_relative "lib/finch_api/version"
 
 Gem::Specification.new do |s|
   s.name = "finch-api"
