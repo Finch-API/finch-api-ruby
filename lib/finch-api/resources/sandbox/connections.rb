@@ -9,19 +9,13 @@ module FinchAPI
 
         # Create a new connection (new company/provider pair) with a new account
         #
-        # @param params [FinchAPI::Models::Sandbox::ConnectionCreateParams, Hash{Symbol=>Object}] .
+        # @overload create(provider_id:, authentication_type: nil, employee_size: nil, products: nil, request_options: {})
         #
-        #   @option params [String] :provider_id The provider associated with the connection
-        #
-        #   @option params [Symbol, FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType] :authentication_type
-        #
-        #   @option params [Integer] :employee_size Optional: the size of the employer to be created with this connection. Defaults
-        #     to 20. Note that if this is higher than 100, historical payroll data will not be
-        #     generated, and instead only one pay period will be created.
-        #
-        #   @option params [Array<String>] :products
-        #
-        #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param provider_id [String]
+        # @param authentication_type [Symbol, FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType]
+        # @param employee_size [Integer]
+        # @param products [Array<String>]
+        # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Models::Sandbox::ConnectionCreateResponse]
         #

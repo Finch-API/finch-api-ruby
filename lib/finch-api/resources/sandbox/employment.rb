@@ -6,51 +6,28 @@ module FinchAPI
       class Employment
         # Update sandbox employment
         #
+        # @overload update(individual_id, class_code: nil, custom_fields: nil, department: nil, employment: nil, employment_status: nil, end_date: nil, first_name: nil, income: nil, income_history: nil, is_active: nil, last_name: nil, latest_rehire_date: nil, location: nil, manager: nil, middle_name: nil, source_id: nil, start_date: nil, title: nil, request_options: {})
+        #
         # @param individual_id [String]
-        #
-        # @param params [FinchAPI::Models::Sandbox::EmploymentUpdateParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [String, nil] :class_code Worker's compensation classification code for this employee
-        #
-        #   @option params [Array<FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField>] :custom_fields Custom fields for the individual. These are fields which are defined by the
-        #     employer in the system. Custom fields are not currently supported for assisted
-        #     connections.
-        #
-        #   @option params [FinchAPI::Models::Sandbox::EmploymentUpdateParams::Department, nil] :department The department object.
-        #
-        #   @option params [FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment, nil] :employment The employment object.
-        #
-        #   @option params [Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus, nil] :employment_status The detailed employment status of the individual.
-        #
-        #   @option params [String, nil] :end_date
-        #
-        #   @option params [String, nil] :first_name The legal first name of the individual.
-        #
-        #   @option params [FinchAPI::Models::Income, nil] :income The employee's income as reported by the provider. This may not always be
-        #     annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
-        #     depending on what information the provider returns.
-        #
-        #   @option params [Array<FinchAPI::Models::Income, nil>, nil] :income_history The array of income history.
-        #
-        #   @option params [Boolean, nil] :is_active `true` if the individual an an active employee or contractor at the company.
-        #
-        #   @option params [String, nil] :last_name The legal last name of the individual.
-        #
-        #   @option params [String, nil] :latest_rehire_date
-        #
-        #   @option params [FinchAPI::Models::Location, nil] :location
-        #
-        #   @option params [FinchAPI::Models::Sandbox::EmploymentUpdateParams::Manager, nil] :manager The manager object representing the manager of the individual within the org.
-        #
-        #   @option params [String, nil] :middle_name The legal middle name of the individual.
-        #
-        #   @option params [String] :source_id The source system's unique employment identifier for this individual
-        #
-        #   @option params [String, nil] :start_date
-        #
-        #   @option params [String, nil] :title The current title of the individual.
-        #
-        #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param class_code [String, nil]
+        # @param custom_fields [Array<FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField>]
+        # @param department [FinchAPI::Models::Sandbox::EmploymentUpdateParams::Department, nil]
+        # @param employment [FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment, nil]
+        # @param employment_status [Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus, nil]
+        # @param end_date [String, nil]
+        # @param first_name [String, nil]
+        # @param income [FinchAPI::Models::Income, nil]
+        # @param income_history [Array<FinchAPI::Models::Income, nil>, nil]
+        # @param is_active [Boolean, nil]
+        # @param last_name [String, nil]
+        # @param latest_rehire_date [String, nil]
+        # @param location [FinchAPI::Models::Location, nil]
+        # @param manager [FinchAPI::Models::Sandbox::EmploymentUpdateParams::Manager, nil]
+        # @param middle_name [String, nil]
+        # @param source_id [String]
+        # @param start_date [String, nil]
+        # @param title [String, nil]
+        # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Models::Sandbox::EmploymentUpdateResponse]
         #

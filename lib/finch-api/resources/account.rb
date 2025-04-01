@@ -5,9 +5,9 @@ module FinchAPI
     class Account
       # Disconnect one or more `access_token`s from your application.
       #
-      # @param params [FinchAPI::Models::AccountDisconnectParams, Hash{Symbol=>Object}] .
+      # @overload disconnect(request_options: {})
       #
-      #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [FinchAPI::Models::DisconnectResponse]
       #
@@ -23,9 +23,9 @@ module FinchAPI
 
       # Read account information associated with an `access_token`
       #
-      # @param params [FinchAPI::Models::AccountIntrospectParams, Hash{Symbol=>Object}] .
+      # @overload introspect(request_options: {})
       #
-      #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [FinchAPI::Models::Introspection]
       #

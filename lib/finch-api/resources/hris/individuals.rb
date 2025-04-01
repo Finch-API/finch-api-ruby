@@ -6,13 +6,11 @@ module FinchAPI
       class Individuals
         # Read individual data, excluding income and employment data
         #
-        # @param params [FinchAPI::Models::HRIS::IndividualRetrieveManyParams, Hash{Symbol=>Object}] .
+        # @overload retrieve_many(options: nil, requests: nil, request_options: {})
         #
-        #   @option params [FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, nil] :options
-        #
-        #   @option params [Array<FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request>] :requests
-        #
-        #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param options [FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, nil]
+        # @param requests [Array<FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request>]
+        # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::ResponsesPage<FinchAPI::Models::HRIS::IndividualResponse>]
         #

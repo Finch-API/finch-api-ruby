@@ -7,18 +7,13 @@ module FinchAPI
         class Accounts
           # Create a new account for an existing connection (company/provider pair)
           #
-          # @param params [FinchAPI::Models::Sandbox::Connections::AccountCreateParams, Hash{Symbol=>Object}] .
+          # @overload create(company_id:, provider_id:, authentication_type: nil, products: nil, request_options: {})
           #
-          #   @option params [String] :company_id
-          #
-          #   @option params [String] :provider_id The provider associated with the `access_token`
-          #
-          #   @option params [Symbol, FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType] :authentication_type
-          #
-          #   @option params [Array<String>] :products Optional, defaults to Organization products (`company`, `directory`,
-          #     `employment`, `individual`)
-          #
-          #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+          # @param company_id [String]
+          # @param provider_id [String]
+          # @param authentication_type [Symbol, FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType]
+          # @param products [Array<String>]
+          # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [FinchAPI::Models::Sandbox::Connections::AccountCreateResponse]
           #
@@ -37,11 +32,10 @@ module FinchAPI
           # Update an existing sandbox account. Change the connection status to understand
           #   how the Finch API responds.
           #
-          # @param params [FinchAPI::Models::Sandbox::Connections::AccountUpdateParams, Hash{Symbol=>Object}] .
+          # @overload update(connection_status: nil, request_options: {})
           #
-          #   @option params [Symbol, FinchAPI::Models::ConnectionStatusType] :connection_status
-          #
-          #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+          # @param connection_status [Symbol, FinchAPI::Models::ConnectionStatusType]
+          # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse]
           #

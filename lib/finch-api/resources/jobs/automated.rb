@@ -19,13 +19,11 @@ module FinchAPI
         #   This endpoint is available for _Scale_ tier customers as an add-on. To request
         #   access to this endpoint, please contact your Finch account manager.
         #
-        # @param params [FinchAPI::Models::Jobs::AutomatedCreateParams, Hash{Symbol=>Object}] .
+        # @overload create(type:, params:, request_options: {})
         #
-        #   @option params [Symbol, FinchAPI::Models::Jobs::AutomatedCreateParams::Type] :type The type of job to start.
-        #
-        #   @option params [FinchAPI::Models::Jobs::AutomatedCreateParams::Params] :params
-        #
-        #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param type [Symbol, FinchAPI::Models::Jobs::AutomatedCreateParams::Type]
+        # @param params [FinchAPI::Models::Jobs::AutomatedCreateParams::Params]
+        # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Models::Jobs::AutomatedCreateResponse]
         #
@@ -43,11 +41,10 @@ module FinchAPI
 
         # Get an automated job by `job_id`.
         #
+        # @overload retrieve(job_id, request_options: {})
+        #
         # @param job_id [String]
-        #
-        # @param params [FinchAPI::Models::Jobs::AutomatedRetrieveParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Models::Jobs::AutomatedAsyncJob]
         #
@@ -65,13 +62,11 @@ module FinchAPI
         #   jobs are sorted in descending order by submission time. For scheduled jobs such
         #   as data syncs, only the next scheduled job is shown.
         #
-        # @param params [FinchAPI::Models::Jobs::AutomatedListParams, Hash{Symbol=>Object}] .
+        # @overload list(limit: nil, offset: nil, request_options: {})
         #
-        #   @option params [Integer] :limit Number of items to return
-        #
-        #   @option params [Integer] :offset Index to start from (defaults to 0)
-        #
-        #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param limit [Integer]
+        # @param offset [Integer]
+        # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Models::Jobs::AutomatedListResponse]
         #

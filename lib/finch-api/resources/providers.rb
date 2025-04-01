@@ -5,9 +5,9 @@ module FinchAPI
     class Providers
       # Return details on all available payroll and HR systems.
       #
-      # @param params [FinchAPI::Models::ProviderListParams, Hash{Symbol=>Object}] .
+      # @overload list(request_options: {})
       #
-      #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [FinchAPI::SinglePage<FinchAPI::Models::Provider>]
       #

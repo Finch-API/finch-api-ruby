@@ -7,9 +7,9 @@ module FinchAPI
         class Configuration
           # Get configurations for sandbox jobs
           #
-          # @param params [FinchAPI::Models::Sandbox::Jobs::ConfigurationRetrieveParams, Hash{Symbol=>Object}] .
+          # @overload retrieve(request_options: {})
           #
-          #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+          # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Array<FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration>]
           #
@@ -25,13 +25,11 @@ module FinchAPI
 
           # Update configurations for sandbox jobs
           #
-          # @param params [FinchAPI::Models::Sandbox::Jobs::ConfigurationUpdateParams, Hash{Symbol=>Object}] .
+          # @overload update(completion_status:, type:, request_options: {})
           #
-          #   @option params [Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus] :completion_status
-          #
-          #   @option params [Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type] :type
-          #
-          #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+          # @param completion_status [Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus]
+          # @param type [Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type]
+          # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration]
           #

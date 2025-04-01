@@ -6,11 +6,10 @@ module FinchAPI
       class PayGroups
         # Read information from a single pay group
         #
+        # @overload retrieve(pay_group_id, request_options: {})
+        #
         # @param pay_group_id [String]
-        #
-        # @param params [FinchAPI::Models::Payroll::PayGroupRetrieveParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Models::Payroll::PayGroupRetrieveResponse]
         #
@@ -26,13 +25,11 @@ module FinchAPI
 
         # Read company pay groups and frequencies
         #
-        # @param params [FinchAPI::Models::Payroll::PayGroupListParams, Hash{Symbol=>Object}] .
+        # @overload list(individual_id: nil, pay_frequencies: nil, request_options: {})
         #
-        #   @option params [String] :individual_id
-        #
-        #   @option params [Array<String>] :pay_frequencies
-        #
-        #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param individual_id [String]
+        # @param pay_frequencies [Array<String>]
+        # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::SinglePage<FinchAPI::Models::Payroll::PayGroupListResponse>]
         #

@@ -6,13 +6,11 @@ module FinchAPI
       class Directory
         # Read company directory and organization structure
         #
-        # @param params [FinchAPI::Models::HRIS::DirectoryListParams, Hash{Symbol=>Object}] .
+        # @overload list(limit: nil, offset: nil, request_options: {})
         #
-        #   @option params [Integer] :limit Number of employees to return (defaults to all)
-        #
-        #   @option params [Integer] :offset Index to start from (defaults to 0)
-        #
-        #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param limit [Integer]
+        # @param offset [Integer]
+        # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::IndividualsPage<FinchAPI::Models::HRIS::IndividualInDirectory>]
         #
