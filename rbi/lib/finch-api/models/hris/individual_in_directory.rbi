@@ -63,7 +63,15 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(id: nil, department: nil, first_name: nil, is_active: nil, last_name: nil, manager: nil, middle_name: nil)
+        def self.new(
+          id: nil,
+          department: nil,
+          first_name: nil,
+          is_active: nil,
+          last_name: nil,
+          manager: nil,
+          middle_name: nil
+        )
         end
 
         sig do

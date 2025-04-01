@@ -65,7 +65,17 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(completed_at:, created_at:, job_id:, job_url:, params:, scheduled_at:, started_at:, status:, type:)
+        def self.new(
+          completed_at:,
+          created_at:,
+          job_id:,
+          job_url:,
+          params:,
+          scheduled_at:,
+          started_at:,
+          status:,
+          type:
+        )
         end
 
         sig do

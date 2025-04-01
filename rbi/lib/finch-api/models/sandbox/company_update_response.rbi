@@ -60,7 +60,16 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(accounts:, departments:, ein:, entity:, legal_name:, locations:, primary_email:, primary_phone_number:)
+        def self.new(
+          accounts:,
+          departments:,
+          ein:,
+          entity:,
+          legal_name:,
+          locations:,
+          primary_email:,
+          primary_phone_number:
+        )
         end
 
         sig do
@@ -113,7 +122,13 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(account_name: nil, account_number: nil, account_type: nil, institution_name: nil, routing_number: nil)
+          def self.new(
+            account_name: nil,
+            account_number: nil,
+            account_type: nil,
+            institution_name: nil,
+            routing_number: nil
+          )
           end
 
           sig do
