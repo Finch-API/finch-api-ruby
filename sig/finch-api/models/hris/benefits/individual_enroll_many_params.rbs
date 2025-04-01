@@ -55,6 +55,7 @@ module FinchAPI
                 annual_maximum: Integer?,
                 catch_up: bool,
                 company_contribution: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution,
+                effective_date: Date,
                 employee_deduction: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction
               }
 
@@ -77,6 +78,10 @@ module FinchAPI
                 FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution
               ) -> FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution
 
+              attr_reader effective_date: Date?
+
+              def effective_date=: (Date) -> Date
+
               attr_reader employee_deduction: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction?
 
               def employee_deduction=: (
@@ -88,6 +93,7 @@ module FinchAPI
                 ?annual_maximum: Integer?,
                 ?catch_up: bool,
                 ?company_contribution: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution,
+                ?effective_date: Date,
                 ?employee_deduction: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction
               ) -> void
 
