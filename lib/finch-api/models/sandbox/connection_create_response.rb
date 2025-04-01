@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module Sandbox
+      # @see FinchAPI::Resources::Sandbox::Connections#create
       class ConnectionCreateResponse < FinchAPI::BaseModel
         # @!attribute access_token
         #

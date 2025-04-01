@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module Jobs
+      # @see FinchAPI::Resources::Jobs::Manual#retrieve
       class ManualAsyncJob < FinchAPI::BaseModel
         # @!attribute body
         #   Specific information about the job, such as individual statuses for batch jobs.

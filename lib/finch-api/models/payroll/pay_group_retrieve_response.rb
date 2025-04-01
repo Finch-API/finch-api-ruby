@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module Payroll
+      # @see FinchAPI::Resources::Payroll::PayGroups#retrieve
       class PayGroupRetrieveResponse < FinchAPI::BaseModel
         # @!attribute id
         #   Finch id (uuidv4) for the pay group

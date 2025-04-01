@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
+      # @see FinchAPI::Resources::HRIS::Payments#list
       class Payment < FinchAPI::BaseModel
         # @!attribute [r] id
         #   The unique id for the payment.

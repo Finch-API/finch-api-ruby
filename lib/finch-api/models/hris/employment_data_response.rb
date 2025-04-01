@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
+      # @see FinchAPI::Resources::HRIS::Employments#retrieve_many
       class EmploymentDataResponse < FinchAPI::BaseModel
         # @!attribute [r] body
         #
