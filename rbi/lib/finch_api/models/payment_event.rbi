@@ -59,7 +59,8 @@ module FinchAPI
         extend FinchAPI::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::PaymentEvent::EventType) }
-        OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol) }
 
         PAYMENT_CREATED = T.let(:"payment.created", FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol)
         PAYMENT_UPDATED = T.let(:"payment.updated", FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol)

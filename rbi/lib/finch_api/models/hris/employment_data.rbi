@@ -274,7 +274,7 @@ module FinchAPI
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::TaggedSymbol) }
 
             FULL_TIME = T.let(:full_time, FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::TaggedSymbol)
             INTERN = T.let(:intern, FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::TaggedSymbol)
@@ -295,7 +295,7 @@ module FinchAPI
 
             TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::EmploymentData::Employment::Type) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::EmploymentData::Employment::Type::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::EmploymentData::Employment::Type::TaggedSymbol) }
 
             EMPLOYEE = T.let(:employee, FinchAPI::Models::HRIS::EmploymentData::Employment::Type::TaggedSymbol)
             CONTRACTOR = T.let(:contractor, FinchAPI::Models::HRIS::EmploymentData::Employment::Type::TaggedSymbol)
@@ -313,7 +313,7 @@ module FinchAPI
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol) }
 
           ACTIVE = T.let(:active, FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol)
           DECEASED = T.let(:deceased, FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol)

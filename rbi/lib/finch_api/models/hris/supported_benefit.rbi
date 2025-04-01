@@ -111,7 +111,7 @@ module FinchAPI
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution::TaggedSymbol) }
 
           FIXED = T.let(:fixed, FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution::TaggedSymbol)
           PERCENT = T.let(:percent, FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution::TaggedSymbol)
@@ -127,7 +127,7 @@ module FinchAPI
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction::TaggedSymbol) }
 
           FIXED = T.let(:fixed, FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction::TaggedSymbol)
           PERCENT = T.let(:percent, FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction::TaggedSymbol)
@@ -143,7 +143,7 @@ module FinchAPI
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::SupportedBenefit::HsaContributionLimit) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::SupportedBenefit::HsaContributionLimit::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::SupportedBenefit::HsaContributionLimit::TaggedSymbol) }
 
           INDIVIDUAL =
             T.let(:individual, FinchAPI::Models::HRIS::SupportedBenefit::HsaContributionLimit::TaggedSymbol)

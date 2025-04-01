@@ -55,7 +55,7 @@ module FinchAPI
         extend FinchAPI::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Income::Unit) }
-        OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::Income::Unit::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, FinchAPI::Models::Income::Unit::TaggedSymbol) }
 
         YEARLY = T.let(:yearly, FinchAPI::Models::Income::Unit::TaggedSymbol)
         QUARTERLY = T.let(:quarterly, FinchAPI::Models::Income::Unit::TaggedSymbol)

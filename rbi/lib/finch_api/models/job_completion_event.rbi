@@ -59,7 +59,8 @@ module FinchAPI
         extend FinchAPI::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::JobCompletionEvent::EventType) }
-        OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::JobCompletionEvent::EventType::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, FinchAPI::Models::JobCompletionEvent::EventType::TaggedSymbol) }
 
         JOB_BENEFIT_CREATE_COMPLETED =
           T.let(:"job.benefit_create.completed", FinchAPI::Models::JobCompletionEvent::EventType::TaggedSymbol)

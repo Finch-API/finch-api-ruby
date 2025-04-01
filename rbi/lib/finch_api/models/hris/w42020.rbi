@@ -135,7 +135,7 @@ module FinchAPI
 
             TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::W42020::Data::FilingStatus) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::W42020::Data::FilingStatus::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::W42020::Data::FilingStatus::TaggedSymbol) }
 
             HEAD_OF_HOUSEHOLD =
               T.let(:head_of_household, FinchAPI::Models::HRIS::W42020::Data::FilingStatus::TaggedSymbol)
@@ -161,7 +161,7 @@ module FinchAPI
           extend FinchAPI::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::W42020::Type) }
-          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::W42020::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::W42020::Type::TaggedSymbol) }
 
           W4_2020 = T.let(:w4_2020, FinchAPI::Models::HRIS::W42020::Type::TaggedSymbol)
 

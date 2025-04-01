@@ -151,7 +151,8 @@ module FinchAPI
             extend FinchAPI::Enum
 
             TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Individual::Email::Type) }
-            OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol) }
 
             WORK = T.let(:work, FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol)
             PERSONAL = T.let(:personal, FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol)
@@ -167,7 +168,8 @@ module FinchAPI
           extend FinchAPI::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Individual::Ethnicity) }
-          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol) }
 
           ASIAN = T.let(:asian, FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol)
           WHITE = T.let(:white, FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol)
@@ -194,7 +196,8 @@ module FinchAPI
           extend FinchAPI::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Individual::Gender) }
-          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol) }
 
           FEMALE = T.let(:female, FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol)
           MALE = T.let(:male, FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol)
@@ -240,7 +243,7 @@ module FinchAPI
 
             TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Individual::PhoneNumber::Type) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::TaggedSymbol) }
 
             WORK = T.let(:work, FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::TaggedSymbol)
             PERSONAL = T.let(:personal, FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::TaggedSymbol)

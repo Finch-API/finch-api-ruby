@@ -219,7 +219,7 @@ module FinchAPI
 
             TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::PayStatement::Earning::Type) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol) }
 
             SALARY = T.let(:salary, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
             WAGE = T.let(:wage, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
@@ -483,7 +483,7 @@ module FinchAPI
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::PayStatement::PaymentMethod) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::PayStatement::PaymentMethod::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::PayStatement::PaymentMethod::TaggedSymbol) }
 
           CHECK = T.let(:check, FinchAPI::Models::HRIS::PayStatement::PaymentMethod::TaggedSymbol)
           DIRECT_DEPOSIT =
@@ -606,7 +606,8 @@ module FinchAPI
             extend FinchAPI::Enum
 
             TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::PayStatement::Tax::Type) }
-            OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol) }
 
             STATE = T.let(:state, FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol)
             FEDERAL = T.let(:federal, FinchAPI::Models::HRIS::PayStatement::Tax::Type::TaggedSymbol)
@@ -624,7 +625,8 @@ module FinchAPI
           extend FinchAPI::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::PayStatement::Type) }
-          OrSymbol = T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol) }
 
           REGULAR_PAYROLL = T.let(:regular_payroll, FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol)
           OFF_CYCLE_PAYROLL = T.let(:off_cycle_payroll, FinchAPI::Models::HRIS::PayStatement::Type::TaggedSymbol)

@@ -200,6 +200,7 @@ module FinchAPI
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::CompanyContribution::TaggedSymbol
                 )
               end
@@ -234,6 +235,7 @@ module FinchAPI
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::EmployeeDeduction::TaggedSymbol
                 )
               end
@@ -270,6 +272,7 @@ module FinchAPI
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::HsaContributionLimit::TaggedSymbol
                 )
               end

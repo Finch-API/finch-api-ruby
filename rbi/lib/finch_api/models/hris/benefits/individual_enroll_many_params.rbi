@@ -227,6 +227,7 @@ module FinchAPI
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit::TaggedSymbol
                     )
                   end
@@ -313,6 +314,7 @@ module FinchAPI
                     T.type_alias do
                       T.any(
                         Symbol,
+                        String,
                         FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::TaggedSymbol
                       )
                     end
@@ -400,6 +402,7 @@ module FinchAPI
                     T.type_alias do
                       T.any(
                         Symbol,
+                        String,
                         FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type::TaggedSymbol
                       )
                     end

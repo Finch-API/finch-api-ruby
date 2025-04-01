@@ -65,7 +65,7 @@ module FinchAPI
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::Connect::SessionReauthenticateParams::Product) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol) }
 
           COMPANY = T.let(:company, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
           DIRECTORY =

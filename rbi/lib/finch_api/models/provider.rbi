@@ -2273,7 +2273,7 @@ module FinchAPI
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Provider::AuthenticationMethod::Type) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol) }
 
           ASSISTED = T.let(:assisted, FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol)
           CREDENTIAL = T.let(:credential, FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol)

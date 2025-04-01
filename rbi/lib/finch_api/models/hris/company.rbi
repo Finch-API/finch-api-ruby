@@ -152,7 +152,7 @@ module FinchAPI
 
             TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::HRISCompany::Account::AccountType) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::HRISCompany::Account::AccountType::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::HRISCompany::Account::AccountType::TaggedSymbol) }
 
             CHECKING = T.let(:checking, FinchAPI::Models::HRIS::HRISCompany::Account::AccountType::TaggedSymbol)
             SAVINGS = T.let(:savings, FinchAPI::Models::HRIS::HRISCompany::Account::AccountType::TaggedSymbol)
@@ -253,7 +253,7 @@ module FinchAPI
 
             TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::HRISCompany::Entity::Subtype) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::HRISCompany::Entity::Subtype::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::HRISCompany::Entity::Subtype::TaggedSymbol) }
 
             S_CORPORATION = T.let(:s_corporation, FinchAPI::Models::HRIS::HRISCompany::Entity::Subtype::TaggedSymbol)
             C_CORPORATION = T.let(:c_corporation, FinchAPI::Models::HRIS::HRISCompany::Entity::Subtype::TaggedSymbol)
@@ -270,7 +270,7 @@ module FinchAPI
 
             TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::HRISCompany::Entity::Type) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, FinchAPI::Models::HRIS::HRISCompany::Entity::Type::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::HRISCompany::Entity::Type::TaggedSymbol) }
 
             LLC = T.let(:llc, FinchAPI::Models::HRIS::HRISCompany::Entity::Type::TaggedSymbol)
             LP = T.let(:lp, FinchAPI::Models::HRIS::HRISCompany::Entity::Type::TaggedSymbol)

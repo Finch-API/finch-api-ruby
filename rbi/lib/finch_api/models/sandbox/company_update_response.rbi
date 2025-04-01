@@ -153,7 +153,13 @@ module FinchAPI
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol
+                )
+              end
 
             CHECKING =
               T.let(:checking, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol)
@@ -267,7 +273,7 @@ module FinchAPI
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol) }
 
             S_CORPORATION =
               T.let(:s_corporation, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol)
@@ -290,7 +296,7 @@ module FinchAPI
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol) }
 
             LLC = T.let(:llc, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)
             LP = T.let(:lp, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)
