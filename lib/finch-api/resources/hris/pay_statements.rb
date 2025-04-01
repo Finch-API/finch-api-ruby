@@ -9,11 +9,10 @@ module FinchAPI
         #   Deduction and contribution types are supported by the payroll systems that
         #   supports Benefits.
         #
-        # @param params [FinchAPI::Models::HRIS::PayStatementRetrieveManyParams, Hash{Symbol=>Object}] .
+        # @overload retrieve_many(requests:, request_options: {})
         #
-        #   @option params [Array<FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request>] :requests The array of batch requests.
-        #
-        #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param requests [Array<FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request>]
+        # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::ResponsesPage<FinchAPI::Models::HRIS::PayStatementResponse>]
         #

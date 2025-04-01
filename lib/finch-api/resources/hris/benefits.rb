@@ -10,17 +10,12 @@ module FinchAPI
         # Creates a new company-wide deduction or contribution. Please use the
         #   `/providers` endpoint to view available types for each provider.
         #
-        # @param params [FinchAPI::Models::HRIS::BenefitCreateParams, Hash{Symbol=>Object}] .
+        # @overload create(description: nil, frequency: nil, type: nil, request_options: {})
         #
-        #   @option params [String] :description Name of the benefit as it appears in the provider and pay statements. Recommend
-        #     limiting this to <30 characters due to limitations in specific providers (e.g.
-        #     Justworks).
-        #
-        #   @option params [Symbol, FinchAPI::Models::HRIS::BenefitFrequency, nil] :frequency
-        #
-        #   @option params [Symbol, FinchAPI::Models::HRIS::BenefitType, nil] :type Type of benefit.
-        #
-        #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param description [String]
+        # @param frequency [Symbol, FinchAPI::Models::HRIS::BenefitFrequency, nil]
+        # @param type [Symbol, FinchAPI::Models::HRIS::BenefitType, nil]
+        # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Models::HRIS::CreateCompanyBenefitsResponse]
         #
@@ -38,11 +33,10 @@ module FinchAPI
 
         # Lists deductions and contributions information for a given item
         #
+        # @overload retrieve(benefit_id, request_options: {})
+        #
         # @param benefit_id [String]
-        #
-        # @param params [FinchAPI::Models::HRIS::BenefitRetrieveParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Models::HRIS::CompanyBenefit]
         #
@@ -58,13 +52,11 @@ module FinchAPI
 
         # Updates an existing company-wide deduction or contribution
         #
+        # @overload update(benefit_id, description: nil, request_options: {})
+        #
         # @param benefit_id [String]
-        #
-        # @param params [FinchAPI::Models::HRIS::BenefitUpdateParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [String] :description Updated name or description.
-        #
-        #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param description [String]
+        # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Models::HRIS::UpdateCompanyBenefitResponse]
         #
@@ -82,9 +74,9 @@ module FinchAPI
 
         # List all company-wide deductions and contributions.
         #
-        # @param params [FinchAPI::Models::HRIS::BenefitListParams, Hash{Symbol=>Object}] .
+        # @overload list(request_options: {})
         #
-        #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::SinglePage<FinchAPI::Models::HRIS::CompanyBenefit>]
         #
@@ -101,9 +93,9 @@ module FinchAPI
 
         # Get deductions metadata
         #
-        # @param params [FinchAPI::Models::HRIS::BenefitListSupportedBenefitsParams, Hash{Symbol=>Object}] .
+        # @overload list_supported_benefits(request_options: {})
         #
-        #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::SinglePage<FinchAPI::Models::HRIS::SupportedBenefit>]
         #

@@ -6,9 +6,9 @@ module FinchAPI
       class Company
         # Read basic company data
         #
-        # @param params [FinchAPI::Models::HRIS::CompanyRetrieveParams, Hash{Symbol=>Object}] .
+        # @overload retrieve(request_options: {})
         #
-        #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Models::HRIS::HRISCompany]
         #

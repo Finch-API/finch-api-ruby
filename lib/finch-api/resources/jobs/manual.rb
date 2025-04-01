@@ -7,11 +7,10 @@ module FinchAPI
         # Get a manual job by `job_id`. Manual jobs are completed by a human and include
         #   Assisted Benefits jobs.
         #
+        # @overload retrieve(job_id, request_options: {})
+        #
         # @param job_id [String]
-        #
-        # @param params [FinchAPI::Models::Jobs::ManualRetrieveParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Models::Jobs::ManualAsyncJob]
         #
