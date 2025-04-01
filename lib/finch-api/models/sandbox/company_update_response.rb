@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module Sandbox
+      # @see FinchAPI::Resources::Sandbox::Company#update
       class CompanyUpdateResponse < FinchAPI::BaseModel
         # @!attribute accounts
         #   An array of bank account objects associated with the payroll/HRIS system.

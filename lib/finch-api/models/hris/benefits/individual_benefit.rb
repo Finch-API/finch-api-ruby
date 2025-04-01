@@ -4,6 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       module Benefits
+        # @see FinchAPI::Resources::HRIS::Benefits::Individuals#retrieve_many_benefits
         class IndividualBenefit < FinchAPI::BaseModel
           # @!attribute [r] body
           #

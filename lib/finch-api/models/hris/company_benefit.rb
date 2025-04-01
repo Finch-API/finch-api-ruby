@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
+      # @see FinchAPI::Resources::HRIS::Benefits#retrieve
       class CompanyBenefit < FinchAPI::BaseModel
         # @!attribute benefit_id
         #

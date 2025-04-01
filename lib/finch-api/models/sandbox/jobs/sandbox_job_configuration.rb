@@ -4,6 +4,7 @@ module FinchAPI
   module Models
     module Sandbox
       module Jobs
+        # @see FinchAPI::Resources::Sandbox::Jobs::Configuration#update
         class SandboxJobConfiguration < FinchAPI::BaseModel
           # @!attribute completion_status
           #

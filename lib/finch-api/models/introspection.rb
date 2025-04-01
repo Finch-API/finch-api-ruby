@@ -2,6 +2,7 @@
 
 module FinchAPI
   module Models
+    # @see FinchAPI::Resources::Account#introspect
     class Introspection < FinchAPI::BaseModel
       # @!attribute account_id
       #   [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection

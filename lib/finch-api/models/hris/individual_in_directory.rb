@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
+      # @see FinchAPI::Resources::HRIS::Directory#list
       class IndividualInDirectory < FinchAPI::BaseModel
         # @!attribute [r] id
         #   A stable Finch id (UUID v4) for an individual in the company.

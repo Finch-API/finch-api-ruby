@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
+      # @see FinchAPI::Resources::HRIS::Documents#list
       class DocumentListResponse < FinchAPI::BaseModel
         # @!attribute documents
         #
