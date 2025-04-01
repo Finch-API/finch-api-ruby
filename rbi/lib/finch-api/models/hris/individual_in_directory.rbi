@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       class IndividualInDirectory < FinchAPI::BaseModel
-        # A stable Finch id (UUID v4) for an individual in the company.
+        # A stable Finch `id` (UUID v4) for an individual in the company.
         sig { returns(T.nilable(String)) }
         attr_reader :id
 
