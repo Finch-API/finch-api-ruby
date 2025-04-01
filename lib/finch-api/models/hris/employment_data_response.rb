@@ -24,6 +24,7 @@ module FinchAPI
         #   attr_writer :code
 
         # @!attribute [r] individual_id
+        #   A stable Finch `id` (UUID v4) for an individual in the company.
         #
         #   @return [String, nil]
         optional :individual_id, String

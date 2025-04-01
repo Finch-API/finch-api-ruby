@@ -5,7 +5,7 @@ module FinchAPI
     module HRIS
       class EmploymentData < FinchAPI::BaseModel
         # @!attribute [r] id
-        #   string A stable Finch `id` (UUID v4) for an individual in the company.
+        #   A stable Finch `id` (UUID v4) for an individual in the company.
         #
         #   @return [String, nil]
         optional :id, String
