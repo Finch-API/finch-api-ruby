@@ -29,6 +29,7 @@ module FinchAPI
 
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+        # @see FinchAPI::Models::Jobs::ManualAsyncJob#status
         module Status
           extend FinchAPI::Enum
 

@@ -42,6 +42,7 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+          # @see FinchAPI::Models::HRIS::Benefits::EnrolledIndividual#body
           class Body < FinchAPI::BaseModel
             # @!attribute finch_code
             #   A descriptive identifier for the response
@@ -72,6 +73,8 @@ module FinchAPI
           end
 
           # HTTP status code. Either 201 or 200
+          #
+          # @see FinchAPI::Models::HRIS::Benefits::EnrolledIndividual#code
           module Code
             extend FinchAPI::Enum
 

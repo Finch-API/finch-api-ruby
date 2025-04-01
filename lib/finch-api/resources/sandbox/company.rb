@@ -27,6 +27,8 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::Models::Sandbox::CompanyUpdateResponse]
+        #
+        # @see FinchAPI::Models::Sandbox::CompanyUpdateParams
         def update(params)
           parsed, options = FinchAPI::Models::Sandbox::CompanyUpdateParams.dump_request(params)
           @client.request(
@@ -38,6 +40,8 @@ module FinchAPI
           )
         end
 
+        # @api private
+        #
         # @param client [FinchAPI::Client]
         def initialize(client:)
           @client = client

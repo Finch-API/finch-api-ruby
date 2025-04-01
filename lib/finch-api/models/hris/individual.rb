@@ -148,6 +148,7 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+          # @see FinchAPI::Models::HRIS::Individual::Email#type
           module Type
             extend FinchAPI::Enum
 
@@ -163,6 +164,8 @@ module FinchAPI
         end
 
         # The EEOC-defined ethnicity of the individual.
+        #
+        # @see FinchAPI::Models::HRIS::Individual#ethnicity
         module Ethnicity
           extend FinchAPI::Enum
 
@@ -183,6 +186,8 @@ module FinchAPI
         end
 
         # The gender of the individual.
+        #
+        # @see FinchAPI::Models::HRIS::Individual#gender
         module Gender
           extend FinchAPI::Enum
 
@@ -217,6 +222,7 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+          # @see FinchAPI::Models::HRIS::Individual::PhoneNumber#type
           module Type
             extend FinchAPI::Enum
 

@@ -40,6 +40,7 @@ module FinchAPI
           def update(connection_status: nil, request_options: {})
           end
 
+          # @api private
           sig { params(client: FinchAPI::Client).returns(T.attached_class) }
           def self.new(client:)
           end

@@ -79,6 +79,7 @@ module FinchAPI
 
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+        # @see FinchAPI::Models::Sandbox::ConnectionCreateResponse#authentication_type
         module AuthenticationType
           extend FinchAPI::Enum
 

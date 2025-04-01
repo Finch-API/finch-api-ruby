@@ -42,6 +42,7 @@ module FinchAPI
 
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+        # @see FinchAPI::Models::HRIS::W42005#data
         class Data < FinchAPI::BaseModel
           # @!attribute additional_withholding
           #   Additional withholding amount (in cents).
@@ -104,6 +105,8 @@ module FinchAPI
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
           # Indicates exemption status from federal tax withholding.
+          #
+          # @see FinchAPI::Models::HRIS::W42005::Data#exemption
           module Exemption
             extend FinchAPI::Enum
 
@@ -118,6 +121,8 @@ module FinchAPI
           end
 
           # The individual's filing status for tax purposes.
+          #
+          # @see FinchAPI::Models::HRIS::W42005::Data#filing_status
           module FilingStatus
             extend FinchAPI::Enum
 
@@ -134,6 +139,8 @@ module FinchAPI
         end
 
         # Specifies the form type, indicating that this document is a 2005 W4 form.
+        #
+        # @see FinchAPI::Models::HRIS::W42005#type
         module Type
           extend FinchAPI::Enum
 

@@ -171,6 +171,7 @@ module FinchAPI
 
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+        # @see FinchAPI::Models::Provider::AuthenticationMethod#supported_fields
         class SupportedFields < FinchAPI::BaseModel
           # @!attribute [r] company
           #
@@ -262,6 +263,7 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+          # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields#company
           class Company < FinchAPI::BaseModel
             # @!attribute [r] id
             #
@@ -376,6 +378,7 @@ module FinchAPI
 
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+            # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company#accounts
             class Accounts < FinchAPI::BaseModel
               # @!attribute [r] account_name
               #
@@ -434,6 +437,7 @@ module FinchAPI
               # def initialize: (Hash | FinchAPI::BaseModel) -> void
             end
 
+            # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company#departments
             class Departments < FinchAPI::BaseModel
               # @!attribute [r] name
               #
@@ -462,6 +466,7 @@ module FinchAPI
 
               # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+              # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments#parent
               class Parent < FinchAPI::BaseModel
                 # @!attribute [r] name
                 #
@@ -481,6 +486,7 @@ module FinchAPI
               end
             end
 
+            # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company#entity
             class Entity < FinchAPI::BaseModel
               # @!attribute [r] subtype
               #
@@ -509,6 +515,7 @@ module FinchAPI
               # def initialize: (Hash | FinchAPI::BaseModel) -> void
             end
 
+            # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company#locations
             class Locations < FinchAPI::BaseModel
               # @!attribute [r] city
               #
@@ -578,6 +585,7 @@ module FinchAPI
             end
           end
 
+          # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields#directory
           class Directory < FinchAPI::BaseModel
             # @!attribute [r] individuals
             #
@@ -607,6 +615,7 @@ module FinchAPI
 
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+            # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory#individuals
             class Individuals < FinchAPI::BaseModel
               # @!attribute [r] id
               #
@@ -696,6 +705,7 @@ module FinchAPI
 
               # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+              # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals#manager
               class Manager < FinchAPI::BaseModel
                 # @!attribute [r] id
                 #
@@ -715,6 +725,7 @@ module FinchAPI
               end
             end
 
+            # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory#paging
             class Paging < FinchAPI::BaseModel
               # @!attribute [r] count
               #
@@ -744,6 +755,7 @@ module FinchAPI
             end
           end
 
+          # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields#employment
           class Employment < FinchAPI::BaseModel
             # @!attribute [r] id
             #
@@ -947,6 +959,7 @@ module FinchAPI
 
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+            # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment#department
             class Department < FinchAPI::BaseModel
               # @!attribute [r] name
               #
@@ -965,6 +978,7 @@ module FinchAPI
               # def initialize: (Hash | FinchAPI::BaseModel) -> void
             end
 
+            # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment#employment
             class Employment < FinchAPI::BaseModel
               # @!attribute [r] subtype
               #
@@ -993,6 +1007,7 @@ module FinchAPI
               # def initialize: (Hash | FinchAPI::BaseModel) -> void
             end
 
+            # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment#income
             class Income < FinchAPI::BaseModel
               # @!attribute [r] amount
               #
@@ -1031,6 +1046,7 @@ module FinchAPI
               # def initialize: (Hash | FinchAPI::BaseModel) -> void
             end
 
+            # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment#location
             class Location < FinchAPI::BaseModel
               # @!attribute [r] city
               #
@@ -1099,6 +1115,7 @@ module FinchAPI
               # def initialize: (Hash | FinchAPI::BaseModel) -> void
             end
 
+            # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment#manager
             class Manager < FinchAPI::BaseModel
               # @!attribute [r] id
               #
@@ -1118,6 +1135,7 @@ module FinchAPI
             end
           end
 
+          # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields#individual
           class Individual < FinchAPI::BaseModel
             # @!attribute [r] id
             #
@@ -1275,6 +1293,7 @@ module FinchAPI
 
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+            # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual#emails
             class Emails < FinchAPI::BaseModel
               # @!attribute [r] data
               #
@@ -1303,6 +1322,7 @@ module FinchAPI
               # def initialize: (Hash | FinchAPI::BaseModel) -> void
             end
 
+            # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual#phone_numbers
             class PhoneNumbers < FinchAPI::BaseModel
               # @!attribute [r] data
               #
@@ -1331,6 +1351,7 @@ module FinchAPI
               # def initialize: (Hash | FinchAPI::BaseModel) -> void
             end
 
+            # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual#residence
             class Residence < FinchAPI::BaseModel
               # @!attribute [r] city
               #
@@ -1400,6 +1421,7 @@ module FinchAPI
             end
           end
 
+          # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields#pay_group
           class PayGroup < FinchAPI::BaseModel
             # @!attribute [r] id
             #
@@ -1448,6 +1470,7 @@ module FinchAPI
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
           end
 
+          # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields#pay_statement
           class PayStatement < FinchAPI::BaseModel
             # @!attribute [r] paging
             #
@@ -1477,6 +1500,7 @@ module FinchAPI
 
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+            # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement#paging
             class Paging < FinchAPI::BaseModel
               # @!attribute count
               #
@@ -1497,6 +1521,7 @@ module FinchAPI
               # def initialize: (Hash | FinchAPI::BaseModel) -> void
             end
 
+            # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement#pay_statements
             class PayStatements < FinchAPI::BaseModel
               # @!attribute [r] earnings
               #
@@ -1622,6 +1647,7 @@ module FinchAPI
 
               # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+              # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements#earnings
               class Earnings < FinchAPI::BaseModel
                 # @!attribute [r] amount
                 #
@@ -1670,6 +1696,7 @@ module FinchAPI
                 # def initialize: (Hash | FinchAPI::BaseModel) -> void
               end
 
+              # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements#employee_deductions
               class EmployeeDeductions < FinchAPI::BaseModel
                 # @!attribute [r] amount
                 #
@@ -1728,6 +1755,7 @@ module FinchAPI
                 # def initialize: (Hash | FinchAPI::BaseModel) -> void
               end
 
+              # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements#employer_contributions
               class EmployerContributions < FinchAPI::BaseModel
                 # @!attribute [r] amount
                 #
@@ -1766,6 +1794,7 @@ module FinchAPI
                 # def initialize: (Hash | FinchAPI::BaseModel) -> void
               end
 
+              # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements#taxes
               class Taxes < FinchAPI::BaseModel
                 # @!attribute [r] amount
                 #
@@ -1826,6 +1855,7 @@ module FinchAPI
             end
           end
 
+          # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields#payment
           class Payment < FinchAPI::BaseModel
             # @!attribute [r] id
             #
@@ -1970,6 +2000,7 @@ module FinchAPI
 
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+            # @see FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment#pay_period
             class PayPeriod < FinchAPI::BaseModel
               # @!attribute [r] end_date
               #
@@ -2001,6 +2032,8 @@ module FinchAPI
         end
 
         # The type of authentication method.
+        #
+        # @see FinchAPI::Models::Provider::AuthenticationMethod#type
         module Type
           extend FinchAPI::Enum
 

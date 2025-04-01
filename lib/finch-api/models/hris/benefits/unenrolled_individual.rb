@@ -42,6 +42,7 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+          # @see FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual#body
           class Body < FinchAPI::BaseModel
             # @!attribute finch_code
             #   A descriptive identifier for the response.

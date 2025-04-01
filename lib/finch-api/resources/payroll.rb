@@ -6,6 +6,8 @@ module FinchAPI
       # @return [FinchAPI::Resources::Payroll::PayGroups]
       attr_reader :pay_groups
 
+      # @api private
+      #
       # @param client [FinchAPI::Client]
       def initialize(client:)
         @client = client

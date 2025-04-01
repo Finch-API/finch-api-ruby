@@ -23,6 +23,8 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::Models::HRIS::CreateCompanyBenefitsResponse]
+        #
+        # @see FinchAPI::Models::HRIS::BenefitCreateParams
         def create(params = {})
           parsed, options = FinchAPI::Models::HRIS::BenefitCreateParams.dump_request(params)
           @client.request(
@@ -43,6 +45,8 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::Models::HRIS::CompanyBenefit]
+        #
+        # @see FinchAPI::Models::HRIS::BenefitRetrieveParams
         def retrieve(benefit_id, params = {})
           @client.request(
             method: :get,
@@ -63,6 +67,8 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::Models::HRIS::UpdateCompanyBenefitResponse]
+        #
+        # @see FinchAPI::Models::HRIS::BenefitUpdateParams
         def update(benefit_id, params = {})
           parsed, options = FinchAPI::Models::HRIS::BenefitUpdateParams.dump_request(params)
           @client.request(
@@ -81,6 +87,8 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::SinglePage<FinchAPI::Models::HRIS::CompanyBenefit>]
+        #
+        # @see FinchAPI::Models::HRIS::BenefitListParams
         def list(params = {})
           @client.request(
             method: :get,
@@ -98,6 +106,8 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::SinglePage<FinchAPI::Models::HRIS::SupportedBenefit>]
+        #
+        # @see FinchAPI::Models::HRIS::BenefitListSupportedBenefitsParams
         def list_supported_benefits(params = {})
           @client.request(
             method: :get,
@@ -108,6 +118,8 @@ module FinchAPI
           )
         end
 
+        # @api private
+        #
         # @param client [FinchAPI::Client]
         def initialize(client:)
           @client = client

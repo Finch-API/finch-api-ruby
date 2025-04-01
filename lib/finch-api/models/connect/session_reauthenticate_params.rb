@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module Connect
+      # @see FinchAPI::Resources::Connect::Sessions#reauthenticate
       class SessionReauthenticateParams < FinchAPI::BaseModel
         # @!parse
         #   extend FinchAPI::Type::RequestParameters::Converter

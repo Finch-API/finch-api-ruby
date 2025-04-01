@@ -31,6 +31,7 @@ module FinchAPI
 
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+        # @see FinchAPI::Models::HRIS::BenefitFeaturesAndOperations#supported_features
         class SupportedFeatures < FinchAPI::BaseModel
           # @!attribute annual_maximum
           #   Whether the provider supports an annual maximum for this benefit.

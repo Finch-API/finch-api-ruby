@@ -4,6 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       module Benefits
+        # @see FinchAPI::Resources::HRIS::Benefits::Individuals#enrolled_ids
         class IndividualEnrolledIDsParams < FinchAPI::BaseModel
           # @!parse
           #   extend FinchAPI::Type::RequestParameters::Converter

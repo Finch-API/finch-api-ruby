@@ -60,6 +60,8 @@ module FinchAPI
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
         # The type of document.
+        #
+        # @see FinchAPI::Models::HRIS::DocumentResponse#type
         module Type
           extend FinchAPI::Enum
 

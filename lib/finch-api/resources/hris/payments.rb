@@ -17,6 +17,8 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::SinglePage<FinchAPI::Models::HRIS::Payment>]
+        #
+        # @see FinchAPI::Models::HRIS::PaymentListParams
         def list(params)
           parsed, options = FinchAPI::Models::HRIS::PaymentListParams.dump_request(params)
           @client.request(
@@ -29,6 +31,8 @@ module FinchAPI
           )
         end
 
+        # @api private
+        #
         # @param client [FinchAPI::Client]
         def initialize(client:)
           @client = client

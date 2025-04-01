@@ -191,6 +191,7 @@ module FinchAPI
 
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+        # @see FinchAPI::Models::Introspection::AuthenticationMethod#connection_status
         class ConnectionStatus < FinchAPI::BaseModel
           # @!attribute [r] message
           #
@@ -220,6 +221,8 @@ module FinchAPI
         end
 
         # The type of authentication method.
+        #
+        # @see FinchAPI::Models::Introspection::AuthenticationMethod#type
         module Type
           extend FinchAPI::Enum
 
@@ -238,6 +241,8 @@ module FinchAPI
       end
 
       # The type of application associated with a token.
+      #
+      # @see FinchAPI::Models::Introspection#client_type
       module ClientType
         extend FinchAPI::Enum
 
@@ -252,6 +257,7 @@ module FinchAPI
         #   def self.values; end
       end
 
+      # @see FinchAPI::Models::Introspection#connection_status
       class ConnectionStatus < FinchAPI::BaseModel
         # @!attribute [r] last_successful_sync
         #   The datetime when the connection was last successfully synced.
@@ -295,6 +301,8 @@ module FinchAPI
       #
       #   - `provider` - connection to an external provider
       #   - `finch` - finch-generated data.
+      #
+      # @see FinchAPI::Models::Introspection#connection_type
       module ConnectionType
         extend FinchAPI::Enum
 

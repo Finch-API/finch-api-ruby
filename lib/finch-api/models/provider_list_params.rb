@@ -2,6 +2,7 @@
 
 module FinchAPI
   module Models
+    # @see FinchAPI::Resources::Providers#list
     class ProviderListParams < FinchAPI::BaseModel
       # @!parse
       #   extend FinchAPI::Type::RequestParameters::Converter

@@ -16,6 +16,7 @@ module FinchAPI
         def retrieve(job_id, request_options: {})
         end
 
+        # @api private
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }
         def self.new(client:)
         end

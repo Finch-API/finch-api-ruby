@@ -22,6 +22,7 @@ module FinchAPI
 
         # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+        # @see FinchAPI::Models::Jobs::AutomatedListResponse#meta
         class Meta < FinchAPI::BaseModel
           # @!attribute [r] quotas
           #   Information about remaining quotas for this connection. Only applicable for
@@ -43,6 +44,7 @@ module FinchAPI
 
           # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+          # @see FinchAPI::Models::Jobs::AutomatedListResponse::Meta#quotas
           class Quotas < FinchAPI::BaseModel
             # @!attribute [r] data_sync_all
             #
@@ -65,6 +67,7 @@ module FinchAPI
 
             # def initialize: (Hash | FinchAPI::BaseModel) -> void
 
+            # @see FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas#data_sync_all
             class DataSyncAll < FinchAPI::BaseModel
               # @!attribute [r] allowed_refreshes
               #

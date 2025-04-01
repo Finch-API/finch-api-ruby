@@ -129,6 +129,7 @@ module FinchAPI
           #   def self.values; end
         end
 
+        # @see FinchAPI::Models::HRIS::Payment#pay_period
         class PayPeriod < FinchAPI::BaseModel
           # @!attribute end_date
           #

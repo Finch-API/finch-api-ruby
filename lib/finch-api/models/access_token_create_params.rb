@@ -2,6 +2,7 @@
 
 module FinchAPI
   module Models
+    # @see FinchAPI::Resources::AccessTokens#create
     class AccessTokenCreateParams < FinchAPI::BaseModel
       # @!parse
       #   extend FinchAPI::Type::RequestParameters::Converter

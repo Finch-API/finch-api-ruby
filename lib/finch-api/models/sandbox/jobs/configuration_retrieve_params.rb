@@ -4,6 +4,7 @@ module FinchAPI
   module Models
     module Sandbox
       module Jobs
+        # @see FinchAPI::Resources::Sandbox::Jobs::Configuration#retrieve
         class ConfigurationRetrieveParams < FinchAPI::BaseModel
           # @!parse
           #   extend FinchAPI::Type::RequestParameters::Converter

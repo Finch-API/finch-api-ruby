@@ -11,6 +11,8 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::Models::HRIS::HRISCompany]
+        #
+        # @see FinchAPI::Models::HRIS::CompanyRetrieveParams
         def retrieve(params = {})
           @client.request(
             method: :get,
@@ -20,6 +22,8 @@ module FinchAPI
           )
         end
 
+        # @api private
+        #
         # @param client [FinchAPI::Client]
         def initialize(client:)
           @client = client

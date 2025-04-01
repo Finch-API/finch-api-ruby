@@ -13,6 +13,8 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::Models::Payroll::PayGroupRetrieveResponse]
+        #
+        # @see FinchAPI::Models::Payroll::PayGroupRetrieveParams
         def retrieve(pay_group_id, params = {})
           @client.request(
             method: :get,
@@ -33,6 +35,8 @@ module FinchAPI
         #   @option params [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [FinchAPI::SinglePage<FinchAPI::Models::Payroll::PayGroupListResponse>]
+        #
+        # @see FinchAPI::Models::Payroll::PayGroupListParams
         def list(params = {})
           parsed, options = FinchAPI::Models::Payroll::PayGroupListParams.dump_request(params)
           @client.request(
@@ -45,6 +49,8 @@ module FinchAPI
           )
         end
 
+        # @api private
+        #
         # @param client [FinchAPI::Client]
         def initialize(client:)
           @client = client
