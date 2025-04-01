@@ -98,6 +98,16 @@ module FinchAPI
               #   # @return [FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution]
               #   attr_writer :company_contribution
 
+              # @!attribute [r] effective_date
+              #   The date the enrollment will take effect
+              #
+              #   @return [Date, nil]
+              optional :effective_date, Date
+
+              # @!parse
+              #   # @return [Date]
+              #   attr_writer :effective_date
+
               # @!attribute [r] employee_deduction
               #
               #   @return [FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction, nil]
@@ -113,6 +123,7 @@ module FinchAPI
               #   # @param annual_maximum [Integer, nil]
               #   # @param catch_up [Boolean]
               #   # @param company_contribution [FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution]
+              #   # @param effective_date [Date]
               #   # @param employee_deduction [FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction]
               #   #
               #   def initialize(
@@ -120,6 +131,7 @@ module FinchAPI
               #     annual_maximum: nil,
               #     catch_up: nil,
               #     company_contribution: nil,
+              #     effective_date: nil,
               #     employee_deduction: nil,
               #     **
               #   )
