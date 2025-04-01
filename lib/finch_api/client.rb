@@ -82,13 +82,13 @@ module FinchAPI
 
     # Creates and returns a new client for interacting with the API.
     #
-    # @param base_url [String, nil] Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
-    #
-    # @param access_token [String, nil]
-    #
     # @param client_id [String, nil] Defaults to `ENV["FINCH_CLIENT_ID"]`
     #
     # @param client_secret [String, nil] Defaults to `ENV["FINCH_CLIENT_SECRET"]`
+    #
+    # @param access_token [String, nil]
+    #
+    # @param base_url [String, nil] Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
     #
     # @param max_retries [Integer] Max number of retries to attempt after a failed retryable request.
     #
@@ -98,10 +98,10 @@ module FinchAPI
     #
     # @param max_retry_delay [Float]
     def initialize(
-      base_url: nil,
-      access_token: nil,
       client_id: ENV["FINCH_CLIENT_ID"],
       client_secret: ENV["FINCH_CLIENT_SECRET"],
+      access_token: nil,
+      base_url: nil,
       max_retries: DEFAULT_MAX_RETRIES,
       timeout: DEFAULT_TIMEOUT_IN_SECONDS,
       initial_retry_delay: DEFAULT_INITIAL_RETRY_DELAY,
@@ -113,9 +113,9 @@ module FinchAPI
         "finch-api-version" => "2020-09-17"
       }
 
-      @access_token = access_token&.to_s
       @client_id = client_id&.to_s
       @client_secret = client_secret&.to_s
+      @access_token = access_token&.to_s
 
       super(
         base_url: base_url,
