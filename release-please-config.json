@@ -64,5 +64,5 @@
     "minupalaniappan"
   ],
   "release-type": "ruby",
-  "version-file": "lib/finch-api/version.rb"
+  "version-file": "lib/finch_api/version.rb"
 }
