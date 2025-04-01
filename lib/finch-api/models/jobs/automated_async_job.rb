@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module Jobs
+      # @see FinchAPI::Resources::Jobs::Automated#retrieve
       class AutomatedAsyncJob < FinchAPI::BaseModel
         # @!attribute completed_at
         #   The datetime the job completed.

@@ -2,6 +2,7 @@
 
 module FinchAPI
   module Models
+    # @see FinchAPI::Resources::AccessTokens#create
     class CreateAccessTokenResponse < FinchAPI::BaseModel
       # @!attribute access_token
       #   The access token for the connection.

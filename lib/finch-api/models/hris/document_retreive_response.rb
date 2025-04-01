@@ -5,6 +5,8 @@ module FinchAPI
     module HRIS
       # A 2020 version of the W-4 tax form containing information on an individual's
       #   filing status, dependents, and withholding details.
+      #
+      # @see FinchAPI::Resources::HRIS::Documents#retreive
       module DocumentRetreiveResponse
         extend FinchAPI::Union
 

@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
+      # @see FinchAPI::Resources::HRIS::Individuals#retrieve_many
       class IndividualResponse < FinchAPI::BaseModel
         # @!attribute [r] body
         #

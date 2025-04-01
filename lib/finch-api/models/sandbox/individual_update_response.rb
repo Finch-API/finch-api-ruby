@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module Sandbox
+      # @see FinchAPI::Resources::Sandbox::Individual#update
       class IndividualUpdateResponse < FinchAPI::BaseModel
         # @!attribute [r] id
         #   A stable Finch `id` (UUID v4) for an individual in the company.

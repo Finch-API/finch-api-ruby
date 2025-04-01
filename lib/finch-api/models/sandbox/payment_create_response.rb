@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module Sandbox
+      # @see FinchAPI::Resources::Sandbox::Payment#create
       class PaymentCreateResponse < FinchAPI::BaseModel
         # @!attribute pay_date
         #   The date of the payment.

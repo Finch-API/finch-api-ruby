@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module Connect
+      # @see FinchAPI::Resources::Connect::Sessions#new
       class SessionNewResponse < FinchAPI::BaseModel
         # @!attribute connect_url
         #   The Connect URL to redirect the user to for authentication

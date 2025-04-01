@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
+      # @see FinchAPI::Resources::HRIS::Benefits#update
       class UpdateCompanyBenefitResponse < FinchAPI::BaseModel
         # @!attribute benefit_id
         #
