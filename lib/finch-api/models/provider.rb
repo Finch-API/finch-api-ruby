@@ -2,6 +2,7 @@
 
 module FinchAPI
   module Models
+    # @see FinchAPI::Resources::Providers#list
     class Provider < FinchAPI::BaseModel
       # @!attribute [r] id
       #   The id of the payroll provider used in Connect.

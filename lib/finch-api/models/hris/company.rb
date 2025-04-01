@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
+      # @see FinchAPI::Resources::HRIS::Company#retrieve
       class HRISCompany < FinchAPI::BaseModel
         # @!attribute id
         #   A stable Finch `id` (UUID v4) for the company.

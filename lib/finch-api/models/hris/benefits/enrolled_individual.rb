@@ -4,6 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       module Benefits
+        # @see FinchAPI::Resources::HRIS::Benefits::Individuals#enroll_many
         class EnrolledIndividual < FinchAPI::BaseModel
           # @!attribute [r] body
           #

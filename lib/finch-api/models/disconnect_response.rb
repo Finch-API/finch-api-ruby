@@ -2,6 +2,7 @@
 
 module FinchAPI
   module Models
+    # @see FinchAPI::Resources::Account#disconnect
     class DisconnectResponse < FinchAPI::BaseModel
       # @!attribute status
       #   If the request is successful, Finch will return “success” (HTTP 200 status).

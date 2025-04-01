@@ -2,6 +2,7 @@
 
 module FinchAPI
   module Models
+    # @see FinchAPI::Resources::RequestForwarding#forward
     class RequestForwardingForwardResponse < FinchAPI::BaseModel
       # @!attribute data
       #   A string representation of the HTTP response body of the forwarded request’s

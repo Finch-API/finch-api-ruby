@@ -4,6 +4,7 @@ module FinchAPI
   module Models
     module Sandbox
       module Connections
+        # @see FinchAPI::Resources::Sandbox::Connections::Accounts#update
         class AccountUpdateResponse < FinchAPI::BaseModel
           # @!attribute account_id
           #   [DEPRECATED] Use `connection_id` to associate a connection with an access token
