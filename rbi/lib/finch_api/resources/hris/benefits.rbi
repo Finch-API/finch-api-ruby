@@ -23,6 +23,7 @@ module FinchAPI
           #   limiting this to <30 characters due to limitations in specific providers (e.g.
           #   Justworks).
           description: nil,
+          # The frequency of the benefit deduction/contribution.
           frequency: nil,
           # Type of benefit.
           type: nil,
