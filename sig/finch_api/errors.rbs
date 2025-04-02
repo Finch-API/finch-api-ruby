@@ -1,99 +1,129 @@
 module FinchAPI
-  class Error < StandardError
-    attr_accessor cause: StandardError?
+  module Errors
+    class Error < StandardError
+      attr_accessor cause: StandardError?
+    end
+
+    class ConversionError < FinchAPI::Errors::Error
+    end
+
+    class APIError < FinchAPI::Errors::Error
+      attr_accessor url: URI::Generic
+
+      attr_accessor status: Integer?
+
+      attr_accessor body: top?
+
+      def initialize: (
+        url: URI::Generic,
+        ?status: Integer?,
+        ?body: Object?,
+        ?request: nil,
+        ?response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class APIConnectionError < FinchAPI::Errors::APIError
+      def initialize: (
+        url: URI::Generic,
+        ?status: nil,
+        ?body: nil,
+        ?request: nil,
+        ?response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class APITimeoutError < FinchAPI::Errors::APIConnectionError
+      def initialize: (
+        url: URI::Generic,
+        ?status: nil,
+        ?body: nil,
+        ?request: nil,
+        ?response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class APIStatusError < FinchAPI::Errors::APIError
+      def self.for: (
+        url: URI::Generic,
+        status: Integer,
+        body: Object?,
+        request: nil,
+        response: nil,
+        ?message: String?
+      ) -> instance
+
+      def initialize: (
+        url: URI::Generic,
+        status: Integer,
+        body: Object?,
+        request: nil,
+        response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class BadRequestError < FinchAPI::Errors::APIStatusError
+      HTTP_STATUS: 400
+    end
+
+    class AuthenticationError < FinchAPI::Errors::APIStatusError
+      HTTP_STATUS: 401
+    end
+
+    class PermissionDeniedError < FinchAPI::Errors::APIStatusError
+      HTTP_STATUS: 403
+    end
+
+    class NotFoundError < FinchAPI::Errors::APIStatusError
+      HTTP_STATUS: 404
+    end
+
+    class ConflictError < FinchAPI::Errors::APIStatusError
+      HTTP_STATUS: 409
+    end
+
+    class UnprocessableEntityError < FinchAPI::Errors::APIStatusError
+      HTTP_STATUS: 422
+    end
+
+    class RateLimitError < FinchAPI::Errors::APIStatusError
+      HTTP_STATUS: 429
+    end
+
+    class InternalServerError < FinchAPI::Errors::APIStatusError
+      HTTP_STATUS: Range[Integer]
+    end
   end
 
-  class ConversionError < FinchAPI::Error
-  end
+  class Error = FinchAPI::Errors::Error
 
-  class APIError < FinchAPI::Error
-    attr_accessor url: URI::Generic
+  class ConversionError = FinchAPI::Errors::ConversionError
 
-    attr_accessor status: Integer?
+  class APIError = FinchAPI::Errors::APIError
 
-    attr_accessor body: top?
+  class APIStatusError = FinchAPI::Errors::APIStatusError
 
-    def initialize: (
-      url: URI::Generic,
-      ?status: Integer?,
-      ?body: Object?,
-      ?request: nil,
-      ?response: nil,
-      ?message: String?
-    ) -> void
-  end
+  class APIConnectionError = FinchAPI::Errors::APIConnectionError
 
-  class APIConnectionError < FinchAPI::APIError
-    def initialize: (
-      url: URI::Generic,
-      ?status: nil,
-      ?body: nil,
-      ?request: nil,
-      ?response: nil,
-      ?message: String?
-    ) -> void
-  end
+  class APITimeoutError = FinchAPI::Errors::APITimeoutError
 
-  class APITimeoutError < FinchAPI::APIConnectionError
-    def initialize: (
-      url: URI::Generic,
-      ?status: nil,
-      ?body: nil,
-      ?request: nil,
-      ?response: nil,
-      ?message: String?
-    ) -> void
-  end
+  class BadRequestError = FinchAPI::Errors::BadRequestError
 
-  class APIStatusError < FinchAPI::APIError
-    def self.for: (
-      url: URI::Generic,
-      status: Integer,
-      body: Object?,
-      request: nil,
-      response: nil,
-      ?message: String?
-    ) -> instance
+  class AuthenticationError = FinchAPI::Errors::AuthenticationError
 
-    def initialize: (
-      url: URI::Generic,
-      status: Integer,
-      body: Object?,
-      request: nil,
-      response: nil,
-      ?message: String?
-    ) -> void
-  end
+  class PermissionDeniedError = FinchAPI::Errors::PermissionDeniedError
 
-  class BadRequestError < FinchAPI::APIStatusError
-    HTTP_STATUS: 400
-  end
+  class NotFoundError = FinchAPI::Errors::NotFoundError
 
-  class AuthenticationError < FinchAPI::APIStatusError
-    HTTP_STATUS: 401
-  end
+  class ConflictError = FinchAPI::Errors::ConflictError
 
-  class PermissionDeniedError < FinchAPI::APIStatusError
-    HTTP_STATUS: 403
-  end
+  class UnprocessableEntityError = FinchAPI::Errors::UnprocessableEntityError
 
-  class NotFoundError < FinchAPI::APIStatusError
-    HTTP_STATUS: 404
-  end
+  class RateLimitError = FinchAPI::Errors::RateLimitError
 
-  class ConflictError < FinchAPI::APIStatusError
-    HTTP_STATUS: 409
-  end
-
-  class UnprocessableEntityError < FinchAPI::APIStatusError
-    HTTP_STATUS: 422
-  end
-
-  class RateLimitError < FinchAPI::APIStatusError
-    HTTP_STATUS: 429
-  end
-
-  class InternalServerError < FinchAPI::APIStatusError
-    HTTP_STATUS: Range[Integer]
-  end
+  class InternalServerError = FinchAPI::Errors::InternalServerError
 end

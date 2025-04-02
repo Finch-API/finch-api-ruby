@@ -29,7 +29,7 @@ module FinchAPI
       # @return [Boolean]
       def next_page? = (raise NotImplementedError)
 
-      # @raise [FinchAPI::APIError]
+      # @raise [FinchAPI::Errors::APIError]
       # @return [FinchAPI::Type::BasePage]
       def next_page = (raise NotImplementedError)
 
