@@ -5,6 +5,7 @@ module FinchAPI
     module HRIS
       module Benefits
         class IndividualEnrolledIDsResponse < FinchAPI::BaseModel
+          # The id of the benefit.
           sig { returns(String) }
           attr_accessor :benefit_id
 

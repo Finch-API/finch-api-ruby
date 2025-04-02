@@ -4,6 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       class CreateCompanyBenefitsResponse < FinchAPI::BaseModel
+        # The id of the benefit.
         sig { returns(String) }
         attr_accessor :benefit_id
 

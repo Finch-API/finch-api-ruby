@@ -52,7 +52,7 @@ module FinchAPI
           end
 
           class Body < FinchAPI::BaseModel
-            # A descriptive identifier for the response
+            # A descriptive identifier for the response.
             sig { returns(T.nilable(String)) }
             attr_accessor :finch_code
 

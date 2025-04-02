@@ -22,6 +22,7 @@ module FinchAPI
         #   attr_writer :description
 
         # @!attribute frequency
+        #   The frequency of the benefit deduction/contribution.
         #
         #   @return [Symbol, FinchAPI::Models::HRIS::BenefitFrequency, nil]
         optional :frequency, enum: -> { FinchAPI::Models::HRIS::BenefitFrequency }, nil?: true
