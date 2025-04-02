@@ -181,7 +181,7 @@ class FinchAPITest < Minitest::Test
     requester = MockRequester.new(307, {"location" => "/redirected"}, {})
     finch.requester = requester
 
-    assert_raises(FinchAPI::APIConnectionError) do
+    assert_raises(FinchAPI::Errors::APIConnectionError) do
       finch.hris.directory.list(request_options: {extra_headers: {}})
     end
 
@@ -199,7 +199,7 @@ class FinchAPITest < Minitest::Test
     requester = MockRequester.new(303, {"location" => "/redirected"}, {})
     finch.requester = requester
 
-    assert_raises(FinchAPI::APIConnectionError) do
+    assert_raises(FinchAPI::Errors::APIConnectionError) do
       finch.hris.directory.list(request_options: {extra_headers: {}})
     end
 
@@ -214,7 +214,7 @@ class FinchAPITest < Minitest::Test
     requester = MockRequester.new(307, {"location" => "/redirected"}, {})
     finch.requester = requester
 
-    assert_raises(FinchAPI::APIConnectionError) do
+    assert_raises(FinchAPI::Errors::APIConnectionError) do
       finch.hris.directory.list(request_options: {extra_headers: {"Authorization" => "Bearer xyz"}})
     end
 
@@ -229,7 +229,7 @@ class FinchAPITest < Minitest::Test
     requester = MockRequester.new(307, {"location" => "https://example.com/redirected"}, {})
     finch.requester = requester
 
-    assert_raises(FinchAPI::APIConnectionError) do
+    assert_raises(FinchAPI::Errors::APIConnectionError) do
       finch.hris.directory.list(request_options: {extra_headers: {"Authorization" => "Bearer xyz"}})
     end
 

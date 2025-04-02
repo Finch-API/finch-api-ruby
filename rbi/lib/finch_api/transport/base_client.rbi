@@ -82,9 +82,10 @@ module FinchAPI
         # @api private
         sig do
           params(
-            status: T.any(Integer, FinchAPI::APIConnectionError),
+            status: T.any(Integer, FinchAPI::Errors::APIConnectionError),
             stream: T.nilable(T::Enumerable[String])
-          ).void
+          )
+            .void
         end
         def reap_connection!(status, stream:)
         end
