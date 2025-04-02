@@ -47,7 +47,7 @@ module FinchAPI
       ) -> FinchAPI::Transport::BaseClient::request_input
 
       def self.reap_connection!: (
-        Integer | FinchAPI::APIConnectionError status,
+        Integer | FinchAPI::Errors::APIConnectionError status,
         stream: Enumerable[String]?
       ) -> void
 

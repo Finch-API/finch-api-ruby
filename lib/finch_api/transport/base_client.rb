@@ -92,7 +92,7 @@ module FinchAPI
               URI.join(url, response_headers["location"])
             rescue ArgumentError
               message = "Server responded with status #{status} but no valid location header."
-              raise FinchAPI::APIConnectionError.new(url: url, message: message)
+              raise FinchAPI::Errors::APIConnectionError.new(url: url, message: message)
             end
 
           request = {**request, url: location}
@@ -100,7 +100,7 @@ module FinchAPI
           case [url.scheme, location.scheme]
           in ["https", "http"]
             message = "Tried to redirect to a insecure URL"
-            raise FinchAPI::APIConnectionError.new(url: url, message: message)
+            raise FinchAPI::Errors::APIConnectionError.new(url: url, message: message)
           else
             nil
           end
@@ -129,13 +129,13 @@ module FinchAPI
 
         # @api private
         #
-        # @param status [Integer, FinchAPI::APIConnectionError]
+        # @param status [Integer, FinchAPI::Errors::APIConnectionError]
         # @param stream [Enumerable, nil]
         def reap_connection!(status, stream:)
           case status
           in (..199) | (300..499)
             stream&.each { next }
-          in FinchAPI::APIConnectionError | (500..)
+          in FinchAPI::Errors::APIConnectionError | (500..)
             FinchAPI::Util.close_fused!(stream)
           else
           end
@@ -326,7 +326,7 @@ module FinchAPI
       #
       # @param send_retry_header [Boolean]
       #
-      # @raise [FinchAPI::APIError]
+      # @raise [FinchAPI::Errors::APIError]
       # @return [Array(Integer, Net::HTTPResponse, Enumerable)]
       private def send_request(request, redirect_count:, retry_count:, send_retry_header:)
         url, headers, max_retries, timeout = request.fetch_values(:url, :headers, :max_retries, :timeout)
@@ -349,7 +349,7 @@ module FinchAPI
           self.class.reap_connection!(status, stream: stream)
 
           message = "Failed to complete the request within #{self.class::MAX_REDIRECTS} redirects."
-          raise FinchAPI::APIConnectionError.new(url: url, message: message)
+          raise FinchAPI::Errors::APIConnectionError.new(url: url, message: message)
         in 300..399
           self.class.reap_connection!(status, stream: stream)
 
@@ -369,14 +369,14 @@ module FinchAPI
             self.class.reap_connection!(status, stream: stream)
           end
 
-          raise FinchAPI::APIStatusError.for(
+          raise FinchAPI::Errors::APIStatusError.for(
             url: url,
             status: status,
             body: decoded,
             request: nil,
             response: response
           )
-        in (400..) | FinchAPI::APIConnectionError
+        in (400..) | FinchAPI::Errors::APIConnectionError
           self.class.reap_connection!(status, stream: stream)
 
           delay = retry_delay(response, retry_count: retry_count)
@@ -416,7 +416,7 @@ module FinchAPI
       #
       #   @option req [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] :options
       #
-      # @raise [FinchAPI::APIError]
+      # @raise [FinchAPI::Errors::APIError]
       # @return [Object]
       def request(req)
         self.class.validate!(req)

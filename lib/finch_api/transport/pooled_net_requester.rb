@@ -153,7 +153,7 @@ module FinchAPI
             end
           end
         rescue Timeout::Error
-          raise FinchAPI::APITimeoutError
+          raise FinchAPI::Errors::APITimeoutError
         end
 
         conn, _, response = enum.next
