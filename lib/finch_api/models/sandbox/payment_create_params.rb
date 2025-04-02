@@ -263,7 +263,7 @@ module FinchAPI
               BONUS = :bonus
               COMMISSION = :commission
               TIPS = :tips
-              NUMBER_1099 = :"1099"
+              TYPE_1099 = :"1099"
               OTHER = :other
 
               finalize!
