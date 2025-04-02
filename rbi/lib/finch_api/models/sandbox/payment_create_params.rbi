@@ -387,7 +387,7 @@ module FinchAPI
                 )
               TIPS =
                 T.let(:tips, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol)
-              NUMBER_1099 =
+              TYPE_1099 =
                 T.let(:"1099", FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol)
               OTHER =
                 T.let(:other, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol)

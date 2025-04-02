@@ -10,13 +10,13 @@ module FinchAPI
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::BenefitType) }
         OrSymbol = T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::BenefitType::TaggedSymbol) }
 
-        NUMBER_401K = T.let(:"401k", FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
-        NUMBER_401K_ROTH = T.let(:"401k_roth", FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
-        NUMBER_401K_LOAN = T.let(:"401k_loan", FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
-        NUMBER_403B = T.let(:"403b", FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
-        NUMBER_403B_ROTH = T.let(:"403b_roth", FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
-        NUMBER_457 = T.let(:"457", FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
-        NUMBER_457_ROTH = T.let(:"457_roth", FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
+        BENEFIT_TYPE_401K = T.let(:"401k", FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
+        BENEFIT_TYPE_401K_ROTH = T.let(:"401k_roth", FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
+        BENEFIT_TYPE_401K_LOAN = T.let(:"401k_loan", FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
+        BENEFIT_TYPE_403B = T.let(:"403b", FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
+        BENEFIT_TYPE_403B_ROTH = T.let(:"403b_roth", FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
+        BENEFIT_TYPE_457 = T.let(:"457", FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
+        BENEFIT_TYPE_457_ROTH = T.let(:"457_roth", FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
         S125_MEDICAL = T.let(:s125_medical, FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
         S125_DENTAL = T.let(:s125_dental, FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
         S125_VISION = T.let(:s125_vision, FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
