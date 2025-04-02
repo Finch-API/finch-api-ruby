@@ -7,13 +7,13 @@ module FinchAPI
       module BenefitType
         extend FinchAPI::Enum
 
-        NUMBER_401K = :"401k"
-        NUMBER_401K_ROTH = :"401k_roth"
-        NUMBER_401K_LOAN = :"401k_loan"
-        NUMBER_403B = :"403b"
-        NUMBER_403B_ROTH = :"403b_roth"
-        NUMBER_457 = :"457"
-        NUMBER_457_ROTH = :"457_roth"
+        BENEFIT_TYPE_401K = :"401k"
+        BENEFIT_TYPE_401K_ROTH = :"401k_roth"
+        BENEFIT_TYPE_401K_LOAN = :"401k_loan"
+        BENEFIT_TYPE_403B = :"403b"
+        BENEFIT_TYPE_403B_ROTH = :"403b_roth"
+        BENEFIT_TYPE_457 = :"457"
+        BENEFIT_TYPE_457_ROTH = :"457_roth"
         S125_MEDICAL = :s125_medical
         S125_DENTAL = :s125_dental
         S125_VISION = :s125_vision

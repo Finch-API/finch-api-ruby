@@ -233,7 +233,7 @@ module FinchAPI
             BONUS = T.let(:bonus, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
             COMMISSION = T.let(:commission, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
             TIPS = T.let(:tips, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
-            NUMBER_1099 = T.let(:"1099", FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
+            TYPE_1099 = T.let(:"1099", FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
             OTHER = T.let(:other, FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol)
 
             sig { override.returns(T::Array[FinchAPI::Models::HRIS::PayStatement::Earning::Type::TaggedSymbol]) }
