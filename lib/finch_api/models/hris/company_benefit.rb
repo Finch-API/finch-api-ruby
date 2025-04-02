@@ -6,6 +6,7 @@ module FinchAPI
       # @see FinchAPI::Resources::HRIS::Benefits#retrieve
       class CompanyBenefit < FinchAPI::BaseModel
         # @!attribute benefit_id
+        #   The id of the benefit.
         #
         #   @return [String]
         required :benefit_id, String
@@ -16,6 +17,7 @@ module FinchAPI
         required :description, String, nil?: true
 
         # @!attribute frequency
+        #   The frequency of the benefit deduction/contribution.
         #
         #   @return [Symbol, FinchAPI::Models::HRIS::BenefitFrequency, nil]
         required :frequency, enum: -> { FinchAPI::Models::HRIS::BenefitFrequency }, nil?: true

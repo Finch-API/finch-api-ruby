@@ -16,6 +16,7 @@ module FinchAPI
         sig { params(description: String).void }
         attr_writer :description
 
+        # The frequency of the benefit deduction/contribution.
         sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::OrSymbol)) }
         attr_accessor :frequency
 

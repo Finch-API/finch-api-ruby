@@ -7,6 +7,7 @@ module FinchAPI
         # @see FinchAPI::Resources::HRIS::Benefits::Individuals#enrolled_ids
         class IndividualEnrolledIDsResponse < FinchAPI::BaseModel
           # @!attribute benefit_id
+          #   The id of the benefit.
           #
           #   @return [String]
           required :benefit_id, String

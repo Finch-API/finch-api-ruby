@@ -6,6 +6,7 @@ module FinchAPI
       # @see FinchAPI::Resources::HRIS::Benefits#update
       class UpdateCompanyBenefitResponse < FinchAPI::BaseModel
         # @!attribute benefit_id
+        #   The id of the benefit.
         #
         #   @return [String]
         required :benefit_id, String

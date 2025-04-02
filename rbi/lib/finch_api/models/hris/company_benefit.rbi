@@ -4,12 +4,14 @@ module FinchAPI
   module Models
     module HRIS
       class CompanyBenefit < FinchAPI::BaseModel
+        # The id of the benefit.
         sig { returns(String) }
         attr_accessor :benefit_id
 
         sig { returns(T.nilable(String)) }
         attr_accessor :description
 
+        # The frequency of the benefit deduction/contribution.
         sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol)) }
         attr_accessor :frequency
 

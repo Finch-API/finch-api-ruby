@@ -82,7 +82,7 @@ module FinchAPI
           # @param individual_ids [Array<String>]
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [FinchAPI::SinglePage<FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual>]
+          # @return [FinchAPI::SinglePage<Object>]
           #
           # @see FinchAPI::Models::HRIS::Benefits::IndividualUnenrollManyParams
           def unenroll_many(benefit_id, params = {})
@@ -92,7 +92,7 @@ module FinchAPI
               path: ["employer/benefits/%1$s/individuals", benefit_id],
               body: parsed,
               page: FinchAPI::SinglePage,
-              model: FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual,
+              model: FinchAPI::Unknown,
               options: options
             )
           end

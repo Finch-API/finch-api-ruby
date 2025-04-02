@@ -46,7 +46,7 @@ module FinchAPI
           # @see FinchAPI::Models::HRIS::Benefits::EnrolledIndividual#body
           class Body < FinchAPI::BaseModel
             # @!attribute finch_code
-            #   A descriptive identifier for the response
+            #   A descriptive identifier for the response.
             #
             #   @return [String, nil]
             optional :finch_code, String, nil?: true

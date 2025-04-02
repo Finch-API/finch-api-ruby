@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
+      # The frequency of the benefit deduction/contribution.
       module BenefitFrequency
         extend FinchAPI::Enum
 

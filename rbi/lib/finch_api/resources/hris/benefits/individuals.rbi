@@ -61,7 +61,7 @@ module FinchAPI
               individual_ids: T::Array[String],
               request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
             )
-              .returns(FinchAPI::SinglePage[FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual])
+              .returns(FinchAPI::SinglePage[T.anything])
           end
           def unenroll_many(
             benefit_id,
