@@ -8,7 +8,7 @@ module FinchAPI
         sig { returns(T.nilable(FinchAPI::Models::HRIS::W42005::Data)) }
         attr_reader :data
 
-        sig { params(data: T.any(FinchAPI::Models::HRIS::W42005::Data, FinchAPI::Util::AnyHash)).void }
+        sig { params(data: T.any(FinchAPI::Models::HRIS::W42005::Data, FinchAPI::Internal::Util::AnyHash)).void }
         attr_writer :data
 
         # Specifies the form type, indicating that this document is a 2005 W4 form.
@@ -26,7 +26,7 @@ module FinchAPI
         #   filing status, dependents, and withholding details.
         sig do
           params(
-            data: T.any(FinchAPI::Models::HRIS::W42005::Data, FinchAPI::Util::AnyHash),
+            data: T.any(FinchAPI::Models::HRIS::W42005::Data, FinchAPI::Internal::Util::AnyHash),
             type: FinchAPI::Models::HRIS::W42005::Type::OrSymbol,
             year: T.nilable(Float)
           )

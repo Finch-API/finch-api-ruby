@@ -2,11 +2,12 @@ module FinchAPI
   module Models
     module Sandbox
       module Jobs
-        type configuration_retrieve_params = {  } & FinchAPI::request_parameters
+        type configuration_retrieve_params =
+          {  } & FinchAPI::Internal::Type::request_parameters
 
         class ConfigurationRetrieveParams < FinchAPI::BaseModel
-          extend FinchAPI::Type::RequestParameters::Converter
-          include FinchAPI::RequestParameters
+          extend FinchAPI::Internal::Type::RequestParameters::Converter
+          include FinchAPI::Internal::Type::RequestParameters
 
           def initialize: (?request_options: FinchAPI::request_opts) -> void
 

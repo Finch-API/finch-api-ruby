@@ -17,7 +17,9 @@ module FinchAPI
 
         sig do
           params(
-            department: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Department, FinchAPI::Util::AnyHash))
+            department: T.nilable(
+              T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Department, FinchAPI::Internal::Util::AnyHash)
+            )
           )
             .void
         end
@@ -41,7 +43,9 @@ module FinchAPI
 
         sig do
           params(
-            manager: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Manager, FinchAPI::Util::AnyHash))
+            manager: T.nilable(
+              T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Manager, FinchAPI::Internal::Util::AnyHash)
+            )
           )
             .void
         end
@@ -54,11 +58,15 @@ module FinchAPI
         sig do
           params(
             id: String,
-            department: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Department, FinchAPI::Util::AnyHash)),
+            department: T.nilable(
+              T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Department, FinchAPI::Internal::Util::AnyHash)
+            ),
             first_name: T.nilable(String),
             is_active: T.nilable(T::Boolean),
             last_name: T.nilable(String),
-            manager: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Manager, FinchAPI::Util::AnyHash)),
+            manager: T.nilable(
+              T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Manager, FinchAPI::Internal::Util::AnyHash)
+            ),
             middle_name: T.nilable(String)
           )
             .returns(T.attached_class)

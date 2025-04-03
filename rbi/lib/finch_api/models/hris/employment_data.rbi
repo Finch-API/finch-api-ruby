@@ -26,7 +26,7 @@ module FinchAPI
 
         sig do
           params(
-            department: T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Department, FinchAPI::Util::AnyHash))
+            department: T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Department, FinchAPI::Internal::Util::AnyHash))
           )
             .void
         end
@@ -38,7 +38,7 @@ module FinchAPI
 
         sig do
           params(
-            employment: T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Employment, FinchAPI::Util::AnyHash))
+            employment: T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Employment, FinchAPI::Internal::Util::AnyHash))
           )
             .void
         end
@@ -62,7 +62,7 @@ module FinchAPI
         sig { returns(T.nilable(FinchAPI::Models::Income)) }
         attr_reader :income
 
-        sig { params(income: T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Util::AnyHash))).void }
+        sig { params(income: T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Internal::Util::AnyHash))).void }
         attr_writer :income
 
         # The array of income history.
@@ -83,7 +83,7 @@ module FinchAPI
         sig { returns(T.nilable(FinchAPI::Models::Location)) }
         attr_reader :location
 
-        sig { params(location: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash))).void }
+        sig { params(location: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::Util::AnyHash))).void }
         attr_writer :location
 
         # The manager object representing the manager of the individual within the org.
@@ -92,7 +92,7 @@ module FinchAPI
 
         sig do
           params(
-            manager: T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Manager, FinchAPI::Util::AnyHash))
+            manager: T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Manager, FinchAPI::Internal::Util::AnyHash))
           )
             .void
         end
@@ -121,19 +121,21 @@ module FinchAPI
           params(
             id: String,
             class_code: T.nilable(String),
-            custom_fields: T.nilable(T::Array[T.any(FinchAPI::Models::HRIS::EmploymentData::CustomField, FinchAPI::Util::AnyHash)]),
-            department: T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Department, FinchAPI::Util::AnyHash)),
-            employment: T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Employment, FinchAPI::Util::AnyHash)),
+            custom_fields: T.nilable(
+              T::Array[T.any(FinchAPI::Models::HRIS::EmploymentData::CustomField, FinchAPI::Internal::Util::AnyHash)]
+            ),
+            department: T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Department, FinchAPI::Internal::Util::AnyHash)),
+            employment: T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Employment, FinchAPI::Internal::Util::AnyHash)),
             employment_status: T.nilable(FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::OrSymbol),
             end_date: T.nilable(String),
             first_name: T.nilable(String),
-            income: T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Util::AnyHash)),
-            income_history: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Util::AnyHash))]),
+            income: T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Internal::Util::AnyHash)),
+            income_history: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Internal::Util::AnyHash))]),
             is_active: T.nilable(T::Boolean),
             last_name: T.nilable(String),
             latest_rehire_date: T.nilable(String),
-            location: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash)),
-            manager: T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Manager, FinchAPI::Util::AnyHash)),
+            location: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::Util::AnyHash)),
+            manager: T.nilable(T.any(FinchAPI::Models::HRIS::EmploymentData::Manager, FinchAPI::Internal::Util::AnyHash)),
             middle_name: T.nilable(String),
             source_id: T.nilable(String),
             start_date: T.nilable(String),

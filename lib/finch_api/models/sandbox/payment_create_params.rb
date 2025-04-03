@@ -6,8 +6,8 @@ module FinchAPI
       # @see FinchAPI::Resources::Sandbox::Payment#create
       class PaymentCreateParams < FinchAPI::BaseModel
         # @!parse
-        #   extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # @!attribute [r] end_date
         #

@@ -8,18 +8,24 @@ module FinchAPI
         sig do
           params(
             accounts: T.nilable(
-              T::Array[T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Account, FinchAPI::Util::AnyHash)]
+              T::Array[T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Account, FinchAPI::Internal::Util::AnyHash)]
             ),
             departments: T.nilable(
-              T::Array[T.nilable(T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Department, FinchAPI::Util::AnyHash))]
+              T::Array[
+              T.nilable(
+                T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Department, FinchAPI::Internal::Util::AnyHash)
+              )
+              ]
             ),
             ein: T.nilable(String),
-            entity: T.nilable(T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity, FinchAPI::Util::AnyHash)),
+            entity: T.nilable(
+              T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity, FinchAPI::Internal::Util::AnyHash)
+            ),
             legal_name: T.nilable(String),
-            locations: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash))]),
+            locations: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::Util::AnyHash))]),
             primary_email: T.nilable(String),
             primary_phone_number: T.nilable(String),
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
           )
             .returns(FinchAPI::Models::Sandbox::CompanyUpdateResponse)
         end

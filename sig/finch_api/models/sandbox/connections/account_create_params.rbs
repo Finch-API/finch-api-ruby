@@ -9,11 +9,11 @@ module FinchAPI
             authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::authentication_type,
             products: ::Array[String]
           }
-          & FinchAPI::request_parameters
+          & FinchAPI::Internal::Type::request_parameters
 
         class AccountCreateParams < FinchAPI::BaseModel
-          extend FinchAPI::Type::RequestParameters::Converter
-          include FinchAPI::RequestParameters
+          extend FinchAPI::Internal::Type::RequestParameters::Converter
+          include FinchAPI::Internal::Type::RequestParameters
 
           attr_accessor company_id: String
 

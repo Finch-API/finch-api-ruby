@@ -3,11 +3,11 @@ module FinchAPI
     module Payroll
       type pay_group_list_params =
         { individual_id: String, pay_frequencies: ::Array[String] }
-        & FinchAPI::request_parameters
+        & FinchAPI::Internal::Type::request_parameters
 
       class PayGroupListParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         attr_reader individual_id: String?
 

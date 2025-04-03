@@ -52,7 +52,7 @@ class FinchAPI::Test::Resources::HRIS::BenefitsTest < FinchAPI::Test::ResourceTe
     response = @finch.hris.benefits.list
 
     assert_pattern do
-      response => FinchAPI::SinglePage
+      response => FinchAPI::Internal::SinglePage
     end
 
     row = response.to_enum.first
@@ -76,7 +76,7 @@ class FinchAPI::Test::Resources::HRIS::BenefitsTest < FinchAPI::Test::ResourceTe
     response = @finch.hris.benefits.list_supported_benefits
 
     assert_pattern do
-      response => FinchAPI::SinglePage
+      response => FinchAPI::Internal::SinglePage
     end
 
     row = response.to_enum.first

@@ -3,11 +3,11 @@ module FinchAPI
     module Sandbox
       type job_create_params =
         { type: FinchAPI::Models::Sandbox::JobCreateParams::type_ }
-        & FinchAPI::request_parameters
+        & FinchAPI::Internal::Type::request_parameters
 
       class JobCreateParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         attr_accessor type: FinchAPI::Models::Sandbox::JobCreateParams::type_
 

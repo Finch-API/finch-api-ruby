@@ -10,13 +10,18 @@ module FinchAPI
         sig { returns(FinchAPI::Models::Jobs::AutomatedListResponse::Meta) }
         attr_reader :meta
 
-        sig { params(meta: T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta, FinchAPI::Util::AnyHash)).void }
+        sig do
+          params(
+            meta: T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta, FinchAPI::Internal::Util::AnyHash)
+          )
+            .void
+        end
         attr_writer :meta
 
         sig do
           params(
-            data: T::Array[T.any(FinchAPI::Models::Jobs::AutomatedAsyncJob, FinchAPI::Util::AnyHash)],
-            meta: T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta, FinchAPI::Util::AnyHash)
+            data: T::Array[T.any(FinchAPI::Models::Jobs::AutomatedAsyncJob, FinchAPI::Internal::Util::AnyHash)],
+            meta: T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta, FinchAPI::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -45,7 +50,7 @@ module FinchAPI
 
           sig do
             params(
-              quotas: T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas, FinchAPI::Util::AnyHash)
+              quotas: T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas, FinchAPI::Internal::Util::AnyHash)
             )
               .void
           end
@@ -53,7 +58,7 @@ module FinchAPI
 
           sig do
             params(
-              quotas: T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas, FinchAPI::Util::AnyHash)
+              quotas: T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas, FinchAPI::Internal::Util::AnyHash)
             )
               .returns(T.attached_class)
           end
@@ -70,7 +75,10 @@ module FinchAPI
 
             sig do
               params(
-                data_sync_all: T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll, FinchAPI::Util::AnyHash)
+                data_sync_all: T.any(
+                  FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll,
+                  FinchAPI::Internal::Util::AnyHash
+                )
               )
                 .void
             end
@@ -82,7 +90,10 @@ module FinchAPI
             #   details.
             sig do
               params(
-                data_sync_all: T.any(FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll, FinchAPI::Util::AnyHash)
+                data_sync_all: T.any(
+                  FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll,
+                  FinchAPI::Internal::Util::AnyHash
+                )
               )
                 .returns(T.attached_class)
             end

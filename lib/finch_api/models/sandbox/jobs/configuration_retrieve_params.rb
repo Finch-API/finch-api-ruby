@@ -7,8 +7,8 @@ module FinchAPI
         # @see FinchAPI::Resources::Sandbox::Jobs::Configuration#retrieve
         class ConfigurationRetrieveParams < FinchAPI::BaseModel
           # @!parse
-          #   extend FinchAPI::Type::RequestParameters::Converter
-          include FinchAPI::RequestParameters
+          #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+          include FinchAPI::Internal::Type::RequestParameters
 
           # @!parse
           #   # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]

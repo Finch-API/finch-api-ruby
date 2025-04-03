@@ -9,9 +9,9 @@ module FinchAPI
           params(
             end_date: Date,
             start_date: Date,
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
           )
-            .returns(FinchAPI::SinglePage[FinchAPI::Models::HRIS::Payment])
+            .returns(FinchAPI::Internal::SinglePage[FinchAPI::Models::HRIS::Payment])
         end
         def list(
           # The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`

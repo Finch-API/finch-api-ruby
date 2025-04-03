@@ -9,7 +9,9 @@ module FinchAPI
           attr_reader :body
 
           sig do
-            params(body: T.any(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body, FinchAPI::Util::AnyHash))
+            params(
+              body: T.any(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body, FinchAPI::Internal::Util::AnyHash)
+            )
               .void
           end
           attr_writer :body
@@ -28,7 +30,7 @@ module FinchAPI
 
           sig do
             params(
-              body: T.any(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body, FinchAPI::Util::AnyHash),
+              body: T.any(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body, FinchAPI::Internal::Util::AnyHash),
               code: Integer,
               individual_id: String
             )
@@ -61,7 +63,7 @@ module FinchAPI
 
             sig do
               params(
-                company_contribution: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitContribution, FinchAPI::Util::AnyHash))
+                company_contribution: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitContribution, FinchAPI::Internal::Util::AnyHash))
               )
                 .void
             end
@@ -72,7 +74,7 @@ module FinchAPI
 
             sig do
               params(
-                employee_deduction: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitContribution, FinchAPI::Util::AnyHash))
+                employee_deduction: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitContribution, FinchAPI::Internal::Util::AnyHash))
               )
                 .void
             end
@@ -90,8 +92,8 @@ module FinchAPI
               params(
                 annual_maximum: T.nilable(Integer),
                 catch_up: T.nilable(T::Boolean),
-                company_contribution: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitContribution, FinchAPI::Util::AnyHash)),
-                employee_deduction: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitContribution, FinchAPI::Util::AnyHash)),
+                company_contribution: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitContribution, FinchAPI::Internal::Util::AnyHash)),
+                employee_deduction: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitContribution, FinchAPI::Internal::Util::AnyHash)),
                 hsa_contribution_limit: T.nilable(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::OrSymbol)
               )
                 .returns(T.attached_class)

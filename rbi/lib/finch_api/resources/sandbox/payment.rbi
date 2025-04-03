@@ -8,9 +8,9 @@ module FinchAPI
         sig do
           params(
             end_date: String,
-            pay_statements: T::Array[T.any(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement, FinchAPI::Util::AnyHash)],
+            pay_statements: T::Array[T.any(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement, FinchAPI::Internal::Util::AnyHash)],
             start_date: String,
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
           )
             .returns(FinchAPI::Models::Sandbox::PaymentCreateResponse)
         end

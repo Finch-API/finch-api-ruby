@@ -9,7 +9,10 @@ module FinchAPI
 
         sig do
           params(
-            supported_features: T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures, FinchAPI::Util::AnyHash)
+            supported_features: T.any(
+              FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures,
+              FinchAPI::Internal::Util::AnyHash
+            )
           )
             .void
         end
@@ -20,7 +23,7 @@ module FinchAPI
 
         sig do
           params(
-            supported_operations: T.any(FinchAPI::Models::HRIS::SupportPerBenefitType, FinchAPI::Util::AnyHash)
+            supported_operations: T.any(FinchAPI::Models::HRIS::SupportPerBenefitType, FinchAPI::Internal::Util::AnyHash)
           )
             .void
         end
@@ -28,8 +31,11 @@ module FinchAPI
 
         sig do
           params(
-            supported_features: T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures, FinchAPI::Util::AnyHash),
-            supported_operations: T.any(FinchAPI::Models::HRIS::SupportPerBenefitType, FinchAPI::Util::AnyHash)
+            supported_features: T.any(
+              FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures,
+              FinchAPI::Internal::Util::AnyHash
+            ),
+            supported_operations: T.any(FinchAPI::Models::HRIS::SupportPerBenefitType, FinchAPI::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

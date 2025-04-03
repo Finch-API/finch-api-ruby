@@ -5,8 +5,8 @@ module FinchAPI
     # @see FinchAPI::Resources::Providers#list
     class ProviderListParams < FinchAPI::BaseModel
       # @!parse
-      #   extend FinchAPI::Type::RequestParameters::Converter
-      include FinchAPI::RequestParameters
+      #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+      include FinchAPI::Internal::Type::RequestParameters
 
       # @!parse
       #   # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]

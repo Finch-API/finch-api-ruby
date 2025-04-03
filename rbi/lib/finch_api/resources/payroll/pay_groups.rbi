@@ -8,7 +8,7 @@ module FinchAPI
         sig do
           params(
             pay_group_id: String,
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
           )
             .returns(FinchAPI::Models::Payroll::PayGroupRetrieveResponse)
         end
@@ -20,9 +20,9 @@ module FinchAPI
           params(
             individual_id: String,
             pay_frequencies: T::Array[String],
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
           )
-            .returns(FinchAPI::SinglePage[FinchAPI::Models::Payroll::PayGroupListResponse])
+            .returns(FinchAPI::Internal::SinglePage[FinchAPI::Models::Payroll::PayGroupListResponse])
         end
         def list(individual_id: nil, pay_frequencies: nil, request_options: {})
         end

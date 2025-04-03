@@ -41,7 +41,7 @@ module FinchAPI
     attr_accessor :timeout
 
     # Returns a new instance of RequestOptions.
-    sig { params(values: FinchAPI::Util::AnyHash).returns(T.attached_class) }
+    sig { params(values: FinchAPI::Internal::Util::AnyHash).returns(T.attached_class) }
     def self.new(values = {})
     end
   end

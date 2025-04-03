@@ -12,7 +12,7 @@ module FinchAPI
         # @param start_date [Date]
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::SinglePage<FinchAPI::Models::HRIS::Payment>]
+        # @return [FinchAPI::Internal::SinglePage<FinchAPI::Models::HRIS::Payment>]
         #
         # @see FinchAPI::Models::HRIS::PaymentListParams
         def list(params)
@@ -21,7 +21,7 @@ module FinchAPI
             method: :get,
             path: "employer/payment",
             query: parsed,
-            page: FinchAPI::SinglePage,
+            page: FinchAPI::Internal::SinglePage,
             model: FinchAPI::Models::HRIS::Payment,
             options: options
           )

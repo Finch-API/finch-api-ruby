@@ -10,13 +10,13 @@ module FinchAPI
         sig { returns(FinchAPI::Models::Paging) }
         attr_reader :paging
 
-        sig { params(paging: T.any(FinchAPI::Models::Paging, FinchAPI::Util::AnyHash)).void }
+        sig { params(paging: T.any(FinchAPI::Models::Paging, FinchAPI::Internal::Util::AnyHash)).void }
         attr_writer :paging
 
         sig do
           params(
-            documents: T::Array[T.any(FinchAPI::Models::HRIS::DocumentResponse, FinchAPI::Util::AnyHash)],
-            paging: T.any(FinchAPI::Models::Paging, FinchAPI::Util::AnyHash)
+            documents: T::Array[T.any(FinchAPI::Models::HRIS::DocumentResponse, FinchAPI::Internal::Util::AnyHash)],
+            paging: T.any(FinchAPI::Models::Paging, FinchAPI::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

@@ -7,7 +7,10 @@ module FinchAPI
         sig { returns(T.nilable(FinchAPI::Models::HRIS::PayStatementResponseBody)) }
         attr_reader :body
 
-        sig { params(body: T.any(FinchAPI::Models::HRIS::PayStatementResponseBody, FinchAPI::Util::AnyHash)).void }
+        sig do
+          params(body: T.any(FinchAPI::Models::HRIS::PayStatementResponseBody, FinchAPI::Internal::Util::AnyHash))
+            .void
+        end
         attr_writer :body
 
         sig { returns(T.nilable(Integer)) }
@@ -24,7 +27,7 @@ module FinchAPI
 
         sig do
           params(
-            body: T.any(FinchAPI::Models::HRIS::PayStatementResponseBody, FinchAPI::Util::AnyHash),
+            body: T.any(FinchAPI::Models::HRIS::PayStatementResponseBody, FinchAPI::Internal::Util::AnyHash),
             code: Integer,
             payment_id: String
           )

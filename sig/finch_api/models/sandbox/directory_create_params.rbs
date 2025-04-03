@@ -5,11 +5,11 @@ module FinchAPI
         {
           body: ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body]
         }
-        & FinchAPI::request_parameters
+        & FinchAPI::Internal::Type::request_parameters
 
       class DirectoryCreateParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         attr_reader body: ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body]?
 

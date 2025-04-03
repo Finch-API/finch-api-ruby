@@ -6,7 +6,7 @@ module FinchAPI
       sig { returns(T.nilable(FinchAPI::Models::EmploymentEvent::Data)) }
       attr_reader :data
 
-      sig { params(data: T.any(FinchAPI::Models::EmploymentEvent::Data, FinchAPI::Util::AnyHash)).void }
+      sig { params(data: T.any(FinchAPI::Models::EmploymentEvent::Data, FinchAPI::Internal::Util::AnyHash)).void }
       attr_writer :data
 
       sig { returns(T.nilable(FinchAPI::Models::EmploymentEvent::EventType::TaggedSymbol)) }
@@ -17,7 +17,7 @@ module FinchAPI
 
       sig do
         params(
-          data: T.any(FinchAPI::Models::EmploymentEvent::Data, FinchAPI::Util::AnyHash),
+          data: T.any(FinchAPI::Models::EmploymentEvent::Data, FinchAPI::Internal::Util::AnyHash),
           event_type: FinchAPI::Models::EmploymentEvent::EventType::OrSymbol
         )
           .returns(T.attached_class)

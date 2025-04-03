@@ -4,8 +4,8 @@ module FinchAPI
   module Models
     module Sandbox
       class ConnectionCreateParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # The provider associated with the connection
         sig { returns(String) }
@@ -43,7 +43,7 @@ module FinchAPI
             authentication_type: FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType::OrSymbol,
             employee_size: Integer,
             products: T::Array[String],
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

@@ -4,15 +4,17 @@ module FinchAPI
   module Models
     module HRIS
       class IndividualRetrieveManyParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         sig { returns(T.nilable(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options)) }
         attr_reader :options
 
         sig do
           params(
-            options: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, FinchAPI::Util::AnyHash))
+            options: T.nilable(
+              T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, FinchAPI::Internal::Util::AnyHash)
+            )
           )
             .void
         end
@@ -23,7 +25,7 @@ module FinchAPI
 
         sig do
           params(
-            requests: T::Array[T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request, FinchAPI::Util::AnyHash)]
+            requests: T::Array[T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request, FinchAPI::Internal::Util::AnyHash)]
           )
             .void
         end
@@ -31,9 +33,11 @@ module FinchAPI
 
         sig do
           params(
-            options: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, FinchAPI::Util::AnyHash)),
-            requests: T::Array[T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request, FinchAPI::Util::AnyHash)],
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
+            options: T.nilable(
+              T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, FinchAPI::Internal::Util::AnyHash)
+            ),
+            requests: T::Array[T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request, FinchAPI::Internal::Util::AnyHash)],
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

@@ -4,8 +4,8 @@ module FinchAPI
   module Models
     module Connect
       class SessionReauthenticateParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # The ID of the existing connection to reauthenticate
         sig { returns(String) }
@@ -30,7 +30,7 @@ module FinchAPI
             minutes_to_expire: T.nilable(Integer),
             products: T.nilable(T::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol]),
             redirect_uri: T.nilable(String),
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

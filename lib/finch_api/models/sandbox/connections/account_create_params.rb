@@ -7,8 +7,8 @@ module FinchAPI
         # @see FinchAPI::Resources::Sandbox::Connections::Accounts#create
         class AccountCreateParams < FinchAPI::BaseModel
           # @!parse
-          #   extend FinchAPI::Type::RequestParameters::Converter
-          include FinchAPI::RequestParameters
+          #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+          include FinchAPI::Internal::Type::RequestParameters
 
           # @!attribute company_id
           #

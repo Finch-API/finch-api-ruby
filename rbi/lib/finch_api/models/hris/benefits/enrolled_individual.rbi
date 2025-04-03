@@ -9,7 +9,9 @@ module FinchAPI
           attr_reader :body
 
           sig do
-            params(body: T.any(FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Body, FinchAPI::Util::AnyHash))
+            params(
+              body: T.any(FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Body, FinchAPI::Internal::Util::AnyHash)
+            )
               .void
           end
           attr_writer :body
@@ -29,7 +31,7 @@ module FinchAPI
 
           sig do
             params(
-              body: T.any(FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Body, FinchAPI::Util::AnyHash),
+              body: T.any(FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Body, FinchAPI::Internal::Util::AnyHash),
               code: FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code::OrInteger,
               individual_id: String
             )

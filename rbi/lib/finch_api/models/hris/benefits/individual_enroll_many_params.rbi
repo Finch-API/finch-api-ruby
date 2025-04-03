@@ -5,8 +5,8 @@ module FinchAPI
     module HRIS
       module Benefits
         class IndividualEnrollManyParams < FinchAPI::BaseModel
-          extend FinchAPI::Type::RequestParameters::Converter
-          include FinchAPI::RequestParameters
+          extend FinchAPI::Internal::Type::RequestParameters::Converter
+          include FinchAPI::Internal::Type::RequestParameters
 
           # Array of the individual_id to enroll and a configuration object.
           sig { returns(T.nilable(T::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual])) }
@@ -14,7 +14,12 @@ module FinchAPI
 
           sig do
             params(
-              individuals: T::Array[T.any(FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual, FinchAPI::Util::AnyHash)]
+              individuals: T::Array[
+              T.any(
+                FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual,
+                FinchAPI::Internal::Util::AnyHash
+              )
+              ]
             )
               .void
           end
@@ -22,8 +27,13 @@ module FinchAPI
 
           sig do
             params(
-              individuals: T::Array[T.any(FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual, FinchAPI::Util::AnyHash)],
-              request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
+              individuals: T::Array[
+              T.any(
+                FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual,
+                FinchAPI::Internal::Util::AnyHash
+              )
+              ],
+              request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
             )
               .returns(T.attached_class)
           end
@@ -54,7 +64,7 @@ module FinchAPI
               params(
                 configuration: T.any(
                   FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -72,7 +82,7 @@ module FinchAPI
               params(
                 configuration: T.any(
                   FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 ),
                 individual_id: String
               )
@@ -137,7 +147,7 @@ module FinchAPI
                 params(
                   company_contribution: T.any(
                     FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution,
-                    FinchAPI::Util::AnyHash
+                    FinchAPI::Internal::Util::AnyHash
                   )
                 )
                   .void
@@ -164,7 +174,7 @@ module FinchAPI
                 params(
                   employee_deduction: T.any(
                     FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction,
-                    FinchAPI::Util::AnyHash
+                    FinchAPI::Internal::Util::AnyHash
                   )
                 )
                   .void
@@ -178,12 +188,12 @@ module FinchAPI
                   catch_up: T::Boolean,
                   company_contribution: T.any(
                     FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution,
-                    FinchAPI::Util::AnyHash
+                    FinchAPI::Internal::Util::AnyHash
                   ),
                   effective_date: Date,
                   employee_deduction: T.any(
                     FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction,
-                    FinchAPI::Util::AnyHash
+                    FinchAPI::Internal::Util::AnyHash
                   )
                 )
                   .returns(T.attached_class)

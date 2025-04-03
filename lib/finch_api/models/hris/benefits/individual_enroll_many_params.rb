@@ -7,8 +7,8 @@ module FinchAPI
         # @see FinchAPI::Resources::HRIS::Benefits::Individuals#enroll_many
         class IndividualEnrollManyParams < FinchAPI::BaseModel
           # @!parse
-          #   extend FinchAPI::Type::RequestParameters::Converter
-          include FinchAPI::RequestParameters
+          #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+          include FinchAPI::Internal::Type::RequestParameters
 
           # @!attribute [r] individuals
           #   Array of the individual_id to enroll and a configuration object.

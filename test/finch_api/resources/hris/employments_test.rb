@@ -7,7 +7,7 @@ class FinchAPI::Test::Resources::HRIS::EmploymentsTest < FinchAPI::Test::Resourc
     response = @finch.hris.employments.retrieve_many(requests: [{individual_id: "individual_id"}])
 
     assert_pattern do
-      response => FinchAPI::ResponsesPage
+      response => FinchAPI::Internal::ResponsesPage
     end
 
     row = response.to_enum.first

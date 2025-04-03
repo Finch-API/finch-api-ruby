@@ -6,8 +6,8 @@ module FinchAPI
       # @see FinchAPI::Resources::HRIS::Directory#list_individuals
       class DirectoryListIndividualsParams < FinchAPI::BaseModel
         # @!parse
-        #   extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # @!attribute [r] limit
         #   Number of employees to return (defaults to all)
