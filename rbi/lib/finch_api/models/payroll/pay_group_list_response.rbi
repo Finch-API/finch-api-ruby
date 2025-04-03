@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module Payroll
-      class PayGroupListResponse < FinchAPI::BaseModel
+      class PayGroupListResponse < FinchAPI::Internal::Type::BaseModel
         # Finch id (uuidv4) for the pay group
         sig { returns(T.nilable(String)) }
         attr_reader :id
@@ -53,7 +53,7 @@ module FinchAPI
         end
 
         module PayFrequency
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency) }

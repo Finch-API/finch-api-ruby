@@ -8,7 +8,7 @@ module FinchAPI
           year: Float?
         }
 
-      class W42005 < FinchAPI::BaseModel
+      class W42005 < FinchAPI::Internal::Type::BaseModel
         attr_reader data: FinchAPI::Models::HRIS::W42005::Data?
 
         def data=: (
@@ -40,7 +40,7 @@ module FinchAPI
             total_number_of_allowances: Integer?
           }
 
-        class Data < FinchAPI::BaseModel
+        class Data < FinchAPI::Internal::Type::BaseModel
           attr_accessor additional_withholding: Integer?
 
           attr_reader exemption: FinchAPI::Models::HRIS::W42005::Data::exemption?
@@ -70,7 +70,7 @@ module FinchAPI
           type exemption = :exempt | :non_exempt
 
           module Exemption
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             EXEMPT: :exempt
             NON_EXEMPT: :non_exempt
@@ -82,7 +82,7 @@ module FinchAPI
             :married | :married_but_withhold_at_higher_single_rate | :single
 
           module FilingStatus
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             MARRIED: :married
             MARRIED_BUT_WITHHOLD_AT_HIGHER_SINGLE_RATE: :married_but_withhold_at_higher_single_rate
@@ -95,7 +95,7 @@ module FinchAPI
         type type_ = :w4_2005
 
         module Type
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           W4_2005: :w4_2005
 

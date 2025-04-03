@@ -2,7 +2,7 @@
 
 module FinchAPI
   module Models
-    class DisconnectResponse < FinchAPI::BaseModel
+    class DisconnectResponse < FinchAPI::Internal::Type::BaseModel
       # If the request is successful, Finch will return “success” (HTTP 200 status).
       sig { returns(String) }
       attr_accessor :status

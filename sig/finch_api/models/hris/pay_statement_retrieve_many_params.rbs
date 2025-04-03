@@ -7,7 +7,7 @@ module FinchAPI
         }
         & FinchAPI::Internal::Type::request_parameters
 
-      class PayStatementRetrieveManyParams < FinchAPI::BaseModel
+      class PayStatementRetrieveManyParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
@@ -22,7 +22,7 @@ module FinchAPI
 
         type request = { payment_id: String, limit: Integer, offset: Integer }
 
-        class Request < FinchAPI::BaseModel
+        class Request < FinchAPI::Internal::Type::BaseModel
           attr_accessor payment_id: String
 
           attr_reader limit: Integer?

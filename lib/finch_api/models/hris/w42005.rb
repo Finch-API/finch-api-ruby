@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
-      class W42005 < FinchAPI::BaseModel
+      class W42005 < FinchAPI::Internal::Type::BaseModel
         # @!attribute [r] data
         #   Detailed information specific to the 2005 W4 form.
         #
@@ -40,10 +40,10 @@ module FinchAPI
         #   #
         #   def initialize(data: nil, type: nil, year: nil, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
         # @see FinchAPI::Models::HRIS::W42005#data
-        class Data < FinchAPI::BaseModel
+        class Data < FinchAPI::Internal::Type::BaseModel
           # @!attribute additional_withholding
           #   Additional withholding amount (in cents).
           #
@@ -102,13 +102,13 @@ module FinchAPI
           #     super
           #   end
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
           # Indicates exemption status from federal tax withholding.
           #
           # @see FinchAPI::Models::HRIS::W42005::Data#exemption
           module Exemption
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             EXEMPT = :exempt
             NON_EXEMPT = :non_exempt
@@ -124,7 +124,7 @@ module FinchAPI
           #
           # @see FinchAPI::Models::HRIS::W42005::Data#filing_status
           module FilingStatus
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             MARRIED = :married
             MARRIED_BUT_WITHHOLD_AT_HIGHER_SINGLE_RATE = :married_but_withhold_at_higher_single_rate
@@ -142,7 +142,7 @@ module FinchAPI
         #
         # @see FinchAPI::Models::HRIS::W42005#type
         module Type
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           W4_2005 = :w4_2005
 

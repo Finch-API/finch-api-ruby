@@ -4,13 +4,13 @@ module FinchAPI
   module Models
     module HRIS
       module Benefits
-        class EnrolledIndividual < FinchAPI::BaseModel
+        class EnrolledIndividual < FinchAPI::Internal::Type::BaseModel
           sig { returns(T.nilable(FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Body)) }
           attr_reader :body
 
           sig do
             params(
-              body: T.any(FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Body, FinchAPI::Internal::Util::AnyHash)
+              body: T.any(FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Body, FinchAPI::Internal::AnyHash)
             )
               .void
           end
@@ -31,7 +31,7 @@ module FinchAPI
 
           sig do
             params(
-              body: T.any(FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Body, FinchAPI::Internal::Util::AnyHash),
+              body: T.any(FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Body, FinchAPI::Internal::AnyHash),
               code: FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code::OrInteger,
               individual_id: String
             )
@@ -53,7 +53,7 @@ module FinchAPI
           def to_hash
           end
 
-          class Body < FinchAPI::BaseModel
+          class Body < FinchAPI::Internal::Type::BaseModel
             # A descriptive identifier for the response.
             sig { returns(T.nilable(String)) }
             attr_accessor :finch_code
@@ -88,7 +88,7 @@ module FinchAPI
 
           # HTTP status code. Either 201 or 200
           module Code
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedInteger =
               T.type_alias { T.all(Integer, FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code) }

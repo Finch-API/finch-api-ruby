@@ -5,7 +5,7 @@ module FinchAPI
         { type: FinchAPI::Models::Sandbox::JobCreateParams::type_ }
         & FinchAPI::Internal::Type::request_parameters
 
-      class JobCreateParams < FinchAPI::BaseModel
+      class JobCreateParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
@@ -21,7 +21,7 @@ module FinchAPI
         type type_ = :data_sync_all
 
         module Type
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           DATA_SYNC_ALL: :data_sync_all
 

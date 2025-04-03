@@ -14,7 +14,7 @@ module FinchAPI
             authentication_type: FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType::OrSymbol,
             employee_size: Integer,
             products: T::Array[String],
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
           )
             .returns(FinchAPI::Models::Sandbox::ConnectionCreateResponse)
         end

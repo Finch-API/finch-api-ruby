@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
-      class BenefitContribution < FinchAPI::BaseModel
+      class BenefitContribution < FinchAPI::Internal::Type::BaseModel
         # @!attribute amount
         #   Contribution amount in cents (if `fixed`) or basis points (if `percent`).
         #
@@ -22,13 +22,13 @@ module FinchAPI
         #   #
         #   def initialize(amount: nil, type: nil, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
         # Contribution type.
         #
         # @see FinchAPI::Models::HRIS::BenefitContribution#type
         module Type
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           FIXED = :fixed
           PERCENT = :percent

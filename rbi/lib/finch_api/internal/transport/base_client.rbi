@@ -25,10 +25,10 @@ module FinchAPI
               ),
               body: T.nilable(T.anything),
               unwrap: T.nilable(Symbol),
-              page: T.nilable(T::Class[FinchAPI::Internal::Type::BasePage[FinchAPI::BaseModel]]),
+              page: T.nilable(T::Class[FinchAPI::Internal::Type::BasePage[FinchAPI::Internal::Type::BaseModel]]),
               stream: T.nilable(T::Class[T.anything]),
               model: T.nilable(FinchAPI::Internal::Type::Converter::Input),
-              options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
+              options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
             }
           end
 
@@ -136,7 +136,7 @@ module FinchAPI
           overridable
             .params(
               req: FinchAPI::Internal::Transport::BaseClient::RequestComponentsShape,
-              opts: FinchAPI::Internal::Util::AnyHash
+              opts: FinchAPI::Internal::AnyHash
             )
             .returns(FinchAPI::Internal::Transport::BaseClient::RequestInputShape)
         end
@@ -180,10 +180,10 @@ module FinchAPI
             ),
             body: T.nilable(T.anything),
             unwrap: T.nilable(Symbol),
-            page: T.nilable(T::Class[FinchAPI::Internal::Type::BasePage[FinchAPI::BaseModel]]),
+            page: T.nilable(T::Class[FinchAPI::Internal::Type::BasePage[FinchAPI::Internal::Type::BaseModel]]),
             stream: T.nilable(T::Class[T.anything]),
             model: T.nilable(FinchAPI::Internal::Type::Converter::Input),
-            options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
+            options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
           )
             .returns(T.anything)
         end
@@ -196,7 +196,7 @@ module FinchAPI
           unwrap: nil,
           page: nil,
           stream: nil,
-          model: FinchAPI::Unknown,
+          model: FinchAPI::Internal::Type::Unknown,
           options: {}
         )
         end

@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Sandbox
       # @see FinchAPI::Resources::Sandbox::Payment#create
-      class PaymentCreateResponse < FinchAPI::BaseModel
+      class PaymentCreateResponse < FinchAPI::Internal::Type::BaseModel
         # @!attribute pay_date
         #   The date of the payment.
         #
@@ -23,7 +23,7 @@ module FinchAPI
         #   #
         #   def initialize(pay_date:, payment_id:, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
       end
     end
   end

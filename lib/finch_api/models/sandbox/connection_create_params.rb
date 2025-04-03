@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Sandbox
       # @see FinchAPI::Resources::Sandbox::Connections#create
-      class ConnectionCreateParams < FinchAPI::BaseModel
+      class ConnectionCreateParams < FinchAPI::Internal::Type::BaseModel
         # @!parse
         #   extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
@@ -40,7 +40,7 @@ module FinchAPI
         # @!attribute [r] products
         #
         #   @return [Array<String>, nil]
-        optional :products, FinchAPI::ArrayOf[String]
+        optional :products, FinchAPI::Internal::Type::ArrayOf[String]
 
         # @!parse
         #   # @return [Array<String>]
@@ -55,10 +55,10 @@ module FinchAPI
         #   #
         #   def initialize(provider_id:, authentication_type: nil, employee_size: nil, products: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
         module AuthenticationType
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           CREDENTIAL = :credential
           API_TOKEN = :api_token

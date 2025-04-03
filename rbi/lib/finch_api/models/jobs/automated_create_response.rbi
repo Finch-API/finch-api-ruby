@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module Jobs
-      class AutomatedCreateResponse < FinchAPI::BaseModel
+      class AutomatedCreateResponse < FinchAPI::Internal::Type::BaseModel
         # The number of allowed refreshes per hour (per hour, fixed window)
         sig { returns(Integer) }
         attr_accessor :allowed_refreshes

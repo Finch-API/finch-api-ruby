@@ -12,7 +12,7 @@ module FinchAPI
           middle_name: String?
         }
 
-      class IndividualInDirectory < FinchAPI::BaseModel
+      class IndividualInDirectory < FinchAPI::Internal::Type::BaseModel
         attr_reader id: String?
 
         def id=: (String) -> String
@@ -43,7 +43,7 @@ module FinchAPI
 
         type department = { name: String? }
 
-        class Department < FinchAPI::BaseModel
+        class Department < FinchAPI::Internal::Type::BaseModel
           attr_accessor name: String?
 
           def initialize: (?name: String?) -> void
@@ -53,7 +53,7 @@ module FinchAPI
 
         type manager = { id: String }
 
-        class Manager < FinchAPI::BaseModel
+        class Manager < FinchAPI::Internal::Type::BaseModel
           attr_reader id: String?
 
           def id=: (String) -> String

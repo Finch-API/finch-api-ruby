@@ -5,7 +5,7 @@ module FinchAPI
         type individual_enrolled_ids_response =
           { benefit_id: String, individual_ids: ::Array[String] }
 
-        class IndividualEnrolledIDsResponse < FinchAPI::BaseModel
+        class IndividualEnrolledIDsResponse < FinchAPI::Internal::Type::BaseModel
           attr_accessor benefit_id: String
 
           attr_accessor individual_ids: ::Array[String]

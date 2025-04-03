@@ -12,7 +12,7 @@ module FinchAPI
         state: String?
       }
 
-    class Location < FinchAPI::BaseModel
+    class Location < FinchAPI::Internal::Type::BaseModel
       attr_accessor city: String?
 
       attr_accessor country: String?

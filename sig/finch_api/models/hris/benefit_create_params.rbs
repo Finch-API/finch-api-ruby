@@ -9,7 +9,7 @@ module FinchAPI
         }
         & FinchAPI::Internal::Type::request_parameters
 
-      class BenefitCreateParams < FinchAPI::BaseModel
+      class BenefitCreateParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 

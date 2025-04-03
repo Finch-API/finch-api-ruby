@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
-      class PayStatementResponseBody < FinchAPI::BaseModel
+      class PayStatementResponseBody < FinchAPI::Internal::Type::BaseModel
         # @!attribute [r] paging
         #
         #   @return [FinchAPI::Models::Paging, nil]
@@ -17,7 +17,7 @@ module FinchAPI
         #   The array of pay statements for the current payment.
         #
         #   @return [Array<FinchAPI::Models::HRIS::PayStatement>, nil]
-        optional :pay_statements, -> { FinchAPI::ArrayOf[FinchAPI::Models::HRIS::PayStatement] }
+        optional :pay_statements, -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::HRIS::PayStatement] }
 
         # @!parse
         #   # @return [Array<FinchAPI::Models::HRIS::PayStatement>]
@@ -29,7 +29,7 @@ module FinchAPI
         #   #
         #   def initialize(paging: nil, pay_statements: nil, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
       end
     end
   end

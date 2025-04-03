@@ -10,7 +10,7 @@ module FinchAPI
     #   - `client_access_only`: This behavior is supported by the provider, but only
     #     available to the client and not to Finch
     module OperationSupport
-      extend FinchAPI::Enum
+      extend FinchAPI::Internal::Type::Enum
 
       TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::OperationSupport) }
       OrSymbol = T.type_alias { T.any(Symbol, String, FinchAPI::Models::OperationSupport::TaggedSymbol) }

@@ -9,7 +9,7 @@ module FinchAPI
       | :reauth
 
     module ConnectionStatusType
-      extend FinchAPI::Enum
+      extend FinchAPI::Internal::Type::Enum
 
       PENDING: :pending
       PROCESSING: :processing

@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Sandbox
       # @see FinchAPI::Resources::Sandbox::Individual#update
-      class IndividualUpdateParams < FinchAPI::BaseModel
+      class IndividualUpdateParams < FinchAPI::Internal::Type::BaseModel
         # @!parse
         #   extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
@@ -18,7 +18,7 @@ module FinchAPI
         #
         #   @return [Array<FinchAPI::Models::Sandbox::IndividualUpdateParams::Email>, nil]
         optional :emails,
-                 -> { FinchAPI::ArrayOf[FinchAPI::Models::Sandbox::IndividualUpdateParams::Email] },
+                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::IndividualUpdateParams::Email] },
                  nil?: true
 
         # @!attribute encrypted_ssn
@@ -63,7 +63,7 @@ module FinchAPI
         #
         #   @return [Array<FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber, nil>, nil]
         optional :phone_numbers,
-                 -> { FinchAPI::ArrayOf[FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber, nil?: true] },
+                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber, nil?: true] },
                  nil?: true
 
         # @!attribute preferred_name
@@ -120,9 +120,9 @@ module FinchAPI
         #     super
         #   end
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
-        class Email < FinchAPI::BaseModel
+        class Email < FinchAPI::Internal::Type::BaseModel
           # @!attribute [r] data
           #
           #   @return [String, nil]
@@ -143,11 +143,11 @@ module FinchAPI
           #   #
           #   def initialize(data: nil, type: nil, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
           # @see FinchAPI::Models::Sandbox::IndividualUpdateParams::Email#type
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             WORK = :work
             PERSONAL = :personal
@@ -162,7 +162,7 @@ module FinchAPI
 
         # The EEOC-defined ethnicity of the individual.
         module Ethnicity
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           ASIAN = :asian
           WHITE = :white
@@ -182,7 +182,7 @@ module FinchAPI
 
         # The gender of the individual.
         module Gender
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           FEMALE = :female
           MALE = :male
@@ -196,7 +196,7 @@ module FinchAPI
           #   def self.values; end
         end
 
-        class PhoneNumber < FinchAPI::BaseModel
+        class PhoneNumber < FinchAPI::Internal::Type::BaseModel
           # @!attribute data
           #
           #   @return [String, nil]
@@ -215,11 +215,11 @@ module FinchAPI
           #   #
           #   def initialize(data: nil, type: nil, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
           # @see FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber#type
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             WORK = :work
             PERSONAL = :personal

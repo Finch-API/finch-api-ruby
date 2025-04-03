@@ -7,7 +7,7 @@ module FinchAPI
           individual_benefits: FinchAPI::Models::OperationSupportMatrix
         }
 
-      class SupportPerBenefitType < FinchAPI::BaseModel
+      class SupportPerBenefitType < FinchAPI::Internal::Type::BaseModel
         attr_reader company_benefits: FinchAPI::Models::OperationSupportMatrix?
 
         def company_benefits=: (

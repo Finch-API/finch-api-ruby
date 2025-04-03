@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       # @see FinchAPI::Resources::HRIS::PayStatements#retrieve_many
-      class PayStatementResponse < FinchAPI::BaseModel
+      class PayStatementResponse < FinchAPI::Internal::Type::BaseModel
         # @!attribute [r] body
         #
         #   @return [FinchAPI::Models::HRIS::PayStatementResponseBody, nil]
@@ -39,7 +39,7 @@ module FinchAPI
         #   #
         #   def initialize(body: nil, code: nil, payment_id: nil, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
       end
     end
   end

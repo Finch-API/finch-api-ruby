@@ -2,7 +2,7 @@
 
 module FinchAPI
   module Models
-    class RequestForwardingForwardResponse < FinchAPI::BaseModel
+    class RequestForwardingForwardResponse < FinchAPI::Internal::Type::BaseModel
       # A string representation of the HTTP response body of the forwarded request’s
       #   response received from the underlying integration’s API. This field may be null
       #   in the case where the upstream system’s response is empty.
@@ -21,7 +21,7 @@ module FinchAPI
 
       sig do
         params(
-          request: T.any(FinchAPI::Models::RequestForwardingForwardResponse::Request, FinchAPI::Internal::Util::AnyHash)
+          request: T.any(FinchAPI::Models::RequestForwardingForwardResponse::Request, FinchAPI::Internal::AnyHash)
         )
           .void
       end
@@ -36,7 +36,7 @@ module FinchAPI
         params(
           data: T.nilable(String),
           headers: T.nilable(T.anything),
-          request: T.any(FinchAPI::Models::RequestForwardingForwardResponse::Request, FinchAPI::Internal::Util::AnyHash),
+          request: T.any(FinchAPI::Models::RequestForwardingForwardResponse::Request, FinchAPI::Internal::AnyHash),
           status_code: Integer
         )
           .returns(T.attached_class)
@@ -58,7 +58,7 @@ module FinchAPI
       def to_hash
       end
 
-      class Request < FinchAPI::BaseModel
+      class Request < FinchAPI::Internal::Type::BaseModel
         # The body that was specified for the forwarded request. If a value was not
         #   specified in the original request, this value will be returned as null ;
         #   otherwise, this value will always be returned as a string.

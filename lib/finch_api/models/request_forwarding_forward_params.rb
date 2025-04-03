@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     # @see FinchAPI::Resources::RequestForwarding#forward
-    class RequestForwardingForwardParams < FinchAPI::BaseModel
+    class RequestForwardingForwardParams < FinchAPI::Internal::Type::BaseModel
       # @!parse
       #   extend FinchAPI::Internal::Type::RequestParameters::Converter
       include FinchAPI::Internal::Type::RequestParameters
@@ -36,14 +36,14 @@ module FinchAPI
       #     `{"Content-Type": "application/xml", "X-API-Version": "v1" }`
       #
       #   @return [Object, nil]
-      optional :headers, FinchAPI::Unknown, nil?: true
+      optional :headers, FinchAPI::Internal::Type::Unknown, nil?: true
 
       # @!attribute params
       #   The query parameters for the forwarded request. This value must be specified as
       #     a valid JSON object rather than a query string.
       #
       #   @return [Object, nil]
-      optional :params, FinchAPI::Unknown, nil?: true
+      optional :params, FinchAPI::Internal::Type::Unknown, nil?: true
 
       # @!parse
       #   # @param method_ [String]
@@ -55,7 +55,7 @@ module FinchAPI
       #   #
       #   def initialize(method_:, route:, data: nil, headers: nil, params: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | FinchAPI::BaseModel) -> void
+      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
     end
   end
 end

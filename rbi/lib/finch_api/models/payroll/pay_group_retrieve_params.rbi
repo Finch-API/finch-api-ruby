@@ -3,12 +3,12 @@
 module FinchAPI
   module Models
     module Payroll
-      class PayGroupRetrieveParams < FinchAPI::BaseModel
+      class PayGroupRetrieveParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
         sig do
-          params(request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
+          params(request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
             .returns(T.attached_class)
         end
         def self.new(request_options: {})

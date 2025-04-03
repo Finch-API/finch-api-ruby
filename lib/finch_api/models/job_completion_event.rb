@@ -27,9 +27,9 @@ module FinchAPI
       #   #
       #   def initialize(data: nil, event_type: nil, **) = super
 
-      # def initialize: (Hash | FinchAPI::BaseModel) -> void
+      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
-      class Data < FinchAPI::BaseModel
+      class Data < FinchAPI::Internal::Type::BaseModel
         # @!attribute job_id
         #   The id of the job which has completed.
         #
@@ -48,11 +48,11 @@ module FinchAPI
         #   #
         #   def initialize(job_id:, job_url:, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
       end
 
       module EventType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         JOB_BENEFIT_CREATE_COMPLETED = :"job.benefit_create.completed"
         JOB_BENEFIT_ENROLL_COMPLETED = :"job.benefit_enroll.completed"

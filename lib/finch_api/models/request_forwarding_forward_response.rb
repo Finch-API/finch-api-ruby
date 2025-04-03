@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     # @see FinchAPI::Resources::RequestForwarding#forward
-    class RequestForwardingForwardResponse < FinchAPI::BaseModel
+    class RequestForwardingForwardResponse < FinchAPI::Internal::Type::BaseModel
       # @!attribute data
       #   A string representation of the HTTP response body of the forwarded request’s
       #     response received from the underlying integration’s API. This field may be null
@@ -17,7 +17,7 @@ module FinchAPI
       #     the underlying integration’s API.
       #
       #   @return [Object, nil]
-      required :headers, FinchAPI::Unknown, nil?: true
+      required :headers, FinchAPI::Internal::Type::Unknown, nil?: true
 
       # @!attribute request
       #   An object containing details of your original forwarded request, for your ease
@@ -41,10 +41,10 @@ module FinchAPI
       #   #
       #   def initialize(data:, headers:, request:, status_code:, **) = super
 
-      # def initialize: (Hash | FinchAPI::BaseModel) -> void
+      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
       # @see FinchAPI::Models::RequestForwardingForwardResponse#request
-      class Request < FinchAPI::BaseModel
+      class Request < FinchAPI::Internal::Type::BaseModel
         # @!attribute data
         #   The body that was specified for the forwarded request. If a value was not
         #     specified in the original request, this value will be returned as null ;
@@ -58,7 +58,7 @@ module FinchAPI
         #     headers were specified, this will be returned as `null`.
         #
         #   @return [Object, nil]
-        required :headers, FinchAPI::Unknown, nil?: true
+        required :headers, FinchAPI::Internal::Type::Unknown, nil?: true
 
         # @!attribute method_
         #   The HTTP method that was specified for the forwarded request. Valid values
@@ -72,7 +72,7 @@ module FinchAPI
         #     parameters were specified, this will be returned as `null`.
         #
         #   @return [Object, nil]
-        required :params, FinchAPI::Unknown, nil?: true
+        required :params, FinchAPI::Internal::Type::Unknown, nil?: true
 
         # @!attribute route
         #   The URL route path that was specified for the forwarded request.
@@ -92,7 +92,7 @@ module FinchAPI
         #   #
         #   def initialize(data:, headers:, method_:, params:, route:, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
       end
     end
   end

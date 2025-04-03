@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       # @see FinchAPI::Resources::HRIS::Benefits#retrieve
-      class CompanyBenefit < FinchAPI::BaseModel
+      class CompanyBenefit < FinchAPI::Internal::Type::BaseModel
         # @!attribute benefit_id
         #   The id of the benefit.
         #
@@ -36,7 +36,7 @@ module FinchAPI
         #   #
         #   def initialize(benefit_id:, description:, frequency:, type:, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
       end
     end
   end

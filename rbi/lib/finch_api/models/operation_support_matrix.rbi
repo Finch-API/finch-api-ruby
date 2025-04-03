@@ -2,7 +2,7 @@
 
 module FinchAPI
   module Models
-    class OperationSupportMatrix < FinchAPI::BaseModel
+    class OperationSupportMatrix < FinchAPI::Internal::Type::BaseModel
       # - `supported`: This operation is supported by both the provider and Finch
       #   - `not_supported_by_finch`: This operation is not supported by Finch but
       #     supported by the provider

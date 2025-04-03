@@ -7,10 +7,10 @@ module FinchAPI
         type known_field =
           { mode: (:coerce | :dump)?, required: bool, nilable: bool }
 
-        def self.known_fields: -> ::Hash[Symbol, (FinchAPI::BaseModel::known_field
+        def self.known_fields: -> ::Hash[Symbol, (FinchAPI::Internal::Type::BaseModel::known_field
         & { type_fn: (^-> FinchAPI::Internal::Type::Converter::input) })]
 
-        def self.fields: -> ::Hash[Symbol, (FinchAPI::BaseModel::known_field
+        def self.fields: -> ::Hash[Symbol, (FinchAPI::Internal::Type::BaseModel::known_field
         & { type: FinchAPI::Internal::Type::Converter::input })]
 
         private def self.add_field: (
@@ -52,7 +52,7 @@ module FinchAPI
         def ==: (top other) -> bool
 
         def self.coerce: (
-          FinchAPI::BaseModel | ::Hash[top, top] | top value,
+          FinchAPI::Internal::Type::BaseModel | ::Hash[top, top] | top value,
           state: FinchAPI::Internal::Type::Converter::state
         ) -> (instance | top)
 

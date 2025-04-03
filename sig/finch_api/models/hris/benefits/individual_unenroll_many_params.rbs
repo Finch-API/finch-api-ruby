@@ -6,7 +6,7 @@ module FinchAPI
           { individual_ids: ::Array[String] }
           & FinchAPI::Internal::Type::request_parameters
 
-        class IndividualUnenrollManyParams < FinchAPI::BaseModel
+        class IndividualUnenrollManyParams < FinchAPI::Internal::Type::BaseModel
           extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
 

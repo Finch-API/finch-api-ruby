@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       # @see FinchAPI::Resources::HRIS::Benefits#list_supported_benefits
-      class BenefitListSupportedBenefitsParams < FinchAPI::BaseModel
+      class BenefitListSupportedBenefitsParams < FinchAPI::Internal::Type::BaseModel
         # @!parse
         #   extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
@@ -14,7 +14,7 @@ module FinchAPI
         #   #
         #   def initialize(request_options: {}, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
       end
     end
   end

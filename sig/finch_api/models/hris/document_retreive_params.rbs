@@ -4,7 +4,7 @@ module FinchAPI
       type document_retreive_params =
         {  } & FinchAPI::Internal::Type::request_parameters
 
-      class DocumentRetreiveParams < FinchAPI::BaseModel
+      class DocumentRetreiveParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 

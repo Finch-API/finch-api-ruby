@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       # @see FinchAPI::Resources::HRIS::Company#retrieve
-      class CompanyRetrieveParams < FinchAPI::BaseModel
+      class CompanyRetrieveParams < FinchAPI::Internal::Type::BaseModel
         # @!parse
         #   extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
@@ -14,7 +14,7 @@ module FinchAPI
         #   #
         #   def initialize(request_options: {}, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
       end
     end
   end

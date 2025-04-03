@@ -14,14 +14,14 @@ class FinchAPI::Test::Resources::Sandbox::IndividualTest < FinchAPI::Test::Resou
       response => {
         id: String | nil,
         dob: String | nil,
-        emails: ^(FinchAPI::ArrayOf[FinchAPI::Models::Sandbox::IndividualUpdateResponse::Email]) | nil,
+        emails: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::IndividualUpdateResponse::Email]) | nil,
         encrypted_ssn: String | nil,
         ethnicity: FinchAPI::Models::Sandbox::IndividualUpdateResponse::Ethnicity | nil,
         first_name: String | nil,
         gender: FinchAPI::Models::Sandbox::IndividualUpdateResponse::Gender | nil,
         last_name: String | nil,
         middle_name: String | nil,
-        phone_numbers: ^(FinchAPI::ArrayOf[FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber, nil?: true]) | nil,
+        phone_numbers: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber, nil?: true]) | nil,
         preferred_name: String | nil,
         residence: FinchAPI::Models::Location | nil,
         ssn: String | nil

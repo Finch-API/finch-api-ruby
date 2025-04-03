@@ -5,7 +5,7 @@ module FinchAPI
     module HRIS
       # Type of benefit.
       module BenefitType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         BENEFIT_TYPE_401K = :"401k"
         BENEFIT_TYPE_401K_ROTH = :"401k_roth"

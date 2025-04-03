@@ -2,7 +2,7 @@
 
 module FinchAPI
   module Models
-    class Location < FinchAPI::BaseModel
+    class Location < FinchAPI::Internal::Type::BaseModel
       # @!attribute city
       #   City, district, suburb, town, or village.
       #
@@ -73,7 +73,7 @@ module FinchAPI
       #     super
       #   end
 
-      # def initialize: (Hash | FinchAPI::BaseModel) -> void
+      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
     end
   end
 end

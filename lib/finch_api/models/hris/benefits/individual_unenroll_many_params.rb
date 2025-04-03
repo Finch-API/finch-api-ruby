@@ -5,7 +5,7 @@ module FinchAPI
     module HRIS
       module Benefits
         # @see FinchAPI::Resources::HRIS::Benefits::Individuals#unenroll_many
-        class IndividualUnenrollManyParams < FinchAPI::BaseModel
+        class IndividualUnenrollManyParams < FinchAPI::Internal::Type::BaseModel
           # @!parse
           #   extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
@@ -14,7 +14,7 @@ module FinchAPI
           #   Array of individual_ids to unenroll.
           #
           #   @return [Array<String>, nil]
-          optional :individual_ids, FinchAPI::ArrayOf[String]
+          optional :individual_ids, FinchAPI::Internal::Type::ArrayOf[String]
 
           # @!parse
           #   # @return [Array<String>]
@@ -26,7 +26,7 @@ module FinchAPI
           #   #
           #   def initialize(individual_ids: nil, request_options: {}, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
         end
       end
     end

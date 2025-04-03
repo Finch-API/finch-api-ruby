@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module Sandbox
-      class IndividualUpdateParams < FinchAPI::BaseModel
+      class IndividualUpdateParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
@@ -49,7 +49,7 @@ module FinchAPI
         sig { returns(T.nilable(FinchAPI::Models::Location)) }
         attr_reader :residence
 
-        sig { params(residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::Util::AnyHash))).void }
+        sig { params(residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::AnyHash))).void }
         attr_writer :residence
 
         # Social Security Number of the individual. This field is only available with the
@@ -63,7 +63,7 @@ module FinchAPI
           params(
             dob: T.nilable(String),
             emails: T.nilable(
-              T::Array[T.any(FinchAPI::Models::Sandbox::IndividualUpdateParams::Email, FinchAPI::Internal::Util::AnyHash)]
+              T::Array[T.any(FinchAPI::Models::Sandbox::IndividualUpdateParams::Email, FinchAPI::Internal::AnyHash)]
             ),
             encrypted_ssn: T.nilable(String),
             ethnicity: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol),
@@ -74,14 +74,14 @@ module FinchAPI
             phone_numbers: T.nilable(
               T::Array[
               T.nilable(
-                T.any(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber, FinchAPI::Internal::Util::AnyHash)
+                T.any(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber, FinchAPI::Internal::AnyHash)
               )
               ]
             ),
             preferred_name: T.nilable(String),
-            residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::Util::AnyHash)),
+            residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::AnyHash)),
             ssn: T.nilable(String),
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -125,7 +125,7 @@ module FinchAPI
         def to_hash
         end
 
-        class Email < FinchAPI::BaseModel
+        class Email < FinchAPI::Internal::Type::BaseModel
           sig { returns(T.nilable(String)) }
           attr_reader :data
 
@@ -155,7 +155,7 @@ module FinchAPI
           end
 
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type) }
@@ -173,7 +173,7 @@ module FinchAPI
 
         # The EEOC-defined ethnicity of the individual.
         module Ethnicity
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity) }
@@ -211,7 +211,7 @@ module FinchAPI
 
         # The gender of the individual.
         module Gender
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender) }
           OrSymbol =
@@ -228,7 +228,7 @@ module FinchAPI
           end
         end
 
-        class PhoneNumber < FinchAPI::BaseModel
+        class PhoneNumber < FinchAPI::Internal::Type::BaseModel
           sig { returns(T.nilable(String)) }
           attr_accessor :data
 
@@ -258,7 +258,7 @@ module FinchAPI
           end
 
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type) }

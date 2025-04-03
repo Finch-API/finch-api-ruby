@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Connect
       # @see FinchAPI::Resources::Connect::Sessions#new
-      class SessionNewResponse < FinchAPI::BaseModel
+      class SessionNewResponse < FinchAPI::Internal::Type::BaseModel
         # @!attribute connect_url
         #   The Connect URL to redirect the user to for authentication
         #
@@ -23,7 +23,7 @@ module FinchAPI
         #   #
         #   def initialize(connect_url:, session_id:, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
       end
     end
   end

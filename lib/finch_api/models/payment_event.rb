@@ -27,9 +27,9 @@ module FinchAPI
       #   #
       #   def initialize(data: nil, event_type: nil, **) = super
 
-      # def initialize: (Hash | FinchAPI::BaseModel) -> void
+      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
-      class Data < FinchAPI::BaseModel
+      class Data < FinchAPI::Internal::Type::BaseModel
         # @!attribute pay_date
         #   The date of the payment.
         #
@@ -48,11 +48,11 @@ module FinchAPI
         #   #
         #   def initialize(pay_date:, payment_id:, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
       end
 
       module EventType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         PAYMENT_CREATED = :"payment.created"
         PAYMENT_UPDATED = :"payment.updated"

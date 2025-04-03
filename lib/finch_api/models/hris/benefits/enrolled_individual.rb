@@ -5,7 +5,7 @@ module FinchAPI
     module HRIS
       module Benefits
         # @see FinchAPI::Resources::HRIS::Benefits::Individuals#enroll_many
-        class EnrolledIndividual < FinchAPI::BaseModel
+        class EnrolledIndividual < FinchAPI::Internal::Type::BaseModel
           # @!attribute [r] body
           #
           #   @return [FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Body, nil]
@@ -41,10 +41,10 @@ module FinchAPI
           #   #
           #   def initialize(body: nil, code: nil, individual_id: nil, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
           # @see FinchAPI::Models::HRIS::Benefits::EnrolledIndividual#body
-          class Body < FinchAPI::BaseModel
+          class Body < FinchAPI::Internal::Type::BaseModel
             # @!attribute finch_code
             #   A descriptive identifier for the response.
             #
@@ -70,14 +70,14 @@ module FinchAPI
             #   #
             #   def initialize(finch_code: nil, message: nil, name: nil, **) = super
 
-            # def initialize: (Hash | FinchAPI::BaseModel) -> void
+            # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
           end
 
           # HTTP status code. Either 201 or 200
           #
           # @see FinchAPI::Models::HRIS::Benefits::EnrolledIndividual#code
           module Code
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             OK = 200
             CREATED = 201

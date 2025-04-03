@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module Jobs
-      class AutomatedCreateParams < FinchAPI::BaseModel
+      class AutomatedCreateParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
@@ -15,9 +15,7 @@ module FinchAPI
         attr_reader :params
 
         sig do
-          params(
-            params: T.any(FinchAPI::Models::Jobs::AutomatedCreateParams::Params, FinchAPI::Internal::Util::AnyHash)
-          )
+          params(params: T.any(FinchAPI::Models::Jobs::AutomatedCreateParams::Params, FinchAPI::Internal::AnyHash))
             .void
         end
         attr_writer :params
@@ -25,8 +23,8 @@ module FinchAPI
         sig do
           params(
             type: FinchAPI::Models::Jobs::AutomatedCreateParams::Type::OrSymbol,
-            params: T.any(FinchAPI::Models::Jobs::AutomatedCreateParams::Params, FinchAPI::Internal::Util::AnyHash),
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
+            params: T.any(FinchAPI::Models::Jobs::AutomatedCreateParams::Params, FinchAPI::Internal::AnyHash),
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -48,7 +46,7 @@ module FinchAPI
 
         # The type of job to start.
         module Type
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Jobs::AutomatedCreateParams::Type) }
           OrSymbol =
@@ -62,7 +60,7 @@ module FinchAPI
           end
         end
 
-        class Params < FinchAPI::BaseModel
+        class Params < FinchAPI::Internal::Type::BaseModel
           # The unique ID of the individual for W-4 data sync.
           sig { returns(String) }
           attr_accessor :individual_id

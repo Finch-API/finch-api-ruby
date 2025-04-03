@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module Connect
-      class SessionReauthenticateParams < FinchAPI::BaseModel
+      class SessionReauthenticateParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
@@ -30,7 +30,7 @@ module FinchAPI
             minutes_to_expire: T.nilable(Integer),
             products: T.nilable(T::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol]),
             redirect_uri: T.nilable(String),
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -60,7 +60,7 @@ module FinchAPI
 
         # The Finch products that can be requested during the Connect flow.
         module Product
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::Connect::SessionReauthenticateParams::Product) }

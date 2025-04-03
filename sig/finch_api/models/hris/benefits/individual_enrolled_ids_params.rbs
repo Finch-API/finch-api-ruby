@@ -5,7 +5,7 @@ module FinchAPI
         type individual_enrolled_ids_params =
           {  } & FinchAPI::Internal::Type::request_parameters
 
-        class IndividualEnrolledIDsParams < FinchAPI::BaseModel
+        class IndividualEnrolledIDsParams < FinchAPI::Internal::Type::BaseModel
           extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
 

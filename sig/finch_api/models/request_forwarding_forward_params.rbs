@@ -10,7 +10,7 @@ module FinchAPI
       }
       & FinchAPI::Internal::Type::request_parameters
 
-    class RequestForwardingForwardParams < FinchAPI::BaseModel
+    class RequestForwardingForwardParams < FinchAPI::Internal::Type::BaseModel
       extend FinchAPI::Internal::Type::RequestParameters::Converter
       include FinchAPI::Internal::Type::RequestParameters
 

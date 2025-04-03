@@ -8,7 +8,7 @@ module FinchAPI
       #
       # @see FinchAPI::Resources::HRIS::Documents#retreive
       module DocumentRetreiveResponse
-        extend FinchAPI::Union
+        extend FinchAPI::Internal::Type::Union
 
         discriminator :type
 

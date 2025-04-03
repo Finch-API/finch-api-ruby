@@ -15,10 +15,10 @@ module FinchAPI
               individuals: T::Array[
               T.any(
                 FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual,
-                FinchAPI::Internal::Util::AnyHash
+                FinchAPI::Internal::AnyHash
               )
               ],
-              request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
+              request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
             )
               .returns(FinchAPI::Internal::SinglePage[FinchAPI::Models::HRIS::Benefits::EnrolledIndividual])
           end
@@ -34,7 +34,7 @@ module FinchAPI
           sig do
             params(
               benefit_id: String,
-              request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
+              request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
             )
               .returns(FinchAPI::Models::HRIS::Benefits::IndividualEnrolledIDsResponse)
           end
@@ -46,7 +46,7 @@ module FinchAPI
             params(
               benefit_id: String,
               individual_ids: String,
-              request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
+              request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
             )
               .returns(FinchAPI::Internal::SinglePage[FinchAPI::Models::HRIS::Benefits::IndividualBenefit])
           end
@@ -64,7 +64,7 @@ module FinchAPI
             params(
               benefit_id: String,
               individual_ids: T::Array[String],
-              request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
+              request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
             )
               .returns(FinchAPI::Internal::SinglePage[T.anything])
           end

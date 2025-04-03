@@ -12,7 +12,7 @@ module FinchAPI
             limit: Integer,
             offset: Integer,
             types: T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol],
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
           )
             .returns(FinchAPI::Models::HRIS::DocumentListResponse)
         end
@@ -36,7 +36,7 @@ module FinchAPI
         sig do
           params(
             document_id: String,
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
           )
             .returns(T.any(FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005))
         end

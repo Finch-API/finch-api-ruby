@@ -28,7 +28,7 @@ module FinchAPI
 
       type data = { individual_id: String }
 
-      class Data < FinchAPI::BaseModel
+      class Data < FinchAPI::Internal::Type::BaseModel
         attr_reader individual_id: String?
 
         def individual_id=: (String) -> String
@@ -42,7 +42,7 @@ module FinchAPI
         :"directory.created" | :"directory.updated" | :"directory.deleted"
 
       module EventType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         DIRECTORY_CREATED: :"directory.created"
         DIRECTORY_UPDATED: :"directory.updated"

@@ -7,8 +7,8 @@ module FinchAPI
         # Read individual employment and income data
         sig do
           params(
-            requests: T::Array[T.any(FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request, FinchAPI::Internal::Util::AnyHash)],
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
+            requests: T::Array[T.any(FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request, FinchAPI::Internal::AnyHash)],
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
           )
             .returns(FinchAPI::Internal::ResponsesPage[FinchAPI::Models::HRIS::EmploymentDataResponse])
         end

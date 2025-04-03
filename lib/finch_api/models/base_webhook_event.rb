@@ -2,7 +2,7 @@
 
 module FinchAPI
   module Models
-    class BaseWebhookEvent < FinchAPI::BaseModel
+    class BaseWebhookEvent < FinchAPI::Internal::Type::BaseModel
       # @!attribute account_id
       #   [DEPRECATED] Unique Finch ID of the employer account used to make this
       #     connection. Use `connection_id` instead to identify the connection associated
@@ -35,7 +35,7 @@ module FinchAPI
       #   #
       #   def initialize(account_id:, company_id:, connection_id: nil, **) = super
 
-      # def initialize: (Hash | FinchAPI::BaseModel) -> void
+      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
     end
   end
 end

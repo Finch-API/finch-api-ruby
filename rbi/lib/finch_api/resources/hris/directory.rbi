@@ -9,7 +9,7 @@ module FinchAPI
           params(
             limit: Integer,
             offset: Integer,
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
           )
             .returns(FinchAPI::Internal::IndividualsPage[FinchAPI::Models::HRIS::IndividualInDirectory])
         end

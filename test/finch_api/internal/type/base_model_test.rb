@@ -3,26 +3,26 @@
 require_relative "../../test_helper"
 
 class FinchAPI::Test::PrimitiveModelTest < Minitest::Test
-  A = FinchAPI::ArrayOf[-> { Integer }]
-  H = FinchAPI::HashOf[-> { Integer }, nil?: true]
+  A = FinchAPI::Internal::Type::ArrayOf[-> { Integer }]
+  H = FinchAPI::Internal::Type::HashOf[-> { Integer }, nil?: true]
 
   module E
-    extend FinchAPI::Enum
+    extend FinchAPI::Internal::Type::Enum
   end
 
   module U
-    extend FinchAPI::Union
+    extend FinchAPI::Internal::Type::Union
   end
 
-  class B < FinchAPI::BaseModel
+  class B < FinchAPI::Internal::Type::BaseModel
     optional :a, Integer
     optional :b, B
   end
 
   def test_typing
     converters = [
-      FinchAPI::Unknown,
-      FinchAPI::BooleanModel,
+      FinchAPI::Internal::Type::Unknown,
+      FinchAPI::Internal::Type::BooleanModel,
       A,
       H,
       E,
@@ -39,11 +39,11 @@ class FinchAPI::Test::PrimitiveModelTest < Minitest::Test
 
   def test_coerce
     cases = {
-      [FinchAPI::Unknown, :a] => [{yes: 1}, :a],
+      [FinchAPI::Internal::Type::Unknown, :a] => [{yes: 1}, :a],
       [NilClass, :a] => [{maybe: 1}, nil],
       [NilClass, nil] => [{yes: 1}, nil],
-      [FinchAPI::BooleanModel, true] => [{yes: 1}, true],
-      [FinchAPI::BooleanModel, "true"] => [{no: 1}, "true"],
+      [FinchAPI::Internal::Type::BooleanModel, true] => [{yes: 1}, true],
+      [FinchAPI::Internal::Type::BooleanModel, "true"] => [{no: 1}, "true"],
       [Integer, 1] => [{yes: 1}, 1],
       [Integer, 1.0] => [{maybe: 1}, 1],
       [Integer, "1"] => [{maybe: 1}, 1],
@@ -76,7 +76,7 @@ class FinchAPI::Test::PrimitiveModelTest < Minitest::Test
 
   def test_dump
     cases = {
-      [FinchAPI::Unknown, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
+      [FinchAPI::Internal::Type::Unknown, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
       [A, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
       [H, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
       [E, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
@@ -85,8 +85,8 @@ class FinchAPI::Test::PrimitiveModelTest < Minitest::Test
       [String, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
       [:b, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
       [nil, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
-      [FinchAPI::BooleanModel, true] => true,
-      [FinchAPI::BooleanModel, "true"] => "true",
+      [FinchAPI::Internal::Type::BooleanModel, true] => true,
+      [FinchAPI::Internal::Type::BooleanModel, "true"] => "true",
       [Integer, "1"] => "1",
       [Float, 1] => 1,
       [String, "one"] => "one",
@@ -126,27 +126,27 @@ end
 
 class FinchAPI::Test::EnumModelTest < Minitest::Test
   module E1
-    extend FinchAPI::Enum
+    extend FinchAPI::Internal::Type::Enum
 
     TRUE = true
   end
 
   module E2
-    extend FinchAPI::Enum
+    extend FinchAPI::Internal::Type::Enum
 
     ONE = 1
     TWO = 2
   end
 
   module E3
-    extend FinchAPI::Enum
+    extend FinchAPI::Internal::Type::Enum
 
     ONE = 1.0
     TWO = 2.0
   end
 
   module E4
-    extend FinchAPI::Enum
+    extend FinchAPI::Internal::Type::Enum
 
     ONE = :one
     TWO = :two
@@ -216,14 +216,14 @@ class FinchAPI::Test::EnumModelTest < Minitest::Test
 end
 
 class FinchAPI::Test::CollectionModelTest < Minitest::Test
-  A1 = FinchAPI::ArrayOf[-> { Integer }]
-  H1 = FinchAPI::HashOf[Integer]
+  A1 = FinchAPI::Internal::Type::ArrayOf[-> { Integer }]
+  H1 = FinchAPI::Internal::Type::HashOf[Integer]
 
-  A2 = FinchAPI::ArrayOf[H1]
-  H2 = FinchAPI::HashOf[-> { A1 }]
+  A2 = FinchAPI::Internal::Type::ArrayOf[H1]
+  H2 = FinchAPI::Internal::Type::HashOf[-> { A1 }]
 
-  A3 = FinchAPI::ArrayOf[Integer, nil?: true]
-  H3 = FinchAPI::HashOf[Integer, nil?: true]
+  A3 = FinchAPI::Internal::Type::ArrayOf[Integer, nil?: true]
+  H3 = FinchAPI::Internal::Type::HashOf[Integer, nil?: true]
 
   def test_coerce
     cases = {
@@ -263,7 +263,7 @@ class FinchAPI::Test::CollectionModelTest < Minitest::Test
 end
 
 class FinchAPI::Test::BaseModelTest < Minitest::Test
-  class M1 < FinchAPI::BaseModel
+  class M1 < FinchAPI::Internal::Type::BaseModel
     required :a, Integer
   end
 
@@ -273,7 +273,7 @@ class FinchAPI::Test::BaseModelTest < Minitest::Test
     optional :c, String
   end
 
-  class M3 < FinchAPI::BaseModel
+  class M3 < FinchAPI::Internal::Type::BaseModel
     optional :c, const: :c
     required :d, const: :d
   end
@@ -290,7 +290,7 @@ class FinchAPI::Test::BaseModelTest < Minitest::Test
     end
   end
 
-  class M5 < FinchAPI::BaseModel
+  class M5 < FinchAPI::Internal::Type::BaseModel
     request_only do
       required :c, const: :c
     end
@@ -301,7 +301,7 @@ class FinchAPI::Test::BaseModelTest < Minitest::Test
   end
 
   class M6 < M1
-    required :a, FinchAPI::ArrayOf[M6]
+    required :a, FinchAPI::Internal::Type::ArrayOf[M6]
   end
 
   def test_coerce
@@ -337,7 +337,7 @@ class FinchAPI::Test::BaseModelTest < Minitest::Test
       assert_pattern do
         coerced = FinchAPI::Internal::Type::Converter.coerce(target, input, state: state)
         assert_equal(coerced, coerced)
-        if coerced.is_a?(FinchAPI::BaseModel)
+        if coerced.is_a?(FinchAPI::Internal::Type::BaseModel)
           coerced.to_h => ^expect
         else
           coerced => ^expect
@@ -403,27 +403,27 @@ end
 
 class FinchAPI::Test::UnionTest < Minitest::Test
   module U0
-    extend FinchAPI::Union
+    extend FinchAPI::Internal::Type::Union
   end
 
   module U1
-    extend FinchAPI::Union
+    extend FinchAPI::Internal::Type::Union
     variant const: :a
     variant const: 2
   end
 
-  class M1 < FinchAPI::BaseModel
+  class M1 < FinchAPI::Internal::Type::BaseModel
     required :t, const: :a, api_name: :type
     optional :c, String
   end
 
-  class M2 < FinchAPI::BaseModel
+  class M2 < FinchAPI::Internal::Type::BaseModel
     required :type, const: :b
     optional :c, String
   end
 
   module U2
-    extend FinchAPI::Union
+    extend FinchAPI::Internal::Type::Union
     discriminator :type
 
     variant :a, M1
@@ -431,7 +431,7 @@ class FinchAPI::Test::UnionTest < Minitest::Test
   end
 
   module U3
-    extend FinchAPI::Union
+    extend FinchAPI::Internal::Type::Union
     discriminator :type
 
     variant :a, M1
@@ -439,37 +439,37 @@ class FinchAPI::Test::UnionTest < Minitest::Test
   end
 
   module U4
-    extend FinchAPI::Union
+    extend FinchAPI::Internal::Type::Union
     discriminator :type
 
     variant String
     variant :a, M1
   end
 
-  class M3 < FinchAPI::BaseModel
+  class M3 < FinchAPI::Internal::Type::BaseModel
     optional :recur, -> { U5 }
     required :a, Integer
   end
 
-  class M4 < FinchAPI::BaseModel
+  class M4 < FinchAPI::Internal::Type::BaseModel
     optional :recur, -> { U5 }
-    required :a, FinchAPI::ArrayOf[-> { U5 }]
+    required :a, FinchAPI::Internal::Type::ArrayOf[-> { U5 }]
   end
 
-  class M5 < FinchAPI::BaseModel
+  class M5 < FinchAPI::Internal::Type::BaseModel
     optional :recur, -> { U5 }
-    required :b, FinchAPI::ArrayOf[-> { U5 }]
+    required :b, FinchAPI::Internal::Type::ArrayOf[-> { U5 }]
   end
 
   module U5
-    extend FinchAPI::Union
+    extend FinchAPI::Internal::Type::Union
 
     variant -> { M3 }
     variant -> { M4 }
   end
 
   module U6
-    extend FinchAPI::Union
+    extend FinchAPI::Internal::Type::Union
 
     variant -> { M3 }
     variant -> { M5 }
@@ -480,7 +480,7 @@ class FinchAPI::Test::UnionTest < Minitest::Test
     tap do
       model.recur
       flunk
-    rescue FinchAPI::ConversionError => e
+    rescue FinchAPI::Errors::ConversionError => e
       assert_kind_of(ArgumentError, e.cause)
     end
   end
@@ -513,7 +513,7 @@ class FinchAPI::Test::UnionTest < Minitest::Test
       assert_pattern do
         coerced = FinchAPI::Internal::Type::Converter.coerce(target, input, state: state)
         assert_equal(coerced, coerced)
-        if coerced.is_a?(FinchAPI::BaseModel)
+        if coerced.is_a?(FinchAPI::Internal::Type::BaseModel)
           coerced.to_h => ^expect
         else
           coerced => ^expect
@@ -527,29 +527,29 @@ end
 
 class FinchAPI::Test::BaseModelQoLTest < Minitest::Test
   module E1
-    extend FinchAPI::Enum
+    extend FinchAPI::Internal::Type::Enum
 
     A = 1
   end
 
   module E2
-    extend FinchAPI::Enum
+    extend FinchAPI::Internal::Type::Enum
 
     A = 1
   end
 
   module E3
-    extend FinchAPI::Enum
+    extend FinchAPI::Internal::Type::Enum
 
     A = 2
     B = 3
   end
 
-  class M1 < FinchAPI::BaseModel
+  class M1 < FinchAPI::Internal::Type::BaseModel
     required :a, Integer
   end
 
-  class M2 < FinchAPI::BaseModel
+  class M2 < FinchAPI::Internal::Type::BaseModel
     required :a, Integer, nil?: true
   end
 
@@ -559,9 +559,9 @@ class FinchAPI::Test::BaseModelQoLTest < Minitest::Test
 
   def test_equality
     cases = {
-      [FinchAPI::Unknown, FinchAPI::Unknown] => true,
-      [FinchAPI::BooleanModel, FinchAPI::BooleanModel] => true,
-      [FinchAPI::Unknown, FinchAPI::BooleanModel] => false,
+      [FinchAPI::Internal::Type::Unknown, FinchAPI::Internal::Type::Unknown] => true,
+      [FinchAPI::Internal::Type::BooleanModel, FinchAPI::Internal::Type::BooleanModel] => true,
+      [FinchAPI::Internal::Type::Unknown, FinchAPI::Internal::Type::BooleanModel] => false,
       [E1, E2] => true,
       [E1, E3] => false,
       [M1, M2] => false,

@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       # @see FinchAPI::Resources::HRIS::Individuals#retrieve_many
-      class IndividualRetrieveManyParams < FinchAPI::BaseModel
+      class IndividualRetrieveManyParams < FinchAPI::Internal::Type::BaseModel
         # @!parse
         #   extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
@@ -18,7 +18,7 @@ module FinchAPI
         #
         #   @return [Array<FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request>, nil]
         optional :requests,
-                 -> { FinchAPI::ArrayOf[FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request] }
+                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request] }
 
         # @!parse
         #   # @return [Array<FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request>]
@@ -31,13 +31,13 @@ module FinchAPI
         #   #
         #   def initialize(options: nil, requests: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
-        class Options < FinchAPI::BaseModel
+        class Options < FinchAPI::Internal::Type::BaseModel
           # @!attribute [r] include
           #
           #   @return [Array<String>, nil]
-          optional :include, FinchAPI::ArrayOf[String]
+          optional :include, FinchAPI::Internal::Type::ArrayOf[String]
 
           # @!parse
           #   # @return [Array<String>]
@@ -48,10 +48,10 @@ module FinchAPI
           #   #
           #   def initialize(include: nil, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
         end
 
-        class Request < FinchAPI::BaseModel
+        class Request < FinchAPI::Internal::Type::BaseModel
           # @!attribute [r] individual_id
           #
           #   @return [String, nil]
@@ -66,7 +66,7 @@ module FinchAPI
           #   #
           #   def initialize(individual_id: nil, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
         end
       end
     end

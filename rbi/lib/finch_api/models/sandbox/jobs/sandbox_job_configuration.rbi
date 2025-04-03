@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Sandbox
       module Jobs
-        class SandboxJobConfiguration < FinchAPI::BaseModel
+        class SandboxJobConfiguration < FinchAPI::Internal::Type::BaseModel
           sig { returns(FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol) }
           attr_accessor :completion_status
 
@@ -34,7 +34,7 @@ module FinchAPI
           end
 
           module CompletionStatus
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus) }
@@ -73,7 +73,7 @@ module FinchAPI
           end
 
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type) }

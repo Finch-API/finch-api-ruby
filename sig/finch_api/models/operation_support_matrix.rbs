@@ -8,7 +8,7 @@ module FinchAPI
         update: FinchAPI::Models::operation_support
       }
 
-    class OperationSupportMatrix < FinchAPI::BaseModel
+    class OperationSupportMatrix < FinchAPI::Internal::Type::BaseModel
       attr_reader create: FinchAPI::Models::operation_support?
 
       def create=: (

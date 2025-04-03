@@ -12,7 +12,7 @@ module FinchAPI
 
         # @param mod [Module]
         def self.included(mod)
-          return unless mod <= FinchAPI::BaseModel
+          return unless mod <= FinchAPI::Internal::Type::BaseModel
 
           mod.extend(FinchAPI::Internal::Type::RequestParameters::Converter)
           mod.optional(:request_options, FinchAPI::RequestOptions)

@@ -36,7 +36,7 @@ class FinchAPI::Test::Resources::HRIS::Benefits::IndividualsTest < FinchAPI::Tes
     assert_pattern do
       response => {
         benefit_id: String,
-        individual_ids: ^(FinchAPI::ArrayOf[String])
+        individual_ids: ^(FinchAPI::Internal::Type::ArrayOf[String])
       }
     end
   end
@@ -75,7 +75,7 @@ class FinchAPI::Test::Resources::HRIS::Benefits::IndividualsTest < FinchAPI::Tes
     return if row.nil?
 
     assert_pattern do
-      row => FinchAPI::Unknown
+      row => FinchAPI::Internal::Type::Unknown
     end
   end
 end

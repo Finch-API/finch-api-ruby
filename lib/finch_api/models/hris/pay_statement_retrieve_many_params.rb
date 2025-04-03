@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       # @see FinchAPI::Resources::HRIS::PayStatements#retrieve_many
-      class PayStatementRetrieveManyParams < FinchAPI::BaseModel
+      class PayStatementRetrieveManyParams < FinchAPI::Internal::Type::BaseModel
         # @!parse
         #   extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
@@ -14,7 +14,7 @@ module FinchAPI
         #
         #   @return [Array<FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request>]
         required :requests,
-                 -> { FinchAPI::ArrayOf[FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request] }
+                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request] }
 
         # @!parse
         #   # @param requests [Array<FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request>]
@@ -22,9 +22,9 @@ module FinchAPI
         #   #
         #   def initialize(requests:, request_options: {}, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
-        class Request < FinchAPI::BaseModel
+        class Request < FinchAPI::Internal::Type::BaseModel
           # @!attribute payment_id
           #   A stable Finch `id` (UUID v4) for a payment.
           #
@@ -58,7 +58,7 @@ module FinchAPI
           #   #
           #   def initialize(payment_id:, limit: nil, offset: nil, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
         end
       end
     end

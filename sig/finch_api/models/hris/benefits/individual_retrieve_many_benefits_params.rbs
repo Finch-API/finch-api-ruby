@@ -6,7 +6,7 @@ module FinchAPI
           { individual_ids: String }
           & FinchAPI::Internal::Type::request_parameters
 
-        class IndividualRetrieveManyBenefitsParams < FinchAPI::BaseModel
+        class IndividualRetrieveManyBenefitsParams < FinchAPI::Internal::Type::BaseModel
           extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
 

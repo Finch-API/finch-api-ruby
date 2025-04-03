@@ -2,7 +2,7 @@ module FinchAPI
   module Models
     type disconnect_response = { status: String }
 
-    class DisconnectResponse < FinchAPI::BaseModel
+    class DisconnectResponse < FinchAPI::Internal::Type::BaseModel
       attr_accessor status: String
 
       def initialize: (status: String) -> void

@@ -3,14 +3,11 @@
 module FinchAPI
   module Models
     module HRIS
-      class PayStatementResponse < FinchAPI::BaseModel
+      class PayStatementResponse < FinchAPI::Internal::Type::BaseModel
         sig { returns(T.nilable(FinchAPI::Models::HRIS::PayStatementResponseBody)) }
         attr_reader :body
 
-        sig do
-          params(body: T.any(FinchAPI::Models::HRIS::PayStatementResponseBody, FinchAPI::Internal::Util::AnyHash))
-            .void
-        end
+        sig { params(body: T.any(FinchAPI::Models::HRIS::PayStatementResponseBody, FinchAPI::Internal::AnyHash)).void }
         attr_writer :body
 
         sig { returns(T.nilable(Integer)) }
@@ -27,7 +24,7 @@ module FinchAPI
 
         sig do
           params(
-            body: T.any(FinchAPI::Models::HRIS::PayStatementResponseBody, FinchAPI::Internal::Util::AnyHash),
+            body: T.any(FinchAPI::Models::HRIS::PayStatementResponseBody, FinchAPI::Internal::AnyHash),
             code: Integer,
             payment_id: String
           )

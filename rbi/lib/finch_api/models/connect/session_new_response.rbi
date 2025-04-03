@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module Connect
-      class SessionNewResponse < FinchAPI::BaseModel
+      class SessionNewResponse < FinchAPI::Internal::Type::BaseModel
         # The Connect URL to redirect the user to for authentication
         sig { returns(String) }
         attr_accessor :connect_url

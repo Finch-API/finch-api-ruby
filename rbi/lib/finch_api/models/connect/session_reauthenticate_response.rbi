@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module Connect
-      class SessionReauthenticateResponse < FinchAPI::BaseModel
+      class SessionReauthenticateResponse < FinchAPI::Internal::Type::BaseModel
         # The Connect URL to redirect the user to for reauthentication
         sig { returns(String) }
         attr_accessor :connect_url

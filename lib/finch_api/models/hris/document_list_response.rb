@@ -4,11 +4,11 @@ module FinchAPI
   module Models
     module HRIS
       # @see FinchAPI::Resources::HRIS::Documents#list
-      class DocumentListResponse < FinchAPI::BaseModel
+      class DocumentListResponse < FinchAPI::Internal::Type::BaseModel
         # @!attribute documents
         #
         #   @return [Array<FinchAPI::Models::HRIS::DocumentResponse>]
-        required :documents, -> { FinchAPI::ArrayOf[FinchAPI::Models::HRIS::DocumentResponse] }
+        required :documents, -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::HRIS::DocumentResponse] }
 
         # @!attribute paging
         #
@@ -21,7 +21,7 @@ module FinchAPI
         #   #
         #   def initialize(documents:, paging:, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
       end
     end
   end

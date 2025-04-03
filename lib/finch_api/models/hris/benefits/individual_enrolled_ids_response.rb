@@ -5,7 +5,7 @@ module FinchAPI
     module HRIS
       module Benefits
         # @see FinchAPI::Resources::HRIS::Benefits::Individuals#enrolled_ids
-        class IndividualEnrolledIDsResponse < FinchAPI::BaseModel
+        class IndividualEnrolledIDsResponse < FinchAPI::Internal::Type::BaseModel
           # @!attribute benefit_id
           #   The id of the benefit.
           #
@@ -15,7 +15,7 @@ module FinchAPI
           # @!attribute individual_ids
           #
           #   @return [Array<String>]
-          required :individual_ids, FinchAPI::ArrayOf[String]
+          required :individual_ids, FinchAPI::Internal::Type::ArrayOf[String]
 
           # @!parse
           #   # @param benefit_id [String]
@@ -23,7 +23,7 @@ module FinchAPI
           #   #
           #   def initialize(benefit_id:, individual_ids:, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
         end
       end
     end

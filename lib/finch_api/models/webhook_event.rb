@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module WebhookEvent
-      extend FinchAPI::Union
+      extend FinchAPI::Internal::Type::Union
 
       discriminator :event_type
 

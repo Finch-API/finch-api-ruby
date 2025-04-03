@@ -5,7 +5,7 @@ module FinchAPI
     module HRIS
       module Benefits
         # @see FinchAPI::Resources::HRIS::Benefits::Individuals#enrolled_ids
-        class IndividualEnrolledIDsParams < FinchAPI::BaseModel
+        class IndividualEnrolledIDsParams < FinchAPI::Internal::Type::BaseModel
           # @!parse
           #   extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
@@ -15,7 +15,7 @@ module FinchAPI
           #   #
           #   def initialize(request_options: {}, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
         end
       end
     end
