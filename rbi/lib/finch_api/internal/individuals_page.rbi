@@ -3,9 +3,9 @@
 module FinchAPI
   module Internal
     class IndividualsPage
-      include FinchAPI::Internal::Type::BasePage
-
       Elem = type_member
+
+      include FinchAPI::Internal::Type::BasePage
 
       sig { returns(T.nilable(T::Array[Elem])) }
       attr_accessor :individuals

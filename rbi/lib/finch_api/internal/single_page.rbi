@@ -3,9 +3,9 @@
 module FinchAPI
   module Internal
     class SinglePage < ::Array
-      include FinchAPI::Internal::Type::BasePage
-
       Elem = type_member
+
+      include FinchAPI::Internal::Type::BasePage
 
       sig { override.returns(T::Boolean) }
       def next_page?
