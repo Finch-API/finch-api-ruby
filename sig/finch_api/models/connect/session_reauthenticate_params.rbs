@@ -8,11 +8,11 @@ module FinchAPI
           products: ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]?,
           redirect_uri: String?
         }
-        & FinchAPI::request_parameters
+        & FinchAPI::Internal::Type::request_parameters
 
       class SessionReauthenticateParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         attr_accessor connection_id: String
 

@@ -6,8 +6,8 @@ module FinchAPI
       # @see FinchAPI::Resources::Jobs::Manual#retrieve
       class ManualRetrieveParams < FinchAPI::BaseModel
         # @!parse
-        #   extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # @!parse
         #   # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]

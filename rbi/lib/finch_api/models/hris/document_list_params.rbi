@@ -4,8 +4,8 @@ module FinchAPI
   module Models
     module HRIS
       class DocumentListParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # Comma-delimited list of stable Finch uuids for each individual. If empty,
         #   defaults to all individuals
@@ -43,7 +43,7 @@ module FinchAPI
             limit: Integer,
             offset: Integer,
             types: T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol],
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

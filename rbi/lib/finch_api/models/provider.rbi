@@ -16,7 +16,7 @@ module FinchAPI
 
       sig do
         params(
-          authentication_methods: T::Array[T.any(FinchAPI::Models::Provider::AuthenticationMethod, FinchAPI::Util::AnyHash)]
+          authentication_methods: T::Array[T.any(FinchAPI::Models::Provider::AuthenticationMethod, FinchAPI::Internal::Util::AnyHash)]
         )
           .void
       end
@@ -83,7 +83,7 @@ module FinchAPI
       sig do
         params(
           id: String,
-          authentication_methods: T::Array[T.any(FinchAPI::Models::Provider::AuthenticationMethod, FinchAPI::Util::AnyHash)],
+          authentication_methods: T::Array[T.any(FinchAPI::Models::Provider::AuthenticationMethod, FinchAPI::Internal::Util::AnyHash)],
           beta: T::Boolean,
           display_name: String,
           icon: String,
@@ -137,7 +137,7 @@ module FinchAPI
 
         sig do
           params(
-            benefits_support: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitsSupport, FinchAPI::Util::AnyHash))
+            benefits_support: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitsSupport, FinchAPI::Internal::Util::AnyHash))
           )
             .void
         end
@@ -150,7 +150,10 @@ module FinchAPI
         sig do
           params(
             supported_fields: T.nilable(
-              T.any(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields, FinchAPI::Util::AnyHash)
+              T.any(
+                FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields,
+                FinchAPI::Internal::Util::AnyHash
+              )
             )
           )
             .void
@@ -166,9 +169,12 @@ module FinchAPI
 
         sig do
           params(
-            benefits_support: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitsSupport, FinchAPI::Util::AnyHash)),
+            benefits_support: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitsSupport, FinchAPI::Internal::Util::AnyHash)),
             supported_fields: T.nilable(
-              T.any(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields, FinchAPI::Util::AnyHash)
+              T.any(
+                FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields,
+                FinchAPI::Internal::Util::AnyHash
+              )
             ),
             type: FinchAPI::Models::Provider::AuthenticationMethod::Type::OrSymbol
           )
@@ -196,7 +202,10 @@ module FinchAPI
 
           sig do
             params(
-              company: T.any(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company, FinchAPI::Util::AnyHash)
+              company: T.any(
+                FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company,
+                FinchAPI::Internal::Util::AnyHash
+              )
             )
               .void
           end
@@ -209,7 +218,7 @@ module FinchAPI
             params(
               directory: T.any(
                 FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory,
-                FinchAPI::Util::AnyHash
+                FinchAPI::Internal::Util::AnyHash
               )
             )
               .void
@@ -223,7 +232,7 @@ module FinchAPI
             params(
               employment: T.any(
                 FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment,
-                FinchAPI::Util::AnyHash
+                FinchAPI::Internal::Util::AnyHash
               )
             )
               .void
@@ -237,7 +246,7 @@ module FinchAPI
             params(
               individual: T.any(
                 FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual,
-                FinchAPI::Util::AnyHash
+                FinchAPI::Internal::Util::AnyHash
               )
             )
               .void
@@ -251,7 +260,7 @@ module FinchAPI
             params(
               pay_group: T.any(
                 FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayGroup,
-                FinchAPI::Util::AnyHash
+                FinchAPI::Internal::Util::AnyHash
               )
             )
               .void
@@ -265,7 +274,7 @@ module FinchAPI
             params(
               pay_statement: T.any(
                 FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement,
-                FinchAPI::Util::AnyHash
+                FinchAPI::Internal::Util::AnyHash
               )
             )
               .void
@@ -277,7 +286,10 @@ module FinchAPI
 
           sig do
             params(
-              payment: T.any(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment, FinchAPI::Util::AnyHash)
+              payment: T.any(
+                FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment,
+                FinchAPI::Internal::Util::AnyHash
+              )
             )
               .void
           end
@@ -286,28 +298,34 @@ module FinchAPI
           # The supported data fields returned by our HR and payroll endpoints
           sig do
             params(
-              company: T.any(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company, FinchAPI::Util::AnyHash),
+              company: T.any(
+                FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company,
+                FinchAPI::Internal::Util::AnyHash
+              ),
               directory: T.any(
                 FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory,
-                FinchAPI::Util::AnyHash
+                FinchAPI::Internal::Util::AnyHash
               ),
               employment: T.any(
                 FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment,
-                FinchAPI::Util::AnyHash
+                FinchAPI::Internal::Util::AnyHash
               ),
               individual: T.any(
                 FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual,
-                FinchAPI::Util::AnyHash
+                FinchAPI::Internal::Util::AnyHash
               ),
               pay_group: T.any(
                 FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayGroup,
-                FinchAPI::Util::AnyHash
+                FinchAPI::Internal::Util::AnyHash
               ),
               pay_statement: T.any(
                 FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement,
-                FinchAPI::Util::AnyHash
+                FinchAPI::Internal::Util::AnyHash
               ),
-              payment: T.any(FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment, FinchAPI::Util::AnyHash)
+              payment: T.any(
+                FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment,
+                FinchAPI::Internal::Util::AnyHash
+              )
             )
               .returns(T.attached_class)
           end
@@ -353,7 +371,7 @@ module FinchAPI
               params(
                 accounts: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Accounts,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -371,7 +389,7 @@ module FinchAPI
               params(
                 departments: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -391,7 +409,7 @@ module FinchAPI
               params(
                 entity: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Entity,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -411,7 +429,7 @@ module FinchAPI
               params(
                 locations: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Locations,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -435,21 +453,21 @@ module FinchAPI
                 id: T::Boolean,
                 accounts: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Accounts,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 ),
                 departments: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 ),
                 ein: T::Boolean,
                 entity: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Entity,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 ),
                 legal_name: T::Boolean,
                 locations: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Locations,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 ),
                 primary_email: T::Boolean,
                 primary_phone_number: T::Boolean
@@ -572,7 +590,7 @@ module FinchAPI
                 params(
                   parent: T.any(
                     FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments::Parent,
-                    FinchAPI::Util::AnyHash
+                    FinchAPI::Internal::Util::AnyHash
                   )
                 )
                   .void
@@ -584,7 +602,7 @@ module FinchAPI
                   name: T::Boolean,
                   parent: T.any(
                     FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments::Parent,
-                    FinchAPI::Util::AnyHash
+                    FinchAPI::Internal::Util::AnyHash
                   )
                 )
                   .returns(T.attached_class)
@@ -724,7 +742,7 @@ module FinchAPI
               params(
                 individuals: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -738,7 +756,7 @@ module FinchAPI
               params(
                 paging: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Paging,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -749,11 +767,11 @@ module FinchAPI
               params(
                 individuals: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 ),
                 paging: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Paging,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 )
               )
                 .returns(T.attached_class)
@@ -817,7 +835,7 @@ module FinchAPI
                 params(
                   manager: T.any(
                     FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager,
-                    FinchAPI::Util::AnyHash
+                    FinchAPI::Internal::Util::AnyHash
                   )
                 )
                   .void
@@ -839,7 +857,7 @@ module FinchAPI
                   last_name: T::Boolean,
                   manager: T.any(
                     FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager,
-                    FinchAPI::Util::AnyHash
+                    FinchAPI::Internal::Util::AnyHash
                   ),
                   middle_name: T::Boolean
                 )
@@ -943,7 +961,7 @@ module FinchAPI
               params(
                 department: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Department,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -961,7 +979,7 @@ module FinchAPI
               params(
                 employment: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Employment,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -993,7 +1011,7 @@ module FinchAPI
               params(
                 income: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Income,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -1029,7 +1047,7 @@ module FinchAPI
               params(
                 location: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Location,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -1043,7 +1061,7 @@ module FinchAPI
               params(
                 manager: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Manager,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -1075,29 +1093,29 @@ module FinchAPI
                 custom_fields: T::Boolean,
                 department: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Department,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 ),
                 employment: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Employment,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 ),
                 employment_status: T::Boolean,
                 end_date: T::Boolean,
                 first_name: T::Boolean,
                 income: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Income,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 ),
                 income_history: T::Boolean,
                 is_active: T::Boolean,
                 last_name: T::Boolean,
                 location: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Location,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 ),
                 manager: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Manager,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 ),
                 middle_name: T::Boolean,
                 start_date: T::Boolean,
@@ -1326,7 +1344,7 @@ module FinchAPI
               params(
                 emails: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::Emails,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -1380,7 +1398,7 @@ module FinchAPI
               params(
                 phone_numbers: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -1404,7 +1422,7 @@ module FinchAPI
               params(
                 residence: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::Residence,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -1423,7 +1441,7 @@ module FinchAPI
                 dob: T::Boolean,
                 emails: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::Emails,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 ),
                 encrypted_ssn: T::Boolean,
                 ethnicity: T::Boolean,
@@ -1433,12 +1451,12 @@ module FinchAPI
                 middle_name: T::Boolean,
                 phone_numbers: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 ),
                 preferred_name: T::Boolean,
                 residence: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::Residence,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 ),
                 ssn: T::Boolean
               )
@@ -1659,7 +1677,7 @@ module FinchAPI
               params(
                 paging: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::Paging,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -1677,7 +1695,7 @@ module FinchAPI
               params(
                 pay_statements: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -1688,11 +1706,11 @@ module FinchAPI
               params(
                 paging: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::Paging,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 ),
                 pay_statements: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 )
               )
                 .returns(T.attached_class)
@@ -1742,7 +1760,7 @@ module FinchAPI
                 params(
                   earnings: T.any(
                     FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings,
-                    FinchAPI::Util::AnyHash
+                    FinchAPI::Internal::Util::AnyHash
                   )
                 )
                   .void
@@ -1762,7 +1780,7 @@ module FinchAPI
                 params(
                   employee_deductions: T.any(
                     FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions,
-                    FinchAPI::Util::AnyHash
+                    FinchAPI::Internal::Util::AnyHash
                   )
                 )
                   .void
@@ -1782,7 +1800,7 @@ module FinchAPI
                 params(
                   employer_contributions: T.any(
                     FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions,
-                    FinchAPI::Util::AnyHash
+                    FinchAPI::Internal::Util::AnyHash
                   )
                 )
                   .void
@@ -1826,7 +1844,7 @@ module FinchAPI
                 params(
                   taxes: T.any(
                     FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes,
-                    FinchAPI::Util::AnyHash
+                    FinchAPI::Internal::Util::AnyHash
                   )
                 )
                   .void
@@ -1849,15 +1867,15 @@ module FinchAPI
                 params(
                   earnings: T.any(
                     FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings,
-                    FinchAPI::Util::AnyHash
+                    FinchAPI::Internal::Util::AnyHash
                   ),
                   employee_deductions: T.any(
                     FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions,
-                    FinchAPI::Util::AnyHash
+                    FinchAPI::Internal::Util::AnyHash
                   ),
                   employer_contributions: T.any(
                     FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions,
-                    FinchAPI::Util::AnyHash
+                    FinchAPI::Internal::Util::AnyHash
                   ),
                   gross_pay: T::Boolean,
                   individual_id: T::Boolean,
@@ -1865,7 +1883,7 @@ module FinchAPI
                   payment_method: T::Boolean,
                   taxes: T.any(
                     FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes,
-                    FinchAPI::Util::AnyHash
+                    FinchAPI::Internal::Util::AnyHash
                   ),
                   total_hours: T::Boolean,
                   type: T::Boolean
@@ -2178,7 +2196,7 @@ module FinchAPI
               params(
                 pay_period: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment::PayPeriod,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -2200,7 +2218,7 @@ module FinchAPI
                 pay_group_ids: T::Boolean,
                 pay_period: T.any(
                   FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment::PayPeriod,
-                  FinchAPI::Util::AnyHash
+                  FinchAPI::Internal::Util::AnyHash
                 )
               )
                 .returns(T.attached_class)

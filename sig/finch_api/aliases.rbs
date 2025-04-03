@@ -1,0 +1,19 @@
+module FinchAPI
+  class Unknown = FinchAPI::Internal::Type::Unknown
+
+  class BooleanModel = FinchAPI::Internal::Type::BooleanModel
+
+  module Enum = FinchAPI::Internal::Type::Enum
+
+  module Union = FinchAPI::Internal::Type::Union
+
+  class ArrayOf = FinchAPI::Internal::Type::ArrayOf
+
+  class HashOf = FinchAPI::Internal::Type::HashOf
+
+  class BaseModel = FinchAPI::Internal::Type::BaseModel
+
+  type request_parameters = FinchAPI::Internal::Type::request_parameters
+
+  module RequestParameters = FinchAPI::Internal::Type::RequestParameters
+end

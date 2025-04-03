@@ -4,8 +4,8 @@ module FinchAPI
   module Models
     module Connect
       class SessionNewParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         sig { returns(String) }
         attr_accessor :customer_id
@@ -24,7 +24,9 @@ module FinchAPI
 
         sig do
           params(
-            integration: T.nilable(T.any(FinchAPI::Models::Connect::SessionNewParams::Integration, FinchAPI::Util::AnyHash))
+            integration: T.nilable(
+              T.any(FinchAPI::Models::Connect::SessionNewParams::Integration, FinchAPI::Internal::Util::AnyHash)
+            )
           )
             .void
         end
@@ -50,12 +52,14 @@ module FinchAPI
             customer_name: String,
             products: T::Array[FinchAPI::Models::Connect::SessionNewParams::Product::OrSymbol],
             customer_email: T.nilable(String),
-            integration: T.nilable(T.any(FinchAPI::Models::Connect::SessionNewParams::Integration, FinchAPI::Util::AnyHash)),
+            integration: T.nilable(
+              T.any(FinchAPI::Models::Connect::SessionNewParams::Integration, FinchAPI::Internal::Util::AnyHash)
+            ),
             manual: T.nilable(T::Boolean),
             minutes_to_expire: T.nilable(Float),
             redirect_uri: T.nilable(String),
             sandbox: T.nilable(FinchAPI::Models::Connect::SessionNewParams::Sandbox::OrSymbol),
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

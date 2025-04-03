@@ -6,8 +6,8 @@ module FinchAPI
       # @see FinchAPI::Resources::HRIS::Payments#list
       class PaymentListParams < FinchAPI::BaseModel
         # @!parse
-        #   extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # @!attribute end_date
         #   The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`

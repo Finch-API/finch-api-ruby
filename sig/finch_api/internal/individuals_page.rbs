@@ -1,0 +1,13 @@
+module FinchAPI
+  module Internal
+    class IndividualsPage[Elem]
+      include FinchAPI::Internal::Type::BasePage[Elem]
+
+      attr_accessor individuals: ::Array[Elem]?
+
+      attr_accessor paging: FinchAPI::Models::Paging
+
+      def inspect: -> String
+    end
+  end
+end

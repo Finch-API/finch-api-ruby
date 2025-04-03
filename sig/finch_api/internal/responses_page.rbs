@@ -1,0 +1,11 @@
+module FinchAPI
+  module Internal
+    class ResponsesPage[Elem]
+      include FinchAPI::Internal::Type::BasePage[Elem]
+
+      attr_accessor responses: ::Array[Elem]?
+
+      def inspect: -> String
+    end
+  end
+end

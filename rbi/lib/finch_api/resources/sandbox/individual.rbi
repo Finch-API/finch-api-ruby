@@ -10,7 +10,7 @@ module FinchAPI
             individual_id: String,
             dob: T.nilable(String),
             emails: T.nilable(
-              T::Array[T.any(FinchAPI::Models::Sandbox::IndividualUpdateParams::Email, FinchAPI::Util::AnyHash)]
+              T::Array[T.any(FinchAPI::Models::Sandbox::IndividualUpdateParams::Email, FinchAPI::Internal::Util::AnyHash)]
             ),
             encrypted_ssn: T.nilable(String),
             ethnicity: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol),
@@ -19,12 +19,16 @@ module FinchAPI
             last_name: T.nilable(String),
             middle_name: T.nilable(String),
             phone_numbers: T.nilable(
-              T::Array[T.nilable(T.any(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber, FinchAPI::Util::AnyHash))]
+              T::Array[
+              T.nilable(
+                T.any(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber, FinchAPI::Internal::Util::AnyHash)
+              )
+              ]
             ),
             preferred_name: T.nilable(String),
-            residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash)),
+            residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::Util::AnyHash)),
             ssn: T.nilable(String),
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
           )
             .returns(FinchAPI::Models::Sandbox::IndividualUpdateResponse)
         end

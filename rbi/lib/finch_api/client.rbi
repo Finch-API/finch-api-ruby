@@ -1,7 +1,7 @@
 # typed: strong
 
 module FinchAPI
-  class Client < FinchAPI::Transport::BaseClient
+  class Client < FinchAPI::Internal::Transport::BaseClient
     DEFAULT_MAX_RETRIES = 2
 
     DEFAULT_TIMEOUT_IN_SECONDS = T.let(60.0, Float)

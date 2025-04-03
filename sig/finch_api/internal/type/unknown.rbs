@@ -1,0 +1,20 @@
+module FinchAPI
+  module Internal
+    module Type
+      class Unknown
+        extend FinchAPI::Internal::Type::Converter
+
+        def self.===: (top other) -> bool
+
+        def self.==: (top other) -> bool
+
+        def self.coerce: (
+          top value,
+          state: FinchAPI::Internal::Type::Converter::state
+        ) -> top
+
+        def self.dump: (top value) -> top
+      end
+    end
+  end
+end

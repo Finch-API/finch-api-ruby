@@ -4,8 +4,8 @@ module FinchAPI
   module Models
     module HRIS
       class EmploymentRetrieveManyParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # The array of batch requests.
         sig { returns(T::Array[FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request]) }
@@ -13,8 +13,8 @@ module FinchAPI
 
         sig do
           params(
-            requests: T::Array[T.any(FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request, FinchAPI::Util::AnyHash)],
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
+            requests: T::Array[T.any(FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request, FinchAPI::Internal::Util::AnyHash)],
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

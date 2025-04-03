@@ -10,7 +10,7 @@ module FinchAPI
           client_id: String,
           client_secret: String,
           redirect_uri: String,
-          request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
+          request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
         )
           .returns(FinchAPI::Models::CreateAccessTokenResponse)
       end

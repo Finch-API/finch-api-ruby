@@ -4,8 +4,8 @@ module FinchAPI
   module Models
     module Sandbox
       class CompanyUpdateParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # An array of bank account objects associated with the payroll/HRIS system.
         sig { returns(T.nilable(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Account])) }
@@ -25,7 +25,9 @@ module FinchAPI
 
         sig do
           params(
-            entity: T.nilable(T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity, FinchAPI::Util::AnyHash))
+            entity: T.nilable(
+              T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity, FinchAPI::Internal::Util::AnyHash)
+            )
           )
             .void
         end
@@ -49,18 +51,24 @@ module FinchAPI
         sig do
           params(
             accounts: T.nilable(
-              T::Array[T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Account, FinchAPI::Util::AnyHash)]
+              T::Array[T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Account, FinchAPI::Internal::Util::AnyHash)]
             ),
             departments: T.nilable(
-              T::Array[T.nilable(T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Department, FinchAPI::Util::AnyHash))]
+              T::Array[
+              T.nilable(
+                T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Department, FinchAPI::Internal::Util::AnyHash)
+              )
+              ]
             ),
             ein: T.nilable(String),
-            entity: T.nilable(T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity, FinchAPI::Util::AnyHash)),
+            entity: T.nilable(
+              T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity, FinchAPI::Internal::Util::AnyHash)
+            ),
             legal_name: T.nilable(String),
-            locations: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash))]),
+            locations: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::Util::AnyHash))]),
             primary_email: T.nilable(String),
             primary_phone_number: T.nilable(String),
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -187,7 +195,10 @@ module FinchAPI
           sig do
             params(
               parent: T.nilable(
-                T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Department::Parent, FinchAPI::Util::AnyHash)
+                T.any(
+                  FinchAPI::Models::Sandbox::CompanyUpdateParams::Department::Parent,
+                  FinchAPI::Internal::Util::AnyHash
+                )
               )
             )
               .void
@@ -198,7 +209,10 @@ module FinchAPI
             params(
               name: T.nilable(String),
               parent: T.nilable(
-                T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Department::Parent, FinchAPI::Util::AnyHash)
+                T.any(
+                  FinchAPI::Models::Sandbox::CompanyUpdateParams::Department::Parent,
+                  FinchAPI::Internal::Util::AnyHash
+                )
               )
             )
               .returns(T.attached_class)

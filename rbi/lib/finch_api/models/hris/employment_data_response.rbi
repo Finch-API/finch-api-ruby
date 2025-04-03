@@ -7,7 +7,7 @@ module FinchAPI
         sig { returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData)) }
         attr_reader :body
 
-        sig { params(body: T.any(FinchAPI::Models::HRIS::EmploymentData, FinchAPI::Util::AnyHash)).void }
+        sig { params(body: T.any(FinchAPI::Models::HRIS::EmploymentData, FinchAPI::Internal::Util::AnyHash)).void }
         attr_writer :body
 
         sig { returns(T.nilable(Integer)) }
@@ -25,7 +25,7 @@ module FinchAPI
 
         sig do
           params(
-            body: T.any(FinchAPI::Models::HRIS::EmploymentData, FinchAPI::Util::AnyHash),
+            body: T.any(FinchAPI::Models::HRIS::EmploymentData, FinchAPI::Internal::Util::AnyHash),
             code: Integer,
             individual_id: String
           )

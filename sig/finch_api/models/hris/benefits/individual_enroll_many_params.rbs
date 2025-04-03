@@ -6,11 +6,11 @@ module FinchAPI
           {
             individuals: ::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual]
           }
-          & FinchAPI::request_parameters
+          & FinchAPI::Internal::Type::request_parameters
 
         class IndividualEnrollManyParams < FinchAPI::BaseModel
-          extend FinchAPI::Type::RequestParameters::Converter
-          include FinchAPI::RequestParameters
+          extend FinchAPI::Internal::Type::RequestParameters::Converter
+          include FinchAPI::Internal::Type::RequestParameters
 
           attr_reader individuals: ::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual]?
 

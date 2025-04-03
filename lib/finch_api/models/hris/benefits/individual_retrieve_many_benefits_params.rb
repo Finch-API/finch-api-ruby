@@ -7,8 +7,8 @@ module FinchAPI
         # @see FinchAPI::Resources::HRIS::Benefits::Individuals#retrieve_many_benefits
         class IndividualRetrieveManyBenefitsParams < FinchAPI::BaseModel
           # @!parse
-          #   extend FinchAPI::Type::RequestParameters::Converter
-          include FinchAPI::RequestParameters
+          #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+          include FinchAPI::Internal::Type::RequestParameters
 
           # @!attribute [r] individual_ids
           #   comma-delimited list of stable Finch uuids for each individual. If empty,

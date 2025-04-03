@@ -4,8 +4,8 @@ module FinchAPI
   module Models
     module HRIS
       class BenefitUpdateParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # Updated name or description.
         sig { returns(T.nilable(String)) }
@@ -17,7 +17,7 @@ module FinchAPI
         sig do
           params(
             description: String,
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

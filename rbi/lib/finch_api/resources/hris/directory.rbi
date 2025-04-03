@@ -9,9 +9,9 @@ module FinchAPI
           params(
             limit: Integer,
             offset: Integer,
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
           )
-            .returns(FinchAPI::IndividualsPage[FinchAPI::Models::HRIS::IndividualInDirectory])
+            .returns(FinchAPI::Internal::IndividualsPage[FinchAPI::Models::HRIS::IndividualInDirectory])
         end
         def list(
           # Number of employees to return (defaults to all)

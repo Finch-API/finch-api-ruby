@@ -12,7 +12,7 @@ module FinchAPI
         # @param offset [Integer]
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::IndividualsPage<FinchAPI::Models::HRIS::IndividualInDirectory>]
+        # @return [FinchAPI::Internal::IndividualsPage<FinchAPI::Models::HRIS::IndividualInDirectory>]
         #
         # @see FinchAPI::Models::HRIS::DirectoryListParams
         def list(params = {})
@@ -21,7 +21,7 @@ module FinchAPI
             method: :get,
             path: "employer/directory",
             query: parsed,
-            page: FinchAPI::IndividualsPage,
+            page: FinchAPI::Internal::IndividualsPage,
             model: FinchAPI::Models::HRIS::IndividualInDirectory,
             options: options
           )

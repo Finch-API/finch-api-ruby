@@ -6,8 +6,8 @@ module FinchAPI
       # @see FinchAPI::Resources::HRIS::Individuals#retrieve_many
       class IndividualRetrieveManyParams < FinchAPI::BaseModel
         # @!parse
-        #   extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # @!attribute options
         #

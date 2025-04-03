@@ -6,8 +6,8 @@ module FinchAPI
       # @see FinchAPI::Resources::Connect::Sessions#new
       class SessionNewParams < FinchAPI::BaseModel
         # @!parse
-        #   extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # @!attribute customer_id
         #

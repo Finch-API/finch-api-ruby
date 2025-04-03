@@ -4,8 +4,8 @@ module FinchAPI
   module Models
     module Jobs
       class AutomatedListParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # Number of items to return
         sig { returns(T.nilable(Integer)) }
@@ -25,7 +25,7 @@ module FinchAPI
           params(
             limit: Integer,
             offset: Integer,
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

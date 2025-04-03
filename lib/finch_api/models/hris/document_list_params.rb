@@ -6,8 +6,8 @@ module FinchAPI
       # @see FinchAPI::Resources::HRIS::Documents#list
       class DocumentListParams < FinchAPI::BaseModel
         # @!parse
-        #   extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # @!attribute [r] individual_ids
         #   Comma-delimited list of stable Finch uuids for each individual. If empty,

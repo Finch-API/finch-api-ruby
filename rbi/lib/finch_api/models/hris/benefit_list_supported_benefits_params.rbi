@@ -4,16 +4,12 @@ module FinchAPI
   module Models
     module HRIS
       class BenefitListSupportedBenefitsParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         sig do
-          params(
-            request_options: T.any(
-              FinchAPI::RequestOptions,
-              FinchAPI::Util::AnyHash
-            )
-          ).returns(T.attached_class)
+          params(request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
+            .returns(T.attached_class)
         end
         def self.new(request_options: {})
         end

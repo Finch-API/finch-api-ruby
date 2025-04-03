@@ -4,8 +4,8 @@ module FinchAPI
   module Models
     module Sandbox
       class JobCreateParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # The type of job to start. Currently the only supported type is `data_sync_all`
         sig { returns(FinchAPI::Models::Sandbox::JobCreateParams::Type::OrSymbol) }
@@ -14,7 +14,7 @@ module FinchAPI
         sig do
           params(
             type: FinchAPI::Models::Sandbox::JobCreateParams::Type::OrSymbol,
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

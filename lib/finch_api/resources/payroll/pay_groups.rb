@@ -31,7 +31,7 @@ module FinchAPI
         # @param pay_frequencies [Array<String>]
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::SinglePage<FinchAPI::Models::Payroll::PayGroupListResponse>]
+        # @return [FinchAPI::Internal::SinglePage<FinchAPI::Models::Payroll::PayGroupListResponse>]
         #
         # @see FinchAPI::Models::Payroll::PayGroupListParams
         def list(params = {})
@@ -40,7 +40,7 @@ module FinchAPI
             method: :get,
             path: "employer/pay-groups",
             query: parsed,
-            page: FinchAPI::SinglePage,
+            page: FinchAPI::Internal::SinglePage,
             model: FinchAPI::Models::Payroll::PayGroupListResponse,
             options: options
           )

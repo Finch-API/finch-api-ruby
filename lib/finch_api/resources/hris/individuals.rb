@@ -12,7 +12,7 @@ module FinchAPI
         # @param requests [Array<FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request>]
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::ResponsesPage<FinchAPI::Models::HRIS::IndividualResponse>]
+        # @return [FinchAPI::Internal::ResponsesPage<FinchAPI::Models::HRIS::IndividualResponse>]
         #
         # @see FinchAPI::Models::HRIS::IndividualRetrieveManyParams
         def retrieve_many(params = {})
@@ -21,7 +21,7 @@ module FinchAPI
             method: :post,
             path: "employer/individual",
             body: parsed,
-            page: FinchAPI::ResponsesPage,
+            page: FinchAPI::Internal::ResponsesPage,
             model: FinchAPI::Models::HRIS::IndividualResponse,
             options: options
           )

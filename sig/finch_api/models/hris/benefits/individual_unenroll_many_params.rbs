@@ -3,11 +3,12 @@ module FinchAPI
     module HRIS
       module Benefits
         type individual_unenroll_many_params =
-          { individual_ids: ::Array[String] } & FinchAPI::request_parameters
+          { individual_ids: ::Array[String] }
+          & FinchAPI::Internal::Type::request_parameters
 
         class IndividualUnenrollManyParams < FinchAPI::BaseModel
-          extend FinchAPI::Type::RequestParameters::Converter
-          include FinchAPI::RequestParameters
+          extend FinchAPI::Internal::Type::RequestParameters::Converter
+          include FinchAPI::Internal::Type::RequestParameters
 
           attr_reader individual_ids: ::Array[String]?
 
