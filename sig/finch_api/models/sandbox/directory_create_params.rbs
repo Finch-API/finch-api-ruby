@@ -7,7 +7,7 @@ module FinchAPI
         }
         & FinchAPI::Internal::Type::request_parameters
 
-      class DirectoryCreateParams < FinchAPI::BaseModel
+      class DirectoryCreateParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
@@ -55,7 +55,7 @@ module FinchAPI
             title: String?
           }
 
-        class Body < FinchAPI::BaseModel
+        class Body < FinchAPI::Internal::Type::BaseModel
           attr_accessor class_code: String?
 
           attr_reader custom_fields: ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField]?
@@ -150,7 +150,7 @@ module FinchAPI
 
           type custom_field = { name: String?, value: top }
 
-          class CustomField < FinchAPI::BaseModel
+          class CustomField < FinchAPI::Internal::Type::BaseModel
             attr_accessor name: String?
 
             attr_reader value: top?
@@ -164,7 +164,7 @@ module FinchAPI
 
           type department = { name: String? }
 
-          class Department < FinchAPI::BaseModel
+          class Department < FinchAPI::Internal::Type::BaseModel
             attr_accessor name: String?
 
             def initialize: (?name: String?) -> void
@@ -178,7 +178,7 @@ module FinchAPI
               type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::type_?
             }
 
-          class Email < FinchAPI::BaseModel
+          class Email < FinchAPI::Internal::Type::BaseModel
             attr_reader data: String?
 
             def data=: (String) -> String
@@ -195,7 +195,7 @@ module FinchAPI
             type type_ = :work | :personal
 
             module Type
-              extend FinchAPI::Enum
+              extend FinchAPI::Internal::Type::Enum
 
               WORK: :work
               PERSONAL: :personal
@@ -210,7 +210,7 @@ module FinchAPI
               type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::type_?
             }
 
-          class Employment < FinchAPI::BaseModel
+          class Employment < FinchAPI::Internal::Type::BaseModel
             attr_accessor subtype: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::subtype?
 
             attr_accessor type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::type_?
@@ -231,7 +231,7 @@ module FinchAPI
               | :individual_contractor
 
             module Subtype
-              extend FinchAPI::Enum
+              extend FinchAPI::Internal::Type::Enum
 
               FULL_TIME: :full_time
               INTERN: :intern
@@ -246,7 +246,7 @@ module FinchAPI
             type type_ = :employee | :contractor
 
             module Type
-              extend FinchAPI::Enum
+              extend FinchAPI::Internal::Type::Enum
 
               EMPLOYEE: :employee
               CONTRACTOR: :contractor
@@ -265,7 +265,7 @@ module FinchAPI
             | :terminated
 
           module EmploymentStatus
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             ACTIVE: :active
             DECEASED: :deceased
@@ -289,7 +289,7 @@ module FinchAPI
             | :decline_to_specify
 
           module Ethnicity
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             ASIAN: :asian
             WHITE: :white
@@ -306,7 +306,7 @@ module FinchAPI
           type gender = :female | :male | :other | :decline_to_specify
 
           module Gender
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             FEMALE: :female
             MALE: :male
@@ -318,7 +318,7 @@ module FinchAPI
 
           type manager = { id: String }
 
-          class Manager < FinchAPI::BaseModel
+          class Manager < FinchAPI::Internal::Type::BaseModel
             attr_reader id: String?
 
             def id=: (String) -> String
@@ -334,7 +334,7 @@ module FinchAPI
               type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::type_?
             }
 
-          class PhoneNumber < FinchAPI::BaseModel
+          class PhoneNumber < FinchAPI::Internal::Type::BaseModel
             attr_accessor data: String?
 
             attr_accessor type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::type_?
@@ -349,7 +349,7 @@ module FinchAPI
             type type_ = :work | :personal
 
             module Type
-              extend FinchAPI::Enum
+              extend FinchAPI::Internal::Type::Enum
 
               WORK: :work
               PERSONAL: :personal

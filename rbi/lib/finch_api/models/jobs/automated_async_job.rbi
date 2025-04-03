@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module Jobs
-      class AutomatedAsyncJob < FinchAPI::BaseModel
+      class AutomatedAsyncJob < FinchAPI::Internal::Type::BaseModel
         # The datetime the job completed.
         sig { returns(T.nilable(Time)) }
         attr_accessor :completed_at
@@ -28,7 +28,7 @@ module FinchAPI
 
         sig do
           params(
-            params: T.nilable(T.any(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params, FinchAPI::Internal::Util::AnyHash))
+            params: T.nilable(T.any(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params, FinchAPI::Internal::AnyHash))
           )
             .void
         end
@@ -57,7 +57,7 @@ module FinchAPI
             created_at: Time,
             job_id: String,
             job_url: String,
-            params: T.nilable(T.any(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params, FinchAPI::Internal::Util::AnyHash)),
+            params: T.nilable(T.any(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params, FinchAPI::Internal::AnyHash)),
             scheduled_at: T.nilable(Time),
             started_at: T.nilable(Time),
             status: FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::OrSymbol,
@@ -97,7 +97,7 @@ module FinchAPI
         def to_hash
         end
 
-        class Params < FinchAPI::BaseModel
+        class Params < FinchAPI::Internal::Type::BaseModel
           # The ID of the individual that the job was completed for.
           sig { returns(T.nilable(String)) }
           attr_reader :individual_id
@@ -116,7 +116,7 @@ module FinchAPI
         end
 
         module Status
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status) }
           OrSymbol =
@@ -137,7 +137,7 @@ module FinchAPI
 
         # The type of automated job
         module Type
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type) }
           OrSymbol =

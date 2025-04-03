@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Sandbox
       module Connections
-        class AccountUpdateResponse < FinchAPI::BaseModel
+        class AccountUpdateResponse < FinchAPI::Internal::Type::BaseModel
           # [DEPRECATED] Use `connection_id` to associate a connection with an access token
           sig { returns(String) }
           attr_accessor :account_id
@@ -68,7 +68,7 @@ module FinchAPI
           end
 
           module AuthenticationType
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType) }

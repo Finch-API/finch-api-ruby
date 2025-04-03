@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
-      class SupportPerBenefitType < FinchAPI::BaseModel
+      class SupportPerBenefitType < FinchAPI::Internal::Type::BaseModel
         # @!attribute [r] company_benefits
         #
         #   @return [FinchAPI::Models::OperationSupportMatrix, nil]
@@ -28,7 +28,7 @@ module FinchAPI
         #   #
         #   def initialize(company_benefits: nil, individual_benefits: nil, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
       end
     end
   end

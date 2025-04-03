@@ -5,7 +5,7 @@ module FinchAPI
     module HRIS
       # The frequency of the benefit deduction/contribution.
       module BenefitFrequency
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::BenefitFrequency) }
         OrSymbol = T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol) }

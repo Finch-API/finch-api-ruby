@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       # @see FinchAPI::Resources::HRIS::Employments#retrieve_many
-      class EmploymentDataResponse < FinchAPI::BaseModel
+      class EmploymentDataResponse < FinchAPI::Internal::Type::BaseModel
         # @!attribute [r] body
         #
         #   @return [FinchAPI::Models::HRIS::EmploymentData, nil]
@@ -40,7 +40,7 @@ module FinchAPI
         #   #
         #   def initialize(body: nil, code: nil, individual_id: nil, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
       end
     end
   end

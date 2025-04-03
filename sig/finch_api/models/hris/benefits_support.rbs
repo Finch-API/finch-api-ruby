@@ -17,7 +17,7 @@ module FinchAPI
           simple_ira: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?
         }
 
-      class BenefitsSupport < FinchAPI::BaseModel
+      class BenefitsSupport < FinchAPI::Internal::Type::BaseModel
         attr_accessor commuter: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?
 
         attr_accessor custom_post_tax: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?

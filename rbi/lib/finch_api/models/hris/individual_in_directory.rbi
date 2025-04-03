@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
-      class IndividualInDirectory < FinchAPI::BaseModel
+      class IndividualInDirectory < FinchAPI::Internal::Type::BaseModel
         # A stable Finch `id` (UUID v4) for an individual in the company.
         sig { returns(T.nilable(String)) }
         attr_reader :id
@@ -17,9 +17,7 @@ module FinchAPI
 
         sig do
           params(
-            department: T.nilable(
-              T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Department, FinchAPI::Internal::Util::AnyHash)
-            )
+            department: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Department, FinchAPI::Internal::AnyHash))
           )
             .void
         end
@@ -43,9 +41,7 @@ module FinchAPI
 
         sig do
           params(
-            manager: T.nilable(
-              T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Manager, FinchAPI::Internal::Util::AnyHash)
-            )
+            manager: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Manager, FinchAPI::Internal::AnyHash))
           )
             .void
         end
@@ -58,15 +54,11 @@ module FinchAPI
         sig do
           params(
             id: String,
-            department: T.nilable(
-              T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Department, FinchAPI::Internal::Util::AnyHash)
-            ),
+            department: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Department, FinchAPI::Internal::AnyHash)),
             first_name: T.nilable(String),
             is_active: T.nilable(T::Boolean),
             last_name: T.nilable(String),
-            manager: T.nilable(
-              T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Manager, FinchAPI::Internal::Util::AnyHash)
-            ),
+            manager: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Manager, FinchAPI::Internal::AnyHash)),
             middle_name: T.nilable(String)
           )
             .returns(T.attached_class)
@@ -99,7 +91,7 @@ module FinchAPI
         def to_hash
         end
 
-        class Department < FinchAPI::BaseModel
+        class Department < FinchAPI::Internal::Type::BaseModel
           # The name of the department.
           sig { returns(T.nilable(String)) }
           attr_accessor :name
@@ -114,7 +106,7 @@ module FinchAPI
           end
         end
 
-        class Manager < FinchAPI::BaseModel
+        class Manager < FinchAPI::Internal::Type::BaseModel
           # A stable Finch `id` (UUID v4) for an individual in the company.
           sig { returns(T.nilable(String)) }
           attr_reader :id

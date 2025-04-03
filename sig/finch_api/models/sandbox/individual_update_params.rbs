@@ -18,7 +18,7 @@ module FinchAPI
         }
         & FinchAPI::Internal::Type::request_parameters
 
-      class IndividualUpdateParams < FinchAPI::BaseModel
+      class IndividualUpdateParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
@@ -70,7 +70,7 @@ module FinchAPI
             type: FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::type_?
           }
 
-        class Email < FinchAPI::BaseModel
+        class Email < FinchAPI::Internal::Type::BaseModel
           attr_reader data: String?
 
           def data=: (String) -> String
@@ -87,7 +87,7 @@ module FinchAPI
           type type_ = :work | :personal
 
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             WORK: :work
             PERSONAL: :personal
@@ -107,7 +107,7 @@ module FinchAPI
           | :decline_to_specify
 
         module Ethnicity
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           ASIAN: :asian
           WHITE: :white
@@ -124,7 +124,7 @@ module FinchAPI
         type gender = :female | :male | :other | :decline_to_specify
 
         module Gender
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           FEMALE: :female
           MALE: :male
@@ -140,7 +140,7 @@ module FinchAPI
             type: FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::type_?
           }
 
-        class PhoneNumber < FinchAPI::BaseModel
+        class PhoneNumber < FinchAPI::Internal::Type::BaseModel
           attr_accessor data: String?
 
           attr_accessor type: FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::type_?
@@ -155,7 +155,7 @@ module FinchAPI
           type type_ = :work | :personal
 
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             WORK: :work
             PERSONAL: :personal

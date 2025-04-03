@@ -8,10 +8,10 @@ module FinchAPI
         sig do
           params(
             options: T.nilable(
-              T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, FinchAPI::Internal::Util::AnyHash)
+              T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, FinchAPI::Internal::AnyHash)
             ),
-            requests: T::Array[T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request, FinchAPI::Internal::Util::AnyHash)],
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
+            requests: T::Array[T.any(FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request, FinchAPI::Internal::AnyHash)],
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
           )
             .returns(FinchAPI::Internal::ResponsesPage[FinchAPI::Models::HRIS::IndividualResponse])
         end

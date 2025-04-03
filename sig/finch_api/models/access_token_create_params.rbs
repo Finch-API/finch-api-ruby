@@ -9,7 +9,7 @@ module FinchAPI
       }
       & FinchAPI::Internal::Type::request_parameters
 
-    class AccessTokenCreateParams < FinchAPI::BaseModel
+    class AccessTokenCreateParams < FinchAPI::Internal::Type::BaseModel
       extend FinchAPI::Internal::Type::RequestParameters::Converter
       include FinchAPI::Internal::Type::RequestParameters
 

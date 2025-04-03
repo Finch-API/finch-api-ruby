@@ -7,7 +7,7 @@ class FinchAPI::Test::Resources::Sandbox::Jobs::ConfigurationTest < FinchAPI::Te
     response = @finch.sandbox.jobs.configuration.retrieve
 
     assert_pattern do
-      response => ^(FinchAPI::ArrayOf[FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration])
+      response => ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration])
     end
   end
 

@@ -4,7 +4,7 @@ module FinchAPI
       type benefit_frequency = :one_time | :every_paycheck | :monthly
 
       module BenefitFrequency
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         ONE_TIME: :one_time
         EVERY_PAYCHECK: :every_paycheck

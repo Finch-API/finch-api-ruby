@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Sandbox
       # @see FinchAPI::Resources::Sandbox::Payment#create
-      class PaymentCreateParams < FinchAPI::BaseModel
+      class PaymentCreateParams < FinchAPI::Internal::Type::BaseModel
         # @!parse
         #   extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
@@ -22,7 +22,7 @@ module FinchAPI
         #
         #   @return [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement>, nil]
         optional :pay_statements,
-                 -> { FinchAPI::ArrayOf[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement] }
+                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement] }
 
         # @!parse
         #   # @return [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement>]
@@ -45,15 +45,15 @@ module FinchAPI
         #   #
         #   def initialize(end_date: nil, pay_statements: nil, start_date: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
-        class PayStatement < FinchAPI::BaseModel
+        class PayStatement < FinchAPI::Internal::Type::BaseModel
           # @!attribute earnings
           #   The array of earnings objects associated with this pay statement
           #
           #   @return [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning, nil>, nil]
           optional :earnings,
-                   -> { FinchAPI::ArrayOf[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning, nil?: true] },
+                   -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning, nil?: true] },
                    nil?: true
 
           # @!attribute employee_deductions
@@ -61,14 +61,14 @@ module FinchAPI
           #
           #   @return [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction, nil>, nil]
           optional :employee_deductions,
-                   -> { FinchAPI::ArrayOf[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction, nil?: true] },
+                   -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction, nil?: true] },
                    nil?: true
 
           # @!attribute employer_contributions
           #
           #   @return [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution, nil>, nil]
           optional :employer_contributions,
-                   -> { FinchAPI::ArrayOf[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution, nil?: true] },
+                   -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution, nil?: true] },
                    nil?: true
 
           # @!attribute gross_pay
@@ -104,7 +104,7 @@ module FinchAPI
           #
           #   @return [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax, nil>, nil]
           optional :taxes,
-                   -> { FinchAPI::ArrayOf[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax, nil?: true] },
+                   -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax, nil?: true] },
                    nil?: true
 
           # @!attribute total_hours
@@ -149,9 +149,9 @@ module FinchAPI
           #     super
           #   end
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
-          class Earning < FinchAPI::BaseModel
+          class Earning < FinchAPI::Internal::Type::BaseModel
             # @!attribute amount
             #   The earnings amount in cents.
             #
@@ -202,10 +202,10 @@ module FinchAPI
             #   #
             #   def initialize(amount: nil, attributes: nil, currency: nil, hours: nil, name: nil, type: nil, **) = super
 
-            # def initialize: (Hash | FinchAPI::BaseModel) -> void
+            # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
             # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning#attributes
-            class Attributes < FinchAPI::BaseModel
+            class Attributes < FinchAPI::Internal::Type::BaseModel
               # @!attribute [r] metadata
               #
               #   @return [FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::Metadata, nil]
@@ -221,17 +221,17 @@ module FinchAPI
               #   #
               #   def initialize(metadata: nil, **) = super
 
-              # def initialize: (Hash | FinchAPI::BaseModel) -> void
+              # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
               # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes#metadata
-              class Metadata < FinchAPI::BaseModel
+              class Metadata < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] metadata
                 #   The metadata to be attached to the entity by existing rules. It is a key-value
                 #     pairs where the values can be of any type (string, number, boolean, object,
                 #     array, etc.).
                 #
                 #   @return [Hash{Symbol=>Object}, nil]
-                optional :metadata, FinchAPI::HashOf[FinchAPI::Unknown]
+                optional :metadata, FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown]
 
                 # @!parse
                 #   # @return [Hash{Symbol=>Object}]
@@ -242,7 +242,7 @@ module FinchAPI
                 #   #
                 #   def initialize(metadata: nil, **) = super
 
-                # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
               end
             end
 
@@ -250,7 +250,7 @@ module FinchAPI
             #
             # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning#type
             module Type
-              extend FinchAPI::Enum
+              extend FinchAPI::Internal::Type::Enum
 
               SALARY = :salary
               WAGE = :wage
@@ -274,7 +274,7 @@ module FinchAPI
             end
           end
 
-          class EmployeeDeduction < FinchAPI::BaseModel
+          class EmployeeDeduction < FinchAPI::Internal::Type::BaseModel
             # @!attribute amount
             #   The deduction amount in cents.
             #
@@ -304,7 +304,7 @@ module FinchAPI
             #   Boolean indicating if the deduction is pre-tax.
             #
             #   @return [Boolean, nil]
-            optional :pre_tax, FinchAPI::BooleanModel, nil?: true
+            optional :pre_tax, FinchAPI::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute type
             #   Type of benefit.
@@ -322,10 +322,10 @@ module FinchAPI
             #   #
             #   def initialize(amount: nil, attributes: nil, currency: nil, name: nil, pre_tax: nil, type: nil, **) = super
 
-            # def initialize: (Hash | FinchAPI::BaseModel) -> void
+            # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
             # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction#attributes
-            class Attributes < FinchAPI::BaseModel
+            class Attributes < FinchAPI::Internal::Type::BaseModel
               # @!attribute [r] metadata
               #
               #   @return [FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes::Metadata, nil]
@@ -341,17 +341,17 @@ module FinchAPI
               #   #
               #   def initialize(metadata: nil, **) = super
 
-              # def initialize: (Hash | FinchAPI::BaseModel) -> void
+              # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
               # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes#metadata
-              class Metadata < FinchAPI::BaseModel
+              class Metadata < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] metadata
                 #   The metadata to be attached to the entity by existing rules. It is a key-value
                 #     pairs where the values can be of any type (string, number, boolean, object,
                 #     array, etc.).
                 #
                 #   @return [Hash{Symbol=>Object}, nil]
-                optional :metadata, FinchAPI::HashOf[FinchAPI::Unknown]
+                optional :metadata, FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown]
 
                 # @!parse
                 #   # @return [Hash{Symbol=>Object}]
@@ -362,12 +362,12 @@ module FinchAPI
                 #   #
                 #   def initialize(metadata: nil, **) = super
 
-                # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
               end
             end
           end
 
-          class EmployerContribution < FinchAPI::BaseModel
+          class EmployerContribution < FinchAPI::Internal::Type::BaseModel
             # @!attribute amount
             #   The contribution amount in cents.
             #
@@ -408,10 +408,10 @@ module FinchAPI
             #   #
             #   def initialize(amount: nil, attributes: nil, currency: nil, name: nil, type: nil, **) = super
 
-            # def initialize: (Hash | FinchAPI::BaseModel) -> void
+            # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
             # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution#attributes
-            class Attributes < FinchAPI::BaseModel
+            class Attributes < FinchAPI::Internal::Type::BaseModel
               # @!attribute [r] metadata
               #
               #   @return [FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes::Metadata, nil]
@@ -427,17 +427,17 @@ module FinchAPI
               #   #
               #   def initialize(metadata: nil, **) = super
 
-              # def initialize: (Hash | FinchAPI::BaseModel) -> void
+              # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
               # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes#metadata
-              class Metadata < FinchAPI::BaseModel
+              class Metadata < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] metadata
                 #   The metadata to be attached to the entity by existing rules. It is a key-value
                 #     pairs where the values can be of any type (string, number, boolean, object,
                 #     array, etc.).
                 #
                 #   @return [Hash{Symbol=>Object}, nil]
-                optional :metadata, FinchAPI::HashOf[FinchAPI::Unknown]
+                optional :metadata, FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown]
 
                 # @!parse
                 #   # @return [Hash{Symbol=>Object}]
@@ -448,7 +448,7 @@ module FinchAPI
                 #   #
                 #   def initialize(metadata: nil, **) = super
 
-                # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
               end
             end
           end
@@ -457,7 +457,7 @@ module FinchAPI
           #
           # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement#payment_method
           module PaymentMethod
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             CHECK = :check
             DIRECT_DEPOSIT = :direct_deposit
@@ -469,7 +469,7 @@ module FinchAPI
             #   def self.values; end
           end
 
-          class Tax < FinchAPI::BaseModel
+          class Tax < FinchAPI::Internal::Type::BaseModel
             # @!attribute amount
             #   The tax amount in cents.
             #
@@ -493,7 +493,7 @@ module FinchAPI
             #   `true` if the amount is paid by the employers.
             #
             #   @return [Boolean, nil]
-            optional :employer, FinchAPI::BooleanModel, nil?: true
+            optional :employer, FinchAPI::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute name
             #   The exact name of tax from the pay statement.
@@ -519,10 +519,10 @@ module FinchAPI
             #   #
             #   def initialize(amount: nil, attributes: nil, currency: nil, employer: nil, name: nil, type: nil, **) = super
 
-            # def initialize: (Hash | FinchAPI::BaseModel) -> void
+            # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
             # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax#attributes
-            class Attributes < FinchAPI::BaseModel
+            class Attributes < FinchAPI::Internal::Type::BaseModel
               # @!attribute [r] metadata
               #
               #   @return [FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::Metadata, nil]
@@ -538,17 +538,17 @@ module FinchAPI
               #   #
               #   def initialize(metadata: nil, **) = super
 
-              # def initialize: (Hash | FinchAPI::BaseModel) -> void
+              # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
               # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes#metadata
-              class Metadata < FinchAPI::BaseModel
+              class Metadata < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] metadata
                 #   The metadata to be attached to the entity by existing rules. It is a key-value
                 #     pairs where the values can be of any type (string, number, boolean, object,
                 #     array, etc.).
                 #
                 #   @return [Hash{Symbol=>Object}, nil]
-                optional :metadata, FinchAPI::HashOf[FinchAPI::Unknown]
+                optional :metadata, FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown]
 
                 # @!parse
                 #   # @return [Hash{Symbol=>Object}]
@@ -559,7 +559,7 @@ module FinchAPI
                 #   #
                 #   def initialize(metadata: nil, **) = super
 
-                # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
               end
             end
 
@@ -567,7 +567,7 @@ module FinchAPI
             #
             # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax#type
             module Type
-              extend FinchAPI::Enum
+              extend FinchAPI::Internal::Type::Enum
 
               STATE = :state
               FEDERAL = :federal
@@ -586,7 +586,7 @@ module FinchAPI
           #
           # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement#type
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             REGULAR_PAYROLL = :regular_payroll
             OFF_CYCLE_PAYROLL = :off_cycle_payroll

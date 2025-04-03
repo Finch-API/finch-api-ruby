@@ -5,7 +5,7 @@ module FinchAPI
         { limit: Integer, offset: Integer }
         & FinchAPI::Internal::Type::request_parameters
 
-      class AutomatedListParams < FinchAPI::BaseModel
+      class AutomatedListParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 

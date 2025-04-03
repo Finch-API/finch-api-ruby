@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module Payroll
-      class PayGroupRetrieveResponse < FinchAPI::BaseModel
+      class PayGroupRetrieveResponse < FinchAPI::Internal::Type::BaseModel
         # Finch id (uuidv4) for the pay group
         sig { returns(String) }
         attr_accessor :id
@@ -46,7 +46,7 @@ module FinchAPI
         end
 
         module PayFrequency
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency) }

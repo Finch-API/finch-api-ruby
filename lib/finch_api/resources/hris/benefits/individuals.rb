@@ -92,7 +92,7 @@ module FinchAPI
               path: ["employer/benefits/%1$s/individuals", benefit_id],
               body: parsed,
               page: FinchAPI::Internal::SinglePage,
-              model: FinchAPI::Unknown,
+              model: FinchAPI::Internal::Type::Unknown,
               options: options
             )
           end

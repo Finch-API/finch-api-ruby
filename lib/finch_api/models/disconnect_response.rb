@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     # @see FinchAPI::Resources::Account#disconnect
-    class DisconnectResponse < FinchAPI::BaseModel
+    class DisconnectResponse < FinchAPI::Internal::Type::BaseModel
       # @!attribute status
       #   If the request is successful, Finch will return “success” (HTTP 200 status).
       #
@@ -15,7 +15,7 @@ module FinchAPI
       #   #
       #   def initialize(status:, **) = super
 
-      # def initialize: (Hash | FinchAPI::BaseModel) -> void
+      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
     end
   end
 end

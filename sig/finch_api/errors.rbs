@@ -98,32 +98,4 @@ module FinchAPI
       HTTP_STATUS: Range[Integer]
     end
   end
-
-  class Error = FinchAPI::Errors::Error
-
-  class ConversionError = FinchAPI::Errors::ConversionError
-
-  class APIError = FinchAPI::Errors::APIError
-
-  class APIStatusError = FinchAPI::Errors::APIStatusError
-
-  class APIConnectionError = FinchAPI::Errors::APIConnectionError
-
-  class APITimeoutError = FinchAPI::Errors::APITimeoutError
-
-  class BadRequestError = FinchAPI::Errors::BadRequestError
-
-  class AuthenticationError = FinchAPI::Errors::AuthenticationError
-
-  class PermissionDeniedError = FinchAPI::Errors::PermissionDeniedError
-
-  class NotFoundError = FinchAPI::Errors::NotFoundError
-
-  class ConflictError = FinchAPI::Errors::ConflictError
-
-  class UnprocessableEntityError = FinchAPI::Errors::UnprocessableEntityError
-
-  class RateLimitError = FinchAPI::Errors::RateLimitError
-
-  class InternalServerError = FinchAPI::Errors::InternalServerError
 end

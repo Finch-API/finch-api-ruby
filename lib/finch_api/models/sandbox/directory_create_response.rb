@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module Sandbox
-      DirectoryCreateResponse = FinchAPI::ArrayOf[FinchAPI::Unknown]
+      DirectoryCreateResponse = FinchAPI::Internal::Type::ArrayOf[FinchAPI::Internal::Type::Unknown]
     end
   end
 end

@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
-      class CompanyBenefit < FinchAPI::BaseModel
+      class CompanyBenefit < FinchAPI::Internal::Type::BaseModel
         # The id of the benefit.
         sig { returns(String) }
         attr_accessor :benefit_id

@@ -14,7 +14,7 @@ module FinchAPI
           primary_phone_number: String?
         }
 
-      class HRISCompany < FinchAPI::BaseModel
+      class HRISCompany < FinchAPI::Internal::Type::BaseModel
         attr_accessor id: String
 
         attr_accessor accounts: ::Array[FinchAPI::Models::HRIS::HRISCompany::Account]?
@@ -56,7 +56,7 @@ module FinchAPI
             routing_number: String?
           }
 
-        class Account < FinchAPI::BaseModel
+        class Account < FinchAPI::Internal::Type::BaseModel
           attr_accessor account_name: String?
 
           attr_accessor account_number: String?
@@ -80,7 +80,7 @@ module FinchAPI
           type account_type = :checking | :savings
 
           module AccountType
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             CHECKING: :checking
             SAVINGS: :savings
@@ -95,7 +95,7 @@ module FinchAPI
             parent: FinchAPI::Models::HRIS::HRISCompany::Department::Parent?
           }
 
-        class Department < FinchAPI::BaseModel
+        class Department < FinchAPI::Internal::Type::BaseModel
           attr_accessor name: String?
 
           attr_accessor parent: FinchAPI::Models::HRIS::HRISCompany::Department::Parent?
@@ -109,7 +109,7 @@ module FinchAPI
 
           type parent = { name: String? }
 
-          class Parent < FinchAPI::BaseModel
+          class Parent < FinchAPI::Internal::Type::BaseModel
             attr_accessor name: String?
 
             def initialize: (?name: String?) -> void
@@ -124,7 +124,7 @@ module FinchAPI
             type: FinchAPI::Models::HRIS::HRISCompany::Entity::type_?
           }
 
-        class Entity < FinchAPI::BaseModel
+        class Entity < FinchAPI::Internal::Type::BaseModel
           attr_accessor subtype: FinchAPI::Models::HRIS::HRISCompany::Entity::subtype?
 
           attr_accessor type: FinchAPI::Models::HRIS::HRISCompany::Entity::type_?
@@ -139,7 +139,7 @@ module FinchAPI
           type subtype = :s_corporation | :c_corporation | :b_corporation
 
           module Subtype
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             S_CORPORATION: :s_corporation
             C_CORPORATION: :c_corporation
@@ -158,7 +158,7 @@ module FinchAPI
             | :cooperative
 
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             LLC: :llc
             LP: :lp

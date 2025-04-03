@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
-      class SupportedBenefit < FinchAPI::BaseModel
+      class SupportedBenefit < FinchAPI::Internal::Type::BaseModel
         # Whether the provider supports an annual maximum for this benefit.
         sig { returns(T.nilable(T::Boolean)) }
         attr_accessor :annual_maximum
@@ -106,7 +106,7 @@ module FinchAPI
         end
 
         module CompanyContribution
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution) }
@@ -122,7 +122,7 @@ module FinchAPI
         end
 
         module EmployeeDeduction
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction) }
@@ -138,7 +138,7 @@ module FinchAPI
         end
 
         module HsaContributionLimit
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::SupportedBenefit::HsaContributionLimit) }

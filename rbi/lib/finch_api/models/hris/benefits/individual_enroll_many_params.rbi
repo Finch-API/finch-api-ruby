@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       module Benefits
-        class IndividualEnrollManyParams < FinchAPI::BaseModel
+        class IndividualEnrollManyParams < FinchAPI::Internal::Type::BaseModel
           extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
 
@@ -17,7 +17,7 @@ module FinchAPI
               individuals: T::Array[
               T.any(
                 FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual,
-                FinchAPI::Internal::Util::AnyHash
+                FinchAPI::Internal::AnyHash
               )
               ]
             )
@@ -30,10 +30,10 @@ module FinchAPI
               individuals: T::Array[
               T.any(
                 FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual,
-                FinchAPI::Internal::Util::AnyHash
+                FinchAPI::Internal::AnyHash
               )
               ],
-              request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
+              request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)
             )
               .returns(T.attached_class)
           end
@@ -52,7 +52,7 @@ module FinchAPI
           def to_hash
           end
 
-          class Individual < FinchAPI::BaseModel
+          class Individual < FinchAPI::Internal::Type::BaseModel
             sig do
               returns(
                 T.nilable(FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration)
@@ -64,7 +64,7 @@ module FinchAPI
               params(
                 configuration: T.any(
                   FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration,
-                  FinchAPI::Internal::Util::AnyHash
+                  FinchAPI::Internal::AnyHash
                 )
               )
                 .void
@@ -82,7 +82,7 @@ module FinchAPI
               params(
                 configuration: T.any(
                   FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration,
-                  FinchAPI::Internal::Util::AnyHash
+                  FinchAPI::Internal::AnyHash
                 ),
                 individual_id: String
               )
@@ -103,7 +103,7 @@ module FinchAPI
             def to_hash
             end
 
-            class Configuration < FinchAPI::BaseModel
+            class Configuration < FinchAPI::Internal::Type::BaseModel
               # For HSA benefits only - whether the contribution limit is for an individual or
               #   family
               sig do
@@ -147,7 +147,7 @@ module FinchAPI
                 params(
                   company_contribution: T.any(
                     FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .void
@@ -174,7 +174,7 @@ module FinchAPI
                 params(
                   employee_deduction: T.any(
                     FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .void
@@ -188,12 +188,12 @@ module FinchAPI
                   catch_up: T::Boolean,
                   company_contribution: T.any(
                     FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   ),
                   effective_date: Date,
                   employee_deduction: T.any(
                     FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .returns(T.attached_class)
@@ -227,7 +227,7 @@ module FinchAPI
               # For HSA benefits only - whether the contribution limit is for an individual or
               #   family
               module AnnualContributionLimit
-                extend FinchAPI::Enum
+                extend FinchAPI::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -265,7 +265,7 @@ module FinchAPI
                 end
               end
 
-              class CompanyContribution < FinchAPI::BaseModel
+              class CompanyContribution < FinchAPI::Internal::Type::BaseModel
                 # Amount in cents for fixed type or basis points (1/100th of a percent) for
                 #   percent type
                 sig { returns(T.nilable(Integer)) }
@@ -314,7 +314,7 @@ module FinchAPI
                 end
 
                 module Type
-                  extend FinchAPI::Enum
+                  extend FinchAPI::Internal::Type::Enum
 
                   TaggedSymbol =
                     T.type_alias do
@@ -353,7 +353,7 @@ module FinchAPI
                 end
               end
 
-              class EmployeeDeduction < FinchAPI::BaseModel
+              class EmployeeDeduction < FinchAPI::Internal::Type::BaseModel
                 # Amount in cents for fixed type or basis points (1/100th of a percent) for
                 #   percent type
                 sig { returns(T.nilable(Integer)) }
@@ -402,7 +402,7 @@ module FinchAPI
                 end
 
                 module Type
-                  extend FinchAPI::Enum
+                  extend FinchAPI::Internal::Type::Enum
 
                   TaggedSymbol =
                     T.type_alias do

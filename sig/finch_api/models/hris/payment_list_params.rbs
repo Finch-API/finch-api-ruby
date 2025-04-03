@@ -5,7 +5,7 @@ module FinchAPI
         { end_date: Date, start_date: Date }
         & FinchAPI::Internal::Type::request_parameters
 
-      class PaymentListParams < FinchAPI::BaseModel
+      class PaymentListParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 

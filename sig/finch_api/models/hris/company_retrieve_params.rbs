@@ -4,7 +4,7 @@ module FinchAPI
       type company_retrieve_params =
         {  } & FinchAPI::Internal::Type::request_parameters
 
-      class CompanyRetrieveParams < FinchAPI::BaseModel
+      class CompanyRetrieveParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 

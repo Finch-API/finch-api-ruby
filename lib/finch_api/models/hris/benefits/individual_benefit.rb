@@ -5,7 +5,7 @@ module FinchAPI
     module HRIS
       module Benefits
         # @see FinchAPI::Resources::HRIS::Benefits::Individuals#retrieve_many_benefits
-        class IndividualBenefit < FinchAPI::BaseModel
+        class IndividualBenefit < FinchAPI::Internal::Type::BaseModel
           # @!attribute [r] body
           #
           #   @return [FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body, nil]
@@ -40,10 +40,10 @@ module FinchAPI
           #   #
           #   def initialize(body: nil, code: nil, individual_id: nil, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
           # @see FinchAPI::Models::HRIS::Benefits::IndividualBenefit#body
-          class Body < FinchAPI::BaseModel
+          class Body < FinchAPI::Internal::Type::BaseModel
             # @!attribute annual_maximum
             #   If the benefit supports annual maximum, the amount in cents for this individual.
             #
@@ -55,7 +55,7 @@ module FinchAPI
             #     for this individual.
             #
             #   @return [Boolean, nil]
-            optional :catch_up, FinchAPI::BooleanModel, nil?: true
+            optional :catch_up, FinchAPI::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute company_contribution
             #
@@ -93,13 +93,13 @@ module FinchAPI
             #     super
             #   end
 
-            # def initialize: (Hash | FinchAPI::BaseModel) -> void
+            # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
             # Type for HSA contribution limit if the benefit is a HSA.
             #
             # @see FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body#hsa_contribution_limit
             module HsaContributionLimit
-              extend FinchAPI::Enum
+              extend FinchAPI::Internal::Type::Enum
 
               INDIVIDUAL = :individual
               FAMILY = :family

@@ -6,7 +6,7 @@ module FinchAPI
       sig { returns(T.nilable(FinchAPI::Models::JobCompletionEvent::Data)) }
       attr_reader :data
 
-      sig { params(data: T.any(FinchAPI::Models::JobCompletionEvent::Data, FinchAPI::Internal::Util::AnyHash)).void }
+      sig { params(data: T.any(FinchAPI::Models::JobCompletionEvent::Data, FinchAPI::Internal::AnyHash)).void }
       attr_writer :data
 
       sig { returns(T.nilable(FinchAPI::Models::JobCompletionEvent::EventType::TaggedSymbol)) }
@@ -17,7 +17,7 @@ module FinchAPI
 
       sig do
         params(
-          data: T.any(FinchAPI::Models::JobCompletionEvent::Data, FinchAPI::Internal::Util::AnyHash),
+          data: T.any(FinchAPI::Models::JobCompletionEvent::Data, FinchAPI::Internal::AnyHash),
           event_type: FinchAPI::Models::JobCompletionEvent::EventType::OrSymbol
         )
           .returns(T.attached_class)
@@ -37,7 +37,7 @@ module FinchAPI
       def to_hash
       end
 
-      class Data < FinchAPI::BaseModel
+      class Data < FinchAPI::Internal::Type::BaseModel
         # The id of the job which has completed.
         sig { returns(String) }
         attr_accessor :job_id
@@ -56,7 +56,7 @@ module FinchAPI
       end
 
       module EventType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::JobCompletionEvent::EventType) }
         OrSymbol =

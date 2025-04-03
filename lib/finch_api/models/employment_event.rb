@@ -27,9 +27,9 @@ module FinchAPI
       #   #
       #   def initialize(data: nil, event_type: nil, **) = super
 
-      # def initialize: (Hash | FinchAPI::BaseModel) -> void
+      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
-      class Data < FinchAPI::BaseModel
+      class Data < FinchAPI::Internal::Type::BaseModel
         # @!attribute [r] individual_id
         #   The ID of the individual related to the event.
         #
@@ -45,11 +45,11 @@ module FinchAPI
         #   #
         #   def initialize(individual_id: nil, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
       end
 
       module EventType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         EMPLOYMENT_CREATED = :"employment.created"
         EMPLOYMENT_UPDATED = :"employment.updated"

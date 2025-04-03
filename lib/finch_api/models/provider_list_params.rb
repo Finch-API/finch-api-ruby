@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     # @see FinchAPI::Resources::Providers#list
-    class ProviderListParams < FinchAPI::BaseModel
+    class ProviderListParams < FinchAPI::Internal::Type::BaseModel
       # @!parse
       #   extend FinchAPI::Internal::Type::RequestParameters::Converter
       include FinchAPI::Internal::Type::RequestParameters
@@ -13,7 +13,7 @@ module FinchAPI
       #   #
       #   def initialize(request_options: {}, **) = super
 
-      # def initialize: (Hash | FinchAPI::BaseModel) -> void
+      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
     end
   end
 end

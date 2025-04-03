@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       # @see FinchAPI::Resources::HRIS::Directory#list
-      class IndividualInDirectory < FinchAPI::BaseModel
+      class IndividualInDirectory < FinchAPI::Internal::Type::BaseModel
         # @!attribute [r] id
         #   A stable Finch `id` (UUID v4) for an individual in the company.
         #
@@ -31,7 +31,7 @@ module FinchAPI
         #   `true` if the individual is an active employee or contractor at the company.
         #
         #   @return [Boolean, nil]
-        optional :is_active, FinchAPI::BooleanModel, nil?: true
+        optional :is_active, FinchAPI::Internal::Type::BooleanModel, nil?: true
 
         # @!attribute last_name
         #   The legal last name of the individual.
@@ -73,10 +73,10 @@ module FinchAPI
         #     super
         #   end
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
         # @see FinchAPI::Models::HRIS::IndividualInDirectory#department
-        class Department < FinchAPI::BaseModel
+        class Department < FinchAPI::Internal::Type::BaseModel
           # @!attribute name
           #   The name of the department.
           #
@@ -90,11 +90,11 @@ module FinchAPI
           #   #
           #   def initialize(name: nil, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
         end
 
         # @see FinchAPI::Models::HRIS::IndividualInDirectory#manager
-        class Manager < FinchAPI::BaseModel
+        class Manager < FinchAPI::Internal::Type::BaseModel
           # @!attribute [r] id
           #   A stable Finch `id` (UUID v4) for an individual in the company.
           #
@@ -112,7 +112,7 @@ module FinchAPI
           #   #
           #   def initialize(id: nil, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
         end
       end
     end

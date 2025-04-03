@@ -11,7 +11,7 @@ module FinchAPI
         sig do
           params(
             type: FinchAPI::Models::Sandbox::JobCreateParams::Type::OrSymbol,
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
           )
             .returns(FinchAPI::Models::Sandbox::JobCreateResponse)
         end

@@ -4,7 +4,7 @@ module FinchAPI
       type benefit_list_supported_benefits_params =
         {  } & FinchAPI::Internal::Type::request_parameters
 
-      class BenefitListSupportedBenefitsParams < FinchAPI::BaseModel
+      class BenefitListSupportedBenefitsParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 

@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Jobs
       # @see FinchAPI::Resources::Jobs::Automated#create
-      class AutomatedCreateParams < FinchAPI::BaseModel
+      class AutomatedCreateParams < FinchAPI::Internal::Type::BaseModel
         # @!parse
         #   extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
@@ -27,11 +27,11 @@ module FinchAPI
         #   #
         #   def initialize(type:, params:, request_options: {}, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
         # The type of job to start.
         module Type
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           W4_FORM_EMPLOYEE_SYNC = :w4_form_employee_sync
 
@@ -42,7 +42,7 @@ module FinchAPI
           #   def self.values; end
         end
 
-        class Params < FinchAPI::BaseModel
+        class Params < FinchAPI::Internal::Type::BaseModel
           # @!attribute individual_id
           #   The unique ID of the individual for W-4 data sync.
           #
@@ -54,7 +54,7 @@ module FinchAPI
           #   #
           #   def initialize(individual_id:, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
         end
       end
     end

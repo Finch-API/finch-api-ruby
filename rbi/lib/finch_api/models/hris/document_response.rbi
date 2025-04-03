@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
-      class DocumentResponse < FinchAPI::BaseModel
+      class DocumentResponse < FinchAPI::Internal::Type::BaseModel
         # A stable Finch id for the document.
         sig { returns(T.nilable(String)) }
         attr_reader :id
@@ -65,7 +65,7 @@ module FinchAPI
 
         # The type of document.
         module Type
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::DocumentResponse::Type) }
           OrSymbol =

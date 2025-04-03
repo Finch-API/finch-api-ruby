@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Sandbox
       # @see FinchAPI::Resources::Sandbox::Company#update
-      class CompanyUpdateParams < FinchAPI::BaseModel
+      class CompanyUpdateParams < FinchAPI::Internal::Type::BaseModel
         # @!parse
         #   extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
@@ -14,7 +14,7 @@ module FinchAPI
         #
         #   @return [Array<FinchAPI::Models::Sandbox::CompanyUpdateParams::Account>, nil]
         required :accounts,
-                 -> { FinchAPI::ArrayOf[FinchAPI::Models::Sandbox::CompanyUpdateParams::Account] },
+                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::CompanyUpdateParams::Account] },
                  nil?: true
 
         # @!attribute departments
@@ -22,7 +22,7 @@ module FinchAPI
         #
         #   @return [Array<FinchAPI::Models::Sandbox::CompanyUpdateParams::Department, nil>, nil]
         required :departments,
-                 -> { FinchAPI::ArrayOf[FinchAPI::Models::Sandbox::CompanyUpdateParams::Department, nil?: true] },
+                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::CompanyUpdateParams::Department, nil?: true] },
                  nil?: true
 
         # @!attribute ein
@@ -46,7 +46,9 @@ module FinchAPI
         # @!attribute locations
         #
         #   @return [Array<FinchAPI::Models::Location, nil>, nil]
-        required :locations, -> { FinchAPI::ArrayOf[FinchAPI::Models::Location, nil?: true] }, nil?: true
+        required :locations,
+                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Location, nil?: true] },
+                 nil?: true
 
         # @!attribute primary_email
         #   The email of the main administrator on the account.
@@ -86,9 +88,9 @@ module FinchAPI
         #     super
         #   end
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
-        class Account < FinchAPI::BaseModel
+        class Account < FinchAPI::Internal::Type::BaseModel
           # @!attribute account_name
           #   The name of the bank associated in the payroll/HRIS system.
           #
@@ -131,13 +133,13 @@ module FinchAPI
           #   #
           #   def initialize(account_name: nil, account_number: nil, account_type: nil, institution_name: nil, routing_number: nil, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
           # The type of bank account.
           #
           # @see FinchAPI::Models::Sandbox::CompanyUpdateParams::Account#account_type
           module AccountType
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             CHECKING = :checking
             SAVINGS = :savings
@@ -150,7 +152,7 @@ module FinchAPI
           end
         end
 
-        class Department < FinchAPI::BaseModel
+        class Department < FinchAPI::Internal::Type::BaseModel
           # @!attribute name
           #   The department name.
           #
@@ -169,10 +171,10 @@ module FinchAPI
           #   #
           #   def initialize(name: nil, parent: nil, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
           # @see FinchAPI::Models::Sandbox::CompanyUpdateParams::Department#parent
-          class Parent < FinchAPI::BaseModel
+          class Parent < FinchAPI::Internal::Type::BaseModel
             # @!attribute name
             #   The parent department's name.
             #
@@ -186,11 +188,11 @@ module FinchAPI
             #   #
             #   def initialize(name: nil, **) = super
 
-            # def initialize: (Hash | FinchAPI::BaseModel) -> void
+            # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
           end
         end
 
-        class Entity < FinchAPI::BaseModel
+        class Entity < FinchAPI::Internal::Type::BaseModel
           # @!attribute subtype
           #   The tax payer subtype of the company.
           #
@@ -213,13 +215,13 @@ module FinchAPI
           #   #
           #   def initialize(subtype: nil, type: nil, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
           # The tax payer subtype of the company.
           #
           # @see FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity#subtype
           module Subtype
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             S_CORPORATION = :s_corporation
             C_CORPORATION = :c_corporation
@@ -236,7 +238,7 @@ module FinchAPI
           #
           # @see FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity#type
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             LLC = :llc
             LP = :lp

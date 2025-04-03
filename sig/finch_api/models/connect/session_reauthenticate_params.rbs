@@ -10,7 +10,7 @@ module FinchAPI
         }
         & FinchAPI::Internal::Type::request_parameters
 
-      class SessionReauthenticateParams < FinchAPI::BaseModel
+      class SessionReauthenticateParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
@@ -43,7 +43,7 @@ module FinchAPI
           | :ssn
 
         module Product
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           COMPANY: :company
           DIRECTORY: :directory

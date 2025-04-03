@@ -17,7 +17,7 @@ module FinchAPI
           pay_period: FinchAPI::Models::HRIS::Payment::PayPeriod?
         }
 
-      class Payment < FinchAPI::BaseModel
+      class Payment < FinchAPI::Internal::Type::BaseModel
         attr_reader id: String?
 
         def id=: (String) -> String
@@ -73,7 +73,7 @@ module FinchAPI
           | :other
 
         module PayFrequency
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           ANNUALLY: :annually
           SEMI_ANNUALLY: :semi_annually
@@ -90,7 +90,7 @@ module FinchAPI
 
         type pay_period = { end_date: String?, start_date: String? }
 
-        class PayPeriod < FinchAPI::BaseModel
+        class PayPeriod < FinchAPI::Internal::Type::BaseModel
           attr_accessor end_date: String?
 
           attr_accessor start_date: String?

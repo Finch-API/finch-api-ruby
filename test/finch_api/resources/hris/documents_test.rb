@@ -12,7 +12,7 @@ class FinchAPI::Test::Resources::HRIS::DocumentsTest < FinchAPI::Test::ResourceT
 
     assert_pattern do
       response => {
-        documents: ^(FinchAPI::ArrayOf[FinchAPI::Models::HRIS::DocumentResponse]),
+        documents: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::HRIS::DocumentResponse]),
         paging: FinchAPI::Models::Paging
       }
     end

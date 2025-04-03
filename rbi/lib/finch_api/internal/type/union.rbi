@@ -34,8 +34,8 @@ module FinchAPI
         # @api private
         sig do
           params(
-            key: T.any(Symbol, FinchAPI::Internal::Util::AnyHash, T.proc.returns(T.anything), T.anything),
-            spec: T.any(FinchAPI::Internal::Util::AnyHash, T.proc.returns(T.anything), T.anything)
+            key: T.any(Symbol, FinchAPI::Internal::AnyHash, T.proc.returns(T.anything), T.anything),
+            spec: T.any(FinchAPI::Internal::AnyHash, T.proc.returns(T.anything), T.anything)
           )
             .void
         end

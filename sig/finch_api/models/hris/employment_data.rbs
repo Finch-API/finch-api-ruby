@@ -25,7 +25,7 @@ module FinchAPI
           work_id: String?
         }
 
-      class EmploymentData < FinchAPI::BaseModel
+      class EmploymentData < FinchAPI::Internal::Type::BaseModel
         attr_reader id: String?
 
         def id=: (String) -> String
@@ -95,7 +95,7 @@ module FinchAPI
 
         type custom_field = { name: String, value: top }
 
-        class CustomField < FinchAPI::BaseModel
+        class CustomField < FinchAPI::Internal::Type::BaseModel
           attr_reader name: String?
 
           def name=: (String) -> String
@@ -111,7 +111,7 @@ module FinchAPI
 
         type department = { name: String? }
 
-        class Department < FinchAPI::BaseModel
+        class Department < FinchAPI::Internal::Type::BaseModel
           attr_accessor name: String?
 
           def initialize: (?name: String?) -> void
@@ -125,7 +125,7 @@ module FinchAPI
             type: FinchAPI::Models::HRIS::EmploymentData::Employment::type_?
           }
 
-        class Employment < FinchAPI::BaseModel
+        class Employment < FinchAPI::Internal::Type::BaseModel
           attr_accessor subtype: FinchAPI::Models::HRIS::EmploymentData::Employment::subtype?
 
           attr_accessor type: FinchAPI::Models::HRIS::EmploymentData::Employment::type_?
@@ -146,7 +146,7 @@ module FinchAPI
             | :individual_contractor
 
           module Subtype
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             FULL_TIME: :full_time
             INTERN: :intern
@@ -161,7 +161,7 @@ module FinchAPI
           type type_ = :employee | :contractor
 
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             EMPLOYEE: :employee
             CONTRACTOR: :contractor
@@ -180,7 +180,7 @@ module FinchAPI
           | :terminated
 
         module EmploymentStatus
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           ACTIVE: :active
           DECEASED: :deceased
@@ -195,7 +195,7 @@ module FinchAPI
 
         type manager = { id: String }
 
-        class Manager < FinchAPI::BaseModel
+        class Manager < FinchAPI::Internal::Type::BaseModel
           attr_reader id: String?
 
           def id=: (String) -> String

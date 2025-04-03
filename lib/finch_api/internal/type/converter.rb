@@ -31,10 +31,10 @@ module FinchAPI
         def dump(value)
           case value
           in Array
-            value.map { FinchAPI::Unknown.dump(_1) }
+            value.map { FinchAPI::Internal::Type::Unknown.dump(_1) }
           in Hash
-            value.transform_values { FinchAPI::Unknown.dump(_1) }
-          in FinchAPI::BaseModel
+            value.transform_values { FinchAPI::Internal::Type::Unknown.dump(_1) }
+          in FinchAPI::Internal::Type::BaseModel
             value.class.dump(value)
           else
             value
@@ -64,7 +64,7 @@ module FinchAPI
             in Hash
               type_info(spec.slice(:const, :enum, :union).first&.last)
             in true | false
-              -> { FinchAPI::BooleanModel }
+              -> { FinchAPI::Internal::Type::BooleanModel }
             in FinchAPI::Internal::Type::Converter | Class | Symbol
               -> { spec }
             in NilClass | Integer | Float
@@ -209,7 +209,7 @@ module FinchAPI
           #
           # @return [Object]
           def dump(target, value)
-            target.is_a?(FinchAPI::Internal::Type::Converter) ? target.dump(value) : FinchAPI::Unknown.dump(value)
+            target.is_a?(FinchAPI::Internal::Type::Converter) ? target.dump(value) : FinchAPI::Internal::Type::Unknown.dump(value)
           end
         end
       end

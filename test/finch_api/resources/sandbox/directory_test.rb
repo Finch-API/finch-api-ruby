@@ -7,7 +7,7 @@ class FinchAPI::Test::Resources::Sandbox::DirectoryTest < FinchAPI::Test::Resour
     response = @finch.sandbox.directory.create
 
     assert_pattern do
-      response => ^(FinchAPI::ArrayOf[FinchAPI::Unknown])
+      response => ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Internal::Type::Unknown])
     end
   end
 end

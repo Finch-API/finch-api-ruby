@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module Connect
-      class SessionNewParams < FinchAPI::BaseModel
+      class SessionNewParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
@@ -24,9 +24,7 @@ module FinchAPI
 
         sig do
           params(
-            integration: T.nilable(
-              T.any(FinchAPI::Models::Connect::SessionNewParams::Integration, FinchAPI::Internal::Util::AnyHash)
-            )
+            integration: T.nilable(T.any(FinchAPI::Models::Connect::SessionNewParams::Integration, FinchAPI::Internal::AnyHash))
           )
             .void
         end
@@ -52,14 +50,12 @@ module FinchAPI
             customer_name: String,
             products: T::Array[FinchAPI::Models::Connect::SessionNewParams::Product::OrSymbol],
             customer_email: T.nilable(String),
-            integration: T.nilable(
-              T.any(FinchAPI::Models::Connect::SessionNewParams::Integration, FinchAPI::Internal::Util::AnyHash)
-            ),
+            integration: T.nilable(T.any(FinchAPI::Models::Connect::SessionNewParams::Integration, FinchAPI::Internal::AnyHash)),
             manual: T.nilable(T::Boolean),
             minutes_to_expire: T.nilable(Float),
             redirect_uri: T.nilable(String),
             sandbox: T.nilable(FinchAPI::Models::Connect::SessionNewParams::Sandbox::OrSymbol),
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -99,7 +95,7 @@ module FinchAPI
 
         # The Finch products that can be requested during the Connect flow.
         module Product
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Connect::SessionNewParams::Product) }
           OrSymbol =
@@ -119,7 +115,7 @@ module FinchAPI
           end
         end
 
-        class Integration < FinchAPI::BaseModel
+        class Integration < FinchAPI::Internal::Type::BaseModel
           sig { returns(T.nilable(FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::OrSymbol)) }
           attr_accessor :auth_method
 
@@ -149,7 +145,7 @@ module FinchAPI
           end
 
           module AuthMethod
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod) }
@@ -174,7 +170,7 @@ module FinchAPI
         end
 
         module Sandbox
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Connect::SessionNewParams::Sandbox) }
           OrSymbol =

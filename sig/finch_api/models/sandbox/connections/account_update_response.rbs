@@ -12,7 +12,7 @@ module FinchAPI
             connection_id: String
           }
 
-        class AccountUpdateResponse < FinchAPI::BaseModel
+        class AccountUpdateResponse < FinchAPI::Internal::Type::BaseModel
           attr_accessor account_id: String
 
           attr_accessor authentication_type: FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::authentication_type
@@ -42,7 +42,7 @@ module FinchAPI
             :credential | :api_token | :oauth | :assisted
 
           module AuthenticationType
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             CREDENTIAL: :credential
             API_TOKEN: :api_token

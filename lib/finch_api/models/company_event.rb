@@ -6,7 +6,7 @@ module FinchAPI
       # @!attribute data
       #
       #   @return [Hash{Symbol=>Object}, nil]
-      optional :data, FinchAPI::HashOf[FinchAPI::Unknown], nil?: true
+      optional :data, FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown], nil?: true
 
       # @!attribute [r] event_type
       #
@@ -23,10 +23,10 @@ module FinchAPI
       #   #
       #   def initialize(data: nil, event_type: nil, **) = super
 
-      # def initialize: (Hash | FinchAPI::BaseModel) -> void
+      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
       module EventType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         COMPANY_UPDATED = :"company.updated"
 

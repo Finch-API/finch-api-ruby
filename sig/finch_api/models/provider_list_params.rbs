@@ -3,7 +3,7 @@ module FinchAPI
     type provider_list_params =
       {  } & FinchAPI::Internal::Type::request_parameters
 
-    class ProviderListParams < FinchAPI::BaseModel
+    class ProviderListParams < FinchAPI::Internal::Type::BaseModel
       extend FinchAPI::Internal::Type::RequestParameters::Converter
       include FinchAPI::Internal::Type::RequestParameters
 

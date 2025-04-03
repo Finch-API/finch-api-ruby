@@ -18,7 +18,7 @@ class FinchAPI::Test::Resources::AccessTokensTest < FinchAPI::Test::ResourceTest
         company_id: String,
         connection_id: String,
         connection_type: FinchAPI::Models::CreateAccessTokenResponse::ConnectionType,
-        products: ^(FinchAPI::ArrayOf[String]),
+        products: ^(FinchAPI::Internal::Type::ArrayOf[String]),
         provider_id: String,
         customer_id: String | nil,
         token_type: String | nil

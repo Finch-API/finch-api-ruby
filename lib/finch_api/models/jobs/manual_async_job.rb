@@ -4,12 +4,12 @@ module FinchAPI
   module Models
     module Jobs
       # @see FinchAPI::Resources::Jobs::Manual#retrieve
-      class ManualAsyncJob < FinchAPI::BaseModel
+      class ManualAsyncJob < FinchAPI::Internal::Type::BaseModel
         # @!attribute body
         #   Specific information about the job, such as individual statuses for batch jobs.
         #
         #   @return [Array<Object>, nil]
-        required :body, FinchAPI::ArrayOf[FinchAPI::Unknown], nil?: true
+        required :body, FinchAPI::Internal::Type::ArrayOf[FinchAPI::Internal::Type::Unknown], nil?: true
 
         # @!attribute job_id
         #
@@ -28,11 +28,11 @@ module FinchAPI
         #   #
         #   def initialize(body:, job_id:, status:, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
         # @see FinchAPI::Models::Jobs::ManualAsyncJob#status
         module Status
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           PENDING = :pending
           IN_PROGRESS = :in_progress

@@ -2,7 +2,7 @@
 
 module FinchAPI
   module Models
-    class Location < FinchAPI::BaseModel
+    class Location < FinchAPI::Internal::Type::BaseModel
       # City, district, suburb, town, or village.
       sig { returns(T.nilable(String)) }
       attr_accessor :city

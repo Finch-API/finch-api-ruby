@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
-      class BenefitContribution < FinchAPI::BaseModel
+      class BenefitContribution < FinchAPI::Internal::Type::BaseModel
         # Contribution amount in cents (if `fixed`) or basis points (if `percent`).
         sig { returns(T.nilable(Integer)) }
         attr_accessor :amount
@@ -33,7 +33,7 @@ module FinchAPI
 
         # Contribution type.
         module Type
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::BenefitContribution::Type) }
           OrSymbol =

@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module Sandbox
-      class EmploymentUpdateResponse < FinchAPI::BaseModel
+      class EmploymentUpdateResponse < FinchAPI::Internal::Type::BaseModel
         # A stable Finch `id` (UUID v4) for an individual in the company.
         sig { returns(T.nilable(String)) }
         attr_reader :id
@@ -23,7 +23,7 @@ module FinchAPI
 
         sig do
           params(
-            custom_fields: T::Array[T.any(FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField, FinchAPI::Internal::Util::AnyHash)]
+            custom_fields: T::Array[T.any(FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField, FinchAPI::Internal::AnyHash)]
           )
             .void
         end
@@ -36,7 +36,7 @@ module FinchAPI
         sig do
           params(
             department: T.nilable(
-              T.any(FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Department, FinchAPI::Internal::Util::AnyHash)
+              T.any(FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Department, FinchAPI::Internal::AnyHash)
             )
           )
             .void
@@ -50,7 +50,7 @@ module FinchAPI
         sig do
           params(
             employment: T.nilable(
-              T.any(FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment, FinchAPI::Internal::Util::AnyHash)
+              T.any(FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment, FinchAPI::Internal::AnyHash)
             )
           )
             .void
@@ -74,7 +74,7 @@ module FinchAPI
         sig { returns(T.nilable(FinchAPI::Models::Income)) }
         attr_reader :income
 
-        sig { params(income: T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Internal::Util::AnyHash))).void }
+        sig { params(income: T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Internal::AnyHash))).void }
         attr_writer :income
 
         # The array of income history.
@@ -95,7 +95,7 @@ module FinchAPI
         sig { returns(T.nilable(FinchAPI::Models::Location)) }
         attr_reader :location
 
-        sig { params(location: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::Util::AnyHash))).void }
+        sig { params(location: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::AnyHash))).void }
         attr_writer :location
 
         # The manager object representing the manager of the individual within the org.
@@ -105,7 +105,7 @@ module FinchAPI
         sig do
           params(
             manager: T.nilable(
-              T.any(FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Manager, FinchAPI::Internal::Util::AnyHash)
+              T.any(FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Manager, FinchAPI::Internal::AnyHash)
             )
           )
             .void
@@ -134,24 +134,24 @@ module FinchAPI
           params(
             id: String,
             class_code: T.nilable(String),
-            custom_fields: T::Array[T.any(FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField, FinchAPI::Internal::Util::AnyHash)],
+            custom_fields: T::Array[T.any(FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField, FinchAPI::Internal::AnyHash)],
             department: T.nilable(
-              T.any(FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Department, FinchAPI::Internal::Util::AnyHash)
+              T.any(FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Department, FinchAPI::Internal::AnyHash)
             ),
             employment: T.nilable(
-              T.any(FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment, FinchAPI::Internal::Util::AnyHash)
+              T.any(FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment, FinchAPI::Internal::AnyHash)
             ),
             employment_status: T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateResponse::EmploymentStatus::OrSymbol),
             end_date: T.nilable(String),
             first_name: T.nilable(String),
-            income: T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Internal::Util::AnyHash)),
-            income_history: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Internal::Util::AnyHash))]),
+            income: T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Internal::AnyHash)),
+            income_history: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Internal::AnyHash))]),
             is_active: T.nilable(T::Boolean),
             last_name: T.nilable(String),
             latest_rehire_date: T.nilable(String),
-            location: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::Util::AnyHash)),
+            location: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::AnyHash)),
             manager: T.nilable(
-              T.any(FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Manager, FinchAPI::Internal::Util::AnyHash)
+              T.any(FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Manager, FinchAPI::Internal::AnyHash)
             ),
             middle_name: T.nilable(String),
             source_id: String,
@@ -212,7 +212,7 @@ module FinchAPI
         def to_hash
         end
 
-        class CustomField < FinchAPI::BaseModel
+        class CustomField < FinchAPI::Internal::Type::BaseModel
           sig { returns(T.nilable(String)) }
           attr_accessor :name
 
@@ -231,7 +231,7 @@ module FinchAPI
           end
         end
 
-        class Department < FinchAPI::BaseModel
+        class Department < FinchAPI::Internal::Type::BaseModel
           # The name of the department associated with the individual.
           sig { returns(T.nilable(String)) }
           attr_accessor :name
@@ -246,7 +246,7 @@ module FinchAPI
           end
         end
 
-        class Employment < FinchAPI::BaseModel
+        class Employment < FinchAPI::Internal::Type::BaseModel
           # The secondary employment type of the individual. Options: `full_time`,
           #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
           sig { returns(T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::Subtype::TaggedSymbol)) }
@@ -282,7 +282,7 @@ module FinchAPI
           # The secondary employment type of the individual. Options: `full_time`,
           #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
           module Subtype
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::Subtype) }
@@ -321,7 +321,7 @@ module FinchAPI
 
           # The main employment type of the individual.
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::Type) }
@@ -344,7 +344,7 @@ module FinchAPI
 
         # The detailed employment status of the individual.
         module EmploymentStatus
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::EmploymentStatus) }
@@ -374,7 +374,7 @@ module FinchAPI
           end
         end
 
-        class Manager < FinchAPI::BaseModel
+        class Manager < FinchAPI::Internal::Type::BaseModel
           # A stable Finch `id` (UUID v4) for an individual in the company.
           sig { returns(T.nilable(String)) }
           attr_reader :id

@@ -18,7 +18,7 @@ module FinchAPI
           ssn: String?
         }
 
-      class IndividualUpdateResponse < FinchAPI::BaseModel
+      class IndividualUpdateResponse < FinchAPI::Internal::Type::BaseModel
         attr_reader id: String?
 
         def id=: (String) -> String
@@ -71,7 +71,7 @@ module FinchAPI
             type: FinchAPI::Models::Sandbox::IndividualUpdateResponse::Email::type_?
           }
 
-        class Email < FinchAPI::BaseModel
+        class Email < FinchAPI::Internal::Type::BaseModel
           attr_reader data: String?
 
           def data=: (String) -> String
@@ -88,7 +88,7 @@ module FinchAPI
           type type_ = :work | :personal
 
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             WORK: :work
             PERSONAL: :personal
@@ -108,7 +108,7 @@ module FinchAPI
           | :decline_to_specify
 
         module Ethnicity
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           ASIAN: :asian
           WHITE: :white
@@ -125,7 +125,7 @@ module FinchAPI
         type gender = :female | :male | :other | :decline_to_specify
 
         module Gender
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           FEMALE: :female
           MALE: :male
@@ -141,7 +141,7 @@ module FinchAPI
             type: FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber::type_?
           }
 
-        class PhoneNumber < FinchAPI::BaseModel
+        class PhoneNumber < FinchAPI::Internal::Type::BaseModel
           attr_accessor data: String?
 
           attr_accessor type: FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber::type_?
@@ -156,7 +156,7 @@ module FinchAPI
           type type_ = :work | :personal
 
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             WORK: :work
             PERSONAL: :personal

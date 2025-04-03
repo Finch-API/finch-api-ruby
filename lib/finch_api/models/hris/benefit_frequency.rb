@@ -5,7 +5,7 @@ module FinchAPI
     module HRIS
       # The frequency of the benefit deduction/contribution.
       module BenefitFrequency
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         ONE_TIME = :one_time
         EVERY_PAYCHECK = :every_paycheck

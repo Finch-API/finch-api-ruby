@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
-      class DirectoryListParams < FinchAPI::BaseModel
+      class DirectoryListParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
@@ -25,7 +25,7 @@ module FinchAPI
           params(
             limit: Integer,
             offset: Integer,
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end

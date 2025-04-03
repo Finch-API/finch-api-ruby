@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Connect
       # @see FinchAPI::Resources::Connect::Sessions#new
-      class SessionNewParams < FinchAPI::BaseModel
+      class SessionNewParams < FinchAPI::Internal::Type::BaseModel
         # @!parse
         #   extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
@@ -22,7 +22,8 @@ module FinchAPI
         # @!attribute products
         #
         #   @return [Array<Symbol, FinchAPI::Models::Connect::SessionNewParams::Product>]
-        required :products, -> { FinchAPI::ArrayOf[enum: FinchAPI::Models::Connect::SessionNewParams::Product] }
+        required :products,
+                 -> { FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::Connect::SessionNewParams::Product] }
 
         # @!attribute customer_email
         #
@@ -37,7 +38,7 @@ module FinchAPI
         # @!attribute manual
         #
         #   @return [Boolean, nil]
-        optional :manual, FinchAPI::BooleanModel, nil?: true
+        optional :manual, FinchAPI::Internal::Type::BooleanModel, nil?: true
 
         # @!attribute minutes_to_expire
         #   The number of minutes until the session expires (defaults to 43,200, which is 30
@@ -84,11 +85,11 @@ module FinchAPI
         #     super
         #   end
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
         # The Finch products that can be requested during the Connect flow.
         module Product
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           COMPANY = :company
           DIRECTORY = :directory
@@ -106,7 +107,7 @@ module FinchAPI
           #   def self.values; end
         end
 
-        class Integration < FinchAPI::BaseModel
+        class Integration < FinchAPI::Internal::Type::BaseModel
           # @!attribute auth_method
           #
           #   @return [Symbol, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod, nil]
@@ -125,11 +126,11 @@ module FinchAPI
           #   #
           #   def initialize(auth_method: nil, provider: nil, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
           # @see FinchAPI::Models::Connect::SessionNewParams::Integration#auth_method
           module AuthMethod
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             ASSISTED = :assisted
             CREDENTIAL = :credential
@@ -145,7 +146,7 @@ module FinchAPI
         end
 
         module Sandbox
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           FINCH = :finch
           PROVIDER = :provider

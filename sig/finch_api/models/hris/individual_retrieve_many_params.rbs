@@ -8,7 +8,7 @@ module FinchAPI
         }
         & FinchAPI::Internal::Type::request_parameters
 
-      class IndividualRetrieveManyParams < FinchAPI::BaseModel
+      class IndividualRetrieveManyParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
@@ -30,7 +30,7 @@ module FinchAPI
 
         type options = { include: ::Array[String] }
 
-        class Options < FinchAPI::BaseModel
+        class Options < FinchAPI::Internal::Type::BaseModel
           attr_reader include: ::Array[String]?
 
           def include=: (::Array[String]) -> ::Array[String]
@@ -42,7 +42,7 @@ module FinchAPI
 
         type request = { individual_id: String }
 
-        class Request < FinchAPI::BaseModel
+        class Request < FinchAPI::Internal::Type::BaseModel
           attr_reader individual_id: String?
 
           def individual_id=: (String) -> String

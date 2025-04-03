@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module Sandbox
-      class PaymentCreateParams < FinchAPI::BaseModel
+      class PaymentCreateParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
@@ -18,7 +18,7 @@ module FinchAPI
 
         sig do
           params(
-            pay_statements: T::Array[T.any(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement, FinchAPI::Internal::Util::AnyHash)]
+            pay_statements: T::Array[T.any(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement, FinchAPI::Internal::AnyHash)]
           )
             .void
         end
@@ -33,9 +33,9 @@ module FinchAPI
         sig do
           params(
             end_date: String,
-            pay_statements: T::Array[T.any(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement, FinchAPI::Internal::Util::AnyHash)],
+            pay_statements: T::Array[T.any(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement, FinchAPI::Internal::AnyHash)],
             start_date: String,
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -56,7 +56,7 @@ module FinchAPI
         def to_hash
         end
 
-        class PayStatement < FinchAPI::BaseModel
+        class PayStatement < FinchAPI::Internal::Type::BaseModel
           # The array of earnings objects associated with this pay statement
           sig do
             returns(
@@ -87,7 +87,7 @@ module FinchAPI
           sig { returns(T.nilable(FinchAPI::Models::Money)) }
           attr_reader :gross_pay
 
-          sig { params(gross_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::Util::AnyHash))).void }
+          sig { params(gross_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::AnyHash))).void }
           attr_writer :gross_pay
 
           # A stable Finch `id` (UUID v4) for an individual in the company
@@ -100,7 +100,7 @@ module FinchAPI
           sig { returns(T.nilable(FinchAPI::Models::Money)) }
           attr_reader :net_pay
 
-          sig { params(net_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::Util::AnyHash))).void }
+          sig { params(net_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::AnyHash))).void }
           attr_writer :net_pay
 
           # The payment method.
@@ -124,10 +124,7 @@ module FinchAPI
               earnings: T.nilable(
                 T::Array[
                 T.nilable(
-                  T.any(
-                    FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning,
-                    FinchAPI::Internal::Util::AnyHash
-                  )
+                  T.any(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning, FinchAPI::Internal::AnyHash)
                 )
                 ]
               ),
@@ -136,7 +133,7 @@ module FinchAPI
                 T.nilable(
                   T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                 ]
@@ -146,22 +143,19 @@ module FinchAPI
                 T.nilable(
                   T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                 ]
               ),
-              gross_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::Util::AnyHash)),
+              gross_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::AnyHash)),
               individual_id: String,
-              net_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::Util::AnyHash)),
+              net_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::AnyHash)),
               payment_method: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::OrSymbol),
               taxes: T.nilable(
                 T::Array[
                 T.nilable(
-                  T.any(
-                    FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax,
-                    FinchAPI::Internal::Util::AnyHash
-                  )
+                  T.any(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax, FinchAPI::Internal::AnyHash)
                 )
                 ]
               ),
@@ -208,7 +202,7 @@ module FinchAPI
           def to_hash
           end
 
-          class Earning < FinchAPI::BaseModel
+          class Earning < FinchAPI::Internal::Type::BaseModel
             # The earnings amount in cents.
             sig { returns(T.nilable(Integer)) }
             attr_accessor :amount
@@ -221,7 +215,7 @@ module FinchAPI
                 attributes: T.nilable(
                   T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
               )
@@ -252,7 +246,7 @@ module FinchAPI
                 attributes: T.nilable(
                   T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 ),
                 currency: T.nilable(String),
@@ -281,7 +275,7 @@ module FinchAPI
             def to_hash
             end
 
-            class Attributes < FinchAPI::BaseModel
+            class Attributes < FinchAPI::Internal::Type::BaseModel
               sig do
                 returns(
                   T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::Metadata)
@@ -293,7 +287,7 @@ module FinchAPI
                 params(
                   metadata: T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::Metadata,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .void
@@ -304,7 +298,7 @@ module FinchAPI
                 params(
                   metadata: T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::Metadata,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .returns(T.attached_class)
@@ -321,7 +315,7 @@ module FinchAPI
               def to_hash
               end
 
-              class Metadata < FinchAPI::BaseModel
+              class Metadata < FinchAPI::Internal::Type::BaseModel
                 # The metadata to be attached to the entity by existing rules. It is a key-value
                 #   pairs where the values can be of any type (string, number, boolean, object,
                 #   array, etc.).
@@ -343,7 +337,7 @@ module FinchAPI
 
             # The type of earning.
             module Type
-              extend FinchAPI::Enum
+              extend FinchAPI::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type) }
@@ -409,7 +403,7 @@ module FinchAPI
             end
           end
 
-          class EmployeeDeduction < FinchAPI::BaseModel
+          class EmployeeDeduction < FinchAPI::Internal::Type::BaseModel
             # The deduction amount in cents.
             sig { returns(T.nilable(Integer)) }
             attr_accessor :amount
@@ -426,7 +420,7 @@ module FinchAPI
                 attributes: T.nilable(
                   T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
               )
@@ -456,7 +450,7 @@ module FinchAPI
                 attributes: T.nilable(
                   T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 ),
                 currency: T.nilable(String),
@@ -485,7 +479,7 @@ module FinchAPI
             def to_hash
             end
 
-            class Attributes < FinchAPI::BaseModel
+            class Attributes < FinchAPI::Internal::Type::BaseModel
               sig do
                 returns(
                   T.nilable(
@@ -499,7 +493,7 @@ module FinchAPI
                 params(
                   metadata: T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes::Metadata,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .void
@@ -510,7 +504,7 @@ module FinchAPI
                 params(
                   metadata: T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes::Metadata,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .returns(T.attached_class)
@@ -529,7 +523,7 @@ module FinchAPI
               def to_hash
               end
 
-              class Metadata < FinchAPI::BaseModel
+              class Metadata < FinchAPI::Internal::Type::BaseModel
                 # The metadata to be attached to the entity by existing rules. It is a key-value
                 #   pairs where the values can be of any type (string, number, boolean, object,
                 #   array, etc.).
@@ -550,7 +544,7 @@ module FinchAPI
             end
           end
 
-          class EmployerContribution < FinchAPI::BaseModel
+          class EmployerContribution < FinchAPI::Internal::Type::BaseModel
             # The contribution amount in cents.
             sig { returns(T.nilable(Integer)) }
             attr_accessor :amount
@@ -567,7 +561,7 @@ module FinchAPI
                 attributes: T.nilable(
                   T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
               )
@@ -593,7 +587,7 @@ module FinchAPI
                 attributes: T.nilable(
                   T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 ),
                 currency: T.nilable(String),
@@ -620,7 +614,7 @@ module FinchAPI
             def to_hash
             end
 
-            class Attributes < FinchAPI::BaseModel
+            class Attributes < FinchAPI::Internal::Type::BaseModel
               sig do
                 returns(
                   T.nilable(
@@ -634,7 +628,7 @@ module FinchAPI
                 params(
                   metadata: T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes::Metadata,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .void
@@ -645,7 +639,7 @@ module FinchAPI
                 params(
                   metadata: T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes::Metadata,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .returns(T.attached_class)
@@ -664,7 +658,7 @@ module FinchAPI
               def to_hash
               end
 
-              class Metadata < FinchAPI::BaseModel
+              class Metadata < FinchAPI::Internal::Type::BaseModel
                 # The metadata to be attached to the entity by existing rules. It is a key-value
                 #   pairs where the values can be of any type (string, number, boolean, object,
                 #   array, etc.).
@@ -687,7 +681,7 @@ module FinchAPI
 
           # The payment method.
           module PaymentMethod
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod) }
@@ -718,7 +712,7 @@ module FinchAPI
             end
           end
 
-          class Tax < FinchAPI::BaseModel
+          class Tax < FinchAPI::Internal::Type::BaseModel
             # The tax amount in cents.
             sig { returns(T.nilable(Integer)) }
             attr_accessor :amount
@@ -731,7 +725,7 @@ module FinchAPI
                 attributes: T.nilable(
                   T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
               )
@@ -761,7 +755,7 @@ module FinchAPI
                 attributes: T.nilable(
                   T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 ),
                 currency: T.nilable(String),
@@ -790,7 +784,7 @@ module FinchAPI
             def to_hash
             end
 
-            class Attributes < FinchAPI::BaseModel
+            class Attributes < FinchAPI::Internal::Type::BaseModel
               sig do
                 returns(
                   T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::Metadata)
@@ -802,7 +796,7 @@ module FinchAPI
                 params(
                   metadata: T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::Metadata,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .void
@@ -813,7 +807,7 @@ module FinchAPI
                 params(
                   metadata: T.any(
                     FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::Metadata,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .returns(T.attached_class)
@@ -830,7 +824,7 @@ module FinchAPI
               def to_hash
               end
 
-              class Metadata < FinchAPI::BaseModel
+              class Metadata < FinchAPI::Internal::Type::BaseModel
                 # The metadata to be attached to the entity by existing rules. It is a key-value
                 #   pairs where the values can be of any type (string, number, boolean, object,
                 #   array, etc.).
@@ -852,7 +846,7 @@ module FinchAPI
 
             # The type of taxes.
             module Type
-              extend FinchAPI::Enum
+              extend FinchAPI::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type) }
@@ -885,7 +879,7 @@ module FinchAPI
 
           # The type of the payment associated with the pay statement.
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type) }

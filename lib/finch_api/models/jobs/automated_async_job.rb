@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Jobs
       # @see FinchAPI::Resources::Jobs::Automated#retrieve
-      class AutomatedAsyncJob < FinchAPI::BaseModel
+      class AutomatedAsyncJob < FinchAPI::Internal::Type::BaseModel
         # @!attribute completed_at
         #   The datetime the job completed.
         #
@@ -75,10 +75,10 @@ module FinchAPI
         #   #
         #   def initialize(completed_at:, created_at:, job_id:, job_url:, params:, scheduled_at:, started_at:, status:, type:, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
         # @see FinchAPI::Models::Jobs::AutomatedAsyncJob#params
-        class Params < FinchAPI::BaseModel
+        class Params < FinchAPI::Internal::Type::BaseModel
           # @!attribute [r] individual_id
           #   The ID of the individual that the job was completed for.
           #
@@ -96,12 +96,12 @@ module FinchAPI
           #   #
           #   def initialize(individual_id: nil, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
         end
 
         # @see FinchAPI::Models::Jobs::AutomatedAsyncJob#status
         module Status
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           PENDING = :pending
           IN_PROGRESS = :in_progress
@@ -121,7 +121,7 @@ module FinchAPI
         #
         # @see FinchAPI::Models::Jobs::AutomatedAsyncJob#type
         module Type
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           DATA_SYNC_ALL = :data_sync_all
           W4_FORM_EMPLOYEE_SYNC = :w4_form_employee_sync

@@ -4,11 +4,11 @@ module FinchAPI
   module Models
     module Jobs
       # @see FinchAPI::Resources::Jobs::Automated#list
-      class AutomatedListResponse < FinchAPI::BaseModel
+      class AutomatedListResponse < FinchAPI::Internal::Type::BaseModel
         # @!attribute data
         #
         #   @return [Array<FinchAPI::Models::Jobs::AutomatedAsyncJob>]
-        required :data, -> { FinchAPI::ArrayOf[FinchAPI::Models::Jobs::AutomatedAsyncJob] }
+        required :data, -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Jobs::AutomatedAsyncJob] }
 
         # @!attribute meta
         #
@@ -21,10 +21,10 @@ module FinchAPI
         #   #
         #   def initialize(data:, meta:, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
         # @see FinchAPI::Models::Jobs::AutomatedListResponse#meta
-        class Meta < FinchAPI::BaseModel
+        class Meta < FinchAPI::Internal::Type::BaseModel
           # @!attribute [r] quotas
           #   Information about remaining quotas for this connection. Only applicable for
           #     customers opted in to use Finch's Data Sync Refresh endpoint
@@ -43,10 +43,10 @@ module FinchAPI
           #   #
           #   def initialize(quotas: nil, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
           # @see FinchAPI::Models::Jobs::AutomatedListResponse::Meta#quotas
-          class Quotas < FinchAPI::BaseModel
+          class Quotas < FinchAPI::Internal::Type::BaseModel
             # @!attribute [r] data_sync_all
             #
             #   @return [FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll, nil]
@@ -66,10 +66,10 @@ module FinchAPI
             #   #
             #   def initialize(data_sync_all: nil, **) = super
 
-            # def initialize: (Hash | FinchAPI::BaseModel) -> void
+            # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
             # @see FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas#data_sync_all
-            class DataSyncAll < FinchAPI::BaseModel
+            class DataSyncAll < FinchAPI::Internal::Type::BaseModel
               # @!attribute [r] allowed_refreshes
               #
               #   @return [Integer, nil]
@@ -94,7 +94,7 @@ module FinchAPI
               #   #
               #   def initialize(allowed_refreshes: nil, remaining_refreshes: nil, **) = super
 
-              # def initialize: (Hash | FinchAPI::BaseModel) -> void
+              # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
             end
           end
         end

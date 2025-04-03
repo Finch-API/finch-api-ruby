@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module Sandbox
-      class CompanyUpdateParams < FinchAPI::BaseModel
+      class CompanyUpdateParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
@@ -25,9 +25,7 @@ module FinchAPI
 
         sig do
           params(
-            entity: T.nilable(
-              T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity, FinchAPI::Internal::Util::AnyHash)
-            )
+            entity: T.nilable(T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity, FinchAPI::Internal::AnyHash))
           )
             .void
         end
@@ -51,24 +49,18 @@ module FinchAPI
         sig do
           params(
             accounts: T.nilable(
-              T::Array[T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Account, FinchAPI::Internal::Util::AnyHash)]
+              T::Array[T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Account, FinchAPI::Internal::AnyHash)]
             ),
             departments: T.nilable(
-              T::Array[
-              T.nilable(
-                T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Department, FinchAPI::Internal::Util::AnyHash)
-              )
-              ]
+              T::Array[T.nilable(T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Department, FinchAPI::Internal::AnyHash))]
             ),
             ein: T.nilable(String),
-            entity: T.nilable(
-              T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity, FinchAPI::Internal::Util::AnyHash)
-            ),
+            entity: T.nilable(T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity, FinchAPI::Internal::AnyHash)),
             legal_name: T.nilable(String),
-            locations: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::Util::AnyHash))]),
+            locations: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::AnyHash))]),
             primary_email: T.nilable(String),
             primary_phone_number: T.nilable(String),
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -104,7 +96,7 @@ module FinchAPI
         def to_hash
         end
 
-        class Account < FinchAPI::BaseModel
+        class Account < FinchAPI::Internal::Type::BaseModel
           # The name of the bank associated in the payroll/HRIS system.
           sig { returns(T.nilable(String)) }
           attr_accessor :account_name
@@ -162,7 +154,7 @@ module FinchAPI
 
           # The type of bank account.
           module AccountType
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::CompanyUpdateParams::Account::AccountType) }
@@ -183,7 +175,7 @@ module FinchAPI
           end
         end
 
-        class Department < FinchAPI::BaseModel
+        class Department < FinchAPI::Internal::Type::BaseModel
           # The department name.
           sig { returns(T.nilable(String)) }
           attr_accessor :name
@@ -195,10 +187,7 @@ module FinchAPI
           sig do
             params(
               parent: T.nilable(
-                T.any(
-                  FinchAPI::Models::Sandbox::CompanyUpdateParams::Department::Parent,
-                  FinchAPI::Internal::Util::AnyHash
-                )
+                T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Department::Parent, FinchAPI::Internal::AnyHash)
               )
             )
               .void
@@ -209,10 +198,7 @@ module FinchAPI
             params(
               name: T.nilable(String),
               parent: T.nilable(
-                T.any(
-                  FinchAPI::Models::Sandbox::CompanyUpdateParams::Department::Parent,
-                  FinchAPI::Internal::Util::AnyHash
-                )
+                T.any(FinchAPI::Models::Sandbox::CompanyUpdateParams::Department::Parent, FinchAPI::Internal::AnyHash)
               )
             )
               .returns(T.attached_class)
@@ -232,7 +218,7 @@ module FinchAPI
           def to_hash
           end
 
-          class Parent < FinchAPI::BaseModel
+          class Parent < FinchAPI::Internal::Type::BaseModel
             # The parent department's name.
             sig { returns(T.nilable(String)) }
             attr_accessor :name
@@ -248,7 +234,7 @@ module FinchAPI
           end
         end
 
-        class Entity < FinchAPI::BaseModel
+        class Entity < FinchAPI::Internal::Type::BaseModel
           # The tax payer subtype of the company.
           sig { returns(T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Subtype::OrSymbol)) }
           attr_accessor :subtype
@@ -282,7 +268,7 @@ module FinchAPI
 
           # The tax payer subtype of the company.
           module Subtype
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Subtype) }
@@ -303,7 +289,7 @@ module FinchAPI
 
           # The tax payer type of the company.
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type) }

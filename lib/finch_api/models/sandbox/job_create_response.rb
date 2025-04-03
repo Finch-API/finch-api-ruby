@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Sandbox
       # @see FinchAPI::Resources::Sandbox::Jobs#create
-      class JobCreateResponse < FinchAPI::BaseModel
+      class JobCreateResponse < FinchAPI::Internal::Type::BaseModel
         # @!attribute allowed_refreshes
         #   The number of allowed refreshes per hour (per hour, fixed window)
         #
@@ -37,7 +37,7 @@ module FinchAPI
         #   #
         #   def initialize(allowed_refreshes:, job_id:, job_url:, remaining_refreshes:, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
       end
     end
   end

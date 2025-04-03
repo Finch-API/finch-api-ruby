@@ -4,7 +4,7 @@ module FinchAPI
       type session_reauthenticate_response =
         { connect_url: String, session_id: String }
 
-      class SessionReauthenticateResponse < FinchAPI::BaseModel
+      class SessionReauthenticateResponse < FinchAPI::Internal::Type::BaseModel
         attr_accessor connect_url: String
 
         attr_accessor session_id: String

@@ -20,7 +20,7 @@ module FinchAPI
         username: String
       }
 
-    class Introspection < FinchAPI::BaseModel
+    class Introspection < FinchAPI::Internal::Type::BaseModel
       attr_accessor account_id: String
 
       attr_accessor authentication_methods: ::Array[FinchAPI::Models::Introspection::AuthenticationMethod]
@@ -81,7 +81,7 @@ module FinchAPI
           type: FinchAPI::Models::Introspection::AuthenticationMethod::type_
         }
 
-      class AuthenticationMethod < FinchAPI::BaseModel
+      class AuthenticationMethod < FinchAPI::Internal::Type::BaseModel
         attr_reader connection_status: FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus?
 
         def connection_status=: (
@@ -109,7 +109,7 @@ module FinchAPI
         type connection_status =
           { message: String, status: FinchAPI::Models::connection_status_type }
 
-        class ConnectionStatus < FinchAPI::BaseModel
+        class ConnectionStatus < FinchAPI::Internal::Type::BaseModel
           attr_reader message: String?
 
           def message=: (String) -> String
@@ -132,7 +132,7 @@ module FinchAPI
           :assisted | :credential | :api_token | :api_credential | :oauth
 
         module Type
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           ASSISTED: :assisted
           CREDENTIAL: :credential
@@ -147,7 +147,7 @@ module FinchAPI
       type client_type = :production | :development | :sandbox
 
       module ClientType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         PRODUCTION: :production
         DEVELOPMENT: :development
@@ -163,7 +163,7 @@ module FinchAPI
           status: FinchAPI::Models::connection_status_type
         }
 
-      class ConnectionStatus < FinchAPI::BaseModel
+      class ConnectionStatus < FinchAPI::Internal::Type::BaseModel
         attr_reader last_successful_sync: Time?
 
         def last_successful_sync=: (Time) -> Time
@@ -190,7 +190,7 @@ module FinchAPI
       type connection_type = :provider | :finch
 
       module ConnectionType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         PROVIDER: :provider
         FINCH: :finch

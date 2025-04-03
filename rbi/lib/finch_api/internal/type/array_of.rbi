@@ -17,11 +17,11 @@ module FinchAPI
         sig(:final) do
           params(
             type_info: T.any(
-              FinchAPI::Internal::Util::AnyHash,
+              FinchAPI::Internal::AnyHash,
               T.proc.returns(FinchAPI::Internal::Type::Converter::Input),
               FinchAPI::Internal::Type::Converter::Input
             ),
-            spec: FinchAPI::Internal::Util::AnyHash
+            spec: FinchAPI::Internal::AnyHash
           )
             .returns(T.attached_class)
         end
@@ -72,11 +72,11 @@ module FinchAPI
         sig(:final) do
           params(
             type_info: T.any(
-              FinchAPI::Internal::Util::AnyHash,
+              FinchAPI::Internal::AnyHash,
               T.proc.returns(FinchAPI::Internal::Type::Converter::Input),
               FinchAPI::Internal::Type::Converter::Input
             ),
-            spec: FinchAPI::Internal::Util::AnyHash
+            spec: FinchAPI::Internal::AnyHash
           )
             .void
         end

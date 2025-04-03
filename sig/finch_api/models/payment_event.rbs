@@ -28,7 +28,7 @@ module FinchAPI
 
       type data = { pay_date: String, payment_id: String }
 
-      class Data < FinchAPI::BaseModel
+      class Data < FinchAPI::Internal::Type::BaseModel
         attr_accessor pay_date: String
 
         attr_accessor payment_id: String
@@ -42,7 +42,7 @@ module FinchAPI
         :"payment.created" | :"payment.updated" | :"payment.deleted"
 
       module EventType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         PAYMENT_CREATED: :"payment.created"
         PAYMENT_UPDATED: :"payment.updated"

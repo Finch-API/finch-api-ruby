@@ -5,7 +5,7 @@ module FinchAPI
     module Sandbox
       module Jobs
         ConfigurationRetrieveResponse =
-          FinchAPI::ArrayOf[-> { FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration }]
+          FinchAPI::Internal::Type::ArrayOf[-> { FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration }]
       end
     end
   end

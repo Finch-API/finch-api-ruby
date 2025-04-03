@@ -10,7 +10,7 @@ module FinchAPI
         }
         & FinchAPI::Internal::Type::request_parameters
 
-      class ConnectionCreateParams < FinchAPI::BaseModel
+      class ConnectionCreateParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
@@ -43,7 +43,7 @@ module FinchAPI
         type authentication_type = :credential | :api_token | :oauth | :assisted
 
         module AuthenticationType
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           CREDENTIAL: :credential
           API_TOKEN: :api_token

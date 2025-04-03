@@ -14,7 +14,7 @@ module FinchAPI
         token_type: String
       }
 
-    class CreateAccessTokenResponse < FinchAPI::BaseModel
+    class CreateAccessTokenResponse < FinchAPI::Internal::Type::BaseModel
       attr_accessor access_token: String
 
       attr_accessor account_id: String
@@ -55,7 +55,7 @@ module FinchAPI
       type client_type = :production | :development | :sandbox
 
       module ClientType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         PRODUCTION: :production
         DEVELOPMENT: :development
@@ -67,7 +67,7 @@ module FinchAPI
       type connection_type = :provider | :finch
 
       module ConnectionType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         PROVIDER: :provider
         FINCH: :finch

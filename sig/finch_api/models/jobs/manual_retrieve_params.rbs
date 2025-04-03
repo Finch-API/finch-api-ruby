@@ -4,7 +4,7 @@ module FinchAPI
       type manual_retrieve_params =
         {  } & FinchAPI::Internal::Type::request_parameters
 
-      class ManualRetrieveParams < FinchAPI::BaseModel
+      class ManualRetrieveParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 

@@ -22,7 +22,7 @@ class FinchAPI::Test::Resources::HRIS::DirectoryTest < FinchAPI::Test::ResourceT
         id: String | nil,
         department: FinchAPI::Models::HRIS::IndividualInDirectory::Department | nil,
         first_name: String | nil,
-        is_active: FinchAPI::BooleanModel | nil,
+        is_active: FinchAPI::Internal::Type::BooleanModel | nil,
         last_name: String | nil,
         manager: FinchAPI::Models::HRIS::IndividualInDirectory::Manager | nil,
         middle_name: String | nil
@@ -49,7 +49,7 @@ class FinchAPI::Test::Resources::HRIS::DirectoryTest < FinchAPI::Test::ResourceT
         id: String | nil,
         department: FinchAPI::Models::HRIS::IndividualInDirectory::Department | nil,
         first_name: String | nil,
-        is_active: FinchAPI::BooleanModel | nil,
+        is_active: FinchAPI::Internal::Type::BooleanModel | nil,
         last_name: String | nil,
         manager: FinchAPI::Models::HRIS::IndividualInDirectory::Manager | nil,
         middle_name: String | nil

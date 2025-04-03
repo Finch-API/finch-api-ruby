@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Connect
       # @see FinchAPI::Resources::Connect::Sessions#reauthenticate
-      class SessionReauthenticateParams < FinchAPI::BaseModel
+      class SessionReauthenticateParams < FinchAPI::Internal::Type::BaseModel
         # @!parse
         #   extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
@@ -27,7 +27,7 @@ module FinchAPI
         #
         #   @return [Array<Symbol, FinchAPI::Models::Connect::SessionReauthenticateParams::Product>, nil]
         optional :products,
-                 -> { FinchAPI::ArrayOf[enum: FinchAPI::Models::Connect::SessionReauthenticateParams::Product] },
+                 -> { FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::Connect::SessionReauthenticateParams::Product] },
                  nil?: true
 
         # @!attribute redirect_uri
@@ -45,11 +45,11 @@ module FinchAPI
         #   #
         #   def initialize(connection_id:, minutes_to_expire: nil, products: nil, redirect_uri: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
         # The Finch products that can be requested during the Connect flow.
         module Product
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           COMPANY = :company
           DIRECTORY = :directory

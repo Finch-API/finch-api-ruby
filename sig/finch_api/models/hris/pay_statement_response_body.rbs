@@ -7,7 +7,7 @@ module FinchAPI
           pay_statements: ::Array[FinchAPI::Models::HRIS::PayStatement]
         }
 
-      class PayStatementResponseBody < FinchAPI::BaseModel
+      class PayStatementResponseBody < FinchAPI::Internal::Type::BaseModel
         attr_reader paging: FinchAPI::Models::Paging?
 
         def paging=: (FinchAPI::Models::Paging) -> FinchAPI::Models::Paging

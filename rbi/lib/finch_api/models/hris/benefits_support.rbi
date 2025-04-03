@@ -3,13 +3,13 @@
 module FinchAPI
   module Models
     module HRIS
-      class BenefitsSupport < FinchAPI::BaseModel
+      class BenefitsSupport < FinchAPI::Internal::Type::BaseModel
         sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations)) }
         attr_reader :commuter
 
         sig do
           params(
-            commuter: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::Util::AnyHash))
+            commuter: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash))
           )
             .void
         end
@@ -20,7 +20,7 @@ module FinchAPI
 
         sig do
           params(
-            custom_post_tax: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::Util::AnyHash))
+            custom_post_tax: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash))
           )
             .void
         end
@@ -31,7 +31,7 @@ module FinchAPI
 
         sig do
           params(
-            custom_pre_tax: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::Util::AnyHash))
+            custom_pre_tax: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash))
           )
             .void
         end
@@ -42,7 +42,7 @@ module FinchAPI
 
         sig do
           params(
-            fsa_dependent_care: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::Util::AnyHash))
+            fsa_dependent_care: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash))
           )
             .void
         end
@@ -53,7 +53,7 @@ module FinchAPI
 
         sig do
           params(
-            fsa_medical: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::Util::AnyHash))
+            fsa_medical: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash))
           )
             .void
         end
@@ -64,7 +64,7 @@ module FinchAPI
 
         sig do
           params(
-            hsa_post: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::Util::AnyHash))
+            hsa_post: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash))
           )
             .void
         end
@@ -75,7 +75,7 @@ module FinchAPI
 
         sig do
           params(
-            hsa_pre: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::Util::AnyHash))
+            hsa_pre: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash))
           )
             .void
         end
@@ -86,7 +86,7 @@ module FinchAPI
 
         sig do
           params(
-            s125_dental: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::Util::AnyHash))
+            s125_dental: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash))
           )
             .void
         end
@@ -97,7 +97,7 @@ module FinchAPI
 
         sig do
           params(
-            s125_medical: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::Util::AnyHash))
+            s125_medical: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash))
           )
             .void
         end
@@ -108,7 +108,7 @@ module FinchAPI
 
         sig do
           params(
-            s125_vision: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::Util::AnyHash))
+            s125_vision: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash))
           )
             .void
         end
@@ -119,7 +119,7 @@ module FinchAPI
 
         sig do
           params(
-            simple: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::Util::AnyHash))
+            simple: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash))
           )
             .void
         end
@@ -130,7 +130,7 @@ module FinchAPI
 
         sig do
           params(
-            simple_ira: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::Util::AnyHash))
+            simple_ira: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash))
           )
             .void
         end
@@ -140,18 +140,18 @@ module FinchAPI
         #   supported, the property will be null
         sig do
           params(
-            commuter: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::Util::AnyHash)),
-            custom_post_tax: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::Util::AnyHash)),
-            custom_pre_tax: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::Util::AnyHash)),
-            fsa_dependent_care: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::Util::AnyHash)),
-            fsa_medical: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::Util::AnyHash)),
-            hsa_post: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::Util::AnyHash)),
-            hsa_pre: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::Util::AnyHash)),
-            s125_dental: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::Util::AnyHash)),
-            s125_medical: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::Util::AnyHash)),
-            s125_vision: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::Util::AnyHash)),
-            simple: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::Util::AnyHash)),
-            simple_ira: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::Util::AnyHash))
+            commuter: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash)),
+            custom_post_tax: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash)),
+            custom_pre_tax: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash)),
+            fsa_dependent_care: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash)),
+            fsa_medical: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash)),
+            hsa_post: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash)),
+            hsa_pre: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash)),
+            s125_dental: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash)),
+            s125_medical: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash)),
+            s125_vision: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash)),
+            simple: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash)),
+            simple_ira: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash))
           )
             .returns(T.attached_class)
         end

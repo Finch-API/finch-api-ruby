@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     # @see FinchAPI::Resources::Account#introspect
-    class Introspection < FinchAPI::BaseModel
+    class Introspection < FinchAPI::Internal::Type::BaseModel
       # @!attribute account_id
       #   [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection
       #     instead of this account ID.
@@ -15,7 +15,7 @@ module FinchAPI
       #
       #   @return [Array<FinchAPI::Models::Introspection::AuthenticationMethod>]
       required :authentication_methods,
-               -> { FinchAPI::ArrayOf[FinchAPI::Models::Introspection::AuthenticationMethod] }
+               -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Introspection::AuthenticationMethod] }
 
       # @!attribute client_id
       #   The client ID of the application associated with the `access_token`.
@@ -83,7 +83,7 @@ module FinchAPI
       #     automated)
       #
       #   @return [Boolean]
-      required :manual, FinchAPI::BooleanModel
+      required :manual, FinchAPI::Internal::Type::BooleanModel
 
       # @!attribute payroll_provider_id
       #   [DEPRECATED] Use `provider_id` to identify the provider instead of this payroll
@@ -96,7 +96,7 @@ module FinchAPI
       #   An array of the authorized products associated with the `access_token`.
       #
       #   @return [Array<String>]
-      required :products, FinchAPI::ArrayOf[String]
+      required :products, FinchAPI::Internal::Type::ArrayOf[String]
 
       # @!attribute provider_id
       #   The ID of the provider associated with the `access_token`.
@@ -150,9 +150,9 @@ module FinchAPI
       #     super
       #   end
 
-      # def initialize: (Hash | FinchAPI::BaseModel) -> void
+      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
-      class AuthenticationMethod < FinchAPI::BaseModel
+      class AuthenticationMethod < FinchAPI::Internal::Type::BaseModel
         # @!attribute [r] connection_status
         #
         #   @return [FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus, nil]
@@ -167,7 +167,7 @@ module FinchAPI
         #   An array of the authorized products associated with the `access_token`.
         #
         #   @return [Array<String>, nil]
-        optional :products, FinchAPI::ArrayOf[String]
+        optional :products, FinchAPI::Internal::Type::ArrayOf[String]
 
         # @!parse
         #   # @return [Array<String>]
@@ -190,10 +190,10 @@ module FinchAPI
         #   #
         #   def initialize(connection_status: nil, products: nil, type: nil, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
         # @see FinchAPI::Models::Introspection::AuthenticationMethod#connection_status
-        class ConnectionStatus < FinchAPI::BaseModel
+        class ConnectionStatus < FinchAPI::Internal::Type::BaseModel
           # @!attribute [r] message
           #
           #   @return [String, nil]
@@ -218,14 +218,14 @@ module FinchAPI
           #   #
           #   def initialize(message: nil, status: nil, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
         end
 
         # The type of authentication method.
         #
         # @see FinchAPI::Models::Introspection::AuthenticationMethod#type
         module Type
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           ASSISTED = :assisted
           CREDENTIAL = :credential
@@ -245,7 +245,7 @@ module FinchAPI
       #
       # @see FinchAPI::Models::Introspection#client_type
       module ClientType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         PRODUCTION = :production
         DEVELOPMENT = :development
@@ -259,7 +259,7 @@ module FinchAPI
       end
 
       # @see FinchAPI::Models::Introspection#connection_status
-      class ConnectionStatus < FinchAPI::BaseModel
+      class ConnectionStatus < FinchAPI::Internal::Type::BaseModel
         # @!attribute [r] last_successful_sync
         #   The datetime when the connection was last successfully synced.
         #
@@ -295,7 +295,7 @@ module FinchAPI
         #   #
         #   def initialize(last_successful_sync: nil, message: nil, status: nil, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
       end
 
       # The type of the connection associated with the token.
@@ -305,7 +305,7 @@ module FinchAPI
       #
       # @see FinchAPI::Models::Introspection#connection_type
       module ConnectionType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         PROVIDER = :provider
         FINCH = :finch

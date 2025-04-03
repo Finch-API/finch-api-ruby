@@ -2,7 +2,7 @@
 
 module FinchAPI
   module Models
-    class OperationSupportMatrix < FinchAPI::BaseModel
+    class OperationSupportMatrix < FinchAPI::Internal::Type::BaseModel
       # @!attribute [r] create
       #   - `supported`: This operation is supported by both the provider and Finch
       #     - `not_supported_by_finch`: This operation is not supported by Finch but
@@ -75,7 +75,7 @@ module FinchAPI
       #   #
       #   def initialize(create: nil, delete: nil, read: nil, update: nil, **) = super
 
-      # def initialize: (Hash | FinchAPI::BaseModel) -> void
+      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
     end
   end
 end

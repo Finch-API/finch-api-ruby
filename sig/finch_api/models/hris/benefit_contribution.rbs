@@ -7,7 +7,7 @@ module FinchAPI
           type: FinchAPI::Models::HRIS::BenefitContribution::type_?
         }
 
-      class BenefitContribution < FinchAPI::BaseModel
+      class BenefitContribution < FinchAPI::Internal::Type::BaseModel
         attr_accessor amount: Integer?
 
         attr_accessor type: FinchAPI::Models::HRIS::BenefitContribution::type_?
@@ -22,7 +22,7 @@ module FinchAPI
         type type_ = :fixed | :percent
 
         module Type
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           FIXED: :fixed
           PERCENT: :percent

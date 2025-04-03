@@ -5,7 +5,7 @@ module FinchAPI
     module HRIS
       # Type of benefit.
       module BenefitType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::BenefitType) }
         OrSymbol = T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::BenefitType::TaggedSymbol) }

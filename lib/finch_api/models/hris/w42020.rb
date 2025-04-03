@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
-      class W42020 < FinchAPI::BaseModel
+      class W42020 < FinchAPI::Internal::Type::BaseModel
         # @!attribute [r] data
         #   Detailed information specific to the 2020 W4 form.
         #
@@ -40,10 +40,10 @@ module FinchAPI
         #   #
         #   def initialize(data: nil, type: nil, year: nil, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
         # @see FinchAPI::Models::HRIS::W42020#data
-        class Data < FinchAPI::BaseModel
+        class Data < FinchAPI::Internal::Type::BaseModel
           # @!attribute amount_for_other_dependents
           #   Amount claimed for dependents other than qualifying children under 17 (in
           #     cents).
@@ -123,13 +123,13 @@ module FinchAPI
           #     super
           #   end
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
           # The individual's filing status for tax purposes.
           #
           # @see FinchAPI::Models::HRIS::W42020::Data#filing_status
           module FilingStatus
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             HEAD_OF_HOUSEHOLD = :head_of_household
             MARRIED_FILING_JOINTLY_OR_QUALIFYING_SURVIVING_SPOUSE =
@@ -148,7 +148,7 @@ module FinchAPI
         #
         # @see FinchAPI::Models::HRIS::W42020#type
         module Type
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           W4_2020 = :w4_2020
 

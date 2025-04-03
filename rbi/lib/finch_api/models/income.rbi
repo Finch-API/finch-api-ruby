@@ -2,7 +2,7 @@
 
 module FinchAPI
   module Models
-    class Income < FinchAPI::BaseModel
+    class Income < FinchAPI::Internal::Type::BaseModel
       # The income amount in cents.
       sig { returns(T.nilable(Integer)) }
       attr_accessor :amount
@@ -52,7 +52,7 @@ module FinchAPI
       # The income unit of payment. Options: `yearly`, `quarterly`, `monthly`,
       #   `semi_monthly`, `bi_weekly`, `weekly`, `daily`, `hourly`, and `fixed`.
       module Unit
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Income::Unit) }
         OrSymbol = T.type_alias { T.any(Symbol, String, FinchAPI::Models::Income::Unit::TaggedSymbol) }

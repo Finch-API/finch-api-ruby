@@ -10,7 +10,7 @@ module FinchAPI
     #   - `client_access_only`: This behavior is supported by the provider, but only
     #     available to the client and not to Finch
     module OperationSupport
-      extend FinchAPI::Enum
+      extend FinchAPI::Internal::Type::Enum
 
       SUPPORTED = :supported
       NOT_SUPPORTED_BY_FINCH = :not_supported_by_finch

@@ -15,7 +15,7 @@ module FinchAPI
           type: FinchAPI::Models::HRIS::PayStatement::type_?
         }
 
-      class PayStatement < FinchAPI::BaseModel
+      class PayStatement < FinchAPI::Internal::Type::BaseModel
         attr_accessor earnings: ::Array[FinchAPI::Models::HRIS::PayStatement::Earning?]?
 
         attr_accessor employee_deductions: ::Array[FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction?]?
@@ -63,7 +63,7 @@ module FinchAPI
             type: FinchAPI::Models::HRIS::PayStatement::Earning::type_?
           }
 
-        class Earning < FinchAPI::BaseModel
+        class Earning < FinchAPI::Internal::Type::BaseModel
           attr_accessor amount: Integer?
 
           attr_accessor attributes: FinchAPI::Models::HRIS::PayStatement::Earning::Attributes?
@@ -92,7 +92,7 @@ module FinchAPI
               metadata: FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata
             }
 
-          class Attributes < FinchAPI::BaseModel
+          class Attributes < FinchAPI::Internal::Type::BaseModel
             attr_reader metadata: FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata?
 
             def metadata=: (
@@ -107,7 +107,7 @@ module FinchAPI
 
             type metadata = { metadata: ::Hash[Symbol, top] }
 
-            class Metadata < FinchAPI::BaseModel
+            class Metadata < FinchAPI::Internal::Type::BaseModel
               attr_reader metadata: ::Hash[Symbol, top]?
 
               def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
@@ -134,7 +134,7 @@ module FinchAPI
             | :other
 
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             SALARY: :salary
             WAGE: :wage
@@ -164,7 +164,7 @@ module FinchAPI
             type: FinchAPI::Models::HRIS::benefit_type?
           }
 
-        class EmployeeDeduction < FinchAPI::BaseModel
+        class EmployeeDeduction < FinchAPI::Internal::Type::BaseModel
           attr_accessor amount: Integer?
 
           attr_accessor attributes: FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes?
@@ -193,7 +193,7 @@ module FinchAPI
               metadata: FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata
             }
 
-          class Attributes < FinchAPI::BaseModel
+          class Attributes < FinchAPI::Internal::Type::BaseModel
             attr_reader metadata: FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata?
 
             def metadata=: (
@@ -208,7 +208,7 @@ module FinchAPI
 
             type metadata = { metadata: ::Hash[Symbol, top] }
 
-            class Metadata < FinchAPI::BaseModel
+            class Metadata < FinchAPI::Internal::Type::BaseModel
               attr_reader metadata: ::Hash[Symbol, top]?
 
               def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
@@ -229,7 +229,7 @@ module FinchAPI
             type: FinchAPI::Models::HRIS::benefit_type?
           }
 
-        class EmployerContribution < FinchAPI::BaseModel
+        class EmployerContribution < FinchAPI::Internal::Type::BaseModel
           attr_accessor amount: Integer?
 
           attr_accessor attributes: FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes?
@@ -255,7 +255,7 @@ module FinchAPI
               metadata: FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata
             }
 
-          class Attributes < FinchAPI::BaseModel
+          class Attributes < FinchAPI::Internal::Type::BaseModel
             attr_reader metadata: FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata?
 
             def metadata=: (
@@ -270,7 +270,7 @@ module FinchAPI
 
             type metadata = { metadata: ::Hash[Symbol, top] }
 
-            class Metadata < FinchAPI::BaseModel
+            class Metadata < FinchAPI::Internal::Type::BaseModel
               attr_reader metadata: ::Hash[Symbol, top]?
 
               def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
@@ -285,7 +285,7 @@ module FinchAPI
         type payment_method = :check | :direct_deposit
 
         module PaymentMethod
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           CHECK: :check
           DIRECT_DEPOSIT: :direct_deposit
@@ -303,7 +303,7 @@ module FinchAPI
             type: FinchAPI::Models::HRIS::PayStatement::Tax::type_?
           }
 
-        class Tax < FinchAPI::BaseModel
+        class Tax < FinchAPI::Internal::Type::BaseModel
           attr_accessor amount: Integer?
 
           attr_accessor attributes: FinchAPI::Models::HRIS::PayStatement::Tax::Attributes?
@@ -332,7 +332,7 @@ module FinchAPI
               metadata: FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata
             }
 
-          class Attributes < FinchAPI::BaseModel
+          class Attributes < FinchAPI::Internal::Type::BaseModel
             attr_reader metadata: FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata?
 
             def metadata=: (
@@ -347,7 +347,7 @@ module FinchAPI
 
             type metadata = { metadata: ::Hash[Symbol, top] }
 
-            class Metadata < FinchAPI::BaseModel
+            class Metadata < FinchAPI::Internal::Type::BaseModel
               attr_reader metadata: ::Hash[Symbol, top]?
 
               def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
@@ -361,7 +361,7 @@ module FinchAPI
           type type_ = :state | :federal | :local | :fica
 
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             STATE: :state
             FEDERAL: :federal
@@ -375,7 +375,7 @@ module FinchAPI
         type type_ = :regular_payroll | :off_cycle_payroll | :one_time_payment
 
         module Type
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           REGULAR_PAYROLL: :regular_payroll
           OFF_CYCLE_PAYROLL: :off_cycle_payroll

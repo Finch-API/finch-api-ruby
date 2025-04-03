@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
-      class HRISCompany < FinchAPI::BaseModel
+      class HRISCompany < FinchAPI::Internal::Type::BaseModel
         # A stable Finch `id` (UUID v4) for the company.
         sig { returns(String) }
         attr_accessor :id
@@ -25,9 +25,7 @@ module FinchAPI
         attr_reader :entity
 
         sig do
-          params(
-            entity: T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Entity, FinchAPI::Internal::Util::AnyHash))
-          )
+          params(entity: T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Entity, FinchAPI::Internal::AnyHash)))
             .void
         end
         attr_writer :entity
@@ -50,16 +48,14 @@ module FinchAPI
         sig do
           params(
             id: String,
-            accounts: T.nilable(
-              T::Array[T.any(FinchAPI::Models::HRIS::HRISCompany::Account, FinchAPI::Internal::Util::AnyHash)]
-            ),
+            accounts: T.nilable(T::Array[T.any(FinchAPI::Models::HRIS::HRISCompany::Account, FinchAPI::Internal::AnyHash)]),
             departments: T.nilable(
-              T::Array[T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Department, FinchAPI::Internal::Util::AnyHash))]
+              T::Array[T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Department, FinchAPI::Internal::AnyHash))]
             ),
             ein: T.nilable(String),
-            entity: T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Entity, FinchAPI::Internal::Util::AnyHash)),
+            entity: T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Entity, FinchAPI::Internal::AnyHash)),
             legal_name: T.nilable(String),
-            locations: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::Util::AnyHash))]),
+            locations: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::AnyHash))]),
             primary_email: T.nilable(String),
             primary_phone_number: T.nilable(String)
           )
@@ -97,7 +93,7 @@ module FinchAPI
         def to_hash
         end
 
-        class Account < FinchAPI::BaseModel
+        class Account < FinchAPI::Internal::Type::BaseModel
           # The name of the bank associated in the payroll/HRIS system.
           sig { returns(T.nilable(String)) }
           attr_accessor :account_name
@@ -155,7 +151,7 @@ module FinchAPI
 
           # The type of bank account.
           module AccountType
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::HRISCompany::Account::AccountType) }
             OrSymbol =
@@ -170,7 +166,7 @@ module FinchAPI
           end
         end
 
-        class Department < FinchAPI::BaseModel
+        class Department < FinchAPI::Internal::Type::BaseModel
           # The department name.
           sig { returns(T.nilable(String)) }
           attr_accessor :name
@@ -181,9 +177,7 @@ module FinchAPI
 
           sig do
             params(
-              parent: T.nilable(
-                T.any(FinchAPI::Models::HRIS::HRISCompany::Department::Parent, FinchAPI::Internal::Util::AnyHash)
-              )
+              parent: T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Department::Parent, FinchAPI::Internal::AnyHash))
             )
               .void
           end
@@ -192,9 +186,7 @@ module FinchAPI
           sig do
             params(
               name: T.nilable(String),
-              parent: T.nilable(
-                T.any(FinchAPI::Models::HRIS::HRISCompany::Department::Parent, FinchAPI::Internal::Util::AnyHash)
-              )
+              parent: T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Department::Parent, FinchAPI::Internal::AnyHash))
             )
               .returns(T.attached_class)
           end
@@ -210,7 +202,7 @@ module FinchAPI
           def to_hash
           end
 
-          class Parent < FinchAPI::BaseModel
+          class Parent < FinchAPI::Internal::Type::BaseModel
             # The parent department's name.
             sig { returns(T.nilable(String)) }
             attr_accessor :name
@@ -226,7 +218,7 @@ module FinchAPI
           end
         end
 
-        class Entity < FinchAPI::BaseModel
+        class Entity < FinchAPI::Internal::Type::BaseModel
           # The tax payer subtype of the company.
           sig { returns(T.nilable(FinchAPI::Models::HRIS::HRISCompany::Entity::Subtype::TaggedSymbol)) }
           attr_accessor :subtype
@@ -260,7 +252,7 @@ module FinchAPI
 
           # The tax payer subtype of the company.
           module Subtype
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::HRISCompany::Entity::Subtype) }
             OrSymbol =
@@ -277,7 +269,7 @@ module FinchAPI
 
           # The tax payer type of the company.
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::HRISCompany::Entity::Type) }
             OrSymbol =

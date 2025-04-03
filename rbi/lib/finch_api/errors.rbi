@@ -143,32 +143,4 @@ module FinchAPI
       HTTP_STATUS = T.let((500..), T::Range[Integer])
     end
   end
-
-  Error = FinchAPI::Errors::Error
-
-  ConversionError = FinchAPI::Errors::ConversionError
-
-  APIError = FinchAPI::Errors::APIError
-
-  APIStatusError = FinchAPI::Errors::APIStatusError
-
-  APIConnectionError = FinchAPI::Errors::APIConnectionError
-
-  APITimeoutError = FinchAPI::Errors::APITimeoutError
-
-  BadRequestError = FinchAPI::Errors::BadRequestError
-
-  AuthenticationError = FinchAPI::Errors::AuthenticationError
-
-  PermissionDeniedError = FinchAPI::Errors::PermissionDeniedError
-
-  NotFoundError = FinchAPI::Errors::NotFoundError
-
-  ConflictError = FinchAPI::Errors::ConflictError
-
-  UnprocessableEntityError = FinchAPI::Errors::UnprocessableEntityError
-
-  RateLimitError = FinchAPI::Errors::RateLimitError
-
-  InternalServerError = FinchAPI::Errors::InternalServerError
 end

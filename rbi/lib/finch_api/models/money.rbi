@@ -2,7 +2,7 @@
 
 module FinchAPI
   module Models
-    class Money < FinchAPI::BaseModel
+    class Money < FinchAPI::Internal::Type::BaseModel
       # Amount for money object (in cents)
       sig { returns(T.nilable(Integer)) }
       attr_accessor :amount
