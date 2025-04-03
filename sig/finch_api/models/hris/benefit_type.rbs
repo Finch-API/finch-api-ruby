@@ -23,7 +23,7 @@ module FinchAPI
         | :custom_pre_tax
 
       module BenefitType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         BENEFIT_TYPE_401K: :"401k"
         BENEFIT_TYPE_401K_ROTH: :"401k_roth"

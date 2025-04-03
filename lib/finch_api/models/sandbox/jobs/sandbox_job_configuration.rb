@@ -5,7 +5,7 @@ module FinchAPI
     module Sandbox
       module Jobs
         # @see FinchAPI::Resources::Sandbox::Jobs::Configuration#update
-        class SandboxJobConfiguration < FinchAPI::BaseModel
+        class SandboxJobConfiguration < FinchAPI::Internal::Type::BaseModel
           # @!attribute completion_status
           #
           #   @return [Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus]
@@ -23,11 +23,11 @@ module FinchAPI
           #   #
           #   def initialize(completion_status:, type:, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
           # @see FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration#completion_status
           module CompletionStatus
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             COMPLETE = :complete
             REAUTH_ERROR = :reauth_error
@@ -43,7 +43,7 @@ module FinchAPI
 
           # @see FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration#type
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             DATA_SYNC_ALL = :data_sync_all
 

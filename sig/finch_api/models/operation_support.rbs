@@ -7,7 +7,7 @@ module FinchAPI
       | :client_access_only
 
     module OperationSupport
-      extend FinchAPI::Enum
+      extend FinchAPI::Internal::Type::Enum
 
       SUPPORTED: :supported
       NOT_SUPPORTED_BY_FINCH: :not_supported_by_finch

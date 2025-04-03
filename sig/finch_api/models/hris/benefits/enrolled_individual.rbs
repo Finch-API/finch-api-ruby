@@ -9,7 +9,7 @@ module FinchAPI
             individual_id: String
           }
 
-        class EnrolledIndividual < FinchAPI::BaseModel
+        class EnrolledIndividual < FinchAPI::Internal::Type::BaseModel
           attr_reader body: FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Body?
 
           def body=: (
@@ -36,7 +36,7 @@ module FinchAPI
 
           type body = { finch_code: String?, message: String?, name: String? }
 
-          class Body < FinchAPI::BaseModel
+          class Body < FinchAPI::Internal::Type::BaseModel
             attr_accessor finch_code: String?
 
             attr_accessor message: String?
@@ -55,7 +55,7 @@ module FinchAPI
           type code = 200 | 201 | 404 | 403
 
           module Code
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             OK: 200
             CREATED: 201

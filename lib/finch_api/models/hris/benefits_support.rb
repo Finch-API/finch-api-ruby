@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
-      class BenefitsSupport < FinchAPI::BaseModel
+      class BenefitsSupport < FinchAPI::Internal::Type::BaseModel
         # @!attribute commuter
         #
         #   @return [FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, nil]
@@ -99,7 +99,7 @@ module FinchAPI
         #     super
         #   end
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
       end
     end
   end

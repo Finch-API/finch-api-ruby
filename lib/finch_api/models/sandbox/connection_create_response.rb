@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Sandbox
       # @see FinchAPI::Resources::Sandbox::Connections#create
-      class ConnectionCreateResponse < FinchAPI::BaseModel
+      class ConnectionCreateResponse < FinchAPI::Internal::Type::BaseModel
         # @!attribute access_token
         #
         #   @return [String]
@@ -37,7 +37,7 @@ module FinchAPI
         # @!attribute products
         #
         #   @return [Array<String>]
-        required :products, FinchAPI::ArrayOf[String]
+        required :products, FinchAPI::Internal::Type::ArrayOf[String]
 
         # @!attribute provider_id
         #   The ID of the provider associated with the `access_token`.
@@ -78,11 +78,11 @@ module FinchAPI
         #     super
         #   end
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
         # @see FinchAPI::Models::Sandbox::ConnectionCreateResponse#authentication_type
         module AuthenticationType
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           CREDENTIAL = :credential
           API_TOKEN = :api_token

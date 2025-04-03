@@ -52,7 +52,7 @@ class FinchAPI::Test::Resources::Jobs::AutomatedTest < FinchAPI::Test::ResourceT
 
     assert_pattern do
       response => {
-        data: ^(FinchAPI::ArrayOf[FinchAPI::Models::Jobs::AutomatedAsyncJob]),
+        data: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Jobs::AutomatedAsyncJob]),
         meta: FinchAPI::Models::Jobs::AutomatedListResponse::Meta
       }
     end

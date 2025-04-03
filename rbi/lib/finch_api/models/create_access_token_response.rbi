@@ -2,7 +2,7 @@
 
 module FinchAPI
   module Models
-    class CreateAccessTokenResponse < FinchAPI::BaseModel
+    class CreateAccessTokenResponse < FinchAPI::Internal::Type::BaseModel
       # The access token for the connection.
       sig { returns(String) }
       attr_accessor :access_token
@@ -103,7 +103,7 @@ module FinchAPI
 
       # The type of application associated with a token.
       module ClientType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::CreateAccessTokenResponse::ClientType) }
         OrSymbol =
@@ -123,7 +123,7 @@ module FinchAPI
       #   - `provider` - connection to an external provider
       #   - `finch` - finch-generated data.
       module ConnectionType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, FinchAPI::Models::CreateAccessTokenResponse::ConnectionType) }

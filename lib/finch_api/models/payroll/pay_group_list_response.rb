@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Payroll
       # @see FinchAPI::Resources::Payroll::PayGroups#list
-      class PayGroupListResponse < FinchAPI::BaseModel
+      class PayGroupListResponse < FinchAPI::Internal::Type::BaseModel
         # @!attribute [r] id
         #   Finch id (uuidv4) for the pay group
         #
@@ -30,7 +30,7 @@ module FinchAPI
         #
         #   @return [Array<Symbol, FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency>, nil]
         optional :pay_frequencies,
-                 -> { FinchAPI::ArrayOf[enum: FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency] }
+                 -> { FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency] }
 
         # @!parse
         #   # @return [Array<Symbol, FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency>]
@@ -43,10 +43,10 @@ module FinchAPI
         #   #
         #   def initialize(id: nil, name: nil, pay_frequencies: nil, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
         module PayFrequency
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           ANNUALLY = :annually
           SEMI_ANNUALLY = :semi_annually

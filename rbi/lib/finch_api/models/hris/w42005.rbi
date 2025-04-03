@@ -3,12 +3,12 @@
 module FinchAPI
   module Models
     module HRIS
-      class W42005 < FinchAPI::BaseModel
+      class W42005 < FinchAPI::Internal::Type::BaseModel
         # Detailed information specific to the 2005 W4 form.
         sig { returns(T.nilable(FinchAPI::Models::HRIS::W42005::Data)) }
         attr_reader :data
 
-        sig { params(data: T.any(FinchAPI::Models::HRIS::W42005::Data, FinchAPI::Internal::Util::AnyHash)).void }
+        sig { params(data: T.any(FinchAPI::Models::HRIS::W42005::Data, FinchAPI::Internal::AnyHash)).void }
         attr_writer :data
 
         # Specifies the form type, indicating that this document is a 2005 W4 form.
@@ -26,7 +26,7 @@ module FinchAPI
         #   filing status, dependents, and withholding details.
         sig do
           params(
-            data: T.any(FinchAPI::Models::HRIS::W42005::Data, FinchAPI::Internal::Util::AnyHash),
+            data: T.any(FinchAPI::Models::HRIS::W42005::Data, FinchAPI::Internal::AnyHash),
             type: FinchAPI::Models::HRIS::W42005::Type::OrSymbol,
             year: T.nilable(Float)
           )
@@ -48,7 +48,7 @@ module FinchAPI
         def to_hash
         end
 
-        class Data < FinchAPI::BaseModel
+        class Data < FinchAPI::Internal::Type::BaseModel
           # Additional withholding amount (in cents).
           sig { returns(T.nilable(Integer)) }
           attr_accessor :additional_withholding
@@ -112,7 +112,7 @@ module FinchAPI
 
           # Indicates exemption status from federal tax withholding.
           module Exemption
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::W42005::Data::Exemption) }
             OrSymbol =
@@ -128,7 +128,7 @@ module FinchAPI
 
           # The individual's filing status for tax purposes.
           module FilingStatus
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::W42005::Data::FilingStatus) }
             OrSymbol =
@@ -150,7 +150,7 @@ module FinchAPI
 
         # Specifies the form type, indicating that this document is a 2005 W4 form.
         module Type
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::W42005::Type) }
           OrSymbol = T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::W42005::Type::TaggedSymbol) }

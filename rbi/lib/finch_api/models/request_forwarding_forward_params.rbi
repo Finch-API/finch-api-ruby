@@ -2,7 +2,7 @@
 
 module FinchAPI
   module Models
-    class RequestForwardingForwardParams < FinchAPI::BaseModel
+    class RequestForwardingForwardParams < FinchAPI::Internal::Type::BaseModel
       extend FinchAPI::Internal::Type::RequestParameters::Converter
       include FinchAPI::Internal::Type::RequestParameters
 
@@ -40,7 +40,7 @@ module FinchAPI
           data: T.nilable(String),
           headers: T.nilable(T.anything),
           params: T.nilable(T.anything),
-          request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
+          request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end

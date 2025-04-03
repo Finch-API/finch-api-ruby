@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       # @see FinchAPI::Resources::HRIS::Payments#list
-      class Payment < FinchAPI::BaseModel
+      class Payment < FinchAPI::Internal::Type::BaseModel
         # @!attribute [r] id
         #   The unique id for the payment.
         #
@@ -44,7 +44,7 @@ module FinchAPI
         #   Array of every individual on this payment.
         #
         #   @return [Array<String>, nil]
-        optional :individual_ids, FinchAPI::ArrayOf[String], nil?: true
+        optional :individual_ids, FinchAPI::Internal::Type::ArrayOf[String], nil?: true
 
         # @!attribute net_pay
         #
@@ -61,14 +61,14 @@ module FinchAPI
         #
         #   @return [Array<Symbol, FinchAPI::Models::HRIS::Payment::PayFrequency>, nil]
         optional :pay_frequencies,
-                 -> { FinchAPI::ArrayOf[enum: FinchAPI::Models::HRIS::Payment::PayFrequency] },
+                 -> { FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::HRIS::Payment::PayFrequency] },
                  nil?: true
 
         # @!attribute pay_group_ids
         #   Array of the Finch id (uuidv4) of every pay group associated with this payment.
         #
         #   @return [Array<String>, nil]
-        optional :pay_group_ids, FinchAPI::ArrayOf[String], nil?: true
+        optional :pay_group_ids, FinchAPI::Internal::Type::ArrayOf[String], nil?: true
 
         # @!attribute pay_period
         #   The pay period object.
@@ -108,10 +108,10 @@ module FinchAPI
         #     super
         #   end
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
         module PayFrequency
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           ANNUALLY = :annually
           SEMI_ANNUALLY = :semi_annually
@@ -131,7 +131,7 @@ module FinchAPI
         end
 
         # @see FinchAPI::Models::HRIS::Payment#pay_period
-        class PayPeriod < FinchAPI::BaseModel
+        class PayPeriod < FinchAPI::Internal::Type::BaseModel
           # @!attribute end_date
           #
           #   @return [String, nil]
@@ -150,7 +150,7 @@ module FinchAPI
           #   #
           #   def initialize(end_date: nil, start_date: nil, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
         end
       end
     end

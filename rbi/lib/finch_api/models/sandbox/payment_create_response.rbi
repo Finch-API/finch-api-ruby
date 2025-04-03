@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module Sandbox
-      class PaymentCreateResponse < FinchAPI::BaseModel
+      class PaymentCreateResponse < FinchAPI::Internal::Type::BaseModel
         # The date of the payment.
         sig { returns(String) }
         attr_accessor :pay_date

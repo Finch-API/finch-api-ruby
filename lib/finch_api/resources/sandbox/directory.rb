@@ -20,7 +20,7 @@ module FinchAPI
             method: :post,
             path: "sandbox/directory",
             body: parsed[:body],
-            model: FinchAPI::ArrayOf[FinchAPI::Unknown],
+            model: FinchAPI::Internal::Type::ArrayOf[FinchAPI::Internal::Type::Unknown],
             options: options
           )
         end

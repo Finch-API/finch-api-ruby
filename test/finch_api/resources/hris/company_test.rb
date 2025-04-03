@@ -13,12 +13,12 @@ class FinchAPI::Test::Resources::HRIS::CompanyTest < FinchAPI::Test::ResourceTes
     assert_pattern do
       response => {
         id: String,
-        accounts: ^(FinchAPI::ArrayOf[FinchAPI::Models::HRIS::HRISCompany::Account]) | nil,
-        departments: ^(FinchAPI::ArrayOf[FinchAPI::Models::HRIS::HRISCompany::Department, nil?: true]) | nil,
+        accounts: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::HRIS::HRISCompany::Account]) | nil,
+        departments: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::HRIS::HRISCompany::Department, nil?: true]) | nil,
         ein: String | nil,
         entity: FinchAPI::Models::HRIS::HRISCompany::Entity | nil,
         legal_name: String | nil,
-        locations: ^(FinchAPI::ArrayOf[FinchAPI::Models::Location, nil?: true]) | nil,
+        locations: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Location, nil?: true]) | nil,
         primary_email: String | nil,
         primary_phone_number: String | nil
       }

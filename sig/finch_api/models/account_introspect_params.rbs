@@ -3,7 +3,7 @@ module FinchAPI
     type account_introspect_params =
       {  } & FinchAPI::Internal::Type::request_parameters
 
-    class AccountIntrospectParams < FinchAPI::BaseModel
+    class AccountIntrospectParams < FinchAPI::Internal::Type::BaseModel
       extend FinchAPI::Internal::Type::RequestParameters::Converter
       include FinchAPI::Internal::Type::RequestParameters
 

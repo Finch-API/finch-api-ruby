@@ -2,7 +2,7 @@ module FinchAPI
   module Models
     type paging = { count: Integer, offset: Integer }
 
-    class Paging < FinchAPI::BaseModel
+    class Paging < FinchAPI::Internal::Type::BaseModel
       attr_reader count: Integer?
 
       def count=: (Integer) -> Integer

@@ -6,7 +6,7 @@ module FinchAPI
           { connection_status: FinchAPI::Models::connection_status_type }
           & FinchAPI::Internal::Type::request_parameters
 
-        class AccountUpdateParams < FinchAPI::BaseModel
+        class AccountUpdateParams < FinchAPI::Internal::Type::BaseModel
           extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
 

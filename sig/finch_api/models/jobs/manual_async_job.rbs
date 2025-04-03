@@ -8,7 +8,7 @@ module FinchAPI
           status: FinchAPI::Models::Jobs::ManualAsyncJob::status
         }
 
-      class ManualAsyncJob < FinchAPI::BaseModel
+      class ManualAsyncJob < FinchAPI::Internal::Type::BaseModel
         attr_accessor body: ::Array[top]?
 
         attr_accessor job_id: String
@@ -26,7 +26,7 @@ module FinchAPI
         type status = :pending | :in_progress | :error | :complete
 
         module Status
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           PENDING: :pending
           IN_PROGRESS: :in_progress

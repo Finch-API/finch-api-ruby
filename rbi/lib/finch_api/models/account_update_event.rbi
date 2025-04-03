@@ -6,7 +6,7 @@ module FinchAPI
       sig { returns(T.nilable(FinchAPI::Models::AccountUpdateEvent::Data)) }
       attr_reader :data
 
-      sig { params(data: T.any(FinchAPI::Models::AccountUpdateEvent::Data, FinchAPI::Internal::Util::AnyHash)).void }
+      sig { params(data: T.any(FinchAPI::Models::AccountUpdateEvent::Data, FinchAPI::Internal::AnyHash)).void }
       attr_writer :data
 
       sig { returns(T.nilable(FinchAPI::Models::AccountUpdateEvent::EventType::TaggedSymbol)) }
@@ -17,7 +17,7 @@ module FinchAPI
 
       sig do
         params(
-          data: T.any(FinchAPI::Models::AccountUpdateEvent::Data, FinchAPI::Internal::Util::AnyHash),
+          data: T.any(FinchAPI::Models::AccountUpdateEvent::Data, FinchAPI::Internal::AnyHash),
           event_type: FinchAPI::Models::AccountUpdateEvent::EventType::OrSymbol
         )
           .returns(T.attached_class)
@@ -37,13 +37,13 @@ module FinchAPI
       def to_hash
       end
 
-      class Data < FinchAPI::BaseModel
+      class Data < FinchAPI::Internal::Type::BaseModel
         sig { returns(FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod) }
         attr_reader :authentication_method
 
         sig do
           params(
-            authentication_method: T.any(FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod, FinchAPI::Internal::Util::AnyHash)
+            authentication_method: T.any(FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod, FinchAPI::Internal::AnyHash)
           )
             .void
         end
@@ -54,7 +54,7 @@ module FinchAPI
 
         sig do
           params(
-            authentication_method: T.any(FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod, FinchAPI::Internal::Util::AnyHash),
+            authentication_method: T.any(FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod, FinchAPI::Internal::AnyHash),
             status: FinchAPI::Models::ConnectionStatusType::OrSymbol
           )
             .returns(T.attached_class)
@@ -74,7 +74,7 @@ module FinchAPI
         def to_hash
         end
 
-        class AuthenticationMethod < FinchAPI::BaseModel
+        class AuthenticationMethod < FinchAPI::Internal::Type::BaseModel
           # Each benefit type and their supported features. If the benefit type is not
           #   supported, the property will be null
           sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitsSupport)) }
@@ -82,7 +82,7 @@ module FinchAPI
 
           sig do
             params(
-              benefits_support: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitsSupport, FinchAPI::Internal::Util::AnyHash))
+              benefits_support: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitsSupport, FinchAPI::Internal::AnyHash))
             )
               .void
           end
@@ -97,7 +97,7 @@ module FinchAPI
               supported_fields: T.nilable(
                 T.any(
                   FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields,
-                  FinchAPI::Internal::Util::AnyHash
+                  FinchAPI::Internal::AnyHash
                 )
               )
             )
@@ -114,11 +114,11 @@ module FinchAPI
 
           sig do
             params(
-              benefits_support: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitsSupport, FinchAPI::Internal::Util::AnyHash)),
+              benefits_support: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitsSupport, FinchAPI::Internal::AnyHash)),
               supported_fields: T.nilable(
                 T.any(
                   FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields,
-                  FinchAPI::Internal::Util::AnyHash
+                  FinchAPI::Internal::AnyHash
                 )
               ),
               type: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::OrSymbol
@@ -141,7 +141,7 @@ module FinchAPI
           def to_hash
           end
 
-          class SupportedFields < FinchAPI::BaseModel
+          class SupportedFields < FinchAPI::Internal::Type::BaseModel
             sig do
               returns(
                 T.nilable(FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company)
@@ -153,7 +153,7 @@ module FinchAPI
               params(
                 company: T.any(
                   FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company,
-                  FinchAPI::Internal::Util::AnyHash
+                  FinchAPI::Internal::AnyHash
                 )
               )
                 .void
@@ -171,7 +171,7 @@ module FinchAPI
               params(
                 directory: T.any(
                   FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory,
-                  FinchAPI::Internal::Util::AnyHash
+                  FinchAPI::Internal::AnyHash
                 )
               )
                 .void
@@ -189,7 +189,7 @@ module FinchAPI
               params(
                 employment: T.any(
                   FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment,
-                  FinchAPI::Internal::Util::AnyHash
+                  FinchAPI::Internal::AnyHash
                 )
               )
                 .void
@@ -207,7 +207,7 @@ module FinchAPI
               params(
                 individual: T.any(
                   FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual,
-                  FinchAPI::Internal::Util::AnyHash
+                  FinchAPI::Internal::AnyHash
                 )
               )
                 .void
@@ -225,7 +225,7 @@ module FinchAPI
               params(
                 pay_group: T.any(
                   FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayGroup,
-                  FinchAPI::Internal::Util::AnyHash
+                  FinchAPI::Internal::AnyHash
                 )
               )
                 .void
@@ -243,7 +243,7 @@ module FinchAPI
               params(
                 pay_statement: T.any(
                   FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement,
-                  FinchAPI::Internal::Util::AnyHash
+                  FinchAPI::Internal::AnyHash
                 )
               )
                 .void
@@ -261,7 +261,7 @@ module FinchAPI
               params(
                 payment: T.any(
                   FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment,
-                  FinchAPI::Internal::Util::AnyHash
+                  FinchAPI::Internal::AnyHash
                 )
               )
                 .void
@@ -273,31 +273,31 @@ module FinchAPI
               params(
                 company: T.any(
                   FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company,
-                  FinchAPI::Internal::Util::AnyHash
+                  FinchAPI::Internal::AnyHash
                 ),
                 directory: T.any(
                   FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory,
-                  FinchAPI::Internal::Util::AnyHash
+                  FinchAPI::Internal::AnyHash
                 ),
                 employment: T.any(
                   FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment,
-                  FinchAPI::Internal::Util::AnyHash
+                  FinchAPI::Internal::AnyHash
                 ),
                 individual: T.any(
                   FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual,
-                  FinchAPI::Internal::Util::AnyHash
+                  FinchAPI::Internal::AnyHash
                 ),
                 pay_group: T.any(
                   FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayGroup,
-                  FinchAPI::Internal::Util::AnyHash
+                  FinchAPI::Internal::AnyHash
                 ),
                 pay_statement: T.any(
                   FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement,
-                  FinchAPI::Internal::Util::AnyHash
+                  FinchAPI::Internal::AnyHash
                 ),
                 payment: T.any(
                   FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment,
-                  FinchAPI::Internal::Util::AnyHash
+                  FinchAPI::Internal::AnyHash
                 )
               )
                 .returns(T.attached_class)
@@ -330,7 +330,7 @@ module FinchAPI
             def to_hash
             end
 
-            class Company < FinchAPI::BaseModel
+            class Company < FinchAPI::Internal::Type::BaseModel
               sig { returns(T.nilable(T::Boolean)) }
               attr_reader :id
 
@@ -350,7 +350,7 @@ module FinchAPI
                 params(
                   accounts: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Accounts,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .void
@@ -370,7 +370,7 @@ module FinchAPI
                 params(
                   departments: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .void
@@ -396,7 +396,7 @@ module FinchAPI
                 params(
                   entity: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Entity,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .void
@@ -422,7 +422,7 @@ module FinchAPI
                 params(
                   locations: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Locations,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .void
@@ -446,21 +446,21 @@ module FinchAPI
                   id: T::Boolean,
                   accounts: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Accounts,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   ),
                   departments: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   ),
                   ein: T::Boolean,
                   entity: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Entity,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   ),
                   legal_name: T::Boolean,
                   locations: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Locations,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   ),
                   primary_email: T::Boolean,
                   primary_phone_number: T::Boolean
@@ -499,7 +499,7 @@ module FinchAPI
               def to_hash
               end
 
-              class Accounts < FinchAPI::BaseModel
+              class Accounts < FinchAPI::Internal::Type::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
                 attr_reader :account_name
 
@@ -565,7 +565,7 @@ module FinchAPI
                 end
               end
 
-              class Departments < FinchAPI::BaseModel
+              class Departments < FinchAPI::Internal::Type::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
                 attr_reader :name
 
@@ -585,7 +585,7 @@ module FinchAPI
                   params(
                     parent: T.any(
                       FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments::Parent,
-                      FinchAPI::Internal::Util::AnyHash
+                      FinchAPI::Internal::AnyHash
                     )
                   )
                     .void
@@ -597,7 +597,7 @@ module FinchAPI
                     name: T::Boolean,
                     parent: T.any(
                       FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments::Parent,
-                      FinchAPI::Internal::Util::AnyHash
+                      FinchAPI::Internal::AnyHash
                     )
                   )
                     .returns(T.attached_class)
@@ -617,7 +617,7 @@ module FinchAPI
                 def to_hash
                 end
 
-                class Parent < FinchAPI::BaseModel
+                class Parent < FinchAPI::Internal::Type::BaseModel
                   sig { returns(T.nilable(T::Boolean)) }
                   attr_reader :name
 
@@ -634,7 +634,7 @@ module FinchAPI
                 end
               end
 
-              class Entity < FinchAPI::BaseModel
+              class Entity < FinchAPI::Internal::Type::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
                 attr_reader :subtype
 
@@ -656,7 +656,7 @@ module FinchAPI
                 end
               end
 
-              class Locations < FinchAPI::BaseModel
+              class Locations < FinchAPI::Internal::Type::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
                 attr_reader :city
 
@@ -725,7 +725,7 @@ module FinchAPI
               end
             end
 
-            class Directory < FinchAPI::BaseModel
+            class Directory < FinchAPI::Internal::Type::BaseModel
               sig do
                 returns(
                   T.nilable(
@@ -739,7 +739,7 @@ module FinchAPI
                 params(
                   individuals: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .void
@@ -759,7 +759,7 @@ module FinchAPI
                 params(
                   paging: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Paging,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .void
@@ -770,11 +770,11 @@ module FinchAPI
                 params(
                   individuals: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   ),
                   paging: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Paging,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .returns(T.attached_class)
@@ -794,7 +794,7 @@ module FinchAPI
               def to_hash
               end
 
-              class Individuals < FinchAPI::BaseModel
+              class Individuals < FinchAPI::Internal::Type::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
                 attr_reader :id
 
@@ -838,7 +838,7 @@ module FinchAPI
                   params(
                     manager: T.any(
                       FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager,
-                      FinchAPI::Internal::Util::AnyHash
+                      FinchAPI::Internal::AnyHash
                     )
                   )
                     .void
@@ -860,7 +860,7 @@ module FinchAPI
                     last_name: T::Boolean,
                     manager: T.any(
                       FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager,
-                      FinchAPI::Internal::Util::AnyHash
+                      FinchAPI::Internal::AnyHash
                     ),
                     middle_name: T::Boolean
                   )
@@ -894,7 +894,7 @@ module FinchAPI
                 def to_hash
                 end
 
-                class Manager < FinchAPI::BaseModel
+                class Manager < FinchAPI::Internal::Type::BaseModel
                   sig { returns(T.nilable(T::Boolean)) }
                   attr_reader :id
 
@@ -911,7 +911,7 @@ module FinchAPI
                 end
               end
 
-              class Paging < FinchAPI::BaseModel
+              class Paging < FinchAPI::Internal::Type::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
                 attr_reader :count
 
@@ -934,7 +934,7 @@ module FinchAPI
               end
             end
 
-            class Employment < FinchAPI::BaseModel
+            class Employment < FinchAPI::Internal::Type::BaseModel
               sig { returns(T.nilable(T::Boolean)) }
               attr_reader :id
 
@@ -966,7 +966,7 @@ module FinchAPI
                 params(
                   department: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Department,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .void
@@ -986,7 +986,7 @@ module FinchAPI
                 params(
                   employment: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Employment,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .void
@@ -1024,7 +1024,7 @@ module FinchAPI
                 params(
                   income: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Income,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .void
@@ -1062,7 +1062,7 @@ module FinchAPI
                 params(
                   location: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Location,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .void
@@ -1082,7 +1082,7 @@ module FinchAPI
                 params(
                   manager: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .void
@@ -1114,29 +1114,29 @@ module FinchAPI
                   custom_fields: T::Boolean,
                   department: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Department,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   ),
                   employment: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Employment,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   ),
                   employment_status: T::Boolean,
                   end_date: T::Boolean,
                   first_name: T::Boolean,
                   income: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Income,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   ),
                   income_history: T::Boolean,
                   is_active: T::Boolean,
                   last_name: T::Boolean,
                   location: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Location,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   ),
                   manager: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   ),
                   middle_name: T::Boolean,
                   start_date: T::Boolean,
@@ -1192,7 +1192,7 @@ module FinchAPI
               def to_hash
               end
 
-              class Department < FinchAPI::BaseModel
+              class Department < FinchAPI::Internal::Type::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
                 attr_reader :name
 
@@ -1208,7 +1208,7 @@ module FinchAPI
                 end
               end
 
-              class Employment < FinchAPI::BaseModel
+              class Employment < FinchAPI::Internal::Type::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
                 attr_reader :subtype
 
@@ -1230,7 +1230,7 @@ module FinchAPI
                 end
               end
 
-              class Income < FinchAPI::BaseModel
+              class Income < FinchAPI::Internal::Type::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
                 attr_reader :amount
 
@@ -1260,7 +1260,7 @@ module FinchAPI
                 end
               end
 
-              class Location < FinchAPI::BaseModel
+              class Location < FinchAPI::Internal::Type::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
                 attr_reader :city
 
@@ -1328,7 +1328,7 @@ module FinchAPI
                 end
               end
 
-              class Manager < FinchAPI::BaseModel
+              class Manager < FinchAPI::Internal::Type::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
                 attr_reader :id
 
@@ -1345,7 +1345,7 @@ module FinchAPI
               end
             end
 
-            class Individual < FinchAPI::BaseModel
+            class Individual < FinchAPI::Internal::Type::BaseModel
               sig { returns(T.nilable(T::Boolean)) }
               attr_reader :id
 
@@ -1371,7 +1371,7 @@ module FinchAPI
                 params(
                   emails: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Emails,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .void
@@ -1427,7 +1427,7 @@ module FinchAPI
                 params(
                   phone_numbers: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .void
@@ -1453,7 +1453,7 @@ module FinchAPI
                 params(
                   residence: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Residence,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .void
@@ -1472,7 +1472,7 @@ module FinchAPI
                   dob: T::Boolean,
                   emails: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Emails,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   ),
                   encrypted_ssn: T::Boolean,
                   ethnicity: T::Boolean,
@@ -1482,12 +1482,12 @@ module FinchAPI
                   middle_name: T::Boolean,
                   phone_numbers: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   ),
                   preferred_name: T::Boolean,
                   residence: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Residence,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   ),
                   ssn: T::Boolean
                 )
@@ -1533,7 +1533,7 @@ module FinchAPI
               def to_hash
               end
 
-              class Emails < FinchAPI::BaseModel
+              class Emails < FinchAPI::Internal::Type::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
                 attr_reader :data
 
@@ -1555,7 +1555,7 @@ module FinchAPI
                 end
               end
 
-              class PhoneNumbers < FinchAPI::BaseModel
+              class PhoneNumbers < FinchAPI::Internal::Type::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
                 attr_reader :data
 
@@ -1577,7 +1577,7 @@ module FinchAPI
                 end
               end
 
-              class Residence < FinchAPI::BaseModel
+              class Residence < FinchAPI::Internal::Type::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
                 attr_reader :city
 
@@ -1646,7 +1646,7 @@ module FinchAPI
               end
             end
 
-            class PayGroup < FinchAPI::BaseModel
+            class PayGroup < FinchAPI::Internal::Type::BaseModel
               sig { returns(T.nilable(T::Boolean)) }
               attr_reader :id
 
@@ -1696,7 +1696,7 @@ module FinchAPI
               end
             end
 
-            class PayStatement < FinchAPI::BaseModel
+            class PayStatement < FinchAPI::Internal::Type::BaseModel
               sig do
                 returns(
                   T.nilable(
@@ -1710,7 +1710,7 @@ module FinchAPI
                 params(
                   paging: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::Paging,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .void
@@ -1730,7 +1730,7 @@ module FinchAPI
                 params(
                   pay_statements: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .void
@@ -1741,11 +1741,11 @@ module FinchAPI
                 params(
                   paging: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::Paging,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   ),
                   pay_statements: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .returns(T.attached_class)
@@ -1765,7 +1765,7 @@ module FinchAPI
               def to_hash
               end
 
-              class Paging < FinchAPI::BaseModel
+              class Paging < FinchAPI::Internal::Type::BaseModel
                 sig { returns(T::Boolean) }
                 attr_accessor :count
 
@@ -1781,7 +1781,7 @@ module FinchAPI
                 end
               end
 
-              class PayStatements < FinchAPI::BaseModel
+              class PayStatements < FinchAPI::Internal::Type::BaseModel
                 sig do
                   returns(
                     T.nilable(
@@ -1795,7 +1795,7 @@ module FinchAPI
                   params(
                     earnings: T.any(
                       FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings,
-                      FinchAPI::Internal::Util::AnyHash
+                      FinchAPI::Internal::AnyHash
                     )
                   )
                     .void
@@ -1815,7 +1815,7 @@ module FinchAPI
                   params(
                     employee_deductions: T.any(
                       FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions,
-                      FinchAPI::Internal::Util::AnyHash
+                      FinchAPI::Internal::AnyHash
                     )
                   )
                     .void
@@ -1835,7 +1835,7 @@ module FinchAPI
                   params(
                     employer_contributions: T.any(
                       FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions,
-                      FinchAPI::Internal::Util::AnyHash
+                      FinchAPI::Internal::AnyHash
                     )
                   )
                     .void
@@ -1879,7 +1879,7 @@ module FinchAPI
                   params(
                     taxes: T.any(
                       FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes,
-                      FinchAPI::Internal::Util::AnyHash
+                      FinchAPI::Internal::AnyHash
                     )
                   )
                     .void
@@ -1902,15 +1902,15 @@ module FinchAPI
                   params(
                     earnings: T.any(
                       FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings,
-                      FinchAPI::Internal::Util::AnyHash
+                      FinchAPI::Internal::AnyHash
                     ),
                     employee_deductions: T.any(
                       FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions,
-                      FinchAPI::Internal::Util::AnyHash
+                      FinchAPI::Internal::AnyHash
                     ),
                     employer_contributions: T.any(
                       FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions,
-                      FinchAPI::Internal::Util::AnyHash
+                      FinchAPI::Internal::AnyHash
                     ),
                     gross_pay: T::Boolean,
                     individual_id: T::Boolean,
@@ -1918,7 +1918,7 @@ module FinchAPI
                     payment_method: T::Boolean,
                     taxes: T.any(
                       FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes,
-                      FinchAPI::Internal::Util::AnyHash
+                      FinchAPI::Internal::AnyHash
                     ),
                     total_hours: T::Boolean,
                     type: T::Boolean
@@ -1959,7 +1959,7 @@ module FinchAPI
                 def to_hash
                 end
 
-                class Earnings < FinchAPI::BaseModel
+                class Earnings < FinchAPI::Internal::Type::BaseModel
                   sig { returns(T.nilable(T::Boolean)) }
                   attr_reader :amount
 
@@ -2005,7 +2005,7 @@ module FinchAPI
                   end
                 end
 
-                class EmployeeDeductions < FinchAPI::BaseModel
+                class EmployeeDeductions < FinchAPI::Internal::Type::BaseModel
                   sig { returns(T.nilable(T::Boolean)) }
                   attr_reader :amount
 
@@ -2065,7 +2065,7 @@ module FinchAPI
                   end
                 end
 
-                class EmployerContributions < FinchAPI::BaseModel
+                class EmployerContributions < FinchAPI::Internal::Type::BaseModel
                   sig { returns(T.nilable(T::Boolean)) }
                   attr_reader :amount
 
@@ -2099,7 +2099,7 @@ module FinchAPI
                   end
                 end
 
-                class Taxes < FinchAPI::BaseModel
+                class Taxes < FinchAPI::Internal::Type::BaseModel
                   sig { returns(T.nilable(T::Boolean)) }
                   attr_reader :amount
 
@@ -2161,7 +2161,7 @@ module FinchAPI
               end
             end
 
-            class Payment < FinchAPI::BaseModel
+            class Payment < FinchAPI::Internal::Type::BaseModel
               sig { returns(T.nilable(T::Boolean)) }
               attr_reader :id
 
@@ -2241,7 +2241,7 @@ module FinchAPI
                 params(
                   pay_period: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment::PayPeriod,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .void
@@ -2263,7 +2263,7 @@ module FinchAPI
                   pay_group_ids: T::Boolean,
                   pay_period: T.any(
                     FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment::PayPeriod,
-                    FinchAPI::Internal::Util::AnyHash
+                    FinchAPI::Internal::AnyHash
                   )
                 )
                   .returns(T.attached_class)
@@ -2306,7 +2306,7 @@ module FinchAPI
               def to_hash
               end
 
-              class PayPeriod < FinchAPI::BaseModel
+              class PayPeriod < FinchAPI::Internal::Type::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
                 attr_reader :end_date
 
@@ -2332,7 +2332,7 @@ module FinchAPI
 
           # The type of authentication method.
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type) }
@@ -2370,7 +2370,7 @@ module FinchAPI
       end
 
       module EventType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::AccountUpdateEvent::EventType) }
         OrSymbol =

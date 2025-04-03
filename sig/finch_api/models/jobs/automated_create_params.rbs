@@ -8,7 +8,7 @@ module FinchAPI
         }
         & FinchAPI::Internal::Type::request_parameters
 
-      class AutomatedCreateParams < FinchAPI::BaseModel
+      class AutomatedCreateParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
@@ -27,7 +27,7 @@ module FinchAPI
         type type_ = :w4_form_employee_sync
 
         module Type
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           W4_FORM_EMPLOYEE_SYNC: :w4_form_employee_sync
 
@@ -36,7 +36,7 @@ module FinchAPI
 
         type params = { individual_id: String }
 
-        class Params < FinchAPI::BaseModel
+        class Params < FinchAPI::Internal::Type::BaseModel
           attr_accessor individual_id: String
 
           def initialize: (individual_id: String) -> void

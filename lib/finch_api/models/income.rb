@@ -2,7 +2,7 @@
 
 module FinchAPI
   module Models
-    class Income < FinchAPI::BaseModel
+    class Income < FinchAPI::Internal::Type::BaseModel
       # @!attribute amount
       #   The income amount in cents.
       #
@@ -40,14 +40,14 @@ module FinchAPI
       #   #
       #   def initialize(amount: nil, currency: nil, effective_date: nil, unit: nil, **) = super
 
-      # def initialize: (Hash | FinchAPI::BaseModel) -> void
+      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
       # The income unit of payment. Options: `yearly`, `quarterly`, `monthly`,
       #   `semi_monthly`, `bi_weekly`, `weekly`, `daily`, `hourly`, and `fixed`.
       #
       # @see FinchAPI::Models::Income#unit
       module Unit
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         YEARLY = :yearly
         QUARTERLY = :quarterly

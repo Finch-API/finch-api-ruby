@@ -15,7 +15,7 @@ module FinchAPI
           #   #
           #   def initialize(request_options: {}, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
         end
       end
     end

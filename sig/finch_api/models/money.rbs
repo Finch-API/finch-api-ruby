@@ -2,7 +2,7 @@ module FinchAPI
   module Models
     type money = { amount: Integer?, currency: String }
 
-    class Money < FinchAPI::BaseModel
+    class Money < FinchAPI::Internal::Type::BaseModel
       attr_accessor amount: Integer?
 
       attr_reader currency: String?

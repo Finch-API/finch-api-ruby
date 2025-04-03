@@ -20,15 +20,15 @@ class FinchAPI::Test::Resources::ProvidersTest < FinchAPI::Test::ResourceTest
     assert_pattern do
       row => {
         id: String | nil,
-        authentication_methods: ^(FinchAPI::ArrayOf[FinchAPI::Models::Provider::AuthenticationMethod]) | nil,
-        beta: FinchAPI::BooleanModel | nil,
+        authentication_methods: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Provider::AuthenticationMethod]) | nil,
+        beta: FinchAPI::Internal::Type::BooleanModel | nil,
         display_name: String | nil,
         icon: String | nil,
         logo: String | nil,
-        manual: FinchAPI::BooleanModel | nil,
-        mfa_required: FinchAPI::BooleanModel | nil,
+        manual: FinchAPI::Internal::Type::BooleanModel | nil,
+        mfa_required: FinchAPI::Internal::Type::BooleanModel | nil,
         primary_color: String | nil,
-        products: ^(FinchAPI::ArrayOf[String]) | nil
+        products: ^(FinchAPI::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end

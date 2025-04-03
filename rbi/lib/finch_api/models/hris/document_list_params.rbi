@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
-      class DocumentListParams < FinchAPI::BaseModel
+      class DocumentListParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
@@ -43,7 +43,7 @@ module FinchAPI
             limit: Integer,
             offset: Integer,
             types: T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol],
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -66,7 +66,7 @@ module FinchAPI
         end
 
         module Type
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::DocumentListParams::Type) }
           OrSymbol =

@@ -8,7 +8,7 @@ module FinchAPI
           individual_id: String
         }
 
-      class EmploymentDataResponse < FinchAPI::BaseModel
+      class EmploymentDataResponse < FinchAPI::Internal::Type::BaseModel
         attr_reader body: FinchAPI::Models::HRIS::EmploymentData?
 
         def body=: (

@@ -7,7 +7,7 @@ module FinchAPI
           meta: FinchAPI::Models::Jobs::AutomatedListResponse::Meta
         }
 
-      class AutomatedListResponse < FinchAPI::BaseModel
+      class AutomatedListResponse < FinchAPI::Internal::Type::BaseModel
         attr_accessor data: ::Array[FinchAPI::Models::Jobs::AutomatedAsyncJob]
 
         attr_accessor meta: FinchAPI::Models::Jobs::AutomatedListResponse::Meta
@@ -24,7 +24,7 @@ module FinchAPI
             quotas: FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas
           }
 
-        class Meta < FinchAPI::BaseModel
+        class Meta < FinchAPI::Internal::Type::BaseModel
           attr_reader quotas: FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas?
 
           def quotas=: (
@@ -42,7 +42,7 @@ module FinchAPI
               data_sync_all: FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll
             }
 
-          class Quotas < FinchAPI::BaseModel
+          class Quotas < FinchAPI::Internal::Type::BaseModel
             attr_reader data_sync_all: FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll?
 
             def data_sync_all=: (
@@ -58,7 +58,7 @@ module FinchAPI
             type data_sync_all =
               { allowed_refreshes: Integer, remaining_refreshes: Integer }
 
-            class DataSyncAll < FinchAPI::BaseModel
+            class DataSyncAll < FinchAPI::Internal::Type::BaseModel
               attr_reader allowed_refreshes: Integer?
 
               def allowed_refreshes=: (Integer) -> Integer

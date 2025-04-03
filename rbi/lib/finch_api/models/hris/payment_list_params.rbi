@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
-      class PaymentListParams < FinchAPI::BaseModel
+      class PaymentListParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
@@ -21,7 +21,7 @@ module FinchAPI
           params(
             end_date: Date,
             start_date: Date,
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end

@@ -8,7 +8,7 @@ module FinchAPI
           payment_id: String
         }
 
-      class PayStatementResponse < FinchAPI::BaseModel
+      class PayStatementResponse < FinchAPI::Internal::Type::BaseModel
         attr_reader body: FinchAPI::Models::HRIS::PayStatementResponseBody?
 
         def body=: (

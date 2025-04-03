@@ -28,7 +28,7 @@ module FinchAPI
 
       type data = { individual_id: String }
 
-      class Data < FinchAPI::BaseModel
+      class Data < FinchAPI::Internal::Type::BaseModel
         attr_reader individual_id: String?
 
         def individual_id=: (String) -> String
@@ -42,7 +42,7 @@ module FinchAPI
         :"employment.created" | :"employment.updated" | :"employment.deleted"
 
       module EventType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         EMPLOYMENT_CREATED: :"employment.created"
         EMPLOYMENT_UPDATED: :"employment.updated"

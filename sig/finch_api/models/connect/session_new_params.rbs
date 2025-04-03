@@ -15,7 +15,7 @@ module FinchAPI
         }
         & FinchAPI::Internal::Type::request_parameters
 
-      class SessionNewParams < FinchAPI::BaseModel
+      class SessionNewParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
@@ -63,7 +63,7 @@ module FinchAPI
           | :ssn
 
         module Product
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           COMPANY: :company
           DIRECTORY: :directory
@@ -83,7 +83,7 @@ module FinchAPI
             provider: String?
           }
 
-        class Integration < FinchAPI::BaseModel
+        class Integration < FinchAPI::Internal::Type::BaseModel
           attr_accessor auth_method: FinchAPI::Models::Connect::SessionNewParams::Integration::auth_method?
 
           attr_accessor provider: String?
@@ -98,7 +98,7 @@ module FinchAPI
           type auth_method = :assisted | :credential | :oauth | :api_token
 
           module AuthMethod
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             ASSISTED: :assisted
             CREDENTIAL: :credential
@@ -112,7 +112,7 @@ module FinchAPI
         type sandbox = :finch | :provider
 
         module Sandbox
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           FINCH: :finch
           PROVIDER: :provider

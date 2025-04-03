@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module ConnectionStatusType
-      extend FinchAPI::Enum
+      extend FinchAPI::Internal::Type::Enum
 
       TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::ConnectionStatusType) }
       OrSymbol = T.type_alias { T.any(Symbol, String, FinchAPI::Models::ConnectionStatusType::TaggedSymbol) }

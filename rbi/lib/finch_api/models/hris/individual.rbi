@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
-      class Individual < FinchAPI::BaseModel
+      class Individual < FinchAPI::Internal::Type::BaseModel
         # A stable Finch `id` (UUID v4) for an individual in the company.
         sig { returns(T.nilable(String)) }
         attr_reader :id
@@ -53,7 +53,7 @@ module FinchAPI
         sig { returns(T.nilable(FinchAPI::Models::Location)) }
         attr_reader :residence
 
-        sig { params(residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::Util::AnyHash))).void }
+        sig { params(residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::AnyHash))).void }
         attr_writer :residence
 
         # Social Security Number of the individual. This field is only available with the
@@ -67,7 +67,7 @@ module FinchAPI
           params(
             id: String,
             dob: T.nilable(String),
-            emails: T.nilable(T::Array[T.any(FinchAPI::Models::HRIS::Individual::Email, FinchAPI::Internal::Util::AnyHash)]),
+            emails: T.nilable(T::Array[T.any(FinchAPI::Models::HRIS::Individual::Email, FinchAPI::Internal::AnyHash)]),
             encrypted_ssn: T.nilable(String),
             ethnicity: T.nilable(FinchAPI::Models::HRIS::Individual::Ethnicity::OrSymbol),
             first_name: T.nilable(String),
@@ -75,10 +75,10 @@ module FinchAPI
             last_name: T.nilable(String),
             middle_name: T.nilable(String),
             phone_numbers: T.nilable(
-              T::Array[T.nilable(T.any(FinchAPI::Models::HRIS::Individual::PhoneNumber, FinchAPI::Internal::Util::AnyHash))]
+              T::Array[T.nilable(T.any(FinchAPI::Models::HRIS::Individual::PhoneNumber, FinchAPI::Internal::AnyHash))]
             ),
             preferred_name: T.nilable(String),
-            residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::Util::AnyHash)),
+            residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::AnyHash)),
             ssn: T.nilable(String)
           )
             .returns(T.attached_class)
@@ -123,7 +123,7 @@ module FinchAPI
         def to_hash
         end
 
-        class Email < FinchAPI::BaseModel
+        class Email < FinchAPI::Internal::Type::BaseModel
           sig { returns(T.nilable(String)) }
           attr_reader :data
 
@@ -148,7 +148,7 @@ module FinchAPI
           end
 
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Individual::Email::Type) }
             OrSymbol =
@@ -165,7 +165,7 @@ module FinchAPI
 
         # The EEOC-defined ethnicity of the individual.
         module Ethnicity
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Individual::Ethnicity) }
           OrSymbol =
@@ -193,7 +193,7 @@ module FinchAPI
 
         # The gender of the individual.
         module Gender
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Individual::Gender) }
           OrSymbol =
@@ -209,7 +209,7 @@ module FinchAPI
           end
         end
 
-        class PhoneNumber < FinchAPI::BaseModel
+        class PhoneNumber < FinchAPI::Internal::Type::BaseModel
           sig { returns(T.nilable(String)) }
           attr_accessor :data
 
@@ -239,7 +239,7 @@ module FinchAPI
           end
 
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Individual::PhoneNumber::Type) }
             OrSymbol =

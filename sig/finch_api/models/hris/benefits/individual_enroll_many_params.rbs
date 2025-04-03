@@ -8,7 +8,7 @@ module FinchAPI
           }
           & FinchAPI::Internal::Type::request_parameters
 
-        class IndividualEnrollManyParams < FinchAPI::BaseModel
+        class IndividualEnrollManyParams < FinchAPI::Internal::Type::BaseModel
           extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
 
@@ -31,7 +31,7 @@ module FinchAPI
               individual_id: String
             }
 
-          class Individual < FinchAPI::BaseModel
+          class Individual < FinchAPI::Internal::Type::BaseModel
             attr_reader configuration: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration?
 
             def configuration=: (
@@ -59,7 +59,7 @@ module FinchAPI
                 employee_deduction: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction
               }
 
-            class Configuration < FinchAPI::BaseModel
+            class Configuration < FinchAPI::Internal::Type::BaseModel
               attr_reader annual_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::annual_contribution_limit?
 
               def annual_contribution_limit=: (
@@ -102,7 +102,7 @@ module FinchAPI
               type annual_contribution_limit = :individual | :family
 
               module AnnualContributionLimit
-                extend FinchAPI::Enum
+                extend FinchAPI::Internal::Type::Enum
 
                 INDIVIDUAL: :individual
                 FAMILY: :family
@@ -116,7 +116,7 @@ module FinchAPI
                   type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::type_
                 }
 
-              class CompanyContribution < FinchAPI::BaseModel
+              class CompanyContribution < FinchAPI::Internal::Type::BaseModel
                 attr_reader amount: Integer?
 
                 def amount=: (Integer) -> Integer
@@ -137,7 +137,7 @@ module FinchAPI
                 type type_ = :fixed | :percent
 
                 module Type
-                  extend FinchAPI::Enum
+                  extend FinchAPI::Internal::Type::Enum
 
                   FIXED: :fixed
                   PERCENT: :percent
@@ -152,7 +152,7 @@ module FinchAPI
                   type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::type_
                 }
 
-              class EmployeeDeduction < FinchAPI::BaseModel
+              class EmployeeDeduction < FinchAPI::Internal::Type::BaseModel
                 attr_reader amount: Integer?
 
                 def amount=: (Integer) -> Integer
@@ -173,7 +173,7 @@ module FinchAPI
                 type type_ = :fixed | :percent
 
                 module Type
-                  extend FinchAPI::Enum
+                  extend FinchAPI::Internal::Type::Enum
 
                   FIXED: :fixed
                   PERCENT: :percent

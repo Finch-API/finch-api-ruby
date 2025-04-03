@@ -2,7 +2,7 @@
 
 module FinchAPI
   module Models
-    class AccessTokenCreateParams < FinchAPI::BaseModel
+    class AccessTokenCreateParams < FinchAPI::Internal::Type::BaseModel
       extend FinchAPI::Internal::Type::RequestParameters::Converter
       include FinchAPI::Internal::Type::RequestParameters
 
@@ -33,7 +33,7 @@ module FinchAPI
           client_id: String,
           client_secret: String,
           redirect_uri: String,
-          request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
+          request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
-      class BenefitFeaturesAndOperations < FinchAPI::BaseModel
+      class BenefitFeaturesAndOperations < FinchAPI::Internal::Type::BaseModel
         sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures)) }
         attr_reader :supported_features
 
@@ -11,7 +11,7 @@ module FinchAPI
           params(
             supported_features: T.any(
               FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures,
-              FinchAPI::Internal::Util::AnyHash
+              FinchAPI::Internal::AnyHash
             )
           )
             .void
@@ -23,7 +23,7 @@ module FinchAPI
 
         sig do
           params(
-            supported_operations: T.any(FinchAPI::Models::HRIS::SupportPerBenefitType, FinchAPI::Internal::Util::AnyHash)
+            supported_operations: T.any(FinchAPI::Models::HRIS::SupportPerBenefitType, FinchAPI::Internal::AnyHash)
           )
             .void
         end
@@ -33,9 +33,9 @@ module FinchAPI
           params(
             supported_features: T.any(
               FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures,
-              FinchAPI::Internal::Util::AnyHash
+              FinchAPI::Internal::AnyHash
             ),
-            supported_operations: T.any(FinchAPI::Models::HRIS::SupportPerBenefitType, FinchAPI::Internal::Util::AnyHash)
+            supported_operations: T.any(FinchAPI::Models::HRIS::SupportPerBenefitType, FinchAPI::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -54,7 +54,7 @@ module FinchAPI
         def to_hash
         end
 
-        class SupportedFeatures < FinchAPI::BaseModel
+        class SupportedFeatures < FinchAPI::Internal::Type::BaseModel
           # Whether the provider supports an annual maximum for this benefit.
           sig { returns(T.nilable(T::Boolean)) }
           attr_accessor :annual_maximum
@@ -196,7 +196,7 @@ module FinchAPI
           end
 
           module CompanyContribution
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias do
@@ -233,7 +233,7 @@ module FinchAPI
           end
 
           module EmployeeDeduction
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::EmployeeDeduction) }
@@ -268,7 +268,7 @@ module FinchAPI
           end
 
           module HsaContributionLimit
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias do

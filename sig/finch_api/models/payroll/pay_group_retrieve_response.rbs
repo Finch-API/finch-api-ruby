@@ -9,7 +9,7 @@ module FinchAPI
           pay_frequencies: ::Array[FinchAPI::Models::Payroll::PayGroupRetrieveResponse::pay_frequency]
         }
 
-      class PayGroupRetrieveResponse < FinchAPI::BaseModel
+      class PayGroupRetrieveResponse < FinchAPI::Internal::Type::BaseModel
         attr_accessor id: String
 
         attr_accessor individual_ids: ::Array[String]
@@ -39,7 +39,7 @@ module FinchAPI
           | :other
 
         module PayFrequency
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           ANNUALLY: :annually
           SEMI_ANNUALLY: :semi_annually

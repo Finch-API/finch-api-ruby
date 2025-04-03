@@ -3,11 +3,11 @@
 module FinchAPI
   module Models
     module HRIS
-      class IndividualResponse < FinchAPI::BaseModel
+      class IndividualResponse < FinchAPI::Internal::Type::BaseModel
         sig { returns(T.nilable(FinchAPI::Models::HRIS::Individual)) }
         attr_reader :body
 
-        sig { params(body: T.any(FinchAPI::Models::HRIS::Individual, FinchAPI::Internal::Util::AnyHash)).void }
+        sig { params(body: T.any(FinchAPI::Models::HRIS::Individual, FinchAPI::Internal::AnyHash)).void }
         attr_writer :body
 
         sig { returns(T.nilable(Integer)) }
@@ -24,7 +24,7 @@ module FinchAPI
 
         sig do
           params(
-            body: T.any(FinchAPI::Models::HRIS::Individual, FinchAPI::Internal::Util::AnyHash),
+            body: T.any(FinchAPI::Models::HRIS::Individual, FinchAPI::Internal::AnyHash),
             code: Integer,
             individual_id: String
           )

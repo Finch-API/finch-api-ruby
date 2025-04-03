@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module Jobs
-      class ManualAsyncJob < FinchAPI::BaseModel
+      class ManualAsyncJob < FinchAPI::Internal::Type::BaseModel
         # Specific information about the job, such as individual statuses for batch jobs.
         sig { returns(T.nilable(T::Array[T.anything])) }
         attr_accessor :body
@@ -39,7 +39,7 @@ module FinchAPI
         end
 
         module Status
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Jobs::ManualAsyncJob::Status) }
           OrSymbol =

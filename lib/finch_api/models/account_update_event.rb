@@ -27,9 +27,9 @@ module FinchAPI
       #   #
       #   def initialize(data: nil, event_type: nil, **) = super
 
-      # def initialize: (Hash | FinchAPI::BaseModel) -> void
+      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
-      class Data < FinchAPI::BaseModel
+      class Data < FinchAPI::Internal::Type::BaseModel
         # @!attribute authentication_method
         #
         #   @return [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod]
@@ -46,10 +46,10 @@ module FinchAPI
         #   #
         #   def initialize(authentication_method:, status:, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
         # @see FinchAPI::Models::AccountUpdateEvent::Data#authentication_method
-        class AuthenticationMethod < FinchAPI::BaseModel
+        class AuthenticationMethod < FinchAPI::Internal::Type::BaseModel
           # @!attribute benefits_support
           #   Each benefit type and their supported features. If the benefit type is not
           #     supported, the property will be null
@@ -82,10 +82,10 @@ module FinchAPI
           #   #
           #   def initialize(benefits_support: nil, supported_fields: nil, type: nil, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
           # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod#supported_fields
-          class SupportedFields < FinchAPI::BaseModel
+          class SupportedFields < FinchAPI::Internal::Type::BaseModel
             # @!attribute [r] company
             #
             #   @return [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company, nil]
@@ -180,14 +180,14 @@ module FinchAPI
             #     super
             #   end
 
-            # def initialize: (Hash | FinchAPI::BaseModel) -> void
+            # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
             # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields#company
-            class Company < FinchAPI::BaseModel
+            class Company < FinchAPI::Internal::Type::BaseModel
               # @!attribute [r] id
               #
               #   @return [Boolean, nil]
-              optional :id, FinchAPI::BooleanModel
+              optional :id, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -216,7 +216,7 @@ module FinchAPI
               # @!attribute [r] ein
               #
               #   @return [Boolean, nil]
-              optional :ein, FinchAPI::BooleanModel
+              optional :ein, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -235,7 +235,7 @@ module FinchAPI
               # @!attribute [r] legal_name
               #
               #   @return [Boolean, nil]
-              optional :legal_name, FinchAPI::BooleanModel
+              optional :legal_name, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -254,7 +254,7 @@ module FinchAPI
               # @!attribute [r] primary_email
               #
               #   @return [Boolean, nil]
-              optional :primary_email, FinchAPI::BooleanModel
+              optional :primary_email, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -263,7 +263,7 @@ module FinchAPI
               # @!attribute [r] primary_phone_number
               #
               #   @return [Boolean, nil]
-              optional :primary_phone_number, FinchAPI::BooleanModel
+              optional :primary_phone_number, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -295,14 +295,14 @@ module FinchAPI
               #     super
               #   end
 
-              # def initialize: (Hash | FinchAPI::BaseModel) -> void
+              # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
               # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company#accounts
-              class Accounts < FinchAPI::BaseModel
+              class Accounts < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] account_name
                 #
                 #   @return [Boolean, nil]
-                optional :account_name, FinchAPI::BooleanModel
+                optional :account_name, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -311,7 +311,7 @@ module FinchAPI
                 # @!attribute [r] account_number
                 #
                 #   @return [Boolean, nil]
-                optional :account_number, FinchAPI::BooleanModel
+                optional :account_number, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -320,7 +320,7 @@ module FinchAPI
                 # @!attribute [r] account_type
                 #
                 #   @return [Boolean, nil]
-                optional :account_type, FinchAPI::BooleanModel
+                optional :account_type, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -329,7 +329,7 @@ module FinchAPI
                 # @!attribute [r] institution_name
                 #
                 #   @return [Boolean, nil]
-                optional :institution_name, FinchAPI::BooleanModel
+                optional :institution_name, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -338,7 +338,7 @@ module FinchAPI
                 # @!attribute [r] routing_number
                 #
                 #   @return [Boolean, nil]
-                optional :routing_number, FinchAPI::BooleanModel
+                optional :routing_number, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -353,15 +353,15 @@ module FinchAPI
                 #   #
                 #   def initialize(account_name: nil, account_number: nil, account_type: nil, institution_name: nil, routing_number: nil, **) = super
 
-                # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
               end
 
               # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company#departments
-              class Departments < FinchAPI::BaseModel
+              class Departments < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] name
                 #
                 #   @return [Boolean, nil]
-                optional :name, FinchAPI::BooleanModel
+                optional :name, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -383,14 +383,14 @@ module FinchAPI
                 #   #
                 #   def initialize(name: nil, parent: nil, **) = super
 
-                # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
                 # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments#parent
-                class Parent < FinchAPI::BaseModel
+                class Parent < FinchAPI::Internal::Type::BaseModel
                   # @!attribute [r] name
                   #
                   #   @return [Boolean, nil]
-                  optional :name, FinchAPI::BooleanModel
+                  optional :name, FinchAPI::Internal::Type::BooleanModel
 
                   # @!parse
                   #   # @return [Boolean]
@@ -401,16 +401,16 @@ module FinchAPI
                   #   #
                   #   def initialize(name: nil, **) = super
 
-                  # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                  # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
                 end
               end
 
               # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company#entity
-              class Entity < FinchAPI::BaseModel
+              class Entity < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] subtype
                 #
                 #   @return [Boolean, nil]
-                optional :subtype, FinchAPI::BooleanModel
+                optional :subtype, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -419,7 +419,7 @@ module FinchAPI
                 # @!attribute [r] type
                 #
                 #   @return [Boolean, nil]
-                optional :type, FinchAPI::BooleanModel
+                optional :type, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -431,15 +431,15 @@ module FinchAPI
                 #   #
                 #   def initialize(subtype: nil, type: nil, **) = super
 
-                # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
               end
 
               # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company#locations
-              class Locations < FinchAPI::BaseModel
+              class Locations < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] city
                 #
                 #   @return [Boolean, nil]
-                optional :city, FinchAPI::BooleanModel
+                optional :city, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -448,7 +448,7 @@ module FinchAPI
                 # @!attribute [r] country
                 #
                 #   @return [Boolean, nil]
-                optional :country, FinchAPI::BooleanModel
+                optional :country, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -457,7 +457,7 @@ module FinchAPI
                 # @!attribute [r] line1
                 #
                 #   @return [Boolean, nil]
-                optional :line1, FinchAPI::BooleanModel
+                optional :line1, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -466,7 +466,7 @@ module FinchAPI
                 # @!attribute [r] line2
                 #
                 #   @return [Boolean, nil]
-                optional :line2, FinchAPI::BooleanModel
+                optional :line2, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -475,7 +475,7 @@ module FinchAPI
                 # @!attribute [r] postal_code
                 #
                 #   @return [Boolean, nil]
-                optional :postal_code, FinchAPI::BooleanModel
+                optional :postal_code, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -484,7 +484,7 @@ module FinchAPI
                 # @!attribute [r] state
                 #
                 #   @return [Boolean, nil]
-                optional :state, FinchAPI::BooleanModel
+                optional :state, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -500,12 +500,12 @@ module FinchAPI
                 #   #
                 #   def initialize(city: nil, country: nil, line1: nil, line2: nil, postal_code: nil, state: nil, **) = super
 
-                # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
               end
             end
 
             # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields#directory
-            class Directory < FinchAPI::BaseModel
+            class Directory < FinchAPI::Internal::Type::BaseModel
               # @!attribute [r] individuals
               #
               #   @return [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals, nil]
@@ -532,14 +532,14 @@ module FinchAPI
               #   #
               #   def initialize(individuals: nil, paging: nil, **) = super
 
-              # def initialize: (Hash | FinchAPI::BaseModel) -> void
+              # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
               # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory#individuals
-              class Individuals < FinchAPI::BaseModel
+              class Individuals < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] id
                 #
                 #   @return [Boolean, nil]
-                optional :id, FinchAPI::BooleanModel
+                optional :id, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -548,7 +548,7 @@ module FinchAPI
                 # @!attribute [r] department
                 #
                 #   @return [Boolean, nil]
-                optional :department, FinchAPI::BooleanModel
+                optional :department, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -557,7 +557,7 @@ module FinchAPI
                 # @!attribute [r] first_name
                 #
                 #   @return [Boolean, nil]
-                optional :first_name, FinchAPI::BooleanModel
+                optional :first_name, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -566,7 +566,7 @@ module FinchAPI
                 # @!attribute [r] is_active
                 #
                 #   @return [Boolean, nil]
-                optional :is_active, FinchAPI::BooleanModel
+                optional :is_active, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -575,7 +575,7 @@ module FinchAPI
                 # @!attribute [r] last_name
                 #
                 #   @return [Boolean, nil]
-                optional :last_name, FinchAPI::BooleanModel
+                optional :last_name, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -594,7 +594,7 @@ module FinchAPI
                 # @!attribute [r] middle_name
                 #
                 #   @return [Boolean, nil]
-                optional :middle_name, FinchAPI::BooleanModel
+                optional :middle_name, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -622,14 +622,14 @@ module FinchAPI
                 #     super
                 #   end
 
-                # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
                 # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals#manager
-                class Manager < FinchAPI::BaseModel
+                class Manager < FinchAPI::Internal::Type::BaseModel
                   # @!attribute [r] id
                   #
                   #   @return [Boolean, nil]
-                  optional :id, FinchAPI::BooleanModel
+                  optional :id, FinchAPI::Internal::Type::BooleanModel
 
                   # @!parse
                   #   # @return [Boolean]
@@ -640,16 +640,16 @@ module FinchAPI
                   #   #
                   #   def initialize(id: nil, **) = super
 
-                  # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                  # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
                 end
               end
 
               # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory#paging
-              class Paging < FinchAPI::BaseModel
+              class Paging < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] count
                 #
                 #   @return [Boolean, nil]
-                optional :count, FinchAPI::BooleanModel
+                optional :count, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -658,7 +658,7 @@ module FinchAPI
                 # @!attribute [r] offset
                 #
                 #   @return [Boolean, nil]
-                optional :offset, FinchAPI::BooleanModel
+                optional :offset, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -670,16 +670,16 @@ module FinchAPI
                 #   #
                 #   def initialize(count: nil, offset: nil, **) = super
 
-                # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
               end
             end
 
             # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields#employment
-            class Employment < FinchAPI::BaseModel
+            class Employment < FinchAPI::Internal::Type::BaseModel
               # @!attribute [r] id
               #
               #   @return [Boolean, nil]
-              optional :id, FinchAPI::BooleanModel
+              optional :id, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -688,7 +688,7 @@ module FinchAPI
               # @!attribute [r] class_code
               #
               #   @return [Boolean, nil]
-              optional :class_code, FinchAPI::BooleanModel
+              optional :class_code, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -697,7 +697,7 @@ module FinchAPI
               # @!attribute [r] custom_fields
               #
               #   @return [Boolean, nil]
-              optional :custom_fields, FinchAPI::BooleanModel
+              optional :custom_fields, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -726,7 +726,7 @@ module FinchAPI
               # @!attribute [r] employment_status
               #
               #   @return [Boolean, nil]
-              optional :employment_status, FinchAPI::BooleanModel
+              optional :employment_status, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -735,7 +735,7 @@ module FinchAPI
               # @!attribute [r] end_date
               #
               #   @return [Boolean, nil]
-              optional :end_date, FinchAPI::BooleanModel
+              optional :end_date, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -744,7 +744,7 @@ module FinchAPI
               # @!attribute [r] first_name
               #
               #   @return [Boolean, nil]
-              optional :first_name, FinchAPI::BooleanModel
+              optional :first_name, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -763,7 +763,7 @@ module FinchAPI
               # @!attribute [r] income_history
               #
               #   @return [Boolean, nil]
-              optional :income_history, FinchAPI::BooleanModel
+              optional :income_history, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -772,7 +772,7 @@ module FinchAPI
               # @!attribute [r] is_active
               #
               #   @return [Boolean, nil]
-              optional :is_active, FinchAPI::BooleanModel
+              optional :is_active, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -781,7 +781,7 @@ module FinchAPI
               # @!attribute [r] last_name
               #
               #   @return [Boolean, nil]
-              optional :last_name, FinchAPI::BooleanModel
+              optional :last_name, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -810,7 +810,7 @@ module FinchAPI
               # @!attribute [r] middle_name
               #
               #   @return [Boolean, nil]
-              optional :middle_name, FinchAPI::BooleanModel
+              optional :middle_name, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -819,7 +819,7 @@ module FinchAPI
               # @!attribute [r] start_date
               #
               #   @return [Boolean, nil]
-              optional :start_date, FinchAPI::BooleanModel
+              optional :start_date, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -828,7 +828,7 @@ module FinchAPI
               # @!attribute [r] title
               #
               #   @return [Boolean, nil]
-              optional :title, FinchAPI::BooleanModel
+              optional :title, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -876,14 +876,14 @@ module FinchAPI
               #     super
               #   end
 
-              # def initialize: (Hash | FinchAPI::BaseModel) -> void
+              # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
               # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment#department
-              class Department < FinchAPI::BaseModel
+              class Department < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] name
                 #
                 #   @return [Boolean, nil]
-                optional :name, FinchAPI::BooleanModel
+                optional :name, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -894,15 +894,15 @@ module FinchAPI
                 #   #
                 #   def initialize(name: nil, **) = super
 
-                # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
               end
 
               # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment#employment
-              class Employment < FinchAPI::BaseModel
+              class Employment < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] subtype
                 #
                 #   @return [Boolean, nil]
-                optional :subtype, FinchAPI::BooleanModel
+                optional :subtype, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -911,7 +911,7 @@ module FinchAPI
                 # @!attribute [r] type
                 #
                 #   @return [Boolean, nil]
-                optional :type, FinchAPI::BooleanModel
+                optional :type, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -923,15 +923,15 @@ module FinchAPI
                 #   #
                 #   def initialize(subtype: nil, type: nil, **) = super
 
-                # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
               end
 
               # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment#income
-              class Income < FinchAPI::BaseModel
+              class Income < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] amount
                 #
                 #   @return [Boolean, nil]
-                optional :amount, FinchAPI::BooleanModel
+                optional :amount, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -940,7 +940,7 @@ module FinchAPI
                 # @!attribute [r] currency
                 #
                 #   @return [Boolean, nil]
-                optional :currency, FinchAPI::BooleanModel
+                optional :currency, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -949,7 +949,7 @@ module FinchAPI
                 # @!attribute [r] unit
                 #
                 #   @return [Boolean, nil]
-                optional :unit, FinchAPI::BooleanModel
+                optional :unit, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -962,15 +962,15 @@ module FinchAPI
                 #   #
                 #   def initialize(amount: nil, currency: nil, unit: nil, **) = super
 
-                # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
               end
 
               # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment#location
-              class Location < FinchAPI::BaseModel
+              class Location < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] city
                 #
                 #   @return [Boolean, nil]
-                optional :city, FinchAPI::BooleanModel
+                optional :city, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -979,7 +979,7 @@ module FinchAPI
                 # @!attribute [r] country
                 #
                 #   @return [Boolean, nil]
-                optional :country, FinchAPI::BooleanModel
+                optional :country, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -988,7 +988,7 @@ module FinchAPI
                 # @!attribute [r] line1
                 #
                 #   @return [Boolean, nil]
-                optional :line1, FinchAPI::BooleanModel
+                optional :line1, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -997,7 +997,7 @@ module FinchAPI
                 # @!attribute [r] line2
                 #
                 #   @return [Boolean, nil]
-                optional :line2, FinchAPI::BooleanModel
+                optional :line2, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1006,7 +1006,7 @@ module FinchAPI
                 # @!attribute [r] postal_code
                 #
                 #   @return [Boolean, nil]
-                optional :postal_code, FinchAPI::BooleanModel
+                optional :postal_code, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1015,7 +1015,7 @@ module FinchAPI
                 # @!attribute [r] state
                 #
                 #   @return [Boolean, nil]
-                optional :state, FinchAPI::BooleanModel
+                optional :state, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1031,15 +1031,15 @@ module FinchAPI
                 #   #
                 #   def initialize(city: nil, country: nil, line1: nil, line2: nil, postal_code: nil, state: nil, **) = super
 
-                # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
               end
 
               # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment#manager
-              class Manager < FinchAPI::BaseModel
+              class Manager < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] id
                 #
                 #   @return [Boolean, nil]
-                optional :id, FinchAPI::BooleanModel
+                optional :id, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1050,16 +1050,16 @@ module FinchAPI
                 #   #
                 #   def initialize(id: nil, **) = super
 
-                # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
               end
             end
 
             # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields#individual
-            class Individual < FinchAPI::BaseModel
+            class Individual < FinchAPI::Internal::Type::BaseModel
               # @!attribute [r] id
               #
               #   @return [Boolean, nil]
-              optional :id, FinchAPI::BooleanModel
+              optional :id, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1068,7 +1068,7 @@ module FinchAPI
               # @!attribute [r] dob
               #
               #   @return [Boolean, nil]
-              optional :dob, FinchAPI::BooleanModel
+              optional :dob, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1087,7 +1087,7 @@ module FinchAPI
               # @!attribute [r] encrypted_ssn
               #
               #   @return [Boolean, nil]
-              optional :encrypted_ssn, FinchAPI::BooleanModel
+              optional :encrypted_ssn, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1096,7 +1096,7 @@ module FinchAPI
               # @!attribute [r] ethnicity
               #
               #   @return [Boolean, nil]
-              optional :ethnicity, FinchAPI::BooleanModel
+              optional :ethnicity, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1105,7 +1105,7 @@ module FinchAPI
               # @!attribute [r] first_name
               #
               #   @return [Boolean, nil]
-              optional :first_name, FinchAPI::BooleanModel
+              optional :first_name, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1114,7 +1114,7 @@ module FinchAPI
               # @!attribute [r] gender
               #
               #   @return [Boolean, nil]
-              optional :gender, FinchAPI::BooleanModel
+              optional :gender, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1123,7 +1123,7 @@ module FinchAPI
               # @!attribute [r] last_name
               #
               #   @return [Boolean, nil]
-              optional :last_name, FinchAPI::BooleanModel
+              optional :last_name, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1132,7 +1132,7 @@ module FinchAPI
               # @!attribute [r] middle_name
               #
               #   @return [Boolean, nil]
-              optional :middle_name, FinchAPI::BooleanModel
+              optional :middle_name, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1151,7 +1151,7 @@ module FinchAPI
               # @!attribute [r] preferred_name
               #
               #   @return [Boolean, nil]
-              optional :preferred_name, FinchAPI::BooleanModel
+              optional :preferred_name, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1170,7 +1170,7 @@ module FinchAPI
               # @!attribute [r] ssn
               #
               #   @return [Boolean, nil]
-              optional :ssn, FinchAPI::BooleanModel
+              optional :ssn, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1210,14 +1210,14 @@ module FinchAPI
               #     super
               #   end
 
-              # def initialize: (Hash | FinchAPI::BaseModel) -> void
+              # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
               # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual#emails
-              class Emails < FinchAPI::BaseModel
+              class Emails < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] data
                 #
                 #   @return [Boolean, nil]
-                optional :data, FinchAPI::BooleanModel
+                optional :data, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1226,7 +1226,7 @@ module FinchAPI
                 # @!attribute [r] type
                 #
                 #   @return [Boolean, nil]
-                optional :type, FinchAPI::BooleanModel
+                optional :type, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1238,15 +1238,15 @@ module FinchAPI
                 #   #
                 #   def initialize(data: nil, type: nil, **) = super
 
-                # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
               end
 
               # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual#phone_numbers
-              class PhoneNumbers < FinchAPI::BaseModel
+              class PhoneNumbers < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] data
                 #
                 #   @return [Boolean, nil]
-                optional :data, FinchAPI::BooleanModel
+                optional :data, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1255,7 +1255,7 @@ module FinchAPI
                 # @!attribute [r] type
                 #
                 #   @return [Boolean, nil]
-                optional :type, FinchAPI::BooleanModel
+                optional :type, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1267,15 +1267,15 @@ module FinchAPI
                 #   #
                 #   def initialize(data: nil, type: nil, **) = super
 
-                # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
               end
 
               # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual#residence
-              class Residence < FinchAPI::BaseModel
+              class Residence < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] city
                 #
                 #   @return [Boolean, nil]
-                optional :city, FinchAPI::BooleanModel
+                optional :city, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1284,7 +1284,7 @@ module FinchAPI
                 # @!attribute [r] country
                 #
                 #   @return [Boolean, nil]
-                optional :country, FinchAPI::BooleanModel
+                optional :country, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1293,7 +1293,7 @@ module FinchAPI
                 # @!attribute [r] line1
                 #
                 #   @return [Boolean, nil]
-                optional :line1, FinchAPI::BooleanModel
+                optional :line1, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1302,7 +1302,7 @@ module FinchAPI
                 # @!attribute [r] line2
                 #
                 #   @return [Boolean, nil]
-                optional :line2, FinchAPI::BooleanModel
+                optional :line2, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1311,7 +1311,7 @@ module FinchAPI
                 # @!attribute [r] postal_code
                 #
                 #   @return [Boolean, nil]
-                optional :postal_code, FinchAPI::BooleanModel
+                optional :postal_code, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1320,7 +1320,7 @@ module FinchAPI
                 # @!attribute [r] state
                 #
                 #   @return [Boolean, nil]
-                optional :state, FinchAPI::BooleanModel
+                optional :state, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1336,16 +1336,16 @@ module FinchAPI
                 #   #
                 #   def initialize(city: nil, country: nil, line1: nil, line2: nil, postal_code: nil, state: nil, **) = super
 
-                # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
               end
             end
 
             # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields#pay_group
-            class PayGroup < FinchAPI::BaseModel
+            class PayGroup < FinchAPI::Internal::Type::BaseModel
               # @!attribute [r] id
               #
               #   @return [Boolean, nil]
-              optional :id, FinchAPI::BooleanModel
+              optional :id, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1354,7 +1354,7 @@ module FinchAPI
               # @!attribute [r] individual_ids
               #
               #   @return [Boolean, nil]
-              optional :individual_ids, FinchAPI::BooleanModel
+              optional :individual_ids, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1363,7 +1363,7 @@ module FinchAPI
               # @!attribute [r] name
               #
               #   @return [Boolean, nil]
-              optional :name, FinchAPI::BooleanModel
+              optional :name, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1372,7 +1372,7 @@ module FinchAPI
               # @!attribute [r] pay_frequencies
               #
               #   @return [Boolean, nil]
-              optional :pay_frequencies, FinchAPI::BooleanModel
+              optional :pay_frequencies, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1386,11 +1386,11 @@ module FinchAPI
               #   #
               #   def initialize(id: nil, individual_ids: nil, name: nil, pay_frequencies: nil, **) = super
 
-              # def initialize: (Hash | FinchAPI::BaseModel) -> void
+              # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
             end
 
             # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields#pay_statement
-            class PayStatement < FinchAPI::BaseModel
+            class PayStatement < FinchAPI::Internal::Type::BaseModel
               # @!attribute [r] paging
               #
               #   @return [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::Paging, nil]
@@ -1417,19 +1417,19 @@ module FinchAPI
               #   #
               #   def initialize(paging: nil, pay_statements: nil, **) = super
 
-              # def initialize: (Hash | FinchAPI::BaseModel) -> void
+              # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
               # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement#paging
-              class Paging < FinchAPI::BaseModel
+              class Paging < FinchAPI::Internal::Type::BaseModel
                 # @!attribute count
                 #
                 #   @return [Boolean]
-                required :count, FinchAPI::BooleanModel
+                required :count, FinchAPI::Internal::Type::BooleanModel
 
                 # @!attribute offset
                 #
                 #   @return [Boolean]
-                required :offset, FinchAPI::BooleanModel
+                required :offset, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @param count [Boolean]
@@ -1437,11 +1437,11 @@ module FinchAPI
                 #   #
                 #   def initialize(count:, offset:, **) = super
 
-                # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
               end
 
               # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement#pay_statements
-              class PayStatements < FinchAPI::BaseModel
+              class PayStatements < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] earnings
                 #
                 #   @return [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings, nil]
@@ -1475,7 +1475,7 @@ module FinchAPI
                 # @!attribute [r] gross_pay
                 #
                 #   @return [Boolean, nil]
-                optional :gross_pay, FinchAPI::BooleanModel
+                optional :gross_pay, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1484,7 +1484,7 @@ module FinchAPI
                 # @!attribute [r] individual_id
                 #
                 #   @return [Boolean, nil]
-                optional :individual_id, FinchAPI::BooleanModel
+                optional :individual_id, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1493,7 +1493,7 @@ module FinchAPI
                 # @!attribute [r] net_pay
                 #
                 #   @return [Boolean, nil]
-                optional :net_pay, FinchAPI::BooleanModel
+                optional :net_pay, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1502,7 +1502,7 @@ module FinchAPI
                 # @!attribute [r] payment_method
                 #
                 #   @return [Boolean, nil]
-                optional :payment_method, FinchAPI::BooleanModel
+                optional :payment_method, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1521,7 +1521,7 @@ module FinchAPI
                 # @!attribute [r] total_hours
                 #
                 #   @return [Boolean, nil]
-                optional :total_hours, FinchAPI::BooleanModel
+                optional :total_hours, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1530,7 +1530,7 @@ module FinchAPI
                 # @!attribute [r] type
                 #
                 #   @return [Boolean, nil]
-                optional :type, FinchAPI::BooleanModel
+                optional :type, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1564,14 +1564,14 @@ module FinchAPI
                 #     super
                 #   end
 
-                # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
                 # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements#earnings
-                class Earnings < FinchAPI::BaseModel
+                class Earnings < FinchAPI::Internal::Type::BaseModel
                   # @!attribute [r] amount
                   #
                   #   @return [Boolean, nil]
-                  optional :amount, FinchAPI::BooleanModel
+                  optional :amount, FinchAPI::Internal::Type::BooleanModel
 
                   # @!parse
                   #   # @return [Boolean]
@@ -1580,7 +1580,7 @@ module FinchAPI
                   # @!attribute [r] currency
                   #
                   #   @return [Boolean, nil]
-                  optional :currency, FinchAPI::BooleanModel
+                  optional :currency, FinchAPI::Internal::Type::BooleanModel
 
                   # @!parse
                   #   # @return [Boolean]
@@ -1589,7 +1589,7 @@ module FinchAPI
                   # @!attribute [r] name
                   #
                   #   @return [Boolean, nil]
-                  optional :name, FinchAPI::BooleanModel
+                  optional :name, FinchAPI::Internal::Type::BooleanModel
 
                   # @!parse
                   #   # @return [Boolean]
@@ -1598,7 +1598,7 @@ module FinchAPI
                   # @!attribute [r] type
                   #
                   #   @return [Boolean, nil]
-                  optional :type, FinchAPI::BooleanModel
+                  optional :type, FinchAPI::Internal::Type::BooleanModel
 
                   # @!parse
                   #   # @return [Boolean]
@@ -1612,15 +1612,15 @@ module FinchAPI
                   #   #
                   #   def initialize(amount: nil, currency: nil, name: nil, type: nil, **) = super
 
-                  # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                  # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
                 end
 
                 # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements#employee_deductions
-                class EmployeeDeductions < FinchAPI::BaseModel
+                class EmployeeDeductions < FinchAPI::Internal::Type::BaseModel
                   # @!attribute [r] amount
                   #
                   #   @return [Boolean, nil]
-                  optional :amount, FinchAPI::BooleanModel
+                  optional :amount, FinchAPI::Internal::Type::BooleanModel
 
                   # @!parse
                   #   # @return [Boolean]
@@ -1629,7 +1629,7 @@ module FinchAPI
                   # @!attribute [r] currency
                   #
                   #   @return [Boolean, nil]
-                  optional :currency, FinchAPI::BooleanModel
+                  optional :currency, FinchAPI::Internal::Type::BooleanModel
 
                   # @!parse
                   #   # @return [Boolean]
@@ -1638,7 +1638,7 @@ module FinchAPI
                   # @!attribute [r] name
                   #
                   #   @return [Boolean, nil]
-                  optional :name, FinchAPI::BooleanModel
+                  optional :name, FinchAPI::Internal::Type::BooleanModel
 
                   # @!parse
                   #   # @return [Boolean]
@@ -1647,7 +1647,7 @@ module FinchAPI
                   # @!attribute [r] pre_tax
                   #
                   #   @return [Boolean, nil]
-                  optional :pre_tax, FinchAPI::BooleanModel
+                  optional :pre_tax, FinchAPI::Internal::Type::BooleanModel
 
                   # @!parse
                   #   # @return [Boolean]
@@ -1656,7 +1656,7 @@ module FinchAPI
                   # @!attribute [r] type
                   #
                   #   @return [Boolean, nil]
-                  optional :type, FinchAPI::BooleanModel
+                  optional :type, FinchAPI::Internal::Type::BooleanModel
 
                   # @!parse
                   #   # @return [Boolean]
@@ -1671,15 +1671,15 @@ module FinchAPI
                   #   #
                   #   def initialize(amount: nil, currency: nil, name: nil, pre_tax: nil, type: nil, **) = super
 
-                  # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                  # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
                 end
 
                 # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements#employer_contributions
-                class EmployerContributions < FinchAPI::BaseModel
+                class EmployerContributions < FinchAPI::Internal::Type::BaseModel
                   # @!attribute [r] amount
                   #
                   #   @return [Boolean, nil]
-                  optional :amount, FinchAPI::BooleanModel
+                  optional :amount, FinchAPI::Internal::Type::BooleanModel
 
                   # @!parse
                   #   # @return [Boolean]
@@ -1688,7 +1688,7 @@ module FinchAPI
                   # @!attribute [r] currency
                   #
                   #   @return [Boolean, nil]
-                  optional :currency, FinchAPI::BooleanModel
+                  optional :currency, FinchAPI::Internal::Type::BooleanModel
 
                   # @!parse
                   #   # @return [Boolean]
@@ -1697,7 +1697,7 @@ module FinchAPI
                   # @!attribute [r] name
                   #
                   #   @return [Boolean, nil]
-                  optional :name, FinchAPI::BooleanModel
+                  optional :name, FinchAPI::Internal::Type::BooleanModel
 
                   # @!parse
                   #   # @return [Boolean]
@@ -1710,15 +1710,15 @@ module FinchAPI
                   #   #
                   #   def initialize(amount: nil, currency: nil, name: nil, **) = super
 
-                  # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                  # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
                 end
 
                 # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements#taxes
-                class Taxes < FinchAPI::BaseModel
+                class Taxes < FinchAPI::Internal::Type::BaseModel
                   # @!attribute [r] amount
                   #
                   #   @return [Boolean, nil]
-                  optional :amount, FinchAPI::BooleanModel
+                  optional :amount, FinchAPI::Internal::Type::BooleanModel
 
                   # @!parse
                   #   # @return [Boolean]
@@ -1727,7 +1727,7 @@ module FinchAPI
                   # @!attribute [r] currency
                   #
                   #   @return [Boolean, nil]
-                  optional :currency, FinchAPI::BooleanModel
+                  optional :currency, FinchAPI::Internal::Type::BooleanModel
 
                   # @!parse
                   #   # @return [Boolean]
@@ -1736,7 +1736,7 @@ module FinchAPI
                   # @!attribute [r] employer
                   #
                   #   @return [Boolean, nil]
-                  optional :employer, FinchAPI::BooleanModel
+                  optional :employer, FinchAPI::Internal::Type::BooleanModel
 
                   # @!parse
                   #   # @return [Boolean]
@@ -1745,7 +1745,7 @@ module FinchAPI
                   # @!attribute [r] name
                   #
                   #   @return [Boolean, nil]
-                  optional :name, FinchAPI::BooleanModel
+                  optional :name, FinchAPI::Internal::Type::BooleanModel
 
                   # @!parse
                   #   # @return [Boolean]
@@ -1754,7 +1754,7 @@ module FinchAPI
                   # @!attribute [r] type
                   #
                   #   @return [Boolean, nil]
-                  optional :type, FinchAPI::BooleanModel
+                  optional :type, FinchAPI::Internal::Type::BooleanModel
 
                   # @!parse
                   #   # @return [Boolean]
@@ -1769,17 +1769,17 @@ module FinchAPI
                   #   #
                   #   def initialize(amount: nil, currency: nil, employer: nil, name: nil, type: nil, **) = super
 
-                  # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                  # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
                 end
               end
             end
 
             # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields#payment
-            class Payment < FinchAPI::BaseModel
+            class Payment < FinchAPI::Internal::Type::BaseModel
               # @!attribute [r] id
               #
               #   @return [Boolean, nil]
-              optional :id, FinchAPI::BooleanModel
+              optional :id, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1788,7 +1788,7 @@ module FinchAPI
               # @!attribute [r] company_debit
               #
               #   @return [Boolean, nil]
-              optional :company_debit, FinchAPI::BooleanModel
+              optional :company_debit, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1797,7 +1797,7 @@ module FinchAPI
               # @!attribute [r] debit_date
               #
               #   @return [Boolean, nil]
-              optional :debit_date, FinchAPI::BooleanModel
+              optional :debit_date, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1806,7 +1806,7 @@ module FinchAPI
               # @!attribute [r] employee_taxes
               #
               #   @return [Boolean, nil]
-              optional :employee_taxes, FinchAPI::BooleanModel
+              optional :employee_taxes, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1815,7 +1815,7 @@ module FinchAPI
               # @!attribute [r] employer_taxes
               #
               #   @return [Boolean, nil]
-              optional :employer_taxes, FinchAPI::BooleanModel
+              optional :employer_taxes, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1824,7 +1824,7 @@ module FinchAPI
               # @!attribute [r] gross_pay
               #
               #   @return [Boolean, nil]
-              optional :gross_pay, FinchAPI::BooleanModel
+              optional :gross_pay, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1833,7 +1833,7 @@ module FinchAPI
               # @!attribute [r] individual_ids
               #
               #   @return [Boolean, nil]
-              optional :individual_ids, FinchAPI::BooleanModel
+              optional :individual_ids, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1842,7 +1842,7 @@ module FinchAPI
               # @!attribute [r] net_pay
               #
               #   @return [Boolean, nil]
-              optional :net_pay, FinchAPI::BooleanModel
+              optional :net_pay, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1851,7 +1851,7 @@ module FinchAPI
               # @!attribute [r] pay_date
               #
               #   @return [Boolean, nil]
-              optional :pay_date, FinchAPI::BooleanModel
+              optional :pay_date, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1860,7 +1860,7 @@ module FinchAPI
               # @!attribute [r] pay_frequencies
               #
               #   @return [Boolean, nil]
-              optional :pay_frequencies, FinchAPI::BooleanModel
+              optional :pay_frequencies, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1869,7 +1869,7 @@ module FinchAPI
               # @!attribute [r] pay_group_ids
               #
               #   @return [Boolean, nil]
-              optional :pay_group_ids, FinchAPI::BooleanModel
+              optional :pay_group_ids, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -1917,14 +1917,14 @@ module FinchAPI
               #     super
               #   end
 
-              # def initialize: (Hash | FinchAPI::BaseModel) -> void
+              # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
               # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment#pay_period
-              class PayPeriod < FinchAPI::BaseModel
+              class PayPeriod < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] end_date
                 #
                 #   @return [Boolean, nil]
-                optional :end_date, FinchAPI::BooleanModel
+                optional :end_date, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1933,7 +1933,7 @@ module FinchAPI
                 # @!attribute [r] start_date
                 #
                 #   @return [Boolean, nil]
-                optional :start_date, FinchAPI::BooleanModel
+                optional :start_date, FinchAPI::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1945,7 +1945,7 @@ module FinchAPI
                 #   #
                 #   def initialize(end_date: nil, start_date: nil, **) = super
 
-                # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
               end
             end
           end
@@ -1954,7 +1954,7 @@ module FinchAPI
           #
           # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod#type
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             ASSISTED = :assisted
             CREDENTIAL = :credential
@@ -1972,7 +1972,7 @@ module FinchAPI
       end
 
       module EventType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         ACCOUNT_UPDATED = :"account.updated"
 

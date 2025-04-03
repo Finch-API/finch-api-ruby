@@ -7,7 +7,7 @@ module FinchAPI
           paging: FinchAPI::Models::Paging
         }
 
-      class DocumentListResponse < FinchAPI::BaseModel
+      class DocumentListResponse < FinchAPI::Internal::Type::BaseModel
         attr_accessor documents: ::Array[FinchAPI::Models::HRIS::DocumentResponse]
 
         attr_accessor paging: FinchAPI::Models::Paging

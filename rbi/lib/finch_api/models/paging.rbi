@@ -2,7 +2,7 @@
 
 module FinchAPI
   module Models
-    class Paging < FinchAPI::BaseModel
+    class Paging < FinchAPI::Internal::Type::BaseModel
       # The total number of elements for the entire query (not just the given page)
       sig { returns(T.nilable(Integer)) }
       attr_reader :count

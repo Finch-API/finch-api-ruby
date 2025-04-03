@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Sandbox
       module Connections
-        class AccountCreateResponse < FinchAPI::BaseModel
+        class AccountCreateResponse < FinchAPI::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :access_token
 
@@ -71,7 +71,7 @@ module FinchAPI
           end
 
           module AuthenticationType
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::Connections::AccountCreateResponse::AuthenticationType) }

@@ -14,7 +14,7 @@ module FinchAPI
         products: ::Array[String]
       }
 
-    class Provider < FinchAPI::BaseModel
+    class Provider < FinchAPI::Internal::Type::BaseModel
       attr_reader id: String?
 
       def id=: (String) -> String
@@ -79,7 +79,7 @@ module FinchAPI
           type: FinchAPI::Models::Provider::AuthenticationMethod::type_
         }
 
-      class AuthenticationMethod < FinchAPI::BaseModel
+      class AuthenticationMethod < FinchAPI::Internal::Type::BaseModel
         attr_accessor benefits_support: FinchAPI::Models::HRIS::BenefitsSupport?
 
         attr_accessor supported_fields: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields?
@@ -109,7 +109,7 @@ module FinchAPI
             payment: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment
           }
 
-        class SupportedFields < FinchAPI::BaseModel
+        class SupportedFields < FinchAPI::Internal::Type::BaseModel
           attr_reader company: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company?
 
           def company=: (
@@ -177,7 +177,7 @@ module FinchAPI
               primary_phone_number: bool
             }
 
-          class Company < FinchAPI::BaseModel
+          class Company < FinchAPI::Internal::Type::BaseModel
             attr_reader id: bool?
 
             def id=: (bool) -> bool
@@ -245,7 +245,7 @@ module FinchAPI
                 routing_number: bool
               }
 
-            class Accounts < FinchAPI::BaseModel
+            class Accounts < FinchAPI::Internal::Type::BaseModel
               attr_reader account_name: bool?
 
               def account_name=: (bool) -> bool
@@ -283,7 +283,7 @@ module FinchAPI
                 parent: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments::Parent
               }
 
-            class Departments < FinchAPI::BaseModel
+            class Departments < FinchAPI::Internal::Type::BaseModel
               attr_reader name: bool?
 
               def name=: (bool) -> bool
@@ -303,7 +303,7 @@ module FinchAPI
 
               type parent = { name: bool }
 
-              class Parent < FinchAPI::BaseModel
+              class Parent < FinchAPI::Internal::Type::BaseModel
                 attr_reader name: bool?
 
                 def name=: (bool) -> bool
@@ -316,7 +316,7 @@ module FinchAPI
 
             type entity = { subtype: bool, type: bool }
 
-            class Entity < FinchAPI::BaseModel
+            class Entity < FinchAPI::Internal::Type::BaseModel
               attr_reader subtype: bool?
 
               def subtype=: (bool) -> bool
@@ -340,7 +340,7 @@ module FinchAPI
                 state: bool
               }
 
-            class Locations < FinchAPI::BaseModel
+            class Locations < FinchAPI::Internal::Type::BaseModel
               attr_reader city: bool?
 
               def city=: (bool) -> bool
@@ -384,7 +384,7 @@ module FinchAPI
               paging: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Paging
             }
 
-          class Directory < FinchAPI::BaseModel
+          class Directory < FinchAPI::Internal::Type::BaseModel
             attr_reader individuals: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals?
 
             def individuals=: (
@@ -415,7 +415,7 @@ module FinchAPI
                 middle_name: bool
               }
 
-            class Individuals < FinchAPI::BaseModel
+            class Individuals < FinchAPI::Internal::Type::BaseModel
               attr_reader id: bool?
 
               def id=: (bool) -> bool
@@ -460,7 +460,7 @@ module FinchAPI
 
               type manager = { id: bool }
 
-              class Manager < FinchAPI::BaseModel
+              class Manager < FinchAPI::Internal::Type::BaseModel
                 attr_reader id: bool?
 
                 def id=: (bool) -> bool
@@ -473,7 +473,7 @@ module FinchAPI
 
             type paging = { count: bool, offset: bool }
 
-            class Paging < FinchAPI::BaseModel
+            class Paging < FinchAPI::Internal::Type::BaseModel
               attr_reader count: bool?
 
               def count=: (bool) -> bool
@@ -509,7 +509,7 @@ module FinchAPI
               title: bool
             }
 
-          class Employment < FinchAPI::BaseModel
+          class Employment < FinchAPI::Internal::Type::BaseModel
             attr_reader id: bool?
 
             def id=: (bool) -> bool
@@ -612,7 +612,7 @@ module FinchAPI
 
             type department = { name: bool }
 
-            class Department < FinchAPI::BaseModel
+            class Department < FinchAPI::Internal::Type::BaseModel
               attr_reader name: bool?
 
               def name=: (bool) -> bool
@@ -624,7 +624,7 @@ module FinchAPI
 
             type employment = { subtype: bool, type: bool }
 
-            class Employment < FinchAPI::BaseModel
+            class Employment < FinchAPI::Internal::Type::BaseModel
               attr_reader subtype: bool?
 
               def subtype=: (bool) -> bool
@@ -640,7 +640,7 @@ module FinchAPI
 
             type income = { amount: bool, currency: bool, unit: bool }
 
-            class Income < FinchAPI::BaseModel
+            class Income < FinchAPI::Internal::Type::BaseModel
               attr_reader amount: bool?
 
               def amount=: (bool) -> bool
@@ -672,7 +672,7 @@ module FinchAPI
                 state: bool
               }
 
-            class Location < FinchAPI::BaseModel
+            class Location < FinchAPI::Internal::Type::BaseModel
               attr_reader city: bool?
 
               def city=: (bool) -> bool
@@ -711,7 +711,7 @@ module FinchAPI
 
             type manager = { id: bool }
 
-            class Manager < FinchAPI::BaseModel
+            class Manager < FinchAPI::Internal::Type::BaseModel
               attr_reader id: bool?
 
               def id=: (bool) -> bool
@@ -739,7 +739,7 @@ module FinchAPI
               ssn: bool
             }
 
-          class Individual < FinchAPI::BaseModel
+          class Individual < FinchAPI::Internal::Type::BaseModel
             attr_reader id: bool?
 
             def id=: (bool) -> bool
@@ -818,7 +818,7 @@ module FinchAPI
 
             type emails = { data: bool, type: bool }
 
-            class Emails < FinchAPI::BaseModel
+            class Emails < FinchAPI::Internal::Type::BaseModel
               attr_reader data: bool?
 
               def data=: (bool) -> bool
@@ -834,7 +834,7 @@ module FinchAPI
 
             type phone_numbers = { data: bool, type: bool }
 
-            class PhoneNumbers < FinchAPI::BaseModel
+            class PhoneNumbers < FinchAPI::Internal::Type::BaseModel
               attr_reader data: bool?
 
               def data=: (bool) -> bool
@@ -858,7 +858,7 @@ module FinchAPI
                 state: bool
               }
 
-            class Residence < FinchAPI::BaseModel
+            class Residence < FinchAPI::Internal::Type::BaseModel
               attr_reader city: bool?
 
               def city=: (bool) -> bool
@@ -904,7 +904,7 @@ module FinchAPI
               pay_frequencies: bool
             }
 
-          class PayGroup < FinchAPI::BaseModel
+          class PayGroup < FinchAPI::Internal::Type::BaseModel
             attr_reader id: bool?
 
             def id=: (bool) -> bool
@@ -937,7 +937,7 @@ module FinchAPI
               pay_statements: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements
             }
 
-          class PayStatement < FinchAPI::BaseModel
+          class PayStatement < FinchAPI::Internal::Type::BaseModel
             attr_reader paging: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::Paging?
 
             def paging=: (
@@ -959,7 +959,7 @@ module FinchAPI
 
             type paging = { count: bool, offset: bool }
 
-            class Paging < FinchAPI::BaseModel
+            class Paging < FinchAPI::Internal::Type::BaseModel
               attr_accessor count: bool
 
               attr_accessor offset: bool
@@ -983,7 +983,7 @@ module FinchAPI
                 type: bool
               }
 
-            class PayStatements < FinchAPI::BaseModel
+            class PayStatements < FinchAPI::Internal::Type::BaseModel
               attr_reader earnings: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings?
 
               def earnings=: (
@@ -1050,7 +1050,7 @@ module FinchAPI
               type earnings =
                 { amount: bool, currency: bool, name: bool, type: bool }
 
-              class Earnings < FinchAPI::BaseModel
+              class Earnings < FinchAPI::Internal::Type::BaseModel
                 attr_reader amount: bool?
 
                 def amount=: (bool) -> bool
@@ -1086,7 +1086,7 @@ module FinchAPI
                   type: bool
                 }
 
-              class EmployeeDeductions < FinchAPI::BaseModel
+              class EmployeeDeductions < FinchAPI::Internal::Type::BaseModel
                 attr_reader amount: bool?
 
                 def amount=: (bool) -> bool
@@ -1121,7 +1121,7 @@ module FinchAPI
               type employer_contributions =
                 { amount: bool, currency: bool, name: bool }
 
-              class EmployerContributions < FinchAPI::BaseModel
+              class EmployerContributions < FinchAPI::Internal::Type::BaseModel
                 attr_reader amount: bool?
 
                 def amount=: (bool) -> bool
@@ -1152,7 +1152,7 @@ module FinchAPI
                   type: bool
                 }
 
-              class Taxes < FinchAPI::BaseModel
+              class Taxes < FinchAPI::Internal::Type::BaseModel
                 attr_reader amount: bool?
 
                 def amount=: (bool) -> bool
@@ -1202,7 +1202,7 @@ module FinchAPI
               pay_period: FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment::PayPeriod
             }
 
-          class Payment < FinchAPI::BaseModel
+          class Payment < FinchAPI::Internal::Type::BaseModel
             attr_reader id: bool?
 
             def id=: (bool) -> bool
@@ -1272,7 +1272,7 @@ module FinchAPI
 
             type pay_period = { end_date: bool, start_date: bool }
 
-            class PayPeriod < FinchAPI::BaseModel
+            class PayPeriod < FinchAPI::Internal::Type::BaseModel
               attr_reader end_date: bool?
 
               def end_date=: (bool) -> bool
@@ -1292,7 +1292,7 @@ module FinchAPI
           :assisted | :credential | :api_token | :api_credential | :oauth
 
         module Type
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           ASSISTED: :assisted
           CREDENTIAL: :credential

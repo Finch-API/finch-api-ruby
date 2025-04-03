@@ -5,7 +5,7 @@ module FinchAPI
         type configuration_retrieve_params =
           {  } & FinchAPI::Internal::Type::request_parameters
 
-        class ConfigurationRetrieveParams < FinchAPI::BaseModel
+        class ConfigurationRetrieveParams < FinchAPI::Internal::Type::BaseModel
           extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
 

@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
-      class BenefitFeaturesAndOperations < FinchAPI::BaseModel
+      class BenefitFeaturesAndOperations < FinchAPI::Internal::Type::BaseModel
         # @!attribute [r] supported_features
         #
         #   @return [FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures, nil]
@@ -29,22 +29,22 @@ module FinchAPI
         #   #
         #   def initialize(supported_features: nil, supported_operations: nil, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
         # @see FinchAPI::Models::HRIS::BenefitFeaturesAndOperations#supported_features
-        class SupportedFeatures < FinchAPI::BaseModel
+        class SupportedFeatures < FinchAPI::Internal::Type::BaseModel
           # @!attribute annual_maximum
           #   Whether the provider supports an annual maximum for this benefit.
           #
           #   @return [Boolean, nil]
-          optional :annual_maximum, FinchAPI::BooleanModel, nil?: true
+          optional :annual_maximum, FinchAPI::Internal::Type::BooleanModel, nil?: true
 
           # @!attribute catch_up
           #   Whether the provider supports catch up for this benefit. This field will only be
           #     true for retirement benefits.
           #
           #   @return [Boolean, nil]
-          optional :catch_up, FinchAPI::BooleanModel, nil?: true
+          optional :catch_up, FinchAPI::Internal::Type::BooleanModel, nil?: true
 
           # @!attribute company_contribution
           #   Supported contribution types. An empty array indicates contributions are not
@@ -53,7 +53,7 @@ module FinchAPI
           #   @return [Array<Symbol, FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::CompanyContribution, nil>, nil]
           optional :company_contribution,
                    -> do
-                     FinchAPI::ArrayOf[
+                     FinchAPI::Internal::Type::ArrayOf[
                      enum: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::CompanyContribution, nil?: true
                      ]
                    end,
@@ -71,7 +71,7 @@ module FinchAPI
           #   @return [Array<Symbol, FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::EmployeeDeduction, nil>, nil]
           optional :employee_deduction,
                    -> do
-                     FinchAPI::ArrayOf[
+                     FinchAPI::Internal::Type::ArrayOf[
                      enum: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::EmployeeDeduction, nil?: true
                      ]
                    end,
@@ -82,7 +82,7 @@ module FinchAPI
           #
           #   @return [Array<Symbol, FinchAPI::Models::HRIS::BenefitFrequency, nil>, nil]
           optional :frequencies,
-                   -> { FinchAPI::ArrayOf[enum: FinchAPI::Models::HRIS::BenefitFrequency, nil?: true] }
+                   -> { FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::HRIS::BenefitFrequency, nil?: true] }
 
           # @!parse
           #   # @return [Array<Symbol, FinchAPI::Models::HRIS::BenefitFrequency, nil>]
@@ -95,7 +95,7 @@ module FinchAPI
           #   @return [Array<Symbol, FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::HsaContributionLimit, nil>, nil]
           optional :hsa_contribution_limit,
                    -> do
-                     FinchAPI::ArrayOf[
+                     FinchAPI::Internal::Type::ArrayOf[
                      enum: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::HsaContributionLimit, nil?: true
                      ]
                    end,
@@ -123,10 +123,10 @@ module FinchAPI
           #     super
           #   end
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
           module CompanyContribution
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             FIXED = :fixed
             PERCENT = :percent
@@ -139,7 +139,7 @@ module FinchAPI
           end
 
           module EmployeeDeduction
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             FIXED = :fixed
             PERCENT = :percent
@@ -152,7 +152,7 @@ module FinchAPI
           end
 
           module HsaContributionLimit
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             INDIVIDUAL = :individual
             FAMILY = :family

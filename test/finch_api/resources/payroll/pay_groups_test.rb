@@ -13,9 +13,9 @@ class FinchAPI::Test::Resources::Payroll::PayGroupsTest < FinchAPI::Test::Resour
     assert_pattern do
       response => {
         id: String,
-        individual_ids: ^(FinchAPI::ArrayOf[String]),
+        individual_ids: ^(FinchAPI::Internal::Type::ArrayOf[String]),
         name: String,
-        pay_frequencies: ^(FinchAPI::ArrayOf[enum: FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency])
+        pay_frequencies: ^(FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency])
       }
     end
   end
@@ -38,7 +38,7 @@ class FinchAPI::Test::Resources::Payroll::PayGroupsTest < FinchAPI::Test::Resour
       row => {
         id: String | nil,
         name: String | nil,
-        pay_frequencies: ^(FinchAPI::ArrayOf[enum: FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency]) | nil
+        pay_frequencies: ^(FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::Payroll::PayGroupListResponse::PayFrequency]) | nil
       }
     end
   end

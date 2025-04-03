@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
-      class DocumentResponse < FinchAPI::BaseModel
+      class DocumentResponse < FinchAPI::Internal::Type::BaseModel
         # @!attribute [r] id
         #   A stable Finch id for the document.
         #
@@ -57,13 +57,13 @@ module FinchAPI
         #   #
         #   def initialize(id: nil, individual_id: nil, type: nil, url: nil, year: nil, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
         # The type of document.
         #
         # @see FinchAPI::Models::HRIS::DocumentResponse#type
         module Type
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           W4_2020 = :w4_2020
           W4_2005 = :w4_2005

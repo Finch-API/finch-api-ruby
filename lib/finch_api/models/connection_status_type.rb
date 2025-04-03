@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module ConnectionStatusType
-      extend FinchAPI::Enum
+      extend FinchAPI::Internal::Type::Enum
 
       PENDING = :pending
       PROCESSING = :processing

@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
-      class Payment < FinchAPI::BaseModel
+      class Payment < FinchAPI::Internal::Type::BaseModel
         # The unique id for the payment.
         sig { returns(T.nilable(String)) }
         attr_reader :id
@@ -14,7 +14,7 @@ module FinchAPI
         sig { returns(T.nilable(FinchAPI::Models::Money)) }
         attr_reader :company_debit
 
-        sig { params(company_debit: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::Util::AnyHash))).void }
+        sig { params(company_debit: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::AnyHash))).void }
         attr_writer :company_debit
 
         sig { returns(T.nilable(String)) }
@@ -23,19 +23,19 @@ module FinchAPI
         sig { returns(T.nilable(FinchAPI::Models::Money)) }
         attr_reader :employee_taxes
 
-        sig { params(employee_taxes: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::Util::AnyHash))).void }
+        sig { params(employee_taxes: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::AnyHash))).void }
         attr_writer :employee_taxes
 
         sig { returns(T.nilable(FinchAPI::Models::Money)) }
         attr_reader :employer_taxes
 
-        sig { params(employer_taxes: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::Util::AnyHash))).void }
+        sig { params(employer_taxes: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::AnyHash))).void }
         attr_writer :employer_taxes
 
         sig { returns(T.nilable(FinchAPI::Models::Money)) }
         attr_reader :gross_pay
 
-        sig { params(gross_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::Util::AnyHash))).void }
+        sig { params(gross_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::AnyHash))).void }
         attr_writer :gross_pay
 
         # Array of every individual on this payment.
@@ -45,7 +45,7 @@ module FinchAPI
         sig { returns(T.nilable(FinchAPI::Models::Money)) }
         attr_reader :net_pay
 
-        sig { params(net_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::Util::AnyHash))).void }
+        sig { params(net_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::AnyHash))).void }
         attr_writer :net_pay
 
         sig { returns(T.nilable(String)) }
@@ -65,7 +65,7 @@ module FinchAPI
 
         sig do
           params(
-            pay_period: T.nilable(T.any(FinchAPI::Models::HRIS::Payment::PayPeriod, FinchAPI::Internal::Util::AnyHash))
+            pay_period: T.nilable(T.any(FinchAPI::Models::HRIS::Payment::PayPeriod, FinchAPI::Internal::AnyHash))
           )
             .void
         end
@@ -74,17 +74,17 @@ module FinchAPI
         sig do
           params(
             id: String,
-            company_debit: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::Util::AnyHash)),
+            company_debit: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::AnyHash)),
             debit_date: T.nilable(String),
-            employee_taxes: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::Util::AnyHash)),
-            employer_taxes: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::Util::AnyHash)),
-            gross_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::Util::AnyHash)),
+            employee_taxes: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::AnyHash)),
+            employer_taxes: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::AnyHash)),
+            gross_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::AnyHash)),
             individual_ids: T.nilable(T::Array[String]),
-            net_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::Util::AnyHash)),
+            net_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::AnyHash)),
             pay_date: T.nilable(String),
             pay_frequencies: T.nilable(T::Array[FinchAPI::Models::HRIS::Payment::PayFrequency::OrSymbol]),
             pay_group_ids: T.nilable(T::Array[String]),
-            pay_period: T.nilable(T.any(FinchAPI::Models::HRIS::Payment::PayPeriod, FinchAPI::Internal::Util::AnyHash))
+            pay_period: T.nilable(T.any(FinchAPI::Models::HRIS::Payment::PayPeriod, FinchAPI::Internal::AnyHash))
           )
             .returns(T.attached_class)
         end
@@ -127,7 +127,7 @@ module FinchAPI
         end
 
         module PayFrequency
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Payment::PayFrequency) }
           OrSymbol =
@@ -148,7 +148,7 @@ module FinchAPI
           end
         end
 
-        class PayPeriod < FinchAPI::BaseModel
+        class PayPeriod < FinchAPI::Internal::Type::BaseModel
           sig { returns(T.nilable(String)) }
           attr_accessor :end_date
 

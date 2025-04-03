@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     # @see FinchAPI::Resources::AccessTokens#create
-    class CreateAccessTokenResponse < FinchAPI::BaseModel
+    class CreateAccessTokenResponse < FinchAPI::Internal::Type::BaseModel
       # @!attribute access_token
       #   The access token for the connection.
       #
@@ -49,7 +49,7 @@ module FinchAPI
       #   An array of the authorized products associated with the `access_token`.
       #
       #   @return [Array<String>]
-      required :products, FinchAPI::ArrayOf[String]
+      required :products, FinchAPI::Internal::Type::ArrayOf[String]
 
       # @!attribute provider_id
       #   The ID of the provider associated with the `access_token`.
@@ -102,13 +102,13 @@ module FinchAPI
       #     super
       #   end
 
-      # def initialize: (Hash | FinchAPI::BaseModel) -> void
+      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
       # The type of application associated with a token.
       #
       # @see FinchAPI::Models::CreateAccessTokenResponse#client_type
       module ClientType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         PRODUCTION = :production
         DEVELOPMENT = :development
@@ -128,7 +128,7 @@ module FinchAPI
       #
       # @see FinchAPI::Models::CreateAccessTokenResponse#connection_type
       module ConnectionType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         PROVIDER = :provider
         FINCH = :finch

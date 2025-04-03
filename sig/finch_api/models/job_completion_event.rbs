@@ -28,7 +28,7 @@ module FinchAPI
 
       type data = { job_id: String, job_url: String }
 
-      class Data < FinchAPI::BaseModel
+      class Data < FinchAPI::Internal::Type::BaseModel
         attr_accessor job_id: String
 
         attr_accessor job_url: String
@@ -47,7 +47,7 @@ module FinchAPI
         | :"job.data_sync_all.completed"
 
       module EventType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         JOB_BENEFIT_CREATE_COMPLETED: :"job.benefit_create.completed"
         JOB_BENEFIT_ENROLL_COMPLETED: :"job.benefit_enroll.completed"

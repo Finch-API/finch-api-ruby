@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
-      class EmploymentData < FinchAPI::BaseModel
+      class EmploymentData < FinchAPI::Internal::Type::BaseModel
         # @!attribute [r] id
         #   A stable Finch `id` (UUID v4) for an individual in the company.
         #
@@ -26,7 +26,7 @@ module FinchAPI
         #
         #   @return [Array<FinchAPI::Models::HRIS::EmploymentData::CustomField>, nil]
         optional :custom_fields,
-                 -> { FinchAPI::ArrayOf[FinchAPI::Models::HRIS::EmploymentData::CustomField] },
+                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::HRIS::EmploymentData::CustomField] },
                  nil?: true
 
         # @!attribute department
@@ -73,13 +73,15 @@ module FinchAPI
         #   The array of income history.
         #
         #   @return [Array<FinchAPI::Models::Income, nil>, nil]
-        optional :income_history, -> { FinchAPI::ArrayOf[FinchAPI::Models::Income, nil?: true] }, nil?: true
+        optional :income_history,
+                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Income, nil?: true] },
+                 nil?: true
 
         # @!attribute is_active
         #   `true` if the individual an an active employee or contractor at the company.
         #
         #   @return [Boolean, nil]
-        optional :is_active, FinchAPI::BooleanModel, nil?: true
+        optional :is_active, FinchAPI::Internal::Type::BooleanModel, nil?: true
 
         # @!attribute last_name
         #   The legal last name of the individual.
@@ -180,9 +182,9 @@ module FinchAPI
         #     super
         #   end
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
-        class CustomField < FinchAPI::BaseModel
+        class CustomField < FinchAPI::Internal::Type::BaseModel
           # @!attribute [r] name
           #
           #   @return [String, nil]
@@ -195,7 +197,7 @@ module FinchAPI
           # @!attribute [r] value
           #
           #   @return [Object, nil]
-          optional :value, FinchAPI::Unknown
+          optional :value, FinchAPI::Internal::Type::Unknown
 
           # @!parse
           #   # @return [Object]
@@ -207,11 +209,11 @@ module FinchAPI
           #   #
           #   def initialize(name: nil, value: nil, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
         end
 
         # @see FinchAPI::Models::HRIS::EmploymentData#department
-        class Department < FinchAPI::BaseModel
+        class Department < FinchAPI::Internal::Type::BaseModel
           # @!attribute name
           #   The name of the department associated with the individual.
           #
@@ -225,11 +227,11 @@ module FinchAPI
           #   #
           #   def initialize(name: nil, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
         end
 
         # @see FinchAPI::Models::HRIS::EmploymentData#employment
-        class Employment < FinchAPI::BaseModel
+        class Employment < FinchAPI::Internal::Type::BaseModel
           # @!attribute subtype
           #   The secondary employment type of the individual. Options: `full_time`,
           #     `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
@@ -251,14 +253,14 @@ module FinchAPI
           #   #
           #   def initialize(subtype: nil, type: nil, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
           # The secondary employment type of the individual. Options: `full_time`,
           #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
           #
           # @see FinchAPI::Models::HRIS::EmploymentData::Employment#subtype
           module Subtype
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             FULL_TIME = :full_time
             INTERN = :intern
@@ -278,7 +280,7 @@ module FinchAPI
           #
           # @see FinchAPI::Models::HRIS::EmploymentData::Employment#type
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             EMPLOYEE = :employee
             CONTRACTOR = :contractor
@@ -296,7 +298,7 @@ module FinchAPI
         #
         # @see FinchAPI::Models::HRIS::EmploymentData#employment_status
         module EmploymentStatus
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           ACTIVE = :active
           DECEASED = :deceased
@@ -314,7 +316,7 @@ module FinchAPI
         end
 
         # @see FinchAPI::Models::HRIS::EmploymentData#manager
-        class Manager < FinchAPI::BaseModel
+        class Manager < FinchAPI::Internal::Type::BaseModel
           # @!attribute [r] id
           #   A stable Finch `id` (UUID v4) for an individual in the company.
           #
@@ -332,7 +334,7 @@ module FinchAPI
           #   #
           #   def initialize(id: nil, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
         end
       end
     end

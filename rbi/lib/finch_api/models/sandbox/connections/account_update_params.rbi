@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Sandbox
       module Connections
-        class AccountUpdateParams < FinchAPI::BaseModel
+        class AccountUpdateParams < FinchAPI::Internal::Type::BaseModel
           extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
 
@@ -17,7 +17,7 @@ module FinchAPI
           sig do
             params(
               connection_status: FinchAPI::Models::ConnectionStatusType::OrSymbol,
-              request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
+              request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)
             )
               .returns(T.attached_class)
           end

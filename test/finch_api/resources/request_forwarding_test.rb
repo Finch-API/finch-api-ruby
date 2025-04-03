@@ -13,7 +13,7 @@ class FinchAPI::Test::Resources::RequestForwardingTest < FinchAPI::Test::Resourc
     assert_pattern do
       response => {
         data: String | nil,
-        headers: FinchAPI::Unknown | nil,
+        headers: FinchAPI::Internal::Type::Unknown | nil,
         request: FinchAPI::Models::RequestForwardingForwardResponse::Request,
         status_code: Integer
       }

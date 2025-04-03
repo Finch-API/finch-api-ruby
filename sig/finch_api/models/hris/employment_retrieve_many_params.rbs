@@ -7,7 +7,7 @@ module FinchAPI
         }
         & FinchAPI::Internal::Type::request_parameters
 
-      class EmploymentRetrieveManyParams < FinchAPI::BaseModel
+      class EmploymentRetrieveManyParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
@@ -22,7 +22,7 @@ module FinchAPI
 
         type request = { individual_id: String }
 
-        class Request < FinchAPI::BaseModel
+        class Request < FinchAPI::Internal::Type::BaseModel
           attr_accessor individual_id: String
 
           def initialize: (individual_id: String) -> void

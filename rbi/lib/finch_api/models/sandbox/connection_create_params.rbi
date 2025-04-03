@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module Sandbox
-      class ConnectionCreateParams < FinchAPI::BaseModel
+      class ConnectionCreateParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
@@ -43,7 +43,7 @@ module FinchAPI
             authentication_type: FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType::OrSymbol,
             employee_size: Integer,
             products: T::Array[String],
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -72,7 +72,7 @@ module FinchAPI
         end
 
         module AuthenticationType
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType) }

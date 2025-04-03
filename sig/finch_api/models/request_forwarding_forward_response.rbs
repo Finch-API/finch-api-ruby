@@ -8,7 +8,7 @@ module FinchAPI
         status_code: Integer
       }
 
-    class RequestForwardingForwardResponse < FinchAPI::BaseModel
+    class RequestForwardingForwardResponse < FinchAPI::Internal::Type::BaseModel
       attr_accessor data: String?
 
       attr_accessor headers: top?
@@ -35,7 +35,7 @@ module FinchAPI
           route: String
         }
 
-      class Request < FinchAPI::BaseModel
+      class Request < FinchAPI::Internal::Type::BaseModel
         attr_accessor data: String?
 
         attr_accessor headers: top?

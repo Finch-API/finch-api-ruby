@@ -18,7 +18,7 @@ module FinchAPI
             @client.request(
               method: :get,
               path: "sandbox/jobs/configuration",
-              model: FinchAPI::ArrayOf[FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration],
+              model: FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration],
               options: params[:request_options]
             )
           end

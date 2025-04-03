@@ -4,7 +4,7 @@ module FinchAPI
       type automated_retrieve_params =
         {  } & FinchAPI::Internal::Type::request_parameters
 
-      class AutomatedRetrieveParams < FinchAPI::BaseModel
+      class AutomatedRetrieveParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 

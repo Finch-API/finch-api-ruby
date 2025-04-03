@@ -35,7 +35,7 @@ module FinchAPI
       end
 
       module EventType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::CompanyEvent::EventType) }
         OrSymbol =

@@ -10,7 +10,7 @@ module FinchAPI
         }
         & FinchAPI::Internal::Type::request_parameters
 
-      class DocumentListParams < FinchAPI::BaseModel
+      class DocumentListParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
@@ -45,7 +45,7 @@ module FinchAPI
         type type_ = :w4_2020 | :w4_2005
 
         module Type
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           W4_2020: :w4_2020
           W4_2005: :w4_2005

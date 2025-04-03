@@ -48,7 +48,7 @@ class FinchAPITest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     finch.requester = requester
 
-    assert_raises(FinchAPI::InternalServerError) do
+    assert_raises(FinchAPI::Errors::InternalServerError) do
       finch.hris.directory.list
     end
 
@@ -61,7 +61,7 @@ class FinchAPITest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     finch.requester = requester
 
-    assert_raises(FinchAPI::InternalServerError) do
+    assert_raises(FinchAPI::Errors::InternalServerError) do
       finch.hris.directory.list
     end
 
@@ -73,7 +73,7 @@ class FinchAPITest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     finch.requester = requester
 
-    assert_raises(FinchAPI::InternalServerError) do
+    assert_raises(FinchAPI::Errors::InternalServerError) do
       finch.hris.directory.list(request_options: {max_retries: 3})
     end
 
@@ -86,7 +86,7 @@ class FinchAPITest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     finch.requester = requester
 
-    assert_raises(FinchAPI::InternalServerError) do
+    assert_raises(FinchAPI::Errors::InternalServerError) do
       finch.hris.directory.list(request_options: {max_retries: 4})
     end
 
@@ -99,7 +99,7 @@ class FinchAPITest < Minitest::Test
     requester = MockRequester.new(500, {"retry-after" => "1.3"}, {})
     finch.requester = requester
 
-    assert_raises(FinchAPI::InternalServerError) do
+    assert_raises(FinchAPI::Errors::InternalServerError) do
       finch.hris.directory.list
     end
 
@@ -113,7 +113,7 @@ class FinchAPITest < Minitest::Test
     requester = MockRequester.new(500, {"retry-after" => (Time.now + 10).httpdate}, {})
     finch.requester = requester
 
-    assert_raises(FinchAPI::InternalServerError) do
+    assert_raises(FinchAPI::Errors::InternalServerError) do
       Thread.current.thread_variable_set(:time_now, Time.now)
       finch.hris.directory.list
       Thread.current.thread_variable_set(:time_now, nil)
@@ -129,7 +129,7 @@ class FinchAPITest < Minitest::Test
     requester = MockRequester.new(500, {"retry-after-ms" => "1300"}, {})
     finch.requester = requester
 
-    assert_raises(FinchAPI::InternalServerError) do
+    assert_raises(FinchAPI::Errors::InternalServerError) do
       finch.hris.directory.list
     end
 
@@ -142,7 +142,7 @@ class FinchAPITest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     finch.requester = requester
 
-    assert_raises(FinchAPI::InternalServerError) do
+    assert_raises(FinchAPI::Errors::InternalServerError) do
       finch.hris.directory.list
     end
 
@@ -155,7 +155,7 @@ class FinchAPITest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     finch.requester = requester
 
-    assert_raises(FinchAPI::InternalServerError) do
+    assert_raises(FinchAPI::Errors::InternalServerError) do
       finch.hris.directory.list(request_options: {extra_headers: {"x-stainless-retry-count" => nil}})
     end
 
@@ -168,7 +168,7 @@ class FinchAPITest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     finch.requester = requester
 
-    assert_raises(FinchAPI::InternalServerError) do
+    assert_raises(FinchAPI::Errors::InternalServerError) do
       finch.hris.directory.list(request_options: {extra_headers: {"x-stainless-retry-count" => "42"}})
     end
 

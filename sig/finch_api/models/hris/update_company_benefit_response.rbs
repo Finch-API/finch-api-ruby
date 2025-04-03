@@ -3,7 +3,7 @@ module FinchAPI
     module HRIS
       type update_company_benefit_response = { benefit_id: String }
 
-      class UpdateCompanyBenefitResponse < FinchAPI::BaseModel
+      class UpdateCompanyBenefitResponse < FinchAPI::Internal::Type::BaseModel
         attr_accessor benefit_id: String
 
         def initialize: (benefit_id: String) -> void

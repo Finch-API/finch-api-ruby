@@ -5,7 +5,7 @@ module FinchAPI
         { individual_id: String, pay_frequencies: ::Array[String] }
         & FinchAPI::Internal::Type::request_parameters
 
-      class PayGroupListParams < FinchAPI::BaseModel
+      class PayGroupListParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 

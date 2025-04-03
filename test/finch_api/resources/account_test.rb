@@ -27,7 +27,7 @@ class FinchAPI::Test::Resources::AccountTest < FinchAPI::Test::ResourceTest
     assert_pattern do
       response => {
         account_id: String,
-        authentication_methods: ^(FinchAPI::ArrayOf[FinchAPI::Models::Introspection::AuthenticationMethod]),
+        authentication_methods: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Introspection::AuthenticationMethod]),
         client_id: String,
         client_type: FinchAPI::Models::Introspection::ClientType,
         company_id: String,
@@ -37,9 +37,9 @@ class FinchAPI::Test::Resources::AccountTest < FinchAPI::Test::ResourceTest
         customer_email: String | nil,
         customer_id: String | nil,
         customer_name: String | nil,
-        manual: FinchAPI::BooleanModel,
+        manual: FinchAPI::Internal::Type::BooleanModel,
         payroll_provider_id: String,
-        products: ^(FinchAPI::ArrayOf[String]),
+        products: ^(FinchAPI::Internal::Type::ArrayOf[String]),
         provider_id: String,
         username: String
       }

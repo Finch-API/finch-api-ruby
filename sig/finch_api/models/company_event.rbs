@@ -27,7 +27,7 @@ module FinchAPI
       type event_type = :"company.updated"
 
       module EventType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         COMPANY_UPDATED: :"company.updated"
 

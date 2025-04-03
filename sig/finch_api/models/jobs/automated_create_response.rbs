@@ -9,7 +9,7 @@ module FinchAPI
           remaining_refreshes: Integer
         }
 
-      class AutomatedCreateResponse < FinchAPI::BaseModel
+      class AutomatedCreateResponse < FinchAPI::Internal::Type::BaseModel
         attr_accessor allowed_refreshes: Integer
 
         attr_accessor job_id: String

@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
-      class Individual < FinchAPI::BaseModel
+      class Individual < FinchAPI::Internal::Type::BaseModel
         # @!attribute [r] id
         #   A stable Finch `id` (UUID v4) for an individual in the company.
         #
@@ -22,7 +22,9 @@ module FinchAPI
         # @!attribute emails
         #
         #   @return [Array<FinchAPI::Models::HRIS::Individual::Email>, nil]
-        optional :emails, -> { FinchAPI::ArrayOf[FinchAPI::Models::HRIS::Individual::Email] }, nil?: true
+        optional :emails,
+                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::HRIS::Individual::Email] },
+                 nil?: true
 
         # @!attribute encrypted_ssn
         #   Social Security Number of the individual in **encrypted** format. This field is
@@ -66,7 +68,7 @@ module FinchAPI
         #
         #   @return [Array<FinchAPI::Models::HRIS::Individual::PhoneNumber, nil>, nil]
         optional :phone_numbers,
-                 -> { FinchAPI::ArrayOf[FinchAPI::Models::HRIS::Individual::PhoneNumber, nil?: true] },
+                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::HRIS::Individual::PhoneNumber, nil?: true] },
                  nil?: true
 
         # @!attribute preferred_name
@@ -123,9 +125,9 @@ module FinchAPI
         #     super
         #   end
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
-        class Email < FinchAPI::BaseModel
+        class Email < FinchAPI::Internal::Type::BaseModel
           # @!attribute [r] data
           #
           #   @return [String, nil]
@@ -146,11 +148,11 @@ module FinchAPI
           #   #
           #   def initialize(data: nil, type: nil, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
           # @see FinchAPI::Models::HRIS::Individual::Email#type
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             WORK = :work
             PERSONAL = :personal
@@ -167,7 +169,7 @@ module FinchAPI
         #
         # @see FinchAPI::Models::HRIS::Individual#ethnicity
         module Ethnicity
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           ASIAN = :asian
           WHITE = :white
@@ -189,7 +191,7 @@ module FinchAPI
         #
         # @see FinchAPI::Models::HRIS::Individual#gender
         module Gender
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           FEMALE = :female
           MALE = :male
@@ -203,7 +205,7 @@ module FinchAPI
           #   def self.values; end
         end
 
-        class PhoneNumber < FinchAPI::BaseModel
+        class PhoneNumber < FinchAPI::Internal::Type::BaseModel
           # @!attribute data
           #
           #   @return [String, nil]
@@ -220,11 +222,11 @@ module FinchAPI
           #   #
           #   def initialize(data: nil, type: nil, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
           # @see FinchAPI::Models::HRIS::Individual::PhoneNumber#type
           module Type
-            extend FinchAPI::Enum
+            extend FinchAPI::Internal::Type::Enum
 
             WORK = :work
             PERSONAL = :personal

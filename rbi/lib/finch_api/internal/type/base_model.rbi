@@ -22,7 +22,7 @@ module FinchAPI
               T::Hash[
               Symbol,
               T.all(
-                FinchAPI::BaseModel::KnownFieldShape,
+                FinchAPI::Internal::Type::BaseModel::KnownFieldShape,
                 {type_fn: T.proc.returns(FinchAPI::Internal::Type::Converter::Input)}
               )
               ]
@@ -34,11 +34,13 @@ module FinchAPI
           # @api private
           sig do
             returns(
-              T::Hash[Symbol,
-                      T.all(
-                        FinchAPI::BaseModel::KnownFieldShape,
-                        {type: FinchAPI::Internal::Type::Converter::Input}
-                      )]
+              T::Hash[
+              Symbol,
+              T.all(
+                FinchAPI::Internal::Type::BaseModel::KnownFieldShape,
+                {type: FinchAPI::Internal::Type::Converter::Input}
+              )
+              ]
             )
           end
           def fields
@@ -60,7 +62,7 @@ module FinchAPI
                 T.proc.returns(FinchAPI::Internal::Type::Converter::Input),
                 FinchAPI::Internal::Type::Converter::Input
               ),
-              spec: FinchAPI::Internal::Util::AnyHash
+              spec: FinchAPI::Internal::AnyHash
             )
               .void
           end
@@ -72,11 +74,11 @@ module FinchAPI
             params(
               name_sym: Symbol,
               type_info: T.any(
-                FinchAPI::Internal::Util::AnyHash,
+                FinchAPI::Internal::AnyHash,
                 T.proc.returns(FinchAPI::Internal::Type::Converter::Input),
                 FinchAPI::Internal::Type::Converter::Input
               ),
-              spec: FinchAPI::Internal::Util::AnyHash
+              spec: FinchAPI::Internal::AnyHash
             )
               .void
           end
@@ -88,11 +90,11 @@ module FinchAPI
             params(
               name_sym: Symbol,
               type_info: T.any(
-                FinchAPI::Internal::Util::AnyHash,
+                FinchAPI::Internal::AnyHash,
                 T.proc.returns(FinchAPI::Internal::Type::Converter::Input),
                 FinchAPI::Internal::Type::Converter::Input
               ),
-              spec: FinchAPI::Internal::Util::AnyHash
+              spec: FinchAPI::Internal::AnyHash
             )
               .void
           end
@@ -128,7 +130,11 @@ module FinchAPI
           sig do
             override
               .params(
-                value: T.any(FinchAPI::BaseModel, T::Hash[T.anything, T.anything], T.anything),
+                value: T.any(
+                  FinchAPI::Internal::Type::BaseModel,
+                  T::Hash[T.anything, T.anything],
+                  T.anything
+                ),
                 state: FinchAPI::Internal::Type::Converter::State
               )
               .returns(T.any(T.attached_class, T.anything))
@@ -164,7 +170,7 @@ module FinchAPI
         #
         #   This method is not recursive. The returned value is shared by the object, so it
         #   should not be mutated.
-        sig { overridable.returns(FinchAPI::Internal::Util::AnyHash) }
+        sig { overridable.returns(FinchAPI::Internal::AnyHash) }
         def to_h
         end
 
@@ -176,11 +182,11 @@ module FinchAPI
         #
         #   This method is not recursive. The returned value is shared by the object, so it
         #   should not be mutated.
-        sig { overridable.returns(FinchAPI::Internal::Util::AnyHash) }
+        sig { overridable.returns(FinchAPI::Internal::AnyHash) }
         def to_hash
         end
 
-        sig { params(keys: T.nilable(T::Array[Symbol])).returns(FinchAPI::Internal::Util::AnyHash) }
+        sig { params(keys: T.nilable(T::Array[Symbol])).returns(FinchAPI::Internal::AnyHash) }
         def deconstruct_keys(keys)
         end
 

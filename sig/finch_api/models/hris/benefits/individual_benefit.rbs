@@ -11,7 +11,7 @@ module FinchAPI
             individual_id: String
           }
 
-        class IndividualBenefit < FinchAPI::BaseModel
+        class IndividualBenefit < FinchAPI::Internal::Type::BaseModel
           attr_reader body: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body?
 
           def body=: (
@@ -43,7 +43,7 @@ module FinchAPI
               hsa_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::hsa_contribution_limit?
             }
 
-          class Body < FinchAPI::BaseModel
+          class Body < FinchAPI::Internal::Type::BaseModel
             attr_accessor annual_maximum: Integer?
 
             attr_accessor catch_up: bool?
@@ -67,7 +67,7 @@ module FinchAPI
             type hsa_contribution_limit = :individual | :family
 
             module HsaContributionLimit
-              extend FinchAPI::Enum
+              extend FinchAPI::Internal::Type::Enum
 
               INDIVIDUAL: :individual
               FAMILY: :family

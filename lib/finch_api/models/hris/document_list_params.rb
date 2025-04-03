@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       # @see FinchAPI::Resources::HRIS::Documents#list
-      class DocumentListParams < FinchAPI::BaseModel
+      class DocumentListParams < FinchAPI::Internal::Type::BaseModel
         # @!parse
         #   extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
@@ -14,7 +14,7 @@ module FinchAPI
         #     defaults to all individuals
         #
         #   @return [Array<String>, nil]
-        optional :individual_ids, FinchAPI::ArrayOf[String]
+        optional :individual_ids, FinchAPI::Internal::Type::ArrayOf[String]
 
         # @!parse
         #   # @return [Array<String>]
@@ -45,7 +45,8 @@ module FinchAPI
         #     types
         #
         #   @return [Array<Symbol, FinchAPI::Models::HRIS::DocumentListParams::Type>, nil]
-        optional :types, -> { FinchAPI::ArrayOf[enum: FinchAPI::Models::HRIS::DocumentListParams::Type] }
+        optional :types,
+                 -> { FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::HRIS::DocumentListParams::Type] }
 
         # @!parse
         #   # @return [Array<Symbol, FinchAPI::Models::HRIS::DocumentListParams::Type>]
@@ -60,10 +61,10 @@ module FinchAPI
         #   #
         #   def initialize(individual_ids: nil, limit: nil, offset: nil, types: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
         module Type
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           W4_2020 = :w4_2020
           W4_2005 = :w4_2005

@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       # @see FinchAPI::Resources::HRIS::Employments#retrieve_many
-      class EmploymentRetrieveManyParams < FinchAPI::BaseModel
+      class EmploymentRetrieveManyParams < FinchAPI::Internal::Type::BaseModel
         # @!parse
         #   extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
@@ -14,7 +14,7 @@ module FinchAPI
         #
         #   @return [Array<FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request>]
         required :requests,
-                 -> { FinchAPI::ArrayOf[FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request] }
+                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request] }
 
         # @!parse
         #   # @param requests [Array<FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request>]
@@ -22,9 +22,9 @@ module FinchAPI
         #   #
         #   def initialize(requests:, request_options: {}, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
-        class Request < FinchAPI::BaseModel
+        class Request < FinchAPI::Internal::Type::BaseModel
           # @!attribute individual_id
           #   A stable Finch `id` (UUID v4) for an individual in the company. There is no
           #     limit to the number of `individual_id` to send per request. It is preferantial
@@ -38,7 +38,7 @@ module FinchAPI
           #   #
           #   def initialize(individual_id:, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
         end
       end
     end

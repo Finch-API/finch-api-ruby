@@ -8,7 +8,7 @@ module FinchAPI
           pay_frequencies: ::Array[FinchAPI::Models::Payroll::PayGroupListResponse::pay_frequency]
         }
 
-      class PayGroupListResponse < FinchAPI::BaseModel
+      class PayGroupListResponse < FinchAPI::Internal::Type::BaseModel
         attr_reader id: String?
 
         def id=: (String) -> String
@@ -43,7 +43,7 @@ module FinchAPI
           | :other
 
         module PayFrequency
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           ANNUALLY: :annually
           SEMI_ANNUALLY: :semi_annually

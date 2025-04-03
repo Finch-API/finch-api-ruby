@@ -4,7 +4,7 @@ module FinchAPI
       type benefit_update_params =
         { description: String } & FinchAPI::Internal::Type::request_parameters
 
-      class BenefitUpdateParams < FinchAPI::BaseModel
+      class BenefitUpdateParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 

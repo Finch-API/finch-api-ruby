@@ -2,7 +2,7 @@
 
 module FinchAPI
   module Models
-    class Money < FinchAPI::BaseModel
+    class Money < FinchAPI::Internal::Type::BaseModel
       # @!attribute amount
       #   Amount for money object (in cents)
       #
@@ -24,7 +24,7 @@ module FinchAPI
       #   #
       #   def initialize(amount: nil, currency: nil, **) = super
 
-      # def initialize: (Hash | FinchAPI::BaseModel) -> void
+      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
     end
   end
 end

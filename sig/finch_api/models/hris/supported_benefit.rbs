@@ -13,7 +13,7 @@ module FinchAPI
           type: FinchAPI::Models::HRIS::benefit_type?
         }
 
-      class SupportedBenefit < FinchAPI::BaseModel
+      class SupportedBenefit < FinchAPI::Internal::Type::BaseModel
         attr_accessor annual_maximum: bool?
 
         attr_accessor catch_up: bool?
@@ -50,7 +50,7 @@ module FinchAPI
         type company_contribution = :fixed | :percent
 
         module CompanyContribution
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           FIXED: :fixed
           PERCENT: :percent
@@ -61,7 +61,7 @@ module FinchAPI
         type employee_deduction = :fixed | :percent
 
         module EmployeeDeduction
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           FIXED: :fixed
           PERCENT: :percent
@@ -72,7 +72,7 @@ module FinchAPI
         type hsa_contribution_limit = :individual | :family
 
         module HsaContributionLimit
-          extend FinchAPI::Enum
+          extend FinchAPI::Internal::Type::Enum
 
           INDIVIDUAL: :individual
           FAMILY: :family

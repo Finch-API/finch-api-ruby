@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module Payroll
       # @see FinchAPI::Resources::Payroll::PayGroups#list
-      class PayGroupListParams < FinchAPI::BaseModel
+      class PayGroupListParams < FinchAPI::Internal::Type::BaseModel
         # @!parse
         #   extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
@@ -21,7 +21,7 @@ module FinchAPI
         # @!attribute [r] pay_frequencies
         #
         #   @return [Array<String>, nil]
-        optional :pay_frequencies, FinchAPI::ArrayOf[String]
+        optional :pay_frequencies, FinchAPI::Internal::Type::ArrayOf[String]
 
         # @!parse
         #   # @return [Array<String>]
@@ -34,7 +34,7 @@ module FinchAPI
         #   #
         #   def initialize(individual_id: nil, pay_frequencies: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | FinchAPI::BaseModel) -> void
+        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
       end
     end
   end

@@ -5,7 +5,7 @@ module FinchAPI
     module HRIS
       module Benefits
         # @see FinchAPI::Resources::HRIS::Benefits::Individuals#enroll_many
-        class IndividualEnrollManyParams < FinchAPI::BaseModel
+        class IndividualEnrollManyParams < FinchAPI::Internal::Type::BaseModel
           # @!parse
           #   extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
@@ -15,7 +15,7 @@ module FinchAPI
           #
           #   @return [Array<FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual>, nil]
           optional :individuals,
-                   -> { FinchAPI::ArrayOf[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual] }
+                   -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual] }
 
           # @!parse
           #   # @return [Array<FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual>]
@@ -27,9 +27,9 @@ module FinchAPI
           #   #
           #   def initialize(individuals: nil, request_options: {}, **) = super
 
-          # def initialize: (Hash | FinchAPI::BaseModel) -> void
+          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
-          class Individual < FinchAPI::BaseModel
+          class Individual < FinchAPI::Internal::Type::BaseModel
             # @!attribute [r] configuration
             #
             #   @return [FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration, nil]
@@ -56,10 +56,10 @@ module FinchAPI
             #   #
             #   def initialize(configuration: nil, individual_id: nil, **) = super
 
-            # def initialize: (Hash | FinchAPI::BaseModel) -> void
+            # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
             # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual#configuration
-            class Configuration < FinchAPI::BaseModel
+            class Configuration < FinchAPI::Internal::Type::BaseModel
               # @!attribute [r] annual_contribution_limit
               #   For HSA benefits only - whether the contribution limit is for an individual or
               #     family
@@ -82,7 +82,7 @@ module FinchAPI
               #   For retirement benefits only - whether catch up contributions are enabled
               #
               #   @return [Boolean, nil]
-              optional :catch_up, FinchAPI::BooleanModel
+              optional :catch_up, FinchAPI::Internal::Type::BooleanModel
 
               # @!parse
               #   # @return [Boolean]
@@ -138,14 +138,14 @@ module FinchAPI
               #     super
               #   end
 
-              # def initialize: (Hash | FinchAPI::BaseModel) -> void
+              # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
               # For HSA benefits only - whether the contribution limit is for an individual or
               #   family
               #
               # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration#annual_contribution_limit
               module AnnualContributionLimit
-                extend FinchAPI::Enum
+                extend FinchAPI::Internal::Type::Enum
 
                 INDIVIDUAL = :individual
                 FAMILY = :family
@@ -158,7 +158,7 @@ module FinchAPI
               end
 
               # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration#company_contribution
-              class CompanyContribution < FinchAPI::BaseModel
+              class CompanyContribution < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] amount
                 #   Amount in cents for fixed type or basis points (1/100th of a percent) for
                 #     percent type
@@ -186,11 +186,11 @@ module FinchAPI
                 #   #
                 #   def initialize(amount: nil, type: nil, **) = super
 
-                # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
                 # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution#type
                 module Type
-                  extend FinchAPI::Enum
+                  extend FinchAPI::Internal::Type::Enum
 
                   FIXED = :fixed
                   PERCENT = :percent
@@ -204,7 +204,7 @@ module FinchAPI
               end
 
               # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration#employee_deduction
-              class EmployeeDeduction < FinchAPI::BaseModel
+              class EmployeeDeduction < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] amount
                 #   Amount in cents for fixed type or basis points (1/100th of a percent) for
                 #     percent type
@@ -232,11 +232,11 @@ module FinchAPI
                 #   #
                 #   def initialize(amount: nil, type: nil, **) = super
 
-                # def initialize: (Hash | FinchAPI::BaseModel) -> void
+                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
                 # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction#type
                 module Type
-                  extend FinchAPI::Enum
+                  extend FinchAPI::Internal::Type::Enum
 
                   FIXED = :fixed
                   PERCENT = :percent

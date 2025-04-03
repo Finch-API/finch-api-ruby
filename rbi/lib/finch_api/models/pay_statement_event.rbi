@@ -6,7 +6,7 @@ module FinchAPI
       sig { returns(T.nilable(FinchAPI::Models::PayStatementEvent::Data)) }
       attr_reader :data
 
-      sig { params(data: T.any(FinchAPI::Models::PayStatementEvent::Data, FinchAPI::Internal::Util::AnyHash)).void }
+      sig { params(data: T.any(FinchAPI::Models::PayStatementEvent::Data, FinchAPI::Internal::AnyHash)).void }
       attr_writer :data
 
       sig { returns(T.nilable(FinchAPI::Models::PayStatementEvent::EventType::TaggedSymbol)) }
@@ -17,7 +17,7 @@ module FinchAPI
 
       sig do
         params(
-          data: T.any(FinchAPI::Models::PayStatementEvent::Data, FinchAPI::Internal::Util::AnyHash),
+          data: T.any(FinchAPI::Models::PayStatementEvent::Data, FinchAPI::Internal::AnyHash),
           event_type: FinchAPI::Models::PayStatementEvent::EventType::OrSymbol
         )
           .returns(T.attached_class)
@@ -37,7 +37,7 @@ module FinchAPI
       def to_hash
       end
 
-      class Data < FinchAPI::BaseModel
+      class Data < FinchAPI::Internal::Type::BaseModel
         # The ID of the individual associated with the pay statement.
         sig { returns(T.nilable(String)) }
         attr_reader :individual_id
@@ -62,7 +62,7 @@ module FinchAPI
       end
 
       module EventType
-        extend FinchAPI::Enum
+        extend FinchAPI::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::PayStatementEvent::EventType) }
         OrSymbol =
