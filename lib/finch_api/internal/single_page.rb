@@ -11,18 +11,6 @@ module FinchAPI
     #   single_page.auto_paging_each do |payment|
     #     puts(payment)
     #   end
-    #
-    # @example
-    #   payments =
-    #     single_page
-    #     .to_enum
-    #     .lazy
-    #     .select { _1.object_id.even? }
-    #     .map(&:itself)
-    #     .take(2)
-    #     .to_a
-    #
-    #   payments => Array
     class SinglePage < ::Array
       include FinchAPI::Internal::Type::BasePage
 
