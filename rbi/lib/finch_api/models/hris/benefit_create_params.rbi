@@ -4,8 +4,8 @@ module FinchAPI
   module Models
     module HRIS
       class BenefitCreateParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # Name of the benefit as it appears in the provider and pay statements. Recommend
         #   limiting this to <30 characters due to limitations in specific providers (e.g.
@@ -29,7 +29,7 @@ module FinchAPI
             description: String,
             frequency: T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::OrSymbol),
             type: T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol),
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

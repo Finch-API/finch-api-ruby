@@ -9,7 +9,7 @@ module FinchAPI
         sig do
           params(
             job_id: String,
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
+            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
           )
             .returns(FinchAPI::Models::Jobs::ManualAsyncJob)
         end

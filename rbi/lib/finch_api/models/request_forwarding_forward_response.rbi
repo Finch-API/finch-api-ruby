@@ -21,7 +21,7 @@ module FinchAPI
 
       sig do
         params(
-          request: T.any(FinchAPI::Models::RequestForwardingForwardResponse::Request, FinchAPI::Util::AnyHash)
+          request: T.any(FinchAPI::Models::RequestForwardingForwardResponse::Request, FinchAPI::Internal::Util::AnyHash)
         )
           .void
       end
@@ -36,7 +36,7 @@ module FinchAPI
         params(
           data: T.nilable(String),
           headers: T.nilable(T.anything),
-          request: T.any(FinchAPI::Models::RequestForwardingForwardResponse::Request, FinchAPI::Util::AnyHash),
+          request: T.any(FinchAPI::Models::RequestForwardingForwardResponse::Request, FinchAPI::Internal::Util::AnyHash),
           status_code: Integer
         )
           .returns(T.attached_class)

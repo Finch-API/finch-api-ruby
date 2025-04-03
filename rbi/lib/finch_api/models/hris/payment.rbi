@@ -14,7 +14,7 @@ module FinchAPI
         sig { returns(T.nilable(FinchAPI::Models::Money)) }
         attr_reader :company_debit
 
-        sig { params(company_debit: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash))).void }
+        sig { params(company_debit: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::Util::AnyHash))).void }
         attr_writer :company_debit
 
         sig { returns(T.nilable(String)) }
@@ -23,19 +23,19 @@ module FinchAPI
         sig { returns(T.nilable(FinchAPI::Models::Money)) }
         attr_reader :employee_taxes
 
-        sig { params(employee_taxes: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash))).void }
+        sig { params(employee_taxes: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::Util::AnyHash))).void }
         attr_writer :employee_taxes
 
         sig { returns(T.nilable(FinchAPI::Models::Money)) }
         attr_reader :employer_taxes
 
-        sig { params(employer_taxes: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash))).void }
+        sig { params(employer_taxes: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::Util::AnyHash))).void }
         attr_writer :employer_taxes
 
         sig { returns(T.nilable(FinchAPI::Models::Money)) }
         attr_reader :gross_pay
 
-        sig { params(gross_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash))).void }
+        sig { params(gross_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::Util::AnyHash))).void }
         attr_writer :gross_pay
 
         # Array of every individual on this payment.
@@ -45,7 +45,7 @@ module FinchAPI
         sig { returns(T.nilable(FinchAPI::Models::Money)) }
         attr_reader :net_pay
 
-        sig { params(net_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash))).void }
+        sig { params(net_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::Util::AnyHash))).void }
         attr_writer :net_pay
 
         sig { returns(T.nilable(String)) }
@@ -64,7 +64,9 @@ module FinchAPI
         attr_reader :pay_period
 
         sig do
-          params(pay_period: T.nilable(T.any(FinchAPI::Models::HRIS::Payment::PayPeriod, FinchAPI::Util::AnyHash)))
+          params(
+            pay_period: T.nilable(T.any(FinchAPI::Models::HRIS::Payment::PayPeriod, FinchAPI::Internal::Util::AnyHash))
+          )
             .void
         end
         attr_writer :pay_period
@@ -72,17 +74,17 @@ module FinchAPI
         sig do
           params(
             id: String,
-            company_debit: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)),
+            company_debit: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::Util::AnyHash)),
             debit_date: T.nilable(String),
-            employee_taxes: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)),
-            employer_taxes: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)),
-            gross_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)),
+            employee_taxes: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::Util::AnyHash)),
+            employer_taxes: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::Util::AnyHash)),
+            gross_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::Util::AnyHash)),
             individual_ids: T.nilable(T::Array[String]),
-            net_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Util::AnyHash)),
+            net_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::Util::AnyHash)),
             pay_date: T.nilable(String),
             pay_frequencies: T.nilable(T::Array[FinchAPI::Models::HRIS::Payment::PayFrequency::OrSymbol]),
             pay_group_ids: T.nilable(T::Array[String]),
-            pay_period: T.nilable(T.any(FinchAPI::Models::HRIS::Payment::PayPeriod, FinchAPI::Util::AnyHash))
+            pay_period: T.nilable(T.any(FinchAPI::Models::HRIS::Payment::PayPeriod, FinchAPI::Internal::Util::AnyHash))
           )
             .returns(T.attached_class)
         end

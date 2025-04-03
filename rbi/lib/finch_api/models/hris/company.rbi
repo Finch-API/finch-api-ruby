@@ -24,7 +24,12 @@ module FinchAPI
         sig { returns(T.nilable(FinchAPI::Models::HRIS::HRISCompany::Entity)) }
         attr_reader :entity
 
-        sig { params(entity: T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Entity, FinchAPI::Util::AnyHash))).void }
+        sig do
+          params(
+            entity: T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Entity, FinchAPI::Internal::Util::AnyHash))
+          )
+            .void
+        end
         attr_writer :entity
 
         # The legal name of the company.
@@ -45,14 +50,16 @@ module FinchAPI
         sig do
           params(
             id: String,
-            accounts: T.nilable(T::Array[T.any(FinchAPI::Models::HRIS::HRISCompany::Account, FinchAPI::Util::AnyHash)]),
+            accounts: T.nilable(
+              T::Array[T.any(FinchAPI::Models::HRIS::HRISCompany::Account, FinchAPI::Internal::Util::AnyHash)]
+            ),
             departments: T.nilable(
-              T::Array[T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Department, FinchAPI::Util::AnyHash))]
+              T::Array[T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Department, FinchAPI::Internal::Util::AnyHash))]
             ),
             ein: T.nilable(String),
-            entity: T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Entity, FinchAPI::Util::AnyHash)),
+            entity: T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Entity, FinchAPI::Internal::Util::AnyHash)),
             legal_name: T.nilable(String),
-            locations: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash))]),
+            locations: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::Util::AnyHash))]),
             primary_email: T.nilable(String),
             primary_phone_number: T.nilable(String)
           )
@@ -174,7 +181,9 @@ module FinchAPI
 
           sig do
             params(
-              parent: T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Department::Parent, FinchAPI::Util::AnyHash))
+              parent: T.nilable(
+                T.any(FinchAPI::Models::HRIS::HRISCompany::Department::Parent, FinchAPI::Internal::Util::AnyHash)
+              )
             )
               .void
           end
@@ -183,7 +192,9 @@ module FinchAPI
           sig do
             params(
               name: T.nilable(String),
-              parent: T.nilable(T.any(FinchAPI::Models::HRIS::HRISCompany::Department::Parent, FinchAPI::Util::AnyHash))
+              parent: T.nilable(
+                T.any(FinchAPI::Models::HRIS::HRISCompany::Department::Parent, FinchAPI::Internal::Util::AnyHash)
+              )
             )
               .returns(T.attached_class)
           end

@@ -7,11 +7,11 @@ module FinchAPI
           pay_statements: ::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement],
           start_date: String
         }
-        & FinchAPI::request_parameters
+        & FinchAPI::Internal::Type::request_parameters
 
       class PaymentCreateParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         attr_reader end_date: String?
 

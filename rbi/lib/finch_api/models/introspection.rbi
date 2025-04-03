@@ -33,7 +33,7 @@ module FinchAPI
 
       sig do
         params(
-          connection_status: T.any(FinchAPI::Models::Introspection::ConnectionStatus, FinchAPI::Util::AnyHash)
+          connection_status: T.any(FinchAPI::Models::Introspection::ConnectionStatus, FinchAPI::Internal::Util::AnyHash)
         )
           .void
       end
@@ -87,12 +87,12 @@ module FinchAPI
       sig do
         params(
           account_id: String,
-          authentication_methods: T::Array[T.any(FinchAPI::Models::Introspection::AuthenticationMethod, FinchAPI::Util::AnyHash)],
+          authentication_methods: T::Array[T.any(FinchAPI::Models::Introspection::AuthenticationMethod, FinchAPI::Internal::Util::AnyHash)],
           client_id: String,
           client_type: FinchAPI::Models::Introspection::ClientType::OrSymbol,
           company_id: String,
           connection_id: String,
-          connection_status: T.any(FinchAPI::Models::Introspection::ConnectionStatus, FinchAPI::Util::AnyHash),
+          connection_status: T.any(FinchAPI::Models::Introspection::ConnectionStatus, FinchAPI::Internal::Util::AnyHash),
           connection_type: FinchAPI::Models::Introspection::ConnectionType::OrSymbol,
           customer_email: T.nilable(String),
           customer_id: T.nilable(String),
@@ -157,7 +157,10 @@ module FinchAPI
 
         sig do
           params(
-            connection_status: T.any(FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus, FinchAPI::Util::AnyHash)
+            connection_status: T.any(
+              FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus,
+              FinchAPI::Internal::Util::AnyHash
+            )
           )
             .void
         end
@@ -179,7 +182,10 @@ module FinchAPI
 
         sig do
           params(
-            connection_status: T.any(FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus, FinchAPI::Util::AnyHash),
+            connection_status: T.any(
+              FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus,
+              FinchAPI::Internal::Util::AnyHash
+            ),
             products: T::Array[String],
             type: FinchAPI::Models::Introspection::AuthenticationMethod::Type::OrSymbol
           )

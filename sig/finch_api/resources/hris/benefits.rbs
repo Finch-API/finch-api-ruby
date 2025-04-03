@@ -24,11 +24,11 @@ module FinchAPI
 
         def list: (
           ?request_options: FinchAPI::request_opts
-        ) -> FinchAPI::SinglePage[FinchAPI::Models::HRIS::CompanyBenefit]
+        ) -> FinchAPI::Internal::SinglePage[FinchAPI::Models::HRIS::CompanyBenefit]
 
         def list_supported_benefits: (
           ?request_options: FinchAPI::request_opts
-        ) -> FinchAPI::SinglePage[FinchAPI::Models::HRIS::SupportedBenefit]
+        ) -> FinchAPI::Internal::SinglePage[FinchAPI::Models::HRIS::SupportedBenefit]
 
         def initialize: (client: FinchAPI::Client) -> void
       end

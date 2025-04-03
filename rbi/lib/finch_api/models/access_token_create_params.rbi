@@ -3,8 +3,8 @@
 module FinchAPI
   module Models
     class AccessTokenCreateParams < FinchAPI::BaseModel
-      extend FinchAPI::Type::RequestParameters::Converter
-      include FinchAPI::RequestParameters
+      extend FinchAPI::Internal::Type::RequestParameters::Converter
+      include FinchAPI::Internal::Type::RequestParameters
 
       sig { returns(String) }
       attr_accessor :code
@@ -33,7 +33,7 @@ module FinchAPI
           client_id: String,
           client_secret: String,
           redirect_uri: String,
-          request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
+          request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -6,8 +6,8 @@ module FinchAPI
       # @see FinchAPI::Resources::Jobs::Automated#list
       class AutomatedListParams < FinchAPI::BaseModel
         # @!parse
-        #   extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # @!attribute [r] limit
         #   Number of items to return

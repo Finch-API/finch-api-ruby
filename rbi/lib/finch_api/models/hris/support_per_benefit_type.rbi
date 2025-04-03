@@ -7,19 +7,29 @@ module FinchAPI
         sig { returns(T.nilable(FinchAPI::Models::OperationSupportMatrix)) }
         attr_reader :company_benefits
 
-        sig { params(company_benefits: T.any(FinchAPI::Models::OperationSupportMatrix, FinchAPI::Util::AnyHash)).void }
+        sig do
+          params(
+            company_benefits: T.any(FinchAPI::Models::OperationSupportMatrix, FinchAPI::Internal::Util::AnyHash)
+          )
+            .void
+        end
         attr_writer :company_benefits
 
         sig { returns(T.nilable(FinchAPI::Models::OperationSupportMatrix)) }
         attr_reader :individual_benefits
 
-        sig { params(individual_benefits: T.any(FinchAPI::Models::OperationSupportMatrix, FinchAPI::Util::AnyHash)).void }
+        sig do
+          params(
+            individual_benefits: T.any(FinchAPI::Models::OperationSupportMatrix, FinchAPI::Internal::Util::AnyHash)
+          )
+            .void
+        end
         attr_writer :individual_benefits
 
         sig do
           params(
-            company_benefits: T.any(FinchAPI::Models::OperationSupportMatrix, FinchAPI::Util::AnyHash),
-            individual_benefits: T.any(FinchAPI::Models::OperationSupportMatrix, FinchAPI::Util::AnyHash)
+            company_benefits: T.any(FinchAPI::Models::OperationSupportMatrix, FinchAPI::Internal::Util::AnyHash),
+            individual_benefits: T.any(FinchAPI::Models::OperationSupportMatrix, FinchAPI::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

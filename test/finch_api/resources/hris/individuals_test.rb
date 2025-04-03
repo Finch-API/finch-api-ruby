@@ -7,7 +7,7 @@ class FinchAPI::Test::Resources::HRIS::IndividualsTest < FinchAPI::Test::Resourc
     response = @finch.hris.individuals.retrieve_many
 
     assert_pattern do
-      response => FinchAPI::ResponsesPage
+      response => FinchAPI::Internal::ResponsesPage
     end
 
     row = response.to_enum.first

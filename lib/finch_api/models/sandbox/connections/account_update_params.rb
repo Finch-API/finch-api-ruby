@@ -7,8 +7,8 @@ module FinchAPI
         # @see FinchAPI::Resources::Sandbox::Connections::Accounts#update
         class AccountUpdateParams < FinchAPI::BaseModel
           # @!parse
-          #   extend FinchAPI::Type::RequestParameters::Converter
-          include FinchAPI::RequestParameters
+          #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+          include FinchAPI::Internal::Type::RequestParameters
 
           # @!attribute [r] connection_status
           #

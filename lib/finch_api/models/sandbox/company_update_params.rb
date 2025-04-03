@@ -6,8 +6,8 @@ module FinchAPI
       # @see FinchAPI::Resources::Sandbox::Company#update
       class CompanyUpdateParams < FinchAPI::BaseModel
         # @!parse
-        #   extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # @!attribute accounts
         #   An array of bank account objects associated with the payroll/HRIS system.

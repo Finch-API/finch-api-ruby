@@ -6,11 +6,11 @@ module FinchAPI
           type: FinchAPI::Models::Jobs::AutomatedCreateParams::type_,
           params: FinchAPI::Models::Jobs::AutomatedCreateParams::Params
         }
-        & FinchAPI::request_parameters
+        & FinchAPI::Internal::Type::request_parameters
 
       class AutomatedCreateParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         attr_accessor type: FinchAPI::Models::Jobs::AutomatedCreateParams::type_
 

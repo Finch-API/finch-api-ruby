@@ -14,7 +14,7 @@ module FinchAPI
         # @param requests [Array<FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request>]
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::ResponsesPage<FinchAPI::Models::HRIS::PayStatementResponse>]
+        # @return [FinchAPI::Internal::ResponsesPage<FinchAPI::Models::HRIS::PayStatementResponse>]
         #
         # @see FinchAPI::Models::HRIS::PayStatementRetrieveManyParams
         def retrieve_many(params)
@@ -23,7 +23,7 @@ module FinchAPI
             method: :post,
             path: "employer/pay-statement",
             body: parsed,
-            page: FinchAPI::ResponsesPage,
+            page: FinchAPI::Internal::ResponsesPage,
             model: FinchAPI::Models::HRIS::PayStatementResponse,
             options: options
           )

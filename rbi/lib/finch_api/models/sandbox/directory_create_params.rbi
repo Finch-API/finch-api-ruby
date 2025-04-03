@@ -4,8 +4,8 @@ module FinchAPI
   module Models
     module Sandbox
       class DirectoryCreateParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # Array of individuals to create. Takes all combined fields from `/individual` and
         #   `/employment` endpoints. All fields are optional.
@@ -14,7 +14,7 @@ module FinchAPI
 
         sig do
           params(
-            body: T::Array[T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body, FinchAPI::Util::AnyHash)]
+            body: T::Array[T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body, FinchAPI::Internal::Util::AnyHash)]
           )
             .void
         end
@@ -22,8 +22,8 @@ module FinchAPI
 
         sig do
           params(
-            body: T::Array[T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body, FinchAPI::Util::AnyHash)],
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
+            body: T::Array[T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body, FinchAPI::Internal::Util::AnyHash)],
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -55,7 +55,12 @@ module FinchAPI
 
           sig do
             params(
-              custom_fields: T::Array[T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField, FinchAPI::Util::AnyHash)]
+              custom_fields: T::Array[
+              T.any(
+                FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField,
+                FinchAPI::Internal::Util::AnyHash
+              )
+              ]
             )
               .void
           end
@@ -68,7 +73,10 @@ module FinchAPI
           sig do
             params(
               department: T.nilable(
-                T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Department, FinchAPI::Util::AnyHash)
+                T.any(
+                  FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Department,
+                  FinchAPI::Internal::Util::AnyHash
+                )
               )
             )
               .void
@@ -88,7 +96,10 @@ module FinchAPI
           sig do
             params(
               employment: T.nilable(
-                T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment, FinchAPI::Util::AnyHash)
+                T.any(
+                  FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment,
+                  FinchAPI::Internal::Util::AnyHash
+                )
               )
             )
               .void
@@ -126,7 +137,7 @@ module FinchAPI
           sig { returns(T.nilable(FinchAPI::Models::Income)) }
           attr_reader :income
 
-          sig { params(income: T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Util::AnyHash))).void }
+          sig { params(income: T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Internal::Util::AnyHash))).void }
           attr_writer :income
 
           # The array of income history.
@@ -147,7 +158,7 @@ module FinchAPI
           sig { returns(T.nilable(FinchAPI::Models::Location)) }
           attr_reader :location
 
-          sig { params(location: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash))).void }
+          sig { params(location: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::Util::AnyHash))).void }
           attr_writer :location
 
           # The manager object representing the manager of the individual within the org.
@@ -156,7 +167,9 @@ module FinchAPI
 
           sig do
             params(
-              manager: T.nilable(T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Manager, FinchAPI::Util::AnyHash))
+              manager: T.nilable(
+                T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Manager, FinchAPI::Internal::Util::AnyHash)
+              )
             )
               .void
           end
@@ -180,7 +193,7 @@ module FinchAPI
           sig { returns(T.nilable(FinchAPI::Models::Location)) }
           attr_reader :residence
 
-          sig { params(residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash))).void }
+          sig { params(residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::Util::AnyHash))).void }
           attr_writer :residence
 
           # The source system's unique employment identifier for this individual
@@ -207,16 +220,27 @@ module FinchAPI
           sig do
             params(
               class_code: T.nilable(String),
-              custom_fields: T::Array[T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField, FinchAPI::Util::AnyHash)],
+              custom_fields: T::Array[
+              T.any(
+                FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField,
+                FinchAPI::Internal::Util::AnyHash
+              )
+              ],
               department: T.nilable(
-                T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Department, FinchAPI::Util::AnyHash)
+                T.any(
+                  FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Department,
+                  FinchAPI::Internal::Util::AnyHash
+                )
               ),
               dob: T.nilable(String),
               emails: T.nilable(
-                T::Array[T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email, FinchAPI::Util::AnyHash)]
+                T::Array[T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email, FinchAPI::Internal::Util::AnyHash)]
               ),
               employment: T.nilable(
-                T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment, FinchAPI::Util::AnyHash)
+                T.any(
+                  FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment,
+                  FinchAPI::Internal::Util::AnyHash
+                )
               ),
               employment_status: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::OrSymbol),
               encrypted_ssn: T.nilable(String),
@@ -224,23 +248,28 @@ module FinchAPI
               ethnicity: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::OrSymbol),
               first_name: T.nilable(String),
               gender: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::OrSymbol),
-              income: T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Util::AnyHash)),
-              income_history: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Util::AnyHash))]),
+              income: T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Internal::Util::AnyHash)),
+              income_history: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Internal::Util::AnyHash))]),
               is_active: T.nilable(T::Boolean),
               last_name: T.nilable(String),
               latest_rehire_date: T.nilable(String),
-              location: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash)),
-              manager: T.nilable(T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Manager, FinchAPI::Util::AnyHash)),
+              location: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::Util::AnyHash)),
+              manager: T.nilable(
+                T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Manager, FinchAPI::Internal::Util::AnyHash)
+              ),
               middle_name: T.nilable(String),
               phone_numbers: T.nilable(
                 T::Array[
                 T.nilable(
-                  T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber, FinchAPI::Util::AnyHash)
+                  T.any(
+                    FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber,
+                    FinchAPI::Internal::Util::AnyHash
+                  )
                 )
                 ]
               ),
               preferred_name: T.nilable(String),
-              residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash)),
+              residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::Util::AnyHash)),
               source_id: String,
               ssn: T.nilable(String),
               start_date: T.nilable(String),

@@ -6,8 +6,8 @@ module FinchAPI
       # @see FinchAPI::Resources::Jobs::Automated#create
       class AutomatedCreateParams < FinchAPI::BaseModel
         # @!parse
-        #   extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # @!attribute type
         #   The type of job to start.

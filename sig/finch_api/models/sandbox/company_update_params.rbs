@@ -12,11 +12,11 @@ module FinchAPI
           primary_email: String?,
           primary_phone_number: String?
         }
-        & FinchAPI::request_parameters
+        & FinchAPI::Internal::Type::request_parameters
 
       class CompanyUpdateParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         attr_accessor accounts: ::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Account]?
 

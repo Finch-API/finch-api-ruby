@@ -12,10 +12,15 @@ module FinchAPI
           sig do
             params(
               benefit_id: String,
-              individuals: T::Array[T.any(FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual, FinchAPI::Util::AnyHash)],
-              request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
+              individuals: T::Array[
+              T.any(
+                FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual,
+                FinchAPI::Internal::Util::AnyHash
+              )
+              ],
+              request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
             )
-              .returns(FinchAPI::SinglePage[FinchAPI::Models::HRIS::Benefits::EnrolledIndividual])
+              .returns(FinchAPI::Internal::SinglePage[FinchAPI::Models::HRIS::Benefits::EnrolledIndividual])
           end
           def enroll_many(
             benefit_id,
@@ -29,7 +34,7 @@ module FinchAPI
           sig do
             params(
               benefit_id: String,
-              request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
+              request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
             )
               .returns(FinchAPI::Models::HRIS::Benefits::IndividualEnrolledIDsResponse)
           end
@@ -41,9 +46,9 @@ module FinchAPI
             params(
               benefit_id: String,
               individual_ids: String,
-              request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
+              request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
             )
-              .returns(FinchAPI::SinglePage[FinchAPI::Models::HRIS::Benefits::IndividualBenefit])
+              .returns(FinchAPI::Internal::SinglePage[FinchAPI::Models::HRIS::Benefits::IndividualBenefit])
           end
           def retrieve_many_benefits(
             benefit_id,
@@ -59,9 +64,9 @@ module FinchAPI
             params(
               benefit_id: String,
               individual_ids: T::Array[String],
-              request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash))
+              request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash))
             )
-              .returns(FinchAPI::SinglePage[T.anything])
+              .returns(FinchAPI::Internal::SinglePage[T.anything])
           end
           def unenroll_many(
             benefit_id,

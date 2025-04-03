@@ -4,8 +4,8 @@ module FinchAPI
   module Models
     module Jobs
       class AutomatedCreateParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # The type of job to start.
         sig { returns(FinchAPI::Models::Jobs::AutomatedCreateParams::Type::OrSymbol) }
@@ -14,14 +14,19 @@ module FinchAPI
         sig { returns(FinchAPI::Models::Jobs::AutomatedCreateParams::Params) }
         attr_reader :params
 
-        sig { params(params: T.any(FinchAPI::Models::Jobs::AutomatedCreateParams::Params, FinchAPI::Util::AnyHash)).void }
+        sig do
+          params(
+            params: T.any(FinchAPI::Models::Jobs::AutomatedCreateParams::Params, FinchAPI::Internal::Util::AnyHash)
+          )
+            .void
+        end
         attr_writer :params
 
         sig do
           params(
             type: FinchAPI::Models::Jobs::AutomatedCreateParams::Type::OrSymbol,
-            params: T.any(FinchAPI::Models::Jobs::AutomatedCreateParams::Params, FinchAPI::Util::AnyHash),
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
+            params: T.any(FinchAPI::Models::Jobs::AutomatedCreateParams::Params, FinchAPI::Internal::Util::AnyHash),
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

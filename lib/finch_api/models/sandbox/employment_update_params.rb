@@ -6,8 +6,8 @@ module FinchAPI
       # @see FinchAPI::Resources::Sandbox::Employment#update
       class EmploymentUpdateParams < FinchAPI::BaseModel
         # @!parse
-        #   extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # @!attribute class_code
         #   Worker's compensation classification code for this employee

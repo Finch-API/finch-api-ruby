@@ -7,20 +7,25 @@ module FinchAPI
         sig { returns(T.nilable(FinchAPI::Models::Paging)) }
         attr_reader :paging
 
-        sig { params(paging: T.any(FinchAPI::Models::Paging, FinchAPI::Util::AnyHash)).void }
+        sig { params(paging: T.any(FinchAPI::Models::Paging, FinchAPI::Internal::Util::AnyHash)).void }
         attr_writer :paging
 
         # The array of pay statements for the current payment.
         sig { returns(T.nilable(T::Array[FinchAPI::Models::HRIS::PayStatement])) }
         attr_reader :pay_statements
 
-        sig { params(pay_statements: T::Array[T.any(FinchAPI::Models::HRIS::PayStatement, FinchAPI::Util::AnyHash)]).void }
+        sig do
+          params(
+            pay_statements: T::Array[T.any(FinchAPI::Models::HRIS::PayStatement, FinchAPI::Internal::Util::AnyHash)]
+          )
+            .void
+        end
         attr_writer :pay_statements
 
         sig do
           params(
-            paging: T.any(FinchAPI::Models::Paging, FinchAPI::Util::AnyHash),
-            pay_statements: T::Array[T.any(FinchAPI::Models::HRIS::PayStatement, FinchAPI::Util::AnyHash)]
+            paging: T.any(FinchAPI::Models::Paging, FinchAPI::Internal::Util::AnyHash),
+            pay_statements: T::Array[T.any(FinchAPI::Models::HRIS::PayStatement, FinchAPI::Internal::Util::AnyHash)]
           )
             .returns(T.attached_class)
         end

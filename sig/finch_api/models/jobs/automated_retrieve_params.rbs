@@ -1,11 +1,12 @@
 module FinchAPI
   module Models
     module Jobs
-      type automated_retrieve_params = {  } & FinchAPI::request_parameters
+      type automated_retrieve_params =
+        {  } & FinchAPI::Internal::Type::request_parameters
 
       class AutomatedRetrieveParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         def initialize: (?request_options: FinchAPI::request_opts) -> void
 

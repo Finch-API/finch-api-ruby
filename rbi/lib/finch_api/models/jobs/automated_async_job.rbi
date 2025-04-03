@@ -28,7 +28,7 @@ module FinchAPI
 
         sig do
           params(
-            params: T.nilable(T.any(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params, FinchAPI::Util::AnyHash))
+            params: T.nilable(T.any(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params, FinchAPI::Internal::Util::AnyHash))
           )
             .void
         end
@@ -57,7 +57,7 @@ module FinchAPI
             created_at: Time,
             job_id: String,
             job_url: String,
-            params: T.nilable(T.any(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params, FinchAPI::Util::AnyHash)),
+            params: T.nilable(T.any(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params, FinchAPI::Internal::Util::AnyHash)),
             scheduled_at: T.nilable(Time),
             started_at: T.nilable(Time),
             status: FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::OrSymbol,

@@ -7,7 +7,7 @@ class FinchAPI::Test::Resources::HRIS::Benefits::IndividualsTest < FinchAPI::Tes
     response = @finch.hris.benefits.individuals.enroll_many("benefit_id")
 
     assert_pattern do
-      response => FinchAPI::SinglePage
+      response => FinchAPI::Internal::SinglePage
     end
 
     row = response.to_enum.first
@@ -45,7 +45,7 @@ class FinchAPI::Test::Resources::HRIS::Benefits::IndividualsTest < FinchAPI::Tes
     response = @finch.hris.benefits.individuals.retrieve_many_benefits("benefit_id")
 
     assert_pattern do
-      response => FinchAPI::SinglePage
+      response => FinchAPI::Internal::SinglePage
     end
 
     row = response.to_enum.first
@@ -68,7 +68,7 @@ class FinchAPI::Test::Resources::HRIS::Benefits::IndividualsTest < FinchAPI::Tes
     response = @finch.hris.benefits.individuals.unenroll_many("benefit_id")
 
     assert_pattern do
-      response => FinchAPI::SinglePage
+      response => FinchAPI::Internal::SinglePage
     end
 
     row = response.to_enum.first

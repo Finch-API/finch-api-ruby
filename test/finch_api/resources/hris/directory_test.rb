@@ -7,7 +7,7 @@ class FinchAPI::Test::Resources::HRIS::DirectoryTest < FinchAPI::Test::ResourceT
     response = @finch.hris.directory.list
 
     assert_pattern do
-      response => FinchAPI::IndividualsPage
+      response => FinchAPI::Internal::IndividualsPage
     end
 
     row = response.to_enum.first
@@ -34,7 +34,7 @@ class FinchAPI::Test::Resources::HRIS::DirectoryTest < FinchAPI::Test::ResourceT
     response = @finch.hris.directory.list_individuals
 
     assert_pattern do
-      response => FinchAPI::IndividualsPage
+      response => FinchAPI::Internal::IndividualsPage
     end
 
     row = response.to_enum.first

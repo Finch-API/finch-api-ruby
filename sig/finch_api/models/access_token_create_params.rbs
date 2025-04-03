@@ -7,11 +7,11 @@ module FinchAPI
         client_secret: String,
         redirect_uri: String
       }
-      & FinchAPI::request_parameters
+      & FinchAPI::Internal::Type::request_parameters
 
     class AccessTokenCreateParams < FinchAPI::BaseModel
-      extend FinchAPI::Type::RequestParameters::Converter
-      include FinchAPI::RequestParameters
+      extend FinchAPI::Internal::Type::RequestParameters::Converter
+      include FinchAPI::Internal::Type::RequestParameters
 
       attr_accessor code: String
 

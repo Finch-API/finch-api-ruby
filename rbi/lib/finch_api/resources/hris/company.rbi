@@ -6,7 +6,14 @@ module FinchAPI
       class Company
         # Read basic company data
         sig do
-          params(request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)))
+          params(
+            request_options: T.nilable(
+              T.any(
+                FinchAPI::RequestOptions,
+                FinchAPI::Internal::Util::AnyHash
+              )
+            )
+          )
             .returns(FinchAPI::Models::HRIS::HRISCompany)
         end
         def retrieve(request_options: {})

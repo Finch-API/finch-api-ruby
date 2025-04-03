@@ -4,8 +4,8 @@ module FinchAPI
   module Models
     module Payroll
       class PayGroupListParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         sig { returns(T.nilable(String)) }
         attr_reader :individual_id
@@ -23,7 +23,7 @@ module FinchAPI
           params(
             individual_id: String,
             pay_frequencies: T::Array[String],
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

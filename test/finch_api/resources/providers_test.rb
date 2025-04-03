@@ -7,7 +7,7 @@ class FinchAPI::Test::Resources::ProvidersTest < FinchAPI::Test::ResourceTest
     response = @finch.providers.list
 
     assert_pattern do
-      response => FinchAPI::SinglePage
+      response => FinchAPI::Internal::SinglePage
     end
 
     row = response.to_enum.first

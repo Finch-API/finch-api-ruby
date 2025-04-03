@@ -6,11 +6,11 @@ module FinchAPI
           options: FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options?,
           requests: ::Array[FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request]
         }
-        & FinchAPI::request_parameters
+        & FinchAPI::Internal::Type::request_parameters
 
       class IndividualRetrieveManyParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         attr_accessor options: FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options?
 

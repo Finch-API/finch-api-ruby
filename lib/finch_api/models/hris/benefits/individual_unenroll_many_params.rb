@@ -7,8 +7,8 @@ module FinchAPI
         # @see FinchAPI::Resources::HRIS::Benefits::Individuals#unenroll_many
         class IndividualUnenrollManyParams < FinchAPI::BaseModel
           # @!parse
-          #   extend FinchAPI::Type::RequestParameters::Converter
-          include FinchAPI::RequestParameters
+          #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+          include FinchAPI::Internal::Type::RequestParameters
 
           # @!attribute [r] individual_ids
           #   Array of individual_ids to unenroll.

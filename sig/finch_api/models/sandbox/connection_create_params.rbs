@@ -8,11 +8,11 @@ module FinchAPI
           employee_size: Integer,
           products: ::Array[String]
         }
-        & FinchAPI::request_parameters
+        & FinchAPI::Internal::Type::request_parameters
 
       class ConnectionCreateParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         attr_accessor provider_id: String
 

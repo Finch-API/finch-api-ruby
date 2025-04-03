@@ -5,8 +5,8 @@ module FinchAPI
     # @see FinchAPI::Resources::RequestForwarding#forward
     class RequestForwardingForwardParams < FinchAPI::BaseModel
       # @!parse
-      #   extend FinchAPI::Type::RequestParameters::Converter
-      include FinchAPI::RequestParameters
+      #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+      include FinchAPI::Internal::Type::RequestParameters
 
       # @!attribute method_
       #   The HTTP method for the forwarded request. Valid values include: `GET` , `POST`

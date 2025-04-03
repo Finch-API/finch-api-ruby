@@ -6,8 +6,8 @@ module FinchAPI
       # @see FinchAPI::Resources::Sandbox::Connections#create
       class ConnectionCreateParams < FinchAPI::BaseModel
         # @!parse
-        #   extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # @!attribute provider_id
         #   The provider associated with the connection

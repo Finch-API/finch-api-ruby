@@ -16,7 +16,7 @@ module FinchAPI
           # @param individuals [Array<FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual>]
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [FinchAPI::SinglePage<FinchAPI::Models::HRIS::Benefits::EnrolledIndividual>]
+          # @return [FinchAPI::Internal::SinglePage<FinchAPI::Models::HRIS::Benefits::EnrolledIndividual>]
           #
           # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams
           def enroll_many(benefit_id, params = {})
@@ -25,7 +25,7 @@ module FinchAPI
               method: :post,
               path: ["employer/benefits/%1$s/individuals", benefit_id],
               body: parsed[:individuals],
-              page: FinchAPI::SinglePage,
+              page: FinchAPI::Internal::SinglePage,
               model: FinchAPI::Models::HRIS::Benefits::EnrolledIndividual,
               options: options
             )
@@ -58,7 +58,7 @@ module FinchAPI
           # @param individual_ids [String]
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [FinchAPI::SinglePage<FinchAPI::Models::HRIS::Benefits::IndividualBenefit>]
+          # @return [FinchAPI::Internal::SinglePage<FinchAPI::Models::HRIS::Benefits::IndividualBenefit>]
           #
           # @see FinchAPI::Models::HRIS::Benefits::IndividualRetrieveManyBenefitsParams
           def retrieve_many_benefits(benefit_id, params = {})
@@ -68,7 +68,7 @@ module FinchAPI
               method: :get,
               path: ["employer/benefits/%1$s/individuals", benefit_id],
               query: parsed,
-              page: FinchAPI::SinglePage,
+              page: FinchAPI::Internal::SinglePage,
               model: FinchAPI::Models::HRIS::Benefits::IndividualBenefit,
               options: options
             )
@@ -82,7 +82,7 @@ module FinchAPI
           # @param individual_ids [Array<String>]
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [FinchAPI::SinglePage<Object>]
+          # @return [FinchAPI::Internal::SinglePage<Object>]
           #
           # @see FinchAPI::Models::HRIS::Benefits::IndividualUnenrollManyParams
           def unenroll_many(benefit_id, params = {})
@@ -91,7 +91,7 @@ module FinchAPI
               method: :delete,
               path: ["employer/benefits/%1$s/individuals", benefit_id],
               body: parsed,
-              page: FinchAPI::SinglePage,
+              page: FinchAPI::Internal::SinglePage,
               model: FinchAPI::Unknown,
               options: options
             )

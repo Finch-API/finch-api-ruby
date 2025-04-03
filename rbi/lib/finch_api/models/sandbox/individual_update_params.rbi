@@ -4,8 +4,8 @@ module FinchAPI
   module Models
     module Sandbox
       class IndividualUpdateParams < FinchAPI::BaseModel
-        extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         sig { returns(T.nilable(String)) }
         attr_accessor :dob
@@ -49,7 +49,7 @@ module FinchAPI
         sig { returns(T.nilable(FinchAPI::Models::Location)) }
         attr_reader :residence
 
-        sig { params(residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash))).void }
+        sig { params(residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::Util::AnyHash))).void }
         attr_writer :residence
 
         # Social Security Number of the individual. This field is only available with the
@@ -63,7 +63,7 @@ module FinchAPI
           params(
             dob: T.nilable(String),
             emails: T.nilable(
-              T::Array[T.any(FinchAPI::Models::Sandbox::IndividualUpdateParams::Email, FinchAPI::Util::AnyHash)]
+              T::Array[T.any(FinchAPI::Models::Sandbox::IndividualUpdateParams::Email, FinchAPI::Internal::Util::AnyHash)]
             ),
             encrypted_ssn: T.nilable(String),
             ethnicity: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol),
@@ -72,12 +72,16 @@ module FinchAPI
             last_name: T.nilable(String),
             middle_name: T.nilable(String),
             phone_numbers: T.nilable(
-              T::Array[T.nilable(T.any(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber, FinchAPI::Util::AnyHash))]
+              T::Array[
+              T.nilable(
+                T.any(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber, FinchAPI::Internal::Util::AnyHash)
+              )
+              ]
             ),
             preferred_name: T.nilable(String),
-            residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Util::AnyHash)),
+            residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::Util::AnyHash)),
             ssn: T.nilable(String),
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Util::AnyHash)
+            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

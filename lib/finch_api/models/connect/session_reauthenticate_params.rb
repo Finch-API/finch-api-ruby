@@ -6,8 +6,8 @@ module FinchAPI
       # @see FinchAPI::Resources::Connect::Sessions#reauthenticate
       class SessionReauthenticateParams < FinchAPI::BaseModel
         # @!parse
-        #   extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # @!attribute connection_id
         #   The ID of the existing connection to reauthenticate

@@ -6,7 +6,7 @@ module FinchAPI
       sig { returns(T.nilable(FinchAPI::Models::DirectoryEvent::Data)) }
       attr_reader :data
 
-      sig { params(data: T.any(FinchAPI::Models::DirectoryEvent::Data, FinchAPI::Util::AnyHash)).void }
+      sig { params(data: T.any(FinchAPI::Models::DirectoryEvent::Data, FinchAPI::Internal::Util::AnyHash)).void }
       attr_writer :data
 
       sig { returns(T.nilable(FinchAPI::Models::DirectoryEvent::EventType::TaggedSymbol)) }
@@ -17,7 +17,7 @@ module FinchAPI
 
       sig do
         params(
-          data: T.any(FinchAPI::Models::DirectoryEvent::Data, FinchAPI::Util::AnyHash),
+          data: T.any(FinchAPI::Models::DirectoryEvent::Data, FinchAPI::Internal::Util::AnyHash),
           event_type: FinchAPI::Models::DirectoryEvent::EventType::OrSymbol
         )
           .returns(T.attached_class)

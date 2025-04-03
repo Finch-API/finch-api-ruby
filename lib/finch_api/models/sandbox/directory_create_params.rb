@@ -6,8 +6,8 @@ module FinchAPI
       # @see FinchAPI::Resources::Sandbox::Directory#create
       class DirectoryCreateParams < FinchAPI::BaseModel
         # @!parse
-        #   extend FinchAPI::Type::RequestParameters::Converter
-        include FinchAPI::RequestParameters
+        #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
 
         # @!attribute [r] body
         #   Array of individuals to create. Takes all combined fields from `/individual` and

@@ -7,7 +7,7 @@ class FinchAPI::Test::Resources::HRIS::PaymentsTest < FinchAPI::Test::ResourceTe
     response = @finch.hris.payments.list(end_date: "2021-01-01", start_date: "2021-01-01")
 
     assert_pattern do
-      response => FinchAPI::SinglePage
+      response => FinchAPI::Internal::SinglePage
     end
 
     row = response.to_enum.first

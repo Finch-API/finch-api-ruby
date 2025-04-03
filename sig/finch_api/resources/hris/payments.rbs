@@ -6,7 +6,7 @@ module FinchAPI
           end_date: Date,
           start_date: Date,
           ?request_options: FinchAPI::request_opts
-        ) -> FinchAPI::SinglePage[FinchAPI::Models::HRIS::Payment]
+        ) -> FinchAPI::Internal::SinglePage[FinchAPI::Models::HRIS::Payment]
 
         def initialize: (client: FinchAPI::Client) -> void
       end
