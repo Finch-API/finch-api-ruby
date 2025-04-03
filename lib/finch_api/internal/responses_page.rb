@@ -2,6 +2,8 @@
 
 module FinchAPI
   module Internal
+    # @generic Elem
+    #
     # @example
     #   if responses_page.has_next?
     #     responses_page = responses_page.next_page
@@ -14,7 +16,7 @@ module FinchAPI
     class ResponsesPage
       include FinchAPI::Internal::Type::BasePage
 
-      # @return [Array<Object>, nil]
+      # @return [Array<generic<Elem>>, nil]
       attr_accessor :responses
 
       # @api private
@@ -46,6 +48,8 @@ module FinchAPI
       end
 
       # @param blk [Proc]
+      #
+      # @yieldparam [generic<Elem>]
       def auto_paging_each(&blk)
         unless block_given?
           raise ArgumentError.new("A block must be given to ##{__method__}")

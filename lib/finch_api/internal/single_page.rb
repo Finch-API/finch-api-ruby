@@ -2,6 +2,8 @@
 
 module FinchAPI
   module Internal
+    # @generic Elem
+    #
     # @example
     #   if single_page.has_next?
     #     single_page = single_page.next_page
@@ -43,6 +45,8 @@ module FinchAPI
       end
 
       # @param blk [Proc]
+      #
+      # @yieldparam [generic<Elem>]
       def auto_paging_each(&blk)
         unless block_given?
           raise ArgumentError.new("A block must be given to ##{__method__}")
