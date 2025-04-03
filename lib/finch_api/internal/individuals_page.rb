@@ -11,18 +11,6 @@ module FinchAPI
     #   individuals_page.auto_paging_each do |directory|
     #     puts(directory)
     #   end
-    #
-    # @example
-    #   directories =
-    #     individuals_page
-    #     .to_enum
-    #     .lazy
-    #     .select { _1.object_id.even? }
-    #     .map(&:itself)
-    #     .take(2)
-    #     .to_a
-    #
-    #   directories => Array
     class IndividualsPage
       include FinchAPI::Internal::Type::BasePage
 
