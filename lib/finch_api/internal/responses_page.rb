@@ -11,18 +11,6 @@ module FinchAPI
     #   responses_page.auto_paging_each do |individual|
     #     puts(individual)
     #   end
-    #
-    # @example
-    #   individuals =
-    #     responses_page
-    #     .to_enum
-    #     .lazy
-    #     .select { _1.object_id.even? }
-    #     .map(&:itself)
-    #     .take(2)
-    #     .to_a
-    #
-    #   individuals => Array
     class ResponsesPage
       include FinchAPI::Internal::Type::BasePage
 
