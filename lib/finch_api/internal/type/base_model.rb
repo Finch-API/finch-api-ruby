@@ -175,7 +175,9 @@ module FinchAPI
           # @param other [Object]
           #
           # @return [Boolean]
-          def ==(other) = other.is_a?(Class) && other <= FinchAPI::Internal::Type::BaseModel && other.fields == fields
+          def ==(other)
+            other.is_a?(Class) && other <= FinchAPI::Internal::Type::BaseModel && other.fields == fields
+          end
         end
 
         # @param other [Object]
@@ -357,7 +359,8 @@ module FinchAPI
           in Hash => coerced
             @data = coerced
           else
-            raise ArgumentError.new("Expected a #{Hash} or #{FinchAPI::Internal::Type::BaseModel}, got #{data.inspect}")
+            message = "Expected a #{Hash} or #{FinchAPI::Internal::Type::BaseModel}, got #{data.inspect}"
+            raise ArgumentError.new(message)
           end
         end
 
@@ -365,7 +368,7 @@ module FinchAPI
         def inspect
           rows = self.class.known_fields.keys.map do
             "#{_1}=#{@data.key?(_1) ? public_send(_1) : ''}"
-          rescue FinchAPI::ConversionError
+          rescue FinchAPI::Errors::ConversionError
             "#{_1}=#{@data.fetch(_1)}"
           end
           "#<#{self.class.name}:0x#{object_id.to_s(16)} #{rows.join(' ')}>"

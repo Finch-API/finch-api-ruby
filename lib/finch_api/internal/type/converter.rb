@@ -209,7 +209,9 @@ module FinchAPI
           #
           # @return [Object]
           def dump(target, value)
+            # rubocop:disable Layout/LineLength
             target.is_a?(FinchAPI::Internal::Type::Converter) ? target.dump(value) : FinchAPI::Internal::Type::Unknown.dump(value)
+            # rubocop:enable Layout/LineLength
           end
         end
       end
