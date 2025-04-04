@@ -1,5 +1,5 @@
 # typed: strong
 
 module FinchAPI
-  VERSION = "0.1.0.pre.alpha.5"
+  VERSION = T.let(T.unsafe(nil), String)
 end
