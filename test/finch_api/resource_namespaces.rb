@@ -6,6 +6,11 @@ module FinchAPI
       module Benefits
       end
 
+      module Company
+        module PayStatementItem
+        end
+      end
+
       module Connect
       end
 
@@ -15,12 +20,20 @@ module FinchAPI
       module HRIS
         module Benefits
         end
+
+        module Company
+          module PayStatementItem
+          end
+        end
       end
 
       module Jobs
       end
 
       module Payroll
+      end
+
+      module PayStatementItem
       end
 
       module Sandbox

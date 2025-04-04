@@ -1,0 +1,76 @@
+module FinchAPI
+  module Models
+    module HRIS
+      module Company
+        type pay_statement_item_list_response =
+          {
+            attributes: FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Attributes,
+            category: FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::category,
+            name: String
+          }
+
+        class PayStatementItemListResponse < FinchAPI::Internal::Type::BaseModel
+          attr_reader attributes: FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Attributes?
+
+          def attributes=: (
+            FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Attributes
+          ) -> FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Attributes
+
+          attr_reader category: FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::category?
+
+          def category=: (
+            FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::category
+          ) -> FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::category
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          def initialize: (
+            ?attributes: FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Attributes,
+            ?category: FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::category,
+            ?name: String
+          ) -> void
+
+          def to_hash: -> FinchAPI::Models::HRIS::Company::pay_statement_item_list_response
+
+          type attributes =
+            { employer: bool?, metadata: top?, pre_tax: bool?, type: String? }
+
+          class Attributes < FinchAPI::Internal::Type::BaseModel
+            attr_accessor employer: bool?
+
+            attr_accessor metadata: top?
+
+            attr_accessor pre_tax: bool?
+
+            attr_accessor type: String?
+
+            def initialize: (
+              ?employer: bool?,
+              ?metadata: top?,
+              ?pre_tax: bool?,
+              ?type: String?
+            ) -> void
+
+            def to_hash: -> FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::attributes
+          end
+
+          type category =
+            :earnings | :taxes | :employee_deductions | :employer_contributions
+
+          module Category
+            extend FinchAPI::Internal::Type::Enum
+
+            EARNINGS: :earnings
+            TAXES: :taxes
+            EMPLOYEE_DEDUCTIONS: :employee_deductions
+            EMPLOYER_CONTRIBUTIONS: :employer_contributions
+
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::category]
+          end
+        end
+      end
+    end
+  end
+end

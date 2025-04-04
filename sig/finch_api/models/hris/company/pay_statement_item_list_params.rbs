@@ -1,0 +1,69 @@
+module FinchAPI
+  module Models
+    module HRIS
+      module Company
+        type pay_statement_item_list_params =
+          {
+            categories: ::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::category],
+            end_date: Date,
+            name: String,
+            start_date: Date,
+            type: String
+          }
+          & FinchAPI::Internal::Type::request_parameters
+
+        class PayStatementItemListParams < FinchAPI::Internal::Type::BaseModel
+          extend FinchAPI::Internal::Type::RequestParameters::Converter
+          include FinchAPI::Internal::Type::RequestParameters
+
+          attr_reader categories: ::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::category]?
+
+          def categories=: (
+            ::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::category]
+          ) -> ::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::category]
+
+          attr_reader end_date: Date?
+
+          def end_date=: (Date) -> Date
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_reader start_date: Date?
+
+          def start_date=: (Date) -> Date
+
+          attr_reader type: String?
+
+          def type=: (String) -> String
+
+          def initialize: (
+            ?categories: ::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::category],
+            ?end_date: Date,
+            ?name: String,
+            ?start_date: Date,
+            ?type: String,
+            ?request_options: FinchAPI::request_opts
+          ) -> void
+
+          def to_hash: -> FinchAPI::Models::HRIS::Company::pay_statement_item_list_params
+
+          type category =
+            :earnings | :taxes | :employee_deductions | :employer_contributions
+
+          module Category
+            extend FinchAPI::Internal::Type::Enum
+
+            EARNINGS: :earnings
+            TAXES: :taxes
+            EMPLOYEE_DEDUCTIONS: :employee_deductions
+            EMPLOYER_CONTRIBUTIONS: :employer_contributions
+
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::category]
+          end
+        end
+      end
+    end
+  end
+end
