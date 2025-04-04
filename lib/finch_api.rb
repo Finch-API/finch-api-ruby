@@ -87,6 +87,7 @@ require_relative "finch_api/models/hris/benefits/individual_enrolled_ids_respons
 require_relative "finch_api/models/hris/benefits/individual_enroll_many_params"
 require_relative "finch_api/models/hris/benefits/individual_retrieve_many_benefits_params"
 require_relative "finch_api/models/hris/benefits/individual_unenroll_many_params"
+require_relative "finch_api/models/hris/benefits/unenrolled_individual"
 require_relative "finch_api/models/hris/benefits_support"
 require_relative "finch_api/models/hris/benefit_type"
 require_relative "finch_api/models/hris/benefit_update_params"

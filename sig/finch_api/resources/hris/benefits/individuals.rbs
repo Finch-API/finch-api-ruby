@@ -24,7 +24,7 @@ module FinchAPI
             String benefit_id,
             ?individual_ids: ::Array[String],
             ?request_options: FinchAPI::request_opts
-          ) -> FinchAPI::Internal::SinglePage[top]
+          ) -> FinchAPI::Internal::SinglePage[FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual]
 
           def initialize: (client: FinchAPI::Client) -> void
         end
