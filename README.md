@@ -139,9 +139,9 @@ Due to limitations with the Sorbet type system, where a method otherwise can tak
 Please follow Sorbet's [setup guides](https://sorbet.org/docs/adopting) for best experience.
 
 ```ruby
-model = FinchAPI::Models::HRIS::DirectoryListParams.new
+params = FinchAPI::Models::HRIS::DirectoryListParams.new
 
-finch.hris.directory.list(**model)
+finch.hris.directory.list(**params)
 ```
 
 ## Advanced
