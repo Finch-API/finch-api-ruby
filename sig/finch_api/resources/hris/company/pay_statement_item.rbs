@@ -1,0 +1,22 @@
+module FinchAPI
+  module Resources
+    class HRIS
+      class Company
+        class PayStatementItem
+          attr_reader rules: FinchAPI::Resources::HRIS::Company::PayStatementItem::Rules
+
+          def list: (
+            ?categories: ::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::category],
+            ?end_date: Date,
+            ?name: String,
+            ?start_date: Date,
+            ?type: String,
+            ?request_options: FinchAPI::request_opts
+          ) -> FinchAPI::Internal::ResponsesPage[FinchAPI::Models::HRIS::Company::PayStatementItemListResponse]
+
+          def initialize: (client: FinchAPI::Client) -> void
+        end
+      end
+    end
+  end
+end

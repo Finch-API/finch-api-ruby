@@ -10,8 +10,8 @@ module FinchAPI
     #   end
     #
     # @example
-    #   responses_page.auto_paging_each do |individual|
-    #     puts(individual)
+    #   responses_page.auto_paging_each do |pay_statement_item|
+    #     puts(pay_statement_item)
     #   end
     class ResponsesPage
       include FinchAPI::Internal::Type::BasePage

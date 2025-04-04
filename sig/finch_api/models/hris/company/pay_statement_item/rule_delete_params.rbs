@@ -1,0 +1,21 @@
+module FinchAPI
+  module Models
+    module HRIS
+      module Company
+        module PayStatementItem
+          type rule_delete_params =
+            {  } & FinchAPI::Internal::Type::request_parameters
+
+          class RuleDeleteParams < FinchAPI::Internal::Type::BaseModel
+            extend FinchAPI::Internal::Type::RequestParameters::Converter
+            include FinchAPI::Internal::Type::RequestParameters
+
+            def initialize: (?request_options: FinchAPI::request_opts) -> void
+
+            def to_hash: -> FinchAPI::Models::HRIS::Company::PayStatementItem::rule_delete_params
+          end
+        end
+      end
+    end
+  end
+end
