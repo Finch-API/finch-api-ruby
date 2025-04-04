@@ -1,0 +1,35 @@
+module FinchAPI
+  module Models
+    module HRIS
+      type benefit_create_params =
+        {
+          description: String,
+          frequency: FinchAPI::Models::HRIS::benefit_frequency?,
+          type: FinchAPI::Models::HRIS::benefit_type?
+        }
+        & FinchAPI::Internal::Type::request_parameters
+
+      class BenefitCreateParams < FinchAPI::Internal::Type::BaseModel
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
+
+        attr_reader description: String?
+
+        def description=: (String) -> String
+
+        attr_accessor frequency: FinchAPI::Models::HRIS::benefit_frequency?
+
+        attr_accessor type: FinchAPI::Models::HRIS::benefit_type?
+
+        def initialize: (
+          ?description: String,
+          ?frequency: FinchAPI::Models::HRIS::benefit_frequency?,
+          ?type: FinchAPI::Models::HRIS::benefit_type?,
+          ?request_options: FinchAPI::request_opts
+        ) -> void
+
+        def to_hash: -> FinchAPI::Models::HRIS::benefit_create_params
+      end
+    end
+  end
+end

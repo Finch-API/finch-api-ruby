@@ -1,0 +1,39 @@
+module FinchAPI
+  module Models
+    type request_forwarding_forward_params =
+      {
+        method_: String,
+        route: String,
+        data: String?,
+        headers: top?,
+        params: top?
+      }
+      & FinchAPI::Internal::Type::request_parameters
+
+    class RequestForwardingForwardParams < FinchAPI::Internal::Type::BaseModel
+      extend FinchAPI::Internal::Type::RequestParameters::Converter
+      include FinchAPI::Internal::Type::RequestParameters
+
+      attr_accessor method_: String
+
+      attr_accessor route: String
+
+      attr_accessor data: String?
+
+      attr_accessor headers: top?
+
+      attr_accessor params: top?
+
+      def initialize: (
+        method_: String,
+        route: String,
+        ?data: String?,
+        ?headers: top?,
+        ?params: top?,
+        ?request_options: FinchAPI::request_opts
+      ) -> void
+
+      def to_hash: -> FinchAPI::Models::request_forwarding_forward_params
+    end
+  end
+end

@@ -1,0 +1,24 @@
+module FinchAPI
+  module Models
+    module HRIS
+      type document_list_response =
+        {
+          documents: ::Array[FinchAPI::Models::HRIS::DocumentResponse],
+          paging: FinchAPI::Models::Paging
+        }
+
+      class DocumentListResponse < FinchAPI::Internal::Type::BaseModel
+        attr_accessor documents: ::Array[FinchAPI::Models::HRIS::DocumentResponse]
+
+        attr_accessor paging: FinchAPI::Models::Paging
+
+        def initialize: (
+          documents: ::Array[FinchAPI::Models::HRIS::DocumentResponse],
+          paging: FinchAPI::Models::Paging
+        ) -> void
+
+        def to_hash: -> FinchAPI::Models::HRIS::document_list_response
+      end
+    end
+  end
+end

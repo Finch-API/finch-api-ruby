@@ -1,0 +1,389 @@
+module FinchAPI
+  module Models
+    module HRIS
+      type pay_statement =
+        {
+          earnings: ::Array[FinchAPI::Models::HRIS::PayStatement::Earning?]?,
+          employee_deductions: ::Array[FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction?]?,
+          employer_contributions: ::Array[FinchAPI::Models::HRIS::PayStatement::EmployerContribution?]?,
+          gross_pay: FinchAPI::Models::Money?,
+          individual_id: String,
+          net_pay: FinchAPI::Models::Money?,
+          payment_method: FinchAPI::Models::HRIS::PayStatement::payment_method?,
+          taxes: ::Array[FinchAPI::Models::HRIS::PayStatement::Tax?]?,
+          total_hours: Float?,
+          type: FinchAPI::Models::HRIS::PayStatement::type_?
+        }
+
+      class PayStatement < FinchAPI::Internal::Type::BaseModel
+        attr_accessor earnings: ::Array[FinchAPI::Models::HRIS::PayStatement::Earning?]?
+
+        attr_accessor employee_deductions: ::Array[FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction?]?
+
+        attr_accessor employer_contributions: ::Array[FinchAPI::Models::HRIS::PayStatement::EmployerContribution?]?
+
+        attr_accessor gross_pay: FinchAPI::Models::Money?
+
+        attr_reader individual_id: String?
+
+        def individual_id=: (String) -> String
+
+        attr_accessor net_pay: FinchAPI::Models::Money?
+
+        attr_accessor payment_method: FinchAPI::Models::HRIS::PayStatement::payment_method?
+
+        attr_accessor taxes: ::Array[FinchAPI::Models::HRIS::PayStatement::Tax?]?
+
+        attr_accessor total_hours: Float?
+
+        attr_accessor type: FinchAPI::Models::HRIS::PayStatement::type_?
+
+        def initialize: (
+          ?earnings: ::Array[FinchAPI::Models::HRIS::PayStatement::Earning?]?,
+          ?employee_deductions: ::Array[FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction?]?,
+          ?employer_contributions: ::Array[FinchAPI::Models::HRIS::PayStatement::EmployerContribution?]?,
+          ?gross_pay: FinchAPI::Models::Money?,
+          ?individual_id: String,
+          ?net_pay: FinchAPI::Models::Money?,
+          ?payment_method: FinchAPI::Models::HRIS::PayStatement::payment_method?,
+          ?taxes: ::Array[FinchAPI::Models::HRIS::PayStatement::Tax?]?,
+          ?total_hours: Float?,
+          ?type: FinchAPI::Models::HRIS::PayStatement::type_?
+        ) -> void
+
+        def to_hash: -> FinchAPI::Models::HRIS::pay_statement
+
+        type earning =
+          {
+            amount: Integer?,
+            attributes: FinchAPI::Models::HRIS::PayStatement::Earning::Attributes?,
+            currency: String?,
+            hours: Float?,
+            name: String?,
+            type: FinchAPI::Models::HRIS::PayStatement::Earning::type_?
+          }
+
+        class Earning < FinchAPI::Internal::Type::BaseModel
+          attr_accessor amount: Integer?
+
+          attr_accessor attributes: FinchAPI::Models::HRIS::PayStatement::Earning::Attributes?
+
+          attr_accessor currency: String?
+
+          attr_accessor hours: Float?
+
+          attr_accessor name: String?
+
+          attr_accessor type: FinchAPI::Models::HRIS::PayStatement::Earning::type_?
+
+          def initialize: (
+            ?amount: Integer?,
+            ?attributes: FinchAPI::Models::HRIS::PayStatement::Earning::Attributes?,
+            ?currency: String?,
+            ?hours: Float?,
+            ?name: String?,
+            ?type: FinchAPI::Models::HRIS::PayStatement::Earning::type_?
+          ) -> void
+
+          def to_hash: -> FinchAPI::Models::HRIS::PayStatement::earning
+
+          type attributes =
+            {
+              metadata: FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata
+            }
+
+          class Attributes < FinchAPI::Internal::Type::BaseModel
+            attr_reader metadata: FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata?
+
+            def metadata=: (
+              FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata
+            ) -> FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata
+
+            def initialize: (
+              ?metadata: FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata
+            ) -> void
+
+            def to_hash: -> FinchAPI::Models::HRIS::PayStatement::Earning::attributes
+
+            type metadata = { metadata: ::Hash[Symbol, top] }
+
+            class Metadata < FinchAPI::Internal::Type::BaseModel
+              attr_reader metadata: ::Hash[Symbol, top]?
+
+              def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+              def initialize: (?metadata: ::Hash[Symbol, top]) -> void
+
+              def to_hash: -> FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::metadata
+            end
+          end
+
+          type type_ =
+            :salary
+            | :wage
+            | :reimbursement
+            | :overtime
+            | :severance
+            | :double_overtime
+            | :pto
+            | :sick
+            | :bonus
+            | :commission
+            | :tips
+            | :"1099"
+            | :other
+
+          module Type
+            extend FinchAPI::Internal::Type::Enum
+
+            SALARY: :salary
+            WAGE: :wage
+            REIMBURSEMENT: :reimbursement
+            OVERTIME: :overtime
+            SEVERANCE: :severance
+            DOUBLE_OVERTIME: :double_overtime
+            PTO: :pto
+            SICK: :sick
+            BONUS: :bonus
+            COMMISSION: :commission
+            TIPS: :tips
+            TYPE_1099: :"1099"
+            OTHER: :other
+
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::PayStatement::Earning::type_]
+          end
+        end
+
+        type employee_deduction =
+          {
+            amount: Integer?,
+            attributes: FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes?,
+            currency: String?,
+            name: String?,
+            pre_tax: bool?,
+            type: FinchAPI::Models::HRIS::benefit_type?
+          }
+
+        class EmployeeDeduction < FinchAPI::Internal::Type::BaseModel
+          attr_accessor amount: Integer?
+
+          attr_accessor attributes: FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes?
+
+          attr_accessor currency: String?
+
+          attr_accessor name: String?
+
+          attr_accessor pre_tax: bool?
+
+          attr_accessor type: FinchAPI::Models::HRIS::benefit_type?
+
+          def initialize: (
+            ?amount: Integer?,
+            ?attributes: FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes?,
+            ?currency: String?,
+            ?name: String?,
+            ?pre_tax: bool?,
+            ?type: FinchAPI::Models::HRIS::benefit_type?
+          ) -> void
+
+          def to_hash: -> FinchAPI::Models::HRIS::PayStatement::employee_deduction
+
+          type attributes =
+            {
+              metadata: FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata
+            }
+
+          class Attributes < FinchAPI::Internal::Type::BaseModel
+            attr_reader metadata: FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata?
+
+            def metadata=: (
+              FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata
+            ) -> FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata
+
+            def initialize: (
+              ?metadata: FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata
+            ) -> void
+
+            def to_hash: -> FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::attributes
+
+            type metadata = { metadata: ::Hash[Symbol, top] }
+
+            class Metadata < FinchAPI::Internal::Type::BaseModel
+              attr_reader metadata: ::Hash[Symbol, top]?
+
+              def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+              def initialize: (?metadata: ::Hash[Symbol, top]) -> void
+
+              def to_hash: -> FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::metadata
+            end
+          end
+        end
+
+        type employer_contribution =
+          {
+            amount: Integer?,
+            attributes: FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes?,
+            currency: String?,
+            name: String?,
+            type: FinchAPI::Models::HRIS::benefit_type?
+          }
+
+        class EmployerContribution < FinchAPI::Internal::Type::BaseModel
+          attr_accessor amount: Integer?
+
+          attr_accessor attributes: FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes?
+
+          attr_accessor currency: String?
+
+          attr_accessor name: String?
+
+          attr_accessor type: FinchAPI::Models::HRIS::benefit_type?
+
+          def initialize: (
+            ?amount: Integer?,
+            ?attributes: FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes?,
+            ?currency: String?,
+            ?name: String?,
+            ?type: FinchAPI::Models::HRIS::benefit_type?
+          ) -> void
+
+          def to_hash: -> FinchAPI::Models::HRIS::PayStatement::employer_contribution
+
+          type attributes =
+            {
+              metadata: FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata
+            }
+
+          class Attributes < FinchAPI::Internal::Type::BaseModel
+            attr_reader metadata: FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata?
+
+            def metadata=: (
+              FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata
+            ) -> FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata
+
+            def initialize: (
+              ?metadata: FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata
+            ) -> void
+
+            def to_hash: -> FinchAPI::Models::HRIS::PayStatement::EmployerContribution::attributes
+
+            type metadata = { metadata: ::Hash[Symbol, top] }
+
+            class Metadata < FinchAPI::Internal::Type::BaseModel
+              attr_reader metadata: ::Hash[Symbol, top]?
+
+              def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+              def initialize: (?metadata: ::Hash[Symbol, top]) -> void
+
+              def to_hash: -> FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::metadata
+            end
+          end
+        end
+
+        type payment_method = :check | :direct_deposit
+
+        module PaymentMethod
+          extend FinchAPI::Internal::Type::Enum
+
+          CHECK: :check
+          DIRECT_DEPOSIT: :direct_deposit
+
+          def self?.values: -> ::Array[FinchAPI::Models::HRIS::PayStatement::payment_method]
+        end
+
+        type tax =
+          {
+            amount: Integer?,
+            attributes: FinchAPI::Models::HRIS::PayStatement::Tax::Attributes?,
+            currency: String?,
+            employer: bool?,
+            name: String?,
+            type: FinchAPI::Models::HRIS::PayStatement::Tax::type_?
+          }
+
+        class Tax < FinchAPI::Internal::Type::BaseModel
+          attr_accessor amount: Integer?
+
+          attr_accessor attributes: FinchAPI::Models::HRIS::PayStatement::Tax::Attributes?
+
+          attr_accessor currency: String?
+
+          attr_accessor employer: bool?
+
+          attr_accessor name: String?
+
+          attr_accessor type: FinchAPI::Models::HRIS::PayStatement::Tax::type_?
+
+          def initialize: (
+            ?amount: Integer?,
+            ?attributes: FinchAPI::Models::HRIS::PayStatement::Tax::Attributes?,
+            ?currency: String?,
+            ?employer: bool?,
+            ?name: String?,
+            ?type: FinchAPI::Models::HRIS::PayStatement::Tax::type_?
+          ) -> void
+
+          def to_hash: -> FinchAPI::Models::HRIS::PayStatement::tax
+
+          type attributes =
+            {
+              metadata: FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata
+            }
+
+          class Attributes < FinchAPI::Internal::Type::BaseModel
+            attr_reader metadata: FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata?
+
+            def metadata=: (
+              FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata
+            ) -> FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata
+
+            def initialize: (
+              ?metadata: FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata
+            ) -> void
+
+            def to_hash: -> FinchAPI::Models::HRIS::PayStatement::Tax::attributes
+
+            type metadata = { metadata: ::Hash[Symbol, top] }
+
+            class Metadata < FinchAPI::Internal::Type::BaseModel
+              attr_reader metadata: ::Hash[Symbol, top]?
+
+              def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+              def initialize: (?metadata: ::Hash[Symbol, top]) -> void
+
+              def to_hash: -> FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::metadata
+            end
+          end
+
+          type type_ = :state | :federal | :local | :fica
+
+          module Type
+            extend FinchAPI::Internal::Type::Enum
+
+            STATE: :state
+            FEDERAL: :federal
+            LOCAL: :local
+            FICA: :fica
+
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::PayStatement::Tax::type_]
+          end
+        end
+
+        type type_ = :regular_payroll | :off_cycle_payroll | :one_time_payment
+
+        module Type
+          extend FinchAPI::Internal::Type::Enum
+
+          REGULAR_PAYROLL: :regular_payroll
+          OFF_CYCLE_PAYROLL: :off_cycle_payroll
+          ONE_TIME_PAYMENT: :one_time_payment
+
+          def self?.values: -> ::Array[FinchAPI::Models::HRIS::PayStatement::type_]
+        end
+      end
+    end
+  end
+end

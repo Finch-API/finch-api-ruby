@@ -1,0 +1,190 @@
+module FinchAPI
+  module Models
+    module HRIS
+      module Benefits
+        type individual_enroll_many_params =
+          {
+            individuals: ::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual]
+          }
+          & FinchAPI::Internal::Type::request_parameters
+
+        class IndividualEnrollManyParams < FinchAPI::Internal::Type::BaseModel
+          extend FinchAPI::Internal::Type::RequestParameters::Converter
+          include FinchAPI::Internal::Type::RequestParameters
+
+          attr_reader individuals: ::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual]?
+
+          def individuals=: (
+            ::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual]
+          ) -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual]
+
+          def initialize: (
+            ?individuals: ::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual],
+            ?request_options: FinchAPI::request_opts
+          ) -> void
+
+          def to_hash: -> FinchAPI::Models::HRIS::Benefits::individual_enroll_many_params
+
+          type individual =
+            {
+              configuration: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration,
+              individual_id: String
+            }
+
+          class Individual < FinchAPI::Internal::Type::BaseModel
+            attr_reader configuration: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration?
+
+            def configuration=: (
+              FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration
+            ) -> FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration
+
+            attr_reader individual_id: String?
+
+            def individual_id=: (String) -> String
+
+            def initialize: (
+              ?configuration: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration,
+              ?individual_id: String
+            ) -> void
+
+            def to_hash: -> FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::individual
+
+            type configuration =
+              {
+                annual_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::annual_contribution_limit,
+                annual_maximum: Integer?,
+                catch_up: bool,
+                company_contribution: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution,
+                effective_date: Date,
+                employee_deduction: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction
+              }
+
+            class Configuration < FinchAPI::Internal::Type::BaseModel
+              attr_reader annual_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::annual_contribution_limit?
+
+              def annual_contribution_limit=: (
+                FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::annual_contribution_limit
+              ) -> FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::annual_contribution_limit
+
+              attr_accessor annual_maximum: Integer?
+
+              attr_reader catch_up: bool?
+
+              def catch_up=: (bool) -> bool
+
+              attr_reader company_contribution: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution?
+
+              def company_contribution=: (
+                FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution
+              ) -> FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution
+
+              attr_reader effective_date: Date?
+
+              def effective_date=: (Date) -> Date
+
+              attr_reader employee_deduction: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction?
+
+              def employee_deduction=: (
+                FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction
+              ) -> FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction
+
+              def initialize: (
+                ?annual_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::annual_contribution_limit,
+                ?annual_maximum: Integer?,
+                ?catch_up: bool,
+                ?company_contribution: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution,
+                ?effective_date: Date,
+                ?employee_deduction: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction
+              ) -> void
+
+              def to_hash: -> FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::configuration
+
+              type annual_contribution_limit = :individual | :family
+
+              module AnnualContributionLimit
+                extend FinchAPI::Internal::Type::Enum
+
+                INDIVIDUAL: :individual
+                FAMILY: :family
+
+                def self?.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::annual_contribution_limit]
+              end
+
+              type company_contribution =
+                {
+                  amount: Integer,
+                  type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::type_
+                }
+
+              class CompanyContribution < FinchAPI::Internal::Type::BaseModel
+                attr_reader amount: Integer?
+
+                def amount=: (Integer) -> Integer
+
+                attr_reader type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::type_?
+
+                def type=: (
+                  FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::type_
+                ) -> FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::type_
+
+                def initialize: (
+                  ?amount: Integer,
+                  ?type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::type_
+                ) -> void
+
+                def to_hash: -> FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::company_contribution
+
+                type type_ = :fixed | :percent
+
+                module Type
+                  extend FinchAPI::Internal::Type::Enum
+
+                  FIXED: :fixed
+                  PERCENT: :percent
+
+                  def self?.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::type_]
+                end
+              end
+
+              type employee_deduction =
+                {
+                  amount: Integer,
+                  type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::type_
+                }
+
+              class EmployeeDeduction < FinchAPI::Internal::Type::BaseModel
+                attr_reader amount: Integer?
+
+                def amount=: (Integer) -> Integer
+
+                attr_reader type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::type_?
+
+                def type=: (
+                  FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::type_
+                ) -> FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::type_
+
+                def initialize: (
+                  ?amount: Integer,
+                  ?type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::type_
+                ) -> void
+
+                def to_hash: -> FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::employee_deduction
+
+                type type_ = :fixed | :percent
+
+                module Type
+                  extend FinchAPI::Internal::Type::Enum
+
+                  FIXED: :fixed
+                  PERCENT: :percent
+
+                  def self?.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::type_]
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

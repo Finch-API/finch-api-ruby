@@ -1,0 +1,13 @@
+module FinchAPI
+  module Models
+    type disconnect_response = { status: String }
+
+    class DisconnectResponse < FinchAPI::Internal::Type::BaseModel
+      attr_accessor status: String
+
+      def initialize: (status: String) -> void
+
+      def to_hash: -> FinchAPI::Models::disconnect_response
+    end
+  end
+end

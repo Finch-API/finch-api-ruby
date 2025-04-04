@@ -1,0 +1,71 @@
+module FinchAPI
+  module Models
+    module HRIS
+      module Benefits
+        type enrolled_individual =
+          {
+            body: FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Body,
+            code: FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::code,
+            individual_id: String
+          }
+
+        class EnrolledIndividual < FinchAPI::Internal::Type::BaseModel
+          attr_reader body: FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Body?
+
+          def body=: (
+            FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Body
+          ) -> FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Body
+
+          attr_reader code: FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::code?
+
+          def code=: (
+            FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::code
+          ) -> FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::code
+
+          attr_reader individual_id: String?
+
+          def individual_id=: (String) -> String
+
+          def initialize: (
+            ?body: FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Body,
+            ?code: FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::code,
+            ?individual_id: String
+          ) -> void
+
+          def to_hash: -> FinchAPI::Models::HRIS::Benefits::enrolled_individual
+
+          type body = { finch_code: String?, message: String?, name: String? }
+
+          class Body < FinchAPI::Internal::Type::BaseModel
+            attr_accessor finch_code: String?
+
+            attr_accessor message: String?
+
+            attr_accessor name: String?
+
+            def initialize: (
+              ?finch_code: String?,
+              ?message: String?,
+              ?name: String?
+            ) -> void
+
+            def to_hash: -> FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::body
+          end
+
+          type code = 200 | 201 | 404 | 403
+
+          module Code
+            extend FinchAPI::Internal::Type::Enum
+
+            OK: 200
+            CREATED: 201
+            NOT_FOUND: 404
+            FORBIDDEN: 403
+
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::code]
+          end
+        end
+      end
+    end
+  end
+end

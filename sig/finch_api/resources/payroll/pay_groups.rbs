@@ -1,0 +1,20 @@
+module FinchAPI
+  module Resources
+    class Payroll
+      class PayGroups
+        def retrieve: (
+          String pay_group_id,
+          ?request_options: FinchAPI::request_opts
+        ) -> FinchAPI::Models::Payroll::PayGroupRetrieveResponse
+
+        def list: (
+          ?individual_id: String,
+          ?pay_frequencies: ::Array[String],
+          ?request_options: FinchAPI::request_opts
+        ) -> FinchAPI::Internal::SinglePage[FinchAPI::Models::Payroll::PayGroupListResponse]
+
+        def initialize: (client: FinchAPI::Client) -> void
+      end
+    end
+  end
+end

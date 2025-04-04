@@ -1,0 +1,32 @@
+module FinchAPI
+  module Models
+    module HRIS
+      type support_per_benefit_type =
+        {
+          company_benefits: FinchAPI::Models::OperationSupportMatrix,
+          individual_benefits: FinchAPI::Models::OperationSupportMatrix
+        }
+
+      class SupportPerBenefitType < FinchAPI::Internal::Type::BaseModel
+        attr_reader company_benefits: FinchAPI::Models::OperationSupportMatrix?
+
+        def company_benefits=: (
+          FinchAPI::Models::OperationSupportMatrix
+        ) -> FinchAPI::Models::OperationSupportMatrix
+
+        attr_reader individual_benefits: FinchAPI::Models::OperationSupportMatrix?
+
+        def individual_benefits=: (
+          FinchAPI::Models::OperationSupportMatrix
+        ) -> FinchAPI::Models::OperationSupportMatrix
+
+        def initialize: (
+          ?company_benefits: FinchAPI::Models::OperationSupportMatrix,
+          ?individual_benefits: FinchAPI::Models::OperationSupportMatrix
+        ) -> void
+
+        def to_hash: -> FinchAPI::Models::HRIS::support_per_benefit_type
+      end
+    end
+  end
+end

@@ -1,0 +1,79 @@
+module FinchAPI
+  module Models
+    type create_access_token_response =
+      {
+        access_token: String,
+        account_id: String,
+        client_type: FinchAPI::Models::CreateAccessTokenResponse::client_type,
+        company_id: String,
+        connection_id: String,
+        connection_type: FinchAPI::Models::CreateAccessTokenResponse::connection_type,
+        products: ::Array[String],
+        provider_id: String,
+        customer_id: String?,
+        token_type: String
+      }
+
+    class CreateAccessTokenResponse < FinchAPI::Internal::Type::BaseModel
+      attr_accessor access_token: String
+
+      attr_accessor account_id: String
+
+      attr_accessor client_type: FinchAPI::Models::CreateAccessTokenResponse::client_type
+
+      attr_accessor company_id: String
+
+      attr_accessor connection_id: String
+
+      attr_accessor connection_type: FinchAPI::Models::CreateAccessTokenResponse::connection_type
+
+      attr_accessor products: ::Array[String]
+
+      attr_accessor provider_id: String
+
+      attr_accessor customer_id: String?
+
+      attr_reader token_type: String?
+
+      def token_type=: (String) -> String
+
+      def initialize: (
+        access_token: String,
+        account_id: String,
+        client_type: FinchAPI::Models::CreateAccessTokenResponse::client_type,
+        company_id: String,
+        connection_id: String,
+        connection_type: FinchAPI::Models::CreateAccessTokenResponse::connection_type,
+        products: ::Array[String],
+        provider_id: String,
+        ?customer_id: String?,
+        ?token_type: String
+      ) -> void
+
+      def to_hash: -> FinchAPI::Models::create_access_token_response
+
+      type client_type = :production | :development | :sandbox
+
+      module ClientType
+        extend FinchAPI::Internal::Type::Enum
+
+        PRODUCTION: :production
+        DEVELOPMENT: :development
+        SANDBOX: :sandbox
+
+        def self?.values: -> ::Array[FinchAPI::Models::CreateAccessTokenResponse::client_type]
+      end
+
+      type connection_type = :provider | :finch
+
+      module ConnectionType
+        extend FinchAPI::Internal::Type::Enum
+
+        PROVIDER: :provider
+        FINCH: :finch
+
+        def self?.values: -> ::Array[FinchAPI::Models::CreateAccessTokenResponse::connection_type]
+      end
+    end
+  end
+end

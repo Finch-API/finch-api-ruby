@@ -1,0 +1,55 @@
+module FinchAPI
+  module Models
+    module HRIS
+      type document_response =
+        {
+          id: String,
+          individual_id: String?,
+          type: FinchAPI::Models::HRIS::DocumentResponse::type_,
+          url: String,
+          year: Float?
+        }
+
+      class DocumentResponse < FinchAPI::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_accessor individual_id: String?
+
+        attr_reader type: FinchAPI::Models::HRIS::DocumentResponse::type_?
+
+        def type=: (
+          FinchAPI::Models::HRIS::DocumentResponse::type_
+        ) -> FinchAPI::Models::HRIS::DocumentResponse::type_
+
+        attr_reader url: String?
+
+        def url=: (String) -> String
+
+        attr_accessor year: Float?
+
+        def initialize: (
+          ?id: String,
+          ?individual_id: String?,
+          ?type: FinchAPI::Models::HRIS::DocumentResponse::type_,
+          ?url: String,
+          ?year: Float?
+        ) -> void
+
+        def to_hash: -> FinchAPI::Models::HRIS::document_response
+
+        type type_ = :w4_2020 | :w4_2005
+
+        module Type
+          extend FinchAPI::Internal::Type::Enum
+
+          W4_2020: :w4_2020
+          W4_2005: :w4_2005
+
+          def self?.values: -> ::Array[FinchAPI::Models::HRIS::DocumentResponse::type_]
+        end
+      end
+    end
+  end
+end

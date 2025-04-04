@@ -1,0 +1,64 @@
+module FinchAPI
+  module Models
+    module HRIS
+      type benefits_support =
+        {
+          commuter: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?,
+          custom_post_tax: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?,
+          custom_pre_tax: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?,
+          fsa_dependent_care: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?,
+          fsa_medical: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?,
+          hsa_post: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?,
+          hsa_pre: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?,
+          :s125_dental => FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?,
+          :s125_medical => FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?,
+          :s125_vision => FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?,
+          simple: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?,
+          simple_ira: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?
+        }
+
+      class BenefitsSupport < FinchAPI::Internal::Type::BaseModel
+        attr_accessor commuter: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?
+
+        attr_accessor custom_post_tax: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?
+
+        attr_accessor custom_pre_tax: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?
+
+        attr_accessor fsa_dependent_care: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?
+
+        attr_accessor fsa_medical: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?
+
+        attr_accessor hsa_post: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?
+
+        attr_accessor hsa_pre: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?
+
+        attr_accessor s125_dental: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?
+
+        attr_accessor s125_medical: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?
+
+        attr_accessor s125_vision: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?
+
+        attr_accessor simple: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?
+
+        attr_accessor simple_ira: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?
+
+        def initialize: (
+          ?commuter: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?,
+          ?custom_post_tax: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?,
+          ?custom_pre_tax: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?,
+          ?fsa_dependent_care: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?,
+          ?fsa_medical: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?,
+          ?hsa_post: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?,
+          ?hsa_pre: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?,
+          ?s125_dental: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?,
+          ?s125_medical: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?,
+          ?s125_vision: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?,
+          ?simple: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?,
+          ?simple_ira: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations?
+        ) -> void
+
+        def to_hash: -> FinchAPI::Models::HRIS::benefits_support
+      end
+    end
+  end
+end

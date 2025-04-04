@@ -1,0 +1,17 @@
+module FinchAPI
+  module Models
+    module Jobs
+      type manual_retrieve_params =
+        {  } & FinchAPI::Internal::Type::request_parameters
+
+      class ManualRetrieveParams < FinchAPI::Internal::Type::BaseModel
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
+
+        def initialize: (?request_options: FinchAPI::request_opts) -> void
+
+        def to_hash: -> FinchAPI::Models::Jobs::manual_retrieve_params
+      end
+    end
+  end
+end

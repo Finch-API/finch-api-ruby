@@ -1,0 +1,35 @@
+module FinchAPI
+  module Models
+    module HRIS
+      type employment_retrieve_many_params =
+        {
+          requests: ::Array[FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request]
+        }
+        & FinchAPI::Internal::Type::request_parameters
+
+      class EmploymentRetrieveManyParams < FinchAPI::Internal::Type::BaseModel
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
+
+        attr_accessor requests: ::Array[FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request]
+
+        def initialize: (
+          requests: ::Array[FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request],
+          ?request_options: FinchAPI::request_opts
+        ) -> void
+
+        def to_hash: -> FinchAPI::Models::HRIS::employment_retrieve_many_params
+
+        type request = { individual_id: String }
+
+        class Request < FinchAPI::Internal::Type::BaseModel
+          attr_accessor individual_id: String
+
+          def initialize: (individual_id: String) -> void
+
+          def to_hash: -> FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::request
+        end
+      end
+    end
+  end
+end

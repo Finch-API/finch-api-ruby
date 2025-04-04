@@ -1,5 +1,53 @@
 # Changelog
 
+## 0.1.0-alpha.6 (2025-04-04)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### ⚠ BREAKING CHANGES
+
+* bump min supported ruby version to 3.1 (oldest non-EOL) ([#105](https://github.com/Finch-API/finch-api-ruby/issues/105))
+* remove top level type aliases to relocated classes ([#104](https://github.com/Finch-API/finch-api-ruby/issues/104))
+* use descriptive prefixes for enum names that start with otherwise illegal identifiers ([#102](https://github.com/Finch-API/finch-api-ruby/issues/102))
+
+### Features
+
+* add reference links in yard ([#91](https://github.com/Finch-API/finch-api-ruby/issues/91)) ([00d19d9](https://github.com/Finch-API/finch-api-ruby/commit/00d19d904112c859a8bfdbdcbd6bff77c8a690c2))
+* **api:** add new endpoints for pay statement items ([#111](https://github.com/Finch-API/finch-api-ruby/issues/111)) ([ad6dda6](https://github.com/Finch-API/finch-api-ruby/commit/ad6dda6260a68c923b8d9ef792be29cc91e3a793))
+* **api:** api update ([#101](https://github.com/Finch-API/finch-api-ruby/issues/101)) ([7aec958](https://github.com/Finch-API/finch-api-ruby/commit/7aec9585751d4a5a3d5abe354ba55b80e74d5cd9))
+* **api:** api update ([#94](https://github.com/Finch-API/finch-api-ruby/issues/94)) ([3ed684f](https://github.com/Finch-API/finch-api-ruby/commit/3ed684fe7a74c9e6c14b370deb3656cf732ec5aa))
+* **api:** api update ([#95](https://github.com/Finch-API/finch-api-ruby/issues/95)) ([d683fa6](https://github.com/Finch-API/finch-api-ruby/commit/d683fa626a563cfd2278eca354daab3866aa163d))
+* **api:** manual updates ([#112](https://github.com/Finch-API/finch-api-ruby/issues/112)) ([e2e7efb](https://github.com/Finch-API/finch-api-ruby/commit/e2e7efb47b063d3bb88708fb6b3cafe80b4ed6af))
+* bump min supported ruby version to 3.1 (oldest non-EOL) ([#105](https://github.com/Finch-API/finch-api-ruby/issues/105)) ([61d708b](https://github.com/Finch-API/finch-api-ruby/commit/61d708b8e76774d4c805738e550e5e5670aac7e7))
+* implement `to_json` for base model ([#99](https://github.com/Finch-API/finch-api-ruby/issues/99)) ([09448dc](https://github.com/Finch-API/finch-api-ruby/commit/09448dc9ff39e3293cb8331f35ccd5a503a02754))
+* link response models to their methods in yard doc ([#93](https://github.com/Finch-API/finch-api-ruby/issues/93)) ([c9498b8](https://github.com/Finch-API/finch-api-ruby/commit/c9498b8396331ab6b67b71fbb765770f7593dc6d))
+* remove top level type aliases to relocated classes ([#104](https://github.com/Finch-API/finch-api-ruby/issues/104)) ([59abb7e](https://github.com/Finch-API/finch-api-ruby/commit/59abb7e7fe034573530ba32cbd17161333a52422))
+* support solargraph generics ([#108](https://github.com/Finch-API/finch-api-ruby/issues/108)) ([a9a77bd](https://github.com/Finch-API/finch-api-ruby/commit/a9a77bdc826b05c7698a92551fa29df578d836c2))
+
+
+### Bug Fixes
+
+* path interpolation template strings ([#90](https://github.com/Finch-API/finch-api-ruby/issues/90)) ([9cbfb2b](https://github.com/Finch-API/finch-api-ruby/commit/9cbfb2bfd665967e0137b221a4f068b6b02c83be))
+* pre-release version string should match ruby, not semver conventions ([#107](https://github.com/Finch-API/finch-api-ruby/issues/107)) ([72c823b](https://github.com/Finch-API/finch-api-ruby/commit/72c823b4c032706dd1a45ebb062116ef56ff53f3))
+* switch to github compatible markdown engine ([#87](https://github.com/Finch-API/finch-api-ruby/issues/87)) ([3f84336](https://github.com/Finch-API/finch-api-ruby/commit/3f84336be69f9d27b503329e397511edba980cae))
+* use descriptive prefixes for enum names that start with otherwise illegal identifiers ([#102](https://github.com/Finch-API/finch-api-ruby/issues/102)) ([4e15ab3](https://github.com/Finch-API/finch-api-ruby/commit/4e15ab3bfa3ae7d695b35ac64901cf9835721ac9))
+
+
+### Chores
+
+* demonstrate how to make undocumented requests in README ([#106](https://github.com/Finch-API/finch-api-ruby/issues/106)) ([c316243](https://github.com/Finch-API/finch-api-ruby/commit/c316243d7f4a6b2b94f88779457fcbcff8ab6eb3))
+* do not use literals for version in type definitions ([#109](https://github.com/Finch-API/finch-api-ruby/issues/109)) ([cdb9530](https://github.com/Finch-API/finch-api-ruby/commit/cdb9530afe28b75425acb6f8ee075d368a365320))
+* extract error classes into own module ([#100](https://github.com/Finch-API/finch-api-ruby/issues/100)) ([82f6f32](https://github.com/Finch-API/finch-api-ruby/commit/82f6f32c6f060e5b5b7a8134aafd92c9f0c92f12))
+* fix misc rubocop errors ([#88](https://github.com/Finch-API/finch-api-ruby/issues/88)) ([369e17b](https://github.com/Finch-API/finch-api-ruby/commit/369e17b85d9cf01d61a0daefdda0af03e7c4e11b))
+* improve yard docs readability ([#92](https://github.com/Finch-API/finch-api-ruby/issues/92)) ([621ca2a](https://github.com/Finch-API/finch-api-ruby/commit/621ca2a7a4646d6ded45f0d2c0851a749c860a80))
+* **internal:** codegen related update ([#96](https://github.com/Finch-API/finch-api-ruby/issues/96)) ([a479855](https://github.com/Finch-API/finch-api-ruby/commit/a47985553f6e4bf93a30cdd5e046a8e6019c8496))
+* **internal:** version bump ([#85](https://github.com/Finch-API/finch-api-ruby/issues/85)) ([fb6870a](https://github.com/Finch-API/finch-api-ruby/commit/fb6870a0610b580e715c8011213996cfffe83d0f))
+* move private classes into internal module ([#103](https://github.com/Finch-API/finch-api-ruby/issues/103)) ([ed3b639](https://github.com/Finch-API/finch-api-ruby/commit/ed3b6395d8dceb2edcecfb496c2ab046ef89ea88))
+* order client variables by "importance" ([#98](https://github.com/Finch-API/finch-api-ruby/issues/98)) ([dcab107](https://github.com/Finch-API/finch-api-ruby/commit/dcab10772b4b55072685efd5602908ac52b968c2))
+* relax sorbet enum parameters to allow `String` in addition to `Symbol` ([#97](https://github.com/Finch-API/finch-api-ruby/issues/97)) ([93128b8](https://github.com/Finch-API/finch-api-ruby/commit/93128b8e9d88e9e470559452f0d3aa7f578a81aa))
+* use fully qualified name in sorbet README example ([#89](https://github.com/Finch-API/finch-api-ruby/issues/89)) ([bc9989c](https://github.com/Finch-API/finch-api-ruby/commit/bc9989c9f0a531a754d35829d454a9265b4524bf))
+* use package name for gemspec ([#110](https://github.com/Finch-API/finch-api-ruby/issues/110)) ([9f6eebe](https://github.com/Finch-API/finch-api-ruby/commit/9f6eebe7df319daed6f7135185cc96bc99273a4a))
+
 ## 0.1.0-alpha.5 (2025-03-31)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)

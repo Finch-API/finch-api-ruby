@@ -14,7 +14,7 @@ xargs = %w[xargs --no-run-if-empty --null --max-procs=0 --max-args=300 --]
 multitask(default: [:test])
 
 multitask(:test) do
-  rb = 
+  rb =
     FileList[ENV.fetch("TEST", "./test/**/*_test.rb")]
     .map { "require_relative(#{_1.dump});" }
     .join
@@ -87,9 +87,9 @@ multitask(typecheck: [:steep, :sorbet])
 multitask(lint: [:rubocop, :typecheck])
 
 multitask(:build) do
-  sh(*%w[gem build -- finch-api.gemspec])
+  sh(*%w[gem build -- finch_api.gemspec])
 end
 
 multitask(release: [:build]) do
-  sh(*%w[gem push], *FileList["finch-api-*.gem"])
+  sh(*%w[gem push], *FileList["finch_api-*.gem"])
 end

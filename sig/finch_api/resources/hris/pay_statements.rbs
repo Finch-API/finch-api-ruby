@@ -1,0 +1,14 @@
+module FinchAPI
+  module Resources
+    class HRIS
+      class PayStatements
+        def retrieve_many: (
+          requests: ::Array[FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request],
+          ?request_options: FinchAPI::request_opts
+        ) -> FinchAPI::Internal::ResponsesPage[FinchAPI::Models::HRIS::PayStatementResponse]
+
+        def initialize: (client: FinchAPI::Client) -> void
+      end
+    end
+  end
+end

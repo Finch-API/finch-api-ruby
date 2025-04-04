@@ -1,0 +1,55 @@
+module FinchAPI
+  module Models
+    type payment_event =
+      {
+        data: FinchAPI::Models::PaymentEvent::Data,
+        event_type: FinchAPI::Models::PaymentEvent::event_type
+      }
+
+    class PaymentEvent < FinchAPI::Models::BaseWebhookEvent
+      def data: -> FinchAPI::Models::PaymentEvent::Data?
+
+      def data=: (
+        FinchAPI::Models::PaymentEvent::Data _
+      ) -> FinchAPI::Models::PaymentEvent::Data
+
+      def event_type: -> FinchAPI::Models::PaymentEvent::event_type?
+
+      def event_type=: (
+        FinchAPI::Models::PaymentEvent::event_type _
+      ) -> FinchAPI::Models::PaymentEvent::event_type
+
+      def initialize: (
+        ?data: FinchAPI::Models::PaymentEvent::Data,
+        ?event_type: FinchAPI::Models::PaymentEvent::event_type
+      ) -> void
+
+      def to_hash: -> FinchAPI::Models::payment_event
+
+      type data = { pay_date: String, payment_id: String }
+
+      class Data < FinchAPI::Internal::Type::BaseModel
+        attr_accessor pay_date: String
+
+        attr_accessor payment_id: String
+
+        def initialize: (pay_date: String, payment_id: String) -> void
+
+        def to_hash: -> FinchAPI::Models::PaymentEvent::data
+      end
+
+      type event_type =
+        :"payment.created" | :"payment.updated" | :"payment.deleted"
+
+      module EventType
+        extend FinchAPI::Internal::Type::Enum
+
+        PAYMENT_CREATED: :"payment.created"
+        PAYMENT_UPDATED: :"payment.updated"
+        PAYMENT_DELETED: :"payment.deleted"
+
+        def self?.values: -> ::Array[FinchAPI::Models::PaymentEvent::event_type]
+      end
+    end
+  end
+end

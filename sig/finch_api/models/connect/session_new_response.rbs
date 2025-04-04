@@ -1,0 +1,17 @@
+module FinchAPI
+  module Models
+    module Connect
+      type session_new_response = { connect_url: String, session_id: String }
+
+      class SessionNewResponse < FinchAPI::Internal::Type::BaseModel
+        attr_accessor connect_url: String
+
+        attr_accessor session_id: String
+
+        def initialize: (connect_url: String, session_id: String) -> void
+
+        def to_hash: -> FinchAPI::Models::Connect::session_new_response
+      end
+    end
+  end
+end

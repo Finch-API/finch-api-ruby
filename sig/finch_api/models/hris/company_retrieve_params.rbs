@@ -1,0 +1,17 @@
+module FinchAPI
+  module Models
+    module HRIS
+      type company_retrieve_params =
+        {  } & FinchAPI::Internal::Type::request_parameters
+
+      class CompanyRetrieveParams < FinchAPI::Internal::Type::BaseModel
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
+
+        def initialize: (?request_options: FinchAPI::request_opts) -> void
+
+        def to_hash: -> FinchAPI::Models::HRIS::company_retrieve_params
+      end
+    end
+  end
+end

@@ -1,0 +1,62 @@
+module FinchAPI
+  module Models
+    module Connect
+      type session_reauthenticate_params =
+        {
+          connection_id: String,
+          minutes_to_expire: Integer?,
+          products: ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]?,
+          redirect_uri: String?
+        }
+        & FinchAPI::Internal::Type::request_parameters
+
+      class SessionReauthenticateParams < FinchAPI::Internal::Type::BaseModel
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
+
+        attr_accessor connection_id: String
+
+        attr_accessor minutes_to_expire: Integer?
+
+        attr_accessor products: ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]?
+
+        attr_accessor redirect_uri: String?
+
+        def initialize: (
+          connection_id: String,
+          ?minutes_to_expire: Integer?,
+          ?products: ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]?,
+          ?redirect_uri: String?,
+          ?request_options: FinchAPI::request_opts
+        ) -> void
+
+        def to_hash: -> FinchAPI::Models::Connect::session_reauthenticate_params
+
+        type product =
+          :company
+          | :directory
+          | :individual
+          | :employment
+          | :payment
+          | :pay_statement
+          | :benefits
+          | :ssn
+
+        module Product
+          extend FinchAPI::Internal::Type::Enum
+
+          COMPANY: :company
+          DIRECTORY: :directory
+          INDIVIDUAL: :individual
+          EMPLOYMENT: :employment
+          PAYMENT: :payment
+          PAY_STATEMENT: :pay_statement
+          BENEFITS: :benefits
+          SSN: :ssn
+
+          def self?.values: -> ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,11 @@
+module FinchAPI
+  module Resources
+    class Providers
+      def list: (
+        ?request_options: FinchAPI::request_opts
+      ) -> FinchAPI::Internal::SinglePage[FinchAPI::Models::Provider]
+
+      def initialize: (client: FinchAPI::Client) -> void
+    end
+  end
+end

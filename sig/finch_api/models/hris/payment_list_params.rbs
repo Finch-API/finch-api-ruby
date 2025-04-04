@@ -1,0 +1,26 @@
+module FinchAPI
+  module Models
+    module HRIS
+      type payment_list_params =
+        { end_date: Date, start_date: Date }
+        & FinchAPI::Internal::Type::request_parameters
+
+      class PaymentListParams < FinchAPI::Internal::Type::BaseModel
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
+
+        attr_accessor end_date: Date
+
+        attr_accessor start_date: Date
+
+        def initialize: (
+          end_date: Date,
+          start_date: Date,
+          ?request_options: FinchAPI::request_opts
+        ) -> void
+
+        def to_hash: -> FinchAPI::Models::HRIS::payment_list_params
+      end
+    end
+  end
+end

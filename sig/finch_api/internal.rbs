@@ -1,0 +1,5 @@
+module FinchAPI
+  module Internal
+    OMIT: top
+  end
+end

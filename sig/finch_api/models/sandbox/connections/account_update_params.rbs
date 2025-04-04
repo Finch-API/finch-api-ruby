@@ -1,0 +1,29 @@
+module FinchAPI
+  module Models
+    module Sandbox
+      module Connections
+        type account_update_params =
+          { connection_status: FinchAPI::Models::connection_status_type }
+          & FinchAPI::Internal::Type::request_parameters
+
+        class AccountUpdateParams < FinchAPI::Internal::Type::BaseModel
+          extend FinchAPI::Internal::Type::RequestParameters::Converter
+          include FinchAPI::Internal::Type::RequestParameters
+
+          attr_reader connection_status: FinchAPI::Models::connection_status_type?
+
+          def connection_status=: (
+            FinchAPI::Models::connection_status_type
+          ) -> FinchAPI::Models::connection_status_type
+
+          def initialize: (
+            ?connection_status: FinchAPI::Models::connection_status_type,
+            ?request_options: FinchAPI::request_opts
+          ) -> void
+
+          def to_hash: -> FinchAPI::Models::Sandbox::Connections::account_update_params
+        end
+      end
+    end
+  end
+end

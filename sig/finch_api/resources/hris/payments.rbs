@@ -1,0 +1,15 @@
+module FinchAPI
+  module Resources
+    class HRIS
+      class Payments
+        def list: (
+          end_date: Date,
+          start_date: Date,
+          ?request_options: FinchAPI::request_opts
+        ) -> FinchAPI::Internal::SinglePage[FinchAPI::Models::HRIS::Payment]
+
+        def initialize: (client: FinchAPI::Client) -> void
+      end
+    end
+  end
+end

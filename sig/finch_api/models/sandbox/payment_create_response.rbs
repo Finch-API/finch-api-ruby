@@ -1,0 +1,17 @@
+module FinchAPI
+  module Models
+    module Sandbox
+      type payment_create_response = { pay_date: String, payment_id: String }
+
+      class PaymentCreateResponse < FinchAPI::Internal::Type::BaseModel
+        attr_accessor pay_date: String
+
+        attr_accessor payment_id: String
+
+        def initialize: (pay_date: String, payment_id: String) -> void
+
+        def to_hash: -> FinchAPI::Models::Sandbox::payment_create_response
+      end
+    end
+  end
+end

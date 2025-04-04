@@ -1,0 +1,120 @@
+module FinchAPI
+  module Models
+    module HRIS
+      module Company
+        module PayStatementItem
+          type rule_create_params =
+            {
+              attributes: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes,
+              conditions: ::Array[FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition],
+              effective_end_date: String?,
+              effective_start_date: String?,
+              entity_type: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::entity_type
+            }
+            & FinchAPI::Internal::Type::request_parameters
+
+          class RuleCreateParams < FinchAPI::Internal::Type::BaseModel
+            extend FinchAPI::Internal::Type::RequestParameters::Converter
+            include FinchAPI::Internal::Type::RequestParameters
+
+            attr_reader attributes: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes?
+
+            def attributes=: (
+              FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes
+            ) -> FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes
+
+            attr_reader conditions: ::Array[FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition]?
+
+            def conditions=: (
+              ::Array[FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition]
+            ) -> ::Array[FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition]
+
+            attr_accessor effective_end_date: String?
+
+            attr_accessor effective_start_date: String?
+
+            attr_reader entity_type: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::entity_type?
+
+            def entity_type=: (
+              FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::entity_type
+            ) -> FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::entity_type
+
+            def initialize: (
+              ?attributes: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes,
+              ?conditions: ::Array[FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition],
+              ?effective_end_date: String?,
+              ?effective_start_date: String?,
+              ?entity_type: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::entity_type,
+              ?request_options: FinchAPI::request_opts
+            ) -> void
+
+            def to_hash: -> FinchAPI::Models::HRIS::Company::PayStatementItem::rule_create_params
+
+            type attributes = { metadata: ::Hash[Symbol, top] }
+
+            class Attributes < FinchAPI::Internal::Type::BaseModel
+              attr_reader metadata: ::Hash[Symbol, top]?
+
+              def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+              def initialize: (?metadata: ::Hash[Symbol, top]) -> void
+
+              def to_hash: -> FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::attributes
+            end
+
+            type condition =
+              {
+                field: String,
+                operator: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::operator,
+                value: String
+              }
+
+            class Condition < FinchAPI::Internal::Type::BaseModel
+              attr_reader field: String?
+
+              def field=: (String) -> String
+
+              attr_reader operator: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::operator?
+
+              def operator=: (
+                FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::operator
+              ) -> FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::operator
+
+              attr_reader value: String?
+
+              def value=: (String) -> String
+
+              def initialize: (
+                ?field: String,
+                ?operator: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::operator,
+                ?value: String
+              ) -> void
+
+              def to_hash: -> FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::condition
+
+              type operator = :equals
+
+              module Operator
+                extend FinchAPI::Internal::Type::Enum
+
+                EQUALS: :equals
+
+                def self?.values: -> ::Array[FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::operator]
+              end
+            end
+
+            type entity_type = :pay_statement_item
+
+            module EntityType
+              extend FinchAPI::Internal::Type::Enum
+
+              PAY_STATEMENT_ITEM: :pay_statement_item
+
+              def self?.values: -> ::Array[FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::entity_type]
+            end
+          end
+        end
+      end
+    end
+  end
+end

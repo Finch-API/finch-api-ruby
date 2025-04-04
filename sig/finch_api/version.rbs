@@ -1,0 +1,3 @@
+module FinchAPI
+  VERSION: String
+end
