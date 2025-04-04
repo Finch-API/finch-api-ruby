@@ -75,7 +75,15 @@ class FinchAPI::Test::Resources::HRIS::Benefits::IndividualsTest < FinchAPI::Tes
     return if row.nil?
 
     assert_pattern do
-      row => FinchAPI::Internal::Type::Unknown
+      row => FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual
+    end
+
+    assert_pattern do
+      row => {
+        body: FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual::Body | nil,
+        code: Integer | nil,
+        individual_id: String | nil
+      }
     end
   end
 end
