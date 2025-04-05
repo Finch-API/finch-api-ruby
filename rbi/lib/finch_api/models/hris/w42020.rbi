@@ -23,7 +23,7 @@ module FinchAPI
         attr_accessor :year
 
         # A 2020 version of the W-4 tax form containing information on an individual's
-        #   filing status, dependents, and withholding details.
+        # filing status, dependents, and withholding details.
         sig do
           params(
             data: T.any(FinchAPI::Models::HRIS::W42020::Data, FinchAPI::Internal::AnyHash),
@@ -48,7 +48,7 @@ module FinchAPI
 
         class Data < FinchAPI::Internal::Type::BaseModel
           # Amount claimed for dependents other than qualifying children under 17 (in
-          #   cents).
+          # cents).
           sig { returns(T.nilable(Integer)) }
           attr_accessor :amount_for_other_dependents
 

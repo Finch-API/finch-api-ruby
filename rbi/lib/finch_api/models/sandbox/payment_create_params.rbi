@@ -223,7 +223,7 @@ module FinchAPI
             attr_accessor :currency
 
             # The number of hours associated with this earning. (For salaried employees, this
-            #   could be hours per pay period, `0` or `null`, depending on the provider).
+            # could be hours per pay period, `0` or `null`, depending on the provider).
             sig { returns(T.nilable(Float)) }
             attr_accessor :hours
 
@@ -308,8 +308,8 @@ module FinchAPI
 
               class Metadata < FinchAPI::Internal::Type::BaseModel
                 # The metadata to be attached to the entity by existing rules. It is a key-value
-                #   pairs where the values can be of any type (string, number, boolean, object,
-                #   array, etc.).
+                # pairs where the values can be of any type (string, number, boolean, object,
+                # array, etc.).
                 sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
                 attr_reader :metadata
 
@@ -509,8 +509,8 @@ module FinchAPI
 
               class Metadata < FinchAPI::Internal::Type::BaseModel
                 # The metadata to be attached to the entity by existing rules. It is a key-value
-                #   pairs where the values can be of any type (string, number, boolean, object,
-                #   array, etc.).
+                # pairs where the values can be of any type (string, number, boolean, object,
+                # array, etc.).
                 sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
                 attr_reader :metadata
 
@@ -638,8 +638,8 @@ module FinchAPI
 
               class Metadata < FinchAPI::Internal::Type::BaseModel
                 # The metadata to be attached to the entity by existing rules. It is a key-value
-                #   pairs where the values can be of any type (string, number, boolean, object,
-                #   array, etc.).
+                # pairs where the values can be of any type (string, number, boolean, object,
+                # array, etc.).
                 sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
                 attr_reader :metadata
 
@@ -798,8 +798,8 @@ module FinchAPI
 
               class Metadata < FinchAPI::Internal::Type::BaseModel
                 # The metadata to be attached to the entity by existing rules. It is a key-value
-                #   pairs where the values can be of any type (string, number, boolean, object,
-                #   array, etc.).
+                # pairs where the values can be of any type (string, number, boolean, object,
+                # array, etc.).
                 sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
                 attr_reader :metadata
 

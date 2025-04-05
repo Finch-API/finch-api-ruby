@@ -8,8 +8,8 @@ module FinchAPI
         include FinchAPI::Internal::Type::RequestParameters
 
         # Name of the benefit as it appears in the provider and pay statements. Recommend
-        #   limiting this to <30 characters due to limitations in specific providers (e.g.
-        #   Justworks).
+        # limiting this to <30 characters due to limitations in specific providers (e.g.
+        # Justworks).
         sig { returns(T.nilable(String)) }
         attr_reader :description
 

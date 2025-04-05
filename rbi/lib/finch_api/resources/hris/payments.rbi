@@ -15,10 +15,10 @@ module FinchAPI
         end
         def list(
           # The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
-          #   format.
+          # format.
           end_date:,
           # The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
-          #   format.
+          # format.
           start_date:,
           request_options: {}
         ); end

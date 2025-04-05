@@ -27,9 +27,9 @@ module FinchAPI
         class Meta < FinchAPI::Internal::Type::BaseModel
           # @!attribute [r] quotas
           #   Information about remaining quotas for this connection. Only applicable for
-          #     customers opted in to use Finch's Data Sync Refresh endpoint
-          #     (`POST /jobs/automated`). Please contact a Finch representative for more
-          #     details.
+          #   customers opted in to use Finch's Data Sync Refresh endpoint
+          #   (`POST /jobs/automated`). Please contact a Finch representative for more
+          #   details.
           #
           #   @return [FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas, nil]
           optional :quotas, -> { FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas }
@@ -58,9 +58,9 @@ module FinchAPI
 
             # @!parse
             #   # Information about remaining quotas for this connection. Only applicable for
-            #   #   customers opted in to use Finch's Data Sync Refresh endpoint
-            #   #   (`POST /jobs/automated`). Please contact a Finch representative for more
-            #   #   details.
+            #   # customers opted in to use Finch's Data Sync Refresh endpoint
+            #   # (`POST /jobs/automated`). Please contact a Finch representative for more
+            #   # details.
             #   #
             #   # @param data_sync_all [FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll]
             #   #

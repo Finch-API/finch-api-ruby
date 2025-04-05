@@ -22,12 +22,12 @@ module FinchAPI
             provider_id:,
             authentication_type: nil,
             # Optional, defaults to Organization products (`company`, `directory`,
-            #   `employment`, `individual`)
+            # `employment`, `individual`)
             products: nil,
             request_options: {}
           ); end
           # Update an existing sandbox account. Change the connection status to understand
-          #   how the Finch API responds.
+          # how the Finch API responds.
           sig do
             params(
               connection_status: FinchAPI::Models::ConnectionStatusType::OrSymbol,

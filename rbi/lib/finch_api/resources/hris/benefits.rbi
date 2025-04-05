@@ -8,7 +8,7 @@ module FinchAPI
         attr_reader :individuals
 
         # Creates a new company-wide deduction or contribution. Please use the
-        #   `/providers` endpoint to view available types for each provider.
+        # `/providers` endpoint to view available types for each provider.
         sig do
           params(
             description: String,
@@ -20,8 +20,8 @@ module FinchAPI
         end
         def create(
           # Name of the benefit as it appears in the provider and pay statements. Recommend
-          #   limiting this to <30 characters due to limitations in specific providers (e.g.
-          #   Justworks).
+          # limiting this to <30 characters due to limitations in specific providers (e.g.
+          # Justworks).
           description: nil,
           # The frequency of the benefit deduction/contribution.
           frequency: nil,

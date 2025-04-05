@@ -12,8 +12,8 @@ module FinchAPI
         attr_accessor :class_code
 
         # Custom fields for the individual. These are fields which are defined by the
-        #   employer in the system. Custom fields are not currently supported for assisted
-        #   connections.
+        # employer in the system. Custom fields are not currently supported for assisted
+        # connections.
         sig { returns(T.nilable(T::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField])) }
         attr_reader :custom_fields
 
@@ -65,8 +65,8 @@ module FinchAPI
         attr_accessor :first_name
 
         # The employee's income as reported by the provider. This may not always be
-        #   annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
-        #   depending on what information the provider returns.
+        # annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
+        # depending on what information the provider returns.
         sig { returns(T.nilable(FinchAPI::Models::Income)) }
         attr_reader :income
 
@@ -233,7 +233,7 @@ module FinchAPI
 
         class Employment < FinchAPI::Internal::Type::BaseModel
           # The secondary employment type of the individual. Options: `full_time`,
-          #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
+          # `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
           sig { returns(T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Subtype::OrSymbol)) }
           attr_accessor :subtype
 
@@ -263,7 +263,7 @@ module FinchAPI
           def to_hash; end
 
           # The secondary employment type of the individual. Options: `full_time`,
-          #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
+          # `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
           module Subtype
             extend FinchAPI::Internal::Type::Enum
 

@@ -101,7 +101,7 @@ module FinchAPI
 
             class Configuration < FinchAPI::Internal::Type::BaseModel
               # For HSA benefits only - whether the contribution limit is for an individual or
-              #   family
+              # family
               sig do
                 returns(
                   T.nilable(
@@ -218,7 +218,7 @@ module FinchAPI
               def to_hash; end
 
               # For HSA benefits only - whether the contribution limit is for an individual or
-              #   family
+              # family
               module AnnualContributionLimit
                 extend FinchAPI::Internal::Type::Enum
 
@@ -259,7 +259,7 @@ module FinchAPI
 
               class CompanyContribution < FinchAPI::Internal::Type::BaseModel
                 # Amount in cents for fixed type or basis points (1/100th of a percent) for
-                #   percent type
+                # percent type
                 sig { returns(T.nilable(Integer)) }
                 attr_reader :amount
 
@@ -344,7 +344,7 @@ module FinchAPI
 
               class EmployeeDeduction < FinchAPI::Internal::Type::BaseModel
                 # Amount in cents for fixed type or basis points (1/100th of a percent) for
-                #   percent type
+                # percent type
                 sig { returns(T.nilable(Integer)) }
                 attr_reader :amount
 

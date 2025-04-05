@@ -42,7 +42,7 @@ module FinchAPI
 
         # @!attribute minutes_to_expire
         #   The number of minutes until the session expires (defaults to 43,200, which is 30
-        #     days)
+        #   days)
         #
         #   @return [Float, nil]
         optional :minutes_to_expire, Float, nil?: true

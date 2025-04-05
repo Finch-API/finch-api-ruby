@@ -14,7 +14,7 @@ module FinchAPI
         end
         def create(
           # Array of individuals to create. Takes all combined fields from `/individual` and
-          #   `/employment` endpoints. All fields are optional.
+          # `/employment` endpoints. All fields are optional.
           body: nil,
           request_options: {}
         ); end

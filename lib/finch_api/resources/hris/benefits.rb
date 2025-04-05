@@ -8,7 +8,7 @@ module FinchAPI
         attr_reader :individuals
 
         # Creates a new company-wide deduction or contribution. Please use the
-        #   `/providers` endpoint to view available types for each provider.
+        # `/providers` endpoint to view available types for each provider.
         #
         # @overload create(description: nil, frequency: nil, type: nil, request_options: {})
         #

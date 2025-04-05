@@ -39,8 +39,8 @@ module FinchAPI
           # Worker's compensation classification code for this employee
           class_code: nil,
           # Custom fields for the individual. These are fields which are defined by the
-          #   employer in the system. Custom fields are not currently supported for assisted
-          #   connections.
+          # employer in the system. Custom fields are not currently supported for assisted
+          # connections.
           custom_fields: nil,
           # The department object.
           department: nil,
@@ -52,8 +52,8 @@ module FinchAPI
           # The legal first name of the individual.
           first_name: nil,
           # The employee's income as reported by the provider. This may not always be
-          #   annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
-          #   depending on what information the provider returns.
+          # annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
+          # depending on what information the provider returns.
           income: nil,
           # The array of income history.
           income_history: nil,

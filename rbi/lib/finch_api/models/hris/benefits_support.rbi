@@ -137,7 +137,7 @@ module FinchAPI
         attr_writer :simple_ira
 
         # Each benefit type and their supported features. If the benefit type is not
-        #   supported, the property will be null
+        # supported, the property will be null
         sig do
           params(
             commuter: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, FinchAPI::Internal::AnyHash)),
