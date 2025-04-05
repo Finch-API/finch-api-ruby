@@ -61,17 +61,17 @@ module FinchAPI
 
           class Attributes < FinchAPI::Internal::Type::BaseModel
             # `true` if the amount is paid by the employers. This field is only available for
-            #   taxes.
+            # taxes.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :employer
 
             # The metadata of the pay statement item derived by the rules engine if available.
-            #   Each attribute will be a key-value pair defined by a rule.
+            # Each attribute will be a key-value pair defined by a rule.
             sig { returns(T.nilable(T.anything)) }
             attr_accessor :metadata
 
             # `true` if the pay statement item is pre-tax. This field is only available for
-            #   employee deductions.
+            # employee deductions.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :pre_tax
 

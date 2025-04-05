@@ -23,15 +23,15 @@ module FinchAPI
 
       # @!attribute unit
       #   The income unit of payment. Options: `yearly`, `quarterly`, `monthly`,
-      #     `semi_monthly`, `bi_weekly`, `weekly`, `daily`, `hourly`, and `fixed`.
+      #   `semi_monthly`, `bi_weekly`, `weekly`, `daily`, `hourly`, and `fixed`.
       #
       #   @return [Symbol, FinchAPI::Models::Income::Unit, nil]
       optional :unit, enum: -> { FinchAPI::Models::Income::Unit }, nil?: true
 
       # @!parse
       #   # The employee's income as reported by the provider. This may not always be
-      #   #   annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
-      #   #   depending on what information the provider returns.
+      #   # annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
+      #   # depending on what information the provider returns.
       #   #
       #   # @param amount [Integer, nil]
       #   # @param currency [String, nil]
@@ -43,7 +43,7 @@ module FinchAPI
       # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
       # The income unit of payment. Options: `yearly`, `quarterly`, `monthly`,
-      #   `semi_monthly`, `bi_weekly`, `weekly`, `daily`, `hourly`, and `fixed`.
+      # `semi_monthly`, `bi_weekly`, `weekly`, `daily`, `hourly`, and `fixed`.
       #
       # @see FinchAPI::Models::Income#unit
       module Unit

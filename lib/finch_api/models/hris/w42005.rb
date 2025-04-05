@@ -32,7 +32,7 @@ module FinchAPI
 
         # @!parse
         #   # A 2005 version of the W-4 tax form containing information on an individual's
-        #   #   filing status, dependents, and withholding details.
+        #   # filing status, dependents, and withholding details.
         #   #
         #   # @param data [FinchAPI::Models::HRIS::W42005::Data]
         #   # @param type [Symbol, FinchAPI::Models::HRIS::W42005::Type]

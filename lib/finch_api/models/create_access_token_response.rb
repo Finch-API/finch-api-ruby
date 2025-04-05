@@ -12,7 +12,7 @@ module FinchAPI
 
       # @!attribute account_id
       #   [DEPRECATED] Use `connection_id` to identify the connection instead of this
-      #     account ID.
+      #   account ID.
       #
       #   @return [String]
       required :account_id, String
@@ -25,7 +25,7 @@ module FinchAPI
 
       # @!attribute company_id
       #   [DEPRECATED] Use `connection_id` to identify the connection instead of this
-      #     company ID.
+      #   company ID.
       #
       #   @return [String]
       required :company_id, String
@@ -39,8 +39,8 @@ module FinchAPI
       # @!attribute connection_type
       #   The type of the connection associated with the token.
       #
-      #     - `provider` - connection to an external provider
-      #     - `finch` - finch-generated data.
+      #   - `provider` - connection to an external provider
+      #   - `finch` - finch-generated data.
       #
       #   @return [Symbol, FinchAPI::Models::CreateAccessTokenResponse::ConnectionType]
       required :connection_type, enum: -> { FinchAPI::Models::CreateAccessTokenResponse::ConnectionType }
@@ -59,7 +59,7 @@ module FinchAPI
 
       # @!attribute customer_id
       #   The ID of your customer you provided to Finch when a connect session was created
-      #     for this connection.
+      #   for this connection.
       #
       #   @return [String, nil]
       optional :customer_id, String, nil?: true
@@ -123,8 +123,8 @@ module FinchAPI
 
       # The type of the connection associated with the token.
       #
-      #   - `provider` - connection to an external provider
-      #   - `finch` - finch-generated data.
+      # - `provider` - connection to an external provider
+      # - `finch` - finch-generated data.
       #
       # @see FinchAPI::Models::CreateAccessTokenResponse#connection_type
       module ConnectionType

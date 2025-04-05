@@ -72,7 +72,7 @@ module FinchAPI
 
         class AuthenticationMethod < FinchAPI::Internal::Type::BaseModel
           # Each benefit type and their supported features. If the benefit type is not
-          #   supported, the property will be null
+          # supported, the property will be null
           sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitsSupport)) }
           attr_reader :benefits_support
 

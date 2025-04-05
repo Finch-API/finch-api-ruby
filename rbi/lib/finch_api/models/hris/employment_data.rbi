@@ -16,7 +16,7 @@ module FinchAPI
         attr_accessor :class_code
 
         # Custom fields for the individual. These are fields which are defined by the
-        #   employer in the system.
+        # employer in the system.
         sig { returns(T.nilable(T::Array[FinchAPI::Models::HRIS::EmploymentData::CustomField])) }
         attr_accessor :custom_fields
 
@@ -45,7 +45,7 @@ module FinchAPI
         attr_writer :employment
 
         # The detailed employment status of the individual. Available options: `active`,
-        #   `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
+        # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
         sig { returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus::TaggedSymbol)) }
         attr_accessor :employment_status
 
@@ -57,8 +57,8 @@ module FinchAPI
         attr_accessor :first_name
 
         # The employee's income as reported by the provider. This may not always be
-        #   annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
-        #   depending on what information the provider returns.
+        # annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
+        # depending on what information the provider returns.
         sig { returns(T.nilable(FinchAPI::Models::Income)) }
         attr_reader :income
 
@@ -230,7 +230,7 @@ module FinchAPI
 
         class Employment < FinchAPI::Internal::Type::BaseModel
           # The secondary employment type of the individual. Options: `full_time`,
-          #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
+          # `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
           sig { returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype::TaggedSymbol)) }
           attr_accessor :subtype
 
@@ -260,7 +260,7 @@ module FinchAPI
           def to_hash; end
 
           # The secondary employment type of the individual. Options: `full_time`,
-          #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
+          # `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
           module Subtype
             extend FinchAPI::Internal::Type::Enum
 
@@ -298,7 +298,7 @@ module FinchAPI
         end
 
         # The detailed employment status of the individual. Available options: `active`,
-        #   `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
+        # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
         module EmploymentStatus
           extend FinchAPI::Internal::Type::Enum
 

@@ -52,7 +52,7 @@ module FinchAPI
 
             # @!attribute catch_up
             #   If the benefit supports catch up (401k, 403b, etc.), whether catch up is enabled
-            #     for this individual.
+            #   for this individual.
             #
             #   @return [Boolean, nil]
             optional :catch_up, FinchAPI::Internal::Type::Boolean, nil?: true

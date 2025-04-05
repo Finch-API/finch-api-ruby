@@ -52,7 +52,7 @@ module FinchAPI
             attr_accessor :annual_maximum
 
             # If the benefit supports catch up (401k, 403b, etc.), whether catch up is enabled
-            #   for this individual.
+            # for this individual.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :catch_up
 

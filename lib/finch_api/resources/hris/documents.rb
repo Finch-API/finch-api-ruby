@@ -5,7 +5,7 @@ module FinchAPI
     class HRIS
       class Documents
         # **Beta:** This endpoint is in beta and may change. Retrieve a list of
-        #   company-wide documents.
+        # company-wide documents.
         #
         # @overload list(individual_ids: nil, limit: nil, offset: nil, types: nil, request_options: {})
         #
@@ -30,7 +30,7 @@ module FinchAPI
         end
 
         # **Beta:** This endpoint is in beta and may change. Retrieve details of a
-        #   specific document by its ID.
+        # specific document by its ID.
         #
         # @overload retreive(document_id, request_options: {})
         #

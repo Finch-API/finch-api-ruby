@@ -18,8 +18,8 @@ module FinchAPI
         attr_accessor :emails
 
         # Social Security Number of the individual in **encrypted** format. This field is
-        #   only available with the `ssn` scope enabled and the
-        #   `options: { include: ['ssn'] }` param set in the body.
+        # only available with the `ssn` scope enabled and the
+        # `options: { include: ['ssn'] }` param set in the body.
         sig { returns(T.nilable(String)) }
         attr_accessor :encrypted_ssn
 
@@ -57,9 +57,9 @@ module FinchAPI
         attr_writer :residence
 
         # Social Security Number of the individual. This field is only available with the
-        #   `ssn` scope enabled and the `options: { include: ['ssn'] }` param set in the
-        #   body.
-        #   [Click here to learn more about enabling the SSN field](/developer-resources/Enable-SSN-Field).
+        # `ssn` scope enabled and the `options: { include: ['ssn'] }` param set in the
+        # body.
+        # [Click here to learn more about enabling the SSN field](/developer-resources/Enable-SSN-Field).
         sig { returns(T.nilable(String)) }
         attr_accessor :ssn
 

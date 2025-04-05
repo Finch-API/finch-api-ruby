@@ -6,9 +6,9 @@ module FinchAPI
       class Benefits
         class Individuals
           # Enroll an individual into a deduction or contribution. This is an overwrite
-          #   operation. If the employee is already enrolled, the enrollment amounts will be
-          #   adjusted. Making the same request multiple times will not create new
-          #   enrollments, but will continue to set the state of the existing enrollment.
+          # operation. If the employee is already enrolled, the enrollment amounts will be
+          # adjusted. Making the same request multiple times will not create new
+          # enrollments, but will continue to set the state of the existing enrollment.
           sig do
             params(
               benefit_id: String,
@@ -50,7 +50,7 @@ module FinchAPI
           def retrieve_many_benefits(
             benefit_id,
             # comma-delimited list of stable Finch uuids for each individual. If empty,
-            #   defaults to all individuals
+            # defaults to all individuals
             individual_ids: nil,
             request_options: {}
           ); end

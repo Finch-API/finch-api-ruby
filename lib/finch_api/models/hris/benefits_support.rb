@@ -66,7 +66,7 @@ module FinchAPI
 
         # @!parse
         #   # Each benefit type and their supported features. If the benefit type is not
-        #   #   supported, the property will be null
+        #   # supported, the property will be null
         #   #
         #   # @param commuter [FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, nil]
         #   # @param custom_post_tax [FinchAPI::Models::HRIS::BenefitFeaturesAndOperations, nil]

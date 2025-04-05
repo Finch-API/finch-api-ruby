@@ -31,7 +31,7 @@ module FinchAPI
           attr_writer :authentication_type
 
           # Optional, defaults to Organization products (`company`, `directory`,
-          #   `employment`, `individual`)
+          # `employment`, `individual`)
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :products
 

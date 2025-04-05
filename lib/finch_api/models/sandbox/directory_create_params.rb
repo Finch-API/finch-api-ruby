@@ -11,7 +11,7 @@ module FinchAPI
 
         # @!attribute [r] body
         #   Array of individuals to create. Takes all combined fields from `/individual` and
-        #     `/employment` endpoints. All fields are optional.
+        #   `/employment` endpoints. All fields are optional.
         #
         #   @return [Array<FinchAPI::Models::Sandbox::DirectoryCreateParams::Body>, nil]
         optional :body,
@@ -38,8 +38,8 @@ module FinchAPI
 
           # @!attribute [r] custom_fields
           #   Custom fields for the individual. These are fields which are defined by the
-          #     employer in the system. Custom fields are not currently supported for assisted
-          #     connections.
+          #   employer in the system. Custom fields are not currently supported for assisted
+          #   connections.
           #
           #   @return [Array<FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField>, nil]
           optional :custom_fields,
@@ -87,8 +87,8 @@ module FinchAPI
 
           # @!attribute encrypted_ssn
           #   Social Security Number of the individual in **encrypted** format. This field is
-          #     only available with the `ssn` scope enabled and the
-          #     `options: { include: ['ssn'] }` param set in the body.
+          #   only available with the `ssn` scope enabled and the
+          #   `options: { include: ['ssn'] }` param set in the body.
           #
           #   @return [String, nil]
           optional :encrypted_ssn, String, nil?: true
@@ -120,8 +120,8 @@ module FinchAPI
 
           # @!attribute income
           #   The employee's income as reported by the provider. This may not always be
-          #     annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
-          #     depending on what information the provider returns.
+          #   annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
+          #   depending on what information the provider returns.
           #
           #   @return [FinchAPI::Models::Income, nil]
           optional :income, -> { FinchAPI::Models::Income }, nil?: true
@@ -198,9 +198,9 @@ module FinchAPI
 
           # @!attribute ssn
           #   Social Security Number of the individual. This field is only available with the
-          #     `ssn` scope enabled and the `options: { include: ['ssn'] }` param set in the
-          #     body.
-          #     [Click here to learn more about enabling the SSN field](/developer-resources/Enable-SSN-Field).
+          #   `ssn` scope enabled and the `options: { include: ['ssn'] }` param set in the
+          #   body.
+          #   [Click here to learn more about enabling the SSN field](/developer-resources/Enable-SSN-Field).
           #
           #   @return [String, nil]
           optional :ssn, String, nil?: true
@@ -366,7 +366,7 @@ module FinchAPI
           class Employment < FinchAPI::Internal::Type::BaseModel
             # @!attribute subtype
             #   The secondary employment type of the individual. Options: `full_time`,
-            #     `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
+            #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
             #
             #   @return [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype, nil]
             optional :subtype,
@@ -392,7 +392,7 @@ module FinchAPI
             # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
             # The secondary employment type of the individual. Options: `full_time`,
-            #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
+            # `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
             #
             # @see FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment#subtype
             module Subtype

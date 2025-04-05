@@ -27,8 +27,8 @@ module FinchAPI
 
         # @!attribute [r] employee_size
         #   Optional: the size of the employer to be created with this connection. Defaults
-        #     to 20. Note that if this is higher than 100, historical payroll data will not be
-        #     generated, and instead only one pay period will be created.
+        #   to 20. Note that if this is higher than 100, historical payroll data will not be
+        #   generated, and instead only one pay period will be created.
         #
         #   @return [Integer, nil]
         optional :employee_size, Integer

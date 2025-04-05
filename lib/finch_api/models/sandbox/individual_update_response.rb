@@ -29,8 +29,8 @@ module FinchAPI
 
         # @!attribute encrypted_ssn
         #   Social Security Number of the individual in **encrypted** format. This field is
-        #     only available with the `ssn` scope enabled and the
-        #     `options: { include: ['ssn'] }` param set in the body.
+        #   only available with the `ssn` scope enabled and the
+        #   `options: { include: ['ssn'] }` param set in the body.
         #
         #   @return [String, nil]
         optional :encrypted_ssn, String, nil?: true
@@ -87,9 +87,9 @@ module FinchAPI
 
         # @!attribute ssn
         #   Social Security Number of the individual. This field is only available with the
-        #     `ssn` scope enabled and the `options: { include: ['ssn'] }` param set in the
-        #     body.
-        #     [Click here to learn more about enabling the SSN field](/developer-resources/Enable-SSN-Field).
+        #   `ssn` scope enabled and the `options: { include: ['ssn'] }` param set in the
+        #   body.
+        #   [Click here to learn more about enabling the SSN field](/developer-resources/Enable-SSN-Field).
         #
         #   @return [String, nil]
         optional :ssn, String, nil?: true

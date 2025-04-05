@@ -9,12 +9,12 @@ module FinchAPI
         attr_accessor :annual_maximum
 
         # Whether the provider supports catch up for this benefit. This field will only be
-        #   true for retirement benefits.
+        # true for retirement benefits.
         sig { returns(T.nilable(T::Boolean)) }
         attr_accessor :catch_up
 
         # Supported contribution types. An empty array indicates contributions are not
-        #   supported.
+        # supported.
         sig do
           returns(
             T.nilable(
@@ -28,7 +28,7 @@ module FinchAPI
         attr_accessor :description
 
         # Supported deduction types. An empty array indicates deductions are not
-        #   supported.
+        # supported.
         sig do
           returns(
             T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction::TaggedSymbol)])
@@ -44,7 +44,7 @@ module FinchAPI
         attr_writer :frequencies
 
         # Whether the provider supports HSA contribution limits. Empty if this feature is
-        #   not supported for the benefit. This array only has values for HSA benefits.
+        # not supported for the benefit. This array only has values for HSA benefits.
         sig do
           returns(
             T.nilable(

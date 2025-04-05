@@ -28,7 +28,7 @@ module FinchAPI
           integration: nil,
           manual: nil,
           # The number of minutes until the session expires (defaults to 43,200, which is 30
-          #   days)
+          # days)
           minutes_to_expire: nil,
           redirect_uri: nil,
           sandbox: nil,
@@ -49,7 +49,7 @@ module FinchAPI
           # The ID of the existing connection to reauthenticate
           connection_id:,
           # The number of minutes until the session expires (defaults to 43,200, which is 30
-          #   days)
+          # days)
           minutes_to_expire: nil,
           # The products to request access to (optional for reauthentication)
           products: nil,

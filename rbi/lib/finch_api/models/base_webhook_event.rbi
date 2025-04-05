@@ -4,13 +4,13 @@ module FinchAPI
   module Models
     class BaseWebhookEvent < FinchAPI::Internal::Type::BaseModel
       # [DEPRECATED] Unique Finch ID of the employer account used to make this
-      #   connection. Use `connection_id` instead to identify the connection associated
-      #   with this event.
+      # connection. Use `connection_id` instead to identify the connection associated
+      # with this event.
       sig { returns(String) }
       attr_accessor :account_id
 
       # [DEPRECATED] Unique Finch ID of the company for which data has been updated. Use
-      #   `connection_id` instead to identify the connection associated with this event.
+      # `connection_id` instead to identify the connection associated with this event.
       sig { returns(String) }
       attr_accessor :company_id
 

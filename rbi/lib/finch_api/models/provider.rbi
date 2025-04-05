@@ -51,8 +51,8 @@ module FinchAPI
       attr_writer :logo
 
       # [DEPRECATED] Whether the Finch integration with this provider uses the Assisted
-      #   Connect Flow by default. This field is now deprecated. Please check for a `type`
-      #   of `assisted` in the `authentication_methods` field instead.
+      # Connect Flow by default. This field is now deprecated. Please check for a `type`
+      # of `assisted` in the `authentication_methods` field instead.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :manual
 
@@ -128,7 +128,7 @@ module FinchAPI
 
       class AuthenticationMethod < FinchAPI::Internal::Type::BaseModel
         # Each benefit type and their supported features. If the benefit type is not
-        #   supported, the property will be null
+        # supported, the property will be null
         sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitsSupport)) }
         attr_reader :benefits_support
 
