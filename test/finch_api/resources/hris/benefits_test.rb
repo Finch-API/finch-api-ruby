@@ -88,8 +88,8 @@ class FinchAPI::Test::Resources::HRIS::BenefitsTest < FinchAPI::Test::ResourceTe
 
     assert_pattern do
       row => {
-        annual_maximum: FinchAPI::Internal::Type::BooleanModel | nil,
-        catch_up: FinchAPI::Internal::Type::BooleanModel | nil,
+        annual_maximum: FinchAPI::Internal::Type::Boolean | nil,
+        catch_up: FinchAPI::Internal::Type::Boolean | nil,
         company_contribution: ^(FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution, nil?: true]) | nil,
         description: String | nil,
         employee_deduction: ^(FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction, nil?: true]) | nil,

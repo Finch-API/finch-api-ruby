@@ -83,7 +83,7 @@ module FinchAPI
       #     automated)
       #
       #   @return [Boolean]
-      required :manual, FinchAPI::Internal::Type::BooleanModel
+      required :manual, FinchAPI::Internal::Type::Boolean
 
       # @!attribute payroll_provider_id
       #   [DEPRECATED] Use `provider_id` to identify the provider instead of this payroll
