@@ -22,8 +22,7 @@ module FinchAPI
         )
           .returns(T.attached_class)
       end
-      def self.new(data: nil, event_type: nil)
-      end
+      def self.new(data: nil, event_type: nil); end
 
       sig do
         override
@@ -34,8 +33,7 @@ module FinchAPI
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Data < FinchAPI::Internal::Type::BaseModel
         sig { returns(FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod) }
@@ -59,8 +57,7 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(authentication_method:, status:)
-        end
+        def self.new(authentication_method:, status:); end
 
         sig do
           override
@@ -71,8 +68,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class AuthenticationMethod < FinchAPI::Internal::Type::BaseModel
           # Each benefit type and their supported features. If the benefit type is not
@@ -125,8 +121,7 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(benefits_support: nil, supported_fields: nil, type: nil)
-          end
+          def self.new(benefits_support: nil, supported_fields: nil, type: nil); end
 
           sig do
             override
@@ -138,8 +133,7 @@ module FinchAPI
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class SupportedFields < FinchAPI::Internal::Type::BaseModel
             sig do
@@ -310,9 +304,7 @@ module FinchAPI
               pay_group: nil,
               pay_statement: nil,
               payment: nil
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -327,8 +319,7 @@ module FinchAPI
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class Company < FinchAPI::Internal::Type::BaseModel
               sig { returns(T.nilable(T::Boolean)) }
@@ -477,9 +468,7 @@ module FinchAPI
                 locations: nil,
                 primary_email: nil,
                 primary_phone_number: nil
-              )
-              end
-
+              ); end
               sig do
                 override
                   .returns(
@@ -496,8 +485,7 @@ module FinchAPI
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Accounts < FinchAPI::Internal::Type::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
@@ -561,8 +549,7 @@ module FinchAPI
                       }
                     )
                 end
-                def to_hash
-                end
+                def to_hash; end
               end
 
               class Departments < FinchAPI::Internal::Type::BaseModel
@@ -602,8 +589,7 @@ module FinchAPI
                   )
                     .returns(T.attached_class)
                 end
-                def self.new(name: nil, parent: nil)
-                end
+                def self.new(name: nil, parent: nil); end
 
                 sig do
                   override
@@ -614,8 +600,7 @@ module FinchAPI
                       }
                     )
                 end
-                def to_hash
-                end
+                def to_hash; end
 
                 class Parent < FinchAPI::Internal::Type::BaseModel
                   sig { returns(T.nilable(T::Boolean)) }
@@ -625,12 +610,10 @@ module FinchAPI
                   attr_writer :name
 
                   sig { params(name: T::Boolean).returns(T.attached_class) }
-                  def self.new(name: nil)
-                  end
+                  def self.new(name: nil); end
 
                   sig { override.returns({name: T::Boolean}) }
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
               end
 
@@ -648,12 +631,10 @@ module FinchAPI
                 attr_writer :type
 
                 sig { params(subtype: T::Boolean, type: T::Boolean).returns(T.attached_class) }
-                def self.new(subtype: nil, type: nil)
-                end
+                def self.new(subtype: nil, type: nil); end
 
                 sig { override.returns({subtype: T::Boolean, type: T::Boolean}) }
-                def to_hash
-                end
+                def to_hash; end
               end
 
               class Locations < FinchAPI::Internal::Type::BaseModel
@@ -720,8 +701,7 @@ module FinchAPI
                       }
                     )
                 end
-                def to_hash
-                end
+                def to_hash; end
               end
             end
 
@@ -779,8 +759,7 @@ module FinchAPI
                 )
                   .returns(T.attached_class)
               end
-              def self.new(individuals: nil, paging: nil)
-              end
+              def self.new(individuals: nil, paging: nil); end
 
               sig do
                 override
@@ -791,8 +770,7 @@ module FinchAPI
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Individuals < FinchAPI::Internal::Type::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
@@ -891,8 +869,7 @@ module FinchAPI
                       }
                     )
                 end
-                def to_hash
-                end
+                def to_hash; end
 
                 class Manager < FinchAPI::Internal::Type::BaseModel
                   sig { returns(T.nilable(T::Boolean)) }
@@ -902,12 +879,10 @@ module FinchAPI
                   attr_writer :id
 
                   sig { params(id: T::Boolean).returns(T.attached_class) }
-                  def self.new(id: nil)
-                  end
+                  def self.new(id: nil); end
 
                   sig { override.returns({id: T::Boolean}) }
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
               end
 
@@ -925,12 +900,10 @@ module FinchAPI
                 attr_writer :offset
 
                 sig { params(count: T::Boolean, offset: T::Boolean).returns(T.attached_class) }
-                def self.new(count: nil, offset: nil)
-                end
+                def self.new(count: nil, offset: nil); end
 
                 sig { override.returns({count: T::Boolean, offset: T::Boolean}) }
-                def to_hash
-                end
+                def to_hash; end
               end
             end
 
@@ -1162,9 +1135,7 @@ module FinchAPI
                 middle_name: nil,
                 start_date: nil,
                 title: nil
-              )
-              end
-
+              ); end
               sig do
                 override
                   .returns(
@@ -1189,8 +1160,7 @@ module FinchAPI
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Department < FinchAPI::Internal::Type::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
@@ -1200,12 +1170,10 @@ module FinchAPI
                 attr_writer :name
 
                 sig { params(name: T::Boolean).returns(T.attached_class) }
-                def self.new(name: nil)
-                end
+                def self.new(name: nil); end
 
                 sig { override.returns({name: T::Boolean}) }
-                def to_hash
-                end
+                def to_hash; end
               end
 
               class Employment < FinchAPI::Internal::Type::BaseModel
@@ -1222,12 +1190,10 @@ module FinchAPI
                 attr_writer :type
 
                 sig { params(subtype: T::Boolean, type: T::Boolean).returns(T.attached_class) }
-                def self.new(subtype: nil, type: nil)
-                end
+                def self.new(subtype: nil, type: nil); end
 
                 sig { override.returns({subtype: T::Boolean, type: T::Boolean}) }
-                def to_hash
-                end
+                def to_hash; end
               end
 
               class Income < FinchAPI::Internal::Type::BaseModel
@@ -1252,12 +1218,10 @@ module FinchAPI
                 sig do
                   params(amount: T::Boolean, currency: T::Boolean, unit: T::Boolean).returns(T.attached_class)
                 end
-                def self.new(amount: nil, currency: nil, unit: nil)
-                end
+                def self.new(amount: nil, currency: nil, unit: nil); end
 
                 sig { override.returns({amount: T::Boolean, currency: T::Boolean, unit: T::Boolean}) }
-                def to_hash
-                end
+                def to_hash; end
               end
 
               class Location < FinchAPI::Internal::Type::BaseModel
@@ -1324,8 +1288,7 @@ module FinchAPI
                       }
                     )
                 end
-                def to_hash
-                end
+                def to_hash; end
               end
 
               class Manager < FinchAPI::Internal::Type::BaseModel
@@ -1336,12 +1299,10 @@ module FinchAPI
                 attr_writer :id
 
                 sig { params(id: T::Boolean).returns(T.attached_class) }
-                def self.new(id: nil)
-                end
+                def self.new(id: nil); end
 
                 sig { override.returns({id: T::Boolean}) }
-                def to_hash
-                end
+                def to_hash; end
               end
             end
 
@@ -1507,9 +1468,7 @@ module FinchAPI
                 preferred_name: nil,
                 residence: nil,
                 ssn: nil
-              )
-              end
-
+              ); end
               sig do
                 override
                   .returns(
@@ -1530,8 +1489,7 @@ module FinchAPI
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Emails < FinchAPI::Internal::Type::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
@@ -1547,12 +1505,10 @@ module FinchAPI
                 attr_writer :type
 
                 sig { params(data: T::Boolean, type: T::Boolean).returns(T.attached_class) }
-                def self.new(data: nil, type: nil)
-                end
+                def self.new(data: nil, type: nil); end
 
                 sig { override.returns({data: T::Boolean, type: T::Boolean}) }
-                def to_hash
-                end
+                def to_hash; end
               end
 
               class PhoneNumbers < FinchAPI::Internal::Type::BaseModel
@@ -1569,12 +1525,10 @@ module FinchAPI
                 attr_writer :type
 
                 sig { params(data: T::Boolean, type: T::Boolean).returns(T.attached_class) }
-                def self.new(data: nil, type: nil)
-                end
+                def self.new(data: nil, type: nil); end
 
                 sig { override.returns({data: T::Boolean, type: T::Boolean}) }
-                def to_hash
-                end
+                def to_hash; end
               end
 
               class Residence < FinchAPI::Internal::Type::BaseModel
@@ -1641,8 +1595,7 @@ module FinchAPI
                       }
                     )
                 end
-                def to_hash
-                end
+                def to_hash; end
               end
             end
 
@@ -1680,8 +1633,7 @@ module FinchAPI
                 )
                   .returns(T.attached_class)
               end
-              def self.new(id: nil, individual_ids: nil, name: nil, pay_frequencies: nil)
-              end
+              def self.new(id: nil, individual_ids: nil, name: nil, pay_frequencies: nil); end
 
               sig do
                 override
@@ -1692,8 +1644,7 @@ module FinchAPI
                              pay_frequencies: T::Boolean
                            })
               end
-              def to_hash
-              end
+              def to_hash; end
             end
 
             class PayStatement < FinchAPI::Internal::Type::BaseModel
@@ -1750,8 +1701,7 @@ module FinchAPI
                 )
                   .returns(T.attached_class)
               end
-              def self.new(paging: nil, pay_statements: nil)
-              end
+              def self.new(paging: nil, pay_statements: nil); end
 
               sig do
                 override
@@ -1762,8 +1712,7 @@ module FinchAPI
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Paging < FinchAPI::Internal::Type::BaseModel
                 sig { returns(T::Boolean) }
@@ -1773,12 +1722,10 @@ module FinchAPI
                 attr_accessor :offset
 
                 sig { params(count: T::Boolean, offset: T::Boolean).returns(T.attached_class) }
-                def self.new(count:, offset:)
-                end
+                def self.new(count:, offset:); end
 
                 sig { override.returns({count: T::Boolean, offset: T::Boolean}) }
-                def to_hash
-                end
+                def to_hash; end
               end
 
               class PayStatements < FinchAPI::Internal::Type::BaseModel
@@ -1936,9 +1883,7 @@ module FinchAPI
                   taxes: nil,
                   total_hours: nil,
                   type: nil
-                )
-                end
-
+                ); end
                 sig do
                   override
                     .returns(
@@ -1956,8 +1901,7 @@ module FinchAPI
                       }
                     )
                 end
-                def to_hash
-                end
+                def to_hash; end
 
                 class Earnings < FinchAPI::Internal::Type::BaseModel
                   sig { returns(T.nilable(T::Boolean)) }
@@ -1988,8 +1932,7 @@ module FinchAPI
                     params(amount: T::Boolean, currency: T::Boolean, name: T::Boolean, type: T::Boolean)
                       .returns(T.attached_class)
                   end
-                  def self.new(amount: nil, currency: nil, name: nil, type: nil)
-                  end
+                  def self.new(amount: nil, currency: nil, name: nil, type: nil); end
 
                   sig do
                     override.returns(
@@ -2001,8 +1944,7 @@ module FinchAPI
                       }
                     )
                   end
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
 
                 class EmployeeDeductions < FinchAPI::Internal::Type::BaseModel
@@ -2046,8 +1988,7 @@ module FinchAPI
                     )
                       .returns(T.attached_class)
                   end
-                  def self.new(amount: nil, currency: nil, name: nil, pre_tax: nil, type: nil)
-                  end
+                  def self.new(amount: nil, currency: nil, name: nil, pre_tax: nil, type: nil); end
 
                   sig do
                     override
@@ -2061,8 +2002,7 @@ module FinchAPI
                         }
                       )
                   end
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
 
                 class EmployerContributions < FinchAPI::Internal::Type::BaseModel
@@ -2091,12 +2031,10 @@ module FinchAPI
                       name: T::Boolean
                     ).returns(T.attached_class)
                   end
-                  def self.new(amount: nil, currency: nil, name: nil)
-                  end
+                  def self.new(amount: nil, currency: nil, name: nil); end
 
                   sig { override.returns({amount: T::Boolean, currency: T::Boolean, name: T::Boolean}) }
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
 
                 class Taxes < FinchAPI::Internal::Type::BaseModel
@@ -2140,8 +2078,7 @@ module FinchAPI
                     )
                       .returns(T.attached_class)
                   end
-                  def self.new(amount: nil, currency: nil, employer: nil, name: nil, type: nil)
-                  end
+                  def self.new(amount: nil, currency: nil, employer: nil, name: nil, type: nil); end
 
                   sig do
                     override
@@ -2155,8 +2092,7 @@ module FinchAPI
                         }
                       )
                   end
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
               end
             end
@@ -2281,9 +2217,7 @@ module FinchAPI
                 pay_frequencies: nil,
                 pay_group_ids: nil,
                 pay_period: nil
-              )
-              end
-
+              ); end
               sig do
                 override
                   .returns(
@@ -2303,8 +2237,7 @@ module FinchAPI
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class PayPeriod < FinchAPI::Internal::Type::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
@@ -2320,12 +2253,10 @@ module FinchAPI
                 attr_writer :start_date
 
                 sig { params(end_date: T::Boolean, start_date: T::Boolean).returns(T.attached_class) }
-                def self.new(end_date: nil, start_date: nil)
-                end
+                def self.new(end_date: nil, start_date: nil); end
 
                 sig { override.returns({end_date: T::Boolean, start_date: T::Boolean}) }
-                def to_hash
-                end
+                def to_hash; end
               end
             end
           end
@@ -2363,8 +2294,7 @@ module FinchAPI
               override
                 .returns(T::Array[FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
       end
@@ -2380,8 +2310,7 @@ module FinchAPI
           T.let(:"account.updated", FinchAPI::Models::AccountUpdateEvent::EventType::TaggedSymbol)
 
         sig { override.returns(T::Array[FinchAPI::Models::AccountUpdateEvent::EventType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

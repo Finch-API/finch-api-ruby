@@ -22,8 +22,7 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(body:, job_id:, status:)
-        end
+        def self.new(body:, job_id:, status:); end
 
         sig do
           override
@@ -35,8 +34,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module Status
           extend FinchAPI::Internal::Type::Enum
@@ -51,8 +49,7 @@ module FinchAPI
           COMPLETE = T.let(:complete, FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol)
 
           sig { override.returns(T::Array[FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

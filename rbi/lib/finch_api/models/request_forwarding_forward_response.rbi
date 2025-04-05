@@ -41,8 +41,7 @@ module FinchAPI
         )
           .returns(T.attached_class)
       end
-      def self.new(data:, headers:, request:, status_code:)
-      end
+      def self.new(data:, headers:, request:, status_code:); end
 
       sig do
         override
@@ -55,8 +54,7 @@ module FinchAPI
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Request < FinchAPI::Internal::Type::BaseModel
         # The body that was specified for the forwarded request. If a value was not
@@ -96,8 +94,7 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(data:, headers:, method_:, params:, route:)
-        end
+        def self.new(data:, headers:, method_:, params:, route:); end
 
         sig do
           override
@@ -111,8 +108,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

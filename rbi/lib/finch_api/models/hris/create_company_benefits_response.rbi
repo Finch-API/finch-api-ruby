@@ -9,12 +9,10 @@ module FinchAPI
         attr_accessor :benefit_id
 
         sig { params(benefit_id: String).returns(T.attached_class) }
-        def self.new(benefit_id:)
-        end
+        def self.new(benefit_id:); end
 
         sig { override.returns({benefit_id: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

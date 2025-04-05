@@ -88,8 +88,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Department < FinchAPI::Internal::Type::BaseModel
           # The name of the department.
@@ -98,12 +97,10 @@ module FinchAPI
 
           # The department object.
           sig { params(name: T.nilable(String)).returns(T.attached_class) }
-          def self.new(name: nil)
-          end
+          def self.new(name: nil); end
 
           sig { override.returns({name: T.nilable(String)}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Manager < FinchAPI::Internal::Type::BaseModel
@@ -116,12 +113,10 @@ module FinchAPI
 
           # The manager object.
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id: nil)
-          end
+          def self.new(id: nil); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
     end

@@ -31,9 +31,7 @@ module FinchAPI
           type:,
           params:,
           request_options: {}
-        )
-        end
-
+        ); end
         # Get an automated job by `job_id`.
         sig do
           params(
@@ -42,8 +40,7 @@ module FinchAPI
           )
             .returns(FinchAPI::Models::Jobs::AutomatedAsyncJob)
         end
-        def retrieve(job_id, request_options: {})
-        end
+        def retrieve(job_id, request_options: {}); end
 
         # Get all automated jobs. Automated jobs are completed by a machine. By default,
         #   jobs are sorted in descending order by submission time. For scheduled jobs such
@@ -62,13 +59,10 @@ module FinchAPI
           # Index to start from (defaults to 0)
           offset: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

@@ -30,15 +30,13 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(body: nil, code: nil, payment_id: nil)
-        end
+        def self.new(body: nil, code: nil, payment_id: nil); end
 
         sig do
           override
             .returns({body: FinchAPI::Models::HRIS::PayStatementResponseBody, code: Integer, payment_id: String})
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

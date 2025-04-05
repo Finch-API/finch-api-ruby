@@ -78,9 +78,7 @@ module FinchAPI
         provider_id:,
         customer_id: nil,
         token_type: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -98,8 +96,7 @@ module FinchAPI
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The type of application associated with a token.
       module ClientType
@@ -114,8 +111,7 @@ module FinchAPI
         SANDBOX = T.let(:sandbox, FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol)
 
         sig { override.returns(T::Array[FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # The type of the connection associated with the token.
@@ -134,8 +130,7 @@ module FinchAPI
         FINCH = T.let(:finch, FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol)
 
         sig { override.returns(T::Array[FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

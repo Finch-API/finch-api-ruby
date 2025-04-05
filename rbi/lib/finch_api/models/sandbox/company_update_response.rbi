@@ -50,9 +50,9 @@ module FinchAPI
             ),
             departments: T.nilable(
               T::Array[
-              T.nilable(
-                T.any(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department, FinchAPI::Internal::AnyHash)
-              )
+                T.nilable(
+                  T.any(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department, FinchAPI::Internal::AnyHash)
+                )
               ]
             ),
             ein: T.nilable(String),
@@ -91,8 +91,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Account < FinchAPI::Internal::Type::BaseModel
           # The name of the bank associated in the payroll/HRIS system.
@@ -147,8 +146,7 @@ module FinchAPI
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The type of bank account.
           module AccountType
@@ -174,8 +172,7 @@ module FinchAPI
               override
                 .returns(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -207,8 +204,7 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(name: nil, parent: nil)
-          end
+          def self.new(name: nil, parent: nil); end
 
           sig do
             override
@@ -219,8 +215,7 @@ module FinchAPI
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Parent < FinchAPI::Internal::Type::BaseModel
             # The parent department's name.
@@ -229,12 +224,10 @@ module FinchAPI
 
             # The parent department, if present.
             sig { params(name: T.nilable(String)).returns(T.attached_class) }
-            def self.new(name: nil)
-            end
+            def self.new(name: nil); end
 
             sig { override.returns({name: T.nilable(String)}) }
-            def to_hash
-            end
+            def to_hash; end
           end
         end
 
@@ -255,8 +248,7 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(subtype: nil, type: nil)
-          end
+          def self.new(subtype: nil, type: nil); end
 
           sig do
             override
@@ -267,8 +259,7 @@ module FinchAPI
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The tax payer subtype of the company.
           module Subtype
@@ -289,8 +280,7 @@ module FinchAPI
             sig do
               override.returns(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # The tax payer type of the company.
@@ -316,8 +306,7 @@ module FinchAPI
               T.let(:cooperative, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)
 
             sig { override.returns(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
       end

@@ -41,8 +41,7 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(options: nil, requests: nil, request_options: {})
-        end
+        def self.new(options: nil, requests: nil, request_options: {}); end
 
         sig do
           override
@@ -54,8 +53,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Options < FinchAPI::Internal::Type::BaseModel
           sig { returns(T.nilable(T::Array[String])) }
@@ -65,12 +63,10 @@ module FinchAPI
           attr_writer :include
 
           sig { params(include: T::Array[String]).returns(T.attached_class) }
-          def self.new(include: nil)
-          end
+          def self.new(include: nil); end
 
           sig { override.returns({include: T::Array[String]}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Request < FinchAPI::Internal::Type::BaseModel
@@ -81,12 +77,10 @@ module FinchAPI
           attr_writer :individual_id
 
           sig { params(individual_id: String).returns(T.attached_class) }
-          def self.new(individual_id: nil)
-          end
+          def self.new(individual_id: nil); end
 
           sig { override.returns({individual_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
     end

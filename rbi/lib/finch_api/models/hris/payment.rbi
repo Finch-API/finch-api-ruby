@@ -101,9 +101,7 @@ module FinchAPI
           pay_frequencies: nil,
           pay_group_ids: nil,
           pay_period: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -123,8 +121,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module PayFrequency
           extend FinchAPI::Internal::Type::Enum
@@ -144,8 +141,7 @@ module FinchAPI
           OTHER = T.let(:other, FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol)
 
           sig { override.returns(T::Array[FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class PayPeriod < FinchAPI::Internal::Type::BaseModel
@@ -157,12 +153,10 @@ module FinchAPI
 
           # The pay period object.
           sig { params(end_date: T.nilable(String), start_date: T.nilable(String)).returns(T.attached_class) }
-          def self.new(end_date: nil, start_date: nil)
-          end
+          def self.new(end_date: nil, start_date: nil); end
 
           sig { override.returns({end_date: T.nilable(String), start_date: T.nilable(String)}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
     end

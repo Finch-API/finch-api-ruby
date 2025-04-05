@@ -33,9 +33,7 @@ module FinchAPI
           redirect_uri: nil,
           sandbox: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # Create a new Connect session for reauthenticating an existing connection
         sig do
           params(
@@ -58,13 +56,10 @@ module FinchAPI
           # The URI to redirect to after the Connect flow is completed
           redirect_uri: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

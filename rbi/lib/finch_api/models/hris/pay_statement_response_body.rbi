@@ -27,8 +27,7 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(paging: nil, pay_statements: nil)
-        end
+        def self.new(paging: nil, pay_statements: nil); end
 
         sig do
           override
@@ -36,8 +35,7 @@ module FinchAPI
               {paging: FinchAPI::Models::Paging, pay_statements: T::Array[FinchAPI::Models::HRIS::PayStatement]}
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

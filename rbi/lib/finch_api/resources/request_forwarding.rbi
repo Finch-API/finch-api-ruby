@@ -37,13 +37,10 @@ module FinchAPI
         #   a valid JSON object rather than a query string.
         params: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

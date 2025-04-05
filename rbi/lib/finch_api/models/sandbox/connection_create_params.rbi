@@ -68,8 +68,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module AuthenticationType
           extend FinchAPI::Internal::Type::Enum
@@ -92,8 +91,7 @@ module FinchAPI
             override
               .returns(T::Array[FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

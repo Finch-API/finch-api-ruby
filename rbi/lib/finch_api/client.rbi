@@ -51,18 +51,15 @@ module FinchAPI
 
     # @api private
     sig { override.returns(T::Hash[String, String]) }
-    private def auth_headers
-    end
+    private def auth_headers; end
 
     # @api private
     sig { returns(T::Hash[String, String]) }
-    private def bearer_auth
-    end
+    private def bearer_auth; end
 
     # @api private
     sig { returns(T::Hash[String, String]) }
-    private def basic_auth
-    end
+    private def basic_auth; end
 
     # Creates and returns a new client for interacting with the API.
     sig do
@@ -91,7 +88,6 @@ module FinchAPI
       timeout: DEFAULT_TIMEOUT_IN_SECONDS,
       initial_retry_delay: DEFAULT_INITIAL_RETRY_DELAY,
       max_retry_delay: DEFAULT_MAX_RETRY_DELAY
-    )
-    end
+    ); end
   end
 end

@@ -39,8 +39,7 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(end_date: nil, pay_statements: nil, start_date: nil, request_options: {})
-        end
+        def self.new(end_date: nil, pay_statements: nil, start_date: nil, request_options: {}); end
 
         sig do
           override
@@ -53,8 +52,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class PayStatement < FinchAPI::Internal::Type::BaseModel
           # The array of earnings objects associated with this pay statement
@@ -123,29 +121,29 @@ module FinchAPI
             params(
               earnings: T.nilable(
                 T::Array[
-                T.nilable(
-                  T.any(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning, FinchAPI::Internal::AnyHash)
-                )
+                  T.nilable(
+                    T.any(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning, FinchAPI::Internal::AnyHash)
+                  )
                 ]
               ),
               employee_deductions: T.nilable(
                 T::Array[
-                T.nilable(
-                  T.any(
-                    FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction,
-                    FinchAPI::Internal::AnyHash
+                  T.nilable(
+                    T.any(
+                      FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction,
+                      FinchAPI::Internal::AnyHash
+                    )
                   )
-                )
                 ]
               ),
               employer_contributions: T.nilable(
                 T::Array[
-                T.nilable(
-                  T.any(
-                    FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution,
-                    FinchAPI::Internal::AnyHash
+                  T.nilable(
+                    T.any(
+                      FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution,
+                      FinchAPI::Internal::AnyHash
+                    )
                   )
-                )
                 ]
               ),
               gross_pay: T.nilable(T.any(FinchAPI::Models::Money, FinchAPI::Internal::AnyHash)),
@@ -154,9 +152,9 @@ module FinchAPI
               payment_method: T.nilable(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::OrSymbol),
               taxes: T.nilable(
                 T::Array[
-                T.nilable(
-                  T.any(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax, FinchAPI::Internal::AnyHash)
-                )
+                  T.nilable(
+                    T.any(FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax, FinchAPI::Internal::AnyHash)
+                  )
                 ]
               ),
               total_hours: T.nilable(Float),
@@ -175,9 +173,7 @@ module FinchAPI
             taxes: nil,
             total_hours: nil,
             type: nil
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -199,8 +195,7 @@ module FinchAPI
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Earning < FinchAPI::Internal::Type::BaseModel
             # The earnings amount in cents.
@@ -256,8 +251,7 @@ module FinchAPI
               )
                 .returns(T.attached_class)
             end
-            def self.new(amount: nil, attributes: nil, currency: nil, hours: nil, name: nil, type: nil)
-            end
+            def self.new(amount: nil, attributes: nil, currency: nil, hours: nil, name: nil, type: nil); end
 
             sig do
               override
@@ -272,8 +266,7 @@ module FinchAPI
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class Attributes < FinchAPI::Internal::Type::BaseModel
               sig do
@@ -303,8 +296,7 @@ module FinchAPI
                 )
                   .returns(T.attached_class)
               end
-              def self.new(metadata: nil)
-              end
+              def self.new(metadata: nil); end
 
               sig do
                 override
@@ -312,8 +304,7 @@ module FinchAPI
                     {metadata: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::Metadata}
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Metadata < FinchAPI::Internal::Type::BaseModel
                 # The metadata to be attached to the entity by existing rules. It is a key-value
@@ -326,12 +317,10 @@ module FinchAPI
                 attr_writer :metadata
 
                 sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
-                def self.new(metadata: nil)
-                end
+                def self.new(metadata: nil); end
 
                 sig { override.returns({metadata: T::Hash[Symbol, T.anything]}) }
-                def to_hash
-                end
+                def to_hash; end
               end
             end
 
@@ -398,8 +387,7 @@ module FinchAPI
                     T::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
           end
 
@@ -460,8 +448,7 @@ module FinchAPI
               )
                 .returns(T.attached_class)
             end
-            def self.new(amount: nil, attributes: nil, currency: nil, name: nil, pre_tax: nil, type: nil)
-            end
+            def self.new(amount: nil, attributes: nil, currency: nil, name: nil, pre_tax: nil, type: nil); end
 
             sig do
               override
@@ -476,8 +463,7 @@ module FinchAPI
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class Attributes < FinchAPI::Internal::Type::BaseModel
               sig do
@@ -509,8 +495,7 @@ module FinchAPI
                 )
                   .returns(T.attached_class)
               end
-              def self.new(metadata: nil)
-              end
+              def self.new(metadata: nil); end
 
               sig do
                 override
@@ -520,8 +505,7 @@ module FinchAPI
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Metadata < FinchAPI::Internal::Type::BaseModel
                 # The metadata to be attached to the entity by existing rules. It is a key-value
@@ -534,12 +518,10 @@ module FinchAPI
                 attr_writer :metadata
 
                 sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
-                def self.new(metadata: nil)
-                end
+                def self.new(metadata: nil); end
 
                 sig { override.returns({metadata: T::Hash[Symbol, T.anything]}) }
-                def to_hash
-                end
+                def to_hash; end
               end
             end
           end
@@ -596,8 +578,7 @@ module FinchAPI
               )
                 .returns(T.attached_class)
             end
-            def self.new(amount: nil, attributes: nil, currency: nil, name: nil, type: nil)
-            end
+            def self.new(amount: nil, attributes: nil, currency: nil, name: nil, type: nil); end
 
             sig do
               override
@@ -611,8 +592,7 @@ module FinchAPI
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class Attributes < FinchAPI::Internal::Type::BaseModel
               sig do
@@ -644,8 +624,7 @@ module FinchAPI
                 )
                   .returns(T.attached_class)
               end
-              def self.new(metadata: nil)
-              end
+              def self.new(metadata: nil); end
 
               sig do
                 override
@@ -655,8 +634,7 @@ module FinchAPI
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Metadata < FinchAPI::Internal::Type::BaseModel
                 # The metadata to be attached to the entity by existing rules. It is a key-value
@@ -669,12 +647,10 @@ module FinchAPI
                 attr_writer :metadata
 
                 sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
-                def self.new(metadata: nil)
-                end
+                def self.new(metadata: nil); end
 
                 sig { override.returns({metadata: T::Hash[Symbol, T.anything]}) }
-                def to_hash
-                end
+                def to_hash; end
               end
             end
           end
@@ -708,8 +684,7 @@ module FinchAPI
                   T::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           class Tax < FinchAPI::Internal::Type::BaseModel
@@ -781,8 +756,7 @@ module FinchAPI
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class Attributes < FinchAPI::Internal::Type::BaseModel
               sig do
@@ -812,8 +786,7 @@ module FinchAPI
                 )
                   .returns(T.attached_class)
               end
-              def self.new(metadata: nil)
-              end
+              def self.new(metadata: nil); end
 
               sig do
                 override
@@ -821,8 +794,7 @@ module FinchAPI
                     {metadata: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::Metadata}
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Metadata < FinchAPI::Internal::Type::BaseModel
                 # The metadata to be attached to the entity by existing rules. It is a key-value
@@ -835,12 +807,10 @@ module FinchAPI
                 attr_writer :metadata
 
                 sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
-                def self.new(metadata: nil)
-                end
+                def self.new(metadata: nil); end
 
                 sig { override.returns({metadata: T::Hash[Symbol, T.anything]}) }
-                def to_hash
-                end
+                def to_hash; end
               end
             end
 
@@ -872,8 +842,7 @@ module FinchAPI
                 override
                   .returns(T::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::TaggedSymbol])
               end
-              def self.values
-              end
+              def self.values; end
             end
           end
 
@@ -900,8 +869,7 @@ module FinchAPI
               override
                 .returns(T::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
       end

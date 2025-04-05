@@ -14,12 +14,10 @@ module FinchAPI
       attr_writer :currency
 
       sig { params(amount: T.nilable(Integer), currency: String).returns(T.attached_class) }
-      def self.new(amount: nil, currency: nil)
-      end
+      def self.new(amount: nil, currency: nil); end
 
       sig { override.returns({amount: T.nilable(Integer), currency: String}) }
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end
