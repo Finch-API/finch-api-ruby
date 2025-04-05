@@ -82,7 +82,7 @@ module FinchAPI
               #   For retirement benefits only - whether catch up contributions are enabled
               #
               #   @return [Boolean, nil]
-              optional :catch_up, FinchAPI::Internal::Type::BooleanModel
+              optional :catch_up, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]

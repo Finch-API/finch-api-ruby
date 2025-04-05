@@ -25,7 +25,7 @@ module FinchAPI
         @client.request(
           method: :post,
           path: "forward",
-          body: parsed,
+          body: parsed.transform_keys(method_: :method),
           model: FinchAPI::Models::RequestForwardingForwardResponse,
           options: options
         )

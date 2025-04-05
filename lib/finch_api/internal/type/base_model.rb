@@ -175,7 +175,9 @@ module FinchAPI
           # @param other [Object]
           #
           # @return [Boolean]
-          def ==(other) = other.is_a?(Class) && other <= FinchAPI::Internal::Type::BaseModel && other.fields == fields
+          def ==(other)
+            other.is_a?(Class) && other <= FinchAPI::Internal::Type::BaseModel && other.fields == fields
+          end
         end
 
         # @param other [Object]
@@ -263,6 +265,7 @@ module FinchAPI
               return super
             end
 
+            is_param = singleton_class <= FinchAPI::Internal::Type::RequestParameters::Converter
             acc = {}
 
             coerced.each do |key, val|
@@ -271,19 +274,21 @@ module FinchAPI
               in nil
                 acc.store(name, super(val))
               else
-                mode, api_name, type_fn = field.fetch_values(:mode, :api_name, :type_fn)
+                mode, type_fn = field.fetch_values(:mode, :type_fn)
                 case mode
                 in :coerce
                   next
                 else
                   target = type_fn.call
+                  api_name = is_param ? name : field.fetch(:api_name)
                   acc.store(api_name, FinchAPI::Internal::Type::Converter.dump(target, val))
                 end
               end
             end
 
-            known_fields.each_value do |field|
-              mode, api_name, const = field.fetch_values(:mode, :api_name, :const)
+            known_fields.each do |name, field|
+              mode, const = field.fetch_values(:mode, :const)
+              api_name = is_param ? name : field.fetch(:api_name)
               next if mode == :coerce || acc.key?(api_name) || const == FinchAPI::Internal::OMIT
               acc.store(api_name, const)
             end
@@ -357,7 +362,8 @@ module FinchAPI
           in Hash => coerced
             @data = coerced
           else
-            raise ArgumentError.new("Expected a #{Hash} or #{FinchAPI::Internal::Type::BaseModel}, got #{data.inspect}")
+            message = "Expected a #{Hash} or #{FinchAPI::Internal::Type::BaseModel}, got #{data.inspect}"
+            raise ArgumentError.new(message)
           end
         end
 
@@ -365,7 +371,7 @@ module FinchAPI
         def inspect
           rows = self.class.known_fields.keys.map do
             "#{_1}=#{@data.key?(_1) ? public_send(_1) : ''}"
-          rescue FinchAPI::ConversionError
+          rescue FinchAPI::Errors::ConversionError
             "#{_1}=#{@data.fetch(_1)}"
           end
           "#<#{self.class.name}:0x#{object_id.to_s(16)} #{rows.join(' ')}>"

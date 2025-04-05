@@ -8,7 +8,7 @@ module FinchAPI
       # @abstract
       #
       # Ruby has no Boolean class; this is something for models to refer to.
-      class BooleanModel
+      class Boolean
         extend FinchAPI::Internal::Type::Converter
 
         # @param other [Object]
@@ -19,7 +19,7 @@ module FinchAPI
         # @param other [Object]
         #
         # @return [Boolean]
-        def self.==(other) = other.is_a?(Class) && other <= FinchAPI::Internal::Type::BooleanModel
+        def self.==(other) = other.is_a?(Class) && other <= FinchAPI::Internal::Type::Boolean
 
         class << self
           # @api private

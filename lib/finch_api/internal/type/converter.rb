@@ -3,7 +3,6 @@
 module FinchAPI
   module Internal
     module Type
-      # rubocop:disable Metrics/ModuleLength
       # @api private
       module Converter
         # rubocop:disable Lint/UnusedMethodArgument
@@ -64,7 +63,7 @@ module FinchAPI
             in Hash
               type_info(spec.slice(:const, :enum, :union).first&.last)
             in true | false
-              -> { FinchAPI::Internal::Type::BooleanModel }
+              -> { FinchAPI::Internal::Type::Boolean }
             in FinchAPI::Internal::Type::Converter | Class | Symbol
               -> { spec }
             in NilClass | Integer | Float
@@ -168,6 +167,9 @@ module FinchAPI
                 in String | Symbol | Numeric
                   exactness[value.is_a?(Numeric) ? :maybe : :yes] += 1
                   return value.to_s
+                in StringIO
+                  exactness[:yes] += 1
+                  return value.string
                 else
                   if strictness == :strong
                     message = "no implicit conversion of #{value.class} into #{target.inspect}"
@@ -209,11 +211,12 @@ module FinchAPI
           #
           # @return [Object]
           def dump(target, value)
+            # rubocop:disable Layout/LineLength
             target.is_a?(FinchAPI::Internal::Type::Converter) ? target.dump(value) : FinchAPI::Internal::Type::Unknown.dump(value)
+            # rubocop:enable Layout/LineLength
           end
         end
       end
-      # rubocop:enable Metrics/ModuleLength
     end
   end
 end

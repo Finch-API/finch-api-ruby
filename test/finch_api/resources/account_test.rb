@@ -37,7 +37,7 @@ class FinchAPI::Test::Resources::AccountTest < FinchAPI::Test::ResourceTest
         customer_email: String | nil,
         customer_id: String | nil,
         customer_name: String | nil,
-        manual: FinchAPI::Internal::Type::BooleanModel,
+        manual: FinchAPI::Internal::Type::Boolean,
         payroll_provider_id: String,
         products: ^(FinchAPI::Internal::Type::ArrayOf[String]),
         provider_id: String,

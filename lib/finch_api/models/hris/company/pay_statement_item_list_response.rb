@@ -52,7 +52,7 @@ module FinchAPI
             #     taxes.
             #
             #   @return [Boolean, nil]
-            optional :employer, FinchAPI::Internal::Type::BooleanModel, nil?: true
+            optional :employer, FinchAPI::Internal::Type::Boolean, nil?: true
 
             # @!attribute metadata
             #   The metadata of the pay statement item derived by the rules engine if available.
@@ -66,7 +66,7 @@ module FinchAPI
             #     employee deductions.
             #
             #   @return [Boolean, nil]
-            optional :pre_tax, FinchAPI::Internal::Type::BooleanModel, nil?: true
+            optional :pre_tax, FinchAPI::Internal::Type::Boolean, nil?: true
 
             # @!attribute type
             #   The type of the pay statement item.

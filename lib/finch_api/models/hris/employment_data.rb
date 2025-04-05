@@ -81,7 +81,7 @@ module FinchAPI
         #   `true` if the individual an an active employee or contractor at the company.
         #
         #   @return [Boolean, nil]
-        optional :is_active, FinchAPI::Internal::Type::BooleanModel, nil?: true
+        optional :is_active, FinchAPI::Internal::Type::Boolean, nil?: true
 
         # @!attribute last_name
         #   The legal last name of the individual.

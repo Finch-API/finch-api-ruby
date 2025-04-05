@@ -1,7 +1,7 @@
 module FinchAPI
   module Internal
     module Type
-      class BooleanModel
+      class Boolean
         extend FinchAPI::Internal::Type::Converter
 
         def self.===: (top other) -> bool
