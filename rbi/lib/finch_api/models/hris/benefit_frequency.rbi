@@ -15,8 +15,7 @@ module FinchAPI
         MONTHLY = T.let(:monthly, FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol)
 
         sig { override.returns(T::Array[FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

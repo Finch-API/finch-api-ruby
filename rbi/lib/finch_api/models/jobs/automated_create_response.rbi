@@ -24,8 +24,7 @@ module FinchAPI
           params(allowed_refreshes: Integer, job_id: String, job_url: String, remaining_refreshes: Integer)
             .returns(T.attached_class)
         end
-        def self.new(allowed_refreshes:, job_id:, job_url:, remaining_refreshes:)
-        end
+        def self.new(allowed_refreshes:, job_id:, job_url:, remaining_refreshes:); end
 
         sig do
           override
@@ -36,8 +35,7 @@ module FinchAPI
                        remaining_refreshes: Integer
                      })
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

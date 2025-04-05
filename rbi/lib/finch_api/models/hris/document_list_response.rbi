@@ -20,15 +20,13 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(documents:, paging:)
-        end
+        def self.new(documents:, paging:); end
 
         sig do
           override
             .returns({documents: T::Array[FinchAPI::Models::HRIS::DocumentResponse], paging: FinchAPI::Models::Paging})
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

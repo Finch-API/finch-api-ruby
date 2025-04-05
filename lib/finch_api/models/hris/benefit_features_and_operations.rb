@@ -54,7 +54,7 @@ module FinchAPI
           optional :company_contribution,
                    -> do
                      FinchAPI::Internal::Type::ArrayOf[
-                     enum: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::CompanyContribution, nil?: true
+                       enum: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::CompanyContribution, nil?: true
                      ]
                    end,
                    nil?: true
@@ -72,7 +72,7 @@ module FinchAPI
           optional :employee_deduction,
                    -> do
                      FinchAPI::Internal::Type::ArrayOf[
-                     enum: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::EmployeeDeduction, nil?: true
+                       enum: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::EmployeeDeduction, nil?: true
                      ]
                    end,
                    nil?: true
@@ -96,7 +96,7 @@ module FinchAPI
           optional :hsa_contribution_limit,
                    -> do
                      FinchAPI::Internal::Type::ArrayOf[
-                     enum: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::HsaContributionLimit, nil?: true
+                       enum: FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::HsaContributionLimit, nil?: true
                      ]
                    end,
                    nil?: true

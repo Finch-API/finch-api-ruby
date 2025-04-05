@@ -122,9 +122,7 @@ module FinchAPI
         products:,
         provider_id:,
         username:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -148,8 +146,7 @@ module FinchAPI
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class AuthenticationMethod < FinchAPI::Internal::Type::BaseModel
         sig { returns(T.nilable(FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus)) }
@@ -191,8 +188,7 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(connection_status: nil, products: nil, type: nil)
-        end
+        def self.new(connection_status: nil, products: nil, type: nil); end
 
         sig do
           override
@@ -204,8 +200,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class ConnectionStatus < FinchAPI::Internal::Type::BaseModel
           sig { returns(T.nilable(String)) }
@@ -223,12 +218,10 @@ module FinchAPI
           sig do
             params(message: String, status: FinchAPI::Models::ConnectionStatusType::OrSymbol).returns(T.attached_class)
           end
-          def self.new(message: nil, status: nil)
-          end
+          def self.new(message: nil, status: nil); end
 
           sig { override.returns({message: String, status: FinchAPI::Models::ConnectionStatusType::TaggedSymbol}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         # The type of authentication method.
@@ -249,8 +242,7 @@ module FinchAPI
           OAUTH = T.let(:oauth, FinchAPI::Models::Introspection::AuthenticationMethod::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[FinchAPI::Models::Introspection::AuthenticationMethod::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -267,8 +259,7 @@ module FinchAPI
         SANDBOX = T.let(:sandbox, FinchAPI::Models::Introspection::ClientType::TaggedSymbol)
 
         sig { override.returns(T::Array[FinchAPI::Models::Introspection::ClientType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class ConnectionStatus < FinchAPI::Internal::Type::BaseModel
@@ -299,8 +290,7 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(last_successful_sync: nil, message: nil, status: nil)
-        end
+        def self.new(last_successful_sync: nil, message: nil, status: nil); end
 
         sig do
           override
@@ -308,8 +298,7 @@ module FinchAPI
               {last_successful_sync: Time, message: String, status: FinchAPI::Models::ConnectionStatusType::TaggedSymbol}
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # The type of the connection associated with the token.
@@ -327,8 +316,7 @@ module FinchAPI
         FINCH = T.let(:finch, FinchAPI::Models::Introspection::ConnectionType::TaggedSymbol)
 
         sig { override.returns(T::Array[FinchAPI::Models::Introspection::ConnectionType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

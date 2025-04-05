@@ -22,8 +22,7 @@ module FinchAPI
       CLIENT_ACCESS_ONLY = T.let(:client_access_only, FinchAPI::Models::OperationSupport::TaggedSymbol)
 
       sig { override.returns(T::Array[FinchAPI::Models::OperationSupport::TaggedSymbol]) }
-      def self.values
-      end
+      def self.values; end
     end
   end
 end

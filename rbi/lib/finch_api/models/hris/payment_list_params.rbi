@@ -25,14 +25,12 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(end_date:, start_date:, request_options: {})
-        end
+        def self.new(end_date:, start_date:, request_options: {}); end
 
         sig do
           override.returns({end_date: Date, start_date: Date, request_options: FinchAPI::RequestOptions})
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

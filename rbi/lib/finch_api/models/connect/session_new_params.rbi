@@ -70,9 +70,7 @@ module FinchAPI
           redirect_uri: nil,
           sandbox: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -90,8 +88,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The Finch products that can be requested during the Connect flow.
         module Product
@@ -111,8 +108,7 @@ module FinchAPI
           SSN = T.let(:ssn, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
 
           sig { override.returns(T::Array[FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class Integration < FinchAPI::Internal::Type::BaseModel
@@ -129,8 +125,7 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(auth_method: nil, provider: nil)
-          end
+          def self.new(auth_method: nil, provider: nil); end
 
           sig do
             override
@@ -141,8 +136,7 @@ module FinchAPI
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module AuthMethod
             extend FinchAPI::Internal::Type::Enum
@@ -164,8 +158,7 @@ module FinchAPI
               override
                 .returns(T::Array[FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -180,8 +173,7 @@ module FinchAPI
           PROVIDER = T.let(:provider, FinchAPI::Models::Connect::SessionNewParams::Sandbox::TaggedSymbol)
 
           sig { override.returns(T::Array[FinchAPI::Models::Connect::SessionNewParams::Sandbox::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

@@ -20,9 +20,9 @@ module FinchAPI
             middle_name: T.nilable(String),
             phone_numbers: T.nilable(
               T::Array[
-              T.nilable(
-                T.any(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber, FinchAPI::Internal::AnyHash)
-              )
+                T.nilable(
+                  T.any(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber, FinchAPI::Internal::AnyHash)
+                )
               ]
             ),
             preferred_name: T.nilable(String),
@@ -60,13 +60,10 @@ module FinchAPI
           #   [Click here to learn more about enabling the SSN field](/developer-resources/Enable-SSN-Field).
           ssn: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

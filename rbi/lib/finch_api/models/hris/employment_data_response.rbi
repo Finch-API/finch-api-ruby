@@ -31,12 +31,10 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(body: nil, code: nil, individual_id: nil)
-        end
+        def self.new(body: nil, code: nil, individual_id: nil); end
 
         sig { override.returns({body: FinchAPI::Models::HRIS::EmploymentData, code: Integer, individual_id: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

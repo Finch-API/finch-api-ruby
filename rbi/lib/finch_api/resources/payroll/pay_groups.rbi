@@ -12,8 +12,7 @@ module FinchAPI
           )
             .returns(FinchAPI::Models::Payroll::PayGroupRetrieveResponse)
         end
-        def retrieve(pay_group_id, request_options: {})
-        end
+        def retrieve(pay_group_id, request_options: {}); end
 
         # Read company pay groups and frequencies
         sig do
@@ -24,13 +23,11 @@ module FinchAPI
           )
             .returns(FinchAPI::Internal::SinglePage[FinchAPI::Models::Payroll::PayGroupListResponse])
         end
-        def list(individual_id: nil, pay_frequencies: nil, request_options: {})
-        end
+        def list(individual_id: nil, pay_frequencies: nil, request_options: {}); end
 
         # @api private
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

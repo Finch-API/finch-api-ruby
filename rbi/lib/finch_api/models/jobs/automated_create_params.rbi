@@ -28,8 +28,7 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(type:, params:, request_options: {})
-        end
+        def self.new(type:, params:, request_options: {}); end
 
         sig do
           override
@@ -41,8 +40,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The type of job to start.
         module Type
@@ -56,8 +54,7 @@ module FinchAPI
             T.let(:w4_form_employee_sync, FinchAPI::Models::Jobs::AutomatedCreateParams::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[FinchAPI::Models::Jobs::AutomatedCreateParams::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class Params < FinchAPI::Internal::Type::BaseModel
@@ -66,12 +63,10 @@ module FinchAPI
           attr_accessor :individual_id
 
           sig { params(individual_id: String).returns(T.attached_class) }
-          def self.new(individual_id:)
-          end
+          def self.new(individual_id:); end
 
           sig { override.returns({individual_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
     end

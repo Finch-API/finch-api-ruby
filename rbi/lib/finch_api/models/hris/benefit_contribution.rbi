@@ -19,8 +19,7 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(amount: nil, type: nil)
-        end
+        def self.new(amount: nil, type: nil); end
 
         sig do
           override
@@ -28,8 +27,7 @@ module FinchAPI
               {amount: T.nilable(Integer), type: T.nilable(FinchAPI::Models::HRIS::BenefitContribution::Type::TaggedSymbol)}
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Contribution type.
         module Type
@@ -43,8 +41,7 @@ module FinchAPI
           PERCENT = T.let(:percent, FinchAPI::Models::HRIS::BenefitContribution::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[FinchAPI::Models::HRIS::BenefitContribution::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

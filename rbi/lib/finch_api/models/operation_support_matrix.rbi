@@ -64,8 +64,7 @@ module FinchAPI
         )
           .returns(T.attached_class)
       end
-      def self.new(create: nil, delete: nil, read: nil, update: nil)
-      end
+      def self.new(create: nil, delete: nil, read: nil, update: nil); end
 
       sig do
         override
@@ -78,8 +77,7 @@ module FinchAPI
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

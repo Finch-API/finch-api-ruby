@@ -25,9 +25,7 @@ module FinchAPI
             #   `employment`, `individual`)
             products: nil,
             request_options: {}
-          )
-          end
-
+          ); end
           # Update an existing sandbox account. Change the connection status to understand
           #   how the Finch API responds.
           sig do
@@ -37,13 +35,11 @@ module FinchAPI
             )
               .returns(FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse)
           end
-          def update(connection_status: nil, request_options: {})
-          end
+          def update(connection_status: nil, request_options: {}); end
 
           # @api private
           sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-          def self.new(client:)
-          end
+          def self.new(client:); end
         end
       end
     end

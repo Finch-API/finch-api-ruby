@@ -28,8 +28,7 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(id:, individual_ids:, name:, pay_frequencies:)
-        end
+        def self.new(id:, individual_ids:, name:, pay_frequencies:); end
 
         sig do
           override
@@ -42,8 +41,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module PayFrequency
           extend FinchAPI::Internal::Type::Enum
@@ -72,8 +70,7 @@ module FinchAPI
           sig do
             override.returns(T::Array[FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

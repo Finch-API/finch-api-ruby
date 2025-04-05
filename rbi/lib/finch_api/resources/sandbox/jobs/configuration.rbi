@@ -10,8 +10,7 @@ module FinchAPI
             params(request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)))
               .returns(T::Array[FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration])
           end
-          def retrieve(request_options: {})
-          end
+          def retrieve(request_options: {}); end
 
           # Update configurations for sandbox jobs
           sig do
@@ -22,13 +21,11 @@ module FinchAPI
             )
               .returns(FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration)
           end
-          def update(completion_status:, type:, request_options: {})
-          end
+          def update(completion_status:, type:, request_options: {}); end
 
           # @api private
           sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-          def self.new(client:)
-          end
+          def self.new(client:); end
         end
       end
     end

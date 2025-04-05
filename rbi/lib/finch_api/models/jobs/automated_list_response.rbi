@@ -20,8 +20,7 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(data:, meta:)
-        end
+        def self.new(data:, meta:); end
 
         sig do
           override
@@ -32,8 +31,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Meta < FinchAPI::Internal::Type::BaseModel
           # Information about remaining quotas for this connection. Only applicable for
@@ -57,12 +55,10 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(quotas: nil)
-          end
+          def self.new(quotas: nil); end
 
           sig { override.returns({quotas: FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas}) }
-          def to_hash
-          end
+          def to_hash; end
 
           class Quotas < FinchAPI::Internal::Type::BaseModel
             sig { returns(T.nilable(FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll)) }
@@ -92,14 +88,12 @@ module FinchAPI
               )
                 .returns(T.attached_class)
             end
-            def self.new(data_sync_all: nil)
-            end
+            def self.new(data_sync_all: nil); end
 
             sig do
               override.returns({data_sync_all: FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll})
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class DataSyncAll < FinchAPI::Internal::Type::BaseModel
               sig { returns(T.nilable(Integer)) }
@@ -117,12 +111,10 @@ module FinchAPI
               sig do
                 params(allowed_refreshes: Integer, remaining_refreshes: Integer).returns(T.attached_class)
               end
-              def self.new(allowed_refreshes: nil, remaining_refreshes: nil)
-              end
+              def self.new(allowed_refreshes: nil, remaining_refreshes: nil); end
 
               sig { override.returns({allowed_refreshes: Integer, remaining_refreshes: Integer}) }
-              def to_hash
-              end
+              def to_hash; end
             end
           end
         end

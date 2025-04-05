@@ -37,8 +37,7 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(body: nil, code: nil, individual_id: nil)
-          end
+          def self.new(body: nil, code: nil, individual_id: nil); end
 
           sig do
             override
@@ -50,8 +49,7 @@ module FinchAPI
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Body < FinchAPI::Internal::Type::BaseModel
             # A descriptive identifier for the response.
@@ -70,8 +68,7 @@ module FinchAPI
               params(finch_code: T.nilable(String), message: T.nilable(String), name: T.nilable(String))
                 .returns(T.attached_class)
             end
-            def self.new(finch_code: nil, message: nil, name: nil)
-            end
+            def self.new(finch_code: nil, message: nil, name: nil); end
 
             sig do
               override.returns(
@@ -82,8 +79,7 @@ module FinchAPI
                 }
               )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           # HTTP status code. Either 201 or 200
@@ -101,8 +97,7 @@ module FinchAPI
             FORBIDDEN = T.let(403, FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code::TaggedInteger)
 
             sig { override.returns(T::Array[FinchAPI::Models::HRIS::Benefits::EnrolledIndividual::Code::TaggedInteger]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
       end

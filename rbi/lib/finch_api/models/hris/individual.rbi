@@ -97,9 +97,7 @@ module FinchAPI
           preferred_name: nil,
           residence: nil,
           ssn: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -120,8 +118,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Email < FinchAPI::Internal::Type::BaseModel
           sig { returns(T.nilable(String)) }
@@ -137,15 +134,13 @@ module FinchAPI
             params(data: String, type: T.nilable(FinchAPI::Models::HRIS::Individual::Email::Type::OrSymbol))
               .returns(T.attached_class)
           end
-          def self.new(data: nil, type: nil)
-          end
+          def self.new(data: nil, type: nil); end
 
           sig do
             override
               .returns({data: String, type: T.nilable(FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol)})
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module Type
             extend FinchAPI::Internal::Type::Enum
@@ -158,8 +153,7 @@ module FinchAPI
             PERSONAL = T.let(:personal, FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol)
 
             sig { override.returns(T::Array[FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -187,8 +181,7 @@ module FinchAPI
             T.let(:decline_to_specify, FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol)
 
           sig { override.returns(T::Array[FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         # The gender of the individual.
@@ -205,8 +198,7 @@ module FinchAPI
           DECLINE_TO_SPECIFY = T.let(:decline_to_specify, FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol)
 
           sig { override.returns(T::Array[FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class PhoneNumber < FinchAPI::Internal::Type::BaseModel
@@ -223,8 +215,7 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(data: nil, type: nil)
-          end
+          def self.new(data: nil, type: nil); end
 
           sig do
             override
@@ -235,8 +226,7 @@ module FinchAPI
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module Type
             extend FinchAPI::Internal::Type::Enum
@@ -249,8 +239,7 @@ module FinchAPI
             PERSONAL = T.let(:personal, FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::TaggedSymbol)
 
             sig { override.returns(T::Array[FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
       end
