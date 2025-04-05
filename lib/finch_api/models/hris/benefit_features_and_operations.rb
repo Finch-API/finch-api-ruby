@@ -37,14 +37,14 @@ module FinchAPI
           #   Whether the provider supports an annual maximum for this benefit.
           #
           #   @return [Boolean, nil]
-          optional :annual_maximum, FinchAPI::Internal::Type::BooleanModel, nil?: true
+          optional :annual_maximum, FinchAPI::Internal::Type::Boolean, nil?: true
 
           # @!attribute catch_up
           #   Whether the provider supports catch up for this benefit. This field will only be
           #     true for retirement benefits.
           #
           #   @return [Boolean, nil]
-          optional :catch_up, FinchAPI::Internal::Type::BooleanModel, nil?: true
+          optional :catch_up, FinchAPI::Internal::Type::Boolean, nil?: true
 
           # @!attribute company_contribution
           #   Supported contribution types. An empty array indicates contributions are not

@@ -304,7 +304,7 @@ module FinchAPI
             #   Boolean indicating if the deduction is pre-tax.
             #
             #   @return [Boolean, nil]
-            optional :pre_tax, FinchAPI::Internal::Type::BooleanModel, nil?: true
+            optional :pre_tax, FinchAPI::Internal::Type::Boolean, nil?: true
 
             # @!attribute type
             #   Type of benefit.
@@ -493,7 +493,7 @@ module FinchAPI
             #   `true` if the amount is paid by the employers.
             #
             #   @return [Boolean, nil]
-            optional :employer, FinchAPI::Internal::Type::BooleanModel, nil?: true
+            optional :employer, FinchAPI::Internal::Type::Boolean, nil?: true
 
             # @!attribute name
             #   The exact name of tax from the pay statement.

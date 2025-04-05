@@ -55,7 +55,7 @@ module FinchAPI
             #     for this individual.
             #
             #   @return [Boolean, nil]
-            optional :catch_up, FinchAPI::Internal::Type::BooleanModel, nil?: true
+            optional :catch_up, FinchAPI::Internal::Type::Boolean, nil?: true
 
             # @!attribute company_contribution
             #

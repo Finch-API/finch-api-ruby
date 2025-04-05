@@ -64,7 +64,7 @@ module FinchAPI
             in Hash
               type_info(spec.slice(:const, :enum, :union).first&.last)
             in true | false
-              -> { FinchAPI::Internal::Type::BooleanModel }
+              -> { FinchAPI::Internal::Type::Boolean }
             in FinchAPI::Internal::Type::Converter | Class | Symbol
               -> { spec }
             in NilClass | Integer | Float
