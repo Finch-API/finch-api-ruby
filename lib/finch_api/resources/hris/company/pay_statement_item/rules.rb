@@ -55,7 +55,7 @@ module FinchAPI
               @client.request(
                 method: :put,
                 path: ["employer/pay-statement-item/rule/%1$s", rule_id],
-                body: parsed,
+                body: parsed.transform_keys(optional_property: :optionalProperty),
                 model: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse,
                 options: options
               )
