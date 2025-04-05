@@ -13,12 +13,10 @@ module FinchAPI
         attr_accessor :session_id
 
         sig { params(connect_url: String, session_id: String).returns(T.attached_class) }
-        def self.new(connect_url:, session_id:)
-        end
+        def self.new(connect_url:, session_id:); end
 
         sig { override.returns({connect_url: String, session_id: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

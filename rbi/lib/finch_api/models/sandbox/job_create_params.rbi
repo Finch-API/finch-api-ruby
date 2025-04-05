@@ -18,8 +18,7 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(type:, request_options: {})
-        end
+        def self.new(type:, request_options: {}); end
 
         sig do
           override
@@ -27,8 +26,7 @@ module FinchAPI
               {type: FinchAPI::Models::Sandbox::JobCreateParams::Type::OrSymbol, request_options: FinchAPI::RequestOptions}
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The type of job to start. Currently the only supported type is `data_sync_all`
         module Type
@@ -41,8 +39,7 @@ module FinchAPI
           DATA_SYNC_ALL = T.let(:data_sync_all, FinchAPI::Models::Sandbox::JobCreateParams::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[FinchAPI::Models::Sandbox::JobCreateParams::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

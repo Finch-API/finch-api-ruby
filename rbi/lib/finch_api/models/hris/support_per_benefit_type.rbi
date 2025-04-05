@@ -7,7 +7,9 @@ module FinchAPI
         sig { returns(T.nilable(FinchAPI::Models::OperationSupportMatrix)) }
         attr_reader :company_benefits
 
-        sig { params(company_benefits: T.any(FinchAPI::Models::OperationSupportMatrix, FinchAPI::Internal::AnyHash)).void }
+        sig do
+          params(company_benefits: T.any(FinchAPI::Models::OperationSupportMatrix, FinchAPI::Internal::AnyHash)).void
+        end
         attr_writer :company_benefits
 
         sig { returns(T.nilable(FinchAPI::Models::OperationSupportMatrix)) }
@@ -26,8 +28,7 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(company_benefits: nil, individual_benefits: nil)
-        end
+        def self.new(company_benefits: nil, individual_benefits: nil); end
 
         sig do
           override
@@ -38,8 +39,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

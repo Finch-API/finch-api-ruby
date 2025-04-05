@@ -28,8 +28,7 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(benefit_id:, description:, frequency:, type:)
-        end
+        def self.new(benefit_id:, description:, frequency:, type:); end
 
         sig do
           override
@@ -42,8 +41,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

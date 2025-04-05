@@ -80,9 +80,7 @@ module FinchAPI
           frequencies: nil,
           hsa_contribution_limit: nil,
           type: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -102,8 +100,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module CompanyContribution
           extend FinchAPI::Internal::Type::Enum
@@ -117,8 +114,7 @@ module FinchAPI
           PERCENT = T.let(:percent, FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution::TaggedSymbol)
 
           sig { override.returns(T::Array[FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         module EmployeeDeduction
@@ -133,8 +129,7 @@ module FinchAPI
           PERCENT = T.let(:percent, FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction::TaggedSymbol)
 
           sig { override.returns(T::Array[FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         module HsaContributionLimit
@@ -150,8 +145,7 @@ module FinchAPI
           FAMILY = T.let(:family, FinchAPI::Models::HRIS::SupportedBenefit::HsaContributionLimit::TaggedSymbol)
 
           sig { override.returns(T::Array[FinchAPI::Models::HRIS::SupportedBenefit::HsaContributionLimit::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

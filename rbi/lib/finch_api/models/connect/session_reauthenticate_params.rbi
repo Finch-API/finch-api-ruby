@@ -55,8 +55,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The Finch products that can be requested during the Connect flow.
         module Product
@@ -82,8 +81,7 @@ module FinchAPI
           SSN = T.let(:ssn, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
 
           sig { override.returns(T::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

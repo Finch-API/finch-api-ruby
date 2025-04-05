@@ -45,8 +45,7 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(attributes: nil, category: nil, name: nil)
-          end
+          def self.new(attributes: nil, category: nil, name: nil); end
 
           sig do
             override
@@ -58,8 +57,7 @@ module FinchAPI
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Attributes < FinchAPI::Internal::Type::BaseModel
             # `true` if the amount is paid by the employers. This field is only available for
@@ -91,8 +89,7 @@ module FinchAPI
               )
                 .returns(T.attached_class)
             end
-            def self.new(employer: nil, metadata: nil, pre_tax: nil, type: nil)
-            end
+            def self.new(employer: nil, metadata: nil, pre_tax: nil, type: nil); end
 
             sig do
               override
@@ -105,8 +102,7 @@ module FinchAPI
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           # The category of the pay statement item.
@@ -143,8 +139,7 @@ module FinchAPI
               override
                 .returns(T::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Category::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
       end

@@ -22,14 +22,12 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(individual_ids: nil, request_options: {})
-          end
+          def self.new(individual_ids: nil, request_options: {}); end
 
           sig do
             override.returns({individual_ids: T::Array[String], request_options: FinchAPI::RequestOptions})
           end
-          def to_hash
-          end
+          def to_hash; end
         end
       end
     end

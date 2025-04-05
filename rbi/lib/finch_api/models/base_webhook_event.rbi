@@ -22,12 +22,10 @@ module FinchAPI
       attr_writer :connection_id
 
       sig { params(account_id: String, company_id: String, connection_id: String).returns(T.attached_class) }
-      def self.new(account_id:, company_id:, connection_id: nil)
-      end
+      def self.new(account_id:, company_id:, connection_id: nil); end
 
       sig { override.returns({account_id: String, company_id: String, connection_id: String}) }
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

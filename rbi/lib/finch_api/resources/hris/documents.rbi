@@ -28,9 +28,7 @@ module FinchAPI
           #   types
           types: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # **Beta:** This endpoint is in beta and may change. Retrieve details of a
         #   specific document by its ID.
         sig do
@@ -44,13 +42,10 @@ module FinchAPI
           # The unique identifier of the document.
           document_id,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

@@ -22,8 +22,7 @@ module FinchAPI
         )
           .returns(T.attached_class)
       end
-      def self.new(data: nil, event_type: nil)
-      end
+      def self.new(data: nil, event_type: nil); end
 
       sig do
         override
@@ -34,8 +33,7 @@ module FinchAPI
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Data < FinchAPI::Internal::Type::BaseModel
         # The date of the payment.
@@ -47,12 +45,10 @@ module FinchAPI
         attr_accessor :payment_id
 
         sig { params(pay_date: String, payment_id: String).returns(T.attached_class) }
-        def self.new(pay_date:, payment_id:)
-        end
+        def self.new(pay_date:, payment_id:); end
 
         sig { override.returns({pay_date: String, payment_id: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       module EventType
@@ -67,8 +63,7 @@ module FinchAPI
         PAYMENT_DELETED = T.let(:"payment.deleted", FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol)
 
         sig { override.returns(T::Array[FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

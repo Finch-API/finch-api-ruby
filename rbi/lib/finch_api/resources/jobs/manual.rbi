@@ -13,13 +13,11 @@ module FinchAPI
           )
             .returns(FinchAPI::Models::Jobs::ManualAsyncJob)
         end
-        def retrieve(job_id, request_options: {})
-        end
+        def retrieve(job_id, request_options: {}); end
 
         # @api private
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

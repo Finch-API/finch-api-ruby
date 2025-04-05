@@ -9,8 +9,7 @@ module FinchAPI
         extend FinchAPI::Internal::Type::Union
 
         sig { override.returns([FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005]) }
-        def self.variants
-        end
+        def self.variants; end
       end
     end
   end

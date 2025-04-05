@@ -22,8 +22,7 @@ module FinchAPI
         )
           .returns(T.attached_class)
       end
-      def self.new(data: nil, event_type: nil)
-      end
+      def self.new(data: nil, event_type: nil); end
 
       sig do
         override
@@ -34,8 +33,7 @@ module FinchAPI
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Data < FinchAPI::Internal::Type::BaseModel
         # The ID of the individual related to the event.
@@ -46,12 +44,10 @@ module FinchAPI
         attr_writer :individual_id
 
         sig { params(individual_id: String).returns(T.attached_class) }
-        def self.new(individual_id: nil)
-        end
+        def self.new(individual_id: nil); end
 
         sig { override.returns({individual_id: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       module EventType
@@ -69,8 +65,7 @@ module FinchAPI
           T.let(:"directory.deleted", FinchAPI::Models::DirectoryEvent::EventType::TaggedSymbol)
 
         sig { override.returns(T::Array[FinchAPI::Models::DirectoryEvent::EventType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

@@ -17,8 +17,7 @@ module FinchAPI
       REAUTH = T.let(:reauth, FinchAPI::Models::ConnectionStatusType::TaggedSymbol)
 
       sig { override.returns(T::Array[FinchAPI::Models::ConnectionStatusType::TaggedSymbol]) }
-      def self.values
-      end
+      def self.values; end
     end
   end
 end

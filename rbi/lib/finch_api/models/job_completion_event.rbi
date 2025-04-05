@@ -22,8 +22,7 @@ module FinchAPI
         )
           .returns(T.attached_class)
       end
-      def self.new(data: nil, event_type: nil)
-      end
+      def self.new(data: nil, event_type: nil); end
 
       sig do
         override
@@ -34,8 +33,7 @@ module FinchAPI
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Data < FinchAPI::Internal::Type::BaseModel
         # The id of the job which has completed.
@@ -47,12 +45,10 @@ module FinchAPI
         attr_accessor :job_url
 
         sig { params(job_id: String, job_url: String).returns(T.attached_class) }
-        def self.new(job_id:, job_url:)
-        end
+        def self.new(job_id:, job_url:); end
 
         sig { override.returns({job_id: String, job_url: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       module EventType
@@ -76,8 +72,7 @@ module FinchAPI
           T.let(:"job.data_sync_all.completed", FinchAPI::Models::JobCompletionEvent::EventType::TaggedSymbol)
 
         sig { override.returns(T::Array[FinchAPI::Models::JobCompletionEvent::EventType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

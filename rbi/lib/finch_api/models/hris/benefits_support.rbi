@@ -168,9 +168,7 @@ module FinchAPI
           s125_vision: nil,
           simple: nil,
           simple_ira: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -190,8 +188,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

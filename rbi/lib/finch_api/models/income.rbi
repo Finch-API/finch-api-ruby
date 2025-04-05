@@ -32,8 +32,7 @@ module FinchAPI
         )
           .returns(T.attached_class)
       end
-      def self.new(amount: nil, currency: nil, effective_date: nil, unit: nil)
-      end
+      def self.new(amount: nil, currency: nil, effective_date: nil, unit: nil); end
 
       sig do
         override
@@ -46,8 +45,7 @@ module FinchAPI
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The income unit of payment. Options: `yearly`, `quarterly`, `monthly`,
       #   `semi_monthly`, `bi_weekly`, `weekly`, `daily`, `hourly`, and `fixed`.
@@ -68,8 +66,7 @@ module FinchAPI
         FIXED = T.let(:fixed, FinchAPI::Models::Income::Unit::TaggedSymbol)
 
         sig { override.returns(T::Array[FinchAPI::Models::Income::Unit::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

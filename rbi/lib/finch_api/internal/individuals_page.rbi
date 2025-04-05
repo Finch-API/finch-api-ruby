@@ -14,8 +14,7 @@ module FinchAPI
       attr_accessor :paging
 
       sig { returns(String) }
-      def inspect
-      end
+      def inspect; end
     end
   end
 end
