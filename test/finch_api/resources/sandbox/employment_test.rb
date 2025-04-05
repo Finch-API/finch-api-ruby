@@ -22,7 +22,7 @@ class FinchAPI::Test::Resources::Sandbox::EmploymentTest < FinchAPI::Test::Resou
         first_name: String | nil,
         income: FinchAPI::Models::Income | nil,
         income_history: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Income, nil?: true]) | nil,
-        is_active: FinchAPI::Internal::Type::BooleanModel | nil,
+        is_active: FinchAPI::Internal::Type::Boolean | nil,
         last_name: String | nil,
         latest_rehire_date: String | nil,
         location: FinchAPI::Models::Location | nil,
