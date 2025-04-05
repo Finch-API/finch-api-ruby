@@ -30,7 +30,7 @@ module FinchAPI
           end
 
           # Update an existing sandbox account. Change the connection status to understand
-          #   how the Finch API responds.
+          # how the Finch API responds.
           #
           # @overload update(connection_status: nil, request_options: {})
           #

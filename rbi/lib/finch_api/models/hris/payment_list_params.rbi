@@ -8,12 +8,12 @@ module FinchAPI
         include FinchAPI::Internal::Type::RequestParameters
 
         # The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
-        #   format.
+        # format.
         sig { returns(Date) }
         attr_accessor :end_date
 
         # The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
-        #   format.
+        # format.
         sig { returns(Date) }
         attr_accessor :start_date
 

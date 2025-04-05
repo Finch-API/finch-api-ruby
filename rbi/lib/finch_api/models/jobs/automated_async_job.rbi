@@ -9,8 +9,8 @@ module FinchAPI
         attr_accessor :completed_at
 
         # The datetime when the job was created. for scheduled jobs, this will be the
-        #   initial connection time. For ad-hoc jobs, this will be the time the creation
-        #   request was received.
+        # initial connection time. For ad-hoc jobs, this will be the time the creation
+        # request was received.
         sig { returns(Time) }
         attr_accessor :created_at
 
@@ -35,8 +35,8 @@ module FinchAPI
         attr_writer :params
 
         # The datetime a job is scheduled to be run. For scheduled jobs, this datetime can
-        #   be in the future if the job has not yet been enqueued. For ad-hoc jobs, this
-        #   field will be null.
+        # be in the future if the job has not yet been enqueued. For ad-hoc jobs, this
+        # field will be null.
         sig { returns(T.nilable(Time)) }
         attr_accessor :scheduled_at
 

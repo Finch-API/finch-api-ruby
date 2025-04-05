@@ -11,14 +11,14 @@ module FinchAPI
 
         # @!attribute end_date
         #   The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
-        #     format.
+        #   format.
         #
         #   @return [Date]
         required :end_date, Date
 
         # @!attribute start_date
         #   The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
-        #     format.
+        #   format.
         #
         #   @return [Date]
         required :start_date, Date

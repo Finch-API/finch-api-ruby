@@ -37,8 +37,8 @@ module FinchAPI
           dob: nil,
           emails: nil,
           # Social Security Number of the individual in **encrypted** format. This field is
-          #   only available with the `ssn` scope enabled and the
-          #   `options: { include: ['ssn'] }` param set in the body.
+          # only available with the `ssn` scope enabled and the
+          # `options: { include: ['ssn'] }` param set in the body.
           encrypted_ssn: nil,
           # The EEOC-defined ethnicity of the individual.
           ethnicity: nil,
@@ -55,9 +55,9 @@ module FinchAPI
           preferred_name: nil,
           residence: nil,
           # Social Security Number of the individual. This field is only available with the
-          #   `ssn` scope enabled and the `options: { include: ['ssn'] }` param set in the
-          #   body.
-          #   [Click here to learn more about enabling the SSN field](/developer-resources/Enable-SSN-Field).
+          # `ssn` scope enabled and the `options: { include: ['ssn'] }` param set in the
+          # body.
+          # [Click here to learn more about enabling the SSN field](/developer-resources/Enable-SSN-Field).
           ssn: nil,
           request_options: {}
         ); end

@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     class Introspection < FinchAPI::Internal::Type::BaseModel
       # [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection
-      #   instead of this account ID.
+      # instead of this account ID.
       sig { returns(String) }
       attr_accessor :account_id
 
@@ -20,7 +20,7 @@ module FinchAPI
       attr_accessor :client_type
 
       # [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection
-      #   instead of this company ID.
+      # instead of this company ID.
       sig { returns(String) }
       attr_accessor :company_id
 
@@ -41,34 +41,34 @@ module FinchAPI
 
       # The type of the connection associated with the token.
       #
-      #   - `provider` - connection to an external provider
-      #   - `finch` - finch-generated data.
+      # - `provider` - connection to an external provider
+      # - `finch` - finch-generated data.
       sig { returns(FinchAPI::Models::Introspection::ConnectionType::TaggedSymbol) }
       attr_accessor :connection_type
 
       # The email of your customer you provided to Finch when a connect session was
-      #   created for this connection.
+      # created for this connection.
       sig { returns(T.nilable(String)) }
       attr_accessor :customer_email
 
       # The ID of your customer you provided to Finch when a connect session was created
-      #   for this connection.
+      # for this connection.
       sig { returns(T.nilable(String)) }
       attr_accessor :customer_id
 
       # The name of your customer you provided to Finch when a connect session was
-      #   created for this connection.
+      # created for this connection.
       sig { returns(T.nilable(String)) }
       attr_accessor :customer_name
 
       # Whether the connection associated with the `access_token` uses the Assisted
-      #   Connect Flow. (`true` if using Assisted Connect, `false` if connection is
-      #   automated)
+      # Connect Flow. (`true` if using Assisted Connect, `false` if connection is
+      # automated)
       sig { returns(T::Boolean) }
       attr_accessor :manual
 
       # [DEPRECATED] Use `provider_id` to identify the provider instead of this payroll
-      #   provider ID.
+      # provider ID.
       sig { returns(String) }
       attr_accessor :payroll_provider_id
 
@@ -303,8 +303,8 @@ module FinchAPI
 
       # The type of the connection associated with the token.
       #
-      #   - `provider` - connection to an external provider
-      #   - `finch` - finch-generated data.
+      # - `provider` - connection to an external provider
+      # - `finch` - finch-generated data.
       module ConnectionType
         extend FinchAPI::Internal::Type::Enum
 

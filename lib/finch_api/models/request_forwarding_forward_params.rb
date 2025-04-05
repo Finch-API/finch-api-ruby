@@ -10,37 +10,37 @@ module FinchAPI
 
       # @!attribute method_
       #   The HTTP method for the forwarded request. Valid values include: `GET` , `POST`
-      #     , `PUT` , `DELETE` , and `PATCH`.
+      #   , `PUT` , `DELETE` , and `PATCH`.
       #
       #   @return [String]
       required :method_, String, api_name: :method
 
       # @!attribute route
       #   The URL route path for the forwarded request. This value must begin with a
-      #     forward-slash ( / ) and may only contain alphanumeric characters, hyphens, and
-      #     underscores.
+      #   forward-slash ( / ) and may only contain alphanumeric characters, hyphens, and
+      #   underscores.
       #
       #   @return [String]
       required :route, String
 
       # @!attribute data
       #   The body for the forwarded request. This value must be specified as either a
-      #     string or a valid JSON object.
+      #   string or a valid JSON object.
       #
       #   @return [String, nil]
       optional :data, String, nil?: true
 
       # @!attribute headers
       #   The HTTP headers to include on the forwarded request. This value must be
-      #     specified as an object of key-value pairs. Example:
-      #     `{"Content-Type": "application/xml", "X-API-Version": "v1" }`
+      #   specified as an object of key-value pairs. Example:
+      #   `{"Content-Type": "application/xml", "X-API-Version": "v1" }`
       #
       #   @return [Object, nil]
       optional :headers, FinchAPI::Internal::Type::Unknown, nil?: true
 
       # @!attribute params
       #   The query parameters for the forwarded request. This value must be specified as
-      #     a valid JSON object rather than a query string.
+      #   a valid JSON object rather than a query string.
       #
       #   @return [Object, nil]
       optional :params, FinchAPI::Internal::Type::Unknown, nil?: true

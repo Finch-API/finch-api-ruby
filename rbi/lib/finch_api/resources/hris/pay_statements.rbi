@@ -6,8 +6,8 @@ module FinchAPI
       class PayStatements
         # Read detailed pay statements for each individual.
         #
-        #   Deduction and contribution types are supported by the payroll systems that
-        #   supports Benefits.
+        # Deduction and contribution types are supported by the payroll systems that
+        # supports Benefits.
         sig do
           params(
             requests: T::Array[T.any(FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request, FinchAPI::Internal::AnyHash)],

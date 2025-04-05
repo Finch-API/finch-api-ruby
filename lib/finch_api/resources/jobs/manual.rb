@@ -5,7 +5,7 @@ module FinchAPI
     class Jobs
       class Manual
         # Get a manual job by `job_id`. Manual jobs are completed by a human and include
-        #   Assisted Benefits jobs.
+        # Assisted Benefits jobs.
         #
         # @overload retrieve(job_id, request_options: {})
         #

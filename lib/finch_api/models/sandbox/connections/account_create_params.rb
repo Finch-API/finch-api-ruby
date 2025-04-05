@@ -33,7 +33,7 @@ module FinchAPI
 
           # @!attribute [r] products
           #   Optional, defaults to Organization products (`company`, `directory`,
-          #     `employment`, `individual`)
+          #   `employment`, `individual`)
           #
           #   @return [Array<String>, nil]
           optional :products, FinchAPI::Internal::Type::ArrayOf[String]

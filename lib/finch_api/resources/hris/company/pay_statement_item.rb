@@ -9,8 +9,8 @@ module FinchAPI
           attr_reader :rules
 
           # **Beta:** this endpoint currently serves employers onboarded after March 4th and
-          #   historical support will be added soon Retrieve a list of detailed pay statement
-          #   items for the access token's connection account.
+          # historical support will be added soon Retrieve a list of detailed pay statement
+          # items for the access token's connection account.
           #
           # @overload list(categories: nil, end_date: nil, name: nil, start_date: nil, type: nil, request_options: {})
           #

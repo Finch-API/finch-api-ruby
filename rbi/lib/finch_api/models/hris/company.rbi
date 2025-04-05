@@ -108,7 +108,7 @@ module FinchAPI
           attr_accessor :institution_name
 
           # A nine-digit code that's based on the U.S. Bank location where your account was
-          #   opened.
+          # opened.
           sig { returns(T.nilable(String)) }
           attr_accessor :routing_number
 

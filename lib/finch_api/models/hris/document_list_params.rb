@@ -11,7 +11,7 @@ module FinchAPI
 
         # @!attribute [r] individual_ids
         #   Comma-delimited list of stable Finch uuids for each individual. If empty,
-        #     defaults to all individuals
+        #   defaults to all individuals
         #
         #   @return [Array<String>, nil]
         optional :individual_ids, FinchAPI::Internal::Type::ArrayOf[String]
@@ -42,7 +42,7 @@ module FinchAPI
 
         # @!attribute [r] types
         #   Comma-delimited list of document types to filter on. If empty, defaults to all
-        #     types
+        #   types
         #
         #   @return [Array<Symbol, FinchAPI::Models::HRIS::DocumentListParams::Type>, nil]
         optional :types,

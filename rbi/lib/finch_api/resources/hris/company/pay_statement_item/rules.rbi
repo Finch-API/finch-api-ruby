@@ -7,11 +7,11 @@ module FinchAPI
         class PayStatementItem
           class Rules
             # **Beta:** this endpoint currently serves employers onboarded after March 4th and
-            #   historical support will be added soon Custom rules can be created to associate
-            #   specific attributes to pay statement items depending on the use case. For
-            #   example, pay statement items that meet certain conditions can be labeled as a
-            #   pre-tax 401k. This metadata can be retrieved where pay statement item
-            #   information is available.
+            # historical support will be added soon Custom rules can be created to associate
+            # specific attributes to pay statement items depending on the use case. For
+            # example, pay statement items that meet certain conditions can be labeled as a
+            # pre-tax 401k. This metadata can be retrieved where pay statement item
+            # information is available.
             sig do
               params(
                 attributes: T.any(
@@ -44,7 +44,7 @@ module FinchAPI
               request_options: {}
             ); end
             # **Beta:** this endpoint currently serves employers onboarded after March 4th and
-            #   historical support will be added soon Update a rule for a pay statement item.
+            # historical support will be added soon Update a rule for a pay statement item.
             sig do
               params(
                 rule_id: String,
@@ -56,7 +56,7 @@ module FinchAPI
             def update(rule_id, optional_property: nil, request_options: {}); end
 
             # **Beta:** this endpoint currently serves employers onboarded after March 4th and
-            #   historical support will be added soon List all rules of a connection account.
+            # historical support will be added soon List all rules of a connection account.
             sig do
               params(request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)))
                 .returns(
@@ -66,7 +66,7 @@ module FinchAPI
             def list(request_options: {}); end
 
             # **Beta:** this endpoint currently serves employers onboarded after March 4th and
-            #   historical support will be added soon Delete a rule for a pay statement item.
+            # historical support will be added soon Delete a rule for a pay statement item.
             sig do
               params(
                 rule_id: String,

@@ -34,7 +34,7 @@ module FinchAPI
         attr_accessor :manual
 
         # The number of minutes until the session expires (defaults to 43,200, which is 30
-        #   days)
+        # days)
         sig { returns(T.nilable(Float)) }
         attr_accessor :minutes_to_expire
 

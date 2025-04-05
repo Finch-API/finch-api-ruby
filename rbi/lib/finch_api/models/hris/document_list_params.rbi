@@ -8,7 +8,7 @@ module FinchAPI
         include FinchAPI::Internal::Type::RequestParameters
 
         # Comma-delimited list of stable Finch uuids for each individual. If empty,
-        #   defaults to all individuals
+        # defaults to all individuals
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :individual_ids
 
@@ -30,7 +30,7 @@ module FinchAPI
         attr_writer :offset
 
         # Comma-delimited list of document types to filter on. If empty, defaults to all
-        #   types
+        # types
         sig { returns(T.nilable(T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol])) }
         attr_reader :types
 

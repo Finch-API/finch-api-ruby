@@ -9,7 +9,7 @@ module FinchAPI
           include FinchAPI::Internal::Type::RequestParameters
 
           # comma-delimited list of stable Finch uuids for each individual. If empty,
-          #   defaults to all individuals
+          # defaults to all individuals
           sig { returns(T.nilable(String)) }
           attr_reader :individual_ids
 

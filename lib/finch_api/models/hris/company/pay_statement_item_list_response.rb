@@ -49,21 +49,21 @@ module FinchAPI
           class Attributes < FinchAPI::Internal::Type::BaseModel
             # @!attribute employer
             #   `true` if the amount is paid by the employers. This field is only available for
-            #     taxes.
+            #   taxes.
             #
             #   @return [Boolean, nil]
             optional :employer, FinchAPI::Internal::Type::Boolean, nil?: true
 
             # @!attribute metadata
             #   The metadata of the pay statement item derived by the rules engine if available.
-            #     Each attribute will be a key-value pair defined by a rule.
+            #   Each attribute will be a key-value pair defined by a rule.
             #
             #   @return [Object, nil]
             optional :metadata, FinchAPI::Internal::Type::Unknown, nil?: true
 
             # @!attribute pre_tax
             #   `true` if the pay statement item is pre-tax. This field is only available for
-            #     employee deductions.
+            #   employee deductions.
             #
             #   @return [Boolean, nil]
             optional :pre_tax, FinchAPI::Internal::Type::Boolean, nil?: true

@@ -62,7 +62,7 @@ module FinchAPI
             class Configuration < FinchAPI::Internal::Type::BaseModel
               # @!attribute [r] annual_contribution_limit
               #   For HSA benefits only - whether the contribution limit is for an individual or
-              #     family
+              #   family
               #
               #   @return [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit, nil]
               optional :annual_contribution_limit,
@@ -141,7 +141,7 @@ module FinchAPI
               # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
               # For HSA benefits only - whether the contribution limit is for an individual or
-              #   family
+              # family
               #
               # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration#annual_contribution_limit
               module AnnualContributionLimit
@@ -161,7 +161,7 @@ module FinchAPI
               class CompanyContribution < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] amount
                 #   Amount in cents for fixed type or basis points (1/100th of a percent) for
-                #     percent type
+                #   percent type
                 #
                 #   @return [Integer, nil]
                 optional :amount, Integer
@@ -207,7 +207,7 @@ module FinchAPI
               class EmployeeDeduction < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] amount
                 #   Amount in cents for fixed type or basis points (1/100th of a percent) for
-                #     percent type
+                #   percent type
                 #
                 #   @return [Integer, nil]
                 optional :amount, Integer

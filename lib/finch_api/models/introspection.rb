@@ -6,7 +6,7 @@ module FinchAPI
     class Introspection < FinchAPI::Internal::Type::BaseModel
       # @!attribute account_id
       #   [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection
-      #     instead of this account ID.
+      #   instead of this account ID.
       #
       #   @return [String]
       required :account_id, String
@@ -31,7 +31,7 @@ module FinchAPI
 
       # @!attribute company_id
       #   [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection
-      #     instead of this company ID.
+      #   instead of this company ID.
       #
       #   @return [String]
       required :company_id, String
@@ -50,44 +50,44 @@ module FinchAPI
       # @!attribute connection_type
       #   The type of the connection associated with the token.
       #
-      #     - `provider` - connection to an external provider
-      #     - `finch` - finch-generated data.
+      #   - `provider` - connection to an external provider
+      #   - `finch` - finch-generated data.
       #
       #   @return [Symbol, FinchAPI::Models::Introspection::ConnectionType]
       required :connection_type, enum: -> { FinchAPI::Models::Introspection::ConnectionType }
 
       # @!attribute customer_email
       #   The email of your customer you provided to Finch when a connect session was
-      #     created for this connection.
+      #   created for this connection.
       #
       #   @return [String, nil]
       required :customer_email, String, nil?: true
 
       # @!attribute customer_id
       #   The ID of your customer you provided to Finch when a connect session was created
-      #     for this connection.
+      #   for this connection.
       #
       #   @return [String, nil]
       required :customer_id, String, nil?: true
 
       # @!attribute customer_name
       #   The name of your customer you provided to Finch when a connect session was
-      #     created for this connection.
+      #   created for this connection.
       #
       #   @return [String, nil]
       required :customer_name, String, nil?: true
 
       # @!attribute manual
       #   Whether the connection associated with the `access_token` uses the Assisted
-      #     Connect Flow. (`true` if using Assisted Connect, `false` if connection is
-      #     automated)
+      #   Connect Flow. (`true` if using Assisted Connect, `false` if connection is
+      #   automated)
       #
       #   @return [Boolean]
       required :manual, FinchAPI::Internal::Type::Boolean
 
       # @!attribute payroll_provider_id
       #   [DEPRECATED] Use `provider_id` to identify the provider instead of this payroll
-      #     provider ID.
+      #   provider ID.
       #
       #   @return [String]
       required :payroll_provider_id, String
@@ -300,8 +300,8 @@ module FinchAPI
 
       # The type of the connection associated with the token.
       #
-      #   - `provider` - connection to an external provider
-      #   - `finch` - finch-generated data.
+      # - `provider` - connection to an external provider
+      # - `finch` - finch-generated data.
       #
       # @see FinchAPI::Models::Introspection#connection_type
       module ConnectionType

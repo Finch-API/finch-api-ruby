@@ -12,7 +12,7 @@ module FinchAPI
 
           # @!attribute [r] categories
           #   Comma-delimited list of pay statement item categories to filter on. If empty,
-          #     defaults to all categories.
+          #   defaults to all categories.
           #
           #   @return [Array<Symbol, FinchAPI::Models::HRIS::Company::PayStatementItemListParams::Category>, nil]
           optional :categories,
@@ -24,7 +24,7 @@ module FinchAPI
 
           # @!attribute [r] end_date
           #   The end date to retrieve pay statement items by via their last seen pay date in
-          #     `YYYY-MM-DD` format.
+          #   `YYYY-MM-DD` format.
           #
           #   @return [Date, nil]
           optional :end_date, Date
@@ -45,7 +45,7 @@ module FinchAPI
 
           # @!attribute [r] start_date
           #   The start date to retrieve pay statement items by via their last seen pay date
-          #     (inclusive) in `YYYY-MM-DD` format.
+          #   (inclusive) in `YYYY-MM-DD` format.
           #
           #   @return [Date, nil]
           optional :start_date, Date

@@ -12,7 +12,7 @@ module FinchAPI
         attr_writer :id
 
         # The ID of the individual associated with the document. This will be null for
-        #   employer-level documents.
+        # employer-level documents.
         sig { returns(T.nilable(String)) }
         attr_accessor :individual_id
 
@@ -24,7 +24,7 @@ module FinchAPI
         attr_writer :type
 
         # A URL to access the document. Format:
-        #   `https://api.tryfinch.com/employer/documents/:document_id`.
+        # `https://api.tryfinch.com/employer/documents/:document_id`.
         sig { returns(T.nilable(String)) }
         attr_reader :url
 
