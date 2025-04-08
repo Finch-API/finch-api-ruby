@@ -32,10 +32,13 @@ module FinchAPI
 
         def coerce: (
           top value,
-          state: FinchAPI::Internal::Type::Converter::state
+          state: FinchAPI::Internal::Type::Converter::coerce_state
         ) -> top
 
-        def dump: (top value) -> top
+        def dump: (
+          top value,
+          state: FinchAPI::Internal::Type::Converter::dump_state
+        ) -> top
       end
     end
   end
