@@ -14,10 +14,13 @@ module FinchAPI
 
         def coerce: (
           String | Symbol | top value,
-          state: FinchAPI::Internal::Type::Converter::state
+          state: FinchAPI::Internal::Type::Converter::coerce_state
         ) -> (Symbol | top)
 
-        def dump: (Symbol | top value) -> (Symbol | top)
+        def dump: (
+          Symbol | top value,
+          state: FinchAPI::Internal::Type::Converter::dump_state
+        ) -> (Symbol | top)
       end
     end
   end
