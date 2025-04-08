@@ -146,7 +146,10 @@ class FinchAPITest < Minitest::Test
       finch.hris.directory.list
     end
 
-    retry_count_headers = requester.attempts.map { _1[:headers]["x-stainless-retry-count"] }
+    retry_count_headers = requester.attempts.map do
+      _1.fetch(:headers).fetch("x-stainless-retry-count")
+    end
+
     assert_equal(%w[0 1 2], retry_count_headers)
   end
 
@@ -159,7 +162,10 @@ class FinchAPITest < Minitest::Test
       finch.hris.directory.list(request_options: {extra_headers: {"x-stainless-retry-count" => nil}})
     end
 
-    retry_count_headers = requester.attempts.map { _1[:headers]["x-stainless-retry-count"] }
+    retry_count_headers = requester.attempts.map do
+      _1.fetch(:headers).fetch("x-stainless-retry-count", nil)
+    end
+
     assert_equal([nil, nil, nil], retry_count_headers)
   end
 
@@ -172,7 +178,10 @@ class FinchAPITest < Minitest::Test
       finch.hris.directory.list(request_options: {extra_headers: {"x-stainless-retry-count" => "42"}})
     end
 
-    retry_count_headers = requester.attempts.map { _1[:headers]["x-stainless-retry-count"] }
+    retry_count_headers = requester.attempts.map do
+      _1.fetch(:headers).fetch("x-stainless-retry-count")
+    end
+
     assert_equal(%w[42 42 42], retry_count_headers)
   end
 
@@ -185,12 +194,12 @@ class FinchAPITest < Minitest::Test
       finch.hris.directory.list(request_options: {extra_headers: {}})
     end
 
-    assert_equal("/redirected", requester.attempts.last[:url].path)
-    assert_equal(requester.attempts.first[:method], requester.attempts.last[:method])
-    assert_equal(requester.attempts.first[:body], requester.attempts.last[:body])
+    assert_equal("/redirected", requester.attempts.last.fetch(:url).path)
+    assert_equal(requester.attempts.first.fetch(:method), requester.attempts.last.fetch(:method))
+    assert_equal(requester.attempts.first.fetch(:body), requester.attempts.last.fetch(:body))
     assert_equal(
-      requester.attempts.first[:headers]["content-type"],
-      requester.attempts.last[:headers]["content-type"]
+      requester.attempts.first.fetch(:headers)["content-type"],
+      requester.attempts.last.fetch(:headers)["content-type"]
     )
   end
 
@@ -203,10 +212,10 @@ class FinchAPITest < Minitest::Test
       finch.hris.directory.list(request_options: {extra_headers: {}})
     end
 
-    assert_equal("/redirected", requester.attempts.last[:url].path)
-    assert_equal(:get, requester.attempts.last[:method])
-    assert_nil(requester.attempts.last[:body])
-    assert_nil(requester.attempts.last[:headers]["Content-Type"])
+    assert_equal("/redirected", requester.attempts.last.fetch(:url).path)
+    assert_equal(:get, requester.attempts.last.fetch(:method))
+    assert_nil(requester.attempts.last.fetch(:body))
+    assert_nil(requester.attempts.last.fetch(:headers)["content-type"])
   end
 
   def test_client_redirect_auth_keep_same_origin
@@ -215,12 +224,12 @@ class FinchAPITest < Minitest::Test
     finch.requester = requester
 
     assert_raises(FinchAPI::Errors::APIConnectionError) do
-      finch.hris.directory.list(request_options: {extra_headers: {"Authorization" => "Bearer xyz"}})
+      finch.hris.directory.list(request_options: {extra_headers: {"authorization" => "Bearer xyz"}})
     end
 
     assert_equal(
-      requester.attempts.first[:headers]["authorization"],
-      requester.attempts.last[:headers]["authorization"]
+      requester.attempts.first.fetch(:headers)["authorization"],
+      requester.attempts.last.fetch(:headers)["authorization"]
     )
   end
 
@@ -230,10 +239,10 @@ class FinchAPITest < Minitest::Test
     finch.requester = requester
 
     assert_raises(FinchAPI::Errors::APIConnectionError) do
-      finch.hris.directory.list(request_options: {extra_headers: {"Authorization" => "Bearer xyz"}})
+      finch.hris.directory.list(request_options: {extra_headers: {"authorization" => "Bearer xyz"}})
     end
 
-    assert_nil(requester.attempts.last[:headers]["Authorization"])
+    assert_nil(requester.attempts.last.fetch(:headers)["authorization"])
   end
 
   def test_default_headers
@@ -241,7 +250,7 @@ class FinchAPITest < Minitest::Test
     requester = MockRequester.new(200, {}, {})
     finch.requester = requester
     finch.hris.directory.list
-    headers = requester.attempts.first[:headers]
+    headers = requester.attempts.first.fetch(:headers)
 
     refute_empty(headers["accept"])
     refute_empty(headers["content-type"])

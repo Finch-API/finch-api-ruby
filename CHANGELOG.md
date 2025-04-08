@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.8 (2025-04-08)
+
+Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
+
+### Chores
+
+* **internal:** version bump ([2107a86](https://github.com/Finch-API/finch-api-ruby/commit/2107a86c968117d7fd7516d95f2951014e7f627c))
+* make client tests look prettier ([#129](https://github.com/Finch-API/finch-api-ruby/issues/129)) ([8e81a13](https://github.com/Finch-API/finch-api-ruby/commit/8e81a13b7cb5bc7ecc384a9f9fcebd70f393dc2e))
+
 ## 0.1.0-alpha.7 (2025-04-08)
 
 Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
