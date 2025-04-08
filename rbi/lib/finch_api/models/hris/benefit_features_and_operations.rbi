@@ -39,8 +39,7 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(supported_features: nil, supported_operations: nil)
-        end
+        def self.new(supported_features: nil, supported_operations: nil); end
 
         sig do
           override
@@ -51,8 +50,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class SupportedFeatures < FinchAPI::Internal::Type::BaseModel
           # Whether the provider supports an annual maximum for this benefit.
@@ -60,19 +58,19 @@ module FinchAPI
           attr_accessor :annual_maximum
 
           # Whether the provider supports catch up for this benefit. This field will only be
-          #   true for retirement benefits.
+          # true for retirement benefits.
           sig { returns(T.nilable(T::Boolean)) }
           attr_accessor :catch_up
 
           # Supported contribution types. An empty array indicates contributions are not
-          #   supported.
+          # supported.
           sig do
             returns(
               T.nilable(
                 T::Array[
-                T.nilable(
-                  FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::CompanyContribution::TaggedSymbol
-                )
+                  T.nilable(
+                    FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::CompanyContribution::TaggedSymbol
+                  )
                 ]
               )
             )
@@ -83,14 +81,14 @@ module FinchAPI
           attr_accessor :description
 
           # Supported deduction types. An empty array indicates deductions are not
-          #   supported.
+          # supported.
           sig do
             returns(
               T.nilable(
                 T::Array[
-                T.nilable(
-                  FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::EmployeeDeduction::TaggedSymbol
-                )
+                  T.nilable(
+                    FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::EmployeeDeduction::TaggedSymbol
+                  )
                 ]
               )
             )
@@ -105,14 +103,14 @@ module FinchAPI
           attr_writer :frequencies
 
           # Whether the provider supports HSA contribution limits. Empty if this feature is
-          #   not supported for the benefit. This array only has values for HSA benefits.
+          # not supported for the benefit. This array only has values for HSA benefits.
           sig do
             returns(
               T.nilable(
                 T::Array[
-                T.nilable(
-                  FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::HsaContributionLimit::TaggedSymbol
-                )
+                  T.nilable(
+                    FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::HsaContributionLimit::TaggedSymbol
+                  )
                 ]
               )
             )
@@ -125,25 +123,25 @@ module FinchAPI
               catch_up: T.nilable(T::Boolean),
               company_contribution: T.nilable(
                 T::Array[
-                T.nilable(
-                  FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::CompanyContribution::OrSymbol
-                )
+                  T.nilable(
+                    FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::CompanyContribution::OrSymbol
+                  )
                 ]
               ),
               description: T.nilable(String),
               employee_deduction: T.nilable(
                 T::Array[
-                T.nilable(
-                  FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::EmployeeDeduction::OrSymbol
-                )
+                  T.nilable(
+                    FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::EmployeeDeduction::OrSymbol
+                  )
                 ]
               ),
               frequencies: T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::OrSymbol)],
               hsa_contribution_limit: T.nilable(
                 T::Array[
-                T.nilable(
-                  FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::HsaContributionLimit::OrSymbol
-                )
+                  T.nilable(
+                    FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::HsaContributionLimit::OrSymbol
+                  )
                 ]
               )
             )
@@ -157,9 +155,7 @@ module FinchAPI
             employee_deduction: nil,
             frequencies: nil,
             hsa_contribution_limit: nil
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -168,32 +164,31 @@ module FinchAPI
                   catch_up: T.nilable(T::Boolean),
                   company_contribution: T.nilable(
                     T::Array[
-                    T.nilable(
-                      FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::CompanyContribution::TaggedSymbol
-                    )
+                      T.nilable(
+                        FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::CompanyContribution::TaggedSymbol
+                      )
                     ]
                   ),
                   description: T.nilable(String),
                   employee_deduction: T.nilable(
                     T::Array[
-                    T.nilable(
-                      FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::EmployeeDeduction::TaggedSymbol
-                    )
+                      T.nilable(
+                        FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::EmployeeDeduction::TaggedSymbol
+                      )
                     ]
                   ),
                   frequencies: T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol)],
                   hsa_contribution_limit: T.nilable(
                     T::Array[
-                    T.nilable(
-                      FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::HsaContributionLimit::TaggedSymbol
-                    )
+                      T.nilable(
+                        FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::HsaContributionLimit::TaggedSymbol
+                      )
                     ]
                   )
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module CompanyContribution
             extend FinchAPI::Internal::Type::Enum
@@ -228,8 +223,7 @@ module FinchAPI
                   T::Array[FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::CompanyContribution::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           module EmployeeDeduction
@@ -263,8 +257,7 @@ module FinchAPI
                   T::Array[FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::EmployeeDeduction::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           module HsaContributionLimit
@@ -298,12 +291,11 @@ module FinchAPI
               override
                 .returns(
                   T::Array[
-                  FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::HsaContributionLimit::TaggedSymbol
+                    FinchAPI::Models::HRIS::BenefitFeaturesAndOperations::SupportedFeatures::HsaContributionLimit::TaggedSymbol
                   ]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
       end

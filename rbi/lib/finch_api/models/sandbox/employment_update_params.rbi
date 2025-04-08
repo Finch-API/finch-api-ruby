@@ -12,8 +12,8 @@ module FinchAPI
         attr_accessor :class_code
 
         # Custom fields for the individual. These are fields which are defined by the
-        #   employer in the system. Custom fields are not currently supported for assisted
-        #   connections.
+        # employer in the system. Custom fields are not currently supported for assisted
+        # connections.
         sig { returns(T.nilable(T::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField])) }
         attr_reader :custom_fields
 
@@ -65,8 +65,8 @@ module FinchAPI
         attr_accessor :first_name
 
         # The employee's income as reported by the provider. This may not always be
-        #   annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
-        #   depending on what information the provider returns.
+        # annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
+        # depending on what information the provider returns.
         sig { returns(T.nilable(FinchAPI::Models::Income)) }
         attr_reader :income
 
@@ -172,9 +172,7 @@ module FinchAPI
           start_date: nil,
           title: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -201,8 +199,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class CustomField < FinchAPI::Internal::Type::BaseModel
           sig { returns(T.nilable(String)) }
@@ -215,12 +212,10 @@ module FinchAPI
           attr_writer :value
 
           sig { params(name: T.nilable(String), value: T.anything).returns(T.attached_class) }
-          def self.new(name: nil, value: nil)
-          end
+          def self.new(name: nil, value: nil); end
 
           sig { override.returns({name: T.nilable(String), value: T.anything}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Department < FinchAPI::Internal::Type::BaseModel
@@ -230,17 +225,15 @@ module FinchAPI
 
           # The department object.
           sig { params(name: T.nilable(String)).returns(T.attached_class) }
-          def self.new(name: nil)
-          end
+          def self.new(name: nil); end
 
           sig { override.returns({name: T.nilable(String)}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Employment < FinchAPI::Internal::Type::BaseModel
           # The secondary employment type of the individual. Options: `full_time`,
-          #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
+          # `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
           sig { returns(T.nilable(FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Subtype::OrSymbol)) }
           attr_accessor :subtype
 
@@ -256,8 +249,7 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(subtype: nil, type: nil)
-          end
+          def self.new(subtype: nil, type: nil); end
 
           sig do
             override
@@ -268,11 +260,10 @@ module FinchAPI
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The secondary employment type of the individual. Options: `full_time`,
-          #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
+          # `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
           module Subtype
             extend FinchAPI::Internal::Type::Enum
 
@@ -306,8 +297,7 @@ module FinchAPI
               override
                 .returns(T::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Subtype::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # The main employment type of the individual.
@@ -328,8 +318,7 @@ module FinchAPI
               override
                 .returns(T::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Type::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -360,8 +349,7 @@ module FinchAPI
             override
               .returns(T::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         class Manager < FinchAPI::Internal::Type::BaseModel
@@ -374,12 +362,10 @@ module FinchAPI
 
           # The manager object representing the manager of the individual within the org.
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id: nil)
-          end
+          def self.new(id: nil); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
     end

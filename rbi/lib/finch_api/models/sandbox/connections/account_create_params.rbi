@@ -31,7 +31,7 @@ module FinchAPI
           attr_writer :authentication_type
 
           # Optional, defaults to Organization products (`company`, `directory`,
-          #   `employment`, `individual`)
+          # `employment`, `individual`)
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :products
 
@@ -69,8 +69,7 @@ module FinchAPI
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module AuthenticationType
             extend FinchAPI::Internal::Type::Enum
@@ -113,8 +112,7 @@ module FinchAPI
                   T::Array[FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
       end

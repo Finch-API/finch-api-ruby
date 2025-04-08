@@ -12,7 +12,7 @@ module FinchAPI
 
           # @!attribute [r] individual_ids
           #   comma-delimited list of stable Finch uuids for each individual. If empty,
-          #     defaults to all individuals
+          #   defaults to all individuals
           #
           #   @return [String, nil]
           optional :individual_ids, String

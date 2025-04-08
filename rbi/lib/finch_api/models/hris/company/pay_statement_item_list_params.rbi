@@ -9,7 +9,7 @@ module FinchAPI
           include FinchAPI::Internal::Type::RequestParameters
 
           # Comma-delimited list of pay statement item categories to filter on. If empty,
-          #   defaults to all categories.
+          # defaults to all categories.
           sig do
             returns(
               T.nilable(T::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::Category::OrSymbol])
@@ -26,7 +26,7 @@ module FinchAPI
           attr_writer :categories
 
           # The end date to retrieve pay statement items by via their last seen pay date in
-          #   `YYYY-MM-DD` format.
+          # `YYYY-MM-DD` format.
           sig { returns(T.nilable(Date)) }
           attr_reader :end_date
 
@@ -41,7 +41,7 @@ module FinchAPI
           attr_writer :name
 
           # The start date to retrieve pay statement items by via their last seen pay date
-          #   (inclusive) in `YYYY-MM-DD` format.
+          # (inclusive) in `YYYY-MM-DD` format.
           sig { returns(T.nilable(Date)) }
           attr_reader :start_date
 
@@ -89,8 +89,7 @@ module FinchAPI
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module Category
             extend FinchAPI::Internal::Type::Enum
@@ -119,8 +118,7 @@ module FinchAPI
               override
                 .returns(T::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::Category::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
       end

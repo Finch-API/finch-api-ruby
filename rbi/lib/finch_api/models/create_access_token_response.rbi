@@ -8,7 +8,7 @@ module FinchAPI
       attr_accessor :access_token
 
       # [DEPRECATED] Use `connection_id` to identify the connection instead of this
-      #   account ID.
+      # account ID.
       sig { returns(String) }
       attr_accessor :account_id
 
@@ -17,7 +17,7 @@ module FinchAPI
       attr_accessor :client_type
 
       # [DEPRECATED] Use `connection_id` to identify the connection instead of this
-      #   company ID.
+      # company ID.
       sig { returns(String) }
       attr_accessor :company_id
 
@@ -27,8 +27,8 @@ module FinchAPI
 
       # The type of the connection associated with the token.
       #
-      #   - `provider` - connection to an external provider
-      #   - `finch` - finch-generated data.
+      # - `provider` - connection to an external provider
+      # - `finch` - finch-generated data.
       sig { returns(FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol) }
       attr_accessor :connection_type
 
@@ -41,7 +41,7 @@ module FinchAPI
       attr_accessor :provider_id
 
       # The ID of your customer you provided to Finch when a connect session was created
-      #   for this connection.
+      # for this connection.
       sig { returns(T.nilable(String)) }
       attr_accessor :customer_id
 
@@ -78,9 +78,7 @@ module FinchAPI
         provider_id:,
         customer_id: nil,
         token_type: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -98,8 +96,7 @@ module FinchAPI
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The type of application associated with a token.
       module ClientType
@@ -114,14 +111,13 @@ module FinchAPI
         SANDBOX = T.let(:sandbox, FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol)
 
         sig { override.returns(T::Array[FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # The type of the connection associated with the token.
       #
-      #   - `provider` - connection to an external provider
-      #   - `finch` - finch-generated data.
+      # - `provider` - connection to an external provider
+      # - `finch` - finch-generated data.
       module ConnectionType
         extend FinchAPI::Internal::Type::Enum
 
@@ -134,8 +130,7 @@ module FinchAPI
         FINCH = T.let(:finch, FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol)
 
         sig { override.returns(T::Array[FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

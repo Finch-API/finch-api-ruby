@@ -23,7 +23,7 @@ module FinchAPI
         attr_accessor :year
 
         # A 2020 version of the W-4 tax form containing information on an individual's
-        #   filing status, dependents, and withholding details.
+        # filing status, dependents, and withholding details.
         sig do
           params(
             data: T.any(FinchAPI::Models::HRIS::W42020::Data, FinchAPI::Internal::AnyHash),
@@ -32,8 +32,7 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(data: nil, type: nil, year: nil)
-        end
+        def self.new(data: nil, type: nil, year: nil); end
 
         sig do
           override
@@ -45,12 +44,11 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Data < FinchAPI::Internal::Type::BaseModel
           # Amount claimed for dependents other than qualifying children under 17 (in
-          #   cents).
+          # cents).
           sig { returns(T.nilable(Integer)) }
           attr_accessor :amount_for_other_dependents
 
@@ -108,9 +106,7 @@ module FinchAPI
             individual_id: nil,
             other_income: nil,
             total_claim_dependent_and_other_credits: nil
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -126,8 +122,7 @@ module FinchAPI
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The individual's filing status for tax purposes.
           module FilingStatus
@@ -151,8 +146,7 @@ module FinchAPI
               )
 
             sig { override.returns(T::Array[FinchAPI::Models::HRIS::W42020::Data::FilingStatus::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -166,8 +160,7 @@ module FinchAPI
           W4_2020 = T.let(:w4_2020, FinchAPI::Models::HRIS::W42020::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[FinchAPI::Models::HRIS::W42020::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

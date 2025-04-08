@@ -18,8 +18,7 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(completion_status:, type:)
-          end
+          def self.new(completion_status:, type:); end
 
           sig do
             override
@@ -30,8 +29,7 @@ module FinchAPI
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module CompletionStatus
             extend FinchAPI::Internal::Type::Enum
@@ -68,8 +66,7 @@ module FinchAPI
                   T::Array[FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           module Type
@@ -84,8 +81,7 @@ module FinchAPI
               T.let(:data_sync_all, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type::TaggedSymbol)
 
             sig { override.returns(T::Array[FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
       end

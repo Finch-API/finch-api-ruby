@@ -38,10 +38,10 @@ module FinchAPI
             sig do
               params(
                 conditions: T::Array[
-                T.any(
-                  FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::Condition,
-                  FinchAPI::Internal::AnyHash
-                )
+                  T.any(
+                    FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::Condition,
+                    FinchAPI::Internal::AnyHash
+                  )
                 ]
               )
                 .void
@@ -101,10 +101,10 @@ module FinchAPI
                   FinchAPI::Internal::AnyHash
                 ),
                 conditions: T::Array[
-                T.any(
-                  FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::Condition,
-                  FinchAPI::Internal::AnyHash
-                )
+                  T.any(
+                    FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::Condition,
+                    FinchAPI::Internal::AnyHash
+                  )
                 ],
                 created_at: Time,
                 effective_end_date: T.nilable(String),
@@ -125,9 +125,7 @@ module FinchAPI
               entity_type: nil,
               priority: nil,
               updated_at: nil
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -144,12 +142,11 @@ module FinchAPI
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class Attributes < FinchAPI::Internal::Type::BaseModel
               # The metadata to be attached in the entity. It is a key-value pairs where the
-              #   values can be of any type (string, number, boolean, object, array, etc.).
+              # values can be of any type (string, number, boolean, object, array, etc.).
               sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
               attr_reader :metadata
 
@@ -158,12 +155,10 @@ module FinchAPI
 
               # Specifies the fields to be applied when the condition is met.
               sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
-              def self.new(metadata: nil)
-              end
+              def self.new(metadata: nil); end
 
               sig { override.returns({metadata: T::Hash[Symbol, T.anything]}) }
-              def to_hash
-              end
+              def to_hash; end
             end
 
             class Condition < FinchAPI::Internal::Type::BaseModel
@@ -207,8 +202,7 @@ module FinchAPI
                 )
                   .returns(T.attached_class)
               end
-              def self.new(field: nil, operator: nil, value: nil)
-              end
+              def self.new(field: nil, operator: nil, value: nil); end
 
               sig do
                 override
@@ -220,8 +214,7 @@ module FinchAPI
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The operator to be used in the rule.
               module Operator
@@ -250,8 +243,7 @@ module FinchAPI
                       T::Array[FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::Condition::Operator::TaggedSymbol]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -282,8 +274,7 @@ module FinchAPI
                     T::Array[FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::EntityType::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
           end
         end

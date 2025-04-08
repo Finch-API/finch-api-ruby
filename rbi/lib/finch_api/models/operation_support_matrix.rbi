@@ -4,12 +4,12 @@ module FinchAPI
   module Models
     class OperationSupportMatrix < FinchAPI::Internal::Type::BaseModel
       # - `supported`: This operation is supported by both the provider and Finch
-      #   - `not_supported_by_finch`: This operation is not supported by Finch but
-      #     supported by the provider
-      #   - `not_supported_by_provider`: This operation is not supported by the provider,
-      #     so Finch cannot support
-      #   - `client_access_only`: This behavior is supported by the provider, but only
-      #     available to the client and not to Finch
+      # - `not_supported_by_finch`: This operation is not supported by Finch but
+      #   supported by the provider
+      # - `not_supported_by_provider`: This operation is not supported by the provider,
+      #   so Finch cannot support
+      # - `client_access_only`: This behavior is supported by the provider, but only
+      #   available to the client and not to Finch
       sig { returns(T.nilable(FinchAPI::Models::OperationSupport::TaggedSymbol)) }
       attr_reader :create
 
@@ -17,12 +17,12 @@ module FinchAPI
       attr_writer :create
 
       # - `supported`: This operation is supported by both the provider and Finch
-      #   - `not_supported_by_finch`: This operation is not supported by Finch but
-      #     supported by the provider
-      #   - `not_supported_by_provider`: This operation is not supported by the provider,
-      #     so Finch cannot support
-      #   - `client_access_only`: This behavior is supported by the provider, but only
-      #     available to the client and not to Finch
+      # - `not_supported_by_finch`: This operation is not supported by Finch but
+      #   supported by the provider
+      # - `not_supported_by_provider`: This operation is not supported by the provider,
+      #   so Finch cannot support
+      # - `client_access_only`: This behavior is supported by the provider, but only
+      #   available to the client and not to Finch
       sig { returns(T.nilable(FinchAPI::Models::OperationSupport::TaggedSymbol)) }
       attr_reader :delete
 
@@ -30,12 +30,12 @@ module FinchAPI
       attr_writer :delete
 
       # - `supported`: This operation is supported by both the provider and Finch
-      #   - `not_supported_by_finch`: This operation is not supported by Finch but
-      #     supported by the provider
-      #   - `not_supported_by_provider`: This operation is not supported by the provider,
-      #     so Finch cannot support
-      #   - `client_access_only`: This behavior is supported by the provider, but only
-      #     available to the client and not to Finch
+      # - `not_supported_by_finch`: This operation is not supported by Finch but
+      #   supported by the provider
+      # - `not_supported_by_provider`: This operation is not supported by the provider,
+      #   so Finch cannot support
+      # - `client_access_only`: This behavior is supported by the provider, but only
+      #   available to the client and not to Finch
       sig { returns(T.nilable(FinchAPI::Models::OperationSupport::TaggedSymbol)) }
       attr_reader :read
 
@@ -43,12 +43,12 @@ module FinchAPI
       attr_writer :read
 
       # - `supported`: This operation is supported by both the provider and Finch
-      #   - `not_supported_by_finch`: This operation is not supported by Finch but
-      #     supported by the provider
-      #   - `not_supported_by_provider`: This operation is not supported by the provider,
-      #     so Finch cannot support
-      #   - `client_access_only`: This behavior is supported by the provider, but only
-      #     available to the client and not to Finch
+      # - `not_supported_by_finch`: This operation is not supported by Finch but
+      #   supported by the provider
+      # - `not_supported_by_provider`: This operation is not supported by the provider,
+      #   so Finch cannot support
+      # - `client_access_only`: This behavior is supported by the provider, but only
+      #   available to the client and not to Finch
       sig { returns(T.nilable(FinchAPI::Models::OperationSupport::TaggedSymbol)) }
       attr_reader :update
 
@@ -64,8 +64,7 @@ module FinchAPI
         )
           .returns(T.attached_class)
       end
-      def self.new(create: nil, delete: nil, read: nil, update: nil)
-      end
+      def self.new(create: nil, delete: nil, read: nil, update: nil); end
 
       sig do
         override
@@ -78,8 +77,7 @@ module FinchAPI
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

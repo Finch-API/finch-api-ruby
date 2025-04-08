@@ -28,14 +28,12 @@ module FinchAPI
           integration: nil,
           manual: nil,
           # The number of minutes until the session expires (defaults to 43,200, which is 30
-          #   days)
+          # days)
           minutes_to_expire: nil,
           redirect_uri: nil,
           sandbox: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # Create a new Connect session for reauthenticating an existing connection
         sig do
           params(
@@ -51,20 +49,17 @@ module FinchAPI
           # The ID of the existing connection to reauthenticate
           connection_id:,
           # The number of minutes until the session expires (defaults to 43,200, which is 30
-          #   days)
+          # days)
           minutes_to_expire: nil,
           # The products to request access to (optional for reauthentication)
           products: nil,
           # The URI to redirect to after the Connect flow is completed
           redirect_uri: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

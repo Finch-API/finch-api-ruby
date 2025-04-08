@@ -37,8 +37,7 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(body: nil, code: nil, individual_id: nil)
-          end
+          def self.new(body: nil, code: nil, individual_id: nil); end
 
           sig do
             override
@@ -46,8 +45,7 @@ module FinchAPI
                 {body: FinchAPI::Models::HRIS::Benefits::UnenrolledIndividual::Body, code: Integer, individual_id: String}
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Body < FinchAPI::Internal::Type::BaseModel
             # A descriptive identifier for the response.
@@ -66,8 +64,7 @@ module FinchAPI
               params(finch_code: T.nilable(String), message: T.nilable(String), name: T.nilable(String))
                 .returns(T.attached_class)
             end
-            def self.new(finch_code: nil, message: nil, name: nil)
-            end
+            def self.new(finch_code: nil, message: nil, name: nil); end
 
             sig do
               override.returns(
@@ -78,8 +75,7 @@ module FinchAPI
                 }
               )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
         end
       end

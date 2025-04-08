@@ -36,8 +36,7 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(body: nil, code: nil, individual_id: nil)
-          end
+          def self.new(body: nil, code: nil, individual_id: nil); end
 
           sig do
             override
@@ -45,8 +44,7 @@ module FinchAPI
                 {body: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body, code: Integer, individual_id: String}
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Body < FinchAPI::Internal::Type::BaseModel
             # If the benefit supports annual maximum, the amount in cents for this individual.
@@ -54,7 +52,7 @@ module FinchAPI
             attr_accessor :annual_maximum
 
             # If the benefit supports catch up (401k, 403b, etc.), whether catch up is enabled
-            #   for this individual.
+            # for this individual.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :catch_up
 
@@ -104,9 +102,7 @@ module FinchAPI
               company_contribution: nil,
               employee_deduction: nil,
               hsa_contribution_limit: nil
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -119,8 +115,7 @@ module FinchAPI
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # Type for HSA contribution limit if the benefit is a HSA.
             module HsaContributionLimit
@@ -154,8 +149,7 @@ module FinchAPI
                     T::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
           end
         end

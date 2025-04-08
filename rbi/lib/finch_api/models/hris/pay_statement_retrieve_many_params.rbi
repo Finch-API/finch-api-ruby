@@ -18,8 +18,7 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(requests:, request_options: {})
-        end
+        def self.new(requests:, request_options: {}); end
 
         sig do
           override
@@ -30,8 +29,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Request < FinchAPI::Internal::Type::BaseModel
           # A stable Finch `id` (UUID v4) for a payment.
@@ -53,12 +51,10 @@ module FinchAPI
           attr_writer :offset
 
           sig { params(payment_id: String, limit: Integer, offset: Integer).returns(T.attached_class) }
-          def self.new(payment_id:, limit: nil, offset: nil)
-          end
+          def self.new(payment_id:, limit: nil, offset: nil); end
 
           sig { override.returns({payment_id: String, limit: Integer, offset: Integer}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
     end

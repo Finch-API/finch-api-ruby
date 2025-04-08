@@ -6,29 +6,29 @@ module FinchAPI
     class RequestForwardingForwardResponse < FinchAPI::Internal::Type::BaseModel
       # @!attribute data
       #   A string representation of the HTTP response body of the forwarded request’s
-      #     response received from the underlying integration’s API. This field may be null
-      #     in the case where the upstream system’s response is empty.
+      #   response received from the underlying integration’s API. This field may be null
+      #   in the case where the upstream system’s response is empty.
       #
       #   @return [String, nil]
       required :data, String, nil?: true
 
       # @!attribute headers
       #   The HTTP headers of the forwarded request’s response, exactly as received from
-      #     the underlying integration’s API.
+      #   the underlying integration’s API.
       #
       #   @return [Object, nil]
       required :headers, FinchAPI::Internal::Type::Unknown, nil?: true
 
       # @!attribute request
       #   An object containing details of your original forwarded request, for your ease
-      #     of reference.
+      #   of reference.
       #
       #   @return [FinchAPI::Models::RequestForwardingForwardResponse::Request]
       required :request, -> { FinchAPI::Models::RequestForwardingForwardResponse::Request }
 
       # @!attribute status_code
       #   The HTTP status code of the forwarded request’s response, exactly received from
-      #     the underlying integration’s API. This value will be returned as an integer.
+      #   the underlying integration’s API. This value will be returned as an integer.
       #
       #   @return [Integer]
       required :status_code, Integer, api_name: :statusCode
@@ -47,29 +47,29 @@ module FinchAPI
       class Request < FinchAPI::Internal::Type::BaseModel
         # @!attribute data
         #   The body that was specified for the forwarded request. If a value was not
-        #     specified in the original request, this value will be returned as null ;
-        #     otherwise, this value will always be returned as a string.
+        #   specified in the original request, this value will be returned as null ;
+        #   otherwise, this value will always be returned as a string.
         #
         #   @return [String, nil]
         required :data, String, nil?: true
 
         # @!attribute headers
         #   The specified HTTP headers that were included in the forwarded request. If no
-        #     headers were specified, this will be returned as `null`.
+        #   headers were specified, this will be returned as `null`.
         #
         #   @return [Object, nil]
         required :headers, FinchAPI::Internal::Type::Unknown, nil?: true
 
         # @!attribute method_
         #   The HTTP method that was specified for the forwarded request. Valid values
-        #     include: `GET` , `POST` , `PUT` , `DELETE` , and `PATCH`.
+        #   include: `GET` , `POST` , `PUT` , `DELETE` , and `PATCH`.
         #
         #   @return [String]
         required :method_, String, api_name: :method
 
         # @!attribute params
         #   The query parameters that were included in the forwarded request. If no query
-        #     parameters were specified, this will be returned as `null`.
+        #   parameters were specified, this will be returned as `null`.
         #
         #   @return [Object, nil]
         required :params, FinchAPI::Internal::Type::Unknown, nil?: true
@@ -82,7 +82,7 @@ module FinchAPI
 
         # @!parse
         #   # An object containing details of your original forwarded request, for your ease
-        #   #   of reference.
+        #   # of reference.
         #   #
         #   # @param data [String, nil]
         #   # @param headers [Object, nil]

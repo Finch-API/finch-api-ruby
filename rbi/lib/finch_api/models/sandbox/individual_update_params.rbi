@@ -14,8 +14,8 @@ module FinchAPI
         attr_accessor :emails
 
         # Social Security Number of the individual in **encrypted** format. This field is
-        #   only available with the `ssn` scope enabled and the
-        #   `options: { include: ['ssn'] }` param set in the body.
+        # only available with the `ssn` scope enabled and the
+        # `options: { include: ['ssn'] }` param set in the body.
         sig { returns(T.nilable(String)) }
         attr_accessor :encrypted_ssn
 
@@ -53,9 +53,9 @@ module FinchAPI
         attr_writer :residence
 
         # Social Security Number of the individual. This field is only available with the
-        #   `ssn` scope enabled and the `options: { include: ['ssn'] }` param set in the
-        #   body.
-        #   [Click here to learn more about enabling the SSN field](/developer-resources/Enable-SSN-Field).
+        # `ssn` scope enabled and the `options: { include: ['ssn'] }` param set in the
+        # body.
+        # [Click here to learn more about enabling the SSN field](/developer-resources/Enable-SSN-Field).
         sig { returns(T.nilable(String)) }
         attr_accessor :ssn
 
@@ -73,9 +73,9 @@ module FinchAPI
             middle_name: T.nilable(String),
             phone_numbers: T.nilable(
               T::Array[
-              T.nilable(
-                T.any(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber, FinchAPI::Internal::AnyHash)
-              )
+                T.nilable(
+                  T.any(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber, FinchAPI::Internal::AnyHash)
+                )
               ]
             ),
             preferred_name: T.nilable(String),
@@ -99,9 +99,7 @@ module FinchAPI
           residence: nil,
           ssn: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -122,8 +120,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Email < FinchAPI::Internal::Type::BaseModel
           sig { returns(T.nilable(String)) }
@@ -142,8 +139,7 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(data: nil, type: nil)
-          end
+          def self.new(data: nil, type: nil); end
 
           sig do
             override
@@ -151,8 +147,7 @@ module FinchAPI
                 {data: String, type: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type::OrSymbol)}
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module Type
             extend FinchAPI::Internal::Type::Enum
@@ -166,8 +161,7 @@ module FinchAPI
             PERSONAL = T.let(:personal, FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type::TaggedSymbol)
 
             sig { override.returns(T::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -205,8 +199,7 @@ module FinchAPI
             T.let(:decline_to_specify, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::TaggedSymbol)
 
           sig { override.returns(T::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         # The gender of the individual.
@@ -224,8 +217,7 @@ module FinchAPI
             T.let(:decline_to_specify, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::TaggedSymbol)
 
           sig { override.returns(T::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class PhoneNumber < FinchAPI::Internal::Type::BaseModel
@@ -242,8 +234,7 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(data: nil, type: nil)
-          end
+          def self.new(data: nil, type: nil); end
 
           sig do
             override
@@ -254,8 +245,7 @@ module FinchAPI
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module Type
             extend FinchAPI::Internal::Type::Enum
@@ -273,8 +263,7 @@ module FinchAPI
               override
                 .returns(T::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
       end

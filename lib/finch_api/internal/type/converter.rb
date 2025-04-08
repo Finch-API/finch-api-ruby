@@ -3,7 +3,6 @@
 module FinchAPI
   module Internal
     module Type
-      # rubocop:disable Metrics/ModuleLength
       # @api private
       module Converter
         # rubocop:disable Lint/UnusedMethodArgument
@@ -64,7 +63,7 @@ module FinchAPI
             in Hash
               type_info(spec.slice(:const, :enum, :union).first&.last)
             in true | false
-              -> { FinchAPI::Internal::Type::BooleanModel }
+              -> { FinchAPI::Internal::Type::Boolean }
             in FinchAPI::Internal::Type::Converter | Class | Symbol
               -> { spec }
             in NilClass | Integer | Float
@@ -76,37 +75,37 @@ module FinchAPI
           #
           # Based on `target`, transform `value` into `target`, to the extent possible:
           #
-          #   1. if the given `value` conforms to `target` already, return the given `value`
-          #   2. if it's possible and safe to convert the given `value` to `target`, then the
-          #      converted value
-          #   3. otherwise, the given `value` unaltered
+          # 1. if the given `value` conforms to `target` already, return the given `value`
+          # 2. if it's possible and safe to convert the given `value` to `target`, then the
+          #    converted value
+          # 3. otherwise, the given `value` unaltered
           #
-          #   The coercion process is subject to improvement between minor release versions.
-          #   See https://docs.pydantic.dev/latest/concepts/unions/#smart-mode
+          # The coercion process is subject to improvement between minor release versions.
+          # See https://docs.pydantic.dev/latest/concepts/unions/#smart-mode
           #
           # @param target [FinchAPI::Internal::Type::Converter, Class]
           #
           # @param value [Object]
           #
           # @param state [Hash{Symbol=>Object}] The `strictness` is one of `true`, `false`, or `:strong`. This informs the
-          #   coercion strategy when we have to decide between multiple possible conversion
-          #   targets:
+          # coercion strategy when we have to decide between multiple possible conversion
+          # targets:
           #
-          #   - `true`: the conversion must be exact, with minimum coercion.
-          #   - `false`: the conversion can be approximate, with some coercion.
-          #   - `:strong`: the conversion must be exact, with no coercion, and raise an error
-          #     if not possible.
+          # - `true`: the conversion must be exact, with minimum coercion.
+          # - `false`: the conversion can be approximate, with some coercion.
+          # - `:strong`: the conversion must be exact, with no coercion, and raise an error
+          #   if not possible.
           #
-          #   The `exactness` is `Hash` with keys being one of `yes`, `no`, or `maybe`. For
-          #   any given conversion attempt, the exactness will be updated based on how closely
-          #   the value recursively matches the target type:
+          # The `exactness` is `Hash` with keys being one of `yes`, `no`, or `maybe`. For
+          # any given conversion attempt, the exactness will be updated based on how closely
+          # the value recursively matches the target type:
           #
-          #   - `yes`: the value can be converted to the target type with minimum coercion.
-          #   - `maybe`: the value can be converted to the target type with some reasonable
-          #     coercion.
-          #   - `no`: the value cannot be converted to the target type.
+          # - `yes`: the value can be converted to the target type with minimum coercion.
+          # - `maybe`: the value can be converted to the target type with some reasonable
+          #   coercion.
+          # - `no`: the value cannot be converted to the target type.
           #
-          #   See implementation below for more details.
+          # See implementation below for more details.
           #
           #   @option state [Boolean, :strong] :strictness
           #
@@ -168,6 +167,9 @@ module FinchAPI
                 in String | Symbol | Numeric
                   exactness[value.is_a?(Numeric) ? :maybe : :yes] += 1
                   return value.to_s
+                in StringIO
+                  exactness[:yes] += 1
+                  return value.string
                 else
                   if strictness == :strong
                     message = "no implicit conversion of #{value.class} into #{target.inspect}"
@@ -209,11 +211,12 @@ module FinchAPI
           #
           # @return [Object]
           def dump(target, value)
+            # rubocop:disable Layout/LineLength
             target.is_a?(FinchAPI::Internal::Type::Converter) ? target.dump(value) : FinchAPI::Internal::Type::Unknown.dump(value)
+            # rubocop:enable Layout/LineLength
           end
         end
       end
-      # rubocop:enable Metrics/ModuleLength
     end
   end
 end

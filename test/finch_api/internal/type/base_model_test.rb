@@ -22,7 +22,7 @@ class FinchAPI::Test::PrimitiveModelTest < Minitest::Test
   def test_typing
     converters = [
       FinchAPI::Internal::Type::Unknown,
-      FinchAPI::Internal::Type::BooleanModel,
+      FinchAPI::Internal::Type::Boolean,
       A,
       H,
       E,
@@ -42,8 +42,8 @@ class FinchAPI::Test::PrimitiveModelTest < Minitest::Test
       [FinchAPI::Internal::Type::Unknown, :a] => [{yes: 1}, :a],
       [NilClass, :a] => [{maybe: 1}, nil],
       [NilClass, nil] => [{yes: 1}, nil],
-      [FinchAPI::Internal::Type::BooleanModel, true] => [{yes: 1}, true],
-      [FinchAPI::Internal::Type::BooleanModel, "true"] => [{no: 1}, "true"],
+      [FinchAPI::Internal::Type::Boolean, true] => [{yes: 1}, true],
+      [FinchAPI::Internal::Type::Boolean, "true"] => [{no: 1}, "true"],
       [Integer, 1] => [{yes: 1}, 1],
       [Integer, 1.0] => [{maybe: 1}, 1],
       [Integer, "1"] => [{maybe: 1}, 1],
@@ -85,8 +85,8 @@ class FinchAPI::Test::PrimitiveModelTest < Minitest::Test
       [String, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
       [:b, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
       [nil, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
-      [FinchAPI::Internal::Type::BooleanModel, true] => true,
-      [FinchAPI::Internal::Type::BooleanModel, "true"] => "true",
+      [FinchAPI::Internal::Type::Boolean, true] => true,
+      [FinchAPI::Internal::Type::Boolean, "true"] => "true",
       [Integer, "1"] => "1",
       [Float, 1] => 1,
       [String, "one"] => "one",
@@ -154,11 +154,11 @@ class FinchAPI::Test::EnumModelTest < Minitest::Test
 
   def test_coerce
     cases = {
-      # rubocop:disable Style/BooleanSymbol
+      # rubocop:disable Lint/BooleanSymbol
       [E1, true] => [{yes: 1}, true],
       [E1, false] => [{no: 1}, false],
       [E1, :true] => [{no: 1}, :true],
-      # rubocop:enable Style/BooleanSymbol
+      # rubocop:enable Lint/BooleanSymbol
 
       [E2, 1] => [{yes: 1}, 1],
       [E2, 1.0] => [{yes: 1}, 1],
@@ -560,8 +560,8 @@ class FinchAPI::Test::BaseModelQoLTest < Minitest::Test
   def test_equality
     cases = {
       [FinchAPI::Internal::Type::Unknown, FinchAPI::Internal::Type::Unknown] => true,
-      [FinchAPI::Internal::Type::BooleanModel, FinchAPI::Internal::Type::BooleanModel] => true,
-      [FinchAPI::Internal::Type::Unknown, FinchAPI::Internal::Type::BooleanModel] => false,
+      [FinchAPI::Internal::Type::Boolean, FinchAPI::Internal::Type::Boolean] => true,
+      [FinchAPI::Internal::Type::Unknown, FinchAPI::Internal::Type::Boolean] => false,
       [E1, E2] => true,
       [E1, E3] => false,
       [M1, M2] => false,

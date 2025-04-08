@@ -12,7 +12,7 @@ module FinchAPI
         attr_writer :id
 
         # The ID of the individual associated with the document. This will be null for
-        #   employer-level documents.
+        # employer-level documents.
         sig { returns(T.nilable(String)) }
         attr_accessor :individual_id
 
@@ -24,7 +24,7 @@ module FinchAPI
         attr_writer :type
 
         # A URL to access the document. Format:
-        #   `https://api.tryfinch.com/employer/documents/:document_id`.
+        # `https://api.tryfinch.com/employer/documents/:document_id`.
         sig { returns(T.nilable(String)) }
         attr_reader :url
 
@@ -45,8 +45,7 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(id: nil, individual_id: nil, type: nil, url: nil, year: nil)
-        end
+        def self.new(id: nil, individual_id: nil, type: nil, url: nil, year: nil); end
 
         sig do
           override
@@ -60,8 +59,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The type of document.
         module Type
@@ -75,8 +73,7 @@ module FinchAPI
           W4_2005 = T.let(:w4_2005, FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

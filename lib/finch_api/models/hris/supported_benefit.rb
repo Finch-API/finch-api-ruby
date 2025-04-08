@@ -9,18 +9,18 @@ module FinchAPI
         #   Whether the provider supports an annual maximum for this benefit.
         #
         #   @return [Boolean, nil]
-        optional :annual_maximum, FinchAPI::Internal::Type::BooleanModel, nil?: true
+        optional :annual_maximum, FinchAPI::Internal::Type::Boolean, nil?: true
 
         # @!attribute catch_up
         #   Whether the provider supports catch up for this benefit. This field will only be
-        #     true for retirement benefits.
+        #   true for retirement benefits.
         #
         #   @return [Boolean, nil]
-        optional :catch_up, FinchAPI::Internal::Type::BooleanModel, nil?: true
+        optional :catch_up, FinchAPI::Internal::Type::Boolean, nil?: true
 
         # @!attribute company_contribution
         #   Supported contribution types. An empty array indicates contributions are not
-        #     supported.
+        #   supported.
         #
         #   @return [Array<Symbol, FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution, nil>, nil]
         optional :company_contribution,
@@ -34,7 +34,7 @@ module FinchAPI
 
         # @!attribute employee_deduction
         #   Supported deduction types. An empty array indicates deductions are not
-        #     supported.
+        #   supported.
         #
         #   @return [Array<Symbol, FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction, nil>, nil]
         optional :employee_deduction,
@@ -54,7 +54,7 @@ module FinchAPI
 
         # @!attribute hsa_contribution_limit
         #   Whether the provider supports HSA contribution limits. Empty if this feature is
-        #     not supported for the benefit. This array only has values for HSA benefits.
+        #   not supported for the benefit. This array only has values for HSA benefits.
         #
         #   @return [Array<Symbol, FinchAPI::Models::HRIS::SupportedBenefit::HsaContributionLimit, nil>, nil]
         optional :hsa_contribution_limit,

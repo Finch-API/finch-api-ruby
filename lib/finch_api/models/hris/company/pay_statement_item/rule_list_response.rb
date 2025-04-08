@@ -123,7 +123,7 @@ module FinchAPI
             class Attributes < FinchAPI::Internal::Type::BaseModel
               # @!attribute [r] metadata
               #   The metadata to be attached in the entity. It is a key-value pairs where the
-              #     values can be of any type (string, number, boolean, object, array, etc.).
+              #   values can be of any type (string, number, boolean, object, array, etc.).
               #
               #   @return [Hash{Symbol=>Object}, nil]
               optional :metadata, FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown]

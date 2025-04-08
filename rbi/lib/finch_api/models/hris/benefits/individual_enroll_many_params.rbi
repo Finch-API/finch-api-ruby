@@ -15,10 +15,10 @@ module FinchAPI
           sig do
             params(
               individuals: T::Array[
-              T.any(
-                FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual,
-                FinchAPI::Internal::AnyHash
-              )
+                T.any(
+                  FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual,
+                  FinchAPI::Internal::AnyHash
+                )
               ]
             )
               .void
@@ -28,17 +28,16 @@ module FinchAPI
           sig do
             params(
               individuals: T::Array[
-              T.any(
-                FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual,
-                FinchAPI::Internal::AnyHash
-              )
+                T.any(
+                  FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual,
+                  FinchAPI::Internal::AnyHash
+                )
               ],
               request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)
             )
               .returns(T.attached_class)
           end
-          def self.new(individuals: nil, request_options: {})
-          end
+          def self.new(individuals: nil, request_options: {}); end
 
           sig do
             override
@@ -49,8 +48,7 @@ module FinchAPI
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Individual < FinchAPI::Internal::Type::BaseModel
             sig do
@@ -88,8 +86,7 @@ module FinchAPI
               )
                 .returns(T.attached_class)
             end
-            def self.new(configuration: nil, individual_id: nil)
-            end
+            def self.new(configuration: nil, individual_id: nil); end
 
             sig do
               override
@@ -100,12 +97,11 @@ module FinchAPI
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class Configuration < FinchAPI::Internal::Type::BaseModel
               # For HSA benefits only - whether the contribution limit is for an individual or
-              #   family
+              # family
               sig do
                 returns(
                   T.nilable(
@@ -205,9 +201,7 @@ module FinchAPI
                 company_contribution: nil,
                 effective_date: nil,
                 employee_deduction: nil
-              )
-              end
-
+              ); end
               sig do
                 override
                   .returns(
@@ -221,11 +215,10 @@ module FinchAPI
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # For HSA benefits only - whether the contribution limit is for an individual or
-              #   family
+              # family
               module AnnualContributionLimit
                 extend FinchAPI::Internal::Type::Enum
 
@@ -257,17 +250,16 @@ module FinchAPI
                   override
                     .returns(
                       T::Array[
-                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit::TaggedSymbol
+                        FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               class CompanyContribution < FinchAPI::Internal::Type::BaseModel
                 # Amount in cents for fixed type or basis points (1/100th of a percent) for
-                #   percent type
+                # percent type
                 sig { returns(T.nilable(Integer)) }
                 attr_reader :amount
 
@@ -298,8 +290,7 @@ module FinchAPI
                   )
                     .returns(T.attached_class)
                 end
-                def self.new(amount: nil, type: nil)
-                end
+                def self.new(amount: nil, type: nil); end
 
                 sig do
                   override
@@ -310,8 +301,7 @@ module FinchAPI
                       }
                     )
                 end
-                def to_hash
-                end
+                def to_hash; end
 
                 module Type
                   extend FinchAPI::Internal::Type::Enum
@@ -344,18 +334,17 @@ module FinchAPI
                     override
                       .returns(
                         T::Array[
-                        FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::TaggedSymbol
+                          FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::TaggedSymbol
                         ]
                       )
                   end
-                  def self.values
-                  end
+                  def self.values; end
                 end
               end
 
               class EmployeeDeduction < FinchAPI::Internal::Type::BaseModel
                 # Amount in cents for fixed type or basis points (1/100th of a percent) for
-                #   percent type
+                # percent type
                 sig { returns(T.nilable(Integer)) }
                 attr_reader :amount
 
@@ -386,8 +375,7 @@ module FinchAPI
                   )
                     .returns(T.attached_class)
                 end
-                def self.new(amount: nil, type: nil)
-                end
+                def self.new(amount: nil, type: nil); end
 
                 sig do
                   override
@@ -398,8 +386,7 @@ module FinchAPI
                       }
                     )
                 end
-                def to_hash
-                end
+                def to_hash; end
 
                 module Type
                   extend FinchAPI::Internal::Type::Enum
@@ -432,12 +419,11 @@ module FinchAPI
                     override
                       .returns(
                         T::Array[
-                        FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type::TaggedSymbol
+                          FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type::TaggedSymbol
                         ]
                       )
                   end
-                  def self.values
-                  end
+                  def self.values; end
                 end
               end
             end

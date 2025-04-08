@@ -8,8 +8,8 @@ module FinchAPI
         include FinchAPI::Internal::Type::RequestParameters
 
         # Name of the benefit as it appears in the provider and pay statements. Recommend
-        #   limiting this to <30 characters due to limitations in specific providers (e.g.
-        #   Justworks).
+        # limiting this to <30 characters due to limitations in specific providers (e.g.
+        # Justworks).
         sig { returns(T.nilable(String)) }
         attr_reader :description
 
@@ -33,8 +33,7 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(description: nil, frequency: nil, type: nil, request_options: {})
-        end
+        def self.new(description: nil, frequency: nil, type: nil, request_options: {}); end
 
         sig do
           override
@@ -47,8 +46,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

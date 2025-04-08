@@ -14,13 +14,11 @@ module FinchAPI
         )
           .returns(FinchAPI::Models::CreateAccessTokenResponse)
       end
-      def create(code:, client_id: nil, client_secret: nil, redirect_uri: nil, request_options: {})
-      end
+      def create(code:, client_id: nil, client_secret: nil, redirect_uri: nil, request_options: {}); end
 
       # @api private
       sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

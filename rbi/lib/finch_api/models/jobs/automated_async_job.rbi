@@ -9,8 +9,8 @@ module FinchAPI
         attr_accessor :completed_at
 
         # The datetime when the job was created. for scheduled jobs, this will be the
-        #   initial connection time. For ad-hoc jobs, this will be the time the creation
-        #   request was received.
+        # initial connection time. For ad-hoc jobs, this will be the time the creation
+        # request was received.
         sig { returns(Time) }
         attr_accessor :created_at
 
@@ -35,8 +35,8 @@ module FinchAPI
         attr_writer :params
 
         # The datetime a job is scheduled to be run. For scheduled jobs, this datetime can
-        #   be in the future if the job has not yet been enqueued. For ad-hoc jobs, this
-        #   field will be null.
+        # be in the future if the job has not yet been enqueued. For ad-hoc jobs, this
+        # field will be null.
         sig { returns(T.nilable(Time)) }
         attr_accessor :scheduled_at
 
@@ -94,8 +94,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Params < FinchAPI::Internal::Type::BaseModel
           # The ID of the individual that the job was completed for.
@@ -107,12 +106,10 @@ module FinchAPI
 
           # The input parameters for the job.
           sig { params(individual_id: String).returns(T.attached_class) }
-          def self.new(individual_id: nil)
-          end
+          def self.new(individual_id: nil); end
 
           sig { override.returns({individual_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module Status
@@ -131,8 +128,7 @@ module FinchAPI
             T.let(:permissions_error, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
 
           sig { override.returns(T::Array[FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         # The type of automated job
@@ -148,8 +144,7 @@ module FinchAPI
             T.let(:w4_form_employee_sync, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

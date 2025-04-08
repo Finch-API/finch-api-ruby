@@ -15,19 +15,16 @@ module FinchAPI
         end
         def list(
           # The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
-          #   format.
+          # format.
           end_date:,
           # The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
-          #   format.
+          # format.
           start_date:,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

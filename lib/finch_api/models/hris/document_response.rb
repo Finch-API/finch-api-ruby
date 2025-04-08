@@ -16,7 +16,7 @@ module FinchAPI
 
         # @!attribute individual_id
         #   The ID of the individual associated with the document. This will be null for
-        #     employer-level documents.
+        #   employer-level documents.
         #
         #   @return [String, nil]
         optional :individual_id, String, nil?: true
@@ -33,7 +33,7 @@ module FinchAPI
 
         # @!attribute [r] url
         #   A URL to access the document. Format:
-        #     `https://api.tryfinch.com/employer/documents/:document_id`.
+        #   `https://api.tryfinch.com/employer/documents/:document_id`.
         #
         #   @return [String, nil]
         optional :url, String

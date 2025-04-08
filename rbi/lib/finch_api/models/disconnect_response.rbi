@@ -8,12 +8,10 @@ module FinchAPI
       attr_accessor :status
 
       sig { params(status: String).returns(T.attached_class) }
-      def self.new(status:)
-      end
+      def self.new(status:); end
 
       sig { override.returns({status: String}) }
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

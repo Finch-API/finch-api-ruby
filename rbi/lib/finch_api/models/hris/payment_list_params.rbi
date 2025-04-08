@@ -8,12 +8,12 @@ module FinchAPI
         include FinchAPI::Internal::Type::RequestParameters
 
         # The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
-        #   format.
+        # format.
         sig { returns(Date) }
         attr_accessor :end_date
 
         # The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
-        #   format.
+        # format.
         sig { returns(Date) }
         attr_accessor :start_date
 
@@ -25,14 +25,12 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(end_date:, start_date:, request_options: {})
-        end
+        def self.new(end_date:, start_date:, request_options: {}); end
 
         sig do
           override.returns({end_date: Date, start_date: Date, request_options: FinchAPI::RequestOptions})
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

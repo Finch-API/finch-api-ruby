@@ -1,5 +1,34 @@
 # Changelog
 
+## 0.1.0-alpha.7 (2025-04-08)
+
+Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
+
+### Features
+
+* allow all valid `JSON` types to be encoded ([#119](https://github.com/Finch-API/finch-api-ruby/issues/119)) ([a67519c](https://github.com/Finch-API/finch-api-ruby/commit/a67519c5f2039cccce94f069ad1eeb40252290c1))
+* support query, header, and body params that have identical names ([#118](https://github.com/Finch-API/finch-api-ruby/issues/118)) ([4fa584a](https://github.com/Finch-API/finch-api-ruby/commit/4fa584ab9a22689faa9b218f508a38188d5847d3))
+
+
+### Bug Fixes
+
+* converter should transform stringio into string where applicable ([#121](https://github.com/Finch-API/finch-api-ruby/issues/121)) ([432e28e](https://github.com/Finch-API/finch-api-ruby/commit/432e28e92b9704f9692937315a5bb129fccb9ed5))
+
+
+### Chores
+
+* always fold up method bodies in sorbet type definitions ([#125](https://github.com/Finch-API/finch-api-ruby/issues/125)) ([ff97af2](https://github.com/Finch-API/finch-api-ruby/commit/ff97af205ffe88a190d05f6ecaf63d73794b39c0))
+* document LSP support in read me ([#117](https://github.com/Finch-API/finch-api-ruby/issues/117)) ([469c82c](https://github.com/Finch-API/finch-api-ruby/commit/469c82c13e10eff05dc59148195e41a8060c660f))
+* **internal:** misc small improvements ([#122](https://github.com/Finch-API/finch-api-ruby/issues/122)) ([9817037](https://github.com/Finch-API/finch-api-ruby/commit/981703710cff8afcdedc0c133457f54480f0cd7e))
+* **internal:** more concise handling of parameter naming conflicts ([#127](https://github.com/Finch-API/finch-api-ruby/issues/127)) ([81414ea](https://github.com/Finch-API/finch-api-ruby/commit/81414ea8318e9f7fef2fece402c9e31088a62c99))
+* **internal:** rubocop rules ([#124](https://github.com/Finch-API/finch-api-ruby/issues/124)) ([7e59465](https://github.com/Finch-API/finch-api-ruby/commit/7e59465247659dac04e33e608c8308c56fea8d58))
+* **internal:** run rubocop linter in parallel ([#123](https://github.com/Finch-API/finch-api-ruby/issues/123)) ([53b1156](https://github.com/Finch-API/finch-api-ruby/commit/53b1156d97634b97ad54330a2860b9cdbe996947))
+* **internal:** version bump ([#113](https://github.com/Finch-API/finch-api-ruby/issues/113)) ([14b68c9](https://github.com/Finch-API/finch-api-ruby/commit/14b68c95d5b50abe3d46745a86054d81e80684c1))
+* misc sdk polish ([#116](https://github.com/Finch-API/finch-api-ruby/issues/116)) ([9af5943](https://github.com/Finch-API/finch-api-ruby/commit/9af5943664bddedd57feab75609521ccfbf3afbd))
+* rename confusing `Type::BooleanModel` to `Type::Boolean` ([#120](https://github.com/Finch-API/finch-api-ruby/issues/120)) ([4295175](https://github.com/Finch-API/finch-api-ruby/commit/429517572c98a1ccc9851a6cb16e875546b637ee))
+* simplify internal utils ([#114](https://github.com/Finch-API/finch-api-ruby/issues/114)) ([0745cc7](https://github.com/Finch-API/finch-api-ruby/commit/0745cc74ce9ef4c0fa2c391ac62b155188110990))
+* update yard comment formatting ([#126](https://github.com/Finch-API/finch-api-ruby/issues/126)) ([695363a](https://github.com/Finch-API/finch-api-ruby/commit/695363a4a80ebae5104a0a01c9427abfc277afb0))
+
 ## 0.1.0-alpha.6 (2025-04-04)
 
 Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)

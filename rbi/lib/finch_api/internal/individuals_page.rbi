@@ -3,9 +3,9 @@
 module FinchAPI
   module Internal
     class IndividualsPage
-      Elem = type_member
-
       include FinchAPI::Internal::Type::BasePage
+
+      Elem = type_member
 
       sig { returns(T.nilable(T::Array[Elem])) }
       attr_accessor :individuals
@@ -14,8 +14,7 @@ module FinchAPI
       attr_accessor :paging
 
       sig { returns(String) }
-      def inspect
-      end
+      def inspect; end
     end
   end
 end

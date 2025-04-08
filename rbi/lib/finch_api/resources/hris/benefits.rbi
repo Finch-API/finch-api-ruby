@@ -8,7 +8,7 @@ module FinchAPI
         attr_reader :individuals
 
         # Creates a new company-wide deduction or contribution. Please use the
-        #   `/providers` endpoint to view available types for each provider.
+        # `/providers` endpoint to view available types for each provider.
         sig do
           params(
             description: String,
@@ -20,17 +20,15 @@ module FinchAPI
         end
         def create(
           # Name of the benefit as it appears in the provider and pay statements. Recommend
-          #   limiting this to <30 characters due to limitations in specific providers (e.g.
-          #   Justworks).
+          # limiting this to <30 characters due to limitations in specific providers (e.g.
+          # Justworks).
           description: nil,
           # The frequency of the benefit deduction/contribution.
           frequency: nil,
           # Type of benefit.
           type: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # Lists deductions and contributions information for a given item
         sig do
           params(
@@ -39,8 +37,7 @@ module FinchAPI
           )
             .returns(FinchAPI::Models::HRIS::CompanyBenefit)
         end
-        def retrieve(benefit_id, request_options: {})
-        end
+        def retrieve(benefit_id, request_options: {}); end
 
         # Updates an existing company-wide deduction or contribution
         sig do
@@ -56,29 +53,24 @@ module FinchAPI
           # Updated name or description.
           description: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # List all company-wide deductions and contributions.
         sig do
           params(request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)))
             .returns(FinchAPI::Internal::SinglePage[FinchAPI::Models::HRIS::CompanyBenefit])
         end
-        def list(request_options: {})
-        end
+        def list(request_options: {}); end
 
         # Get deductions metadata
         sig do
           params(request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)))
             .returns(FinchAPI::Internal::SinglePage[FinchAPI::Models::HRIS::SupportedBenefit])
         end
-        def list_supported_benefits(request_options: {})
-        end
+        def list_supported_benefits(request_options: {}); end
 
         # @api private
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

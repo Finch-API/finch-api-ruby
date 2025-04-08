@@ -32,7 +32,7 @@ module FinchAPI
 
         # @!parse
         #   # A 2020 version of the W-4 tax form containing information on an individual's
-        #   #   filing status, dependents, and withholding details.
+        #   # filing status, dependents, and withholding details.
         #   #
         #   # @param data [FinchAPI::Models::HRIS::W42020::Data]
         #   # @param type [Symbol, FinchAPI::Models::HRIS::W42020::Type]
@@ -46,7 +46,7 @@ module FinchAPI
         class Data < FinchAPI::Internal::Type::BaseModel
           # @!attribute amount_for_other_dependents
           #   Amount claimed for dependents other than qualifying children under 17 (in
-          #     cents).
+          #   cents).
           #
           #   @return [Integer, nil]
           optional :amount_for_other_dependents, Integer, nil?: true

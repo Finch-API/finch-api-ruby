@@ -8,7 +8,7 @@ module FinchAPI
         include FinchAPI::Internal::Type::RequestParameters
 
         # Comma-delimited list of stable Finch uuids for each individual. If empty,
-        #   defaults to all individuals
+        # defaults to all individuals
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :individual_ids
 
@@ -30,7 +30,7 @@ module FinchAPI
         attr_writer :offset
 
         # Comma-delimited list of document types to filter on. If empty, defaults to all
-        #   types
+        # types
         sig { returns(T.nilable(T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol])) }
         attr_reader :types
 
@@ -47,8 +47,7 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(individual_ids: nil, limit: nil, offset: nil, types: nil, request_options: {})
-        end
+        def self.new(individual_ids: nil, limit: nil, offset: nil, types: nil, request_options: {}); end
 
         sig do
           override
@@ -62,8 +61,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module Type
           extend FinchAPI::Internal::Type::Enum
@@ -76,8 +74,7 @@ module FinchAPI
           W4_2005 = T.let(:w4_2005, FinchAPI::Models::HRIS::DocumentListParams::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

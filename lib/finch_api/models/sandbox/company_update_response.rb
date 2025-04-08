@@ -101,7 +101,7 @@ module FinchAPI
 
           # @!attribute routing_number
           #   A nine-digit code that's based on the U.S. Bank location where your account was
-          #     opened.
+          #   opened.
           #
           #   @return [String, nil]
           optional :routing_number, String, nil?: true

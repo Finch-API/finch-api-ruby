@@ -19,7 +19,7 @@ module FinchAPI
           # @api private
           #
           # Assumes superclass fields are totally defined before fields are accessed /
-          #   defined on subclasses.
+          # defined on subclasses.
           #
           # @return [Hash{Symbol=>Hash{Symbol=>Object}}]
           def known_fields
@@ -150,7 +150,7 @@ module FinchAPI
           # @api private
           #
           # `request_only` attributes not excluded from `.#coerce` when receiving responses
-          #   even if well behaved servers should not send them
+          # even if well behaved servers should not send them
           #
           # @param blk [Proc]
           private def request_only(&blk)
@@ -175,7 +175,9 @@ module FinchAPI
           # @param other [Object]
           #
           # @return [Boolean]
-          def ==(other) = other.is_a?(Class) && other <= FinchAPI::Internal::Type::BaseModel && other.fields == fields
+          def ==(other)
+            other.is_a?(Class) && other <= FinchAPI::Internal::Type::BaseModel && other.fields == fields
+          end
         end
 
         # @param other [Object]
@@ -271,7 +273,7 @@ module FinchAPI
               in nil
                 acc.store(name, super(val))
               else
-                mode, api_name, type_fn = field.fetch_values(:mode, :api_name, :type_fn)
+                api_name, mode, type_fn = field.fetch_values(:api_name, :mode, :type_fn)
                 case mode
                 in :coerce
                   next
@@ -283,7 +285,7 @@ module FinchAPI
             end
 
             known_fields.each_value do |field|
-              mode, api_name, const = field.fetch_values(:mode, :api_name, :const)
+              api_name, mode, const = field.fetch_values(:api_name, :mode, :const)
               next if mode == :coerce || acc.key?(api_name) || const == FinchAPI::Internal::OMIT
               acc.store(api_name, const)
             end
@@ -293,11 +295,11 @@ module FinchAPI
         end
 
         # Returns the raw value associated with the given key, if found. Otherwise, nil is
-        #   returned.
+        # returned.
         #
-        #   It is valid to lookup keys that are not in the API spec, for example to access
-        #   undocumented features. This method does not parse response data into
-        #   higher-level types. Lookup by anything other than a Symbol is an ArgumentError.
+        # It is valid to lookup keys that are not in the API spec, for example to access
+        # undocumented features. This method does not parse response data into
+        # higher-level types. Lookup by anything other than a Symbol is an ArgumentError.
         #
         # @param key [Symbol]
         #
@@ -312,12 +314,12 @@ module FinchAPI
 
         # Returns a Hash of the data underlying this object. O(1)
         #
-        #   Keys are Symbols and values are the raw values from the response. The return
-        #   value indicates which values were ever set on the object. i.e. there will be a
-        #   key in this hash if they ever were, even if the set value was nil.
+        # Keys are Symbols and values are the raw values from the response. The return
+        # value indicates which values were ever set on the object. i.e. there will be a
+        # key in this hash if they ever were, even if the set value was nil.
         #
-        #   This method is not recursive. The returned value is shared by the object, so it
-        #   should not be mutated.
+        # This method is not recursive. The returned value is shared by the object, so it
+        # should not be mutated.
         #
         # @return [Hash{Symbol=>Object}]
         def to_h = @data
@@ -357,7 +359,8 @@ module FinchAPI
           in Hash => coerced
             @data = coerced
           else
-            raise ArgumentError.new("Expected a #{Hash} or #{FinchAPI::Internal::Type::BaseModel}, got #{data.inspect}")
+            message = "Expected a #{Hash} or #{FinchAPI::Internal::Type::BaseModel}, got #{data.inspect}"
+            raise ArgumentError.new(message)
           end
         end
 
@@ -365,7 +368,7 @@ module FinchAPI
         def inspect
           rows = self.class.known_fields.keys.map do
             "#{_1}=#{@data.key?(_1) ? public_send(_1) : ''}"
-          rescue FinchAPI::ConversionError
+          rescue FinchAPI::Errors::ConversionError
             "#{_1}=#{@data.fetch(_1)}"
           end
           "#<#{self.class.name}:0x#{object_id.to_s(16)} #{rows.join(' ')}>"

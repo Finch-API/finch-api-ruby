@@ -17,8 +17,8 @@ module FinchAPI
 
         # @!attribute [r] custom_fields
         #   Custom fields for the individual. These are fields which are defined by the
-        #     employer in the system. Custom fields are not currently supported for assisted
-        #     connections.
+        #   employer in the system. Custom fields are not currently supported for assisted
+        #   connections.
         #
         #   @return [Array<FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField>, nil]
         optional :custom_fields,
@@ -61,8 +61,8 @@ module FinchAPI
 
         # @!attribute income
         #   The employee's income as reported by the provider. This may not always be
-        #     annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
-        #     depending on what information the provider returns.
+        #   annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
+        #   depending on what information the provider returns.
         #
         #   @return [FinchAPI::Models::Income, nil]
         optional :income, -> { FinchAPI::Models::Income }, nil?: true
@@ -79,7 +79,7 @@ module FinchAPI
         #   `true` if the individual an an active employee or contractor at the company.
         #
         #   @return [Boolean, nil]
-        optional :is_active, FinchAPI::Internal::Type::BooleanModel, nil?: true
+        optional :is_active, FinchAPI::Internal::Type::Boolean, nil?: true
 
         # @!attribute last_name
         #   The legal last name of the individual.
@@ -222,7 +222,7 @@ module FinchAPI
         class Employment < FinchAPI::Internal::Type::BaseModel
           # @!attribute subtype
           #   The secondary employment type of the individual. Options: `full_time`,
-          #     `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
+          #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
           #
           #   @return [Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::Subtype, nil]
           optional :subtype,
@@ -248,7 +248,7 @@ module FinchAPI
           # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
           # The secondary employment type of the individual. Options: `full_time`,
-          #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
+          # `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
           #
           # @see FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment#subtype
           module Subtype

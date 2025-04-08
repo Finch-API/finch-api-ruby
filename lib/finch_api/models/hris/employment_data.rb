@@ -22,7 +22,7 @@ module FinchAPI
 
         # @!attribute custom_fields
         #   Custom fields for the individual. These are fields which are defined by the
-        #     employer in the system.
+        #   employer in the system.
         #
         #   @return [Array<FinchAPI::Models::HRIS::EmploymentData::CustomField>, nil]
         optional :custom_fields,
@@ -43,7 +43,7 @@ module FinchAPI
 
         # @!attribute employment_status
         #   The detailed employment status of the individual. Available options: `active`,
-        #     `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
+        #   `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
         #
         #   @return [Symbol, FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus, nil]
         optional :employment_status,
@@ -63,8 +63,8 @@ module FinchAPI
 
         # @!attribute income
         #   The employee's income as reported by the provider. This may not always be
-        #     annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
-        #     depending on what information the provider returns.
+        #   annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
+        #   depending on what information the provider returns.
         #
         #   @return [FinchAPI::Models::Income, nil]
         optional :income, -> { FinchAPI::Models::Income }, nil?: true
@@ -81,7 +81,7 @@ module FinchAPI
         #   `true` if the individual an an active employee or contractor at the company.
         #
         #   @return [Boolean, nil]
-        optional :is_active, FinchAPI::Internal::Type::BooleanModel, nil?: true
+        optional :is_active, FinchAPI::Internal::Type::Boolean, nil?: true
 
         # @!attribute last_name
         #   The legal last name of the individual.
@@ -234,7 +234,7 @@ module FinchAPI
         class Employment < FinchAPI::Internal::Type::BaseModel
           # @!attribute subtype
           #   The secondary employment type of the individual. Options: `full_time`,
-          #     `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
+          #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
           #
           #   @return [Symbol, FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype, nil]
           optional :subtype, enum: -> { FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype }, nil?: true
@@ -256,7 +256,7 @@ module FinchAPI
           # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
 
           # The secondary employment type of the individual. Options: `full_time`,
-          #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
+          # `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
           #
           # @see FinchAPI::Models::HRIS::EmploymentData::Employment#subtype
           module Subtype
@@ -294,7 +294,7 @@ module FinchAPI
         end
 
         # The detailed employment status of the individual. Available options: `active`,
-        #   `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
+        # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
         #
         # @see FinchAPI::Models::HRIS::EmploymentData#employment_status
         module EmploymentStatus

@@ -16,13 +16,13 @@ module FinchAPI
       attr_accessor :effective_date
 
       # The income unit of payment. Options: `yearly`, `quarterly`, `monthly`,
-      #   `semi_monthly`, `bi_weekly`, `weekly`, `daily`, `hourly`, and `fixed`.
+      # `semi_monthly`, `bi_weekly`, `weekly`, `daily`, `hourly`, and `fixed`.
       sig { returns(T.nilable(FinchAPI::Models::Income::Unit::OrSymbol)) }
       attr_accessor :unit
 
       # The employee's income as reported by the provider. This may not always be
-      #   annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
-      #   depending on what information the provider returns.
+      # annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
+      # depending on what information the provider returns.
       sig do
         params(
           amount: T.nilable(Integer),
@@ -32,8 +32,7 @@ module FinchAPI
         )
           .returns(T.attached_class)
       end
-      def self.new(amount: nil, currency: nil, effective_date: nil, unit: nil)
-      end
+      def self.new(amount: nil, currency: nil, effective_date: nil, unit: nil); end
 
       sig do
         override
@@ -46,11 +45,10 @@ module FinchAPI
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The income unit of payment. Options: `yearly`, `quarterly`, `monthly`,
-      #   `semi_monthly`, `bi_weekly`, `weekly`, `daily`, `hourly`, and `fixed`.
+      # `semi_monthly`, `bi_weekly`, `weekly`, `daily`, `hourly`, and `fixed`.
       module Unit
         extend FinchAPI::Internal::Type::Enum
 
@@ -68,8 +66,7 @@ module FinchAPI
         FIXED = T.let(:fixed, FinchAPI::Models::Income::Unit::TaggedSymbol)
 
         sig { override.returns(T::Array[FinchAPI::Models::Income::Unit::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

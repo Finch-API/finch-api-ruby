@@ -20,9 +20,9 @@ module FinchAPI
             middle_name: T.nilable(String),
             phone_numbers: T.nilable(
               T::Array[
-              T.nilable(
-                T.any(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber, FinchAPI::Internal::AnyHash)
-              )
+                T.nilable(
+                  T.any(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber, FinchAPI::Internal::AnyHash)
+                )
               ]
             ),
             preferred_name: T.nilable(String),
@@ -37,8 +37,8 @@ module FinchAPI
           dob: nil,
           emails: nil,
           # Social Security Number of the individual in **encrypted** format. This field is
-          #   only available with the `ssn` scope enabled and the
-          #   `options: { include: ['ssn'] }` param set in the body.
+          # only available with the `ssn` scope enabled and the
+          # `options: { include: ['ssn'] }` param set in the body.
           encrypted_ssn: nil,
           # The EEOC-defined ethnicity of the individual.
           ethnicity: nil,
@@ -55,18 +55,15 @@ module FinchAPI
           preferred_name: nil,
           residence: nil,
           # Social Security Number of the individual. This field is only available with the
-          #   `ssn` scope enabled and the `options: { include: ['ssn'] }` param set in the
-          #   body.
-          #   [Click here to learn more about enabling the SSN field](/developer-resources/Enable-SSN-Field).
+          # `ssn` scope enabled and the `options: { include: ['ssn'] }` param set in the
+          # body.
+          # [Click here to learn more about enabling the SSN field](/developer-resources/Enable-SSN-Field).
           ssn: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

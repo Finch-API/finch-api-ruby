@@ -29,7 +29,7 @@ module FinchAPI
       #   `true` if the integration is in a beta state, `false` otherwise
       #
       #   @return [Boolean, nil]
-      optional :beta, FinchAPI::Internal::Type::BooleanModel
+      optional :beta, FinchAPI::Internal::Type::Boolean
 
       # @!parse
       #   # @return [Boolean]
@@ -67,11 +67,11 @@ module FinchAPI
 
       # @!attribute [r] manual
       #   [DEPRECATED] Whether the Finch integration with this provider uses the Assisted
-      #     Connect Flow by default. This field is now deprecated. Please check for a `type`
-      #     of `assisted` in the `authentication_methods` field instead.
+      #   Connect Flow by default. This field is now deprecated. Please check for a `type`
+      #   of `assisted` in the `authentication_methods` field instead.
       #
       #   @return [Boolean, nil]
-      optional :manual, FinchAPI::Internal::Type::BooleanModel
+      optional :manual, FinchAPI::Internal::Type::Boolean
 
       # @!parse
       #   # @return [Boolean]
@@ -81,7 +81,7 @@ module FinchAPI
       #   whether MFA is required for the provider.
       #
       #   @return [Boolean, nil]
-      optional :mfa_required, FinchAPI::Internal::Type::BooleanModel
+      optional :mfa_required, FinchAPI::Internal::Type::Boolean
 
       # @!parse
       #   # @return [Boolean]
@@ -140,7 +140,7 @@ module FinchAPI
       class AuthenticationMethod < FinchAPI::Internal::Type::BaseModel
         # @!attribute benefits_support
         #   Each benefit type and their supported features. If the benefit type is not
-        #     supported, the property will be null
+        #   supported, the property will be null
         #
         #   @return [FinchAPI::Models::HRIS::BenefitsSupport, nil]
         optional :benefits_support, -> { FinchAPI::Models::HRIS::BenefitsSupport }, nil?: true
@@ -269,7 +269,7 @@ module FinchAPI
             # @!attribute [r] id
             #
             #   @return [Boolean, nil]
-            optional :id, FinchAPI::Internal::Type::BooleanModel
+            optional :id, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -298,7 +298,7 @@ module FinchAPI
             # @!attribute [r] ein
             #
             #   @return [Boolean, nil]
-            optional :ein, FinchAPI::Internal::Type::BooleanModel
+            optional :ein, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -317,7 +317,7 @@ module FinchAPI
             # @!attribute [r] legal_name
             #
             #   @return [Boolean, nil]
-            optional :legal_name, FinchAPI::Internal::Type::BooleanModel
+            optional :legal_name, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -336,7 +336,7 @@ module FinchAPI
             # @!attribute [r] primary_email
             #
             #   @return [Boolean, nil]
-            optional :primary_email, FinchAPI::Internal::Type::BooleanModel
+            optional :primary_email, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -345,7 +345,7 @@ module FinchAPI
             # @!attribute [r] primary_phone_number
             #
             #   @return [Boolean, nil]
-            optional :primary_phone_number, FinchAPI::Internal::Type::BooleanModel
+            optional :primary_phone_number, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -384,7 +384,7 @@ module FinchAPI
               # @!attribute [r] account_name
               #
               #   @return [Boolean, nil]
-              optional :account_name, FinchAPI::Internal::Type::BooleanModel
+              optional :account_name, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -393,7 +393,7 @@ module FinchAPI
               # @!attribute [r] account_number
               #
               #   @return [Boolean, nil]
-              optional :account_number, FinchAPI::Internal::Type::BooleanModel
+              optional :account_number, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -402,7 +402,7 @@ module FinchAPI
               # @!attribute [r] account_type
               #
               #   @return [Boolean, nil]
-              optional :account_type, FinchAPI::Internal::Type::BooleanModel
+              optional :account_type, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -411,7 +411,7 @@ module FinchAPI
               # @!attribute [r] institution_name
               #
               #   @return [Boolean, nil]
-              optional :institution_name, FinchAPI::Internal::Type::BooleanModel
+              optional :institution_name, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -420,7 +420,7 @@ module FinchAPI
               # @!attribute [r] routing_number
               #
               #   @return [Boolean, nil]
-              optional :routing_number, FinchAPI::Internal::Type::BooleanModel
+              optional :routing_number, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -443,7 +443,7 @@ module FinchAPI
               # @!attribute [r] name
               #
               #   @return [Boolean, nil]
-              optional :name, FinchAPI::Internal::Type::BooleanModel
+              optional :name, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -472,7 +472,7 @@ module FinchAPI
                 # @!attribute [r] name
                 #
                 #   @return [Boolean, nil]
-                optional :name, FinchAPI::Internal::Type::BooleanModel
+                optional :name, FinchAPI::Internal::Type::Boolean
 
                 # @!parse
                 #   # @return [Boolean]
@@ -492,7 +492,7 @@ module FinchAPI
               # @!attribute [r] subtype
               #
               #   @return [Boolean, nil]
-              optional :subtype, FinchAPI::Internal::Type::BooleanModel
+              optional :subtype, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -501,7 +501,7 @@ module FinchAPI
               # @!attribute [r] type
               #
               #   @return [Boolean, nil]
-              optional :type, FinchAPI::Internal::Type::BooleanModel
+              optional :type, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -521,7 +521,7 @@ module FinchAPI
               # @!attribute [r] city
               #
               #   @return [Boolean, nil]
-              optional :city, FinchAPI::Internal::Type::BooleanModel
+              optional :city, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -530,7 +530,7 @@ module FinchAPI
               # @!attribute [r] country
               #
               #   @return [Boolean, nil]
-              optional :country, FinchAPI::Internal::Type::BooleanModel
+              optional :country, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -539,7 +539,7 @@ module FinchAPI
               # @!attribute [r] line1
               #
               #   @return [Boolean, nil]
-              optional :line1, FinchAPI::Internal::Type::BooleanModel
+              optional :line1, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -548,7 +548,7 @@ module FinchAPI
               # @!attribute [r] line2
               #
               #   @return [Boolean, nil]
-              optional :line2, FinchAPI::Internal::Type::BooleanModel
+              optional :line2, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -557,7 +557,7 @@ module FinchAPI
               # @!attribute [r] postal_code
               #
               #   @return [Boolean, nil]
-              optional :postal_code, FinchAPI::Internal::Type::BooleanModel
+              optional :postal_code, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -566,7 +566,7 @@ module FinchAPI
               # @!attribute [r] state
               #
               #   @return [Boolean, nil]
-              optional :state, FinchAPI::Internal::Type::BooleanModel
+              optional :state, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -621,7 +621,7 @@ module FinchAPI
               # @!attribute [r] id
               #
               #   @return [Boolean, nil]
-              optional :id, FinchAPI::Internal::Type::BooleanModel
+              optional :id, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -630,7 +630,7 @@ module FinchAPI
               # @!attribute [r] department
               #
               #   @return [Boolean, nil]
-              optional :department, FinchAPI::Internal::Type::BooleanModel
+              optional :department, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -639,7 +639,7 @@ module FinchAPI
               # @!attribute [r] first_name
               #
               #   @return [Boolean, nil]
-              optional :first_name, FinchAPI::Internal::Type::BooleanModel
+              optional :first_name, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -648,7 +648,7 @@ module FinchAPI
               # @!attribute [r] is_active
               #
               #   @return [Boolean, nil]
-              optional :is_active, FinchAPI::Internal::Type::BooleanModel
+              optional :is_active, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -657,7 +657,7 @@ module FinchAPI
               # @!attribute [r] last_name
               #
               #   @return [Boolean, nil]
-              optional :last_name, FinchAPI::Internal::Type::BooleanModel
+              optional :last_name, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -676,7 +676,7 @@ module FinchAPI
               # @!attribute [r] middle_name
               #
               #   @return [Boolean, nil]
-              optional :middle_name, FinchAPI::Internal::Type::BooleanModel
+              optional :middle_name, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -711,7 +711,7 @@ module FinchAPI
                 # @!attribute [r] id
                 #
                 #   @return [Boolean, nil]
-                optional :id, FinchAPI::Internal::Type::BooleanModel
+                optional :id, FinchAPI::Internal::Type::Boolean
 
                 # @!parse
                 #   # @return [Boolean]
@@ -731,7 +731,7 @@ module FinchAPI
               # @!attribute [r] count
               #
               #   @return [Boolean, nil]
-              optional :count, FinchAPI::Internal::Type::BooleanModel
+              optional :count, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -740,7 +740,7 @@ module FinchAPI
               # @!attribute [r] offset
               #
               #   @return [Boolean, nil]
-              optional :offset, FinchAPI::Internal::Type::BooleanModel
+              optional :offset, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -761,7 +761,7 @@ module FinchAPI
             # @!attribute [r] id
             #
             #   @return [Boolean, nil]
-            optional :id, FinchAPI::Internal::Type::BooleanModel
+            optional :id, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -770,7 +770,7 @@ module FinchAPI
             # @!attribute [r] class_code
             #
             #   @return [Boolean, nil]
-            optional :class_code, FinchAPI::Internal::Type::BooleanModel
+            optional :class_code, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -779,7 +779,7 @@ module FinchAPI
             # @!attribute [r] custom_fields
             #
             #   @return [Boolean, nil]
-            optional :custom_fields, FinchAPI::Internal::Type::BooleanModel
+            optional :custom_fields, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -808,7 +808,7 @@ module FinchAPI
             # @!attribute [r] employment_status
             #
             #   @return [Boolean, nil]
-            optional :employment_status, FinchAPI::Internal::Type::BooleanModel
+            optional :employment_status, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -817,7 +817,7 @@ module FinchAPI
             # @!attribute [r] end_date
             #
             #   @return [Boolean, nil]
-            optional :end_date, FinchAPI::Internal::Type::BooleanModel
+            optional :end_date, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -826,7 +826,7 @@ module FinchAPI
             # @!attribute [r] first_name
             #
             #   @return [Boolean, nil]
-            optional :first_name, FinchAPI::Internal::Type::BooleanModel
+            optional :first_name, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -845,7 +845,7 @@ module FinchAPI
             # @!attribute [r] income_history
             #
             #   @return [Boolean, nil]
-            optional :income_history, FinchAPI::Internal::Type::BooleanModel
+            optional :income_history, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -854,7 +854,7 @@ module FinchAPI
             # @!attribute [r] is_active
             #
             #   @return [Boolean, nil]
-            optional :is_active, FinchAPI::Internal::Type::BooleanModel
+            optional :is_active, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -863,7 +863,7 @@ module FinchAPI
             # @!attribute [r] last_name
             #
             #   @return [Boolean, nil]
-            optional :last_name, FinchAPI::Internal::Type::BooleanModel
+            optional :last_name, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -892,7 +892,7 @@ module FinchAPI
             # @!attribute [r] middle_name
             #
             #   @return [Boolean, nil]
-            optional :middle_name, FinchAPI::Internal::Type::BooleanModel
+            optional :middle_name, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -901,7 +901,7 @@ module FinchAPI
             # @!attribute [r] start_date
             #
             #   @return [Boolean, nil]
-            optional :start_date, FinchAPI::Internal::Type::BooleanModel
+            optional :start_date, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -910,7 +910,7 @@ module FinchAPI
             # @!attribute [r] title
             #
             #   @return [Boolean, nil]
-            optional :title, FinchAPI::Internal::Type::BooleanModel
+            optional :title, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -965,7 +965,7 @@ module FinchAPI
               # @!attribute [r] name
               #
               #   @return [Boolean, nil]
-              optional :name, FinchAPI::Internal::Type::BooleanModel
+              optional :name, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -984,7 +984,7 @@ module FinchAPI
               # @!attribute [r] subtype
               #
               #   @return [Boolean, nil]
-              optional :subtype, FinchAPI::Internal::Type::BooleanModel
+              optional :subtype, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -993,7 +993,7 @@ module FinchAPI
               # @!attribute [r] type
               #
               #   @return [Boolean, nil]
-              optional :type, FinchAPI::Internal::Type::BooleanModel
+              optional :type, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1013,7 +1013,7 @@ module FinchAPI
               # @!attribute [r] amount
               #
               #   @return [Boolean, nil]
-              optional :amount, FinchAPI::Internal::Type::BooleanModel
+              optional :amount, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1022,7 +1022,7 @@ module FinchAPI
               # @!attribute [r] currency
               #
               #   @return [Boolean, nil]
-              optional :currency, FinchAPI::Internal::Type::BooleanModel
+              optional :currency, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1031,7 +1031,7 @@ module FinchAPI
               # @!attribute [r] unit
               #
               #   @return [Boolean, nil]
-              optional :unit, FinchAPI::Internal::Type::BooleanModel
+              optional :unit, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1052,7 +1052,7 @@ module FinchAPI
               # @!attribute [r] city
               #
               #   @return [Boolean, nil]
-              optional :city, FinchAPI::Internal::Type::BooleanModel
+              optional :city, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1061,7 +1061,7 @@ module FinchAPI
               # @!attribute [r] country
               #
               #   @return [Boolean, nil]
-              optional :country, FinchAPI::Internal::Type::BooleanModel
+              optional :country, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1070,7 +1070,7 @@ module FinchAPI
               # @!attribute [r] line1
               #
               #   @return [Boolean, nil]
-              optional :line1, FinchAPI::Internal::Type::BooleanModel
+              optional :line1, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1079,7 +1079,7 @@ module FinchAPI
               # @!attribute [r] line2
               #
               #   @return [Boolean, nil]
-              optional :line2, FinchAPI::Internal::Type::BooleanModel
+              optional :line2, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1088,7 +1088,7 @@ module FinchAPI
               # @!attribute [r] postal_code
               #
               #   @return [Boolean, nil]
-              optional :postal_code, FinchAPI::Internal::Type::BooleanModel
+              optional :postal_code, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1097,7 +1097,7 @@ module FinchAPI
               # @!attribute [r] state
               #
               #   @return [Boolean, nil]
-              optional :state, FinchAPI::Internal::Type::BooleanModel
+              optional :state, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1121,7 +1121,7 @@ module FinchAPI
               # @!attribute [r] id
               #
               #   @return [Boolean, nil]
-              optional :id, FinchAPI::Internal::Type::BooleanModel
+              optional :id, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1141,7 +1141,7 @@ module FinchAPI
             # @!attribute [r] id
             #
             #   @return [Boolean, nil]
-            optional :id, FinchAPI::Internal::Type::BooleanModel
+            optional :id, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -1150,7 +1150,7 @@ module FinchAPI
             # @!attribute [r] dob
             #
             #   @return [Boolean, nil]
-            optional :dob, FinchAPI::Internal::Type::BooleanModel
+            optional :dob, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -1169,7 +1169,7 @@ module FinchAPI
             # @!attribute [r] encrypted_ssn
             #
             #   @return [Boolean, nil]
-            optional :encrypted_ssn, FinchAPI::Internal::Type::BooleanModel
+            optional :encrypted_ssn, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -1178,7 +1178,7 @@ module FinchAPI
             # @!attribute [r] ethnicity
             #
             #   @return [Boolean, nil]
-            optional :ethnicity, FinchAPI::Internal::Type::BooleanModel
+            optional :ethnicity, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -1187,7 +1187,7 @@ module FinchAPI
             # @!attribute [r] first_name
             #
             #   @return [Boolean, nil]
-            optional :first_name, FinchAPI::Internal::Type::BooleanModel
+            optional :first_name, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -1196,7 +1196,7 @@ module FinchAPI
             # @!attribute [r] gender
             #
             #   @return [Boolean, nil]
-            optional :gender, FinchAPI::Internal::Type::BooleanModel
+            optional :gender, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -1205,7 +1205,7 @@ module FinchAPI
             # @!attribute [r] last_name
             #
             #   @return [Boolean, nil]
-            optional :last_name, FinchAPI::Internal::Type::BooleanModel
+            optional :last_name, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -1214,7 +1214,7 @@ module FinchAPI
             # @!attribute [r] middle_name
             #
             #   @return [Boolean, nil]
-            optional :middle_name, FinchAPI::Internal::Type::BooleanModel
+            optional :middle_name, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -1233,7 +1233,7 @@ module FinchAPI
             # @!attribute [r] preferred_name
             #
             #   @return [Boolean, nil]
-            optional :preferred_name, FinchAPI::Internal::Type::BooleanModel
+            optional :preferred_name, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -1252,7 +1252,7 @@ module FinchAPI
             # @!attribute [r] ssn
             #
             #   @return [Boolean, nil]
-            optional :ssn, FinchAPI::Internal::Type::BooleanModel
+            optional :ssn, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -1299,7 +1299,7 @@ module FinchAPI
               # @!attribute [r] data
               #
               #   @return [Boolean, nil]
-              optional :data, FinchAPI::Internal::Type::BooleanModel
+              optional :data, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1308,7 +1308,7 @@ module FinchAPI
               # @!attribute [r] type
               #
               #   @return [Boolean, nil]
-              optional :type, FinchAPI::Internal::Type::BooleanModel
+              optional :type, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1328,7 +1328,7 @@ module FinchAPI
               # @!attribute [r] data
               #
               #   @return [Boolean, nil]
-              optional :data, FinchAPI::Internal::Type::BooleanModel
+              optional :data, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1337,7 +1337,7 @@ module FinchAPI
               # @!attribute [r] type
               #
               #   @return [Boolean, nil]
-              optional :type, FinchAPI::Internal::Type::BooleanModel
+              optional :type, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1357,7 +1357,7 @@ module FinchAPI
               # @!attribute [r] city
               #
               #   @return [Boolean, nil]
-              optional :city, FinchAPI::Internal::Type::BooleanModel
+              optional :city, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1366,7 +1366,7 @@ module FinchAPI
               # @!attribute [r] country
               #
               #   @return [Boolean, nil]
-              optional :country, FinchAPI::Internal::Type::BooleanModel
+              optional :country, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1375,7 +1375,7 @@ module FinchAPI
               # @!attribute [r] line1
               #
               #   @return [Boolean, nil]
-              optional :line1, FinchAPI::Internal::Type::BooleanModel
+              optional :line1, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1384,7 +1384,7 @@ module FinchAPI
               # @!attribute [r] line2
               #
               #   @return [Boolean, nil]
-              optional :line2, FinchAPI::Internal::Type::BooleanModel
+              optional :line2, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1393,7 +1393,7 @@ module FinchAPI
               # @!attribute [r] postal_code
               #
               #   @return [Boolean, nil]
-              optional :postal_code, FinchAPI::Internal::Type::BooleanModel
+              optional :postal_code, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1402,7 +1402,7 @@ module FinchAPI
               # @!attribute [r] state
               #
               #   @return [Boolean, nil]
-              optional :state, FinchAPI::Internal::Type::BooleanModel
+              optional :state, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1427,7 +1427,7 @@ module FinchAPI
             # @!attribute [r] id
             #
             #   @return [Boolean, nil]
-            optional :id, FinchAPI::Internal::Type::BooleanModel
+            optional :id, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -1436,7 +1436,7 @@ module FinchAPI
             # @!attribute [r] individual_ids
             #
             #   @return [Boolean, nil]
-            optional :individual_ids, FinchAPI::Internal::Type::BooleanModel
+            optional :individual_ids, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -1445,7 +1445,7 @@ module FinchAPI
             # @!attribute [r] name
             #
             #   @return [Boolean, nil]
-            optional :name, FinchAPI::Internal::Type::BooleanModel
+            optional :name, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -1454,7 +1454,7 @@ module FinchAPI
             # @!attribute [r] pay_frequencies
             #
             #   @return [Boolean, nil]
-            optional :pay_frequencies, FinchAPI::Internal::Type::BooleanModel
+            optional :pay_frequencies, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -1506,12 +1506,12 @@ module FinchAPI
               # @!attribute count
               #
               #   @return [Boolean]
-              required :count, FinchAPI::Internal::Type::BooleanModel
+              required :count, FinchAPI::Internal::Type::Boolean
 
               # @!attribute offset
               #
               #   @return [Boolean]
-              required :offset, FinchAPI::Internal::Type::BooleanModel
+              required :offset, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @param count [Boolean]
@@ -1557,7 +1557,7 @@ module FinchAPI
               # @!attribute [r] gross_pay
               #
               #   @return [Boolean, nil]
-              optional :gross_pay, FinchAPI::Internal::Type::BooleanModel
+              optional :gross_pay, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1566,7 +1566,7 @@ module FinchAPI
               # @!attribute [r] individual_id
               #
               #   @return [Boolean, nil]
-              optional :individual_id, FinchAPI::Internal::Type::BooleanModel
+              optional :individual_id, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1575,7 +1575,7 @@ module FinchAPI
               # @!attribute [r] net_pay
               #
               #   @return [Boolean, nil]
-              optional :net_pay, FinchAPI::Internal::Type::BooleanModel
+              optional :net_pay, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1584,7 +1584,7 @@ module FinchAPI
               # @!attribute [r] payment_method
               #
               #   @return [Boolean, nil]
-              optional :payment_method, FinchAPI::Internal::Type::BooleanModel
+              optional :payment_method, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1603,7 +1603,7 @@ module FinchAPI
               # @!attribute [r] total_hours
               #
               #   @return [Boolean, nil]
-              optional :total_hours, FinchAPI::Internal::Type::BooleanModel
+              optional :total_hours, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1612,7 +1612,7 @@ module FinchAPI
               # @!attribute [r] type
               #
               #   @return [Boolean, nil]
-              optional :type, FinchAPI::Internal::Type::BooleanModel
+              optional :type, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1653,7 +1653,7 @@ module FinchAPI
                 # @!attribute [r] amount
                 #
                 #   @return [Boolean, nil]
-                optional :amount, FinchAPI::Internal::Type::BooleanModel
+                optional :amount, FinchAPI::Internal::Type::Boolean
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1662,7 +1662,7 @@ module FinchAPI
                 # @!attribute [r] currency
                 #
                 #   @return [Boolean, nil]
-                optional :currency, FinchAPI::Internal::Type::BooleanModel
+                optional :currency, FinchAPI::Internal::Type::Boolean
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1671,7 +1671,7 @@ module FinchAPI
                 # @!attribute [r] name
                 #
                 #   @return [Boolean, nil]
-                optional :name, FinchAPI::Internal::Type::BooleanModel
+                optional :name, FinchAPI::Internal::Type::Boolean
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1680,7 +1680,7 @@ module FinchAPI
                 # @!attribute [r] type
                 #
                 #   @return [Boolean, nil]
-                optional :type, FinchAPI::Internal::Type::BooleanModel
+                optional :type, FinchAPI::Internal::Type::Boolean
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1702,7 +1702,7 @@ module FinchAPI
                 # @!attribute [r] amount
                 #
                 #   @return [Boolean, nil]
-                optional :amount, FinchAPI::Internal::Type::BooleanModel
+                optional :amount, FinchAPI::Internal::Type::Boolean
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1711,7 +1711,7 @@ module FinchAPI
                 # @!attribute [r] currency
                 #
                 #   @return [Boolean, nil]
-                optional :currency, FinchAPI::Internal::Type::BooleanModel
+                optional :currency, FinchAPI::Internal::Type::Boolean
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1720,7 +1720,7 @@ module FinchAPI
                 # @!attribute [r] name
                 #
                 #   @return [Boolean, nil]
-                optional :name, FinchAPI::Internal::Type::BooleanModel
+                optional :name, FinchAPI::Internal::Type::Boolean
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1729,7 +1729,7 @@ module FinchAPI
                 # @!attribute [r] pre_tax
                 #
                 #   @return [Boolean, nil]
-                optional :pre_tax, FinchAPI::Internal::Type::BooleanModel
+                optional :pre_tax, FinchAPI::Internal::Type::Boolean
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1738,7 +1738,7 @@ module FinchAPI
                 # @!attribute [r] type
                 #
                 #   @return [Boolean, nil]
-                optional :type, FinchAPI::Internal::Type::BooleanModel
+                optional :type, FinchAPI::Internal::Type::Boolean
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1761,7 +1761,7 @@ module FinchAPI
                 # @!attribute [r] amount
                 #
                 #   @return [Boolean, nil]
-                optional :amount, FinchAPI::Internal::Type::BooleanModel
+                optional :amount, FinchAPI::Internal::Type::Boolean
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1770,7 +1770,7 @@ module FinchAPI
                 # @!attribute [r] currency
                 #
                 #   @return [Boolean, nil]
-                optional :currency, FinchAPI::Internal::Type::BooleanModel
+                optional :currency, FinchAPI::Internal::Type::Boolean
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1779,7 +1779,7 @@ module FinchAPI
                 # @!attribute [r] name
                 #
                 #   @return [Boolean, nil]
-                optional :name, FinchAPI::Internal::Type::BooleanModel
+                optional :name, FinchAPI::Internal::Type::Boolean
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1800,7 +1800,7 @@ module FinchAPI
                 # @!attribute [r] amount
                 #
                 #   @return [Boolean, nil]
-                optional :amount, FinchAPI::Internal::Type::BooleanModel
+                optional :amount, FinchAPI::Internal::Type::Boolean
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1809,7 +1809,7 @@ module FinchAPI
                 # @!attribute [r] currency
                 #
                 #   @return [Boolean, nil]
-                optional :currency, FinchAPI::Internal::Type::BooleanModel
+                optional :currency, FinchAPI::Internal::Type::Boolean
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1818,7 +1818,7 @@ module FinchAPI
                 # @!attribute [r] employer
                 #
                 #   @return [Boolean, nil]
-                optional :employer, FinchAPI::Internal::Type::BooleanModel
+                optional :employer, FinchAPI::Internal::Type::Boolean
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1827,7 +1827,7 @@ module FinchAPI
                 # @!attribute [r] name
                 #
                 #   @return [Boolean, nil]
-                optional :name, FinchAPI::Internal::Type::BooleanModel
+                optional :name, FinchAPI::Internal::Type::Boolean
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1836,7 +1836,7 @@ module FinchAPI
                 # @!attribute [r] type
                 #
                 #   @return [Boolean, nil]
-                optional :type, FinchAPI::Internal::Type::BooleanModel
+                optional :type, FinchAPI::Internal::Type::Boolean
 
                 # @!parse
                 #   # @return [Boolean]
@@ -1861,7 +1861,7 @@ module FinchAPI
             # @!attribute [r] id
             #
             #   @return [Boolean, nil]
-            optional :id, FinchAPI::Internal::Type::BooleanModel
+            optional :id, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -1870,7 +1870,7 @@ module FinchAPI
             # @!attribute [r] company_debit
             #
             #   @return [Boolean, nil]
-            optional :company_debit, FinchAPI::Internal::Type::BooleanModel
+            optional :company_debit, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -1879,7 +1879,7 @@ module FinchAPI
             # @!attribute [r] debit_date
             #
             #   @return [Boolean, nil]
-            optional :debit_date, FinchAPI::Internal::Type::BooleanModel
+            optional :debit_date, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -1888,7 +1888,7 @@ module FinchAPI
             # @!attribute [r] employee_taxes
             #
             #   @return [Boolean, nil]
-            optional :employee_taxes, FinchAPI::Internal::Type::BooleanModel
+            optional :employee_taxes, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -1897,7 +1897,7 @@ module FinchAPI
             # @!attribute [r] employer_taxes
             #
             #   @return [Boolean, nil]
-            optional :employer_taxes, FinchAPI::Internal::Type::BooleanModel
+            optional :employer_taxes, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -1906,7 +1906,7 @@ module FinchAPI
             # @!attribute [r] gross_pay
             #
             #   @return [Boolean, nil]
-            optional :gross_pay, FinchAPI::Internal::Type::BooleanModel
+            optional :gross_pay, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -1915,7 +1915,7 @@ module FinchAPI
             # @!attribute [r] individual_ids
             #
             #   @return [Boolean, nil]
-            optional :individual_ids, FinchAPI::Internal::Type::BooleanModel
+            optional :individual_ids, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -1924,7 +1924,7 @@ module FinchAPI
             # @!attribute [r] net_pay
             #
             #   @return [Boolean, nil]
-            optional :net_pay, FinchAPI::Internal::Type::BooleanModel
+            optional :net_pay, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -1933,7 +1933,7 @@ module FinchAPI
             # @!attribute [r] pay_date
             #
             #   @return [Boolean, nil]
-            optional :pay_date, FinchAPI::Internal::Type::BooleanModel
+            optional :pay_date, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -1942,7 +1942,7 @@ module FinchAPI
             # @!attribute [r] pay_frequencies
             #
             #   @return [Boolean, nil]
-            optional :pay_frequencies, FinchAPI::Internal::Type::BooleanModel
+            optional :pay_frequencies, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -1951,7 +1951,7 @@ module FinchAPI
             # @!attribute [r] pay_group_ids
             #
             #   @return [Boolean, nil]
-            optional :pay_group_ids, FinchAPI::Internal::Type::BooleanModel
+            optional :pay_group_ids, FinchAPI::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]
@@ -2006,7 +2006,7 @@ module FinchAPI
               # @!attribute [r] end_date
               #
               #   @return [Boolean, nil]
-              optional :end_date, FinchAPI::Internal::Type::BooleanModel
+              optional :end_date, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -2015,7 +2015,7 @@ module FinchAPI
               # @!attribute [r] start_date
               #
               #   @return [Boolean, nil]
-              optional :start_date, FinchAPI::Internal::Type::BooleanModel
+              optional :start_date, FinchAPI::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]

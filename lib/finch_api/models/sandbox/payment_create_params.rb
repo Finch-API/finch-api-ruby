@@ -173,7 +173,7 @@ module FinchAPI
 
             # @!attribute hours
             #   The number of hours associated with this earning. (For salaried employees, this
-            #     could be hours per pay period, `0` or `null`, depending on the provider).
+            #   could be hours per pay period, `0` or `null`, depending on the provider).
             #
             #   @return [Float, nil]
             optional :hours, Float, nil?: true
@@ -227,8 +227,8 @@ module FinchAPI
               class Metadata < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] metadata
                 #   The metadata to be attached to the entity by existing rules. It is a key-value
-                #     pairs where the values can be of any type (string, number, boolean, object,
-                #     array, etc.).
+                #   pairs where the values can be of any type (string, number, boolean, object,
+                #   array, etc.).
                 #
                 #   @return [Hash{Symbol=>Object}, nil]
                 optional :metadata, FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown]
@@ -304,7 +304,7 @@ module FinchAPI
             #   Boolean indicating if the deduction is pre-tax.
             #
             #   @return [Boolean, nil]
-            optional :pre_tax, FinchAPI::Internal::Type::BooleanModel, nil?: true
+            optional :pre_tax, FinchAPI::Internal::Type::Boolean, nil?: true
 
             # @!attribute type
             #   Type of benefit.
@@ -347,8 +347,8 @@ module FinchAPI
               class Metadata < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] metadata
                 #   The metadata to be attached to the entity by existing rules. It is a key-value
-                #     pairs where the values can be of any type (string, number, boolean, object,
-                #     array, etc.).
+                #   pairs where the values can be of any type (string, number, boolean, object,
+                #   array, etc.).
                 #
                 #   @return [Hash{Symbol=>Object}, nil]
                 optional :metadata, FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown]
@@ -433,8 +433,8 @@ module FinchAPI
               class Metadata < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] metadata
                 #   The metadata to be attached to the entity by existing rules. It is a key-value
-                #     pairs where the values can be of any type (string, number, boolean, object,
-                #     array, etc.).
+                #   pairs where the values can be of any type (string, number, boolean, object,
+                #   array, etc.).
                 #
                 #   @return [Hash{Symbol=>Object}, nil]
                 optional :metadata, FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown]
@@ -493,7 +493,7 @@ module FinchAPI
             #   `true` if the amount is paid by the employers.
             #
             #   @return [Boolean, nil]
-            optional :employer, FinchAPI::Internal::Type::BooleanModel, nil?: true
+            optional :employer, FinchAPI::Internal::Type::Boolean, nil?: true
 
             # @!attribute name
             #   The exact name of tax from the pay statement.
@@ -544,8 +544,8 @@ module FinchAPI
               class Metadata < FinchAPI::Internal::Type::BaseModel
                 # @!attribute [r] metadata
                 #   The metadata to be attached to the entity by existing rules. It is a key-value
-                #     pairs where the values can be of any type (string, number, boolean, object,
-                #     array, etc.).
+                #   pairs where the values can be of any type (string, number, boolean, object,
+                #   array, etc.).
                 #
                 #   @return [Hash{Symbol=>Object}, nil]
                 optional :metadata, FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown]

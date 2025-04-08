@@ -23,7 +23,7 @@ module FinchAPI
         attr_accessor :year
 
         # A 2005 version of the W-4 tax form containing information on an individual's
-        #   filing status, dependents, and withholding details.
+        # filing status, dependents, and withholding details.
         sig do
           params(
             data: T.any(FinchAPI::Models::HRIS::W42005::Data, FinchAPI::Internal::AnyHash),
@@ -32,8 +32,7 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(data: nil, type: nil, year: nil)
-        end
+        def self.new(data: nil, type: nil, year: nil); end
 
         sig do
           override
@@ -45,8 +44,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Data < FinchAPI::Internal::Type::BaseModel
           # Additional withholding amount (in cents).
@@ -92,9 +90,7 @@ module FinchAPI
             filing_status: nil,
             individual_id: nil,
             total_number_of_allowances: nil
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -107,8 +103,7 @@ module FinchAPI
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # Indicates exemption status from federal tax withholding.
           module Exemption
@@ -122,8 +117,7 @@ module FinchAPI
             NON_EXEMPT = T.let(:non_exempt, FinchAPI::Models::HRIS::W42005::Data::Exemption::TaggedSymbol)
 
             sig { override.returns(T::Array[FinchAPI::Models::HRIS::W42005::Data::Exemption::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           # The individual's filing status for tax purposes.
@@ -143,8 +137,7 @@ module FinchAPI
             SINGLE = T.let(:single, FinchAPI::Models::HRIS::W42005::Data::FilingStatus::TaggedSymbol)
 
             sig { override.returns(T::Array[FinchAPI::Models::HRIS::W42005::Data::FilingStatus::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -158,8 +151,7 @@ module FinchAPI
           W4_2005 = T.let(:w4_2005, FinchAPI::Models::HRIS::W42005::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[FinchAPI::Models::HRIS::W42005::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

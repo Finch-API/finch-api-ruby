@@ -4,18 +4,18 @@ module FinchAPI
   module Models
     class RequestForwardingForwardResponse < FinchAPI::Internal::Type::BaseModel
       # A string representation of the HTTP response body of the forwarded request’s
-      #   response received from the underlying integration’s API. This field may be null
-      #   in the case where the upstream system’s response is empty.
+      # response received from the underlying integration’s API. This field may be null
+      # in the case where the upstream system’s response is empty.
       sig { returns(T.nilable(String)) }
       attr_accessor :data
 
       # The HTTP headers of the forwarded request’s response, exactly as received from
-      #   the underlying integration’s API.
+      # the underlying integration’s API.
       sig { returns(T.nilable(T.anything)) }
       attr_accessor :headers
 
       # An object containing details of your original forwarded request, for your ease
-      #   of reference.
+      # of reference.
       sig { returns(FinchAPI::Models::RequestForwardingForwardResponse::Request) }
       attr_reader :request
 
@@ -28,7 +28,7 @@ module FinchAPI
       attr_writer :request
 
       # The HTTP status code of the forwarded request’s response, exactly received from
-      #   the underlying integration’s API. This value will be returned as an integer.
+      # the underlying integration’s API. This value will be returned as an integer.
       sig { returns(Integer) }
       attr_accessor :status_code
 
@@ -41,8 +41,7 @@ module FinchAPI
         )
           .returns(T.attached_class)
       end
-      def self.new(data:, headers:, request:, status_code:)
-      end
+      def self.new(data:, headers:, request:, status_code:); end
 
       sig do
         override
@@ -55,28 +54,27 @@ module FinchAPI
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Request < FinchAPI::Internal::Type::BaseModel
         # The body that was specified for the forwarded request. If a value was not
-        #   specified in the original request, this value will be returned as null ;
-        #   otherwise, this value will always be returned as a string.
+        # specified in the original request, this value will be returned as null ;
+        # otherwise, this value will always be returned as a string.
         sig { returns(T.nilable(String)) }
         attr_accessor :data
 
         # The specified HTTP headers that were included in the forwarded request. If no
-        #   headers were specified, this will be returned as `null`.
+        # headers were specified, this will be returned as `null`.
         sig { returns(T.nilable(T.anything)) }
         attr_accessor :headers
 
         # The HTTP method that was specified for the forwarded request. Valid values
-        #   include: `GET` , `POST` , `PUT` , `DELETE` , and `PATCH`.
+        # include: `GET` , `POST` , `PUT` , `DELETE` , and `PATCH`.
         sig { returns(String) }
         attr_accessor :method_
 
         # The query parameters that were included in the forwarded request. If no query
-        #   parameters were specified, this will be returned as `null`.
+        # parameters were specified, this will be returned as `null`.
         sig { returns(T.nilable(T.anything)) }
         attr_accessor :params
 
@@ -85,7 +83,7 @@ module FinchAPI
         attr_accessor :route
 
         # An object containing details of your original forwarded request, for your ease
-        #   of reference.
+        # of reference.
         sig do
           params(
             data: T.nilable(String),
@@ -96,8 +94,7 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(data:, headers:, method_:, params:, route:)
-        end
+        def self.new(data:, headers:, method_:, params:, route:); end
 
         sig do
           override
@@ -111,8 +108,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

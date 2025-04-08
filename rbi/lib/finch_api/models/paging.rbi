@@ -18,12 +18,10 @@ module FinchAPI
       attr_writer :offset
 
       sig { params(count: Integer, offset: Integer).returns(T.attached_class) }
-      def self.new(count: nil, offset: nil)
-      end
+      def self.new(count: nil, offset: nil); end
 
       sig { override.returns({count: Integer, offset: Integer}) }
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

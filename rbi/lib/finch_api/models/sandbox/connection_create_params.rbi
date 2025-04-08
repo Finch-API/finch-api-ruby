@@ -23,8 +23,8 @@ module FinchAPI
         attr_writer :authentication_type
 
         # Optional: the size of the employer to be created with this connection. Defaults
-        #   to 20. Note that if this is higher than 100, historical payroll data will not be
-        #   generated, and instead only one pay period will be created.
+        # to 20. Note that if this is higher than 100, historical payroll data will not be
+        # generated, and instead only one pay period will be created.
         sig { returns(T.nilable(Integer)) }
         attr_reader :employee_size
 
@@ -68,8 +68,7 @@ module FinchAPI
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module AuthenticationType
           extend FinchAPI::Internal::Type::Enum
@@ -92,8 +91,7 @@ module FinchAPI
             override
               .returns(T::Array[FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

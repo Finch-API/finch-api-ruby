@@ -6,9 +6,9 @@ module FinchAPI
       class Benefits
         class Individuals
           # Enroll an individual into a deduction or contribution. This is an overwrite
-          #   operation. If the employee is already enrolled, the enrollment amounts will be
-          #   adjusted. Making the same request multiple times will not create new
-          #   enrollments, but will continue to set the state of the existing enrollment.
+          # operation. If the employee is already enrolled, the enrollment amounts will be
+          # adjusted. Making the same request multiple times will not create new
+          # enrollments, but will continue to set the state of the existing enrollment.
           #
           # @overload enroll_many(benefit_id, individuals: nil, request_options: {})
           #

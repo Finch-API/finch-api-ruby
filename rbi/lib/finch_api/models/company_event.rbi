@@ -19,8 +19,7 @@ module FinchAPI
         )
           .returns(T.attached_class)
       end
-      def self.new(data: nil, event_type: nil)
-      end
+      def self.new(data: nil, event_type: nil); end
 
       sig do
         override
@@ -31,8 +30,7 @@ module FinchAPI
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module EventType
         extend FinchAPI::Internal::Type::Enum
@@ -44,8 +42,7 @@ module FinchAPI
         COMPANY_UPDATED = T.let(:"company.updated", FinchAPI::Models::CompanyEvent::EventType::TaggedSymbol)
 
         sig { override.returns(T::Array[FinchAPI::Models::CompanyEvent::EventType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end
