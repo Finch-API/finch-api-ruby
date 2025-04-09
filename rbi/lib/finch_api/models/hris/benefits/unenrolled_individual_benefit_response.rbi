@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       module Benefits
-        class IndividualUnenrollManyResponse < FinchAPI::Internal::Type::BaseModel
+        class UnenrolledIndividualBenefitResponse < FinchAPI::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :job_id
 

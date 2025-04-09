@@ -24,7 +24,7 @@ module FinchAPI
             String benefit_id,
             ?individual_ids: ::Array[String],
             ?request_options: FinchAPI::request_opts
-          ) -> FinchAPI::Models::HRIS::Benefits::IndividualUnenrollManyResponse
+          ) -> FinchAPI::Models::HRIS::Benefits::UnenrolledIndividualBenefitResponse
 
           def initialize: (client: FinchAPI::Client) -> void
         end

@@ -1,0 +1,17 @@
+module FinchAPI
+  module Models
+    module HRIS
+      module Benefits
+        type unenrolled_individual_benefit_response = { job_id: String }
+
+        class UnenrolledIndividualBenefitResponse < FinchAPI::Internal::Type::BaseModel
+          attr_accessor job_id: String
+
+          def initialize: (job_id: String) -> void
+
+          def to_hash: -> FinchAPI::Models::HRIS::Benefits::unenrolled_individual_benefit_response
+        end
+      end
+    end
+  end
+end

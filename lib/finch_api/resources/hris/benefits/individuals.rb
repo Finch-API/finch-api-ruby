@@ -81,7 +81,7 @@ module FinchAPI
           # @param individual_ids [Array<String>]
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [FinchAPI::Models::HRIS::Benefits::IndividualUnenrollManyResponse]
+          # @return [FinchAPI::Models::HRIS::Benefits::UnenrolledIndividualBenefitResponse]
           #
           # @see FinchAPI::Models::HRIS::Benefits::IndividualUnenrollManyParams
           def unenroll_many(benefit_id, params = {})
@@ -90,7 +90,7 @@ module FinchAPI
               method: :delete,
               path: ["employer/benefits/%1$s/individuals", benefit_id],
               body: parsed,
-              model: FinchAPI::Models::HRIS::Benefits::IndividualUnenrollManyResponse,
+              model: FinchAPI::Models::HRIS::Benefits::UnenrolledIndividualBenefitResponse,
               options: options
             )
           end
