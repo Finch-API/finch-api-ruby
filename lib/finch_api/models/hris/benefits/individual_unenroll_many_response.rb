@@ -4,8 +4,8 @@ module FinchAPI
   module Models
     module HRIS
       module Benefits
-        # @see FinchAPI::Resources::HRIS::Benefits::Individuals#enroll_many
-        class IndividualEnrollManyResponse < FinchAPI::Internal::Type::BaseModel
+        # @see FinchAPI::Resources::HRIS::Benefits::Individuals#unenroll_many
+        class IndividualUnenrollManyResponse < FinchAPI::Internal::Type::BaseModel
           # @!attribute job_id
           #
           #   @return [String]
