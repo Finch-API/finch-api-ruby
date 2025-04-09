@@ -17,9 +17,7 @@ module FinchAPI
         # supported.
         sig do
           returns(
-            T.nilable(
-              T::Array[T.nilable(FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution::TaggedSymbol)]
-            )
+            T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution::OrSymbol)])
           )
         end
         attr_accessor :company_contribution
@@ -31,13 +29,13 @@ module FinchAPI
         # supported.
         sig do
           returns(
-            T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction::TaggedSymbol)])
+            T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction::OrSymbol)])
           )
         end
         attr_accessor :employee_deduction
 
         # The list of frequencies supported by the provider for this benefit
-        sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol)])) }
+        sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::OrSymbol)])) }
         attr_reader :frequencies
 
         sig { params(frequencies: T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::OrSymbol)]).void }
@@ -47,16 +45,10 @@ module FinchAPI
         # not supported for the benefit. This array only has values for HSA benefits.
         sig do
           returns(
-            T.nilable(
-              T::Array[T.nilable(FinchAPI::Models::HRIS::SupportedBenefit::HsaContributionLimit::TaggedSymbol)]
-            )
+            T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::SupportedBenefit::HsaContributionLimit::OrSymbol)])
           )
         end
         attr_accessor :hsa_contribution_limit
-
-        # Type of benefit.
-        sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)) }
-        attr_accessor :type
 
         sig do
           params(
@@ -66,8 +58,7 @@ module FinchAPI
             description: T.nilable(String),
             employee_deduction: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction::OrSymbol)]),
             frequencies: T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::OrSymbol)],
-            hsa_contribution_limit: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::SupportedBenefit::HsaContributionLimit::OrSymbol)]),
-            type: T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol)
+            hsa_contribution_limit: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::SupportedBenefit::HsaContributionLimit::OrSymbol)])
           )
             .returns(T.attached_class)
         end
@@ -78,8 +69,7 @@ module FinchAPI
           description: nil,
           employee_deduction: nil,
           frequencies: nil,
-          hsa_contribution_limit: nil,
-          type: nil
+          hsa_contribution_limit: nil
         ); end
         sig do
           override
@@ -87,16 +77,11 @@ module FinchAPI
               {
                 annual_maximum: T.nilable(T::Boolean),
                 catch_up: T.nilable(T::Boolean),
-                company_contribution: T.nilable(
-                  T::Array[T.nilable(FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution::TaggedSymbol)]
-                ),
+                company_contribution: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution::OrSymbol)]),
                 description: T.nilable(String),
-                employee_deduction: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction::TaggedSymbol)]),
-                frequencies: T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol)],
-                hsa_contribution_limit: T.nilable(
-                  T::Array[T.nilable(FinchAPI::Models::HRIS::SupportedBenefit::HsaContributionLimit::TaggedSymbol)]
-                ),
-                type: T.nilable(FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
+                employee_deduction: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction::OrSymbol)]),
+                frequencies: T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::OrSymbol)],
+                hsa_contribution_limit: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::SupportedBenefit::HsaContributionLimit::OrSymbol)])
               }
             )
         end
