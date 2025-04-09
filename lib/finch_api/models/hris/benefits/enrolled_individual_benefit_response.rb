@@ -5,7 +5,7 @@ module FinchAPI
     module HRIS
       module Benefits
         # @see FinchAPI::Resources::HRIS::Benefits::Individuals#enroll_many
-        class EnrolledIndividualBenefit < FinchAPI::Internal::Type::BaseModel
+        class EnrolledIndividualBenefitResponse < FinchAPI::Internal::Type::BaseModel
           # @!attribute job_id
           #
           #   @return [String]
@@ -19,8 +19,6 @@ module FinchAPI
           # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
         end
       end
-
-      EnrolledIndividualBenefit = Benefits::EnrolledIndividualBenefit
     end
   end
 end
