@@ -4,7 +4,7 @@ module FinchAPI
   module Models
     module HRIS
       module Benefits
-        class EnrolledIndividualBenifit < FinchAPI::Internal::Type::BaseModel
+        class EnrolledIndividualBenefit < FinchAPI::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :job_id
 
@@ -15,6 +15,8 @@ module FinchAPI
           def to_hash; end
         end
       end
+
+      EnrolledIndividualBenefit = Benefits::EnrolledIndividualBenefit
     end
   end
 end
