@@ -97,7 +97,7 @@ module FinchAPI
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::Internal::SinglePage<FinchAPI::Models::HRIS::SupportedBenefit>]
+        # @return [FinchAPI::Internal::SinglePage<FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse>]
         #
         # @see FinchAPI::Models::HRIS::BenefitListSupportedBenefitsParams
         def list_supported_benefits(params = {})
@@ -105,7 +105,7 @@ module FinchAPI
             method: :get,
             path: "employer/benefits/meta",
             page: FinchAPI::Internal::SinglePage,
-            model: FinchAPI::Models::HRIS::SupportedBenefit,
+            model: FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse,
             options: params[:request_options]
           )
         end
