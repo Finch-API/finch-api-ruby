@@ -11,10 +11,16 @@ module FinchAPI
         #   @return [String]
         required :benefit_id, String
 
+        # @!attribute job_id
+        #
+        #   @return [String]
+        required :job_id, String
+
         # @!parse
         #   # @param benefit_id [String]
+        #   # @param job_id [String]
         #   #
-        #   def initialize(benefit_id:, **) = super
+        #   def initialize(benefit_id:, job_id:, **) = super
 
         # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
       end
