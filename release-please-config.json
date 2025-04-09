@@ -66,6 +66,9 @@
   "release-type": "ruby",
   "version-file": "lib/finch_api/version.rb",
   "extra-files": [
-    "README.md"
+    {
+      "type": "ruby-readme",
+      "path": "README.md"
+    }
   ]
 }
