@@ -20,7 +20,7 @@ module FinchAPI
               ],
               request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
             )
-              .returns(FinchAPI::Models::HRIS::Benefits::EnrolledIndividualBenifit)
+              .returns(FinchAPI::Models::HRIS::Benefits::EnrolledIndividualBenefit)
           end
           def enroll_many(
             benefit_id,

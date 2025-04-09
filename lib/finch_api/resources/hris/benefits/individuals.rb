@@ -16,7 +16,7 @@ module FinchAPI
           # @param individuals [Array<FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual>]
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [FinchAPI::Models::HRIS::Benefits::EnrolledIndividualBenifit]
+          # @return [FinchAPI::Models::HRIS::Benefits::EnrolledIndividualBenefit]
           #
           # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams
           def enroll_many(benefit_id, params = {})
@@ -25,7 +25,7 @@ module FinchAPI
               method: :post,
               path: ["employer/benefits/%1$s/individuals", benefit_id],
               body: parsed[:individuals],
-              model: FinchAPI::Models::HRIS::Benefits::EnrolledIndividualBenifit,
+              model: FinchAPI::Models::HRIS::Benefits::EnrolledIndividualBenefit,
               options: options
             )
           end
