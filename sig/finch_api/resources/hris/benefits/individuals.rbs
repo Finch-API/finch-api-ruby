@@ -7,7 +7,7 @@ module FinchAPI
             String benefit_id,
             ?individuals: ::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual],
             ?request_options: FinchAPI::request_opts
-          ) -> FinchAPI::Models::HRIS::Benefits::EnrolledIndividualBenefit
+          ) -> FinchAPI::Models::HRIS::Benefits::EnrolledIndividualBenefitResponse
 
           def enrolled_ids: (
             String benefit_id,
