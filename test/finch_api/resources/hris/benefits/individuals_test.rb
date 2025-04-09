@@ -59,7 +59,7 @@ class FinchAPI::Test::Resources::HRIS::Benefits::IndividualsTest < FinchAPI::Tes
     response = @finch.hris.benefits.individuals.unenroll_many("benefit_id")
 
     assert_pattern do
-      response => FinchAPI::Models::HRIS::Benefits::IndividualUnenrollManyResponse
+      response => FinchAPI::Models::HRIS::Benefits::UnenrolledIndividualBenefitResponse
     end
 
     assert_pattern do
