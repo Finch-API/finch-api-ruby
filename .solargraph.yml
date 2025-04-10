@@ -5,7 +5,7 @@ include:
   - 'Rakefile'
   - 'examples/**/*.rb'
   - 'lib/**/*.rb'
-  - 'test/finch-api/resource_namespaces.rb'
-  - 'test/finch-api/test_helper.rb'
+  - 'test/finch_api/resource_namespaces.rb'
+  - 'test/finch_api/test_helper.rb'
 exclude:
   - 'rbi/**/*'
