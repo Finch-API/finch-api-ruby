@@ -17,7 +17,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "finch-api", "~> 0.1.0.pre.alpha.7"
+gem "finch-api", "~> 0.1.0.pre.alpha.9"
 ```
 
 <!-- x-release-please-end -->
@@ -138,6 +138,13 @@ After Solargraph is installed, **you must populate its index** either via the pr
 
 ```sh
 bundle exec solargraph gems
+```
+
+Note: if you had installed the gem either using a `git:` or `github:` URL, or had vendored the gem using bundler, you will need to set up your [`.solargraph.yml`](https://solargraph.org/guides/configuration) to include the path to the gem's `lib` directory.
+
+```yaml
+include:
+  - 'vendor/bundle/ruby/*/gems/finch-api-*/lib/**/*.rb'
 ```
 
 Otherwise Solargraph will not be able to provide type information or auto-completion for any non-indexed libraries.

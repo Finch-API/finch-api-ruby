@@ -1,5 +1,35 @@
 # Changelog
 
+## 0.1.0-alpha.9 (2025-04-10)
+
+Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
+
+### Features
+
+* **api:** add models for hrs benefits individuals async responses ([7492eec](https://github.com/Finch-API/finch-api-ruby/commit/7492eec6cc2c2b3434126b3f6e79291d5badebaa))
+* **api:** api update ([#136](https://github.com/Finch-API/finch-api-ruby/issues/136)) ([e1bd1b5](https://github.com/Finch-API/finch-api-ruby/commit/e1bd1b517f2ef5acba32de6490c581cde6b5a88f))
+* **api:** benefits mutation API endpoints (create benefit, update benefit, enroll individual, unenroll individual) now properly return async response types ([#139](https://github.com/Finch-API/finch-api-ruby/issues/139)) ([f6b269c](https://github.com/Finch-API/finch-api-ruby/commit/f6b269cdc764e317bf5c3622bac66d625222d1db))
+* use Pathname alongside raw IO handles for file uploads ([#132](https://github.com/Finch-API/finch-api-ruby/issues/132)) ([ca140ed](https://github.com/Finch-API/finch-api-ruby/commit/ca140ed7e0ba64dab0532c07e54c1fd3c74ee887))
+
+
+### Bug Fixes
+
+* **internal:** update release-please to use ruby strategy for README.md ([#137](https://github.com/Finch-API/finch-api-ruby/issues/137)) ([8a2f9b4](https://github.com/Finch-API/finch-api-ruby/commit/8a2f9b4b2ee02513530d25a86eff44ee66b6c47d))
+* raise connection error for errors that result from HTTP transports ([#133](https://github.com/Finch-API/finch-api-ruby/issues/133)) ([908b8ba](https://github.com/Finch-API/finch-api-ruby/commit/908b8bab442d72e3061461b66b130f852e09949d))
+
+
+### Chores
+
+* add README docs for using solargraph when installing gem from git ([#131](https://github.com/Finch-API/finch-api-ruby/issues/131)) ([7bec93f](https://github.com/Finch-API/finch-api-ruby/commit/7bec93f44da855671b5c1be8ca11cb57f30d5cc7))
+* ensure readme.md is bumped when release please updates versions ([#135](https://github.com/Finch-API/finch-api-ruby/issues/135)) ([52953bd](https://github.com/Finch-API/finch-api-ruby/commit/52953bd7d499b595d8632c67db0a2c4ec418be7d))
+* fix lsp configuration file for local development ([ff3d47c](https://github.com/Finch-API/finch-api-ruby/commit/ff3d47c157613223fdafd0f953f5ab72f647a30a))
+* fix typo ([48e4f10](https://github.com/Finch-API/finch-api-ruby/commit/48e4f106285126601f9b60296d589f82b775e19b))
+* fix typo ([#140](https://github.com/Finch-API/finch-api-ruby/issues/140)) ([176f00b](https://github.com/Finch-API/finch-api-ruby/commit/176f00bd5ce8b85cec38d381b0c8c68a144060cf))
+* **internal:** expand CI branch coverage ([#138](https://github.com/Finch-API/finch-api-ruby/issues/138)) ([e699355](https://github.com/Finch-API/finch-api-ruby/commit/e699355e6db0fbf1853fdb7d9769eec8f6043fca))
+* **internal:** reduce CI branch coverage ([ff0aa81](https://github.com/Finch-API/finch-api-ruby/commit/ff0aa81561a53763a8ac6fdf373969991b193580))
+* **internal:** version bump ([508a2f6](https://github.com/Finch-API/finch-api-ruby/commit/508a2f6cc90a990e2ef220e9dcf41afde861f464))
+* loosen const and integer coercion rules ([#134](https://github.com/Finch-API/finch-api-ruby/issues/134)) ([954fa16](https://github.com/Finch-API/finch-api-ruby/commit/954fa162fb447df7392082c5b7676f205701b18a))
+
 ## 0.1.0-alpha.8 (2025-04-08)
 
 Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)

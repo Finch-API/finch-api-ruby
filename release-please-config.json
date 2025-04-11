@@ -64,5 +64,11 @@
     "minupalaniappan"
   ],
   "release-type": "ruby",
-  "version-file": "lib/finch_api/version.rb"
+  "version-file": "lib/finch_api/version.rb",
+  "extra-files": [
+    {
+      "type": "ruby-readme",
+      "path": "README.md"
+    }
+  ]
 }
