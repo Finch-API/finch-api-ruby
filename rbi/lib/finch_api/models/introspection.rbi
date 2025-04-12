@@ -3,6 +3,10 @@
 module FinchAPI
   module Models
     class Introspection < FinchAPI::Internal::Type::BaseModel
+      # The Finch UUID of the token being introspected.
+      sig { returns(String) }
+      attr_accessor :id
+
       # [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection
       # instead of this account ID.
       sig { returns(String) }
@@ -86,6 +90,7 @@ module FinchAPI
 
       sig do
         params(
+          id: String,
           account_id: String,
           authentication_methods: T::Array[T.any(FinchAPI::Models::Introspection::AuthenticationMethod, FinchAPI::Internal::AnyHash)],
           client_id: String,
@@ -106,6 +111,7 @@ module FinchAPI
           .returns(T.attached_class)
       end
       def self.new(
+        id:,
         account_id:,
         authentication_methods:,
         client_id:,
@@ -127,6 +133,7 @@ module FinchAPI
         override
           .returns(
             {
+              id: String,
               account_id: String,
               authentication_methods: T::Array[FinchAPI::Models::Introspection::AuthenticationMethod],
               client_id: String,
