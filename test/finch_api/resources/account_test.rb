@@ -26,6 +26,7 @@ class FinchAPI::Test::Resources::AccountTest < FinchAPI::Test::ResourceTest
 
     assert_pattern do
       response => {
+        id: String,
         account_id: String,
         authentication_methods: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Introspection::AuthenticationMethod]),
         client_id: String,

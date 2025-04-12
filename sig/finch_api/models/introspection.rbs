@@ -2,6 +2,7 @@ module FinchAPI
   module Models
     type introspection =
       {
+        id: String,
         account_id: String,
         authentication_methods: ::Array[FinchAPI::Models::Introspection::AuthenticationMethod],
         client_id: String,
@@ -21,6 +22,8 @@ module FinchAPI
       }
 
     class Introspection < FinchAPI::Internal::Type::BaseModel
+      attr_accessor id: String
+
       attr_accessor account_id: String
 
       attr_accessor authentication_methods: ::Array[FinchAPI::Models::Introspection::AuthenticationMethod]
@@ -54,6 +57,7 @@ module FinchAPI
       attr_accessor username: String
 
       def initialize: (
+        id: String,
         account_id: String,
         authentication_methods: ::Array[FinchAPI::Models::Introspection::AuthenticationMethod],
         client_id: String,
