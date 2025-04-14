@@ -4,6 +4,12 @@ module FinchAPI
   module Models
     # @see FinchAPI::Resources::Account#introspect
     class Introspection < FinchAPI::Internal::Type::BaseModel
+      # @!attribute id
+      #   The Finch UUID of the token being introspected.
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute account_id
       #   [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection
       #   instead of this account ID.
@@ -111,6 +117,7 @@ module FinchAPI
       required :username, String
 
       # @!parse
+      #   # @param id [String]
       #   # @param account_id [String]
       #   # @param authentication_methods [Array<FinchAPI::Models::Introspection::AuthenticationMethod>]
       #   # @param client_id [String]
@@ -129,6 +136,7 @@ module FinchAPI
       #   # @param username [String]
       #   #
       #   def initialize(
+      #     id:,
       #     account_id:,
       #     authentication_methods:,
       #     client_id:,
