@@ -53,7 +53,8 @@ module FinchAPI
         required :primary_email, String, nil?: true
 
         # @!attribute primary_phone_number
-        #   The phone number of the main administrator on the account. Format: `XXXXXXXXXX`
+        #   The phone number of the main administrator on the account. Format: E.164, with
+        #   extension where applicable, e.g. `+NNNNNNNNNNN xExtension`
         #
         #   @return [String, nil]
         required :primary_phone_number, String, nil?: true
