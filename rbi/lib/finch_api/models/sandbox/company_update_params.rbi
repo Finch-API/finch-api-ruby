@@ -42,7 +42,8 @@ module FinchAPI
         sig { returns(T.nilable(String)) }
         attr_accessor :primary_email
 
-        # The phone number of the main administrator on the account. Format: `XXXXXXXXXX`
+        # The phone number of the main administrator on the account. Format: E.164, with
+        # extension where applicable, e.g. `+NNNNNNNNNNN xExtension`
         sig { returns(T.nilable(String)) }
         attr_accessor :primary_phone_number
 
