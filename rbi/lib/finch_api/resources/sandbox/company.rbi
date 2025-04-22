@@ -37,7 +37,8 @@ module FinchAPI
           locations:,
           # The email of the main administrator on the account.
           primary_email:,
-          # The phone number of the main administrator on the account. Format: `XXXXXXXXXX`
+          # The phone number of the main administrator on the account. Format: E.164, with
+          # extension where applicable, e.g. `+NNNNNNNNNNN xExtension`
           primary_phone_number:,
           request_options: {}
         ); end
