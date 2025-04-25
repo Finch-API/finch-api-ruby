@@ -28,8 +28,15 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(id:, individual_ids:, name:, pay_frequencies:); end
-
+        def self.new(
+          # Finch id (uuidv4) for the pay group
+          id:,
+          individual_ids:,
+          # Name of the pay group
+          name:,
+          # List of pay frequencies associated with this pay group
+          pay_frequencies:
+        ); end
         sig do
           override
             .returns(
@@ -48,8 +55,7 @@ module FinchAPI
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           ANNUALLY =
             T.let(:annually, FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol)

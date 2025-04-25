@@ -11,7 +11,16 @@ class FinchAPI::Test::Resources::Sandbox::CompanyTest < FinchAPI::Test::Resource
         ein: "ein",
         entity: {},
         legal_name: "legal_name",
-        locations: [{}],
+        locations: [
+          {
+            city: "city",
+            country: "country",
+            line1: "line1",
+            line2: "line2",
+            postal_code: "postal_code",
+            state: "state"
+          }
+        ],
         primary_email: "dev@stainless.com",
         primary_phone_number: "primary_phone_number"
       )

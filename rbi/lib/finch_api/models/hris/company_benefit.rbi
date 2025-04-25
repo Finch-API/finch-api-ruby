@@ -28,8 +28,15 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(benefit_id:, description:, frequency:, type:); end
-
+        def self.new(
+          # The id of the benefit.
+          benefit_id:,
+          description:,
+          # The frequency of the benefit deduction/contribution.
+          frequency:,
+          # Type of benefit.
+          type:
+        ); end
         sig do
           override
             .returns(

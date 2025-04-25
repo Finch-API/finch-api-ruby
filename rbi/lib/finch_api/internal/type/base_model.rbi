@@ -111,10 +111,16 @@ module FinchAPI
 
           sig { params(other: T.anything).returns(T::Boolean) }
           def ==(other); end
+
+          sig { returns(Integer) }
+          def hash; end
         end
 
         sig { params(other: T.anything).returns(T::Boolean) }
         def ==(other); end
+
+        sig { returns(Integer) }
+        def hash; end
 
         class << self
           # @api private
@@ -179,6 +185,12 @@ module FinchAPI
         sig { params(keys: T.nilable(T::Array[Symbol])).returns(FinchAPI::Internal::AnyHash) }
         def deconstruct_keys(keys); end
 
+        class << self
+          # @api private
+          sig { params(model: FinchAPI::Internal::Type::BaseModel).returns(FinchAPI::Internal::AnyHash) }
+          def walk(model); end
+        end
+
         sig { params(a: T.anything).returns(String) }
         def to_json(*a); end
 
@@ -189,6 +201,16 @@ module FinchAPI
         sig { params(data: T.any(T::Hash[Symbol, T.anything], T.self_type)).returns(T.attached_class) }
         def self.new(data = {}); end
 
+        class << self
+          # @api private
+          sig { params(depth: Integer).returns(String) }
+          def inspect(depth: 0); end
+        end
+
+        sig { returns(String) }
+        def to_s; end
+
+        # @api private
         sig { returns(String) }
         def inspect; end
       end

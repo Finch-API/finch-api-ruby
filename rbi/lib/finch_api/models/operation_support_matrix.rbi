@@ -64,8 +64,40 @@ module FinchAPI
         )
           .returns(T.attached_class)
       end
-      def self.new(create: nil, delete: nil, read: nil, update: nil); end
-
+      def self.new(
+        # - `supported`: This operation is supported by both the provider and Finch
+        # - `not_supported_by_finch`: This operation is not supported by Finch but
+        #   supported by the provider
+        # - `not_supported_by_provider`: This operation is not supported by the provider,
+        #   so Finch cannot support
+        # - `client_access_only`: This behavior is supported by the provider, but only
+        #   available to the client and not to Finch
+        create: nil,
+        # - `supported`: This operation is supported by both the provider and Finch
+        # - `not_supported_by_finch`: This operation is not supported by Finch but
+        #   supported by the provider
+        # - `not_supported_by_provider`: This operation is not supported by the provider,
+        #   so Finch cannot support
+        # - `client_access_only`: This behavior is supported by the provider, but only
+        #   available to the client and not to Finch
+        delete: nil,
+        # - `supported`: This operation is supported by both the provider and Finch
+        # - `not_supported_by_finch`: This operation is not supported by Finch but
+        #   supported by the provider
+        # - `not_supported_by_provider`: This operation is not supported by the provider,
+        #   so Finch cannot support
+        # - `client_access_only`: This behavior is supported by the provider, but only
+        #   available to the client and not to Finch
+        read: nil,
+        # - `supported`: This operation is supported by both the provider and Finch
+        # - `not_supported_by_finch`: This operation is not supported by Finch but
+        #   supported by the provider
+        # - `not_supported_by_provider`: This operation is not supported by the provider,
+        #   so Finch cannot support
+        # - `client_access_only`: This behavior is supported by the provider, but only
+        #   available to the client and not to Finch
+        update: nil
+      ); end
       sig do
         override
           .returns(

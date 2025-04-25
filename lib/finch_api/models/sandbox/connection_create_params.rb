@@ -5,8 +5,7 @@ module FinchAPI
     module Sandbox
       # @see FinchAPI::Resources::Sandbox::Connections#create
       class ConnectionCreateParams < FinchAPI::Internal::Type::BaseModel
-        # @!parse
-        #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
         # @!attribute provider_id
@@ -15,17 +14,13 @@ module FinchAPI
         #   @return [String]
         required :provider_id, String
 
-        # @!attribute [r] authentication_type
+        # @!attribute authentication_type
         #
         #   @return [Symbol, FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType, nil]
         optional :authentication_type,
                  enum: -> { FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType }
 
-        # @!parse
-        #   # @return [Symbol, FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType]
-        #   attr_writer :authentication_type
-
-        # @!attribute [r] employee_size
+        # @!attribute employee_size
         #   Optional: the size of the employer to be created with this connection. Defaults
         #   to 20. Note that if this is higher than 100, historical payroll data will not be
         #   generated, and instead only one pay period will be created.
@@ -33,29 +28,25 @@ module FinchAPI
         #   @return [Integer, nil]
         optional :employee_size, Integer
 
-        # @!parse
-        #   # @return [Integer]
-        #   attr_writer :employee_size
-
-        # @!attribute [r] products
+        # @!attribute products
         #
         #   @return [Array<String>, nil]
         optional :products, FinchAPI::Internal::Type::ArrayOf[String]
 
-        # @!parse
-        #   # @return [Array<String>]
-        #   attr_writer :products
-
-        # @!parse
-        #   # @param provider_id [String]
-        #   # @param authentication_type [Symbol, FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType]
-        #   # @param employee_size [Integer]
-        #   # @param products [Array<String>]
-        #   # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(provider_id:, authentication_type: nil, employee_size: nil, products: nil, request_options: {}, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(provider_id:, authentication_type: nil, employee_size: nil, products: nil, request_options: {})
+        #   Some parameter documentations has been truncated, see
+        #   {FinchAPI::Models::Sandbox::ConnectionCreateParams} for more details.
+        #
+        #   @param provider_id [String] The provider associated with the connection
+        #
+        #   @param authentication_type [Symbol, FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType]
+        #
+        #   @param employee_size [Integer] Optional: the size of the employer to be created with this connection. Defaults
+        #   ...
+        #
+        #   @param products [Array<String>]
+        #
+        #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 
         module AuthenticationType
           extend FinchAPI::Internal::Type::Enum
@@ -65,11 +56,8 @@ module FinchAPI
           OAUTH = :oauth
           ASSISTED = :assisted
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

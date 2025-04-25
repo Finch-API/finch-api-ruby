@@ -44,8 +44,10 @@ module FinchAPI
         attr_writer :individual_id
 
         sig { params(individual_id: String).returns(T.attached_class) }
-        def self.new(individual_id: nil); end
-
+        def self.new(
+          # The ID of the individual related to the event.
+          individual_id: nil
+        ); end
         sig { override.returns({individual_id: String}) }
         def to_hash; end
       end
@@ -54,8 +56,7 @@ module FinchAPI
         extend FinchAPI::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::DirectoryEvent::EventType) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, FinchAPI::Models::DirectoryEvent::EventType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         DIRECTORY_CREATED =
           T.let(:"directory.created", FinchAPI::Models::DirectoryEvent::EventType::TaggedSymbol)

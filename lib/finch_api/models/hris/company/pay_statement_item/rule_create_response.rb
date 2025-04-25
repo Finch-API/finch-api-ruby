@@ -7,46 +7,30 @@ module FinchAPI
         module PayStatementItem
           # @see FinchAPI::Resources::HRIS::Company::PayStatementItem::Rules#create
           class RuleCreateResponse < FinchAPI::Internal::Type::BaseModel
-            # @!attribute [r] id
+            # @!attribute id
             #   Finch id (uuidv4) for the rule.
             #
             #   @return [String, nil]
             optional :id, String
 
-            # @!parse
-            #   # @return [String]
-            #   attr_writer :id
-
-            # @!attribute [r] attributes
+            # @!attribute attributes
             #   Specifies the fields to be applied when the condition is met.
             #
             #   @return [FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::Attributes, nil]
             optional :attributes,
                      -> { FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::Attributes }
 
-            # @!parse
-            #   # @return [FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::Attributes]
-            #   attr_writer :attributes
-
-            # @!attribute [r] conditions
+            # @!attribute conditions
             #
             #   @return [Array<FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::Condition>, nil]
             optional :conditions,
                      -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::Condition] }
 
-            # @!parse
-            #   # @return [Array<FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::Condition>]
-            #   attr_writer :conditions
-
-            # @!attribute [r] created_at
+            # @!attribute created_at
             #   The datetime when the rule was created.
             #
             #   @return [Time, nil]
             optional :created_at, Time
-
-            # @!parse
-            #   # @return [Time]
-            #   attr_writer :created_at
 
             # @!attribute effective_end_date
             #   Specifies when the rules should stop applying rules based on the date.
@@ -60,128 +44,90 @@ module FinchAPI
             #   @return [String, nil]
             optional :effective_start_date, String, nil?: true
 
-            # @!attribute [r] entity_type
+            # @!attribute entity_type
             #   The entity type to which the rule is applied.
             #
             #   @return [Symbol, FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::EntityType, nil]
             optional :entity_type,
                      enum: -> { FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::EntityType }
 
-            # @!parse
-            #   # @return [Symbol, FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::EntityType]
-            #   attr_writer :entity_type
-
-            # @!attribute [r] priority
+            # @!attribute priority
             #   The priority of the rule.
             #
             #   @return [Integer, nil]
             optional :priority, Integer
 
-            # @!parse
-            #   # @return [Integer]
-            #   attr_writer :priority
-
-            # @!attribute [r] updated_at
+            # @!attribute updated_at
             #   The datetime when the rule was last updated.
             #
             #   @return [Time, nil]
             optional :updated_at, Time
 
-            # @!parse
-            #   # @return [Time]
-            #   attr_writer :updated_at
-
-            # @!parse
-            #   # @param id [String]
-            #   # @param attributes [FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::Attributes]
-            #   # @param conditions [Array<FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::Condition>]
-            #   # @param created_at [Time]
-            #   # @param effective_end_date [String, nil]
-            #   # @param effective_start_date [String, nil]
-            #   # @param entity_type [Symbol, FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::EntityType]
-            #   # @param priority [Integer]
-            #   # @param updated_at [Time]
-            #   #
-            #   def initialize(
-            #     id: nil,
-            #     attributes: nil,
-            #     conditions: nil,
-            #     created_at: nil,
-            #     effective_end_date: nil,
-            #     effective_start_date: nil,
-            #     entity_type: nil,
-            #     priority: nil,
-            #     updated_at: nil,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+            # @!method initialize(id: nil, attributes: nil, conditions: nil, created_at: nil, effective_end_date: nil, effective_start_date: nil, entity_type: nil, priority: nil, updated_at: nil)
+            #   @param id [String] Finch id (uuidv4) for the rule.
+            #
+            #   @param attributes [FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::Attributes] Specifies the fields to be applied when the condition is met.
+            #
+            #   @param conditions [Array<FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::Condition>]
+            #
+            #   @param created_at [Time] The datetime when the rule was created.
+            #
+            #   @param effective_end_date [String, nil] Specifies when the rules should stop applying rules based on the date.
+            #
+            #   @param effective_start_date [String, nil] Specifies when the rule should begin applying based on the date.
+            #
+            #   @param entity_type [Symbol, FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::EntityType] The entity type to which the rule is applied.
+            #
+            #   @param priority [Integer] The priority of the rule.
+            #
+            #   @param updated_at [Time] The datetime when the rule was last updated.
 
             # @see FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse#attributes
             class Attributes < FinchAPI::Internal::Type::BaseModel
-              # @!attribute [r] metadata
+              # @!attribute metadata
               #   The metadata to be attached in the entity. It is a key-value pairs where the
               #   values can be of any type (string, number, boolean, object, array, etc.).
               #
               #   @return [Hash{Symbol=>Object}, nil]
               optional :metadata, FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown]
 
-              # @!parse
-              #   # @return [Hash{Symbol=>Object}]
-              #   attr_writer :metadata
-
-              # @!parse
-              #   # Specifies the fields to be applied when the condition is met.
-              #   #
-              #   # @param metadata [Hash{Symbol=>Object}]
-              #   #
-              #   def initialize(metadata: nil, **) = super
-
-              # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+              # @!method initialize(metadata: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::Attributes}
+              #   for more details.
+              #
+              #   Specifies the fields to be applied when the condition is met.
+              #
+              #   @param metadata [Hash{Symbol=>Object}] The metadata to be attached in the entity. It is a key-value pairs where the val
+              #   ...
             end
 
             class Condition < FinchAPI::Internal::Type::BaseModel
-              # @!attribute [r] field
+              # @!attribute field
               #   The field to be checked in the rule.
               #
               #   @return [String, nil]
               optional :field, String
 
-              # @!parse
-              #   # @return [String]
-              #   attr_writer :field
-
-              # @!attribute [r] operator
+              # @!attribute operator
               #   The operator to be used in the rule.
               #
               #   @return [Symbol, FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::Condition::Operator, nil]
               optional :operator,
                        enum: -> { FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::Condition::Operator }
 
-              # @!parse
-              #   # @return [Symbol, FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::Condition::Operator]
-              #   attr_writer :operator
-
-              # @!attribute [r] value
+              # @!attribute value
               #   The value of the field to be checked in the rule.
               #
               #   @return [String, nil]
               optional :value, String
 
-              # @!parse
-              #   # @return [String]
-              #   attr_writer :value
-
-              # @!parse
-              #   # @param field [String]
-              #   # @param operator [Symbol, FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::Condition::Operator]
-              #   # @param value [String]
-              #   #
-              #   def initialize(field: nil, operator: nil, value: nil, **) = super
-
-              # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+              # @!method initialize(field: nil, operator: nil, value: nil)
+              #   @param field [String] The field to be checked in the rule.
+              #
+              #   @param operator [Symbol, FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse::Condition::Operator] The operator to be used in the rule.
+              #
+              #   @param value [String] The value of the field to be checked in the rule.
 
               # The operator to be used in the rule.
               #
@@ -191,11 +137,8 @@ module FinchAPI
 
                 EQUALS = :equals
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -207,11 +150,8 @@ module FinchAPI
 
               PAY_STATEMENT_ITEM = :pay_statement_item
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
           end
         end

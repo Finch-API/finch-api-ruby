@@ -163,15 +163,22 @@ module FinchAPI
               .returns(T.attached_class)
           end
           def self.new(
+            # The array of earnings objects associated with this pay statement
             earnings: nil,
+            # The array of deductions objects associated with this pay statement.
             employee_deductions: nil,
             employer_contributions: nil,
             gross_pay: nil,
+            # A stable Finch `id` (UUID v4) for an individual in the company
             individual_id: nil,
             net_pay: nil,
+            # The payment method.
             payment_method: nil,
+            # The array of taxes objects associated with this pay statement.
             taxes: nil,
+            # The number of hours worked for this pay period
             total_hours: nil,
+            # The type of the payment associated with the pay statement.
             type: nil
           ); end
           sig do
@@ -251,8 +258,20 @@ module FinchAPI
               )
                 .returns(T.attached_class)
             end
-            def self.new(amount: nil, attributes: nil, currency: nil, hours: nil, name: nil, type: nil); end
-
+            def self.new(
+              # The earnings amount in cents.
+              amount: nil,
+              attributes: nil,
+              # The earnings currency code.
+              currency: nil,
+              # The number of hours associated with this earning. (For salaried employees, this
+              # could be hours per pay period, `0` or `null`, depending on the provider).
+              hours: nil,
+              # The exact name of the deduction from the pay statement.
+              name: nil,
+              # The type of earning.
+              type: nil
+            ); end
             sig do
               override
                 .returns(
@@ -317,8 +336,12 @@ module FinchAPI
                 attr_writer :metadata
 
                 sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
-                def self.new(metadata: nil); end
-
+                def self.new(
+                  # The metadata to be attached to the entity by existing rules. It is a key-value
+                  # pairs where the values can be of any type (string, number, boolean, object,
+                  # array, etc.).
+                  metadata: nil
+                ); end
                 sig { override.returns({metadata: T::Hash[Symbol, T.anything]}) }
                 def to_hash; end
               end
@@ -330,14 +353,7 @@ module FinchAPI
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type) }
-              OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    String,
-                    FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol
-                  )
-                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               SALARY =
                 T.let(:salary, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type::TaggedSymbol)
@@ -448,8 +464,19 @@ module FinchAPI
               )
                 .returns(T.attached_class)
             end
-            def self.new(amount: nil, attributes: nil, currency: nil, name: nil, pre_tax: nil, type: nil); end
-
+            def self.new(
+              # The deduction amount in cents.
+              amount: nil,
+              attributes: nil,
+              # The deduction currency.
+              currency: nil,
+              # The deduction name from the pay statement.
+              name: nil,
+              # Boolean indicating if the deduction is pre-tax.
+              pre_tax: nil,
+              # Type of benefit.
+              type: nil
+            ); end
             sig do
               override
                 .returns(
@@ -518,8 +545,12 @@ module FinchAPI
                 attr_writer :metadata
 
                 sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
-                def self.new(metadata: nil); end
-
+                def self.new(
+                  # The metadata to be attached to the entity by existing rules. It is a key-value
+                  # pairs where the values can be of any type (string, number, boolean, object,
+                  # array, etc.).
+                  metadata: nil
+                ); end
                 sig { override.returns({metadata: T::Hash[Symbol, T.anything]}) }
                 def to_hash; end
               end
@@ -578,8 +609,17 @@ module FinchAPI
               )
                 .returns(T.attached_class)
             end
-            def self.new(amount: nil, attributes: nil, currency: nil, name: nil, type: nil); end
-
+            def self.new(
+              # The contribution amount in cents.
+              amount: nil,
+              attributes: nil,
+              # The contribution currency.
+              currency: nil,
+              # The contribution name from the pay statement.
+              name: nil,
+              # Type of benefit.
+              type: nil
+            ); end
             sig do
               override
                 .returns(
@@ -647,8 +687,12 @@ module FinchAPI
                 attr_writer :metadata
 
                 sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
-                def self.new(metadata: nil); end
-
+                def self.new(
+                  # The metadata to be attached to the entity by existing rules. It is a key-value
+                  # pairs where the values can be of any type (string, number, boolean, object,
+                  # array, etc.).
+                  metadata: nil
+                ); end
                 sig { override.returns({metadata: T::Hash[Symbol, T.anything]}) }
                 def to_hash; end
               end
@@ -661,14 +705,7 @@ module FinchAPI
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  String,
-                  FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::TaggedSymbol
-                )
-              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             CHECK =
               T.let(:check, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::TaggedSymbol)
@@ -740,9 +777,19 @@ module FinchAPI
               )
                 .returns(T.attached_class)
             end
-            def self.new(amount: nil, attributes: nil, currency: nil, employer: nil, name: nil, type: nil)
-            end
-
+            def self.new(
+              # The tax amount in cents.
+              amount: nil,
+              attributes: nil,
+              # The currency code.
+              currency: nil,
+              # `true` if the amount is paid by the employers.
+              employer: nil,
+              # The exact name of tax from the pay statement.
+              name: nil,
+              # The type of taxes.
+              type: nil
+            ); end
             sig do
               override
                 .returns(
@@ -807,8 +854,12 @@ module FinchAPI
                 attr_writer :metadata
 
                 sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
-                def self.new(metadata: nil); end
-
+                def self.new(
+                  # The metadata to be attached to the entity by existing rules. It is a key-value
+                  # pairs where the values can be of any type (string, number, boolean, object,
+                  # array, etc.).
+                  metadata: nil
+                ); end
                 sig { override.returns({metadata: T::Hash[Symbol, T.anything]}) }
                 def to_hash; end
               end
@@ -820,14 +871,7 @@ module FinchAPI
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type) }
-              OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    String,
-                    FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::TaggedSymbol
-                  )
-                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               STATE =
                 T.let(:state, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type::TaggedSymbol)
@@ -852,8 +896,7 @@ module FinchAPI
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             REGULAR_PAYROLL =
               T.let(:regular_payroll, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type::TaggedSymbol)

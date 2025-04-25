@@ -4,12 +4,19 @@ module FinchAPI
   module Resources
     class HRIS
       class Payments
+        # Some parameter documentations has been truncated, see
+        # {FinchAPI::Models::HRIS::PaymentListParams} for more details.
+        #
         # Read payroll and contractor related payments by the company.
         #
         # @overload list(end_date:, start_date:, request_options: {})
         #
-        # @param end_date [Date]
-        # @param start_date [Date]
+        # @param end_date [Date] The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD` forma
+        # ...
+        #
+        # @param start_date [Date] The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD` for
+        # ...
+        #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Internal::SinglePage<FinchAPI::Models::HRIS::Payment>]

@@ -64,16 +64,21 @@ module FinchAPI
             .returns(T.attached_class)
         end
         def self.new(
+          # A stable Finch `id` (UUID v4) for an individual in the company.
           id: nil,
+          # The department object.
           department: nil,
+          # The legal first name of the individual.
           first_name: nil,
+          # `true` if the individual is an active employee or contractor at the company.
           is_active: nil,
+          # The legal last name of the individual.
           last_name: nil,
+          # The manager object.
           manager: nil,
+          # The legal middle name of the individual.
           middle_name: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -97,8 +102,10 @@ module FinchAPI
 
           # The department object.
           sig { params(name: T.nilable(String)).returns(T.attached_class) }
-          def self.new(name: nil); end
-
+          def self.new(
+            # The name of the department.
+            name: nil
+          ); end
           sig { override.returns({name: T.nilable(String)}) }
           def to_hash; end
         end
@@ -113,8 +120,10 @@ module FinchAPI
 
           # The manager object.
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id: nil); end
-
+          def self.new(
+            # A stable Finch `id` (UUID v4) for an individual in the company.
+            id: nil
+          ); end
           sig { override.returns({id: String}) }
           def to_hash; end
         end

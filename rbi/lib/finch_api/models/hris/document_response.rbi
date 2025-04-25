@@ -45,8 +45,20 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(id: nil, individual_id: nil, type: nil, url: nil, year: nil); end
-
+        def self.new(
+          # A stable Finch id for the document.
+          id: nil,
+          # The ID of the individual associated with the document. This will be null for
+          # employer-level documents.
+          individual_id: nil,
+          # The type of document.
+          type: nil,
+          # A URL to access the document. Format:
+          # `https://api.tryfinch.com/employer/documents/:document_id`.
+          url: nil,
+          # The year the document applies to, if available.
+          year: nil
+        ); end
         sig do
           override
             .returns(
@@ -66,8 +78,7 @@ module FinchAPI
           extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::DocumentResponse::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           W4_2020 = T.let(:w4_2020, FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol)
           W4_2005 = T.let(:w4_2005, FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol)

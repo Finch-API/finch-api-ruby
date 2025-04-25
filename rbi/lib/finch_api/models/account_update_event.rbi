@@ -121,8 +121,15 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(benefits_support: nil, supported_fields: nil, type: nil); end
-
+          def self.new(
+            # Each benefit type and their supported features. If the benefit type is not
+            # supported, the property will be null
+            benefits_support: nil,
+            # The supported data fields returned by our HR and payroll endpoints
+            supported_fields: nil,
+            # The type of authentication method.
+            type: nil
+          ); end
           sig do
             override
               .returns(
@@ -2267,14 +2274,7 @@ module FinchAPI
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  String,
-                  FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::TaggedSymbol
-                )
-              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             ASSISTED =
               T.let(:assisted, FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type::TaggedSymbol)
@@ -2303,8 +2303,7 @@ module FinchAPI
         extend FinchAPI::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::AccountUpdateEvent::EventType) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, FinchAPI::Models::AccountUpdateEvent::EventType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ACCOUNT_UPDATED =
           T.let(:"account.updated", FinchAPI::Models::AccountUpdateEvent::EventType::TaggedSymbol)

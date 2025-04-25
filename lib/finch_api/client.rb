@@ -88,7 +88,8 @@ module FinchAPI
     #
     # @param access_token [String, nil]
     #
-    # @param base_url [String, nil] Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
+    # @param base_url [String, nil] Override the default base URL for the API, e.g.,
+    # `"https://api.example.com/v2/"`. Defaults to `ENV["FINCH_BASE_URL"]`
     #
     # @param max_retries [Integer] Max number of retries to attempt after a failed retryable request.
     #
@@ -101,11 +102,11 @@ module FinchAPI
       client_id: ENV["FINCH_CLIENT_ID"],
       client_secret: ENV["FINCH_CLIENT_SECRET"],
       access_token: nil,
-      base_url: nil,
-      max_retries: DEFAULT_MAX_RETRIES,
-      timeout: DEFAULT_TIMEOUT_IN_SECONDS,
-      initial_retry_delay: DEFAULT_INITIAL_RETRY_DELAY,
-      max_retry_delay: DEFAULT_MAX_RETRY_DELAY
+      base_url: ENV["FINCH_BASE_URL"],
+      max_retries: FinchAPI::Client::DEFAULT_MAX_RETRIES,
+      timeout: FinchAPI::Client::DEFAULT_TIMEOUT_IN_SECONDS,
+      initial_retry_delay: FinchAPI::Client::DEFAULT_INITIAL_RETRY_DELAY,
+      max_retry_delay: FinchAPI::Client::DEFAULT_MAX_RETRY_DELAY
     )
       base_url ||= "https://api.tryfinch.com"
 

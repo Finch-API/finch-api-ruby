@@ -22,8 +22,11 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(individual_ids: nil, request_options: {}); end
-
+          def self.new(
+            # Array of individual_ids to unenroll.
+            individual_ids: nil,
+            request_options: {}
+          ); end
           sig do
             override.returns({individual_ids: T::Array[String], request_options: FinchAPI::RequestOptions})
           end

@@ -45,8 +45,12 @@ module FinchAPI
         attr_accessor :job_url
 
         sig { params(job_id: String, job_url: String).returns(T.attached_class) }
-        def self.new(job_id:, job_url:); end
-
+        def self.new(
+          # The id of the job which has completed.
+          job_id:,
+          # The url to query the result of the job.
+          job_url:
+        ); end
         sig { override.returns({job_id: String, job_url: String}) }
         def to_hash; end
       end
@@ -55,8 +59,7 @@ module FinchAPI
         extend FinchAPI::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::JobCompletionEvent::EventType) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, FinchAPI::Models::JobCompletionEvent::EventType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         JOB_BENEFIT_CREATE_COMPLETED =
           T.let(:"job.benefit_create.completed", FinchAPI::Models::JobCompletionEvent::EventType::TaggedSymbol)

@@ -59,19 +59,26 @@ module FinchAPI
         #   @return [String, nil]
         required :primary_phone_number, String, nil?: true
 
-        # @!parse
-        #   # @param accounts [Array<FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account>, nil]
-        #   # @param departments [Array<FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department, nil>, nil]
-        #   # @param ein [String, nil]
-        #   # @param entity [FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity, nil]
-        #   # @param legal_name [String, nil]
-        #   # @param locations [Array<FinchAPI::Models::Location, nil>, nil]
-        #   # @param primary_email [String, nil]
-        #   # @param primary_phone_number [String, nil]
-        #   #
-        #   def initialize(accounts:, departments:, ein:, entity:, legal_name:, locations:, primary_email:, primary_phone_number:, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(accounts:, departments:, ein:, entity:, legal_name:, locations:, primary_email:, primary_phone_number:)
+        #   Some parameter documentations has been truncated, see
+        #   {FinchAPI::Models::Sandbox::CompanyUpdateResponse} for more details.
+        #
+        #   @param accounts [Array<FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account>, nil] An array of bank account objects associated with the payroll/HRIS system.
+        #
+        #   @param departments [Array<FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department, nil>, nil] The array of company departments.
+        #
+        #   @param ein [String, nil] The employer identification number.
+        #
+        #   @param entity [FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity, nil] The entity type object.
+        #
+        #   @param legal_name [String, nil] The legal name of the company.
+        #
+        #   @param locations [Array<FinchAPI::Models::Location, nil>, nil]
+        #
+        #   @param primary_email [String, nil] The email of the main administrator on the account.
+        #
+        #   @param primary_phone_number [String, nil] The phone number of the main administrator on the account. Format: E.164, with e
+        #   ...
 
         class Account < FinchAPI::Internal::Type::BaseModel
           # @!attribute account_name
@@ -107,16 +114,20 @@ module FinchAPI
           #   @return [String, nil]
           optional :routing_number, String, nil?: true
 
-          # @!parse
-          #   # @param account_name [String, nil]
-          #   # @param account_number [String, nil]
-          #   # @param account_type [Symbol, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType, nil]
-          #   # @param institution_name [String, nil]
-          #   # @param routing_number [String, nil]
-          #   #
-          #   def initialize(account_name: nil, account_number: nil, account_type: nil, institution_name: nil, routing_number: nil, **) = super
-
-          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+          # @!method initialize(account_name: nil, account_number: nil, account_type: nil, institution_name: nil, routing_number: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account} for more details.
+          #
+          #   @param account_name [String, nil] The name of the bank associated in the payroll/HRIS system.
+          #
+          #   @param account_number [String, nil] 10-12 digit number to specify the bank account
+          #
+          #   @param account_type [Symbol, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType, nil] The type of bank account.
+          #
+          #   @param institution_name [String, nil] Name of the banking institution.
+          #
+          #   @param routing_number [String, nil] A nine-digit code that's based on the U.S. Bank location where your account was
+          #   ...
 
           # The type of bank account.
           #
@@ -127,11 +138,8 @@ module FinchAPI
             CHECKING = :checking
             SAVINGS = :savings
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -148,13 +156,10 @@ module FinchAPI
           #   @return [FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department::Parent, nil]
           optional :parent, -> { FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department::Parent }, nil?: true
 
-          # @!parse
-          #   # @param name [String, nil]
-          #   # @param parent [FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department::Parent, nil]
-          #   #
-          #   def initialize(name: nil, parent: nil, **) = super
-
-          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+          # @!method initialize(name: nil, parent: nil)
+          #   @param name [String, nil] The department name.
+          #
+          #   @param parent [FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department::Parent, nil] The parent department, if present.
 
           # @see FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department#parent
           class Parent < FinchAPI::Internal::Type::BaseModel
@@ -164,14 +169,10 @@ module FinchAPI
             #   @return [String, nil]
             optional :name, String, nil?: true
 
-            # @!parse
-            #   # The parent department, if present.
-            #   #
-            #   # @param name [String, nil]
-            #   #
-            #   def initialize(name: nil, **) = super
-
-            # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+            # @!method initialize(name: nil)
+            #   The parent department, if present.
+            #
+            #   @param name [String, nil] The parent department's name.
           end
         end
 
@@ -191,15 +192,12 @@ module FinchAPI
           #   @return [Symbol, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type, nil]
           optional :type, enum: -> { FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type }, nil?: true
 
-          # @!parse
-          #   # The entity type object.
-          #   #
-          #   # @param subtype [Symbol, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype, nil]
-          #   # @param type [Symbol, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type, nil]
-          #   #
-          #   def initialize(subtype: nil, type: nil, **) = super
-
-          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+          # @!method initialize(subtype: nil, type: nil)
+          #   The entity type object.
+          #
+          #   @param subtype [Symbol, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype, nil] The tax payer subtype of the company.
+          #
+          #   @param type [Symbol, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type, nil] The tax payer type of the company.
 
           # The tax payer subtype of the company.
           #
@@ -211,11 +209,8 @@ module FinchAPI
             C_CORPORATION = :c_corporation
             B_CORPORATION = :b_corporation
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
 
           # The tax payer type of the company.
@@ -232,11 +227,8 @@ module FinchAPI
             PARTNERSHIP = :partnership
             COOPERATIVE = :cooperative
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
       end

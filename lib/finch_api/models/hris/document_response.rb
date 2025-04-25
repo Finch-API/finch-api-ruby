@@ -4,15 +4,11 @@ module FinchAPI
   module Models
     module HRIS
       class DocumentResponse < FinchAPI::Internal::Type::BaseModel
-        # @!attribute [r] id
+        # @!attribute id
         #   A stable Finch id for the document.
         #
         #   @return [String, nil]
         optional :id, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :id
 
         # @!attribute individual_id
         #   The ID of the individual associated with the document. This will be null for
@@ -21,26 +17,18 @@ module FinchAPI
         #   @return [String, nil]
         optional :individual_id, String, nil?: true
 
-        # @!attribute [r] type
+        # @!attribute type
         #   The type of document.
         #
         #   @return [Symbol, FinchAPI::Models::HRIS::DocumentResponse::Type, nil]
         optional :type, enum: -> { FinchAPI::Models::HRIS::DocumentResponse::Type }
 
-        # @!parse
-        #   # @return [Symbol, FinchAPI::Models::HRIS::DocumentResponse::Type]
-        #   attr_writer :type
-
-        # @!attribute [r] url
+        # @!attribute url
         #   A URL to access the document. Format:
         #   `https://api.tryfinch.com/employer/documents/:document_id`.
         #
         #   @return [String, nil]
         optional :url, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :url
 
         # @!attribute year
         #   The year the document applies to, if available.
@@ -48,16 +36,21 @@ module FinchAPI
         #   @return [Float, nil]
         optional :year, Float, nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param individual_id [String, nil]
-        #   # @param type [Symbol, FinchAPI::Models::HRIS::DocumentResponse::Type]
-        #   # @param url [String]
-        #   # @param year [Float, nil]
-        #   #
-        #   def initialize(id: nil, individual_id: nil, type: nil, url: nil, year: nil, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(id: nil, individual_id: nil, type: nil, url: nil, year: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {FinchAPI::Models::HRIS::DocumentResponse} for more details.
+        #
+        #   @param id [String] A stable Finch id for the document.
+        #
+        #   @param individual_id [String, nil] The ID of the individual associated with the document. This will be null for emp
+        #   ...
+        #
+        #   @param type [Symbol, FinchAPI::Models::HRIS::DocumentResponse::Type] The type of document.
+        #
+        #   @param url [String] A URL to access the document. Format: `https://api.tryfinch.com/employer/documen
+        #   ...
+        #
+        #   @param year [Float, nil] The year the document applies to, if available.
 
         # The type of document.
         #
@@ -68,11 +61,8 @@ module FinchAPI
           W4_2020 = :w4_2020
           W4_2005 = :w4_2005
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

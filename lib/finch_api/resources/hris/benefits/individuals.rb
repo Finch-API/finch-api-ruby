@@ -13,7 +13,9 @@ module FinchAPI
           # @overload enroll_many(benefit_id, individuals: nil, request_options: {})
           #
           # @param benefit_id [String]
-          # @param individuals [Array<FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual>]
+          #
+          # @param individuals [Array<FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual>] Array of the individual_id to enroll and a configuration object.
+          #
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [FinchAPI::Models::HRIS::Benefits::EnrolledIndividualBenefitResponse]
@@ -49,12 +51,19 @@ module FinchAPI
             )
           end
 
+          # Some parameter documentations has been truncated, see
+          # {FinchAPI::Models::HRIS::Benefits::IndividualRetrieveManyBenefitsParams} for
+          # more details.
+          #
           # Get enrollment information for the given individuals.
           #
           # @overload retrieve_many_benefits(benefit_id, individual_ids: nil, request_options: {})
           #
           # @param benefit_id [String]
-          # @param individual_ids [String]
+          #
+          # @param individual_ids [String] comma-delimited list of stable Finch uuids for each individual. If empty, defaul
+          # ...
+          #
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [FinchAPI::Internal::SinglePage<FinchAPI::Models::HRIS::Benefits::IndividualBenefit>]
@@ -78,7 +87,9 @@ module FinchAPI
           # @overload unenroll_many(benefit_id, individual_ids: nil, request_options: {})
           #
           # @param benefit_id [String]
-          # @param individual_ids [Array<String>]
+          #
+          # @param individual_ids [Array<String>] Array of individual_ids to unenroll.
+          #
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [FinchAPI::Models::HRIS::Benefits::UnenrolledIndividualBenefitResponse]

@@ -8,7 +8,8 @@ module FinchAPI
         #
         # @overload retrieve_many(requests:, request_options: {})
         #
-        # @param requests [Array<FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request>]
+        # @param requests [Array<FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request>] The array of batch requests.
+        #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Internal::ResponsesPage<FinchAPI::Models::HRIS::EmploymentDataResponse>]

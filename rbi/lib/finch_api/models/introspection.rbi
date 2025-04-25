@@ -111,22 +111,48 @@ module FinchAPI
           .returns(T.attached_class)
       end
       def self.new(
+        # The Finch UUID of the token being introspected.
         id:,
+        # [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection
+        # instead of this account ID.
         account_id:,
         authentication_methods:,
+        # The client ID of the application associated with the `access_token`.
         client_id:,
+        # The type of application associated with a token.
         client_type:,
+        # [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection
+        # instead of this company ID.
         company_id:,
+        # The Finch UUID of the connection associated with the `access_token`.
         connection_id:,
         connection_status:,
+        # The type of the connection associated with the token.
+        #
+        # - `provider` - connection to an external provider
+        # - `finch` - finch-generated data.
         connection_type:,
+        # The email of your customer you provided to Finch when a connect session was
+        # created for this connection.
         customer_email:,
+        # The ID of your customer you provided to Finch when a connect session was created
+        # for this connection.
         customer_id:,
+        # The name of your customer you provided to Finch when a connect session was
+        # created for this connection.
         customer_name:,
+        # Whether the connection associated with the `access_token` uses the Assisted
+        # Connect Flow. (`true` if using Assisted Connect, `false` if connection is
+        # automated)
         manual:,
+        # [DEPRECATED] Use `provider_id` to identify the provider instead of this payroll
+        # provider ID.
         payroll_provider_id:,
+        # An array of the authorized products associated with the `access_token`.
         products:,
+        # The ID of the provider associated with the `access_token`.
         provider_id:,
+        # The account username used for login associated with the `access_token`.
         username:
       ); end
       sig do
@@ -195,8 +221,13 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(connection_status: nil, products: nil, type: nil); end
-
+        def self.new(
+          connection_status: nil,
+          # An array of the authorized products associated with the `access_token`.
+          products: nil,
+          # The type of authentication method.
+          type: nil
+        ); end
         sig do
           override
             .returns(
@@ -237,8 +268,7 @@ module FinchAPI
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::Introspection::AuthenticationMethod::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Introspection::AuthenticationMethod::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           ASSISTED = T.let(:assisted, FinchAPI::Models::Introspection::AuthenticationMethod::Type::TaggedSymbol)
           CREDENTIAL =
@@ -258,8 +288,7 @@ module FinchAPI
         extend FinchAPI::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Introspection::ClientType) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, FinchAPI::Models::Introspection::ClientType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         PRODUCTION = T.let(:production, FinchAPI::Models::Introspection::ClientType::TaggedSymbol)
         DEVELOPMENT = T.let(:development, FinchAPI::Models::Introspection::ClientType::TaggedSymbol)
@@ -297,8 +326,12 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(last_successful_sync: nil, message: nil, status: nil); end
-
+        def self.new(
+          # The datetime when the connection was last successfully synced.
+          last_successful_sync: nil,
+          message: nil,
+          status: nil
+        ); end
         sig do
           override
             .returns(
@@ -316,8 +349,7 @@ module FinchAPI
         extend FinchAPI::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Introspection::ConnectionType) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, FinchAPI::Models::Introspection::ConnectionType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         PROVIDER = T.let(:provider, FinchAPI::Models::Introspection::ConnectionType::TaggedSymbol)
         FINCH = T.let(:finch, FinchAPI::Models::Introspection::ConnectionType::TaggedSymbol)

@@ -21,14 +21,12 @@ module FinchAPI
         #   @return [Symbol, FinchAPI::Models::Jobs::ManualAsyncJob::Status]
         required :status, enum: -> { FinchAPI::Models::Jobs::ManualAsyncJob::Status }
 
-        # @!parse
-        #   # @param body [Array<Object>, nil]
-        #   # @param job_id [String]
-        #   # @param status [Symbol, FinchAPI::Models::Jobs::ManualAsyncJob::Status]
-        #   #
-        #   def initialize(body:, job_id:, status:, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(body:, job_id:, status:)
+        #   @param body [Array<Object>, nil] Specific information about the job, such as individual statuses for batch jobs.
+        #
+        #   @param job_id [String]
+        #
+        #   @param status [Symbol, FinchAPI::Models::Jobs::ManualAsyncJob::Status]
 
         # @see FinchAPI::Models::Jobs::ManualAsyncJob#status
         module Status
@@ -39,11 +37,8 @@ module FinchAPI
           ERROR = :error
           COMPLETE = :complete
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

@@ -18,8 +18,11 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(requests:, request_options: {}); end
-
+        def self.new(
+          # The array of batch requests.
+          requests:,
+          request_options: {}
+        ); end
         sig do
           override
             .returns(
@@ -51,8 +54,14 @@ module FinchAPI
           attr_writer :offset
 
           sig { params(payment_id: String, limit: Integer, offset: Integer).returns(T.attached_class) }
-          def self.new(payment_id:, limit: nil, offset: nil); end
-
+          def self.new(
+            # A stable Finch `id` (UUID v4) for a payment.
+            payment_id:,
+            # Number of pay statements to return (defaults to all).
+            limit: nil,
+            # Index to start from.
+            offset: nil
+          ); end
           sig { override.returns({payment_id: String, limit: Integer, offset: Integer}) }
           def to_hash; end
         end

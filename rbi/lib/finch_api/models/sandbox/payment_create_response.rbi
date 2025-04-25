@@ -13,8 +13,12 @@ module FinchAPI
         attr_accessor :payment_id
 
         sig { params(pay_date: String, payment_id: String).returns(T.attached_class) }
-        def self.new(pay_date:, payment_id:); end
-
+        def self.new(
+          # The date of the payment.
+          pay_date:,
+          # The ID of the payment.
+          payment_id:
+        ); end
         sig { override.returns({pay_date: String, payment_id: String}) }
         def to_hash; end
       end

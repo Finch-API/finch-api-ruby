@@ -16,30 +16,13 @@ module FinchAPI
     class SinglePage < ::Array
       include FinchAPI::Internal::Type::BasePage
 
-      # @api private
-      #
-      # @param client [FinchAPI::Internal::Transport::BaseClient]
-      # @param req [Hash{Symbol=>Object}]
-      # @param headers [Hash{String=>String}, Net::HTTPHeader]
-      # @param page_data [Array<Object>]
-      def initialize(client:, req:, headers:, page_data:)
-        super
-        model = req.fetch(:model)
-
-        case page_data
-        in Array
-          replace(page_data.map { FinchAPI::Internal::Type::Converter.coerce(model, _1) })
-        else
-        end
-      end
-
       # @return [Boolean]
       def next_page?
         false
       end
 
       # @raise [FinchAPI::HTTP::Error]
-      # @return [FinchAPI::Internal::SinglePage]
+      # @return [self]
       def next_page
         RuntimeError.new("No more pages available.")
       end
@@ -51,17 +34,39 @@ module FinchAPI
         unless block_given?
           raise ArgumentError.new("A block must be given to ##{__method__}")
         end
+
         page = self
         loop do
-          page.each { blk.call(_1) }
+          page.each(&blk)
+
           break unless page.next_page?
           page = page.next_page
         end
       end
 
+      # @api private
+      #
+      # @param client [FinchAPI::Internal::Transport::BaseClient]
+      # @param req [Hash{Symbol=>Object}]
+      # @param headers [Hash{String=>String}, Net::HTTPHeader]
+      # @param page_data [Array<Object>]
+      def initialize(client:, req:, headers:, page_data:)
+        super
+
+        case page_data
+        in Array
+          replace(page_data.map { FinchAPI::Internal::Type::Converter.coerce(@model, _1) })
+        else
+        end
+      end
+
+      # @api private
+      #
       # @return [String]
       def inspect
-        "#<#{self.class}:0x#{object_id.to_s(16)}>"
+        model = FinchAPI::Internal::Type::Converter.inspect(@model, depth: 1)
+
+        "#<#{self.class}[#{model}]:0x#{object_id.to_s(16)}>"
       end
     end
   end

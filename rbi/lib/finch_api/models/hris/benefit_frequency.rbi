@@ -8,7 +8,7 @@ module FinchAPI
         extend FinchAPI::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::BenefitFrequency) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ONE_TIME = T.let(:one_time, FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol)
         EVERY_PAYCHECK = T.let(:every_paycheck, FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol)

@@ -28,8 +28,12 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(type:, params:, request_options: {}); end
-
+        def self.new(
+          # The type of job to start.
+          type:,
+          params:,
+          request_options: {}
+        ); end
         sig do
           override
             .returns(
@@ -47,8 +51,7 @@ module FinchAPI
           extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Jobs::AutomatedCreateParams::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Jobs::AutomatedCreateParams::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           W4_FORM_EMPLOYEE_SYNC =
             T.let(:w4_form_employee_sync, FinchAPI::Models::Jobs::AutomatedCreateParams::Type::TaggedSymbol)
@@ -63,8 +66,10 @@ module FinchAPI
           attr_accessor :individual_id
 
           sig { params(individual_id: String).returns(T.attached_class) }
-          def self.new(individual_id:); end
-
+          def self.new(
+            # The unique ID of the individual for W-4 data sync.
+            individual_id:
+          ); end
           sig { override.returns({individual_id: String}) }
           def to_hash; end
         end

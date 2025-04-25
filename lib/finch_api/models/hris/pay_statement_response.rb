@@ -5,41 +5,25 @@ module FinchAPI
     module HRIS
       # @see FinchAPI::Resources::HRIS::PayStatements#retrieve_many
       class PayStatementResponse < FinchAPI::Internal::Type::BaseModel
-        # @!attribute [r] body
+        # @!attribute body
         #
         #   @return [FinchAPI::Models::HRIS::PayStatementResponseBody, nil]
         optional :body, -> { FinchAPI::Models::HRIS::PayStatementResponseBody }
 
-        # @!parse
-        #   # @return [FinchAPI::Models::HRIS::PayStatementResponseBody]
-        #   attr_writer :body
-
-        # @!attribute [r] code
+        # @!attribute code
         #
         #   @return [Integer, nil]
         optional :code, Integer
 
-        # @!parse
-        #   # @return [Integer]
-        #   attr_writer :code
-
-        # @!attribute [r] payment_id
+        # @!attribute payment_id
         #
         #   @return [String, nil]
         optional :payment_id, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :payment_id
-
-        # @!parse
-        #   # @param body [FinchAPI::Models::HRIS::PayStatementResponseBody]
-        #   # @param code [Integer]
-        #   # @param payment_id [String]
-        #   #
-        #   def initialize(body: nil, code: nil, payment_id: nil, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(body: nil, code: nil, payment_id: nil)
+        #   @param body [FinchAPI::Models::HRIS::PayStatementResponseBody]
+        #   @param code [Integer]
+        #   @param payment_id [String]
       end
     end
   end

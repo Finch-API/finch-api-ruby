@@ -66,6 +66,8 @@ module FinchAPI
           customer_email: nil,
           integration: nil,
           manual: nil,
+          # The number of minutes until the session expires (defaults to 43,200, which is 30
+          # days)
           minutes_to_expire: nil,
           redirect_uri: nil,
           sandbox: nil,
@@ -95,8 +97,7 @@ module FinchAPI
           extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Connect::SessionNewParams::Product) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           COMPANY = T.let(:company, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
           DIRECTORY = T.let(:directory, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
@@ -106,6 +107,8 @@ module FinchAPI
           PAY_STATEMENT = T.let(:pay_statement, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
           BENEFITS = T.let(:benefits, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
           SSN = T.let(:ssn, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
+          DEDUCTION = T.let(:deduction, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
+          DOCUMENTS = T.let(:documents, FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol)
 
           sig { override.returns(T::Array[FinchAPI::Models::Connect::SessionNewParams::Product::TaggedSymbol]) }
           def self.values; end
@@ -143,8 +146,7 @@ module FinchAPI
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             ASSISTED =
               T.let(:assisted, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod::TaggedSymbol)
@@ -166,8 +168,7 @@ module FinchAPI
           extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Connect::SessionNewParams::Sandbox) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Connect::SessionNewParams::Sandbox::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           FINCH = T.let(:finch, FinchAPI::Models::Connect::SessionNewParams::Sandbox::TaggedSymbol)
           PROVIDER = T.let(:provider, FinchAPI::Models::Connect::SessionNewParams::Sandbox::TaggedSymbol)

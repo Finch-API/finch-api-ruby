@@ -41,16 +41,12 @@ module FinchAPI
                  -> { FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::EmployeeDeduction, nil?: true] },
                  nil?: true
 
-        # @!attribute [r] frequencies
+        # @!attribute frequencies
         #   The list of frequencies supported by the provider for this benefit
         #
         #   @return [Array<Symbol, FinchAPI::Models::HRIS::BenefitFrequency, nil>, nil]
         optional :frequencies,
                  -> { FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::HRIS::BenefitFrequency, nil?: true] }
-
-        # @!parse
-        #   # @return [Array<Symbol, FinchAPI::Models::HRIS::BenefitFrequency, nil>]
-        #   attr_writer :frequencies
 
         # @!attribute hsa_contribution_limit
         #   Whether the provider supports HSA contribution limits. Empty if this feature is
@@ -61,29 +57,27 @@ module FinchAPI
                  -> { FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::HsaContributionLimit, nil?: true] },
                  nil?: true
 
-        # @!parse
-        #   # @param annual_maximum [Boolean, nil]
-        #   # @param catch_up [Boolean, nil]
-        #   # @param company_contribution [Array<Symbol, FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::CompanyContribution, nil>, nil]
-        #   # @param description [String, nil]
-        #   # @param employee_deduction [Array<Symbol, FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::EmployeeDeduction, nil>, nil]
-        #   # @param frequencies [Array<Symbol, FinchAPI::Models::HRIS::BenefitFrequency, nil>]
-        #   # @param hsa_contribution_limit [Array<Symbol, FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::HsaContributionLimit, nil>, nil]
-        #   #
-        #   def initialize(
-        #     annual_maximum: nil,
-        #     catch_up: nil,
-        #     company_contribution: nil,
-        #     description: nil,
-        #     employee_deduction: nil,
-        #     frequencies: nil,
-        #     hsa_contribution_limit: nil,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(annual_maximum: nil, catch_up: nil, company_contribution: nil, description: nil, employee_deduction: nil, frequencies: nil, hsa_contribution_limit: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse} for more details.
+        #
+        #   @param annual_maximum [Boolean, nil] Whether the provider supports an annual maximum for this benefit.
+        #
+        #   @param catch_up [Boolean, nil] Whether the provider supports catch up for this benefit. This field will only be
+        #   ...
+        #
+        #   @param company_contribution [Array<Symbol, FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::CompanyContribution, nil>, nil] Supported contribution types. An empty array indicates contributions are not sup
+        #   ...
+        #
+        #   @param description [String, nil]
+        #
+        #   @param employee_deduction [Array<Symbol, FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::EmployeeDeduction, nil>, nil] Supported deduction types. An empty array indicates deductions are not supported
+        #   ...
+        #
+        #   @param frequencies [Array<Symbol, FinchAPI::Models::HRIS::BenefitFrequency, nil>] The list of frequencies supported by the provider for this benefit
+        #
+        #   @param hsa_contribution_limit [Array<Symbol, FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::HsaContributionLimit, nil>, nil] Whether the provider supports HSA contribution limits. Empty if this feature is
+        #   ...
 
         module CompanyContribution
           extend FinchAPI::Internal::Type::Enum
@@ -91,11 +85,8 @@ module FinchAPI
           FIXED = :fixed
           PERCENT = :percent
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         module EmployeeDeduction
@@ -104,11 +95,8 @@ module FinchAPI
           FIXED = :fixed
           PERCENT = :percent
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         module HsaContributionLimit
@@ -117,11 +105,8 @@ module FinchAPI
           INDIVIDUAL = :individual
           FAMILY = :family
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

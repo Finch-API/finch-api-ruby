@@ -8,8 +8,10 @@ module FinchAPI
         #
         # @overload list(limit: nil, offset: nil, request_options: {})
         #
-        # @param limit [Integer]
-        # @param offset [Integer]
+        # @param limit [Integer] Number of employees to return (defaults to all)
+        #
+        # @param offset [Integer] Index to start from (defaults to 0)
+        #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Internal::IndividualsPage<FinchAPI::Models::HRIS::IndividualInDirectory>]

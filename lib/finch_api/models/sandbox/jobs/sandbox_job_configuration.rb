@@ -17,13 +17,9 @@ module FinchAPI
           #   @return [Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type]
           required :type, enum: -> { FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type }
 
-          # @!parse
-          #   # @param completion_status [Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus]
-          #   # @param type [Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type]
-          #   #
-          #   def initialize(completion_status:, type:, **) = super
-
-          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+          # @!method initialize(completion_status:, type:)
+          #   @param completion_status [Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus]
+          #   @param type [Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type]
 
           # @see FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration#completion_status
           module CompletionStatus
@@ -34,11 +30,8 @@ module FinchAPI
             PERMISSIONS_ERROR = :permissions_error
             ERROR = :error
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
 
           # @see FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration#type
@@ -47,11 +40,8 @@ module FinchAPI
 
             DATA_SYNC_ALL = :data_sync_all
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
       end

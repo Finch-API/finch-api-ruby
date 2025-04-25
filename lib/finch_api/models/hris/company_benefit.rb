@@ -28,15 +28,14 @@ module FinchAPI
         #   @return [Symbol, FinchAPI::Models::HRIS::BenefitType, nil]
         required :type, enum: -> { FinchAPI::Models::HRIS::BenefitType }, nil?: true
 
-        # @!parse
-        #   # @param benefit_id [String]
-        #   # @param description [String, nil]
-        #   # @param frequency [Symbol, FinchAPI::Models::HRIS::BenefitFrequency, nil]
-        #   # @param type [Symbol, FinchAPI::Models::HRIS::BenefitType, nil]
-        #   #
-        #   def initialize(benefit_id:, description:, frequency:, type:, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(benefit_id:, description:, frequency:, type:)
+        #   @param benefit_id [String] The id of the benefit.
+        #
+        #   @param description [String, nil]
+        #
+        #   @param frequency [Symbol, FinchAPI::Models::HRIS::BenefitFrequency, nil] The frequency of the benefit deduction/contribution.
+        #
+        #   @param type [Symbol, FinchAPI::Models::HRIS::BenefitType, nil] Type of benefit.
       end
     end
   end

@@ -16,6 +16,7 @@ module FinchAPI
       sig { override.params(blk: T.proc.params(arg0: Elem).void).void }
       def auto_paging_each(&blk); end
 
+      # @api private
       sig { returns(String) }
       def inspect; end
     end

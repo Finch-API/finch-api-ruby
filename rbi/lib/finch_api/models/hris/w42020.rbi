@@ -32,8 +32,14 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(data: nil, type: nil, year: nil); end
-
+        def self.new(
+          # Detailed information specific to the 2020 W4 form.
+          data: nil,
+          # Specifies the form type, indicating that this document is a 2020 W4 form.
+          type: nil,
+          # The tax year this W4 document applies to.
+          year: nil
+        ); end
         sig do
           override
             .returns(
@@ -98,13 +104,22 @@ module FinchAPI
               .returns(T.attached_class)
           end
           def self.new(
+            # Amount claimed for dependents other than qualifying children under 17 (in
+            # cents).
             amount_for_other_dependents: nil,
+            # Amount claimed for dependents under 17 years old (in cents).
             amount_for_qualifying_children_under_17: nil,
+            # Deductible expenses (in cents).
             deductions: nil,
+            # Additional withholding amount (in cents).
             extra_withholding: nil,
+            # The individual's filing status for tax purposes.
             filing_status: nil,
+            # The unique identifier for the individual associated with this document.
             individual_id: nil,
+            # Additional income from sources outside of primary employment (in cents).
             other_income: nil,
+            # Total amount claimed for dependents and other credits (in cents).
             total_claim_dependent_and_other_credits: nil
           ); end
           sig do
@@ -129,8 +144,7 @@ module FinchAPI
             extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::W42020::Data::FilingStatus) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::W42020::Data::FilingStatus::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             HEAD_OF_HOUSEHOLD =
               T.let(:head_of_household, FinchAPI::Models::HRIS::W42020::Data::FilingStatus::TaggedSymbol)
@@ -155,7 +169,7 @@ module FinchAPI
           extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::W42020::Type) }
-          OrSymbol = T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::W42020::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           W4_2020 = T.let(:w4_2020, FinchAPI::Models::HRIS::W42020::Type::TaggedSymbol)
 

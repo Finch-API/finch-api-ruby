@@ -87,8 +87,9 @@ class FinchAPI::Test::UtilDataHandlingTest < Minitest::Test
       FinchAPI::Internal::Util.dig([], 1.0) => nil
 
       FinchAPI::Internal::Util.dig(Object, 1) => nil
-      FinchAPI::Internal::Util.dig([], 1.0, 2) => 2
       FinchAPI::Internal::Util.dig([], 1.0) { 2 } => 2
+      FinchAPI::Internal::Util.dig([], ->(_) { 2 }) => 2
+      FinchAPI::Internal::Util.dig([1], -> { _1 in [1] }) => true
     end
   end
 end
@@ -157,6 +158,22 @@ class FinchAPI::Test::UtilUriHandlingTest < Minitest::Test
   end
 end
 
+class FinchAPI::Test::RegexMatchTest < Minitest::Test
+  def test_json_content
+    cases = {
+      "application/json" => true,
+      "application/jsonl" => false,
+      "application/vnd.github.v3+json" => true,
+      "application/vnd.api+json" => true
+    }
+    cases.each do |header, verdict|
+      assert_pattern do
+        FinchAPI::Internal::Util::JSON_CONTENT.match?(header) => ^verdict
+      end
+    end
+  end
+end
+
 class FinchAPI::Test::UtilFormDataEncodingTest < Minitest::Test
   class FakeCGI < CGI
     def initialize(headers, io)
@@ -184,8 +201,12 @@ class FinchAPI::Test::UtilFormDataEncodingTest < Minitest::Test
     file = Pathname(__FILE__)
     headers = {"content-type" => "multipart/form-data"}
     cases = {
+      "abc" => "abc",
       StringIO.new("abc") => "abc",
-      file => /^class FinchAPI/
+      FinchAPI::FilePart.new("abc") => "abc",
+      FinchAPI::FilePart.new(StringIO.new("abc")) => "abc",
+      file => /^class FinchAPI/,
+      FinchAPI::FilePart.new(file) => /^class FinchAPI/
     }
     cases.each do |body, val|
       encoded = FinchAPI::Internal::Util.encode_content(headers, body)
@@ -203,7 +224,13 @@ class FinchAPI::Test::UtilFormDataEncodingTest < Minitest::Test
       {a: 2, b: nil} => {"a" => "2", "b" => "null"},
       {a: 2, b: [1, 2, 3]} => {"a" => "2", "b" => "1"},
       {strio: StringIO.new("a")} => {"strio" => "a"},
-      {pathname: Pathname(__FILE__)} => {"pathname" => -> { _1.read in /^class FinchAPI/ }}
+      {strio: FinchAPI::FilePart.new("a")} => {"strio" => "a"},
+      {pathname: Pathname(__FILE__)} => {"pathname" => -> { _1.read in /^class FinchAPI/ }},
+      {pathname: FinchAPI::FilePart.new(Pathname(__FILE__))} => {
+        "pathname" => -> {
+          _1.read in /^class FinchAPI/
+        }
+      }
     }
     cases.each do |body, testcase|
       encoded = FinchAPI::Internal::Util.encode_content(headers, body)
@@ -368,6 +395,24 @@ class FinchAPI::Test::UtilFusedEnumTest < Minitest::Test
   end
 end
 
+class FinchAPI::Test::UtilContentDecodingTest < Minitest::Test
+  def test_charset
+    cases = {
+      "application/json" => Encoding::BINARY,
+      "application/json; charset=utf-8" => Encoding::UTF_8,
+      "charset=uTf-8 application/json; " => Encoding::UTF_8,
+      "charset=UTF-8; application/json; " => Encoding::UTF_8,
+      "charset=ISO-8859-1 ;application/json; " => Encoding::ISO_8859_1,
+      "charset=EUC-KR ;application/json; " => Encoding::EUC_KR
+    }
+    text = String.new.force_encoding(Encoding::BINARY)
+    cases.each do |content_type, encoding|
+      FinchAPI::Internal::Util.force_charset!(content_type, text: text)
+      assert_equal(encoding, text.encoding)
+    end
+  end
+end
+
 class FinchAPI::Test::UtilSseTest < Minitest::Test
   def test_decode_lines
     cases = {
@@ -381,7 +426,9 @@ class FinchAPI::Test::UtilSseTest < Minitest::Test
       %W[\na b\n\n] => %W[\n ab\n \n],
       %W[\na b] => %W[\n ab],
       %W[\u1F62E\u200D\u1F4A8] => %W[\u1F62E\u200D\u1F4A8],
-      %W[\u1F62E \u200D \u1F4A8] => %W[\u1F62E\u200D\u1F4A8]
+      %W[\u1F62E \u200D \u1F4A8] => %W[\u1F62E\u200D\u1F4A8],
+      ["\xf0\x9f".b, "\xa5\xba".b] => ["\xf0\x9f\xa5\xba".b],
+      ["\xf0".b, "\x9f".b, "\xa5".b, "\xba".b] => ["\xf0\x9f\xa5\xba".b]
     }
     eols = %W[\n \r \r\n]
     cases.each do |enum, expected|

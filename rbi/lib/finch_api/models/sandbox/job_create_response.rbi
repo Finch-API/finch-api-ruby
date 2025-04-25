@@ -24,8 +24,16 @@ module FinchAPI
           params(allowed_refreshes: Integer, job_id: String, job_url: String, remaining_refreshes: Integer)
             .returns(T.attached_class)
         end
-        def self.new(allowed_refreshes:, job_id:, job_url:, remaining_refreshes:); end
-
+        def self.new(
+          # The number of allowed refreshes per hour (per hour, fixed window)
+          allowed_refreshes:,
+          # The id of the job that has been created.
+          job_id:,
+          # The url that can be used to retrieve the job status
+          job_url:,
+          # The number of remaining refreshes available (per hour, fixed window)
+          remaining_refreshes:
+        ); end
         sig do
           override
             .returns({

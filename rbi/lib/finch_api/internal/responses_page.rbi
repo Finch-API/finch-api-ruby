@@ -10,6 +10,7 @@ module FinchAPI
       sig { returns(T.nilable(T::Array[Elem])) }
       attr_accessor :responses
 
+      # @api private
       sig { returns(String) }
       def inspect; end
     end

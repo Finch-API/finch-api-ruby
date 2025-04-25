@@ -66,18 +66,28 @@ module FinchAPI
             .returns(T.attached_class)
         end
         def self.new(
+          # The datetime the job completed.
           completed_at:,
+          # The datetime when the job was created. for scheduled jobs, this will be the
+          # initial connection time. For ad-hoc jobs, this will be the time the creation
+          # request was received.
           created_at:,
+          # The id of the job that has been created.
           job_id:,
+          # The url that can be used to retrieve the job status
           job_url:,
+          # The input parameters for the job.
           params:,
+          # The datetime a job is scheduled to be run. For scheduled jobs, this datetime can
+          # be in the future if the job has not yet been enqueued. For ad-hoc jobs, this
+          # field will be null.
           scheduled_at:,
+          # The datetime a job entered into the job queue.
           started_at:,
           status:,
+          # The type of automated job
           type:
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -106,8 +116,10 @@ module FinchAPI
 
           # The input parameters for the job.
           sig { params(individual_id: String).returns(T.attached_class) }
-          def self.new(individual_id: nil); end
-
+          def self.new(
+            # The ID of the individual that the job was completed for.
+            individual_id: nil
+          ); end
           sig { override.returns({individual_id: String}) }
           def to_hash; end
         end
@@ -116,8 +128,7 @@ module FinchAPI
           extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           PENDING = T.let(:pending, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
           IN_PROGRESS = T.let(:in_progress, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
@@ -136,8 +147,7 @@ module FinchAPI
           extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           DATA_SYNC_ALL = T.let(:data_sync_all, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol)
           W4_FORM_EMPLOYEE_SYNC =

@@ -5,22 +5,25 @@ module FinchAPI
     module Type
       # @api private
       #
-      # Either `Pathname` or `StringIO`.
-      class IOLike
+      # Either `Pathname` or `StringIO`, or `IO`, or
+      # `FinchAPI::Internal::Type::FileInput`.
+      #
+      # Note: when `IO` is used, all retries are disabled, since many IO` streams are
+      # not rewindable.
+      class FileInput
         extend FinchAPI::Internal::Type::Converter
 
         abstract!
-        final!
 
-        sig(:final) { params(other: T.anything).returns(T::Boolean) }
+        sig { params(other: T.anything).returns(T::Boolean) }
         def self.===(other); end
 
-        sig(:final) { params(other: T.anything).returns(T::Boolean) }
+        sig { params(other: T.anything).returns(T::Boolean) }
         def self.==(other); end
 
         class << self
           # @api private
-          sig(:final) do
+          sig do
             override
               .params(
                 value: T.any(StringIO, String, T.anything),
@@ -31,7 +34,7 @@ module FinchAPI
           def coerce(value, state:); end
 
           # @api private
-          sig(:final) do
+          sig do
             override
               .params(
                 value: T.any(Pathname, StringIO, IO, String, T.anything),

@@ -32,8 +32,17 @@ module FinchAPI
         )
           .returns(T.attached_class)
       end
-      def self.new(amount: nil, currency: nil, effective_date: nil, unit: nil); end
-
+      def self.new(
+        # The income amount in cents.
+        amount: nil,
+        # The currency code.
+        currency: nil,
+        # The date the income amount went into effect.
+        effective_date: nil,
+        # The income unit of payment. Options: `yearly`, `quarterly`, `monthly`,
+        # `semi_monthly`, `bi_weekly`, `weekly`, `daily`, `hourly`, and `fixed`.
+        unit: nil
+      ); end
       sig do
         override
           .returns(
@@ -53,7 +62,7 @@ module FinchAPI
         extend FinchAPI::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Income::Unit) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, FinchAPI::Models::Income::Unit::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         YEARLY = T.let(:yearly, FinchAPI::Models::Income::Unit::TaggedSymbol)
         QUARTERLY = T.let(:quarterly, FinchAPI::Models::Income::Unit::TaggedSymbol)

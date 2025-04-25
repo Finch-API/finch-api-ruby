@@ -62,41 +62,42 @@ module FinchAPI
         #   @return [Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type]
         required :type, enum: -> { FinchAPI::Models::Jobs::AutomatedAsyncJob::Type }
 
-        # @!parse
-        #   # @param completed_at [Time, nil]
-        #   # @param created_at [Time]
-        #   # @param job_id [String]
-        #   # @param job_url [String]
-        #   # @param params [FinchAPI::Models::Jobs::AutomatedAsyncJob::Params, nil]
-        #   # @param scheduled_at [Time, nil]
-        #   # @param started_at [Time, nil]
-        #   # @param status [Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status]
-        #   # @param type [Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type]
-        #   #
-        #   def initialize(completed_at:, created_at:, job_id:, job_url:, params:, scheduled_at:, started_at:, status:, type:, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(completed_at:, created_at:, job_id:, job_url:, params:, scheduled_at:, started_at:, status:, type:)
+        #   Some parameter documentations has been truncated, see
+        #   {FinchAPI::Models::Jobs::AutomatedAsyncJob} for more details.
+        #
+        #   @param completed_at [Time, nil] The datetime the job completed.
+        #
+        #   @param created_at [Time] The datetime when the job was created. for scheduled jobs, this will be the init
+        #   ...
+        #
+        #   @param job_id [String] The id of the job that has been created.
+        #
+        #   @param job_url [String] The url that can be used to retrieve the job status
+        #
+        #   @param params [FinchAPI::Models::Jobs::AutomatedAsyncJob::Params, nil] The input parameters for the job.
+        #
+        #   @param scheduled_at [Time, nil] The datetime a job is scheduled to be run. For scheduled jobs, this datetime can
+        #   ...
+        #
+        #   @param started_at [Time, nil] The datetime a job entered into the job queue.
+        #
+        #   @param status [Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status]
+        #
+        #   @param type [Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type] The type of automated job
 
         # @see FinchAPI::Models::Jobs::AutomatedAsyncJob#params
         class Params < FinchAPI::Internal::Type::BaseModel
-          # @!attribute [r] individual_id
+          # @!attribute individual_id
           #   The ID of the individual that the job was completed for.
           #
           #   @return [String, nil]
           optional :individual_id, String
 
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :individual_id
-
-          # @!parse
-          #   # The input parameters for the job.
-          #   #
-          #   # @param individual_id [String]
-          #   #
-          #   def initialize(individual_id: nil, **) = super
-
-          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+          # @!method initialize(individual_id: nil)
+          #   The input parameters for the job.
+          #
+          #   @param individual_id [String] The ID of the individual that the job was completed for.
         end
 
         # @see FinchAPI::Models::Jobs::AutomatedAsyncJob#status
@@ -110,11 +111,8 @@ module FinchAPI
           REAUTH_ERROR = :reauth_error
           PERMISSIONS_ERROR = :permissions_error
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # The type of automated job
@@ -126,11 +124,8 @@ module FinchAPI
           DATA_SYNC_ALL = :data_sync_all
           W4_FORM_EMPLOYEE_SYNC = :w4_form_employee_sync
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

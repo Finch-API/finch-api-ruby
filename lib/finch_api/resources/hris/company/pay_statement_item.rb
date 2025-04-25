@@ -8,17 +8,28 @@ module FinchAPI
           # @return [FinchAPI::Resources::HRIS::Company::PayStatementItem::Rules]
           attr_reader :rules
 
+          # Some parameter documentations has been truncated, see
+          # {FinchAPI::Models::HRIS::Company::PayStatementItemListParams} for more details.
+          #
           # **Beta:** this endpoint currently serves employers onboarded after March 4th and
           # historical support will be added soon Retrieve a list of detailed pay statement
           # items for the access token's connection account.
           #
           # @overload list(categories: nil, end_date: nil, name: nil, start_date: nil, type: nil, request_options: {})
           #
-          # @param categories [Array<Symbol, FinchAPI::Models::HRIS::Company::PayStatementItemListParams::Category>]
-          # @param end_date [Date]
-          # @param name [String]
-          # @param start_date [Date]
-          # @param type [String]
+          # @param categories [Array<Symbol, FinchAPI::Models::HRIS::Company::PayStatementItemListParams::Category>] Comma-delimited list of pay statement item categories to filter on. If empty, de
+          # ...
+          #
+          # @param end_date [Date] The end date to retrieve pay statement items by via their last seen pay date in
+          # ...
+          #
+          # @param name [String] Case-insensitive partial match search by pay statement item name.
+          #
+          # @param start_date [Date] The start date to retrieve pay statement items by via their last seen pay date (
+          # ...
+          #
+          # @param type [String] String search by pay statement item type.
+          #
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [FinchAPI::Internal::ResponsesPage<FinchAPI::Models::HRIS::Company::PayStatementItemListResponse>]

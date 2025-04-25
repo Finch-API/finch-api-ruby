@@ -13,6 +13,7 @@ module FinchAPI
       sig { returns(FinchAPI::Models::Paging) }
       attr_accessor :paging
 
+      # @api private
       sig { returns(String) }
       def inspect; end
     end

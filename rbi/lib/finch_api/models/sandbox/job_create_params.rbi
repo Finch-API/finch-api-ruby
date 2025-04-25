@@ -18,8 +18,11 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(type:, request_options: {}); end
-
+        def self.new(
+          # The type of job to start. Currently the only supported type is `data_sync_all`
+          type:,
+          request_options: {}
+        ); end
         sig do
           override
             .returns(
@@ -33,8 +36,7 @@ module FinchAPI
           extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::JobCreateParams::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Sandbox::JobCreateParams::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           DATA_SYNC_ALL = T.let(:data_sync_all, FinchAPI::Models::Sandbox::JobCreateParams::Type::TaggedSymbol)
 

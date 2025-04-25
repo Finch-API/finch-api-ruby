@@ -89,17 +89,22 @@ module FinchAPI
             .returns(T.attached_class)
         end
         def self.new(
+          # The unique id for the payment.
           id: nil,
           company_debit: nil,
           debit_date: nil,
           employee_taxes: nil,
           employer_taxes: nil,
           gross_pay: nil,
+          # Array of every individual on this payment.
           individual_ids: nil,
           net_pay: nil,
           pay_date: nil,
+          # List of pay frequencies associated with this payment.
           pay_frequencies: nil,
+          # Array of the Finch id (uuidv4) of every pay group associated with this payment.
           pay_group_ids: nil,
+          # The pay period object.
           pay_period: nil
         ); end
         sig do
@@ -127,8 +132,7 @@ module FinchAPI
           extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Payment::PayFrequency) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           ANNUALLY = T.let(:annually, FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol)
           SEMI_ANNUALLY = T.let(:semi_annually, FinchAPI::Models::HRIS::Payment::PayFrequency::TaggedSymbol)

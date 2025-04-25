@@ -5,8 +5,7 @@ module FinchAPI
     module Connect
       # @see FinchAPI::Resources::Connect::Sessions#new
       class SessionNewParams < FinchAPI::Internal::Type::BaseModel
-        # @!parse
-        #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
         # @!attribute customer_id
@@ -57,35 +56,30 @@ module FinchAPI
         #   @return [Symbol, FinchAPI::Models::Connect::SessionNewParams::Sandbox, nil]
         optional :sandbox, enum: -> { FinchAPI::Models::Connect::SessionNewParams::Sandbox }, nil?: true
 
-        # @!parse
-        #   # @param customer_id [String]
-        #   # @param customer_name [String]
-        #   # @param products [Array<Symbol, FinchAPI::Models::Connect::SessionNewParams::Product>]
-        #   # @param customer_email [String, nil]
-        #   # @param integration [FinchAPI::Models::Connect::SessionNewParams::Integration, nil]
-        #   # @param manual [Boolean, nil]
-        #   # @param minutes_to_expire [Float, nil]
-        #   # @param redirect_uri [String, nil]
-        #   # @param sandbox [Symbol, FinchAPI::Models::Connect::SessionNewParams::Sandbox, nil]
-        #   # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(
-        #     customer_id:,
-        #     customer_name:,
-        #     products:,
-        #     customer_email: nil,
-        #     integration: nil,
-        #     manual: nil,
-        #     minutes_to_expire: nil,
-        #     redirect_uri: nil,
-        #     sandbox: nil,
-        #     request_options: {},
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(customer_id:, customer_name:, products:, customer_email: nil, integration: nil, manual: nil, minutes_to_expire: nil, redirect_uri: nil, sandbox: nil, request_options: {})
+        #   Some parameter documentations has been truncated, see
+        #   {FinchAPI::Models::Connect::SessionNewParams} for more details.
+        #
+        #   @param customer_id [String]
+        #
+        #   @param customer_name [String]
+        #
+        #   @param products [Array<Symbol, FinchAPI::Models::Connect::SessionNewParams::Product>]
+        #
+        #   @param customer_email [String, nil]
+        #
+        #   @param integration [FinchAPI::Models::Connect::SessionNewParams::Integration, nil]
+        #
+        #   @param manual [Boolean, nil]
+        #
+        #   @param minutes_to_expire [Float, nil] The number of minutes until the session expires (defaults to 43,200, which is 30
+        #   ...
+        #
+        #   @param redirect_uri [String, nil]
+        #
+        #   @param sandbox [Symbol, FinchAPI::Models::Connect::SessionNewParams::Sandbox, nil]
+        #
+        #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 
         # The Finch products that can be requested during the Connect flow.
         module Product
@@ -99,12 +93,11 @@ module FinchAPI
           PAY_STATEMENT = :pay_statement
           BENEFITS = :benefits
           SSN = :ssn
+          DEDUCTION = :deduction
+          DOCUMENTS = :documents
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         class Integration < FinchAPI::Internal::Type::BaseModel
@@ -120,13 +113,9 @@ module FinchAPI
           #   @return [String, nil]
           optional :provider, String, nil?: true
 
-          # @!parse
-          #   # @param auth_method [Symbol, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod, nil]
-          #   # @param provider [String, nil]
-          #   #
-          #   def initialize(auth_method: nil, provider: nil, **) = super
-
-          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+          # @!method initialize(auth_method: nil, provider: nil)
+          #   @param auth_method [Symbol, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod, nil]
+          #   @param provider [String, nil]
 
           # @see FinchAPI::Models::Connect::SessionNewParams::Integration#auth_method
           module AuthMethod
@@ -137,11 +126,8 @@ module FinchAPI
             OAUTH = :oauth
             API_TOKEN = :api_token
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -151,11 +137,8 @@ module FinchAPI
           FINCH = :finch
           PROVIDER = :provider
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end
