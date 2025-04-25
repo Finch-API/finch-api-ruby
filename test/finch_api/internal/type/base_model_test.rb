@@ -94,7 +94,7 @@ class FinchAPI::Test::PrimitiveModelTest < Minitest::Test
       [:a, :b] => :b,
       [:a, "a"] => "a",
       [String, StringIO.new("one")] => "one",
-      [String, Pathname(__FILE__)] => FinchAPI::Internal::Util::SerializationAdapter
+      [String, Pathname(__FILE__)] => FinchAPI::FilePart
     }
 
     cases.each do
@@ -154,6 +154,13 @@ class FinchAPI::Test::PrimitiveModelTest < Minitest::Test
 end
 
 class FinchAPI::Test::EnumModelTest < Minitest::Test
+  class E0
+    include FinchAPI::Internal::Type::Enum
+    attr_reader :values
+
+    def initialize(*values) = (@values = values)
+  end
+
   module E1
     extend FinchAPI::Internal::Type::Enum
 
@@ -183,6 +190,10 @@ class FinchAPI::Test::EnumModelTest < Minitest::Test
 
   def test_coerce
     cases = {
+      [E0.new, "one"] => [{no: 1}, "one"],
+      [E0.new(:one), "one"] => [{yes: 1}, :one],
+      [E0.new(:two), "one"] => [{maybe: 1}, "one"],
+
       # rubocop:disable Lint/BooleanSymbol
       [E1, true] => [{yes: 1}, true],
       [E1, false] => [{no: 1}, false],
@@ -432,8 +443,10 @@ class FinchAPI::Test::BaseModelTest < Minitest::Test
 end
 
 class FinchAPI::Test::UnionTest < Minitest::Test
-  module U0
-    extend FinchAPI::Internal::Type::Union
+  class U0
+    include FinchAPI::Internal::Type::Union
+
+    def initialize(*variants) = variants.each { variant(_1) }
   end
 
   module U1
@@ -519,6 +532,11 @@ class FinchAPI::Test::UnionTest < Minitest::Test
     cases = {
       [U0, :""] => [{no: 1}, 0, :""],
 
+      [U0.new(Integer, Float), "one"] => [{no: 1}, 2, "one"],
+      [U0.new(Integer, Float), 1.0] => [{yes: 1}, 2, 1.0],
+      [U0.new({const: :a}), "a"] => [{yes: 1}, 1, :a],
+      [U0.new({const: :a}), "2"] => [{maybe: 1}, 1, "2"],
+
       [U1, "a"] => [{yes: 1}, 1, :a],
       [U1, "2"] => [{maybe: 1}, 2, "2"],
       [U1, :b] => [{maybe: 1}, 2, :b],
@@ -556,6 +574,13 @@ class FinchAPI::Test::UnionTest < Minitest::Test
 end
 
 class FinchAPI::Test::BaseModelQoLTest < Minitest::Test
+  class E0
+    include FinchAPI::Internal::Type::Enum
+    attr_reader :values
+
+    def initialize(*values) = (@values = values)
+  end
+
   module E1
     extend FinchAPI::Internal::Type::Enum
 
@@ -575,6 +600,26 @@ class FinchAPI::Test::BaseModelQoLTest < Minitest::Test
     B = 3
   end
 
+  class U0
+    include FinchAPI::Internal::Type::Union
+
+    def initialize(*variants) = variants.each { variant(_1) }
+  end
+
+  module U1
+    extend FinchAPI::Internal::Type::Union
+
+    variant String
+    variant Integer
+  end
+
+  module U2
+    extend FinchAPI::Internal::Type::Union
+
+    variant String
+    variant Integer
+  end
+
   class M1 < FinchAPI::Internal::Type::BaseModel
     required :a, Integer
   end
@@ -592,17 +637,27 @@ class FinchAPI::Test::BaseModelQoLTest < Minitest::Test
       [FinchAPI::Internal::Type::Unknown, FinchAPI::Internal::Type::Unknown] => true,
       [FinchAPI::Internal::Type::Boolean, FinchAPI::Internal::Type::Boolean] => true,
       [FinchAPI::Internal::Type::Unknown, FinchAPI::Internal::Type::Boolean] => false,
+      [E0.new(:a, :b), E0.new(:a, :b)] => true,
+      [E0.new(:a, :b), E0.new(:b, :a)] => true,
+      [E0.new(:a, :b), E0.new(:b, :c)] => false,
       [E1, E2] => true,
       [E1, E3] => false,
+      [U0.new(String, Integer), U0.new(String, Integer)] => true,
+      [U0.new(String, Integer), U0.new(Integer, String)] => false,
+      [U0.new(String, Float), U0.new(String, Integer)] => false,
+      [U1, U2] => true,
       [M1, M2] => false,
-      [M1, M3] => true
+      [M1, M3] => true,
+      [M1.new(a: 1), M1.new(a: 1)] => true
     }
 
     cases.each do
       if _2
         assert_equal(*_1)
+        assert_equal(*_1.map(&:hash))
       else
         refute_equal(*_1)
+        refute_equal(*_1.map(&:hash))
       end
     end
   end

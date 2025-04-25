@@ -97,10 +97,14 @@ module FinchAPI
                 .returns(T.attached_class)
             end
             def self.new(
+              # If the benefit supports annual maximum, the amount in cents for this individual.
               annual_maximum: nil,
+              # If the benefit supports catch up (401k, 403b, etc.), whether catch up is enabled
+              # for this individual.
               catch_up: nil,
               company_contribution: nil,
               employee_deduction: nil,
+              # Type for HSA contribution limit if the benefit is a HSA.
               hsa_contribution_limit: nil
             ); end
             sig do
@@ -123,14 +127,7 @@ module FinchAPI
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit) }
-              OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    String,
-                    FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol
-                  )
-                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               INDIVIDUAL =
                 T.let(

@@ -48,14 +48,16 @@ module FinchAPI
             .returns(T.attached_class)
         end
         def self.new(
+          # The provider associated with the connection
           provider_id:,
           authentication_type: nil,
+          # Optional: the size of the employer to be created with this connection. Defaults
+          # to 20. Note that if this is higher than 100, historical payroll data will not be
+          # generated, and instead only one pay period will be created.
           employee_size: nil,
           products: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -75,8 +77,7 @@ module FinchAPI
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           CREDENTIAL =
             T.let(:credential, FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType::TaggedSymbol)

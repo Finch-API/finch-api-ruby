@@ -5,14 +5,22 @@ module FinchAPI
     class Sandbox
       class Connections
         class Accounts
+          # Some parameter documentations has been truncated, see
+          # {FinchAPI::Models::Sandbox::Connections::AccountCreateParams} for more details.
+          #
           # Create a new account for an existing connection (company/provider pair)
           #
           # @overload create(company_id:, provider_id:, authentication_type: nil, products: nil, request_options: {})
           #
           # @param company_id [String]
-          # @param provider_id [String]
+          #
+          # @param provider_id [String] The provider associated with the `access_token`
+          #
           # @param authentication_type [Symbol, FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType]
-          # @param products [Array<String>]
+          #
+          # @param products [Array<String>] Optional, defaults to Organization products (`company`, `directory`, `employment
+          # ...
+          #
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [FinchAPI::Models::Sandbox::Connections::AccountCreateResponse]

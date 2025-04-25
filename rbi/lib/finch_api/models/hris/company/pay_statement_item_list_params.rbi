@@ -67,15 +67,21 @@ module FinchAPI
               .returns(T.attached_class)
           end
           def self.new(
+            # Comma-delimited list of pay statement item categories to filter on. If empty,
+            # defaults to all categories.
             categories: nil,
+            # The end date to retrieve pay statement items by via their last seen pay date in
+            # `YYYY-MM-DD` format.
             end_date: nil,
+            # Case-insensitive partial match search by pay statement item name.
             name: nil,
+            # The start date to retrieve pay statement items by via their last seen pay date
+            # (inclusive) in `YYYY-MM-DD` format.
             start_date: nil,
+            # String search by pay statement item type.
             type: nil,
             request_options: {}
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -96,8 +102,7 @@ module FinchAPI
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Company::PayStatementItemListParams::Category) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::Company::PayStatementItemListParams::Category::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             EARNINGS =
               T.let(:earnings, FinchAPI::Models::HRIS::Company::PayStatementItemListParams::Category::TaggedSymbol)

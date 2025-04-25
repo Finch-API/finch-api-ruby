@@ -8,8 +8,10 @@ module FinchAPI
       attr_accessor :status
 
       sig { params(status: String).returns(T.attached_class) }
-      def self.new(status:); end
-
+      def self.new(
+        # If the request is successful, Finch will return “success” (HTTP 200 status).
+        status:
+      ); end
       sig { override.returns({status: String}) }
       def to_hash; end
     end

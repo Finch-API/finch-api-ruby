@@ -27,8 +27,11 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(paging: nil, pay_statements: nil); end
-
+        def self.new(
+          paging: nil,
+          # The array of pay statements for the current payment.
+          pay_statements: nil
+        ); end
         sig do
           override
             .returns(

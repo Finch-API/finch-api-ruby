@@ -11,12 +11,8 @@ module FinchAPI
           #   @return [String]
           required :job_id, String
 
-          # @!parse
-          #   # @param job_id [String]
-          #   #
-          #   def initialize(job_id:, **) = super
-
-          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+          # @!method initialize(job_id:)
+          #   @param job_id [String]
         end
       end
     end

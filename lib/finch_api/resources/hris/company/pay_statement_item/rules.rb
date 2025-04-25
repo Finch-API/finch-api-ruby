@@ -15,11 +15,16 @@ module FinchAPI
             #
             # @overload create(attributes: nil, conditions: nil, effective_end_date: nil, effective_start_date: nil, entity_type: nil, request_options: {})
             #
-            # @param attributes [FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes]
+            # @param attributes [FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes] Specifies the fields to be applied when the condition is met.
+            #
             # @param conditions [Array<FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition>]
-            # @param effective_end_date [String, nil]
-            # @param effective_start_date [String, nil]
-            # @param entity_type [Symbol, FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::EntityType]
+            #
+            # @param effective_end_date [String, nil] Specifies when the rules should stop applying rules based on the date.
+            #
+            # @param effective_start_date [String, nil] Specifies when the rule should begin applying based on the date.
+            #
+            # @param entity_type [Symbol, FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::EntityType] The entity type to which the rule is applied.
+            #
             # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
             #
             # @return [FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse]

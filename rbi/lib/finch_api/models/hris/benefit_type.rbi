@@ -8,7 +8,7 @@ module FinchAPI
         extend FinchAPI::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::BenefitType) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::BenefitType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         BENEFIT_TYPE_401K = T.let(:"401k", FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)
         BENEFIT_TYPE_401K_ROTH = T.let(:"401k_roth", FinchAPI::Models::HRIS::BenefitType::TaggedSymbol)

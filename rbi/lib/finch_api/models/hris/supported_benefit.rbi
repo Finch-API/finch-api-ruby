@@ -63,12 +63,22 @@ module FinchAPI
             .returns(T.attached_class)
         end
         def self.new(
+          # Whether the provider supports an annual maximum for this benefit.
           annual_maximum: nil,
+          # Whether the provider supports catch up for this benefit. This field will only be
+          # true for retirement benefits.
           catch_up: nil,
+          # Supported contribution types. An empty array indicates contributions are not
+          # supported.
           company_contribution: nil,
           description: nil,
+          # Supported deduction types. An empty array indicates deductions are not
+          # supported.
           employee_deduction: nil,
+          # The list of frequencies supported by the provider for this benefit
           frequencies: nil,
+          # Whether the provider supports HSA contribution limits. Empty if this feature is
+          # not supported for the benefit. This array only has values for HSA benefits.
           hsa_contribution_limit: nil
         ); end
         sig do
@@ -92,8 +102,7 @@ module FinchAPI
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           FIXED = T.let(:fixed, FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution::TaggedSymbol)
           PERCENT = T.let(:percent, FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution::TaggedSymbol)
@@ -107,8 +116,7 @@ module FinchAPI
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           FIXED = T.let(:fixed, FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction::TaggedSymbol)
           PERCENT = T.let(:percent, FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction::TaggedSymbol)
@@ -122,8 +130,7 @@ module FinchAPI
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::SupportedBenefit::HsaContributionLimit) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::SupportedBenefit::HsaContributionLimit::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           INDIVIDUAL =
             T.let(:individual, FinchAPI::Models::HRIS::SupportedBenefit::HsaContributionLimit::TaggedSymbol)

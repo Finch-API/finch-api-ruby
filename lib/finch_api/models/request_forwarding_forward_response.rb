@@ -33,15 +33,21 @@ module FinchAPI
       #   @return [Integer]
       required :status_code, Integer, api_name: :statusCode
 
-      # @!parse
-      #   # @param data [String, nil]
-      #   # @param headers [Object, nil]
-      #   # @param request [FinchAPI::Models::RequestForwardingForwardResponse::Request]
-      #   # @param status_code [Integer]
-      #   #
-      #   def initialize(data:, headers:, request:, status_code:, **) = super
-
-      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+      # @!method initialize(data:, headers:, request:, status_code:)
+      #   Some parameter documentations has been truncated, see
+      #   {FinchAPI::Models::RequestForwardingForwardResponse} for more details.
+      #
+      #   @param data [String, nil] A string representation of the HTTP response body of the forwarded request’s res
+      #   ...
+      #
+      #   @param headers [Object, nil] The HTTP headers of the forwarded request’s response, exactly as received from t
+      #   ...
+      #
+      #   @param request [FinchAPI::Models::RequestForwardingForwardResponse::Request] An object containing details of your original forwarded request, for your ease o
+      #   ...
+      #
+      #   @param status_code [Integer] The HTTP status code of the forwarded request’s response, exactly received from
+      #   ...
 
       # @see FinchAPI::Models::RequestForwardingForwardResponse#request
       class Request < FinchAPI::Internal::Type::BaseModel
@@ -80,19 +86,26 @@ module FinchAPI
         #   @return [String]
         required :route, String
 
-        # @!parse
-        #   # An object containing details of your original forwarded request, for your ease
-        #   # of reference.
-        #   #
-        #   # @param data [String, nil]
-        #   # @param headers [Object, nil]
-        #   # @param method_ [String]
-        #   # @param params [Object, nil]
-        #   # @param route [String]
-        #   #
-        #   def initialize(data:, headers:, method_:, params:, route:, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(data:, headers:, method_:, params:, route:)
+        #   Some parameter documentations has been truncated, see
+        #   {FinchAPI::Models::RequestForwardingForwardResponse::Request} for more details.
+        #
+        #   An object containing details of your original forwarded request, for your ease
+        #   of reference.
+        #
+        #   @param data [String, nil] The body that was specified for the forwarded request. If a value was not specif
+        #   ...
+        #
+        #   @param headers [Object, nil] The specified HTTP headers that were included in the forwarded request. If no he
+        #   ...
+        #
+        #   @param method_ [String] The HTTP method that was specified for the forwarded request. Valid values inclu
+        #   ...
+        #
+        #   @param params [Object, nil] The query parameters that were included in the forwarded request. If no query pa
+        #   ...
+        #
+        #   @param route [String] The URL route path that was specified for the forwarded request.
       end
     end
   end

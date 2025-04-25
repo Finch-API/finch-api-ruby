@@ -55,8 +55,13 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(quotas: nil); end
-
+          def self.new(
+            # Information about remaining quotas for this connection. Only applicable for
+            # customers opted in to use Finch's Data Sync Refresh endpoint
+            # (`POST /jobs/automated`). Please contact a Finch representative for more
+            # details.
+            quotas: nil
+          ); end
           sig { override.returns({quotas: FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas}) }
           def to_hash; end
 

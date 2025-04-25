@@ -3,19 +3,27 @@
 module FinchAPI
   module Internal
     module Type
+      # @api private
+      #
       # @generic Elem
       #
       # This module provides a base implementation for paginated responses in the SDK.
       module BasePage
         # rubocop:disable Lint/UnusedMethodArgument
 
+        # @api public
+        #
         # @return [Boolean]
         def next_page? = (raise NotImplementedError)
 
+        # @api public
+        #
         # @raise [FinchAPI::Errors::APIError]
-        # @return [FinchAPI::Internal::Type::BasePage]
+        # @return [self]
         def next_page = (raise NotImplementedError)
 
+        # @api public
+        #
         # @param blk [Proc]
         #
         # @yieldparam [generic<Elem>]
@@ -36,6 +44,7 @@ module FinchAPI
         def initialize(client:, req:, headers:, page_data:)
           @client = client
           @req = req
+          @model = req.fetch(:model)
           super()
         end
 

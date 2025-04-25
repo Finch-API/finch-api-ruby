@@ -9,22 +9,15 @@ module FinchAPI
       #   @return [Integer, nil]
       optional :amount, Integer, nil?: true
 
-      # @!attribute [r] currency
+      # @!attribute currency
       #
       #   @return [String, nil]
       optional :currency, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :currency
-
-      # @!parse
-      #   # @param amount [Integer, nil]
-      #   # @param currency [String]
-      #   #
-      #   def initialize(amount: nil, currency: nil, **) = super
-
-      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+      # @!method initialize(amount: nil, currency: nil)
+      #   @param amount [Integer, nil] Amount for money object (in cents)
+      #
+      #   @param currency [String]
     end
   end
 end

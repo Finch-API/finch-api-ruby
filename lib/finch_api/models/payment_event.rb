@@ -3,31 +3,19 @@
 module FinchAPI
   module Models
     class PaymentEvent < FinchAPI::Models::BaseWebhookEvent
-      # @!attribute [r] data
+      # @!attribute data
       #
       #   @return [FinchAPI::Models::PaymentEvent::Data, nil]
       optional :data, -> { FinchAPI::Models::PaymentEvent::Data }
 
-      # @!parse
-      #   # @return [FinchAPI::Models::PaymentEvent::Data]
-      #   attr_writer :data
-
-      # @!attribute [r] event_type
+      # @!attribute event_type
       #
       #   @return [Symbol, FinchAPI::Models::PaymentEvent::EventType, nil]
       optional :event_type, enum: -> { FinchAPI::Models::PaymentEvent::EventType }
 
-      # @!parse
-      #   # @return [Symbol, FinchAPI::Models::PaymentEvent::EventType]
-      #   attr_writer :event_type
-
-      # @!parse
-      #   # @param data [FinchAPI::Models::PaymentEvent::Data]
-      #   # @param event_type [Symbol, FinchAPI::Models::PaymentEvent::EventType]
-      #   #
-      #   def initialize(data: nil, event_type: nil, **) = super
-
-      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+      # @!method initialize(data: nil, event_type: nil)
+      #   @param data [FinchAPI::Models::PaymentEvent::Data]
+      #   @param event_type [Symbol, FinchAPI::Models::PaymentEvent::EventType]
 
       class Data < FinchAPI::Internal::Type::BaseModel
         # @!attribute pay_date
@@ -42,13 +30,10 @@ module FinchAPI
         #   @return [String]
         required :payment_id, String
 
-        # @!parse
-        #   # @param pay_date [String]
-        #   # @param payment_id [String]
-        #   #
-        #   def initialize(pay_date:, payment_id:, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(pay_date:, payment_id:)
+        #   @param pay_date [String] The date of the payment.
+        #
+        #   @param payment_id [String] The ID of the payment.
       end
 
       module EventType
@@ -58,11 +43,8 @@ module FinchAPI
         PAYMENT_UPDATED = :"payment.updated"
         PAYMENT_DELETED = :"payment.deleted"
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

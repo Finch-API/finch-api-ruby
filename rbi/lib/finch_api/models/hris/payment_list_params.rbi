@@ -25,8 +25,15 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(end_date:, start_date:, request_options: {}); end
-
+        def self.new(
+          # The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
+          # format.
+          end_date:,
+          # The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
+          # format.
+          start_date:,
+          request_options: {}
+        ); end
         sig do
           override.returns({end_date: Date, start_date: Date, request_options: FinchAPI::RequestOptions})
         end

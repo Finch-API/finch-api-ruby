@@ -68,13 +68,19 @@ module FinchAPI
         sig do
           params(
             data: T.any(FinchAPI::Internal::AnyHash, T::Array[T.anything], T.anything),
-            pick: T.nilable(T.any(Symbol, Integer, T::Array[T.any(Symbol, Integer)])),
-            sentinel: T.nilable(T.anything),
+            pick: T.nilable(
+              T.any(
+                Symbol,
+                Integer,
+                T::Array[T.any(Symbol, Integer)],
+                T.proc.params(arg0: T.anything).returns(T.anything)
+              )
+            ),
             blk: T.nilable(T.proc.returns(T.anything))
           )
             .returns(T.nilable(T.anything))
         end
-        def dig(data, pick, sentinel = nil, &blk); end
+        def dig(data, pick, &blk); end
       end
 
       class << self
@@ -141,22 +147,6 @@ module FinchAPI
       end
 
       # @api private
-      class SerializationAdapter
-        sig { returns(T.any(Pathname, IO)) }
-        attr_reader :inner
-
-        sig { params(a: T.anything).returns(String) }
-        def to_json(*a); end
-
-        sig { params(a: T.anything).returns(String) }
-        def to_yaml(*a); end
-
-        # @api private
-        sig { params(inner: T.any(Pathname, IO)).returns(T.attached_class) }
-        def self.new(inner); end
-      end
-
-      # @api private
       #
       # An adapter that satisfies the IO interface required by `::IO.copy_stream`
       class ReadIOAdapter
@@ -192,7 +182,22 @@ module FinchAPI
         def writable_enum(&blk); end
       end
 
+      JSON_CONTENT = T.let(%r{^application/(?:vnd(?:\.[^.]+)*\+)?json(?!l)}, Regexp)
+      JSONL_CONTENT = T.let(%r{^application/(?:x-)?jsonl}, Regexp)
+
       class << self
+        # @api private
+        sig do
+          params(
+            y: Enumerator::Yielder,
+            val: T.anything,
+            closing: T::Array[T.proc.void],
+            content_type: T.nilable(String)
+          )
+            .void
+        end
+        private def write_multipart_content(y, val:, closing:, content_type: nil); end
+
         # @api private
         sig do
           params(
@@ -215,6 +220,14 @@ module FinchAPI
         def encode_content(headers, body); end
 
         # @api private
+        #
+        # https://www.iana.org/assignments/character-sets/character-sets.xhtml
+        sig { params(content_type: String, text: String).void }
+        def force_charset!(content_type, text:); end
+
+        # @api private
+        #
+        # Assumes each chunk in stream has `Encoding::BINARY`.
         sig do
           params(
             headers: T.any(T::Hash[String, String], Net::HTTPHeader),
@@ -263,12 +276,19 @@ module FinchAPI
 
       class << self
         # @api private
+        #
+        # Assumes Strings have been forced into having `Encoding::BINARY`.
+        #
+        # This decoder is responsible for reassembling lines split across multiple
+        # fragments.
         sig { params(enum: T::Enumerable[String]).returns(T::Enumerable[String]) }
         def decode_lines(enum); end
 
         # @api private
         #
         # https://html.spec.whatwg.org/multipage/server-sent-events.html#parsing-an-event-stream
+        #
+        # Assumes that `lines` has been decoded with `#decode_lines`.
         sig do
           params(lines: T::Enumerable[String]).returns(T::Enumerable[FinchAPI::Internal::Util::ServerSentEvent])
         end

@@ -51,8 +51,12 @@ module FinchAPI
         attr_writer :payment_id
 
         sig { params(individual_id: String, payment_id: String).returns(T.attached_class) }
-        def self.new(individual_id: nil, payment_id: nil); end
-
+        def self.new(
+          # The ID of the individual associated with the pay statement.
+          individual_id: nil,
+          # The ID of the payment associated with the pay statement.
+          payment_id: nil
+        ); end
         sig { override.returns({individual_id: String, payment_id: String}) }
         def to_hash; end
       end
@@ -61,8 +65,7 @@ module FinchAPI
         extend FinchAPI::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::PayStatementEvent::EventType) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, FinchAPI::Models::PayStatementEvent::EventType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         PAY_STATEMENT_CREATED =
           T.let(:"pay_statement.created", FinchAPI::Models::PayStatementEvent::EventType::TaggedSymbol)

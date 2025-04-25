@@ -68,15 +68,31 @@ module FinchAPI
           .returns(T.attached_class)
       end
       def self.new(
+        # The access token for the connection.
         access_token:,
+        # [DEPRECATED] Use `connection_id` to identify the connection instead of this
+        # account ID.
         account_id:,
+        # The type of application associated with a token.
         client_type:,
+        # [DEPRECATED] Use `connection_id` to identify the connection instead of this
+        # company ID.
         company_id:,
+        # The Finch UUID of the connection associated with the `access_token`.
         connection_id:,
+        # The type of the connection associated with the token.
+        #
+        # - `provider` - connection to an external provider
+        # - `finch` - finch-generated data.
         connection_type:,
+        # An array of the authorized products associated with the `access_token`.
         products:,
+        # The ID of the provider associated with the `access_token`.
         provider_id:,
+        # The ID of your customer you provided to Finch when a connect session was created
+        # for this connection.
         customer_id: nil,
+        # The RFC 8693 token type (Finch uses `bearer` tokens)
         token_type: nil
       ); end
       sig do
@@ -103,8 +119,7 @@ module FinchAPI
         extend FinchAPI::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::CreateAccessTokenResponse::ClientType) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         PRODUCTION = T.let(:production, FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol)
         DEVELOPMENT = T.let(:development, FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol)
@@ -123,8 +138,7 @@ module FinchAPI
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, FinchAPI::Models::CreateAccessTokenResponse::ConnectionType) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         PROVIDER = T.let(:provider, FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol)
         FINCH = T.let(:finch, FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol)

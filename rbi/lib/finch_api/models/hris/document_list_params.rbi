@@ -47,8 +47,19 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(individual_ids: nil, limit: nil, offset: nil, types: nil, request_options: {}); end
-
+        def self.new(
+          # Comma-delimited list of stable Finch uuids for each individual. If empty,
+          # defaults to all individuals
+          individual_ids: nil,
+          # Number of documents to return (defaults to all)
+          limit: nil,
+          # Index to start from (defaults to 0)
+          offset: nil,
+          # Comma-delimited list of document types to filter on. If empty, defaults to all
+          # types
+          types: nil,
+          request_options: {}
+        ); end
         sig do
           override
             .returns(
@@ -67,8 +78,7 @@ module FinchAPI
           extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::DocumentListParams::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::DocumentListParams::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           W4_2020 = T.let(:w4_2020, FinchAPI::Models::HRIS::DocumentListParams::Type::TaggedSymbol)
           W4_2005 = T.let(:w4_2005, FinchAPI::Models::HRIS::DocumentListParams::Type::TaggedSymbol)

@@ -96,15 +96,27 @@ module FinchAPI
           .returns(T.attached_class)
       end
       def self.new(
+        # The id of the payroll provider used in Connect.
         id: nil,
+        # The list of authentication methods supported by the provider.
         authentication_methods: nil,
+        # `true` if the integration is in a beta state, `false` otherwise
         beta: nil,
+        # The display name of the payroll provider.
         display_name: nil,
+        # The url to the official icon of the payroll provider.
         icon: nil,
+        # The url to the official logo of the payroll provider.
         logo: nil,
+        # [DEPRECATED] Whether the Finch integration with this provider uses the Assisted
+        # Connect Flow by default. This field is now deprecated. Please check for a `type`
+        # of `assisted` in the `authentication_methods` field instead.
         manual: nil,
+        # whether MFA is required for the provider.
         mfa_required: nil,
+        # The hex code for the primary color of the payroll provider.
         primary_color: nil,
+        # The list of Finch products supported on this payroll provider.
         products: nil
       ); end
       sig do
@@ -171,8 +183,15 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(benefits_support: nil, supported_fields: nil, type: nil); end
-
+        def self.new(
+          # Each benefit type and their supported features. If the benefit type is not
+          # supported, the property will be null
+          benefits_support: nil,
+          # The supported data fields returned by our HR and payroll endpoints
+          supported_fields: nil,
+          # The type of authentication method.
+          type: nil
+        ); end
         sig do
           override
             .returns(
@@ -2213,8 +2232,7 @@ module FinchAPI
           extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Provider::AuthenticationMethod::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           ASSISTED = T.let(:assisted, FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol)
           CREDENTIAL = T.let(:credential, FinchAPI::Models::Provider::AuthenticationMethod::Type::TaggedSymbol)

@@ -15,17 +15,13 @@ module FinchAPI
         #   @return [FinchAPI::Models::Jobs::AutomatedListResponse::Meta]
         required :meta, -> { FinchAPI::Models::Jobs::AutomatedListResponse::Meta }
 
-        # @!parse
-        #   # @param data [Array<FinchAPI::Models::Jobs::AutomatedAsyncJob>]
-        #   # @param meta [FinchAPI::Models::Jobs::AutomatedListResponse::Meta]
-        #   #
-        #   def initialize(data:, meta:, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(data:, meta:)
+        #   @param data [Array<FinchAPI::Models::Jobs::AutomatedAsyncJob>]
+        #   @param meta [FinchAPI::Models::Jobs::AutomatedListResponse::Meta]
 
         # @see FinchAPI::Models::Jobs::AutomatedListResponse#meta
         class Meta < FinchAPI::Internal::Type::BaseModel
-          # @!attribute [r] quotas
+          # @!attribute quotas
           #   Information about remaining quotas for this connection. Only applicable for
           #   customers opted in to use Finch's Data Sync Refresh endpoint
           #   (`POST /jobs/automated`). Please contact a Finch representative for more
@@ -34,67 +30,43 @@ module FinchAPI
           #   @return [FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas, nil]
           optional :quotas, -> { FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas }
 
-          # @!parse
-          #   # @return [FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas]
-          #   attr_writer :quotas
-
-          # @!parse
-          #   # @param quotas [FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas]
-          #   #
-          #   def initialize(quotas: nil, **) = super
-
-          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+          # @!method initialize(quotas: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {FinchAPI::Models::Jobs::AutomatedListResponse::Meta} for more details.
+          #
+          #   @param quotas [FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas] Information about remaining quotas for this connection. Only applicable for cust
+          #   ...
 
           # @see FinchAPI::Models::Jobs::AutomatedListResponse::Meta#quotas
           class Quotas < FinchAPI::Internal::Type::BaseModel
-            # @!attribute [r] data_sync_all
+            # @!attribute data_sync_all
             #
             #   @return [FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll, nil]
             optional :data_sync_all, -> { FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll }
 
-            # @!parse
-            #   # @return [FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll]
-            #   attr_writer :data_sync_all
-
-            # @!parse
-            #   # Information about remaining quotas for this connection. Only applicable for
-            #   # customers opted in to use Finch's Data Sync Refresh endpoint
-            #   # (`POST /jobs/automated`). Please contact a Finch representative for more
-            #   # details.
-            #   #
-            #   # @param data_sync_all [FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll]
-            #   #
-            #   def initialize(data_sync_all: nil, **) = super
-
-            # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+            # @!method initialize(data_sync_all: nil)
+            #   Information about remaining quotas for this connection. Only applicable for
+            #   customers opted in to use Finch's Data Sync Refresh endpoint
+            #   (`POST /jobs/automated`). Please contact a Finch representative for more
+            #   details.
+            #
+            #   @param data_sync_all [FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll]
 
             # @see FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas#data_sync_all
             class DataSyncAll < FinchAPI::Internal::Type::BaseModel
-              # @!attribute [r] allowed_refreshes
+              # @!attribute allowed_refreshes
               #
               #   @return [Integer, nil]
               optional :allowed_refreshes, Integer
 
-              # @!parse
-              #   # @return [Integer]
-              #   attr_writer :allowed_refreshes
-
-              # @!attribute [r] remaining_refreshes
+              # @!attribute remaining_refreshes
               #
               #   @return [Integer, nil]
               optional :remaining_refreshes, Integer
 
-              # @!parse
-              #   # @return [Integer]
-              #   attr_writer :remaining_refreshes
-
-              # @!parse
-              #   # @param allowed_refreshes [Integer]
-              #   # @param remaining_refreshes [Integer]
-              #   #
-              #   def initialize(allowed_refreshes: nil, remaining_refreshes: nil, **) = super
-
-              # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+              # @!method initialize(allowed_refreshes: nil, remaining_refreshes: nil)
+              #   @param allowed_refreshes [Integer]
+              #   @param remaining_refreshes [Integer]
             end
           end
         end

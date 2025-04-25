@@ -13,6 +13,10 @@ module FinchAPI
       class ArrayOf
         include FinchAPI::Internal::Type::Converter
 
+        private_class_method :new
+
+        # @overload [](type_info, spec = {})
+        #
         # @param type_info [Hash{Symbol=>Object}, Proc, FinchAPI::Internal::Type::Converter, Class]
         #
         # @param spec [Hash{Symbol=>Object}] .
@@ -24,13 +28,19 @@ module FinchAPI
         #   @option spec [Proc] :union
         #
         #   @option spec [Boolean] :"nil?"
-        def self.[](type_info, spec = {}) = new(type_info, spec)
+        #
+        # @return [FinchAPI::Internal::Type::ArrayOf]
+        def self.[](...) = new(...)
 
+        # @api public
+        #
         # @param other [Object]
         #
         # @return [Boolean]
         def ===(other) = other.is_a?(Array) && other.all?(item_type)
 
+        # @api public
+        #
         # @param other [Object]
         #
         # @return [Boolean]
@@ -39,6 +49,11 @@ module FinchAPI
           other.is_a?(FinchAPI::Internal::Type::ArrayOf) && other.nilable? == nilable? && other.item_type == item_type
           # rubocop:enable Layout/LineLength
         end
+
+        # @api public
+        #
+        # @return [Integer]
+        def hash = [self.class, item_type].hash
 
         # @api private
         #
@@ -120,7 +135,18 @@ module FinchAPI
         #   @option spec [Boolean] :"nil?"
         def initialize(type_info, spec = {})
           @item_type_fn = FinchAPI::Internal::Type::Converter.type_info(type_info || spec)
-          @nilable = spec[:nil?]
+          @nilable = spec.fetch(:nil?, false)
+        end
+
+        # @api private
+        #
+        # @param depth [Integer]
+        #
+        # @return [String]
+        def inspect(depth: 0)
+          items = FinchAPI::Internal::Type::Converter.inspect(item_type, depth: depth.succ)
+
+          "#{self.class}[#{[items, nilable? ? 'nil' : nil].compact.join(' | ')}]"
         end
       end
     end

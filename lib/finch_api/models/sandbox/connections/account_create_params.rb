@@ -6,8 +6,7 @@ module FinchAPI
       module Connections
         # @see FinchAPI::Resources::Sandbox::Connections::Accounts#create
         class AccountCreateParams < FinchAPI::Internal::Type::BaseModel
-          # @!parse
-          #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+          extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
 
           # @!attribute company_id
@@ -21,37 +20,33 @@ module FinchAPI
           #   @return [String]
           required :provider_id, String
 
-          # @!attribute [r] authentication_type
+          # @!attribute authentication_type
           #
           #   @return [Symbol, FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType, nil]
           optional :authentication_type,
                    enum: -> { FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType }
 
-          # @!parse
-          #   # @return [Symbol, FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType]
-          #   attr_writer :authentication_type
-
-          # @!attribute [r] products
+          # @!attribute products
           #   Optional, defaults to Organization products (`company`, `directory`,
           #   `employment`, `individual`)
           #
           #   @return [Array<String>, nil]
           optional :products, FinchAPI::Internal::Type::ArrayOf[String]
 
-          # @!parse
-          #   # @return [Array<String>]
-          #   attr_writer :products
-
-          # @!parse
-          #   # @param company_id [String]
-          #   # @param provider_id [String]
-          #   # @param authentication_type [Symbol, FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType]
-          #   # @param products [Array<String>]
-          #   # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
-          #   #
-          #   def initialize(company_id:, provider_id:, authentication_type: nil, products: nil, request_options: {}, **) = super
-
-          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+          # @!method initialize(company_id:, provider_id:, authentication_type: nil, products: nil, request_options: {})
+          #   Some parameter documentations has been truncated, see
+          #   {FinchAPI::Models::Sandbox::Connections::AccountCreateParams} for more details.
+          #
+          #   @param company_id [String]
+          #
+          #   @param provider_id [String] The provider associated with the `access_token`
+          #
+          #   @param authentication_type [Symbol, FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType]
+          #
+          #   @param products [Array<String>] Optional, defaults to Organization products (`company`, `directory`, `employment
+          #   ...
+          #
+          #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 
           module AuthenticationType
             extend FinchAPI::Internal::Type::Enum
@@ -61,11 +56,8 @@ module FinchAPI
             OAUTH = :oauth
             ASSISTED = :assisted
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
       end

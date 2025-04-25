@@ -13,7 +13,7 @@ module FinchAPI
       extend FinchAPI::Internal::Type::Enum
 
       TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::OperationSupport) }
-      OrSymbol = T.type_alias { T.any(Symbol, String, FinchAPI::Models::OperationSupport::TaggedSymbol) }
+      OrSymbol = T.type_alias { T.any(Symbol, String) }
 
       SUPPORTED = T.let(:supported, FinchAPI::Models::OperationSupport::TaggedSymbol)
       NOT_SUPPORTED_BY_FINCH = T.let(:not_supported_by_finch, FinchAPI::Models::OperationSupport::TaggedSymbol)

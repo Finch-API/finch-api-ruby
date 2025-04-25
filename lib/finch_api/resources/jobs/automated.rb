@@ -21,8 +21,10 @@ module FinchAPI
         #
         # @overload create(type:, params:, request_options: {})
         #
-        # @param type [Symbol, FinchAPI::Models::Jobs::AutomatedCreateParams::Type]
+        # @param type [Symbol, FinchAPI::Models::Jobs::AutomatedCreateParams::Type] The type of job to start.
+        #
         # @param params [FinchAPI::Models::Jobs::AutomatedCreateParams::Params]
+        #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Models::Jobs::AutomatedCreateResponse]
@@ -64,8 +66,10 @@ module FinchAPI
         #
         # @overload list(limit: nil, offset: nil, request_options: {})
         #
-        # @param limit [Integer]
-        # @param offset [Integer]
+        # @param limit [Integer] Number of items to return
+        #
+        # @param offset [Integer] Index to start from (defaults to 0)
+        #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Models::Jobs::AutomatedListResponse]

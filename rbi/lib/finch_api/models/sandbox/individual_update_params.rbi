@@ -88,15 +88,28 @@ module FinchAPI
         def self.new(
           dob: nil,
           emails: nil,
+          # Social Security Number of the individual in **encrypted** format. This field is
+          # only available with the `ssn` scope enabled and the
+          # `options: { include: ['ssn'] }` param set in the body.
           encrypted_ssn: nil,
+          # The EEOC-defined ethnicity of the individual.
           ethnicity: nil,
+          # The legal first name of the individual.
           first_name: nil,
+          # The gender of the individual.
           gender: nil,
+          # The legal last name of the individual.
           last_name: nil,
+          # The legal middle name of the individual.
           middle_name: nil,
           phone_numbers: nil,
+          # The preferred name of the individual.
           preferred_name: nil,
           residence: nil,
+          # Social Security Number of the individual. This field is only available with the
+          # `ssn` scope enabled and the `options: { include: ['ssn'] }` param set in the
+          # body.
+          # [Click here to learn more about enabling the SSN field](/developer-resources/Enable-SSN-Field).
           ssn: nil,
           request_options: {}
         ); end
@@ -154,8 +167,7 @@ module FinchAPI
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             WORK = T.let(:work, FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type::TaggedSymbol)
             PERSONAL = T.let(:personal, FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type::TaggedSymbol)
@@ -171,8 +183,7 @@ module FinchAPI
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           ASIAN = T.let(:asian, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::TaggedSymbol)
           WHITE = T.let(:white, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::TaggedSymbol)
@@ -207,8 +218,7 @@ module FinchAPI
           extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           FEMALE = T.let(:female, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::TaggedSymbol)
           MALE = T.let(:male, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::TaggedSymbol)
@@ -252,8 +262,7 @@ module FinchAPI
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             WORK = T.let(:work, FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type::TaggedSymbol)
             PERSONAL =

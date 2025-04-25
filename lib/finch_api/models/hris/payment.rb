@@ -5,15 +5,11 @@ module FinchAPI
     module HRIS
       # @see FinchAPI::Resources::HRIS::Payments#list
       class Payment < FinchAPI::Internal::Type::BaseModel
-        # @!attribute [r] id
+        # @!attribute id
         #   The unique id for the payment.
         #
         #   @return [String, nil]
         optional :id, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :id
 
         # @!attribute company_debit
         #
@@ -76,39 +72,30 @@ module FinchAPI
         #   @return [FinchAPI::Models::HRIS::Payment::PayPeriod, nil]
         optional :pay_period, -> { FinchAPI::Models::HRIS::Payment::PayPeriod }, nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param company_debit [FinchAPI::Models::Money, nil]
-        #   # @param debit_date [String, nil]
-        #   # @param employee_taxes [FinchAPI::Models::Money, nil]
-        #   # @param employer_taxes [FinchAPI::Models::Money, nil]
-        #   # @param gross_pay [FinchAPI::Models::Money, nil]
-        #   # @param individual_ids [Array<String>, nil]
-        #   # @param net_pay [FinchAPI::Models::Money, nil]
-        #   # @param pay_date [String, nil]
-        #   # @param pay_frequencies [Array<Symbol, FinchAPI::Models::HRIS::Payment::PayFrequency>, nil]
-        #   # @param pay_group_ids [Array<String>, nil]
-        #   # @param pay_period [FinchAPI::Models::HRIS::Payment::PayPeriod, nil]
-        #   #
-        #   def initialize(
-        #     id: nil,
-        #     company_debit: nil,
-        #     debit_date: nil,
-        #     employee_taxes: nil,
-        #     employer_taxes: nil,
-        #     gross_pay: nil,
-        #     individual_ids: nil,
-        #     net_pay: nil,
-        #     pay_date: nil,
-        #     pay_frequencies: nil,
-        #     pay_group_ids: nil,
-        #     pay_period: nil,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(id: nil, company_debit: nil, debit_date: nil, employee_taxes: nil, employer_taxes: nil, gross_pay: nil, individual_ids: nil, net_pay: nil, pay_date: nil, pay_frequencies: nil, pay_group_ids: nil, pay_period: nil)
+        #   @param id [String] The unique id for the payment.
+        #
+        #   @param company_debit [FinchAPI::Models::Money, nil]
+        #
+        #   @param debit_date [String, nil]
+        #
+        #   @param employee_taxes [FinchAPI::Models::Money, nil]
+        #
+        #   @param employer_taxes [FinchAPI::Models::Money, nil]
+        #
+        #   @param gross_pay [FinchAPI::Models::Money, nil]
+        #
+        #   @param individual_ids [Array<String>, nil] Array of every individual on this payment.
+        #
+        #   @param net_pay [FinchAPI::Models::Money, nil]
+        #
+        #   @param pay_date [String, nil]
+        #
+        #   @param pay_frequencies [Array<Symbol, FinchAPI::Models::HRIS::Payment::PayFrequency>, nil] List of pay frequencies associated with this payment.
+        #
+        #   @param pay_group_ids [Array<String>, nil] Array of the Finch id (uuidv4) of every pay group associated with this payment.
+        #
+        #   @param pay_period [FinchAPI::Models::HRIS::Payment::PayPeriod, nil] The pay period object.
 
         module PayFrequency
           extend FinchAPI::Internal::Type::Enum
@@ -123,11 +110,8 @@ module FinchAPI
           DAILY = :daily
           OTHER = :other
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see FinchAPI::Models::HRIS::Payment#pay_period
@@ -142,15 +126,11 @@ module FinchAPI
           #   @return [String, nil]
           optional :start_date, String, nil?: true
 
-          # @!parse
-          #   # The pay period object.
-          #   #
-          #   # @param end_date [String, nil]
-          #   # @param start_date [String, nil]
-          #   #
-          #   def initialize(end_date: nil, start_date: nil, **) = super
-
-          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+          # @!method initialize(end_date: nil, start_date: nil)
+          #   The pay period object.
+          #
+          #   @param end_date [String, nil]
+          #   @param start_date [String, nil]
         end
       end
     end

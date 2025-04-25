@@ -11,6 +11,8 @@ module FinchAPI
       required :id, String
 
       # @!attribute account_id
+      #   @deprecated
+      #
       #   [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection
       #   instead of this account ID.
       #
@@ -36,6 +38,8 @@ module FinchAPI
       required :client_type, enum: -> { FinchAPI::Models::Introspection::ClientType }
 
       # @!attribute company_id
+      #   @deprecated
+      #
       #   [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection
       #   instead of this company ID.
       #
@@ -92,6 +96,8 @@ module FinchAPI
       required :manual, FinchAPI::Internal::Type::Boolean
 
       # @!attribute payroll_provider_id
+      #   @deprecated
+      #
       #   [DEPRECATED] Use `provider_id` to identify the provider instead of this payroll
       #   provider ID.
       #
@@ -116,117 +122,92 @@ module FinchAPI
       #   @return [String]
       required :username, String
 
-      # @!parse
-      #   # @param id [String]
-      #   # @param account_id [String]
-      #   # @param authentication_methods [Array<FinchAPI::Models::Introspection::AuthenticationMethod>]
-      #   # @param client_id [String]
-      #   # @param client_type [Symbol, FinchAPI::Models::Introspection::ClientType]
-      #   # @param company_id [String]
-      #   # @param connection_id [String]
-      #   # @param connection_status [FinchAPI::Models::Introspection::ConnectionStatus]
-      #   # @param connection_type [Symbol, FinchAPI::Models::Introspection::ConnectionType]
-      #   # @param customer_email [String, nil]
-      #   # @param customer_id [String, nil]
-      #   # @param customer_name [String, nil]
-      #   # @param manual [Boolean]
-      #   # @param payroll_provider_id [String]
-      #   # @param products [Array<String>]
-      #   # @param provider_id [String]
-      #   # @param username [String]
-      #   #
-      #   def initialize(
-      #     id:,
-      #     account_id:,
-      #     authentication_methods:,
-      #     client_id:,
-      #     client_type:,
-      #     company_id:,
-      #     connection_id:,
-      #     connection_status:,
-      #     connection_type:,
-      #     customer_email:,
-      #     customer_id:,
-      #     customer_name:,
-      #     manual:,
-      #     payroll_provider_id:,
-      #     products:,
-      #     provider_id:,
-      #     username:,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, account_id:, authentication_methods:, client_id:, client_type:, company_id:, connection_id:, connection_status:, connection_type:, customer_email:, customer_id:, customer_name:, manual:, payroll_provider_id:, products:, provider_id:, username:)
+      #   Some parameter documentations has been truncated, see
+      #   {FinchAPI::Models::Introspection} for more details.
+      #
+      #   @param id [String] The Finch UUID of the token being introspected.
+      #
+      #   @param account_id [String] [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection ins
+      #   ...
+      #
+      #   @param authentication_methods [Array<FinchAPI::Models::Introspection::AuthenticationMethod>]
+      #
+      #   @param client_id [String] The client ID of the application associated with the `access_token`.
+      #
+      #   @param client_type [Symbol, FinchAPI::Models::Introspection::ClientType] The type of application associated with a token.
+      #
+      #   @param company_id [String] [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection ins
+      #   ...
+      #
+      #   @param connection_id [String] The Finch UUID of the connection associated with the `access_token`.
+      #
+      #   @param connection_status [FinchAPI::Models::Introspection::ConnectionStatus]
+      #
+      #   @param connection_type [Symbol, FinchAPI::Models::Introspection::ConnectionType] The type of the connection associated with the token. ...
+      #
+      #   @param customer_email [String, nil] The email of your customer you provided to Finch when a connect session was crea
+      #   ...
+      #
+      #   @param customer_id [String, nil] The ID of your customer you provided to Finch when a connect session was created
+      #   ...
+      #
+      #   @param customer_name [String, nil] The name of your customer you provided to Finch when a connect session was creat
+      #   ...
+      #
+      #   @param manual [Boolean] Whether the connection associated with the `access_token` uses the Assisted Conn
+      #   ...
+      #
+      #   @param payroll_provider_id [String] [DEPRECATED] Use `provider_id` to identify the provider instead of this payroll
+      #   ...
+      #
+      #   @param products [Array<String>] An array of the authorized products associated with the `access_token`.
+      #
+      #   @param provider_id [String] The ID of the provider associated with the `access_token`.
+      #
+      #   @param username [String] The account username used for login associated with the `access_token`.
 
       class AuthenticationMethod < FinchAPI::Internal::Type::BaseModel
-        # @!attribute [r] connection_status
+        # @!attribute connection_status
         #
         #   @return [FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus, nil]
         optional :connection_status,
                  -> { FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus }
 
-        # @!parse
-        #   # @return [FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus]
-        #   attr_writer :connection_status
-
-        # @!attribute [r] products
+        # @!attribute products
         #   An array of the authorized products associated with the `access_token`.
         #
         #   @return [Array<String>, nil]
         optional :products, FinchAPI::Internal::Type::ArrayOf[String]
 
-        # @!parse
-        #   # @return [Array<String>]
-        #   attr_writer :products
-
-        # @!attribute [r] type
+        # @!attribute type
         #   The type of authentication method.
         #
         #   @return [Symbol, FinchAPI::Models::Introspection::AuthenticationMethod::Type, nil]
         optional :type, enum: -> { FinchAPI::Models::Introspection::AuthenticationMethod::Type }
 
-        # @!parse
-        #   # @return [Symbol, FinchAPI::Models::Introspection::AuthenticationMethod::Type]
-        #   attr_writer :type
-
-        # @!parse
-        #   # @param connection_status [FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus]
-        #   # @param products [Array<String>]
-        #   # @param type [Symbol, FinchAPI::Models::Introspection::AuthenticationMethod::Type]
-        #   #
-        #   def initialize(connection_status: nil, products: nil, type: nil, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(connection_status: nil, products: nil, type: nil)
+        #   @param connection_status [FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus]
+        #
+        #   @param products [Array<String>] An array of the authorized products associated with the `access_token`.
+        #
+        #   @param type [Symbol, FinchAPI::Models::Introspection::AuthenticationMethod::Type] The type of authentication method.
 
         # @see FinchAPI::Models::Introspection::AuthenticationMethod#connection_status
         class ConnectionStatus < FinchAPI::Internal::Type::BaseModel
-          # @!attribute [r] message
+          # @!attribute message
           #
           #   @return [String, nil]
           optional :message, String
 
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :message
-
-          # @!attribute [r] status
+          # @!attribute status
           #
           #   @return [Symbol, FinchAPI::Models::ConnectionStatusType, nil]
           optional :status, enum: -> { FinchAPI::Models::ConnectionStatusType }
 
-          # @!parse
-          #   # @return [Symbol, FinchAPI::Models::ConnectionStatusType]
-          #   attr_writer :status
-
-          # @!parse
-          #   # @param message [String]
-          #   # @param status [Symbol, FinchAPI::Models::ConnectionStatusType]
-          #   #
-          #   def initialize(message: nil, status: nil, **) = super
-
-          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+          # @!method initialize(message: nil, status: nil)
+          #   @param message [String]
+          #   @param status [Symbol, FinchAPI::Models::ConnectionStatusType]
         end
 
         # The type of authentication method.
@@ -241,11 +222,8 @@ module FinchAPI
           API_CREDENTIAL = :api_credential
           OAUTH = :oauth
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
@@ -259,51 +237,34 @@ module FinchAPI
         DEVELOPMENT = :development
         SANDBOX = :sandbox
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see FinchAPI::Models::Introspection#connection_status
       class ConnectionStatus < FinchAPI::Internal::Type::BaseModel
-        # @!attribute [r] last_successful_sync
+        # @!attribute last_successful_sync
         #   The datetime when the connection was last successfully synced.
         #
         #   @return [Time, nil]
         optional :last_successful_sync, Time
 
-        # @!parse
-        #   # @return [Time]
-        #   attr_writer :last_successful_sync
-
-        # @!attribute [r] message
+        # @!attribute message
         #
         #   @return [String, nil]
         optional :message, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :message
-
-        # @!attribute [r] status
+        # @!attribute status
         #
         #   @return [Symbol, FinchAPI::Models::ConnectionStatusType, nil]
         optional :status, enum: -> { FinchAPI::Models::ConnectionStatusType }
 
-        # @!parse
-        #   # @return [Symbol, FinchAPI::Models::ConnectionStatusType]
-        #   attr_writer :status
-
-        # @!parse
-        #   # @param last_successful_sync [Time]
-        #   # @param message [String]
-        #   # @param status [Symbol, FinchAPI::Models::ConnectionStatusType]
-        #   #
-        #   def initialize(last_successful_sync: nil, message: nil, status: nil, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(last_successful_sync: nil, message: nil, status: nil)
+        #   @param last_successful_sync [Time] The datetime when the connection was last successfully synced.
+        #
+        #   @param message [String]
+        #
+        #   @param status [Symbol, FinchAPI::Models::ConnectionStatusType]
       end
 
       # The type of the connection associated with the token.
@@ -318,11 +279,8 @@ module FinchAPI
         PROVIDER = :provider
         FINCH = :finch
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

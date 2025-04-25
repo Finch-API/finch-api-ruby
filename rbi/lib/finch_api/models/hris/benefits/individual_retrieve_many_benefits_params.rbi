@@ -23,8 +23,12 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(individual_ids: nil, request_options: {}); end
-
+          def self.new(
+            # comma-delimited list of stable Finch uuids for each individual. If empty,
+            # defaults to all individuals
+            individual_ids: nil,
+            request_options: {}
+          ); end
           sig { override.returns({individual_ids: String, request_options: FinchAPI::RequestOptions}) }
           def to_hash; end
         end

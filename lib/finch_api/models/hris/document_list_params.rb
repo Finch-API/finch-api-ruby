@@ -5,42 +5,29 @@ module FinchAPI
     module HRIS
       # @see FinchAPI::Resources::HRIS::Documents#list
       class DocumentListParams < FinchAPI::Internal::Type::BaseModel
-        # @!parse
-        #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
-        # @!attribute [r] individual_ids
+        # @!attribute individual_ids
         #   Comma-delimited list of stable Finch uuids for each individual. If empty,
         #   defaults to all individuals
         #
         #   @return [Array<String>, nil]
         optional :individual_ids, FinchAPI::Internal::Type::ArrayOf[String]
 
-        # @!parse
-        #   # @return [Array<String>]
-        #   attr_writer :individual_ids
-
-        # @!attribute [r] limit
+        # @!attribute limit
         #   Number of documents to return (defaults to all)
         #
         #   @return [Integer, nil]
         optional :limit, Integer
 
-        # @!parse
-        #   # @return [Integer]
-        #   attr_writer :limit
-
-        # @!attribute [r] offset
+        # @!attribute offset
         #   Index to start from (defaults to 0)
         #
         #   @return [Integer, nil]
         optional :offset, Integer
 
-        # @!parse
-        #   # @return [Integer]
-        #   attr_writer :offset
-
-        # @!attribute [r] types
+        # @!attribute types
         #   Comma-delimited list of document types to filter on. If empty, defaults to all
         #   types
         #
@@ -48,20 +35,21 @@ module FinchAPI
         optional :types,
                  -> { FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::HRIS::DocumentListParams::Type] }
 
-        # @!parse
-        #   # @return [Array<Symbol, FinchAPI::Models::HRIS::DocumentListParams::Type>]
-        #   attr_writer :types
-
-        # @!parse
-        #   # @param individual_ids [Array<String>]
-        #   # @param limit [Integer]
-        #   # @param offset [Integer]
-        #   # @param types [Array<Symbol, FinchAPI::Models::HRIS::DocumentListParams::Type>]
-        #   # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(individual_ids: nil, limit: nil, offset: nil, types: nil, request_options: {}, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(individual_ids: nil, limit: nil, offset: nil, types: nil, request_options: {})
+        #   Some parameter documentations has been truncated, see
+        #   {FinchAPI::Models::HRIS::DocumentListParams} for more details.
+        #
+        #   @param individual_ids [Array<String>] Comma-delimited list of stable Finch uuids for each individual. If empty, defaul
+        #   ...
+        #
+        #   @param limit [Integer] Number of documents to return (defaults to all)
+        #
+        #   @param offset [Integer] Index to start from (defaults to 0)
+        #
+        #   @param types [Array<Symbol, FinchAPI::Models::HRIS::DocumentListParams::Type>] Comma-delimited list of document types to filter on. If empty, defaults to all t
+        #   ...
+        #
+        #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 
         module Type
           extend FinchAPI::Internal::Type::Enum
@@ -69,11 +57,8 @@ module FinchAPI
           W4_2020 = :w4_2020
           W4_2005 = :w4_2005
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

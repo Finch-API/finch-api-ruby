@@ -6,61 +6,42 @@ module FinchAPI
       module Benefits
         # @see FinchAPI::Resources::HRIS::Benefits::Individuals#enroll_many
         class IndividualEnrollManyParams < FinchAPI::Internal::Type::BaseModel
-          # @!parse
-          #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+          extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
 
-          # @!attribute [r] individuals
+          # @!attribute individuals
           #   Array of the individual_id to enroll and a configuration object.
           #
           #   @return [Array<FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual>, nil]
           optional :individuals,
                    -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual] }
 
-          # @!parse
-          #   # @return [Array<FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual>]
-          #   attr_writer :individuals
-
-          # @!parse
-          #   # @param individuals [Array<FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual>]
-          #   # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
-          #   #
-          #   def initialize(individuals: nil, request_options: {}, **) = super
-
-          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+          # @!method initialize(individuals: nil, request_options: {})
+          #   @param individuals [Array<FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual>] Array of the individual_id to enroll and a configuration object.
+          #
+          #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 
           class Individual < FinchAPI::Internal::Type::BaseModel
-            # @!attribute [r] configuration
+            # @!attribute configuration
             #
             #   @return [FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration, nil]
             optional :configuration,
                      -> { FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration }
 
-            # @!parse
-            #   # @return [FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration]
-            #   attr_writer :configuration
-
-            # @!attribute [r] individual_id
+            # @!attribute individual_id
             #   Finch id (uuidv4) for the individual to enroll
             #
             #   @return [String, nil]
             optional :individual_id, String
 
-            # @!parse
-            #   # @return [String]
-            #   attr_writer :individual_id
-
-            # @!parse
-            #   # @param configuration [FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration]
-            #   # @param individual_id [String]
-            #   #
-            #   def initialize(configuration: nil, individual_id: nil, **) = super
-
-            # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+            # @!method initialize(configuration: nil, individual_id: nil)
+            #   @param configuration [FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration]
+            #
+            #   @param individual_id [String] Finch id (uuidv4) for the individual to enroll
 
             # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual#configuration
             class Configuration < FinchAPI::Internal::Type::BaseModel
-              # @!attribute [r] annual_contribution_limit
+              # @!attribute annual_contribution_limit
               #   For HSA benefits only - whether the contribution limit is for an individual or
               #   family
               #
@@ -68,77 +49,53 @@ module FinchAPI
               optional :annual_contribution_limit,
                        enum: -> { FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit }
 
-              # @!parse
-              #   # @return [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit]
-              #   attr_writer :annual_contribution_limit
-
               # @!attribute annual_maximum
               #   Maximum annual amount in cents
               #
               #   @return [Integer, nil]
               optional :annual_maximum, Integer, nil?: true
 
-              # @!attribute [r] catch_up
+              # @!attribute catch_up
               #   For retirement benefits only - whether catch up contributions are enabled
               #
               #   @return [Boolean, nil]
               optional :catch_up, FinchAPI::Internal::Type::Boolean
 
-              # @!parse
-              #   # @return [Boolean]
-              #   attr_writer :catch_up
-
-              # @!attribute [r] company_contribution
+              # @!attribute company_contribution
               #
               #   @return [FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution, nil]
               optional :company_contribution,
                        -> { FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution }
 
-              # @!parse
-              #   # @return [FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution]
-              #   attr_writer :company_contribution
-
-              # @!attribute [r] effective_date
+              # @!attribute effective_date
               #   The date the enrollment will take effect
               #
               #   @return [Date, nil]
               optional :effective_date, Date
 
-              # @!parse
-              #   # @return [Date]
-              #   attr_writer :effective_date
-
-              # @!attribute [r] employee_deduction
+              # @!attribute employee_deduction
               #
               #   @return [FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction, nil]
               optional :employee_deduction,
                        -> { FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction }
 
-              # @!parse
-              #   # @return [FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction]
-              #   attr_writer :employee_deduction
-
-              # @!parse
-              #   # @param annual_contribution_limit [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit]
-              #   # @param annual_maximum [Integer, nil]
-              #   # @param catch_up [Boolean]
-              #   # @param company_contribution [FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution]
-              #   # @param effective_date [Date]
-              #   # @param employee_deduction [FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction]
-              #   #
-              #   def initialize(
-              #     annual_contribution_limit: nil,
-              #     annual_maximum: nil,
-              #     catch_up: nil,
-              #     company_contribution: nil,
-              #     effective_date: nil,
-              #     employee_deduction: nil,
-              #     **
-              #   )
-              #     super
-              #   end
-
-              # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+              # @!method initialize(annual_contribution_limit: nil, annual_maximum: nil, catch_up: nil, company_contribution: nil, effective_date: nil, employee_deduction: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration}
+              #   for more details.
+              #
+              #   @param annual_contribution_limit [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit] For HSA benefits only - whether the contribution limit is for an individual or f
+              #   ...
+              #
+              #   @param annual_maximum [Integer, nil] Maximum annual amount in cents
+              #
+              #   @param catch_up [Boolean] For retirement benefits only - whether catch up contributions are enabled
+              #
+              #   @param company_contribution [FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution]
+              #
+              #   @param effective_date [Date] The date the enrollment will take effect
+              #
+              #   @param employee_deduction [FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction]
 
               # For HSA benefits only - whether the contribution limit is for an individual or
               # family
@@ -150,43 +107,34 @@ module FinchAPI
                 INDIVIDUAL = :individual
                 FAMILY = :family
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
 
               # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration#company_contribution
               class CompanyContribution < FinchAPI::Internal::Type::BaseModel
-                # @!attribute [r] amount
+                # @!attribute amount
                 #   Amount in cents for fixed type or basis points (1/100th of a percent) for
                 #   percent type
                 #
                 #   @return [Integer, nil]
                 optional :amount, Integer
 
-                # @!parse
-                #   # @return [Integer]
-                #   attr_writer :amount
-
-                # @!attribute [r] type
+                # @!attribute type
                 #
                 #   @return [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type, nil]
                 optional :type,
                          enum: -> { FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type }
 
-                # @!parse
-                #   # @return [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type]
-                #   attr_writer :type
-
-                # @!parse
-                #   # @param amount [Integer]
-                #   # @param type [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type]
-                #   #
-                #   def initialize(amount: nil, type: nil, **) = super
-
-                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+                # @!method initialize(amount: nil, type: nil)
+                #   Some parameter documentations has been truncated, see
+                #   {FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution}
+                #   for more details.
+                #
+                #   @param amount [Integer] Amount in cents for fixed type or basis points (1/100th of a percent) for percen
+                #   ...
+                #
+                #   @param type [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type]
 
                 # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution#type
                 module Type
@@ -195,44 +143,35 @@ module FinchAPI
                   FIXED = :fixed
                   PERCENT = :percent
 
-                  finalize!
-
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def self.values; end
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
                 end
               end
 
               # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration#employee_deduction
               class EmployeeDeduction < FinchAPI::Internal::Type::BaseModel
-                # @!attribute [r] amount
+                # @!attribute amount
                 #   Amount in cents for fixed type or basis points (1/100th of a percent) for
                 #   percent type
                 #
                 #   @return [Integer, nil]
                 optional :amount, Integer
 
-                # @!parse
-                #   # @return [Integer]
-                #   attr_writer :amount
-
-                # @!attribute [r] type
+                # @!attribute type
                 #
                 #   @return [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type, nil]
                 optional :type,
                          enum: -> { FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type }
 
-                # @!parse
-                #   # @return [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type]
-                #   attr_writer :type
-
-                # @!parse
-                #   # @param amount [Integer]
-                #   # @param type [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type]
-                #   #
-                #   def initialize(amount: nil, type: nil, **) = super
-
-                # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+                # @!method initialize(amount: nil, type: nil)
+                #   Some parameter documentations has been truncated, see
+                #   {FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction}
+                #   for more details.
+                #
+                #   @param amount [Integer] Amount in cents for fixed type or basis points (1/100th of a percent) for percen
+                #   ...
+                #
+                #   @param type [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type]
 
                 # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction#type
                 module Type
@@ -241,11 +180,8 @@ module FinchAPI
                   FIXED = :fixed
                   PERCENT = :percent
 
-                  finalize!
-
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def self.values; end
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
                 end
               end
             end

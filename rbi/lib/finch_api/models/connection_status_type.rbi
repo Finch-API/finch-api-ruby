@@ -6,7 +6,7 @@ module FinchAPI
       extend FinchAPI::Internal::Type::Enum
 
       TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::ConnectionStatusType) }
-      OrSymbol = T.type_alias { T.any(Symbol, String, FinchAPI::Models::ConnectionStatusType::TaggedSymbol) }
+      OrSymbol = T.type_alias { T.any(Symbol, String) }
 
       PENDING = T.let(:pending, FinchAPI::Models::ConnectionStatusType::TaggedSymbol)
       PROCESSING = T.let(:processing, FinchAPI::Models::ConnectionStatusType::TaggedSymbol)

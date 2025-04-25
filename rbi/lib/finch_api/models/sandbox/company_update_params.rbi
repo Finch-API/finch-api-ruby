@@ -66,13 +66,21 @@ module FinchAPI
             .returns(T.attached_class)
         end
         def self.new(
+          # An array of bank account objects associated with the payroll/HRIS system.
           accounts:,
+          # The array of company departments.
           departments:,
+          # The employer identification number.
           ein:,
+          # The entity type object.
           entity:,
+          # The legal name of the company.
           legal_name:,
           locations:,
+          # The email of the main administrator on the account.
           primary_email:,
+          # The phone number of the main administrator on the account. Format: E.164, with
+          # extension where applicable, e.g. `+NNNNNNNNNNN xExtension`
           primary_phone_number:,
           request_options: {}
         ); end
@@ -127,14 +135,18 @@ module FinchAPI
               .returns(T.attached_class)
           end
           def self.new(
+            # The name of the bank associated in the payroll/HRIS system.
             account_name: nil,
+            # 10-12 digit number to specify the bank account
             account_number: nil,
+            # The type of bank account.
             account_type: nil,
+            # Name of the banking institution.
             institution_name: nil,
+            # A nine-digit code that's based on the U.S. Bank location where your account was
+            # opened.
             routing_number: nil
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -155,8 +167,7 @@ module FinchAPI
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::CompanyUpdateParams::Account::AccountType) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, FinchAPI::Models::Sandbox::CompanyUpdateParams::Account::AccountType::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             CHECKING =
               T.let(:checking, FinchAPI::Models::Sandbox::CompanyUpdateParams::Account::AccountType::TaggedSymbol)
@@ -199,8 +210,12 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(name: nil, parent: nil); end
-
+          def self.new(
+            # The department name.
+            name: nil,
+            # The parent department, if present.
+            parent: nil
+          ); end
           sig do
             override
               .returns(
@@ -219,8 +234,10 @@ module FinchAPI
 
             # The parent department, if present.
             sig { params(name: T.nilable(String)).returns(T.attached_class) }
-            def self.new(name: nil); end
-
+            def self.new(
+              # The parent department's name.
+              name: nil
+            ); end
             sig { override.returns({name: T.nilable(String)}) }
             def to_hash; end
           end
@@ -243,8 +260,12 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(subtype: nil, type: nil); end
-
+          def self.new(
+            # The tax payer subtype of the company.
+            subtype: nil,
+            # The tax payer type of the company.
+            type: nil
+          ); end
           sig do
             override
               .returns(
@@ -262,8 +283,7 @@ module FinchAPI
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Subtype) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Subtype::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             S_CORPORATION =
               T.let(:s_corporation, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Subtype::TaggedSymbol)
@@ -282,8 +302,7 @@ module FinchAPI
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             LLC = T.let(:llc, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type::TaggedSymbol)
             LP = T.let(:lp, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type::TaggedSymbol)

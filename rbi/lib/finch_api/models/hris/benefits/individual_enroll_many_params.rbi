@@ -37,8 +37,11 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(individuals: nil, request_options: {}); end
-
+          def self.new(
+            # Array of the individual_id to enroll and a configuration object.
+            individuals: nil,
+            request_options: {}
+          ); end
           sig do
             override
               .returns(
@@ -86,8 +89,11 @@ module FinchAPI
               )
                 .returns(T.attached_class)
             end
-            def self.new(configuration: nil, individual_id: nil); end
-
+            def self.new(
+              configuration: nil,
+              # Finch id (uuidv4) for the individual to enroll
+              individual_id: nil
+            ); end
             sig do
               override
                 .returns(
@@ -195,10 +201,15 @@ module FinchAPI
                   .returns(T.attached_class)
               end
               def self.new(
+                # For HSA benefits only - whether the contribution limit is for an individual or
+                # family
                 annual_contribution_limit: nil,
+                # Maximum annual amount in cents
                 annual_maximum: nil,
+                # For retirement benefits only - whether catch up contributions are enabled
                 catch_up: nil,
                 company_contribution: nil,
+                # The date the enrollment will take effect
                 effective_date: nil,
                 employee_deduction: nil
               ); end
@@ -226,14 +237,7 @@ module FinchAPI
                   T.type_alias do
                     T.all(Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit)
                   end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      String,
-                      FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit::TaggedSymbol
-                    )
-                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 INDIVIDUAL =
                   T.let(
@@ -290,8 +294,12 @@ module FinchAPI
                   )
                     .returns(T.attached_class)
                 end
-                def self.new(amount: nil, type: nil); end
-
+                def self.new(
+                  # Amount in cents for fixed type or basis points (1/100th of a percent) for
+                  # percent type
+                  amount: nil,
+                  type: nil
+                ); end
                 sig do
                   override
                     .returns(
@@ -310,14 +318,7 @@ module FinchAPI
                     T.type_alias do
                       T.all(Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type)
                     end
-                  OrSymbol =
-                    T.type_alias do
-                      T.any(
-                        Symbol,
-                        String,
-                        FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::TaggedSymbol
-                      )
-                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                   FIXED =
                     T.let(
@@ -375,8 +376,12 @@ module FinchAPI
                   )
                     .returns(T.attached_class)
                 end
-                def self.new(amount: nil, type: nil); end
-
+                def self.new(
+                  # Amount in cents for fixed type or basis points (1/100th of a percent) for
+                  # percent type
+                  amount: nil,
+                  type: nil
+                ); end
                 sig do
                   override
                     .returns(
@@ -395,14 +400,7 @@ module FinchAPI
                     T.type_alias do
                       T.all(Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type)
                     end
-                  OrSymbol =
-                    T.type_alias do
-                      T.any(
-                        Symbol,
-                        String,
-                        FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type::TaggedSymbol
-                      )
-                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                   FIXED =
                     T.let(

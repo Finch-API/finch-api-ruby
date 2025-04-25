@@ -45,8 +45,14 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(attributes: nil, category: nil, name: nil); end
-
+          def self.new(
+            # The attributes of the pay statement item.
+            attributes: nil,
+            # The category of the pay statement item.
+            category: nil,
+            # The name of the pay statement item.
+            name: nil
+          ); end
           sig do
             override
               .returns(
@@ -67,7 +73,7 @@ module FinchAPI
 
             # The metadata of the pay statement item derived by the rules engine if available.
             # Each attribute will be a key-value pair defined by a rule.
-            sig { returns(T.nilable(T.anything)) }
+            sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
             attr_accessor :metadata
 
             # `true` if the pay statement item is pre-tax. This field is only available for
@@ -83,20 +89,31 @@ module FinchAPI
             sig do
               params(
                 employer: T.nilable(T::Boolean),
-                metadata: T.nilable(T.anything),
+                metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
                 pre_tax: T.nilable(T::Boolean),
                 type: T.nilable(String)
               )
                 .returns(T.attached_class)
             end
-            def self.new(employer: nil, metadata: nil, pre_tax: nil, type: nil); end
-
+            def self.new(
+              # `true` if the amount is paid by the employers. This field is only available for
+              # taxes.
+              employer: nil,
+              # The metadata of the pay statement item derived by the rules engine if available.
+              # Each attribute will be a key-value pair defined by a rule.
+              metadata: nil,
+              # `true` if the pay statement item is pre-tax. This field is only available for
+              # employee deductions.
+              pre_tax: nil,
+              # The type of the pay statement item.
+              type: nil
+            ); end
             sig do
               override
                 .returns(
                   {
                     employer: T.nilable(T::Boolean),
-                    metadata: T.nilable(T.anything),
+                    metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
                     pre_tax: T.nilable(T::Boolean),
                     type: T.nilable(String)
                   }
@@ -111,14 +128,7 @@ module FinchAPI
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Category) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  String,
-                  FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Category::TaggedSymbol
-                )
-              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             EARNINGS =
               T.let(:earnings, FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Category::TaggedSymbol)

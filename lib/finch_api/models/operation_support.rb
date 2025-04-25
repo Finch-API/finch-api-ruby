@@ -17,11 +17,8 @@ module FinchAPI
       NOT_SUPPORTED_BY_PROVIDER = :not_supported_by_provider
       CLIENT_ACCESS_ONLY = :client_access_only
 
-      finalize!
-
-      # @!parse
-      #   # @return [Array<Symbol>]
-      #   def self.values; end
+      # @!method self.values
+      #   @return [Array<Symbol>]
     end
   end
 end

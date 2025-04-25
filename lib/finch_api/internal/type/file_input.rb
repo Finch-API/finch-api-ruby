@@ -7,26 +7,36 @@ module FinchAPI
       #
       # @abstract
       #
-      # Either `Pathname` or `StringIO`.
-      class IOLike
+      # Either `Pathname` or `StringIO`, or `IO`, or
+      # `FinchAPI::Internal::Type::FileInput`.
+      #
+      # Note: when `IO` is used, all retries are disabled, since many IO` streams are
+      # not rewindable.
+      class FileInput
         extend FinchAPI::Internal::Type::Converter
 
+        private_class_method :new
+
+        # @api public
+        #
         # @param other [Object]
         #
         # @return [Boolean]
         def self.===(other)
           case other
-          in StringIO | Pathname | IO
+          in Pathname | StringIO | IO | String | FinchAPI::FilePart
             true
           else
             false
           end
         end
 
+        # @api public
+        #
         # @param other [Object]
         #
         # @return [Boolean]
-        def self.==(other) = other.is_a?(Class) && other <= FinchAPI::Internal::Type::IOLike
+        def self.==(other) = other.is_a?(Class) && other <= FinchAPI::Internal::Type::FileInput
 
         class << self
           # @api private
@@ -57,17 +67,28 @@ module FinchAPI
             end
           end
 
-          # @!parse
-          #   # @api private
-          #   #
-          #   # @param value [Pathname, StringIO, IO, String, Object]
-          #   #
-          #   # @param state [Hash{Symbol=>Object}] .
-          #   #
-          #   #   @option state [Boolean] :can_retry
-          #   #
-          #   # @return [Pathname, StringIO, IO, String, Object]
-          #   def dump(value, state:) = super
+          # @api private
+          #
+          # @param value [Pathname, StringIO, IO, String, Object]
+          #
+          # @param state [Hash{Symbol=>Object}] .
+          #
+          #   @option state [Boolean] :can_retry
+          #
+          # @return [Pathname, StringIO, IO, String, Object]
+          def dump(value, state:)
+            # rubocop:disable Lint/DuplicateBranch
+            case value
+            in IO
+              state[:can_retry] = false
+            in FinchAPI::FilePart if value.content.is_a?(IO)
+              state[:can_retry] = false
+            else
+            end
+            # rubocop:enable Lint/DuplicateBranch
+
+            value
+          end
         end
       end
     end

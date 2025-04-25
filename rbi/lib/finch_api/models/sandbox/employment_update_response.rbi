@@ -161,24 +161,43 @@ module FinchAPI
             .returns(T.attached_class)
         end
         def self.new(
+          # A stable Finch `id` (UUID v4) for an individual in the company.
           id: nil,
+          # Worker's compensation classification code for this employee
           class_code: nil,
+          # Custom fields for the individual. These are fields which are defined by the
+          # employer in the system. Custom fields are not currently supported for assisted
+          # connections.
           custom_fields: nil,
+          # The department object.
           department: nil,
+          # The employment object.
           employment: nil,
+          # The detailed employment status of the individual.
           employment_status: nil,
           end_date: nil,
+          # The legal first name of the individual.
           first_name: nil,
+          # The employee's income as reported by the provider. This may not always be
+          # annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
+          # depending on what information the provider returns.
           income: nil,
+          # The array of income history.
           income_history: nil,
+          # `true` if the individual an an active employee or contractor at the company.
           is_active: nil,
+          # The legal last name of the individual.
           last_name: nil,
           latest_rehire_date: nil,
           location: nil,
+          # The manager object representing the manager of the individual within the org.
           manager: nil,
+          # The legal middle name of the individual.
           middle_name: nil,
+          # The source system's unique employment identifier for this individual
           source_id: nil,
           start_date: nil,
+          # The current title of the individual.
           title: nil
         ); end
         sig do
@@ -233,8 +252,10 @@ module FinchAPI
 
           # The department object.
           sig { params(name: T.nilable(String)).returns(T.attached_class) }
-          def self.new(name: nil); end
-
+          def self.new(
+            # The name of the department associated with the individual.
+            name: nil
+          ); end
           sig { override.returns({name: T.nilable(String)}) }
           def to_hash; end
         end
@@ -257,8 +278,13 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(subtype: nil, type: nil); end
-
+          def self.new(
+            # The secondary employment type of the individual. Options: `full_time`,
+            # `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
+            subtype: nil,
+            # The main employment type of the individual.
+            type: nil
+          ); end
           sig do
             override
               .returns(
@@ -277,14 +303,7 @@ module FinchAPI
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::Subtype) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  String,
-                  FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::Subtype::TaggedSymbol
-                )
-              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             FULL_TIME =
               T.let(:full_time, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::Subtype::TaggedSymbol)
@@ -315,8 +334,7 @@ module FinchAPI
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::Type::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             EMPLOYEE =
               T.let(:employee, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::Type::TaggedSymbol)
@@ -337,8 +355,7 @@ module FinchAPI
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::EmploymentStatus) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::EmploymentStatus::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           ACTIVE =
             T.let(:active, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::EmploymentStatus::TaggedSymbol)
@@ -372,8 +389,10 @@ module FinchAPI
 
           # The manager object representing the manager of the individual within the org.
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id: nil); end
-
+          def self.new(
+            # A stable Finch `id` (UUID v4) for an individual in the company.
+            id: nil
+          ); end
           sig { override.returns({id: String}) }
           def to_hash; end
         end

@@ -19,8 +19,12 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(amount: nil, type: nil); end
-
+        def self.new(
+          # Contribution amount in cents (if `fixed`) or basis points (if `percent`).
+          amount: nil,
+          # Contribution type.
+          type: nil
+        ); end
         sig do
           override
             .returns(
@@ -34,8 +38,7 @@ module FinchAPI
           extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::BenefitContribution::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::BenefitContribution::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           FIXED = T.let(:fixed, FinchAPI::Models::HRIS::BenefitContribution::Type::TaggedSymbol)
           PERCENT = T.let(:percent, FinchAPI::Models::HRIS::BenefitContribution::Type::TaggedSymbol)

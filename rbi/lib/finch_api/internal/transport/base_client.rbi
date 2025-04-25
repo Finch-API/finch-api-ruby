@@ -24,7 +24,14 @@ module FinchAPI
                         )]
               ),
               body: T.nilable(T.anything),
-              unwrap: T.nilable(Symbol),
+              unwrap: T.nilable(
+                T.any(
+                  Symbol,
+                  Integer,
+                  T::Array[T.any(Symbol, Integer)],
+                  T.proc.params(arg0: T.anything).returns(T.anything)
+                )
+              ),
               page: T.nilable(T::Class[FinchAPI::Internal::Type::BasePage[FinchAPI::Internal::Type::BaseModel]]),
               stream: T.nilable(T::Class[T.anything]),
               model: T.nilable(FinchAPI::Internal::Type::Converter::Input),
@@ -90,7 +97,7 @@ module FinchAPI
 
         # @api private
         sig { returns(FinchAPI::Internal::Transport::PooledNetRequester) }
-        attr_accessor :requester
+        attr_reader :requester
 
         # @api private
         sig do
@@ -170,7 +177,14 @@ module FinchAPI
                       )]
             ),
             body: T.nilable(T.anything),
-            unwrap: T.nilable(Symbol),
+            unwrap: T.nilable(
+              T.any(
+                Symbol,
+                Integer,
+                T::Array[T.any(Symbol, Integer)],
+                T.proc.params(arg0: T.anything).returns(T.anything)
+              )
+            ),
             page: T.nilable(T::Class[FinchAPI::Internal::Type::BasePage[FinchAPI::Internal::Type::BaseModel]]),
             stream: T.nilable(T::Class[T.anything]),
             model: T.nilable(FinchAPI::Internal::Type::Converter::Input),
@@ -190,6 +204,7 @@ module FinchAPI
           model: FinchAPI::Internal::Type::Unknown,
           options: {}
         ); end
+        # @api private
         sig { returns(String) }
         def inspect; end
       end

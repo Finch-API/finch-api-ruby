@@ -5,15 +5,11 @@ module FinchAPI
     module HRIS
       # @see FinchAPI::Resources::HRIS::Directory#list
       class IndividualInDirectory < FinchAPI::Internal::Type::BaseModel
-        # @!attribute [r] id
+        # @!attribute id
         #   A stable Finch `id` (UUID v4) for an individual in the company.
         #
         #   @return [String, nil]
         optional :id, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :id
 
         # @!attribute department
         #   The department object.
@@ -51,29 +47,20 @@ module FinchAPI
         #   @return [String, nil]
         optional :middle_name, String, nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param department [FinchAPI::Models::HRIS::IndividualInDirectory::Department, nil]
-        #   # @param first_name [String, nil]
-        #   # @param is_active [Boolean, nil]
-        #   # @param last_name [String, nil]
-        #   # @param manager [FinchAPI::Models::HRIS::IndividualInDirectory::Manager, nil]
-        #   # @param middle_name [String, nil]
-        #   #
-        #   def initialize(
-        #     id: nil,
-        #     department: nil,
-        #     first_name: nil,
-        #     is_active: nil,
-        #     last_name: nil,
-        #     manager: nil,
-        #     middle_name: nil,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(id: nil, department: nil, first_name: nil, is_active: nil, last_name: nil, manager: nil, middle_name: nil)
+        #   @param id [String] A stable Finch `id` (UUID v4) for an individual in the company.
+        #
+        #   @param department [FinchAPI::Models::HRIS::IndividualInDirectory::Department, nil] The department object.
+        #
+        #   @param first_name [String, nil] The legal first name of the individual.
+        #
+        #   @param is_active [Boolean, nil] `true` if the individual is an active employee or contractor at the company.
+        #
+        #   @param last_name [String, nil] The legal last name of the individual.
+        #
+        #   @param manager [FinchAPI::Models::HRIS::IndividualInDirectory::Manager, nil] The manager object.
+        #
+        #   @param middle_name [String, nil] The legal middle name of the individual.
 
         # @see FinchAPI::Models::HRIS::IndividualInDirectory#department
         class Department < FinchAPI::Internal::Type::BaseModel
@@ -83,36 +70,24 @@ module FinchAPI
           #   @return [String, nil]
           optional :name, String, nil?: true
 
-          # @!parse
-          #   # The department object.
-          #   #
-          #   # @param name [String, nil]
-          #   #
-          #   def initialize(name: nil, **) = super
-
-          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+          # @!method initialize(name: nil)
+          #   The department object.
+          #
+          #   @param name [String, nil] The name of the department.
         end
 
         # @see FinchAPI::Models::HRIS::IndividualInDirectory#manager
         class Manager < FinchAPI::Internal::Type::BaseModel
-          # @!attribute [r] id
+          # @!attribute id
           #   A stable Finch `id` (UUID v4) for an individual in the company.
           #
           #   @return [String, nil]
           optional :id, String
 
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :id
-
-          # @!parse
-          #   # The manager object.
-          #   #
-          #   # @param id [String]
-          #   #
-          #   def initialize(id: nil, **) = super
-
-          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+          # @!method initialize(id: nil)
+          #   The manager object.
+          #
+          #   @param id [String] A stable Finch `id` (UUID v4) for an individual in the company.
         end
       end
     end

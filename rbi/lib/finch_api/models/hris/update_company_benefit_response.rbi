@@ -12,8 +12,11 @@ module FinchAPI
         attr_accessor :job_id
 
         sig { params(benefit_id: String, job_id: String).returns(T.attached_class) }
-        def self.new(benefit_id:, job_id:); end
-
+        def self.new(
+          # The id of the benefit.
+          benefit_id:,
+          job_id:
+        ); end
         sig { override.returns({benefit_id: String, job_id: String}) }
         def to_hash; end
       end

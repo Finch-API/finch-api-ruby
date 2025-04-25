@@ -44,15 +44,17 @@ module FinchAPI
           end
           def self.new(
             access_token:,
+            # [DEPRECATED] Use `connection_id` to associate a connection with an access token
             account_id:,
             authentication_type:,
+            # [DEPRECATED] Use `connection_id` to associate a connection with an access token
             company_id:,
+            # The ID of the new connection
             connection_id:,
             products:,
+            # The ID of the provider associated with the `access_token`
             provider_id:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -74,14 +76,7 @@ module FinchAPI
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::Connections::AccountCreateResponse::AuthenticationType) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  String,
-                  FinchAPI::Models::Sandbox::Connections::AccountCreateResponse::AuthenticationType::TaggedSymbol
-                )
-              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             CREDENTIAL =
               T.let(

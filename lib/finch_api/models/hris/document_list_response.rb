@@ -15,13 +15,9 @@ module FinchAPI
         #   @return [FinchAPI::Models::Paging]
         required :paging, -> { FinchAPI::Models::Paging }
 
-        # @!parse
-        #   # @param documents [Array<FinchAPI::Models::HRIS::DocumentResponse>]
-        #   # @param paging [FinchAPI::Models::Paging]
-        #   #
-        #   def initialize(documents:, paging:, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(documents:, paging:)
+        #   @param documents [Array<FinchAPI::Models::HRIS::DocumentResponse>]
+        #   @param paging [FinchAPI::Models::Paging]
       end
     end
   end

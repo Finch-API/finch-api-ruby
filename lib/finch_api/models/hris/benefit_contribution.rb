@@ -16,13 +16,10 @@ module FinchAPI
         #   @return [Symbol, FinchAPI::Models::HRIS::BenefitContribution::Type, nil]
         optional :type, enum: -> { FinchAPI::Models::HRIS::BenefitContribution::Type }, nil?: true
 
-        # @!parse
-        #   # @param amount [Integer, nil]
-        #   # @param type [Symbol, FinchAPI::Models::HRIS::BenefitContribution::Type, nil]
-        #   #
-        #   def initialize(amount: nil, type: nil, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(amount: nil, type: nil)
+        #   @param amount [Integer, nil] Contribution amount in cents (if `fixed`) or basis points (if `percent`).
+        #
+        #   @param type [Symbol, FinchAPI::Models::HRIS::BenefitContribution::Type, nil] Contribution type.
 
         # Contribution type.
         #
@@ -33,11 +30,8 @@ module FinchAPI
           FIXED = :fixed
           PERCENT = :percent
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

@@ -30,6 +30,8 @@ module FinchAPI
 
         def ==: (top other) -> bool
 
+        def hash: -> Integer
+
         def coerce: (
           top value,
           state: FinchAPI::Internal::Type::Converter::coerce_state
@@ -39,6 +41,8 @@ module FinchAPI
           top value,
           state: FinchAPI::Internal::Type::Converter::dump_state
         ) -> top
+
+        def inspect: (?depth: Integer) -> String
       end
     end
   end

@@ -35,14 +35,17 @@ module FinchAPI
             .returns(T.attached_class)
         end
         def self.new(
+          # The ID of the existing connection to reauthenticate
           connection_id:,
+          # The number of minutes until the session expires (defaults to 43,200, which is 30
+          # days)
           minutes_to_expire: nil,
+          # The products to request access to (optional for reauthentication)
           products: nil,
+          # The URI to redirect to after the Connect flow is completed
           redirect_uri: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -63,8 +66,7 @@ module FinchAPI
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, FinchAPI::Models::Connect::SessionReauthenticateParams::Product) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           COMPANY = T.let(:company, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
           DIRECTORY =
@@ -79,6 +81,10 @@ module FinchAPI
           BENEFITS =
             T.let(:benefits, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
           SSN = T.let(:ssn, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
+          DEDUCTION =
+            T.let(:deduction, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
+          DOCUMENTS =
+            T.let(:documents, FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol)
 
           sig { override.returns(T::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::Product::TaggedSymbol]) }
           def self.values; end

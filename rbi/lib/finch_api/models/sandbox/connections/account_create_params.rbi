@@ -50,13 +50,14 @@ module FinchAPI
           end
           def self.new(
             company_id:,
+            # The provider associated with the `access_token`
             provider_id:,
             authentication_type: nil,
+            # Optional, defaults to Organization products (`company`, `directory`,
+            # `employment`, `individual`)
             products: nil,
             request_options: {}
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -76,14 +77,7 @@ module FinchAPI
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  String,
-                  FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::TaggedSymbol
-                )
-              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             CREDENTIAL =
               T.let(

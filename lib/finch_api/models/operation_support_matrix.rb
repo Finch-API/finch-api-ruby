@@ -3,7 +3,7 @@
 module FinchAPI
   module Models
     class OperationSupportMatrix < FinchAPI::Internal::Type::BaseModel
-      # @!attribute [r] create
+      # @!attribute create
       #   - `supported`: This operation is supported by both the provider and Finch
       #   - `not_supported_by_finch`: This operation is not supported by Finch but
       #     supported by the provider
@@ -15,11 +15,7 @@ module FinchAPI
       #   @return [Symbol, FinchAPI::Models::OperationSupport, nil]
       optional :create, enum: -> { FinchAPI::Models::OperationSupport }
 
-      # @!parse
-      #   # @return [Symbol, FinchAPI::Models::OperationSupport]
-      #   attr_writer :create
-
-      # @!attribute [r] delete
+      # @!attribute delete
       #   - `supported`: This operation is supported by both the provider and Finch
       #   - `not_supported_by_finch`: This operation is not supported by Finch but
       #     supported by the provider
@@ -31,11 +27,7 @@ module FinchAPI
       #   @return [Symbol, FinchAPI::Models::OperationSupport, nil]
       optional :delete, enum: -> { FinchAPI::Models::OperationSupport }
 
-      # @!parse
-      #   # @return [Symbol, FinchAPI::Models::OperationSupport]
-      #   attr_writer :delete
-
-      # @!attribute [r] read
+      # @!attribute read
       #   - `supported`: This operation is supported by both the provider and Finch
       #   - `not_supported_by_finch`: This operation is not supported by Finch but
       #     supported by the provider
@@ -47,11 +39,7 @@ module FinchAPI
       #   @return [Symbol, FinchAPI::Models::OperationSupport, nil]
       optional :read, enum: -> { FinchAPI::Models::OperationSupport }
 
-      # @!parse
-      #   # @return [Symbol, FinchAPI::Models::OperationSupport]
-      #   attr_writer :read
-
-      # @!attribute [r] update
+      # @!attribute update
       #   - `supported`: This operation is supported by both the provider and Finch
       #   - `not_supported_by_finch`: This operation is not supported by Finch but
       #     supported by the provider
@@ -63,19 +51,17 @@ module FinchAPI
       #   @return [Symbol, FinchAPI::Models::OperationSupport, nil]
       optional :update, enum: -> { FinchAPI::Models::OperationSupport }
 
-      # @!parse
-      #   # @return [Symbol, FinchAPI::Models::OperationSupport]
-      #   attr_writer :update
-
-      # @!parse
-      #   # @param create [Symbol, FinchAPI::Models::OperationSupport]
-      #   # @param delete [Symbol, FinchAPI::Models::OperationSupport]
-      #   # @param read [Symbol, FinchAPI::Models::OperationSupport]
-      #   # @param update [Symbol, FinchAPI::Models::OperationSupport]
-      #   #
-      #   def initialize(create: nil, delete: nil, read: nil, update: nil, **) = super
-
-      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+      # @!method initialize(create: nil, delete: nil, read: nil, update: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {FinchAPI::Models::OperationSupportMatrix} for more details.
+      #
+      #   @param create [Symbol, FinchAPI::Models::OperationSupport] - `supported`: This operation is supported by both the provider and Finch ...
+      #
+      #   @param delete [Symbol, FinchAPI::Models::OperationSupport] - `supported`: This operation is supported by both the provider and Finch ...
+      #
+      #   @param read [Symbol, FinchAPI::Models::OperationSupport] - `supported`: This operation is supported by both the provider and Finch ...
+      #
+      #   @param update [Symbol, FinchAPI::Models::OperationSupport] - `supported`: This operation is supported by both the provider and Finch ...
     end
   end
 end

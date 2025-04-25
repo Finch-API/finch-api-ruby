@@ -22,8 +22,12 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(body:, job_id:, status:); end
-
+        def self.new(
+          # Specific information about the job, such as individual statuses for batch jobs.
+          body:,
+          job_id:,
+          status:
+        ); end
         sig do
           override
             .returns(
@@ -40,8 +44,7 @@ module FinchAPI
           extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Jobs::ManualAsyncJob::Status) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           PENDING = T.let(:pending, FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol)
           IN_PROGRESS = T.let(:in_progress, FinchAPI::Models::Jobs::ManualAsyncJob::Status::TaggedSymbol)

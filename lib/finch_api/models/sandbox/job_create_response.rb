@@ -29,15 +29,14 @@ module FinchAPI
         #   @return [Integer]
         required :remaining_refreshes, Integer
 
-        # @!parse
-        #   # @param allowed_refreshes [Integer]
-        #   # @param job_id [String]
-        #   # @param job_url [String]
-        #   # @param remaining_refreshes [Integer]
-        #   #
-        #   def initialize(allowed_refreshes:, job_id:, job_url:, remaining_refreshes:, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(allowed_refreshes:, job_id:, job_url:, remaining_refreshes:)
+        #   @param allowed_refreshes [Integer] The number of allowed refreshes per hour (per hour, fixed window)
+        #
+        #   @param job_id [String] The id of the job that has been created.
+        #
+        #   @param job_url [String] The url that can be used to retrieve the job status
+        #
+        #   @param remaining_refreshes [Integer] The number of remaining refreshes available (per hour, fixed window)
       end
     end
   end

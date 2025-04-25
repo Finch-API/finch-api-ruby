@@ -32,8 +32,14 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(data: nil, type: nil, year: nil); end
-
+        def self.new(
+          # Detailed information specific to the 2005 W4 form.
+          data: nil,
+          # Specifies the form type, indicating that this document is a 2005 W4 form.
+          type: nil,
+          # The tax year this W4 document applies to.
+          year: nil
+        ); end
         sig do
           override
             .returns(
@@ -85,10 +91,15 @@ module FinchAPI
               .returns(T.attached_class)
           end
           def self.new(
+            # Additional withholding amount (in cents).
             additional_withholding: nil,
+            # Indicates exemption status from federal tax withholding.
             exemption: nil,
+            # The individual's filing status for tax purposes.
             filing_status: nil,
+            # The unique identifier for the individual associated with this 2005 W4 form.
             individual_id: nil,
+            # Total number of allowances claimed (in cents).
             total_number_of_allowances: nil
           ); end
           sig do
@@ -110,8 +121,7 @@ module FinchAPI
             extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::W42005::Data::Exemption) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::W42005::Data::Exemption::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             EXEMPT = T.let(:exempt, FinchAPI::Models::HRIS::W42005::Data::Exemption::TaggedSymbol)
             NON_EXEMPT = T.let(:non_exempt, FinchAPI::Models::HRIS::W42005::Data::Exemption::TaggedSymbol)
@@ -125,8 +135,7 @@ module FinchAPI
             extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::W42005::Data::FilingStatus) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::W42005::Data::FilingStatus::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             MARRIED = T.let(:married, FinchAPI::Models::HRIS::W42005::Data::FilingStatus::TaggedSymbol)
             MARRIED_BUT_WITHHOLD_AT_HIGHER_SINGLE_RATE =
@@ -146,7 +155,7 @@ module FinchAPI
           extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::W42005::Type) }
-          OrSymbol = T.type_alias { T.any(Symbol, String, FinchAPI::Models::HRIS::W42005::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           W4_2005 = T.let(:w4_2005, FinchAPI::Models::HRIS::W42005::Type::TaggedSymbol)
 

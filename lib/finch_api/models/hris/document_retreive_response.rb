@@ -18,9 +18,8 @@ module FinchAPI
         # A 2005 version of the W-4 tax form containing information on an individual's filing status, dependents, and withholding details.
         variant :w4_2005, -> { FinchAPI::Models::HRIS::W42005 }
 
-        # @!parse
-        #   # @return [Array(FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005)]
       end
     end
   end

@@ -18,8 +18,12 @@ module FinchAPI
       attr_writer :offset
 
       sig { params(count: Integer, offset: Integer).returns(T.attached_class) }
-      def self.new(count: nil, offset: nil); end
-
+      def self.new(
+        # The total number of elements for the entire query (not just the given page)
+        count: nil,
+        # The current start index of the returned list of elements
+        offset: nil
+      ); end
       sig { override.returns({count: Integer, offset: Integer}) }
       def to_hash; end
     end

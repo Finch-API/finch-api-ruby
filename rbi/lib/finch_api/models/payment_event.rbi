@@ -45,8 +45,12 @@ module FinchAPI
         attr_accessor :payment_id
 
         sig { params(pay_date: String, payment_id: String).returns(T.attached_class) }
-        def self.new(pay_date:, payment_id:); end
-
+        def self.new(
+          # The date of the payment.
+          pay_date:,
+          # The ID of the payment.
+          payment_id:
+        ); end
         sig { override.returns({pay_date: String, payment_id: String}) }
         def to_hash; end
       end
@@ -55,8 +59,7 @@ module FinchAPI
         extend FinchAPI::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::PaymentEvent::EventType) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         PAYMENT_CREATED = T.let(:"payment.created", FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol)
         PAYMENT_UPDATED = T.let(:"payment.updated", FinchAPI::Models::PaymentEvent::EventType::TaggedSymbol)

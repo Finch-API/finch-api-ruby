@@ -88,10 +88,14 @@ module FinchAPI
                 .returns(T.attached_class)
             end
             def self.new(
+              # Specifies the fields to be applied when the condition is met.
               attributes: nil,
               conditions: nil,
+              # Specifies when the rules should stop applying rules based on the date.
               effective_end_date: nil,
+              # Specifies when the rule should begin applying based on the date.
               effective_start_date: nil,
+              # The entity type to which the rule is applied.
               entity_type: nil,
               request_options: {}
             ); end
@@ -121,8 +125,11 @@ module FinchAPI
 
               # Specifies the fields to be applied when the condition is met.
               sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
-              def self.new(metadata: nil); end
-
+              def self.new(
+                # The metadata to be attached in the entity. It is a key-value pairs where the
+                # values can be of any type (string, number, boolean, object, array, etc.).
+                metadata: nil
+              ); end
               sig { override.returns({metadata: T::Hash[Symbol, T.anything]}) }
               def to_hash; end
             end
@@ -168,8 +175,14 @@ module FinchAPI
                 )
                   .returns(T.attached_class)
               end
-              def self.new(field: nil, operator: nil, value: nil); end
-
+              def self.new(
+                # The field to be checked in the rule.
+                field: nil,
+                # The operator to be used in the rule.
+                operator: nil,
+                # The value of the field to be checked in the rule.
+                value: nil
+              ); end
               sig do
                 override
                   .returns(
@@ -188,14 +201,7 @@ module FinchAPI
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::Operator) }
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      String,
-                      FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::Operator::TaggedSymbol
-                    )
-                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 EQUALS =
                   T.let(
@@ -219,14 +225,7 @@ module FinchAPI
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::EntityType) }
-              OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    String,
-                    FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::EntityType::TaggedSymbol
-                  )
-                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               PAY_STATEMENT_ITEM =
                 T.let(

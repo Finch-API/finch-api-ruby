@@ -6,10 +6,10 @@ module FinchAPI
         country: String?,
         :line1 => String?,
         :line2 => String?,
-        name: String?,
         postal_code: String?,
-        source_id: String?,
-        state: String?
+        state: String?,
+        name: String?,
+        source_id: String?
       }
 
     class Location < FinchAPI::Internal::Type::BaseModel
@@ -21,23 +21,23 @@ module FinchAPI
 
       attr_accessor line2: String?
 
-      attr_accessor name: String?
-
       attr_accessor postal_code: String?
-
-      attr_accessor source_id: String?
 
       attr_accessor state: String?
 
+      attr_accessor name: String?
+
+      attr_accessor source_id: String?
+
       def initialize: (
-        ?city: String?,
-        ?country: String?,
-        ?line1: String?,
-        ?line2: String?,
+        city: String?,
+        country: String?,
+        line1: String?,
+        line2: String?,
+        postal_code: String?,
+        state: String?,
         ?name: String?,
-        ?postal_code: String?,
-        ?source_id: String?,
-        ?state: String?
+        ?source_id: String?
       ) -> void
 
       def to_hash: -> FinchAPI::Models::location

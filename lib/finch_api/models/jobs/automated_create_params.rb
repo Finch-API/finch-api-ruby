@@ -5,8 +5,7 @@ module FinchAPI
     module Jobs
       # @see FinchAPI::Resources::Jobs::Automated#create
       class AutomatedCreateParams < FinchAPI::Internal::Type::BaseModel
-        # @!parse
-        #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
         # @!attribute type
@@ -20,14 +19,12 @@ module FinchAPI
         #   @return [FinchAPI::Models::Jobs::AutomatedCreateParams::Params]
         required :params, -> { FinchAPI::Models::Jobs::AutomatedCreateParams::Params }
 
-        # @!parse
-        #   # @param type [Symbol, FinchAPI::Models::Jobs::AutomatedCreateParams::Type]
-        #   # @param params [FinchAPI::Models::Jobs::AutomatedCreateParams::Params]
-        #   # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(type:, params:, request_options: {}, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(type:, params:, request_options: {})
+        #   @param type [Symbol, FinchAPI::Models::Jobs::AutomatedCreateParams::Type] The type of job to start.
+        #
+        #   @param params [FinchAPI::Models::Jobs::AutomatedCreateParams::Params]
+        #
+        #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 
         # The type of job to start.
         module Type
@@ -35,11 +32,8 @@ module FinchAPI
 
           W4_FORM_EMPLOYEE_SYNC = :w4_form_employee_sync
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         class Params < FinchAPI::Internal::Type::BaseModel
@@ -49,12 +43,8 @@ module FinchAPI
           #   @return [String]
           required :individual_id, String
 
-          # @!parse
-          #   # @param individual_id [String]
-          #   #
-          #   def initialize(individual_id:, **) = super
-
-          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+          # @!method initialize(individual_id:)
+          #   @param individual_id [String] The unique ID of the individual for W-4 data sync.
         end
       end
     end
