@@ -18,7 +18,7 @@ module FinchAPI
               name: String,
               start_date: Date,
               type: String,
-              request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
+              request_options: FinchAPI::RequestOpts
             )
               .returns(FinchAPI::Internal::ResponsesPage[FinchAPI::Models::HRIS::Company::PayStatementItemListResponse])
           end

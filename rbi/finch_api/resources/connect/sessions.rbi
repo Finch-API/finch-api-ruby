@@ -16,7 +16,7 @@ module FinchAPI
             minutes_to_expire: T.nilable(Float),
             redirect_uri: T.nilable(String),
             sandbox: T.nilable(FinchAPI::Models::Connect::SessionNewParams::Sandbox::OrSymbol),
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
+            request_options: FinchAPI::RequestOpts
           )
             .returns(FinchAPI::Models::Connect::SessionNewResponse)
         end
@@ -41,7 +41,7 @@ module FinchAPI
             minutes_to_expire: T.nilable(Integer),
             products: T.nilable(T::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::Product::OrSymbol]),
             redirect_uri: T.nilable(String),
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
+            request_options: FinchAPI::RequestOpts
           )
             .returns(FinchAPI::Models::Connect::SessionReauthenticateResponse)
         end

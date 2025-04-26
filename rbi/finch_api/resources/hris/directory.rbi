@@ -6,11 +6,7 @@ module FinchAPI
       class Directory
         # Read company directory and organization structure
         sig do
-          params(
-            limit: Integer,
-            offset: Integer,
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
-          )
+          params(limit: Integer, offset: Integer, request_options: FinchAPI::RequestOpts)
             .returns(FinchAPI::Internal::IndividualsPage[FinchAPI::Models::HRIS::IndividualInDirectory])
         end
         def list(

@@ -7,10 +7,7 @@ module FinchAPI
         # Get a manual job by `job_id`. Manual jobs are completed by a human and include
         # Assisted Benefits jobs.
         sig do
-          params(
-            job_id: String,
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
-          )
+          params(job_id: String, request_options: FinchAPI::RequestOpts)
             .returns(FinchAPI::Models::Jobs::ManualAsyncJob)
         end
         def retrieve(job_id, request_options: {}); end

@@ -14,7 +14,7 @@ module FinchAPI
             description: String,
             frequency: T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::OrSymbol),
             type: T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol),
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
+            request_options: FinchAPI::RequestOpts
           )
             .returns(FinchAPI::Models::HRIS::CreateCompanyBenefitsResponse)
         end
@@ -31,21 +31,14 @@ module FinchAPI
         ); end
         # Lists deductions and contributions information for a given item
         sig do
-          params(
-            benefit_id: String,
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
-          )
+          params(benefit_id: String, request_options: FinchAPI::RequestOpts)
             .returns(FinchAPI::Models::HRIS::CompanyBenefit)
         end
         def retrieve(benefit_id, request_options: {}); end
 
         # Updates an existing company-wide deduction or contribution
         sig do
-          params(
-            benefit_id: String,
-            description: String,
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
-          )
+          params(benefit_id: String, description: String, request_options: FinchAPI::RequestOpts)
             .returns(FinchAPI::Models::HRIS::UpdateCompanyBenefitResponse)
         end
         def update(
@@ -56,14 +49,14 @@ module FinchAPI
         ); end
         # List all company-wide deductions and contributions.
         sig do
-          params(request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)))
+          params(request_options: FinchAPI::RequestOpts)
             .returns(FinchAPI::Internal::SinglePage[FinchAPI::Models::HRIS::CompanyBenefit])
         end
         def list(request_options: {}); end
 
         # Get deductions metadata
         sig do
-          params(request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)))
+          params(request_options: FinchAPI::RequestOpts)
             .returns(FinchAPI::Internal::SinglePage[FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse])
         end
         def list_supported_benefits(request_options: {}); end

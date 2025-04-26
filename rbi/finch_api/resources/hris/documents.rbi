@@ -12,7 +12,7 @@ module FinchAPI
             limit: Integer,
             offset: Integer,
             types: T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol],
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
+            request_options: FinchAPI::RequestOpts
           )
             .returns(FinchAPI::Models::HRIS::DocumentListResponse)
         end
@@ -32,10 +32,7 @@ module FinchAPI
         # **Beta:** This endpoint is in beta and may change. Retrieve details of a
         # specific document by its ID.
         sig do
-          params(
-            document_id: String,
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
-          )
+          params(document_id: String, request_options: FinchAPI::RequestOpts)
             .returns(T.any(FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005))
         end
         def retreive(

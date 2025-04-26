@@ -35,7 +35,7 @@ module FinchAPI
               page: T.nilable(T::Class[FinchAPI::Internal::Type::BasePage[FinchAPI::Internal::Type::BaseModel]]),
               stream: T.nilable(T::Class[T.anything]),
               model: T.nilable(FinchAPI::Internal::Type::Converter::Input),
-              options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
+              options: T.nilable(FinchAPI::RequestOpts)
             }
           end
 
@@ -188,7 +188,7 @@ module FinchAPI
             page: T.nilable(T::Class[FinchAPI::Internal::Type::BasePage[FinchAPI::Internal::Type::BaseModel]]),
             stream: T.nilable(T::Class[T.anything]),
             model: T.nilable(FinchAPI::Internal::Type::Converter::Input),
-            options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
+            options: T.nilable(FinchAPI::RequestOpts)
           )
             .returns(T.anything)
         end

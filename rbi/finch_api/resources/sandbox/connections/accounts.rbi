@@ -12,7 +12,7 @@ module FinchAPI
               provider_id: String,
               authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol,
               products: T::Array[String],
-              request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
+              request_options: FinchAPI::RequestOpts
             )
               .returns(FinchAPI::Models::Sandbox::Connections::AccountCreateResponse)
           end
@@ -31,7 +31,7 @@ module FinchAPI
           sig do
             params(
               connection_status: FinchAPI::Models::ConnectionStatusType::OrSymbol,
-              request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
+              request_options: FinchAPI::RequestOpts
             )
               .returns(FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse)
           end

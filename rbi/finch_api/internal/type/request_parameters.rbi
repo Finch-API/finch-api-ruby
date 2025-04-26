@@ -6,7 +6,7 @@ module FinchAPI
       # @api private
       module RequestParameters
         # Options to specify HTTP behaviour for this request.
-        sig { returns(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)) }
+        sig { returns(FinchAPI::RequestOpts) }
         attr_accessor :request_options
 
         # @api private
