@@ -8,10 +8,7 @@ module FinchAPI
         attr_reader :pay_statement_item
 
         # Read basic company data
-        sig do
-          params(request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)))
-            .returns(FinchAPI::Models::HRIS::HRISCompany)
-        end
+        sig { params(request_options: FinchAPI::RequestOpts).returns(FinchAPI::Models::HRIS::HRISCompany) }
         def retrieve(request_options: {}); end
 
         # @api private

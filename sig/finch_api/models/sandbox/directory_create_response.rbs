@@ -3,7 +3,7 @@ module FinchAPI
     module Sandbox
       type directory_create_response = ::Array[top]
 
-      DirectoryCreateResponse: directory_create_response
+      DirectoryCreateResponse: FinchAPI::Internal::Type::Converter
     end
   end
 end

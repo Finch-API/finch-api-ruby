@@ -14,7 +14,7 @@ module FinchAPI
           data: T.nilable(String),
           headers: T.nilable(T.anything),
           params: T.nilable(T.anything),
-          request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
+          request_options: FinchAPI::RequestOpts
         )
           .returns(FinchAPI::Models::RequestForwardingForwardResponse)
       end

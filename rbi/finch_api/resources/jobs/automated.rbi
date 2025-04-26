@@ -22,7 +22,7 @@ module FinchAPI
           params(
             type: FinchAPI::Models::Jobs::AutomatedCreateParams::Type::OrSymbol,
             params: T.any(FinchAPI::Models::Jobs::AutomatedCreateParams::Params, FinchAPI::Internal::AnyHash),
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
+            request_options: FinchAPI::RequestOpts
           )
             .returns(FinchAPI::Models::Jobs::AutomatedCreateResponse)
         end
@@ -34,10 +34,7 @@ module FinchAPI
         ); end
         # Get an automated job by `job_id`.
         sig do
-          params(
-            job_id: String,
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
-          )
+          params(job_id: String, request_options: FinchAPI::RequestOpts)
             .returns(FinchAPI::Models::Jobs::AutomatedAsyncJob)
         end
         def retrieve(job_id, request_options: {}); end
@@ -46,11 +43,7 @@ module FinchAPI
         # jobs are sorted in descending order by submission time. For scheduled jobs such
         # as data syncs, only the next scheduled job is shown.
         sig do
-          params(
-            limit: Integer,
-            offset: Integer,
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
-          )
+          params(limit: Integer, offset: Integer, request_options: FinchAPI::RequestOpts)
             .returns(FinchAPI::Models::Jobs::AutomatedListResponse)
         end
         def list(

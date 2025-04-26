@@ -18,7 +18,7 @@ module FinchAPI
                   FinchAPI::Internal::AnyHash
                 )
               ],
-              request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
+              request_options: FinchAPI::RequestOpts
             )
               .returns(FinchAPI::Models::HRIS::Benefits::EnrolledIndividualBenefitResponse)
           end
@@ -30,21 +30,14 @@ module FinchAPI
           ); end
           # Lists individuals currently enrolled in a given deduction.
           sig do
-            params(
-              benefit_id: String,
-              request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
-            )
+            params(benefit_id: String, request_options: FinchAPI::RequestOpts)
               .returns(FinchAPI::Models::HRIS::Benefits::IndividualEnrolledIDsResponse)
           end
           def enrolled_ids(benefit_id, request_options: {}); end
 
           # Get enrollment information for the given individuals.
           sig do
-            params(
-              benefit_id: String,
-              individual_ids: String,
-              request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
-            )
+            params(benefit_id: String, individual_ids: String, request_options: FinchAPI::RequestOpts)
               .returns(FinchAPI::Internal::SinglePage[FinchAPI::Models::HRIS::Benefits::IndividualBenefit])
           end
           def retrieve_many_benefits(
@@ -59,7 +52,7 @@ module FinchAPI
             params(
               benefit_id: String,
               individual_ids: T::Array[String],
-              request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
+              request_options: FinchAPI::RequestOpts
             )
               .returns(FinchAPI::Models::HRIS::Benefits::UnenrolledIndividualBenefitResponse)
           end

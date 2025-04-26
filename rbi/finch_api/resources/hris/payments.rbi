@@ -6,11 +6,7 @@ module FinchAPI
       class Payments
         # Read payroll and contractor related payments by the company.
         sig do
-          params(
-            end_date: Date,
-            start_date: Date,
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
-          )
+          params(end_date: Date, start_date: Date, request_options: FinchAPI::RequestOpts)
             .returns(FinchAPI::Internal::SinglePage[FinchAPI::Models::HRIS::Payment])
         end
         def list(

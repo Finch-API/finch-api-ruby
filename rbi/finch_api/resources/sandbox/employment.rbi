@@ -30,7 +30,7 @@ module FinchAPI
             source_id: String,
             start_date: T.nilable(String),
             title: T.nilable(String),
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
+            request_options: FinchAPI::RequestOpts
           )
             .returns(FinchAPI::Models::Sandbox::EmploymentUpdateResponse)
         end

@@ -6,10 +6,7 @@ module FinchAPI
       class PayGroups
         # Read information from a single pay group
         sig do
-          params(
-            pay_group_id: String,
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
-          )
+          params(pay_group_id: String, request_options: FinchAPI::RequestOpts)
             .returns(FinchAPI::Models::Payroll::PayGroupRetrieveResponse)
         end
         def retrieve(pay_group_id, request_options: {}); end
@@ -19,7 +16,7 @@ module FinchAPI
           params(
             individual_id: String,
             pay_frequencies: T::Array[String],
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
+            request_options: FinchAPI::RequestOpts
           )
             .returns(FinchAPI::Internal::SinglePage[FinchAPI::Models::Payroll::PayGroupListResponse])
         end

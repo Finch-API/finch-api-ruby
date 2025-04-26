@@ -28,7 +28,7 @@ module FinchAPI
             preferred_name: T.nilable(String),
             residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::AnyHash)),
             ssn: T.nilable(String),
-            request_options: T.nilable(T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
+            request_options: FinchAPI::RequestOpts
           )
             .returns(FinchAPI::Models::Sandbox::IndividualUpdateResponse)
         end
