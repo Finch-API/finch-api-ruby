@@ -5,11 +5,8 @@ module FinchAPI
     module HRIS
       class IndividualInDirectory < FinchAPI::Internal::Type::BaseModel
         # A stable Finch `id` (UUID v4) for an individual in the company.
-        sig { returns(T.nilable(String)) }
-        attr_reader :id
-
-        sig { params(id: String).void }
-        attr_writer :id
+        sig { returns(String) }
+        attr_accessor :id
 
         # The department object.
         sig { returns(T.nilable(FinchAPI::Models::HRIS::IndividualInDirectory::Department)) }
@@ -65,19 +62,19 @@ module FinchAPI
         end
         def self.new(
           # A stable Finch `id` (UUID v4) for an individual in the company.
-          id: nil,
+          id:,
           # The department object.
-          department: nil,
+          department:,
           # The legal first name of the individual.
-          first_name: nil,
+          first_name:,
           # `true` if the individual is an active employee or contractor at the company.
-          is_active: nil,
+          is_active:,
           # The legal last name of the individual.
-          last_name: nil,
+          last_name:,
           # The manager object.
-          manager: nil,
+          manager:,
           # The legal middle name of the individual.
-          middle_name: nil
+          middle_name:
         ); end
         sig do
           override
@@ -112,17 +109,14 @@ module FinchAPI
 
         class Manager < FinchAPI::Internal::Type::BaseModel
           # A stable Finch `id` (UUID v4) for an individual in the company.
-          sig { returns(T.nilable(String)) }
-          attr_reader :id
-
-          sig { params(id: String).void }
-          attr_writer :id
+          sig { returns(String) }
+          attr_accessor :id
 
           # The manager object.
           sig { params(id: String).returns(T.attached_class) }
           def self.new(
             # A stable Finch `id` (UUID v4) for an individual in the company.
-            id: nil
+            id:
           ); end
           sig { override.returns({id: String}) }
           def to_hash; end
