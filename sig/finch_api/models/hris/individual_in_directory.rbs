@@ -13,9 +13,7 @@ module FinchAPI
         }
 
       class IndividualInDirectory < FinchAPI::Internal::Type::BaseModel
-        attr_reader id: String?
-
-        def id=: (String) -> String
+        attr_accessor id: String
 
         attr_accessor department: FinchAPI::Models::HRIS::IndividualInDirectory::Department?
 
@@ -30,13 +28,13 @@ module FinchAPI
         attr_accessor middle_name: String?
 
         def initialize: (
-          ?id: String,
-          ?department: FinchAPI::Models::HRIS::IndividualInDirectory::Department?,
-          ?first_name: String?,
-          ?is_active: bool?,
-          ?last_name: String?,
-          ?manager: FinchAPI::Models::HRIS::IndividualInDirectory::Manager?,
-          ?middle_name: String?
+          id: String,
+          department: FinchAPI::Models::HRIS::IndividualInDirectory::Department?,
+          first_name: String?,
+          is_active: bool?,
+          last_name: String?,
+          manager: FinchAPI::Models::HRIS::IndividualInDirectory::Manager?,
+          middle_name: String?
         ) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::individual_in_directory
@@ -54,11 +52,9 @@ module FinchAPI
         type manager = { id: String }
 
         class Manager < FinchAPI::Internal::Type::BaseModel
-          attr_reader id: String?
+          attr_accessor id: String
 
-          def id=: (String) -> String
-
-          def initialize: (?id: String) -> void
+          def initialize: (id: String) -> void
 
           def to_hash: -> FinchAPI::Models::HRIS::IndividualInDirectory::manager
         end
