@@ -4,23 +4,17 @@ module FinchAPI
   module Models
     module HRIS
       class IndividualResponse < FinchAPI::Internal::Type::BaseModel
-        sig { returns(T.nilable(FinchAPI::Models::HRIS::Individual)) }
+        sig { returns(FinchAPI::Models::HRIS::Individual) }
         attr_reader :body
 
         sig { params(body: T.any(FinchAPI::Models::HRIS::Individual, FinchAPI::Internal::AnyHash)).void }
         attr_writer :body
 
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :code
+        sig { returns(Integer) }
+        attr_accessor :code
 
-        sig { params(code: Integer).void }
-        attr_writer :code
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :individual_id
-
-        sig { params(individual_id: String).void }
-        attr_writer :individual_id
+        sig { returns(String) }
+        attr_accessor :individual_id
 
         sig do
           params(
@@ -30,7 +24,7 @@ module FinchAPI
           )
             .returns(T.attached_class)
         end
-        def self.new(body: nil, code: nil, individual_id: nil); end
+        def self.new(body:, code:, individual_id:); end
 
         sig { override.returns({body: FinchAPI::Models::HRIS::Individual, code: Integer, individual_id: String}) }
         def to_hash; end

@@ -5,8 +5,6 @@ module FinchAPI
         {
           id: String,
           dob: String?,
-          emails: ::Array[FinchAPI::Models::HRIS::Individual::Email]?,
-          encrypted_ssn: String?,
           ethnicity: FinchAPI::Models::HRIS::Individual::ethnicity?,
           first_name: String?,
           gender: FinchAPI::Models::HRIS::Individual::gender?,
@@ -15,19 +13,15 @@ module FinchAPI
           phone_numbers: ::Array[FinchAPI::Models::HRIS::Individual::PhoneNumber?]?,
           preferred_name: String?,
           residence: FinchAPI::Models::Location?,
+          emails: ::Array[FinchAPI::Models::HRIS::Individual::Email]?,
+          encrypted_ssn: String?,
           ssn: String?
         }
 
       class Individual < FinchAPI::Internal::Type::BaseModel
-        attr_reader id: String?
-
-        def id=: (String) -> String
+        attr_accessor id: String
 
         attr_accessor dob: String?
-
-        attr_accessor emails: ::Array[FinchAPI::Models::HRIS::Individual::Email]?
-
-        attr_accessor encrypted_ssn: String?
 
         attr_accessor ethnicity: FinchAPI::Models::HRIS::Individual::ethnicity?
 
@@ -45,57 +39,29 @@ module FinchAPI
 
         attr_accessor residence: FinchAPI::Models::Location?
 
+        attr_accessor emails: ::Array[FinchAPI::Models::HRIS::Individual::Email]?
+
+        attr_accessor encrypted_ssn: String?
+
         attr_accessor ssn: String?
 
         def initialize: (
-          ?id: String,
-          ?dob: String?,
+          id: String,
+          dob: String?,
+          ethnicity: FinchAPI::Models::HRIS::Individual::ethnicity?,
+          first_name: String?,
+          gender: FinchAPI::Models::HRIS::Individual::gender?,
+          last_name: String?,
+          middle_name: String?,
+          phone_numbers: ::Array[FinchAPI::Models::HRIS::Individual::PhoneNumber?]?,
+          preferred_name: String?,
+          residence: FinchAPI::Models::Location?,
           ?emails: ::Array[FinchAPI::Models::HRIS::Individual::Email]?,
           ?encrypted_ssn: String?,
-          ?ethnicity: FinchAPI::Models::HRIS::Individual::ethnicity?,
-          ?first_name: String?,
-          ?gender: FinchAPI::Models::HRIS::Individual::gender?,
-          ?last_name: String?,
-          ?middle_name: String?,
-          ?phone_numbers: ::Array[FinchAPI::Models::HRIS::Individual::PhoneNumber?]?,
-          ?preferred_name: String?,
-          ?residence: FinchAPI::Models::Location?,
           ?ssn: String?
         ) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::individual
-
-        type email =
-          {
-            data: String,
-            type: FinchAPI::Models::HRIS::Individual::Email::type_?
-          }
-
-        class Email < FinchAPI::Internal::Type::BaseModel
-          attr_reader data: String?
-
-          def data=: (String) -> String
-
-          attr_accessor type: FinchAPI::Models::HRIS::Individual::Email::type_?
-
-          def initialize: (
-            ?data: String,
-            ?type: FinchAPI::Models::HRIS::Individual::Email::type_?
-          ) -> void
-
-          def to_hash: -> FinchAPI::Models::HRIS::Individual::email
-
-          type type_ = :work | :personal
-
-          module Type
-            extend FinchAPI::Internal::Type::Enum
-
-            WORK: :work
-            PERSONAL: :personal
-
-            def self?.values: -> ::Array[FinchAPI::Models::HRIS::Individual::Email::type_]
-          end
-        end
 
         type ethnicity =
           :asian
@@ -147,8 +113,8 @@ module FinchAPI
           attr_accessor type: FinchAPI::Models::HRIS::Individual::PhoneNumber::type_?
 
           def initialize: (
-            ?data: String?,
-            ?type: FinchAPI::Models::HRIS::Individual::PhoneNumber::type_?
+            data: String?,
+            type: FinchAPI::Models::HRIS::Individual::PhoneNumber::type_?
           ) -> void
 
           def to_hash: -> FinchAPI::Models::HRIS::Individual::phone_number
@@ -162,6 +128,36 @@ module FinchAPI
             PERSONAL: :personal
 
             def self?.values: -> ::Array[FinchAPI::Models::HRIS::Individual::PhoneNumber::type_]
+          end
+        end
+
+        type email =
+          {
+            data: String,
+            type: FinchAPI::Models::HRIS::Individual::Email::type_?
+          }
+
+        class Email < FinchAPI::Internal::Type::BaseModel
+          attr_accessor data: String
+
+          attr_accessor type: FinchAPI::Models::HRIS::Individual::Email::type_?
+
+          def initialize: (
+            data: String,
+            type: FinchAPI::Models::HRIS::Individual::Email::type_?
+          ) -> void
+
+          def to_hash: -> FinchAPI::Models::HRIS::Individual::email
+
+          type type_ = :work | :personal
+
+          module Type
+            extend FinchAPI::Internal::Type::Enum
+
+            WORK: :work
+            PERSONAL: :personal
+
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::Individual::Email::type_]
           end
         end
       end
