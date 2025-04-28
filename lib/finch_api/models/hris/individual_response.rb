@@ -7,20 +7,20 @@ module FinchAPI
       class IndividualResponse < FinchAPI::Internal::Type::BaseModel
         # @!attribute body
         #
-        #   @return [FinchAPI::Models::HRIS::Individual, nil]
-        optional :body, -> { FinchAPI::Models::HRIS::Individual }
+        #   @return [FinchAPI::Models::HRIS::Individual]
+        required :body, -> { FinchAPI::Models::HRIS::Individual }
 
         # @!attribute code
         #
-        #   @return [Integer, nil]
-        optional :code, Integer
+        #   @return [Integer]
+        required :code, Integer
 
         # @!attribute individual_id
         #
-        #   @return [String, nil]
-        optional :individual_id, String
+        #   @return [String]
+        required :individual_id, String
 
-        # @!method initialize(body: nil, code: nil, individual_id: nil)
+        # @!method initialize(body:, code:, individual_id:)
         #   @param body [FinchAPI::Models::HRIS::Individual]
         #   @param code [Integer]
         #   @param individual_id [String]

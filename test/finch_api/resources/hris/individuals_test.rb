@@ -19,9 +19,9 @@ class FinchAPI::Test::Resources::HRIS::IndividualsTest < FinchAPI::Test::Resourc
 
     assert_pattern do
       row => {
-        body: FinchAPI::Models::HRIS::Individual | nil,
-        code: Integer | nil,
-        individual_id: String | nil
+        body: FinchAPI::Models::HRIS::Individual,
+        code: Integer,
+        individual_id: String
       }
     end
   end

@@ -7,13 +7,61 @@ module FinchAPI
         # @!attribute id
         #   A stable Finch `id` (UUID v4) for an individual in the company.
         #
-        #   @return [String, nil]
-        optional :id, String
+        #   @return [String]
+        required :id, String
 
         # @!attribute dob
         #
         #   @return [String, nil]
-        optional :dob, String, nil?: true
+        required :dob, String, nil?: true
+
+        # @!attribute ethnicity
+        #   The EEOC-defined ethnicity of the individual.
+        #
+        #   @return [Symbol, FinchAPI::Models::HRIS::Individual::Ethnicity, nil]
+        required :ethnicity, enum: -> { FinchAPI::Models::HRIS::Individual::Ethnicity }, nil?: true
+
+        # @!attribute first_name
+        #   The legal first name of the individual.
+        #
+        #   @return [String, nil]
+        required :first_name, String, nil?: true
+
+        # @!attribute gender
+        #   The gender of the individual.
+        #
+        #   @return [Symbol, FinchAPI::Models::HRIS::Individual::Gender, nil]
+        required :gender, enum: -> { FinchAPI::Models::HRIS::Individual::Gender }, nil?: true
+
+        # @!attribute last_name
+        #   The legal last name of the individual.
+        #
+        #   @return [String, nil]
+        required :last_name, String, nil?: true
+
+        # @!attribute middle_name
+        #   The legal middle name of the individual.
+        #
+        #   @return [String, nil]
+        required :middle_name, String, nil?: true
+
+        # @!attribute phone_numbers
+        #
+        #   @return [Array<FinchAPI::Models::HRIS::Individual::PhoneNumber, nil>, nil]
+        required :phone_numbers,
+                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::HRIS::Individual::PhoneNumber, nil?: true] },
+                 nil?: true
+
+        # @!attribute preferred_name
+        #   The preferred name of the individual.
+        #
+        #   @return [String, nil]
+        required :preferred_name, String, nil?: true
+
+        # @!attribute residence
+        #
+        #   @return [FinchAPI::Models::Location, nil]
+        required :residence, -> { FinchAPI::Models::Location }, nil?: true
 
         # @!attribute emails
         #
@@ -30,54 +78,6 @@ module FinchAPI
         #   @return [String, nil]
         optional :encrypted_ssn, String, nil?: true
 
-        # @!attribute ethnicity
-        #   The EEOC-defined ethnicity of the individual.
-        #
-        #   @return [Symbol, FinchAPI::Models::HRIS::Individual::Ethnicity, nil]
-        optional :ethnicity, enum: -> { FinchAPI::Models::HRIS::Individual::Ethnicity }, nil?: true
-
-        # @!attribute first_name
-        #   The legal first name of the individual.
-        #
-        #   @return [String, nil]
-        optional :first_name, String, nil?: true
-
-        # @!attribute gender
-        #   The gender of the individual.
-        #
-        #   @return [Symbol, FinchAPI::Models::HRIS::Individual::Gender, nil]
-        optional :gender, enum: -> { FinchAPI::Models::HRIS::Individual::Gender }, nil?: true
-
-        # @!attribute last_name
-        #   The legal last name of the individual.
-        #
-        #   @return [String, nil]
-        optional :last_name, String, nil?: true
-
-        # @!attribute middle_name
-        #   The legal middle name of the individual.
-        #
-        #   @return [String, nil]
-        optional :middle_name, String, nil?: true
-
-        # @!attribute phone_numbers
-        #
-        #   @return [Array<FinchAPI::Models::HRIS::Individual::PhoneNumber, nil>, nil]
-        optional :phone_numbers,
-                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::HRIS::Individual::PhoneNumber, nil?: true] },
-                 nil?: true
-
-        # @!attribute preferred_name
-        #   The preferred name of the individual.
-        #
-        #   @return [String, nil]
-        optional :preferred_name, String, nil?: true
-
-        # @!attribute residence
-        #
-        #   @return [FinchAPI::Models::Location, nil]
-        optional :residence, -> { FinchAPI::Models::Location }, nil?: true
-
         # @!attribute ssn
         #   Social Security Number of the individual. This field is only available with the
         #   `ssn` scope enabled and the `options: { include: ['ssn'] }` param set in the
@@ -87,18 +87,13 @@ module FinchAPI
         #   @return [String, nil]
         optional :ssn, String, nil?: true
 
-        # @!method initialize(id: nil, dob: nil, emails: nil, encrypted_ssn: nil, ethnicity: nil, first_name: nil, gender: nil, last_name: nil, middle_name: nil, phone_numbers: nil, preferred_name: nil, residence: nil, ssn: nil)
+        # @!method initialize(id:, dob:, ethnicity:, first_name:, gender:, last_name:, middle_name:, phone_numbers:, preferred_name:, residence:, emails: nil, encrypted_ssn: nil, ssn: nil)
         #   Some parameter documentations has been truncated, see
         #   {FinchAPI::Models::HRIS::Individual} for more details.
         #
         #   @param id [String] A stable Finch `id` (UUID v4) for an individual in the company.
         #
         #   @param dob [String, nil]
-        #
-        #   @param emails [Array<FinchAPI::Models::HRIS::Individual::Email>, nil]
-        #
-        #   @param encrypted_ssn [String, nil] Social Security Number of the individual in **encrypted** format. This field is
-        #   ...
         #
         #   @param ethnicity [Symbol, FinchAPI::Models::HRIS::Individual::Ethnicity, nil] The EEOC-defined ethnicity of the individual.
         #
@@ -116,35 +111,13 @@ module FinchAPI
         #
         #   @param residence [FinchAPI::Models::Location, nil]
         #
+        #   @param emails [Array<FinchAPI::Models::HRIS::Individual::Email>, nil]
+        #
+        #   @param encrypted_ssn [String, nil] Social Security Number of the individual in **encrypted** format. This field is
+        #   ...
+        #
         #   @param ssn [String, nil] Social Security Number of the individual. This field is only available with the
         #   ...
-
-        class Email < FinchAPI::Internal::Type::BaseModel
-          # @!attribute data
-          #
-          #   @return [String, nil]
-          optional :data, String
-
-          # @!attribute type
-          #
-          #   @return [Symbol, FinchAPI::Models::HRIS::Individual::Email::Type, nil]
-          optional :type, enum: -> { FinchAPI::Models::HRIS::Individual::Email::Type }, nil?: true
-
-          # @!method initialize(data: nil, type: nil)
-          #   @param data [String]
-          #   @param type [Symbol, FinchAPI::Models::HRIS::Individual::Email::Type, nil]
-
-          # @see FinchAPI::Models::HRIS::Individual::Email#type
-          module Type
-            extend FinchAPI::Internal::Type::Enum
-
-            WORK = :work
-            PERSONAL = :personal
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
-        end
 
         # The EEOC-defined ethnicity of the individual.
         #
@@ -184,18 +157,45 @@ module FinchAPI
           # @!attribute data
           #
           #   @return [String, nil]
-          optional :data, String, nil?: true
+          required :data, String, nil?: true
 
           # @!attribute type
           #
           #   @return [Symbol, FinchAPI::Models::HRIS::Individual::PhoneNumber::Type, nil]
-          optional :type, enum: -> { FinchAPI::Models::HRIS::Individual::PhoneNumber::Type }, nil?: true
+          required :type, enum: -> { FinchAPI::Models::HRIS::Individual::PhoneNumber::Type }, nil?: true
 
-          # @!method initialize(data: nil, type: nil)
+          # @!method initialize(data:, type:)
           #   @param data [String, nil]
           #   @param type [Symbol, FinchAPI::Models::HRIS::Individual::PhoneNumber::Type, nil]
 
           # @see FinchAPI::Models::HRIS::Individual::PhoneNumber#type
+          module Type
+            extend FinchAPI::Internal::Type::Enum
+
+            WORK = :work
+            PERSONAL = :personal
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
+        class Email < FinchAPI::Internal::Type::BaseModel
+          # @!attribute data
+          #
+          #   @return [String]
+          required :data, String
+
+          # @!attribute type
+          #
+          #   @return [Symbol, FinchAPI::Models::HRIS::Individual::Email::Type, nil]
+          required :type, enum: -> { FinchAPI::Models::HRIS::Individual::Email::Type }, nil?: true
+
+          # @!method initialize(data:, type:)
+          #   @param data [String]
+          #   @param type [Symbol, FinchAPI::Models::HRIS::Individual::Email::Type, nil]
+
+          # @see FinchAPI::Models::HRIS::Individual::Email#type
           module Type
             extend FinchAPI::Internal::Type::Enum
 

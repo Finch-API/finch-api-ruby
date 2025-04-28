@@ -5,23 +5,11 @@ module FinchAPI
     module HRIS
       class Individual < FinchAPI::Internal::Type::BaseModel
         # A stable Finch `id` (UUID v4) for an individual in the company.
-        sig { returns(T.nilable(String)) }
-        attr_reader :id
-
-        sig { params(id: String).void }
-        attr_writer :id
+        sig { returns(String) }
+        attr_accessor :id
 
         sig { returns(T.nilable(String)) }
         attr_accessor :dob
-
-        sig { returns(T.nilable(T::Array[FinchAPI::Models::HRIS::Individual::Email])) }
-        attr_accessor :emails
-
-        # Social Security Number of the individual in **encrypted** format. This field is
-        # only available with the `ssn` scope enabled and the
-        # `options: { include: ['ssn'] }` param set in the body.
-        sig { returns(T.nilable(String)) }
-        attr_accessor :encrypted_ssn
 
         # The EEOC-defined ethnicity of the individual.
         sig { returns(T.nilable(FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol)) }
@@ -56,6 +44,15 @@ module FinchAPI
         sig { params(residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::AnyHash))).void }
         attr_writer :residence
 
+        sig { returns(T.nilable(T::Array[FinchAPI::Models::HRIS::Individual::Email])) }
+        attr_accessor :emails
+
+        # Social Security Number of the individual in **encrypted** format. This field is
+        # only available with the `ssn` scope enabled and the
+        # `options: { include: ['ssn'] }` param set in the body.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :encrypted_ssn
+
         # Social Security Number of the individual. This field is only available with the
         # `ssn` scope enabled and the `options: { include: ['ssn'] }` param set in the
         # body.
@@ -67,8 +64,6 @@ module FinchAPI
           params(
             id: String,
             dob: T.nilable(String),
-            emails: T.nilable(T::Array[T.any(FinchAPI::Models::HRIS::Individual::Email, FinchAPI::Internal::AnyHash)]),
-            encrypted_ssn: T.nilable(String),
             ethnicity: T.nilable(FinchAPI::Models::HRIS::Individual::Ethnicity::OrSymbol),
             first_name: T.nilable(String),
             gender: T.nilable(FinchAPI::Models::HRIS::Individual::Gender::OrSymbol),
@@ -79,33 +74,35 @@ module FinchAPI
             ),
             preferred_name: T.nilable(String),
             residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::AnyHash)),
+            emails: T.nilable(T::Array[T.any(FinchAPI::Models::HRIS::Individual::Email, FinchAPI::Internal::AnyHash)]),
+            encrypted_ssn: T.nilable(String),
             ssn: T.nilable(String)
           )
             .returns(T.attached_class)
         end
         def self.new(
           # A stable Finch `id` (UUID v4) for an individual in the company.
-          id: nil,
-          dob: nil,
+          id:,
+          dob:,
+          # The EEOC-defined ethnicity of the individual.
+          ethnicity:,
+          # The legal first name of the individual.
+          first_name:,
+          # The gender of the individual.
+          gender:,
+          # The legal last name of the individual.
+          last_name:,
+          # The legal middle name of the individual.
+          middle_name:,
+          phone_numbers:,
+          # The preferred name of the individual.
+          preferred_name:,
+          residence:,
           emails: nil,
           # Social Security Number of the individual in **encrypted** format. This field is
           # only available with the `ssn` scope enabled and the
           # `options: { include: ['ssn'] }` param set in the body.
           encrypted_ssn: nil,
-          # The EEOC-defined ethnicity of the individual.
-          ethnicity: nil,
-          # The legal first name of the individual.
-          first_name: nil,
-          # The gender of the individual.
-          gender: nil,
-          # The legal last name of the individual.
-          last_name: nil,
-          # The legal middle name of the individual.
-          middle_name: nil,
-          phone_numbers: nil,
-          # The preferred name of the individual.
-          preferred_name: nil,
-          residence: nil,
           # Social Security Number of the individual. This field is only available with the
           # `ssn` scope enabled and the `options: { include: ['ssn'] }` param set in the
           # body.
@@ -118,8 +115,6 @@ module FinchAPI
               {
                 id: String,
                 dob: T.nilable(String),
-                emails: T.nilable(T::Array[FinchAPI::Models::HRIS::Individual::Email]),
-                encrypted_ssn: T.nilable(String),
                 ethnicity: T.nilable(FinchAPI::Models::HRIS::Individual::Ethnicity::TaggedSymbol),
                 first_name: T.nilable(String),
                 gender: T.nilable(FinchAPI::Models::HRIS::Individual::Gender::TaggedSymbol),
@@ -128,47 +123,13 @@ module FinchAPI
                 phone_numbers: T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::Individual::PhoneNumber)]),
                 preferred_name: T.nilable(String),
                 residence: T.nilable(FinchAPI::Models::Location),
+                emails: T.nilable(T::Array[FinchAPI::Models::HRIS::Individual::Email]),
+                encrypted_ssn: T.nilable(String),
                 ssn: T.nilable(String)
               }
             )
         end
         def to_hash; end
-
-        class Email < FinchAPI::Internal::Type::BaseModel
-          sig { returns(T.nilable(String)) }
-          attr_reader :data
-
-          sig { params(data: String).void }
-          attr_writer :data
-
-          sig { returns(T.nilable(FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol)) }
-          attr_accessor :type
-
-          sig do
-            params(data: String, type: T.nilable(FinchAPI::Models::HRIS::Individual::Email::Type::OrSymbol))
-              .returns(T.attached_class)
-          end
-          def self.new(data: nil, type: nil); end
-
-          sig do
-            override
-              .returns({data: String, type: T.nilable(FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol)})
-          end
-          def to_hash; end
-
-          module Type
-            extend FinchAPI::Internal::Type::Enum
-
-            TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Individual::Email::Type) }
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            WORK = T.let(:work, FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol)
-            PERSONAL = T.let(:personal, FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol)
-
-            sig { override.returns(T::Array[FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol]) }
-            def self.values; end
-          end
-        end
 
         # The EEOC-defined ethnicity of the individual.
         module Ethnicity
@@ -226,7 +187,7 @@ module FinchAPI
             )
               .returns(T.attached_class)
           end
-          def self.new(data: nil, type: nil); end
+          def self.new(data:, type:); end
 
           sig do
             override
@@ -249,6 +210,39 @@ module FinchAPI
             PERSONAL = T.let(:personal, FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::TaggedSymbol)
 
             sig { override.returns(T::Array[FinchAPI::Models::HRIS::Individual::PhoneNumber::Type::TaggedSymbol]) }
+            def self.values; end
+          end
+        end
+
+        class Email < FinchAPI::Internal::Type::BaseModel
+          sig { returns(String) }
+          attr_accessor :data
+
+          sig { returns(T.nilable(FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol)) }
+          attr_accessor :type
+
+          sig do
+            params(data: String, type: T.nilable(FinchAPI::Models::HRIS::Individual::Email::Type::OrSymbol))
+              .returns(T.attached_class)
+          end
+          def self.new(data:, type:); end
+
+          sig do
+            override
+              .returns({data: String, type: T.nilable(FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol)})
+          end
+          def to_hash; end
+
+          module Type
+            extend FinchAPI::Internal::Type::Enum
+
+            TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Individual::Email::Type) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            WORK = T.let(:work, FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol)
+            PERSONAL = T.let(:personal, FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol)
+
+            sig { override.returns(T::Array[FinchAPI::Models::HRIS::Individual::Email::Type::TaggedSymbol]) }
             def self.values; end
           end
         end
