@@ -1,5 +1,35 @@
 # Changelog
 
+## 0.1.0-alpha.13 (2025-04-29)
+
+Full Changelog: [v0.1.0-alpha.12...v0.1.0-alpha.13](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.12...v0.1.0-alpha.13)
+
+### Features
+
+* **api:** api update ([2763397](https://github.com/Finch-API/finch-api-ruby/commit/2763397ba5fb250521e2670796fac35dab3e479d))
+* **api:** api update ([e8ea0b2](https://github.com/Finch-API/finch-api-ruby/commit/e8ea0b2f1288158944ee787612d3a7840212e728))
+* **api:** api update ([a8916c9](https://github.com/Finch-API/finch-api-ruby/commit/a8916c92f39f9cce9b8b1718e1651d9609b16bb8))
+* **api:** api update ([b5ceabb](https://github.com/Finch-API/finch-api-ruby/commit/b5ceabb5157f3cb177c292ac1db38fe2ee2398ed))
+* **api:** api update ([9f9b600](https://github.com/Finch-API/finch-api-ruby/commit/9f9b600482ef6c4c257877fab587338311202d1d))
+* **api:** api update ([9c98649](https://github.com/Finch-API/finch-api-ruby/commit/9c986495c3111434466d972f42477322385a7794))
+* **api:** api update ([7dcee57](https://github.com/Finch-API/finch-api-ruby/commit/7dcee57d8114c3c871e79f660bbf3d6d0aade886))
+* **api:** api update ([b0bc9bb](https://github.com/Finch-API/finch-api-ruby/commit/b0bc9bbb1660ee83252d2d646af79cf55dee8ce9))
+* **api:** api update ([106335f](https://github.com/Finch-API/finch-api-ruby/commit/106335f11705616838e59a848551c51ca73fec8d))
+
+
+### Bug Fixes
+
+* invalid enum names ([89de302](https://github.com/Finch-API/finch-api-ruby/commit/89de3026ca9a44c9b038caf0239d5eb1e04c17a1))
+
+
+### Chores
+
+* add generator safe directory ([7e8da29](https://github.com/Finch-API/finch-api-ruby/commit/7e8da298f02a5cfe40012daffd18ac439c426ff6))
+* **internal:** annotate request options with type aliases in sorbet ([6f63db8](https://github.com/Finch-API/finch-api-ruby/commit/6f63db86081f88b411261a50028c95ca16a29e65))
+* **internal:** remove unnecessary `rbi/lib` folder ([2238283](https://github.com/Finch-API/finch-api-ruby/commit/2238283c857c1a425133f6ff2f1b4f0ae8b1b84a))
+* loosen rubocop rules that don't always make sense ([6699ec0](https://github.com/Finch-API/finch-api-ruby/commit/6699ec06493bd11bd15ef59bdc5c0ba0413f6dba))
+* more accurate type annotations and aliases ([b6d3a80](https://github.com/Finch-API/finch-api-ruby/commit/b6d3a804a617710558f198d26947d57fdfefef14))
+
 ## 0.1.0-alpha.12 (2025-04-18)
 
 Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
