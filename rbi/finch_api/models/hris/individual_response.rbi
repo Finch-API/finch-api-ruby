@@ -6,7 +6,7 @@ module FinchAPI
       class IndividualResponse < FinchAPI::Internal::Type::BaseModel
         sig do
           returns(
-            T.any(FinchAPI::Models::HRIS::Individual::UnionMember0, FinchAPI::Models::HRIS::Individual::UnionMember1)
+            T.any(FinchAPI::Models::HRIS::Individual::UnionMember0, FinchAPI::Models::HRIS::Individual::BatchError)
           )
         end
         attr_accessor :body
@@ -22,7 +22,7 @@ module FinchAPI
             body: T.any(
               FinchAPI::Models::HRIS::Individual::UnionMember0,
               FinchAPI::Internal::AnyHash,
-              FinchAPI::Models::HRIS::Individual::UnionMember1
+              FinchAPI::Models::HRIS::Individual::BatchError
             ),
             code: Integer,
             individual_id: String
@@ -35,7 +35,7 @@ module FinchAPI
           override
             .returns(
               {
-                body: T.any(FinchAPI::Models::HRIS::Individual::UnionMember0, FinchAPI::Models::HRIS::Individual::UnionMember1),
+                body: T.any(FinchAPI::Models::HRIS::Individual::UnionMember0, FinchAPI::Models::HRIS::Individual::BatchError),
                 code: Integer,
                 individual_id: String
               }
