@@ -11,6 +11,9 @@ module FinchAPI
         # `/providers` endpoint to view available types for each provider.
         sig do
           params(
+            company_contribution: T.nilable(
+              T.any(FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution, FinchAPI::Internal::AnyHash)
+            ),
             description: String,
             frequency: T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::OrSymbol),
             type: T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol),
@@ -19,6 +22,8 @@ module FinchAPI
             .returns(FinchAPI::Models::HRIS::CreateCompanyBenefitsResponse)
         end
         def create(
+          # The company match for this benefit.
+          company_contribution: nil,
           # Name of the benefit as it appears in the provider and pay statements. Recommend
           # limiting this to <30 characters due to limitations in specific providers (e.g.
           # Justworks).

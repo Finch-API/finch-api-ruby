@@ -13,7 +13,9 @@ module FinchAPI
         # Creates a new company-wide deduction or contribution. Please use the
         # `/providers` endpoint to view available types for each provider.
         #
-        # @overload create(description: nil, frequency: nil, type: nil, request_options: {})
+        # @overload create(company_contribution: nil, description: nil, frequency: nil, type: nil, request_options: {})
+        #
+        # @param company_contribution [FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution, nil] The company match for this benefit.
         #
         # @param description [String] Name of the benefit as it appears in the provider and pay statements. Recommend
         # ...

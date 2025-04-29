@@ -8,6 +8,14 @@ module FinchAPI
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
+        # @!attribute company_contribution
+        #   The company match for this benefit.
+        #
+        #   @return [FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution, nil]
+        optional :company_contribution,
+                 -> { FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution },
+                 nil?: true
+
         # @!attribute description
         #   Name of the benefit as it appears in the provider and pay statements. Recommend
         #   limiting this to <30 characters due to limitations in specific providers (e.g.
@@ -28,9 +36,11 @@ module FinchAPI
         #   @return [Symbol, FinchAPI::Models::HRIS::BenefitType, nil]
         optional :type, enum: -> { FinchAPI::Models::HRIS::BenefitType }, nil?: true
 
-        # @!method initialize(description: nil, frequency: nil, type: nil, request_options: {})
+        # @!method initialize(company_contribution: nil, description: nil, frequency: nil, type: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {FinchAPI::Models::HRIS::BenefitCreateParams} for more details.
+        #
+        #   @param company_contribution [FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution, nil] The company match for this benefit.
         #
         #   @param description [String] Name of the benefit as it appears in the provider and pay statements. Recommend
         #   ...
@@ -40,6 +50,51 @@ module FinchAPI
         #   @param type [Symbol, FinchAPI::Models::HRIS::BenefitType, nil] Type of benefit.
         #
         #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
+
+        class CompanyContribution < FinchAPI::Internal::Type::BaseModel
+          # @!attribute tiers
+          #
+          #   @return [Array<FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution::Tier>, nil]
+          optional :tiers,
+                   -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution::Tier] }
+
+          # @!attribute type
+          #
+          #   @return [Symbol, FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution::Type, nil]
+          optional :type, enum: -> { FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution::Type }
+
+          # @!method initialize(tiers: nil, type: nil)
+          #   The company match for this benefit.
+          #
+          #   @param tiers [Array<FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution::Tier>]
+          #   @param type [Symbol, FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution::Type]
+
+          class Tier < FinchAPI::Internal::Type::BaseModel
+            # @!attribute match
+            #
+            #   @return [Integer, nil]
+            optional :match, Integer
+
+            # @!attribute threshold
+            #
+            #   @return [Integer, nil]
+            optional :threshold, Integer
+
+            # @!method initialize(match: nil, threshold: nil)
+            #   @param match [Integer]
+            #   @param threshold [Integer]
+          end
+
+          # @see FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution#type
+          module Type
+            extend FinchAPI::Internal::Type::Enum
+
+            MATCH = :match
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
       end
     end
   end
