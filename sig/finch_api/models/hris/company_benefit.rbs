@@ -57,18 +57,18 @@ module FinchAPI
 
           def to_hash: -> FinchAPI::Models::HRIS::CompanyBenefit::company_contribution
 
-          type tier = { match: Float, threshold: Float }
+          type tier = { match: Integer, threshold: Integer }
 
           class Tier < FinchAPI::Internal::Type::BaseModel
-            attr_reader match: Float?
+            attr_reader match: Integer?
 
-            def match=: (Float) -> Float
+            def match=: (Integer) -> Integer
 
-            attr_reader threshold: Float?
+            attr_reader threshold: Integer?
 
-            def threshold=: (Float) -> Float
+            def threshold=: (Integer) -> Integer
 
-            def initialize: (?match: Float, ?threshold: Float) -> void
+            def initialize: (?match: Integer, ?threshold: Integer) -> void
 
             def to_hash: -> FinchAPI::Models::HRIS::CompanyBenefit::CompanyContribution::tier
           end

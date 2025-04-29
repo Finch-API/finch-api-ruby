@@ -106,22 +106,22 @@ module FinchAPI
           def to_hash; end
 
           class Tier < FinchAPI::Internal::Type::BaseModel
-            sig { returns(T.nilable(Float)) }
+            sig { returns(T.nilable(Integer)) }
             attr_reader :match
 
-            sig { params(match: Float).void }
+            sig { params(match: Integer).void }
             attr_writer :match
 
-            sig { returns(T.nilable(Float)) }
+            sig { returns(T.nilable(Integer)) }
             attr_reader :threshold
 
-            sig { params(threshold: Float).void }
+            sig { params(threshold: Integer).void }
             attr_writer :threshold
 
-            sig { params(match: Float, threshold: Float).returns(T.attached_class) }
+            sig { params(match: Integer, threshold: Integer).returns(T.attached_class) }
             def self.new(match: nil, threshold: nil); end
 
-            sig { override.returns({match: Float, threshold: Float}) }
+            sig { override.returns({match: Integer, threshold: Integer}) }
             def to_hash; end
           end
 

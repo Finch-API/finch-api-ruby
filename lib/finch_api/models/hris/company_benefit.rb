@@ -69,17 +69,17 @@ module FinchAPI
           class Tier < FinchAPI::Internal::Type::BaseModel
             # @!attribute match
             #
-            #   @return [Float, nil]
-            optional :match, Float
+            #   @return [Integer, nil]
+            optional :match, Integer
 
             # @!attribute threshold
             #
-            #   @return [Float, nil]
-            optional :threshold, Float
+            #   @return [Integer, nil]
+            optional :threshold, Integer
 
             # @!method initialize(match: nil, threshold: nil)
-            #   @param match [Float]
-            #   @param threshold [Float]
+            #   @param match [Integer]
+            #   @param threshold [Integer]
           end
 
           # @see FinchAPI::Models::HRIS::CompanyBenefit::CompanyContribution#type
