@@ -7,8 +7,8 @@ module FinchAPI
       class IndividualResponse < FinchAPI::Internal::Type::BaseModel
         # @!attribute body
         #
-        #   @return [FinchAPI::Models::HRIS::Individual]
-        required :body, -> { FinchAPI::Models::HRIS::Individual }
+        #   @return [FinchAPI::Models::HRIS::Individual::UnionMember0, FinchAPI::Models::HRIS::Individual::UnionMember1]
+        required :body, union: -> { FinchAPI::Models::HRIS::Individual }
 
         # @!attribute code
         #
@@ -21,7 +21,7 @@ module FinchAPI
         required :individual_id, String
 
         # @!method initialize(body:, code:, individual_id:)
-        #   @param body [FinchAPI::Models::HRIS::Individual]
+        #   @param body [FinchAPI::Models::HRIS::Individual::UnionMember0, FinchAPI::Models::HRIS::Individual::UnionMember1]
         #   @param code [Integer]
         #   @param individual_id [String]
       end

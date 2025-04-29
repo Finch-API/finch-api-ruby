@@ -3,20 +3,20 @@ module FinchAPI
     module HRIS
       type individual_response =
         {
-          body: FinchAPI::Models::HRIS::Individual,
+          body: FinchAPI::Models::HRIS::individual,
           code: Integer,
           individual_id: String
         }
 
       class IndividualResponse < FinchAPI::Internal::Type::BaseModel
-        attr_accessor body: FinchAPI::Models::HRIS::Individual
+        attr_accessor body: FinchAPI::Models::HRIS::individual
 
         attr_accessor code: Integer
 
         attr_accessor individual_id: String
 
         def initialize: (
-          body: FinchAPI::Models::HRIS::Individual,
+          body: FinchAPI::Models::HRIS::individual,
           code: Integer,
           individual_id: String
         ) -> void
