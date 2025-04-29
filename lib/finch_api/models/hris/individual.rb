@@ -8,7 +8,7 @@ module FinchAPI
 
         variant -> { FinchAPI::Models::HRIS::Individual::UnionMember0 }
 
-        variant -> { FinchAPI::Models::HRIS::Individual::UnionMember1 }
+        variant -> { FinchAPI::Models::HRIS::Individual::BatchError }
 
         class UnionMember0 < FinchAPI::Internal::Type::BaseModel
           # @!attribute id
@@ -217,7 +217,7 @@ module FinchAPI
           end
         end
 
-        class UnionMember1 < FinchAPI::Internal::Type::BaseModel
+        class BatchError < FinchAPI::Internal::Type::BaseModel
           # @!attribute code
           #
           #   @return [Float]
@@ -246,7 +246,7 @@ module FinchAPI
         end
 
         # @!method self.variants
-        #   @return [Array(FinchAPI::Models::HRIS::Individual::UnionMember0, FinchAPI::Models::HRIS::Individual::UnionMember1)]
+        #   @return [Array(FinchAPI::Models::HRIS::Individual::UnionMember0, FinchAPI::Models::HRIS::Individual::BatchError)]
       end
     end
   end

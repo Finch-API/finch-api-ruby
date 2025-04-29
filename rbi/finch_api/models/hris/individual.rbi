@@ -279,7 +279,7 @@ module FinchAPI
           end
         end
 
-        class UnionMember1 < FinchAPI::Internal::Type::BaseModel
+        class BatchError < FinchAPI::Internal::Type::BaseModel
           sig { returns(Float) }
           attr_accessor :code
 
@@ -307,7 +307,7 @@ module FinchAPI
         sig do
           override
             .returns(
-              [FinchAPI::Models::HRIS::Individual::UnionMember0, FinchAPI::Models::HRIS::Individual::UnionMember1]
+              [FinchAPI::Models::HRIS::Individual::UnionMember0, FinchAPI::Models::HRIS::Individual::BatchError]
             )
         end
         def self.variants; end

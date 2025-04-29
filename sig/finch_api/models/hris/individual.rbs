@@ -3,7 +3,7 @@ module FinchAPI
     module HRIS
       type individual =
         FinchAPI::Models::HRIS::Individual::UnionMember0
-        | FinchAPI::Models::HRIS::Individual::UnionMember1
+        | FinchAPI::Models::HRIS::Individual::BatchError
 
       module Individual
         extend FinchAPI::Internal::Type::Union
@@ -169,10 +169,10 @@ module FinchAPI
           end
         end
 
-        type union_member1 =
+        type batch_error =
           { code: Float, message: String, name: String, finch_code: String }
 
-        class UnionMember1 < FinchAPI::Internal::Type::BaseModel
+        class BatchError < FinchAPI::Internal::Type::BaseModel
           attr_accessor code: Float
 
           attr_accessor message: String
@@ -190,10 +190,10 @@ module FinchAPI
             ?finch_code: String
           ) -> void
 
-          def to_hash: -> FinchAPI::Models::HRIS::Individual::union_member1
+          def to_hash: -> FinchAPI::Models::HRIS::Individual::batch_error
         end
 
-        def self?.variants: -> [FinchAPI::Models::HRIS::Individual::UnionMember0, FinchAPI::Models::HRIS::Individual::UnionMember1]
+        def self?.variants: -> [FinchAPI::Models::HRIS::Individual::UnionMember0, FinchAPI::Models::HRIS::Individual::BatchError]
       end
     end
   end
