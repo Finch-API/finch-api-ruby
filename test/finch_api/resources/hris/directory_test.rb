@@ -19,7 +19,7 @@ class FinchAPI::Test::Resources::HRIS::DirectoryTest < FinchAPI::Test::ResourceT
 
     assert_pattern do
       row => {
-        id: String | nil,
+        id: String,
         department: FinchAPI::Models::HRIS::IndividualInDirectory::Department | nil,
         first_name: String | nil,
         is_active: FinchAPI::Internal::Type::Boolean | nil,
@@ -46,7 +46,7 @@ class FinchAPI::Test::Resources::HRIS::DirectoryTest < FinchAPI::Test::ResourceT
 
     assert_pattern do
       row => {
-        id: String | nil,
+        id: String,
         department: FinchAPI::Models::HRIS::IndividualInDirectory::Department | nil,
         first_name: String | nil,
         is_active: FinchAPI::Internal::Type::Boolean | nil,

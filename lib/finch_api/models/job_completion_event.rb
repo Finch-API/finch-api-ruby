@@ -3,31 +3,19 @@
 module FinchAPI
   module Models
     class JobCompletionEvent < FinchAPI::Models::BaseWebhookEvent
-      # @!attribute [r] data
+      # @!attribute data
       #
       #   @return [FinchAPI::Models::JobCompletionEvent::Data, nil]
       optional :data, -> { FinchAPI::Models::JobCompletionEvent::Data }
 
-      # @!parse
-      #   # @return [FinchAPI::Models::JobCompletionEvent::Data]
-      #   attr_writer :data
-
-      # @!attribute [r] event_type
+      # @!attribute event_type
       #
       #   @return [Symbol, FinchAPI::Models::JobCompletionEvent::EventType, nil]
       optional :event_type, enum: -> { FinchAPI::Models::JobCompletionEvent::EventType }
 
-      # @!parse
-      #   # @return [Symbol, FinchAPI::Models::JobCompletionEvent::EventType]
-      #   attr_writer :event_type
-
-      # @!parse
-      #   # @param data [FinchAPI::Models::JobCompletionEvent::Data]
-      #   # @param event_type [Symbol, FinchAPI::Models::JobCompletionEvent::EventType]
-      #   #
-      #   def initialize(data: nil, event_type: nil, **) = super
-
-      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+      # @!method initialize(data: nil, event_type: nil)
+      #   @param data [FinchAPI::Models::JobCompletionEvent::Data]
+      #   @param event_type [Symbol, FinchAPI::Models::JobCompletionEvent::EventType]
 
       class Data < FinchAPI::Internal::Type::BaseModel
         # @!attribute job_id
@@ -42,13 +30,10 @@ module FinchAPI
         #   @return [String]
         required :job_url, String
 
-        # @!parse
-        #   # @param job_id [String]
-        #   # @param job_url [String]
-        #   #
-        #   def initialize(job_id:, job_url:, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(job_id:, job_url:)
+        #   @param job_id [String] The id of the job which has completed.
+        #
+        #   @param job_url [String] The url to query the result of the job.
       end
 
       module EventType
@@ -61,11 +46,8 @@ module FinchAPI
         JOB_BENEFIT_UPDATE_COMPLETED = :"job.benefit_update.completed"
         JOB_DATA_SYNC_ALL_COMPLETED = :"job.data_sync_all.completed"
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

@@ -15,6 +15,7 @@ require "minitest/focus"
 require "minitest/hooks/test"
 require "minitest/proveit"
 require "minitest/rg"
+require "webmock"
 
 require_relative "../../lib/finch_api"
 require_relative "resource_namespaces"
@@ -44,8 +45,10 @@ end
 class FinchAPI::Test::SingletonClient < FinchAPI::Client
   include Singleton
 
+  TEST_API_BASE_URL = ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010")
+
   def initialize
-    super(base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"), access_token: "My Access Token")
+    super(base_url: FinchAPI::Test::SingletonClient::TEST_API_BASE_URL, access_token: "My Access Token")
   end
 end
 
@@ -71,4 +74,8 @@ class FinchAPI::Test::ResourceTest < Minitest::Test
   def around_all = async? ? Sync { super } : super
 
   def around = async? ? Async { super }.wait : super
+end
+
+module WebMock
+  AssertionFailure.error_class = Minitest::Assertion
 end

@@ -27,11 +27,8 @@ module FinchAPI
         CUSTOM_POST_TAX = :custom_post_tax
         CUSTOM_PRE_TAX = :custom_pre_tax
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

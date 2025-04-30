@@ -41,6 +41,8 @@ module FinchAPI
           | :pay_statement
           | :benefits
           | :ssn
+          | :deduction
+          | :documents
 
         module Product
           extend FinchAPI::Internal::Type::Enum
@@ -53,6 +55,8 @@ module FinchAPI
           PAY_STATEMENT: :pay_statement
           BENEFITS: :benefits
           SSN: :ssn
+          DEDUCTION: :deduction
+          DOCUMENTS: :documents
 
           def self?.values: -> ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]
         end

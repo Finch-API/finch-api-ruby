@@ -11,7 +11,8 @@ module FinchAPI
         #
         # @overload create(type:, request_options: {})
         #
-        # @param type [Symbol, FinchAPI::Models::Sandbox::JobCreateParams::Type]
+        # @param type [Symbol, FinchAPI::Models::Sandbox::JobCreateParams::Type] The type of job to start. Currently the only supported type is `data_sync_all`
+        #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Models::Sandbox::JobCreateResponse]

@@ -5,8 +5,7 @@ module FinchAPI
     module HRIS
       # @see FinchAPI::Resources::HRIS::Employments#retrieve_many
       class EmploymentRetrieveManyParams < FinchAPI::Internal::Type::BaseModel
-        # @!parse
-        #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
         # @!attribute requests
@@ -16,13 +15,10 @@ module FinchAPI
         required :requests,
                  -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request] }
 
-        # @!parse
-        #   # @param requests [Array<FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request>]
-        #   # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(requests:, request_options: {}, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(requests:, request_options: {})
+        #   @param requests [Array<FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request>] The array of batch requests.
+        #
+        #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 
         class Request < FinchAPI::Internal::Type::BaseModel
           # @!attribute individual_id
@@ -33,12 +29,13 @@ module FinchAPI
           #   @return [String]
           required :individual_id, String
 
-          # @!parse
-          #   # @param individual_id [String]
-          #   #
-          #   def initialize(individual_id:, **) = super
-
-          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+          # @!method initialize(individual_id:)
+          #   Some parameter documentations has been truncated, see
+          #   {FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request} for more
+          #   details.
+          #
+          #   @param individual_id [String] A stable Finch `id` (UUID v4) for an individual in the company. There is no limi
+          #   ...
         end
       end
     end

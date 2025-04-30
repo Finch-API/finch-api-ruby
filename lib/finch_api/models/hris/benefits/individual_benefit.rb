@@ -6,41 +6,25 @@ module FinchAPI
       module Benefits
         # @see FinchAPI::Resources::HRIS::Benefits::Individuals#retrieve_many_benefits
         class IndividualBenefit < FinchAPI::Internal::Type::BaseModel
-          # @!attribute [r] body
+          # @!attribute body
           #
           #   @return [FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body, nil]
           optional :body, -> { FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body }
 
-          # @!parse
-          #   # @return [FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body]
-          #   attr_writer :body
-
-          # @!attribute [r] code
+          # @!attribute code
           #
           #   @return [Integer, nil]
           optional :code, Integer
 
-          # @!parse
-          #   # @return [Integer]
-          #   attr_writer :code
-
-          # @!attribute [r] individual_id
+          # @!attribute individual_id
           #
           #   @return [String, nil]
           optional :individual_id, String
 
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :individual_id
-
-          # @!parse
-          #   # @param body [FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body]
-          #   # @param code [Integer]
-          #   # @param individual_id [String]
-          #   #
-          #   def initialize(body: nil, code: nil, individual_id: nil, **) = super
-
-          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+          # @!method initialize(body: nil, code: nil, individual_id: nil)
+          #   @param body [FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body]
+          #   @param code [Integer]
+          #   @param individual_id [String]
 
           # @see FinchAPI::Models::HRIS::Benefits::IndividualBenefit#body
           class Body < FinchAPI::Internal::Type::BaseModel
@@ -75,25 +59,21 @@ module FinchAPI
                      enum: -> { FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit },
                      nil?: true
 
-            # @!parse
-            #   # @param annual_maximum [Integer, nil]
-            #   # @param catch_up [Boolean, nil]
-            #   # @param company_contribution [FinchAPI::Models::HRIS::BenefitContribution, nil]
-            #   # @param employee_deduction [FinchAPI::Models::HRIS::BenefitContribution, nil]
-            #   # @param hsa_contribution_limit [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit, nil]
-            #   #
-            #   def initialize(
-            #     annual_maximum: nil,
-            #     catch_up: nil,
-            #     company_contribution: nil,
-            #     employee_deduction: nil,
-            #     hsa_contribution_limit: nil,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+            # @!method initialize(annual_maximum: nil, catch_up: nil, company_contribution: nil, employee_deduction: nil, hsa_contribution_limit: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body} for more details.
+            #
+            #   @param annual_maximum [Integer, nil] If the benefit supports annual maximum, the amount in cents for this individual.
+            #   ...
+            #
+            #   @param catch_up [Boolean, nil] If the benefit supports catch up (401k, 403b, etc.), whether catch up is enabled
+            #   ...
+            #
+            #   @param company_contribution [FinchAPI::Models::HRIS::BenefitContribution, nil]
+            #
+            #   @param employee_deduction [FinchAPI::Models::HRIS::BenefitContribution, nil]
+            #
+            #   @param hsa_contribution_limit [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit, nil] Type for HSA contribution limit if the benefit is a HSA.
 
             # Type for HSA contribution limit if the benefit is a HSA.
             #
@@ -104,11 +84,8 @@ module FinchAPI
               INDIVIDUAL = :individual
               FAMILY = :family
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
           end
         end

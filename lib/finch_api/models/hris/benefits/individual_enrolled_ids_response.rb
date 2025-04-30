@@ -17,13 +17,10 @@ module FinchAPI
           #   @return [Array<String>]
           required :individual_ids, FinchAPI::Internal::Type::ArrayOf[String]
 
-          # @!parse
-          #   # @param benefit_id [String]
-          #   # @param individual_ids [Array<String>]
-          #   #
-          #   def initialize(benefit_id:, individual_ids:, **) = super
-
-          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+          # @!method initialize(benefit_id:, individual_ids:)
+          #   @param benefit_id [String] The id of the benefit.
+          #
+          #   @param individual_ids [Array<String>]
         end
       end
     end

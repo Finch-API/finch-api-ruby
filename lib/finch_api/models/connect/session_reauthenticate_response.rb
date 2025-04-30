@@ -17,13 +17,10 @@ module FinchAPI
         #   @return [String]
         required :session_id, String
 
-        # @!parse
-        #   # @param connect_url [String]
-        #   # @param session_id [String]
-        #   #
-        #   def initialize(connect_url:, session_id:, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(connect_url:, session_id:)
+        #   @param connect_url [String] The Connect URL to redirect the user to for reauthentication
+        #
+        #   @param session_id [String] The unique identifier for the created connect session
       end
     end
   end

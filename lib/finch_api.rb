@@ -19,15 +19,6 @@ require "uri"
 # We already ship the preferred sorbet manifests in the package itself.
 # `tapioca` currently does not offer us a way to opt out of unnecessary compilation.
 if Object.const_defined?(:Tapioca) && caller.chain([$PROGRAM_NAME]).chain(ARGV).grep(/tapioca/)
-  Warning.warn(
-    <<~WARN
-      \n
-      ⚠️ skipped loading of "finch_api" gem under `tapioca`.
-
-      This message is normal and expected if you are running a `tapioca` command, and does not impact `.rbi` generation.
-      \n
-    WARN
-  )
   return
 end
 
@@ -40,7 +31,7 @@ require_relative "finch_api/internal/util"
 require_relative "finch_api/internal/type/converter"
 require_relative "finch_api/internal/type/unknown"
 require_relative "finch_api/internal/type/boolean"
-require_relative "finch_api/internal/type/io_like"
+require_relative "finch_api/internal/type/file_input"
 require_relative "finch_api/internal/type/enum"
 require_relative "finch_api/internal/type/union"
 require_relative "finch_api/internal/type/array_of"
@@ -50,6 +41,7 @@ require_relative "finch_api/internal/type/base_page"
 require_relative "finch_api/internal/type/request_parameters"
 require_relative "finch_api/internal"
 require_relative "finch_api/request_options"
+require_relative "finch_api/file_part"
 require_relative "finch_api/errors"
 require_relative "finch_api/internal/transport/base_client"
 require_relative "finch_api/internal/transport/pooled_net_requester"

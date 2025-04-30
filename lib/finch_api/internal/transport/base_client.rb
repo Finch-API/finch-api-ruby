@@ -93,7 +93,11 @@ module FinchAPI
                 URI.join(url, response_headers["location"])
               rescue ArgumentError
                 message = "Server responded with status #{status} but no valid location header."
-                raise FinchAPI::Errors::APIConnectionError.new(url: url, message: message)
+                raise FinchAPI::Errors::APIConnectionError.new(
+                  url: url,
+                  response: response_headers,
+                  message: message
+                )
               end
 
             request = {**request, url: location}
@@ -101,7 +105,11 @@ module FinchAPI
             case [url.scheme, location.scheme]
             in ["https", "http"]
               message = "Tried to redirect to a insecure URL"
-              raise FinchAPI::Errors::APIConnectionError.new(url: url, message: message)
+              raise FinchAPI::Errors::APIConnectionError.new(
+                url: url,
+                response: response_headers,
+                message: message
+              )
             else
               nil
             end
@@ -145,7 +153,7 @@ module FinchAPI
 
         # @api private
         # @return [FinchAPI::Internal::Transport::PooledNetRequester]
-        attr_accessor :requester
+        attr_reader :requester
 
         # @api private
         #
@@ -206,11 +214,11 @@ module FinchAPI
         #
         #   @option req [Object, nil] :body
         #
-        #   @option req [Symbol, nil] :unwrap
+        #   @option req [Symbol, Integer, Array<Symbol, Integer>, Proc, nil] :unwrap
         #
-        #   @option req [Class, nil] :page
+        #   @option req [Class<FinchAPI::Internal::Type::BasePage>, nil] :page
         #
-        #   @option req [Class, nil] :stream
+        #   @option req [Class<FinchAPI::Internal::Type::BaseStream>, nil] :stream
         #
         #   @option req [FinchAPI::Internal::Type::Converter, Class, nil] :model
         #
@@ -245,7 +253,7 @@ module FinchAPI
 
           if @idempotency_header &&
              !headers.key?(@idempotency_header) &&
-             !Net::HTTP::IDEMPOTENT_METHODS_.include?(method.to_s.upcase)
+             (!Net::HTTP::IDEMPOTENT_METHODS_.include?(method.to_s.upcase) || opts.key?(:idempotency_key))
             headers[@idempotency_header] = opts.fetch(:idempotency_key) { generate_idempotency_key }
           end
 
@@ -350,7 +358,7 @@ module FinchAPI
             self.class.reap_connection!(status, stream: stream)
 
             message = "Failed to complete the request within #{self.class::MAX_REDIRECTS} redirects."
-            raise FinchAPI::Errors::APIConnectionError.new(url: url, message: message)
+            raise FinchAPI::Errors::APIConnectionError.new(url: url, response: response, message: message)
           in 300..399
             self.class.reap_connection!(status, stream: stream)
 
@@ -407,11 +415,11 @@ module FinchAPI
         #
         # @param body [Object, nil]
         #
-        # @param unwrap [Symbol, nil]
+        # @param unwrap [Symbol, Integer, Array<Symbol, Integer>, Proc, nil]
         #
-        # @param page [Class, nil]
+        # @param page [Class<FinchAPI::Internal::Type::BasePage>, nil]
         #
-        # @param stream [Class, nil]
+        # @param stream [Class<FinchAPI::Internal::Type::BaseStream>, nil]
         #
         # @param model [FinchAPI::Internal::Type::Converter, Class, nil]
         #
@@ -460,6 +468,8 @@ module FinchAPI
           end
         end
 
+        # @api private
+        #
         # @return [String]
         def inspect
           # rubocop:disable Layout/LineLength

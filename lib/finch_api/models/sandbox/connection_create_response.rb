@@ -11,6 +11,8 @@ module FinchAPI
         required :access_token, String
 
         # @!attribute account_id
+        #   @deprecated
+        #
         #   [DEPRECATED] Use `connection_id` to associate a connection with an access token
         #
         #   @return [String]
@@ -23,6 +25,8 @@ module FinchAPI
                  enum: -> { FinchAPI::Models::Sandbox::ConnectionCreateResponse::AuthenticationType }
 
         # @!attribute company_id
+        #   @deprecated
+        #
         #   [DEPRECATED] Use `connection_id` to associate a connection with an access token
         #
         #   @return [String]
@@ -45,40 +49,27 @@ module FinchAPI
         #   @return [String]
         required :provider_id, String
 
-        # @!attribute [r] token_type
+        # @!attribute token_type
         #
         #   @return [String, nil]
         optional :token_type, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :token_type
-
-        # @!parse
-        #   # @param access_token [String]
-        #   # @param account_id [String]
-        #   # @param authentication_type [Symbol, FinchAPI::Models::Sandbox::ConnectionCreateResponse::AuthenticationType]
-        #   # @param company_id [String]
-        #   # @param connection_id [String]
-        #   # @param products [Array<String>]
-        #   # @param provider_id [String]
-        #   # @param token_type [String]
-        #   #
-        #   def initialize(
-        #     access_token:,
-        #     account_id:,
-        #     authentication_type:,
-        #     company_id:,
-        #     connection_id:,
-        #     products:,
-        #     provider_id:,
-        #     token_type: nil,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(access_token:, account_id:, authentication_type:, company_id:, connection_id:, products:, provider_id:, token_type: nil)
+        #   @param access_token [String]
+        #
+        #   @param account_id [String] [DEPRECATED] Use `connection_id` to associate a connection with an access token
+        #
+        #   @param authentication_type [Symbol, FinchAPI::Models::Sandbox::ConnectionCreateResponse::AuthenticationType]
+        #
+        #   @param company_id [String] [DEPRECATED] Use `connection_id` to associate a connection with an access token
+        #
+        #   @param connection_id [String] The ID of the new connection
+        #
+        #   @param products [Array<String>]
+        #
+        #   @param provider_id [String] The ID of the provider associated with the `access_token`.
+        #
+        #   @param token_type [String]
 
         # @see FinchAPI::Models::Sandbox::ConnectionCreateResponse#authentication_type
         module AuthenticationType
@@ -89,11 +80,8 @@ module FinchAPI
           OAUTH = :oauth
           ASSISTED = :assisted
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

@@ -7,14 +7,23 @@ module FinchAPI
         # @return [FinchAPI::Resources::HRIS::Benefits::Individuals]
         attr_reader :individuals
 
+        # Some parameter documentations has been truncated, see
+        # {FinchAPI::Models::HRIS::BenefitCreateParams} for more details.
+        #
         # Creates a new company-wide deduction or contribution. Please use the
         # `/providers` endpoint to view available types for each provider.
         #
-        # @overload create(description: nil, frequency: nil, type: nil, request_options: {})
+        # @overload create(company_contribution: nil, description: nil, frequency: nil, type: nil, request_options: {})
         #
-        # @param description [String]
-        # @param frequency [Symbol, FinchAPI::Models::HRIS::BenefitFrequency, nil]
-        # @param type [Symbol, FinchAPI::Models::HRIS::BenefitType, nil]
+        # @param company_contribution [FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution, nil] The company match for this benefit.
+        #
+        # @param description [String] Name of the benefit as it appears in the provider and pay statements. Recommend
+        # ...
+        #
+        # @param frequency [Symbol, FinchAPI::Models::HRIS::BenefitFrequency, nil] The frequency of the benefit deduction/contribution.
+        #
+        # @param type [Symbol, FinchAPI::Models::HRIS::BenefitType, nil] Type of benefit.
+        #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Models::HRIS::CreateCompanyBenefitsResponse]
@@ -55,7 +64,9 @@ module FinchAPI
         # @overload update(benefit_id, description: nil, request_options: {})
         #
         # @param benefit_id [String]
-        # @param description [String]
+        #
+        # @param description [String] Updated name or description.
+        #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Models::HRIS::UpdateCompanyBenefitResponse]

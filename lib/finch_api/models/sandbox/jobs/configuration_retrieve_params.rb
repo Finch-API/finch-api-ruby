@@ -6,16 +6,11 @@ module FinchAPI
       module Jobs
         # @see FinchAPI::Resources::Sandbox::Jobs::Configuration#retrieve
         class ConfigurationRetrieveParams < FinchAPI::Internal::Type::BaseModel
-          # @!parse
-          #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+          extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
 
-          # @!parse
-          #   # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
-          #   #
-          #   def initialize(request_options: {}, **) = super
-
-          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+          # @!method initialize(request_options: {})
+          #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
         end
       end
     end

@@ -17,13 +17,10 @@ module FinchAPI
         #   @return [String]
         required :payment_id, String
 
-        # @!parse
-        #   # @param pay_date [String]
-        #   # @param payment_id [String]
-        #   #
-        #   def initialize(pay_date:, payment_id:, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(pay_date:, payment_id:)
+        #   @param pay_date [String] The date of the payment.
+        #
+        #   @param payment_id [String] The ID of the payment.
       end
     end
   end

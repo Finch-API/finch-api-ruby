@@ -5,8 +5,7 @@ module FinchAPI
     module Connect
       # @see FinchAPI::Resources::Connect::Sessions#reauthenticate
       class SessionReauthenticateParams < FinchAPI::Internal::Type::BaseModel
-        # @!parse
-        #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
         # @!attribute connection_id
@@ -36,16 +35,20 @@ module FinchAPI
         #   @return [String, nil]
         optional :redirect_uri, String, nil?: true
 
-        # @!parse
-        #   # @param connection_id [String]
-        #   # @param minutes_to_expire [Integer, nil]
-        #   # @param products [Array<Symbol, FinchAPI::Models::Connect::SessionReauthenticateParams::Product>, nil]
-        #   # @param redirect_uri [String, nil]
-        #   # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(connection_id:, minutes_to_expire: nil, products: nil, redirect_uri: nil, request_options: {}, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(connection_id:, minutes_to_expire: nil, products: nil, redirect_uri: nil, request_options: {})
+        #   Some parameter documentations has been truncated, see
+        #   {FinchAPI::Models::Connect::SessionReauthenticateParams} for more details.
+        #
+        #   @param connection_id [String] The ID of the existing connection to reauthenticate
+        #
+        #   @param minutes_to_expire [Integer, nil] The number of minutes until the session expires (defaults to 43,200, which is 30
+        #   ...
+        #
+        #   @param products [Array<Symbol, FinchAPI::Models::Connect::SessionReauthenticateParams::Product>, nil] The products to request access to (optional for reauthentication)
+        #
+        #   @param redirect_uri [String, nil] The URI to redirect to after the Connect flow is completed
+        #
+        #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 
         # The Finch products that can be requested during the Connect flow.
         module Product
@@ -59,12 +62,11 @@ module FinchAPI
           PAY_STATEMENT = :pay_statement
           BENEFITS = :benefits
           SSN = :ssn
+          DEDUCTION = :deduction
+          DOCUMENTS = :documents
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

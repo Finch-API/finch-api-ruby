@@ -28,6 +28,7 @@ class FinchAPI::Test::Resources::HRIS::BenefitsTest < FinchAPI::Test::ResourceTe
     assert_pattern do
       response => {
         benefit_id: String,
+        company_contribution: FinchAPI::Models::HRIS::CompanyBenefit::CompanyContribution | nil,
         description: String | nil,
         frequency: FinchAPI::Models::HRIS::BenefitFrequency | nil,
         type: FinchAPI::Models::HRIS::BenefitType | nil
@@ -67,6 +68,7 @@ class FinchAPI::Test::Resources::HRIS::BenefitsTest < FinchAPI::Test::ResourceTe
     assert_pattern do
       row => {
         benefit_id: String,
+        company_contribution: FinchAPI::Models::HRIS::CompanyBenefit::CompanyContribution | nil,
         description: String | nil,
         frequency: FinchAPI::Models::HRIS::BenefitFrequency | nil,
         type: FinchAPI::Models::HRIS::BenefitType | nil

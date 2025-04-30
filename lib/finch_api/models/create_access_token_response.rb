@@ -11,6 +11,8 @@ module FinchAPI
       required :access_token, String
 
       # @!attribute account_id
+      #   @deprecated
+      #
       #   [DEPRECATED] Use `connection_id` to identify the connection instead of this
       #   account ID.
       #
@@ -24,6 +26,8 @@ module FinchAPI
       required :client_type, enum: -> { FinchAPI::Models::CreateAccessTokenResponse::ClientType }
 
       # @!attribute company_id
+      #   @deprecated
+      #
       #   [DEPRECATED] Use `connection_id` to identify the connection instead of this
       #   company ID.
       #
@@ -64,45 +68,38 @@ module FinchAPI
       #   @return [String, nil]
       optional :customer_id, String, nil?: true
 
-      # @!attribute [r] token_type
+      # @!attribute token_type
       #   The RFC 8693 token type (Finch uses `bearer` tokens)
       #
       #   @return [String, nil]
       optional :token_type, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :token_type
-
-      # @!parse
-      #   # @param access_token [String]
-      #   # @param account_id [String]
-      #   # @param client_type [Symbol, FinchAPI::Models::CreateAccessTokenResponse::ClientType]
-      #   # @param company_id [String]
-      #   # @param connection_id [String]
-      #   # @param connection_type [Symbol, FinchAPI::Models::CreateAccessTokenResponse::ConnectionType]
-      #   # @param products [Array<String>]
-      #   # @param provider_id [String]
-      #   # @param customer_id [String, nil]
-      #   # @param token_type [String]
-      #   #
-      #   def initialize(
-      #     access_token:,
-      #     account_id:,
-      #     client_type:,
-      #     company_id:,
-      #     connection_id:,
-      #     connection_type:,
-      #     products:,
-      #     provider_id:,
-      #     customer_id: nil,
-      #     token_type: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+      # @!method initialize(access_token:, account_id:, client_type:, company_id:, connection_id:, connection_type:, products:, provider_id:, customer_id: nil, token_type: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {FinchAPI::Models::CreateAccessTokenResponse} for more details.
+      #
+      #   @param access_token [String] The access token for the connection.
+      #
+      #   @param account_id [String] [DEPRECATED] Use `connection_id` to identify the connection instead of this acco
+      #   ...
+      #
+      #   @param client_type [Symbol, FinchAPI::Models::CreateAccessTokenResponse::ClientType] The type of application associated with a token.
+      #
+      #   @param company_id [String] [DEPRECATED] Use `connection_id` to identify the connection instead of this comp
+      #   ...
+      #
+      #   @param connection_id [String] The Finch UUID of the connection associated with the `access_token`.
+      #
+      #   @param connection_type [Symbol, FinchAPI::Models::CreateAccessTokenResponse::ConnectionType] The type of the connection associated with the token. ...
+      #
+      #   @param products [Array<String>] An array of the authorized products associated with the `access_token`.
+      #
+      #   @param provider_id [String] The ID of the provider associated with the `access_token`.
+      #
+      #   @param customer_id [String, nil] The ID of your customer you provided to Finch when a connect session was created
+      #   ...
+      #
+      #   @param token_type [String] The RFC 8693 token type (Finch uses `bearer` tokens)
 
       # The type of application associated with a token.
       #
@@ -114,11 +111,8 @@ module FinchAPI
         DEVELOPMENT = :development
         SANDBOX = :sandbox
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # The type of the connection associated with the token.
@@ -133,11 +127,8 @@ module FinchAPI
         PROVIDER = :provider
         FINCH = :finch
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

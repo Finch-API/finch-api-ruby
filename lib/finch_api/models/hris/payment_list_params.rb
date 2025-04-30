@@ -5,8 +5,7 @@ module FinchAPI
     module HRIS
       # @see FinchAPI::Resources::HRIS::Payments#list
       class PaymentListParams < FinchAPI::Internal::Type::BaseModel
-        # @!parse
-        #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
         # @!attribute end_date
@@ -23,14 +22,17 @@ module FinchAPI
         #   @return [Date]
         required :start_date, Date
 
-        # @!parse
-        #   # @param end_date [Date]
-        #   # @param start_date [Date]
-        #   # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(end_date:, start_date:, request_options: {}, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(end_date:, start_date:, request_options: {})
+        #   Some parameter documentations has been truncated, see
+        #   {FinchAPI::Models::HRIS::PaymentListParams} for more details.
+        #
+        #   @param end_date [Date] The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD` forma
+        #   ...
+        #
+        #   @param start_date [Date] The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD` for
+        #   ...
+        #
+        #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

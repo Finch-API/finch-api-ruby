@@ -28,19 +28,22 @@ module FinchAPI
       #   @return [Symbol, FinchAPI::Models::Income::Unit, nil]
       optional :unit, enum: -> { FinchAPI::Models::Income::Unit }, nil?: true
 
-      # @!parse
-      #   # The employee's income as reported by the provider. This may not always be
-      #   # annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
-      #   # depending on what information the provider returns.
-      #   #
-      #   # @param amount [Integer, nil]
-      #   # @param currency [String, nil]
-      #   # @param effective_date [String, nil]
-      #   # @param unit [Symbol, FinchAPI::Models::Income::Unit, nil]
-      #   #
-      #   def initialize(amount: nil, currency: nil, effective_date: nil, unit: nil, **) = super
-
-      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+      # @!method initialize(amount: nil, currency: nil, effective_date: nil, unit: nil)
+      #   Some parameter documentations has been truncated, see {FinchAPI::Models::Income}
+      #   for more details.
+      #
+      #   The employee's income as reported by the provider. This may not always be
+      #   annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
+      #   depending on what information the provider returns.
+      #
+      #   @param amount [Integer, nil] The income amount in cents.
+      #
+      #   @param currency [String, nil] The currency code.
+      #
+      #   @param effective_date [String, nil] The date the income amount went into effect.
+      #
+      #   @param unit [Symbol, FinchAPI::Models::Income::Unit, nil] The income unit of payment. Options: `yearly`, `quarterly`, `monthly`, `semi_mon
+      #   ...
 
       # The income unit of payment. Options: `yearly`, `quarterly`, `monthly`,
       # `semi_monthly`, `bi_weekly`, `weekly`, `daily`, `hourly`, and `fixed`.
@@ -59,11 +62,8 @@ module FinchAPI
         HOURLY = :hourly
         FIXED = :fixed
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

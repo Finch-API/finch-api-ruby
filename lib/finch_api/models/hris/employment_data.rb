@@ -4,15 +4,11 @@ module FinchAPI
   module Models
     module HRIS
       class EmploymentData < FinchAPI::Internal::Type::BaseModel
-        # @!attribute [r] id
+        # @!attribute id
         #   A stable Finch `id` (UUID v4) for an individual in the company.
         #
         #   @return [String, nil]
         optional :id, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :id
 
         # @!attribute class_code
         #   Worker's compensation classification code for this employee
@@ -129,87 +125,74 @@ module FinchAPI
         optional :title, String, nil?: true
 
         # @!attribute work_id
+        #   @deprecated
+        #
         #   This field is deprecated in favour of `source_id`
         #
         #   @return [String, nil]
         optional :work_id, String, nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param class_code [String, nil]
-        #   # @param custom_fields [Array<FinchAPI::Models::HRIS::EmploymentData::CustomField>, nil]
-        #   # @param department [FinchAPI::Models::HRIS::EmploymentData::Department, nil]
-        #   # @param employment [FinchAPI::Models::HRIS::EmploymentData::Employment, nil]
-        #   # @param employment_status [Symbol, FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus, nil]
-        #   # @param end_date [String, nil]
-        #   # @param first_name [String, nil]
-        #   # @param income [FinchAPI::Models::Income, nil]
-        #   # @param income_history [Array<FinchAPI::Models::Income, nil>, nil]
-        #   # @param is_active [Boolean, nil]
-        #   # @param last_name [String, nil]
-        #   # @param latest_rehire_date [String, nil]
-        #   # @param location [FinchAPI::Models::Location, nil]
-        #   # @param manager [FinchAPI::Models::HRIS::EmploymentData::Manager, nil]
-        #   # @param middle_name [String, nil]
-        #   # @param source_id [String, nil]
-        #   # @param start_date [String, nil]
-        #   # @param title [String, nil]
-        #   # @param work_id [String, nil]
-        #   #
-        #   def initialize(
-        #     id: nil,
-        #     class_code: nil,
-        #     custom_fields: nil,
-        #     department: nil,
-        #     employment: nil,
-        #     employment_status: nil,
-        #     end_date: nil,
-        #     first_name: nil,
-        #     income: nil,
-        #     income_history: nil,
-        #     is_active: nil,
-        #     last_name: nil,
-        #     latest_rehire_date: nil,
-        #     location: nil,
-        #     manager: nil,
-        #     middle_name: nil,
-        #     source_id: nil,
-        #     start_date: nil,
-        #     title: nil,
-        #     work_id: nil,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(id: nil, class_code: nil, custom_fields: nil, department: nil, employment: nil, employment_status: nil, end_date: nil, first_name: nil, income: nil, income_history: nil, is_active: nil, last_name: nil, latest_rehire_date: nil, location: nil, manager: nil, middle_name: nil, source_id: nil, start_date: nil, title: nil, work_id: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {FinchAPI::Models::HRIS::EmploymentData} for more details.
+        #
+        #   @param id [String] A stable Finch `id` (UUID v4) for an individual in the company.
+        #
+        #   @param class_code [String, nil] Worker's compensation classification code for this employee
+        #
+        #   @param custom_fields [Array<FinchAPI::Models::HRIS::EmploymentData::CustomField>, nil] Custom fields for the individual. These are fields which are defined by the empl
+        #   ...
+        #
+        #   @param department [FinchAPI::Models::HRIS::EmploymentData::Department, nil] The department object.
+        #
+        #   @param employment [FinchAPI::Models::HRIS::EmploymentData::Employment, nil] The employment object.
+        #
+        #   @param employment_status [Symbol, FinchAPI::Models::HRIS::EmploymentData::EmploymentStatus, nil] The detailed employment status of the individual. Available options: `active`, `
+        #   ...
+        #
+        #   @param end_date [String, nil]
+        #
+        #   @param first_name [String, nil] The legal first name of the individual.
+        #
+        #   @param income [FinchAPI::Models::Income, nil] The employee's income as reported by the provider. This may not always be annual
+        #   ...
+        #
+        #   @param income_history [Array<FinchAPI::Models::Income, nil>, nil] The array of income history.
+        #
+        #   @param is_active [Boolean, nil] `true` if the individual an an active employee or contractor at the company.
+        #
+        #   @param last_name [String, nil] The legal last name of the individual.
+        #
+        #   @param latest_rehire_date [String, nil]
+        #
+        #   @param location [FinchAPI::Models::Location, nil]
+        #
+        #   @param manager [FinchAPI::Models::HRIS::EmploymentData::Manager, nil] The manager object representing the manager of the individual within the org.
+        #
+        #   @param middle_name [String, nil] The legal middle name of the individual.
+        #
+        #   @param source_id [String, nil] The source system's unique employment identifier for this individual
+        #
+        #   @param start_date [String, nil]
+        #
+        #   @param title [String, nil] The current title of the individual.
+        #
+        #   @param work_id [String, nil] This field is deprecated in favour of `source_id`
 
         class CustomField < FinchAPI::Internal::Type::BaseModel
-          # @!attribute [r] name
+          # @!attribute name
           #
           #   @return [String, nil]
           optional :name, String
 
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :name
-
-          # @!attribute [r] value
+          # @!attribute value
           #
           #   @return [Object, nil]
           optional :value, FinchAPI::Internal::Type::Unknown
 
-          # @!parse
-          #   # @return [Object]
-          #   attr_writer :value
-
-          # @!parse
-          #   # @param name [String]
-          #   # @param value [Object]
-          #   #
-          #   def initialize(name: nil, value: nil, **) = super
-
-          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+          # @!method initialize(name: nil, value: nil)
+          #   @param name [String]
+          #   @param value [Object]
         end
 
         # @see FinchAPI::Models::HRIS::EmploymentData#department
@@ -220,14 +203,10 @@ module FinchAPI
           #   @return [String, nil]
           optional :name, String, nil?: true
 
-          # @!parse
-          #   # The department object.
-          #   #
-          #   # @param name [String, nil]
-          #   #
-          #   def initialize(name: nil, **) = super
-
-          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+          # @!method initialize(name: nil)
+          #   The department object.
+          #
+          #   @param name [String, nil] The name of the department associated with the individual.
         end
 
         # @see FinchAPI::Models::HRIS::EmploymentData#employment
@@ -245,15 +224,16 @@ module FinchAPI
           #   @return [Symbol, FinchAPI::Models::HRIS::EmploymentData::Employment::Type, nil]
           optional :type, enum: -> { FinchAPI::Models::HRIS::EmploymentData::Employment::Type }, nil?: true
 
-          # @!parse
-          #   # The employment object.
-          #   #
-          #   # @param subtype [Symbol, FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype, nil]
-          #   # @param type [Symbol, FinchAPI::Models::HRIS::EmploymentData::Employment::Type, nil]
-          #   #
-          #   def initialize(subtype: nil, type: nil, **) = super
-
-          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+          # @!method initialize(subtype: nil, type: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {FinchAPI::Models::HRIS::EmploymentData::Employment} for more details.
+          #
+          #   The employment object.
+          #
+          #   @param subtype [Symbol, FinchAPI::Models::HRIS::EmploymentData::Employment::Subtype, nil] The secondary employment type of the individual. Options: `full_time`, `part_tim
+          #   ...
+          #
+          #   @param type [Symbol, FinchAPI::Models::HRIS::EmploymentData::Employment::Type, nil] The main employment type of the individual.
 
           # The secondary employment type of the individual. Options: `full_time`,
           # `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
@@ -269,11 +249,8 @@ module FinchAPI
             SEASONAL = :seasonal
             INDIVIDUAL_CONTRACTOR = :individual_contractor
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
 
           # The main employment type of the individual.
@@ -285,11 +262,8 @@ module FinchAPI
             EMPLOYEE = :employee
             CONTRACTOR = :contractor
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -308,33 +282,22 @@ module FinchAPI
           RETIRED = :retired
           TERMINATED = :terminated
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see FinchAPI::Models::HRIS::EmploymentData#manager
         class Manager < FinchAPI::Internal::Type::BaseModel
-          # @!attribute [r] id
+          # @!attribute id
           #   A stable Finch `id` (UUID v4) for an individual in the company.
           #
           #   @return [String, nil]
           optional :id, String
 
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :id
-
-          # @!parse
-          #   # The manager object representing the manager of the individual within the org.
-          #   #
-          #   # @param id [String]
-          #   #
-          #   def initialize(id: nil, **) = super
-
-          # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+          # @!method initialize(id: nil)
+          #   The manager object representing the manager of the individual within the org.
+          #
+          #   @param id [String] A stable Finch `id` (UUID v4) for an individual in the company.
         end
       end
     end

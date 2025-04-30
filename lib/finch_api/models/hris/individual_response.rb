@@ -5,41 +5,25 @@ module FinchAPI
     module HRIS
       # @see FinchAPI::Resources::HRIS::Individuals#retrieve_many
       class IndividualResponse < FinchAPI::Internal::Type::BaseModel
-        # @!attribute [r] body
+        # @!attribute body
         #
-        #   @return [FinchAPI::Models::HRIS::Individual, nil]
-        optional :body, -> { FinchAPI::Models::HRIS::Individual }
+        #   @return [FinchAPI::Models::HRIS::Individual::UnionMember0, FinchAPI::Models::HRIS::Individual::BatchError]
+        required :body, union: -> { FinchAPI::Models::HRIS::Individual }
 
-        # @!parse
-        #   # @return [FinchAPI::Models::HRIS::Individual]
-        #   attr_writer :body
-
-        # @!attribute [r] code
+        # @!attribute code
         #
-        #   @return [Integer, nil]
-        optional :code, Integer
+        #   @return [Integer]
+        required :code, Integer
 
-        # @!parse
-        #   # @return [Integer]
-        #   attr_writer :code
-
-        # @!attribute [r] individual_id
+        # @!attribute individual_id
         #
-        #   @return [String, nil]
-        optional :individual_id, String
+        #   @return [String]
+        required :individual_id, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :individual_id
-
-        # @!parse
-        #   # @param body [FinchAPI::Models::HRIS::Individual]
-        #   # @param code [Integer]
-        #   # @param individual_id [String]
-        #   #
-        #   def initialize(body: nil, code: nil, individual_id: nil, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(body:, code:, individual_id:)
+        #   @param body [FinchAPI::Models::HRIS::Individual::UnionMember0, FinchAPI::Models::HRIS::Individual::BatchError]
+        #   @param code [Integer]
+        #   @param individual_id [String]
       end
     end
   end

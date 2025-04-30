@@ -4,8 +4,7 @@ module FinchAPI
   module Models
     # @see FinchAPI::Resources::RequestForwarding#forward
     class RequestForwardingForwardParams < FinchAPI::Internal::Type::BaseModel
-      # @!parse
-      #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+      extend FinchAPI::Internal::Type::RequestParameters::Converter
       include FinchAPI::Internal::Type::RequestParameters
 
       # @!attribute method_
@@ -45,17 +44,26 @@ module FinchAPI
       #   @return [Object, nil]
       optional :params, FinchAPI::Internal::Type::Unknown, nil?: true
 
-      # @!parse
-      #   # @param method_ [String]
-      #   # @param route [String]
-      #   # @param data [String, nil]
-      #   # @param headers [Object, nil]
-      #   # @param params [Object, nil]
-      #   # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(method_:, route:, data: nil, headers: nil, params: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+      # @!method initialize(method_:, route:, data: nil, headers: nil, params: nil, request_options: {})
+      #   Some parameter documentations has been truncated, see
+      #   {FinchAPI::Models::RequestForwardingForwardParams} for more details.
+      #
+      #   @param method_ [String] The HTTP method for the forwarded request. Valid values include: `GET` , `POST`
+      #   ...
+      #
+      #   @param route [String] The URL route path for the forwarded request. This value must begin with a forwa
+      #   ...
+      #
+      #   @param data [String, nil] The body for the forwarded request. This value must be specified as either a str
+      #   ...
+      #
+      #   @param headers [Object, nil] The HTTP headers to include on the forwarded request. This value must be specifi
+      #   ...
+      #
+      #   @param params [Object, nil] The query parameters for the forwarded request. This value must be specified as
+      #   ...
+      #
+      #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

@@ -5,6 +5,7 @@ module FinchAPI
         attr_reader individuals: FinchAPI::Resources::HRIS::Benefits::Individuals
 
         def create: (
+          ?company_contribution: FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution?,
           ?description: String,
           ?frequency: FinchAPI::Models::HRIS::benefit_frequency?,
           ?type: FinchAPI::Models::HRIS::benefit_type?,

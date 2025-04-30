@@ -5,8 +5,7 @@ module FinchAPI
     module Sandbox
       # @see FinchAPI::Resources::Sandbox::Jobs#create
       class JobCreateParams < FinchAPI::Internal::Type::BaseModel
-        # @!parse
-        #   extend FinchAPI::Internal::Type::RequestParameters::Converter
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
         # @!attribute type
@@ -15,13 +14,10 @@ module FinchAPI
         #   @return [Symbol, FinchAPI::Models::Sandbox::JobCreateParams::Type]
         required :type, enum: -> { FinchAPI::Models::Sandbox::JobCreateParams::Type }
 
-        # @!parse
-        #   # @param type [Symbol, FinchAPI::Models::Sandbox::JobCreateParams::Type]
-        #   # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(type:, request_options: {}, **) = super
-
-        # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+        # @!method initialize(type:, request_options: {})
+        #   @param type [Symbol, FinchAPI::Models::Sandbox::JobCreateParams::Type] The type of job to start. Currently the only supported type is `data_sync_all`
+        #
+        #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 
         # The type of job to start. Currently the only supported type is `data_sync_all`
         module Type
@@ -29,11 +25,8 @@ module FinchAPI
 
           DATA_SYNC_ALL = :data_sync_all
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

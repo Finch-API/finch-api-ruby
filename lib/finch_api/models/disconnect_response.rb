@@ -10,12 +10,8 @@ module FinchAPI
       #   @return [String]
       required :status, String
 
-      # @!parse
-      #   # @param status [String]
-      #   #
-      #   def initialize(status:, **) = super
-
-      # def initialize: (Hash | FinchAPI::Internal::Type::BaseModel) -> void
+      # @!method initialize(status:)
+      #   @param status [String] If the request is successful, Finch will return “success” (HTTP 200 status).
     end
   end
 end
