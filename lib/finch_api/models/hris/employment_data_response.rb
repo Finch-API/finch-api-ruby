@@ -7,22 +7,22 @@ module FinchAPI
       class EmploymentDataResponse < FinchAPI::Internal::Type::BaseModel
         # @!attribute body
         #
-        #   @return [FinchAPI::Models::HRIS::EmploymentData, nil]
-        optional :body, -> { FinchAPI::Models::HRIS::EmploymentData }
+        #   @return [FinchAPI::Models::HRIS::EmploymentData::UnionMember0, FinchAPI::Models::HRIS::EmploymentData::BatchError]
+        required :body, union: -> { FinchAPI::Models::HRIS::EmploymentData }
 
         # @!attribute code
         #
-        #   @return [Integer, nil]
-        optional :code, Integer
+        #   @return [Integer]
+        required :code, Integer
 
         # @!attribute individual_id
         #   A stable Finch `id` (UUID v4) for an individual in the company.
         #
-        #   @return [String, nil]
-        optional :individual_id, String
+        #   @return [String]
+        required :individual_id, String
 
-        # @!method initialize(body: nil, code: nil, individual_id: nil)
-        #   @param body [FinchAPI::Models::HRIS::EmploymentData]
+        # @!method initialize(body:, code:, individual_id:)
+        #   @param body [FinchAPI::Models::HRIS::EmploymentData::UnionMember0, FinchAPI::Models::HRIS::EmploymentData::BatchError]
         #
         #   @param code [Integer]
         #

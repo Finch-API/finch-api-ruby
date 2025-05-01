@@ -7,28 +7,28 @@ module FinchAPI
       #   The income amount in cents.
       #
       #   @return [Integer, nil]
-      optional :amount, Integer, nil?: true
+      required :amount, Integer, nil?: true
 
       # @!attribute currency
       #   The currency code.
       #
       #   @return [String, nil]
-      optional :currency, String, nil?: true
+      required :currency, String, nil?: true
 
       # @!attribute effective_date
       #   The date the income amount went into effect.
       #
       #   @return [String, nil]
-      optional :effective_date, String, nil?: true
+      required :effective_date, String, nil?: true
 
       # @!attribute unit
       #   The income unit of payment. Options: `yearly`, `quarterly`, `monthly`,
       #   `semi_monthly`, `bi_weekly`, `weekly`, `daily`, `hourly`, and `fixed`.
       #
       #   @return [Symbol, FinchAPI::Models::Income::Unit, nil]
-      optional :unit, enum: -> { FinchAPI::Models::Income::Unit }, nil?: true
+      required :unit, enum: -> { FinchAPI::Models::Income::Unit }, nil?: true
 
-      # @!method initialize(amount: nil, currency: nil, effective_date: nil, unit: nil)
+      # @!method initialize(amount:, currency:, effective_date:, unit:)
       #   Some parameter documentations has been truncated, see {FinchAPI::Models::Income}
       #   for more details.
       #

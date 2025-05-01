@@ -34,14 +34,14 @@ module FinchAPI
       end
       def self.new(
         # The income amount in cents.
-        amount: nil,
+        amount:,
         # The currency code.
-        currency: nil,
+        currency:,
         # The date the income amount went into effect.
-        effective_date: nil,
+        effective_date:,
         # The income unit of payment. Options: `yearly`, `quarterly`, `monthly`,
         # `semi_monthly`, `bi_weekly`, `weekly`, `daily`, `hourly`, and `fixed`.
-        unit: nil
+        unit:
       ); end
       sig do
         override
