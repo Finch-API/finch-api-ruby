@@ -3,30 +3,22 @@ module FinchAPI
     module HRIS
       type employment_data_response =
         {
-          body: FinchAPI::Models::HRIS::EmploymentData,
+          body: FinchAPI::Models::HRIS::employment_data,
           code: Integer,
           individual_id: String
         }
 
       class EmploymentDataResponse < FinchAPI::Internal::Type::BaseModel
-        attr_reader body: FinchAPI::Models::HRIS::EmploymentData?
+        attr_accessor body: FinchAPI::Models::HRIS::employment_data
 
-        def body=: (
-          FinchAPI::Models::HRIS::EmploymentData
-        ) -> FinchAPI::Models::HRIS::EmploymentData
+        attr_accessor code: Integer
 
-        attr_reader code: Integer?
-
-        def code=: (Integer) -> Integer
-
-        attr_reader individual_id: String?
-
-        def individual_id=: (String) -> String
+        attr_accessor individual_id: String
 
         def initialize: (
-          ?body: FinchAPI::Models::HRIS::EmploymentData,
-          ?code: Integer,
-          ?individual_id: String
+          body: FinchAPI::Models::HRIS::employment_data,
+          code: Integer,
+          individual_id: String
         ) -> void
 
         def to_hash: -> FinchAPI::Models::HRIS::employment_data_response

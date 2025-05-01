@@ -18,10 +18,10 @@ module FinchAPI
       attr_accessor unit: FinchAPI::Models::Income::unit?
 
       def initialize: (
-        ?amount: Integer?,
-        ?currency: String?,
-        ?effective_date: String?,
-        ?unit: FinchAPI::Models::Income::unit?
+        amount: Integer?,
+        currency: String?,
+        effective_date: String?,
+        unit: FinchAPI::Models::Income::unit?
       ) -> void
 
       def to_hash: -> FinchAPI::Models::income
