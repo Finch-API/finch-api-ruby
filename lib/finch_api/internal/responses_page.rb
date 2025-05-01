@@ -57,8 +57,8 @@ module FinchAPI
         super
 
         case page_data
-        in {responses: Array | nil => responses}
-          @responses = responses&.map { FinchAPI::Internal::Type::Converter.coerce(@model, _1) }
+        in {responses: Array => responses}
+          @responses = responses.map { FinchAPI::Internal::Type::Converter.coerce(@model, _1) }
         else
         end
       end
