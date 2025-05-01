@@ -1,0 +1,63 @@
+module FinchAPI
+  class AccessTokenCreateParams = FinchAPI::Models::AccessTokenCreateParams
+
+  class AccountDisconnectParams = FinchAPI::Models::AccountDisconnectParams
+
+  class AccountIntrospectParams = FinchAPI::Models::AccountIntrospectParams
+
+  class AccountUpdateEvent = FinchAPI::Models::AccountUpdateEvent
+
+  class BaseWebhookEvent = FinchAPI::Models::BaseWebhookEvent
+
+  class CompanyEvent = FinchAPI::Models::CompanyEvent
+
+  module Connect = FinchAPI::Models::Connect
+
+  module ConnectionStatusType = FinchAPI::Models::ConnectionStatusType
+
+  class CreateAccessTokenResponse = FinchAPI::Models::CreateAccessTokenResponse
+
+  class DirectoryEvent = FinchAPI::Models::DirectoryEvent
+
+  class DisconnectResponse = FinchAPI::Models::DisconnectResponse
+
+  class EmploymentEvent = FinchAPI::Models::EmploymentEvent
+
+  module HRIS = FinchAPI::Models::HRIS
+
+  class Income = FinchAPI::Models::Income
+
+  class IndividualEvent = FinchAPI::Models::IndividualEvent
+
+  class Introspection = FinchAPI::Models::Introspection
+
+  class JobCompletionEvent = FinchAPI::Models::JobCompletionEvent
+
+  module Jobs = FinchAPI::Models::Jobs
+
+  class Location = FinchAPI::Models::Location
+
+  class Money = FinchAPI::Models::Money
+
+  module OperationSupport = FinchAPI::Models::OperationSupport
+
+  class OperationSupportMatrix = FinchAPI::Models::OperationSupportMatrix
+
+  class Paging = FinchAPI::Models::Paging
+
+  class PaymentEvent = FinchAPI::Models::PaymentEvent
+
+  module Payroll = FinchAPI::Models::Payroll
+
+  class PayStatementEvent = FinchAPI::Models::PayStatementEvent
+
+  class Provider = FinchAPI::Models::Provider
+
+  class ProviderListParams = FinchAPI::Models::ProviderListParams
+
+  class RequestForwardingForwardParams = FinchAPI::Models::RequestForwardingForwardParams
+
+  module Sandbox = FinchAPI::Models::Sandbox
+
+  module WebhookEvent = FinchAPI::Models::WebhookEvent
+end
