@@ -24,7 +24,7 @@ module FinchAPI
 
       # @return [Boolean]
       def next_page?
-        paging&.offset.to_i + individuals.to_a.size < paging&.count.to_i
+        !individuals.to_a.empty? && (paging&.offset.to_i + individuals.to_a.size < paging&.count.to_i)
       end
 
       # @raise [FinchAPI::HTTP::Error]
@@ -69,8 +69,8 @@ module FinchAPI
         super
 
         case page_data
-        in {individuals: Array | nil => individuals}
-          @individuals = individuals&.map { FinchAPI::Internal::Type::Converter.coerce(@model, _1) }
+        in {individuals: Array => individuals}
+          @individuals = individuals.map { FinchAPI::Internal::Type::Converter.coerce(@model, _1) }
         else
         end
         case page_data
