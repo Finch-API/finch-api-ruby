@@ -211,20 +211,20 @@ module FinchAPI
               # The metadata to be attached to the entity by existing rules. It is a key-value
               # pairs where the values can be of any type (string, number, boolean, object,
               # array, etc.).
-              sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+              sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
               attr_reader :metadata
 
-              sig { params(metadata: T::Hash[Symbol, T.anything]).void }
+              sig { params(metadata: T::Hash[Symbol, T.nilable(T.anything)]).void }
               attr_writer :metadata
 
-              sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
+              sig { params(metadata: T::Hash[Symbol, T.nilable(T.anything)]).returns(T.attached_class) }
               def self.new(
                 # The metadata to be attached to the entity by existing rules. It is a key-value
                 # pairs where the values can be of any type (string, number, boolean, object,
                 # array, etc.).
                 metadata: nil
               ); end
-              sig { override.returns({metadata: T::Hash[Symbol, T.anything]}) }
+              sig { override.returns({metadata: T::Hash[Symbol, T.nilable(T.anything)]}) }
               def to_hash; end
             end
           end
@@ -366,20 +366,20 @@ module FinchAPI
               # The metadata to be attached to the entity by existing rules. It is a key-value
               # pairs where the values can be of any type (string, number, boolean, object,
               # array, etc.).
-              sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+              sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
               attr_reader :metadata
 
-              sig { params(metadata: T::Hash[Symbol, T.anything]).void }
+              sig { params(metadata: T::Hash[Symbol, T.nilable(T.anything)]).void }
               attr_writer :metadata
 
-              sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
+              sig { params(metadata: T::Hash[Symbol, T.nilable(T.anything)]).returns(T.attached_class) }
               def self.new(
                 # The metadata to be attached to the entity by existing rules. It is a key-value
                 # pairs where the values can be of any type (string, number, boolean, object,
                 # array, etc.).
                 metadata: nil
               ); end
-              sig { override.returns({metadata: T::Hash[Symbol, T.anything]}) }
+              sig { override.returns({metadata: T::Hash[Symbol, T.nilable(T.anything)]}) }
               def to_hash; end
             end
           end
@@ -488,20 +488,20 @@ module FinchAPI
               # The metadata to be attached to the entity by existing rules. It is a key-value
               # pairs where the values can be of any type (string, number, boolean, object,
               # array, etc.).
-              sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+              sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
               attr_reader :metadata
 
-              sig { params(metadata: T::Hash[Symbol, T.anything]).void }
+              sig { params(metadata: T::Hash[Symbol, T.nilable(T.anything)]).void }
               attr_writer :metadata
 
-              sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
+              sig { params(metadata: T::Hash[Symbol, T.nilable(T.anything)]).returns(T.attached_class) }
               def self.new(
                 # The metadata to be attached to the entity by existing rules. It is a key-value
                 # pairs where the values can be of any type (string, number, boolean, object,
                 # array, etc.).
                 metadata: nil
               ); end
-              sig { override.returns({metadata: T::Hash[Symbol, T.anything]}) }
+              sig { override.returns({metadata: T::Hash[Symbol, T.nilable(T.anything)]}) }
               def to_hash; end
             end
           end
@@ -620,20 +620,20 @@ module FinchAPI
               # The metadata to be attached to the entity by existing rules. It is a key-value
               # pairs where the values can be of any type (string, number, boolean, object,
               # array, etc.).
-              sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+              sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
               attr_reader :metadata
 
-              sig { params(metadata: T::Hash[Symbol, T.anything]).void }
+              sig { params(metadata: T::Hash[Symbol, T.nilable(T.anything)]).void }
               attr_writer :metadata
 
-              sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
+              sig { params(metadata: T::Hash[Symbol, T.nilable(T.anything)]).returns(T.attached_class) }
               def self.new(
                 # The metadata to be attached to the entity by existing rules. It is a key-value
                 # pairs where the values can be of any type (string, number, boolean, object,
                 # array, etc.).
                 metadata: nil
               ); end
-              sig { override.returns({metadata: T::Hash[Symbol, T.anything]}) }
+              sig { override.returns({metadata: T::Hash[Symbol, T.nilable(T.anything)]}) }
               def to_hash; end
             end
           end
