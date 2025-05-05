@@ -140,14 +140,14 @@ module FinchAPI
 
               def to_hash: -> FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::attributes
 
-              type metadata = { metadata: ::Hash[Symbol, top] }
+              type metadata = { metadata: ::Hash[Symbol, top?] }
 
               class Metadata < FinchAPI::Internal::Type::BaseModel
-                attr_reader metadata: ::Hash[Symbol, top]?
+                attr_reader metadata: ::Hash[Symbol, top?]?
 
-                def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+                def metadata=: (::Hash[Symbol, top?]) -> ::Hash[Symbol, top?]
 
-                def initialize: (?metadata: ::Hash[Symbol, top]) -> void
+                def initialize: (?metadata: ::Hash[Symbol, top?]) -> void
 
                 def to_hash: -> FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::metadata
               end
@@ -241,14 +241,14 @@ module FinchAPI
 
               def to_hash: -> FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::attributes
 
-              type metadata = { metadata: ::Hash[Symbol, top] }
+              type metadata = { metadata: ::Hash[Symbol, top?] }
 
               class Metadata < FinchAPI::Internal::Type::BaseModel
-                attr_reader metadata: ::Hash[Symbol, top]?
+                attr_reader metadata: ::Hash[Symbol, top?]?
 
-                def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+                def metadata=: (::Hash[Symbol, top?]) -> ::Hash[Symbol, top?]
 
-                def initialize: (?metadata: ::Hash[Symbol, top]) -> void
+                def initialize: (?metadata: ::Hash[Symbol, top?]) -> void
 
                 def to_hash: -> FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes::metadata
               end
@@ -303,14 +303,14 @@ module FinchAPI
 
               def to_hash: -> FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::attributes
 
-              type metadata = { metadata: ::Hash[Symbol, top] }
+              type metadata = { metadata: ::Hash[Symbol, top?] }
 
               class Metadata < FinchAPI::Internal::Type::BaseModel
-                attr_reader metadata: ::Hash[Symbol, top]?
+                attr_reader metadata: ::Hash[Symbol, top?]?
 
-                def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+                def metadata=: (::Hash[Symbol, top?]) -> ::Hash[Symbol, top?]
 
-                def initialize: (?metadata: ::Hash[Symbol, top]) -> void
+                def initialize: (?metadata: ::Hash[Symbol, top?]) -> void
 
                 def to_hash: -> FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes::metadata
               end
@@ -380,14 +380,14 @@ module FinchAPI
 
               def to_hash: -> FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::attributes
 
-              type metadata = { metadata: ::Hash[Symbol, top] }
+              type metadata = { metadata: ::Hash[Symbol, top?] }
 
               class Metadata < FinchAPI::Internal::Type::BaseModel
-                attr_reader metadata: ::Hash[Symbol, top]?
+                attr_reader metadata: ::Hash[Symbol, top?]?
 
-                def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+                def metadata=: (::Hash[Symbol, top?]) -> ::Hash[Symbol, top?]
 
-                def initialize: (?metadata: ::Hash[Symbol, top]) -> void
+                def initialize: (?metadata: ::Hash[Symbol, top?]) -> void
 
                 def to_hash: -> FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::metadata
               end

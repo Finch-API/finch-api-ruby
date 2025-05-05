@@ -198,15 +198,16 @@ module FinchAPI
                 #   pairs where the values can be of any type (string, number, boolean, object,
                 #   array, etc.).
                 #
-                #   @return [Hash{Symbol=>Object}, nil]
-                optional :metadata, FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown]
+                #   @return [Hash{Symbol=>Object, nil}, nil]
+                optional :metadata,
+                         FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown, nil?: true]
 
                 # @!method initialize(metadata: nil)
                 #   Some parameter documentations has been truncated, see
                 #   {FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::Metadata}
                 #   for more details.
                 #
-                #   @param metadata [Hash{Symbol=>Object}] The metadata to be attached to the entity by existing rules. It is a key-value p
+                #   @param metadata [Hash{Symbol=>Object, nil}] The metadata to be attached to the entity by existing rules. It is a key-value p
                 #   ...
               end
             end
@@ -305,15 +306,16 @@ module FinchAPI
                 #   pairs where the values can be of any type (string, number, boolean, object,
                 #   array, etc.).
                 #
-                #   @return [Hash{Symbol=>Object}, nil]
-                optional :metadata, FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown]
+                #   @return [Hash{Symbol=>Object, nil}, nil]
+                optional :metadata,
+                         FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown, nil?: true]
 
                 # @!method initialize(metadata: nil)
                 #   Some parameter documentations has been truncated, see
                 #   {FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes::Metadata}
                 #   for more details.
                 #
-                #   @param metadata [Hash{Symbol=>Object}] The metadata to be attached to the entity by existing rules. It is a key-value p
+                #   @param metadata [Hash{Symbol=>Object, nil}] The metadata to be attached to the entity by existing rules. It is a key-value p
                 #   ...
               end
             end
@@ -380,15 +382,16 @@ module FinchAPI
                 #   pairs where the values can be of any type (string, number, boolean, object,
                 #   array, etc.).
                 #
-                #   @return [Hash{Symbol=>Object}, nil]
-                optional :metadata, FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown]
+                #   @return [Hash{Symbol=>Object, nil}, nil]
+                optional :metadata,
+                         FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown, nil?: true]
 
                 # @!method initialize(metadata: nil)
                 #   Some parameter documentations has been truncated, see
                 #   {FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes::Metadata}
                 #   for more details.
                 #
-                #   @param metadata [Hash{Symbol=>Object}] The metadata to be attached to the entity by existing rules. It is a key-value p
+                #   @param metadata [Hash{Symbol=>Object, nil}] The metadata to be attached to the entity by existing rules. It is a key-value p
                 #   ...
               end
             end
@@ -478,15 +481,16 @@ module FinchAPI
                 #   pairs where the values can be of any type (string, number, boolean, object,
                 #   array, etc.).
                 #
-                #   @return [Hash{Symbol=>Object}, nil]
-                optional :metadata, FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown]
+                #   @return [Hash{Symbol=>Object, nil}, nil]
+                optional :metadata,
+                         FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown, nil?: true]
 
                 # @!method initialize(metadata: nil)
                 #   Some parameter documentations has been truncated, see
                 #   {FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::Metadata}
                 #   for more details.
                 #
-                #   @param metadata [Hash{Symbol=>Object}] The metadata to be attached to the entity by existing rules. It is a key-value p
+                #   @param metadata [Hash{Symbol=>Object, nil}] The metadata to be attached to the entity by existing rules. It is a key-value p
                 #   ...
               end
             end
