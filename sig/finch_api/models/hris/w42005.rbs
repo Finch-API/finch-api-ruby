@@ -3,39 +3,37 @@ module FinchAPI
     module HRIS
       type w42005 =
         {
-          data: FinchAPI::Models::HRIS::W42005::Data,
-          type: FinchAPI::Models::HRIS::W42005::type_,
+          data: FinchAPI::HRIS::W42005::Data,
+          type: FinchAPI::HRIS::W42005::type_,
           year: Float?
         }
 
       class W42005 < FinchAPI::Internal::Type::BaseModel
-        attr_reader data: FinchAPI::Models::HRIS::W42005::Data?
+        attr_reader data: FinchAPI::HRIS::W42005::Data?
 
         def data=: (
-          FinchAPI::Models::HRIS::W42005::Data
-        ) -> FinchAPI::Models::HRIS::W42005::Data
+          FinchAPI::HRIS::W42005::Data
+        ) -> FinchAPI::HRIS::W42005::Data
 
-        attr_reader type: FinchAPI::Models::HRIS::W42005::type_?
+        attr_reader type: FinchAPI::HRIS::W42005::type_?
 
         def type=: (
-          FinchAPI::Models::HRIS::W42005::type_
-        ) -> FinchAPI::Models::HRIS::W42005::type_
+          FinchAPI::HRIS::W42005::type_
+        ) -> FinchAPI::HRIS::W42005::type_
 
         attr_accessor year: Float?
 
         def initialize: (
-          ?data: FinchAPI::Models::HRIS::W42005::Data,
-          ?type: FinchAPI::Models::HRIS::W42005::type_,
+          ?data: FinchAPI::HRIS::W42005::Data,
+          ?type: FinchAPI::HRIS::W42005::type_,
           ?year: Float?
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::HRIS::w42005
 
         type data =
           {
             additional_withholding: Integer?,
-            exemption: FinchAPI::Models::HRIS::W42005::Data::exemption,
-            filing_status: FinchAPI::Models::HRIS::W42005::Data::filing_status?,
+            exemption: FinchAPI::HRIS::W42005::Data::exemption,
+            filing_status: FinchAPI::HRIS::W42005::Data::filing_status?,
             individual_id: String,
             total_number_of_allowances: Integer?
           }
@@ -43,13 +41,13 @@ module FinchAPI
         class Data < FinchAPI::Internal::Type::BaseModel
           attr_accessor additional_withholding: Integer?
 
-          attr_reader exemption: FinchAPI::Models::HRIS::W42005::Data::exemption?
+          attr_reader exemption: FinchAPI::HRIS::W42005::Data::exemption?
 
           def exemption=: (
-            FinchAPI::Models::HRIS::W42005::Data::exemption
-          ) -> FinchAPI::Models::HRIS::W42005::Data::exemption
+            FinchAPI::HRIS::W42005::Data::exemption
+          ) -> FinchAPI::HRIS::W42005::Data::exemption
 
-          attr_accessor filing_status: FinchAPI::Models::HRIS::W42005::Data::filing_status?
+          attr_accessor filing_status: FinchAPI::HRIS::W42005::Data::filing_status?
 
           attr_reader individual_id: String?
 
@@ -59,13 +57,11 @@ module FinchAPI
 
           def initialize: (
             ?additional_withholding: Integer?,
-            ?exemption: FinchAPI::Models::HRIS::W42005::Data::exemption,
-            ?filing_status: FinchAPI::Models::HRIS::W42005::Data::filing_status?,
+            ?exemption: FinchAPI::HRIS::W42005::Data::exemption,
+            ?filing_status: FinchAPI::HRIS::W42005::Data::filing_status?,
             ?individual_id: String,
             ?total_number_of_allowances: Integer?
           ) -> void
-
-          def to_hash: -> FinchAPI::Models::HRIS::W42005::data
 
           type exemption = :exempt | :non_exempt
 
@@ -75,7 +71,7 @@ module FinchAPI
             EXEMPT: :exempt
             NON_EXEMPT: :non_exempt
 
-            def self?.values: -> ::Array[FinchAPI::Models::HRIS::W42005::Data::exemption]
+            def self?.values: -> ::Array[FinchAPI::HRIS::W42005::Data::exemption]
           end
 
           type filing_status =
@@ -88,7 +84,7 @@ module FinchAPI
             MARRIED_BUT_WITHHOLD_AT_HIGHER_SINGLE_RATE: :married_but_withhold_at_higher_single_rate
             SINGLE: :single
 
-            def self?.values: -> ::Array[FinchAPI::Models::HRIS::W42005::Data::filing_status]
+            def self?.values: -> ::Array[FinchAPI::HRIS::W42005::Data::filing_status]
           end
         end
 
@@ -99,7 +95,7 @@ module FinchAPI
 
           W4_2005: :w4_2005
 
-          def self?.values: -> ::Array[FinchAPI::Models::HRIS::W42005::type_]
+          def self?.values: -> ::Array[FinchAPI::HRIS::W42005::type_]
         end
       end
     end

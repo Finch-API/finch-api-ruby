@@ -4,14 +4,14 @@ module FinchAPI
       class Automated
         def create: (
           type: FinchAPI::Models::Jobs::AutomatedCreateParams::type_,
-          params: FinchAPI::Models::Jobs::AutomatedCreateParams::Params,
+          params: FinchAPI::Jobs::AutomatedCreateParams::Params,
           ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::Models::Jobs::AutomatedCreateResponse
 
         def retrieve: (
           String job_id,
           ?request_options: FinchAPI::request_opts
-        ) -> FinchAPI::Models::Jobs::AutomatedAsyncJob
+        ) -> FinchAPI::Jobs::AutomatedAsyncJob
 
         def list: (
           ?limit: Integer,

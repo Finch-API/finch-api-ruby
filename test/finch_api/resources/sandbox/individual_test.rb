@@ -23,7 +23,7 @@ class FinchAPI::Test::Resources::Sandbox::IndividualTest < FinchAPI::Test::Resou
         middle_name: String | nil,
         phone_numbers: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber, nil?: true]) | nil,
         preferred_name: String | nil,
-        residence: FinchAPI::Models::Location | nil,
+        residence: FinchAPI::Location | nil,
         ssn: String | nil
       }
     end

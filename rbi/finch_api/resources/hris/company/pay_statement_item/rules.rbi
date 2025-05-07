@@ -14,22 +14,20 @@ module FinchAPI
             # information is available.
             sig do
               params(
-                attributes: T.any(
-                  FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes,
-                  FinchAPI::Internal::AnyHash
-                ),
-                conditions: T::Array[
-                  T.any(
-                    FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition,
-                    FinchAPI::Internal::AnyHash
-                  )
-                ],
+                attributes:
+                  FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes::OrHash,
+                conditions:
+                  T::Array[
+                    FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::OrHash
+                  ],
                 effective_end_date: T.nilable(String),
                 effective_start_date: T.nilable(String),
-                entity_type: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::EntityType::OrSymbol,
-                request_options: FinchAPI::RequestOpts
+                entity_type:
+                  FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::EntityType::OrSymbol,
+                request_options: FinchAPI::RequestOptions::OrHash
+              ).returns(
+                FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse
               )
-                .returns(FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse)
             end
             def create(
               # Specifies the fields to be applied when the condition is met.
@@ -42,36 +40,52 @@ module FinchAPI
               # The entity type to which the rule is applied.
               entity_type: nil,
               request_options: {}
-            ); end
+            )
+            end
+
             # **Beta:** this endpoint currently serves employers onboarded after March 4th and
             # historical support will be added soon Update a rule for a pay statement item.
             sig do
-              params(rule_id: String, optional_property: T.anything, request_options: FinchAPI::RequestOpts)
-                .returns(FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse)
+              params(
+                rule_id: String,
+                optional_property: T.anything,
+                request_options: FinchAPI::RequestOptions::OrHash
+              ).returns(
+                FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse
+              )
             end
-            def update(rule_id, optional_property: nil, request_options: {}); end
+            def update(rule_id, optional_property: nil, request_options: {})
+            end
 
             # **Beta:** this endpoint currently serves employers onboarded after March 4th and
             # historical support will be added soon List all rules of a connection account.
             sig do
-              params(request_options: FinchAPI::RequestOpts)
-                .returns(
-                  FinchAPI::Internal::ResponsesPage[FinchAPI::Models::HRIS::Company::PayStatementItem::RuleListResponse]
-                )
+              params(request_options: FinchAPI::RequestOptions::OrHash).returns(
+                FinchAPI::Internal::ResponsesPage[
+                  FinchAPI::Models::HRIS::Company::PayStatementItem::RuleListResponse
+                ]
+              )
             end
-            def list(request_options: {}); end
+            def list(request_options: {})
+            end
 
             # **Beta:** this endpoint currently serves employers onboarded after March 4th and
             # historical support will be added soon Delete a rule for a pay statement item.
             sig do
-              params(rule_id: String, request_options: FinchAPI::RequestOpts)
-                .returns(FinchAPI::Models::HRIS::Company::PayStatementItem::RuleDeleteResponse)
+              params(
+                rule_id: String,
+                request_options: FinchAPI::RequestOptions::OrHash
+              ).returns(
+                FinchAPI::Models::HRIS::Company::PayStatementItem::RuleDeleteResponse
+              )
             end
-            def delete(rule_id, request_options: {}); end
+            def delete(rule_id, request_options: {})
+            end
 
             # @api private
             sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-            def self.new(client:); end
+            def self.new(client:)
+            end
           end
         end
       end

@@ -16,10 +16,9 @@ module FinchAPI
         #
         # @param provider_id [String] The provider associated with the connection
         #
-        # @param authentication_type [Symbol, FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType]
+        # @param authentication_type [Symbol, FinchAPI::Sandbox::ConnectionCreateParams::AuthenticationType]
         #
         # @param employee_size [Integer] Optional: the size of the employer to be created with this connection. Defaults
-        # ...
         #
         # @param products [Array<String>]
         #
@@ -29,7 +28,7 @@ module FinchAPI
         #
         # @see FinchAPI::Models::Sandbox::ConnectionCreateParams
         def create(params)
-          parsed, options = FinchAPI::Models::Sandbox::ConnectionCreateParams.dump_request(params)
+          parsed, options = FinchAPI::Sandbox::ConnectionCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "sandbox/connections",

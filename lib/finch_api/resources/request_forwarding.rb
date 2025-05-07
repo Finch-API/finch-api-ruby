@@ -14,19 +14,14 @@ module FinchAPI
       # @overload forward(method_:, route:, data: nil, headers: nil, params: nil, request_options: {})
       #
       # @param method_ [String] The HTTP method for the forwarded request. Valid values include: `GET` , `POST`
-      # ...
       #
       # @param route [String] The URL route path for the forwarded request. This value must begin with a forwa
-      # ...
       #
       # @param data [String, nil] The body for the forwarded request. This value must be specified as either a str
-      # ...
       #
       # @param headers [Object, nil] The HTTP headers to include on the forwarded request. This value must be specifi
-      # ...
       #
       # @param params [Object, nil] The query parameters for the forwarded request. This value must be specified as
-      # ...
       #
       # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -34,7 +29,7 @@ module FinchAPI
       #
       # @see FinchAPI::Models::RequestForwardingForwardParams
       def forward(params)
-        parsed, options = FinchAPI::Models::RequestForwardingForwardParams.dump_request(params)
+        parsed, options = FinchAPI::RequestForwardingForwardParams.dump_request(params)
         @client.request(
           method: :post,
           path: "forward",

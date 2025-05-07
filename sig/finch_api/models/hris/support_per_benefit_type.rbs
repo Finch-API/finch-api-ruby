@@ -3,29 +3,27 @@ module FinchAPI
     module HRIS
       type support_per_benefit_type =
         {
-          company_benefits: FinchAPI::Models::OperationSupportMatrix,
-          individual_benefits: FinchAPI::Models::OperationSupportMatrix
+          company_benefits: FinchAPI::OperationSupportMatrix,
+          individual_benefits: FinchAPI::OperationSupportMatrix
         }
 
       class SupportPerBenefitType < FinchAPI::Internal::Type::BaseModel
-        attr_reader company_benefits: FinchAPI::Models::OperationSupportMatrix?
+        attr_reader company_benefits: FinchAPI::OperationSupportMatrix?
 
         def company_benefits=: (
-          FinchAPI::Models::OperationSupportMatrix
-        ) -> FinchAPI::Models::OperationSupportMatrix
+          FinchAPI::OperationSupportMatrix
+        ) -> FinchAPI::OperationSupportMatrix
 
-        attr_reader individual_benefits: FinchAPI::Models::OperationSupportMatrix?
+        attr_reader individual_benefits: FinchAPI::OperationSupportMatrix?
 
         def individual_benefits=: (
-          FinchAPI::Models::OperationSupportMatrix
-        ) -> FinchAPI::Models::OperationSupportMatrix
+          FinchAPI::OperationSupportMatrix
+        ) -> FinchAPI::OperationSupportMatrix
 
         def initialize: (
-          ?company_benefits: FinchAPI::Models::OperationSupportMatrix,
-          ?individual_benefits: FinchAPI::Models::OperationSupportMatrix
+          ?company_benefits: FinchAPI::OperationSupportMatrix,
+          ?individual_benefits: FinchAPI::OperationSupportMatrix
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::HRIS::support_per_benefit_type
       end
     end
   end

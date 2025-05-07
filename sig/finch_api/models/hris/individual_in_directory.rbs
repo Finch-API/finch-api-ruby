@@ -4,18 +4,18 @@ module FinchAPI
       type individual_in_directory =
         {
           id: String,
-          department: FinchAPI::Models::HRIS::IndividualInDirectory::Department?,
+          department: FinchAPI::HRIS::IndividualInDirectory::Department?,
           first_name: String?,
           is_active: bool?,
           last_name: String?,
-          manager: FinchAPI::Models::HRIS::IndividualInDirectory::Manager?,
+          manager: FinchAPI::HRIS::IndividualInDirectory::Manager?,
           middle_name: String?
         }
 
       class IndividualInDirectory < FinchAPI::Internal::Type::BaseModel
         attr_accessor id: String
 
-        attr_accessor department: FinchAPI::Models::HRIS::IndividualInDirectory::Department?
+        attr_accessor department: FinchAPI::HRIS::IndividualInDirectory::Department?
 
         attr_accessor first_name: String?
 
@@ -23,21 +23,19 @@ module FinchAPI
 
         attr_accessor last_name: String?
 
-        attr_accessor manager: FinchAPI::Models::HRIS::IndividualInDirectory::Manager?
+        attr_accessor manager: FinchAPI::HRIS::IndividualInDirectory::Manager?
 
         attr_accessor middle_name: String?
 
         def initialize: (
           id: String,
-          department: FinchAPI::Models::HRIS::IndividualInDirectory::Department?,
+          department: FinchAPI::HRIS::IndividualInDirectory::Department?,
           first_name: String?,
           is_active: bool?,
           last_name: String?,
-          manager: FinchAPI::Models::HRIS::IndividualInDirectory::Manager?,
+          manager: FinchAPI::HRIS::IndividualInDirectory::Manager?,
           middle_name: String?
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::HRIS::individual_in_directory
 
         type department = { name: String? }
 
@@ -45,8 +43,6 @@ module FinchAPI
           attr_accessor name: String?
 
           def initialize: (?name: String?) -> void
-
-          def to_hash: -> FinchAPI::Models::HRIS::IndividualInDirectory::department
         end
 
         type manager = { id: String }
@@ -55,8 +51,6 @@ module FinchAPI
           attr_accessor id: String
 
           def initialize: (id: String) -> void
-
-          def to_hash: -> FinchAPI::Models::HRIS::IndividualInDirectory::manager
         end
       end
     end

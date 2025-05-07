@@ -8,31 +8,38 @@ module FinchAPI
           extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
 
-          sig { returns(T.nilable(FinchAPI::Models::ConnectionStatusType::OrSymbol)) }
+          OrHash =
+            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
+          sig { returns(T.nilable(FinchAPI::ConnectionStatusType::OrSymbol)) }
           attr_reader :connection_status
 
-          sig { params(connection_status: FinchAPI::Models::ConnectionStatusType::OrSymbol).void }
+          sig do
+            params(
+              connection_status: FinchAPI::ConnectionStatusType::OrSymbol
+            ).void
+          end
           attr_writer :connection_status
 
           sig do
             params(
-              connection_status: FinchAPI::Models::ConnectionStatusType::OrSymbol,
-              request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)
-            )
-              .returns(T.attached_class)
+              connection_status: FinchAPI::ConnectionStatusType::OrSymbol,
+              request_options: FinchAPI::RequestOptions::OrHash
+            ).returns(T.attached_class)
           end
-          def self.new(connection_status: nil, request_options: {}); end
+          def self.new(connection_status: nil, request_options: {})
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  connection_status: FinchAPI::Models::ConnectionStatusType::OrSymbol,
-                  request_options: FinchAPI::RequestOptions
-                }
-              )
+            override.returns(
+              {
+                connection_status: FinchAPI::ConnectionStatusType::OrSymbol,
+                request_options: FinchAPI::RequestOptions
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
         end
       end
     end

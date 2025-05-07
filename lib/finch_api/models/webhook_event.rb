@@ -7,24 +7,24 @@ module FinchAPI
 
       discriminator :event_type
 
-      variant :"account.updated", -> { FinchAPI::Models::AccountUpdateEvent }
+      variant :"account.updated", -> { FinchAPI::AccountUpdateEvent }
 
-      variant :"company.updated", -> { FinchAPI::Models::CompanyEvent }
+      variant :"company.updated", -> { FinchAPI::CompanyEvent }
 
-      variant -> { FinchAPI::Models::JobCompletionEvent }
+      variant -> { FinchAPI::JobCompletionEvent }
 
-      variant -> { FinchAPI::Models::DirectoryEvent }
+      variant -> { FinchAPI::DirectoryEvent }
 
-      variant -> { FinchAPI::Models::EmploymentEvent }
+      variant -> { FinchAPI::EmploymentEvent }
 
-      variant -> { FinchAPI::Models::IndividualEvent }
+      variant -> { FinchAPI::IndividualEvent }
 
-      variant -> { FinchAPI::Models::PaymentEvent }
+      variant -> { FinchAPI::PaymentEvent }
 
-      variant -> { FinchAPI::Models::PayStatementEvent }
+      variant -> { FinchAPI::PayStatementEvent }
 
       # @!method self.variants
-      #   @return [Array(FinchAPI::Models::AccountUpdateEvent, FinchAPI::Models::CompanyEvent, FinchAPI::Models::JobCompletionEvent, FinchAPI::Models::DirectoryEvent, FinchAPI::Models::EmploymentEvent, FinchAPI::Models::IndividualEvent, FinchAPI::Models::PaymentEvent, FinchAPI::Models::PayStatementEvent)]
+      #   @return [Array(FinchAPI::AccountUpdateEvent, FinchAPI::CompanyEvent, FinchAPI::JobCompletionEvent, FinchAPI::DirectoryEvent, FinchAPI::EmploymentEvent, FinchAPI::IndividualEvent, FinchAPI::PaymentEvent, FinchAPI::PayStatementEvent)]
     end
   end
 end

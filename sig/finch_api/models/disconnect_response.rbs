@@ -6,8 +6,6 @@ module FinchAPI
       attr_accessor status: String
 
       def initialize: (status: String) -> void
-
-      def to_hash: -> FinchAPI::Models::disconnect_response
     end
   end
 end

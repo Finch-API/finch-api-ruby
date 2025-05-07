@@ -6,7 +6,7 @@ module FinchAPI
           ?individual_ids: ::Array[String],
           ?limit: Integer,
           ?offset: Integer,
-          ?types: ::Array[FinchAPI::Models::HRIS::DocumentListParams::type_],
+          ?types: ::Array[FinchAPI::HRIS::DocumentListParams::type_],
           ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::Models::HRIS::DocumentListResponse
 

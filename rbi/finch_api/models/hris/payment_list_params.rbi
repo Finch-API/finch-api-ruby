@@ -7,6 +7,9 @@ module FinchAPI
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
         # The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
         # format.
         sig { returns(Date) }
@@ -21,9 +24,8 @@ module FinchAPI
           params(
             end_date: Date,
             start_date: Date,
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: FinchAPI::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
@@ -33,11 +35,20 @@ module FinchAPI
           # format.
           start_date:,
           request_options: {}
-        ); end
-        sig do
-          override.returns({end_date: Date, start_date: Date, request_options: FinchAPI::RequestOptions})
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              end_date: Date,
+              start_date: Date,
+              request_options: FinchAPI::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

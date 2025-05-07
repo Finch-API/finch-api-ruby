@@ -11,17 +11,20 @@ module FinchAPI
         # @!attribute accounts
         #   An array of bank account objects associated with the payroll/HRIS system.
         #
-        #   @return [Array<FinchAPI::Models::Sandbox::CompanyUpdateParams::Account>, nil]
+        #   @return [Array<FinchAPI::Sandbox::CompanyUpdateParams::Account>, nil]
         required :accounts,
-                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::CompanyUpdateParams::Account] },
+                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::CompanyUpdateParams::Account] },
                  nil?: true
 
         # @!attribute departments
         #   The array of company departments.
         #
-        #   @return [Array<FinchAPI::Models::Sandbox::CompanyUpdateParams::Department, nil>, nil]
+        #   @return [Array<FinchAPI::Sandbox::CompanyUpdateParams::Department, nil>, nil]
         required :departments,
-                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::CompanyUpdateParams::Department, nil?: true] },
+                 -> {
+                   FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::CompanyUpdateParams::Department,
+                                                     nil?: true]
+                 },
                  nil?: true
 
         # @!attribute ein
@@ -33,8 +36,8 @@ module FinchAPI
         # @!attribute entity
         #   The entity type object.
         #
-        #   @return [FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity, nil]
-        required :entity, -> { FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity }, nil?: true
+        #   @return [FinchAPI::Sandbox::CompanyUpdateParams::Entity, nil]
+        required :entity, -> { FinchAPI::Sandbox::CompanyUpdateParams::Entity }, nil?: true
 
         # @!attribute legal_name
         #   The legal name of the company.
@@ -44,9 +47,11 @@ module FinchAPI
 
         # @!attribute locations
         #
-        #   @return [Array<FinchAPI::Models::Location, nil>, nil]
+        #   @return [Array<FinchAPI::Location, nil>, nil]
         required :locations,
-                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Location, nil?: true] },
+                 -> {
+                   FinchAPI::Internal::Type::ArrayOf[FinchAPI::Location, nil?: true]
+                 },
                  nil?: true
 
         # @!attribute primary_email
@@ -66,22 +71,21 @@ module FinchAPI
         #   Some parameter documentations has been truncated, see
         #   {FinchAPI::Models::Sandbox::CompanyUpdateParams} for more details.
         #
-        #   @param accounts [Array<FinchAPI::Models::Sandbox::CompanyUpdateParams::Account>, nil] An array of bank account objects associated with the payroll/HRIS system.
+        #   @param accounts [Array<FinchAPI::Sandbox::CompanyUpdateParams::Account>, nil] An array of bank account objects associated with the payroll/HRIS system.
         #
-        #   @param departments [Array<FinchAPI::Models::Sandbox::CompanyUpdateParams::Department, nil>, nil] The array of company departments.
+        #   @param departments [Array<FinchAPI::Sandbox::CompanyUpdateParams::Department, nil>, nil] The array of company departments.
         #
         #   @param ein [String, nil] The employer identification number.
         #
-        #   @param entity [FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity, nil] The entity type object.
+        #   @param entity [FinchAPI::Sandbox::CompanyUpdateParams::Entity, nil] The entity type object.
         #
         #   @param legal_name [String, nil] The legal name of the company.
         #
-        #   @param locations [Array<FinchAPI::Models::Location, nil>, nil]
+        #   @param locations [Array<FinchAPI::Location, nil>, nil]
         #
         #   @param primary_email [String, nil] The email of the main administrator on the account.
         #
         #   @param primary_phone_number [String, nil] The phone number of the main administrator on the account. Format: E.164, with e
-        #   ...
         #
         #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 
@@ -101,9 +105,9 @@ module FinchAPI
           # @!attribute account_type
           #   The type of bank account.
           #
-          #   @return [Symbol, FinchAPI::Models::Sandbox::CompanyUpdateParams::Account::AccountType, nil]
+          #   @return [Symbol, FinchAPI::Sandbox::CompanyUpdateParams::Account::AccountType, nil]
           optional :account_type,
-                   enum: -> { FinchAPI::Models::Sandbox::CompanyUpdateParams::Account::AccountType },
+                   enum: -> { FinchAPI::Sandbox::CompanyUpdateParams::Account::AccountType },
                    nil?: true
 
           # @!attribute institution_name
@@ -121,22 +125,21 @@ module FinchAPI
 
           # @!method initialize(account_name: nil, account_number: nil, account_type: nil, institution_name: nil, routing_number: nil)
           #   Some parameter documentations has been truncated, see
-          #   {FinchAPI::Models::Sandbox::CompanyUpdateParams::Account} for more details.
+          #   {FinchAPI::Sandbox::CompanyUpdateParams::Account} for more details.
           #
           #   @param account_name [String, nil] The name of the bank associated in the payroll/HRIS system.
           #
           #   @param account_number [String, nil] 10-12 digit number to specify the bank account
           #
-          #   @param account_type [Symbol, FinchAPI::Models::Sandbox::CompanyUpdateParams::Account::AccountType, nil] The type of bank account.
+          #   @param account_type [Symbol, FinchAPI::Sandbox::CompanyUpdateParams::Account::AccountType, nil] The type of bank account.
           #
           #   @param institution_name [String, nil] Name of the banking institution.
           #
           #   @param routing_number [String, nil] A nine-digit code that's based on the U.S. Bank location where your account was
-          #   ...
 
           # The type of bank account.
           #
-          # @see FinchAPI::Models::Sandbox::CompanyUpdateParams::Account#account_type
+          # @see FinchAPI::Sandbox::CompanyUpdateParams::Account#account_type
           module AccountType
             extend FinchAPI::Internal::Type::Enum
 
@@ -158,15 +161,15 @@ module FinchAPI
           # @!attribute parent
           #   The parent department, if present.
           #
-          #   @return [FinchAPI::Models::Sandbox::CompanyUpdateParams::Department::Parent, nil]
-          optional :parent, -> { FinchAPI::Models::Sandbox::CompanyUpdateParams::Department::Parent }, nil?: true
+          #   @return [FinchAPI::Sandbox::CompanyUpdateParams::Department::Parent, nil]
+          optional :parent, -> { FinchAPI::Sandbox::CompanyUpdateParams::Department::Parent }, nil?: true
 
           # @!method initialize(name: nil, parent: nil)
           #   @param name [String, nil] The department name.
           #
-          #   @param parent [FinchAPI::Models::Sandbox::CompanyUpdateParams::Department::Parent, nil] The parent department, if present.
+          #   @param parent [FinchAPI::Sandbox::CompanyUpdateParams::Department::Parent, nil] The parent department, if present.
 
-          # @see FinchAPI::Models::Sandbox::CompanyUpdateParams::Department#parent
+          # @see FinchAPI::Sandbox::CompanyUpdateParams::Department#parent
           class Parent < FinchAPI::Internal::Type::BaseModel
             # @!attribute name
             #   The parent department's name.
@@ -185,27 +188,25 @@ module FinchAPI
           # @!attribute subtype
           #   The tax payer subtype of the company.
           #
-          #   @return [Symbol, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Subtype, nil]
-          optional :subtype,
-                   enum: -> { FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Subtype },
-                   nil?: true
+          #   @return [Symbol, FinchAPI::Sandbox::CompanyUpdateParams::Entity::Subtype, nil]
+          optional :subtype, enum: -> { FinchAPI::Sandbox::CompanyUpdateParams::Entity::Subtype }, nil?: true
 
           # @!attribute type
           #   The tax payer type of the company.
           #
-          #   @return [Symbol, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type, nil]
-          optional :type, enum: -> { FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type }, nil?: true
+          #   @return [Symbol, FinchAPI::Sandbox::CompanyUpdateParams::Entity::Type, nil]
+          optional :type, enum: -> { FinchAPI::Sandbox::CompanyUpdateParams::Entity::Type }, nil?: true
 
           # @!method initialize(subtype: nil, type: nil)
           #   The entity type object.
           #
-          #   @param subtype [Symbol, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Subtype, nil] The tax payer subtype of the company.
+          #   @param subtype [Symbol, FinchAPI::Sandbox::CompanyUpdateParams::Entity::Subtype, nil] The tax payer subtype of the company.
           #
-          #   @param type [Symbol, FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::Type, nil] The tax payer type of the company.
+          #   @param type [Symbol, FinchAPI::Sandbox::CompanyUpdateParams::Entity::Type, nil] The tax payer type of the company.
 
           # The tax payer subtype of the company.
           #
-          # @see FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity#subtype
+          # @see FinchAPI::Sandbox::CompanyUpdateParams::Entity#subtype
           module Subtype
             extend FinchAPI::Internal::Type::Enum
 
@@ -219,7 +220,7 @@ module FinchAPI
 
           # The tax payer type of the company.
           #
-          # @see FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity#type
+          # @see FinchAPI::Sandbox::CompanyUpdateParams::Entity#type
           module Type
             extend FinchAPI::Internal::Type::Enum
 

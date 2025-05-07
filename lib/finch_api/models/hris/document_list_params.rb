@@ -31,23 +31,23 @@ module FinchAPI
         #   Comma-delimited list of document types to filter on. If empty, defaults to all
         #   types
         #
-        #   @return [Array<Symbol, FinchAPI::Models::HRIS::DocumentListParams::Type>, nil]
+        #   @return [Array<Symbol, FinchAPI::HRIS::DocumentListParams::Type>, nil]
         optional :types,
-                 -> { FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::HRIS::DocumentListParams::Type] }
+                 -> {
+                   FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::HRIS::DocumentListParams::Type]
+                 }
 
         # @!method initialize(individual_ids: nil, limit: nil, offset: nil, types: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {FinchAPI::Models::HRIS::DocumentListParams} for more details.
         #
         #   @param individual_ids [Array<String>] Comma-delimited list of stable Finch uuids for each individual. If empty, defaul
-        #   ...
         #
         #   @param limit [Integer] Number of documents to return (defaults to all)
         #
         #   @param offset [Integer] Index to start from (defaults to 0)
         #
-        #   @param types [Array<Symbol, FinchAPI::Models::HRIS::DocumentListParams::Type>] Comma-delimited list of document types to filter on. If empty, defaults to all t
-        #   ...
+        #   @param types [Array<Symbol, FinchAPI::HRIS::DocumentListParams::Type>] Comma-delimited list of document types to filter on. If empty, defaults to all t
         #
         #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 

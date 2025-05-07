@@ -4,6 +4,9 @@ module FinchAPI
   module Models
     module Jobs
       class AutomatedCreateResponse < FinchAPI::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
         # The number of allowed refreshes per hour (per hour, fixed window)
         sig { returns(Integer) }
         attr_accessor :allowed_refreshes
@@ -21,8 +24,12 @@ module FinchAPI
         attr_accessor :remaining_refreshes
 
         sig do
-          params(allowed_refreshes: Integer, job_id: String, job_url: String, remaining_refreshes: Integer)
-            .returns(T.attached_class)
+          params(
+            allowed_refreshes: Integer,
+            job_id: String,
+            job_url: String,
+            remaining_refreshes: Integer
+          ).returns(T.attached_class)
         end
         def self.new(
           # The number of allowed refreshes per hour (per hour, fixed window)
@@ -33,17 +40,21 @@ module FinchAPI
           job_url:,
           # The number of remaining refreshes available (per hour, fixed window)
           remaining_refreshes:
-        ); end
-        sig do
-          override
-            .returns({
-                       allowed_refreshes: Integer,
-                       job_id: String,
-                       job_url: String,
-                       remaining_refreshes: Integer
-                     })
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              allowed_refreshes: Integer,
+              job_id: String,
+              job_url: String,
+              remaining_refreshes: Integer
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

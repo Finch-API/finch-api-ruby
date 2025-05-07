@@ -78,8 +78,8 @@ module FinchAPI
 
         # @!attribute residence
         #
-        #   @return [FinchAPI::Models::Location, nil]
-        optional :residence, -> { FinchAPI::Models::Location }, nil?: true
+        #   @return [FinchAPI::Location, nil]
+        optional :residence, -> { FinchAPI::Location }, nil?: true
 
         # @!attribute ssn
         #   Social Security Number of the individual. This field is only available with the
@@ -101,7 +101,6 @@ module FinchAPI
         #   @param emails [Array<FinchAPI::Models::Sandbox::IndividualUpdateResponse::Email>, nil]
         #
         #   @param encrypted_ssn [String, nil] Social Security Number of the individual in **encrypted** format. This field is
-        #   ...
         #
         #   @param ethnicity [Symbol, FinchAPI::Models::Sandbox::IndividualUpdateResponse::Ethnicity, nil] The EEOC-defined ethnicity of the individual.
         #
@@ -117,10 +116,9 @@ module FinchAPI
         #
         #   @param preferred_name [String, nil] The preferred name of the individual.
         #
-        #   @param residence [FinchAPI::Models::Location, nil]
+        #   @param residence [FinchAPI::Location, nil]
         #
         #   @param ssn [String, nil] Social Security Number of the individual. This field is only available with the
-        #   ...
 
         class Email < FinchAPI::Internal::Type::BaseModel
           # @!attribute data

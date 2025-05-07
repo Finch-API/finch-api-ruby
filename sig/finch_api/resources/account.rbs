@@ -3,11 +3,11 @@ module FinchAPI
     class Account
       def disconnect: (
         ?request_options: FinchAPI::request_opts
-      ) -> FinchAPI::Models::DisconnectResponse
+      ) -> FinchAPI::DisconnectResponse
 
       def introspect: (
         ?request_options: FinchAPI::request_opts
-      ) -> FinchAPI::Models::Introspection
+      ) -> FinchAPI::Introspection
 
       def initialize: (client: FinchAPI::Client) -> void
     end

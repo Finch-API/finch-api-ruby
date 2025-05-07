@@ -2,22 +2,17 @@ module FinchAPI
   module Models
     module HRIS
       type benefit_contribution =
-        {
-          amount: Integer?,
-          type: FinchAPI::Models::HRIS::BenefitContribution::type_?
-        }
+        { amount: Integer?, type: FinchAPI::HRIS::BenefitContribution::type_? }
 
       class BenefitContribution < FinchAPI::Internal::Type::BaseModel
         attr_accessor amount: Integer?
 
-        attr_accessor type: FinchAPI::Models::HRIS::BenefitContribution::type_?
+        attr_accessor type: FinchAPI::HRIS::BenefitContribution::type_?
 
         def initialize: (
           ?amount: Integer?,
-          ?type: FinchAPI::Models::HRIS::BenefitContribution::type_?
+          ?type: FinchAPI::HRIS::BenefitContribution::type_?
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::HRIS::benefit_contribution
 
         type type_ = :fixed | :percent
 
@@ -27,7 +22,7 @@ module FinchAPI
           FIXED: :fixed
           PERCENT: :percent
 
-          def self?.values: -> ::Array[FinchAPI::Models::HRIS::BenefitContribution::type_]
+          def self?.values: -> ::Array[FinchAPI::HRIS::BenefitContribution::type_]
         end
       end
     end

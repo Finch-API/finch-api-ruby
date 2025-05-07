@@ -4,6 +4,9 @@ module FinchAPI
   module Models
     module Jobs
       class AutomatedAsyncJob < FinchAPI::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
         # The datetime the job completed.
         sig { returns(T.nilable(Time)) }
         attr_accessor :completed_at
@@ -23,14 +26,13 @@ module FinchAPI
         attr_accessor :job_url
 
         # The input parameters for the job.
-        sig { returns(T.nilable(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params)) }
+        sig { returns(T.nilable(FinchAPI::Jobs::AutomatedAsyncJob::Params)) }
         attr_reader :params
 
         sig do
           params(
-            params: T.nilable(T.any(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params, FinchAPI::Internal::AnyHash))
-          )
-            .void
+            params: T.nilable(FinchAPI::Jobs::AutomatedAsyncJob::Params::OrHash)
+          ).void
         end
         attr_writer :params
 
@@ -44,11 +46,11 @@ module FinchAPI
         sig { returns(T.nilable(Time)) }
         attr_accessor :started_at
 
-        sig { returns(FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol) }
+        sig { returns(FinchAPI::Jobs::AutomatedAsyncJob::Status::TaggedSymbol) }
         attr_accessor :status
 
         # The type of automated job
-        sig { returns(FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol) }
+        sig { returns(FinchAPI::Jobs::AutomatedAsyncJob::Type::TaggedSymbol) }
         attr_accessor :type
 
         sig do
@@ -57,13 +59,13 @@ module FinchAPI
             created_at: Time,
             job_id: String,
             job_url: String,
-            params: T.nilable(T.any(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params, FinchAPI::Internal::AnyHash)),
+            params:
+              T.nilable(FinchAPI::Jobs::AutomatedAsyncJob::Params::OrHash),
             scheduled_at: T.nilable(Time),
             started_at: T.nilable(Time),
-            status: FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::OrSymbol,
-            type: FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::OrSymbol
-          )
-            .returns(T.attached_class)
+            status: FinchAPI::Jobs::AutomatedAsyncJob::Status::OrSymbol,
+            type: FinchAPI::Jobs::AutomatedAsyncJob::Type::OrSymbol
+          ).returns(T.attached_class)
         end
         def self.new(
           # The datetime the job completed.
@@ -87,26 +89,31 @@ module FinchAPI
           status:,
           # The type of automated job
           type:
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                completed_at: T.nilable(Time),
-                created_at: Time,
-                job_id: String,
-                job_url: String,
-                params: T.nilable(FinchAPI::Models::Jobs::AutomatedAsyncJob::Params),
-                scheduled_at: T.nilable(Time),
-                started_at: T.nilable(Time),
-                status: FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol,
-                type: FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              completed_at: T.nilable(Time),
+              created_at: Time,
+              job_id: String,
+              job_url: String,
+              params: T.nilable(FinchAPI::Jobs::AutomatedAsyncJob::Params),
+              scheduled_at: T.nilable(Time),
+              started_at: T.nilable(Time),
+              status: FinchAPI::Jobs::AutomatedAsyncJob::Status::TaggedSymbol,
+              type: FinchAPI::Jobs::AutomatedAsyncJob::Type::TaggedSymbol
+            }
+          )
+        end
+        def to_hash
+        end
 
         class Params < FinchAPI::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
           # The ID of the individual that the job was completed for.
           sig { returns(T.nilable(String)) }
           attr_reader :individual_id
@@ -119,42 +126,91 @@ module FinchAPI
           def self.new(
             # The ID of the individual that the job was completed for.
             individual_id: nil
-          ); end
-          sig { override.returns({individual_id: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig { override.returns({ individual_id: String }) }
+          def to_hash
+          end
         end
 
         module Status
           extend FinchAPI::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, FinchAPI::Jobs::AutomatedAsyncJob::Status)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          PENDING = T.let(:pending, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
-          IN_PROGRESS = T.let(:in_progress, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
-          COMPLETE = T.let(:complete, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
-          ERROR = T.let(:error, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
-          REAUTH_ERROR = T.let(:reauth_error, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
+          PENDING =
+            T.let(
+              :pending,
+              FinchAPI::Jobs::AutomatedAsyncJob::Status::TaggedSymbol
+            )
+          IN_PROGRESS =
+            T.let(
+              :in_progress,
+              FinchAPI::Jobs::AutomatedAsyncJob::Status::TaggedSymbol
+            )
+          COMPLETE =
+            T.let(
+              :complete,
+              FinchAPI::Jobs::AutomatedAsyncJob::Status::TaggedSymbol
+            )
+          ERROR =
+            T.let(
+              :error,
+              FinchAPI::Jobs::AutomatedAsyncJob::Status::TaggedSymbol
+            )
+          REAUTH_ERROR =
+            T.let(
+              :reauth_error,
+              FinchAPI::Jobs::AutomatedAsyncJob::Status::TaggedSymbol
+            )
           PERMISSIONS_ERROR =
-            T.let(:permissions_error, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol)
+            T.let(
+              :permissions_error,
+              FinchAPI::Jobs::AutomatedAsyncJob::Status::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[FinchAPI::Models::Jobs::AutomatedAsyncJob::Status::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[FinchAPI::Jobs::AutomatedAsyncJob::Status::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         # The type of automated job
         module Type
           extend FinchAPI::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, FinchAPI::Jobs::AutomatedAsyncJob::Type)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          DATA_SYNC_ALL = T.let(:data_sync_all, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol)
+          DATA_SYNC_ALL =
+            T.let(
+              :data_sync_all,
+              FinchAPI::Jobs::AutomatedAsyncJob::Type::TaggedSymbol
+            )
           W4_FORM_EMPLOYEE_SYNC =
-            T.let(:w4_form_employee_sync, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol)
+            T.let(
+              :w4_form_employee_sync,
+              FinchAPI::Jobs::AutomatedAsyncJob::Type::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[FinchAPI::Models::Jobs::AutomatedAsyncJob::Type::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[FinchAPI::Jobs::AutomatedAsyncJob::Type::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
       end
     end

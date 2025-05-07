@@ -11,14 +11,14 @@ module FinchAPI
           #
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Array<FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration>]
+          # @return [Array<FinchAPI::Sandbox::Jobs::SandboxJobConfiguration>]
           #
           # @see FinchAPI::Models::Sandbox::Jobs::ConfigurationRetrieveParams
           def retrieve(params = {})
             @client.request(
               method: :get,
               path: "sandbox/jobs/configuration",
-              model: FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration],
+              model: FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::Jobs::SandboxJobConfiguration],
               options: params[:request_options]
             )
           end
@@ -27,20 +27,20 @@ module FinchAPI
           #
           # @overload update(completion_status:, type:, request_options: {})
           #
-          # @param completion_status [Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus]
-          # @param type [Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type]
+          # @param completion_status [Symbol, FinchAPI::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus]
+          # @param type [Symbol, FinchAPI::Sandbox::Jobs::SandboxJobConfiguration::Type]
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration]
+          # @return [FinchAPI::Sandbox::Jobs::SandboxJobConfiguration]
           #
           # @see FinchAPI::Models::Sandbox::Jobs::ConfigurationUpdateParams
           def update(params)
-            parsed, options = FinchAPI::Models::Sandbox::Jobs::ConfigurationUpdateParams.dump_request(params)
+            parsed, options = FinchAPI::Sandbox::Jobs::ConfigurationUpdateParams.dump_request(params)
             @client.request(
               method: :put,
               path: "sandbox/jobs/configuration",
               body: parsed,
-              model: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration,
+              model: FinchAPI::Sandbox::Jobs::SandboxJobConfiguration,
               options: options
             )
           end

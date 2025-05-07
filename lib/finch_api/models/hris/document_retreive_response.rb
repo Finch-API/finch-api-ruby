@@ -13,13 +13,13 @@ module FinchAPI
         discriminator :type
 
         # A 2020 version of the W-4 tax form containing information on an individual's filing status, dependents, and withholding details.
-        variant :w4_2020, -> { FinchAPI::Models::HRIS::W42020 }
+        variant :w4_2020, -> { FinchAPI::HRIS::W42020 }
 
         # A 2005 version of the W-4 tax form containing information on an individual's filing status, dependents, and withholding details.
-        variant :w4_2005, -> { FinchAPI::Models::HRIS::W42005 }
+        variant :w4_2005, -> { FinchAPI::HRIS::W42005 }
 
         # @!method self.variants
-        #   @return [Array(FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005)]
+        #   @return [Array(FinchAPI::HRIS::W42020, FinchAPI::HRIS::W42005)]
       end
     end
   end

@@ -19,8 +19,6 @@ module FinchAPI
               ?optional_property: top,
               ?request_options: FinchAPI::request_opts
             ) -> void
-
-            def to_hash: -> FinchAPI::Models::HRIS::Company::PayStatementItem::rule_update_params
           end
         end
       end

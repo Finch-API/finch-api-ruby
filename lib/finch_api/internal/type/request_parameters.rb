@@ -5,10 +5,10 @@ module FinchAPI
     module Type
       # @api private
       module RequestParameters
-        # @!parse
-        #   # Options to specify HTTP behaviour for this request.
-        #   # @return [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
-        #   attr_accessor :request_options
+        # @!attribute request_options
+        # Options to specify HTTP behaviour for this request.
+        #
+        #   @return [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 
         # @param mod [Module]
         def self.included(mod)

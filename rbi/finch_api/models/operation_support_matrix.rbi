@@ -3,6 +3,8 @@
 module FinchAPI
   module Models
     class OperationSupportMatrix < FinchAPI::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
       # - `supported`: This operation is supported by both the provider and Finch
       # - `not_supported_by_finch`: This operation is not supported by Finch but
       #   supported by the provider
@@ -10,10 +12,10 @@ module FinchAPI
       #   so Finch cannot support
       # - `client_access_only`: This behavior is supported by the provider, but only
       #   available to the client and not to Finch
-      sig { returns(T.nilable(FinchAPI::Models::OperationSupport::TaggedSymbol)) }
+      sig { returns(T.nilable(FinchAPI::OperationSupport::TaggedSymbol)) }
       attr_reader :create
 
-      sig { params(create: FinchAPI::Models::OperationSupport::OrSymbol).void }
+      sig { params(create: FinchAPI::OperationSupport::OrSymbol).void }
       attr_writer :create
 
       # - `supported`: This operation is supported by both the provider and Finch
@@ -23,10 +25,10 @@ module FinchAPI
       #   so Finch cannot support
       # - `client_access_only`: This behavior is supported by the provider, but only
       #   available to the client and not to Finch
-      sig { returns(T.nilable(FinchAPI::Models::OperationSupport::TaggedSymbol)) }
+      sig { returns(T.nilable(FinchAPI::OperationSupport::TaggedSymbol)) }
       attr_reader :delete
 
-      sig { params(delete: FinchAPI::Models::OperationSupport::OrSymbol).void }
+      sig { params(delete: FinchAPI::OperationSupport::OrSymbol).void }
       attr_writer :delete
 
       # - `supported`: This operation is supported by both the provider and Finch
@@ -36,10 +38,10 @@ module FinchAPI
       #   so Finch cannot support
       # - `client_access_only`: This behavior is supported by the provider, but only
       #   available to the client and not to Finch
-      sig { returns(T.nilable(FinchAPI::Models::OperationSupport::TaggedSymbol)) }
+      sig { returns(T.nilable(FinchAPI::OperationSupport::TaggedSymbol)) }
       attr_reader :read
 
-      sig { params(read: FinchAPI::Models::OperationSupport::OrSymbol).void }
+      sig { params(read: FinchAPI::OperationSupport::OrSymbol).void }
       attr_writer :read
 
       # - `supported`: This operation is supported by both the provider and Finch
@@ -49,20 +51,19 @@ module FinchAPI
       #   so Finch cannot support
       # - `client_access_only`: This behavior is supported by the provider, but only
       #   available to the client and not to Finch
-      sig { returns(T.nilable(FinchAPI::Models::OperationSupport::TaggedSymbol)) }
+      sig { returns(T.nilable(FinchAPI::OperationSupport::TaggedSymbol)) }
       attr_reader :update
 
-      sig { params(update: FinchAPI::Models::OperationSupport::OrSymbol).void }
+      sig { params(update: FinchAPI::OperationSupport::OrSymbol).void }
       attr_writer :update
 
       sig do
         params(
-          create: FinchAPI::Models::OperationSupport::OrSymbol,
-          delete: FinchAPI::Models::OperationSupport::OrSymbol,
-          read: FinchAPI::Models::OperationSupport::OrSymbol,
-          update: FinchAPI::Models::OperationSupport::OrSymbol
-        )
-          .returns(T.attached_class)
+          create: FinchAPI::OperationSupport::OrSymbol,
+          delete: FinchAPI::OperationSupport::OrSymbol,
+          read: FinchAPI::OperationSupport::OrSymbol,
+          update: FinchAPI::OperationSupport::OrSymbol
+        ).returns(T.attached_class)
       end
       def self.new(
         # - `supported`: This operation is supported by both the provider and Finch
@@ -97,19 +98,21 @@ module FinchAPI
         # - `client_access_only`: This behavior is supported by the provider, but only
         #   available to the client and not to Finch
         update: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              create: FinchAPI::Models::OperationSupport::TaggedSymbol,
-              delete: FinchAPI::Models::OperationSupport::TaggedSymbol,
-              read: FinchAPI::Models::OperationSupport::TaggedSymbol,
-              update: FinchAPI::Models::OperationSupport::TaggedSymbol
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            create: FinchAPI::OperationSupport::TaggedSymbol,
+            delete: FinchAPI::OperationSupport::TaggedSymbol,
+            read: FinchAPI::OperationSupport::TaggedSymbol,
+            update: FinchAPI::OperationSupport::TaggedSymbol
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

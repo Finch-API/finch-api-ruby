@@ -10,18 +10,20 @@ module FinchAPI
 
         # @!attribute options
         #
-        #   @return [FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, nil]
-        optional :options, -> { FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options }, nil?: true
+        #   @return [FinchAPI::HRIS::IndividualRetrieveManyParams::Options, nil]
+        optional :options, -> { FinchAPI::HRIS::IndividualRetrieveManyParams::Options }, nil?: true
 
         # @!attribute requests
         #
-        #   @return [Array<FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request>, nil]
+        #   @return [Array<FinchAPI::HRIS::IndividualRetrieveManyParams::Request>, nil]
         optional :requests,
-                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request] }
+                 -> {
+                   FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::IndividualRetrieveManyParams::Request]
+                 }
 
         # @!method initialize(options: nil, requests: nil, request_options: {})
-        #   @param options [FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, nil]
-        #   @param requests [Array<FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request>]
+        #   @param options [FinchAPI::HRIS::IndividualRetrieveManyParams::Options, nil]
+        #   @param requests [Array<FinchAPI::HRIS::IndividualRetrieveManyParams::Request>]
         #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 
         class Options < FinchAPI::Internal::Type::BaseModel

@@ -2,12 +2,12 @@ module FinchAPI
   module Models
     module HRIS
       type document_retreive_response =
-        FinchAPI::Models::HRIS::W42020 | FinchAPI::Models::HRIS::W42005
+        FinchAPI::HRIS::W42020 | FinchAPI::HRIS::W42005
 
       module DocumentRetreiveResponse
         extend FinchAPI::Internal::Type::Union
 
-        def self?.variants: -> [FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005]
+        def self?.variants: -> ::Array[FinchAPI::Models::HRIS::document_retreive_response]
       end
     end
   end

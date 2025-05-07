@@ -5,9 +5,9 @@ module FinchAPI
         def new: (
           customer_id: String,
           customer_name: String,
-          products: ::Array[FinchAPI::Models::Connect::SessionNewParams::product],
+          products: ::Array[FinchAPI::Connect::SessionNewParams::product],
           ?customer_email: String?,
-          ?integration: FinchAPI::Models::Connect::SessionNewParams::Integration?,
+          ?integration: FinchAPI::Connect::SessionNewParams::Integration?,
           ?manual: bool?,
           ?minutes_to_expire: Float?,
           ?redirect_uri: String?,
@@ -18,7 +18,7 @@ module FinchAPI
         def reauthenticate: (
           connection_id: String,
           ?minutes_to_expire: Integer?,
-          ?products: ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]?,
+          ?products: ::Array[FinchAPI::Connect::SessionReauthenticateParams::product]?,
           ?redirect_uri: String?,
           ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::Models::Connect::SessionReauthenticateResponse

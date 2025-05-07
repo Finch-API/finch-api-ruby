@@ -41,8 +41,6 @@ module FinchAPI
           ?hsa_contribution_limit: ::Array[FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::hsa_contribution_limit?]?
         ) -> void
 
-        def to_hash: -> FinchAPI::Models::HRIS::benefit_list_supported_benefits_response
-
         type company_contribution = :fixed | :percent
 
         module CompanyContribution

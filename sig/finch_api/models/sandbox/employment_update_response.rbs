@@ -11,12 +11,12 @@ module FinchAPI
           employment_status: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::employment_status?,
           end_date: String?,
           first_name: String?,
-          income: FinchAPI::Models::Income?,
-          income_history: ::Array[FinchAPI::Models::Income?]?,
+          income: FinchAPI::Income?,
+          income_history: ::Array[FinchAPI::Income?]?,
           is_active: bool?,
           last_name: String?,
           latest_rehire_date: String?,
-          location: FinchAPI::Models::Location?,
+          location: FinchAPI::Location?,
           manager: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Manager?,
           middle_name: String?,
           source_id: String,
@@ -47,9 +47,9 @@ module FinchAPI
 
         attr_accessor first_name: String?
 
-        attr_accessor income: FinchAPI::Models::Income?
+        attr_accessor income: FinchAPI::Income?
 
-        attr_accessor income_history: ::Array[FinchAPI::Models::Income?]?
+        attr_accessor income_history: ::Array[FinchAPI::Income?]?
 
         attr_accessor is_active: bool?
 
@@ -57,7 +57,7 @@ module FinchAPI
 
         attr_accessor latest_rehire_date: String?
 
-        attr_accessor location: FinchAPI::Models::Location?
+        attr_accessor location: FinchAPI::Location?
 
         attr_accessor manager: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Manager?
 
@@ -80,20 +80,18 @@ module FinchAPI
           ?employment_status: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::employment_status?,
           ?end_date: String?,
           ?first_name: String?,
-          ?income: FinchAPI::Models::Income?,
-          ?income_history: ::Array[FinchAPI::Models::Income?]?,
+          ?income: FinchAPI::Income?,
+          ?income_history: ::Array[FinchAPI::Income?]?,
           ?is_active: bool?,
           ?last_name: String?,
           ?latest_rehire_date: String?,
-          ?location: FinchAPI::Models::Location?,
+          ?location: FinchAPI::Location?,
           ?manager: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Manager?,
           ?middle_name: String?,
           ?source_id: String,
           ?start_date: String?,
           ?title: String?
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::Sandbox::employment_update_response
 
         type custom_field = { name: String?, value: top }
 
@@ -105,8 +103,6 @@ module FinchAPI
           def value=: (top) -> top
 
           def initialize: (?name: String?, ?value: top) -> void
-
-          def to_hash: -> FinchAPI::Models::Sandbox::EmploymentUpdateResponse::custom_field
         end
 
         type department = { name: String? }
@@ -115,8 +111,6 @@ module FinchAPI
           attr_accessor name: String?
 
           def initialize: (?name: String?) -> void
-
-          def to_hash: -> FinchAPI::Models::Sandbox::EmploymentUpdateResponse::department
         end
 
         type employment =
@@ -134,8 +128,6 @@ module FinchAPI
             ?subtype: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::subtype?,
             ?type: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::type_?
           ) -> void
-
-          def to_hash: -> FinchAPI::Models::Sandbox::EmploymentUpdateResponse::employment
 
           type subtype =
             :full_time
@@ -201,8 +193,6 @@ module FinchAPI
           def id=: (String) -> String
 
           def initialize: (?id: String) -> void
-
-          def to_hash: -> FinchAPI::Models::Sandbox::EmploymentUpdateResponse::manager
         end
       end
     end

@@ -3,7 +3,7 @@ module FinchAPI
     class Sandbox
       class Directory
         def create: (
-          ?body: ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body],
+          ?body: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body],
           ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::Models::Sandbox::directory_create_response
 

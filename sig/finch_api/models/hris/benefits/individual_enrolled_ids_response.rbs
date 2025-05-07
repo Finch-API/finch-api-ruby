@@ -14,8 +14,6 @@ module FinchAPI
             benefit_id: String,
             individual_ids: ::Array[String]
           ) -> void
-
-          def to_hash: -> FinchAPI::Models::HRIS::Benefits::individual_enrolled_ids_response
         end
       end
     end

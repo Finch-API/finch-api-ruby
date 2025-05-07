@@ -6,7 +6,7 @@ module FinchAPI
 
         def retrieve: (
           ?request_options: FinchAPI::request_opts
-        ) -> FinchAPI::Models::HRIS::HRISCompany
+        ) -> FinchAPI::HRIS::HRISCompany
 
         def initialize: (client: FinchAPI::Client) -> void
       end

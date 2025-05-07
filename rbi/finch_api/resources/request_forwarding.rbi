@@ -14,9 +14,8 @@ module FinchAPI
           data: T.nilable(String),
           headers: T.nilable(T.anything),
           params: T.nilable(T.anything),
-          request_options: FinchAPI::RequestOpts
-        )
-          .returns(FinchAPI::Models::RequestForwardingForwardResponse)
+          request_options: FinchAPI::RequestOptions::OrHash
+        ).returns(FinchAPI::Models::RequestForwardingForwardResponse)
       end
       def forward(
         # The HTTP method for the forwarded request. Valid values include: `GET` , `POST`
@@ -37,10 +36,13 @@ module FinchAPI
         # a valid JSON object rather than a query string.
         params: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

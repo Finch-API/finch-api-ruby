@@ -6,7 +6,7 @@ module FinchAPI
           ?limit: Integer,
           ?offset: Integer,
           ?request_options: FinchAPI::request_opts
-        ) -> FinchAPI::Internal::IndividualsPage[FinchAPI::Models::HRIS::IndividualInDirectory]
+        ) -> FinchAPI::Internal::IndividualsPage[FinchAPI::HRIS::IndividualInDirectory]
 
         alias list_individuals list
 

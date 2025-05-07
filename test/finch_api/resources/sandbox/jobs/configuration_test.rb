@@ -7,7 +7,7 @@ class FinchAPI::Test::Resources::Sandbox::Jobs::ConfigurationTest < FinchAPI::Te
     response = @finch.sandbox.jobs.configuration.retrieve
 
     assert_pattern do
-      response => ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration])
+      response => ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::Jobs::SandboxJobConfiguration])
     end
   end
 
@@ -15,13 +15,13 @@ class FinchAPI::Test::Resources::Sandbox::Jobs::ConfigurationTest < FinchAPI::Te
     response = @finch.sandbox.jobs.configuration.update(completion_status: :complete, type: :data_sync_all)
 
     assert_pattern do
-      response => FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration
+      response => FinchAPI::Sandbox::Jobs::SandboxJobConfiguration
     end
 
     assert_pattern do
       response => {
-        completion_status: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus,
-        type: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type
+        completion_status: FinchAPI::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus,
+        type: FinchAPI::Sandbox::Jobs::SandboxJobConfiguration::Type
       }
     end
   end

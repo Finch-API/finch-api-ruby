@@ -14,17 +14,17 @@ class FinchAPI::Test::Resources::HRIS::DirectoryTest < FinchAPI::Test::ResourceT
     return if row.nil?
 
     assert_pattern do
-      row => FinchAPI::Models::HRIS::IndividualInDirectory
+      row => FinchAPI::HRIS::IndividualInDirectory
     end
 
     assert_pattern do
       row => {
         id: String,
-        department: FinchAPI::Models::HRIS::IndividualInDirectory::Department | nil,
+        department: FinchAPI::HRIS::IndividualInDirectory::Department | nil,
         first_name: String | nil,
         is_active: FinchAPI::Internal::Type::Boolean | nil,
         last_name: String | nil,
-        manager: FinchAPI::Models::HRIS::IndividualInDirectory::Manager | nil,
+        manager: FinchAPI::HRIS::IndividualInDirectory::Manager | nil,
         middle_name: String | nil
       }
     end
@@ -41,17 +41,17 @@ class FinchAPI::Test::Resources::HRIS::DirectoryTest < FinchAPI::Test::ResourceT
     return if row.nil?
 
     assert_pattern do
-      row => FinchAPI::Models::HRIS::IndividualInDirectory
+      row => FinchAPI::HRIS::IndividualInDirectory
     end
 
     assert_pattern do
       row => {
         id: String,
-        department: FinchAPI::Models::HRIS::IndividualInDirectory::Department | nil,
+        department: FinchAPI::HRIS::IndividualInDirectory::Department | nil,
         first_name: String | nil,
         is_active: FinchAPI::Internal::Type::Boolean | nil,
         last_name: String | nil,
-        manager: FinchAPI::Models::HRIS::IndividualInDirectory::Manager | nil,
+        manager: FinchAPI::HRIS::IndividualInDirectory::Manager | nil,
         middle_name: String | nil
       }
     end

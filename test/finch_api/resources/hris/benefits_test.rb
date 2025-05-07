@@ -7,7 +7,7 @@ class FinchAPI::Test::Resources::HRIS::BenefitsTest < FinchAPI::Test::ResourceTe
     response = @finch.hris.benefits.create
 
     assert_pattern do
-      response => FinchAPI::Models::HRIS::CreateCompanyBenefitsResponse
+      response => FinchAPI::HRIS::CreateCompanyBenefitsResponse
     end
 
     assert_pattern do
@@ -22,16 +22,16 @@ class FinchAPI::Test::Resources::HRIS::BenefitsTest < FinchAPI::Test::ResourceTe
     response = @finch.hris.benefits.retrieve("benefit_id")
 
     assert_pattern do
-      response => FinchAPI::Models::HRIS::CompanyBenefit
+      response => FinchAPI::HRIS::CompanyBenefit
     end
 
     assert_pattern do
       response => {
         benefit_id: String,
-        company_contribution: FinchAPI::Models::HRIS::CompanyBenefit::CompanyContribution | nil,
+        company_contribution: FinchAPI::HRIS::CompanyBenefit::CompanyContribution | nil,
         description: String | nil,
-        frequency: FinchAPI::Models::HRIS::BenefitFrequency | nil,
-        type: FinchAPI::Models::HRIS::BenefitType | nil
+        frequency: FinchAPI::HRIS::BenefitFrequency | nil,
+        type: FinchAPI::HRIS::BenefitType | nil
       }
     end
   end
@@ -40,7 +40,7 @@ class FinchAPI::Test::Resources::HRIS::BenefitsTest < FinchAPI::Test::ResourceTe
     response = @finch.hris.benefits.update("benefit_id")
 
     assert_pattern do
-      response => FinchAPI::Models::HRIS::UpdateCompanyBenefitResponse
+      response => FinchAPI::HRIS::UpdateCompanyBenefitResponse
     end
 
     assert_pattern do
@@ -62,16 +62,16 @@ class FinchAPI::Test::Resources::HRIS::BenefitsTest < FinchAPI::Test::ResourceTe
     return if row.nil?
 
     assert_pattern do
-      row => FinchAPI::Models::HRIS::CompanyBenefit
+      row => FinchAPI::HRIS::CompanyBenefit
     end
 
     assert_pattern do
       row => {
         benefit_id: String,
-        company_contribution: FinchAPI::Models::HRIS::CompanyBenefit::CompanyContribution | nil,
+        company_contribution: FinchAPI::HRIS::CompanyBenefit::CompanyContribution | nil,
         description: String | nil,
-        frequency: FinchAPI::Models::HRIS::BenefitFrequency | nil,
-        type: FinchAPI::Models::HRIS::BenefitType | nil
+        frequency: FinchAPI::HRIS::BenefitFrequency | nil,
+        type: FinchAPI::HRIS::BenefitType | nil
       }
     end
   end
@@ -97,7 +97,8 @@ class FinchAPI::Test::Resources::HRIS::BenefitsTest < FinchAPI::Test::ResourceTe
         company_contribution: ^(FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::CompanyContribution, nil?: true]) | nil,
         description: String | nil,
         employee_deduction: ^(FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::EmployeeDeduction, nil?: true]) | nil,
-        frequencies: ^(FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::HRIS::BenefitFrequency, nil?: true]) | nil,
+        frequencies: ^(FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::HRIS::BenefitFrequency,
+                                                         nil?: true]) | nil,
         hsa_contribution_limit: ^(FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::HsaContributionLimit, nil?: true]) | nil
       }
     end

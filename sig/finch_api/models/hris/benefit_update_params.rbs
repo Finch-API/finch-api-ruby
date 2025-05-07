@@ -16,8 +16,6 @@ module FinchAPI
           ?description: String,
           ?request_options: FinchAPI::request_opts
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::HRIS::benefit_update_params
       end
     end
   end

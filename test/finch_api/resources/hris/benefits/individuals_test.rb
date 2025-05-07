@@ -7,7 +7,7 @@ class FinchAPI::Test::Resources::HRIS::Benefits::IndividualsTest < FinchAPI::Tes
     response = @finch.hris.benefits.individuals.enroll_many("benefit_id")
 
     assert_pattern do
-      response => FinchAPI::Models::HRIS::Benefits::EnrolledIndividualBenefitResponse
+      response => FinchAPI::HRIS::Benefits::EnrolledIndividualBenefitResponse
     end
 
     assert_pattern do
@@ -43,12 +43,12 @@ class FinchAPI::Test::Resources::HRIS::Benefits::IndividualsTest < FinchAPI::Tes
     return if row.nil?
 
     assert_pattern do
-      row => FinchAPI::Models::HRIS::Benefits::IndividualBenefit
+      row => FinchAPI::HRIS::Benefits::IndividualBenefit
     end
 
     assert_pattern do
       row => {
-        body: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body | nil,
+        body: FinchAPI::HRIS::Benefits::IndividualBenefit::Body | nil,
         code: Integer | nil,
         individual_id: String | nil
       }
@@ -59,7 +59,7 @@ class FinchAPI::Test::Resources::HRIS::Benefits::IndividualsTest < FinchAPI::Tes
     response = @finch.hris.benefits.individuals.unenroll_many("benefit_id")
 
     assert_pattern do
-      response => FinchAPI::Models::HRIS::Benefits::UnenrolledIndividualBenefitResponse
+      response => FinchAPI::HRIS::Benefits::UnenrolledIndividualBenefitResponse
     end
 
     assert_pattern do

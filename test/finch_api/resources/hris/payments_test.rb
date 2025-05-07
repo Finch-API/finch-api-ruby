@@ -14,23 +14,23 @@ class FinchAPI::Test::Resources::HRIS::PaymentsTest < FinchAPI::Test::ResourceTe
     return if row.nil?
 
     assert_pattern do
-      row => FinchAPI::Models::HRIS::Payment
+      row => FinchAPI::HRIS::Payment
     end
 
     assert_pattern do
       row => {
         id: String | nil,
-        company_debit: FinchAPI::Models::Money | nil,
+        company_debit: FinchAPI::Money | nil,
         debit_date: String | nil,
-        employee_taxes: FinchAPI::Models::Money | nil,
-        employer_taxes: FinchAPI::Models::Money | nil,
-        gross_pay: FinchAPI::Models::Money | nil,
+        employee_taxes: FinchAPI::Money | nil,
+        employer_taxes: FinchAPI::Money | nil,
+        gross_pay: FinchAPI::Money | nil,
         individual_ids: ^(FinchAPI::Internal::Type::ArrayOf[String]) | nil,
-        net_pay: FinchAPI::Models::Money | nil,
+        net_pay: FinchAPI::Money | nil,
         pay_date: String | nil,
-        pay_frequencies: ^(FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::HRIS::Payment::PayFrequency]) | nil,
+        pay_frequencies: ^(FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::HRIS::Payment::PayFrequency]) | nil,
         pay_group_ids: ^(FinchAPI::Internal::Type::ArrayOf[String]) | nil,
-        pay_period: FinchAPI::Models::HRIS::Payment::PayPeriod | nil
+        pay_period: FinchAPI::HRIS::Payment::PayPeriod | nil
       }
     end
   end

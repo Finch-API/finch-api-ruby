@@ -7,20 +7,23 @@ module FinchAPI
         # Add new individuals to a sandbox company
         sig do
           params(
-            body: T::Array[T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body, FinchAPI::Internal::AnyHash)],
-            request_options: FinchAPI::RequestOpts
-          )
-            .returns(T::Array[T.anything])
+            body:
+              T::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::OrHash],
+            request_options: FinchAPI::RequestOptions::OrHash
+          ).returns(T::Array[T.anything])
         end
         def create(
           # Array of individuals to create. Takes all combined fields from `/individual` and
           # `/employment` endpoints. All fields are optional.
           body: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

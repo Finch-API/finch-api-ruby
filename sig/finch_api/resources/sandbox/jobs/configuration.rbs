@@ -11,7 +11,7 @@ module FinchAPI
             completion_status: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::completion_status,
             type: FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::type_,
             ?request_options: FinchAPI::request_opts
-          ) -> FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration
+          ) -> FinchAPI::Sandbox::Jobs::SandboxJobConfiguration
 
           def initialize: (client: FinchAPI::Client) -> void
         end

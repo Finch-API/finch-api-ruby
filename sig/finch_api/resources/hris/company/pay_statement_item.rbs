@@ -6,7 +6,7 @@ module FinchAPI
           attr_reader rules: FinchAPI::Resources::HRIS::Company::PayStatementItem::Rules
 
           def list: (
-            ?categories: ::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::category],
+            ?categories: ::Array[FinchAPI::HRIS::Company::PayStatementItemListParams::category],
             ?end_date: Date,
             ?name: String,
             ?start_date: Date,

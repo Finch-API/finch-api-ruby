@@ -7,60 +7,81 @@ module FinchAPI
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
         # The type of job to start.
-        sig { returns(FinchAPI::Models::Jobs::AutomatedCreateParams::Type::OrSymbol) }
+        sig { returns(FinchAPI::Jobs::AutomatedCreateParams::Type::OrSymbol) }
         attr_accessor :type
 
-        sig { returns(FinchAPI::Models::Jobs::AutomatedCreateParams::Params) }
+        sig { returns(FinchAPI::Jobs::AutomatedCreateParams::Params) }
         attr_reader :params
 
         sig do
-          params(params: T.any(FinchAPI::Models::Jobs::AutomatedCreateParams::Params, FinchAPI::Internal::AnyHash))
-            .void
+          params(
+            params: FinchAPI::Jobs::AutomatedCreateParams::Params::OrHash
+          ).void
         end
         attr_writer :params
 
         sig do
           params(
-            type: FinchAPI::Models::Jobs::AutomatedCreateParams::Type::OrSymbol,
-            params: T.any(FinchAPI::Models::Jobs::AutomatedCreateParams::Params, FinchAPI::Internal::AnyHash),
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            type: FinchAPI::Jobs::AutomatedCreateParams::Type::OrSymbol,
+            params: FinchAPI::Jobs::AutomatedCreateParams::Params::OrHash,
+            request_options: FinchAPI::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # The type of job to start.
           type:,
           params:,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                type: FinchAPI::Models::Jobs::AutomatedCreateParams::Type::OrSymbol,
-                params: FinchAPI::Models::Jobs::AutomatedCreateParams::Params,
-                request_options: FinchAPI::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              type: FinchAPI::Jobs::AutomatedCreateParams::Type::OrSymbol,
+              params: FinchAPI::Jobs::AutomatedCreateParams::Params,
+              request_options: FinchAPI::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
 
         # The type of job to start.
         module Type
           extend FinchAPI::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Jobs::AutomatedCreateParams::Type) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, FinchAPI::Jobs::AutomatedCreateParams::Type)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           W4_FORM_EMPLOYEE_SYNC =
-            T.let(:w4_form_employee_sync, FinchAPI::Models::Jobs::AutomatedCreateParams::Type::TaggedSymbol)
+            T.let(
+              :w4_form_employee_sync,
+              FinchAPI::Jobs::AutomatedCreateParams::Type::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[FinchAPI::Models::Jobs::AutomatedCreateParams::Type::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                FinchAPI::Jobs::AutomatedCreateParams::Type::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class Params < FinchAPI::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
           # The unique ID of the individual for W-4 data sync.
           sig { returns(String) }
           attr_accessor :individual_id
@@ -69,9 +90,12 @@ module FinchAPI
           def self.new(
             # The unique ID of the individual for W-4 data sync.
             individual_id:
-          ); end
-          sig { override.returns({individual_id: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig { override.returns({ individual_id: String }) }
+          def to_hash
+          end
         end
       end
     end

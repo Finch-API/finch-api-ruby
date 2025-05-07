@@ -11,11 +11,11 @@ module FinchAPI
         # @!attribute type
         #   The type of job to start. Currently the only supported type is `data_sync_all`
         #
-        #   @return [Symbol, FinchAPI::Models::Sandbox::JobCreateParams::Type]
-        required :type, enum: -> { FinchAPI::Models::Sandbox::JobCreateParams::Type }
+        #   @return [Symbol, FinchAPI::Sandbox::JobCreateParams::Type]
+        required :type, enum: -> { FinchAPI::Sandbox::JobCreateParams::Type }
 
         # @!method initialize(type:, request_options: {})
-        #   @param type [Symbol, FinchAPI::Models::Sandbox::JobCreateParams::Type] The type of job to start. Currently the only supported type is `data_sync_all`
+        #   @param type [Symbol, FinchAPI::Sandbox::JobCreateParams::Type] The type of job to start. Currently the only supported type is `data_sync_all`
         #
         #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 

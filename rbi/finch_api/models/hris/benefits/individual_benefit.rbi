@@ -7,14 +7,20 @@ module FinchAPI
 
       module Benefits
         class IndividualBenefit < FinchAPI::Internal::Type::BaseModel
-          sig { returns(T.nilable(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body)) }
+          OrHash =
+            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
+          sig do
+            returns(
+              T.nilable(FinchAPI::HRIS::Benefits::IndividualBenefit::Body)
+            )
+          end
           attr_reader :body
 
           sig do
             params(
-              body: T.any(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body, FinchAPI::Internal::AnyHash)
-            )
-              .void
+              body: FinchAPI::HRIS::Benefits::IndividualBenefit::Body::OrHash
+            ).void
           end
           attr_writer :body
 
@@ -32,23 +38,30 @@ module FinchAPI
 
           sig do
             params(
-              body: T.any(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body, FinchAPI::Internal::AnyHash),
+              body: FinchAPI::HRIS::Benefits::IndividualBenefit::Body::OrHash,
               code: Integer,
               individual_id: String
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
-          def self.new(body: nil, code: nil, individual_id: nil); end
+          def self.new(body: nil, code: nil, individual_id: nil)
+          end
 
           sig do
-            override
-              .returns(
-                {body: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body, code: Integer, individual_id: String}
-              )
+            override.returns(
+              {
+                body: FinchAPI::HRIS::Benefits::IndividualBenefit::Body,
+                code: Integer,
+                individual_id: String
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class Body < FinchAPI::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
             # If the benefit supports annual maximum, the amount in cents for this individual.
             sig { returns(T.nilable(Integer)) }
             attr_accessor :annual_maximum
@@ -58,32 +71,34 @@ module FinchAPI
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :catch_up
 
-            sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitContribution)) }
+            sig { returns(T.nilable(FinchAPI::HRIS::BenefitContribution)) }
             attr_reader :company_contribution
 
             sig do
               params(
-                company_contribution: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitContribution, FinchAPI::Internal::AnyHash))
-              )
-                .void
+                company_contribution:
+                  T.nilable(FinchAPI::HRIS::BenefitContribution::OrHash)
+              ).void
             end
             attr_writer :company_contribution
 
-            sig { returns(T.nilable(FinchAPI::Models::HRIS::BenefitContribution)) }
+            sig { returns(T.nilable(FinchAPI::HRIS::BenefitContribution)) }
             attr_reader :employee_deduction
 
             sig do
               params(
-                employee_deduction: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitContribution, FinchAPI::Internal::AnyHash))
-              )
-                .void
+                employee_deduction:
+                  T.nilable(FinchAPI::HRIS::BenefitContribution::OrHash)
+              ).void
             end
             attr_writer :employee_deduction
 
             # Type for HSA contribution limit if the benefit is a HSA.
             sig do
               returns(
-                T.nilable(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol)
+                T.nilable(
+                  FinchAPI::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol
+                )
               )
             end
             attr_accessor :hsa_contribution_limit
@@ -92,11 +107,15 @@ module FinchAPI
               params(
                 annual_maximum: T.nilable(Integer),
                 catch_up: T.nilable(T::Boolean),
-                company_contribution: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitContribution, FinchAPI::Internal::AnyHash)),
-                employee_deduction: T.nilable(T.any(FinchAPI::Models::HRIS::BenefitContribution, FinchAPI::Internal::AnyHash)),
-                hsa_contribution_limit: T.nilable(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::OrSymbol)
-              )
-                .returns(T.attached_class)
+                company_contribution:
+                  T.nilable(FinchAPI::HRIS::BenefitContribution::OrHash),
+                employee_deduction:
+                  T.nilable(FinchAPI::HRIS::BenefitContribution::OrHash),
+                hsa_contribution_limit:
+                  T.nilable(
+                    FinchAPI::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::OrSymbol
+                  )
+              ).returns(T.attached_class)
             end
             def self.new(
               # If the benefit supports annual maximum, the amount in cents for this individual.
@@ -108,47 +127,61 @@ module FinchAPI
               employee_deduction: nil,
               # Type for HSA contribution limit if the benefit is a HSA.
               hsa_contribution_limit: nil
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    annual_maximum: T.nilable(Integer),
-                    catch_up: T.nilable(T::Boolean),
-                    company_contribution: T.nilable(FinchAPI::Models::HRIS::BenefitContribution),
-                    employee_deduction: T.nilable(FinchAPI::Models::HRIS::BenefitContribution),
-                    hsa_contribution_limit: T.nilable(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol)
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  annual_maximum: T.nilable(Integer),
+                  catch_up: T.nilable(T::Boolean),
+                  company_contribution:
+                    T.nilable(FinchAPI::HRIS::BenefitContribution),
+                  employee_deduction:
+                    T.nilable(FinchAPI::HRIS::BenefitContribution),
+                  hsa_contribution_limit:
+                    T.nilable(
+                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol
+                    )
+                }
+              )
+            end
+            def to_hash
+            end
 
             # Type for HSA contribution limit if the benefit is a HSA.
             module HsaContributionLimit
               extend FinchAPI::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit) }
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    FinchAPI::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit
+                  )
+                end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               INDIVIDUAL =
                 T.let(
                   :individual,
-                  FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol
+                  FinchAPI::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol
                 )
               FAMILY =
                 T.let(
                   :family,
-                  FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol
+                  FinchAPI::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol
                 )
 
               sig do
-                override
-                  .returns(
-                    T::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol]
-                  )
+                override.returns(
+                  T::Array[
+                    FinchAPI::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
           end
         end

@@ -27,10 +27,8 @@ module FinchAPI
         #   {FinchAPI::Models::HRIS::PaymentListParams} for more details.
         #
         #   @param end_date [Date] The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD` forma
-        #   ...
         #
         #   @param start_date [Date] The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD` for
-        #   ...
         #
         #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
       end

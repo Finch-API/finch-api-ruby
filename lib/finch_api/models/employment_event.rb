@@ -5,17 +5,17 @@ module FinchAPI
     class EmploymentEvent < FinchAPI::Models::BaseWebhookEvent
       # @!attribute data
       #
-      #   @return [FinchAPI::Models::EmploymentEvent::Data, nil]
-      optional :data, -> { FinchAPI::Models::EmploymentEvent::Data }
+      #   @return [FinchAPI::EmploymentEvent::Data, nil]
+      optional :data, -> { FinchAPI::EmploymentEvent::Data }
 
       # @!attribute event_type
       #
-      #   @return [Symbol, FinchAPI::Models::EmploymentEvent::EventType, nil]
-      optional :event_type, enum: -> { FinchAPI::Models::EmploymentEvent::EventType }
+      #   @return [Symbol, FinchAPI::EmploymentEvent::EventType, nil]
+      optional :event_type, enum: -> { FinchAPI::EmploymentEvent::EventType }
 
       # @!method initialize(data: nil, event_type: nil)
-      #   @param data [FinchAPI::Models::EmploymentEvent::Data]
-      #   @param event_type [Symbol, FinchAPI::Models::EmploymentEvent::EventType]
+      #   @param data [FinchAPI::EmploymentEvent::Data]
+      #   @param event_type [Symbol, FinchAPI::EmploymentEvent::EventType]
 
       class Data < FinchAPI::Internal::Type::BaseModel
         # @!attribute individual_id

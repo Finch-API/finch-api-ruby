@@ -9,28 +9,37 @@ module FinchAPI
           params(
             individual_id: String,
             dob: T.nilable(String),
-            emails: T.nilable(
-              T::Array[T.any(FinchAPI::Models::Sandbox::IndividualUpdateParams::Email, FinchAPI::Internal::AnyHash)]
-            ),
+            emails:
+              T.nilable(
+                T::Array[
+                  FinchAPI::Sandbox::IndividualUpdateParams::Email::OrHash
+                ]
+              ),
             encrypted_ssn: T.nilable(String),
-            ethnicity: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol),
+            ethnicity:
+              T.nilable(
+                FinchAPI::Sandbox::IndividualUpdateParams::Ethnicity::OrSymbol
+              ),
             first_name: T.nilable(String),
-            gender: T.nilable(FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender::OrSymbol),
+            gender:
+              T.nilable(
+                FinchAPI::Sandbox::IndividualUpdateParams::Gender::OrSymbol
+              ),
             last_name: T.nilable(String),
             middle_name: T.nilable(String),
-            phone_numbers: T.nilable(
-              T::Array[
-                T.nilable(
-                  T.any(FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber, FinchAPI::Internal::AnyHash)
-                )
-              ]
-            ),
+            phone_numbers:
+              T.nilable(
+                T::Array[
+                  T.nilable(
+                    FinchAPI::Sandbox::IndividualUpdateParams::PhoneNumber::OrHash
+                  )
+                ]
+              ),
             preferred_name: T.nilable(String),
-            residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::AnyHash)),
+            residence: T.nilable(FinchAPI::Location::OrHash),
             ssn: T.nilable(String),
-            request_options: FinchAPI::RequestOpts
-          )
-            .returns(FinchAPI::Models::Sandbox::IndividualUpdateResponse)
+            request_options: FinchAPI::RequestOptions::OrHash
+          ).returns(FinchAPI::Models::Sandbox::IndividualUpdateResponse)
         end
         def update(
           individual_id,
@@ -60,10 +69,13 @@ module FinchAPI
           # [Click here to learn more about enabling the SSN field](/developer-resources/Enable-SSN-Field).
           ssn: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

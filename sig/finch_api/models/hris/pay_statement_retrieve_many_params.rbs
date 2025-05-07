@@ -3,7 +3,7 @@ module FinchAPI
     module HRIS
       type pay_statement_retrieve_many_params =
         {
-          requests: ::Array[FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request]
+          requests: ::Array[FinchAPI::HRIS::PayStatementRetrieveManyParams::Request]
         }
         & FinchAPI::Internal::Type::request_parameters
 
@@ -11,14 +11,12 @@ module FinchAPI
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
-        attr_accessor requests: ::Array[FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request]
+        attr_accessor requests: ::Array[FinchAPI::HRIS::PayStatementRetrieveManyParams::Request]
 
         def initialize: (
-          requests: ::Array[FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request],
+          requests: ::Array[FinchAPI::HRIS::PayStatementRetrieveManyParams::Request],
           ?request_options: FinchAPI::request_opts
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::HRIS::pay_statement_retrieve_many_params
 
         type request = { payment_id: String, limit: Integer, offset: Integer }
 
@@ -38,8 +36,6 @@ module FinchAPI
             ?limit: Integer,
             ?offset: Integer
           ) -> void
-
-          def to_hash: -> FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::request
         end
       end
     end

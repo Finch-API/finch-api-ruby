@@ -14,7 +14,7 @@ module FinchAPI
           middle_name: String?,
           phone_numbers: ::Array[FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber?]?,
           preferred_name: String?,
-          residence: FinchAPI::Models::Location?,
+          residence: FinchAPI::Location?,
           ssn: String?
         }
 
@@ -43,7 +43,7 @@ module FinchAPI
 
         attr_accessor preferred_name: String?
 
-        attr_accessor residence: FinchAPI::Models::Location?
+        attr_accessor residence: FinchAPI::Location?
 
         attr_accessor ssn: String?
 
@@ -59,11 +59,9 @@ module FinchAPI
           ?middle_name: String?,
           ?phone_numbers: ::Array[FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber?]?,
           ?preferred_name: String?,
-          ?residence: FinchAPI::Models::Location?,
+          ?residence: FinchAPI::Location?,
           ?ssn: String?
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::Sandbox::individual_update_response
 
         type email =
           {
@@ -82,8 +80,6 @@ module FinchAPI
             ?data: String,
             ?type: FinchAPI::Models::Sandbox::IndividualUpdateResponse::Email::type_?
           ) -> void
-
-          def to_hash: -> FinchAPI::Models::Sandbox::IndividualUpdateResponse::email
 
           type type_ = :work | :personal
 
@@ -150,8 +146,6 @@ module FinchAPI
             ?data: String?,
             ?type: FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber::type_?
           ) -> void
-
-          def to_hash: -> FinchAPI::Models::Sandbox::IndividualUpdateResponse::phone_number
 
           type type_ = :work | :personal
 

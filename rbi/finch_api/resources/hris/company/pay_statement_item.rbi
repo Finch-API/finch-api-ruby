@@ -5,7 +5,9 @@ module FinchAPI
     class HRIS
       class Company
         class PayStatementItem
-          sig { returns(FinchAPI::Resources::HRIS::Company::PayStatementItem::Rules) }
+          sig do
+            returns(FinchAPI::Resources::HRIS::Company::PayStatementItem::Rules)
+          end
           attr_reader :rules
 
           # **Beta:** this endpoint currently serves employers onboarded after March 4th and
@@ -13,14 +15,20 @@ module FinchAPI
           # items for the access token's connection account.
           sig do
             params(
-              categories: T::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::Category::OrSymbol],
+              categories:
+                T::Array[
+                  FinchAPI::HRIS::Company::PayStatementItemListParams::Category::OrSymbol
+                ],
               end_date: Date,
               name: String,
               start_date: Date,
               type: String,
-              request_options: FinchAPI::RequestOpts
+              request_options: FinchAPI::RequestOptions::OrHash
+            ).returns(
+              FinchAPI::Internal::ResponsesPage[
+                FinchAPI::Models::HRIS::Company::PayStatementItemListResponse
+              ]
             )
-              .returns(FinchAPI::Internal::ResponsesPage[FinchAPI::Models::HRIS::Company::PayStatementItemListResponse])
           end
           def list(
             # Comma-delimited list of pay statement item categories to filter on. If empty,
@@ -37,10 +45,13 @@ module FinchAPI
             # String search by pay statement item type.
             type: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # @api private
           sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-          def self.new(client:); end
+          def self.new(client:)
+          end
         end
       end
     end

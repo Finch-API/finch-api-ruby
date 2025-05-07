@@ -29,8 +29,6 @@ module FinchAPI
           ?pay_frequencies: ::Array[FinchAPI::Models::Payroll::PayGroupListResponse::pay_frequency]
         ) -> void
 
-        def to_hash: -> FinchAPI::Models::Payroll::pay_group_list_response
-
         type pay_frequency =
           :annually
           | :semi_annually

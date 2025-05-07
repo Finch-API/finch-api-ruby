@@ -8,9 +8,9 @@ module FinchAPI
       # @example
       #   # `document_retreive_response` is a `FinchAPI::Models::HRIS::DocumentRetreiveResponse`
       #   case document_retreive_response
-      #   when FinchAPI::Models::HRIS::W42020
+      #   when FinchAPI::HRIS::W42020
       #     puts(document_retreive_response.data)
-      #   when FinchAPI::Models::HRIS::W42005
+      #   when FinchAPI::HRIS::W42005
       #     puts(document_retreive_response.type)
       #   else
       #     puts(document_retreive_response)

@@ -15,9 +15,11 @@ module FinchAPI
 
         # @!attribute pay_statements
         #
-        #   @return [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement>, nil]
+        #   @return [Array<FinchAPI::Sandbox::PaymentCreateParams::PayStatement>, nil]
         optional :pay_statements,
-                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement] }
+                 -> {
+                   FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::PaymentCreateParams::PayStatement]
+                 }
 
         # @!attribute start_date
         #
@@ -26,7 +28,7 @@ module FinchAPI
 
         # @!method initialize(end_date: nil, pay_statements: nil, start_date: nil, request_options: {})
         #   @param end_date [String]
-        #   @param pay_statements [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement>]
+        #   @param pay_statements [Array<FinchAPI::Sandbox::PaymentCreateParams::PayStatement>]
         #   @param start_date [String]
         #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 
@@ -34,30 +36,39 @@ module FinchAPI
           # @!attribute earnings
           #   The array of earnings objects associated with this pay statement
           #
-          #   @return [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning, nil>, nil]
+          #   @return [Array<FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning, nil>, nil]
           optional :earnings,
-                   -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning, nil?: true] },
+                   -> {
+                     FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning,
+                                                       nil?: true]
+                   },
                    nil?: true
 
           # @!attribute employee_deductions
           #   The array of deductions objects associated with this pay statement.
           #
-          #   @return [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction, nil>, nil]
+          #   @return [Array<FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction, nil>, nil]
           optional :employee_deductions,
-                   -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction, nil?: true] },
+                   -> {
+                     FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction,
+                                                       nil?: true]
+                   },
                    nil?: true
 
           # @!attribute employer_contributions
           #
-          #   @return [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution, nil>, nil]
+          #   @return [Array<FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution, nil>, nil]
           optional :employer_contributions,
-                   -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution, nil?: true] },
+                   -> {
+                     FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution,
+                                                       nil?: true]
+                   },
                    nil?: true
 
           # @!attribute gross_pay
           #
-          #   @return [FinchAPI::Models::Money, nil]
-          optional :gross_pay, -> { FinchAPI::Models::Money }, nil?: true
+          #   @return [FinchAPI::Money, nil]
+          optional :gross_pay, -> { FinchAPI::Money }, nil?: true
 
           # @!attribute individual_id
           #   A stable Finch `id` (UUID v4) for an individual in the company
@@ -67,23 +78,26 @@ module FinchAPI
 
           # @!attribute net_pay
           #
-          #   @return [FinchAPI::Models::Money, nil]
-          optional :net_pay, -> { FinchAPI::Models::Money }, nil?: true
+          #   @return [FinchAPI::Money, nil]
+          optional :net_pay, -> { FinchAPI::Money }, nil?: true
 
           # @!attribute payment_method
           #   The payment method.
           #
-          #   @return [Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod, nil]
+          #   @return [Symbol, FinchAPI::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod, nil]
           optional :payment_method,
-                   enum: -> { FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod },
+                   enum: -> { FinchAPI::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod },
                    nil?: true
 
           # @!attribute taxes
           #   The array of taxes objects associated with this pay statement.
           #
-          #   @return [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax, nil>, nil]
+          #   @return [Array<FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax, nil>, nil]
           optional :taxes,
-                   -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax, nil?: true] },
+                   -> {
+                     FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax,
+                                                       nil?: true]
+                   },
                    nil?: true
 
           # @!attribute total_hours
@@ -95,31 +109,29 @@ module FinchAPI
           # @!attribute type
           #   The type of the payment associated with the pay statement.
           #
-          #   @return [Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type, nil]
-          optional :type,
-                   enum: -> { FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type },
-                   nil?: true
+          #   @return [Symbol, FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Type, nil]
+          optional :type, enum: -> { FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Type }, nil?: true
 
           # @!method initialize(earnings: nil, employee_deductions: nil, employer_contributions: nil, gross_pay: nil, individual_id: nil, net_pay: nil, payment_method: nil, taxes: nil, total_hours: nil, type: nil)
-          #   @param earnings [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning, nil>, nil] The array of earnings objects associated with this pay statement
+          #   @param earnings [Array<FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning, nil>, nil] The array of earnings objects associated with this pay statement
           #
-          #   @param employee_deductions [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction, nil>, nil] The array of deductions objects associated with this pay statement.
+          #   @param employee_deductions [Array<FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction, nil>, nil] The array of deductions objects associated with this pay statement.
           #
-          #   @param employer_contributions [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution, nil>, nil]
+          #   @param employer_contributions [Array<FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution, nil>, nil]
           #
-          #   @param gross_pay [FinchAPI::Models::Money, nil]
+          #   @param gross_pay [FinchAPI::Money, nil]
           #
           #   @param individual_id [String] A stable Finch `id` (UUID v4) for an individual in the company
           #
-          #   @param net_pay [FinchAPI::Models::Money, nil]
+          #   @param net_pay [FinchAPI::Money, nil]
           #
-          #   @param payment_method [Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod, nil] The payment method.
+          #   @param payment_method [Symbol, FinchAPI::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod, nil] The payment method.
           #
-          #   @param taxes [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax, nil>, nil] The array of taxes objects associated with this pay statement.
+          #   @param taxes [Array<FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax, nil>, nil] The array of taxes objects associated with this pay statement.
           #
           #   @param total_hours [Float, nil] The number of hours worked for this pay period
           #
-          #   @param type [Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Type, nil] The type of the payment associated with the pay statement.
+          #   @param type [Symbol, FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Type, nil] The type of the payment associated with the pay statement.
 
           class Earning < FinchAPI::Internal::Type::BaseModel
             # @!attribute amount
@@ -130,9 +142,9 @@ module FinchAPI
 
             # @!attribute attributes
             #
-            #   @return [FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes, nil]
+            #   @return [FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes, nil]
             optional :attributes,
-                     -> { FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes },
+                     -> { FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes },
                      nil?: true
 
             # @!attribute currency
@@ -157,41 +169,42 @@ module FinchAPI
             # @!attribute type
             #   The type of earning.
             #
-            #   @return [Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type, nil]
+            #   @return [Symbol, FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning::Type, nil]
             optional :type,
-                     enum: -> { FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type },
+                     enum: -> { FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning::Type },
                      nil?: true
 
             # @!method initialize(amount: nil, attributes: nil, currency: nil, hours: nil, name: nil, type: nil)
             #   Some parameter documentations has been truncated, see
-            #   {FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning} for more
+            #   {FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning} for more
             #   details.
             #
             #   @param amount [Integer, nil] The earnings amount in cents.
             #
-            #   @param attributes [FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes, nil]
+            #   @param attributes [FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes, nil]
             #
             #   @param currency [String, nil] The earnings currency code.
             #
             #   @param hours [Float, nil] The number of hours associated with this earning. (For salaried employees, this
-            #   ...
             #
             #   @param name [String, nil] The exact name of the deduction from the pay statement.
             #
-            #   @param type [Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Type, nil] The type of earning.
+            #   @param type [Symbol, FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning::Type, nil] The type of earning.
 
-            # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning#attributes
+            # @see FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning#attributes
             class Attributes < FinchAPI::Internal::Type::BaseModel
               # @!attribute metadata
               #
-              #   @return [FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::Metadata, nil]
+              #   @return [FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::Metadata, nil]
               optional :metadata,
-                       -> { FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::Metadata }
+                       -> {
+                         FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::Metadata
+                       }
 
               # @!method initialize(metadata: nil)
-              #   @param metadata [FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::Metadata]
+              #   @param metadata [FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::Metadata]
 
-              # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes#metadata
+              # @see FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes#metadata
               class Metadata < FinchAPI::Internal::Type::BaseModel
                 # @!attribute metadata
                 #   The metadata to be attached to the entity by existing rules. It is a key-value
@@ -204,17 +217,16 @@ module FinchAPI
 
                 # @!method initialize(metadata: nil)
                 #   Some parameter documentations has been truncated, see
-                #   {FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::Metadata}
+                #   {FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::Metadata}
                 #   for more details.
                 #
                 #   @param metadata [Hash{Symbol=>Object, nil}] The metadata to be attached to the entity by existing rules. It is a key-value p
-                #   ...
               end
             end
 
             # The type of earning.
             #
-            # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning#type
+            # @see FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning#type
             module Type
               extend FinchAPI::Internal::Type::Enum
 
@@ -246,9 +258,11 @@ module FinchAPI
 
             # @!attribute attributes
             #
-            #   @return [FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes, nil]
+            #   @return [FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes, nil]
             optional :attributes,
-                     -> { FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes },
+                     -> {
+                       FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes
+                     },
                      nil?: true
 
             # @!attribute currency
@@ -272,13 +286,13 @@ module FinchAPI
             # @!attribute type
             #   Type of benefit.
             #
-            #   @return [Symbol, FinchAPI::Models::HRIS::BenefitType, nil]
-            optional :type, enum: -> { FinchAPI::Models::HRIS::BenefitType }, nil?: true
+            #   @return [Symbol, FinchAPI::HRIS::BenefitType, nil]
+            optional :type, enum: -> { FinchAPI::HRIS::BenefitType }, nil?: true
 
             # @!method initialize(amount: nil, attributes: nil, currency: nil, name: nil, pre_tax: nil, type: nil)
             #   @param amount [Integer, nil] The deduction amount in cents.
             #
-            #   @param attributes [FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes, nil]
+            #   @param attributes [FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes, nil]
             #
             #   @param currency [String, nil] The deduction currency.
             #
@@ -286,20 +300,22 @@ module FinchAPI
             #
             #   @param pre_tax [Boolean, nil] Boolean indicating if the deduction is pre-tax.
             #
-            #   @param type [Symbol, FinchAPI::Models::HRIS::BenefitType, nil] Type of benefit.
+            #   @param type [Symbol, FinchAPI::HRIS::BenefitType, nil] Type of benefit.
 
-            # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction#attributes
+            # @see FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction#attributes
             class Attributes < FinchAPI::Internal::Type::BaseModel
               # @!attribute metadata
               #
-              #   @return [FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes::Metadata, nil]
+              #   @return [FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes::Metadata, nil]
               optional :metadata,
-                       -> { FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes::Metadata }
+                       -> {
+                         FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes::Metadata
+                       }
 
               # @!method initialize(metadata: nil)
-              #   @param metadata [FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes::Metadata]
+              #   @param metadata [FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes::Metadata]
 
-              # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes#metadata
+              # @see FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes#metadata
               class Metadata < FinchAPI::Internal::Type::BaseModel
                 # @!attribute metadata
                 #   The metadata to be attached to the entity by existing rules. It is a key-value
@@ -312,11 +328,10 @@ module FinchAPI
 
                 # @!method initialize(metadata: nil)
                 #   Some parameter documentations has been truncated, see
-                #   {FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes::Metadata}
+                #   {FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes::Metadata}
                 #   for more details.
                 #
                 #   @param metadata [Hash{Symbol=>Object, nil}] The metadata to be attached to the entity by existing rules. It is a key-value p
-                #   ...
               end
             end
           end
@@ -330,9 +345,11 @@ module FinchAPI
 
             # @!attribute attributes
             #
-            #   @return [FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes, nil]
+            #   @return [FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes, nil]
             optional :attributes,
-                     -> { FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes },
+                     -> {
+                       FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes
+                     },
                      nil?: true
 
             # @!attribute currency
@@ -350,32 +367,34 @@ module FinchAPI
             # @!attribute type
             #   Type of benefit.
             #
-            #   @return [Symbol, FinchAPI::Models::HRIS::BenefitType, nil]
-            optional :type, enum: -> { FinchAPI::Models::HRIS::BenefitType }, nil?: true
+            #   @return [Symbol, FinchAPI::HRIS::BenefitType, nil]
+            optional :type, enum: -> { FinchAPI::HRIS::BenefitType }, nil?: true
 
             # @!method initialize(amount: nil, attributes: nil, currency: nil, name: nil, type: nil)
             #   @param amount [Integer, nil] The contribution amount in cents.
             #
-            #   @param attributes [FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes, nil]
+            #   @param attributes [FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes, nil]
             #
             #   @param currency [String, nil] The contribution currency.
             #
             #   @param name [String, nil] The contribution name from the pay statement.
             #
-            #   @param type [Symbol, FinchAPI::Models::HRIS::BenefitType, nil] Type of benefit.
+            #   @param type [Symbol, FinchAPI::HRIS::BenefitType, nil] Type of benefit.
 
-            # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution#attributes
+            # @see FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution#attributes
             class Attributes < FinchAPI::Internal::Type::BaseModel
               # @!attribute metadata
               #
-              #   @return [FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes::Metadata, nil]
+              #   @return [FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes::Metadata, nil]
               optional :metadata,
-                       -> { FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes::Metadata }
+                       -> {
+                         FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes::Metadata
+                       }
 
               # @!method initialize(metadata: nil)
-              #   @param metadata [FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes::Metadata]
+              #   @param metadata [FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes::Metadata]
 
-              # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes#metadata
+              # @see FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes#metadata
               class Metadata < FinchAPI::Internal::Type::BaseModel
                 # @!attribute metadata
                 #   The metadata to be attached to the entity by existing rules. It is a key-value
@@ -388,18 +407,17 @@ module FinchAPI
 
                 # @!method initialize(metadata: nil)
                 #   Some parameter documentations has been truncated, see
-                #   {FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes::Metadata}
+                #   {FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes::Metadata}
                 #   for more details.
                 #
                 #   @param metadata [Hash{Symbol=>Object, nil}] The metadata to be attached to the entity by existing rules. It is a key-value p
-                #   ...
               end
             end
           end
 
           # The payment method.
           #
-          # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement#payment_method
+          # @see FinchAPI::Sandbox::PaymentCreateParams::PayStatement#payment_method
           module PaymentMethod
             extend FinchAPI::Internal::Type::Enum
 
@@ -419,9 +437,9 @@ module FinchAPI
 
             # @!attribute attributes
             #
-            #   @return [FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes, nil]
+            #   @return [FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes, nil]
             optional :attributes,
-                     -> { FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes },
+                     -> { FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes },
                      nil?: true
 
             # @!attribute currency
@@ -445,15 +463,17 @@ module FinchAPI
             # @!attribute type
             #   The type of taxes.
             #
-            #   @return [Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type, nil]
+            #   @return [Symbol, FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax::Type, nil]
             optional :type,
-                     enum: -> { FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type },
+                     enum: -> {
+                       FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax::Type
+                     },
                      nil?: true
 
             # @!method initialize(amount: nil, attributes: nil, currency: nil, employer: nil, name: nil, type: nil)
             #   @param amount [Integer, nil] The tax amount in cents.
             #
-            #   @param attributes [FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes, nil]
+            #   @param attributes [FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes, nil]
             #
             #   @param currency [String, nil] The currency code.
             #
@@ -461,20 +481,22 @@ module FinchAPI
             #
             #   @param name [String, nil] The exact name of tax from the pay statement.
             #
-            #   @param type [Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Type, nil] The type of taxes.
+            #   @param type [Symbol, FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax::Type, nil] The type of taxes.
 
-            # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax#attributes
+            # @see FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax#attributes
             class Attributes < FinchAPI::Internal::Type::BaseModel
               # @!attribute metadata
               #
-              #   @return [FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::Metadata, nil]
+              #   @return [FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::Metadata, nil]
               optional :metadata,
-                       -> { FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::Metadata }
+                       -> {
+                         FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::Metadata
+                       }
 
               # @!method initialize(metadata: nil)
-              #   @param metadata [FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::Metadata]
+              #   @param metadata [FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::Metadata]
 
-              # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes#metadata
+              # @see FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes#metadata
               class Metadata < FinchAPI::Internal::Type::BaseModel
                 # @!attribute metadata
                 #   The metadata to be attached to the entity by existing rules. It is a key-value
@@ -487,17 +509,16 @@ module FinchAPI
 
                 # @!method initialize(metadata: nil)
                 #   Some parameter documentations has been truncated, see
-                #   {FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::Metadata}
+                #   {FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::Metadata}
                 #   for more details.
                 #
                 #   @param metadata [Hash{Symbol=>Object, nil}] The metadata to be attached to the entity by existing rules. It is a key-value p
-                #   ...
               end
             end
 
             # The type of taxes.
             #
-            # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax#type
+            # @see FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax#type
             module Type
               extend FinchAPI::Internal::Type::Enum
 
@@ -513,7 +534,7 @@ module FinchAPI
 
           # The type of the payment associated with the pay statement.
           #
-          # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement#type
+          # @see FinchAPI::Sandbox::PaymentCreateParams::PayStatement#type
           module Type
             extend FinchAPI::Internal::Type::Enum
 

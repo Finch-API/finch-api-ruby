@@ -10,19 +10,28 @@ module FinchAPI
         # supports Benefits.
         sig do
           params(
-            requests: T::Array[T.any(FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request, FinchAPI::Internal::AnyHash)],
-            request_options: FinchAPI::RequestOpts
+            requests:
+              T::Array[
+                FinchAPI::HRIS::PayStatementRetrieveManyParams::Request::OrHash
+              ],
+            request_options: FinchAPI::RequestOptions::OrHash
+          ).returns(
+            FinchAPI::Internal::ResponsesPage[
+              FinchAPI::HRIS::PayStatementResponse
+            ]
           )
-            .returns(FinchAPI::Internal::ResponsesPage[FinchAPI::Models::HRIS::PayStatementResponse])
         end
         def retrieve_many(
           # The array of batch requests.
           requests:,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

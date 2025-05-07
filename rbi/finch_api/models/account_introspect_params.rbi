@@ -6,14 +6,19 @@ module FinchAPI
       extend FinchAPI::Internal::Type::RequestParameters::Converter
       include FinchAPI::Internal::Type::RequestParameters
 
-      sig do
-        params(request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash))
-          .returns(T.attached_class)
-      end
-      def self.new(request_options: {}); end
+      OrHash = T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
 
-      sig { override.returns({request_options: FinchAPI::RequestOptions}) }
-      def to_hash; end
+      sig do
+        params(request_options: FinchAPI::RequestOptions::OrHash).returns(
+          T.attached_class
+        )
+      end
+      def self.new(request_options: {})
+      end
+
+      sig { override.returns({ request_options: FinchAPI::RequestOptions }) }
+      def to_hash
+      end
     end
   end
 end
