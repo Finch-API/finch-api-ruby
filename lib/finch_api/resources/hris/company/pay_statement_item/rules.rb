@@ -15,15 +15,15 @@ module FinchAPI
             #
             # @overload create(attributes: nil, conditions: nil, effective_end_date: nil, effective_start_date: nil, entity_type: nil, request_options: {})
             #
-            # @param attributes [FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes] Specifies the fields to be applied when the condition is met.
+            # @param attributes [FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes] Specifies the fields to be applied when the condition is met.
             #
-            # @param conditions [Array<FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition>]
+            # @param conditions [Array<FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Condition>]
             #
             # @param effective_end_date [String, nil] Specifies when the rules should stop applying rules based on the date.
             #
             # @param effective_start_date [String, nil] Specifies when the rule should begin applying based on the date.
             #
-            # @param entity_type [Symbol, FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::EntityType] The entity type to which the rule is applied.
+            # @param entity_type [Symbol, FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::EntityType] The entity type to which the rule is applied.
             #
             # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
             #
@@ -31,8 +31,7 @@ module FinchAPI
             #
             # @see FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams
             def create(params = {})
-              parsed, options =
-                FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams.dump_request(params)
+              parsed, options = FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams.dump_request(params)
               @client.request(
                 method: :post,
                 path: "employer/pay-statement-item/rule",
@@ -55,8 +54,7 @@ module FinchAPI
             #
             # @see FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateParams
             def update(rule_id, params = {})
-              parsed, options =
-                FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateParams.dump_request(params)
+              parsed, options = FinchAPI::HRIS::Company::PayStatementItem::RuleUpdateParams.dump_request(params)
               @client.request(
                 method: :put,
                 path: ["employer/pay-statement-item/rule/%1$s", rule_id],

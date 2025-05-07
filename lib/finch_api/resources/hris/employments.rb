@@ -8,21 +8,21 @@ module FinchAPI
         #
         # @overload retrieve_many(requests:, request_options: {})
         #
-        # @param requests [Array<FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request>] The array of batch requests.
+        # @param requests [Array<FinchAPI::HRIS::EmploymentRetrieveManyParams::Request>] The array of batch requests.
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::Internal::ResponsesPage<FinchAPI::Models::HRIS::EmploymentDataResponse>]
+        # @return [FinchAPI::Internal::ResponsesPage<FinchAPI::HRIS::EmploymentDataResponse>]
         #
         # @see FinchAPI::Models::HRIS::EmploymentRetrieveManyParams
         def retrieve_many(params)
-          parsed, options = FinchAPI::Models::HRIS::EmploymentRetrieveManyParams.dump_request(params)
+          parsed, options = FinchAPI::HRIS::EmploymentRetrieveManyParams.dump_request(params)
           @client.request(
             method: :post,
             path: "employer/employment",
             body: parsed,
             page: FinchAPI::Internal::ResponsesPage,
-            model: FinchAPI::Models::HRIS::EmploymentDataResponse,
+            model: FinchAPI::HRIS::EmploymentDataResponse,
             options: options
           )
         end

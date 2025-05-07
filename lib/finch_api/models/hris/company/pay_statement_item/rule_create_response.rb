@@ -99,7 +99,6 @@ module FinchAPI
               #   Specifies the fields to be applied when the condition is met.
               #
               #   @param metadata [Hash{Symbol=>Object}] The metadata to be attached in the entity. It is a key-value pairs where the val
-              #   ...
             end
 
             class Condition < FinchAPI::Internal::Type::BaseModel

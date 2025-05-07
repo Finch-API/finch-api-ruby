@@ -6,6 +6,9 @@ module FinchAPI
       module Company
         module PayStatementItem
           class RuleUpdateResponse < FinchAPI::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
             # Finch id (uuidv4) for the rule.
             sig { returns(T.nilable(String)) }
             attr_reader :id
@@ -14,37 +17,41 @@ module FinchAPI
             attr_writer :id
 
             # Specifies the fields to be applied when the condition is met.
-            sig { returns(T.nilable(FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Attributes)) }
+            sig do
+              returns(
+                T.nilable(
+                  FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Attributes
+                )
+              )
+            end
             attr_reader :attributes
 
             sig do
               params(
-                attributes: T.any(
-                  FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Attributes,
-                  FinchAPI::Internal::AnyHash
-                )
-              )
-                .void
+                attributes:
+                  FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Attributes::OrHash
+              ).void
             end
             attr_writer :attributes
 
             sig do
               returns(
-                T.nilable(T::Array[FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Condition])
+                T.nilable(
+                  T::Array[
+                    FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Condition
+                  ]
+                )
               )
             end
             attr_reader :conditions
 
             sig do
               params(
-                conditions: T::Array[
-                  T.any(
-                    FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Condition,
-                    FinchAPI::Internal::AnyHash
-                  )
-                ]
-              )
-                .void
+                conditions:
+                  T::Array[
+                    FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Condition::OrHash
+                  ]
+              ).void
             end
             attr_writer :conditions
 
@@ -66,16 +73,18 @@ module FinchAPI
             # The entity type to which the rule is applied.
             sig do
               returns(
-                T.nilable(FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::EntityType::TaggedSymbol)
+                T.nilable(
+                  FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::EntityType::TaggedSymbol
+                )
               )
             end
             attr_reader :entity_type
 
             sig do
               params(
-                entity_type: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::EntityType::OrSymbol
-              )
-                .void
+                entity_type:
+                  FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::EntityType::OrSymbol
+              ).void
             end
             attr_writer :entity_type
 
@@ -96,24 +105,20 @@ module FinchAPI
             sig do
               params(
                 id: String,
-                attributes: T.any(
-                  FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Attributes,
-                  FinchAPI::Internal::AnyHash
-                ),
-                conditions: T::Array[
-                  T.any(
-                    FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Condition,
-                    FinchAPI::Internal::AnyHash
-                  )
-                ],
+                attributes:
+                  FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Attributes::OrHash,
+                conditions:
+                  T::Array[
+                    FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Condition::OrHash
+                  ],
                 created_at: Time,
                 effective_end_date: T.nilable(String),
                 effective_start_date: T.nilable(String),
-                entity_type: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::EntityType::OrSymbol,
+                entity_type:
+                  FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::EntityType::OrSymbol,
                 priority: Integer,
                 updated_at: Time
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
             def self.new(
               # Finch id (uuidv4) for the rule.
@@ -133,26 +138,36 @@ module FinchAPI
               priority: nil,
               # The datetime when the rule was last updated.
               updated_at: nil
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    id: String,
-                    attributes: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Attributes,
-                    conditions: T::Array[FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Condition],
-                    created_at: Time,
-                    effective_end_date: T.nilable(String),
-                    effective_start_date: T.nilable(String),
-                    entity_type: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::EntityType::TaggedSymbol,
-                    priority: Integer,
-                    updated_at: Time
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  id: String,
+                  attributes:
+                    FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Attributes,
+                  conditions:
+                    T::Array[
+                      FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Condition
+                    ],
+                  created_at: Time,
+                  effective_end_date: T.nilable(String),
+                  effective_start_date: T.nilable(String),
+                  entity_type:
+                    FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::EntityType::TaggedSymbol,
+                  priority: Integer,
+                  updated_at: Time
+                }
+              )
+            end
+            def to_hash
+            end
 
             class Attributes < FinchAPI::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
               # The metadata to be attached in the entity. It is a key-value pairs where the
               # values can be of any type (string, number, boolean, object, array, etc.).
               sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
@@ -162,17 +177,29 @@ module FinchAPI
               attr_writer :metadata
 
               # Specifies the fields to be applied when the condition is met.
-              sig { params(metadata: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
+              sig do
+                params(metadata: T::Hash[Symbol, T.anything]).returns(
+                  T.attached_class
+                )
+              end
               def self.new(
                 # The metadata to be attached in the entity. It is a key-value pairs where the
                 # values can be of any type (string, number, boolean, object, array, etc.).
                 metadata: nil
-              ); end
-              sig { override.returns({metadata: T::Hash[Symbol, T.anything]}) }
-              def to_hash; end
+              )
+              end
+
+              sig do
+                override.returns({ metadata: T::Hash[Symbol, T.anything] })
+              end
+              def to_hash
+              end
             end
 
             class Condition < FinchAPI::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
               # The field to be checked in the rule.
               sig { returns(T.nilable(String)) }
               attr_reader :field
@@ -192,9 +219,9 @@ module FinchAPI
 
               sig do
                 params(
-                  operator: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Condition::Operator::OrSymbol
-                )
-                  .void
+                  operator:
+                    FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Condition::Operator::OrSymbol
+                ).void
               end
               attr_writer :operator
 
@@ -208,10 +235,10 @@ module FinchAPI
               sig do
                 params(
                   field: String,
-                  operator: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Condition::Operator::OrSymbol,
+                  operator:
+                    FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Condition::Operator::OrSymbol,
                   value: String
-                )
-                  .returns(T.attached_class)
+                ).returns(T.attached_class)
               end
               def self.new(
                 # The field to be checked in the rule.
@@ -220,25 +247,33 @@ module FinchAPI
                 operator: nil,
                 # The value of the field to be checked in the rule.
                 value: nil
-              ); end
-              sig do
-                override
-                  .returns(
-                    {
-                      field: String,
-                      operator: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Condition::Operator::TaggedSymbol,
-                      value: String
-                    }
-                  )
+              )
               end
-              def to_hash; end
+
+              sig do
+                override.returns(
+                  {
+                    field: String,
+                    operator:
+                      FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Condition::Operator::TaggedSymbol,
+                    value: String
+                  }
+                )
+              end
+              def to_hash
+              end
 
               # The operator to be used in the rule.
               module Operator
                 extend FinchAPI::Internal::Type::Enum
 
                 TaggedSymbol =
-                  T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Condition::Operator) }
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Condition::Operator
+                    )
+                  end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 EQUALS =
@@ -248,12 +283,14 @@ module FinchAPI
                   )
 
                 sig do
-                  override
-                    .returns(
-                      T::Array[FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Condition::Operator::TaggedSymbol]
-                    )
+                  override.returns(
+                    T::Array[
+                      FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Condition::Operator::TaggedSymbol
+                    ]
+                  )
                 end
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -262,7 +299,12 @@ module FinchAPI
               extend FinchAPI::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::EntityType) }
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::EntityType
+                  )
+                end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               PAY_STATEMENT_ITEM =
@@ -272,12 +314,14 @@ module FinchAPI
                 )
 
               sig do
-                override
-                  .returns(
-                    T::Array[FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::EntityType::TaggedSymbol]
-                  )
+                override.returns(
+                  T::Array[
+                    FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::EntityType::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
           end
         end

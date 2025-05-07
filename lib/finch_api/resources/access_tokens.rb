@@ -13,16 +13,16 @@ module FinchAPI
       # @param redirect_uri [String]
       # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [FinchAPI::Models::CreateAccessTokenResponse]
+      # @return [FinchAPI::CreateAccessTokenResponse]
       #
       # @see FinchAPI::Models::AccessTokenCreateParams
       def create(params)
-        parsed, options = FinchAPI::Models::AccessTokenCreateParams.dump_request(params)
+        parsed, options = FinchAPI::AccessTokenCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "auth/token",
           body: parsed,
-          model: FinchAPI::Models::CreateAccessTokenResponse,
+          model: FinchAPI::CreateAccessTokenResponse,
           options: options
         )
       end

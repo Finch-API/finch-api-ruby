@@ -5,17 +5,17 @@ module FinchAPI
     class JobCompletionEvent < FinchAPI::Models::BaseWebhookEvent
       # @!attribute data
       #
-      #   @return [FinchAPI::Models::JobCompletionEvent::Data, nil]
-      optional :data, -> { FinchAPI::Models::JobCompletionEvent::Data }
+      #   @return [FinchAPI::JobCompletionEvent::Data, nil]
+      optional :data, -> { FinchAPI::JobCompletionEvent::Data }
 
       # @!attribute event_type
       #
-      #   @return [Symbol, FinchAPI::Models::JobCompletionEvent::EventType, nil]
-      optional :event_type, enum: -> { FinchAPI::Models::JobCompletionEvent::EventType }
+      #   @return [Symbol, FinchAPI::JobCompletionEvent::EventType, nil]
+      optional :event_type, enum: -> { FinchAPI::JobCompletionEvent::EventType }
 
       # @!method initialize(data: nil, event_type: nil)
-      #   @param data [FinchAPI::Models::JobCompletionEvent::Data]
-      #   @param event_type [Symbol, FinchAPI::Models::JobCompletionEvent::EventType]
+      #   @param data [FinchAPI::JobCompletionEvent::Data]
+      #   @param event_type [Symbol, FinchAPI::JobCompletionEvent::EventType]
 
       class Data < FinchAPI::Internal::Type::BaseModel
         # @!attribute job_id

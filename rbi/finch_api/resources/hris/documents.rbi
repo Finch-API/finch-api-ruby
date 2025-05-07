@@ -11,10 +11,9 @@ module FinchAPI
             individual_ids: T::Array[String],
             limit: Integer,
             offset: Integer,
-            types: T::Array[FinchAPI::Models::HRIS::DocumentListParams::Type::OrSymbol],
-            request_options: FinchAPI::RequestOpts
-          )
-            .returns(FinchAPI::Models::HRIS::DocumentListResponse)
+            types: T::Array[FinchAPI::HRIS::DocumentListParams::Type::OrSymbol],
+            request_options: FinchAPI::RequestOptions::OrHash
+          ).returns(FinchAPI::Models::HRIS::DocumentListResponse)
         end
         def list(
           # Comma-delimited list of stable Finch uuids for each individual. If empty,
@@ -28,21 +27,28 @@ module FinchAPI
           # types
           types: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # **Beta:** This endpoint is in beta and may change. Retrieve details of a
         # specific document by its ID.
         sig do
-          params(document_id: String, request_options: FinchAPI::RequestOpts)
-            .returns(T.any(FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005))
+          params(
+            document_id: String,
+            request_options: FinchAPI::RequestOptions::OrHash
+          ).returns(T.any(FinchAPI::HRIS::W42020, FinchAPI::HRIS::W42005))
         end
         def retreive(
           # The unique identifier of the document.
           document_id,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

@@ -8,7 +8,7 @@ module FinchAPI
           ein: String?,
           entity: FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity?,
           legal_name: String?,
-          locations: ::Array[FinchAPI::Models::Location?]?,
+          locations: ::Array[FinchAPI::Location?]?,
           primary_email: String?,
           primary_phone_number: String?
         }
@@ -24,7 +24,7 @@ module FinchAPI
 
         attr_accessor legal_name: String?
 
-        attr_accessor locations: ::Array[FinchAPI::Models::Location?]?
+        attr_accessor locations: ::Array[FinchAPI::Location?]?
 
         attr_accessor primary_email: String?
 
@@ -36,12 +36,10 @@ module FinchAPI
           ein: String?,
           entity: FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity?,
           legal_name: String?,
-          locations: ::Array[FinchAPI::Models::Location?]?,
+          locations: ::Array[FinchAPI::Location?]?,
           primary_email: String?,
           primary_phone_number: String?
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::Sandbox::company_update_response
 
         type account =
           {
@@ -71,8 +69,6 @@ module FinchAPI
             ?routing_number: String?
           ) -> void
 
-          def to_hash: -> FinchAPI::Models::Sandbox::CompanyUpdateResponse::account
-
           type account_type = :checking | :savings
 
           module AccountType
@@ -101,16 +97,12 @@ module FinchAPI
             ?parent: FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department::Parent?
           ) -> void
 
-          def to_hash: -> FinchAPI::Models::Sandbox::CompanyUpdateResponse::department
-
           type parent = { name: String? }
 
           class Parent < FinchAPI::Internal::Type::BaseModel
             attr_accessor name: String?
 
             def initialize: (?name: String?) -> void
-
-            def to_hash: -> FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department::parent
           end
         end
 
@@ -129,8 +121,6 @@ module FinchAPI
             ?subtype: FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::subtype?,
             ?type: FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::type_?
           ) -> void
-
-          def to_hash: -> FinchAPI::Models::Sandbox::CompanyUpdateResponse::entity
 
           type subtype = :s_corporation | :c_corporation | :b_corporation
 

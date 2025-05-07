@@ -3,7 +3,7 @@ module FinchAPI
     module Sandbox
       module Jobs
         type configuration_retrieve_response =
-          ::Array[FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration]
+          ::Array[FinchAPI::Sandbox::Jobs::SandboxJobConfiguration]
 
         ConfigurationRetrieveResponse: FinchAPI::Internal::Type::Converter
       end

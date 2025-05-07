@@ -20,8 +20,6 @@ module FinchAPI
           code: Integer,
           individual_id: String
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::HRIS::employment_data_response
       end
     end
   end

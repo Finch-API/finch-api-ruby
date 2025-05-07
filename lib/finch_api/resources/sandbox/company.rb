@@ -11,22 +11,21 @@ module FinchAPI
         #
         # @overload update(accounts:, departments:, ein:, entity:, legal_name:, locations:, primary_email:, primary_phone_number:, request_options: {})
         #
-        # @param accounts [Array<FinchAPI::Models::Sandbox::CompanyUpdateParams::Account>, nil] An array of bank account objects associated with the payroll/HRIS system.
+        # @param accounts [Array<FinchAPI::Sandbox::CompanyUpdateParams::Account>, nil] An array of bank account objects associated with the payroll/HRIS system.
         #
-        # @param departments [Array<FinchAPI::Models::Sandbox::CompanyUpdateParams::Department, nil>, nil] The array of company departments.
+        # @param departments [Array<FinchAPI::Sandbox::CompanyUpdateParams::Department, nil>, nil] The array of company departments.
         #
         # @param ein [String, nil] The employer identification number.
         #
-        # @param entity [FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity, nil] The entity type object.
+        # @param entity [FinchAPI::Sandbox::CompanyUpdateParams::Entity, nil] The entity type object.
         #
         # @param legal_name [String, nil] The legal name of the company.
         #
-        # @param locations [Array<FinchAPI::Models::Location, nil>, nil]
+        # @param locations [Array<FinchAPI::Location, nil>, nil]
         #
         # @param primary_email [String, nil] The email of the main administrator on the account.
         #
         # @param primary_phone_number [String, nil] The phone number of the main administrator on the account. Format: E.164, with e
-        # ...
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -34,7 +33,7 @@ module FinchAPI
         #
         # @see FinchAPI::Models::Sandbox::CompanyUpdateParams
         def update(params)
-          parsed, options = FinchAPI::Models::Sandbox::CompanyUpdateParams.dump_request(params)
+          parsed, options = FinchAPI::Sandbox::CompanyUpdateParams.dump_request(params)
           @client.request(
             method: :put,
             path: "sandbox/company",

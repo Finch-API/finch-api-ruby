@@ -3,6 +3,8 @@
 module FinchAPI
   module Models
     class CreateAccessTokenResponse < FinchAPI::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
       # The access token for the connection.
       sig { returns(String) }
       attr_accessor :access_token
@@ -13,7 +15,9 @@ module FinchAPI
       attr_accessor :account_id
 
       # The type of application associated with a token.
-      sig { returns(FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol) }
+      sig do
+        returns(FinchAPI::CreateAccessTokenResponse::ClientType::TaggedSymbol)
+      end
       attr_accessor :client_type
 
       # [DEPRECATED] Use `connection_id` to identify the connection instead of this
@@ -29,7 +33,11 @@ module FinchAPI
       #
       # - `provider` - connection to an external provider
       # - `finch` - finch-generated data.
-      sig { returns(FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol) }
+      sig do
+        returns(
+          FinchAPI::CreateAccessTokenResponse::ConnectionType::TaggedSymbol
+        )
+      end
       attr_accessor :connection_type
 
       # An array of the authorized products associated with the `access_token`.
@@ -56,16 +64,17 @@ module FinchAPI
         params(
           access_token: String,
           account_id: String,
-          client_type: FinchAPI::Models::CreateAccessTokenResponse::ClientType::OrSymbol,
+          client_type:
+            FinchAPI::CreateAccessTokenResponse::ClientType::OrSymbol,
           company_id: String,
           connection_id: String,
-          connection_type: FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::OrSymbol,
+          connection_type:
+            FinchAPI::CreateAccessTokenResponse::ConnectionType::OrSymbol,
           products: T::Array[String],
           provider_id: String,
           customer_id: T.nilable(String),
           token_type: String
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The access token for the connection.
@@ -94,39 +103,65 @@ module FinchAPI
         customer_id: nil,
         # The RFC 8693 token type (Finch uses `bearer` tokens)
         token_type: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              access_token: String,
-              account_id: String,
-              client_type: FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol,
-              company_id: String,
-              connection_id: String,
-              connection_type: FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol,
-              products: T::Array[String],
-              provider_id: String,
-              customer_id: T.nilable(String),
-              token_type: String
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            access_token: String,
+            account_id: String,
+            client_type:
+              FinchAPI::CreateAccessTokenResponse::ClientType::TaggedSymbol,
+            company_id: String,
+            connection_id: String,
+            connection_type:
+              FinchAPI::CreateAccessTokenResponse::ConnectionType::TaggedSymbol,
+            products: T::Array[String],
+            provider_id: String,
+            customer_id: T.nilable(String),
+            token_type: String
+          }
+        )
+      end
+      def to_hash
+      end
 
       # The type of application associated with a token.
       module ClientType
         extend FinchAPI::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::CreateAccessTokenResponse::ClientType) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, FinchAPI::CreateAccessTokenResponse::ClientType)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        PRODUCTION = T.let(:production, FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol)
-        DEVELOPMENT = T.let(:development, FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol)
-        SANDBOX = T.let(:sandbox, FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol)
+        PRODUCTION =
+          T.let(
+            :production,
+            FinchAPI::CreateAccessTokenResponse::ClientType::TaggedSymbol
+          )
+        DEVELOPMENT =
+          T.let(
+            :development,
+            FinchAPI::CreateAccessTokenResponse::ClientType::TaggedSymbol
+          )
+        SANDBOX =
+          T.let(
+            :sandbox,
+            FinchAPI::CreateAccessTokenResponse::ClientType::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[FinchAPI::Models::CreateAccessTokenResponse::ClientType::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              FinchAPI::CreateAccessTokenResponse::ClientType::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       # The type of the connection associated with the token.
@@ -137,14 +172,31 @@ module FinchAPI
         extend FinchAPI::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, FinchAPI::Models::CreateAccessTokenResponse::ConnectionType) }
+          T.type_alias do
+            T.all(Symbol, FinchAPI::CreateAccessTokenResponse::ConnectionType)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        PROVIDER = T.let(:provider, FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol)
-        FINCH = T.let(:finch, FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol)
+        PROVIDER =
+          T.let(
+            :provider,
+            FinchAPI::CreateAccessTokenResponse::ConnectionType::TaggedSymbol
+          )
+        FINCH =
+          T.let(
+            :finch,
+            FinchAPI::CreateAccessTokenResponse::ConnectionType::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[FinchAPI::Models::CreateAccessTokenResponse::ConnectionType::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              FinchAPI::CreateAccessTokenResponse::ConnectionType::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

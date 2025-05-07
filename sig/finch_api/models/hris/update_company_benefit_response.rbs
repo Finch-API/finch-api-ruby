@@ -10,8 +10,6 @@ module FinchAPI
         attr_accessor job_id: String
 
         def initialize: (benefit_id: String, job_id: String) -> void
-
-        def to_hash: -> FinchAPI::Models::HRIS::update_company_benefit_response
       end
     end
   end

@@ -3,39 +3,48 @@
 module FinchAPI
   module Models
     class EmploymentEvent < FinchAPI::Models::BaseWebhookEvent
-      sig { returns(T.nilable(FinchAPI::Models::EmploymentEvent::Data)) }
+      OrHash = T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
+      sig { returns(T.nilable(FinchAPI::EmploymentEvent::Data)) }
       attr_reader :data
 
-      sig { params(data: T.any(FinchAPI::Models::EmploymentEvent::Data, FinchAPI::Internal::AnyHash)).void }
+      sig { params(data: FinchAPI::EmploymentEvent::Data::OrHash).void }
       attr_writer :data
 
-      sig { returns(T.nilable(FinchAPI::Models::EmploymentEvent::EventType::TaggedSymbol)) }
+      sig do
+        returns(T.nilable(FinchAPI::EmploymentEvent::EventType::TaggedSymbol))
+      end
       attr_reader :event_type
 
-      sig { params(event_type: FinchAPI::Models::EmploymentEvent::EventType::OrSymbol).void }
+      sig do
+        params(event_type: FinchAPI::EmploymentEvent::EventType::OrSymbol).void
+      end
       attr_writer :event_type
 
       sig do
         params(
-          data: T.any(FinchAPI::Models::EmploymentEvent::Data, FinchAPI::Internal::AnyHash),
-          event_type: FinchAPI::Models::EmploymentEvent::EventType::OrSymbol
-        )
-          .returns(T.attached_class)
+          data: FinchAPI::EmploymentEvent::Data::OrHash,
+          event_type: FinchAPI::EmploymentEvent::EventType::OrSymbol
+        ).returns(T.attached_class)
       end
-      def self.new(data: nil, event_type: nil); end
+      def self.new(data: nil, event_type: nil)
+      end
 
       sig do
-        override
-          .returns(
-            {
-              data: FinchAPI::Models::EmploymentEvent::Data,
-              event_type: FinchAPI::Models::EmploymentEvent::EventType::TaggedSymbol
-            }
-          )
+        override.returns(
+          {
+            data: FinchAPI::EmploymentEvent::Data,
+            event_type: FinchAPI::EmploymentEvent::EventType::TaggedSymbol
+          }
+        )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Data < FinchAPI::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
         # The ID of the individual related to the event.
         sig { returns(T.nilable(String)) }
         attr_reader :individual_id
@@ -47,26 +56,44 @@ module FinchAPI
         def self.new(
           # The ID of the individual related to the event.
           individual_id: nil
-        ); end
-        sig { override.returns({individual_id: String}) }
-        def to_hash; end
+        )
+        end
+
+        sig { override.returns({ individual_id: String }) }
+        def to_hash
+        end
       end
 
       module EventType
         extend FinchAPI::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::EmploymentEvent::EventType) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, FinchAPI::EmploymentEvent::EventType) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         EMPLOYMENT_CREATED =
-          T.let(:"employment.created", FinchAPI::Models::EmploymentEvent::EventType::TaggedSymbol)
+          T.let(
+            :"employment.created",
+            FinchAPI::EmploymentEvent::EventType::TaggedSymbol
+          )
         EMPLOYMENT_UPDATED =
-          T.let(:"employment.updated", FinchAPI::Models::EmploymentEvent::EventType::TaggedSymbol)
+          T.let(
+            :"employment.updated",
+            FinchAPI::EmploymentEvent::EventType::TaggedSymbol
+          )
         EMPLOYMENT_DELETED =
-          T.let(:"employment.deleted", FinchAPI::Models::EmploymentEvent::EventType::TaggedSymbol)
+          T.let(
+            :"employment.deleted",
+            FinchAPI::EmploymentEvent::EventType::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[FinchAPI::Models::EmploymentEvent::EventType::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[FinchAPI::EmploymentEvent::EventType::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

@@ -7,8 +7,8 @@ module FinchAPI
       class AutomatedListResponse < FinchAPI::Internal::Type::BaseModel
         # @!attribute data
         #
-        #   @return [Array<FinchAPI::Models::Jobs::AutomatedAsyncJob>]
-        required :data, -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Jobs::AutomatedAsyncJob] }
+        #   @return [Array<FinchAPI::Jobs::AutomatedAsyncJob>]
+        required :data, -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Jobs::AutomatedAsyncJob] }
 
         # @!attribute meta
         #
@@ -16,7 +16,7 @@ module FinchAPI
         required :meta, -> { FinchAPI::Models::Jobs::AutomatedListResponse::Meta }
 
         # @!method initialize(data:, meta:)
-        #   @param data [Array<FinchAPI::Models::Jobs::AutomatedAsyncJob>]
+        #   @param data [Array<FinchAPI::Jobs::AutomatedAsyncJob>]
         #   @param meta [FinchAPI::Models::Jobs::AutomatedListResponse::Meta]
 
         # @see FinchAPI::Models::Jobs::AutomatedListResponse#meta
@@ -35,7 +35,6 @@ module FinchAPI
           #   {FinchAPI::Models::Jobs::AutomatedListResponse::Meta} for more details.
           #
           #   @param quotas [FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas] Information about remaining quotas for this connection. Only applicable for cust
-          #   ...
 
           # @see FinchAPI::Models::Jobs::AutomatedListResponse::Meta#quotas
           class Quotas < FinchAPI::Internal::Type::BaseModel

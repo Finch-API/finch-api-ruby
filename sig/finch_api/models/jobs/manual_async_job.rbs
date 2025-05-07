@@ -5,7 +5,7 @@ module FinchAPI
         {
           body: ::Array[top]?,
           job_id: String,
-          status: FinchAPI::Models::Jobs::ManualAsyncJob::status
+          status: FinchAPI::Jobs::ManualAsyncJob::status
         }
 
       class ManualAsyncJob < FinchAPI::Internal::Type::BaseModel
@@ -13,15 +13,13 @@ module FinchAPI
 
         attr_accessor job_id: String
 
-        attr_accessor status: FinchAPI::Models::Jobs::ManualAsyncJob::status
+        attr_accessor status: FinchAPI::Jobs::ManualAsyncJob::status
 
         def initialize: (
           body: ::Array[top]?,
           job_id: String,
-          status: FinchAPI::Models::Jobs::ManualAsyncJob::status
+          status: FinchAPI::Jobs::ManualAsyncJob::status
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::Jobs::manual_async_job
 
         type status = :pending | :in_progress | :error | :complete
 
@@ -33,7 +31,7 @@ module FinchAPI
           ERROR: :error
           COMPLETE: :complete
 
-          def self?.values: -> ::Array[FinchAPI::Models::Jobs::ManualAsyncJob::status]
+          def self?.values: -> ::Array[FinchAPI::Jobs::ManualAsyncJob::status]
         end
       end
     end

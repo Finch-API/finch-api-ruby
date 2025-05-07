@@ -14,17 +14,17 @@ module FinchAPI
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::Internal::IndividualsPage<FinchAPI::Models::HRIS::IndividualInDirectory>]
+        # @return [FinchAPI::Internal::IndividualsPage<FinchAPI::HRIS::IndividualInDirectory>]
         #
         # @see FinchAPI::Models::HRIS::DirectoryListParams
         def list(params = {})
-          parsed, options = FinchAPI::Models::HRIS::DirectoryListParams.dump_request(params)
+          parsed, options = FinchAPI::HRIS::DirectoryListParams.dump_request(params)
           @client.request(
             method: :get,
             path: "employer/directory",
             query: parsed,
             page: FinchAPI::Internal::IndividualsPage,
-            model: FinchAPI::Models::HRIS::IndividualInDirectory,
+            model: FinchAPI::HRIS::IndividualInDirectory,
             options: options
           )
         end

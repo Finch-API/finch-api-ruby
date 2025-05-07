@@ -7,44 +7,56 @@ module FinchAPI
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
         # Array of individuals to create. Takes all combined fields from `/individual` and
         # `/employment` endpoints. All fields are optional.
-        sig { returns(T.nilable(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body])) }
+        sig do
+          returns(
+            T.nilable(T::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body])
+          )
+        end
         attr_reader :body
 
         sig do
           params(
-            body: T::Array[T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body, FinchAPI::Internal::AnyHash)]
-          )
-            .void
+            body:
+              T::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::OrHash]
+          ).void
         end
         attr_writer :body
 
         sig do
           params(
-            body: T::Array[T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body, FinchAPI::Internal::AnyHash)],
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            body:
+              T::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::OrHash],
+            request_options: FinchAPI::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # Array of individuals to create. Takes all combined fields from `/individual` and
           # `/employment` endpoints. All fields are optional.
           body: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                body: T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body],
-                request_options: FinchAPI::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              body: T::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body],
+              request_options: FinchAPI::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
 
         class Body < FinchAPI::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
           # Worker's compensation classification code for this employee
           sig { returns(T.nilable(String)) }
           attr_accessor :class_code
@@ -52,53 +64,87 @@ module FinchAPI
           # Custom fields for the individual. These are fields which are defined by the
           # employer in the system. Custom fields are not currently supported for assisted
           # connections.
-          sig { returns(T.nilable(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField])) }
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField
+                ]
+              )
+            )
+          end
           attr_reader :custom_fields
 
           sig do
             params(
-              custom_fields: T::Array[T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField, FinchAPI::Internal::AnyHash)]
-            )
-              .void
+              custom_fields:
+                T::Array[
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField::OrHash
+                ]
+            ).void
           end
           attr_writer :custom_fields
 
           # The department object.
-          sig { returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Department)) }
+          sig do
+            returns(
+              T.nilable(
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::Department
+              )
+            )
+          end
           attr_reader :department
 
           sig do
             params(
-              department: T.nilable(
-                T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Department, FinchAPI::Internal::AnyHash)
-              )
-            )
-              .void
+              department:
+                T.nilable(
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Department::OrHash
+                )
+            ).void
           end
           attr_writer :department
 
           sig { returns(T.nilable(String)) }
           attr_accessor :dob
 
-          sig { returns(T.nilable(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email])) }
+          sig do
+            returns(
+              T.nilable(
+                T::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::Email]
+              )
+            )
+          end
           attr_accessor :emails
 
           # The employment object.
-          sig { returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment)) }
+          sig do
+            returns(
+              T.nilable(
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment
+              )
+            )
+          end
           attr_reader :employment
 
           sig do
             params(
-              employment: T.nilable(
-                T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment, FinchAPI::Internal::AnyHash)
-              )
-            )
-              .void
+              employment:
+                T.nilable(
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::OrHash
+                )
+            ).void
           end
           attr_writer :employment
 
           # The detailed employment status of the individual.
-          sig { returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::OrSymbol)) }
+          sig do
+            returns(
+              T.nilable(
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::OrSymbol
+              )
+            )
+          end
           attr_accessor :employment_status
 
           # Social Security Number of the individual in **encrypted** format. This field is
@@ -111,7 +157,13 @@ module FinchAPI
           attr_accessor :end_date
 
           # The EEOC-defined ethnicity of the individual.
-          sig { returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::OrSymbol)) }
+          sig do
+            returns(
+              T.nilable(
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::Ethnicity::OrSymbol
+              )
+            )
+          end
           attr_accessor :ethnicity
 
           # The legal first name of the individual.
@@ -119,20 +171,26 @@ module FinchAPI
           attr_accessor :first_name
 
           # The gender of the individual.
-          sig { returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::OrSymbol)) }
+          sig do
+            returns(
+              T.nilable(
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::Gender::OrSymbol
+              )
+            )
+          end
           attr_accessor :gender
 
           # The employee's income as reported by the provider. This may not always be
           # annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
           # depending on what information the provider returns.
-          sig { returns(T.nilable(FinchAPI::Models::Income)) }
+          sig { returns(T.nilable(FinchAPI::Income)) }
           attr_reader :income
 
-          sig { params(income: T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Internal::AnyHash))).void }
+          sig { params(income: T.nilable(FinchAPI::Income::OrHash)).void }
           attr_writer :income
 
           # The array of income history.
-          sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::Income)])) }
+          sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Income)])) }
           attr_accessor :income_history
 
           # `true` if the individual an an active employee or contractor at the company.
@@ -146,23 +204,27 @@ module FinchAPI
           sig { returns(T.nilable(String)) }
           attr_accessor :latest_rehire_date
 
-          sig { returns(T.nilable(FinchAPI::Models::Location)) }
+          sig { returns(T.nilable(FinchAPI::Location)) }
           attr_reader :location
 
-          sig { params(location: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::AnyHash))).void }
+          sig { params(location: T.nilable(FinchAPI::Location::OrHash)).void }
           attr_writer :location
 
           # The manager object representing the manager of the individual within the org.
-          sig { returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Manager)) }
+          sig do
+            returns(
+              T.nilable(FinchAPI::Sandbox::DirectoryCreateParams::Body::Manager)
+            )
+          end
           attr_reader :manager
 
           sig do
             params(
-              manager: T.nilable(
-                T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Manager, FinchAPI::Internal::AnyHash)
-              )
-            )
-              .void
+              manager:
+                T.nilable(
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Manager::OrHash
+                )
+            ).void
           end
           attr_writer :manager
 
@@ -172,7 +234,13 @@ module FinchAPI
 
           sig do
             returns(
-              T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber)])
+              T.nilable(
+                T::Array[
+                  T.nilable(
+                    FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber
+                  )
+                ]
+              )
             )
           end
           attr_accessor :phone_numbers
@@ -181,10 +249,10 @@ module FinchAPI
           sig { returns(T.nilable(String)) }
           attr_accessor :preferred_name
 
-          sig { returns(T.nilable(FinchAPI::Models::Location)) }
+          sig { returns(T.nilable(FinchAPI::Location)) }
           attr_reader :residence
 
-          sig { params(residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::AnyHash))).void }
+          sig { params(residence: T.nilable(FinchAPI::Location::OrHash)).void }
           attr_writer :residence
 
           # The source system's unique employment identifier for this individual
@@ -211,48 +279,67 @@ module FinchAPI
           sig do
             params(
               class_code: T.nilable(String),
-              custom_fields: T::Array[T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField, FinchAPI::Internal::AnyHash)],
-              department: T.nilable(
-                T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Department, FinchAPI::Internal::AnyHash)
-              ),
+              custom_fields:
+                T::Array[
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField::OrHash
+                ],
+              department:
+                T.nilable(
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Department::OrHash
+                ),
               dob: T.nilable(String),
-              emails: T.nilable(
-                T::Array[T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email, FinchAPI::Internal::AnyHash)]
-              ),
-              employment: T.nilable(
-                T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment, FinchAPI::Internal::AnyHash)
-              ),
-              employment_status: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::OrSymbol),
+              emails:
+                T.nilable(
+                  T::Array[
+                    FinchAPI::Sandbox::DirectoryCreateParams::Body::Email::OrHash
+                  ]
+                ),
+              employment:
+                T.nilable(
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::OrHash
+                ),
+              employment_status:
+                T.nilable(
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::OrSymbol
+                ),
               encrypted_ssn: T.nilable(String),
               end_date: T.nilable(String),
-              ethnicity: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::OrSymbol),
+              ethnicity:
+                T.nilable(
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Ethnicity::OrSymbol
+                ),
               first_name: T.nilable(String),
-              gender: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::OrSymbol),
-              income: T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Internal::AnyHash)),
-              income_history: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Internal::AnyHash))]),
+              gender:
+                T.nilable(
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Gender::OrSymbol
+                ),
+              income: T.nilable(FinchAPI::Income::OrHash),
+              income_history:
+                T.nilable(T::Array[T.nilable(FinchAPI::Income::OrHash)]),
               is_active: T.nilable(T::Boolean),
               last_name: T.nilable(String),
               latest_rehire_date: T.nilable(String),
-              location: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::AnyHash)),
-              manager: T.nilable(
-                T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Manager, FinchAPI::Internal::AnyHash)
-              ),
+              location: T.nilable(FinchAPI::Location::OrHash),
+              manager:
+                T.nilable(
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Manager::OrHash
+                ),
               middle_name: T.nilable(String),
-              phone_numbers: T.nilable(
-                T::Array[
-                  T.nilable(
-                    T.any(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber, FinchAPI::Internal::AnyHash)
-                  )
-                ]
-              ),
+              phone_numbers:
+                T.nilable(
+                  T::Array[
+                    T.nilable(
+                      FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber::OrHash
+                    )
+                  ]
+                ),
               preferred_name: T.nilable(String),
-              residence: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::AnyHash)),
+              residence: T.nilable(FinchAPI::Location::OrHash),
               source_id: String,
               ssn: T.nilable(String),
               start_date: T.nilable(String),
               title: T.nilable(String)
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # Worker's compensation classification code for this employee
@@ -310,44 +397,83 @@ module FinchAPI
             start_date: nil,
             # The current title of the individual.
             title: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  class_code: T.nilable(String),
-                  custom_fields: T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField],
-                  department: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Department),
-                  dob: T.nilable(String),
-                  emails: T.nilable(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email]),
-                  employment: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment),
-                  employment_status: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::OrSymbol),
-                  encrypted_ssn: T.nilable(String),
-                  end_date: T.nilable(String),
-                  ethnicity: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::OrSymbol),
-                  first_name: T.nilable(String),
-                  gender: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::OrSymbol),
-                  income: T.nilable(FinchAPI::Models::Income),
-                  income_history: T.nilable(T::Array[T.nilable(FinchAPI::Models::Income)]),
-                  is_active: T.nilable(T::Boolean),
-                  last_name: T.nilable(String),
-                  latest_rehire_date: T.nilable(String),
-                  location: T.nilable(FinchAPI::Models::Location),
-                  manager: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Manager),
-                  middle_name: T.nilable(String),
-                  phone_numbers: T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber)]),
-                  preferred_name: T.nilable(String),
-                  residence: T.nilable(FinchAPI::Models::Location),
-                  source_id: String,
-                  ssn: T.nilable(String),
-                  start_date: T.nilable(String),
-                  title: T.nilable(String)
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                class_code: T.nilable(String),
+                custom_fields:
+                  T::Array[
+                    FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField
+                  ],
+                department:
+                  T.nilable(
+                    FinchAPI::Sandbox::DirectoryCreateParams::Body::Department
+                  ),
+                dob: T.nilable(String),
+                emails:
+                  T.nilable(
+                    T::Array[
+                      FinchAPI::Sandbox::DirectoryCreateParams::Body::Email
+                    ]
+                  ),
+                employment:
+                  T.nilable(
+                    FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment
+                  ),
+                employment_status:
+                  T.nilable(
+                    FinchAPI::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::OrSymbol
+                  ),
+                encrypted_ssn: T.nilable(String),
+                end_date: T.nilable(String),
+                ethnicity:
+                  T.nilable(
+                    FinchAPI::Sandbox::DirectoryCreateParams::Body::Ethnicity::OrSymbol
+                  ),
+                first_name: T.nilable(String),
+                gender:
+                  T.nilable(
+                    FinchAPI::Sandbox::DirectoryCreateParams::Body::Gender::OrSymbol
+                  ),
+                income: T.nilable(FinchAPI::Income),
+                income_history:
+                  T.nilable(T::Array[T.nilable(FinchAPI::Income)]),
+                is_active: T.nilable(T::Boolean),
+                last_name: T.nilable(String),
+                latest_rehire_date: T.nilable(String),
+                location: T.nilable(FinchAPI::Location),
+                manager:
+                  T.nilable(
+                    FinchAPI::Sandbox::DirectoryCreateParams::Body::Manager
+                  ),
+                middle_name: T.nilable(String),
+                phone_numbers:
+                  T.nilable(
+                    T::Array[
+                      T.nilable(
+                        FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber
+                      )
+                    ]
+                  ),
+                preferred_name: T.nilable(String),
+                residence: T.nilable(FinchAPI::Location),
+                source_id: String,
+                ssn: T.nilable(String),
+                start_date: T.nilable(String),
+                title: T.nilable(String)
+              }
+            )
+          end
+          def to_hash
+          end
 
           class CustomField < FinchAPI::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
             sig { returns(T.nilable(String)) }
             attr_accessor :name
 
@@ -357,14 +483,25 @@ module FinchAPI
             sig { params(value: T.anything).void }
             attr_writer :value
 
-            sig { params(name: T.nilable(String), value: T.anything).returns(T.attached_class) }
-            def self.new(name: nil, value: nil); end
+            sig do
+              params(name: T.nilable(String), value: T.anything).returns(
+                T.attached_class
+              )
+            end
+            def self.new(name: nil, value: nil)
+            end
 
-            sig { override.returns({name: T.nilable(String), value: T.anything}) }
-            def to_hash; end
+            sig do
+              override.returns({ name: T.nilable(String), value: T.anything })
+            end
+            def to_hash
+            end
           end
 
           class Department < FinchAPI::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
             # The name of the department associated with the individual.
             sig { returns(T.nilable(String)) }
             attr_accessor :name
@@ -374,74 +511,131 @@ module FinchAPI
             def self.new(
               # The name of the department associated with the individual.
               name: nil
-            ); end
-            sig { override.returns({name: T.nilable(String)}) }
-            def to_hash; end
+            )
+            end
+
+            sig { override.returns({ name: T.nilable(String) }) }
+            def to_hash
+            end
           end
 
           class Email < FinchAPI::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
             sig { returns(T.nilable(String)) }
             attr_reader :data
 
             sig { params(data: String).void }
             attr_writer :data
 
-            sig { returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type::OrSymbol)) }
+            sig do
+              returns(
+                T.nilable(
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Email::Type::OrSymbol
+                )
+              )
+            end
             attr_accessor :type
 
             sig do
               params(
                 data: String,
-                type: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type::OrSymbol)
-              )
-                .returns(T.attached_class)
+                type:
+                  T.nilable(
+                    FinchAPI::Sandbox::DirectoryCreateParams::Body::Email::Type::OrSymbol
+                  )
+              ).returns(T.attached_class)
             end
-            def self.new(data: nil, type: nil); end
+            def self.new(data: nil, type: nil)
+            end
 
             sig do
-              override
-                .returns(
-                  {data: String, type: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type::OrSymbol)}
-                )
+              override.returns(
+                {
+                  data: String,
+                  type:
+                    T.nilable(
+                      FinchAPI::Sandbox::DirectoryCreateParams::Body::Email::Type::OrSymbol
+                    )
+                }
+              )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             module Type
               extend FinchAPI::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type) }
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    FinchAPI::Sandbox::DirectoryCreateParams::Body::Email::Type
+                  )
+                end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              WORK = T.let(:work, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type::TaggedSymbol)
+              WORK =
+                T.let(
+                  :work,
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Email::Type::TaggedSymbol
+                )
               PERSONAL =
-                T.let(:personal, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type::TaggedSymbol)
+                T.let(
+                  :personal,
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Email::Type::TaggedSymbol
+                )
 
               sig do
-                override
-                  .returns(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type::TaggedSymbol])
+                override.returns(
+                  T::Array[
+                    FinchAPI::Sandbox::DirectoryCreateParams::Body::Email::Type::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
           end
 
           class Employment < FinchAPI::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
             # The secondary employment type of the individual. Options: `full_time`,
             # `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
-            sig { returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::OrSymbol)) }
+            sig do
+              returns(
+                T.nilable(
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::OrSymbol
+                )
+              )
+            end
             attr_accessor :subtype
 
             # The main employment type of the individual.
-            sig { returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type::OrSymbol)) }
+            sig do
+              returns(
+                T.nilable(
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Type::OrSymbol
+                )
+              )
+            end
             attr_accessor :type
 
             # The employment object.
             sig do
               params(
-                subtype: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::OrSymbol),
-                type: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type::OrSymbol)
-              )
-                .returns(T.attached_class)
+                subtype:
+                  T.nilable(
+                    FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::OrSymbol
+                  ),
+                type:
+                  T.nilable(
+                    FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Type::OrSymbol
+                  )
+              ).returns(T.attached_class)
             end
             def self.new(
               # The secondary employment type of the individual. Options: `full_time`,
@@ -449,17 +643,25 @@ module FinchAPI
               subtype: nil,
               # The main employment type of the individual.
               type: nil
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    subtype: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::OrSymbol),
-                    type: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type::OrSymbol)
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  subtype:
+                    T.nilable(
+                      FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::OrSymbol
+                    ),
+                  type:
+                    T.nilable(
+                      FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Type::OrSymbol
+                    )
+                }
+              )
+            end
+            def to_hash
+            end
 
             # The secondary employment type of the individual. Options: `full_time`,
             # `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
@@ -467,41 +669,54 @@ module FinchAPI
               extend FinchAPI::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype) }
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Subtype
+                  )
+                end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               FULL_TIME =
                 T.let(
                   :full_time,
-                  FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::TaggedSymbol
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::TaggedSymbol
                 )
               INTERN =
-                T.let(:intern, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::TaggedSymbol)
+                T.let(
+                  :intern,
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::TaggedSymbol
+                )
               PART_TIME =
                 T.let(
                   :part_time,
-                  FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::TaggedSymbol
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::TaggedSymbol
                 )
               TEMP =
-                T.let(:temp, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::TaggedSymbol)
+                T.let(
+                  :temp,
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::TaggedSymbol
+                )
               SEASONAL =
                 T.let(
                   :seasonal,
-                  FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::TaggedSymbol
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::TaggedSymbol
                 )
               INDIVIDUAL_CONTRACTOR =
                 T.let(
                   :individual_contractor,
-                  FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::TaggedSymbol
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::TaggedSymbol
                 )
 
               sig do
-                override
-                  .returns(
-                    T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::TaggedSymbol]
-                  )
+                override.returns(
+                  T::Array[
+                    FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Subtype::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
 
             # The main employment type of the individual.
@@ -509,19 +724,34 @@ module FinchAPI
               extend FinchAPI::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type) }
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Type
+                  )
+                end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               EMPLOYEE =
-                T.let(:employee, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type::TaggedSymbol)
+                T.let(
+                  :employee,
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Type::TaggedSymbol
+                )
               CONTRACTOR =
-                T.let(:contractor, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type::TaggedSymbol)
+                T.let(
+                  :contractor,
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Type::TaggedSymbol
+                )
 
               sig do
-                override
-                  .returns(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type::TaggedSymbol])
+                override.returns(
+                  T::Array[
+                    FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Type::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
           end
 
@@ -530,29 +760,59 @@ module FinchAPI
             extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::EmploymentStatus
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             ACTIVE =
-              T.let(:active, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::TaggedSymbol)
+              T.let(
+                :active,
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::TaggedSymbol
+              )
             DECEASED =
-              T.let(:deceased, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::TaggedSymbol)
+              T.let(
+                :deceased,
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::TaggedSymbol
+              )
             LEAVE =
-              T.let(:leave, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::TaggedSymbol)
+              T.let(
+                :leave,
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::TaggedSymbol
+              )
             ONBOARDING =
-              T.let(:onboarding, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::TaggedSymbol)
+              T.let(
+                :onboarding,
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::TaggedSymbol
+              )
             PREHIRE =
-              T.let(:prehire, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::TaggedSymbol)
+              T.let(
+                :prehire,
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::TaggedSymbol
+              )
             RETIRED =
-              T.let(:retired, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::TaggedSymbol)
+              T.let(
+                :retired,
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::TaggedSymbol
+              )
             TERMINATED =
-              T.let(:terminated, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::TaggedSymbol)
+              T.let(
+                :terminated,
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::EmploymentStatus::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
 
           # The EEOC-defined ethnicity of the individual.
@@ -560,43 +820,64 @@ module FinchAPI
             extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Ethnicity
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            ASIAN = T.let(:asian, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol)
-            WHITE = T.let(:white, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol)
+            ASIAN =
+              T.let(
+                :asian,
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol
+              )
+            WHITE =
+              T.let(
+                :white,
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol
+              )
             BLACK_OR_AFRICAN_AMERICAN =
               T.let(
                 :black_or_african_american,
-                FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol
               )
             NATIVE_HAWAIIAN_OR_PACIFIC_ISLANDER =
               T.let(
                 :native_hawaiian_or_pacific_islander,
-                FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol
               )
             AMERICAN_INDIAN_OR_ALASKA_NATIVE =
               T.let(
                 :american_indian_or_alaska_native,
-                FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol
               )
             HISPANIC_OR_LATINO =
               T.let(
                 :hispanic_or_latino,
-                FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol
               )
             TWO_OR_MORE_RACES =
-              T.let(:two_or_more_races, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol)
+              T.let(
+                :two_or_more_races,
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol
+              )
             DECLINE_TO_SPECIFY =
               T.let(
                 :decline_to_specify,
-                FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol
               )
 
             sig do
-              override.returns(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
 
           # The gender of the individual.
@@ -604,20 +885,50 @@ module FinchAPI
             extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Gender
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            FEMALE = T.let(:female, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::TaggedSymbol)
-            MALE = T.let(:male, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::TaggedSymbol)
-            OTHER = T.let(:other, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::TaggedSymbol)
+            FEMALE =
+              T.let(
+                :female,
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::Gender::TaggedSymbol
+              )
+            MALE =
+              T.let(
+                :male,
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::Gender::TaggedSymbol
+              )
+            OTHER =
+              T.let(
+                :other,
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::Gender::TaggedSymbol
+              )
             DECLINE_TO_SPECIFY =
-              T.let(:decline_to_specify, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::TaggedSymbol)
+              T.let(
+                :decline_to_specify,
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::Gender::TaggedSymbol
+              )
 
-            sig { override.returns(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender::TaggedSymbol]) }
-            def self.values; end
+            sig do
+              override.returns(
+                T::Array[
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Gender::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
 
           class Manager < FinchAPI::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
             # A stable Finch `id` (UUID v4) for an individual in the company.
             sig { returns(T.nilable(String)) }
             attr_reader :id
@@ -630,55 +941,88 @@ module FinchAPI
             def self.new(
               # A stable Finch `id` (UUID v4) for an individual in the company.
               id: nil
-            ); end
-            sig { override.returns({id: String}) }
-            def to_hash; end
+            )
+            end
+
+            sig { override.returns({ id: String }) }
+            def to_hash
+            end
           end
 
           class PhoneNumber < FinchAPI::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
             sig { returns(T.nilable(String)) }
             attr_accessor :data
 
-            sig { returns(T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::OrSymbol)) }
+            sig do
+              returns(
+                T.nilable(
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::OrSymbol
+                )
+              )
+            end
             attr_accessor :type
 
             sig do
               params(
                 data: T.nilable(String),
-                type: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::OrSymbol)
-              )
-                .returns(T.attached_class)
+                type:
+                  T.nilable(
+                    FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::OrSymbol
+                  )
+              ).returns(T.attached_class)
             end
-            def self.new(data: nil, type: nil); end
+            def self.new(data: nil, type: nil)
+            end
 
             sig do
-              override
-                .returns(
-                  {
-                    data: T.nilable(String),
-                    type: T.nilable(FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::OrSymbol)
-                  }
-                )
+              override.returns(
+                {
+                  data: T.nilable(String),
+                  type:
+                    T.nilable(
+                      FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::OrSymbol
+                    )
+                }
+              )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             module Type
               extend FinchAPI::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type) }
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type
+                  )
+                end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               WORK =
-                T.let(:work, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::TaggedSymbol)
+                T.let(
+                  :work,
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::TaggedSymbol
+                )
               PERSONAL =
-                T.let(:personal, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::TaggedSymbol)
+                T.let(
+                  :personal,
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::TaggedSymbol
+                )
 
               sig do
-                override
-                  .returns(T::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::TaggedSymbol])
+                override.returns(
+                  T::Array[
+                    FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
           end
         end

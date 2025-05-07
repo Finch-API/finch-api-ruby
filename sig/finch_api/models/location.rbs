@@ -39,8 +39,6 @@ module FinchAPI
         ?name: String?,
         ?source_id: String?
       ) -> void
-
-      def to_hash: -> FinchAPI::Models::location
     end
   end
 end

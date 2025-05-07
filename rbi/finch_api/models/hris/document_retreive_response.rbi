@@ -8,8 +8,16 @@ module FinchAPI
       module DocumentRetreiveResponse
         extend FinchAPI::Internal::Type::Union
 
-        sig { override.returns([FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005]) }
-        def self.variants; end
+        Variants =
+          T.type_alias { T.any(FinchAPI::HRIS::W42020, FinchAPI::HRIS::W42005) }
+
+        sig do
+          override.returns(
+            T::Array[FinchAPI::Models::HRIS::DocumentRetreiveResponse::Variants]
+          )
+        end
+        def self.variants
+        end
       end
     end
   end

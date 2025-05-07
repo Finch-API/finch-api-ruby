@@ -3,12 +3,12 @@ module FinchAPI
     module Sandbox
       type company_update_params =
         {
-          accounts: ::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Account]?,
-          departments: ::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Department?]?,
+          accounts: ::Array[FinchAPI::Sandbox::CompanyUpdateParams::Account]?,
+          departments: ::Array[FinchAPI::Sandbox::CompanyUpdateParams::Department?]?,
           ein: String?,
-          entity: FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity?,
+          entity: FinchAPI::Sandbox::CompanyUpdateParams::Entity?,
           legal_name: String?,
-          locations: ::Array[FinchAPI::Models::Location?]?,
+          locations: ::Array[FinchAPI::Location?]?,
           primary_email: String?,
           primary_phone_number: String?
         }
@@ -18,41 +18,39 @@ module FinchAPI
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
-        attr_accessor accounts: ::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Account]?
+        attr_accessor accounts: ::Array[FinchAPI::Sandbox::CompanyUpdateParams::Account]?
 
-        attr_accessor departments: ::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Department?]?
+        attr_accessor departments: ::Array[FinchAPI::Sandbox::CompanyUpdateParams::Department?]?
 
         attr_accessor ein: String?
 
-        attr_accessor entity: FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity?
+        attr_accessor entity: FinchAPI::Sandbox::CompanyUpdateParams::Entity?
 
         attr_accessor legal_name: String?
 
-        attr_accessor locations: ::Array[FinchAPI::Models::Location?]?
+        attr_accessor locations: ::Array[FinchAPI::Location?]?
 
         attr_accessor primary_email: String?
 
         attr_accessor primary_phone_number: String?
 
         def initialize: (
-          accounts: ::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Account]?,
-          departments: ::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Department?]?,
+          accounts: ::Array[FinchAPI::Sandbox::CompanyUpdateParams::Account]?,
+          departments: ::Array[FinchAPI::Sandbox::CompanyUpdateParams::Department?]?,
           ein: String?,
-          entity: FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity?,
+          entity: FinchAPI::Sandbox::CompanyUpdateParams::Entity?,
           legal_name: String?,
-          locations: ::Array[FinchAPI::Models::Location?]?,
+          locations: ::Array[FinchAPI::Location?]?,
           primary_email: String?,
           primary_phone_number: String?,
           ?request_options: FinchAPI::request_opts
         ) -> void
 
-        def to_hash: -> FinchAPI::Models::Sandbox::company_update_params
-
         type account =
           {
             account_name: String?,
             account_number: String?,
-            account_type: FinchAPI::Models::Sandbox::CompanyUpdateParams::Account::account_type?,
+            account_type: FinchAPI::Sandbox::CompanyUpdateParams::Account::account_type?,
             institution_name: String?,
             routing_number: String?
           }
@@ -62,7 +60,7 @@ module FinchAPI
 
           attr_accessor account_number: String?
 
-          attr_accessor account_type: FinchAPI::Models::Sandbox::CompanyUpdateParams::Account::account_type?
+          attr_accessor account_type: FinchAPI::Sandbox::CompanyUpdateParams::Account::account_type?
 
           attr_accessor institution_name: String?
 
@@ -71,12 +69,10 @@ module FinchAPI
           def initialize: (
             ?account_name: String?,
             ?account_number: String?,
-            ?account_type: FinchAPI::Models::Sandbox::CompanyUpdateParams::Account::account_type?,
+            ?account_type: FinchAPI::Sandbox::CompanyUpdateParams::Account::account_type?,
             ?institution_name: String?,
             ?routing_number: String?
           ) -> void
-
-          def to_hash: -> FinchAPI::Models::Sandbox::CompanyUpdateParams::account
 
           type account_type = :checking | :savings
 
@@ -86,27 +82,25 @@ module FinchAPI
             CHECKING: :checking
             SAVINGS: :savings
 
-            def self?.values: -> ::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Account::account_type]
+            def self?.values: -> ::Array[FinchAPI::Sandbox::CompanyUpdateParams::Account::account_type]
           end
         end
 
         type department =
           {
             name: String?,
-            parent: FinchAPI::Models::Sandbox::CompanyUpdateParams::Department::Parent?
+            parent: FinchAPI::Sandbox::CompanyUpdateParams::Department::Parent?
           }
 
         class Department < FinchAPI::Internal::Type::BaseModel
           attr_accessor name: String?
 
-          attr_accessor parent: FinchAPI::Models::Sandbox::CompanyUpdateParams::Department::Parent?
+          attr_accessor parent: FinchAPI::Sandbox::CompanyUpdateParams::Department::Parent?
 
           def initialize: (
             ?name: String?,
-            ?parent: FinchAPI::Models::Sandbox::CompanyUpdateParams::Department::Parent?
+            ?parent: FinchAPI::Sandbox::CompanyUpdateParams::Department::Parent?
           ) -> void
-
-          def to_hash: -> FinchAPI::Models::Sandbox::CompanyUpdateParams::department
 
           type parent = { name: String? }
 
@@ -114,28 +108,24 @@ module FinchAPI
             attr_accessor name: String?
 
             def initialize: (?name: String?) -> void
-
-            def to_hash: -> FinchAPI::Models::Sandbox::CompanyUpdateParams::Department::parent
           end
         end
 
         type entity =
           {
-            subtype: FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::subtype?,
-            type: FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::type_?
+            subtype: FinchAPI::Sandbox::CompanyUpdateParams::Entity::subtype?,
+            type: FinchAPI::Sandbox::CompanyUpdateParams::Entity::type_?
           }
 
         class Entity < FinchAPI::Internal::Type::BaseModel
-          attr_accessor subtype: FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::subtype?
+          attr_accessor subtype: FinchAPI::Sandbox::CompanyUpdateParams::Entity::subtype?
 
-          attr_accessor type: FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::type_?
+          attr_accessor type: FinchAPI::Sandbox::CompanyUpdateParams::Entity::type_?
 
           def initialize: (
-            ?subtype: FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::subtype?,
-            ?type: FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::type_?
+            ?subtype: FinchAPI::Sandbox::CompanyUpdateParams::Entity::subtype?,
+            ?type: FinchAPI::Sandbox::CompanyUpdateParams::Entity::type_?
           ) -> void
-
-          def to_hash: -> FinchAPI::Models::Sandbox::CompanyUpdateParams::entity
 
           type subtype = :s_corporation | :c_corporation | :b_corporation
 
@@ -146,7 +136,7 @@ module FinchAPI
             C_CORPORATION: :c_corporation
             B_CORPORATION: :b_corporation
 
-            def self?.values: -> ::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::subtype]
+            def self?.values: -> ::Array[FinchAPI::Sandbox::CompanyUpdateParams::Entity::subtype]
           end
 
           type type_ =
@@ -169,7 +159,7 @@ module FinchAPI
             PARTNERSHIP: :partnership
             COOPERATIVE: :cooperative
 
-            def self?.values: -> ::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity::type_]
+            def self?.values: -> ::Array[FinchAPI::Sandbox::CompanyUpdateParams::Entity::type_]
           end
         end
       end

@@ -24,8 +24,6 @@ module FinchAPI
           job_url: String,
           remaining_refreshes: Integer
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::Sandbox::job_create_response
       end
     end
   end

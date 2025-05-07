@@ -4,17 +4,17 @@ module FinchAPI
       type payment =
         {
           id: String,
-          company_debit: FinchAPI::Models::Money?,
+          company_debit: FinchAPI::Money?,
           debit_date: String?,
-          employee_taxes: FinchAPI::Models::Money?,
-          employer_taxes: FinchAPI::Models::Money?,
-          gross_pay: FinchAPI::Models::Money?,
+          employee_taxes: FinchAPI::Money?,
+          employer_taxes: FinchAPI::Money?,
+          gross_pay: FinchAPI::Money?,
           individual_ids: ::Array[String]?,
-          net_pay: FinchAPI::Models::Money?,
+          net_pay: FinchAPI::Money?,
           pay_date: String?,
-          pay_frequencies: ::Array[FinchAPI::Models::HRIS::Payment::pay_frequency]?,
+          pay_frequencies: ::Array[FinchAPI::HRIS::Payment::pay_frequency]?,
           pay_group_ids: ::Array[String]?,
-          pay_period: FinchAPI::Models::HRIS::Payment::PayPeriod?
+          pay_period: FinchAPI::HRIS::Payment::PayPeriod?
         }
 
       class Payment < FinchAPI::Internal::Type::BaseModel
@@ -22,44 +22,42 @@ module FinchAPI
 
         def id=: (String) -> String
 
-        attr_accessor company_debit: FinchAPI::Models::Money?
+        attr_accessor company_debit: FinchAPI::Money?
 
         attr_accessor debit_date: String?
 
-        attr_accessor employee_taxes: FinchAPI::Models::Money?
+        attr_accessor employee_taxes: FinchAPI::Money?
 
-        attr_accessor employer_taxes: FinchAPI::Models::Money?
+        attr_accessor employer_taxes: FinchAPI::Money?
 
-        attr_accessor gross_pay: FinchAPI::Models::Money?
+        attr_accessor gross_pay: FinchAPI::Money?
 
         attr_accessor individual_ids: ::Array[String]?
 
-        attr_accessor net_pay: FinchAPI::Models::Money?
+        attr_accessor net_pay: FinchAPI::Money?
 
         attr_accessor pay_date: String?
 
-        attr_accessor pay_frequencies: ::Array[FinchAPI::Models::HRIS::Payment::pay_frequency]?
+        attr_accessor pay_frequencies: ::Array[FinchAPI::HRIS::Payment::pay_frequency]?
 
         attr_accessor pay_group_ids: ::Array[String]?
 
-        attr_accessor pay_period: FinchAPI::Models::HRIS::Payment::PayPeriod?
+        attr_accessor pay_period: FinchAPI::HRIS::Payment::PayPeriod?
 
         def initialize: (
           ?id: String,
-          ?company_debit: FinchAPI::Models::Money?,
+          ?company_debit: FinchAPI::Money?,
           ?debit_date: String?,
-          ?employee_taxes: FinchAPI::Models::Money?,
-          ?employer_taxes: FinchAPI::Models::Money?,
-          ?gross_pay: FinchAPI::Models::Money?,
+          ?employee_taxes: FinchAPI::Money?,
+          ?employer_taxes: FinchAPI::Money?,
+          ?gross_pay: FinchAPI::Money?,
           ?individual_ids: ::Array[String]?,
-          ?net_pay: FinchAPI::Models::Money?,
+          ?net_pay: FinchAPI::Money?,
           ?pay_date: String?,
-          ?pay_frequencies: ::Array[FinchAPI::Models::HRIS::Payment::pay_frequency]?,
+          ?pay_frequencies: ::Array[FinchAPI::HRIS::Payment::pay_frequency]?,
           ?pay_group_ids: ::Array[String]?,
-          ?pay_period: FinchAPI::Models::HRIS::Payment::PayPeriod?
+          ?pay_period: FinchAPI::HRIS::Payment::PayPeriod?
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::HRIS::payment
 
         type pay_frequency =
           :annually
@@ -85,7 +83,7 @@ module FinchAPI
           DAILY: :daily
           OTHER: :other
 
-          def self?.values: -> ::Array[FinchAPI::Models::HRIS::Payment::pay_frequency]
+          def self?.values: -> ::Array[FinchAPI::HRIS::Payment::pay_frequency]
         end
 
         type pay_period = { end_date: String?, start_date: String? }
@@ -96,8 +94,6 @@ module FinchAPI
           attr_accessor start_date: String?
 
           def initialize: (?end_date: String?, ?start_date: String?) -> void
-
-          def to_hash: -> FinchAPI::Models::HRIS::Payment::pay_period
         end
       end
     end

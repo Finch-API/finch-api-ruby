@@ -34,8 +34,8 @@ module FinchAPI
         # @!attribute params
         #   The input parameters for the job.
         #
-        #   @return [FinchAPI::Models::Jobs::AutomatedAsyncJob::Params, nil]
-        required :params, -> { FinchAPI::Models::Jobs::AutomatedAsyncJob::Params }, nil?: true
+        #   @return [FinchAPI::Jobs::AutomatedAsyncJob::Params, nil]
+        required :params, -> { FinchAPI::Jobs::AutomatedAsyncJob::Params }, nil?: true
 
         # @!attribute scheduled_at
         #   The datetime a job is scheduled to be run. For scheduled jobs, this datetime can
@@ -53,40 +53,38 @@ module FinchAPI
 
         # @!attribute status
         #
-        #   @return [Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status]
-        required :status, enum: -> { FinchAPI::Models::Jobs::AutomatedAsyncJob::Status }
+        #   @return [Symbol, FinchAPI::Jobs::AutomatedAsyncJob::Status]
+        required :status, enum: -> { FinchAPI::Jobs::AutomatedAsyncJob::Status }
 
         # @!attribute type
         #   The type of automated job
         #
-        #   @return [Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type]
-        required :type, enum: -> { FinchAPI::Models::Jobs::AutomatedAsyncJob::Type }
+        #   @return [Symbol, FinchAPI::Jobs::AutomatedAsyncJob::Type]
+        required :type, enum: -> { FinchAPI::Jobs::AutomatedAsyncJob::Type }
 
         # @!method initialize(completed_at:, created_at:, job_id:, job_url:, params:, scheduled_at:, started_at:, status:, type:)
         #   Some parameter documentations has been truncated, see
-        #   {FinchAPI::Models::Jobs::AutomatedAsyncJob} for more details.
+        #   {FinchAPI::Jobs::AutomatedAsyncJob} for more details.
         #
         #   @param completed_at [Time, nil] The datetime the job completed.
         #
         #   @param created_at [Time] The datetime when the job was created. for scheduled jobs, this will be the init
-        #   ...
         #
         #   @param job_id [String] The id of the job that has been created.
         #
         #   @param job_url [String] The url that can be used to retrieve the job status
         #
-        #   @param params [FinchAPI::Models::Jobs::AutomatedAsyncJob::Params, nil] The input parameters for the job.
+        #   @param params [FinchAPI::Jobs::AutomatedAsyncJob::Params, nil] The input parameters for the job.
         #
         #   @param scheduled_at [Time, nil] The datetime a job is scheduled to be run. For scheduled jobs, this datetime can
-        #   ...
         #
         #   @param started_at [Time, nil] The datetime a job entered into the job queue.
         #
-        #   @param status [Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Status]
+        #   @param status [Symbol, FinchAPI::Jobs::AutomatedAsyncJob::Status]
         #
-        #   @param type [Symbol, FinchAPI::Models::Jobs::AutomatedAsyncJob::Type] The type of automated job
+        #   @param type [Symbol, FinchAPI::Jobs::AutomatedAsyncJob::Type] The type of automated job
 
-        # @see FinchAPI::Models::Jobs::AutomatedAsyncJob#params
+        # @see FinchAPI::Jobs::AutomatedAsyncJob#params
         class Params < FinchAPI::Internal::Type::BaseModel
           # @!attribute individual_id
           #   The ID of the individual that the job was completed for.
@@ -100,7 +98,7 @@ module FinchAPI
           #   @param individual_id [String] The ID of the individual that the job was completed for.
         end
 
-        # @see FinchAPI::Models::Jobs::AutomatedAsyncJob#status
+        # @see FinchAPI::Jobs::AutomatedAsyncJob#status
         module Status
           extend FinchAPI::Internal::Type::Enum
 
@@ -117,7 +115,7 @@ module FinchAPI
 
         # The type of automated job
         #
-        # @see FinchAPI::Models::Jobs::AutomatedAsyncJob#type
+        # @see FinchAPI::Jobs::AutomatedAsyncJob#type
         module Type
           extend FinchAPI::Internal::Type::Enum
 

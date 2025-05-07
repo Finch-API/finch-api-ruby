@@ -16,10 +16,9 @@ module FinchAPI
           #
           # @param provider_id [String] The provider associated with the `access_token`
           #
-          # @param authentication_type [Symbol, FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType]
+          # @param authentication_type [Symbol, FinchAPI::Sandbox::Connections::AccountCreateParams::AuthenticationType]
           #
           # @param products [Array<String>] Optional, defaults to Organization products (`company`, `directory`, `employment
-          # ...
           #
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -27,7 +26,7 @@ module FinchAPI
           #
           # @see FinchAPI::Models::Sandbox::Connections::AccountCreateParams
           def create(params)
-            parsed, options = FinchAPI::Models::Sandbox::Connections::AccountCreateParams.dump_request(params)
+            parsed, options = FinchAPI::Sandbox::Connections::AccountCreateParams.dump_request(params)
             @client.request(
               method: :post,
               path: "sandbox/connections/accounts",
@@ -42,14 +41,14 @@ module FinchAPI
           #
           # @overload update(connection_status: nil, request_options: {})
           #
-          # @param connection_status [Symbol, FinchAPI::Models::ConnectionStatusType]
+          # @param connection_status [Symbol, FinchAPI::ConnectionStatusType]
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse]
           #
           # @see FinchAPI::Models::Sandbox::Connections::AccountUpdateParams
           def update(params = {})
-            parsed, options = FinchAPI::Models::Sandbox::Connections::AccountUpdateParams.dump_request(params)
+            parsed, options = FinchAPI::Sandbox::Connections::AccountUpdateParams.dump_request(params)
             @client.request(
               method: :put,
               path: "sandbox/connections/accounts",

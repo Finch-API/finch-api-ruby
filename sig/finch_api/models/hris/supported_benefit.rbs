@@ -5,11 +5,11 @@ module FinchAPI
         {
           annual_maximum: bool?,
           catch_up: bool?,
-          company_contribution: ::Array[FinchAPI::Models::HRIS::SupportedBenefit::company_contribution?]?,
+          company_contribution: ::Array[FinchAPI::HRIS::SupportedBenefit::company_contribution?]?,
           description: String?,
-          employee_deduction: ::Array[FinchAPI::Models::HRIS::SupportedBenefit::employee_deduction?]?,
+          employee_deduction: ::Array[FinchAPI::HRIS::SupportedBenefit::employee_deduction?]?,
           frequencies: ::Array[FinchAPI::Models::HRIS::benefit_frequency?],
-          hsa_contribution_limit: ::Array[FinchAPI::Models::HRIS::SupportedBenefit::hsa_contribution_limit?]?
+          hsa_contribution_limit: ::Array[FinchAPI::HRIS::SupportedBenefit::hsa_contribution_limit?]?
         }
 
       class SupportedBenefit < FinchAPI::Internal::Type::BaseModel
@@ -17,11 +17,11 @@ module FinchAPI
 
         attr_accessor catch_up: bool?
 
-        attr_accessor company_contribution: ::Array[FinchAPI::Models::HRIS::SupportedBenefit::company_contribution?]?
+        attr_accessor company_contribution: ::Array[FinchAPI::HRIS::SupportedBenefit::company_contribution?]?
 
         attr_accessor description: String?
 
-        attr_accessor employee_deduction: ::Array[FinchAPI::Models::HRIS::SupportedBenefit::employee_deduction?]?
+        attr_accessor employee_deduction: ::Array[FinchAPI::HRIS::SupportedBenefit::employee_deduction?]?
 
         attr_reader frequencies: ::Array[FinchAPI::Models::HRIS::benefit_frequency?]?
 
@@ -29,19 +29,17 @@ module FinchAPI
           ::Array[FinchAPI::Models::HRIS::benefit_frequency?]
         ) -> ::Array[FinchAPI::Models::HRIS::benefit_frequency?]
 
-        attr_accessor hsa_contribution_limit: ::Array[FinchAPI::Models::HRIS::SupportedBenefit::hsa_contribution_limit?]?
+        attr_accessor hsa_contribution_limit: ::Array[FinchAPI::HRIS::SupportedBenefit::hsa_contribution_limit?]?
 
         def initialize: (
           ?annual_maximum: bool?,
           ?catch_up: bool?,
-          ?company_contribution: ::Array[FinchAPI::Models::HRIS::SupportedBenefit::company_contribution?]?,
+          ?company_contribution: ::Array[FinchAPI::HRIS::SupportedBenefit::company_contribution?]?,
           ?description: String?,
-          ?employee_deduction: ::Array[FinchAPI::Models::HRIS::SupportedBenefit::employee_deduction?]?,
+          ?employee_deduction: ::Array[FinchAPI::HRIS::SupportedBenefit::employee_deduction?]?,
           ?frequencies: ::Array[FinchAPI::Models::HRIS::benefit_frequency?],
-          ?hsa_contribution_limit: ::Array[FinchAPI::Models::HRIS::SupportedBenefit::hsa_contribution_limit?]?
+          ?hsa_contribution_limit: ::Array[FinchAPI::HRIS::SupportedBenefit::hsa_contribution_limit?]?
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::HRIS::supported_benefit
 
         type company_contribution = :fixed | :percent
 
@@ -51,7 +49,7 @@ module FinchAPI
           FIXED: :fixed
           PERCENT: :percent
 
-          def self?.values: -> ::Array[FinchAPI::Models::HRIS::SupportedBenefit::company_contribution]
+          def self?.values: -> ::Array[FinchAPI::HRIS::SupportedBenefit::company_contribution]
         end
 
         type employee_deduction = :fixed | :percent
@@ -62,7 +60,7 @@ module FinchAPI
           FIXED: :fixed
           PERCENT: :percent
 
-          def self?.values: -> ::Array[FinchAPI::Models::HRIS::SupportedBenefit::employee_deduction]
+          def self?.values: -> ::Array[FinchAPI::HRIS::SupportedBenefit::employee_deduction]
         end
 
         type hsa_contribution_limit = :individual | :family
@@ -73,7 +71,7 @@ module FinchAPI
           INDIVIDUAL: :individual
           FAMILY: :family
 
-          def self?.values: -> ::Array[FinchAPI::Models::HRIS::SupportedBenefit::hsa_contribution_limit]
+          def self?.values: -> ::Array[FinchAPI::HRIS::SupportedBenefit::hsa_contribution_limit]
         end
       end
     end

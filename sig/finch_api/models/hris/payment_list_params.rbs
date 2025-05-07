@@ -18,8 +18,6 @@ module FinchAPI
           start_date: Date,
           ?request_options: FinchAPI::request_opts
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::HRIS::payment_list_params
       end
     end
   end

@@ -70,13 +70,10 @@ module FinchAPI
             #   The attributes of the pay statement item.
             #
             #   @param employer [Boolean, nil] `true` if the amount is paid by the employers. This field is only available for
-            #   ...
             #
             #   @param metadata [Hash{Symbol=>Object, nil}, nil] The metadata of the pay statement item derived by the rules engine if available.
-            #   ...
             #
             #   @param pre_tax [Boolean, nil] `true` if the pay statement item is pre-tax. This field is only available for em
-            #   ...
             #
             #   @param type [String, nil] The type of the pay statement item.
           end

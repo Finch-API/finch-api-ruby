@@ -14,20 +14,20 @@ module FinchAPI
           #
           # @param benefit_id [String]
           #
-          # @param individuals [Array<FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual>] Array of the individual_id to enroll and a configuration object.
+          # @param individuals [Array<FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual>] Array of the individual_id to enroll and a configuration object.
           #
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [FinchAPI::Models::HRIS::Benefits::EnrolledIndividualBenefitResponse]
+          # @return [FinchAPI::HRIS::Benefits::EnrolledIndividualBenefitResponse]
           #
           # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams
           def enroll_many(benefit_id, params = {})
-            parsed, options = FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams.dump_request(params)
+            parsed, options = FinchAPI::HRIS::Benefits::IndividualEnrollManyParams.dump_request(params)
             @client.request(
               method: :post,
               path: ["employer/benefits/%1$s/individuals", benefit_id],
               body: parsed[:individuals],
-              model: FinchAPI::Models::HRIS::Benefits::EnrolledIndividualBenefitResponse,
+              model: FinchAPI::HRIS::Benefits::EnrolledIndividualBenefitResponse,
               options: options
             )
           end
@@ -62,22 +62,20 @@ module FinchAPI
           # @param benefit_id [String]
           #
           # @param individual_ids [String] comma-delimited list of stable Finch uuids for each individual. If empty, defaul
-          # ...
           #
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [FinchAPI::Internal::SinglePage<FinchAPI::Models::HRIS::Benefits::IndividualBenefit>]
+          # @return [FinchAPI::Internal::SinglePage<FinchAPI::HRIS::Benefits::IndividualBenefit>]
           #
           # @see FinchAPI::Models::HRIS::Benefits::IndividualRetrieveManyBenefitsParams
           def retrieve_many_benefits(benefit_id, params = {})
-            parsed, options =
-              FinchAPI::Models::HRIS::Benefits::IndividualRetrieveManyBenefitsParams.dump_request(params)
+            parsed, options = FinchAPI::HRIS::Benefits::IndividualRetrieveManyBenefitsParams.dump_request(params)
             @client.request(
               method: :get,
               path: ["employer/benefits/%1$s/individuals", benefit_id],
               query: parsed,
               page: FinchAPI::Internal::SinglePage,
-              model: FinchAPI::Models::HRIS::Benefits::IndividualBenefit,
+              model: FinchAPI::HRIS::Benefits::IndividualBenefit,
               options: options
             )
           end
@@ -92,16 +90,16 @@ module FinchAPI
           #
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [FinchAPI::Models::HRIS::Benefits::UnenrolledIndividualBenefitResponse]
+          # @return [FinchAPI::HRIS::Benefits::UnenrolledIndividualBenefitResponse]
           #
           # @see FinchAPI::Models::HRIS::Benefits::IndividualUnenrollManyParams
           def unenroll_many(benefit_id, params = {})
-            parsed, options = FinchAPI::Models::HRIS::Benefits::IndividualUnenrollManyParams.dump_request(params)
+            parsed, options = FinchAPI::HRIS::Benefits::IndividualUnenrollManyParams.dump_request(params)
             @client.request(
               method: :delete,
               path: ["employer/benefits/%1$s/individuals", benefit_id],
               body: parsed,
-              model: FinchAPI::Models::HRIS::Benefits::UnenrolledIndividualBenefitResponse,
+              model: FinchAPI::HRIS::Benefits::UnenrolledIndividualBenefitResponse,
               options: options
             )
           end

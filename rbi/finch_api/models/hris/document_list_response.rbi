@@ -4,29 +4,37 @@ module FinchAPI
   module Models
     module HRIS
       class DocumentListResponse < FinchAPI::Internal::Type::BaseModel
-        sig { returns(T::Array[FinchAPI::Models::HRIS::DocumentResponse]) }
+        OrHash =
+          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
+        sig { returns(T::Array[FinchAPI::HRIS::DocumentResponse]) }
         attr_accessor :documents
 
-        sig { returns(FinchAPI::Models::Paging) }
+        sig { returns(FinchAPI::Paging) }
         attr_reader :paging
 
-        sig { params(paging: T.any(FinchAPI::Models::Paging, FinchAPI::Internal::AnyHash)).void }
+        sig { params(paging: FinchAPI::Paging::OrHash).void }
         attr_writer :paging
 
         sig do
           params(
-            documents: T::Array[T.any(FinchAPI::Models::HRIS::DocumentResponse, FinchAPI::Internal::AnyHash)],
-            paging: T.any(FinchAPI::Models::Paging, FinchAPI::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            documents: T::Array[FinchAPI::HRIS::DocumentResponse::OrHash],
+            paging: FinchAPI::Paging::OrHash
+          ).returns(T.attached_class)
         end
-        def self.new(documents:, paging:); end
+        def self.new(documents:, paging:)
+        end
 
         sig do
-          override
-            .returns({documents: T::Array[FinchAPI::Models::HRIS::DocumentResponse], paging: FinchAPI::Models::Paging})
+          override.returns(
+            {
+              documents: T::Array[FinchAPI::HRIS::DocumentResponse],
+              paging: FinchAPI::Paging
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

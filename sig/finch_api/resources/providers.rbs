@@ -3,7 +3,7 @@ module FinchAPI
     class Providers
       def list: (
         ?request_options: FinchAPI::request_opts
-      ) -> FinchAPI::Internal::SinglePage[FinchAPI::Models::Provider]
+      ) -> FinchAPI::Internal::SinglePage[FinchAPI::Provider]
 
       def initialize: (client: FinchAPI::Client) -> void
     end

@@ -12,17 +12,25 @@ module FinchAPI
     module OperationSupport
       extend FinchAPI::Internal::Type::Enum
 
-      TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::OperationSupport) }
+      TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::OperationSupport) }
       OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-      SUPPORTED = T.let(:supported, FinchAPI::Models::OperationSupport::TaggedSymbol)
-      NOT_SUPPORTED_BY_FINCH = T.let(:not_supported_by_finch, FinchAPI::Models::OperationSupport::TaggedSymbol)
+      SUPPORTED = T.let(:supported, FinchAPI::OperationSupport::TaggedSymbol)
+      NOT_SUPPORTED_BY_FINCH =
+        T.let(:not_supported_by_finch, FinchAPI::OperationSupport::TaggedSymbol)
       NOT_SUPPORTED_BY_PROVIDER =
-        T.let(:not_supported_by_provider, FinchAPI::Models::OperationSupport::TaggedSymbol)
-      CLIENT_ACCESS_ONLY = T.let(:client_access_only, FinchAPI::Models::OperationSupport::TaggedSymbol)
+        T.let(
+          :not_supported_by_provider,
+          FinchAPI::OperationSupport::TaggedSymbol
+        )
+      CLIENT_ACCESS_ONLY =
+        T.let(:client_access_only, FinchAPI::OperationSupport::TaggedSymbol)
 
-      sig { override.returns(T::Array[FinchAPI::Models::OperationSupport::TaggedSymbol]) }
-      def self.values; end
+      sig do
+        override.returns(T::Array[FinchAPI::OperationSupport::TaggedSymbol])
+      end
+      def self.values
+      end
     end
   end
 end

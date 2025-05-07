@@ -22,8 +22,6 @@ module FinchAPI
           ?offset: Integer,
           ?request_options: FinchAPI::request_opts
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::Jobs::automated_list_params
       end
     end
   end

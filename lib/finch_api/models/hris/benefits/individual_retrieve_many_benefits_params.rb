@@ -22,7 +22,6 @@ module FinchAPI
           #   more details.
           #
           #   @param individual_ids [String] comma-delimited list of stable Finch uuids for each individual. If empty, defaul
-          #   ...
           #
           #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
         end

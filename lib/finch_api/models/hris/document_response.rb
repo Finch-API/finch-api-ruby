@@ -20,8 +20,8 @@ module FinchAPI
         # @!attribute type
         #   The type of document.
         #
-        #   @return [Symbol, FinchAPI::Models::HRIS::DocumentResponse::Type, nil]
-        optional :type, enum: -> { FinchAPI::Models::HRIS::DocumentResponse::Type }
+        #   @return [Symbol, FinchAPI::HRIS::DocumentResponse::Type, nil]
+        optional :type, enum: -> { FinchAPI::HRIS::DocumentResponse::Type }
 
         # @!attribute url
         #   A URL to access the document. Format:
@@ -38,23 +38,21 @@ module FinchAPI
 
         # @!method initialize(id: nil, individual_id: nil, type: nil, url: nil, year: nil)
         #   Some parameter documentations has been truncated, see
-        #   {FinchAPI::Models::HRIS::DocumentResponse} for more details.
+        #   {FinchAPI::HRIS::DocumentResponse} for more details.
         #
         #   @param id [String] A stable Finch id for the document.
         #
         #   @param individual_id [String, nil] The ID of the individual associated with the document. This will be null for emp
-        #   ...
         #
-        #   @param type [Symbol, FinchAPI::Models::HRIS::DocumentResponse::Type] The type of document.
+        #   @param type [Symbol, FinchAPI::HRIS::DocumentResponse::Type] The type of document.
         #
         #   @param url [String] A URL to access the document. Format: `https://api.tryfinch.com/employer/documen
-        #   ...
         #
         #   @param year [Float, nil] The year the document applies to, if available.
 
         # The type of document.
         #
-        # @see FinchAPI::Models::HRIS::DocumentResponse#type
+        # @see FinchAPI::HRIS::DocumentResponse#type
         module Type
           extend FinchAPI::Internal::Type::Enum
 

@@ -6,6 +6,8 @@ module FinchAPI
       extend FinchAPI::Internal::Type::RequestParameters::Converter
       include FinchAPI::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
       # The HTTP method for the forwarded request. Valid values include: `GET` , `POST`
       # , `PUT` , `DELETE` , and `PATCH`.
       sig { returns(String) }
@@ -40,9 +42,8 @@ module FinchAPI
           data: T.nilable(String),
           headers: T.nilable(T.anything),
           params: T.nilable(T.anything),
-          request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: FinchAPI::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # The HTTP method for the forwarded request. Valid values include: `GET` , `POST`
@@ -63,21 +64,23 @@ module FinchAPI
         # a valid JSON object rather than a query string.
         params: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              method_: String,
-              route: String,
-              data: T.nilable(String),
-              headers: T.nilable(T.anything),
-              params: T.nilable(T.anything),
-              request_options: FinchAPI::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            method_: String,
+            route: String,
+            data: T.nilable(String),
+            headers: T.nilable(T.anything),
+            params: T.nilable(T.anything),
+            request_options: FinchAPI::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

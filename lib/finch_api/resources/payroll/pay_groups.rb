@@ -35,7 +35,7 @@ module FinchAPI
         #
         # @see FinchAPI::Models::Payroll::PayGroupListParams
         def list(params = {})
-          parsed, options = FinchAPI::Models::Payroll::PayGroupListParams.dump_request(params)
+          parsed, options = FinchAPI::Payroll::PayGroupListParams.dump_request(params)
           @client.request(
             method: :get,
             path: "employer/pay-groups",

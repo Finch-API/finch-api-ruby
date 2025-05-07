@@ -1,19 +1,19 @@
 module FinchAPI
   module Models
     type webhook_event =
-      FinchAPI::Models::AccountUpdateEvent
-      | FinchAPI::Models::CompanyEvent
-      | FinchAPI::Models::JobCompletionEvent
-      | FinchAPI::Models::DirectoryEvent
-      | FinchAPI::Models::EmploymentEvent
-      | FinchAPI::Models::IndividualEvent
-      | FinchAPI::Models::PaymentEvent
-      | FinchAPI::Models::PayStatementEvent
+      FinchAPI::AccountUpdateEvent
+      | FinchAPI::CompanyEvent
+      | FinchAPI::JobCompletionEvent
+      | FinchAPI::DirectoryEvent
+      | FinchAPI::EmploymentEvent
+      | FinchAPI::IndividualEvent
+      | FinchAPI::PaymentEvent
+      | FinchAPI::PayStatementEvent
 
     module WebhookEvent
       extend FinchAPI::Internal::Type::Union
 
-      def self?.variants: -> [FinchAPI::Models::AccountUpdateEvent, FinchAPI::Models::CompanyEvent, FinchAPI::Models::JobCompletionEvent, FinchAPI::Models::DirectoryEvent, FinchAPI::Models::EmploymentEvent, FinchAPI::Models::IndividualEvent, FinchAPI::Models::PaymentEvent, FinchAPI::Models::PayStatementEvent]
+      def self?.variants: -> ::Array[FinchAPI::Models::webhook_event]
     end
   end
 end

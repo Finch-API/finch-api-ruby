@@ -57,7 +57,8 @@ module FinchAPI
 
   ProviderListParams = FinchAPI::Models::ProviderListParams
 
-  RequestForwardingForwardParams = FinchAPI::Models::RequestForwardingForwardParams
+  RequestForwardingForwardParams =
+    FinchAPI::Models::RequestForwardingForwardParams
 
   Sandbox = FinchAPI::Models::Sandbox
 

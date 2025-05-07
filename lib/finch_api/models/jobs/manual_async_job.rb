@@ -18,17 +18,17 @@ module FinchAPI
 
         # @!attribute status
         #
-        #   @return [Symbol, FinchAPI::Models::Jobs::ManualAsyncJob::Status]
-        required :status, enum: -> { FinchAPI::Models::Jobs::ManualAsyncJob::Status }
+        #   @return [Symbol, FinchAPI::Jobs::ManualAsyncJob::Status]
+        required :status, enum: -> { FinchAPI::Jobs::ManualAsyncJob::Status }
 
         # @!method initialize(body:, job_id:, status:)
         #   @param body [Array<Object>, nil] Specific information about the job, such as individual statuses for batch jobs.
         #
         #   @param job_id [String]
         #
-        #   @param status [Symbol, FinchAPI::Models::Jobs::ManualAsyncJob::Status]
+        #   @param status [Symbol, FinchAPI::Jobs::ManualAsyncJob::Status]
 
-        # @see FinchAPI::Models::Jobs::ManualAsyncJob#status
+        # @see FinchAPI::Jobs::ManualAsyncJob#status
         module Status
           extend FinchAPI::Internal::Type::Enum
 

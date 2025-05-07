@@ -3,33 +3,31 @@ module FinchAPI
     module HRIS
       type w42020 =
         {
-          data: FinchAPI::Models::HRIS::W42020::Data,
-          type: FinchAPI::Models::HRIS::W42020::type_,
+          data: FinchAPI::HRIS::W42020::Data,
+          type: FinchAPI::HRIS::W42020::type_,
           year: Float?
         }
 
       class W42020 < FinchAPI::Internal::Type::BaseModel
-        attr_reader data: FinchAPI::Models::HRIS::W42020::Data?
+        attr_reader data: FinchAPI::HRIS::W42020::Data?
 
         def data=: (
-          FinchAPI::Models::HRIS::W42020::Data
-        ) -> FinchAPI::Models::HRIS::W42020::Data
+          FinchAPI::HRIS::W42020::Data
+        ) -> FinchAPI::HRIS::W42020::Data
 
-        attr_reader type: FinchAPI::Models::HRIS::W42020::type_?
+        attr_reader type: FinchAPI::HRIS::W42020::type_?
 
         def type=: (
-          FinchAPI::Models::HRIS::W42020::type_
-        ) -> FinchAPI::Models::HRIS::W42020::type_
+          FinchAPI::HRIS::W42020::type_
+        ) -> FinchAPI::HRIS::W42020::type_
 
         attr_accessor year: Float?
 
         def initialize: (
-          ?data: FinchAPI::Models::HRIS::W42020::Data,
-          ?type: FinchAPI::Models::HRIS::W42020::type_,
+          ?data: FinchAPI::HRIS::W42020::Data,
+          ?type: FinchAPI::HRIS::W42020::type_,
           ?year: Float?
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::HRIS::w42020
 
         type data =
           {
@@ -37,7 +35,7 @@ module FinchAPI
             :amount_for_qualifying_children_under_17 => Integer?,
             deductions: Integer?,
             extra_withholding: Integer?,
-            filing_status: FinchAPI::Models::HRIS::W42020::Data::filing_status?,
+            filing_status: FinchAPI::HRIS::W42020::Data::filing_status?,
             individual_id: String,
             other_income: Integer?,
             total_claim_dependent_and_other_credits: Integer?
@@ -52,7 +50,7 @@ module FinchAPI
 
           attr_accessor extra_withholding: Integer?
 
-          attr_accessor filing_status: FinchAPI::Models::HRIS::W42020::Data::filing_status?
+          attr_accessor filing_status: FinchAPI::HRIS::W42020::Data::filing_status?
 
           attr_reader individual_id: String?
 
@@ -67,13 +65,11 @@ module FinchAPI
             ?amount_for_qualifying_children_under_17: Integer?,
             ?deductions: Integer?,
             ?extra_withholding: Integer?,
-            ?filing_status: FinchAPI::Models::HRIS::W42020::Data::filing_status?,
+            ?filing_status: FinchAPI::HRIS::W42020::Data::filing_status?,
             ?individual_id: String,
             ?other_income: Integer?,
             ?total_claim_dependent_and_other_credits: Integer?
           ) -> void
-
-          def to_hash: -> FinchAPI::Models::HRIS::W42020::data
 
           type filing_status =
             :head_of_household
@@ -87,7 +83,7 @@ module FinchAPI
             MARRIED_FILING_JOINTLY_OR_QUALIFYING_SURVIVING_SPOUSE: :married_filing_jointly_or_qualifying_surviving_spouse
             SINGLE_OR_MARRIED_FILING_SEPARATELY: :single_or_married_filing_separately
 
-            def self?.values: -> ::Array[FinchAPI::Models::HRIS::W42020::Data::filing_status]
+            def self?.values: -> ::Array[FinchAPI::HRIS::W42020::Data::filing_status]
           end
         end
 
@@ -98,7 +94,7 @@ module FinchAPI
 
           W4_2020: :w4_2020
 
-          def self?.values: -> ::Array[FinchAPI::Models::HRIS::W42020::type_]
+          def self?.values: -> ::Array[FinchAPI::HRIS::W42020::type_]
         end
       end
     end

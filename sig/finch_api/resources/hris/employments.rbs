@@ -3,9 +3,9 @@ module FinchAPI
     class HRIS
       class Employments
         def retrieve_many: (
-          requests: ::Array[FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request],
+          requests: ::Array[FinchAPI::HRIS::EmploymentRetrieveManyParams::Request],
           ?request_options: FinchAPI::request_opts
-        ) -> FinchAPI::Internal::ResponsesPage[FinchAPI::Models::HRIS::EmploymentDataResponse]
+        ) -> FinchAPI::Internal::ResponsesPage[FinchAPI::HRIS::EmploymentDataResponse]
 
         def initialize: (client: FinchAPI::Client) -> void
       end

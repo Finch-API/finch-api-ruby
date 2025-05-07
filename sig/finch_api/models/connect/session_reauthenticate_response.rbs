@@ -10,8 +10,6 @@ module FinchAPI
         attr_accessor session_id: String
 
         def initialize: (connect_url: String, session_id: String) -> void
-
-        def to_hash: -> FinchAPI::Models::Connect::session_reauthenticate_response
       end
     end
   end

@@ -7,11 +7,11 @@ module FinchAPI
           created_at: Time,
           job_id: String,
           job_url: String,
-          params: FinchAPI::Models::Jobs::AutomatedAsyncJob::Params?,
+          params: FinchAPI::Jobs::AutomatedAsyncJob::Params?,
           scheduled_at: Time?,
           started_at: Time?,
-          status: FinchAPI::Models::Jobs::AutomatedAsyncJob::status,
-          type: FinchAPI::Models::Jobs::AutomatedAsyncJob::type_
+          status: FinchAPI::Jobs::AutomatedAsyncJob::status,
+          type: FinchAPI::Jobs::AutomatedAsyncJob::type_
         }
 
       class AutomatedAsyncJob < FinchAPI::Internal::Type::BaseModel
@@ -23,29 +23,27 @@ module FinchAPI
 
         attr_accessor job_url: String
 
-        attr_accessor params: FinchAPI::Models::Jobs::AutomatedAsyncJob::Params?
+        attr_accessor params: FinchAPI::Jobs::AutomatedAsyncJob::Params?
 
         attr_accessor scheduled_at: Time?
 
         attr_accessor started_at: Time?
 
-        attr_accessor status: FinchAPI::Models::Jobs::AutomatedAsyncJob::status
+        attr_accessor status: FinchAPI::Jobs::AutomatedAsyncJob::status
 
-        attr_accessor type: FinchAPI::Models::Jobs::AutomatedAsyncJob::type_
+        attr_accessor type: FinchAPI::Jobs::AutomatedAsyncJob::type_
 
         def initialize: (
           completed_at: Time?,
           created_at: Time,
           job_id: String,
           job_url: String,
-          params: FinchAPI::Models::Jobs::AutomatedAsyncJob::Params?,
+          params: FinchAPI::Jobs::AutomatedAsyncJob::Params?,
           scheduled_at: Time?,
           started_at: Time?,
-          status: FinchAPI::Models::Jobs::AutomatedAsyncJob::status,
-          type: FinchAPI::Models::Jobs::AutomatedAsyncJob::type_
+          status: FinchAPI::Jobs::AutomatedAsyncJob::status,
+          type: FinchAPI::Jobs::AutomatedAsyncJob::type_
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::Jobs::automated_async_job
 
         type params = { individual_id: String }
 
@@ -55,8 +53,6 @@ module FinchAPI
           def individual_id=: (String) -> String
 
           def initialize: (?individual_id: String) -> void
-
-          def to_hash: -> FinchAPI::Models::Jobs::AutomatedAsyncJob::params
         end
 
         type status =
@@ -77,7 +73,7 @@ module FinchAPI
           REAUTH_ERROR: :reauth_error
           PERMISSIONS_ERROR: :permissions_error
 
-          def self?.values: -> ::Array[FinchAPI::Models::Jobs::AutomatedAsyncJob::status]
+          def self?.values: -> ::Array[FinchAPI::Jobs::AutomatedAsyncJob::status]
         end
 
         type type_ = :data_sync_all | :w4_form_employee_sync
@@ -88,7 +84,7 @@ module FinchAPI
           DATA_SYNC_ALL: :data_sync_all
           W4_FORM_EMPLOYEE_SYNC: :w4_form_employee_sync
 
-          def self?.values: -> ::Array[FinchAPI::Models::Jobs::AutomatedAsyncJob::type_]
+          def self?.values: -> ::Array[FinchAPI::Jobs::AutomatedAsyncJob::type_]
         end
       end
     end

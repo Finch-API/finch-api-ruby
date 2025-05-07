@@ -5,7 +5,7 @@ module FinchAPI
         {
           connection_id: String,
           minutes_to_expire: Integer?,
-          products: ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]?,
+          products: ::Array[FinchAPI::Connect::SessionReauthenticateParams::product]?,
           redirect_uri: String?
         }
         & FinchAPI::Internal::Type::request_parameters
@@ -18,19 +18,17 @@ module FinchAPI
 
         attr_accessor minutes_to_expire: Integer?
 
-        attr_accessor products: ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]?
+        attr_accessor products: ::Array[FinchAPI::Connect::SessionReauthenticateParams::product]?
 
         attr_accessor redirect_uri: String?
 
         def initialize: (
           connection_id: String,
           ?minutes_to_expire: Integer?,
-          ?products: ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]?,
+          ?products: ::Array[FinchAPI::Connect::SessionReauthenticateParams::product]?,
           ?redirect_uri: String?,
           ?request_options: FinchAPI::request_opts
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::Connect::session_reauthenticate_params
 
         type product =
           :company
@@ -58,7 +56,7 @@ module FinchAPI
           DEDUCTION: :deduction
           DOCUMENTS: :documents
 
-          def self?.values: -> ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]
+          def self?.values: -> ::Array[FinchAPI::Connect::SessionReauthenticateParams::product]
         end
       end
     end

@@ -6,7 +6,18 @@ module FinchAPI
       module EmploymentData
         extend FinchAPI::Internal::Type::Union
 
+        Variants =
+          T.type_alias do
+            T.any(
+              FinchAPI::HRIS::EmploymentData::UnionMember0,
+              FinchAPI::HRIS::EmploymentData::BatchError
+            )
+          end
+
         class UnionMember0 < FinchAPI::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
           # A stable Finch `id` (UUID v4) for an individual in the company.
           sig { returns(String) }
           attr_accessor :id
@@ -17,40 +28,66 @@ module FinchAPI
 
           # Custom fields for the individual. These are fields which are defined by the
           # employer in the system.
-          sig { returns(T.nilable(T::Array[FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField])) }
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField
+                ]
+              )
+            )
+          end
           attr_accessor :custom_fields
 
           # The department object.
-          sig { returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Department)) }
+          sig do
+            returns(
+              T.nilable(
+                FinchAPI::HRIS::EmploymentData::UnionMember0::Department
+              )
+            )
+          end
           attr_reader :department
 
           sig do
             params(
-              department: T.nilable(
-                T.any(FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Department, FinchAPI::Internal::AnyHash)
-              )
-            )
-              .void
+              department:
+                T.nilable(
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::Department::OrHash
+                )
+            ).void
           end
           attr_writer :department
 
           # The employment object.
-          sig { returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment)) }
+          sig do
+            returns(
+              T.nilable(
+                FinchAPI::HRIS::EmploymentData::UnionMember0::Employment
+              )
+            )
+          end
           attr_reader :employment
 
           sig do
             params(
-              employment: T.nilable(
-                T.any(FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment, FinchAPI::Internal::AnyHash)
-              )
-            )
-              .void
+              employment:
+                T.nilable(
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::OrHash
+                )
+            ).void
           end
           attr_writer :employment
 
           # The detailed employment status of the individual. Available options: `active`,
           # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
-          sig { returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol)) }
+          sig do
+            returns(
+              T.nilable(
+                FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol
+              )
+            )
+          end
           attr_accessor :employment_status
 
           sig { returns(T.nilable(String)) }
@@ -71,23 +108,27 @@ module FinchAPI
           sig { returns(T.nilable(String)) }
           attr_accessor :latest_rehire_date
 
-          sig { returns(T.nilable(FinchAPI::Models::Location)) }
+          sig { returns(T.nilable(FinchAPI::Location)) }
           attr_reader :location
 
-          sig { params(location: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::AnyHash))).void }
+          sig { params(location: T.nilable(FinchAPI::Location::OrHash)).void }
           attr_writer :location
 
           # The manager object representing the manager of the individual within the org.
-          sig { returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Manager)) }
+          sig do
+            returns(
+              T.nilable(FinchAPI::HRIS::EmploymentData::UnionMember0::Manager)
+            )
+          end
           attr_reader :manager
 
           sig do
             params(
-              manager: T.nilable(
-                T.any(FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Manager, FinchAPI::Internal::AnyHash)
-              )
-            )
-              .void
+              manager:
+                T.nilable(
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::Manager::OrHash
+                )
+            ).void
           end
           attr_writer :manager
 
@@ -113,48 +154,57 @@ module FinchAPI
           # The employee's income as reported by the provider. This may not always be
           # annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
           # depending on what information the provider returns.
-          sig { returns(T.nilable(FinchAPI::Models::Income)) }
+          sig { returns(T.nilable(FinchAPI::Income)) }
           attr_reader :income
 
-          sig { params(income: T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Internal::AnyHash))).void }
+          sig { params(income: T.nilable(FinchAPI::Income::OrHash)).void }
           attr_writer :income
 
           # The array of income history.
-          sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::Income)])) }
+          sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Income)])) }
           attr_accessor :income_history
 
           sig do
             params(
               id: String,
               class_code: T.nilable(String),
-              custom_fields: T.nilable(
-                T::Array[T.any(FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField, FinchAPI::Internal::AnyHash)]
-              ),
-              department: T.nilable(
-                T.any(FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Department, FinchAPI::Internal::AnyHash)
-              ),
-              employment: T.nilable(
-                T.any(FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment, FinchAPI::Internal::AnyHash)
-              ),
-              employment_status: T.nilable(FinchAPI::Models::HRIS::EmploymentData::UnionMember0::EmploymentStatus::OrSymbol),
+              custom_fields:
+                T.nilable(
+                  T::Array[
+                    FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField::OrHash
+                  ]
+                ),
+              department:
+                T.nilable(
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::Department::OrHash
+                ),
+              employment:
+                T.nilable(
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::OrHash
+                ),
+              employment_status:
+                T.nilable(
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus::OrSymbol
+                ),
               end_date: T.nilable(String),
               first_name: T.nilable(String),
               is_active: T.nilable(T::Boolean),
               last_name: T.nilable(String),
               latest_rehire_date: T.nilable(String),
-              location: T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::AnyHash)),
-              manager: T.nilable(
-                T.any(FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Manager, FinchAPI::Internal::AnyHash)
-              ),
+              location: T.nilable(FinchAPI::Location::OrHash),
+              manager:
+                T.nilable(
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::Manager::OrHash
+                ),
               middle_name: T.nilable(String),
               source_id: T.nilable(String),
               start_date: T.nilable(String),
               title: T.nilable(String),
               work_id: T.nilable(String),
-              income: T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Internal::AnyHash)),
-              income_history: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::Income, FinchAPI::Internal::AnyHash))])
-            )
-              .returns(T.attached_class)
+              income: T.nilable(FinchAPI::Income::OrHash),
+              income_history:
+                T.nilable(T::Array[T.nilable(FinchAPI::Income::OrHash)])
+            ).returns(T.attached_class)
           end
           def self.new(
             # A stable Finch `id` (UUID v4) for an individual in the company.
@@ -197,50 +247,68 @@ module FinchAPI
             income: nil,
             # The array of income history.
             income_history: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  id: String,
-                  class_code: T.nilable(String),
-                  custom_fields: T.nilable(T::Array[FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField]),
-                  department: T.nilable(FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Department),
-                  employment: T.nilable(FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment),
-                  employment_status: T.nilable(FinchAPI::Models::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol),
-                  end_date: T.nilable(String),
-                  first_name: T.nilable(String),
-                  is_active: T.nilable(T::Boolean),
-                  last_name: T.nilable(String),
-                  latest_rehire_date: T.nilable(String),
-                  location: T.nilable(FinchAPI::Models::Location),
-                  manager: T.nilable(FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Manager),
-                  middle_name: T.nilable(String),
-                  source_id: T.nilable(String),
-                  start_date: T.nilable(String),
-                  title: T.nilable(String),
-                  work_id: T.nilable(String),
-                  income: T.nilable(FinchAPI::Models::Income),
-                  income_history: T.nilable(T::Array[T.nilable(FinchAPI::Models::Income)])
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                id: String,
+                class_code: T.nilable(String),
+                custom_fields:
+                  T.nilable(
+                    T::Array[
+                      FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField
+                    ]
+                  ),
+                department:
+                  T.nilable(
+                    FinchAPI::HRIS::EmploymentData::UnionMember0::Department
+                  ),
+                employment:
+                  T.nilable(
+                    FinchAPI::HRIS::EmploymentData::UnionMember0::Employment
+                  ),
+                employment_status:
+                  T.nilable(
+                    FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol
+                  ),
+                end_date: T.nilable(String),
+                first_name: T.nilable(String),
+                is_active: T.nilable(T::Boolean),
+                last_name: T.nilable(String),
+                latest_rehire_date: T.nilable(String),
+                location: T.nilable(FinchAPI::Location),
+                manager:
+                  T.nilable(
+                    FinchAPI::HRIS::EmploymentData::UnionMember0::Manager
+                  ),
+                middle_name: T.nilable(String),
+                source_id: T.nilable(String),
+                start_date: T.nilable(String),
+                title: T.nilable(String),
+                work_id: T.nilable(String),
+                income: T.nilable(FinchAPI::Income),
+                income_history: T.nilable(T::Array[T.nilable(FinchAPI::Income)])
+              }
+            )
+          end
+          def to_hash
+          end
 
           class CustomField < FinchAPI::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
             sig { returns(T.nilable(String)) }
             attr_reader :name
 
             sig { params(name: String).void }
             attr_writer :name
 
-            sig { returns(T.nilable(T.any(String, T::Array[T.anything], T.anything, Float, T::Boolean))) }
-            attr_accessor :value
-
             sig do
-              params(
-                name: String,
-                value: T.nilable(
+              returns(
+                T.nilable(
                   T.any(
                     String,
                     T::Array[T.anything],
@@ -250,36 +318,85 @@ module FinchAPI
                   )
                 )
               )
-                .returns(T.attached_class)
             end
-            def self.new(name: nil, value: nil); end
+            attr_accessor :value
 
             sig do
-              override
-                .returns(
-                  {
-                    name: String,
-                    value: T.nilable(T.any(String, T::Array[T.anything], T.anything, Float, T::Boolean))
-                  }
-                )
+              params(
+                name: String,
+                value:
+                  T.nilable(
+                    T.any(
+                      String,
+                      T::Array[T.anything],
+                      T.anything,
+                      Float,
+                      T::Boolean
+                    )
+                  )
+              ).returns(T.attached_class)
             end
-            def to_hash; end
+            def self.new(name: nil, value: nil)
+            end
+
+            sig do
+              override.returns(
+                {
+                  name: String,
+                  value:
+                    T.nilable(
+                      T.any(
+                        String,
+                        T::Array[T.anything],
+                        T.anything,
+                        Float,
+                        T::Boolean
+                      )
+                    )
+                }
+              )
+            end
+            def to_hash
+            end
 
             module Value
               extend FinchAPI::Internal::Type::Union
 
-              sig { override.returns([String, T::Array[T.anything], T.anything, Float, T::Boolean]) }
-              def self.variants; end
+              Variants =
+                T.type_alias do
+                  T.any(
+                    String,
+                    T::Array[T.anything],
+                    T.anything,
+                    Float,
+                    T::Boolean
+                  )
+                end
+
+              sig do
+                override.returns(
+                  T::Array[
+                    FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField::Value::Variants
+                  ]
+                )
+              end
+              def self.variants
+              end
 
               UnionMember1Array =
                 T.let(
-                  FinchAPI::Internal::Type::ArrayOf[FinchAPI::Internal::Type::Unknown],
+                  FinchAPI::Internal::Type::ArrayOf[
+                    FinchAPI::Internal::Type::Unknown
+                  ],
                   FinchAPI::Internal::Type::Converter
                 )
             end
           end
 
           class Department < FinchAPI::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
             # The name of the department associated with the individual.
             sig { returns(T.nilable(String)) }
             attr_accessor :name
@@ -289,32 +406,51 @@ module FinchAPI
             def self.new(
               # The name of the department associated with the individual.
               name:
-            ); end
-            sig { override.returns({name: T.nilable(String)}) }
-            def to_hash; end
+            )
+            end
+
+            sig { override.returns({ name: T.nilable(String) }) }
+            def to_hash
+            end
           end
 
           class Employment < FinchAPI::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
             # The secondary employment type of the individual. Options: `full_time`,
             # `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
             sig do
               returns(
-                T.nilable(FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol)
+                T.nilable(
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol
+                )
               )
             end
             attr_accessor :subtype
 
             # The main employment type of the individual.
-            sig { returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment::Type::TaggedSymbol)) }
+            sig do
+              returns(
+                T.nilable(
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Type::TaggedSymbol
+                )
+              )
+            end
             attr_accessor :type
 
             # The employment object.
             sig do
               params(
-                subtype: T.nilable(FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment::Subtype::OrSymbol),
-                type: T.nilable(FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment::Type::OrSymbol)
-              )
-                .returns(T.attached_class)
+                subtype:
+                  T.nilable(
+                    FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype::OrSymbol
+                  ),
+                type:
+                  T.nilable(
+                    FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Type::OrSymbol
+                  )
+              ).returns(T.attached_class)
             end
             def self.new(
               # The secondary employment type of the individual. Options: `full_time`,
@@ -322,17 +458,25 @@ module FinchAPI
               subtype:,
               # The main employment type of the individual.
               type:
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    subtype: T.nilable(FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol),
-                    type: T.nilable(FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment::Type::TaggedSymbol)
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  subtype:
+                    T.nilable(
+                      FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol
+                    ),
+                  type:
+                    T.nilable(
+                      FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Type::TaggedSymbol
+                    )
+                }
+              )
+            end
+            def to_hash
+            end
 
             # The secondary employment type of the individual. Options: `full_time`,
             # `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
@@ -340,30 +484,54 @@ module FinchAPI
               extend FinchAPI::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment::Subtype) }
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype
+                  )
+                end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               FULL_TIME =
-                T.let(:full_time, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol)
+                T.let(
+                  :full_time,
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol
+                )
               INTERN =
-                T.let(:intern, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol)
+                T.let(
+                  :intern,
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol
+                )
               PART_TIME =
-                T.let(:part_time, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol)
+                T.let(
+                  :part_time,
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol
+                )
               TEMP =
-                T.let(:temp, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol)
+                T.let(
+                  :temp,
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol
+                )
               SEASONAL =
-                T.let(:seasonal, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol)
+                T.let(
+                  :seasonal,
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol
+                )
               INDIVIDUAL_CONTRACTOR =
                 T.let(
                   :individual_contractor,
-                  FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol
                 )
 
               sig do
-                override
-                  .returns(T::Array[FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol])
+                override.returns(
+                  T::Array[
+                    FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
 
             # The main employment type of the individual.
@@ -371,19 +539,34 @@ module FinchAPI
               extend FinchAPI::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment::Type) }
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Type
+                  )
+                end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               EMPLOYEE =
-                T.let(:employee, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment::Type::TaggedSymbol)
+                T.let(
+                  :employee,
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Type::TaggedSymbol
+                )
               CONTRACTOR =
-                T.let(:contractor, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment::Type::TaggedSymbol)
+                T.let(
+                  :contractor,
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Type::TaggedSymbol
+                )
 
               sig do
-                override
-                  .returns(T::Array[FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment::Type::TaggedSymbol])
+                override.returns(
+                  T::Array[
+                    FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Type::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
           end
 
@@ -393,32 +576,65 @@ module FinchAPI
             extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::EmploymentStatus) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             ACTIVE =
-              T.let(:active, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol)
+              T.let(
+                :active,
+                FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol
+              )
             DECEASED =
-              T.let(:deceased, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol)
+              T.let(
+                :deceased,
+                FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol
+              )
             LEAVE =
-              T.let(:leave, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol)
+              T.let(
+                :leave,
+                FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol
+              )
             ONBOARDING =
-              T.let(:onboarding, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol)
+              T.let(
+                :onboarding,
+                FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol
+              )
             PREHIRE =
-              T.let(:prehire, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol)
+              T.let(
+                :prehire,
+                FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol
+              )
             RETIRED =
-              T.let(:retired, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol)
+              T.let(
+                :retired,
+                FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol
+              )
             TERMINATED =
-              T.let(:terminated, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol)
+              T.let(
+                :terminated,
+                FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[FinchAPI::Models::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
 
           class Manager < FinchAPI::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
             # A stable Finch `id` (UUID v4) for an individual in the company.
             sig { returns(String) }
             attr_accessor :id
@@ -428,13 +644,19 @@ module FinchAPI
             def self.new(
               # A stable Finch `id` (UUID v4) for an individual in the company.
               id:
-            ); end
-            sig { override.returns({id: String}) }
-            def to_hash; end
+            )
+            end
+
+            sig { override.returns({ id: String }) }
+            def to_hash
+            end
           end
         end
 
         class BatchError < FinchAPI::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
           sig { returns(Float) }
           attr_accessor :code
 
@@ -451,21 +673,30 @@ module FinchAPI
           attr_writer :finch_code
 
           sig do
-            params(code: Float, message: String, name: String, finch_code: String).returns(T.attached_class)
+            params(
+              code: Float,
+              message: String,
+              name: String,
+              finch_code: String
+            ).returns(T.attached_class)
           end
-          def self.new(code:, message:, name:, finch_code: nil); end
+          def self.new(code:, message:, name:, finch_code: nil)
+          end
 
-          sig { override.returns({code: Float, message: String, name: String, finch_code: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              { code: Float, message: String, name: String, finch_code: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         sig do
-          override
-            .returns(
-              [FinchAPI::Models::HRIS::EmploymentData::UnionMember0, FinchAPI::Models::HRIS::EmploymentData::BatchError]
-            )
+          override.returns(T::Array[FinchAPI::HRIS::EmploymentData::Variants])
         end
-        def self.variants; end
+        def self.variants
+        end
       end
     end
   end

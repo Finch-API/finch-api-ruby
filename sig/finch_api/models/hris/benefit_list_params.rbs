@@ -9,8 +9,6 @@ module FinchAPI
         include FinchAPI::Internal::Type::RequestParameters
 
         def initialize: (?request_options: FinchAPI::request_opts) -> void
-
-        def to_hash: -> FinchAPI::Models::HRIS::benefit_list_params
       end
     end
   end

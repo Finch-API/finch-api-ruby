@@ -3,17 +3,17 @@ module FinchAPI
     module HRIS
       type pay_statement_response =
         {
-          body: FinchAPI::Models::HRIS::PayStatementResponseBody,
+          body: FinchAPI::HRIS::PayStatementResponseBody,
           code: Integer,
           payment_id: String
         }
 
       class PayStatementResponse < FinchAPI::Internal::Type::BaseModel
-        attr_reader body: FinchAPI::Models::HRIS::PayStatementResponseBody?
+        attr_reader body: FinchAPI::HRIS::PayStatementResponseBody?
 
         def body=: (
-          FinchAPI::Models::HRIS::PayStatementResponseBody
-        ) -> FinchAPI::Models::HRIS::PayStatementResponseBody
+          FinchAPI::HRIS::PayStatementResponseBody
+        ) -> FinchAPI::HRIS::PayStatementResponseBody
 
         attr_reader code: Integer?
 
@@ -24,12 +24,10 @@ module FinchAPI
         def payment_id=: (String) -> String
 
         def initialize: (
-          ?body: FinchAPI::Models::HRIS::PayStatementResponseBody,
+          ?body: FinchAPI::HRIS::PayStatementResponseBody,
           ?code: Integer,
           ?payment_id: String
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::HRIS::pay_statement_response
       end
     end
   end

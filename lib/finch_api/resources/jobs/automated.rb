@@ -21,9 +21,9 @@ module FinchAPI
         #
         # @overload create(type:, params:, request_options: {})
         #
-        # @param type [Symbol, FinchAPI::Models::Jobs::AutomatedCreateParams::Type] The type of job to start.
+        # @param type [Symbol, FinchAPI::Jobs::AutomatedCreateParams::Type] The type of job to start.
         #
-        # @param params [FinchAPI::Models::Jobs::AutomatedCreateParams::Params]
+        # @param params [FinchAPI::Jobs::AutomatedCreateParams::Params]
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -31,7 +31,7 @@ module FinchAPI
         #
         # @see FinchAPI::Models::Jobs::AutomatedCreateParams
         def create(params)
-          parsed, options = FinchAPI::Models::Jobs::AutomatedCreateParams.dump_request(params)
+          parsed, options = FinchAPI::Jobs::AutomatedCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "jobs/automated",
@@ -48,14 +48,14 @@ module FinchAPI
         # @param job_id [String]
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::Models::Jobs::AutomatedAsyncJob]
+        # @return [FinchAPI::Jobs::AutomatedAsyncJob]
         #
         # @see FinchAPI::Models::Jobs::AutomatedRetrieveParams
         def retrieve(job_id, params = {})
           @client.request(
             method: :get,
             path: ["jobs/automated/%1$s", job_id],
-            model: FinchAPI::Models::Jobs::AutomatedAsyncJob,
+            model: FinchAPI::Jobs::AutomatedAsyncJob,
             options: params[:request_options]
           )
         end
@@ -76,7 +76,7 @@ module FinchAPI
         #
         # @see FinchAPI::Models::Jobs::AutomatedListParams
         def list(params = {})
-          parsed, options = FinchAPI::Models::Jobs::AutomatedListParams.dump_request(params)
+          parsed, options = FinchAPI::Jobs::AutomatedListParams.dump_request(params)
           @client.request(
             method: :get,
             path: "jobs/automated",

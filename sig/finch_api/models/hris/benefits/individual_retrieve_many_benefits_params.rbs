@@ -18,8 +18,6 @@ module FinchAPI
             ?individual_ids: String,
             ?request_options: FinchAPI::request_opts
           ) -> void
-
-          def to_hash: -> FinchAPI::Models::HRIS::Benefits::individual_retrieve_many_benefits_params
         end
       end
     end

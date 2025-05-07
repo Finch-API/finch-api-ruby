@@ -8,8 +8,8 @@ module FinchAPI
         class IndividualBenefit < FinchAPI::Internal::Type::BaseModel
           # @!attribute body
           #
-          #   @return [FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body, nil]
-          optional :body, -> { FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body }
+          #   @return [FinchAPI::HRIS::Benefits::IndividualBenefit::Body, nil]
+          optional :body, -> { FinchAPI::HRIS::Benefits::IndividualBenefit::Body }
 
           # @!attribute code
           #
@@ -22,11 +22,11 @@ module FinchAPI
           optional :individual_id, String
 
           # @!method initialize(body: nil, code: nil, individual_id: nil)
-          #   @param body [FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body]
+          #   @param body [FinchAPI::HRIS::Benefits::IndividualBenefit::Body]
           #   @param code [Integer]
           #   @param individual_id [String]
 
-          # @see FinchAPI::Models::HRIS::Benefits::IndividualBenefit#body
+          # @see FinchAPI::HRIS::Benefits::IndividualBenefit#body
           class Body < FinchAPI::Internal::Type::BaseModel
             # @!attribute annual_maximum
             #   If the benefit supports annual maximum, the amount in cents for this individual.
@@ -43,41 +43,39 @@ module FinchAPI
 
             # @!attribute company_contribution
             #
-            #   @return [FinchAPI::Models::HRIS::BenefitContribution, nil]
-            optional :company_contribution, -> { FinchAPI::Models::HRIS::BenefitContribution }, nil?: true
+            #   @return [FinchAPI::HRIS::BenefitContribution, nil]
+            optional :company_contribution, -> { FinchAPI::HRIS::BenefitContribution }, nil?: true
 
             # @!attribute employee_deduction
             #
-            #   @return [FinchAPI::Models::HRIS::BenefitContribution, nil]
-            optional :employee_deduction, -> { FinchAPI::Models::HRIS::BenefitContribution }, nil?: true
+            #   @return [FinchAPI::HRIS::BenefitContribution, nil]
+            optional :employee_deduction, -> { FinchAPI::HRIS::BenefitContribution }, nil?: true
 
             # @!attribute hsa_contribution_limit
             #   Type for HSA contribution limit if the benefit is a HSA.
             #
-            #   @return [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit, nil]
+            #   @return [Symbol, FinchAPI::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit, nil]
             optional :hsa_contribution_limit,
-                     enum: -> { FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit },
+                     enum: -> { FinchAPI::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit },
                      nil?: true
 
             # @!method initialize(annual_maximum: nil, catch_up: nil, company_contribution: nil, employee_deduction: nil, hsa_contribution_limit: nil)
             #   Some parameter documentations has been truncated, see
-            #   {FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body} for more details.
+            #   {FinchAPI::HRIS::Benefits::IndividualBenefit::Body} for more details.
             #
             #   @param annual_maximum [Integer, nil] If the benefit supports annual maximum, the amount in cents for this individual.
-            #   ...
             #
             #   @param catch_up [Boolean, nil] If the benefit supports catch up (401k, 403b, etc.), whether catch up is enabled
-            #   ...
             #
-            #   @param company_contribution [FinchAPI::Models::HRIS::BenefitContribution, nil]
+            #   @param company_contribution [FinchAPI::HRIS::BenefitContribution, nil]
             #
-            #   @param employee_deduction [FinchAPI::Models::HRIS::BenefitContribution, nil]
+            #   @param employee_deduction [FinchAPI::HRIS::BenefitContribution, nil]
             #
-            #   @param hsa_contribution_limit [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit, nil] Type for HSA contribution limit if the benefit is a HSA.
+            #   @param hsa_contribution_limit [Symbol, FinchAPI::HRIS::Benefits::IndividualBenefit::Body::HsaContributionLimit, nil] Type for HSA contribution limit if the benefit is a HSA.
 
             # Type for HSA contribution limit if the benefit is a HSA.
             #
-            # @see FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body#hsa_contribution_limit
+            # @see FinchAPI::HRIS::Benefits::IndividualBenefit::Body#hsa_contribution_limit
             module HsaContributionLimit
               extend FinchAPI::Internal::Type::Enum
 

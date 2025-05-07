@@ -41,9 +41,11 @@ module FinchAPI
 
         # @!attribute locations
         #
-        #   @return [Array<FinchAPI::Models::Location, nil>, nil]
+        #   @return [Array<FinchAPI::Location, nil>, nil]
         required :locations,
-                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Location, nil?: true] },
+                 -> {
+                   FinchAPI::Internal::Type::ArrayOf[FinchAPI::Location, nil?: true]
+                 },
                  nil?: true
 
         # @!attribute primary_email
@@ -73,12 +75,11 @@ module FinchAPI
         #
         #   @param legal_name [String, nil] The legal name of the company.
         #
-        #   @param locations [Array<FinchAPI::Models::Location, nil>, nil]
+        #   @param locations [Array<FinchAPI::Location, nil>, nil]
         #
         #   @param primary_email [String, nil] The email of the main administrator on the account.
         #
         #   @param primary_phone_number [String, nil] The phone number of the main administrator on the account. Format: E.164, with e
-        #   ...
 
         class Account < FinchAPI::Internal::Type::BaseModel
           # @!attribute account_name
@@ -127,7 +128,6 @@ module FinchAPI
           #   @param institution_name [String, nil] Name of the banking institution.
           #
           #   @param routing_number [String, nil] A nine-digit code that's based on the U.S. Bank location where your account was
-          #   ...
 
           # The type of bank account.
           #

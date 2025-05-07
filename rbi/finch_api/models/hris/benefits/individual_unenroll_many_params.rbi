@@ -8,6 +8,9 @@ module FinchAPI
           extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
 
+          OrHash =
+            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
           # Array of individual_ids to unenroll.
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :individual_ids
@@ -18,19 +21,26 @@ module FinchAPI
           sig do
             params(
               individual_ids: T::Array[String],
-              request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)
-            )
-              .returns(T.attached_class)
+              request_options: FinchAPI::RequestOptions::OrHash
+            ).returns(T.attached_class)
           end
           def self.new(
             # Array of individual_ids to unenroll.
             individual_ids: nil,
             request_options: {}
-          ); end
-          sig do
-            override.returns({individual_ids: T::Array[String], request_options: FinchAPI::RequestOptions})
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                individual_ids: T::Array[String],
+                request_options: FinchAPI::RequestOptions
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
     end

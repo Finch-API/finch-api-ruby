@@ -4,6 +4,9 @@ module FinchAPI
   module Models
     module HRIS
       class BenefitListSupportedBenefitsResponse < FinchAPI::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
         # Whether the provider supports an annual maximum for this benefit.
         sig { returns(T.nilable(T::Boolean)) }
         attr_accessor :annual_maximum
@@ -18,7 +21,11 @@ module FinchAPI
         sig do
           returns(
             T.nilable(
-              T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::CompanyContribution::TaggedSymbol)]
+              T::Array[
+                T.nilable(
+                  FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::CompanyContribution::TaggedSymbol
+                )
+              ]
             )
           )
         end
@@ -32,17 +39,34 @@ module FinchAPI
         sig do
           returns(
             T.nilable(
-              T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::EmployeeDeduction::TaggedSymbol)]
+              T::Array[
+                T.nilable(
+                  FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::EmployeeDeduction::TaggedSymbol
+                )
+              ]
             )
           )
         end
         attr_accessor :employee_deduction
 
         # The list of frequencies supported by the provider for this benefit
-        sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol)])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                T.nilable(FinchAPI::HRIS::BenefitFrequency::TaggedSymbol)
+              ]
+            )
+          )
+        end
         attr_reader :frequencies
 
-        sig { params(frequencies: T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::OrSymbol)]).void }
+        sig do
+          params(
+            frequencies:
+              T::Array[T.nilable(FinchAPI::HRIS::BenefitFrequency::OrSymbol)]
+          ).void
+        end
         attr_writer :frequencies
 
         # Whether the provider supports HSA contribution limits. Empty if this feature is
@@ -64,19 +88,34 @@ module FinchAPI
           params(
             annual_maximum: T.nilable(T::Boolean),
             catch_up: T.nilable(T::Boolean),
-            company_contribution: T.nilable(
-              T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::CompanyContribution::OrSymbol)]
-            ),
+            company_contribution:
+              T.nilable(
+                T::Array[
+                  T.nilable(
+                    FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::CompanyContribution::OrSymbol
+                  )
+                ]
+              ),
             description: T.nilable(String),
-            employee_deduction: T.nilable(
-              T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::EmployeeDeduction::OrSymbol)]
-            ),
-            frequencies: T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::OrSymbol)],
-            hsa_contribution_limit: T.nilable(
-              T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::HsaContributionLimit::OrSymbol)]
-            )
-          )
-            .returns(T.attached_class)
+            employee_deduction:
+              T.nilable(
+                T::Array[
+                  T.nilable(
+                    FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::EmployeeDeduction::OrSymbol
+                  )
+                ]
+              ),
+            frequencies:
+              T::Array[T.nilable(FinchAPI::HRIS::BenefitFrequency::OrSymbol)],
+            hsa_contribution_limit:
+              T.nilable(
+                T::Array[
+                  T.nilable(
+                    FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::HsaContributionLimit::OrSymbol
+                  )
+                ]
+              )
+          ).returns(T.attached_class)
         end
         def self.new(
           # Whether the provider supports an annual maximum for this benefit.
@@ -96,38 +135,59 @@ module FinchAPI
           # Whether the provider supports HSA contribution limits. Empty if this feature is
           # not supported for the benefit. This array only has values for HSA benefits.
           hsa_contribution_limit: nil
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                annual_maximum: T.nilable(T::Boolean),
-                catch_up: T.nilable(T::Boolean),
-                company_contribution: T.nilable(
-                  T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::CompanyContribution::TaggedSymbol)]
+          override.returns(
+            {
+              annual_maximum: T.nilable(T::Boolean),
+              catch_up: T.nilable(T::Boolean),
+              company_contribution:
+                T.nilable(
+                  T::Array[
+                    T.nilable(
+                      FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::CompanyContribution::TaggedSymbol
+                    )
+                  ]
                 ),
-                description: T.nilable(String),
-                employee_deduction: T.nilable(
-                  T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::EmployeeDeduction::TaggedSymbol)]
+              description: T.nilable(String),
+              employee_deduction:
+                T.nilable(
+                  T::Array[
+                    T.nilable(
+                      FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::EmployeeDeduction::TaggedSymbol
+                    )
+                  ]
                 ),
-                frequencies: T::Array[T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol)],
-                hsa_contribution_limit: T.nilable(
+              frequencies:
+                T::Array[
+                  T.nilable(FinchAPI::HRIS::BenefitFrequency::TaggedSymbol)
+                ],
+              hsa_contribution_limit:
+                T.nilable(
                   T::Array[
                     T.nilable(
                       FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::HsaContributionLimit::TaggedSymbol
                     )
                   ]
                 )
-              }
-            )
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         module CompanyContribution
           extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::CompanyContribution) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::CompanyContribution
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           FIXED =
@@ -142,19 +202,26 @@ module FinchAPI
             )
 
           sig do
-            override
-              .returns(
-                T::Array[FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::CompanyContribution::TaggedSymbol]
-              )
+            override.returns(
+              T::Array[
+                FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::CompanyContribution::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
 
         module EmployeeDeduction
           extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::EmployeeDeduction) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::EmployeeDeduction
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           FIXED =
@@ -169,19 +236,26 @@ module FinchAPI
             )
 
           sig do
-            override
-              .returns(
-                T::Array[FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::EmployeeDeduction::TaggedSymbol]
-              )
+            override.returns(
+              T::Array[
+                FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::EmployeeDeduction::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
 
         module HsaContributionLimit
           extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::HsaContributionLimit) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::HsaContributionLimit
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           INDIVIDUAL =
@@ -196,12 +270,14 @@ module FinchAPI
             )
 
           sig do
-            override
-              .returns(
-                T::Array[FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::HsaContributionLimit::TaggedSymbol]
-              )
+            override.returns(
+              T::Array[
+                FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::HsaContributionLimit::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

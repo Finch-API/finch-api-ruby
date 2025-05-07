@@ -4,10 +4,15 @@ module FinchAPI
   module Models
     module HRIS
       class PayStatementResponse < FinchAPI::Internal::Type::BaseModel
-        sig { returns(T.nilable(FinchAPI::Models::HRIS::PayStatementResponseBody)) }
+        OrHash =
+          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
+        sig { returns(T.nilable(FinchAPI::HRIS::PayStatementResponseBody)) }
         attr_reader :body
 
-        sig { params(body: T.any(FinchAPI::Models::HRIS::PayStatementResponseBody, FinchAPI::Internal::AnyHash)).void }
+        sig do
+          params(body: FinchAPI::HRIS::PayStatementResponseBody::OrHash).void
+        end
         attr_writer :body
 
         sig { returns(T.nilable(Integer)) }
@@ -24,19 +29,25 @@ module FinchAPI
 
         sig do
           params(
-            body: T.any(FinchAPI::Models::HRIS::PayStatementResponseBody, FinchAPI::Internal::AnyHash),
+            body: FinchAPI::HRIS::PayStatementResponseBody::OrHash,
             code: Integer,
             payment_id: String
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
-        def self.new(body: nil, code: nil, payment_id: nil); end
+        def self.new(body: nil, code: nil, payment_id: nil)
+        end
 
         sig do
-          override
-            .returns({body: FinchAPI::Models::HRIS::PayStatementResponseBody, code: Integer, payment_id: String})
+          override.returns(
+            {
+              body: FinchAPI::HRIS::PayStatementResponseBody,
+              code: Integer,
+              payment_id: String
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

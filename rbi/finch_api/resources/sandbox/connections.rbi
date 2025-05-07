@@ -11,12 +11,12 @@ module FinchAPI
         sig do
           params(
             provider_id: String,
-            authentication_type: FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType::OrSymbol,
+            authentication_type:
+              FinchAPI::Sandbox::ConnectionCreateParams::AuthenticationType::OrSymbol,
             employee_size: Integer,
             products: T::Array[String],
-            request_options: FinchAPI::RequestOpts
-          )
-            .returns(FinchAPI::Models::Sandbox::ConnectionCreateResponse)
+            request_options: FinchAPI::RequestOptions::OrHash
+          ).returns(FinchAPI::Models::Sandbox::ConnectionCreateResponse)
         end
         def create(
           # The provider associated with the connection
@@ -28,10 +28,13 @@ module FinchAPI
           employee_size: nil,
           products: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

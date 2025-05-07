@@ -7,6 +7,9 @@ module FinchAPI
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
         # Updated name or description.
         sig { returns(T.nilable(String)) }
         attr_reader :description
@@ -17,20 +20,23 @@ module FinchAPI
         sig do
           params(
             description: String,
-            request_options: T.any(
-              FinchAPI::RequestOptions,
-              FinchAPI::Internal::AnyHash
-            )
-          )
-            .returns(T.attached_class)
+            request_options: FinchAPI::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # Updated name or description.
           description: nil,
           request_options: {}
-        ); end
-        sig { override.returns({description: String, request_options: FinchAPI::RequestOptions}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns(
+            { description: String, request_options: FinchAPI::RequestOptions }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end
