@@ -128,6 +128,22 @@ module FinchAPI
             input.respond_to?(:to_h) ? input.to_h : input
           end
         end
+
+        # @api private
+        #
+        # @param input [Object]
+        #
+        # @raise [ArgumentError]
+        # @return [Hash{Object=>Object}, nil]
+        def coerce_hash!(input)
+          case coerce_hash(input)
+          in Hash | nil => coerced
+            coerced
+          else
+            message = "Expected a #{Hash} or #{FinchAPI::Internal::Type::BaseModel}, got #{data.inspect}"
+            raise ArgumentError.new(message)
+          end
+        end
       end
 
       class << self
@@ -454,7 +470,7 @@ module FinchAPI
       # @type [Regexp]
       JSON_CONTENT = %r{^application/(?:vnd(?:\.[^.]+)*\+)?json(?!l)}
       # @type [Regexp]
-      JSONL_CONTENT = %r{^application/(?:x-)?jsonl}
+      JSONL_CONTENT = %r{^application/(:?x-(?:n|l)djson)|(:?(?:x-)?jsonl)}
 
       class << self
         # @api private
@@ -493,7 +509,7 @@ module FinchAPI
             y << val.to_s
           else
             y << "Content-Type: application/json\r\n\r\n"
-            y << JSON.fast_generate(val)
+            y << JSON.generate(val)
           end
           y << "\r\n"
         end
@@ -519,7 +535,7 @@ module FinchAPI
             filename = ERB::Util.url_encode(val.filename)
             y << "; filename=\"#{filename}\""
           in Pathname | IO
-            filename = ERB::Util.url_encode(File.basename(val.to_path))
+            filename = ERB::Util.url_encode(::File.basename(val.to_path))
             y << "; filename=\"#{filename}\""
           else
           end
@@ -570,9 +586,9 @@ module FinchAPI
           content_type = headers["content-type"]
           case [content_type, body]
           in [FinchAPI::Internal::Util::JSON_CONTENT, Hash | Array | -> { primitive?(_1) }]
-            [headers, JSON.fast_generate(body)]
+            [headers, JSON.generate(body)]
           in [FinchAPI::Internal::Util::JSONL_CONTENT, Enumerable] unless body.is_a?(FinchAPI::Internal::Type::FileInput)
-            [headers, body.lazy.map { JSON.fast_generate(_1) }]
+            [headers, body.lazy.map { JSON.generate(_1) }]
           in [%r{^multipart/form-data}, Hash | FinchAPI::Internal::Type::FileInput]
             boundary, strio = encode_multipart_streaming(body)
             headers = {**headers, "content-type" => "#{content_type}; boundary=#{boundary}"}

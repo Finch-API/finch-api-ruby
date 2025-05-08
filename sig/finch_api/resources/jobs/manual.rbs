@@ -5,7 +5,7 @@ module FinchAPI
         def retrieve: (
           String job_id,
           ?request_options: FinchAPI::request_opts
-        ) -> FinchAPI::Models::Jobs::ManualAsyncJob
+        ) -> FinchAPI::Jobs::ManualAsyncJob
 
         def initialize: (client: FinchAPI::Client) -> void
       end

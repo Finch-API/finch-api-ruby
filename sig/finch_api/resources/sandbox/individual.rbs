@@ -5,16 +5,16 @@ module FinchAPI
         def update: (
           String individual_id,
           ?dob: String?,
-          ?emails: ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::Email]?,
+          ?emails: ::Array[FinchAPI::Sandbox::IndividualUpdateParams::Email]?,
           ?encrypted_ssn: String?,
           ?ethnicity: FinchAPI::Models::Sandbox::IndividualUpdateParams::ethnicity?,
           ?first_name: String?,
           ?gender: FinchAPI::Models::Sandbox::IndividualUpdateParams::gender?,
           ?last_name: String?,
           ?middle_name: String?,
-          ?phone_numbers: ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber?]?,
+          ?phone_numbers: ::Array[FinchAPI::Sandbox::IndividualUpdateParams::PhoneNumber?]?,
           ?preferred_name: String?,
-          ?residence: FinchAPI::Models::Location?,
+          ?residence: FinchAPI::Location?,
           ?ssn: String?,
           ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::Models::Sandbox::IndividualUpdateResponse

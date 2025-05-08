@@ -1,6 +1,6 @@
 # Finch Ruby API library
 
-The Finch Ruby library provides convenient access to the Finch REST API from any Ruby 3.1.0+ application.
+The Finch Ruby library provides convenient access to the Finch REST API from any Ruby 3.2.0+ application.
 
 It is generated with [Stainless](https://www.stainless.com/).
 
@@ -17,7 +17,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "finch-api", "~> 0.1.0.pre.alpha.13"
+gem "finch-api", "~> 0.1.0.pre.alpha.14"
 ```
 
 <!-- x-release-please-end -->
@@ -76,7 +76,7 @@ rescue FinchAPI::Errors::APIError => e
 end
 ```
 
-Error codes are as followed:
+Error codes are as follows:
 
 | Cause            | Error Type                 |
 | ---------------- | -------------------------- |
@@ -191,9 +191,9 @@ Sorbet's typed enums require sub-classing of the [`T::Enum` class](https://sorbe
 Since this library does not depend on `sorbet-runtime`, it uses a [`T.all` intersection type](https://sorbet.org/docs/intersection-types) with a ruby primitive type to construct a "tagged alias" instead.
 
 ```ruby
-module FinchAPI::Models::ConnectionStatusType
+module FinchAPI::ConnectionStatusType
   # This alias aids language service driven navigation.
-  TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::ConnectionStatusType) }
+  TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::ConnectionStatusType) }
 end
 ```
 
@@ -214,7 +214,7 @@ This package considers improvements to the (non-runtime) `*.rbi` and `*.rbs` typ
 
 ## Requirements
 
-Ruby 3.1.0 or higher.
+Ruby 3.2.0 or higher.
 
 ## Contributing
 

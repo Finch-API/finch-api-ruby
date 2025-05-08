@@ -12,24 +12,22 @@ module FinchAPI
         # @overload list(end_date:, start_date:, request_options: {})
         #
         # @param end_date [Date] The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD` forma
-        # ...
         #
         # @param start_date [Date] The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD` for
-        # ...
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::Internal::SinglePage<FinchAPI::Models::HRIS::Payment>]
+        # @return [FinchAPI::Internal::SinglePage<FinchAPI::HRIS::Payment>]
         #
         # @see FinchAPI::Models::HRIS::PaymentListParams
         def list(params)
-          parsed, options = FinchAPI::Models::HRIS::PaymentListParams.dump_request(params)
+          parsed, options = FinchAPI::HRIS::PaymentListParams.dump_request(params)
           @client.request(
             method: :get,
             path: "employer/payment",
             query: parsed,
             page: FinchAPI::Internal::SinglePage,
-            model: FinchAPI::Models::HRIS::Payment,
+            model: FinchAPI::HRIS::Payment,
             options: options
           )
         end

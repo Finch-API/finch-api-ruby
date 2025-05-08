@@ -62,15 +62,15 @@ module FinchAPI
         #   annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
         #   depending on what information the provider returns.
         #
-        #   @return [FinchAPI::Models::Income, nil]
-        optional :income, -> { FinchAPI::Models::Income }, nil?: true
+        #   @return [FinchAPI::Income, nil]
+        optional :income, -> { FinchAPI::Income }, nil?: true
 
         # @!attribute income_history
         #   The array of income history.
         #
-        #   @return [Array<FinchAPI::Models::Income, nil>, nil]
+        #   @return [Array<FinchAPI::Income, nil>, nil]
         optional :income_history,
-                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Income, nil?: true] },
+                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Income, nil?: true] },
                  nil?: true
 
         # @!attribute is_active
@@ -92,8 +92,8 @@ module FinchAPI
 
         # @!attribute location
         #
-        #   @return [FinchAPI::Models::Location, nil]
-        optional :location, -> { FinchAPI::Models::Location }, nil?: true
+        #   @return [FinchAPI::Location, nil]
+        optional :location, -> { FinchAPI::Location }, nil?: true
 
         # @!attribute manager
         #   The manager object representing the manager of the individual within the org.
@@ -133,7 +133,6 @@ module FinchAPI
         #   @param class_code [String, nil] Worker's compensation classification code for this employee
         #
         #   @param custom_fields [Array<FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField>] Custom fields for the individual. These are fields which are defined by the empl
-        #   ...
         #
         #   @param department [FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Department, nil] The department object.
         #
@@ -145,10 +144,9 @@ module FinchAPI
         #
         #   @param first_name [String, nil] The legal first name of the individual.
         #
-        #   @param income [FinchAPI::Models::Income, nil] The employee's income as reported by the provider. This may not always be annual
-        #   ...
+        #   @param income [FinchAPI::Income, nil] The employee's income as reported by the provider. This may not always be annual
         #
-        #   @param income_history [Array<FinchAPI::Models::Income, nil>, nil] The array of income history.
+        #   @param income_history [Array<FinchAPI::Income, nil>, nil] The array of income history.
         #
         #   @param is_active [Boolean, nil] `true` if the individual an an active employee or contractor at the company.
         #
@@ -156,7 +154,7 @@ module FinchAPI
         #
         #   @param latest_rehire_date [String, nil]
         #
-        #   @param location [FinchAPI::Models::Location, nil]
+        #   @param location [FinchAPI::Location, nil]
         #
         #   @param manager [FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Manager, nil] The manager object representing the manager of the individual within the org.
         #
@@ -225,7 +223,6 @@ module FinchAPI
           #   The employment object.
           #
           #   @param subtype [Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::Subtype, nil] The secondary employment type of the individual. Options: `full_time`, `part_ti
-          #   ...
           #
           #   @param type [Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::Type, nil] The main employment type of the individual.
 

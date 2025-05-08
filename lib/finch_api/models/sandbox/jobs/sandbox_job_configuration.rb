@@ -8,20 +8,20 @@ module FinchAPI
         class SandboxJobConfiguration < FinchAPI::Internal::Type::BaseModel
           # @!attribute completion_status
           #
-          #   @return [Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus]
+          #   @return [Symbol, FinchAPI::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus]
           required :completion_status,
-                   enum: -> { FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus }
+                   enum: -> { FinchAPI::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus }
 
           # @!attribute type
           #
-          #   @return [Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type]
-          required :type, enum: -> { FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type }
+          #   @return [Symbol, FinchAPI::Sandbox::Jobs::SandboxJobConfiguration::Type]
+          required :type, enum: -> { FinchAPI::Sandbox::Jobs::SandboxJobConfiguration::Type }
 
           # @!method initialize(completion_status:, type:)
-          #   @param completion_status [Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus]
-          #   @param type [Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type]
+          #   @param completion_status [Symbol, FinchAPI::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus]
+          #   @param type [Symbol, FinchAPI::Sandbox::Jobs::SandboxJobConfiguration::Type]
 
-          # @see FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration#completion_status
+          # @see FinchAPI::Sandbox::Jobs::SandboxJobConfiguration#completion_status
           module CompletionStatus
             extend FinchAPI::Internal::Type::Enum
 
@@ -34,7 +34,7 @@ module FinchAPI
             #   @return [Array<Symbol>]
           end
 
-          # @see FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration#type
+          # @see FinchAPI::Sandbox::Jobs::SandboxJobConfiguration#type
           module Type
             extend FinchAPI::Internal::Type::Enum
 

@@ -11,12 +11,14 @@ module FinchAPI
         # @!attribute requests
         #   The array of batch requests.
         #
-        #   @return [Array<FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request>]
+        #   @return [Array<FinchAPI::HRIS::PayStatementRetrieveManyParams::Request>]
         required :requests,
-                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request] }
+                 -> {
+                   FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::PayStatementRetrieveManyParams::Request]
+                 }
 
         # @!method initialize(requests:, request_options: {})
-        #   @param requests [Array<FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request>] The array of batch requests.
+        #   @param requests [Array<FinchAPI::HRIS::PayStatementRetrieveManyParams::Request>] The array of batch requests.
         #
         #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 

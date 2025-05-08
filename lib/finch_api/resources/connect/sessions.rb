@@ -15,20 +15,19 @@ module FinchAPI
         #
         # @param customer_name [String]
         #
-        # @param products [Array<Symbol, FinchAPI::Models::Connect::SessionNewParams::Product>]
+        # @param products [Array<Symbol, FinchAPI::Connect::SessionNewParams::Product>]
         #
         # @param customer_email [String, nil]
         #
-        # @param integration [FinchAPI::Models::Connect::SessionNewParams::Integration, nil]
+        # @param integration [FinchAPI::Connect::SessionNewParams::Integration, nil]
         #
         # @param manual [Boolean, nil]
         #
         # @param minutes_to_expire [Float, nil] The number of minutes until the session expires (defaults to 43,200, which is 30
-        # ...
         #
         # @param redirect_uri [String, nil]
         #
-        # @param sandbox [Symbol, FinchAPI::Models::Connect::SessionNewParams::Sandbox, nil]
+        # @param sandbox [Symbol, FinchAPI::Connect::SessionNewParams::Sandbox, nil]
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -36,7 +35,7 @@ module FinchAPI
         #
         # @see FinchAPI::Models::Connect::SessionNewParams
         def new(params)
-          parsed, options = FinchAPI::Models::Connect::SessionNewParams.dump_request(params)
+          parsed, options = FinchAPI::Connect::SessionNewParams.dump_request(params)
           @client.request(
             method: :post,
             path: "connect/sessions",
@@ -56,9 +55,8 @@ module FinchAPI
         # @param connection_id [String] The ID of the existing connection to reauthenticate
         #
         # @param minutes_to_expire [Integer, nil] The number of minutes until the session expires (defaults to 43,200, which is 30
-        # ...
         #
-        # @param products [Array<Symbol, FinchAPI::Models::Connect::SessionReauthenticateParams::Product>, nil] The products to request access to (optional for reauthentication)
+        # @param products [Array<Symbol, FinchAPI::Connect::SessionReauthenticateParams::Product>, nil] The products to request access to (optional for reauthentication)
         #
         # @param redirect_uri [String, nil] The URI to redirect to after the Connect flow is completed
         #
@@ -68,7 +66,7 @@ module FinchAPI
         #
         # @see FinchAPI::Models::Connect::SessionReauthenticateParams
         def reauthenticate(params)
-          parsed, options = FinchAPI::Models::Connect::SessionReauthenticateParams.dump_request(params)
+          parsed, options = FinchAPI::Connect::SessionReauthenticateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "connect/sessions/reauthenticate",

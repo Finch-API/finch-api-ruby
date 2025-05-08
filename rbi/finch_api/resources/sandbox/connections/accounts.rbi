@@ -10,11 +10,13 @@ module FinchAPI
             params(
               company_id: String,
               provider_id: String,
-              authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol,
+              authentication_type:
+                FinchAPI::Sandbox::Connections::AccountCreateParams::AuthenticationType::OrSymbol,
               products: T::Array[String],
-              request_options: FinchAPI::RequestOpts
+              request_options: FinchAPI::RequestOptions::OrHash
+            ).returns(
+              FinchAPI::Models::Sandbox::Connections::AccountCreateResponse
             )
-              .returns(FinchAPI::Models::Sandbox::Connections::AccountCreateResponse)
           end
           def create(
             company_id:,
@@ -25,21 +27,26 @@ module FinchAPI
             # `employment`, `individual`)
             products: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # Update an existing sandbox account. Change the connection status to understand
           # how the Finch API responds.
           sig do
             params(
-              connection_status: FinchAPI::Models::ConnectionStatusType::OrSymbol,
-              request_options: FinchAPI::RequestOpts
+              connection_status: FinchAPI::ConnectionStatusType::OrSymbol,
+              request_options: FinchAPI::RequestOptions::OrHash
+            ).returns(
+              FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse
             )
-              .returns(FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse)
           end
-          def update(connection_status: nil, request_options: {}); end
+          def update(connection_status: nil, request_options: {})
+          end
 
           # @api private
           sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-          def self.new(client:); end
+          def self.new(client:)
+          end
         end
       end
     end

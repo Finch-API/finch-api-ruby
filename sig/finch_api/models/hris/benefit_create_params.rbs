@@ -3,7 +3,7 @@ module FinchAPI
     module HRIS
       type benefit_create_params =
         {
-          company_contribution: FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution?,
+          company_contribution: FinchAPI::HRIS::BenefitCreateParams::CompanyContribution?,
           description: String,
           frequency: FinchAPI::Models::HRIS::benefit_frequency?,
           type: FinchAPI::Models::HRIS::benefit_type?
@@ -14,7 +14,7 @@ module FinchAPI
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
-        attr_accessor company_contribution: FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution?
+        attr_accessor company_contribution: FinchAPI::HRIS::BenefitCreateParams::CompanyContribution?
 
         attr_reader description: String?
 
@@ -25,40 +25,36 @@ module FinchAPI
         attr_accessor type: FinchAPI::Models::HRIS::benefit_type?
 
         def initialize: (
-          ?company_contribution: FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution?,
+          ?company_contribution: FinchAPI::HRIS::BenefitCreateParams::CompanyContribution?,
           ?description: String,
           ?frequency: FinchAPI::Models::HRIS::benefit_frequency?,
           ?type: FinchAPI::Models::HRIS::benefit_type?,
           ?request_options: FinchAPI::request_opts
         ) -> void
 
-        def to_hash: -> FinchAPI::Models::HRIS::benefit_create_params
-
         type company_contribution =
           {
-            tiers: ::Array[FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution::Tier],
-            type: FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution::type_
+            tiers: ::Array[FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::Tier],
+            type: FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::type_
           }
 
         class CompanyContribution < FinchAPI::Internal::Type::BaseModel
-          attr_reader tiers: ::Array[FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution::Tier]?
+          attr_reader tiers: ::Array[FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::Tier]?
 
           def tiers=: (
-            ::Array[FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution::Tier]
-          ) -> ::Array[FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution::Tier]
+            ::Array[FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::Tier]
+          ) -> ::Array[FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::Tier]
 
-          attr_reader type: FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution::type_?
+          attr_reader type: FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::type_?
 
           def type=: (
-            FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution::type_
-          ) -> FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution::type_
+            FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::type_
+          ) -> FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::type_
 
           def initialize: (
-            ?tiers: ::Array[FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution::Tier],
-            ?type: FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution::type_
+            ?tiers: ::Array[FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::Tier],
+            ?type: FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::type_
           ) -> void
-
-          def to_hash: -> FinchAPI::Models::HRIS::BenefitCreateParams::company_contribution
 
           type tier = { match: Integer, threshold: Integer }
 
@@ -72,8 +68,6 @@ module FinchAPI
             def threshold=: (Integer) -> Integer
 
             def initialize: (?match: Integer, ?threshold: Integer) -> void
-
-            def to_hash: -> FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution::tier
           end
 
           type type_ = :match
@@ -83,7 +77,7 @@ module FinchAPI
 
             MATCH: :match
 
-            def self?.values: -> ::Array[FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution::type_]
+            def self?.values: -> ::Array[FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::type_]
           end
         end
       end

@@ -13,14 +13,12 @@ module FinchAPI
         # @overload list(individual_ids: nil, limit: nil, offset: nil, types: nil, request_options: {})
         #
         # @param individual_ids [Array<String>] Comma-delimited list of stable Finch uuids for each individual. If empty, defaul
-        # ...
         #
         # @param limit [Integer] Number of documents to return (defaults to all)
         #
         # @param offset [Integer] Index to start from (defaults to 0)
         #
-        # @param types [Array<Symbol, FinchAPI::Models::HRIS::DocumentListParams::Type>] Comma-delimited list of document types to filter on. If empty, defaults to all t
-        # ...
+        # @param types [Array<Symbol, FinchAPI::HRIS::DocumentListParams::Type>] Comma-delimited list of document types to filter on. If empty, defaults to all t
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -28,7 +26,7 @@ module FinchAPI
         #
         # @see FinchAPI::Models::HRIS::DocumentListParams
         def list(params = {})
-          parsed, options = FinchAPI::Models::HRIS::DocumentListParams.dump_request(params)
+          parsed, options = FinchAPI::HRIS::DocumentListParams.dump_request(params)
           @client.request(
             method: :get,
             path: "employer/documents",
@@ -47,7 +45,7 @@ module FinchAPI
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005]
+        # @return [FinchAPI::HRIS::W42020, FinchAPI::HRIS::W42005]
         #
         # @see FinchAPI::Models::HRIS::DocumentRetreiveParams
         def retreive(document_id, params = {})

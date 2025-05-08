@@ -12,8 +12,8 @@ class FinchAPI::Test::Resources::HRIS::DocumentsTest < FinchAPI::Test::ResourceT
 
     assert_pattern do
       response => {
-        documents: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::HRIS::DocumentResponse]),
-        paging: FinchAPI::Models::Paging
+        documents: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::DocumentResponse]),
+        paging: FinchAPI::Paging
       }
     end
   end
@@ -27,15 +27,15 @@ class FinchAPI::Test::Resources::HRIS::DocumentsTest < FinchAPI::Test::ResourceT
 
     assert_pattern do
       case response
-      in FinchAPI::Models::HRIS::W42020
-      in FinchAPI::Models::HRIS::W42005
+      in FinchAPI::HRIS::W42020
+      in FinchAPI::HRIS::W42005
       end
     end
 
     assert_pattern do
       case response
-      in {type: :w4_2020, data: FinchAPI::Models::HRIS::W42020::Data | nil, year: Float | nil}
-      in {type: :w4_2005, data: FinchAPI::Models::HRIS::W42005::Data | nil, year: Float | nil}
+      in {type: :w4_2020, data: FinchAPI::HRIS::W42020::Data | nil, year: Float | nil}
+      in {type: :w4_2005, data: FinchAPI::HRIS::W42005::Data | nil, year: Float | nil}
       end
     end
   end

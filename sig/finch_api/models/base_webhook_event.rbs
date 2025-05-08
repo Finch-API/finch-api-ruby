@@ -17,8 +17,6 @@ module FinchAPI
         company_id: String,
         ?connection_id: String
       ) -> void
-
-      def to_hash: -> FinchAPI::Models::base_webhook_event
     end
   end
 end

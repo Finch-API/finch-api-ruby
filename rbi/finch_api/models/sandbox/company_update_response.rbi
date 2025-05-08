@@ -4,12 +4,33 @@ module FinchAPI
   module Models
     module Sandbox
       class CompanyUpdateResponse < FinchAPI::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
         # An array of bank account objects associated with the payroll/HRIS system.
-        sig { returns(T.nilable(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account
+              ]
+            )
+          )
+        end
         attr_accessor :accounts
 
         # The array of company departments.
-        sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department)])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                T.nilable(
+                  FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department
+                )
+              ]
+            )
+          )
+        end
         attr_accessor :departments
 
         # The employer identification number.
@@ -17,14 +38,20 @@ module FinchAPI
         attr_accessor :ein
 
         # The entity type object.
-        sig { returns(T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity)) }
+        sig do
+          returns(
+            T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity)
+          )
+        end
         attr_reader :entity
 
         sig do
           params(
-            entity: T.nilable(T.any(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity, FinchAPI::Internal::AnyHash))
-          )
-            .void
+            entity:
+              T.nilable(
+                FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::OrHash
+              )
+          ).void
         end
         attr_writer :entity
 
@@ -32,7 +59,7 @@ module FinchAPI
         sig { returns(T.nilable(String)) }
         attr_accessor :legal_name
 
-        sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Models::Location)])) }
+        sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Location)])) }
         attr_accessor :locations
 
         # The email of the main administrator on the account.
@@ -46,24 +73,31 @@ module FinchAPI
 
         sig do
           params(
-            accounts: T.nilable(
-              T::Array[T.any(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account, FinchAPI::Internal::AnyHash)]
-            ),
-            departments: T.nilable(
-              T::Array[
-                T.nilable(
-                  T.any(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department, FinchAPI::Internal::AnyHash)
-                )
-              ]
-            ),
+            accounts:
+              T.nilable(
+                T::Array[
+                  FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::OrHash
+                ]
+              ),
+            departments:
+              T.nilable(
+                T::Array[
+                  T.nilable(
+                    FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department::OrHash
+                  )
+                ]
+              ),
             ein: T.nilable(String),
-            entity: T.nilable(T.any(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity, FinchAPI::Internal::AnyHash)),
+            entity:
+              T.nilable(
+                FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::OrHash
+              ),
             legal_name: T.nilable(String),
-            locations: T.nilable(T::Array[T.nilable(T.any(FinchAPI::Models::Location, FinchAPI::Internal::AnyHash))]),
+            locations:
+              T.nilable(T::Array[T.nilable(FinchAPI::Location::OrHash)]),
             primary_email: T.nilable(String),
             primary_phone_number: T.nilable(String)
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # An array of bank account objects associated with the payroll/HRIS system.
@@ -82,25 +116,45 @@ module FinchAPI
           # The phone number of the main administrator on the account. Format: E.164, with
           # extension where applicable, e.g. `+NNNNNNNNNNN xExtension`
           primary_phone_number:
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                accounts: T.nilable(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account]),
-                departments: T.nilable(T::Array[T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department)]),
-                ein: T.nilable(String),
-                entity: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity),
-                legal_name: T.nilable(String),
-                locations: T.nilable(T::Array[T.nilable(FinchAPI::Models::Location)]),
-                primary_email: T.nilable(String),
-                primary_phone_number: T.nilable(String)
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              accounts:
+                T.nilable(
+                  T::Array[
+                    FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account
+                  ]
+                ),
+              departments:
+                T.nilable(
+                  T::Array[
+                    T.nilable(
+                      FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department
+                    )
+                  ]
+                ),
+              ein: T.nilable(String),
+              entity:
+                T.nilable(
+                  FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity
+                ),
+              legal_name: T.nilable(String),
+              locations: T.nilable(T::Array[T.nilable(FinchAPI::Location)]),
+              primary_email: T.nilable(String),
+              primary_phone_number: T.nilable(String)
+            }
+          )
+        end
+        def to_hash
+        end
 
         class Account < FinchAPI::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
           # The name of the bank associated in the payroll/HRIS system.
           sig { returns(T.nilable(String)) }
           attr_accessor :account_name
@@ -110,7 +164,13 @@ module FinchAPI
           attr_accessor :account_number
 
           # The type of bank account.
-          sig { returns(T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol)) }
+          sig do
+            returns(
+              T.nilable(
+                FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol
+              )
+            )
+          end
           attr_accessor :account_type
 
           # Name of the banking institution.
@@ -126,11 +186,13 @@ module FinchAPI
             params(
               account_name: T.nilable(String),
               account_number: T.nilable(String),
-              account_type: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::OrSymbol),
+              account_type:
+                T.nilable(
+                  FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::OrSymbol
+                ),
               institution_name: T.nilable(String),
               routing_number: T.nilable(String)
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # The name of the bank associated in the payroll/HRIS system.
@@ -144,88 +206,125 @@ module FinchAPI
             # A nine-digit code that's based on the U.S. Bank location where your account was
             # opened.
             routing_number: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  account_name: T.nilable(String),
-                  account_number: T.nilable(String),
-                  account_type: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol),
-                  institution_name: T.nilable(String),
-                  routing_number: T.nilable(String)
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                account_name: T.nilable(String),
+                account_number: T.nilable(String),
+                account_type:
+                  T.nilable(
+                    FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol
+                  ),
+                institution_name: T.nilable(String),
+                routing_number: T.nilable(String)
+              }
+            )
+          end
+          def to_hash
+          end
 
           # The type of bank account.
           module AccountType
             extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             CHECKING =
-              T.let(:checking, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol)
+              T.let(
+                :checking,
+                FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol
+              )
             SAVINGS =
-              T.let(:savings, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol)
+              T.let(
+                :savings,
+                FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account::AccountType::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Department < FinchAPI::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
           # The department name.
           sig { returns(T.nilable(String)) }
           attr_accessor :name
 
           # The parent department, if present.
-          sig { returns(T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department::Parent)) }
+          sig do
+            returns(
+              T.nilable(
+                FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department::Parent
+              )
+            )
+          end
           attr_reader :parent
 
           sig do
             params(
-              parent: T.nilable(
-                T.any(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department::Parent, FinchAPI::Internal::AnyHash)
-              )
-            )
-              .void
+              parent:
+                T.nilable(
+                  FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department::Parent::OrHash
+                )
+            ).void
           end
           attr_writer :parent
 
           sig do
             params(
               name: T.nilable(String),
-              parent: T.nilable(
-                T.any(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department::Parent, FinchAPI::Internal::AnyHash)
-              )
-            )
-              .returns(T.attached_class)
+              parent:
+                T.nilable(
+                  FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department::Parent::OrHash
+                )
+            ).returns(T.attached_class)
           end
           def self.new(
             # The department name.
             name: nil,
             # The parent department, if present.
             parent: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  name: T.nilable(String),
-                  parent: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department::Parent)
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                name: T.nilable(String),
+                parent:
+                  T.nilable(
+                    FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department::Parent
+                  )
+              }
+            )
+          end
+          def to_hash
+          end
 
           class Parent < FinchAPI::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
             # The parent department's name.
             sig { returns(T.nilable(String)) }
             attr_accessor :name
@@ -235,65 +334,115 @@ module FinchAPI
             def self.new(
               # The parent department's name.
               name: nil
-            ); end
-            sig { override.returns({name: T.nilable(String)}) }
-            def to_hash; end
+            )
+            end
+
+            sig { override.returns({ name: T.nilable(String) }) }
+            def to_hash
+            end
           end
         end
 
         class Entity < FinchAPI::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
           # The tax payer subtype of the company.
-          sig { returns(T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol)) }
+          sig do
+            returns(
+              T.nilable(
+                FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol
+              )
+            )
+          end
           attr_accessor :subtype
 
           # The tax payer type of the company.
-          sig { returns(T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)) }
+          sig do
+            returns(
+              T.nilable(
+                FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol
+              )
+            )
+          end
           attr_accessor :type
 
           # The entity type object.
           sig do
             params(
-              subtype: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::OrSymbol),
-              type: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::OrSymbol)
-            )
-              .returns(T.attached_class)
+              subtype:
+                T.nilable(
+                  FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::OrSymbol
+                ),
+              type:
+                T.nilable(
+                  FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::OrSymbol
+                )
+            ).returns(T.attached_class)
           end
           def self.new(
             # The tax payer subtype of the company.
             subtype: nil,
             # The tax payer type of the company.
             type: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  subtype: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol),
-                  type: T.nilable(FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                subtype:
+                  T.nilable(
+                    FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol
+                  ),
+                type:
+                  T.nilable(
+                    FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol
+                  )
+              }
+            )
+          end
+          def to_hash
+          end
 
           # The tax payer subtype of the company.
           module Subtype
             extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             S_CORPORATION =
-              T.let(:s_corporation, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol)
+              T.let(
+                :s_corporation,
+                FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol
+              )
             C_CORPORATION =
-              T.let(:c_corporation, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol)
+              T.let(
+                :c_corporation,
+                FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol
+              )
             B_CORPORATION =
-              T.let(:b_corporation, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol)
+              T.let(
+                :b_corporation,
+                FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol
+              )
 
             sig do
-              override.returns(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Subtype::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
 
           # The tax payer type of the company.
@@ -301,24 +450,59 @@ module FinchAPI
             extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            LLC = T.let(:llc, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)
-            LP = T.let(:lp, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)
+            LLC =
+              T.let(
+                :llc,
+                FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol
+              )
+            LP =
+              T.let(
+                :lp,
+                FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol
+              )
             CORPORATION =
-              T.let(:corporation, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)
+              T.let(
+                :corporation,
+                FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol
+              )
             SOLE_PROPRIETOR =
-              T.let(:sole_proprietor, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)
+              T.let(
+                :sole_proprietor,
+                FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol
+              )
             NON_PROFIT =
-              T.let(:non_profit, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)
+              T.let(
+                :non_profit,
+                FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol
+              )
             PARTNERSHIP =
-              T.let(:partnership, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)
+              T.let(
+                :partnership,
+                FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol
+              )
             COOPERATIVE =
-              T.let(:cooperative, FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol)
+              T.let(
+                :cooperative,
+                FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol
+              )
 
-            sig { override.returns(T::Array[FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol]) }
-            def self.values; end
+            sig do
+              override.returns(
+                T::Array[
+                  FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity::Type::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
       end

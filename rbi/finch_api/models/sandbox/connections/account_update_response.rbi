@@ -5,11 +5,18 @@ module FinchAPI
     module Sandbox
       module Connections
         class AccountUpdateResponse < FinchAPI::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
           # [DEPRECATED] Use `connection_id` to associate a connection with an access token
           sig { returns(String) }
           attr_accessor :account_id
 
-          sig { returns(FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType::TaggedSymbol) }
+          sig do
+            returns(
+              FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType::TaggedSymbol
+            )
+          end
           attr_accessor :authentication_type
 
           # [DEPRECATED] Use `connection_id` to associate a connection with an access token
@@ -33,13 +40,13 @@ module FinchAPI
           sig do
             params(
               account_id: String,
-              authentication_type: FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType::OrSymbol,
+              authentication_type:
+                FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType::OrSymbol,
               company_id: String,
               products: T::Array[String],
               provider_id: String,
               connection_id: String
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # [DEPRECATED] Use `connection_id` to associate a connection with an access token
@@ -52,27 +59,35 @@ module FinchAPI
             provider_id:,
             # The ID of the new connection
             connection_id: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  account_id: String,
-                  authentication_type: FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType::TaggedSymbol,
-                  company_id: String,
-                  products: T::Array[String],
-                  provider_id: String,
-                  connection_id: String
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                account_id: String,
+                authentication_type:
+                  FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType::TaggedSymbol,
+                company_id: String,
+                products: T::Array[String],
+                provider_id: String,
+                connection_id: String
+              }
+            )
+          end
+          def to_hash
+          end
 
           module AuthenticationType
             extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             CREDENTIAL =
@@ -97,12 +112,14 @@ module FinchAPI
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
       end

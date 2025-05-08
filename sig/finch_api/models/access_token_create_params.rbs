@@ -34,8 +34,6 @@ module FinchAPI
         ?redirect_uri: String,
         ?request_options: FinchAPI::request_opts
       ) -> void
-
-      def to_hash: -> FinchAPI::Models::access_token_create_params
     end
   end
 end

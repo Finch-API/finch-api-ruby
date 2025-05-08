@@ -4,19 +4,26 @@ module FinchAPI
   module Models
     module HRIS
       class IndividualInDirectory < FinchAPI::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
         # A stable Finch `id` (UUID v4) for an individual in the company.
         sig { returns(String) }
         attr_accessor :id
 
         # The department object.
-        sig { returns(T.nilable(FinchAPI::Models::HRIS::IndividualInDirectory::Department)) }
+        sig do
+          returns(T.nilable(FinchAPI::HRIS::IndividualInDirectory::Department))
+        end
         attr_reader :department
 
         sig do
           params(
-            department: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Department, FinchAPI::Internal::AnyHash))
-          )
-            .void
+            department:
+              T.nilable(
+                FinchAPI::HRIS::IndividualInDirectory::Department::OrHash
+              )
+          ).void
         end
         attr_writer :department
 
@@ -33,14 +40,16 @@ module FinchAPI
         attr_accessor :last_name
 
         # The manager object.
-        sig { returns(T.nilable(FinchAPI::Models::HRIS::IndividualInDirectory::Manager)) }
+        sig do
+          returns(T.nilable(FinchAPI::HRIS::IndividualInDirectory::Manager))
+        end
         attr_reader :manager
 
         sig do
           params(
-            manager: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Manager, FinchAPI::Internal::AnyHash))
-          )
-            .void
+            manager:
+              T.nilable(FinchAPI::HRIS::IndividualInDirectory::Manager::OrHash)
+          ).void
         end
         attr_writer :manager
 
@@ -51,14 +60,17 @@ module FinchAPI
         sig do
           params(
             id: String,
-            department: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Department, FinchAPI::Internal::AnyHash)),
+            department:
+              T.nilable(
+                FinchAPI::HRIS::IndividualInDirectory::Department::OrHash
+              ),
             first_name: T.nilable(String),
             is_active: T.nilable(T::Boolean),
             last_name: T.nilable(String),
-            manager: T.nilable(T.any(FinchAPI::Models::HRIS::IndividualInDirectory::Manager, FinchAPI::Internal::AnyHash)),
+            manager:
+              T.nilable(FinchAPI::HRIS::IndividualInDirectory::Manager::OrHash),
             middle_name: T.nilable(String)
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # A stable Finch `id` (UUID v4) for an individual in the company.
@@ -75,24 +87,31 @@ module FinchAPI
           manager:,
           # The legal middle name of the individual.
           middle_name:
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                id: String,
-                department: T.nilable(FinchAPI::Models::HRIS::IndividualInDirectory::Department),
-                first_name: T.nilable(String),
-                is_active: T.nilable(T::Boolean),
-                last_name: T.nilable(String),
-                manager: T.nilable(FinchAPI::Models::HRIS::IndividualInDirectory::Manager),
-                middle_name: T.nilable(String)
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              id: String,
+              department:
+                T.nilable(FinchAPI::HRIS::IndividualInDirectory::Department),
+              first_name: T.nilable(String),
+              is_active: T.nilable(T::Boolean),
+              last_name: T.nilable(String),
+              manager:
+                T.nilable(FinchAPI::HRIS::IndividualInDirectory::Manager),
+              middle_name: T.nilable(String)
+            }
+          )
+        end
+        def to_hash
+        end
 
         class Department < FinchAPI::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
           # The name of the department.
           sig { returns(T.nilable(String)) }
           attr_accessor :name
@@ -102,12 +121,18 @@ module FinchAPI
           def self.new(
             # The name of the department.
             name: nil
-          ); end
-          sig { override.returns({name: T.nilable(String)}) }
-          def to_hash; end
+          )
+          end
+
+          sig { override.returns({ name: T.nilable(String) }) }
+          def to_hash
+          end
         end
 
         class Manager < FinchAPI::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
           # A stable Finch `id` (UUID v4) for an individual in the company.
           sig { returns(String) }
           attr_accessor :id
@@ -117,9 +142,12 @@ module FinchAPI
           def self.new(
             # A stable Finch `id` (UUID v4) for an individual in the company.
             id:
-          ); end
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
       end
     end

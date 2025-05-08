@@ -4,41 +4,60 @@ module FinchAPI
   module Models
     module HRIS
       class EmploymentDataResponse < FinchAPI::Internal::Type::BaseModel
-        sig { returns(T.nilable(FinchAPI::Models::HRIS::EmploymentData)) }
-        attr_reader :body
+        OrHash =
+          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
 
-        sig { params(body: T.any(FinchAPI::Models::HRIS::EmploymentData, FinchAPI::Internal::AnyHash)).void }
-        attr_writer :body
+        sig do
+          returns(
+            T.any(
+              FinchAPI::HRIS::EmploymentData::UnionMember0,
+              FinchAPI::HRIS::EmploymentData::BatchError
+            )
+          )
+        end
+        attr_accessor :body
 
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :code
-
-        sig { params(code: Integer).void }
-        attr_writer :code
+        sig { returns(Integer) }
+        attr_accessor :code
 
         # A stable Finch `id` (UUID v4) for an individual in the company.
-        sig { returns(T.nilable(String)) }
-        attr_reader :individual_id
-
-        sig { params(individual_id: String).void }
-        attr_writer :individual_id
+        sig { returns(String) }
+        attr_accessor :individual_id
 
         sig do
           params(
-            body: T.any(FinchAPI::Models::HRIS::EmploymentData, FinchAPI::Internal::AnyHash),
+            body:
+              T.any(
+                FinchAPI::HRIS::EmploymentData::UnionMember0::OrHash,
+                FinchAPI::HRIS::EmploymentData::BatchError::OrHash
+              ),
             code: Integer,
             individual_id: String
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
-          body: nil,
-          code: nil,
+          body:,
+          code:,
           # A stable Finch `id` (UUID v4) for an individual in the company.
-          individual_id: nil
-        ); end
-        sig { override.returns({body: FinchAPI::Models::HRIS::EmploymentData, code: Integer, individual_id: String}) }
-        def to_hash; end
+          individual_id:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              body:
+                T.any(
+                  FinchAPI::HRIS::EmploymentData::UnionMember0,
+                  FinchAPI::HRIS::EmploymentData::BatchError
+                ),
+              code: Integer,
+              individual_id: String
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

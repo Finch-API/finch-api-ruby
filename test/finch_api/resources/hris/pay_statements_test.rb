@@ -15,12 +15,12 @@ class FinchAPI::Test::Resources::HRIS::PayStatementsTest < FinchAPI::Test::Resou
     return if row.nil?
 
     assert_pattern do
-      row => FinchAPI::Models::HRIS::PayStatementResponse
+      row => FinchAPI::HRIS::PayStatementResponse
     end
 
     assert_pattern do
       row => {
-        body: FinchAPI::Models::HRIS::PayStatementResponseBody | nil,
+        body: FinchAPI::HRIS::PayStatementResponseBody | nil,
         code: Integer | nil,
         payment_id: String | nil
       }

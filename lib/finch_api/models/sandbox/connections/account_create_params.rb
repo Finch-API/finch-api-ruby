@@ -22,9 +22,9 @@ module FinchAPI
 
           # @!attribute authentication_type
           #
-          #   @return [Symbol, FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType, nil]
+          #   @return [Symbol, FinchAPI::Sandbox::Connections::AccountCreateParams::AuthenticationType, nil]
           optional :authentication_type,
-                   enum: -> { FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType }
+                   enum: -> { FinchAPI::Sandbox::Connections::AccountCreateParams::AuthenticationType }
 
           # @!attribute products
           #   Optional, defaults to Organization products (`company`, `directory`,
@@ -41,10 +41,9 @@ module FinchAPI
           #
           #   @param provider_id [String] The provider associated with the `access_token`
           #
-          #   @param authentication_type [Symbol, FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType]
+          #   @param authentication_type [Symbol, FinchAPI::Sandbox::Connections::AccountCreateParams::AuthenticationType]
           #
           #   @param products [Array<String>] Optional, defaults to Organization products (`company`, `directory`, `employment
-          #   ...
           #
           #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 

@@ -4,12 +4,12 @@ module FinchAPI
       type hris_company =
         {
           id: String,
-          accounts: ::Array[FinchAPI::Models::HRIS::HRISCompany::Account]?,
-          departments: ::Array[FinchAPI::Models::HRIS::HRISCompany::Department?]?,
+          accounts: ::Array[FinchAPI::HRIS::HRISCompany::Account]?,
+          departments: ::Array[FinchAPI::HRIS::HRISCompany::Department?]?,
           ein: String?,
-          entity: FinchAPI::Models::HRIS::HRISCompany::Entity?,
+          entity: FinchAPI::HRIS::HRISCompany::Entity?,
           legal_name: String?,
-          locations: ::Array[FinchAPI::Models::Location?]?,
+          locations: ::Array[FinchAPI::Location?]?,
           primary_email: String?,
           primary_phone_number: String?
         }
@@ -17,17 +17,17 @@ module FinchAPI
       class HRISCompany < FinchAPI::Internal::Type::BaseModel
         attr_accessor id: String
 
-        attr_accessor accounts: ::Array[FinchAPI::Models::HRIS::HRISCompany::Account]?
+        attr_accessor accounts: ::Array[FinchAPI::HRIS::HRISCompany::Account]?
 
-        attr_accessor departments: ::Array[FinchAPI::Models::HRIS::HRISCompany::Department?]?
+        attr_accessor departments: ::Array[FinchAPI::HRIS::HRISCompany::Department?]?
 
         attr_accessor ein: String?
 
-        attr_accessor entity: FinchAPI::Models::HRIS::HRISCompany::Entity?
+        attr_accessor entity: FinchAPI::HRIS::HRISCompany::Entity?
 
         attr_accessor legal_name: String?
 
-        attr_accessor locations: ::Array[FinchAPI::Models::Location?]?
+        attr_accessor locations: ::Array[FinchAPI::Location?]?
 
         attr_accessor primary_email: String?
 
@@ -35,23 +35,21 @@ module FinchAPI
 
         def initialize: (
           id: String,
-          accounts: ::Array[FinchAPI::Models::HRIS::HRISCompany::Account]?,
-          departments: ::Array[FinchAPI::Models::HRIS::HRISCompany::Department?]?,
+          accounts: ::Array[FinchAPI::HRIS::HRISCompany::Account]?,
+          departments: ::Array[FinchAPI::HRIS::HRISCompany::Department?]?,
           ein: String?,
-          entity: FinchAPI::Models::HRIS::HRISCompany::Entity?,
+          entity: FinchAPI::HRIS::HRISCompany::Entity?,
           legal_name: String?,
-          locations: ::Array[FinchAPI::Models::Location?]?,
+          locations: ::Array[FinchAPI::Location?]?,
           primary_email: String?,
           primary_phone_number: String?
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::HRIS::hris_company
 
         type account =
           {
             account_name: String?,
             account_number: String?,
-            account_type: FinchAPI::Models::HRIS::HRISCompany::Account::account_type?,
+            account_type: FinchAPI::HRIS::HRISCompany::Account::account_type?,
             institution_name: String?,
             routing_number: String?
           }
@@ -61,7 +59,7 @@ module FinchAPI
 
           attr_accessor account_number: String?
 
-          attr_accessor account_type: FinchAPI::Models::HRIS::HRISCompany::Account::account_type?
+          attr_accessor account_type: FinchAPI::HRIS::HRISCompany::Account::account_type?
 
           attr_accessor institution_name: String?
 
@@ -70,12 +68,10 @@ module FinchAPI
           def initialize: (
             account_name: String?,
             account_number: String?,
-            account_type: FinchAPI::Models::HRIS::HRISCompany::Account::account_type?,
+            account_type: FinchAPI::HRIS::HRISCompany::Account::account_type?,
             institution_name: String?,
             routing_number: String?
           ) -> void
-
-          def to_hash: -> FinchAPI::Models::HRIS::HRISCompany::account
 
           type account_type = :checking | :savings
 
@@ -85,27 +81,25 @@ module FinchAPI
             CHECKING: :checking
             SAVINGS: :savings
 
-            def self?.values: -> ::Array[FinchAPI::Models::HRIS::HRISCompany::Account::account_type]
+            def self?.values: -> ::Array[FinchAPI::HRIS::HRISCompany::Account::account_type]
           end
         end
 
         type department =
           {
             name: String?,
-            parent: FinchAPI::Models::HRIS::HRISCompany::Department::Parent?
+            parent: FinchAPI::HRIS::HRISCompany::Department::Parent?
           }
 
         class Department < FinchAPI::Internal::Type::BaseModel
           attr_accessor name: String?
 
-          attr_accessor parent: FinchAPI::Models::HRIS::HRISCompany::Department::Parent?
+          attr_accessor parent: FinchAPI::HRIS::HRISCompany::Department::Parent?
 
           def initialize: (
             name: String?,
-            parent: FinchAPI::Models::HRIS::HRISCompany::Department::Parent?
+            parent: FinchAPI::HRIS::HRISCompany::Department::Parent?
           ) -> void
-
-          def to_hash: -> FinchAPI::Models::HRIS::HRISCompany::department
 
           type parent = { name: String? }
 
@@ -113,28 +107,24 @@ module FinchAPI
             attr_accessor name: String?
 
             def initialize: (name: String?) -> void
-
-            def to_hash: -> FinchAPI::Models::HRIS::HRISCompany::Department::parent
           end
         end
 
         type entity =
           {
-            subtype: FinchAPI::Models::HRIS::HRISCompany::Entity::subtype?,
-            type: FinchAPI::Models::HRIS::HRISCompany::Entity::type_?
+            subtype: FinchAPI::HRIS::HRISCompany::Entity::subtype?,
+            type: FinchAPI::HRIS::HRISCompany::Entity::type_?
           }
 
         class Entity < FinchAPI::Internal::Type::BaseModel
-          attr_accessor subtype: FinchAPI::Models::HRIS::HRISCompany::Entity::subtype?
+          attr_accessor subtype: FinchAPI::HRIS::HRISCompany::Entity::subtype?
 
-          attr_accessor type: FinchAPI::Models::HRIS::HRISCompany::Entity::type_?
+          attr_accessor type: FinchAPI::HRIS::HRISCompany::Entity::type_?
 
           def initialize: (
-            subtype: FinchAPI::Models::HRIS::HRISCompany::Entity::subtype?,
-            type: FinchAPI::Models::HRIS::HRISCompany::Entity::type_?
+            subtype: FinchAPI::HRIS::HRISCompany::Entity::subtype?,
+            type: FinchAPI::HRIS::HRISCompany::Entity::type_?
           ) -> void
-
-          def to_hash: -> FinchAPI::Models::HRIS::HRISCompany::entity
 
           type subtype = :s_corporation | :c_corporation | :b_corporation
 
@@ -145,7 +135,7 @@ module FinchAPI
             C_CORPORATION: :c_corporation
             B_CORPORATION: :b_corporation
 
-            def self?.values: -> ::Array[FinchAPI::Models::HRIS::HRISCompany::Entity::subtype]
+            def self?.values: -> ::Array[FinchAPI::HRIS::HRISCompany::Entity::subtype]
           end
 
           type type_ =
@@ -168,7 +158,7 @@ module FinchAPI
             PARTNERSHIP: :partnership
             COOPERATIVE: :cooperative
 
-            def self?.values: -> ::Array[FinchAPI::Models::HRIS::HRISCompany::Entity::type_]
+            def self?.values: -> ::Array[FinchAPI::HRIS::HRISCompany::Entity::type_]
           end
         end
       end

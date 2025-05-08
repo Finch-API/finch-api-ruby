@@ -3,6 +3,8 @@
 module FinchAPI
   module Models
     class Introspection < FinchAPI::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
       # The Finch UUID of the token being introspected.
       sig { returns(String) }
       attr_accessor :id
@@ -12,7 +14,7 @@ module FinchAPI
       sig { returns(String) }
       attr_accessor :account_id
 
-      sig { returns(T::Array[FinchAPI::Models::Introspection::AuthenticationMethod]) }
+      sig { returns(T::Array[FinchAPI::Introspection::AuthenticationMethod]) }
       attr_accessor :authentication_methods
 
       # The client ID of the application associated with the `access_token`.
@@ -20,7 +22,7 @@ module FinchAPI
       attr_accessor :client_id
 
       # The type of application associated with a token.
-      sig { returns(FinchAPI::Models::Introspection::ClientType::TaggedSymbol) }
+      sig { returns(FinchAPI::Introspection::ClientType::TaggedSymbol) }
       attr_accessor :client_type
 
       # [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection
@@ -32,14 +34,13 @@ module FinchAPI
       sig { returns(String) }
       attr_accessor :connection_id
 
-      sig { returns(FinchAPI::Models::Introspection::ConnectionStatus) }
+      sig { returns(FinchAPI::Introspection::ConnectionStatus) }
       attr_reader :connection_status
 
       sig do
         params(
-          connection_status: T.any(FinchAPI::Models::Introspection::ConnectionStatus, FinchAPI::Internal::AnyHash)
-        )
-          .void
+          connection_status: FinchAPI::Introspection::ConnectionStatus::OrHash
+        ).void
       end
       attr_writer :connection_status
 
@@ -47,7 +48,7 @@ module FinchAPI
       #
       # - `provider` - connection to an external provider
       # - `finch` - finch-generated data.
-      sig { returns(FinchAPI::Models::Introspection::ConnectionType::TaggedSymbol) }
+      sig { returns(FinchAPI::Introspection::ConnectionType::TaggedSymbol) }
       attr_accessor :connection_type
 
       # The email of your customer you provided to Finch when a connect session was
@@ -92,13 +93,14 @@ module FinchAPI
         params(
           id: String,
           account_id: String,
-          authentication_methods: T::Array[T.any(FinchAPI::Models::Introspection::AuthenticationMethod, FinchAPI::Internal::AnyHash)],
+          authentication_methods:
+            T::Array[FinchAPI::Introspection::AuthenticationMethod::OrHash],
           client_id: String,
-          client_type: FinchAPI::Models::Introspection::ClientType::OrSymbol,
+          client_type: FinchAPI::Introspection::ClientType::OrSymbol,
           company_id: String,
           connection_id: String,
-          connection_status: T.any(FinchAPI::Models::Introspection::ConnectionStatus, FinchAPI::Internal::AnyHash),
-          connection_type: FinchAPI::Models::Introspection::ConnectionType::OrSymbol,
+          connection_status: FinchAPI::Introspection::ConnectionStatus::OrHash,
+          connection_type: FinchAPI::Introspection::ConnectionType::OrSymbol,
           customer_email: T.nilable(String),
           customer_id: T.nilable(String),
           customer_name: T.nilable(String),
@@ -107,8 +109,7 @@ module FinchAPI
           products: T::Array[String],
           provider_id: String,
           username: String
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The Finch UUID of the token being introspected.
@@ -154,45 +155,55 @@ module FinchAPI
         provider_id:,
         # The account username used for login associated with the `access_token`.
         username:
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              account_id: String,
-              authentication_methods: T::Array[FinchAPI::Models::Introspection::AuthenticationMethod],
-              client_id: String,
-              client_type: FinchAPI::Models::Introspection::ClientType::TaggedSymbol,
-              company_id: String,
-              connection_id: String,
-              connection_status: FinchAPI::Models::Introspection::ConnectionStatus,
-              connection_type: FinchAPI::Models::Introspection::ConnectionType::TaggedSymbol,
-              customer_email: T.nilable(String),
-              customer_id: T.nilable(String),
-              customer_name: T.nilable(String),
-              manual: T::Boolean,
-              payroll_provider_id: String,
-              products: T::Array[String],
-              provider_id: String,
-              username: String
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            account_id: String,
+            authentication_methods:
+              T::Array[FinchAPI::Introspection::AuthenticationMethod],
+            client_id: String,
+            client_type: FinchAPI::Introspection::ClientType::TaggedSymbol,
+            company_id: String,
+            connection_id: String,
+            connection_status: FinchAPI::Introspection::ConnectionStatus,
+            connection_type:
+              FinchAPI::Introspection::ConnectionType::TaggedSymbol,
+            customer_email: T.nilable(String),
+            customer_id: T.nilable(String),
+            customer_name: T.nilable(String),
+            manual: T::Boolean,
+            payroll_provider_id: String,
+            products: T::Array[String],
+            provider_id: String,
+            username: String
+          }
+        )
+      end
+      def to_hash
+      end
 
       class AuthenticationMethod < FinchAPI::Internal::Type::BaseModel
-        sig { returns(T.nilable(FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus)) }
+        OrHash =
+          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
+        sig do
+          returns(
+            T.nilable(
+              FinchAPI::Introspection::AuthenticationMethod::ConnectionStatus
+            )
+          )
+        end
         attr_reader :connection_status
 
         sig do
           params(
-            connection_status: T.any(
-              FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus,
-              FinchAPI::Internal::AnyHash
-            )
-          )
-            .void
+            connection_status:
+              FinchAPI::Introspection::AuthenticationMethod::ConnectionStatus::OrHash
+          ).void
         end
         attr_writer :connection_status
 
@@ -204,22 +215,29 @@ module FinchAPI
         attr_writer :products
 
         # The type of authentication method.
-        sig { returns(T.nilable(FinchAPI::Models::Introspection::AuthenticationMethod::Type::TaggedSymbol)) }
+        sig do
+          returns(
+            T.nilable(
+              FinchAPI::Introspection::AuthenticationMethod::Type::TaggedSymbol
+            )
+          )
+        end
         attr_reader :type
 
-        sig { params(type: FinchAPI::Models::Introspection::AuthenticationMethod::Type::OrSymbol).void }
+        sig do
+          params(
+            type: FinchAPI::Introspection::AuthenticationMethod::Type::OrSymbol
+          ).void
+        end
         attr_writer :type
 
         sig do
           params(
-            connection_status: T.any(
-              FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus,
-              FinchAPI::Internal::AnyHash
-            ),
+            connection_status:
+              FinchAPI::Introspection::AuthenticationMethod::ConnectionStatus::OrHash,
             products: T::Array[String],
-            type: FinchAPI::Models::Introspection::AuthenticationMethod::Type::OrSymbol
-          )
-            .returns(T.attached_class)
+            type: FinchAPI::Introspection::AuthenticationMethod::Type::OrSymbol
+          ).returns(T.attached_class)
         end
         def self.new(
           connection_status: nil,
@@ -227,39 +245,60 @@ module FinchAPI
           products: nil,
           # The type of authentication method.
           type: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                connection_status: FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus,
-                products: T::Array[String],
-                type: FinchAPI::Models::Introspection::AuthenticationMethod::Type::TaggedSymbol
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              connection_status:
+                FinchAPI::Introspection::AuthenticationMethod::ConnectionStatus,
+              products: T::Array[String],
+              type:
+                FinchAPI::Introspection::AuthenticationMethod::Type::TaggedSymbol
+            }
+          )
+        end
+        def to_hash
+        end
 
         class ConnectionStatus < FinchAPI::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
           sig { returns(T.nilable(String)) }
           attr_reader :message
 
           sig { params(message: String).void }
           attr_writer :message
 
-          sig { returns(T.nilable(FinchAPI::Models::ConnectionStatusType::TaggedSymbol)) }
+          sig do
+            returns(T.nilable(FinchAPI::ConnectionStatusType::TaggedSymbol))
+          end
           attr_reader :status
 
-          sig { params(status: FinchAPI::Models::ConnectionStatusType::OrSymbol).void }
+          sig { params(status: FinchAPI::ConnectionStatusType::OrSymbol).void }
           attr_writer :status
 
           sig do
-            params(message: String, status: FinchAPI::Models::ConnectionStatusType::OrSymbol).returns(T.attached_class)
+            params(
+              message: String,
+              status: FinchAPI::ConnectionStatusType::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(message: nil, status: nil); end
+          def self.new(message: nil, status: nil)
+          end
 
-          sig { override.returns({message: String, status: FinchAPI::Models::ConnectionStatusType::TaggedSymbol}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                message: String,
+                status: FinchAPI::ConnectionStatusType::TaggedSymbol
+              }
+            )
+          end
+          def to_hash
+          end
         end
 
         # The type of authentication method.
@@ -267,19 +306,46 @@ module FinchAPI
           extend FinchAPI::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, FinchAPI::Models::Introspection::AuthenticationMethod::Type) }
+            T.type_alias do
+              T.all(Symbol, FinchAPI::Introspection::AuthenticationMethod::Type)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ASSISTED = T.let(:assisted, FinchAPI::Models::Introspection::AuthenticationMethod::Type::TaggedSymbol)
+          ASSISTED =
+            T.let(
+              :assisted,
+              FinchAPI::Introspection::AuthenticationMethod::Type::TaggedSymbol
+            )
           CREDENTIAL =
-            T.let(:credential, FinchAPI::Models::Introspection::AuthenticationMethod::Type::TaggedSymbol)
-          API_TOKEN = T.let(:api_token, FinchAPI::Models::Introspection::AuthenticationMethod::Type::TaggedSymbol)
+            T.let(
+              :credential,
+              FinchAPI::Introspection::AuthenticationMethod::Type::TaggedSymbol
+            )
+          API_TOKEN =
+            T.let(
+              :api_token,
+              FinchAPI::Introspection::AuthenticationMethod::Type::TaggedSymbol
+            )
           API_CREDENTIAL =
-            T.let(:api_credential, FinchAPI::Models::Introspection::AuthenticationMethod::Type::TaggedSymbol)
-          OAUTH = T.let(:oauth, FinchAPI::Models::Introspection::AuthenticationMethod::Type::TaggedSymbol)
+            T.let(
+              :api_credential,
+              FinchAPI::Introspection::AuthenticationMethod::Type::TaggedSymbol
+            )
+          OAUTH =
+            T.let(
+              :oauth,
+              FinchAPI::Introspection::AuthenticationMethod::Type::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[FinchAPI::Models::Introspection::AuthenticationMethod::Type::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                FinchAPI::Introspection::AuthenticationMethod::Type::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
 
@@ -287,18 +353,30 @@ module FinchAPI
       module ClientType
         extend FinchAPI::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Introspection::ClientType) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, FinchAPI::Introspection::ClientType) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        PRODUCTION = T.let(:production, FinchAPI::Models::Introspection::ClientType::TaggedSymbol)
-        DEVELOPMENT = T.let(:development, FinchAPI::Models::Introspection::ClientType::TaggedSymbol)
-        SANDBOX = T.let(:sandbox, FinchAPI::Models::Introspection::ClientType::TaggedSymbol)
+        PRODUCTION =
+          T.let(:production, FinchAPI::Introspection::ClientType::TaggedSymbol)
+        DEVELOPMENT =
+          T.let(:development, FinchAPI::Introspection::ClientType::TaggedSymbol)
+        SANDBOX =
+          T.let(:sandbox, FinchAPI::Introspection::ClientType::TaggedSymbol)
 
-        sig { override.returns(T::Array[FinchAPI::Models::Introspection::ClientType::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[FinchAPI::Introspection::ClientType::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       class ConnectionStatus < FinchAPI::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
         # The datetime when the connection was last successfully synced.
         sig { returns(T.nilable(Time)) }
         attr_reader :last_successful_sync
@@ -312,33 +390,38 @@ module FinchAPI
         sig { params(message: String).void }
         attr_writer :message
 
-        sig { returns(T.nilable(FinchAPI::Models::ConnectionStatusType::TaggedSymbol)) }
+        sig { returns(T.nilable(FinchAPI::ConnectionStatusType::TaggedSymbol)) }
         attr_reader :status
 
-        sig { params(status: FinchAPI::Models::ConnectionStatusType::OrSymbol).void }
+        sig { params(status: FinchAPI::ConnectionStatusType::OrSymbol).void }
         attr_writer :status
 
         sig do
           params(
             last_successful_sync: Time,
             message: String,
-            status: FinchAPI::Models::ConnectionStatusType::OrSymbol
-          )
-            .returns(T.attached_class)
+            status: FinchAPI::ConnectionStatusType::OrSymbol
+          ).returns(T.attached_class)
         end
         def self.new(
           # The datetime when the connection was last successfully synced.
           last_successful_sync: nil,
           message: nil,
           status: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {last_successful_sync: Time, message: String, status: FinchAPI::Models::ConnectionStatusType::TaggedSymbol}
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              last_successful_sync: Time,
+              message: String,
+              status: FinchAPI::ConnectionStatusType::TaggedSymbol
+            }
+          )
+        end
+        def to_hash
+        end
       end
 
       # The type of the connection associated with the token.
@@ -348,14 +431,27 @@ module FinchAPI
       module ConnectionType
         extend FinchAPI::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::Introspection::ConnectionType) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, FinchAPI::Introspection::ConnectionType)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        PROVIDER = T.let(:provider, FinchAPI::Models::Introspection::ConnectionType::TaggedSymbol)
-        FINCH = T.let(:finch, FinchAPI::Models::Introspection::ConnectionType::TaggedSymbol)
+        PROVIDER =
+          T.let(
+            :provider,
+            FinchAPI::Introspection::ConnectionType::TaggedSymbol
+          )
+        FINCH =
+          T.let(:finch, FinchAPI::Introspection::ConnectionType::TaggedSymbol)
 
-        sig { override.returns(T::Array[FinchAPI::Models::Introspection::ConnectionType::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[FinchAPI::Introspection::ConnectionType::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

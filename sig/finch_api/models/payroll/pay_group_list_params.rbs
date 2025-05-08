@@ -22,8 +22,6 @@ module FinchAPI
           ?pay_frequencies: ::Array[String],
           ?request_options: FinchAPI::request_opts
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::Payroll::pay_group_list_params
       end
     end
   end

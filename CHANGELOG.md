@@ -1,5 +1,43 @@
 # Changelog
 
+## 0.1.0-alpha.14 (2025-05-07)
+
+Full Changelog: [v0.1.0-alpha.13...v0.1.0-alpha.14](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.13...v0.1.0-alpha.14)
+
+### Features
+
+* **api:** api update ([a1e63ab](https://github.com/Finch-API/finch-api-ruby/commit/a1e63ab1e953ca1a3745ec158e5cbba3336e8cc4))
+* **api:** api update ([131b860](https://github.com/Finch-API/finch-api-ruby/commit/131b8600623807e6f9fe61eec0008f466ea9bf51))
+* **api:** api update ([0cb263a](https://github.com/Finch-API/finch-api-ruby/commit/0cb263a792ddcd544d4b790dcb87a49af23798de))
+* **api:** api update ([664ac2e](https://github.com/Finch-API/finch-api-ruby/commit/664ac2e40a5f79294e19f2536241e3e3080b35bd))
+* **api:** api update ([f4d4ab0](https://github.com/Finch-API/finch-api-ruby/commit/f4d4ab0dcfb81d75e0f7fe5bee9583a616e39ac6))
+* **api:** api update ([bdab477](https://github.com/Finch-API/finch-api-ruby/commit/bdab47770cdc398d71349734d214d365569311a0))
+
+
+### Bug Fixes
+
+* **internal:** ensure formatting always uses c.utf-8 locale ([4b68a42](https://github.com/Finch-API/finch-api-ruby/commit/4b68a42729fba915f1d778b306f9a1120f936012))
+* **internal:** fix formatting script for macos ([549b415](https://github.com/Finch-API/finch-api-ruby/commit/549b415b8fbb8baf6de342de32798d3096085a3c))
+
+
+### Chores
+
+* accept all nd-json mimetype variants ([53a8863](https://github.com/Finch-API/finch-api-ruby/commit/53a8863036254bd052c47fb283c82798784859f6))
+* always check if current page is empty in `next_page?` ([89f7522](https://github.com/Finch-API/finch-api-ruby/commit/89f7522c76cbf4cb79a171b842fdb9db8ca0fb1f))
+* **internal:** codegen related update ([15d107c](https://github.com/Finch-API/finch-api-ruby/commit/15d107cee7ff974a750f1cbfa812392ac1b7fc47))
+* **internal:** codegen related update ([bcaecfa](https://github.com/Finch-API/finch-api-ruby/commit/bcaecfa4b137a6a767d69ea15c77885185d8368c))
+* **internal:** codegen related update ([f328b3a](https://github.com/Finch-API/finch-api-ruby/commit/f328b3a5c3ea6ffeb01186ea929b4eb6f70ef1aa))
+* re-export top level models under library namespace ([e8cc430](https://github.com/Finch-API/finch-api-ruby/commit/e8cc430134d053ce8e3e5d31aea2c43270eb2ffa))
+* remove Gemfile.lock during bootstrap ([6a383f0](https://github.com/Finch-API/finch-api-ruby/commit/6a383f0228803c29f1a22658821311ad3239aa97))
+* reorganize type aliases ([e527e5d](https://github.com/Finch-API/finch-api-ruby/commit/e527e5d5d118f2d00611a2f790e9fcc67a4794b0))
+* revert ignoring Gemfile.lock ([8abcd39](https://github.com/Finch-API/finch-api-ruby/commit/8abcd39a9a0ba36ac5e1a8b65e69762c174408e4))
+* validate request option coercion correctness ([41e068d](https://github.com/Finch-API/finch-api-ruby/commit/41e068d7304cd25e4e250a2c724cb99b1bf9d9b8))
+
+
+### Documentation
+
+* **readme:** fix typo ([15960ca](https://github.com/Finch-API/finch-api-ruby/commit/15960caf4fd7cfd3596326a0605ab61a64441558))
+
 ## 0.1.0-alpha.13 (2025-04-29)
 
 Full Changelog: [v0.1.0-alpha.12...v0.1.0-alpha.13](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.12...v0.1.0-alpha.13)

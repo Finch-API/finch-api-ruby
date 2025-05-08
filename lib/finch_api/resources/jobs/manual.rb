@@ -12,14 +12,14 @@ module FinchAPI
         # @param job_id [String]
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::Models::Jobs::ManualAsyncJob]
+        # @return [FinchAPI::Jobs::ManualAsyncJob]
         #
         # @see FinchAPI::Models::Jobs::ManualRetrieveParams
         def retrieve(job_id, params = {})
           @client.request(
             method: :get,
             path: ["jobs/manual/%1$s", job_id],
-            model: FinchAPI::Models::Jobs::ManualAsyncJob,
+            model: FinchAPI::Jobs::ManualAsyncJob,
             options: params[:request_options]
           )
         end

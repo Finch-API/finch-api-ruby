@@ -14,8 +14,8 @@ module FinchAPI
         # @!attribute department
         #   The department object.
         #
-        #   @return [FinchAPI::Models::HRIS::IndividualInDirectory::Department, nil]
-        required :department, -> { FinchAPI::Models::HRIS::IndividualInDirectory::Department }, nil?: true
+        #   @return [FinchAPI::HRIS::IndividualInDirectory::Department, nil]
+        required :department, -> { FinchAPI::HRIS::IndividualInDirectory::Department }, nil?: true
 
         # @!attribute first_name
         #   The legal first name of the individual.
@@ -38,8 +38,8 @@ module FinchAPI
         # @!attribute manager
         #   The manager object.
         #
-        #   @return [FinchAPI::Models::HRIS::IndividualInDirectory::Manager, nil]
-        required :manager, -> { FinchAPI::Models::HRIS::IndividualInDirectory::Manager }, nil?: true
+        #   @return [FinchAPI::HRIS::IndividualInDirectory::Manager, nil]
+        required :manager, -> { FinchAPI::HRIS::IndividualInDirectory::Manager }, nil?: true
 
         # @!attribute middle_name
         #   The legal middle name of the individual.
@@ -50,7 +50,7 @@ module FinchAPI
         # @!method initialize(id:, department:, first_name:, is_active:, last_name:, manager:, middle_name:)
         #   @param id [String] A stable Finch `id` (UUID v4) for an individual in the company.
         #
-        #   @param department [FinchAPI::Models::HRIS::IndividualInDirectory::Department, nil] The department object.
+        #   @param department [FinchAPI::HRIS::IndividualInDirectory::Department, nil] The department object.
         #
         #   @param first_name [String, nil] The legal first name of the individual.
         #
@@ -58,11 +58,11 @@ module FinchAPI
         #
         #   @param last_name [String, nil] The legal last name of the individual.
         #
-        #   @param manager [FinchAPI::Models::HRIS::IndividualInDirectory::Manager, nil] The manager object.
+        #   @param manager [FinchAPI::HRIS::IndividualInDirectory::Manager, nil] The manager object.
         #
         #   @param middle_name [String, nil] The legal middle name of the individual.
 
-        # @see FinchAPI::Models::HRIS::IndividualInDirectory#department
+        # @see FinchAPI::HRIS::IndividualInDirectory#department
         class Department < FinchAPI::Internal::Type::BaseModel
           # @!attribute name
           #   The name of the department.
@@ -76,7 +76,7 @@ module FinchAPI
           #   @param name [String, nil] The name of the department.
         end
 
-        # @see FinchAPI::Models::HRIS::IndividualInDirectory#manager
+        # @see FinchAPI::HRIS::IndividualInDirectory#manager
         class Manager < FinchAPI::Internal::Type::BaseModel
           # @!attribute id
           #   A stable Finch `id` (UUID v4) for an individual in the company.

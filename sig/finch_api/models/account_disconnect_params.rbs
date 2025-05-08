@@ -8,8 +8,6 @@ module FinchAPI
       include FinchAPI::Internal::Type::RequestParameters
 
       def initialize: (?request_options: FinchAPI::request_opts) -> void
-
-      def to_hash: -> FinchAPI::Models::account_disconnect_params
     end
   end
 end

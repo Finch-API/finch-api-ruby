@@ -14,12 +14,12 @@ class FinchAPI::Test::Resources::HRIS::IndividualsTest < FinchAPI::Test::Resourc
     return if row.nil?
 
     assert_pattern do
-      row => FinchAPI::Models::HRIS::IndividualResponse
+      row => FinchAPI::HRIS::IndividualResponse
     end
 
     assert_pattern do
       row => {
-        body: FinchAPI::Models::HRIS::Individual,
+        body: FinchAPI::HRIS::Individual,
         code: Integer,
         individual_id: String
       }

@@ -49,19 +49,14 @@ module FinchAPI
       #   {FinchAPI::Models::RequestForwardingForwardParams} for more details.
       #
       #   @param method_ [String] The HTTP method for the forwarded request. Valid values include: `GET` , `POST`
-      #   ...
       #
       #   @param route [String] The URL route path for the forwarded request. This value must begin with a forwa
-      #   ...
       #
       #   @param data [String, nil] The body for the forwarded request. This value must be specified as either a str
-      #   ...
       #
       #   @param headers [Object, nil] The HTTP headers to include on the forwarded request. This value must be specifi
-      #   ...
       #
       #   @param params [Object, nil] The query parameters for the forwarded request. This value must be specified as
-      #   ...
       #
       #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
     end

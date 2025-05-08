@@ -3,6 +3,8 @@
 module FinchAPI
   module Models
     class Location < FinchAPI::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
       # City, district, suburb, town, or village.
       sig { returns(T.nilable(String)) }
       attr_accessor :city
@@ -43,8 +45,7 @@ module FinchAPI
           state: T.nilable(String),
           name: T.nilable(String),
           source_id: T.nilable(String)
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # City, district, suburb, town, or village.
@@ -61,23 +62,25 @@ module FinchAPI
         state:,
         name: nil,
         source_id: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              city: T.nilable(String),
-              country: T.nilable(String),
-              line1: T.nilable(String),
-              line2: T.nilable(String),
-              postal_code: T.nilable(String),
-              state: T.nilable(String),
-              name: T.nilable(String),
-              source_id: T.nilable(String)
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            city: T.nilable(String),
+            country: T.nilable(String),
+            line1: T.nilable(String),
+            line2: T.nilable(String),
+            postal_code: T.nilable(String),
+            state: T.nilable(String),
+            name: T.nilable(String),
+            source_id: T.nilable(String)
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

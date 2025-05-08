@@ -5,9 +5,9 @@ module FinchAPI
         class Individuals
           def enroll_many: (
             String benefit_id,
-            ?individuals: ::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual],
+            ?individuals: ::Array[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual],
             ?request_options: FinchAPI::request_opts
-          ) -> FinchAPI::Models::HRIS::Benefits::EnrolledIndividualBenefitResponse
+          ) -> FinchAPI::HRIS::Benefits::EnrolledIndividualBenefitResponse
 
           def enrolled_ids: (
             String benefit_id,
@@ -18,13 +18,13 @@ module FinchAPI
             String benefit_id,
             ?individual_ids: String,
             ?request_options: FinchAPI::request_opts
-          ) -> FinchAPI::Internal::SinglePage[FinchAPI::Models::HRIS::Benefits::IndividualBenefit]
+          ) -> FinchAPI::Internal::SinglePage[FinchAPI::HRIS::Benefits::IndividualBenefit]
 
           def unenroll_many: (
             String benefit_id,
             ?individual_ids: ::Array[String],
             ?request_options: FinchAPI::request_opts
-          ) -> FinchAPI::Models::HRIS::Benefits::UnenrolledIndividualBenefitResponse
+          ) -> FinchAPI::HRIS::Benefits::UnenrolledIndividualBenefitResponse
 
           def initialize: (client: FinchAPI::Client) -> void
         end

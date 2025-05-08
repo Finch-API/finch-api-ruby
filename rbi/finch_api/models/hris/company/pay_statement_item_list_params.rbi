@@ -8,20 +8,29 @@ module FinchAPI
           extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
 
+          OrHash =
+            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
           # Comma-delimited list of pay statement item categories to filter on. If empty,
           # defaults to all categories.
           sig do
             returns(
-              T.nilable(T::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::Category::OrSymbol])
+              T.nilable(
+                T::Array[
+                  FinchAPI::HRIS::Company::PayStatementItemListParams::Category::OrSymbol
+                ]
+              )
             )
           end
           attr_reader :categories
 
           sig do
             params(
-              categories: T::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::Category::OrSymbol]
-            )
-              .void
+              categories:
+                T::Array[
+                  FinchAPI::HRIS::Company::PayStatementItemListParams::Category::OrSymbol
+                ]
+            ).void
           end
           attr_writer :categories
 
@@ -57,14 +66,16 @@ module FinchAPI
 
           sig do
             params(
-              categories: T::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::Category::OrSymbol],
+              categories:
+                T::Array[
+                  FinchAPI::HRIS::Company::PayStatementItemListParams::Category::OrSymbol
+                ],
               end_date: Date,
               name: String,
               start_date: Date,
               type: String,
-              request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)
-            )
-              .returns(T.attached_class)
+              request_options: FinchAPI::RequestOptions::OrHash
+            ).returns(T.attached_class)
           end
           def self.new(
             # Comma-delimited list of pay statement item categories to filter on. If empty,
@@ -81,49 +92,69 @@ module FinchAPI
             # String search by pay statement item type.
             type: nil,
             request_options: {}
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  categories: T::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::Category::OrSymbol],
-                  end_date: Date,
-                  name: String,
-                  start_date: Date,
-                  type: String,
-                  request_options: FinchAPI::RequestOptions
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                categories:
+                  T::Array[
+                    FinchAPI::HRIS::Company::PayStatementItemListParams::Category::OrSymbol
+                  ],
+                end_date: Date,
+                name: String,
+                start_date: Date,
+                type: String,
+                request_options: FinchAPI::RequestOptions
+              }
+            )
+          end
+          def to_hash
+          end
 
           module Category
             extend FinchAPI::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::Company::PayStatementItemListParams::Category) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  FinchAPI::HRIS::Company::PayStatementItemListParams::Category
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             EARNINGS =
-              T.let(:earnings, FinchAPI::Models::HRIS::Company::PayStatementItemListParams::Category::TaggedSymbol)
+              T.let(
+                :earnings,
+                FinchAPI::HRIS::Company::PayStatementItemListParams::Category::TaggedSymbol
+              )
             TAXES =
-              T.let(:taxes, FinchAPI::Models::HRIS::Company::PayStatementItemListParams::Category::TaggedSymbol)
+              T.let(
+                :taxes,
+                FinchAPI::HRIS::Company::PayStatementItemListParams::Category::TaggedSymbol
+              )
             EMPLOYEE_DEDUCTIONS =
               T.let(
                 :employee_deductions,
-                FinchAPI::Models::HRIS::Company::PayStatementItemListParams::Category::TaggedSymbol
+                FinchAPI::HRIS::Company::PayStatementItemListParams::Category::TaggedSymbol
               )
             EMPLOYER_CONTRIBUTIONS =
               T.let(
                 :employer_contributions,
-                FinchAPI::Models::HRIS::Company::PayStatementItemListParams::Category::TaggedSymbol
+                FinchAPI::HRIS::Company::PayStatementItemListParams::Category::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(T::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::Category::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  FinchAPI::HRIS::Company::PayStatementItemListParams::Category::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
       end

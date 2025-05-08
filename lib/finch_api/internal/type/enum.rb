@@ -17,13 +17,13 @@ module FinchAPI
       # values safely.
       #
       # @example
-      #   # `connection_status_type` is a `FinchAPI::Models::ConnectionStatusType`
+      #   # `connection_status_type` is a `FinchAPI::ConnectionStatusType`
       #   case connection_status_type
-      #   when FinchAPI::Models::ConnectionStatusType::PENDING
+      #   when FinchAPI::ConnectionStatusType::PENDING
       #     # ...
-      #   when FinchAPI::Models::ConnectionStatusType::PROCESSING
+      #   when FinchAPI::ConnectionStatusType::PROCESSING
       #     # ...
-      #   when FinchAPI::Models::ConnectionStatusType::CONNECTED
+      #   when FinchAPI::ConnectionStatusType::CONNECTED
       #     # ...
       #   else
       #     puts(connection_status_type)

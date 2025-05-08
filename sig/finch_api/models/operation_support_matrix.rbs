@@ -39,8 +39,6 @@ module FinchAPI
         ?read: FinchAPI::Models::operation_support,
         ?update: FinchAPI::Models::operation_support
       ) -> void
-
-      def to_hash: -> FinchAPI::Models::operation_support_matrix
     end
   end
 end

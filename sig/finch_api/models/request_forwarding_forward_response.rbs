@@ -24,8 +24,6 @@ module FinchAPI
         status_code: Integer
       ) -> void
 
-      def to_hash: -> FinchAPI::Models::request_forwarding_forward_response
-
       type request =
         {
           data: String?,
@@ -53,8 +51,6 @@ module FinchAPI
           params: top?,
           route: String
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::RequestForwardingForwardResponse::request
       end
     end
   end

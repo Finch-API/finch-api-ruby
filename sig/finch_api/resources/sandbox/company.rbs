@@ -3,12 +3,12 @@ module FinchAPI
     class Sandbox
       class Company
         def update: (
-          accounts: ::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Account]?,
-          departments: ::Array[FinchAPI::Models::Sandbox::CompanyUpdateParams::Department?]?,
+          accounts: ::Array[FinchAPI::Sandbox::CompanyUpdateParams::Account]?,
+          departments: ::Array[FinchAPI::Sandbox::CompanyUpdateParams::Department?]?,
           ein: String?,
-          entity: FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity?,
+          entity: FinchAPI::Sandbox::CompanyUpdateParams::Entity?,
           legal_name: String?,
-          locations: ::Array[FinchAPI::Models::Location?]?,
+          locations: ::Array[FinchAPI::Location?]?,
           primary_email: String?,
           primary_phone_number: String?,
           ?request_options: FinchAPI::request_opts

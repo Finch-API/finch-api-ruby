@@ -5,13 +5,23 @@ module FinchAPI
     module WebhookEvent
       extend FinchAPI::Internal::Type::Union
 
-      sig do
-        override
-          .returns(
-            [FinchAPI::Models::AccountUpdateEvent, FinchAPI::Models::CompanyEvent, FinchAPI::Models::JobCompletionEvent, FinchAPI::Models::DirectoryEvent, FinchAPI::Models::EmploymentEvent, FinchAPI::Models::IndividualEvent, FinchAPI::Models::PaymentEvent, FinchAPI::Models::PayStatementEvent]
+      Variants =
+        T.type_alias do
+          T.any(
+            FinchAPI::AccountUpdateEvent,
+            FinchAPI::CompanyEvent,
+            FinchAPI::JobCompletionEvent,
+            FinchAPI::DirectoryEvent,
+            FinchAPI::EmploymentEvent,
+            FinchAPI::IndividualEvent,
+            FinchAPI::PaymentEvent,
+            FinchAPI::PayStatementEvent
           )
+        end
+
+      sig { override.returns(T::Array[FinchAPI::WebhookEvent::Variants]) }
+      def self.variants
       end
-      def self.variants; end
     end
   end
 end

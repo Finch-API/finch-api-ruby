@@ -6,6 +6,8 @@ module FinchAPI
       extend FinchAPI::Internal::Type::RequestParameters::Converter
       include FinchAPI::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
       sig { returns(String) }
       attr_accessor :code
 
@@ -33,25 +35,31 @@ module FinchAPI
           client_id: String,
           client_secret: String,
           redirect_uri: String,
-          request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: FinchAPI::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
-      def self.new(code:, client_id: nil, client_secret: nil, redirect_uri: nil, request_options: {}); end
+      def self.new(
+        code:,
+        client_id: nil,
+        client_secret: nil,
+        redirect_uri: nil,
+        request_options: {}
+      )
+      end
 
       sig do
-        override
-          .returns(
-            {
-              code: String,
-              client_id: String,
-              client_secret: String,
-              redirect_uri: String,
-              request_options: FinchAPI::RequestOptions
-            }
-          )
+        override.returns(
+          {
+            code: String,
+            client_id: String,
+            client_secret: String,
+            redirect_uri: String,
+            request_options: FinchAPI::RequestOptions
+          }
+        )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

@@ -25,7 +25,7 @@ class FinchAPI::Test::Resources::Jobs::AutomatedTest < FinchAPI::Test::ResourceT
     response = @finch.jobs.automated.retrieve("job_id")
 
     assert_pattern do
-      response => FinchAPI::Models::Jobs::AutomatedAsyncJob
+      response => FinchAPI::Jobs::AutomatedAsyncJob
     end
 
     assert_pattern do
@@ -34,11 +34,11 @@ class FinchAPI::Test::Resources::Jobs::AutomatedTest < FinchAPI::Test::ResourceT
         created_at: Time,
         job_id: String,
         job_url: String,
-        params: FinchAPI::Models::Jobs::AutomatedAsyncJob::Params | nil,
+        params: FinchAPI::Jobs::AutomatedAsyncJob::Params | nil,
         scheduled_at: Time | nil,
         started_at: Time | nil,
-        status: FinchAPI::Models::Jobs::AutomatedAsyncJob::Status,
-        type: FinchAPI::Models::Jobs::AutomatedAsyncJob::Type
+        status: FinchAPI::Jobs::AutomatedAsyncJob::Status,
+        type: FinchAPI::Jobs::AutomatedAsyncJob::Type
       }
     end
   end
@@ -52,7 +52,7 @@ class FinchAPI::Test::Resources::Jobs::AutomatedTest < FinchAPI::Test::ResourceT
 
     assert_pattern do
       response => {
-        data: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Jobs::AutomatedAsyncJob]),
+        data: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Jobs::AutomatedAsyncJob]),
         meta: FinchAPI::Models::Jobs::AutomatedListResponse::Meta
       }
     end

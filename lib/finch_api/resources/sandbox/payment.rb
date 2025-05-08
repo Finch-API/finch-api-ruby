@@ -9,7 +9,7 @@ module FinchAPI
         # @overload create(end_date: nil, pay_statements: nil, start_date: nil, request_options: {})
         #
         # @param end_date [String]
-        # @param pay_statements [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement>]
+        # @param pay_statements [Array<FinchAPI::Sandbox::PaymentCreateParams::PayStatement>]
         # @param start_date [String]
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -17,7 +17,7 @@ module FinchAPI
         #
         # @see FinchAPI::Models::Sandbox::PaymentCreateParams
         def create(params = {})
-          parsed, options = FinchAPI::Models::Sandbox::PaymentCreateParams.dump_request(params)
+          parsed, options = FinchAPI::Sandbox::PaymentCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "sandbox/payment",

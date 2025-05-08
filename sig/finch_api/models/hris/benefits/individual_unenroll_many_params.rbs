@@ -18,8 +18,6 @@ module FinchAPI
             ?individual_ids: ::Array[String],
             ?request_options: FinchAPI::request_opts
           ) -> void
-
-          def to_hash: -> FinchAPI::Models::HRIS::Benefits::individual_unenroll_many_params
         end
       end
     end

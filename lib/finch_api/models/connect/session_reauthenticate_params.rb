@@ -24,9 +24,11 @@ module FinchAPI
         # @!attribute products
         #   The products to request access to (optional for reauthentication)
         #
-        #   @return [Array<Symbol, FinchAPI::Models::Connect::SessionReauthenticateParams::Product>, nil]
+        #   @return [Array<Symbol, FinchAPI::Connect::SessionReauthenticateParams::Product>, nil]
         optional :products,
-                 -> { FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::Connect::SessionReauthenticateParams::Product] },
+                 -> {
+                   FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Connect::SessionReauthenticateParams::Product]
+                 },
                  nil?: true
 
         # @!attribute redirect_uri
@@ -42,9 +44,8 @@ module FinchAPI
         #   @param connection_id [String] The ID of the existing connection to reauthenticate
         #
         #   @param minutes_to_expire [Integer, nil] The number of minutes until the session expires (defaults to 43,200, which is 30
-        #   ...
         #
-        #   @param products [Array<Symbol, FinchAPI::Models::Connect::SessionReauthenticateParams::Product>, nil] The products to request access to (optional for reauthentication)
+        #   @param products [Array<Symbol, FinchAPI::Connect::SessionReauthenticateParams::Product>, nil] The products to request access to (optional for reauthentication)
         #
         #   @param redirect_uri [String, nil] The URI to redirect to after the Connect flow is completed
         #

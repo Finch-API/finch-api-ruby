@@ -3,6 +3,8 @@
 module FinchAPI
   module Models
     class RequestForwardingForwardResponse < FinchAPI::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
       # A string representation of the HTTP response body of the forwarded request’s
       # response received from the underlying integration’s API. This field may be null
       # in the case where the upstream system’s response is empty.
@@ -16,14 +18,16 @@ module FinchAPI
 
       # An object containing details of your original forwarded request, for your ease
       # of reference.
-      sig { returns(FinchAPI::Models::RequestForwardingForwardResponse::Request) }
+      sig do
+        returns(FinchAPI::Models::RequestForwardingForwardResponse::Request)
+      end
       attr_reader :request
 
       sig do
         params(
-          request: T.any(FinchAPI::Models::RequestForwardingForwardResponse::Request, FinchAPI::Internal::AnyHash)
-        )
-          .void
+          request:
+            FinchAPI::Models::RequestForwardingForwardResponse::Request::OrHash
+        ).void
       end
       attr_writer :request
 
@@ -36,10 +40,10 @@ module FinchAPI
         params(
           data: T.nilable(String),
           headers: T.nilable(T.anything),
-          request: T.any(FinchAPI::Models::RequestForwardingForwardResponse::Request, FinchAPI::Internal::AnyHash),
+          request:
+            FinchAPI::Models::RequestForwardingForwardResponse::Request::OrHash,
           status_code: Integer
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # A string representation of the HTTP response body of the forwarded request’s
@@ -55,21 +59,27 @@ module FinchAPI
         # The HTTP status code of the forwarded request’s response, exactly received from
         # the underlying integration’s API. This value will be returned as an integer.
         status_code:
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              data: T.nilable(String),
-              headers: T.nilable(T.anything),
-              request: FinchAPI::Models::RequestForwardingForwardResponse::Request,
-              status_code: Integer
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            data: T.nilable(String),
+            headers: T.nilable(T.anything),
+            request:
+              FinchAPI::Models::RequestForwardingForwardResponse::Request,
+            status_code: Integer
+          }
+        )
+      end
+      def to_hash
+      end
 
       class Request < FinchAPI::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
         # The body that was specified for the forwarded request. If a value was not
         # specified in the original request, this value will be returned as null ;
         # otherwise, this value will always be returned as a string.
@@ -104,8 +114,7 @@ module FinchAPI
             method_: String,
             params: T.nilable(T.anything),
             route: String
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # The body that was specified for the forwarded request. If a value was not
@@ -123,20 +132,22 @@ module FinchAPI
           params:,
           # The URL route path that was specified for the forwarded request.
           route:
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                data: T.nilable(String),
-                headers: T.nilable(T.anything),
-                method_: String,
-                params: T.nilable(T.anything),
-                route: String
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              data: T.nilable(String),
+              headers: T.nilable(T.anything),
+              method_: String,
+              params: T.nilable(T.anything),
+              route: String
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

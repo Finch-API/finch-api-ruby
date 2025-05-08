@@ -7,19 +7,28 @@ module FinchAPI
         # Read individual employment and income data
         sig do
           params(
-            requests: T::Array[T.any(FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request, FinchAPI::Internal::AnyHash)],
-            request_options: FinchAPI::RequestOpts
+            requests:
+              T::Array[
+                FinchAPI::HRIS::EmploymentRetrieveManyParams::Request::OrHash
+              ],
+            request_options: FinchAPI::RequestOptions::OrHash
+          ).returns(
+            FinchAPI::Internal::ResponsesPage[
+              FinchAPI::HRIS::EmploymentDataResponse
+            ]
           )
-            .returns(FinchAPI::Internal::ResponsesPage[FinchAPI::Models::HRIS::EmploymentDataResponse])
         end
         def retrieve_many(
           # The array of batch requests.
           requests:,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

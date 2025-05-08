@@ -7,15 +7,24 @@ module FinchAPI
       module BenefitFrequency
         extend FinchAPI::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::BenefitFrequency) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, FinchAPI::HRIS::BenefitFrequency) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        ONE_TIME = T.let(:one_time, FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol)
-        EVERY_PAYCHECK = T.let(:every_paycheck, FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol)
-        MONTHLY = T.let(:monthly, FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol)
+        ONE_TIME =
+          T.let(:one_time, FinchAPI::HRIS::BenefitFrequency::TaggedSymbol)
+        EVERY_PAYCHECK =
+          T.let(:every_paycheck, FinchAPI::HRIS::BenefitFrequency::TaggedSymbol)
+        MONTHLY =
+          T.let(:monthly, FinchAPI::HRIS::BenefitFrequency::TaggedSymbol)
 
-        sig { override.returns(T::Array[FinchAPI::Models::HRIS::BenefitFrequency::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[FinchAPI::HRIS::BenefitFrequency::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

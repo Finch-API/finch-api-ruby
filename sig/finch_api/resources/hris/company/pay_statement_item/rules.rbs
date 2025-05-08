@@ -5,8 +5,8 @@ module FinchAPI
         class PayStatementItem
           class Rules
             def create: (
-              ?attributes: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes,
-              ?conditions: ::Array[FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition],
+              ?attributes: FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes,
+              ?conditions: ::Array[FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Condition],
               ?effective_end_date: String?,
               ?effective_start_date: String?,
               ?entity_type: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::entity_type,

@@ -13,14 +13,14 @@ module FinchAPI
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::Models::HRIS::HRISCompany]
+        # @return [FinchAPI::HRIS::HRISCompany]
         #
         # @see FinchAPI::Models::HRIS::CompanyRetrieveParams
         def retrieve(params = {})
           @client.request(
             method: :get,
             path: "employer/company",
-            model: FinchAPI::Models::HRIS::HRISCompany,
+            model: FinchAPI::HRIS::HRISCompany,
             options: params[:request_options]
           )
         end

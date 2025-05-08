@@ -10,12 +10,13 @@ module FinchAPI
       sig { returns(T.nilable(T::Array[Elem])) }
       attr_accessor :data
 
-      sig { returns(FinchAPI::Models::Paging) }
+      sig { returns(FinchAPI::Paging) }
       attr_accessor :paging
 
       # @api private
       sig { returns(String) }
-      def inspect; end
+      def inspect
+      end
     end
   end
 end

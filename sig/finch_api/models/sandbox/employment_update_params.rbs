@@ -4,19 +4,19 @@ module FinchAPI
       type employment_update_params =
         {
           class_code: String?,
-          custom_fields: ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField],
-          department: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Department?,
-          employment: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment?,
+          custom_fields: ::Array[FinchAPI::Sandbox::EmploymentUpdateParams::CustomField],
+          department: FinchAPI::Sandbox::EmploymentUpdateParams::Department?,
+          employment: FinchAPI::Sandbox::EmploymentUpdateParams::Employment?,
           employment_status: FinchAPI::Models::Sandbox::EmploymentUpdateParams::employment_status?,
           end_date: String?,
           first_name: String?,
-          income: FinchAPI::Models::Income?,
-          income_history: ::Array[FinchAPI::Models::Income?]?,
+          income: FinchAPI::Income?,
+          income_history: ::Array[FinchAPI::Income?]?,
           is_active: bool?,
           last_name: String?,
           latest_rehire_date: String?,
-          location: FinchAPI::Models::Location?,
-          manager: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Manager?,
+          location: FinchAPI::Location?,
+          manager: FinchAPI::Sandbox::EmploymentUpdateParams::Manager?,
           middle_name: String?,
           source_id: String,
           start_date: String?,
@@ -30,15 +30,15 @@ module FinchAPI
 
         attr_accessor class_code: String?
 
-        attr_reader custom_fields: ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField]?
+        attr_reader custom_fields: ::Array[FinchAPI::Sandbox::EmploymentUpdateParams::CustomField]?
 
         def custom_fields=: (
-          ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField]
-        ) -> ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField]
+          ::Array[FinchAPI::Sandbox::EmploymentUpdateParams::CustomField]
+        ) -> ::Array[FinchAPI::Sandbox::EmploymentUpdateParams::CustomField]
 
-        attr_accessor department: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Department?
+        attr_accessor department: FinchAPI::Sandbox::EmploymentUpdateParams::Department?
 
-        attr_accessor employment: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment?
+        attr_accessor employment: FinchAPI::Sandbox::EmploymentUpdateParams::Employment?
 
         attr_accessor employment_status: FinchAPI::Models::Sandbox::EmploymentUpdateParams::employment_status?
 
@@ -46,9 +46,9 @@ module FinchAPI
 
         attr_accessor first_name: String?
 
-        attr_accessor income: FinchAPI::Models::Income?
+        attr_accessor income: FinchAPI::Income?
 
-        attr_accessor income_history: ::Array[FinchAPI::Models::Income?]?
+        attr_accessor income_history: ::Array[FinchAPI::Income?]?
 
         attr_accessor is_active: bool?
 
@@ -56,9 +56,9 @@ module FinchAPI
 
         attr_accessor latest_rehire_date: String?
 
-        attr_accessor location: FinchAPI::Models::Location?
+        attr_accessor location: FinchAPI::Location?
 
-        attr_accessor manager: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Manager?
+        attr_accessor manager: FinchAPI::Sandbox::EmploymentUpdateParams::Manager?
 
         attr_accessor middle_name: String?
 
@@ -72,27 +72,25 @@ module FinchAPI
 
         def initialize: (
           ?class_code: String?,
-          ?custom_fields: ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField],
-          ?department: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Department?,
-          ?employment: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment?,
+          ?custom_fields: ::Array[FinchAPI::Sandbox::EmploymentUpdateParams::CustomField],
+          ?department: FinchAPI::Sandbox::EmploymentUpdateParams::Department?,
+          ?employment: FinchAPI::Sandbox::EmploymentUpdateParams::Employment?,
           ?employment_status: FinchAPI::Models::Sandbox::EmploymentUpdateParams::employment_status?,
           ?end_date: String?,
           ?first_name: String?,
-          ?income: FinchAPI::Models::Income?,
-          ?income_history: ::Array[FinchAPI::Models::Income?]?,
+          ?income: FinchAPI::Income?,
+          ?income_history: ::Array[FinchAPI::Income?]?,
           ?is_active: bool?,
           ?last_name: String?,
           ?latest_rehire_date: String?,
-          ?location: FinchAPI::Models::Location?,
-          ?manager: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Manager?,
+          ?location: FinchAPI::Location?,
+          ?manager: FinchAPI::Sandbox::EmploymentUpdateParams::Manager?,
           ?middle_name: String?,
           ?source_id: String,
           ?start_date: String?,
           ?title: String?,
           ?request_options: FinchAPI::request_opts
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::Sandbox::employment_update_params
 
         type custom_field = { name: String?, value: top }
 
@@ -104,8 +102,6 @@ module FinchAPI
           def value=: (top) -> top
 
           def initialize: (?name: String?, ?value: top) -> void
-
-          def to_hash: -> FinchAPI::Models::Sandbox::EmploymentUpdateParams::custom_field
         end
 
         type department = { name: String? }
@@ -114,27 +110,23 @@ module FinchAPI
           attr_accessor name: String?
 
           def initialize: (?name: String?) -> void
-
-          def to_hash: -> FinchAPI::Models::Sandbox::EmploymentUpdateParams::department
         end
 
         type employment =
           {
-            subtype: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::subtype?,
-            type: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::type_?
+            subtype: FinchAPI::Sandbox::EmploymentUpdateParams::Employment::subtype?,
+            type: FinchAPI::Sandbox::EmploymentUpdateParams::Employment::type_?
           }
 
         class Employment < FinchAPI::Internal::Type::BaseModel
-          attr_accessor subtype: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::subtype?
+          attr_accessor subtype: FinchAPI::Sandbox::EmploymentUpdateParams::Employment::subtype?
 
-          attr_accessor type: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::type_?
+          attr_accessor type: FinchAPI::Sandbox::EmploymentUpdateParams::Employment::type_?
 
           def initialize: (
-            ?subtype: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::subtype?,
-            ?type: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::type_?
+            ?subtype: FinchAPI::Sandbox::EmploymentUpdateParams::Employment::subtype?,
+            ?type: FinchAPI::Sandbox::EmploymentUpdateParams::Employment::type_?
           ) -> void
-
-          def to_hash: -> FinchAPI::Models::Sandbox::EmploymentUpdateParams::employment
 
           type subtype =
             :full_time
@@ -154,7 +146,7 @@ module FinchAPI
             SEASONAL: :seasonal
             INDIVIDUAL_CONTRACTOR: :individual_contractor
 
-            def self?.values: -> ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::subtype]
+            def self?.values: -> ::Array[FinchAPI::Sandbox::EmploymentUpdateParams::Employment::subtype]
           end
 
           type type_ = :employee | :contractor
@@ -165,7 +157,7 @@ module FinchAPI
             EMPLOYEE: :employee
             CONTRACTOR: :contractor
 
-            def self?.values: -> ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::type_]
+            def self?.values: -> ::Array[FinchAPI::Sandbox::EmploymentUpdateParams::Employment::type_]
           end
         end
 
@@ -200,8 +192,6 @@ module FinchAPI
           def id=: (String) -> String
 
           def initialize: (?id: String) -> void
-
-          def to_hash: -> FinchAPI::Models::Sandbox::EmploymentUpdateParams::manager
         end
       end
     end

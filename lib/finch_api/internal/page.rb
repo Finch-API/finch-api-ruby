@@ -19,12 +19,12 @@ module FinchAPI
       # @return [Array<generic<Elem>>, nil]
       attr_accessor :data
 
-      # @return [FinchAPI::Models::Paging]
+      # @return [FinchAPI::Paging]
       attr_accessor :paging
 
       # @return [Boolean]
       def next_page?
-        paging&.offset.to_i + data.to_a.size < paging&.count.to_i
+        !data.to_a.empty? && (paging&.offset.to_i + data.to_a.size < paging&.count.to_i)
       end
 
       # @raise [FinchAPI::HTTP::Error]
@@ -69,13 +69,13 @@ module FinchAPI
         super
 
         case page_data
-        in {data: Array | nil => data}
-          @data = data&.map { FinchAPI::Internal::Type::Converter.coerce(@model, _1) }
+        in {data: Array => data}
+          @data = data.map { FinchAPI::Internal::Type::Converter.coerce(@model, _1) }
         else
         end
         case page_data
         in {paging: Hash | nil => paging}
-          @paging = FinchAPI::Internal::Type::Converter.coerce(FinchAPI::Models::Paging, paging)
+          @paging = FinchAPI::Internal::Type::Converter.coerce(FinchAPI::Paging, paging)
         else
         end
       end

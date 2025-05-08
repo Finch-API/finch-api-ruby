@@ -7,14 +7,14 @@ class FinchAPI::Test::Resources::Jobs::ManualTest < FinchAPI::Test::ResourceTest
     response = @finch.jobs.manual.retrieve("job_id")
 
     assert_pattern do
-      response => FinchAPI::Models::Jobs::ManualAsyncJob
+      response => FinchAPI::Jobs::ManualAsyncJob
     end
 
     assert_pattern do
       response => {
         body: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Internal::Type::Unknown]) | nil,
         job_id: String,
-        status: FinchAPI::Models::Jobs::ManualAsyncJob::Status
+        status: FinchAPI::Jobs::ManualAsyncJob::Status
       }
     end
   end

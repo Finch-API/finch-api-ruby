@@ -2,149 +2,141 @@ module FinchAPI
   module Models
     type account_update_event =
       {
-        data: FinchAPI::Models::AccountUpdateEvent::Data,
-        event_type: FinchAPI::Models::AccountUpdateEvent::event_type
+        data: FinchAPI::AccountUpdateEvent::Data,
+        event_type: FinchAPI::AccountUpdateEvent::event_type
       }
 
     class AccountUpdateEvent < FinchAPI::Models::BaseWebhookEvent
-      def data: -> FinchAPI::Models::AccountUpdateEvent::Data?
+      def data: -> FinchAPI::AccountUpdateEvent::Data?
 
       def data=: (
-        FinchAPI::Models::AccountUpdateEvent::Data _
-      ) -> FinchAPI::Models::AccountUpdateEvent::Data
+        FinchAPI::AccountUpdateEvent::Data _
+      ) -> FinchAPI::AccountUpdateEvent::Data
 
-      def event_type: -> FinchAPI::Models::AccountUpdateEvent::event_type?
+      def event_type: -> FinchAPI::AccountUpdateEvent::event_type?
 
       def event_type=: (
-        FinchAPI::Models::AccountUpdateEvent::event_type _
-      ) -> FinchAPI::Models::AccountUpdateEvent::event_type
+        FinchAPI::AccountUpdateEvent::event_type _
+      ) -> FinchAPI::AccountUpdateEvent::event_type
 
       def initialize: (
-        ?data: FinchAPI::Models::AccountUpdateEvent::Data,
-        ?event_type: FinchAPI::Models::AccountUpdateEvent::event_type
+        ?data: FinchAPI::AccountUpdateEvent::Data,
+        ?event_type: FinchAPI::AccountUpdateEvent::event_type
       ) -> void
-
-      def to_hash: -> FinchAPI::Models::account_update_event
 
       type data =
         {
-          authentication_method: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod,
+          authentication_method: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod,
           status: FinchAPI::Models::connection_status_type
         }
 
       class Data < FinchAPI::Internal::Type::BaseModel
-        attr_accessor authentication_method: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod
+        attr_accessor authentication_method: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod
 
         attr_accessor status: FinchAPI::Models::connection_status_type
 
         def initialize: (
-          authentication_method: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod,
+          authentication_method: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod,
           status: FinchAPI::Models::connection_status_type
         ) -> void
 
-        def to_hash: -> FinchAPI::Models::AccountUpdateEvent::data
-
         type authentication_method =
           {
-            benefits_support: FinchAPI::Models::HRIS::BenefitsSupport?,
-            supported_fields: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields?,
-            type: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::type_
+            benefits_support: FinchAPI::HRIS::BenefitsSupport?,
+            supported_fields: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields?,
+            type: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::type_
           }
 
         class AuthenticationMethod < FinchAPI::Internal::Type::BaseModel
-          attr_accessor benefits_support: FinchAPI::Models::HRIS::BenefitsSupport?
+          attr_accessor benefits_support: FinchAPI::HRIS::BenefitsSupport?
 
-          attr_accessor supported_fields: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields?
+          attr_accessor supported_fields: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields?
 
-          attr_reader type: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::type_?
+          attr_reader type: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::type_?
 
           def type=: (
-            FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::type_
-          ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::type_
+            FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::type_
+          ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::type_
 
           def initialize: (
-            ?benefits_support: FinchAPI::Models::HRIS::BenefitsSupport?,
-            ?supported_fields: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields?,
-            ?type: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::type_
+            ?benefits_support: FinchAPI::HRIS::BenefitsSupport?,
+            ?supported_fields: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields?,
+            ?type: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::type_
           ) -> void
-
-          def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::authentication_method
 
           type supported_fields =
             {
-              company: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company,
-              directory: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory,
-              employment: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment,
-              individual: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual,
-              pay_group: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayGroup,
-              pay_statement: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement,
-              payment: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment
+              company: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company,
+              directory: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory,
+              employment: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment,
+              individual: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual,
+              pay_group: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayGroup,
+              pay_statement: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement,
+              payment: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment
             }
 
           class SupportedFields < FinchAPI::Internal::Type::BaseModel
-            attr_reader company: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company?
+            attr_reader company: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company?
 
             def company=: (
-              FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company
-            ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company
+              FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company
+            ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company
 
-            attr_reader directory: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory?
+            attr_reader directory: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory?
 
             def directory=: (
-              FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory
-            ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory
+              FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory
+            ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory
 
-            attr_reader employment: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment?
+            attr_reader employment: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment?
 
             def employment=: (
-              FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment
-            ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment
+              FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment
+            ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment
 
-            attr_reader individual: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual?
+            attr_reader individual: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual?
 
             def individual=: (
-              FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual
-            ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual
+              FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual
+            ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual
 
-            attr_reader pay_group: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayGroup?
+            attr_reader pay_group: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayGroup?
 
             def pay_group=: (
-              FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayGroup
-            ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayGroup
+              FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayGroup
+            ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayGroup
 
-            attr_reader pay_statement: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement?
+            attr_reader pay_statement: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement?
 
             def pay_statement=: (
-              FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement
-            ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement
+              FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement
+            ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement
 
-            attr_reader payment: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment?
+            attr_reader payment: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment?
 
             def payment=: (
-              FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment
-            ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment
+              FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment
+            ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment
 
             def initialize: (
-              ?company: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company,
-              ?directory: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory,
-              ?employment: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment,
-              ?individual: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual,
-              ?pay_group: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayGroup,
-              ?pay_statement: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement,
-              ?payment: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment
+              ?company: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company,
+              ?directory: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory,
+              ?employment: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment,
+              ?individual: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual,
+              ?pay_group: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayGroup,
+              ?pay_statement: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement,
+              ?payment: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment
             ) -> void
-
-            def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::supported_fields
 
             type company =
               {
                 id: bool,
-                accounts: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Accounts,
-                departments: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments,
+                accounts: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Accounts,
+                departments: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments,
                 ein: bool,
-                entity: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Entity,
+                entity: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Entity,
                 legal_name: bool,
-                locations: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Locations,
+                locations: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Locations,
                 primary_email: bool,
                 primary_phone_number: bool
               }
@@ -154,37 +146,37 @@ module FinchAPI
 
               def id=: (bool) -> bool
 
-              attr_reader accounts: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Accounts?
+              attr_reader accounts: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Accounts?
 
               def accounts=: (
-                FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Accounts
-              ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Accounts
+                FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Accounts
+              ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Accounts
 
-              attr_reader departments: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments?
+              attr_reader departments: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments?
 
               def departments=: (
-                FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments
-              ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments
+                FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments
+              ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments
 
               attr_reader ein: bool?
 
               def ein=: (bool) -> bool
 
-              attr_reader entity: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Entity?
+              attr_reader entity: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Entity?
 
               def entity=: (
-                FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Entity
-              ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Entity
+                FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Entity
+              ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Entity
 
               attr_reader legal_name: bool?
 
               def legal_name=: (bool) -> bool
 
-              attr_reader locations: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Locations?
+              attr_reader locations: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Locations?
 
               def locations=: (
-                FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Locations
-              ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Locations
+                FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Locations
+              ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Locations
 
               attr_reader primary_email: bool?
 
@@ -196,17 +188,15 @@ module FinchAPI
 
               def initialize: (
                 ?id: bool,
-                ?accounts: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Accounts,
-                ?departments: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments,
+                ?accounts: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Accounts,
+                ?departments: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments,
                 ?ein: bool,
-                ?entity: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Entity,
+                ?entity: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Entity,
                 ?legal_name: bool,
-                ?locations: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Locations,
+                ?locations: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Locations,
                 ?primary_email: bool,
                 ?primary_phone_number: bool
               ) -> void
-
-              def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::company
 
               type accounts =
                 {
@@ -245,14 +235,12 @@ module FinchAPI
                   ?institution_name: bool,
                   ?routing_number: bool
                 ) -> void
-
-                def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::accounts
               end
 
               type departments =
                 {
                   name: bool,
-                  parent: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments::Parent
+                  parent: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments::Parent
                 }
 
               class Departments < FinchAPI::Internal::Type::BaseModel
@@ -260,18 +248,16 @@ module FinchAPI
 
                 def name=: (bool) -> bool
 
-                attr_reader parent: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments::Parent?
+                attr_reader parent: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments::Parent?
 
                 def parent=: (
-                  FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments::Parent
-                ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments::Parent
+                  FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments::Parent
+                ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments::Parent
 
                 def initialize: (
                   ?name: bool,
-                  ?parent: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments::Parent
+                  ?parent: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments::Parent
                 ) -> void
-
-                def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::departments
 
                 type parent = { name: bool }
 
@@ -281,8 +267,6 @@ module FinchAPI
                   def name=: (bool) -> bool
 
                   def initialize: (?name: bool) -> void
-
-                  def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments::parent
                 end
               end
 
@@ -298,8 +282,6 @@ module FinchAPI
                 def type=: (bool) -> bool
 
                 def initialize: (?subtype: bool, ?type: bool) -> void
-
-                def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::entity
               end
 
               type locations =
@@ -345,36 +327,32 @@ module FinchAPI
                   ?postal_code: bool,
                   ?state: bool
                 ) -> void
-
-                def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::locations
               end
             end
 
             type directory =
               {
-                individuals: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals,
-                paging: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Paging
+                individuals: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals,
+                paging: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Paging
               }
 
             class Directory < FinchAPI::Internal::Type::BaseModel
-              attr_reader individuals: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals?
+              attr_reader individuals: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals?
 
               def individuals=: (
-                FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals
-              ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals
+                FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals
+              ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals
 
-              attr_reader paging: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Paging?
+              attr_reader paging: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Paging?
 
               def paging=: (
-                FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Paging
-              ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Paging
+                FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Paging
+              ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Paging
 
               def initialize: (
-                ?individuals: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals,
-                ?paging: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Paging
+                ?individuals: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals,
+                ?paging: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Paging
               ) -> void
-
-              def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::directory
 
               type individuals =
                 {
@@ -383,7 +361,7 @@ module FinchAPI
                   first_name: bool,
                   is_active: bool,
                   last_name: bool,
-                  manager: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager,
+                  manager: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager,
                   middle_name: bool
                 }
 
@@ -408,11 +386,11 @@ module FinchAPI
 
                 def last_name=: (bool) -> bool
 
-                attr_reader manager: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager?
+                attr_reader manager: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager?
 
                 def manager=: (
-                  FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager
-                ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager
+                  FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager
+                ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager
 
                 attr_reader middle_name: bool?
 
@@ -424,11 +402,9 @@ module FinchAPI
                   ?first_name: bool,
                   ?is_active: bool,
                   ?last_name: bool,
-                  ?manager: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager,
+                  ?manager: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager,
                   ?middle_name: bool
                 ) -> void
-
-                def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::individuals
 
                 type manager = { id: bool }
 
@@ -438,8 +414,6 @@ module FinchAPI
                   def id=: (bool) -> bool
 
                   def initialize: (?id: bool) -> void
-
-                  def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals::manager
                 end
               end
 
@@ -455,8 +429,6 @@ module FinchAPI
                 def offset=: (bool) -> bool
 
                 def initialize: (?count: bool, ?offset: bool) -> void
-
-                def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::paging
               end
             end
 
@@ -465,17 +437,17 @@ module FinchAPI
                 id: bool,
                 class_code: bool,
                 custom_fields: bool,
-                department: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Department,
-                employment: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Employment,
+                department: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Department,
+                employment: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Employment,
                 employment_status: bool,
                 end_date: bool,
                 first_name: bool,
-                income: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Income,
+                income: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Income,
                 income_history: bool,
                 is_active: bool,
                 last_name: bool,
-                location: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Location,
-                manager: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager,
+                location: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Location,
+                manager: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager,
                 middle_name: bool,
                 start_date: bool,
                 title: bool
@@ -494,17 +466,17 @@ module FinchAPI
 
               def custom_fields=: (bool) -> bool
 
-              attr_reader department: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Department?
+              attr_reader department: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Department?
 
               def department=: (
-                FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Department
-              ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Department
+                FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Department
+              ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Department
 
-              attr_reader employment: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Employment?
+              attr_reader employment: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Employment?
 
               def employment=: (
-                FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Employment
-              ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Employment
+                FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Employment
+              ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Employment
 
               attr_reader employment_status: bool?
 
@@ -518,11 +490,11 @@ module FinchAPI
 
               def first_name=: (bool) -> bool
 
-              attr_reader income: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Income?
+              attr_reader income: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Income?
 
               def income=: (
-                FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Income
-              ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Income
+                FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Income
+              ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Income
 
               attr_reader income_history: bool?
 
@@ -536,17 +508,17 @@ module FinchAPI
 
               def last_name=: (bool) -> bool
 
-              attr_reader location: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Location?
+              attr_reader location: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Location?
 
               def location=: (
-                FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Location
-              ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Location
+                FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Location
+              ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Location
 
-              attr_reader manager: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager?
+              attr_reader manager: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager?
 
               def manager=: (
-                FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager
-              ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager
+                FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager
+              ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager
 
               attr_reader middle_name: bool?
 
@@ -564,23 +536,21 @@ module FinchAPI
                 ?id: bool,
                 ?class_code: bool,
                 ?custom_fields: bool,
-                ?department: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Department,
-                ?employment: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Employment,
+                ?department: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Department,
+                ?employment: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Employment,
                 ?employment_status: bool,
                 ?end_date: bool,
                 ?first_name: bool,
-                ?income: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Income,
+                ?income: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Income,
                 ?income_history: bool,
                 ?is_active: bool,
                 ?last_name: bool,
-                ?location: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Location,
-                ?manager: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager,
+                ?location: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Location,
+                ?manager: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager,
                 ?middle_name: bool,
                 ?start_date: bool,
                 ?title: bool
               ) -> void
-
-              def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::employment
 
               type department = { name: bool }
 
@@ -590,8 +560,6 @@ module FinchAPI
                 def name=: (bool) -> bool
 
                 def initialize: (?name: bool) -> void
-
-                def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::department
               end
 
               type employment = { subtype: bool, type: bool }
@@ -606,8 +574,6 @@ module FinchAPI
                 def type=: (bool) -> bool
 
                 def initialize: (?subtype: bool, ?type: bool) -> void
-
-                def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::employment
               end
 
               type income = { amount: bool, currency: bool, unit: bool }
@@ -630,8 +596,6 @@ module FinchAPI
                   ?currency: bool,
                   ?unit: bool
                 ) -> void
-
-                def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::income
               end
 
               type location =
@@ -677,8 +641,6 @@ module FinchAPI
                   ?postal_code: bool,
                   ?state: bool
                 ) -> void
-
-                def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::location
               end
 
               type manager = { id: bool }
@@ -689,8 +651,6 @@ module FinchAPI
                 def id=: (bool) -> bool
 
                 def initialize: (?id: bool) -> void
-
-                def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::manager
               end
             end
 
@@ -698,16 +658,16 @@ module FinchAPI
               {
                 id: bool,
                 dob: bool,
-                emails: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Emails,
+                emails: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Emails,
                 encrypted_ssn: bool,
                 ethnicity: bool,
                 first_name: bool,
                 gender: bool,
                 last_name: bool,
                 middle_name: bool,
-                phone_numbers: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers,
+                phone_numbers: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers,
                 preferred_name: bool,
-                residence: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Residence,
+                residence: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Residence,
                 ssn: bool
               }
 
@@ -720,11 +680,11 @@ module FinchAPI
 
               def dob=: (bool) -> bool
 
-              attr_reader emails: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Emails?
+              attr_reader emails: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Emails?
 
               def emails=: (
-                FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Emails
-              ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Emails
+                FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Emails
+              ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Emails
 
               attr_reader encrypted_ssn: bool?
 
@@ -750,21 +710,21 @@ module FinchAPI
 
               def middle_name=: (bool) -> bool
 
-              attr_reader phone_numbers: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers?
+              attr_reader phone_numbers: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers?
 
               def phone_numbers=: (
-                FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers
-              ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers
+                FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers
+              ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers
 
               attr_reader preferred_name: bool?
 
               def preferred_name=: (bool) -> bool
 
-              attr_reader residence: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Residence?
+              attr_reader residence: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Residence?
 
               def residence=: (
-                FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Residence
-              ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Residence
+                FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Residence
+              ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Residence
 
               attr_reader ssn: bool?
 
@@ -773,20 +733,18 @@ module FinchAPI
               def initialize: (
                 ?id: bool,
                 ?dob: bool,
-                ?emails: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Emails,
+                ?emails: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Emails,
                 ?encrypted_ssn: bool,
                 ?ethnicity: bool,
                 ?first_name: bool,
                 ?gender: bool,
                 ?last_name: bool,
                 ?middle_name: bool,
-                ?phone_numbers: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers,
+                ?phone_numbers: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers,
                 ?preferred_name: bool,
-                ?residence: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Residence,
+                ?residence: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Residence,
                 ?ssn: bool
               ) -> void
-
-              def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::individual
 
               type emails = { data: bool, type: bool }
 
@@ -800,8 +758,6 @@ module FinchAPI
                 def type=: (bool) -> bool
 
                 def initialize: (?data: bool, ?type: bool) -> void
-
-                def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::emails
               end
 
               type phone_numbers = { data: bool, type: bool }
@@ -816,8 +772,6 @@ module FinchAPI
                 def type=: (bool) -> bool
 
                 def initialize: (?data: bool, ?type: bool) -> void
-
-                def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::phone_numbers
               end
 
               type residence =
@@ -863,8 +817,6 @@ module FinchAPI
                   ?postal_code: bool,
                   ?state: bool
                 ) -> void
-
-                def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::residence
               end
             end
 
@@ -899,35 +851,31 @@ module FinchAPI
                 ?name: bool,
                 ?pay_frequencies: bool
               ) -> void
-
-              def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::pay_group
             end
 
             type pay_statement =
               {
-                paging: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::Paging,
-                pay_statements: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements
+                paging: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::Paging,
+                pay_statements: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements
               }
 
             class PayStatement < FinchAPI::Internal::Type::BaseModel
-              attr_reader paging: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::Paging?
+              attr_reader paging: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::Paging?
 
               def paging=: (
-                FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::Paging
-              ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::Paging
+                FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::Paging
+              ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::Paging
 
-              attr_reader pay_statements: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements?
+              attr_reader pay_statements: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements?
 
               def pay_statements=: (
-                FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements
-              ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements
+                FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements
+              ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements
 
               def initialize: (
-                ?paging: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::Paging,
-                ?pay_statements: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements
+                ?paging: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::Paging,
+                ?pay_statements: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements
               ) -> void
-
-              def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::pay_statement
 
               type paging = { count: bool, offset: bool }
 
@@ -937,42 +885,40 @@ module FinchAPI
                 attr_accessor offset: bool
 
                 def initialize: (count: bool, offset: bool) -> void
-
-                def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::paging
               end
 
               type pay_statements =
                 {
-                  earnings: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings,
-                  employee_deductions: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions,
-                  employer_contributions: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions,
+                  earnings: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings,
+                  employee_deductions: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions,
+                  employer_contributions: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions,
                   gross_pay: bool,
                   individual_id: bool,
                   net_pay: bool,
                   payment_method: bool,
-                  taxes: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes,
+                  taxes: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes,
                   total_hours: bool,
                   type: bool
                 }
 
               class PayStatements < FinchAPI::Internal::Type::BaseModel
-                attr_reader earnings: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings?
+                attr_reader earnings: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings?
 
                 def earnings=: (
-                  FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings
-                ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings
+                  FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings
+                ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings
 
-                attr_reader employee_deductions: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions?
+                attr_reader employee_deductions: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions?
 
                 def employee_deductions=: (
-                  FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions
-                ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions
+                  FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions
+                ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions
 
-                attr_reader employer_contributions: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions?
+                attr_reader employer_contributions: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions?
 
                 def employer_contributions=: (
-                  FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions
-                ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions
+                  FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions
+                ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions
 
                 attr_reader gross_pay: bool?
 
@@ -990,11 +936,11 @@ module FinchAPI
 
                 def payment_method=: (bool) -> bool
 
-                attr_reader taxes: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes?
+                attr_reader taxes: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes?
 
                 def taxes=: (
-                  FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes
-                ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes
+                  FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes
+                ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes
 
                 attr_reader total_hours: bool?
 
@@ -1005,19 +951,17 @@ module FinchAPI
                 def type=: (bool) -> bool
 
                 def initialize: (
-                  ?earnings: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings,
-                  ?employee_deductions: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions,
-                  ?employer_contributions: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions,
+                  ?earnings: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings,
+                  ?employee_deductions: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions,
+                  ?employer_contributions: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions,
                   ?gross_pay: bool,
                   ?individual_id: bool,
                   ?net_pay: bool,
                   ?payment_method: bool,
-                  ?taxes: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes,
+                  ?taxes: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes,
                   ?total_hours: bool,
                   ?type: bool
                 ) -> void
-
-                def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::pay_statements
 
                 type earnings =
                   { amount: bool, currency: bool, name: bool, type: bool }
@@ -1045,8 +989,6 @@ module FinchAPI
                     ?name: bool,
                     ?type: bool
                   ) -> void
-
-                  def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::earnings
                 end
 
                 type employee_deductions =
@@ -1086,8 +1028,6 @@ module FinchAPI
                     ?pre_tax: bool,
                     ?type: bool
                   ) -> void
-
-                  def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::employee_deductions
                 end
 
                 type employer_contributions =
@@ -1111,8 +1051,6 @@ module FinchAPI
                     ?currency: bool,
                     ?name: bool
                   ) -> void
-
-                  def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::employer_contributions
                 end
 
                 type taxes =
@@ -1152,8 +1090,6 @@ module FinchAPI
                     ?name: bool,
                     ?type: bool
                   ) -> void
-
-                  def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::taxes
                 end
               end
             end
@@ -1171,7 +1107,7 @@ module FinchAPI
                 pay_date: bool,
                 pay_frequencies: bool,
                 pay_group_ids: bool,
-                pay_period: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment::PayPeriod
+                pay_period: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment::PayPeriod
               }
 
             class Payment < FinchAPI::Internal::Type::BaseModel
@@ -1219,11 +1155,11 @@ module FinchAPI
 
               def pay_group_ids=: (bool) -> bool
 
-              attr_reader pay_period: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment::PayPeriod?
+              attr_reader pay_period: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment::PayPeriod?
 
               def pay_period=: (
-                FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment::PayPeriod
-              ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment::PayPeriod
+                FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment::PayPeriod
+              ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment::PayPeriod
 
               def initialize: (
                 ?id: bool,
@@ -1237,10 +1173,8 @@ module FinchAPI
                 ?pay_date: bool,
                 ?pay_frequencies: bool,
                 ?pay_group_ids: bool,
-                ?pay_period: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment::PayPeriod
+                ?pay_period: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment::PayPeriod
               ) -> void
-
-              def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::payment
 
               type pay_period = { end_date: bool, start_date: bool }
 
@@ -1254,8 +1188,6 @@ module FinchAPI
                 def start_date=: (bool) -> bool
 
                 def initialize: (?end_date: bool, ?start_date: bool) -> void
-
-                def to_hash: -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment::pay_period
               end
             end
           end
@@ -1272,7 +1204,7 @@ module FinchAPI
             API_CREDENTIAL: :api_credential
             OAUTH: :oauth
 
-            def self?.values: -> ::Array[FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::type_]
+            def self?.values: -> ::Array[FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::type_]
           end
         end
       end
@@ -1284,7 +1216,7 @@ module FinchAPI
 
         ACCOUNT_UPDATED: :"account.updated"
 
-        def self?.values: -> ::Array[FinchAPI::Models::AccountUpdateEvent::event_type]
+        def self?.values: -> ::Array[FinchAPI::AccountUpdateEvent::event_type]
       end
     end
   end

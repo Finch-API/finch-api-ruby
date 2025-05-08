@@ -5,9 +5,9 @@ module FinchAPI
         {
           customer_id: String,
           customer_name: String,
-          products: ::Array[FinchAPI::Models::Connect::SessionNewParams::product],
+          products: ::Array[FinchAPI::Connect::SessionNewParams::product],
           customer_email: String?,
-          integration: FinchAPI::Models::Connect::SessionNewParams::Integration?,
+          integration: FinchAPI::Connect::SessionNewParams::Integration?,
           manual: bool?,
           minutes_to_expire: Float?,
           redirect_uri: String?,
@@ -23,11 +23,11 @@ module FinchAPI
 
         attr_accessor customer_name: String
 
-        attr_accessor products: ::Array[FinchAPI::Models::Connect::SessionNewParams::product]
+        attr_accessor products: ::Array[FinchAPI::Connect::SessionNewParams::product]
 
         attr_accessor customer_email: String?
 
-        attr_accessor integration: FinchAPI::Models::Connect::SessionNewParams::Integration?
+        attr_accessor integration: FinchAPI::Connect::SessionNewParams::Integration?
 
         attr_accessor manual: bool?
 
@@ -40,17 +40,15 @@ module FinchAPI
         def initialize: (
           customer_id: String,
           customer_name: String,
-          products: ::Array[FinchAPI::Models::Connect::SessionNewParams::product],
+          products: ::Array[FinchAPI::Connect::SessionNewParams::product],
           ?customer_email: String?,
-          ?integration: FinchAPI::Models::Connect::SessionNewParams::Integration?,
+          ?integration: FinchAPI::Connect::SessionNewParams::Integration?,
           ?manual: bool?,
           ?minutes_to_expire: Float?,
           ?redirect_uri: String?,
           ?sandbox: FinchAPI::Models::Connect::SessionNewParams::sandbox?,
           ?request_options: FinchAPI::request_opts
         ) -> void
-
-        def to_hash: -> FinchAPI::Models::Connect::session_new_params
 
         type product =
           :company
@@ -78,26 +76,24 @@ module FinchAPI
           DEDUCTION: :deduction
           DOCUMENTS: :documents
 
-          def self?.values: -> ::Array[FinchAPI::Models::Connect::SessionNewParams::product]
+          def self?.values: -> ::Array[FinchAPI::Connect::SessionNewParams::product]
         end
 
         type integration =
           {
-            auth_method: FinchAPI::Models::Connect::SessionNewParams::Integration::auth_method?,
+            auth_method: FinchAPI::Connect::SessionNewParams::Integration::auth_method?,
             provider: String?
           }
 
         class Integration < FinchAPI::Internal::Type::BaseModel
-          attr_accessor auth_method: FinchAPI::Models::Connect::SessionNewParams::Integration::auth_method?
+          attr_accessor auth_method: FinchAPI::Connect::SessionNewParams::Integration::auth_method?
 
           attr_accessor provider: String?
 
           def initialize: (
-            ?auth_method: FinchAPI::Models::Connect::SessionNewParams::Integration::auth_method?,
+            ?auth_method: FinchAPI::Connect::SessionNewParams::Integration::auth_method?,
             ?provider: String?
           ) -> void
-
-          def to_hash: -> FinchAPI::Models::Connect::SessionNewParams::integration
 
           type auth_method = :assisted | :credential | :oauth | :api_token
 
@@ -109,7 +105,7 @@ module FinchAPI
             OAUTH: :oauth
             API_TOKEN: :api_token
 
-            def self?.values: -> ::Array[FinchAPI::Models::Connect::SessionNewParams::Integration::auth_method]
+            def self?.values: -> ::Array[FinchAPI::Connect::SessionNewParams::Integration::auth_method]
           end
         end
 

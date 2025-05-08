@@ -4,6 +4,9 @@ module FinchAPI
   module Models
     module HRIS
       class DocumentResponse < FinchAPI::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
         # A stable Finch id for the document.
         sig { returns(T.nilable(String)) }
         attr_reader :id
@@ -17,10 +20,16 @@ module FinchAPI
         attr_accessor :individual_id
 
         # The type of document.
-        sig { returns(T.nilable(FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol)) }
+        sig do
+          returns(
+            T.nilable(FinchAPI::HRIS::DocumentResponse::Type::TaggedSymbol)
+          )
+        end
         attr_reader :type
 
-        sig { params(type: FinchAPI::Models::HRIS::DocumentResponse::Type::OrSymbol).void }
+        sig do
+          params(type: FinchAPI::HRIS::DocumentResponse::Type::OrSymbol).void
+        end
         attr_writer :type
 
         # A URL to access the document. Format:
@@ -39,11 +48,10 @@ module FinchAPI
           params(
             id: String,
             individual_id: T.nilable(String),
-            type: FinchAPI::Models::HRIS::DocumentResponse::Type::OrSymbol,
+            type: FinchAPI::HRIS::DocumentResponse::Type::OrSymbol,
             url: String,
             year: T.nilable(Float)
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # A stable Finch id for the document.
@@ -58,33 +66,51 @@ module FinchAPI
           url: nil,
           # The year the document applies to, if available.
           year: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                id: String,
-                individual_id: T.nilable(String),
-                type: FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol,
-                url: String,
-                year: T.nilable(Float)
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              id: String,
+              individual_id: T.nilable(String),
+              type: FinchAPI::HRIS::DocumentResponse::Type::TaggedSymbol,
+              url: String,
+              year: T.nilable(Float)
+            }
+          )
+        end
+        def to_hash
+        end
 
         # The type of document.
         module Type
           extend FinchAPI::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, FinchAPI::Models::HRIS::DocumentResponse::Type) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, FinchAPI::HRIS::DocumentResponse::Type)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          W4_2020 = T.let(:w4_2020, FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol)
-          W4_2005 = T.let(:w4_2005, FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol)
+          W4_2020 =
+            T.let(
+              :w4_2020,
+              FinchAPI::HRIS::DocumentResponse::Type::TaggedSymbol
+            )
+          W4_2005 =
+            T.let(
+              :w4_2005,
+              FinchAPI::HRIS::DocumentResponse::Type::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[FinchAPI::Models::HRIS::DocumentResponse::Type::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[FinchAPI::HRIS::DocumentResponse::Type::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
       end
     end

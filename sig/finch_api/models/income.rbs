@@ -5,7 +5,7 @@ module FinchAPI
         amount: Integer?,
         currency: String?,
         effective_date: String?,
-        unit: FinchAPI::Models::Income::unit?
+        unit: FinchAPI::Income::unit?
       }
 
     class Income < FinchAPI::Internal::Type::BaseModel
@@ -15,16 +15,14 @@ module FinchAPI
 
       attr_accessor effective_date: String?
 
-      attr_accessor unit: FinchAPI::Models::Income::unit?
+      attr_accessor unit: FinchAPI::Income::unit?
 
       def initialize: (
-        ?amount: Integer?,
-        ?currency: String?,
-        ?effective_date: String?,
-        ?unit: FinchAPI::Models::Income::unit?
+        amount: Integer?,
+        currency: String?,
+        effective_date: String?,
+        unit: FinchAPI::Income::unit?
       ) -> void
-
-      def to_hash: -> FinchAPI::Models::income
 
       type unit =
         :yearly
@@ -50,7 +48,7 @@ module FinchAPI
         HOURLY: :hourly
         FIXED: :fixed
 
-        def self?.values: -> ::Array[FinchAPI::Models::Income::unit]
+        def self?.values: -> ::Array[FinchAPI::Income::unit]
       end
     end
   end

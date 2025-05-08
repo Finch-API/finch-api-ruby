@@ -11,15 +11,15 @@ module FinchAPI
         # `/providers` endpoint to view available types for each provider.
         sig do
           params(
-            company_contribution: T.nilable(
-              T.any(FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution, FinchAPI::Internal::AnyHash)
-            ),
+            company_contribution:
+              T.nilable(
+                FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::OrHash
+              ),
             description: String,
-            frequency: T.nilable(FinchAPI::Models::HRIS::BenefitFrequency::OrSymbol),
-            type: T.nilable(FinchAPI::Models::HRIS::BenefitType::OrSymbol),
-            request_options: FinchAPI::RequestOpts
-          )
-            .returns(FinchAPI::Models::HRIS::CreateCompanyBenefitsResponse)
+            frequency: T.nilable(FinchAPI::HRIS::BenefitFrequency::OrSymbol),
+            type: T.nilable(FinchAPI::HRIS::BenefitType::OrSymbol),
+            request_options: FinchAPI::RequestOptions::OrHash
+          ).returns(FinchAPI::HRIS::CreateCompanyBenefitsResponse)
         end
         def create(
           # The company match for this benefit.
@@ -33,42 +33,59 @@ module FinchAPI
           # Type of benefit.
           type: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Lists deductions and contributions information for a given item
         sig do
-          params(benefit_id: String, request_options: FinchAPI::RequestOpts)
-            .returns(FinchAPI::Models::HRIS::CompanyBenefit)
+          params(
+            benefit_id: String,
+            request_options: FinchAPI::RequestOptions::OrHash
+          ).returns(FinchAPI::HRIS::CompanyBenefit)
         end
-        def retrieve(benefit_id, request_options: {}); end
+        def retrieve(benefit_id, request_options: {})
+        end
 
         # Updates an existing company-wide deduction or contribution
         sig do
-          params(benefit_id: String, description: String, request_options: FinchAPI::RequestOpts)
-            .returns(FinchAPI::Models::HRIS::UpdateCompanyBenefitResponse)
+          params(
+            benefit_id: String,
+            description: String,
+            request_options: FinchAPI::RequestOptions::OrHash
+          ).returns(FinchAPI::HRIS::UpdateCompanyBenefitResponse)
         end
         def update(
           benefit_id,
           # Updated name or description.
           description: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # List all company-wide deductions and contributions.
         sig do
-          params(request_options: FinchAPI::RequestOpts)
-            .returns(FinchAPI::Internal::SinglePage[FinchAPI::Models::HRIS::CompanyBenefit])
+          params(request_options: FinchAPI::RequestOptions::OrHash).returns(
+            FinchAPI::Internal::SinglePage[FinchAPI::HRIS::CompanyBenefit]
+          )
         end
-        def list(request_options: {}); end
+        def list(request_options: {})
+        end
 
         # Get deductions metadata
         sig do
-          params(request_options: FinchAPI::RequestOpts)
-            .returns(FinchAPI::Internal::SinglePage[FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse])
+          params(request_options: FinchAPI::RequestOptions::OrHash).returns(
+            FinchAPI::Internal::SinglePage[
+              FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse
+            ]
+          )
         end
-        def list_supported_benefits(request_options: {}); end
+        def list_supported_benefits(request_options: {})
+        end
 
         # @api private
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

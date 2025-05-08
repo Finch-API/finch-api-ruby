@@ -261,7 +261,7 @@ module FinchAPI
             headers["x-stainless-retry-count"] = "0"
           end
 
-          timeout = opts.fetch(:timeout, @timeout).to_f.clamp((0..))
+          timeout = opts.fetch(:timeout, @timeout).to_f.clamp(0..)
           unless headers.key?("x-stainless-timeout") || timeout.zero?
             headers["x-stainless-timeout"] = timeout.to_s
           end
@@ -458,9 +458,9 @@ module FinchAPI
 
           decoded = FinchAPI::Internal::Util.decode_content(response, stream: stream)
           case req
-          in { stream: Class => st }
+          in {stream: Class => st}
             st.new(model: model, url: url, status: status, response: response, stream: decoded)
-          in { page: Class => page }
+          in {page: Class => page}
             page.new(client: self, req: req, headers: response, page_data: decoded)
           else
             unwrapped = FinchAPI::Internal::Util.dig(decoded, req[:unwrap])

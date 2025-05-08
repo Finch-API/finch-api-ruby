@@ -20,31 +20,38 @@ module FinchAPI
         # access to this endpoint, please contact your Finch account manager.
         sig do
           params(
-            type: FinchAPI::Models::Jobs::AutomatedCreateParams::Type::OrSymbol,
-            params: T.any(FinchAPI::Models::Jobs::AutomatedCreateParams::Params, FinchAPI::Internal::AnyHash),
-            request_options: FinchAPI::RequestOpts
-          )
-            .returns(FinchAPI::Models::Jobs::AutomatedCreateResponse)
+            type: FinchAPI::Jobs::AutomatedCreateParams::Type::OrSymbol,
+            params: FinchAPI::Jobs::AutomatedCreateParams::Params::OrHash,
+            request_options: FinchAPI::RequestOptions::OrHash
+          ).returns(FinchAPI::Models::Jobs::AutomatedCreateResponse)
         end
         def create(
           # The type of job to start.
           type:,
           params:,
           request_options: {}
-        ); end
+        )
+        end
+
         # Get an automated job by `job_id`.
         sig do
-          params(job_id: String, request_options: FinchAPI::RequestOpts)
-            .returns(FinchAPI::Models::Jobs::AutomatedAsyncJob)
+          params(
+            job_id: String,
+            request_options: FinchAPI::RequestOptions::OrHash
+          ).returns(FinchAPI::Jobs::AutomatedAsyncJob)
         end
-        def retrieve(job_id, request_options: {}); end
+        def retrieve(job_id, request_options: {})
+        end
 
         # Get all automated jobs. Automated jobs are completed by a machine. By default,
         # jobs are sorted in descending order by submission time. For scheduled jobs such
         # as data syncs, only the next scheduled job is shown.
         sig do
-          params(limit: Integer, offset: Integer, request_options: FinchAPI::RequestOpts)
-            .returns(FinchAPI::Models::Jobs::AutomatedListResponse)
+          params(
+            limit: Integer,
+            offset: Integer,
+            request_options: FinchAPI::RequestOptions::OrHash
+          ).returns(FinchAPI::Models::Jobs::AutomatedListResponse)
         end
         def list(
           # Number of items to return
@@ -52,10 +59,13 @@ module FinchAPI
           # Index to start from (defaults to 0)
           offset: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

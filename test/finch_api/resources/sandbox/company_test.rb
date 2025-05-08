@@ -36,7 +36,7 @@ class FinchAPI::Test::Resources::Sandbox::CompanyTest < FinchAPI::Test::Resource
         ein: String | nil,
         entity: FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity | nil,
         legal_name: String | nil,
-        locations: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Location, nil?: true]) | nil,
+        locations: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Location, nil?: true]) | nil,
         primary_email: String | nil,
         primary_phone_number: String | nil
       }

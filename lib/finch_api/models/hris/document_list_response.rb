@@ -7,17 +7,17 @@ module FinchAPI
       class DocumentListResponse < FinchAPI::Internal::Type::BaseModel
         # @!attribute documents
         #
-        #   @return [Array<FinchAPI::Models::HRIS::DocumentResponse>]
-        required :documents, -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::HRIS::DocumentResponse] }
+        #   @return [Array<FinchAPI::HRIS::DocumentResponse>]
+        required :documents, -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::DocumentResponse] }
 
         # @!attribute paging
         #
-        #   @return [FinchAPI::Models::Paging]
-        required :paging, -> { FinchAPI::Models::Paging }
+        #   @return [FinchAPI::Paging]
+        required :paging, -> { FinchAPI::Paging }
 
         # @!method initialize(documents:, paging:)
-        #   @param documents [Array<FinchAPI::Models::HRIS::DocumentResponse>]
-        #   @param paging [FinchAPI::Models::Paging]
+        #   @param documents [Array<FinchAPI::HRIS::DocumentResponse>]
+        #   @param paging [FinchAPI::Paging]
       end
     end
   end

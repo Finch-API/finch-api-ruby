@@ -38,16 +38,12 @@ module FinchAPI
       #   {FinchAPI::Models::RequestForwardingForwardResponse} for more details.
       #
       #   @param data [String, nil] A string representation of the HTTP response body of the forwarded request’s res
-      #   ...
       #
       #   @param headers [Object, nil] The HTTP headers of the forwarded request’s response, exactly as received from t
-      #   ...
       #
       #   @param request [FinchAPI::Models::RequestForwardingForwardResponse::Request] An object containing details of your original forwarded request, for your ease o
-      #   ...
       #
       #   @param status_code [Integer] The HTTP status code of the forwarded request’s response, exactly received from
-      #   ...
 
       # @see FinchAPI::Models::RequestForwardingForwardResponse#request
       class Request < FinchAPI::Internal::Type::BaseModel
@@ -94,16 +90,12 @@ module FinchAPI
         #   of reference.
         #
         #   @param data [String, nil] The body that was specified for the forwarded request. If a value was not specif
-        #   ...
         #
         #   @param headers [Object, nil] The specified HTTP headers that were included in the forwarded request. If no he
-        #   ...
         #
         #   @param method_ [String] The HTTP method that was specified for the forwarded request. Valid values inclu
-        #   ...
         #
         #   @param params [Object, nil] The query parameters that were included in the forwarded request. If no query pa
-        #   ...
         #
         #   @param route [String] The URL route path that was specified for the forwarded request.
       end

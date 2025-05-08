@@ -14,14 +14,14 @@ class FinchAPI::Test::Resources::HRIS::EmploymentsTest < FinchAPI::Test::Resourc
     return if row.nil?
 
     assert_pattern do
-      row => FinchAPI::Models::HRIS::EmploymentDataResponse
+      row => FinchAPI::HRIS::EmploymentDataResponse
     end
 
     assert_pattern do
       row => {
-        body: FinchAPI::Models::HRIS::EmploymentData | nil,
-        code: Integer | nil,
-        individual_id: String | nil
+        body: FinchAPI::HRIS::EmploymentData,
+        code: Integer,
+        individual_id: String
       }
     end
   end

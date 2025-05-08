@@ -7,6 +7,9 @@ module FinchAPI
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+
         # Number of items to return
         sig { returns(T.nilable(Integer)) }
         attr_reader :limit
@@ -25,9 +28,8 @@ module FinchAPI
           params(
             limit: Integer,
             offset: Integer,
-            request_options: T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: FinchAPI::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # Number of items to return
@@ -35,9 +37,20 @@ module FinchAPI
           # Index to start from (defaults to 0)
           offset: nil,
           request_options: {}
-        ); end
-        sig { override.returns({limit: Integer, offset: Integer, request_options: FinchAPI::RequestOptions}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              limit: Integer,
+              offset: Integer,
+              request_options: FinchAPI::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

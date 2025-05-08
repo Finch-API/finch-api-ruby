@@ -21,9 +21,12 @@ module FinchAPI
         #   Supported contribution types. An empty array indicates contributions are not
         #   supported.
         #
-        #   @return [Array<Symbol, FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution, nil>, nil]
+        #   @return [Array<Symbol, FinchAPI::HRIS::SupportedBenefit::CompanyContribution, nil>, nil]
         optional :company_contribution,
-                 -> { FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution, nil?: true] },
+                 -> {
+                   FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::HRIS::SupportedBenefit::CompanyContribution,
+                                                     nil?: true]
+                 },
                  nil?: true
 
         # @!attribute description
@@ -35,48 +38,50 @@ module FinchAPI
         #   Supported deduction types. An empty array indicates deductions are not
         #   supported.
         #
-        #   @return [Array<Symbol, FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction, nil>, nil]
+        #   @return [Array<Symbol, FinchAPI::HRIS::SupportedBenefit::EmployeeDeduction, nil>, nil]
         optional :employee_deduction,
-                 -> { FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction, nil?: true] },
+                 -> {
+                   FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::HRIS::SupportedBenefit::EmployeeDeduction,
+                                                     nil?: true]
+                 },
                  nil?: true
 
         # @!attribute frequencies
         #   The list of frequencies supported by the provider for this benefit
         #
-        #   @return [Array<Symbol, FinchAPI::Models::HRIS::BenefitFrequency, nil>, nil]
+        #   @return [Array<Symbol, FinchAPI::HRIS::BenefitFrequency, nil>, nil]
         optional :frequencies,
-                 -> { FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::HRIS::BenefitFrequency, nil?: true] }
+                 -> { FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::HRIS::BenefitFrequency, nil?: true] }
 
         # @!attribute hsa_contribution_limit
         #   Whether the provider supports HSA contribution limits. Empty if this feature is
         #   not supported for the benefit. This array only has values for HSA benefits.
         #
-        #   @return [Array<Symbol, FinchAPI::Models::HRIS::SupportedBenefit::HsaContributionLimit, nil>, nil]
+        #   @return [Array<Symbol, FinchAPI::HRIS::SupportedBenefit::HsaContributionLimit, nil>, nil]
         optional :hsa_contribution_limit,
-                 -> { FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::HRIS::SupportedBenefit::HsaContributionLimit, nil?: true] },
+                 -> {
+                   FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::HRIS::SupportedBenefit::HsaContributionLimit,
+                                                     nil?: true]
+                 },
                  nil?: true
 
         # @!method initialize(annual_maximum: nil, catch_up: nil, company_contribution: nil, description: nil, employee_deduction: nil, frequencies: nil, hsa_contribution_limit: nil)
         #   Some parameter documentations has been truncated, see
-        #   {FinchAPI::Models::HRIS::SupportedBenefit} for more details.
+        #   {FinchAPI::HRIS::SupportedBenefit} for more details.
         #
         #   @param annual_maximum [Boolean, nil] Whether the provider supports an annual maximum for this benefit.
         #
         #   @param catch_up [Boolean, nil] Whether the provider supports catch up for this benefit. This field will only be
-        #   ...
         #
-        #   @param company_contribution [Array<Symbol, FinchAPI::Models::HRIS::SupportedBenefit::CompanyContribution, nil>, nil] Supported contribution types. An empty array indicates contributions are not sup
-        #   ...
+        #   @param company_contribution [Array<Symbol, FinchAPI::HRIS::SupportedBenefit::CompanyContribution, nil>, nil] Supported contribution types. An empty array indicates contributions are not sup
         #
         #   @param description [String, nil]
         #
-        #   @param employee_deduction [Array<Symbol, FinchAPI::Models::HRIS::SupportedBenefit::EmployeeDeduction, nil>, nil] Supported deduction types. An empty array indicates deductions are not supported
-        #   ...
+        #   @param employee_deduction [Array<Symbol, FinchAPI::HRIS::SupportedBenefit::EmployeeDeduction, nil>, nil] Supported deduction types. An empty array indicates deductions are not supported
         #
-        #   @param frequencies [Array<Symbol, FinchAPI::Models::HRIS::BenefitFrequency, nil>] The list of frequencies supported by the provider for this benefit
+        #   @param frequencies [Array<Symbol, FinchAPI::HRIS::BenefitFrequency, nil>] The list of frequencies supported by the provider for this benefit
         #
-        #   @param hsa_contribution_limit [Array<Symbol, FinchAPI::Models::HRIS::SupportedBenefit::HsaContributionLimit, nil>, nil] Whether the provider supports HSA contribution limits. Empty if this feature is
-        #   ...
+        #   @param hsa_contribution_limit [Array<Symbol, FinchAPI::HRIS::SupportedBenefit::HsaContributionLimit, nil>, nil] Whether the provider supports HSA contribution limits. Empty if this feature is
 
         module CompanyContribution
           extend FinchAPI::Internal::Type::Enum
