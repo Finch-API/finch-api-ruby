@@ -99,7 +99,7 @@ module FinchAPI
       # @param response [nil]
       # @param message [String, nil]
       #
-      # @return [FinchAPI::Errors::APIStatusError]
+      # @return [self]
       def self.for(url:, status:, body:, request:, response:, message: nil)
         kwargs = {
           url: url,
