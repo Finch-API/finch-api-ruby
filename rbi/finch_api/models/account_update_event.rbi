@@ -3,7 +3,10 @@
 module FinchAPI
   module Models
     class AccountUpdateEvent < FinchAPI::Models::BaseWebhookEvent
-      OrHash = T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(FinchAPI::AccountUpdateEvent, FinchAPI::Internal::AnyHash)
+        end
 
       sig { returns(T.nilable(FinchAPI::AccountUpdateEvent::Data)) }
       attr_reader :data
@@ -47,7 +50,12 @@ module FinchAPI
 
       class Data < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::AccountUpdateEvent::Data,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         sig do
           returns(FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod)
@@ -89,7 +97,12 @@ module FinchAPI
 
         class AuthenticationMethod < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # Each benefit type and their supported features. If the benefit type is not
           # supported, the property will be null
@@ -183,7 +196,12 @@ module FinchAPI
 
           class SupportedFields < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             sig do
               returns(
@@ -359,7 +377,12 @@ module FinchAPI
 
             class Company < FinchAPI::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company,
+                    FinchAPI::Internal::AnyHash
+                  )
+                end
 
               sig { returns(T.nilable(T::Boolean)) }
               attr_reader :id
@@ -514,7 +537,10 @@ module FinchAPI
               class Accounts < FinchAPI::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                    T.any(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Accounts,
+                      FinchAPI::Internal::AnyHash
+                    )
                   end
 
                 sig { returns(T.nilable(T::Boolean)) }
@@ -583,7 +609,10 @@ module FinchAPI
               class Departments < FinchAPI::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                    T.any(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments,
+                      FinchAPI::Internal::AnyHash
+                    )
                   end
 
                 sig { returns(T.nilable(T::Boolean)) }
@@ -634,7 +663,10 @@ module FinchAPI
                 class Parent < FinchAPI::Internal::Type::BaseModel
                   OrHash =
                     T.type_alias do
-                      T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                      T.any(
+                        FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments::Parent,
+                        FinchAPI::Internal::AnyHash
+                      )
                     end
 
                   sig { returns(T.nilable(T::Boolean)) }
@@ -656,7 +688,10 @@ module FinchAPI
               class Entity < FinchAPI::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                    T.any(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Entity,
+                      FinchAPI::Internal::AnyHash
+                    )
                   end
 
                 sig { returns(T.nilable(T::Boolean)) }
@@ -689,7 +724,10 @@ module FinchAPI
               class Locations < FinchAPI::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                    T.any(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Locations,
+                      FinchAPI::Internal::AnyHash
+                    )
                   end
 
                 sig { returns(T.nilable(T::Boolean)) }
@@ -767,7 +805,12 @@ module FinchAPI
 
             class Directory < FinchAPI::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory,
+                    FinchAPI::Internal::AnyHash
+                  )
+                end
 
               sig do
                 returns(
@@ -830,7 +873,10 @@ module FinchAPI
               class Individuals < FinchAPI::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                    T.any(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals,
+                      FinchAPI::Internal::AnyHash
+                    )
                   end
 
                 sig { returns(T.nilable(T::Boolean)) }
@@ -929,7 +975,10 @@ module FinchAPI
                 class Manager < FinchAPI::Internal::Type::BaseModel
                   OrHash =
                     T.type_alias do
-                      T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                      T.any(
+                        FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager,
+                        FinchAPI::Internal::AnyHash
+                      )
                     end
 
                   sig { returns(T.nilable(T::Boolean)) }
@@ -951,7 +1000,10 @@ module FinchAPI
               class Paging < FinchAPI::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                    T.any(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Paging,
+                      FinchAPI::Internal::AnyHash
+                    )
                   end
 
                 sig { returns(T.nilable(T::Boolean)) }
@@ -984,7 +1036,12 @@ module FinchAPI
 
             class Employment < FinchAPI::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment,
+                    FinchAPI::Internal::AnyHash
+                  )
+                end
 
               sig { returns(T.nilable(T::Boolean)) }
               attr_reader :id
@@ -1224,7 +1281,10 @@ module FinchAPI
               class Department < FinchAPI::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                    T.any(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Department,
+                      FinchAPI::Internal::AnyHash
+                    )
                   end
 
                 sig { returns(T.nilable(T::Boolean)) }
@@ -1245,7 +1305,10 @@ module FinchAPI
               class Employment < FinchAPI::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                    T.any(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Employment,
+                      FinchAPI::Internal::AnyHash
+                    )
                   end
 
                 sig { returns(T.nilable(T::Boolean)) }
@@ -1278,7 +1341,10 @@ module FinchAPI
               class Income < FinchAPI::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                    T.any(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Income,
+                      FinchAPI::Internal::AnyHash
+                    )
                   end
 
                 sig { returns(T.nilable(T::Boolean)) }
@@ -1325,7 +1391,10 @@ module FinchAPI
               class Location < FinchAPI::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                    T.any(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Location,
+                      FinchAPI::Internal::AnyHash
+                    )
                   end
 
                 sig { returns(T.nilable(T::Boolean)) }
@@ -1403,7 +1472,10 @@ module FinchAPI
               class Manager < FinchAPI::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                    T.any(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager,
+                      FinchAPI::Internal::AnyHash
+                    )
                   end
 
                 sig { returns(T.nilable(T::Boolean)) }
@@ -1424,7 +1496,12 @@ module FinchAPI
 
             class Individual < FinchAPI::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual,
+                    FinchAPI::Internal::AnyHash
+                  )
+                end
 
               sig { returns(T.nilable(T::Boolean)) }
               attr_reader :id
@@ -1602,7 +1679,10 @@ module FinchAPI
               class Emails < FinchAPI::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                    T.any(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Emails,
+                      FinchAPI::Internal::AnyHash
+                    )
                   end
 
                 sig { returns(T.nilable(T::Boolean)) }
@@ -1633,7 +1713,10 @@ module FinchAPI
               class PhoneNumbers < FinchAPI::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                    T.any(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers,
+                      FinchAPI::Internal::AnyHash
+                    )
                   end
 
                 sig { returns(T.nilable(T::Boolean)) }
@@ -1664,7 +1747,10 @@ module FinchAPI
               class Residence < FinchAPI::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                    T.any(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Residence,
+                      FinchAPI::Internal::AnyHash
+                    )
                   end
 
                 sig { returns(T.nilable(T::Boolean)) }
@@ -1742,7 +1828,12 @@ module FinchAPI
 
             class PayGroup < FinchAPI::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayGroup,
+                    FinchAPI::Internal::AnyHash
+                  )
+                end
 
               sig { returns(T.nilable(T::Boolean)) }
               attr_reader :id
@@ -1800,7 +1891,12 @@ module FinchAPI
 
             class PayStatement < FinchAPI::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement,
+                    FinchAPI::Internal::AnyHash
+                  )
+                end
 
               sig do
                 returns(
@@ -1863,7 +1959,10 @@ module FinchAPI
               class Paging < FinchAPI::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                    T.any(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::Paging,
+                      FinchAPI::Internal::AnyHash
+                    )
                   end
 
                 sig { returns(T::Boolean) }
@@ -1890,7 +1989,10 @@ module FinchAPI
               class PayStatements < FinchAPI::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                    T.any(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements,
+                      FinchAPI::Internal::AnyHash
+                    )
                   end
 
                 sig do
@@ -2055,7 +2157,10 @@ module FinchAPI
                 class Earnings < FinchAPI::Internal::Type::BaseModel
                   OrHash =
                     T.type_alias do
-                      T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                      T.any(
+                        FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings,
+                        FinchAPI::Internal::AnyHash
+                      )
                     end
 
                   sig { returns(T.nilable(T::Boolean)) }
@@ -2110,7 +2215,10 @@ module FinchAPI
                 class EmployeeDeductions < FinchAPI::Internal::Type::BaseModel
                   OrHash =
                     T.type_alias do
-                      T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                      T.any(
+                        FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions,
+                        FinchAPI::Internal::AnyHash
+                      )
                     end
 
                   sig { returns(T.nilable(T::Boolean)) }
@@ -2179,7 +2287,10 @@ module FinchAPI
                 class EmployerContributions < FinchAPI::Internal::Type::BaseModel
                   OrHash =
                     T.type_alias do
-                      T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                      T.any(
+                        FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions,
+                        FinchAPI::Internal::AnyHash
+                      )
                     end
 
                   sig { returns(T.nilable(T::Boolean)) }
@@ -2226,7 +2337,10 @@ module FinchAPI
                 class Taxes < FinchAPI::Internal::Type::BaseModel
                   OrHash =
                     T.type_alias do
-                      T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                      T.any(
+                        FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes,
+                        FinchAPI::Internal::AnyHash
+                      )
                     end
 
                   sig { returns(T.nilable(T::Boolean)) }
@@ -2296,7 +2410,12 @@ module FinchAPI
 
             class Payment < FinchAPI::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment,
+                    FinchAPI::Internal::AnyHash
+                  )
+                end
 
               sig { returns(T.nilable(T::Boolean)) }
               attr_reader :id
@@ -2439,7 +2558,10 @@ module FinchAPI
               class PayPeriod < FinchAPI::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                    T.any(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment::PayPeriod,
+                      FinchAPI::Internal::AnyHash
+                    )
                   end
 
                 sig { returns(T.nilable(T::Boolean)) }

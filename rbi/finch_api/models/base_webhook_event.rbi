@@ -3,7 +3,10 @@
 module FinchAPI
   module Models
     class BaseWebhookEvent < FinchAPI::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(FinchAPI::BaseWebhookEvent, FinchAPI::Internal::AnyHash)
+        end
 
       # [DEPRECATED] Unique Finch ID of the employer account used to make this
       # connection. Use `connection_id` instead to identify the connection associated

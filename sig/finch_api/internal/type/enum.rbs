@@ -3,6 +3,7 @@ module FinchAPI
     module Type
       module Enum
         include FinchAPI::Internal::Type::Converter
+        include FinchAPI::Internal::Util::SorbetRuntimeSupport
 
         def self.values: -> ::Array[(nil | bool | Integer | Float | Symbol)]
 

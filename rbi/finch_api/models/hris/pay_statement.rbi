@@ -5,7 +5,9 @@ module FinchAPI
     module HRIS
       class PayStatement < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(FinchAPI::HRIS::PayStatement, FinchAPI::Internal::AnyHash)
+          end
 
         # The array of earnings objects associated with this pay statement
         sig do
@@ -185,7 +187,12 @@ module FinchAPI
 
         class Earning < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::HRIS::PayStatement::Earning,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # The earnings amount in cents.
           sig { returns(T.nilable(Integer)) }
@@ -282,7 +289,12 @@ module FinchAPI
 
           class Attributes < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::HRIS::PayStatement::Earning::Attributes,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             sig do
               returns(
@@ -323,7 +335,12 @@ module FinchAPI
 
             class Metadata < FinchAPI::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    FinchAPI::HRIS::PayStatement::Earning::Attributes::Metadata,
+                    FinchAPI::Internal::AnyHash
+                  )
+                end
 
               # The metadata to be attached to the entity by existing rules. It is a key-value
               # pairs where the values can be of any type (string, number, boolean, object,
@@ -449,7 +466,12 @@ module FinchAPI
 
         class EmployeeDeduction < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::HRIS::PayStatement::EmployeeDeduction,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # The deduction amount in cents.
           sig { returns(T.nilable(Integer)) }
@@ -538,7 +560,12 @@ module FinchAPI
 
           class Attributes < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             sig do
               returns(
@@ -579,7 +606,12 @@ module FinchAPI
 
             class Metadata < FinchAPI::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata,
+                    FinchAPI::Internal::AnyHash
+                  )
+                end
 
               # The metadata to be attached to the entity by existing rules. It is a key-value
               # pairs where the values can be of any type (string, number, boolean, object,
@@ -618,7 +650,12 @@ module FinchAPI
 
         class EmployerContribution < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::HRIS::PayStatement::EmployerContribution,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # The contribution amount in cents.
           sig { returns(T.nilable(Integer)) }
@@ -699,7 +736,12 @@ module FinchAPI
 
           class Attributes < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::HRIS::PayStatement::EmployerContribution::Attributes,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             sig do
               returns(
@@ -740,7 +782,12 @@ module FinchAPI
 
             class Metadata < FinchAPI::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    FinchAPI::HRIS::PayStatement::EmployerContribution::Attributes::Metadata,
+                    FinchAPI::Internal::AnyHash
+                  )
+                end
 
               # The metadata to be attached to the entity by existing rules. It is a key-value
               # pairs where the values can be of any type (string, number, boolean, object,
@@ -811,7 +858,12 @@ module FinchAPI
 
         class Tax < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::HRIS::PayStatement::Tax,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # The tax amount in cents.
           sig { returns(T.nilable(Integer)) }
@@ -899,7 +951,12 @@ module FinchAPI
 
           class Attributes < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::HRIS::PayStatement::Tax::Attributes,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             sig do
               returns(
@@ -940,7 +997,12 @@ module FinchAPI
 
             class Metadata < FinchAPI::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    FinchAPI::HRIS::PayStatement::Tax::Attributes::Metadata,
+                    FinchAPI::Internal::AnyHash
+                  )
+                end
 
               # The metadata to be attached to the entity by existing rules. It is a key-value
               # pairs where the values can be of any type (string, number, boolean, object,

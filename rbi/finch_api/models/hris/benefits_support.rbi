@@ -5,7 +5,9 @@ module FinchAPI
     module HRIS
       class BenefitsSupport < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(FinchAPI::HRIS::BenefitsSupport, FinchAPI::Internal::AnyHash)
+          end
 
         sig { returns(T.nilable(FinchAPI::HRIS::BenefitFeaturesAndOperations)) }
         attr_reader :commuter

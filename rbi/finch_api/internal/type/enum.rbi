@@ -17,6 +17,7 @@ module FinchAPI
       # values safely.
       module Enum
         include FinchAPI::Internal::Type::Converter
+        include FinchAPI::Internal::Util::SorbetRuntimeSupport
 
         # All of the valid Symbol values for this enum.
         sig do

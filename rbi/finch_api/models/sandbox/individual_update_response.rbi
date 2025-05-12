@@ -5,7 +5,12 @@ module FinchAPI
     module Sandbox
       class IndividualUpdateResponse < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::Models::Sandbox::IndividualUpdateResponse,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         # A stable Finch `id` (UUID v4) for an individual in the company.
         sig { returns(T.nilable(String)) }
@@ -204,7 +209,12 @@ module FinchAPI
 
         class Email < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::Models::Sandbox::IndividualUpdateResponse::Email,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           sig { returns(T.nilable(String)) }
           attr_reader :data
@@ -394,7 +404,12 @@ module FinchAPI
 
         class PhoneNumber < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           sig { returns(T.nilable(String)) }
           attr_accessor :data

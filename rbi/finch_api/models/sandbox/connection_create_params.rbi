@@ -8,7 +8,12 @@ module FinchAPI
         include FinchAPI::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::Sandbox::ConnectionCreateParams,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         # The provider associated with the connection
         sig { returns(String) }

@@ -10,7 +10,12 @@ module FinchAPI
             include FinchAPI::Internal::Type::RequestParameters
 
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             # Specifies the fields to be applied when the condition is met.
             sig do
@@ -128,7 +133,12 @@ module FinchAPI
 
             class Attributes < FinchAPI::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes,
+                    FinchAPI::Internal::AnyHash
+                  )
+                end
 
               # The metadata to be attached in the entity. It is a key-value pairs where the
               # values can be of any type (string, number, boolean, object, array, etc.).
@@ -160,7 +170,12 @@ module FinchAPI
 
             class Condition < FinchAPI::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Condition,
+                    FinchAPI::Internal::AnyHash
+                  )
+                end
 
               # The field to be checked in the rule.
               sig { returns(T.nilable(String)) }

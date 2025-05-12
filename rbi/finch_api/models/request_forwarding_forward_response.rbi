@@ -3,7 +3,13 @@
 module FinchAPI
   module Models
     class RequestForwardingForwardResponse < FinchAPI::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            FinchAPI::Models::RequestForwardingForwardResponse,
+            FinchAPI::Internal::AnyHash
+          )
+        end
 
       # A string representation of the HTTP response body of the forwarded request’s
       # response received from the underlying integration’s API. This field may be null
@@ -78,7 +84,12 @@ module FinchAPI
 
       class Request < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::Models::RequestForwardingForwardResponse::Request,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         # The body that was specified for the forwarded request. If a value was not
         # specified in the original request, this value will be returned as null ;

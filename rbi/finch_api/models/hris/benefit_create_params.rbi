@@ -8,7 +8,12 @@ module FinchAPI
         include FinchAPI::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::HRIS::BenefitCreateParams,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         # The company match for this benefit.
         sig do
@@ -91,7 +96,12 @@ module FinchAPI
 
         class CompanyContribution < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::HRIS::BenefitCreateParams::CompanyContribution,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -162,7 +172,12 @@ module FinchAPI
 
           class Tier < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::Tier,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             sig { returns(T.nilable(Integer)) }
             attr_reader :match

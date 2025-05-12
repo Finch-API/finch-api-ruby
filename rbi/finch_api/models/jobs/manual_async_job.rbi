@@ -5,7 +5,9 @@ module FinchAPI
     module Jobs
       class ManualAsyncJob < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(FinchAPI::Jobs::ManualAsyncJob, FinchAPI::Internal::AnyHash)
+          end
 
         # Specific information about the job, such as individual statuses for batch jobs.
         sig { returns(T.nilable(T::Array[T.anything])) }

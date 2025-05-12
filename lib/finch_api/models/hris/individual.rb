@@ -250,6 +250,12 @@ module FinchAPI
 
         # @!method self.variants
         #   @return [Array(FinchAPI::HRIS::Individual::UnionMember0, FinchAPI::HRIS::Individual::BatchError)]
+
+        define_sorbet_constant!(:Variants) do
+          T.type_alias do
+            T.any(FinchAPI::HRIS::Individual::UnionMember0, FinchAPI::HRIS::Individual::BatchError)
+          end
+        end
       end
     end
   end

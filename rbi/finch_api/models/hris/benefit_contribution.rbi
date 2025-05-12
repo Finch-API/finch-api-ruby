@@ -5,7 +5,12 @@ module FinchAPI
     module HRIS
       class BenefitContribution < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::HRIS::BenefitContribution,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         # Contribution amount in cents (if `fixed`) or basis points (if `percent`).
         sig { returns(T.nilable(Integer)) }

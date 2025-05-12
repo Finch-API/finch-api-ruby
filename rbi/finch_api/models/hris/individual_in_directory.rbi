@@ -5,7 +5,12 @@ module FinchAPI
     module HRIS
       class IndividualInDirectory < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::HRIS::IndividualInDirectory,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         # A stable Finch `id` (UUID v4) for an individual in the company.
         sig { returns(String) }
@@ -110,7 +115,12 @@ module FinchAPI
 
         class Department < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::HRIS::IndividualInDirectory::Department,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # The name of the department.
           sig { returns(T.nilable(String)) }
@@ -131,7 +141,12 @@ module FinchAPI
 
         class Manager < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::HRIS::IndividualInDirectory::Manager,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # A stable Finch `id` (UUID v4) for an individual in the company.
           sig { returns(String) }

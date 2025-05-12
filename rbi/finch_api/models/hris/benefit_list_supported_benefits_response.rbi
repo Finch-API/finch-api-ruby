@@ -5,7 +5,12 @@ module FinchAPI
     module HRIS
       class BenefitListSupportedBenefitsResponse < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         # Whether the provider supports an annual maximum for this benefit.
         sig { returns(T.nilable(T::Boolean)) }

@@ -29,7 +29,7 @@ module FinchAPI
         #
         #   @option spec [Boolean] :"nil?"
         #
-        # @return [FinchAPI::Internal::Type::HashOf]
+        # @return [self]
         def self.[](...) = new(...)
 
         # @api public

@@ -9,7 +9,12 @@ module FinchAPI
           include FinchAPI::Internal::Type::RequestParameters
 
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::HRIS::Company::PayStatementItemListParams,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # Comma-delimited list of pay statement item categories to filter on. If empty,
           # defaults to all categories.

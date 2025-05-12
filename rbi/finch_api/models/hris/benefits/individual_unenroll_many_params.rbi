@@ -9,7 +9,12 @@ module FinchAPI
           include FinchAPI::Internal::Type::RequestParameters
 
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::HRIS::Benefits::IndividualUnenrollManyParams,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # Array of individual_ids to unenroll.
           sig { returns(T.nilable(T::Array[String])) }

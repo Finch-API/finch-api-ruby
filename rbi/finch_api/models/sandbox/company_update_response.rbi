@@ -5,7 +5,12 @@ module FinchAPI
     module Sandbox
       class CompanyUpdateResponse < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::Models::Sandbox::CompanyUpdateResponse,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         # An array of bank account objects associated with the payroll/HRIS system.
         sig do
@@ -153,7 +158,12 @@ module FinchAPI
 
         class Account < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::Models::Sandbox::CompanyUpdateResponse::Account,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # The name of the bank associated in the payroll/HRIS system.
           sig { returns(T.nilable(String)) }
@@ -264,7 +274,12 @@ module FinchAPI
 
         class Department < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # The department name.
           sig { returns(T.nilable(String)) }
@@ -323,7 +338,12 @@ module FinchAPI
 
           class Parent < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::Models::Sandbox::CompanyUpdateResponse::Department::Parent,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             # The parent department's name.
             sig { returns(T.nilable(String)) }
@@ -345,7 +365,12 @@ module FinchAPI
 
         class Entity < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::Models::Sandbox::CompanyUpdateResponse::Entity,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # The tax payer subtype of the company.
           sig do

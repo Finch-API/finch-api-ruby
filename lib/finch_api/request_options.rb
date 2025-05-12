@@ -69,5 +69,9 @@ module FinchAPI
     #   Returns a new instance of RequestOptions.
     #
     #   @param values [Hash{Symbol=>Object}]
+
+    define_sorbet_constant!(:OrHash) do
+      T.type_alias { T.any(FinchAPI::RequestOptions, FinchAPI::Internal::AnyHash) }
+    end
   end
 end

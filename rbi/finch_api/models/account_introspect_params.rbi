@@ -6,7 +6,10 @@ module FinchAPI
       extend FinchAPI::Internal::Type::RequestParameters::Converter
       include FinchAPI::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(FinchAPI::AccountIntrospectParams, FinchAPI::Internal::AnyHash)
+        end
 
       sig do
         params(request_options: FinchAPI::RequestOptions::OrHash).returns(

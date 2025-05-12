@@ -3,7 +3,8 @@
 module FinchAPI
   module Models
     class Paging < FinchAPI::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(FinchAPI::Paging, FinchAPI::Internal::AnyHash) }
 
       # The current start index of the returned list of elements
       sig { returns(Integer) }
