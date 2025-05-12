@@ -5,7 +5,9 @@ module FinchAPI
     module HRIS
       class Payment < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(FinchAPI::HRIS::Payment, FinchAPI::Internal::AnyHash)
+          end
 
         # The unique id for the payment.
         sig { returns(T.nilable(String)) }
@@ -197,7 +199,12 @@ module FinchAPI
 
         class PayPeriod < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::HRIS::Payment::PayPeriod,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           sig { returns(T.nilable(String)) }
           attr_accessor :end_date

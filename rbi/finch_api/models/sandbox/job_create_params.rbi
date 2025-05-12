@@ -8,7 +8,12 @@ module FinchAPI
         include FinchAPI::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::Sandbox::JobCreateParams,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         # The type of job to start. Currently the only supported type is `data_sync_all`
         sig { returns(FinchAPI::Sandbox::JobCreateParams::Type::OrSymbol) }

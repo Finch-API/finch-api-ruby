@@ -5,7 +5,12 @@ module FinchAPI
     module Jobs
       class AutomatedListResponse < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::Models::Jobs::AutomatedListResponse,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         sig { returns(T::Array[FinchAPI::Jobs::AutomatedAsyncJob]) }
         attr_accessor :data
@@ -42,7 +47,12 @@ module FinchAPI
 
         class Meta < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::Models::Jobs::AutomatedListResponse::Meta,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # Information about remaining quotas for this connection. Only applicable for
           # customers opted in to use Finch's Data Sync Refresh endpoint
@@ -93,7 +103,12 @@ module FinchAPI
 
           class Quotas < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             sig do
               returns(
@@ -138,7 +153,12 @@ module FinchAPI
 
             class DataSyncAll < FinchAPI::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    FinchAPI::Models::Jobs::AutomatedListResponse::Meta::Quotas::DataSyncAll,
+                    FinchAPI::Internal::AnyHash
+                  )
+                end
 
               sig { returns(T.nilable(Integer)) }
               attr_reader :allowed_refreshes

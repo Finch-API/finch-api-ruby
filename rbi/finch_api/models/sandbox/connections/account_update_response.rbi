@@ -6,7 +6,12 @@ module FinchAPI
       module Connections
         class AccountUpdateResponse < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # [DEPRECATED] Use `connection_id` to associate a connection with an access token
           sig { returns(String) }

@@ -5,7 +5,12 @@ module FinchAPI
     module Sandbox
       class PaymentCreateResponse < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::Models::Sandbox::PaymentCreateResponse,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         # The date of the payment.
         sig { returns(String) }

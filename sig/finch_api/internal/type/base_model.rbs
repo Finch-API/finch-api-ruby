@@ -3,9 +3,12 @@ module FinchAPI
     module Type
       class BaseModel
         extend FinchAPI::Internal::Type::Converter
+        extend FinchAPI::Internal::Util::SorbetRuntimeSupport
 
         type known_field =
           { mode: (:coerce | :dump)?, required: bool, nilable: bool }
+
+        def self.inherited: (self child) -> void
 
         def self.known_fields: -> ::Hash[Symbol, (FinchAPI::Internal::Type::BaseModel::known_field
         & { type_fn: (^-> FinchAPI::Internal::Type::Converter::input) })]
@@ -58,10 +61,10 @@ module FinchAPI
         def self.coerce: (
           FinchAPI::Internal::Type::BaseModel | ::Hash[top, top] | top value,
           state: FinchAPI::Internal::Type::Converter::coerce_state
-        ) -> (instance | top)
+        ) -> (self | top)
 
         def self.dump: (
-          instance | top value,
+          self | top value,
           state: FinchAPI::Internal::Type::Converter::dump_state
         ) -> (::Hash[top, top] | top)
 

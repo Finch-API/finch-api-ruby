@@ -8,7 +8,12 @@ module FinchAPI
         include FinchAPI::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::HRIS::PaymentListParams,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         # The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
         # format.

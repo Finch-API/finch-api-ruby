@@ -8,7 +8,12 @@ module FinchAPI
         include FinchAPI::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::HRIS::IndividualRetrieveManyParams,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         sig do
           returns(
@@ -80,7 +85,12 @@ module FinchAPI
 
         class Options < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::HRIS::IndividualRetrieveManyParams::Options,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :include
@@ -99,7 +109,12 @@ module FinchAPI
 
         class Request < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::HRIS::IndividualRetrieveManyParams::Request,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           sig { returns(T.nilable(String)) }
           attr_reader :individual_id

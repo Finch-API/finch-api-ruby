@@ -16,7 +16,12 @@ module FinchAPI
 
         class UnionMember0 < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::HRIS::EmploymentData::UnionMember0,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # A stable Finch `id` (UUID v4) for an individual in the company.
           sig { returns(String) }
@@ -298,7 +303,12 @@ module FinchAPI
 
           class CustomField < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             sig { returns(T.nilable(String)) }
             attr_reader :name
@@ -395,7 +405,12 @@ module FinchAPI
 
           class Department < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::Department,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             # The name of the department associated with the individual.
             sig { returns(T.nilable(String)) }
@@ -416,7 +431,12 @@ module FinchAPI
 
           class Employment < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             # The secondary employment type of the individual. Options: `full_time`,
             # `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
@@ -633,7 +653,12 @@ module FinchAPI
 
           class Manager < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::Manager,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             # A stable Finch `id` (UUID v4) for an individual in the company.
             sig { returns(String) }
@@ -655,7 +680,12 @@ module FinchAPI
 
         class BatchError < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::HRIS::EmploymentData::BatchError,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           sig { returns(Float) }
           attr_accessor :code

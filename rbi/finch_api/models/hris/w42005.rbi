@@ -5,7 +5,9 @@ module FinchAPI
     module HRIS
       class W42005 < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(FinchAPI::HRIS::W42005, FinchAPI::Internal::AnyHash)
+          end
 
         # Detailed information specific to the 2005 W4 form.
         sig { returns(T.nilable(FinchAPI::HRIS::W42005::Data)) }
@@ -58,7 +60,9 @@ module FinchAPI
 
         class Data < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(FinchAPI::HRIS::W42005::Data, FinchAPI::Internal::AnyHash)
+            end
 
           # Additional withholding amount (in cents).
           sig { returns(T.nilable(Integer)) }

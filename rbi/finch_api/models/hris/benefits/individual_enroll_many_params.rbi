@@ -9,7 +9,12 @@ module FinchAPI
           include FinchAPI::Internal::Type::RequestParameters
 
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::HRIS::Benefits::IndividualEnrollManyParams,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # Array of the individual_id to enroll and a configuration object.
           sig do
@@ -65,7 +70,12 @@ module FinchAPI
 
           class Individual < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             sig do
               returns(
@@ -119,7 +129,12 @@ module FinchAPI
 
             class Configuration < FinchAPI::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration,
+                    FinchAPI::Internal::AnyHash
+                  )
+                end
 
               # For HSA benefits only - whether the contribution limit is for an individual or
               # family
@@ -277,7 +292,10 @@ module FinchAPI
               class CompanyContribution < FinchAPI::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                    T.any(
+                      FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution,
+                      FinchAPI::Internal::AnyHash
+                    )
                   end
 
                 # Amount in cents for fixed type or basis points (1/100th of a percent) for
@@ -370,7 +388,10 @@ module FinchAPI
               class EmployeeDeduction < FinchAPI::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, FinchAPI::Internal::AnyHash)
+                    T.any(
+                      FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction,
+                      FinchAPI::Internal::AnyHash
+                    )
                   end
 
                 # Amount in cents for fixed type or basis points (1/100th of a percent) for

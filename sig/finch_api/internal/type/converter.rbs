@@ -2,6 +2,8 @@ module FinchAPI
   module Internal
     module Type
       module Converter
+        extend FinchAPI::Internal::Util::SorbetRuntimeSupport
+
         type input = FinchAPI::Internal::Type::Converter | Class
 
         type coerce_state =

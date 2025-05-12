@@ -221,6 +221,10 @@ module FinchAPI
               # @!method self.variants
               #   @return [Array(String, Array<Object>, Object, Float, Boolean)]
 
+              define_sorbet_constant!(:Variants) do
+                T.type_alias { T.any(String, T::Array[T.anything], T.anything, Float, T::Boolean) }
+              end
+
               # @type [FinchAPI::Internal::Type::Converter]
               UnionMember1Array = FinchAPI::Internal::Type::ArrayOf[FinchAPI::Internal::Type::Unknown]
             end
@@ -367,6 +371,12 @@ module FinchAPI
 
         # @!method self.variants
         #   @return [Array(FinchAPI::HRIS::EmploymentData::UnionMember0, FinchAPI::HRIS::EmploymentData::BatchError)]
+
+        define_sorbet_constant!(:Variants) do
+          T.type_alias do
+            T.any(FinchAPI::HRIS::EmploymentData::UnionMember0, FinchAPI::HRIS::EmploymentData::BatchError)
+          end
+        end
       end
     end
   end

@@ -5,7 +5,12 @@ module FinchAPI
     module HRIS
       class UpdateCompanyBenefitResponse < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::HRIS::UpdateCompanyBenefitResponse,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         # The id of the benefit.
         sig { returns(String) }

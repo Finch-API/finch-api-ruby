@@ -5,7 +5,12 @@ module FinchAPI
     module HRIS
       class DocumentListResponse < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::Models::HRIS::DocumentListResponse,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         sig { returns(T::Array[FinchAPI::HRIS::DocumentResponse]) }
         attr_accessor :documents

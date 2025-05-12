@@ -8,7 +8,12 @@ module FinchAPI
         include FinchAPI::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::Connect::SessionNewParams,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         sig { returns(String) }
         attr_accessor :customer_id
@@ -194,7 +199,12 @@ module FinchAPI
 
         class Integration < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::Connect::SessionNewParams::Integration,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(

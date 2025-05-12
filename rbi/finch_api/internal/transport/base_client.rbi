@@ -5,9 +5,11 @@ module FinchAPI
     module Transport
       # @api private
       class BaseClient
+        extend FinchAPI::Internal::Util::SorbetRuntimeSupport
+
         abstract!
 
-        RequestComponentsShape =
+        RequestComponents =
           T.type_alias do
             {
               method: Symbol,
@@ -53,7 +55,7 @@ module FinchAPI
             }
           end
 
-        RequestInputShape =
+        RequestInput =
           T.type_alias do
             {
               method: Symbol,
@@ -74,8 +76,7 @@ module FinchAPI
           # @api private
           sig do
             params(
-              req:
-                FinchAPI::Internal::Transport::BaseClient::RequestComponentsShape
+              req: FinchAPI::Internal::Transport::BaseClient::RequestComponents
             ).void
           end
           def validate!(req)
@@ -94,13 +95,10 @@ module FinchAPI
           # @api private
           sig do
             params(
-              request:
-                FinchAPI::Internal::Transport::BaseClient::RequestInputShape,
+              request: FinchAPI::Internal::Transport::BaseClient::RequestInput,
               status: Integer,
               response_headers: T.any(T::Hash[String, String], Net::HTTPHeader)
-            ).returns(
-              FinchAPI::Internal::Transport::BaseClient::RequestInputShape
-            )
+            ).returns(FinchAPI::Internal::Transport::BaseClient::RequestInput)
           end
           def follow_redirect(request, status:, response_headers:)
           end
@@ -167,13 +165,10 @@ module FinchAPI
         sig do
           overridable
             .params(
-              req:
-                FinchAPI::Internal::Transport::BaseClient::RequestComponentsShape,
+              req: FinchAPI::Internal::Transport::BaseClient::RequestComponents,
               opts: FinchAPI::Internal::AnyHash
             )
-            .returns(
-              FinchAPI::Internal::Transport::BaseClient::RequestInputShape
-            )
+            .returns(FinchAPI::Internal::Transport::BaseClient::RequestInput)
         end
         private def build_request(req, opts)
         end
@@ -191,8 +186,7 @@ module FinchAPI
         # @api private
         sig do
           params(
-            request:
-              FinchAPI::Internal::Transport::BaseClient::RequestInputShape,
+            request: FinchAPI::Internal::Transport::BaseClient::RequestInput,
             redirect_count: Integer,
             retry_count: Integer,
             send_retry_header: T::Boolean

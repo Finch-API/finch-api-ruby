@@ -6,7 +6,12 @@ module FinchAPI
       module Company
         class PayStatementItemListResponse < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::Models::HRIS::Company::PayStatementItemListResponse,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # The attributes of the pay statement item.
           sig do
@@ -86,7 +91,12 @@ module FinchAPI
 
           class Attributes < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Attributes,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             # `true` if the amount is paid by the employers. This field is only available for
             # taxes.

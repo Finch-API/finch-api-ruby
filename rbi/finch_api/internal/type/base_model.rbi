@@ -5,10 +5,11 @@ module FinchAPI
     module Type
       class BaseModel
         extend FinchAPI::Internal::Type::Converter
+        extend FinchAPI::Internal::Util::SorbetRuntimeSupport
 
         abstract!
 
-        KnownFieldShape =
+        KnownField =
           T.type_alias do
             {
               mode: T.nilable(Symbol),
@@ -18,19 +19,29 @@ module FinchAPI
           end
 
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::Internal::Type::BaseModel,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         class << self
           # @api private
           #
           # Assumes superclass fields are totally defined before fields are accessed /
           # defined on subclasses.
+          sig { params(child: T.self_type).void }
+          def inherited(child)
+          end
+
+          # @api private
           sig do
             returns(
               T::Hash[
                 Symbol,
                 T.all(
-                  FinchAPI::Internal::Type::BaseModel::KnownFieldShape,
+                  FinchAPI::Internal::Type::BaseModel::KnownField,
                   {
                     type_fn:
                       T.proc.returns(FinchAPI::Internal::Type::Converter::Input)
@@ -48,7 +59,7 @@ module FinchAPI
               T::Hash[
                 Symbol,
                 T.all(
-                  FinchAPI::Internal::Type::BaseModel::KnownFieldShape,
+                  FinchAPI::Internal::Type::BaseModel::KnownField,
                   { type: FinchAPI::Internal::Type::Converter::Input }
                 )
               ]

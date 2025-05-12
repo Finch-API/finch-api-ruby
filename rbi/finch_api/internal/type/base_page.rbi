@@ -29,8 +29,7 @@ module FinchAPI
         sig do
           params(
             client: FinchAPI::Internal::Transport::BaseClient,
-            req:
-              FinchAPI::Internal::Transport::BaseClient::RequestComponentsShape,
+            req: FinchAPI::Internal::Transport::BaseClient::RequestComponents,
             headers: T.any(T::Hash[String, String], Net::HTTPHeader),
             page_data: T.anything
           ).void

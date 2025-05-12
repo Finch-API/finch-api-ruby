@@ -9,7 +9,12 @@ module FinchAPI
           include FinchAPI::Internal::Type::RequestParameters
 
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::Sandbox::Jobs::ConfigurationRetrieveParams,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           sig do
             params(request_options: FinchAPI::RequestOptions::OrHash).returns(

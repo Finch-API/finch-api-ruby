@@ -9,7 +9,12 @@ module FinchAPI
           include FinchAPI::Internal::Type::RequestParameters
 
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::Sandbox::Connections::AccountUpdateParams,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           sig { returns(T.nilable(FinchAPI::ConnectionStatusType::OrSymbol)) }
           attr_reader :connection_status
