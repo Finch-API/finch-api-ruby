@@ -103,10 +103,10 @@ module FinchAPI
       client_secret: ENV["FINCH_CLIENT_SECRET"],
       access_token: nil,
       base_url: ENV["FINCH_BASE_URL"],
-      max_retries: FinchAPI::Client::DEFAULT_MAX_RETRIES,
-      timeout: FinchAPI::Client::DEFAULT_TIMEOUT_IN_SECONDS,
-      initial_retry_delay: FinchAPI::Client::DEFAULT_INITIAL_RETRY_DELAY,
-      max_retry_delay: FinchAPI::Client::DEFAULT_MAX_RETRY_DELAY
+      max_retries: self.class::DEFAULT_MAX_RETRIES,
+      timeout: self.class::DEFAULT_TIMEOUT_IN_SECONDS,
+      initial_retry_delay: self.class::DEFAULT_INITIAL_RETRY_DELAY,
+      max_retry_delay: self.class::DEFAULT_MAX_RETRY_DELAY
     )
       base_url ||= "https://api.tryfinch.com"
 
