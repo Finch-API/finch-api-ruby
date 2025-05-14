@@ -393,6 +393,14 @@ module FinchAPI
         # @param keys [Array<Symbol>, nil]
         #
         # @return [Hash{Symbol=>Object}]
+        #
+        # @example
+        #   # `operation_support_matrix` is a `FinchAPI::OperationSupportMatrix`
+        #   operation_support_matrix => {
+        #     create: create,
+        #     delete: delete,
+        #     read: read
+        #   }
         def deconstruct_keys(keys)
           (keys || self.class.known_fields.keys)
             .filter_map do |k|
