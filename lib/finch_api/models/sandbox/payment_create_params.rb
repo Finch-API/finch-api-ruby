@@ -423,6 +423,7 @@ module FinchAPI
 
             CHECK = :check
             DIRECT_DEPOSIT = :direct_deposit
+            OTHER = :other
 
             # @!method self.values
             #   @return [Array<Symbol>]
