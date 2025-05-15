@@ -9,24 +9,16 @@ module FinchAPI
         }
 
       class PayStatementResponse < FinchAPI::Internal::Type::BaseModel
-        attr_reader body: FinchAPI::HRIS::PayStatementResponseBody?
+        attr_accessor body: FinchAPI::HRIS::PayStatementResponseBody
 
-        def body=: (
-          FinchAPI::HRIS::PayStatementResponseBody
-        ) -> FinchAPI::HRIS::PayStatementResponseBody
+        attr_accessor code: Integer
 
-        attr_reader code: Integer?
-
-        def code=: (Integer) -> Integer
-
-        attr_reader payment_id: String?
-
-        def payment_id=: (String) -> String
+        attr_accessor payment_id: String
 
         def initialize: (
-          ?body: FinchAPI::HRIS::PayStatementResponseBody,
-          ?code: Integer,
-          ?payment_id: String
+          body: FinchAPI::HRIS::PayStatementResponseBody,
+          code: Integer,
+          payment_id: String
         ) -> void
       end
     end

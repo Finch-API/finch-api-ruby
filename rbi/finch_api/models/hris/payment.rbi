@@ -10,11 +10,8 @@ module FinchAPI
           end
 
         # The unique id for the payment.
-        sig { returns(T.nilable(String)) }
-        attr_reader :id
-
-        sig { params(id: String).void }
-        attr_writer :id
+        sig { returns(String) }
+        attr_accessor :id
 
         sig { returns(T.nilable(FinchAPI::Money)) }
         attr_reader :company_debit
@@ -102,22 +99,22 @@ module FinchAPI
         end
         def self.new(
           # The unique id for the payment.
-          id: nil,
-          company_debit: nil,
-          debit_date: nil,
-          employee_taxes: nil,
-          employer_taxes: nil,
-          gross_pay: nil,
+          id:,
+          company_debit:,
+          debit_date:,
+          employee_taxes:,
+          employer_taxes:,
+          gross_pay:,
           # Array of every individual on this payment.
-          individual_ids: nil,
-          net_pay: nil,
-          pay_date: nil,
+          individual_ids:,
+          net_pay:,
+          pay_date:,
           # List of pay frequencies associated with this payment.
-          pay_frequencies: nil,
+          pay_frequencies:,
           # Array of the Finch id (uuidv4) of every pay group associated with this payment.
-          pay_group_ids: nil,
+          pay_group_ids:,
           # The pay period object.
-          pay_period: nil
+          pay_period:
         )
         end
 
@@ -159,34 +156,34 @@ module FinchAPI
               :annually,
               FinchAPI::HRIS::Payment::PayFrequency::TaggedSymbol
             )
-          SEMI_ANNUALLY =
-            T.let(
-              :semi_annually,
-              FinchAPI::HRIS::Payment::PayFrequency::TaggedSymbol
-            )
-          QUARTERLY =
-            T.let(
-              :quarterly,
-              FinchAPI::HRIS::Payment::PayFrequency::TaggedSymbol
-            )
-          MONTHLY =
-            T.let(:monthly, FinchAPI::HRIS::Payment::PayFrequency::TaggedSymbol)
-          SEMI_MONTHLY =
-            T.let(
-              :semi_monthly,
-              FinchAPI::HRIS::Payment::PayFrequency::TaggedSymbol
-            )
           BI_WEEKLY =
             T.let(
               :bi_weekly,
               FinchAPI::HRIS::Payment::PayFrequency::TaggedSymbol
             )
-          WEEKLY =
-            T.let(:weekly, FinchAPI::HRIS::Payment::PayFrequency::TaggedSymbol)
           DAILY =
             T.let(:daily, FinchAPI::HRIS::Payment::PayFrequency::TaggedSymbol)
+          MONTHLY =
+            T.let(:monthly, FinchAPI::HRIS::Payment::PayFrequency::TaggedSymbol)
           OTHER =
             T.let(:other, FinchAPI::HRIS::Payment::PayFrequency::TaggedSymbol)
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              FinchAPI::HRIS::Payment::PayFrequency::TaggedSymbol
+            )
+          SEMI_ANNUALLY =
+            T.let(
+              :semi_annually,
+              FinchAPI::HRIS::Payment::PayFrequency::TaggedSymbol
+            )
+          SEMI_MONTHLY =
+            T.let(
+              :semi_monthly,
+              FinchAPI::HRIS::Payment::PayFrequency::TaggedSymbol
+            )
+          WEEKLY =
+            T.let(:weekly, FinchAPI::HRIS::Payment::PayFrequency::TaggedSymbol)
 
           sig do
             override.returns(
@@ -219,7 +216,7 @@ module FinchAPI
               start_date: T.nilable(String)
             ).returns(T.attached_class)
           end
-          def self.new(end_date: nil, start_date: nil)
+          def self.new(end_date:, start_date:)
           end
 
           sig do
