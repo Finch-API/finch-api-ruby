@@ -10,48 +10,38 @@ module FinchAPI
           }
 
         class PayStatementItemListResponse < FinchAPI::Internal::Type::BaseModel
-          attr_reader attributes: FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Attributes?
+          attr_accessor attributes: FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Attributes
 
-          def attributes=: (
-            FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Attributes
-          ) -> FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Attributes
+          attr_accessor category: FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::category
 
-          attr_reader category: FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::category?
-
-          def category=: (
-            FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::category
-          ) -> FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::category
-
-          attr_reader name: String?
-
-          def name=: (String) -> String
+          attr_accessor name: String
 
           def initialize: (
-            ?attributes: FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Attributes,
-            ?category: FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::category,
-            ?name: String
+            attributes: FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Attributes,
+            category: FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::category,
+            name: String
           ) -> void
 
           type attributes =
             {
-              employer: bool?,
               metadata: ::Hash[Symbol, top?]?,
+              employer: bool?,
               pre_tax: bool?,
               type: String?
             }
 
           class Attributes < FinchAPI::Internal::Type::BaseModel
-            attr_accessor employer: bool?
-
             attr_accessor metadata: ::Hash[Symbol, top?]?
+
+            attr_accessor employer: bool?
 
             attr_accessor pre_tax: bool?
 
             attr_accessor type: String?
 
             def initialize: (
+              metadata: ::Hash[Symbol, top?]?,
               ?employer: bool?,
-              ?metadata: ::Hash[Symbol, top?]?,
               ?pre_tax: bool?,
               ?type: String?
             ) -> void

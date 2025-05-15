@@ -8,7 +8,7 @@ module FinchAPI
         #   The array of earnings objects associated with this pay statement
         #
         #   @return [Array<FinchAPI::HRIS::PayStatement::Earning, nil>, nil]
-        optional :earnings,
+        required :earnings,
                  -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::PayStatement::Earning, nil?: true] },
                  nil?: true
 
@@ -16,7 +16,7 @@ module FinchAPI
         #   The array of deductions objects associated with this pay statement.
         #
         #   @return [Array<FinchAPI::HRIS::PayStatement::EmployeeDeduction, nil>, nil]
-        optional :employee_deductions,
+        required :employee_deductions,
                  -> {
                    FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::PayStatement::EmployeeDeduction,
                                                      nil?: true]
@@ -26,7 +26,7 @@ module FinchAPI
         # @!attribute employer_contributions
         #
         #   @return [Array<FinchAPI::HRIS::PayStatement::EmployerContribution, nil>, nil]
-        optional :employer_contributions,
+        required :employer_contributions,
                  -> {
                    FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::PayStatement::EmployerContribution,
                                                      nil?: true]
@@ -36,30 +36,30 @@ module FinchAPI
         # @!attribute gross_pay
         #
         #   @return [FinchAPI::Money, nil]
-        optional :gross_pay, -> { FinchAPI::Money }, nil?: true
+        required :gross_pay, -> { FinchAPI::Money }, nil?: true
 
         # @!attribute individual_id
         #   A stable Finch `id` (UUID v4) for an individual in the company
         #
-        #   @return [String, nil]
-        optional :individual_id, String
+        #   @return [String]
+        required :individual_id, String
 
         # @!attribute net_pay
         #
         #   @return [FinchAPI::Money, nil]
-        optional :net_pay, -> { FinchAPI::Money }, nil?: true
+        required :net_pay, -> { FinchAPI::Money }, nil?: true
 
         # @!attribute payment_method
         #   The payment method.
         #
         #   @return [Symbol, FinchAPI::HRIS::PayStatement::PaymentMethod, nil]
-        optional :payment_method, enum: -> { FinchAPI::HRIS::PayStatement::PaymentMethod }, nil?: true
+        required :payment_method, enum: -> { FinchAPI::HRIS::PayStatement::PaymentMethod }, nil?: true
 
         # @!attribute taxes
         #   The array of taxes objects associated with this pay statement.
         #
         #   @return [Array<FinchAPI::HRIS::PayStatement::Tax, nil>, nil]
-        optional :taxes,
+        required :taxes,
                  -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::PayStatement::Tax, nil?: true] },
                  nil?: true
 
@@ -67,15 +67,15 @@ module FinchAPI
         #   The number of hours worked for this pay period
         #
         #   @return [Float, nil]
-        optional :total_hours, Float, nil?: true
+        required :total_hours, Float, nil?: true
 
         # @!attribute type
         #   The type of the payment associated with the pay statement.
         #
         #   @return [Symbol, FinchAPI::HRIS::PayStatement::Type, nil]
-        optional :type, enum: -> { FinchAPI::HRIS::PayStatement::Type }, nil?: true
+        required :type, enum: -> { FinchAPI::HRIS::PayStatement::Type }, nil?: true
 
-        # @!method initialize(earnings: nil, employee_deductions: nil, employer_contributions: nil, gross_pay: nil, individual_id: nil, net_pay: nil, payment_method: nil, taxes: nil, total_hours: nil, type: nil)
+        # @!method initialize(earnings:, employee_deductions:, employer_contributions:, gross_pay:, individual_id:, net_pay:, payment_method:, taxes:, total_hours:, type:)
         #   @param earnings [Array<FinchAPI::HRIS::PayStatement::Earning, nil>, nil] The array of earnings objects associated with this pay statement
         #
         #   @param employee_deductions [Array<FinchAPI::HRIS::PayStatement::EmployeeDeduction, nil>, nil] The array of deductions objects associated with this pay statement.
@@ -101,45 +101,43 @@ module FinchAPI
           #   The earnings amount in cents.
           #
           #   @return [Integer, nil]
-          optional :amount, Integer, nil?: true
-
-          # @!attribute attributes
-          #
-          #   @return [FinchAPI::HRIS::PayStatement::Earning::Attributes, nil]
-          optional :attributes, -> { FinchAPI::HRIS::PayStatement::Earning::Attributes }, nil?: true
+          required :amount, Integer, nil?: true
 
           # @!attribute currency
           #   The earnings currency code.
           #
           #   @return [String, nil]
-          optional :currency, String, nil?: true
+          required :currency, String, nil?: true
 
           # @!attribute hours
           #   The number of hours associated with this earning. (For salaried employees, this
           #   could be hours per pay period, `0` or `null`, depending on the provider).
           #
           #   @return [Float, nil]
-          optional :hours, Float, nil?: true
+          required :hours, Float, nil?: true
 
           # @!attribute name
           #   The exact name of the deduction from the pay statement.
           #
           #   @return [String, nil]
-          optional :name, String, nil?: true
+          required :name, String, nil?: true
 
           # @!attribute type
           #   The type of earning.
           #
           #   @return [Symbol, FinchAPI::HRIS::PayStatement::Earning::Type, nil]
-          optional :type, enum: -> { FinchAPI::HRIS::PayStatement::Earning::Type }, nil?: true
+          required :type, enum: -> { FinchAPI::HRIS::PayStatement::Earning::Type }, nil?: true
 
-          # @!method initialize(amount: nil, attributes: nil, currency: nil, hours: nil, name: nil, type: nil)
+          # @!attribute attributes
+          #
+          #   @return [FinchAPI::HRIS::PayStatement::Earning::Attributes, nil]
+          optional :attributes, -> { FinchAPI::HRIS::PayStatement::Earning::Attributes }, nil?: true
+
+          # @!method initialize(amount:, currency:, hours:, name:, type:, attributes: nil)
           #   Some parameter documentations has been truncated, see
           #   {FinchAPI::HRIS::PayStatement::Earning} for more details.
           #
           #   @param amount [Integer, nil] The earnings amount in cents.
-          #
-          #   @param attributes [FinchAPI::HRIS::PayStatement::Earning::Attributes, nil]
           #
           #   @param currency [String, nil] The earnings currency code.
           #
@@ -148,35 +146,8 @@ module FinchAPI
           #   @param name [String, nil] The exact name of the deduction from the pay statement.
           #
           #   @param type [Symbol, FinchAPI::HRIS::PayStatement::Earning::Type, nil] The type of earning.
-
-          # @see FinchAPI::HRIS::PayStatement::Earning#attributes
-          class Attributes < FinchAPI::Internal::Type::BaseModel
-            # @!attribute metadata
-            #
-            #   @return [FinchAPI::HRIS::PayStatement::Earning::Attributes::Metadata, nil]
-            optional :metadata, -> { FinchAPI::HRIS::PayStatement::Earning::Attributes::Metadata }
-
-            # @!method initialize(metadata: nil)
-            #   @param metadata [FinchAPI::HRIS::PayStatement::Earning::Attributes::Metadata]
-
-            # @see FinchAPI::HRIS::PayStatement::Earning::Attributes#metadata
-            class Metadata < FinchAPI::Internal::Type::BaseModel
-              # @!attribute metadata
-              #   The metadata to be attached to the entity by existing rules. It is a key-value
-              #   pairs where the values can be of any type (string, number, boolean, object,
-              #   array, etc.).
-              #
-              #   @return [Hash{Symbol=>Object, nil}, nil]
-              optional :metadata,
-                       FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown, nil?: true]
-
-              # @!method initialize(metadata: nil)
-              #   Some parameter documentations has been truncated, see
-              #   {FinchAPI::HRIS::PayStatement::Earning::Attributes::Metadata} for more details.
-              #
-              #   @param metadata [Hash{Symbol=>Object, nil}] The metadata to be attached to the entity by existing rules. It is a key-value p
-            end
-          end
+          #
+          #   @param attributes [FinchAPI::HRIS::PayStatement::Earning::Attributes, nil]
 
           # The type of earning.
           #
@@ -201,6 +172,35 @@ module FinchAPI
             # @!method self.values
             #   @return [Array<Symbol>]
           end
+
+          # @see FinchAPI::HRIS::PayStatement::Earning#attributes
+          class Attributes < FinchAPI::Internal::Type::BaseModel
+            # @!attribute metadata
+            #
+            #   @return [FinchAPI::HRIS::PayStatement::Earning::Attributes::Metadata]
+            required :metadata, -> { FinchAPI::HRIS::PayStatement::Earning::Attributes::Metadata }
+
+            # @!method initialize(metadata:)
+            #   @param metadata [FinchAPI::HRIS::PayStatement::Earning::Attributes::Metadata]
+
+            # @see FinchAPI::HRIS::PayStatement::Earning::Attributes#metadata
+            class Metadata < FinchAPI::Internal::Type::BaseModel
+              # @!attribute metadata
+              #   The metadata to be attached to the entity by existing rules. It is a key-value
+              #   pairs where the values can be of any type (string, number, boolean, object,
+              #   array, etc.).
+              #
+              #   @return [Hash{Symbol=>Object, nil}]
+              required :metadata,
+                       FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown, nil?: true]
+
+              # @!method initialize(metadata:)
+              #   Some parameter documentations has been truncated, see
+              #   {FinchAPI::HRIS::PayStatement::Earning::Attributes::Metadata} for more details.
+              #
+              #   @param metadata [Hash{Symbol=>Object, nil}] The metadata to be attached to the entity by existing rules. It is a key-value p
+            end
+          end
         end
 
         class EmployeeDeduction < FinchAPI::Internal::Type::BaseModel
@@ -208,41 +208,39 @@ module FinchAPI
           #   The deduction amount in cents.
           #
           #   @return [Integer, nil]
-          optional :amount, Integer, nil?: true
+          required :amount, Integer, nil?: true
+
+          # @!attribute currency
+          #   The deduction currency.
+          #
+          #   @return [String, nil]
+          required :currency, String, nil?: true
+
+          # @!attribute name
+          #   The deduction name from the pay statement.
+          #
+          #   @return [String, nil]
+          required :name, String, nil?: true
+
+          # @!attribute pre_tax
+          #   Boolean indicating if the deduction is pre-tax.
+          #
+          #   @return [Boolean, nil]
+          required :pre_tax, FinchAPI::Internal::Type::Boolean, nil?: true
+
+          # @!attribute type
+          #   Type of benefit.
+          #
+          #   @return [Symbol, FinchAPI::HRIS::BenefitType, nil]
+          required :type, enum: -> { FinchAPI::HRIS::BenefitType }, nil?: true
 
           # @!attribute attributes
           #
           #   @return [FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes, nil]
           optional :attributes, -> { FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes }, nil?: true
 
-          # @!attribute currency
-          #   The deduction currency.
-          #
-          #   @return [String, nil]
-          optional :currency, String, nil?: true
-
-          # @!attribute name
-          #   The deduction name from the pay statement.
-          #
-          #   @return [String, nil]
-          optional :name, String, nil?: true
-
-          # @!attribute pre_tax
-          #   Boolean indicating if the deduction is pre-tax.
-          #
-          #   @return [Boolean, nil]
-          optional :pre_tax, FinchAPI::Internal::Type::Boolean, nil?: true
-
-          # @!attribute type
-          #   Type of benefit.
-          #
-          #   @return [Symbol, FinchAPI::HRIS::BenefitType, nil]
-          optional :type, enum: -> { FinchAPI::HRIS::BenefitType }, nil?: true
-
-          # @!method initialize(amount: nil, attributes: nil, currency: nil, name: nil, pre_tax: nil, type: nil)
+          # @!method initialize(amount:, currency:, name:, pre_tax:, type:, attributes: nil)
           #   @param amount [Integer, nil] The deduction amount in cents.
-          #
-          #   @param attributes [FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes, nil]
           #
           #   @param currency [String, nil] The deduction currency.
           #
@@ -251,15 +249,17 @@ module FinchAPI
           #   @param pre_tax [Boolean, nil] Boolean indicating if the deduction is pre-tax.
           #
           #   @param type [Symbol, FinchAPI::HRIS::BenefitType, nil] Type of benefit.
+          #
+          #   @param attributes [FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes, nil]
 
           # @see FinchAPI::HRIS::PayStatement::EmployeeDeduction#attributes
           class Attributes < FinchAPI::Internal::Type::BaseModel
             # @!attribute metadata
             #
-            #   @return [FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata, nil]
-            optional :metadata, -> { FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata }
+            #   @return [FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata]
+            required :metadata, -> { FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata }
 
-            # @!method initialize(metadata: nil)
+            # @!method initialize(metadata:)
             #   @param metadata [FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata]
 
             # @see FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes#metadata
@@ -269,11 +269,11 @@ module FinchAPI
               #   pairs where the values can be of any type (string, number, boolean, object,
               #   array, etc.).
               #
-              #   @return [Hash{Symbol=>Object, nil}, nil]
-              optional :metadata,
+              #   @return [Hash{Symbol=>Object, nil}]
+              required :metadata,
                        FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown, nil?: true]
 
-              # @!method initialize(metadata: nil)
+              # @!method initialize(metadata:)
               #   Some parameter documentations has been truncated, see
               #   {FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata} for more
               #   details.
@@ -288,7 +288,25 @@ module FinchAPI
           #   The contribution amount in cents.
           #
           #   @return [Integer, nil]
-          optional :amount, Integer, nil?: true
+          required :amount, Integer, nil?: true
+
+          # @!attribute currency
+          #   The contribution currency.
+          #
+          #   @return [String, nil]
+          required :currency, String, nil?: true
+
+          # @!attribute name
+          #   The contribution name from the pay statement.
+          #
+          #   @return [String, nil]
+          required :name, String, nil?: true
+
+          # @!attribute type
+          #   Type of benefit.
+          #
+          #   @return [Symbol, FinchAPI::HRIS::BenefitType, nil]
+          required :type, enum: -> { FinchAPI::HRIS::BenefitType }, nil?: true
 
           # @!attribute attributes
           #
@@ -299,46 +317,28 @@ module FinchAPI
                    },
                    nil?: true
 
-          # @!attribute currency
-          #   The contribution currency.
-          #
-          #   @return [String, nil]
-          optional :currency, String, nil?: true
-
-          # @!attribute name
-          #   The contribution name from the pay statement.
-          #
-          #   @return [String, nil]
-          optional :name, String, nil?: true
-
-          # @!attribute type
-          #   Type of benefit.
-          #
-          #   @return [Symbol, FinchAPI::HRIS::BenefitType, nil]
-          optional :type, enum: -> { FinchAPI::HRIS::BenefitType }, nil?: true
-
-          # @!method initialize(amount: nil, attributes: nil, currency: nil, name: nil, type: nil)
+          # @!method initialize(amount:, currency:, name:, type:, attributes: nil)
           #   @param amount [Integer, nil] The contribution amount in cents.
-          #
-          #   @param attributes [FinchAPI::HRIS::PayStatement::EmployerContribution::Attributes, nil]
           #
           #   @param currency [String, nil] The contribution currency.
           #
           #   @param name [String, nil] The contribution name from the pay statement.
           #
           #   @param type [Symbol, FinchAPI::HRIS::BenefitType, nil] Type of benefit.
+          #
+          #   @param attributes [FinchAPI::HRIS::PayStatement::EmployerContribution::Attributes, nil]
 
           # @see FinchAPI::HRIS::PayStatement::EmployerContribution#attributes
           class Attributes < FinchAPI::Internal::Type::BaseModel
             # @!attribute metadata
             #
-            #   @return [FinchAPI::HRIS::PayStatement::EmployerContribution::Attributes::Metadata, nil]
-            optional :metadata,
+            #   @return [FinchAPI::HRIS::PayStatement::EmployerContribution::Attributes::Metadata]
+            required :metadata,
                      -> {
                        FinchAPI::HRIS::PayStatement::EmployerContribution::Attributes::Metadata
                      }
 
-            # @!method initialize(metadata: nil)
+            # @!method initialize(metadata:)
             #   @param metadata [FinchAPI::HRIS::PayStatement::EmployerContribution::Attributes::Metadata]
 
             # @see FinchAPI::HRIS::PayStatement::EmployerContribution::Attributes#metadata
@@ -348,11 +348,11 @@ module FinchAPI
               #   pairs where the values can be of any type (string, number, boolean, object,
               #   array, etc.).
               #
-              #   @return [Hash{Symbol=>Object, nil}, nil]
-              optional :metadata,
+              #   @return [Hash{Symbol=>Object, nil}]
+              required :metadata,
                        FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown, nil?: true]
 
-              # @!method initialize(metadata: nil)
+              # @!method initialize(metadata:)
               #   Some parameter documentations has been truncated, see
               #   {FinchAPI::HRIS::PayStatement::EmployerContribution::Attributes::Metadata} for
               #   more details.
@@ -380,41 +380,39 @@ module FinchAPI
           #   The tax amount in cents.
           #
           #   @return [Integer, nil]
-          optional :amount, Integer, nil?: true
+          required :amount, Integer, nil?: true
+
+          # @!attribute currency
+          #   The currency code.
+          #
+          #   @return [String, nil]
+          required :currency, String, nil?: true
+
+          # @!attribute employer
+          #   `true` if the amount is paid by the employers.
+          #
+          #   @return [Boolean, nil]
+          required :employer, FinchAPI::Internal::Type::Boolean, nil?: true
+
+          # @!attribute name
+          #   The exact name of tax from the pay statement.
+          #
+          #   @return [String, nil]
+          required :name, String, nil?: true
+
+          # @!attribute type
+          #   The type of taxes.
+          #
+          #   @return [Symbol, FinchAPI::HRIS::PayStatement::Tax::Type, nil]
+          required :type, enum: -> { FinchAPI::HRIS::PayStatement::Tax::Type }, nil?: true
 
           # @!attribute attributes
           #
           #   @return [FinchAPI::HRIS::PayStatement::Tax::Attributes, nil]
           optional :attributes, -> { FinchAPI::HRIS::PayStatement::Tax::Attributes }, nil?: true
 
-          # @!attribute currency
-          #   The currency code.
-          #
-          #   @return [String, nil]
-          optional :currency, String, nil?: true
-
-          # @!attribute employer
-          #   `true` if the amount is paid by the employers.
-          #
-          #   @return [Boolean, nil]
-          optional :employer, FinchAPI::Internal::Type::Boolean, nil?: true
-
-          # @!attribute name
-          #   The exact name of tax from the pay statement.
-          #
-          #   @return [String, nil]
-          optional :name, String, nil?: true
-
-          # @!attribute type
-          #   The type of taxes.
-          #
-          #   @return [Symbol, FinchAPI::HRIS::PayStatement::Tax::Type, nil]
-          optional :type, enum: -> { FinchAPI::HRIS::PayStatement::Tax::Type }, nil?: true
-
-          # @!method initialize(amount: nil, attributes: nil, currency: nil, employer: nil, name: nil, type: nil)
+          # @!method initialize(amount:, currency:, employer:, name:, type:, attributes: nil)
           #   @param amount [Integer, nil] The tax amount in cents.
-          #
-          #   @param attributes [FinchAPI::HRIS::PayStatement::Tax::Attributes, nil]
           #
           #   @param currency [String, nil] The currency code.
           #
@@ -423,35 +421,8 @@ module FinchAPI
           #   @param name [String, nil] The exact name of tax from the pay statement.
           #
           #   @param type [Symbol, FinchAPI::HRIS::PayStatement::Tax::Type, nil] The type of taxes.
-
-          # @see FinchAPI::HRIS::PayStatement::Tax#attributes
-          class Attributes < FinchAPI::Internal::Type::BaseModel
-            # @!attribute metadata
-            #
-            #   @return [FinchAPI::HRIS::PayStatement::Tax::Attributes::Metadata, nil]
-            optional :metadata, -> { FinchAPI::HRIS::PayStatement::Tax::Attributes::Metadata }
-
-            # @!method initialize(metadata: nil)
-            #   @param metadata [FinchAPI::HRIS::PayStatement::Tax::Attributes::Metadata]
-
-            # @see FinchAPI::HRIS::PayStatement::Tax::Attributes#metadata
-            class Metadata < FinchAPI::Internal::Type::BaseModel
-              # @!attribute metadata
-              #   The metadata to be attached to the entity by existing rules. It is a key-value
-              #   pairs where the values can be of any type (string, number, boolean, object,
-              #   array, etc.).
-              #
-              #   @return [Hash{Symbol=>Object, nil}, nil]
-              optional :metadata,
-                       FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown, nil?: true]
-
-              # @!method initialize(metadata: nil)
-              #   Some parameter documentations has been truncated, see
-              #   {FinchAPI::HRIS::PayStatement::Tax::Attributes::Metadata} for more details.
-              #
-              #   @param metadata [Hash{Symbol=>Object, nil}] The metadata to be attached to the entity by existing rules. It is a key-value p
-            end
-          end
+          #
+          #   @param attributes [FinchAPI::HRIS::PayStatement::Tax::Attributes, nil]
 
           # The type of taxes.
           #
@@ -466,6 +437,35 @@ module FinchAPI
 
             # @!method self.values
             #   @return [Array<Symbol>]
+          end
+
+          # @see FinchAPI::HRIS::PayStatement::Tax#attributes
+          class Attributes < FinchAPI::Internal::Type::BaseModel
+            # @!attribute metadata
+            #
+            #   @return [FinchAPI::HRIS::PayStatement::Tax::Attributes::Metadata]
+            required :metadata, -> { FinchAPI::HRIS::PayStatement::Tax::Attributes::Metadata }
+
+            # @!method initialize(metadata:)
+            #   @param metadata [FinchAPI::HRIS::PayStatement::Tax::Attributes::Metadata]
+
+            # @see FinchAPI::HRIS::PayStatement::Tax::Attributes#metadata
+            class Metadata < FinchAPI::Internal::Type::BaseModel
+              # @!attribute metadata
+              #   The metadata to be attached to the entity by existing rules. It is a key-value
+              #   pairs where the values can be of any type (string, number, boolean, object,
+              #   array, etc.).
+              #
+              #   @return [Hash{Symbol=>Object, nil}]
+              required :metadata,
+                       FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown, nil?: true]
+
+              # @!method initialize(metadata:)
+              #   Some parameter documentations has been truncated, see
+              #   {FinchAPI::HRIS::PayStatement::Tax::Attributes::Metadata} for more details.
+              #
+              #   @param metadata [Hash{Symbol=>Object, nil}] The metadata to be attached to the entity by existing rules. It is a key-value p
+            end
           end
         end
 
