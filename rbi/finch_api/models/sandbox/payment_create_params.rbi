@@ -955,6 +955,11 @@ module FinchAPI
                 :direct_deposit,
                 FinchAPI::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::TaggedSymbol
               )
+            OTHER =
+              T.let(
+                :other,
+                FinchAPI::Sandbox::PaymentCreateParams::PayStatement::PaymentMethod::TaggedSymbol
+              )
 
             sig do
               override.returns(

@@ -822,6 +822,11 @@ module FinchAPI
               :direct_deposit,
               FinchAPI::HRIS::PayStatement::PaymentMethod::TaggedSymbol
             )
+          OTHER =
+            T.let(
+              :other,
+              FinchAPI::HRIS::PayStatement::PaymentMethod::TaggedSymbol
+            )
 
           sig do
             override.returns(
