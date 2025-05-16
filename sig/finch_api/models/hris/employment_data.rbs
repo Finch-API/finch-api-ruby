@@ -24,12 +24,12 @@ module FinchAPI
             location: FinchAPI::Location?,
             manager: FinchAPI::HRIS::EmploymentData::UnionMember0::Manager?,
             middle_name: String?,
-            source_id: String?,
             start_date: String?,
             title: String?,
             work_id: String?,
             income: FinchAPI::Income?,
-            income_history: ::Array[FinchAPI::Income?]?
+            income_history: ::Array[FinchAPI::Income?]?,
+            source_id: String?
           }
 
         class UnionMember0 < FinchAPI::Internal::Type::BaseModel
@@ -61,8 +61,6 @@ module FinchAPI
 
           attr_accessor middle_name: String?
 
-          attr_accessor source_id: String?
-
           attr_accessor start_date: String?
 
           attr_accessor title: String?
@@ -72,6 +70,8 @@ module FinchAPI
           attr_accessor income: FinchAPI::Income?
 
           attr_accessor income_history: ::Array[FinchAPI::Income?]?
+
+          attr_accessor source_id: String?
 
           def initialize: (
             id: String,
@@ -88,12 +88,12 @@ module FinchAPI
             location: FinchAPI::Location?,
             manager: FinchAPI::HRIS::EmploymentData::UnionMember0::Manager?,
             middle_name: String?,
-            source_id: String?,
             start_date: String?,
             title: String?,
             work_id: String?,
             ?income: FinchAPI::Income?,
-            ?income_history: ::Array[FinchAPI::Income?]?
+            ?income_history: ::Array[FinchAPI::Income?]?,
+            ?source_id: String?
           ) -> void
 
           type custom_field =
