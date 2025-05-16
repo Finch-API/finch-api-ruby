@@ -20,9 +20,9 @@ class FinchAPI::Test::Resources::HRIS::PayStatementsTest < FinchAPI::Test::Resou
 
     assert_pattern do
       row => {
-        body: FinchAPI::HRIS::PayStatementResponseBody,
-        code: Integer,
-        payment_id: String
+        body: FinchAPI::HRIS::PayStatementResponseBody | nil,
+        code: Integer | nil,
+        payment_id: String | nil
       }
     end
   end

@@ -42,14 +42,14 @@ module FinchAPI
           extend FinchAPI::Internal::Type::Enum
 
           ANNUALLY = :annually
-          BI_WEEKLY = :bi_weekly
-          DAILY = :daily
-          MONTHLY = :monthly
-          OTHER = :other
-          QUARTERLY = :quarterly
           SEMI_ANNUALLY = :semi_annually
+          QUARTERLY = :quarterly
+          MONTHLY = :monthly
           SEMI_MONTHLY = :semi_monthly
+          BI_WEEKLY = :bi_weekly
           WEEKLY = :weekly
+          DAILY = :daily
+          OTHER = :other
 
           # @!method self.values
           #   @return [Array<Symbol>]

@@ -19,9 +19,9 @@ class FinchAPI::Test::Resources::HRIS::Company::PayStatementItemTest < FinchAPI:
 
     assert_pattern do
       row => {
-        attributes: FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Attributes,
-        category: FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Category,
-        name: String
+        attributes: FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Attributes | nil,
+        category: FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Category | nil,
+        name: String | nil
       }
     end
   end

@@ -12,73 +12,45 @@ module FinchAPI
             )
           end
 
-        sig { returns(FinchAPI::HRIS::PayStatementResponseBody::Paging) }
+        sig { returns(T.nilable(FinchAPI::Paging)) }
         attr_reader :paging
 
-        sig do
-          params(
-            paging: FinchAPI::HRIS::PayStatementResponseBody::Paging::OrHash
-          ).void
-        end
+        sig { params(paging: FinchAPI::Paging::OrHash).void }
         attr_writer :paging
 
-        sig { returns(T::Array[FinchAPI::HRIS::PayStatement]) }
-        attr_accessor :pay_statements
+        # The array of pay statements for the current payment.
+        sig { returns(T.nilable(T::Array[FinchAPI::HRIS::PayStatement])) }
+        attr_reader :pay_statements
 
         sig do
           params(
-            paging: FinchAPI::HRIS::PayStatementResponseBody::Paging::OrHash,
+            pay_statements: T::Array[FinchAPI::HRIS::PayStatement::OrHash]
+          ).void
+        end
+        attr_writer :pay_statements
+
+        sig do
+          params(
+            paging: FinchAPI::Paging::OrHash,
             pay_statements: T::Array[FinchAPI::HRIS::PayStatement::OrHash]
           ).returns(T.attached_class)
         end
-        def self.new(paging:, pay_statements:)
+        def self.new(
+          paging: nil,
+          # The array of pay statements for the current payment.
+          pay_statements: nil
+        )
         end
 
         sig do
           override.returns(
             {
-              paging: FinchAPI::HRIS::PayStatementResponseBody::Paging,
+              paging: FinchAPI::Paging,
               pay_statements: T::Array[FinchAPI::HRIS::PayStatement]
             }
           )
         end
         def to_hash
-        end
-
-        class Paging < FinchAPI::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                FinchAPI::HRIS::PayStatementResponseBody::Paging,
-                FinchAPI::Internal::AnyHash
-              )
-            end
-
-          # The current start index of the returned list of elements
-          sig { returns(Integer) }
-          attr_accessor :offset
-
-          # The total number of elements for the entire query (not just the given page)
-          sig { returns(T.nilable(Integer)) }
-          attr_reader :count
-
-          sig { params(count: Integer).void }
-          attr_writer :count
-
-          sig do
-            params(offset: Integer, count: Integer).returns(T.attached_class)
-          end
-          def self.new(
-            # The current start index of the returned list of elements
-            offset:,
-            # The total number of elements for the entire query (not just the given page)
-            count: nil
-          )
-          end
-
-          sig { override.returns({ offset: Integer, count: Integer }) }
-          def to_hash
-          end
         end
       end
     end
