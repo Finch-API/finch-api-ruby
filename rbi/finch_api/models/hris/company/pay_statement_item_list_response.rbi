@@ -16,7 +16,9 @@ module FinchAPI
           # The attributes of the pay statement item.
           sig do
             returns(
-              FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Attributes
+              T.nilable(
+                FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Attributes
+              )
             )
           end
           attr_reader :attributes
@@ -32,14 +34,27 @@ module FinchAPI
           # The category of the pay statement item.
           sig do
             returns(
-              FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Category::TaggedSymbol
+              T.nilable(
+                FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Category::TaggedSymbol
+              )
             )
           end
-          attr_accessor :category
+          attr_reader :category
+
+          sig do
+            params(
+              category:
+                FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Category::OrSymbol
+            ).void
+          end
+          attr_writer :category
 
           # The name of the pay statement item.
-          sig { returns(String) }
-          attr_accessor :name
+          sig { returns(T.nilable(String)) }
+          attr_reader :name
+
+          sig { params(name: String).void }
+          attr_writer :name
 
           sig do
             params(
@@ -52,11 +67,11 @@ module FinchAPI
           end
           def self.new(
             # The attributes of the pay statement item.
-            attributes:,
+            attributes: nil,
             # The category of the pay statement item.
-            category:,
+            category: nil,
             # The name of the pay statement item.
-            name:
+            name: nil
           )
           end
 
@@ -83,15 +98,15 @@ module FinchAPI
                 )
               end
 
-            # The metadata of the pay statement item derived by the rules engine if available.
-            # Each attribute will be a key-value pair defined by a rule.
-            sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
-            attr_accessor :metadata
-
             # `true` if the amount is paid by the employers. This field is only available for
             # taxes.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :employer
+
+            # The metadata of the pay statement item derived by the rules engine if available.
+            # Each attribute will be a key-value pair defined by a rule.
+            sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
+            attr_accessor :metadata
 
             # `true` if the pay statement item is pre-tax. This field is only available for
             # employee deductions.
@@ -105,19 +120,19 @@ module FinchAPI
             # The attributes of the pay statement item.
             sig do
               params(
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
                 employer: T.nilable(T::Boolean),
+                metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
                 pre_tax: T.nilable(T::Boolean),
                 type: T.nilable(String)
               ).returns(T.attached_class)
             end
             def self.new(
-              # The metadata of the pay statement item derived by the rules engine if available.
-              # Each attribute will be a key-value pair defined by a rule.
-              metadata:,
               # `true` if the amount is paid by the employers. This field is only available for
               # taxes.
               employer: nil,
+              # The metadata of the pay statement item derived by the rules engine if available.
+              # Each attribute will be a key-value pair defined by a rule.
+              metadata: nil,
               # `true` if the pay statement item is pre-tax. This field is only available for
               # employee deductions.
               pre_tax: nil,
@@ -129,8 +144,8 @@ module FinchAPI
             sig do
               override.returns(
                 {
-                  metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
                   employer: T.nilable(T::Boolean),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
                   pre_tax: T.nilable(T::Boolean),
                   type: T.nilable(String)
                 }

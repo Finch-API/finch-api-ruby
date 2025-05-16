@@ -9,41 +9,49 @@ module FinchAPI
         }
 
       class PayGroupListResponse < FinchAPI::Internal::Type::BaseModel
-        attr_accessor id: String
+        attr_reader id: String?
 
-        attr_accessor name: String
+        def id=: (String) -> String
 
-        attr_accessor pay_frequencies: ::Array[FinchAPI::Models::Payroll::PayGroupListResponse::pay_frequency]
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader pay_frequencies: ::Array[FinchAPI::Models::Payroll::PayGroupListResponse::pay_frequency]?
+
+        def pay_frequencies=: (
+          ::Array[FinchAPI::Models::Payroll::PayGroupListResponse::pay_frequency]
+        ) -> ::Array[FinchAPI::Models::Payroll::PayGroupListResponse::pay_frequency]
 
         def initialize: (
-          id: String,
-          name: String,
-          pay_frequencies: ::Array[FinchAPI::Models::Payroll::PayGroupListResponse::pay_frequency]
+          ?id: String,
+          ?name: String,
+          ?pay_frequencies: ::Array[FinchAPI::Models::Payroll::PayGroupListResponse::pay_frequency]
         ) -> void
 
         type pay_frequency =
           :annually
-          | :bi_weekly
-          | :daily
-          | :monthly
-          | :other
-          | :quarterly
           | :semi_annually
+          | :quarterly
+          | :monthly
           | :semi_monthly
+          | :bi_weekly
           | :weekly
+          | :daily
+          | :other
 
         module PayFrequency
           extend FinchAPI::Internal::Type::Enum
 
           ANNUALLY: :annually
-          BI_WEEKLY: :bi_weekly
-          DAILY: :daily
-          MONTHLY: :monthly
-          OTHER: :other
-          QUARTERLY: :quarterly
           SEMI_ANNUALLY: :semi_annually
+          QUARTERLY: :quarterly
+          MONTHLY: :monthly
           SEMI_MONTHLY: :semi_monthly
+          BI_WEEKLY: :bi_weekly
           WEEKLY: :weekly
+          DAILY: :daily
+          OTHER: :other
 
           def self?.values: -> ::Array[FinchAPI::Models::Payroll::PayGroupListResponse::pay_frequency]
         end

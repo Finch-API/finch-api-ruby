@@ -7,20 +7,20 @@ module FinchAPI
       class PayStatementResponse < FinchAPI::Internal::Type::BaseModel
         # @!attribute body
         #
-        #   @return [FinchAPI::HRIS::PayStatementResponseBody]
-        required :body, -> { FinchAPI::HRIS::PayStatementResponseBody }
+        #   @return [FinchAPI::HRIS::PayStatementResponseBody, nil]
+        optional :body, -> { FinchAPI::HRIS::PayStatementResponseBody }
 
         # @!attribute code
         #
-        #   @return [Integer]
-        required :code, Integer
+        #   @return [Integer, nil]
+        optional :code, Integer
 
         # @!attribute payment_id
         #
-        #   @return [String]
-        required :payment_id, String
+        #   @return [String, nil]
+        optional :payment_id, String
 
-        # @!method initialize(body:, code:, payment_id:)
+        # @!method initialize(body: nil, code: nil, payment_id: nil)
         #   @param body [FinchAPI::HRIS::PayStatementResponseBody]
         #   @param code [Integer]
         #   @param payment_id [String]

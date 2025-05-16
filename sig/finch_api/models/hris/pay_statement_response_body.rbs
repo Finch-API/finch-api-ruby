@@ -3,31 +3,25 @@ module FinchAPI
     module HRIS
       type pay_statement_response_body =
         {
-          paging: FinchAPI::HRIS::PayStatementResponseBody::Paging,
+          paging: FinchAPI::Paging,
           pay_statements: ::Array[FinchAPI::HRIS::PayStatement]
         }
 
       class PayStatementResponseBody < FinchAPI::Internal::Type::BaseModel
-        attr_accessor paging: FinchAPI::HRIS::PayStatementResponseBody::Paging
+        attr_reader paging: FinchAPI::Paging?
 
-        attr_accessor pay_statements: ::Array[FinchAPI::HRIS::PayStatement]
+        def paging=: (FinchAPI::Paging) -> FinchAPI::Paging
+
+        attr_reader pay_statements: ::Array[FinchAPI::HRIS::PayStatement]?
+
+        def pay_statements=: (
+          ::Array[FinchAPI::HRIS::PayStatement]
+        ) -> ::Array[FinchAPI::HRIS::PayStatement]
 
         def initialize: (
-          paging: FinchAPI::HRIS::PayStatementResponseBody::Paging,
-          pay_statements: ::Array[FinchAPI::HRIS::PayStatement]
+          ?paging: FinchAPI::Paging,
+          ?pay_statements: ::Array[FinchAPI::HRIS::PayStatement]
         ) -> void
-
-        type paging = { offset: Integer, count: Integer }
-
-        class Paging < FinchAPI::Internal::Type::BaseModel
-          attr_accessor offset: Integer
-
-          attr_reader count: Integer?
-
-          def count=: (Integer) -> Integer
-
-          def initialize: (offset: Integer, ?count: Integer) -> void
-        end
       end
     end
   end

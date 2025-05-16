@@ -7,14 +7,14 @@ module FinchAPI
       #   Amount for money object (in cents)
       #
       #   @return [Integer, nil]
-      required :amount, Integer, nil?: true
+      optional :amount, Integer, nil?: true
 
       # @!attribute currency
       #
-      #   @return [String]
-      required :currency, String
+      #   @return [String, nil]
+      optional :currency, String
 
-      # @!method initialize(amount:, currency:)
+      # @!method initialize(amount: nil, currency: nil)
       #   @param amount [Integer, nil] Amount for money object (in cents)
       #
       #   @param currency [String]

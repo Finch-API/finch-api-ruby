@@ -10,8 +10,11 @@ module FinchAPI
       sig { returns(T.nilable(Integer)) }
       attr_accessor :amount
 
-      sig { returns(String) }
-      attr_accessor :currency
+      sig { returns(T.nilable(String)) }
+      attr_reader :currency
+
+      sig { params(currency: String).void }
+      attr_writer :currency
 
       sig do
         params(amount: T.nilable(Integer), currency: String).returns(
@@ -20,8 +23,8 @@ module FinchAPI
       end
       def self.new(
         # Amount for money object (in cents)
-        amount:,
-        currency:
+        amount: nil,
+        currency: nil
       )
       end
 

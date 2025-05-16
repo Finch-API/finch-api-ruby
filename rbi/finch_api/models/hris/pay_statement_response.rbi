@@ -12,7 +12,7 @@ module FinchAPI
             )
           end
 
-        sig { returns(FinchAPI::HRIS::PayStatementResponseBody) }
+        sig { returns(T.nilable(FinchAPI::HRIS::PayStatementResponseBody)) }
         attr_reader :body
 
         sig do
@@ -20,11 +20,17 @@ module FinchAPI
         end
         attr_writer :body
 
-        sig { returns(Integer) }
-        attr_accessor :code
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :code
 
-        sig { returns(String) }
-        attr_accessor :payment_id
+        sig { params(code: Integer).void }
+        attr_writer :code
+
+        sig { returns(T.nilable(String)) }
+        attr_reader :payment_id
+
+        sig { params(payment_id: String).void }
+        attr_writer :payment_id
 
         sig do
           params(
@@ -33,7 +39,7 @@ module FinchAPI
             payment_id: String
           ).returns(T.attached_class)
         end
-        def self.new(body:, code:, payment_id:)
+        def self.new(body: nil, code: nil, payment_id: nil)
         end
 
         sig do
