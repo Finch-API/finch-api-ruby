@@ -35,17 +35,7 @@ module FinchAPI
             )
           )
         end
-        attr_reader :custom_fields
-
-        sig do
-          params(
-            custom_fields:
-              T::Array[
-                FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField::OrHash
-              ]
-          ).void
-        end
-        attr_writer :custom_fields
+        attr_accessor :custom_fields
 
         # The department object.
         sig do
@@ -87,7 +77,8 @@ module FinchAPI
         end
         attr_writer :employment
 
-        # The detailed employment status of the individual.
+        # The detailed employment status of the individual. Available options: `active`,
+        # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
         sig do
           returns(
             T.nilable(
@@ -160,10 +151,7 @@ module FinchAPI
 
         # The source system's unique employment identifier for this individual
         sig { returns(T.nilable(String)) }
-        attr_reader :source_id
-
-        sig { params(source_id: String).void }
-        attr_writer :source_id
+        attr_accessor :source_id
 
         sig { returns(T.nilable(String)) }
         attr_accessor :start_date
@@ -177,9 +165,11 @@ module FinchAPI
             id: String,
             class_code: T.nilable(String),
             custom_fields:
-              T::Array[
-                FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField::OrHash
-              ],
+              T.nilable(
+                T::Array[
+                  FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField::OrHash
+                ]
+              ),
             department:
               T.nilable(
                 FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Department::OrHash
@@ -206,7 +196,7 @@ module FinchAPI
                 FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Manager::OrHash
               ),
             middle_name: T.nilable(String),
-            source_id: String,
+            source_id: T.nilable(String),
             start_date: T.nilable(String),
             title: T.nilable(String)
           ).returns(T.attached_class)
@@ -224,7 +214,8 @@ module FinchAPI
           department: nil,
           # The employment object.
           employment: nil,
-          # The detailed employment status of the individual.
+          # The detailed employment status of the individual. Available options: `active`,
+          # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
           employment_status: nil,
           end_date: nil,
           # The legal first name of the individual.
@@ -259,9 +250,11 @@ module FinchAPI
               id: String,
               class_code: T.nilable(String),
               custom_fields:
-                T::Array[
-                  FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField
-                ],
+                T.nilable(
+                  T::Array[
+                    FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField
+                  ]
+                ),
               department:
                 T.nilable(
                   FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Department
@@ -287,7 +280,7 @@ module FinchAPI
                   FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Manager
                 ),
               middle_name: T.nilable(String),
-              source_id: String,
+              source_id: T.nilable(String),
               start_date: T.nilable(String),
               title: T.nilable(String)
             }
@@ -516,7 +509,8 @@ module FinchAPI
           end
         end
 
-        # The detailed employment status of the individual.
+        # The detailed employment status of the individual. Available options: `active`,
+        # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
         module EmploymentStatus
           extend FinchAPI::Internal::Type::Enum
 

@@ -15,13 +15,13 @@ module FinchAPI
         #
         # @param class_code [String, nil] Worker's compensation classification code for this employee
         #
-        # @param custom_fields [Array<FinchAPI::Sandbox::EmploymentUpdateParams::CustomField>] Custom fields for the individual. These are fields which are defined by the empl
+        # @param custom_fields [Array<FinchAPI::Sandbox::EmploymentUpdateParams::CustomField>, nil] Custom fields for the individual. These are fields which are defined by the empl
         #
         # @param department [FinchAPI::Sandbox::EmploymentUpdateParams::Department, nil] The department object.
         #
         # @param employment [FinchAPI::Sandbox::EmploymentUpdateParams::Employment, nil] The employment object.
         #
-        # @param employment_status [Symbol, FinchAPI::Sandbox::EmploymentUpdateParams::EmploymentStatus, nil] The detailed employment status of the individual.
+        # @param employment_status [Symbol, FinchAPI::Sandbox::EmploymentUpdateParams::EmploymentStatus, nil] The detailed employment status of the individual. Available options: `active`, `
         #
         # @param end_date [String, nil]
         #
@@ -43,7 +43,7 @@ module FinchAPI
         #
         # @param middle_name [String, nil] The legal middle name of the individual.
         #
-        # @param source_id [String] The source system's unique employment identifier for this individual
+        # @param source_id [String, nil] The source system's unique employment identifier for this individual
         #
         # @param start_date [String, nil]
         #
