@@ -141,10 +141,6 @@ module FinchAPI
           sig { returns(T.nilable(String)) }
           attr_accessor :middle_name
 
-          # The source system's unique employment identifier for this individual
-          sig { returns(T.nilable(String)) }
-          attr_accessor :source_id
-
           sig { returns(T.nilable(String)) }
           attr_accessor :start_date
 
@@ -168,6 +164,10 @@ module FinchAPI
           # The array of income history.
           sig { returns(T.nilable(T::Array[T.nilable(FinchAPI::Income)])) }
           attr_accessor :income_history
+
+          # The source system's unique employment identifier for this individual
+          sig { returns(T.nilable(String)) }
+          attr_accessor :source_id
 
           sig do
             params(
@@ -202,13 +202,13 @@ module FinchAPI
                   FinchAPI::HRIS::EmploymentData::UnionMember0::Manager::OrHash
                 ),
               middle_name: T.nilable(String),
-              source_id: T.nilable(String),
               start_date: T.nilable(String),
               title: T.nilable(String),
               work_id: T.nilable(String),
               income: T.nilable(FinchAPI::Income::OrHash),
               income_history:
-                T.nilable(T::Array[T.nilable(FinchAPI::Income::OrHash)])
+                T.nilable(T::Array[T.nilable(FinchAPI::Income::OrHash)]),
+              source_id: T.nilable(String)
             ).returns(T.attached_class)
           end
           def self.new(
@@ -239,8 +239,6 @@ module FinchAPI
             manager:,
             # The legal middle name of the individual.
             middle_name:,
-            # The source system's unique employment identifier for this individual
-            source_id:,
             start_date:,
             # The current title of the individual.
             title:,
@@ -251,7 +249,9 @@ module FinchAPI
             # depending on what information the provider returns.
             income: nil,
             # The array of income history.
-            income_history: nil
+            income_history: nil,
+            # The source system's unique employment identifier for this individual
+            source_id: nil
           )
           end
 
@@ -289,12 +289,13 @@ module FinchAPI
                     FinchAPI::HRIS::EmploymentData::UnionMember0::Manager
                   ),
                 middle_name: T.nilable(String),
-                source_id: T.nilable(String),
                 start_date: T.nilable(String),
                 title: T.nilable(String),
                 work_id: T.nilable(String),
                 income: T.nilable(FinchAPI::Income),
-                income_history: T.nilable(T::Array[T.nilable(FinchAPI::Income)])
+                income_history:
+                  T.nilable(T::Array[T.nilable(FinchAPI::Income)]),
+                source_id: T.nilable(String)
               }
             )
           end

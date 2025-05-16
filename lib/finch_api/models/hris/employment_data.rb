@@ -100,12 +100,6 @@ module FinchAPI
           #   @return [String, nil]
           required :middle_name, String, nil?: true
 
-          # @!attribute source_id
-          #   The source system's unique employment identifier for this individual
-          #
-          #   @return [String, nil]
-          required :source_id, String, nil?: true
-
           # @!attribute start_date
           #
           #   @return [String, nil]
@@ -141,7 +135,13 @@ module FinchAPI
                    -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Income, nil?: true] },
                    nil?: true
 
-          # @!method initialize(id:, class_code:, custom_fields:, department:, employment:, employment_status:, end_date:, first_name:, is_active:, last_name:, latest_rehire_date:, location:, manager:, middle_name:, source_id:, start_date:, title:, work_id:, income: nil, income_history: nil)
+          # @!attribute source_id
+          #   The source system's unique employment identifier for this individual
+          #
+          #   @return [String, nil]
+          optional :source_id, String, nil?: true
+
+          # @!method initialize(id:, class_code:, custom_fields:, department:, employment:, employment_status:, end_date:, first_name:, is_active:, last_name:, latest_rehire_date:, location:, manager:, middle_name:, start_date:, title:, work_id:, income: nil, income_history: nil, source_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {FinchAPI::HRIS::EmploymentData::UnionMember0} for more details.
           #
@@ -173,8 +173,6 @@ module FinchAPI
           #
           #   @param middle_name [String, nil] The legal middle name of the individual.
           #
-          #   @param source_id [String, nil] The source system's unique employment identifier for this individual
-          #
           #   @param start_date [String, nil]
           #
           #   @param title [String, nil] The current title of the individual.
@@ -184,6 +182,8 @@ module FinchAPI
           #   @param income [FinchAPI::Income, nil] The employee's income as reported by the provider. This may not always be annual
           #
           #   @param income_history [Array<FinchAPI::Income, nil>, nil] The array of income history.
+          #
+          #   @param source_id [String, nil] The source system's unique employment identifier for this individual
 
           class CustomField < FinchAPI::Internal::Type::BaseModel
             # @!attribute name
