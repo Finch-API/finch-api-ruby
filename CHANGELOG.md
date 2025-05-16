@@ -1,5 +1,35 @@
 # Changelog
 
+## 0.1.0-alpha.17 (2025-05-16)
+
+Full Changelog: [v0.1.0-alpha.16...v0.1.0-alpha.17](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.16...v0.1.0-alpha.17)
+
+### Features
+
+* **api:** api update ([2cd7677](https://github.com/Finch-API/finch-api-ruby/commit/2cd76772fe2768477bb236372c94887a7f1f7022))
+* **api:** api update ([db14723](https://github.com/Finch-API/finch-api-ruby/commit/db147236a70addae46834af9b8339400480a7600))
+* **api:** api update ([1f0346a](https://github.com/Finch-API/finch-api-ruby/commit/1f0346afcca537802e8287a46bc2f759e909975f))
+* bump default connection pool size limit to minimum of 99 ([2e0e107](https://github.com/Finch-API/finch-api-ruby/commit/2e0e1078e5a29ffb965346cd6f620743f0e4b6db))
+* expose base client options as read only attributes ([289fb00](https://github.com/Finch-API/finch-api-ruby/commit/289fb00361821da703dbc9aab1db9ad8435427e3))
+* expose recursive `#to_h` conversion ([03335a6](https://github.com/Finch-API/finch-api-ruby/commit/03335a6a67ce9176fecdafc79c98ddeb22210803))
+* support sorbet aliases at the runtime ([beb18c8](https://github.com/Finch-API/finch-api-ruby/commit/beb18c85b5edba3d056d5d480f9fc4d19ea751a4))
+
+
+### Bug Fixes
+
+* **internal:** update gemspec name ([70eb621](https://github.com/Finch-API/finch-api-ruby/commit/70eb6214cf238d92f6b2f23969f252a5e4ce3941))
+
+
+### Chores
+
+* fix misc linting / minor issues ([9c271ed](https://github.com/Finch-API/finch-api-ruby/commit/9c271edf9374973a70e98774d1f55959181ed6be))
+* **internal:** version bump ([f365e16](https://github.com/Finch-API/finch-api-ruby/commit/f365e164984a15deeb545bc07ab8a85373d840ea))
+
+
+### Documentation
+
+* rewrite much of README.md for readability ([d5fac03](https://github.com/Finch-API/finch-api-ruby/commit/d5fac031d01715a45d40fab30e856e42c601a9a9))
+
 ## 0.1.0-alpha.16 (2025-05-08)
 
 Full Changelog: [v0.1.0-alpha.15...v0.1.0-alpha.16](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.15...v0.1.0-alpha.16)
