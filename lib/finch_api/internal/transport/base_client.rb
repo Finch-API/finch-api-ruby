@@ -7,6 +7,8 @@ module FinchAPI
       #
       # @abstract
       class BaseClient
+        extend FinchAPI::Internal::Util::SorbetRuntimeSupport
+
         # from whatwg fetch spec
         MAX_REDIRECTS = 20
 
@@ -151,6 +153,27 @@ module FinchAPI
           end
         end
 
+        # @return [URI::Generic]
+        attr_reader :base_url
+
+        # @return [Float]
+        attr_reader :timeout
+
+        # @return [Integer]
+        attr_reader :max_retries
+
+        # @return [Float]
+        attr_reader :initial_retry_delay
+
+        # @return [Float]
+        attr_reader :max_retry_delay
+
+        # @return [Hash{String=>String}]
+        attr_reader :headers
+
+        # @return [String, nil]
+        attr_reader :idempotency_header
+
         # @api private
         # @return [FinchAPI::Internal::Transport::PooledNetRequester]
         attr_reader :requester
@@ -182,10 +205,11 @@ module FinchAPI
             },
             headers
           )
-          @base_url = FinchAPI::Internal::Util.parse_uri(base_url)
+          @base_url_components = FinchAPI::Internal::Util.parse_uri(base_url)
+          @base_url = FinchAPI::Internal::Util.unparse_uri(@base_url_components)
           @idempotency_header = idempotency_header&.to_s&.downcase
-          @max_retries = max_retries
           @timeout = timeout
+          @max_retries = max_retries
           @initial_retry_delay = initial_retry_delay
           @max_retry_delay = max_retry_delay
         end
@@ -276,10 +300,14 @@ module FinchAPI
               FinchAPI::Internal::Util.deep_merge(*[req[:body], opts[:extra_body]].compact)
             end
 
+          url = FinchAPI::Internal::Util.join_parsed_uri(
+            @base_url_components,
+            {**req, path: path, query: query}
+          )
           headers, encoded = FinchAPI::Internal::Util.encode_content(headers, body)
           {
             method: method,
-            url: FinchAPI::Internal::Util.join_parsed_uri(@base_url, {**req, path: path, query: query}),
+            url: url,
             headers: headers,
             body: encoded,
             max_retries: opts.fetch(:max_retries, @max_retries),
@@ -473,9 +501,53 @@ module FinchAPI
         # @return [String]
         def inspect
           # rubocop:disable Layout/LineLength
-          base_url = FinchAPI::Internal::Util.unparse_uri(@base_url)
-          "#<#{self.class.name}:0x#{object_id.to_s(16)} base_url=#{base_url} max_retries=#{@max_retries} timeout=#{@timeout}>"
+          "#<#{self.class.name}:0x#{object_id.to_s(16)} base_url=#{@base_url} max_retries=#{@max_retries} timeout=#{@timeout}>"
           # rubocop:enable Layout/LineLength
+        end
+
+        define_sorbet_constant!(:RequestComponents) do
+          T.type_alias do
+            {
+              method: Symbol,
+              path: T.any(String, T::Array[String]),
+              query: T.nilable(T::Hash[String, T.nilable(T.any(T::Array[String], String))]),
+              headers: T.nilable(
+                T::Hash[String,
+                        T.nilable(
+                          T.any(
+                            String,
+                            Integer,
+                            T::Array[T.nilable(T.any(String, Integer))]
+                          )
+                        )]
+              ),
+              body: T.nilable(T.anything),
+              unwrap: T.nilable(
+                T.any(
+                  Symbol,
+                  Integer,
+                  T::Array[T.any(Symbol, Integer)],
+                  T.proc.params(arg0: T.anything).returns(T.anything)
+                )
+              ),
+              page: T.nilable(T::Class[FinchAPI::Internal::Type::BasePage[FinchAPI::Internal::Type::BaseModel]]),
+              stream: T.nilable(T::Class[T.anything]),
+              model: T.nilable(FinchAPI::Internal::Type::Converter::Input),
+              options: T.nilable(FinchAPI::RequestOptions::OrHash)
+            }
+          end
+        end
+        define_sorbet_constant!(:RequestInput) do
+          T.type_alias do
+            {
+              method: Symbol,
+              url: URI::Generic,
+              headers: T::Hash[String, String],
+              body: T.anything,
+              max_retries: Integer,
+              timeout: Float
+            }
+          end
         end
       end
     end

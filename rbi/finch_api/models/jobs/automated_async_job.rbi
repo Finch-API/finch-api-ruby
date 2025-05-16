@@ -5,7 +5,12 @@ module FinchAPI
     module Jobs
       class AutomatedAsyncJob < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::Jobs::AutomatedAsyncJob,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         # The datetime the job completed.
         sig { returns(T.nilable(Time)) }
@@ -112,7 +117,12 @@ module FinchAPI
 
         class Params < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::Jobs::AutomatedAsyncJob::Params,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # The ID of the individual that the job was completed for.
           sig { returns(T.nilable(String)) }

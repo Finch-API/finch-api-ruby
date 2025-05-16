@@ -9,7 +9,12 @@ module FinchAPI
           include FinchAPI::Internal::Type::RequestParameters
 
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::HRIS::Benefits::IndividualRetrieveManyBenefitsParams,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # comma-delimited list of stable Finch uuids for each individual. If empty,
           # defaults to all individuals

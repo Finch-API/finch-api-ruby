@@ -262,13 +262,14 @@ module FinchAPI
           end
         end
 
-        type payment_method = :check | :direct_deposit
+        type payment_method = :check | :direct_deposit | :other
 
         module PaymentMethod
           extend FinchAPI::Internal::Type::Enum
 
           CHECK: :check
           DIRECT_DEPOSIT: :direct_deposit
+          OTHER: :other
 
           def self?.values: -> ::Array[FinchAPI::HRIS::PayStatement::payment_method]
         end

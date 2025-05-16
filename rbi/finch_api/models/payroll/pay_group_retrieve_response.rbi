@@ -5,7 +5,12 @@ module FinchAPI
     module Payroll
       class PayGroupRetrieveResponse < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::Models::Payroll::PayGroupRetrieveResponse,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         # Finch id (uuidv4) for the pay group
         sig { returns(String) }

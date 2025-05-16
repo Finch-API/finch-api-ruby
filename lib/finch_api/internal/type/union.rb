@@ -27,6 +27,7 @@ module FinchAPI
       #   end
       module Union
         include FinchAPI::Internal::Type::Converter
+        include FinchAPI::Internal::Util::SorbetRuntimeSupport
 
         # @api private
         #

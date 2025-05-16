@@ -8,7 +8,12 @@ module FinchAPI
         include FinchAPI::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::Sandbox::DirectoryCreateParams,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         # Array of individuals to create. Takes all combined fields from `/individual` and
         # `/employment` endpoints. All fields are optional.
@@ -55,7 +60,12 @@ module FinchAPI
 
         class Body < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::Sandbox::DirectoryCreateParams::Body,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # Worker's compensation classification code for this employee
           sig { returns(T.nilable(String)) }
@@ -472,7 +482,12 @@ module FinchAPI
 
           class CustomField < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             sig { returns(T.nilable(String)) }
             attr_accessor :name
@@ -500,7 +515,12 @@ module FinchAPI
 
           class Department < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Department,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             # The name of the department associated with the individual.
             sig { returns(T.nilable(String)) }
@@ -521,7 +541,12 @@ module FinchAPI
 
           class Email < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Email,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             sig { returns(T.nilable(String)) }
             attr_reader :data
@@ -601,7 +626,12 @@ module FinchAPI
 
           class Employment < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             # The secondary employment type of the individual. Options: `full_time`,
             # `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
@@ -927,7 +957,12 @@ module FinchAPI
 
           class Manager < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::Manager,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             # A stable Finch `id` (UUID v4) for an individual in the company.
             sig { returns(T.nilable(String)) }
@@ -951,7 +986,12 @@ module FinchAPI
 
           class PhoneNumber < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             sig { returns(T.nilable(String)) }
             attr_accessor :data

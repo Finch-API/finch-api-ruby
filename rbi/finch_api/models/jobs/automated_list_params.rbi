@@ -8,7 +8,12 @@ module FinchAPI
         include FinchAPI::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::Jobs::AutomatedListParams,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         # Number of items to return
         sig { returns(T.nilable(Integer)) }

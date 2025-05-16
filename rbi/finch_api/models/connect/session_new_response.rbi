@@ -5,7 +5,12 @@ module FinchAPI
     module Connect
       class SessionNewResponse < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::Models::Connect::SessionNewResponse,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         # The Connect URL to redirect the user to for authentication
         sig { returns(String) }

@@ -6,7 +6,13 @@ module FinchAPI
       extend FinchAPI::Internal::Type::RequestParameters::Converter
       include FinchAPI::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            FinchAPI::RequestForwardingForwardParams,
+            FinchAPI::Internal::AnyHash
+          )
+        end
 
       # The HTTP method for the forwarded request. Valid values include: `GET` , `POST`
       # , `PUT` , `DELETE` , and `PATCH`.

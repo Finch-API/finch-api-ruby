@@ -3,7 +3,10 @@
 module FinchAPI
   module Models
     class OperationSupportMatrix < FinchAPI::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(FinchAPI::OperationSupportMatrix, FinchAPI::Internal::AnyHash)
+        end
 
       # - `supported`: This operation is supported by both the provider and Finch
       # - `not_supported_by_finch`: This operation is not supported by Finch but

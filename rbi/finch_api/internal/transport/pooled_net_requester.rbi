@@ -5,7 +5,9 @@ module FinchAPI
     module Transport
       # @api private
       class PooledNetRequester
-        RequestShape =
+        extend FinchAPI::Internal::Util::SorbetRuntimeSupport
+
+        Request =
           T.type_alias do
             {
               method: Symbol,
@@ -19,6 +21,8 @@ module FinchAPI
         # from the golang stdlib
         # https://github.com/golang/go/blob/c8eced8580028328fde7c03cbfcb720ce15b2358/src/net/http/transport.go#L49
         KEEP_ALIVE_TIMEOUT = 30
+
+        DEFAULT_MAX_CONNECTIONS = T.let(T.unsafe(nil), Integer)
 
         class << self
           # @api private
@@ -35,7 +39,7 @@ module FinchAPI
           sig do
             params(
               request:
-                FinchAPI::Internal::Transport::PooledNetRequester::RequestShape,
+                FinchAPI::Internal::Transport::PooledNetRequester::Request,
               blk: T.proc.params(arg0: String).void
             ).returns([Net::HTTPGenericRequest, T.proc.void])
           end
@@ -57,8 +61,7 @@ module FinchAPI
         # @api private
         sig do
           params(
-            request:
-              FinchAPI::Internal::Transport::PooledNetRequester::RequestShape
+            request: FinchAPI::Internal::Transport::PooledNetRequester::Request
           ).returns([Integer, Net::HTTPResponse, T::Enumerable[String]])
         end
         def execute(request)
@@ -66,7 +69,9 @@ module FinchAPI
 
         # @api private
         sig { params(size: Integer).returns(T.attached_class) }
-        def self.new(size: Etc.nprocessors)
+        def self.new(
+          size: FinchAPI::Internal::Transport::PooledNetRequester::DEFAULT_MAX_CONNECTIONS
+        )
         end
       end
     end

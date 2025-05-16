@@ -3,7 +3,10 @@
 module FinchAPI
   module Models
     class JobCompletionEvent < FinchAPI::Models::BaseWebhookEvent
-      OrHash = T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(FinchAPI::JobCompletionEvent, FinchAPI::Internal::AnyHash)
+        end
 
       sig { returns(T.nilable(FinchAPI::JobCompletionEvent::Data)) }
       attr_reader :data
@@ -47,7 +50,12 @@ module FinchAPI
 
       class Data < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::JobCompletionEvent::Data,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         # The id of the job which has completed.
         sig { returns(String) }

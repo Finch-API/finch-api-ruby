@@ -3,7 +3,8 @@
 module FinchAPI
   module Models
     class Income < FinchAPI::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(FinchAPI::Income, FinchAPI::Internal::AnyHash) }
 
       # The income amount in cents.
       sig { returns(T.nilable(Integer)) }

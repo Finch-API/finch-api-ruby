@@ -3,6 +3,7 @@ module FinchAPI
     module Type
       module Union
         include FinchAPI::Internal::Type::Converter
+        include FinchAPI::Internal::Util::SorbetRuntimeSupport
 
         private def self.known_variants: -> ::Array[[Symbol?, (^-> FinchAPI::Internal::Type::Converter::input)]]
 

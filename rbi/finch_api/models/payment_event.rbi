@@ -3,7 +3,10 @@
 module FinchAPI
   module Models
     class PaymentEvent < FinchAPI::Models::BaseWebhookEvent
-      OrHash = T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(FinchAPI::PaymentEvent, FinchAPI::Internal::AnyHash)
+        end
 
       sig { returns(T.nilable(FinchAPI::PaymentEvent::Data)) }
       attr_reader :data
@@ -43,7 +46,9 @@ module FinchAPI
 
       class Data < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(FinchAPI::PaymentEvent::Data, FinchAPI::Internal::AnyHash)
+          end
 
         # The date of the payment.
         sig { returns(String) }

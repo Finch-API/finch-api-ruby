@@ -8,7 +8,12 @@ module FinchAPI
       module Benefits
         class IndividualBenefit < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::HRIS::Benefits::IndividualBenefit,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -60,7 +65,12 @@ module FinchAPI
 
           class Body < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::HRIS::Benefits::IndividualBenefit::Body,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             # If the benefit supports annual maximum, the amount in cents for this individual.
             sig { returns(T.nilable(Integer)) }

@@ -16,7 +16,12 @@ module FinchAPI
 
         class UnionMember0 < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::HRIS::Individual::UnionMember0,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # A stable Finch `id` (UUID v4) for an individual in the company.
           sig { returns(String) }
@@ -315,7 +320,12 @@ module FinchAPI
 
           class PhoneNumber < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::HRIS::Individual::UnionMember0::PhoneNumber,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             sig { returns(T.nilable(String)) }
             attr_accessor :data
@@ -392,7 +402,12 @@ module FinchAPI
 
           class Email < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::HRIS::Individual::UnionMember0::Email,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             sig { returns(String) }
             attr_accessor :data
@@ -470,7 +485,12 @@ module FinchAPI
 
         class BatchError < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::HRIS::Individual::BatchError,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           sig { returns(Float) }
           attr_accessor :code

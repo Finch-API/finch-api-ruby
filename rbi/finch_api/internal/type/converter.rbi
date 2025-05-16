@@ -5,6 +5,8 @@ module FinchAPI
     module Type
       # @api private
       module Converter
+        extend FinchAPI::Internal::Util::SorbetRuntimeSupport
+
         Input =
           T.type_alias do
             T.any(FinchAPI::Internal::Type::Converter, T::Class[T.anything])

@@ -25,6 +25,21 @@ module FinchAPI
 
       # @!method self.variants
       #   @return [Array(FinchAPI::AccountUpdateEvent, FinchAPI::CompanyEvent, FinchAPI::JobCompletionEvent, FinchAPI::DirectoryEvent, FinchAPI::EmploymentEvent, FinchAPI::IndividualEvent, FinchAPI::PaymentEvent, FinchAPI::PayStatementEvent)]
+
+      define_sorbet_constant!(:Variants) do
+        T.type_alias do
+          T.any(
+            FinchAPI::AccountUpdateEvent,
+            FinchAPI::CompanyEvent,
+            FinchAPI::JobCompletionEvent,
+            FinchAPI::DirectoryEvent,
+            FinchAPI::EmploymentEvent,
+            FinchAPI::IndividualEvent,
+            FinchAPI::PaymentEvent,
+            FinchAPI::PayStatementEvent
+          )
+        end
+      end
     end
   end
 end

@@ -7,7 +7,12 @@ module FinchAPI
         module PayStatementItem
           class RuleUpdateResponse < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             # Finch id (uuidv4) for the rule.
             sig { returns(T.nilable(String)) }
@@ -166,7 +171,12 @@ module FinchAPI
 
             class Attributes < FinchAPI::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Attributes,
+                    FinchAPI::Internal::AnyHash
+                  )
+                end
 
               # The metadata to be attached in the entity. It is a key-value pairs where the
               # values can be of any type (string, number, boolean, object, array, etc.).
@@ -198,7 +208,12 @@ module FinchAPI
 
             class Condition < FinchAPI::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse::Condition,
+                    FinchAPI::Internal::AnyHash
+                  )
+                end
 
               # The field to be checked in the rule.
               sig { returns(T.nilable(String)) }

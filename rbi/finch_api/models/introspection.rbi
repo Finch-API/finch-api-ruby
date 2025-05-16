@@ -3,7 +3,10 @@
 module FinchAPI
   module Models
     class Introspection < FinchAPI::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(FinchAPI::Introspection, FinchAPI::Internal::AnyHash)
+        end
 
       # The Finch UUID of the token being introspected.
       sig { returns(String) }
@@ -188,7 +191,12 @@ module FinchAPI
 
       class AuthenticationMethod < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::Introspection::AuthenticationMethod,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         sig do
           returns(
@@ -264,7 +272,12 @@ module FinchAPI
 
         class ConnectionStatus < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::Introspection::AuthenticationMethod::ConnectionStatus,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           sig { returns(T.nilable(String)) }
           attr_reader :message
@@ -375,7 +388,12 @@ module FinchAPI
 
       class ConnectionStatus < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::Introspection::ConnectionStatus,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         # The datetime when the connection was last successfully synced.
         sig { returns(T.nilable(Time)) }

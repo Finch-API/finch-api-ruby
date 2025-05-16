@@ -3,7 +3,10 @@
 module FinchAPI
   module Models
     class CompanyEvent < FinchAPI::Models::BaseWebhookEvent
-      OrHash = T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(FinchAPI::CompanyEvent, FinchAPI::Internal::AnyHash)
+        end
 
       sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
       attr_accessor :data

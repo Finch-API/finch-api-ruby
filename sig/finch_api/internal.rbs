@@ -1,5 +1,7 @@
 module FinchAPI
   module Internal
+    extend FinchAPI::Internal::Util::SorbetRuntimeSupport
+
     OMIT: Object
   end
 end

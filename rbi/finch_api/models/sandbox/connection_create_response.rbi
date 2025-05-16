@@ -5,7 +5,12 @@ module FinchAPI
     module Sandbox
       class ConnectionCreateResponse < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::Models::Sandbox::ConnectionCreateResponse,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         sig { returns(String) }
         attr_accessor :access_token

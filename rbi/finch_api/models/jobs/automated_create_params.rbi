@@ -8,7 +8,12 @@ module FinchAPI
         include FinchAPI::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::Jobs::AutomatedCreateParams,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         # The type of job to start.
         sig { returns(FinchAPI::Jobs::AutomatedCreateParams::Type::OrSymbol) }
@@ -80,7 +85,12 @@ module FinchAPI
 
         class Params < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::Jobs::AutomatedCreateParams::Params,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # The unique ID of the individual for W-4 data sync.
           sig { returns(String) }

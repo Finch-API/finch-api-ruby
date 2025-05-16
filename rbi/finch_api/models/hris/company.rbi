@@ -5,7 +5,9 @@ module FinchAPI
     module HRIS
       class HRISCompany < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(FinchAPI::HRIS::HRISCompany, FinchAPI::Internal::AnyHash)
+          end
 
         # A stable Finch `id` (UUID v4) for the company.
         sig { returns(String) }
@@ -124,7 +126,12 @@ module FinchAPI
 
         class Account < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::HRIS::HRISCompany::Account,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # The name of the bank associated in the payroll/HRIS system.
           sig { returns(T.nilable(String)) }
@@ -232,7 +239,12 @@ module FinchAPI
 
         class Department < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::HRIS::HRISCompany::Department,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # The department name.
           sig { returns(T.nilable(String)) }
@@ -285,7 +297,12 @@ module FinchAPI
 
           class Parent < FinchAPI::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  FinchAPI::HRIS::HRISCompany::Department::Parent,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
             # The parent department's name.
             sig { returns(T.nilable(String)) }
@@ -307,7 +324,12 @@ module FinchAPI
 
         class Entity < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::HRIS::HRISCompany::Entity,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # The tax payer subtype of the company.
           sig do

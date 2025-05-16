@@ -2,6 +2,8 @@ module FinchAPI
   module Internal
     module Transport
       class BaseClient
+        extend FinchAPI::Internal::Util::SorbetRuntimeSupport
+
         type request_components =
           {
             method: Symbol,
@@ -20,7 +22,6 @@ module FinchAPI
             model: FinchAPI::Internal::Type::Converter::input?,
             options: FinchAPI::request_opts?
           }
-
         type request_input =
           {
             method: Symbol,
@@ -54,6 +55,20 @@ module FinchAPI
           Integer | FinchAPI::Errors::APIConnectionError status,
           stream: Enumerable[String]?
         ) -> void
+
+        attr_reader base_url: URI::Generic
+
+        attr_reader timeout: Float
+
+        attr_reader max_retries: Integer
+
+        attr_reader initial_retry_delay: Float
+
+        attr_reader max_retry_delay: Float
+
+        attr_reader headers: ::Hash[String, String]
+
+        attr_reader idempotency_header: String?
 
         # @api private
         attr_reader requester: FinchAPI::Internal::Transport::PooledNetRequester

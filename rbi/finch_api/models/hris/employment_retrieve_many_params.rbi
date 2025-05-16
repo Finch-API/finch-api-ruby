@@ -8,7 +8,12 @@ module FinchAPI
         include FinchAPI::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::HRIS::EmploymentRetrieveManyParams,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         # The array of batch requests.
         sig do
@@ -48,7 +53,12 @@ module FinchAPI
 
         class Request < FinchAPI::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                FinchAPI::HRIS::EmploymentRetrieveManyParams::Request,
+                FinchAPI::Internal::AnyHash
+              )
+            end
 
           # A stable Finch `id` (UUID v4) for an individual in the company. There is no
           # limit to the number of `individual_id` to send per request. It is preferantial

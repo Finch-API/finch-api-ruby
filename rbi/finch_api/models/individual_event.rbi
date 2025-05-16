@@ -3,7 +3,10 @@
 module FinchAPI
   module Models
     class IndividualEvent < FinchAPI::Models::BaseWebhookEvent
-      OrHash = T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(FinchAPI::IndividualEvent, FinchAPI::Internal::AnyHash)
+        end
 
       sig { returns(T.nilable(FinchAPI::IndividualEvent::Data)) }
       attr_reader :data
@@ -43,7 +46,9 @@ module FinchAPI
 
       class Data < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(FinchAPI::IndividualEvent::Data, FinchAPI::Internal::AnyHash)
+          end
 
         # The ID of the individual related to the event.
         sig { returns(T.nilable(String)) }

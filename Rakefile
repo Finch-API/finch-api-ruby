@@ -41,7 +41,7 @@ desc("Lint `*.rb(i)`")
 multitask(:"lint:rubocop") do
   find = %w[find ./lib ./test ./rbi -type f -and ( -name *.rb -or -name *.rbi ) -print0]
 
-  rubocop = %w[rubocop --fail-level E]
+  rubocop = %w[rubocop]
   rubocop += %w[--format github] if ENV.key?("CI")
 
   # some lines cannot be shortened
@@ -147,7 +147,7 @@ multitask(:"build:gem") do
     sig/*
   GLOB
 
-  sh(*%w[gem build -- openai.gemspec])
+  sh(*%w[gem build -- finch_api.gemspec])
   rm_rf(ignore_file)
 end
 

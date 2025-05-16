@@ -5,10 +5,11 @@ module FinchAPI
     module Type
       class BaseModel
         extend FinchAPI::Internal::Type::Converter
+        extend FinchAPI::Internal::Util::SorbetRuntimeSupport
 
         abstract!
 
-        KnownFieldShape =
+        KnownField =
           T.type_alias do
             {
               mode: T.nilable(Symbol),
@@ -18,19 +19,29 @@ module FinchAPI
           end
 
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::Internal::Type::BaseModel,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         class << self
           # @api private
           #
           # Assumes superclass fields are totally defined before fields are accessed /
           # defined on subclasses.
+          sig { params(child: T.self_type).void }
+          def inherited(child)
+          end
+
+          # @api private
           sig do
             returns(
               T::Hash[
                 Symbol,
                 T.all(
-                  FinchAPI::Internal::Type::BaseModel::KnownFieldShape,
+                  FinchAPI::Internal::Type::BaseModel::KnownField,
                   {
                     type_fn:
                       T.proc.returns(FinchAPI::Internal::Type::Converter::Input)
@@ -48,7 +59,7 @@ module FinchAPI
               T::Hash[
                 Symbol,
                 T.all(
-                  FinchAPI::Internal::Type::BaseModel::KnownFieldShape,
+                  FinchAPI::Internal::Type::BaseModel::KnownField,
                   { type: FinchAPI::Internal::Type::Converter::Input }
                 )
               ]
@@ -188,6 +199,18 @@ module FinchAPI
           end
         end
 
+        class << self
+          # @api private
+          sig do
+            params(
+              model: FinchAPI::Internal::Type::BaseModel,
+              convert: T::Boolean
+            ).returns(FinchAPI::Internal::AnyHash)
+          end
+          def recursively_to_h(model, convert:)
+          end
+        end
+
         # Returns the raw value associated with the given key, if found. Otherwise, nil is
         # returned.
         #
@@ -222,23 +245,18 @@ module FinchAPI
         def to_hash
         end
 
+        # In addition to the behaviour of `#to_h`, this method will recursively call
+        # `#to_h` on nested models.
+        sig { overridable.returns(FinchAPI::Internal::AnyHash) }
+        def deep_to_h
+        end
+
         sig do
           params(keys: T.nilable(T::Array[Symbol])).returns(
             FinchAPI::Internal::AnyHash
           )
         end
         def deconstruct_keys(keys)
-        end
-
-        class << self
-          # @api private
-          sig do
-            params(model: FinchAPI::Internal::Type::BaseModel).returns(
-              FinchAPI::Internal::AnyHash
-            )
-          end
-          def walk(model)
-          end
         end
 
         sig { params(a: T.anything).returns(String) }

@@ -5,7 +5,12 @@ module FinchAPI
     module HRIS
       class IndividualResponse < FinchAPI::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, FinchAPI::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              FinchAPI::HRIS::IndividualResponse,
+              FinchAPI::Internal::AnyHash
+            )
+          end
 
         sig do
           returns(
