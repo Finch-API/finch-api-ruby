@@ -83,17 +83,7 @@ module FinchAPI
               )
             )
           end
-          attr_reader :custom_fields
-
-          sig do
-            params(
-              custom_fields:
-                T::Array[
-                  FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField::OrHash
-                ]
-            ).void
-          end
-          attr_writer :custom_fields
+          attr_accessor :custom_fields
 
           # The department object.
           sig do
@@ -147,7 +137,8 @@ module FinchAPI
           end
           attr_writer :employment
 
-          # The detailed employment status of the individual.
+          # The detailed employment status of the individual. Available options: `active`,
+          # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
           sig do
             returns(
               T.nilable(
@@ -267,10 +258,7 @@ module FinchAPI
 
           # The source system's unique employment identifier for this individual
           sig { returns(T.nilable(String)) }
-          attr_reader :source_id
-
-          sig { params(source_id: String).void }
-          attr_writer :source_id
+          attr_accessor :source_id
 
           # Social Security Number of the individual. This field is only available with the
           # `ssn` scope enabled and the `options: { include: ['ssn'] }` param set in the
@@ -290,9 +278,11 @@ module FinchAPI
             params(
               class_code: T.nilable(String),
               custom_fields:
-                T::Array[
-                  FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField::OrHash
-                ],
+                T.nilable(
+                  T::Array[
+                    FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField::OrHash
+                  ]
+                ),
               department:
                 T.nilable(
                   FinchAPI::Sandbox::DirectoryCreateParams::Body::Department::OrHash
@@ -345,7 +335,7 @@ module FinchAPI
                 ),
               preferred_name: T.nilable(String),
               residence: T.nilable(FinchAPI::Location::OrHash),
-              source_id: String,
+              source_id: T.nilable(String),
               ssn: T.nilable(String),
               start_date: T.nilable(String),
               title: T.nilable(String)
@@ -364,7 +354,8 @@ module FinchAPI
             emails: nil,
             # The employment object.
             employment: nil,
-            # The detailed employment status of the individual.
+            # The detailed employment status of the individual. Available options: `active`,
+            # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
             employment_status: nil,
             # Social Security Number of the individual in **encrypted** format. This field is
             # only available with the `ssn` scope enabled and the
@@ -415,9 +406,11 @@ module FinchAPI
               {
                 class_code: T.nilable(String),
                 custom_fields:
-                  T::Array[
-                    FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField
-                  ],
+                  T.nilable(
+                    T::Array[
+                      FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField
+                    ]
+                  ),
                 department:
                   T.nilable(
                     FinchAPI::Sandbox::DirectoryCreateParams::Body::Department
@@ -470,7 +463,7 @@ module FinchAPI
                   ),
                 preferred_name: T.nilable(String),
                 residence: T.nilable(FinchAPI::Location),
-                source_id: String,
+                source_id: T.nilable(String),
                 ssn: T.nilable(String),
                 start_date: T.nilable(String),
                 title: T.nilable(String)
@@ -785,7 +778,8 @@ module FinchAPI
             end
           end
 
-          # The detailed employment status of the individual.
+          # The detailed employment status of the individual. Available options: `active`,
+          # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
           module EmploymentStatus
             extend FinchAPI::Internal::Type::Enum
 

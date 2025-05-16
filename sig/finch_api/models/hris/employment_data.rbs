@@ -98,23 +98,21 @@ module FinchAPI
 
           type custom_field =
             {
-              name: String,
+              name: String?,
               value: FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField::value?
             }
 
           class CustomField < FinchAPI::Internal::Type::BaseModel
-            attr_reader name: String?
-
-            def name=: (String) -> String
+            attr_accessor name: String?
 
             attr_accessor value: FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField::value?
 
             def initialize: (
-              ?name: String,
+              ?name: String?,
               ?value: FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField::value?
             ) -> void
 
-            type value = String | ::Array[top] | top | Float | bool
+            type value = (String | ::Array[top] | top | Float | bool)?
 
             module Value
               extend FinchAPI::Internal::Type::Union

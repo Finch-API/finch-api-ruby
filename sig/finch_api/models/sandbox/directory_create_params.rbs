@@ -23,7 +23,7 @@ module FinchAPI
         type body =
           {
             class_code: String?,
-            custom_fields: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField],
+            custom_fields: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField]?,
             department: FinchAPI::Sandbox::DirectoryCreateParams::Body::Department?,
             dob: String?,
             emails: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::Email]?,
@@ -45,7 +45,7 @@ module FinchAPI
             phone_numbers: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber?]?,
             preferred_name: String?,
             residence: FinchAPI::Location?,
-            source_id: String,
+            source_id: String?,
             ssn: String?,
             start_date: String?,
             title: String?
@@ -54,11 +54,7 @@ module FinchAPI
         class Body < FinchAPI::Internal::Type::BaseModel
           attr_accessor class_code: String?
 
-          attr_reader custom_fields: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField]?
-
-          def custom_fields=: (
-            ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField]
-          ) -> ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField]
+          attr_accessor custom_fields: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField]?
 
           attr_accessor department: FinchAPI::Sandbox::DirectoryCreateParams::Body::Department?
 
@@ -102,9 +98,7 @@ module FinchAPI
 
           attr_accessor residence: FinchAPI::Location?
 
-          attr_reader source_id: String?
-
-          def source_id=: (String) -> String
+          attr_accessor source_id: String?
 
           attr_accessor ssn: String?
 
@@ -114,7 +108,7 @@ module FinchAPI
 
           def initialize: (
             ?class_code: String?,
-            ?custom_fields: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField],
+            ?custom_fields: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField]?,
             ?department: FinchAPI::Sandbox::DirectoryCreateParams::Body::Department?,
             ?dob: String?,
             ?emails: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::Email]?,
@@ -136,7 +130,7 @@ module FinchAPI
             ?phone_numbers: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber?]?,
             ?preferred_name: String?,
             ?residence: FinchAPI::Location?,
-            ?source_id: String,
+            ?source_id: String?,
             ?ssn: String?,
             ?start_date: String?,
             ?title: String?

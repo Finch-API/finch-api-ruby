@@ -25,7 +25,8 @@ module FinchAPI
 
           # @!attribute custom_fields
           #   Custom fields for the individual. These are fields which are defined by the
-          #   employer in the system.
+          #   employer in the system. Custom fields are not currently supported for assisted
+          #   connections.
           #
           #   @return [Array<FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField>, nil]
           required :custom_fields,
@@ -189,7 +190,7 @@ module FinchAPI
             # @!attribute name
             #
             #   @return [String, nil]
-            optional :name, String
+            optional :name, String, nil?: true
 
             # @!attribute value
             #
@@ -199,7 +200,7 @@ module FinchAPI
                      nil?: true
 
             # @!method initialize(name: nil, value: nil)
-            #   @param name [String]
+            #   @param name [String, nil]
             #   @param value [String, Array<Object>, Object, Float, Boolean, nil]
 
             # @see FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField#value
@@ -222,7 +223,7 @@ module FinchAPI
               #   @return [Array(String, Array<Object>, Object, Float, Boolean)]
 
               define_sorbet_constant!(:Variants) do
-                T.type_alias { T.any(String, T::Array[T.anything], T.anything, Float, T::Boolean) }
+                T.type_alias { T.nilable(T.any(String, T::Array[T.anything], T.anything, Float, T::Boolean)) }
               end
 
               # @type [FinchAPI::Internal::Type::Converter]

@@ -5,7 +5,7 @@ module FinchAPI
         def update: (
           String individual_id,
           ?class_code: String?,
-          ?custom_fields: ::Array[FinchAPI::Sandbox::EmploymentUpdateParams::CustomField],
+          ?custom_fields: ::Array[FinchAPI::Sandbox::EmploymentUpdateParams::CustomField]?,
           ?department: FinchAPI::Sandbox::EmploymentUpdateParams::Department?,
           ?employment: FinchAPI::Sandbox::EmploymentUpdateParams::Employment?,
           ?employment_status: FinchAPI::Models::Sandbox::EmploymentUpdateParams::employment_status?,
@@ -19,7 +19,7 @@ module FinchAPI
           ?location: FinchAPI::Location?,
           ?manager: FinchAPI::Sandbox::EmploymentUpdateParams::Manager?,
           ?middle_name: String?,
-          ?source_id: String,
+          ?source_id: String?,
           ?start_date: String?,
           ?title: String?,
           ?request_options: FinchAPI::request_opts

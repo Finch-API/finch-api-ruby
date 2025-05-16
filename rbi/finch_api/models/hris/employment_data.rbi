@@ -32,7 +32,8 @@ module FinchAPI
           attr_accessor :class_code
 
           # Custom fields for the individual. These are fields which are defined by the
-          # employer in the system.
+          # employer in the system. Custom fields are not currently supported for assisted
+          # connections.
           sig do
             returns(
               T.nilable(
@@ -217,7 +218,8 @@ module FinchAPI
             # Worker's compensation classification code for this employee
             class_code:,
             # Custom fields for the individual. These are fields which are defined by the
-            # employer in the system.
+            # employer in the system. Custom fields are not currently supported for assisted
+            # connections.
             custom_fields:,
             # The department object.
             department:,
@@ -312,10 +314,7 @@ module FinchAPI
               end
 
             sig { returns(T.nilable(String)) }
-            attr_reader :name
-
-            sig { params(name: String).void }
-            attr_writer :name
+            attr_accessor :name
 
             sig do
               returns(
@@ -334,7 +333,7 @@ module FinchAPI
 
             sig do
               params(
-                name: String,
+                name: T.nilable(String),
                 value:
                   T.nilable(
                     T.any(
@@ -353,7 +352,7 @@ module FinchAPI
             sig do
               override.returns(
                 {
-                  name: String,
+                  name: T.nilable(String),
                   value:
                     T.nilable(
                       T.any(
@@ -375,12 +374,14 @@ module FinchAPI
 
               Variants =
                 T.type_alias do
-                  T.any(
-                    String,
-                    T::Array[T.anything],
-                    T.anything,
-                    Float,
-                    T::Boolean
+                  T.nilable(
+                    T.any(
+                      String,
+                      T::Array[T.anything],
+                      T.anything,
+                      Float,
+                      T::Boolean
+                    )
                   )
                 end
 

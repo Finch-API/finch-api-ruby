@@ -10,9 +10,11 @@ module FinchAPI
             individual_id: String,
             class_code: T.nilable(String),
             custom_fields:
-              T::Array[
-                FinchAPI::Sandbox::EmploymentUpdateParams::CustomField::OrHash
-              ],
+              T.nilable(
+                T::Array[
+                  FinchAPI::Sandbox::EmploymentUpdateParams::CustomField::OrHash
+                ]
+              ),
             department:
               T.nilable(
                 FinchAPI::Sandbox::EmploymentUpdateParams::Department::OrHash
@@ -39,7 +41,7 @@ module FinchAPI
                 FinchAPI::Sandbox::EmploymentUpdateParams::Manager::OrHash
               ),
             middle_name: T.nilable(String),
-            source_id: String,
+            source_id: T.nilable(String),
             start_date: T.nilable(String),
             title: T.nilable(String),
             request_options: FinchAPI::RequestOptions::OrHash
@@ -57,7 +59,8 @@ module FinchAPI
           department: nil,
           # The employment object.
           employment: nil,
-          # The detailed employment status of the individual.
+          # The detailed employment status of the individual. Available options: `active`,
+          # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
           employment_status: nil,
           end_date: nil,
           # The legal first name of the individual.

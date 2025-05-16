@@ -42,7 +42,8 @@ module FinchAPI
           optional :custom_fields,
                    -> {
                      FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField]
-                   }
+                   },
+                   nil?: true
 
           # @!attribute department
           #   The department object.
@@ -71,7 +72,8 @@ module FinchAPI
           optional :employment, -> { FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment }, nil?: true
 
           # @!attribute employment_status
-          #   The detailed employment status of the individual.
+          #   The detailed employment status of the individual. Available options: `active`,
+          #   `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
           #
           #   @return [Symbol, FinchAPI::Sandbox::DirectoryCreateParams::Body::EmploymentStatus, nil]
           optional :employment_status,
@@ -188,7 +190,7 @@ module FinchAPI
           #   The source system's unique employment identifier for this individual
           #
           #   @return [String, nil]
-          optional :source_id, String
+          optional :source_id, String, nil?: true
 
           # @!attribute ssn
           #   Social Security Number of the individual. This field is only available with the
@@ -216,7 +218,7 @@ module FinchAPI
           #
           #   @param class_code [String, nil] Worker's compensation classification code for this employee
           #
-          #   @param custom_fields [Array<FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField>] Custom fields for the individual. These are fields which are defined by the empl
+          #   @param custom_fields [Array<FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField>, nil] Custom fields for the individual. These are fields which are defined by the empl
           #
           #   @param department [FinchAPI::Sandbox::DirectoryCreateParams::Body::Department, nil] The department object.
           #
@@ -226,7 +228,7 @@ module FinchAPI
           #
           #   @param employment [FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment, nil] The employment object.
           #
-          #   @param employment_status [Symbol, FinchAPI::Sandbox::DirectoryCreateParams::Body::EmploymentStatus, nil] The detailed employment status of the individual.
+          #   @param employment_status [Symbol, FinchAPI::Sandbox::DirectoryCreateParams::Body::EmploymentStatus, nil] The detailed employment status of the individual. Available options: `active`, `
           #
           #   @param encrypted_ssn [String, nil] Social Security Number of the individual in **encrypted** format. This field is
           #
@@ -260,7 +262,7 @@ module FinchAPI
           #
           #   @param residence [FinchAPI::Location, nil]
           #
-          #   @param source_id [String] The source system's unique employment identifier for this individual
+          #   @param source_id [String, nil] The source system's unique employment identifier for this individual
           #
           #   @param ssn [String, nil] Social Security Number of the individual. This field is only available with the
           #
@@ -356,7 +358,7 @@ module FinchAPI
             #
             #   The employment object.
             #
-            #   @param subtype [Symbol, FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Subtype, nil] The secondary employment type of the individual. Options: `full_time`, `part_ti
+            #   @param subtype [Symbol, FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Subtype, nil] The secondary employment type of the individual. Options: `full_time`, `part_tim
             #
             #   @param type [Symbol, FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Type, nil] The main employment type of the individual.
 
@@ -392,7 +394,8 @@ module FinchAPI
             end
           end
 
-          # The detailed employment status of the individual.
+          # The detailed employment status of the individual. Available options: `active`,
+          # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
           #
           # @see FinchAPI::Sandbox::DirectoryCreateParams::Body#employment_status
           module EmploymentStatus
