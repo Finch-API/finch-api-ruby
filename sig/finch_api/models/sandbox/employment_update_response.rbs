@@ -5,7 +5,7 @@ module FinchAPI
         {
           id: String,
           class_code: String?,
-          custom_fields: ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField],
+          custom_fields: ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField]?,
           department: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Department?,
           employment: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment?,
           employment_status: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::employment_status?,
@@ -19,7 +19,7 @@ module FinchAPI
           location: FinchAPI::Location?,
           manager: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Manager?,
           middle_name: String?,
-          source_id: String,
+          source_id: String?,
           start_date: String?,
           title: String?
         }
@@ -31,11 +31,7 @@ module FinchAPI
 
         attr_accessor class_code: String?
 
-        attr_reader custom_fields: ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField]?
-
-        def custom_fields=: (
-          ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField]
-        ) -> ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField]
+        attr_accessor custom_fields: ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField]?
 
         attr_accessor department: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Department?
 
@@ -63,9 +59,7 @@ module FinchAPI
 
         attr_accessor middle_name: String?
 
-        attr_reader source_id: String?
-
-        def source_id=: (String) -> String
+        attr_accessor source_id: String?
 
         attr_accessor start_date: String?
 
@@ -74,7 +68,7 @@ module FinchAPI
         def initialize: (
           ?id: String,
           ?class_code: String?,
-          ?custom_fields: ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField],
+          ?custom_fields: ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField]?,
           ?department: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Department?,
           ?employment: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment?,
           ?employment_status: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::employment_status?,
@@ -88,7 +82,7 @@ module FinchAPI
           ?location: FinchAPI::Location?,
           ?manager: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Manager?,
           ?middle_name: String?,
-          ?source_id: String,
+          ?source_id: String?,
           ?start_date: String?,
           ?title: String?
         ) -> void
