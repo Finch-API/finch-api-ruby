@@ -23,7 +23,8 @@ module FinchAPI
         optional :custom_fields,
                  -> {
                    FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::EmploymentUpdateParams::CustomField]
-                 }
+                 },
+                 nil?: true
 
         # @!attribute department
         #   The department object.
@@ -38,7 +39,8 @@ module FinchAPI
         optional :employment, -> { FinchAPI::Sandbox::EmploymentUpdateParams::Employment }, nil?: true
 
         # @!attribute employment_status
-        #   The detailed employment status of the individual.
+        #   The detailed employment status of the individual. Available options: `active`,
+        #   `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
         #
         #   @return [Symbol, FinchAPI::Sandbox::EmploymentUpdateParams::EmploymentStatus, nil]
         optional :employment_status,
@@ -110,7 +112,7 @@ module FinchAPI
         #   The source system's unique employment identifier for this individual
         #
         #   @return [String, nil]
-        optional :source_id, String
+        optional :source_id, String, nil?: true
 
         # @!attribute start_date
         #
@@ -129,13 +131,13 @@ module FinchAPI
         #
         #   @param class_code [String, nil] Worker's compensation classification code for this employee
         #
-        #   @param custom_fields [Array<FinchAPI::Sandbox::EmploymentUpdateParams::CustomField>] Custom fields for the individual. These are fields which are defined by the empl
+        #   @param custom_fields [Array<FinchAPI::Sandbox::EmploymentUpdateParams::CustomField>, nil] Custom fields for the individual. These are fields which are defined by the empl
         #
         #   @param department [FinchAPI::Sandbox::EmploymentUpdateParams::Department, nil] The department object.
         #
         #   @param employment [FinchAPI::Sandbox::EmploymentUpdateParams::Employment, nil] The employment object.
         #
-        #   @param employment_status [Symbol, FinchAPI::Sandbox::EmploymentUpdateParams::EmploymentStatus, nil] The detailed employment status of the individual.
+        #   @param employment_status [Symbol, FinchAPI::Sandbox::EmploymentUpdateParams::EmploymentStatus, nil] The detailed employment status of the individual. Available options: `active`, `
         #
         #   @param end_date [String, nil]
         #
@@ -157,7 +159,7 @@ module FinchAPI
         #
         #   @param middle_name [String, nil] The legal middle name of the individual.
         #
-        #   @param source_id [String] The source system's unique employment identifier for this individual
+        #   @param source_id [String, nil] The source system's unique employment identifier for this individual
         #
         #   @param start_date [String, nil]
         #
@@ -218,7 +220,7 @@ module FinchAPI
           #
           #   The employment object.
           #
-          #   @param subtype [Symbol, FinchAPI::Sandbox::EmploymentUpdateParams::Employment::Subtype, nil] The secondary employment type of the individual. Options: `full_time`, `part_ti
+          #   @param subtype [Symbol, FinchAPI::Sandbox::EmploymentUpdateParams::Employment::Subtype, nil] The secondary employment type of the individual. Options: `full_time`, `part_tim
           #
           #   @param type [Symbol, FinchAPI::Sandbox::EmploymentUpdateParams::Employment::Type, nil] The main employment type of the individual.
 
@@ -254,7 +256,8 @@ module FinchAPI
           end
         end
 
-        # The detailed employment status of the individual.
+        # The detailed employment status of the individual. Available options: `active`,
+        # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
         module EmploymentStatus
           extend FinchAPI::Internal::Type::Enum
 
