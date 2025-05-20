@@ -12,14 +12,7 @@ module FinchAPI
             )
           end
 
-        sig do
-          returns(
-            T.any(
-              FinchAPI::HRIS::EmploymentData::UnionMember0,
-              FinchAPI::HRIS::EmploymentData::BatchError
-            )
-          )
-        end
+        sig { returns(FinchAPI::HRIS::EmploymentData::Variants) }
         attr_accessor :body
 
         sig { returns(Integer) }
@@ -51,11 +44,7 @@ module FinchAPI
         sig do
           override.returns(
             {
-              body:
-                T.any(
-                  FinchAPI::HRIS::EmploymentData::UnionMember0,
-                  FinchAPI::HRIS::EmploymentData::BatchError
-                ),
+              body: FinchAPI::HRIS::EmploymentData::Variants,
               code: Integer,
               individual_id: String
             }

@@ -319,13 +319,7 @@ module FinchAPI
             sig do
               returns(
                 T.nilable(
-                  T.any(
-                    String,
-                    T::Array[T.anything],
-                    T.anything,
-                    Float,
-                    T::Boolean
-                  )
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField::Value::Variants
                 )
               )
             end
@@ -336,13 +330,7 @@ module FinchAPI
                 name: T.nilable(String),
                 value:
                   T.nilable(
-                    T.any(
-                      String,
-                      T::Array[T.anything],
-                      T.anything,
-                      Float,
-                      T::Boolean
-                    )
+                    FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField::Value::Variants
                   )
               ).returns(T.attached_class)
             end
@@ -355,13 +343,7 @@ module FinchAPI
                   name: T.nilable(String),
                   value:
                     T.nilable(
-                      T.any(
-                        String,
-                        T::Array[T.anything],
-                        T.anything,
-                        Float,
-                        T::Boolean
-                      )
+                      FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField::Value::Variants
                     )
                 }
               )
