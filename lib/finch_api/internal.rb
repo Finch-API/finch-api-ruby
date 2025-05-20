@@ -13,5 +13,8 @@ module FinchAPI
     define_sorbet_constant!(:AnyHash) do
       T.type_alias { T::Hash[Symbol, T.anything] }
     end
+    define_sorbet_constant!(:FileInput) do
+      T.type_alias { T.any(Pathname, StringIO, IO, String, FinchAPI::FilePart) }
+    end
   end
 end

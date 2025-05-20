@@ -2,6 +2,8 @@ module FinchAPI
   module Internal
     extend FinchAPI::Internal::Util::SorbetRuntimeSupport
 
+    type file_input = Pathname | StringIO | IO | String | FinchAPI::FilePart
+
     OMIT: Object
   end
 end
