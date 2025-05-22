@@ -12,7 +12,6 @@ module FinchAPI
           {
             id: String,
             class_code: String?,
-            custom_fields: ::Array[FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField]?,
             department: FinchAPI::HRIS::EmploymentData::UnionMember0::Department?,
             employment: FinchAPI::HRIS::EmploymentData::UnionMember0::Employment?,
             employment_status: FinchAPI::Models::HRIS::EmploymentData::UnionMember0::employment_status?,
@@ -26,18 +25,17 @@ module FinchAPI
             middle_name: String?,
             start_date: String?,
             title: String?,
-            work_id: String?,
+            custom_fields: ::Array[FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField]?,
             income: FinchAPI::Income?,
             income_history: ::Array[FinchAPI::Income?]?,
-            source_id: String?
+            source_id: String?,
+            work_id: String?
           }
 
         class UnionMember0 < FinchAPI::Internal::Type::BaseModel
           attr_accessor id: String
 
           attr_accessor class_code: String?
-
-          attr_accessor custom_fields: ::Array[FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField]?
 
           attr_accessor department: FinchAPI::HRIS::EmploymentData::UnionMember0::Department?
 
@@ -65,7 +63,7 @@ module FinchAPI
 
           attr_accessor title: String?
 
-          attr_accessor work_id: String?
+          attr_accessor custom_fields: ::Array[FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField]?
 
           attr_accessor income: FinchAPI::Income?
 
@@ -73,10 +71,11 @@ module FinchAPI
 
           attr_accessor source_id: String?
 
+          attr_accessor work_id: String?
+
           def initialize: (
             id: String,
             class_code: String?,
-            custom_fields: ::Array[FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField]?,
             department: FinchAPI::HRIS::EmploymentData::UnionMember0::Department?,
             employment: FinchAPI::HRIS::EmploymentData::UnionMember0::Employment?,
             employment_status: FinchAPI::Models::HRIS::EmploymentData::UnionMember0::employment_status?,
@@ -90,16 +89,16 @@ module FinchAPI
             middle_name: String?,
             start_date: String?,
             title: String?,
-            work_id: String?,
+            ?custom_fields: ::Array[FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField]?,
             ?income: FinchAPI::Income?,
             ?income_history: ::Array[FinchAPI::Income?]?,
-            ?source_id: String?
+            ?source_id: String?,
+            ?work_id: String?
           ) -> void
 
           def to_hash: -> {
             id: String,
             class_code: String?,
-            custom_fields: ::Array[FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField]?,
             department: FinchAPI::HRIS::EmploymentData::UnionMember0::Department?,
             employment: FinchAPI::HRIS::EmploymentData::UnionMember0::Employment?,
             employment_status: FinchAPI::Models::HRIS::EmploymentData::UnionMember0::employment_status?,
@@ -113,43 +112,12 @@ module FinchAPI
             middle_name: String?,
             start_date: String?,
             title: String?,
-            work_id: String?,
+            custom_fields: ::Array[FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField]?,
             income: FinchAPI::Income?,
             income_history: ::Array[FinchAPI::Income?]?,
-            source_id: String?
+            source_id: String?,
+            work_id: String?
           }
-
-          type custom_field =
-            {
-              name: String?,
-              value: FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField::value?
-            }
-
-          class CustomField < FinchAPI::Internal::Type::BaseModel
-            attr_accessor name: String?
-
-            attr_accessor value: FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField::value?
-
-            def initialize: (
-              ?name: String?,
-              ?value: FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField::value?
-            ) -> void
-
-            def to_hash: -> {
-              name: String?,
-              value: FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField::value?
-            }
-
-            type value = (String | ::Array[top] | top | Float | bool)?
-
-            module Value
-              extend FinchAPI::Internal::Type::Union
-
-              def self?.variants: -> ::Array[FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField::value]
-
-              UnionMember1Array: FinchAPI::Internal::Type::Converter
-            end
-          end
 
           type department = { name: String? }
 
@@ -246,6 +214,38 @@ module FinchAPI
             def initialize: (id: String) -> void
 
             def to_hash: -> { id: String }
+          end
+
+          type custom_field =
+            {
+              name: String?,
+              value: FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField::value?
+            }
+
+          class CustomField < FinchAPI::Internal::Type::BaseModel
+            attr_accessor name: String?
+
+            attr_accessor value: FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField::value?
+
+            def initialize: (
+              ?name: String?,
+              ?value: FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField::value?
+            ) -> void
+
+            def to_hash: -> {
+              name: String?,
+              value: FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField::value?
+            }
+
+            type value = (String | ::Array[top] | top | Float | bool)?
+
+            module Value
+              extend FinchAPI::Internal::Type::Union
+
+              def self?.variants: -> ::Array[FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField::value]
+
+              UnionMember1Array: FinchAPI::Internal::Type::Converter
+            end
           end
         end
 

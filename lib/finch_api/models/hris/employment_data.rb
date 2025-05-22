@@ -23,18 +23,6 @@ module FinchAPI
           #   @return [String, nil]
           required :class_code, String, nil?: true
 
-          # @!attribute custom_fields
-          #   Custom fields for the individual. These are fields which are defined by the
-          #   employer in the system. Custom fields are not currently supported for assisted
-          #   connections.
-          #
-          #   @return [Array<FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField>, nil]
-          required :custom_fields,
-                   -> {
-                     FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField]
-                   },
-                   nil?: true
-
           # @!attribute department
           #   The department object.
           #
@@ -112,13 +100,17 @@ module FinchAPI
           #   @return [String, nil]
           required :title, String, nil?: true
 
-          # @!attribute work_id
-          #   @deprecated
+          # @!attribute custom_fields
+          #   Custom fields for the individual. These are fields which are defined by the
+          #   employer in the system. Custom fields are not currently supported for assisted
+          #   connections.
           #
-          #   This field is deprecated in favour of `source_id`
-          #
-          #   @return [String, nil]
-          required :work_id, String, nil?: true
+          #   @return [Array<FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField>, nil]
+          optional :custom_fields,
+                   -> {
+                     FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField]
+                   },
+                   nil?: true
 
           # @!attribute income
           #   The employee's income as reported by the provider. This may not always be
@@ -142,15 +134,21 @@ module FinchAPI
           #   @return [String, nil]
           optional :source_id, String, nil?: true
 
-          # @!method initialize(id:, class_code:, custom_fields:, department:, employment:, employment_status:, end_date:, first_name:, is_active:, last_name:, latest_rehire_date:, location:, manager:, middle_name:, start_date:, title:, work_id:, income: nil, income_history: nil, source_id: nil)
+          # @!attribute work_id
+          #   @deprecated
+          #
+          #   This field is deprecated in favour of `source_id`
+          #
+          #   @return [String, nil]
+          optional :work_id, String, nil?: true
+
+          # @!method initialize(id:, class_code:, department:, employment:, employment_status:, end_date:, first_name:, is_active:, last_name:, latest_rehire_date:, location:, manager:, middle_name:, start_date:, title:, custom_fields: nil, income: nil, income_history: nil, source_id: nil, work_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {FinchAPI::Models::HRIS::EmploymentData::UnionMember0} for more details.
           #
           #   @param id [String] A stable Finch `id` (UUID v4) for an individual in the company.
           #
           #   @param class_code [String, nil] Worker's compensation classification code for this employee
-          #
-          #   @param custom_fields [Array<FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField>, nil] Custom fields for the individual. These are fields which are defined by the empl
           #
           #   @param department [FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Department, nil] The department object.
           #
@@ -178,52 +176,15 @@ module FinchAPI
           #
           #   @param title [String, nil] The current title of the individual.
           #
-          #   @param work_id [String, nil] This field is deprecated in favour of `source_id`
+          #   @param custom_fields [Array<FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField>, nil] Custom fields for the individual. These are fields which are defined by the empl
           #
           #   @param income [FinchAPI::Models::Income, nil] The employee's income as reported by the provider. This may not always be annual
           #
           #   @param income_history [Array<FinchAPI::Models::Income, nil>, nil] The array of income history.
           #
           #   @param source_id [String, nil] The source system's unique employment identifier for this individual
-
-          class CustomField < FinchAPI::Internal::Type::BaseModel
-            # @!attribute name
-            #
-            #   @return [String, nil]
-            optional :name, String, nil?: true
-
-            # @!attribute value
-            #
-            #   @return [String, Array<Object>, Object, Float, Boolean, nil]
-            optional :value,
-                     union: -> { FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField::Value },
-                     nil?: true
-
-            # @!method initialize(name: nil, value: nil)
-            #   @param name [String, nil]
-            #   @param value [String, Array<Object>, Object, Float, Boolean, nil]
-
-            # @see FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField#value
-            module Value
-              extend FinchAPI::Internal::Type::Union
-
-              variant String
-
-              variant -> { FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField::Value::UnionMember1Array }
-
-              variant FinchAPI::Internal::Type::Unknown
-
-              variant Float
-
-              variant FinchAPI::Internal::Type::Boolean
-
-              # @!method self.variants
-              #   @return [Array(String, Array<Object>, Object, Float, Boolean)]
-
-              # @type [FinchAPI::Internal::Type::Converter]
-              UnionMember1Array = FinchAPI::Internal::Type::ArrayOf[FinchAPI::Internal::Type::Unknown]
-            end
-          end
+          #
+          #   @param work_id [String, nil] This field is deprecated in favour of `source_id`
 
           # @see FinchAPI::Models::HRIS::EmploymentData::UnionMember0#department
           class Department < FinchAPI::Internal::Type::BaseModel
@@ -334,6 +295,45 @@ module FinchAPI
             #   The manager object representing the manager of the individual within the org.
             #
             #   @param id [String] A stable Finch `id` (UUID v4) for an individual in the company.
+          end
+
+          class CustomField < FinchAPI::Internal::Type::BaseModel
+            # @!attribute name
+            #
+            #   @return [String, nil]
+            optional :name, String, nil?: true
+
+            # @!attribute value
+            #
+            #   @return [String, Array<Object>, Object, Float, Boolean, nil]
+            optional :value,
+                     union: -> { FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField::Value },
+                     nil?: true
+
+            # @!method initialize(name: nil, value: nil)
+            #   @param name [String, nil]
+            #   @param value [String, Array<Object>, Object, Float, Boolean, nil]
+
+            # @see FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField#value
+            module Value
+              extend FinchAPI::Internal::Type::Union
+
+              variant String
+
+              variant -> { FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField::Value::UnionMember1Array }
+
+              variant FinchAPI::Internal::Type::Unknown
+
+              variant Float
+
+              variant FinchAPI::Internal::Type::Boolean
+
+              # @!method self.variants
+              #   @return [Array(String, Array<Object>, Object, Float, Boolean)]
+
+              # @type [FinchAPI::Internal::Type::Converter]
+              UnionMember1Array = FinchAPI::Internal::Type::ArrayOf[FinchAPI::Internal::Type::Unknown]
+            end
           end
         end
 
