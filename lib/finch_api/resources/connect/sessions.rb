@@ -23,7 +23,7 @@ module FinchAPI
         #
         # @param manual [Boolean, nil]
         #
-        # @param minutes_to_expire [Float, nil] The number of minutes until the session expires (defaults to 43,200, which is 30
+        # @param minutes_to_expire [Float, nil] The number of minutes until the session expires (defaults to 129,600, which is 9
         #
         # @param redirect_uri [String, nil]
         #

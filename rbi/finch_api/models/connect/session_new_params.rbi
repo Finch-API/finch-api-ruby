@@ -49,8 +49,8 @@ module FinchAPI
         sig { returns(T.nilable(T::Boolean)) }
         attr_accessor :manual
 
-        # The number of minutes until the session expires (defaults to 43,200, which is 30
-        # days)
+        # The number of minutes until the session expires (defaults to 129,600, which is
+        # 90 days)
         sig { returns(T.nilable(Float)) }
         attr_accessor :minutes_to_expire
 
@@ -90,8 +90,8 @@ module FinchAPI
           customer_email: nil,
           integration: nil,
           manual: nil,
-          # The number of minutes until the session expires (defaults to 43,200, which is 30
-          # days)
+          # The number of minutes until the session expires (defaults to 129,600, which is
+          # 90 days)
           minutes_to_expire: nil,
           redirect_uri: nil,
           sandbox: nil,
