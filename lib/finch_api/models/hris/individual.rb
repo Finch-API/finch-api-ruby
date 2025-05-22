@@ -25,7 +25,7 @@ module FinchAPI
           # @!attribute ethnicity
           #   The EEOC-defined ethnicity of the individual.
           #
-          #   @return [Symbol, FinchAPI::HRIS::Individual::UnionMember0::Ethnicity, nil]
+          #   @return [Symbol, FinchAPI::Models::HRIS::Individual::UnionMember0::Ethnicity, nil]
           required :ethnicity, enum: -> { FinchAPI::HRIS::Individual::UnionMember0::Ethnicity }, nil?: true
 
           # @!attribute first_name
@@ -37,7 +37,7 @@ module FinchAPI
           # @!attribute gender
           #   The gender of the individual.
           #
-          #   @return [Symbol, FinchAPI::HRIS::Individual::UnionMember0::Gender, nil]
+          #   @return [Symbol, FinchAPI::Models::HRIS::Individual::UnionMember0::Gender, nil]
           required :gender, enum: -> { FinchAPI::HRIS::Individual::UnionMember0::Gender }, nil?: true
 
           # @!attribute last_name
@@ -54,7 +54,7 @@ module FinchAPI
 
           # @!attribute phone_numbers
           #
-          #   @return [Array<FinchAPI::HRIS::Individual::UnionMember0::PhoneNumber, nil>, nil]
+          #   @return [Array<FinchAPI::Models::HRIS::Individual::UnionMember0::PhoneNumber, nil>, nil]
           required :phone_numbers,
                    -> {
                      FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::Individual::UnionMember0::PhoneNumber,
@@ -70,12 +70,12 @@ module FinchAPI
 
           # @!attribute residence
           #
-          #   @return [FinchAPI::Location, nil]
+          #   @return [FinchAPI::Models::Location, nil]
           required :residence, -> { FinchAPI::Location }, nil?: true
 
           # @!attribute emails
           #
-          #   @return [Array<FinchAPI::HRIS::Individual::UnionMember0::Email>, nil]
+          #   @return [Array<FinchAPI::Models::HRIS::Individual::UnionMember0::Email>, nil]
           optional :emails,
                    -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::Individual::UnionMember0::Email] },
                    nil?: true
@@ -99,29 +99,29 @@ module FinchAPI
 
           # @!method initialize(id:, dob:, ethnicity:, first_name:, gender:, last_name:, middle_name:, phone_numbers:, preferred_name:, residence:, emails: nil, encrypted_ssn: nil, ssn: nil)
           #   Some parameter documentations has been truncated, see
-          #   {FinchAPI::HRIS::Individual::UnionMember0} for more details.
+          #   {FinchAPI::Models::HRIS::Individual::UnionMember0} for more details.
           #
           #   @param id [String] A stable Finch `id` (UUID v4) for an individual in the company.
           #
           #   @param dob [String, nil]
           #
-          #   @param ethnicity [Symbol, FinchAPI::HRIS::Individual::UnionMember0::Ethnicity, nil] The EEOC-defined ethnicity of the individual.
+          #   @param ethnicity [Symbol, FinchAPI::Models::HRIS::Individual::UnionMember0::Ethnicity, nil] The EEOC-defined ethnicity of the individual.
           #
           #   @param first_name [String, nil] The legal first name of the individual.
           #
-          #   @param gender [Symbol, FinchAPI::HRIS::Individual::UnionMember0::Gender, nil] The gender of the individual.
+          #   @param gender [Symbol, FinchAPI::Models::HRIS::Individual::UnionMember0::Gender, nil] The gender of the individual.
           #
           #   @param last_name [String, nil] The legal last name of the individual.
           #
           #   @param middle_name [String, nil] The legal middle name of the individual.
           #
-          #   @param phone_numbers [Array<FinchAPI::HRIS::Individual::UnionMember0::PhoneNumber, nil>, nil]
+          #   @param phone_numbers [Array<FinchAPI::Models::HRIS::Individual::UnionMember0::PhoneNumber, nil>, nil]
           #
           #   @param preferred_name [String, nil] The preferred name of the individual.
           #
-          #   @param residence [FinchAPI::Location, nil]
+          #   @param residence [FinchAPI::Models::Location, nil]
           #
-          #   @param emails [Array<FinchAPI::HRIS::Individual::UnionMember0::Email>, nil]
+          #   @param emails [Array<FinchAPI::Models::HRIS::Individual::UnionMember0::Email>, nil]
           #
           #   @param encrypted_ssn [String, nil] Social Security Number of the individual in **encrypted** format. This field is
           #
@@ -129,7 +129,7 @@ module FinchAPI
 
           # The EEOC-defined ethnicity of the individual.
           #
-          # @see FinchAPI::HRIS::Individual::UnionMember0#ethnicity
+          # @see FinchAPI::Models::HRIS::Individual::UnionMember0#ethnicity
           module Ethnicity
             extend FinchAPI::Internal::Type::Enum
 
@@ -148,7 +148,7 @@ module FinchAPI
 
           # The gender of the individual.
           #
-          # @see FinchAPI::HRIS::Individual::UnionMember0#gender
+          # @see FinchAPI::Models::HRIS::Individual::UnionMember0#gender
           module Gender
             extend FinchAPI::Internal::Type::Enum
 
@@ -169,7 +169,7 @@ module FinchAPI
 
             # @!attribute type
             #
-            #   @return [Symbol, FinchAPI::HRIS::Individual::UnionMember0::PhoneNumber::Type, nil]
+            #   @return [Symbol, FinchAPI::Models::HRIS::Individual::UnionMember0::PhoneNumber::Type, nil]
             required :type,
                      enum: -> {
                        FinchAPI::HRIS::Individual::UnionMember0::PhoneNumber::Type
@@ -178,9 +178,9 @@ module FinchAPI
 
             # @!method initialize(data:, type:)
             #   @param data [String, nil]
-            #   @param type [Symbol, FinchAPI::HRIS::Individual::UnionMember0::PhoneNumber::Type, nil]
+            #   @param type [Symbol, FinchAPI::Models::HRIS::Individual::UnionMember0::PhoneNumber::Type, nil]
 
-            # @see FinchAPI::HRIS::Individual::UnionMember0::PhoneNumber#type
+            # @see FinchAPI::Models::HRIS::Individual::UnionMember0::PhoneNumber#type
             module Type
               extend FinchAPI::Internal::Type::Enum
 
@@ -200,14 +200,14 @@ module FinchAPI
 
             # @!attribute type
             #
-            #   @return [Symbol, FinchAPI::HRIS::Individual::UnionMember0::Email::Type, nil]
+            #   @return [Symbol, FinchAPI::Models::HRIS::Individual::UnionMember0::Email::Type, nil]
             required :type, enum: -> { FinchAPI::HRIS::Individual::UnionMember0::Email::Type }, nil?: true
 
             # @!method initialize(data:, type:)
             #   @param data [String]
-            #   @param type [Symbol, FinchAPI::HRIS::Individual::UnionMember0::Email::Type, nil]
+            #   @param type [Symbol, FinchAPI::Models::HRIS::Individual::UnionMember0::Email::Type, nil]
 
-            # @see FinchAPI::HRIS::Individual::UnionMember0::Email#type
+            # @see FinchAPI::Models::HRIS::Individual::UnionMember0::Email#type
             module Type
               extend FinchAPI::Internal::Type::Enum
 
@@ -249,7 +249,7 @@ module FinchAPI
         end
 
         # @!method self.variants
-        #   @return [Array(FinchAPI::HRIS::Individual::UnionMember0, FinchAPI::HRIS::Individual::BatchError)]
+        #   @return [Array(FinchAPI::Models::HRIS::Individual::UnionMember0, FinchAPI::Models::HRIS::Individual::BatchError)]
       end
     end
   end

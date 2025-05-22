@@ -19,6 +19,11 @@ module FinchAPI
               ?optional_property: top,
               ?request_options: FinchAPI::request_opts
             ) -> void
+
+            def to_hash: -> {
+              optional_property: top,
+              request_options: FinchAPI::RequestOptions
+            }
           end
         end
       end

@@ -11,11 +11,11 @@ module FinchAPI
 
           # @!attribute connection_status
           #
-          #   @return [Symbol, FinchAPI::ConnectionStatusType, nil]
+          #   @return [Symbol, FinchAPI::Models::ConnectionStatusType, nil]
           optional :connection_status, enum: -> { FinchAPI::ConnectionStatusType }
 
           # @!method initialize(connection_status: nil, request_options: {})
-          #   @param connection_status [Symbol, FinchAPI::ConnectionStatusType]
+          #   @param connection_status [Symbol, FinchAPI::Models::ConnectionStatusType]
           #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
         end
       end

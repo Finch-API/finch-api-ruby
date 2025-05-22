@@ -28,6 +28,12 @@ module FinchAPI
           ?code: Integer,
           ?payment_id: String
         ) -> void
+
+        def to_hash: -> {
+          body: FinchAPI::HRIS::PayStatementResponseBody,
+          code: Integer,
+          payment_id: String
+        }
       end
     end
   end

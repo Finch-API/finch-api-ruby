@@ -24,7 +24,7 @@ module FinchAPI
       variant -> { FinchAPI::PayStatementEvent }
 
       # @!method self.variants
-      #   @return [Array(FinchAPI::AccountUpdateEvent, FinchAPI::CompanyEvent, FinchAPI::JobCompletionEvent, FinchAPI::DirectoryEvent, FinchAPI::EmploymentEvent, FinchAPI::IndividualEvent, FinchAPI::PaymentEvent, FinchAPI::PayStatementEvent)]
+      #   @return [Array(FinchAPI::Models::AccountUpdateEvent, FinchAPI::Models::CompanyEvent, FinchAPI::Models::JobCompletionEvent, FinchAPI::Models::DirectoryEvent, FinchAPI::Models::EmploymentEvent, FinchAPI::Models::IndividualEvent, FinchAPI::Models::PaymentEvent, FinchAPI::Models::PayStatementEvent)]
     end
   end
 end

@@ -10,6 +10,8 @@ module FinchAPI
       def currency=: (String) -> String
 
       def initialize: (?amount: Integer?, ?currency: String) -> void
+
+      def to_hash: -> { amount: Integer?, currency: String }
     end
   end
 end

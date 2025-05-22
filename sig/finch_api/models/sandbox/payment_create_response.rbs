@@ -9,6 +9,8 @@ module FinchAPI
         attr_accessor payment_id: String
 
         def initialize: (pay_date: String, payment_id: String) -> void
+
+        def to_hash: -> { pay_date: String, payment_id: String }
       end
     end
   end

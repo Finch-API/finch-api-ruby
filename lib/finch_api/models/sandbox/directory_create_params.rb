@@ -12,7 +12,7 @@ module FinchAPI
         #   Array of individuals to create. Takes all combined fields from `/individual` and
         #   `/employment` endpoints. All fields are optional.
         #
-        #   @return [Array<FinchAPI::Sandbox::DirectoryCreateParams::Body>, nil]
+        #   @return [Array<FinchAPI::Models::Sandbox::DirectoryCreateParams::Body>, nil]
         optional :body,
                  -> {
                    FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::DirectoryCreateParams::Body]
@@ -22,7 +22,7 @@ module FinchAPI
         #   Some parameter documentations has been truncated, see
         #   {FinchAPI::Models::Sandbox::DirectoryCreateParams} for more details.
         #
-        #   @param body [Array<FinchAPI::Sandbox::DirectoryCreateParams::Body>] Array of individuals to create. Takes all combined fields from `/individual` and
+        #   @param body [Array<FinchAPI::Models::Sandbox::DirectoryCreateParams::Body>] Array of individuals to create. Takes all combined fields from `/individual` and
         #
         #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 
@@ -38,7 +38,7 @@ module FinchAPI
           #   employer in the system. Custom fields are not currently supported for assisted
           #   connections.
           #
-          #   @return [Array<FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField>, nil]
+          #   @return [Array<FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField>, nil]
           optional :custom_fields,
                    -> {
                      FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField]
@@ -48,7 +48,7 @@ module FinchAPI
           # @!attribute department
           #   The department object.
           #
-          #   @return [FinchAPI::Sandbox::DirectoryCreateParams::Body::Department, nil]
+          #   @return [FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Department, nil]
           optional :department, -> { FinchAPI::Sandbox::DirectoryCreateParams::Body::Department }, nil?: true
 
           # @!attribute dob
@@ -58,7 +58,7 @@ module FinchAPI
 
           # @!attribute emails
           #
-          #   @return [Array<FinchAPI::Sandbox::DirectoryCreateParams::Body::Email>, nil]
+          #   @return [Array<FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email>, nil]
           optional :emails,
                    -> {
                      FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::DirectoryCreateParams::Body::Email]
@@ -68,14 +68,14 @@ module FinchAPI
           # @!attribute employment
           #   The employment object.
           #
-          #   @return [FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment, nil]
+          #   @return [FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment, nil]
           optional :employment, -> { FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment }, nil?: true
 
           # @!attribute employment_status
           #   The detailed employment status of the individual. Available options: `active`,
           #   `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
           #
-          #   @return [Symbol, FinchAPI::Sandbox::DirectoryCreateParams::Body::EmploymentStatus, nil]
+          #   @return [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus, nil]
           optional :employment_status,
                    enum: -> { FinchAPI::Sandbox::DirectoryCreateParams::Body::EmploymentStatus },
                    nil?: true
@@ -96,7 +96,7 @@ module FinchAPI
           # @!attribute ethnicity
           #   The EEOC-defined ethnicity of the individual.
           #
-          #   @return [Symbol, FinchAPI::Sandbox::DirectoryCreateParams::Body::Ethnicity, nil]
+          #   @return [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity, nil]
           optional :ethnicity,
                    enum: -> {
                      FinchAPI::Sandbox::DirectoryCreateParams::Body::Ethnicity
@@ -112,7 +112,7 @@ module FinchAPI
           # @!attribute gender
           #   The gender of the individual.
           #
-          #   @return [Symbol, FinchAPI::Sandbox::DirectoryCreateParams::Body::Gender, nil]
+          #   @return [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender, nil]
           optional :gender, enum: -> { FinchAPI::Sandbox::DirectoryCreateParams::Body::Gender }, nil?: true
 
           # @!attribute income
@@ -120,13 +120,13 @@ module FinchAPI
           #   annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
           #   depending on what information the provider returns.
           #
-          #   @return [FinchAPI::Income, nil]
+          #   @return [FinchAPI::Models::Income, nil]
           optional :income, -> { FinchAPI::Income }, nil?: true
 
           # @!attribute income_history
           #   The array of income history.
           #
-          #   @return [Array<FinchAPI::Income, nil>, nil]
+          #   @return [Array<FinchAPI::Models::Income, nil>, nil]
           optional :income_history,
                    -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Income, nil?: true] },
                    nil?: true
@@ -150,13 +150,13 @@ module FinchAPI
 
           # @!attribute location
           #
-          #   @return [FinchAPI::Location, nil]
+          #   @return [FinchAPI::Models::Location, nil]
           optional :location, -> { FinchAPI::Location }, nil?: true
 
           # @!attribute manager
           #   The manager object representing the manager of the individual within the org.
           #
-          #   @return [FinchAPI::Sandbox::DirectoryCreateParams::Body::Manager, nil]
+          #   @return [FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Manager, nil]
           optional :manager, -> { FinchAPI::Sandbox::DirectoryCreateParams::Body::Manager }, nil?: true
 
           # @!attribute middle_name
@@ -167,7 +167,7 @@ module FinchAPI
 
           # @!attribute phone_numbers
           #
-          #   @return [Array<FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber, nil>, nil]
+          #   @return [Array<FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber, nil>, nil]
           optional :phone_numbers,
                    -> {
                      FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber,
@@ -183,7 +183,7 @@ module FinchAPI
 
           # @!attribute residence
           #
-          #   @return [FinchAPI::Location, nil]
+          #   @return [FinchAPI::Models::Location, nil]
           optional :residence, -> { FinchAPI::Location }, nil?: true
 
           # @!attribute source_id
@@ -214,35 +214,35 @@ module FinchAPI
 
           # @!method initialize(class_code: nil, custom_fields: nil, department: nil, dob: nil, emails: nil, employment: nil, employment_status: nil, encrypted_ssn: nil, end_date: nil, ethnicity: nil, first_name: nil, gender: nil, income: nil, income_history: nil, is_active: nil, last_name: nil, latest_rehire_date: nil, location: nil, manager: nil, middle_name: nil, phone_numbers: nil, preferred_name: nil, residence: nil, source_id: nil, ssn: nil, start_date: nil, title: nil)
           #   Some parameter documentations has been truncated, see
-          #   {FinchAPI::Sandbox::DirectoryCreateParams::Body} for more details.
+          #   {FinchAPI::Models::Sandbox::DirectoryCreateParams::Body} for more details.
           #
           #   @param class_code [String, nil] Worker's compensation classification code for this employee
           #
-          #   @param custom_fields [Array<FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField>, nil] Custom fields for the individual. These are fields which are defined by the empl
+          #   @param custom_fields [Array<FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField>, nil] Custom fields for the individual. These are fields which are defined by the empl
           #
-          #   @param department [FinchAPI::Sandbox::DirectoryCreateParams::Body::Department, nil] The department object.
+          #   @param department [FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Department, nil] The department object.
           #
           #   @param dob [String, nil]
           #
-          #   @param emails [Array<FinchAPI::Sandbox::DirectoryCreateParams::Body::Email>, nil]
+          #   @param emails [Array<FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email>, nil]
           #
-          #   @param employment [FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment, nil] The employment object.
+          #   @param employment [FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment, nil] The employment object.
           #
-          #   @param employment_status [Symbol, FinchAPI::Sandbox::DirectoryCreateParams::Body::EmploymentStatus, nil] The detailed employment status of the individual. Available options: `active`, `
+          #   @param employment_status [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus, nil] The detailed employment status of the individual. Available options: `active`, `
           #
           #   @param encrypted_ssn [String, nil] Social Security Number of the individual in **encrypted** format. This field is
           #
           #   @param end_date [String, nil]
           #
-          #   @param ethnicity [Symbol, FinchAPI::Sandbox::DirectoryCreateParams::Body::Ethnicity, nil] The EEOC-defined ethnicity of the individual.
+          #   @param ethnicity [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity, nil] The EEOC-defined ethnicity of the individual.
           #
           #   @param first_name [String, nil] The legal first name of the individual.
           #
-          #   @param gender [Symbol, FinchAPI::Sandbox::DirectoryCreateParams::Body::Gender, nil] The gender of the individual.
+          #   @param gender [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender, nil] The gender of the individual.
           #
-          #   @param income [FinchAPI::Income, nil] The employee's income as reported by the provider. This may not always be annual
+          #   @param income [FinchAPI::Models::Income, nil] The employee's income as reported by the provider. This may not always be annual
           #
-          #   @param income_history [Array<FinchAPI::Income, nil>, nil] The array of income history.
+          #   @param income_history [Array<FinchAPI::Models::Income, nil>, nil] The array of income history.
           #
           #   @param is_active [Boolean, nil] `true` if the individual an an active employee or contractor at the company.
           #
@@ -250,17 +250,17 @@ module FinchAPI
           #
           #   @param latest_rehire_date [String, nil]
           #
-          #   @param location [FinchAPI::Location, nil]
+          #   @param location [FinchAPI::Models::Location, nil]
           #
-          #   @param manager [FinchAPI::Sandbox::DirectoryCreateParams::Body::Manager, nil] The manager object representing the manager of the individual within the org.
+          #   @param manager [FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Manager, nil] The manager object representing the manager of the individual within the org.
           #
           #   @param middle_name [String, nil] The legal middle name of the individual.
           #
-          #   @param phone_numbers [Array<FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber, nil>, nil]
+          #   @param phone_numbers [Array<FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber, nil>, nil]
           #
           #   @param preferred_name [String, nil] The preferred name of the individual.
           #
-          #   @param residence [FinchAPI::Location, nil]
+          #   @param residence [FinchAPI::Models::Location, nil]
           #
           #   @param source_id [String, nil] The source system's unique employment identifier for this individual
           #
@@ -286,7 +286,7 @@ module FinchAPI
             #   @param value [Object]
           end
 
-          # @see FinchAPI::Sandbox::DirectoryCreateParams::Body#department
+          # @see FinchAPI::Models::Sandbox::DirectoryCreateParams::Body#department
           class Department < FinchAPI::Internal::Type::BaseModel
             # @!attribute name
             #   The name of the department associated with the individual.
@@ -308,7 +308,7 @@ module FinchAPI
 
             # @!attribute type
             #
-            #   @return [Symbol, FinchAPI::Sandbox::DirectoryCreateParams::Body::Email::Type, nil]
+            #   @return [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type, nil]
             optional :type,
                      enum: -> {
                        FinchAPI::Sandbox::DirectoryCreateParams::Body::Email::Type
@@ -317,9 +317,9 @@ module FinchAPI
 
             # @!method initialize(data: nil, type: nil)
             #   @param data [String]
-            #   @param type [Symbol, FinchAPI::Sandbox::DirectoryCreateParams::Body::Email::Type, nil]
+            #   @param type [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::Type, nil]
 
-            # @see FinchAPI::Sandbox::DirectoryCreateParams::Body::Email#type
+            # @see FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email#type
             module Type
               extend FinchAPI::Internal::Type::Enum
 
@@ -331,13 +331,13 @@ module FinchAPI
             end
           end
 
-          # @see FinchAPI::Sandbox::DirectoryCreateParams::Body#employment
+          # @see FinchAPI::Models::Sandbox::DirectoryCreateParams::Body#employment
           class Employment < FinchAPI::Internal::Type::BaseModel
             # @!attribute subtype
             #   The secondary employment type of the individual. Options: `full_time`,
             #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
             #
-            #   @return [Symbol, FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Subtype, nil]
+            #   @return [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype, nil]
             optional :subtype,
                      enum: -> { FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Subtype },
                      nil?: true
@@ -345,7 +345,7 @@ module FinchAPI
             # @!attribute type
             #   The main employment type of the individual.
             #
-            #   @return [Symbol, FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Type, nil]
+            #   @return [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type, nil]
             optional :type,
                      enum: -> {
                        FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Type
@@ -354,18 +354,19 @@ module FinchAPI
 
             # @!method initialize(subtype: nil, type: nil)
             #   Some parameter documentations has been truncated, see
-            #   {FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment} for more details.
+            #   {FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment} for more
+            #   details.
             #
             #   The employment object.
             #
-            #   @param subtype [Symbol, FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Subtype, nil] The secondary employment type of the individual. Options: `full_time`, `part_tim
+            #   @param subtype [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Subtype, nil] The secondary employment type of the individual. Options: `full_time`, `part_tim
             #
-            #   @param type [Symbol, FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::Type, nil] The main employment type of the individual.
+            #   @param type [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::Type, nil] The main employment type of the individual.
 
             # The secondary employment type of the individual. Options: `full_time`,
             # `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
             #
-            # @see FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment#subtype
+            # @see FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment#subtype
             module Subtype
               extend FinchAPI::Internal::Type::Enum
 
@@ -382,7 +383,7 @@ module FinchAPI
 
             # The main employment type of the individual.
             #
-            # @see FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment#type
+            # @see FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment#type
             module Type
               extend FinchAPI::Internal::Type::Enum
 
@@ -397,7 +398,7 @@ module FinchAPI
           # The detailed employment status of the individual. Available options: `active`,
           # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
           #
-          # @see FinchAPI::Sandbox::DirectoryCreateParams::Body#employment_status
+          # @see FinchAPI::Models::Sandbox::DirectoryCreateParams::Body#employment_status
           module EmploymentStatus
             extend FinchAPI::Internal::Type::Enum
 
@@ -415,7 +416,7 @@ module FinchAPI
 
           # The EEOC-defined ethnicity of the individual.
           #
-          # @see FinchAPI::Sandbox::DirectoryCreateParams::Body#ethnicity
+          # @see FinchAPI::Models::Sandbox::DirectoryCreateParams::Body#ethnicity
           module Ethnicity
             extend FinchAPI::Internal::Type::Enum
 
@@ -434,7 +435,7 @@ module FinchAPI
 
           # The gender of the individual.
           #
-          # @see FinchAPI::Sandbox::DirectoryCreateParams::Body#gender
+          # @see FinchAPI::Models::Sandbox::DirectoryCreateParams::Body#gender
           module Gender
             extend FinchAPI::Internal::Type::Enum
 
@@ -447,7 +448,7 @@ module FinchAPI
             #   @return [Array<Symbol>]
           end
 
-          # @see FinchAPI::Sandbox::DirectoryCreateParams::Body#manager
+          # @see FinchAPI::Models::Sandbox::DirectoryCreateParams::Body#manager
           class Manager < FinchAPI::Internal::Type::BaseModel
             # @!attribute id
             #   A stable Finch `id` (UUID v4) for an individual in the company.
@@ -469,7 +470,7 @@ module FinchAPI
 
             # @!attribute type
             #
-            #   @return [Symbol, FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type, nil]
+            #   @return [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type, nil]
             optional :type,
                      enum: -> {
                        FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type
@@ -478,9 +479,9 @@ module FinchAPI
 
             # @!method initialize(data: nil, type: nil)
             #   @param data [String, nil]
-            #   @param type [Symbol, FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type, nil]
+            #   @param type [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::Type, nil]
 
-            # @see FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber#type
+            # @see FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber#type
             module Type
               extend FinchAPI::Internal::Type::Enum
 

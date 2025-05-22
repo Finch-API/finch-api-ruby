@@ -22,6 +22,11 @@ module FinchAPI
           ?paging: FinchAPI::Paging,
           ?pay_statements: ::Array[FinchAPI::HRIS::PayStatement]
         ) -> void
+
+        def to_hash: -> {
+          paging: FinchAPI::Paging,
+          pay_statements: ::Array[FinchAPI::HRIS::PayStatement]
+        }
       end
     end
   end

@@ -25,12 +25,12 @@ module FinchAPI
       #   The income unit of payment. Options: `yearly`, `quarterly`, `monthly`,
       #   `semi_monthly`, `bi_weekly`, `weekly`, `daily`, `hourly`, and `fixed`.
       #
-      #   @return [Symbol, FinchAPI::Income::Unit, nil]
+      #   @return [Symbol, FinchAPI::Models::Income::Unit, nil]
       required :unit, enum: -> { FinchAPI::Income::Unit }, nil?: true
 
       # @!method initialize(amount:, currency:, effective_date:, unit:)
-      #   Some parameter documentations has been truncated, see {FinchAPI::Income} for
-      #   more details.
+      #   Some parameter documentations has been truncated, see {FinchAPI::Models::Income}
+      #   for more details.
       #
       #   The employee's income as reported by the provider. This may not always be
       #   annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
@@ -42,12 +42,12 @@ module FinchAPI
       #
       #   @param effective_date [String, nil] The date the income amount went into effect.
       #
-      #   @param unit [Symbol, FinchAPI::Income::Unit, nil] The income unit of payment. Options: `yearly`, `quarterly`, `monthly`, `semi_mon
+      #   @param unit [Symbol, FinchAPI::Models::Income::Unit, nil] The income unit of payment. Options: `yearly`, `quarterly`, `monthly`, `semi_mon
 
       # The income unit of payment. Options: `yearly`, `quarterly`, `monthly`,
       # `semi_monthly`, `bi_weekly`, `weekly`, `daily`, `hourly`, and `fixed`.
       #
-      # @see FinchAPI::Income#unit
+      # @see FinchAPI::Models::Income#unit
       module Unit
         extend FinchAPI::Internal::Type::Enum
 

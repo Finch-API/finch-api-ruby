@@ -24,6 +24,13 @@ module FinchAPI
           job_url: String,
           remaining_refreshes: Integer
         ) -> void
+
+        def to_hash: -> {
+          allowed_refreshes: Integer,
+          job_id: String,
+          job_url: String,
+          remaining_refreshes: Integer
+        }
       end
     end
   end

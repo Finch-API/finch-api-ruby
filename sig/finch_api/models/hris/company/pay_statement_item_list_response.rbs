@@ -32,6 +32,12 @@ module FinchAPI
             ?name: String
           ) -> void
 
+          def to_hash: -> {
+            attributes: FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::Attributes,
+            category: FinchAPI::Models::HRIS::Company::PayStatementItemListResponse::category,
+            name: String
+          }
+
           type attributes =
             {
               employer: bool?,
@@ -55,6 +61,13 @@ module FinchAPI
               ?pre_tax: bool?,
               ?type: String?
             ) -> void
+
+            def to_hash: -> {
+              employer: bool?,
+              metadata: ::Hash[Symbol, top?]?,
+              pre_tax: bool?,
+              type: String?
+            }
           end
 
           type category =

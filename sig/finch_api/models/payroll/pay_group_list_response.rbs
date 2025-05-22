@@ -29,6 +29,12 @@ module FinchAPI
           ?pay_frequencies: ::Array[FinchAPI::Models::Payroll::PayGroupListResponse::pay_frequency]
         ) -> void
 
+        def to_hash: -> {
+          id: String,
+          name: String,
+          pay_frequencies: ::Array[FinchAPI::Models::Payroll::PayGroupListResponse::pay_frequency]
+        }
+
         type pay_frequency =
           :annually
           | :semi_annually

@@ -14,11 +14,11 @@ module FinchAPI
           #
           # @param benefit_id [String]
           #
-          # @param individuals [Array<FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual>] Array of the individual_id to enroll and a configuration object.
+          # @param individuals [Array<FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual>] Array of the individual_id to enroll and a configuration object.
           #
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [FinchAPI::HRIS::Benefits::EnrolledIndividualBenefitResponse]
+          # @return [FinchAPI::Models::HRIS::Benefits::EnrolledIndividualBenefitResponse]
           #
           # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams
           def enroll_many(benefit_id, params = {})
@@ -65,7 +65,7 @@ module FinchAPI
           #
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [FinchAPI::Internal::SinglePage<FinchAPI::HRIS::Benefits::IndividualBenefit>]
+          # @return [FinchAPI::Internal::SinglePage<FinchAPI::Models::HRIS::Benefits::IndividualBenefit>]
           #
           # @see FinchAPI::Models::HRIS::Benefits::IndividualRetrieveManyBenefitsParams
           def retrieve_many_benefits(benefit_id, params = {})
@@ -90,7 +90,7 @@ module FinchAPI
           #
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [FinchAPI::HRIS::Benefits::UnenrolledIndividualBenefitResponse]
+          # @return [FinchAPI::Models::HRIS::Benefits::UnenrolledIndividualBenefitResponse]
           #
           # @see FinchAPI::Models::HRIS::Benefits::IndividualUnenrollManyParams
           def unenroll_many(benefit_id, params = {})

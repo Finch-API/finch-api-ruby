@@ -20,6 +20,12 @@ module FinchAPI
           code: Integer,
           individual_id: String
         ) -> void
+
+        def to_hash: -> {
+          body: FinchAPI::Models::HRIS::individual,
+          code: Integer,
+          individual_id: String
+        }
       end
     end
   end

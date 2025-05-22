@@ -20,6 +20,11 @@ module FinchAPI
           ?request_options: FinchAPI::request_opts
         ) -> void
 
+        def to_hash: -> {
+          body: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body],
+          request_options: FinchAPI::RequestOptions
+        }
+
         type body =
           {
             class_code: String?,
@@ -28,12 +33,12 @@ module FinchAPI
             dob: String?,
             emails: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::Email]?,
             employment: FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment?,
-            employment_status: FinchAPI::Sandbox::DirectoryCreateParams::Body::employment_status?,
+            employment_status: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::employment_status?,
             encrypted_ssn: String?,
             end_date: String?,
-            ethnicity: FinchAPI::Sandbox::DirectoryCreateParams::Body::ethnicity?,
+            ethnicity: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::ethnicity?,
             first_name: String?,
-            gender: FinchAPI::Sandbox::DirectoryCreateParams::Body::gender?,
+            gender: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::gender?,
             income: FinchAPI::Income?,
             income_history: ::Array[FinchAPI::Income?]?,
             is_active: bool?,
@@ -64,17 +69,17 @@ module FinchAPI
 
           attr_accessor employment: FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment?
 
-          attr_accessor employment_status: FinchAPI::Sandbox::DirectoryCreateParams::Body::employment_status?
+          attr_accessor employment_status: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::employment_status?
 
           attr_accessor encrypted_ssn: String?
 
           attr_accessor end_date: String?
 
-          attr_accessor ethnicity: FinchAPI::Sandbox::DirectoryCreateParams::Body::ethnicity?
+          attr_accessor ethnicity: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::ethnicity?
 
           attr_accessor first_name: String?
 
-          attr_accessor gender: FinchAPI::Sandbox::DirectoryCreateParams::Body::gender?
+          attr_accessor gender: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::gender?
 
           attr_accessor income: FinchAPI::Income?
 
@@ -113,12 +118,12 @@ module FinchAPI
             ?dob: String?,
             ?emails: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::Email]?,
             ?employment: FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment?,
-            ?employment_status: FinchAPI::Sandbox::DirectoryCreateParams::Body::employment_status?,
+            ?employment_status: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::employment_status?,
             ?encrypted_ssn: String?,
             ?end_date: String?,
-            ?ethnicity: FinchAPI::Sandbox::DirectoryCreateParams::Body::ethnicity?,
+            ?ethnicity: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::ethnicity?,
             ?first_name: String?,
-            ?gender: FinchAPI::Sandbox::DirectoryCreateParams::Body::gender?,
+            ?gender: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::gender?,
             ?income: FinchAPI::Income?,
             ?income_history: ::Array[FinchAPI::Income?]?,
             ?is_active: bool?,
@@ -136,6 +141,36 @@ module FinchAPI
             ?title: String?
           ) -> void
 
+          def to_hash: -> {
+            class_code: String?,
+            custom_fields: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField]?,
+            department: FinchAPI::Sandbox::DirectoryCreateParams::Body::Department?,
+            dob: String?,
+            emails: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::Email]?,
+            employment: FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment?,
+            employment_status: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::employment_status?,
+            encrypted_ssn: String?,
+            end_date: String?,
+            ethnicity: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::ethnicity?,
+            first_name: String?,
+            gender: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::gender?,
+            income: FinchAPI::Income?,
+            income_history: ::Array[FinchAPI::Income?]?,
+            is_active: bool?,
+            last_name: String?,
+            latest_rehire_date: String?,
+            location: FinchAPI::Location?,
+            manager: FinchAPI::Sandbox::DirectoryCreateParams::Body::Manager?,
+            middle_name: String?,
+            phone_numbers: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber?]?,
+            preferred_name: String?,
+            residence: FinchAPI::Location?,
+            source_id: String?,
+            ssn: String?,
+            start_date: String?,
+            title: String?
+          }
+
           type custom_field = { name: String?, value: top }
 
           class CustomField < FinchAPI::Internal::Type::BaseModel
@@ -146,6 +181,8 @@ module FinchAPI
             def value=: (top) -> top
 
             def initialize: (?name: String?, ?value: top) -> void
+
+            def to_hash: -> { name: String?, value: top }
           end
 
           type department = { name: String? }
@@ -154,12 +191,14 @@ module FinchAPI
             attr_accessor name: String?
 
             def initialize: (?name: String?) -> void
+
+            def to_hash: -> { name: String? }
           end
 
           type email =
             {
               data: String,
-              type: FinchAPI::Sandbox::DirectoryCreateParams::Body::Email::type_?
+              type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::type_?
             }
 
           class Email < FinchAPI::Internal::Type::BaseModel
@@ -167,12 +206,17 @@ module FinchAPI
 
             def data=: (String) -> String
 
-            attr_accessor type: FinchAPI::Sandbox::DirectoryCreateParams::Body::Email::type_?
+            attr_accessor type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::type_?
 
             def initialize: (
               ?data: String,
-              ?type: FinchAPI::Sandbox::DirectoryCreateParams::Body::Email::type_?
+              ?type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::type_?
             ) -> void
+
+            def to_hash: -> {
+              data: String,
+              type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::type_?
+            }
 
             type type_ = :work | :personal
 
@@ -182,25 +226,30 @@ module FinchAPI
               WORK: :work
               PERSONAL: :personal
 
-              def self?.values: -> ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::Email::type_]
+              def self?.values: -> ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Email::type_]
             end
           end
 
           type employment =
             {
-              subtype: FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::subtype?,
-              type: FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::type_?
+              subtype: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::subtype?,
+              type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::type_?
             }
 
           class Employment < FinchAPI::Internal::Type::BaseModel
-            attr_accessor subtype: FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::subtype?
+            attr_accessor subtype: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::subtype?
 
-            attr_accessor type: FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::type_?
+            attr_accessor type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::type_?
 
             def initialize: (
-              ?subtype: FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::subtype?,
-              ?type: FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::type_?
+              ?subtype: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::subtype?,
+              ?type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::type_?
             ) -> void
+
+            def to_hash: -> {
+              subtype: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::subtype?,
+              type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::type_?
+            }
 
             type subtype =
               :full_time
@@ -220,7 +269,7 @@ module FinchAPI
               SEASONAL: :seasonal
               INDIVIDUAL_CONTRACTOR: :individual_contractor
 
-              def self?.values: -> ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::subtype]
+              def self?.values: -> ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::subtype]
             end
 
             type type_ = :employee | :contractor
@@ -231,7 +280,7 @@ module FinchAPI
               EMPLOYEE: :employee
               CONTRACTOR: :contractor
 
-              def self?.values: -> ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment::type_]
+              def self?.values: -> ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment::type_]
             end
           end
 
@@ -255,7 +304,7 @@ module FinchAPI
             RETIRED: :retired
             TERMINATED: :terminated
 
-            def self?.values: -> ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::employment_status]
+            def self?.values: -> ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::employment_status]
           end
 
           type ethnicity =
@@ -280,7 +329,7 @@ module FinchAPI
             TWO_OR_MORE_RACES: :two_or_more_races
             DECLINE_TO_SPECIFY: :decline_to_specify
 
-            def self?.values: -> ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::ethnicity]
+            def self?.values: -> ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::ethnicity]
           end
 
           type gender = :female | :male | :other | :decline_to_specify
@@ -293,7 +342,7 @@ module FinchAPI
             OTHER: :other
             DECLINE_TO_SPECIFY: :decline_to_specify
 
-            def self?.values: -> ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::gender]
+            def self?.values: -> ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::gender]
           end
 
           type manager = { id: String }
@@ -304,23 +353,30 @@ module FinchAPI
             def id=: (String) -> String
 
             def initialize: (?id: String) -> void
+
+            def to_hash: -> { id: String }
           end
 
           type phone_number =
             {
               data: String?,
-              type: FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber::type_?
+              type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::type_?
             }
 
           class PhoneNumber < FinchAPI::Internal::Type::BaseModel
             attr_accessor data: String?
 
-            attr_accessor type: FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber::type_?
+            attr_accessor type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::type_?
 
             def initialize: (
               ?data: String?,
-              ?type: FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber::type_?
+              ?type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::type_?
             ) -> void
+
+            def to_hash: -> {
+              data: String?,
+              type: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::type_?
+            }
 
             type type_ = :work | :personal
 
@@ -330,7 +386,7 @@ module FinchAPI
               WORK: :work
               PERSONAL: :personal
 
-              def self?.values: -> ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber::type_]
+              def self?.values: -> ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::PhoneNumber::type_]
             end
           end
         end

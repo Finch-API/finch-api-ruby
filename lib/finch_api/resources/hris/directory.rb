@@ -14,7 +14,7 @@ module FinchAPI
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::Internal::IndividualsPage<FinchAPI::HRIS::IndividualInDirectory>]
+        # @return [FinchAPI::Internal::IndividualsPage<FinchAPI::Models::HRIS::IndividualInDirectory>]
         #
         # @see FinchAPI::Models::HRIS::DirectoryListParams
         def list(params = {})

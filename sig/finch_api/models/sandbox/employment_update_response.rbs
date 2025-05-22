@@ -87,6 +87,28 @@ module FinchAPI
           ?title: String?
         ) -> void
 
+        def to_hash: -> {
+          id: String,
+          class_code: String?,
+          custom_fields: ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField]?,
+          department: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Department?,
+          employment: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment?,
+          employment_status: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::employment_status?,
+          end_date: String?,
+          first_name: String?,
+          income: FinchAPI::Income?,
+          income_history: ::Array[FinchAPI::Income?]?,
+          is_active: bool?,
+          last_name: String?,
+          latest_rehire_date: String?,
+          location: FinchAPI::Location?,
+          manager: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Manager?,
+          middle_name: String?,
+          source_id: String?,
+          start_date: String?,
+          title: String?
+        }
+
         type custom_field = { name: String?, value: top }
 
         class CustomField < FinchAPI::Internal::Type::BaseModel
@@ -97,6 +119,8 @@ module FinchAPI
           def value=: (top) -> top
 
           def initialize: (?name: String?, ?value: top) -> void
+
+          def to_hash: -> { name: String?, value: top }
         end
 
         type department = { name: String? }
@@ -105,6 +129,8 @@ module FinchAPI
           attr_accessor name: String?
 
           def initialize: (?name: String?) -> void
+
+          def to_hash: -> { name: String? }
         end
 
         type employment =
@@ -122,6 +148,11 @@ module FinchAPI
             ?subtype: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::subtype?,
             ?type: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::type_?
           ) -> void
+
+          def to_hash: -> {
+            subtype: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::subtype?,
+            type: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Employment::type_?
+          }
 
           type subtype =
             :full_time
@@ -187,6 +218,8 @@ module FinchAPI
           def id=: (String) -> String
 
           def initialize: (?id: String) -> void
+
+          def to_hash: -> { id: String }
         end
       end
     end

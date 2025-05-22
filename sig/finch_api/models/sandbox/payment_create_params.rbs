@@ -34,6 +34,13 @@ module FinchAPI
           ?request_options: FinchAPI::request_opts
         ) -> void
 
+        def to_hash: -> {
+          end_date: String,
+          pay_statements: ::Array[FinchAPI::Sandbox::PaymentCreateParams::PayStatement],
+          start_date: String,
+          request_options: FinchAPI::RequestOptions
+        }
+
         type pay_statement =
           {
             earnings: ::Array[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning?]?,
@@ -42,10 +49,10 @@ module FinchAPI
             gross_pay: FinchAPI::Money?,
             individual_id: String,
             net_pay: FinchAPI::Money?,
-            payment_method: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::payment_method?,
+            payment_method: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::payment_method?,
             taxes: ::Array[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax?]?,
             total_hours: Float?,
-            type: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::type_?
+            type: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::type_?
           }
 
         class PayStatement < FinchAPI::Internal::Type::BaseModel
@@ -63,13 +70,13 @@ module FinchAPI
 
           attr_accessor net_pay: FinchAPI::Money?
 
-          attr_accessor payment_method: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::payment_method?
+          attr_accessor payment_method: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::payment_method?
 
           attr_accessor taxes: ::Array[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax?]?
 
           attr_accessor total_hours: Float?
 
-          attr_accessor type: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::type_?
+          attr_accessor type: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::type_?
 
           def initialize: (
             ?earnings: ::Array[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning?]?,
@@ -78,11 +85,24 @@ module FinchAPI
             ?gross_pay: FinchAPI::Money?,
             ?individual_id: String,
             ?net_pay: FinchAPI::Money?,
-            ?payment_method: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::payment_method?,
+            ?payment_method: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::payment_method?,
             ?taxes: ::Array[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax?]?,
             ?total_hours: Float?,
-            ?type: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::type_?
+            ?type: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::type_?
           ) -> void
+
+          def to_hash: -> {
+            earnings: ::Array[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning?]?,
+            employee_deductions: ::Array[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction?]?,
+            employer_contributions: ::Array[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution?]?,
+            gross_pay: FinchAPI::Money?,
+            individual_id: String,
+            net_pay: FinchAPI::Money?,
+            payment_method: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::payment_method?,
+            taxes: ::Array[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax?]?,
+            total_hours: Float?,
+            type: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::type_?
+          }
 
           type earning =
             {
@@ -91,7 +111,7 @@ module FinchAPI
               currency: String?,
               hours: Float?,
               name: String?,
-              type: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning::type_?
+              type: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::type_?
             }
 
           class Earning < FinchAPI::Internal::Type::BaseModel
@@ -105,7 +125,7 @@ module FinchAPI
 
             attr_accessor name: String?
 
-            attr_accessor type: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning::type_?
+            attr_accessor type: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::type_?
 
             def initialize: (
               ?amount: Integer?,
@@ -113,8 +133,17 @@ module FinchAPI
               ?currency: String?,
               ?hours: Float?,
               ?name: String?,
-              ?type: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning::type_?
+              ?type: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::type_?
             ) -> void
+
+            def to_hash: -> {
+              amount: Integer?,
+              attributes: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes?,
+              currency: String?,
+              hours: Float?,
+              name: String?,
+              type: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::type_?
+            }
 
             type attributes =
               {
@@ -132,6 +161,10 @@ module FinchAPI
                 ?metadata: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::Metadata
               ) -> void
 
+              def to_hash: -> {
+                metadata: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning::Attributes::Metadata
+              }
+
               type metadata = { metadata: ::Hash[Symbol, top?] }
 
               class Metadata < FinchAPI::Internal::Type::BaseModel
@@ -140,6 +173,8 @@ module FinchAPI
                 def metadata=: (::Hash[Symbol, top?]) -> ::Hash[Symbol, top?]
 
                 def initialize: (?metadata: ::Hash[Symbol, top?]) -> void
+
+                def to_hash: -> { metadata: ::Hash[Symbol, top?] }
               end
             end
 
@@ -175,7 +210,7 @@ module FinchAPI
               TYPE_1099: :"1099"
               OTHER: :other
 
-              def self?.values: -> ::Array[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning::type_]
+              def self?.values: -> ::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning::type_]
             end
           end
 
@@ -211,6 +246,15 @@ module FinchAPI
               ?type: FinchAPI::Models::HRIS::benefit_type?
             ) -> void
 
+            def to_hash: -> {
+              amount: Integer?,
+              attributes: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes?,
+              currency: String?,
+              name: String?,
+              pre_tax: bool?,
+              type: FinchAPI::Models::HRIS::benefit_type?
+            }
+
             type attributes =
               {
                 metadata: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes::Metadata
@@ -227,6 +271,10 @@ module FinchAPI
                 ?metadata: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes::Metadata
               ) -> void
 
+              def to_hash: -> {
+                metadata: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Attributes::Metadata
+              }
+
               type metadata = { metadata: ::Hash[Symbol, top?] }
 
               class Metadata < FinchAPI::Internal::Type::BaseModel
@@ -235,6 +283,8 @@ module FinchAPI
                 def metadata=: (::Hash[Symbol, top?]) -> ::Hash[Symbol, top?]
 
                 def initialize: (?metadata: ::Hash[Symbol, top?]) -> void
+
+                def to_hash: -> { metadata: ::Hash[Symbol, top?] }
               end
             end
           end
@@ -267,6 +317,14 @@ module FinchAPI
               ?type: FinchAPI::Models::HRIS::benefit_type?
             ) -> void
 
+            def to_hash: -> {
+              amount: Integer?,
+              attributes: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes?,
+              currency: String?,
+              name: String?,
+              type: FinchAPI::Models::HRIS::benefit_type?
+            }
+
             type attributes =
               {
                 metadata: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes::Metadata
@@ -283,6 +341,10 @@ module FinchAPI
                 ?metadata: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes::Metadata
               ) -> void
 
+              def to_hash: -> {
+                metadata: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Attributes::Metadata
+              }
+
               type metadata = { metadata: ::Hash[Symbol, top?] }
 
               class Metadata < FinchAPI::Internal::Type::BaseModel
@@ -291,6 +353,8 @@ module FinchAPI
                 def metadata=: (::Hash[Symbol, top?]) -> ::Hash[Symbol, top?]
 
                 def initialize: (?metadata: ::Hash[Symbol, top?]) -> void
+
+                def to_hash: -> { metadata: ::Hash[Symbol, top?] }
               end
             end
           end
@@ -304,7 +368,7 @@ module FinchAPI
             DIRECT_DEPOSIT: :direct_deposit
             OTHER: :other
 
-            def self?.values: -> ::Array[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::payment_method]
+            def self?.values: -> ::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::payment_method]
           end
 
           type tax =
@@ -314,7 +378,7 @@ module FinchAPI
               currency: String?,
               employer: bool?,
               name: String?,
-              type: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax::type_?
+              type: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::type_?
             }
 
           class Tax < FinchAPI::Internal::Type::BaseModel
@@ -328,7 +392,7 @@ module FinchAPI
 
             attr_accessor name: String?
 
-            attr_accessor type: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax::type_?
+            attr_accessor type: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::type_?
 
             def initialize: (
               ?amount: Integer?,
@@ -336,8 +400,17 @@ module FinchAPI
               ?currency: String?,
               ?employer: bool?,
               ?name: String?,
-              ?type: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax::type_?
+              ?type: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::type_?
             ) -> void
+
+            def to_hash: -> {
+              amount: Integer?,
+              attributes: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes?,
+              currency: String?,
+              employer: bool?,
+              name: String?,
+              type: FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::type_?
+            }
 
             type attributes =
               {
@@ -355,6 +428,10 @@ module FinchAPI
                 ?metadata: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::Metadata
               ) -> void
 
+              def to_hash: -> {
+                metadata: FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax::Attributes::Metadata
+              }
+
               type metadata = { metadata: ::Hash[Symbol, top?] }
 
               class Metadata < FinchAPI::Internal::Type::BaseModel
@@ -363,6 +440,8 @@ module FinchAPI
                 def metadata=: (::Hash[Symbol, top?]) -> ::Hash[Symbol, top?]
 
                 def initialize: (?metadata: ::Hash[Symbol, top?]) -> void
+
+                def to_hash: -> { metadata: ::Hash[Symbol, top?] }
               end
             end
 
@@ -376,7 +455,7 @@ module FinchAPI
               LOCAL: :local
               FICA: :fica
 
-              def self?.values: -> ::Array[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax::type_]
+              def self?.values: -> ::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax::type_]
             end
           end
 
@@ -389,7 +468,7 @@ module FinchAPI
             OFF_CYCLE_PAYROLL: :off_cycle_payroll
             ONE_TIME_PAYMENT: :one_time_payment
 
-            def self?.values: -> ::Array[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::type_]
+            def self?.values: -> ::Array[FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::type_]
           end
         end
       end

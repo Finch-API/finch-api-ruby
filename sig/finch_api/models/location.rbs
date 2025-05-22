@@ -39,6 +39,17 @@ module FinchAPI
         ?name: String?,
         ?source_id: String?
       ) -> void
+
+      def to_hash: -> {
+        city: String?,
+        country: String?,
+        :line1 => String?,
+        :line2 => String?,
+        postal_code: String?,
+        state: String?,
+        name: String?,
+        source_id: String?
+      }
     end
   end
 end
