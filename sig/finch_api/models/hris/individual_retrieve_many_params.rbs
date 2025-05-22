@@ -26,6 +26,12 @@ module FinchAPI
           ?request_options: FinchAPI::request_opts
         ) -> void
 
+        def to_hash: -> {
+          options: FinchAPI::HRIS::IndividualRetrieveManyParams::Options?,
+          requests: ::Array[FinchAPI::HRIS::IndividualRetrieveManyParams::Request],
+          request_options: FinchAPI::RequestOptions
+        }
+
         type options = { include: ::Array[String] }
 
         class Options < FinchAPI::Internal::Type::BaseModel
@@ -34,6 +40,8 @@ module FinchAPI
           def include=: (::Array[String]) -> ::Array[String]
 
           def initialize: (?include: ::Array[String]) -> void
+
+          def to_hash: -> { include: ::Array[String] }
         end
 
         type request = { individual_id: String }
@@ -44,6 +52,8 @@ module FinchAPI
           def individual_id=: (String) -> String
 
           def initialize: (?individual_id: String) -> void
+
+          def to_hash: -> { individual_id: String }
         end
       end
     end

@@ -13,17 +13,17 @@ module FinchAPI
         # @!attribute type
         #   Contribution type.
         #
-        #   @return [Symbol, FinchAPI::HRIS::BenefitContribution::Type, nil]
+        #   @return [Symbol, FinchAPI::Models::HRIS::BenefitContribution::Type, nil]
         optional :type, enum: -> { FinchAPI::HRIS::BenefitContribution::Type }, nil?: true
 
         # @!method initialize(amount: nil, type: nil)
         #   @param amount [Integer, nil] Contribution amount in cents (if `fixed`) or basis points (if `percent`).
         #
-        #   @param type [Symbol, FinchAPI::HRIS::BenefitContribution::Type, nil] Contribution type.
+        #   @param type [Symbol, FinchAPI::Models::HRIS::BenefitContribution::Type, nil] Contribution type.
 
         # Contribution type.
         #
-        # @see FinchAPI::HRIS::BenefitContribution#type
+        # @see FinchAPI::Models::HRIS::BenefitContribution#type
         module Type
           extend FinchAPI::Internal::Type::Enum
 

@@ -16,7 +16,7 @@ module FinchAPI
           #
           # @param provider_id [String] The provider associated with the `access_token`
           #
-          # @param authentication_type [Symbol, FinchAPI::Sandbox::Connections::AccountCreateParams::AuthenticationType]
+          # @param authentication_type [Symbol, FinchAPI::Models::Sandbox::Connections::AccountCreateParams::AuthenticationType]
           #
           # @param products [Array<String>] Optional, defaults to Organization products (`company`, `directory`, `employment
           #
@@ -41,7 +41,7 @@ module FinchAPI
           #
           # @overload update(connection_status: nil, request_options: {})
           #
-          # @param connection_status [Symbol, FinchAPI::ConnectionStatusType]
+          # @param connection_status [Symbol, FinchAPI::Models::ConnectionStatusType]
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse]

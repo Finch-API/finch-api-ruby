@@ -32,6 +32,15 @@ module FinchAPI
         ?params: top?,
         ?request_options: FinchAPI::request_opts
       ) -> void
+
+      def to_hash: -> {
+        method_: String,
+        route: String,
+        data: String?,
+        headers: top?,
+        params: top?,
+        request_options: FinchAPI::RequestOptions
+      }
     end
   end
 end

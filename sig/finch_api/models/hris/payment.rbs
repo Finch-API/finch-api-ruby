@@ -12,7 +12,7 @@ module FinchAPI
           individual_ids: ::Array[String]?,
           net_pay: FinchAPI::Money?,
           pay_date: String?,
-          pay_frequencies: ::Array[FinchAPI::HRIS::Payment::pay_frequency]?,
+          pay_frequencies: ::Array[FinchAPI::Models::HRIS::Payment::pay_frequency]?,
           pay_group_ids: ::Array[String]?,
           pay_period: FinchAPI::HRIS::Payment::PayPeriod?
         }
@@ -38,7 +38,7 @@ module FinchAPI
 
         attr_accessor pay_date: String?
 
-        attr_accessor pay_frequencies: ::Array[FinchAPI::HRIS::Payment::pay_frequency]?
+        attr_accessor pay_frequencies: ::Array[FinchAPI::Models::HRIS::Payment::pay_frequency]?
 
         attr_accessor pay_group_ids: ::Array[String]?
 
@@ -54,10 +54,25 @@ module FinchAPI
           ?individual_ids: ::Array[String]?,
           ?net_pay: FinchAPI::Money?,
           ?pay_date: String?,
-          ?pay_frequencies: ::Array[FinchAPI::HRIS::Payment::pay_frequency]?,
+          ?pay_frequencies: ::Array[FinchAPI::Models::HRIS::Payment::pay_frequency]?,
           ?pay_group_ids: ::Array[String]?,
           ?pay_period: FinchAPI::HRIS::Payment::PayPeriod?
         ) -> void
+
+        def to_hash: -> {
+          id: String,
+          company_debit: FinchAPI::Money?,
+          debit_date: String?,
+          employee_taxes: FinchAPI::Money?,
+          employer_taxes: FinchAPI::Money?,
+          gross_pay: FinchAPI::Money?,
+          individual_ids: ::Array[String]?,
+          net_pay: FinchAPI::Money?,
+          pay_date: String?,
+          pay_frequencies: ::Array[FinchAPI::Models::HRIS::Payment::pay_frequency]?,
+          pay_group_ids: ::Array[String]?,
+          pay_period: FinchAPI::HRIS::Payment::PayPeriod?
+        }
 
         type pay_frequency =
           :annually
@@ -83,7 +98,7 @@ module FinchAPI
           DAILY: :daily
           OTHER: :other
 
-          def self?.values: -> ::Array[FinchAPI::HRIS::Payment::pay_frequency]
+          def self?.values: -> ::Array[FinchAPI::Models::HRIS::Payment::pay_frequency]
         end
 
         type pay_period = { end_date: String?, start_date: String? }
@@ -94,6 +109,8 @@ module FinchAPI
           attr_accessor start_date: String?
 
           def initialize: (?end_date: String?, ?start_date: String?) -> void
+
+          def to_hash: -> { end_date: String?, start_date: String? }
         end
       end
     end

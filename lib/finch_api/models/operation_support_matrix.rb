@@ -12,7 +12,7 @@ module FinchAPI
       #   - `client_access_only`: This behavior is supported by the provider, but only
       #     available to the client and not to Finch
       #
-      #   @return [Symbol, FinchAPI::OperationSupport, nil]
+      #   @return [Symbol, FinchAPI::Models::OperationSupport, nil]
       optional :create, enum: -> { FinchAPI::OperationSupport }
 
       # @!attribute delete
@@ -24,7 +24,7 @@ module FinchAPI
       #   - `client_access_only`: This behavior is supported by the provider, but only
       #     available to the client and not to Finch
       #
-      #   @return [Symbol, FinchAPI::OperationSupport, nil]
+      #   @return [Symbol, FinchAPI::Models::OperationSupport, nil]
       optional :delete, enum: -> { FinchAPI::OperationSupport }
 
       # @!attribute read
@@ -36,7 +36,7 @@ module FinchAPI
       #   - `client_access_only`: This behavior is supported by the provider, but only
       #     available to the client and not to Finch
       #
-      #   @return [Symbol, FinchAPI::OperationSupport, nil]
+      #   @return [Symbol, FinchAPI::Models::OperationSupport, nil]
       optional :read, enum: -> { FinchAPI::OperationSupport }
 
       # @!attribute update
@@ -48,20 +48,20 @@ module FinchAPI
       #   - `client_access_only`: This behavior is supported by the provider, but only
       #     available to the client and not to Finch
       #
-      #   @return [Symbol, FinchAPI::OperationSupport, nil]
+      #   @return [Symbol, FinchAPI::Models::OperationSupport, nil]
       optional :update, enum: -> { FinchAPI::OperationSupport }
 
       # @!method initialize(create: nil, delete: nil, read: nil, update: nil)
       #   Some parameter documentations has been truncated, see
-      #   {FinchAPI::OperationSupportMatrix} for more details.
+      #   {FinchAPI::Models::OperationSupportMatrix} for more details.
       #
-      #   @param create [Symbol, FinchAPI::OperationSupport] - `supported`: This operation is supported by both the provider and Finch
+      #   @param create [Symbol, FinchAPI::Models::OperationSupport] - `supported`: This operation is supported by both the provider and Finch
       #
-      #   @param delete [Symbol, FinchAPI::OperationSupport] - `supported`: This operation is supported by both the provider and Finch
+      #   @param delete [Symbol, FinchAPI::Models::OperationSupport] - `supported`: This operation is supported by both the provider and Finch
       #
-      #   @param read [Symbol, FinchAPI::OperationSupport] - `supported`: This operation is supported by both the provider and Finch
+      #   @param read [Symbol, FinchAPI::Models::OperationSupport] - `supported`: This operation is supported by both the provider and Finch
       #
-      #   @param update [Symbol, FinchAPI::OperationSupport] - `supported`: This operation is supported by both the provider and Finch
+      #   @param update [Symbol, FinchAPI::Models::OperationSupport] - `supported`: This operation is supported by both the provider and Finch
     end
   end
 end

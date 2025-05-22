@@ -19,7 +19,7 @@ module FinchAPI
         variant :w4_2005, -> { FinchAPI::HRIS::W42005 }
 
         # @!method self.variants
-        #   @return [Array(FinchAPI::HRIS::W42020, FinchAPI::HRIS::W42005)]
+        #   @return [Array(FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005)]
       end
     end
   end

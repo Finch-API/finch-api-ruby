@@ -10,12 +10,12 @@ module FinchAPI
 
       # @!attribute event_type
       #
-      #   @return [Symbol, FinchAPI::CompanyEvent::EventType, nil]
+      #   @return [Symbol, FinchAPI::Models::CompanyEvent::EventType, nil]
       optional :event_type, enum: -> { FinchAPI::CompanyEvent::EventType }
 
       # @!method initialize(data: nil, event_type: nil)
       #   @param data [Hash{Symbol=>Object}, nil]
-      #   @param event_type [Symbol, FinchAPI::CompanyEvent::EventType]
+      #   @param event_type [Symbol, FinchAPI::Models::CompanyEvent::EventType]
 
       module EventType
         extend FinchAPI::Internal::Type::Enum

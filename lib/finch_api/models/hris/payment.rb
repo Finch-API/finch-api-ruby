@@ -13,7 +13,7 @@ module FinchAPI
 
         # @!attribute company_debit
         #
-        #   @return [FinchAPI::Money, nil]
+        #   @return [FinchAPI::Models::Money, nil]
         optional :company_debit, -> { FinchAPI::Money }, nil?: true
 
         # @!attribute debit_date
@@ -23,17 +23,17 @@ module FinchAPI
 
         # @!attribute employee_taxes
         #
-        #   @return [FinchAPI::Money, nil]
+        #   @return [FinchAPI::Models::Money, nil]
         optional :employee_taxes, -> { FinchAPI::Money }, nil?: true
 
         # @!attribute employer_taxes
         #
-        #   @return [FinchAPI::Money, nil]
+        #   @return [FinchAPI::Models::Money, nil]
         optional :employer_taxes, -> { FinchAPI::Money }, nil?: true
 
         # @!attribute gross_pay
         #
-        #   @return [FinchAPI::Money, nil]
+        #   @return [FinchAPI::Models::Money, nil]
         optional :gross_pay, -> { FinchAPI::Money }, nil?: true
 
         # @!attribute individual_ids
@@ -44,7 +44,7 @@ module FinchAPI
 
         # @!attribute net_pay
         #
-        #   @return [FinchAPI::Money, nil]
+        #   @return [FinchAPI::Models::Money, nil]
         optional :net_pay, -> { FinchAPI::Money }, nil?: true
 
         # @!attribute pay_date
@@ -55,7 +55,7 @@ module FinchAPI
         # @!attribute pay_frequencies
         #   List of pay frequencies associated with this payment.
         #
-        #   @return [Array<Symbol, FinchAPI::HRIS::Payment::PayFrequency>, nil]
+        #   @return [Array<Symbol, FinchAPI::Models::HRIS::Payment::PayFrequency>, nil]
         optional :pay_frequencies,
                  -> { FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::HRIS::Payment::PayFrequency] },
                  nil?: true
@@ -69,33 +69,33 @@ module FinchAPI
         # @!attribute pay_period
         #   The pay period object.
         #
-        #   @return [FinchAPI::HRIS::Payment::PayPeriod, nil]
+        #   @return [FinchAPI::Models::HRIS::Payment::PayPeriod, nil]
         optional :pay_period, -> { FinchAPI::HRIS::Payment::PayPeriod }, nil?: true
 
         # @!method initialize(id: nil, company_debit: nil, debit_date: nil, employee_taxes: nil, employer_taxes: nil, gross_pay: nil, individual_ids: nil, net_pay: nil, pay_date: nil, pay_frequencies: nil, pay_group_ids: nil, pay_period: nil)
         #   @param id [String] The unique id for the payment.
         #
-        #   @param company_debit [FinchAPI::Money, nil]
+        #   @param company_debit [FinchAPI::Models::Money, nil]
         #
         #   @param debit_date [String, nil]
         #
-        #   @param employee_taxes [FinchAPI::Money, nil]
+        #   @param employee_taxes [FinchAPI::Models::Money, nil]
         #
-        #   @param employer_taxes [FinchAPI::Money, nil]
+        #   @param employer_taxes [FinchAPI::Models::Money, nil]
         #
-        #   @param gross_pay [FinchAPI::Money, nil]
+        #   @param gross_pay [FinchAPI::Models::Money, nil]
         #
         #   @param individual_ids [Array<String>, nil] Array of every individual on this payment.
         #
-        #   @param net_pay [FinchAPI::Money, nil]
+        #   @param net_pay [FinchAPI::Models::Money, nil]
         #
         #   @param pay_date [String, nil]
         #
-        #   @param pay_frequencies [Array<Symbol, FinchAPI::HRIS::Payment::PayFrequency>, nil] List of pay frequencies associated with this payment.
+        #   @param pay_frequencies [Array<Symbol, FinchAPI::Models::HRIS::Payment::PayFrequency>, nil] List of pay frequencies associated with this payment.
         #
         #   @param pay_group_ids [Array<String>, nil] Array of the Finch id (uuidv4) of every pay group associated with this payment.
         #
-        #   @param pay_period [FinchAPI::HRIS::Payment::PayPeriod, nil] The pay period object.
+        #   @param pay_period [FinchAPI::Models::HRIS::Payment::PayPeriod, nil] The pay period object.
 
         module PayFrequency
           extend FinchAPI::Internal::Type::Enum
@@ -114,7 +114,7 @@ module FinchAPI
           #   @return [Array<Symbol>]
         end
 
-        # @see FinchAPI::HRIS::Payment#pay_period
+        # @see FinchAPI::Models::HRIS::Payment#pay_period
         class PayPeriod < FinchAPI::Internal::Type::BaseModel
           # @!attribute end_date
           #

@@ -13,7 +13,7 @@ module FinchAPI
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::HRIS::HRISCompany]
+        # @return [FinchAPI::Models::HRIS::HRISCompany]
         #
         # @see FinchAPI::Models::HRIS::CompanyRetrieveParams
         def retrieve(params = {})

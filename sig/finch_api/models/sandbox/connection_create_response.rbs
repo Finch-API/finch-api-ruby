@@ -43,6 +43,17 @@ module FinchAPI
           ?token_type: String
         ) -> void
 
+        def to_hash: -> {
+          access_token: String,
+          account_id: String,
+          authentication_type: FinchAPI::Models::Sandbox::ConnectionCreateResponse::authentication_type,
+          company_id: String,
+          connection_id: String,
+          products: ::Array[String],
+          provider_id: String,
+          token_type: String
+        }
+
         type authentication_type = :credential | :api_token | :oauth | :assisted
 
         module AuthenticationType

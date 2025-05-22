@@ -12,7 +12,7 @@ module FinchAPI
         # @param job_id [String]
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::Jobs::ManualAsyncJob]
+        # @return [FinchAPI::Models::Jobs::ManualAsyncJob]
         #
         # @see FinchAPI::Models::Jobs::ManualRetrieveParams
         def retrieve(job_id, params = {})

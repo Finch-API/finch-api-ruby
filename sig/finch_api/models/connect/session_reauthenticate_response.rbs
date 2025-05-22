@@ -10,6 +10,8 @@ module FinchAPI
         attr_accessor session_id: String
 
         def initialize: (connect_url: String, session_id: String) -> void
+
+        def to_hash: -> { connect_url: String, session_id: String }
       end
     end
   end
