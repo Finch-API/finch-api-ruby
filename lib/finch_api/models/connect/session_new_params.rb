@@ -40,8 +40,8 @@ module FinchAPI
         optional :manual, FinchAPI::Internal::Type::Boolean, nil?: true
 
         # @!attribute minutes_to_expire
-        #   The number of minutes until the session expires (defaults to 43,200, which is 30
-        #   days)
+        #   The number of minutes until the session expires (defaults to 129,600, which is
+        #   90 days)
         #
         #   @return [Float, nil]
         optional :minutes_to_expire, Float, nil?: true
@@ -72,7 +72,7 @@ module FinchAPI
         #
         #   @param manual [Boolean, nil]
         #
-        #   @param minutes_to_expire [Float, nil] The number of minutes until the session expires (defaults to 43,200, which is 30
+        #   @param minutes_to_expire [Float, nil] The number of minutes until the session expires (defaults to 129,600, which is 9
         #
         #   @param redirect_uri [String, nil]
         #
