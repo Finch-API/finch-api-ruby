@@ -600,11 +600,13 @@ module FinchAPI
         #
         # @return [Object]
         def encode_content(headers, body)
+          # rubocop:disable Style/CaseEquality
+          # rubocop:disable Layout/LineLength
           content_type = headers["content-type"]
           case [content_type, body]
           in [FinchAPI::Internal::Util::JSON_CONTENT, Hash | Array | -> { primitive?(_1) }]
             [headers, JSON.generate(body)]
-          in [FinchAPI::Internal::Util::JSONL_CONTENT, Enumerable] unless body.is_a?(FinchAPI::Internal::Type::FileInput)
+          in [FinchAPI::Internal::Util::JSONL_CONTENT, Enumerable] unless FinchAPI::Internal::Type::FileInput === body
             [headers, body.lazy.map { JSON.generate(_1) }]
           in [%r{^multipart/form-data}, Hash | FinchAPI::Internal::Type::FileInput]
             boundary, strio = encode_multipart_streaming(body)
@@ -619,6 +621,8 @@ module FinchAPI
           else
             [headers, body]
           end
+          # rubocop:enable Layout/LineLength
+          # rubocop:enable Style/CaseEquality
         end
 
         # @api private
