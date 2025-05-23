@@ -15,7 +15,7 @@ module FinchAPI
 
         # @!attribute emails
         #
-        #   @return [Array<FinchAPI::Sandbox::IndividualUpdateParams::Email>, nil]
+        #   @return [Array<FinchAPI::Models::Sandbox::IndividualUpdateParams::Email>, nil]
         optional :emails,
                  -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::IndividualUpdateParams::Email] },
                  nil?: true
@@ -31,7 +31,7 @@ module FinchAPI
         # @!attribute ethnicity
         #   The EEOC-defined ethnicity of the individual.
         #
-        #   @return [Symbol, FinchAPI::Sandbox::IndividualUpdateParams::Ethnicity, nil]
+        #   @return [Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity, nil]
         optional :ethnicity, enum: -> { FinchAPI::Sandbox::IndividualUpdateParams::Ethnicity }, nil?: true
 
         # @!attribute first_name
@@ -43,7 +43,7 @@ module FinchAPI
         # @!attribute gender
         #   The gender of the individual.
         #
-        #   @return [Symbol, FinchAPI::Sandbox::IndividualUpdateParams::Gender, nil]
+        #   @return [Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender, nil]
         optional :gender, enum: -> { FinchAPI::Sandbox::IndividualUpdateParams::Gender }, nil?: true
 
         # @!attribute last_name
@@ -60,7 +60,7 @@ module FinchAPI
 
         # @!attribute phone_numbers
         #
-        #   @return [Array<FinchAPI::Sandbox::IndividualUpdateParams::PhoneNumber, nil>, nil]
+        #   @return [Array<FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber, nil>, nil]
         optional :phone_numbers,
                  -> {
                    FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::IndividualUpdateParams::PhoneNumber,
@@ -76,7 +76,7 @@ module FinchAPI
 
         # @!attribute residence
         #
-        #   @return [FinchAPI::Location, nil]
+        #   @return [FinchAPI::Models::Location, nil]
         optional :residence, -> { FinchAPI::Location }, nil?: true
 
         # @!attribute ssn
@@ -94,25 +94,25 @@ module FinchAPI
         #
         #   @param dob [String, nil]
         #
-        #   @param emails [Array<FinchAPI::Sandbox::IndividualUpdateParams::Email>, nil]
+        #   @param emails [Array<FinchAPI::Models::Sandbox::IndividualUpdateParams::Email>, nil]
         #
         #   @param encrypted_ssn [String, nil] Social Security Number of the individual in **encrypted** format. This field is
         #
-        #   @param ethnicity [Symbol, FinchAPI::Sandbox::IndividualUpdateParams::Ethnicity, nil] The EEOC-defined ethnicity of the individual.
+        #   @param ethnicity [Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity, nil] The EEOC-defined ethnicity of the individual.
         #
         #   @param first_name [String, nil] The legal first name of the individual.
         #
-        #   @param gender [Symbol, FinchAPI::Sandbox::IndividualUpdateParams::Gender, nil] The gender of the individual.
+        #   @param gender [Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender, nil] The gender of the individual.
         #
         #   @param last_name [String, nil] The legal last name of the individual.
         #
         #   @param middle_name [String, nil] The legal middle name of the individual.
         #
-        #   @param phone_numbers [Array<FinchAPI::Sandbox::IndividualUpdateParams::PhoneNumber, nil>, nil]
+        #   @param phone_numbers [Array<FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber, nil>, nil]
         #
         #   @param preferred_name [String, nil] The preferred name of the individual.
         #
-        #   @param residence [FinchAPI::Location, nil]
+        #   @param residence [FinchAPI::Models::Location, nil]
         #
         #   @param ssn [String, nil] Social Security Number of the individual. This field is only available with the
         #
@@ -126,14 +126,14 @@ module FinchAPI
 
           # @!attribute type
           #
-          #   @return [Symbol, FinchAPI::Sandbox::IndividualUpdateParams::Email::Type, nil]
+          #   @return [Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type, nil]
           optional :type, enum: -> { FinchAPI::Sandbox::IndividualUpdateParams::Email::Type }, nil?: true
 
           # @!method initialize(data: nil, type: nil)
           #   @param data [String]
-          #   @param type [Symbol, FinchAPI::Sandbox::IndividualUpdateParams::Email::Type, nil]
+          #   @param type [Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::Type, nil]
 
-          # @see FinchAPI::Sandbox::IndividualUpdateParams::Email#type
+          # @see FinchAPI::Models::Sandbox::IndividualUpdateParams::Email#type
           module Type
             extend FinchAPI::Internal::Type::Enum
 
@@ -183,7 +183,7 @@ module FinchAPI
 
           # @!attribute type
           #
-          #   @return [Symbol, FinchAPI::Sandbox::IndividualUpdateParams::PhoneNumber::Type, nil]
+          #   @return [Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type, nil]
           optional :type,
                    enum: -> {
                      FinchAPI::Sandbox::IndividualUpdateParams::PhoneNumber::Type
@@ -192,9 +192,9 @@ module FinchAPI
 
           # @!method initialize(data: nil, type: nil)
           #   @param data [String, nil]
-          #   @param type [Symbol, FinchAPI::Sandbox::IndividualUpdateParams::PhoneNumber::Type, nil]
+          #   @param type [Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type, nil]
 
-          # @see FinchAPI::Sandbox::IndividualUpdateParams::PhoneNumber#type
+          # @see FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber#type
           module Type
             extend FinchAPI::Internal::Type::Enum
 

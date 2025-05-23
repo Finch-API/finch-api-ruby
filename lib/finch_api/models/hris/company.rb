@@ -14,7 +14,7 @@ module FinchAPI
         # @!attribute accounts
         #   An array of bank account objects associated with the payroll/HRIS system.
         #
-        #   @return [Array<FinchAPI::HRIS::HRISCompany::Account>, nil]
+        #   @return [Array<FinchAPI::Models::HRIS::HRISCompany::Account>, nil]
         required :accounts,
                  -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::HRISCompany::Account] },
                  nil?: true
@@ -22,7 +22,7 @@ module FinchAPI
         # @!attribute departments
         #   The array of company departments.
         #
-        #   @return [Array<FinchAPI::HRIS::HRISCompany::Department, nil>, nil]
+        #   @return [Array<FinchAPI::Models::HRIS::HRISCompany::Department, nil>, nil]
         required :departments,
                  -> {
                    FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::HRISCompany::Department, nil?: true]
@@ -38,7 +38,7 @@ module FinchAPI
         # @!attribute entity
         #   The entity type object.
         #
-        #   @return [FinchAPI::HRIS::HRISCompany::Entity, nil]
+        #   @return [FinchAPI::Models::HRIS::HRISCompany::Entity, nil]
         required :entity, -> { FinchAPI::HRIS::HRISCompany::Entity }, nil?: true
 
         # @!attribute legal_name
@@ -49,7 +49,7 @@ module FinchAPI
 
         # @!attribute locations
         #
-        #   @return [Array<FinchAPI::Location, nil>, nil]
+        #   @return [Array<FinchAPI::Models::Location, nil>, nil]
         required :locations,
                  -> {
                    FinchAPI::Internal::Type::ArrayOf[FinchAPI::Location, nil?: true]
@@ -71,21 +71,21 @@ module FinchAPI
 
         # @!method initialize(id:, accounts:, departments:, ein:, entity:, legal_name:, locations:, primary_email:, primary_phone_number:)
         #   Some parameter documentations has been truncated, see
-        #   {FinchAPI::HRIS::HRISCompany} for more details.
+        #   {FinchAPI::Models::HRIS::HRISCompany} for more details.
         #
         #   @param id [String] A stable Finch `id` (UUID v4) for the company.
         #
-        #   @param accounts [Array<FinchAPI::HRIS::HRISCompany::Account>, nil] An array of bank account objects associated with the payroll/HRIS system.
+        #   @param accounts [Array<FinchAPI::Models::HRIS::HRISCompany::Account>, nil] An array of bank account objects associated with the payroll/HRIS system.
         #
-        #   @param departments [Array<FinchAPI::HRIS::HRISCompany::Department, nil>, nil] The array of company departments.
+        #   @param departments [Array<FinchAPI::Models::HRIS::HRISCompany::Department, nil>, nil] The array of company departments.
         #
         #   @param ein [String, nil] The employer identification number.
         #
-        #   @param entity [FinchAPI::HRIS::HRISCompany::Entity, nil] The entity type object.
+        #   @param entity [FinchAPI::Models::HRIS::HRISCompany::Entity, nil] The entity type object.
         #
         #   @param legal_name [String, nil] The legal name of the company.
         #
-        #   @param locations [Array<FinchAPI::Location, nil>, nil]
+        #   @param locations [Array<FinchAPI::Models::Location, nil>, nil]
         #
         #   @param primary_email [String, nil] The email of the main administrator on the account.
         #
@@ -107,7 +107,7 @@ module FinchAPI
           # @!attribute account_type
           #   The type of bank account.
           #
-          #   @return [Symbol, FinchAPI::HRIS::HRISCompany::Account::AccountType, nil]
+          #   @return [Symbol, FinchAPI::Models::HRIS::HRISCompany::Account::AccountType, nil]
           required :account_type, enum: -> { FinchAPI::HRIS::HRISCompany::Account::AccountType }, nil?: true
 
           # @!attribute institution_name
@@ -125,13 +125,13 @@ module FinchAPI
 
           # @!method initialize(account_name:, account_number:, account_type:, institution_name:, routing_number:)
           #   Some parameter documentations has been truncated, see
-          #   {FinchAPI::HRIS::HRISCompany::Account} for more details.
+          #   {FinchAPI::Models::HRIS::HRISCompany::Account} for more details.
           #
           #   @param account_name [String, nil] The name of the bank associated in the payroll/HRIS system.
           #
           #   @param account_number [String, nil] 10-12 digit number to specify the bank account
           #
-          #   @param account_type [Symbol, FinchAPI::HRIS::HRISCompany::Account::AccountType, nil] The type of bank account.
+          #   @param account_type [Symbol, FinchAPI::Models::HRIS::HRISCompany::Account::AccountType, nil] The type of bank account.
           #
           #   @param institution_name [String, nil] Name of the banking institution.
           #
@@ -139,7 +139,7 @@ module FinchAPI
 
           # The type of bank account.
           #
-          # @see FinchAPI::HRIS::HRISCompany::Account#account_type
+          # @see FinchAPI::Models::HRIS::HRISCompany::Account#account_type
           module AccountType
             extend FinchAPI::Internal::Type::Enum
 
@@ -161,15 +161,15 @@ module FinchAPI
           # @!attribute parent
           #   The parent department, if present.
           #
-          #   @return [FinchAPI::HRIS::HRISCompany::Department::Parent, nil]
+          #   @return [FinchAPI::Models::HRIS::HRISCompany::Department::Parent, nil]
           required :parent, -> { FinchAPI::HRIS::HRISCompany::Department::Parent }, nil?: true
 
           # @!method initialize(name:, parent:)
           #   @param name [String, nil] The department name.
           #
-          #   @param parent [FinchAPI::HRIS::HRISCompany::Department::Parent, nil] The parent department, if present.
+          #   @param parent [FinchAPI::Models::HRIS::HRISCompany::Department::Parent, nil] The parent department, if present.
 
-          # @see FinchAPI::HRIS::HRISCompany::Department#parent
+          # @see FinchAPI::Models::HRIS::HRISCompany::Department#parent
           class Parent < FinchAPI::Internal::Type::BaseModel
             # @!attribute name
             #   The parent department's name.
@@ -184,30 +184,30 @@ module FinchAPI
           end
         end
 
-        # @see FinchAPI::HRIS::HRISCompany#entity
+        # @see FinchAPI::Models::HRIS::HRISCompany#entity
         class Entity < FinchAPI::Internal::Type::BaseModel
           # @!attribute subtype
           #   The tax payer subtype of the company.
           #
-          #   @return [Symbol, FinchAPI::HRIS::HRISCompany::Entity::Subtype, nil]
+          #   @return [Symbol, FinchAPI::Models::HRIS::HRISCompany::Entity::Subtype, nil]
           required :subtype, enum: -> { FinchAPI::HRIS::HRISCompany::Entity::Subtype }, nil?: true
 
           # @!attribute type
           #   The tax payer type of the company.
           #
-          #   @return [Symbol, FinchAPI::HRIS::HRISCompany::Entity::Type, nil]
+          #   @return [Symbol, FinchAPI::Models::HRIS::HRISCompany::Entity::Type, nil]
           required :type, enum: -> { FinchAPI::HRIS::HRISCompany::Entity::Type }, nil?: true
 
           # @!method initialize(subtype:, type:)
           #   The entity type object.
           #
-          #   @param subtype [Symbol, FinchAPI::HRIS::HRISCompany::Entity::Subtype, nil] The tax payer subtype of the company.
+          #   @param subtype [Symbol, FinchAPI::Models::HRIS::HRISCompany::Entity::Subtype, nil] The tax payer subtype of the company.
           #
-          #   @param type [Symbol, FinchAPI::HRIS::HRISCompany::Entity::Type, nil] The tax payer type of the company.
+          #   @param type [Symbol, FinchAPI::Models::HRIS::HRISCompany::Entity::Type, nil] The tax payer type of the company.
 
           # The tax payer subtype of the company.
           #
-          # @see FinchAPI::HRIS::HRISCompany::Entity#subtype
+          # @see FinchAPI::Models::HRIS::HRISCompany::Entity#subtype
           module Subtype
             extend FinchAPI::Internal::Type::Enum
 
@@ -221,7 +221,7 @@ module FinchAPI
 
           # The tax payer type of the company.
           #
-          # @see FinchAPI::HRIS::HRISCompany::Entity#type
+          # @see FinchAPI::Models::HRIS::HRISCompany::Entity#type
           module Type
             extend FinchAPI::Internal::Type::Enum
 

@@ -12,40 +12,34 @@ module FinchAPI
             )
           end
 
-        sig { returns(T.nilable(FinchAPI::HRIS::PayStatementResponseBody)) }
-        attr_reader :body
+        sig { returns(FinchAPI::HRIS::PayStatementResponseBody::Variants) }
+        attr_accessor :body
 
-        sig do
-          params(body: FinchAPI::HRIS::PayStatementResponseBody::OrHash).void
-        end
-        attr_writer :body
+        sig { returns(Integer) }
+        attr_accessor :code
 
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :code
-
-        sig { params(code: Integer).void }
-        attr_writer :code
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :payment_id
-
-        sig { params(payment_id: String).void }
-        attr_writer :payment_id
+        sig { returns(String) }
+        attr_accessor :payment_id
 
         sig do
           params(
-            body: FinchAPI::HRIS::PayStatementResponseBody::OrHash,
+            body:
+              T.any(
+                FinchAPI::HRIS::PayStatementResponseBody::UnionMember0::OrHash,
+                FinchAPI::HRIS::PayStatementResponseBody::BatchError::OrHash,
+                FinchAPI::HRIS::PayStatementResponseBody::UnionMember2::OrHash
+              ),
             code: Integer,
             payment_id: String
           ).returns(T.attached_class)
         end
-        def self.new(body: nil, code: nil, payment_id: nil)
+        def self.new(body:, code:, payment_id:)
         end
 
         sig do
           override.returns(
             {
-              body: FinchAPI::HRIS::PayStatementResponseBody,
+              body: FinchAPI::HRIS::PayStatementResponseBody::Variants,
               code: Integer,
               payment_id: String
             }

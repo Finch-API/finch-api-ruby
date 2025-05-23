@@ -11,7 +11,7 @@ module FinchAPI
         #
         # @overload create(body: nil, request_options: {})
         #
-        # @param body [Array<FinchAPI::Sandbox::DirectoryCreateParams::Body>] Array of individuals to create. Takes all combined fields from `/individual` and
+        # @param body [Array<FinchAPI::Models::Sandbox::DirectoryCreateParams::Body>] Array of individuals to create. Takes all combined fields from `/individual` and
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #

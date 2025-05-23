@@ -34,6 +34,14 @@ module FinchAPI
         ?redirect_uri: String,
         ?request_options: FinchAPI::request_opts
       ) -> void
+
+      def to_hash: -> {
+        code: String,
+        client_id: String,
+        client_secret: String,
+        redirect_uri: String,
+        request_options: FinchAPI::RequestOptions
+      }
     end
   end
 end

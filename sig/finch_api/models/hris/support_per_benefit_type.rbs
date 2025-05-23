@@ -24,6 +24,11 @@ module FinchAPI
           ?company_benefits: FinchAPI::OperationSupportMatrix,
           ?individual_benefits: FinchAPI::OperationSupportMatrix
         ) -> void
+
+        def to_hash: -> {
+          company_benefits: FinchAPI::OperationSupportMatrix,
+          individual_benefits: FinchAPI::OperationSupportMatrix
+        }
       end
     end
   end

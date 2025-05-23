@@ -62,10 +62,26 @@ module FinchAPI
           ?request_options: FinchAPI::request_opts
         ) -> void
 
+        def to_hash: -> {
+          dob: String?,
+          emails: ::Array[FinchAPI::Sandbox::IndividualUpdateParams::Email]?,
+          encrypted_ssn: String?,
+          ethnicity: FinchAPI::Models::Sandbox::IndividualUpdateParams::ethnicity?,
+          first_name: String?,
+          gender: FinchAPI::Models::Sandbox::IndividualUpdateParams::gender?,
+          last_name: String?,
+          middle_name: String?,
+          phone_numbers: ::Array[FinchAPI::Sandbox::IndividualUpdateParams::PhoneNumber?]?,
+          preferred_name: String?,
+          residence: FinchAPI::Location?,
+          ssn: String?,
+          request_options: FinchAPI::RequestOptions
+        }
+
         type email =
           {
             data: String,
-            type: FinchAPI::Sandbox::IndividualUpdateParams::Email::type_?
+            type: FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::type_?
           }
 
         class Email < FinchAPI::Internal::Type::BaseModel
@@ -73,12 +89,17 @@ module FinchAPI
 
           def data=: (String) -> String
 
-          attr_accessor type: FinchAPI::Sandbox::IndividualUpdateParams::Email::type_?
+          attr_accessor type: FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::type_?
 
           def initialize: (
             ?data: String,
-            ?type: FinchAPI::Sandbox::IndividualUpdateParams::Email::type_?
+            ?type: FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::type_?
           ) -> void
+
+          def to_hash: -> {
+            data: String,
+            type: FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::type_?
+          }
 
           type type_ = :work | :personal
 
@@ -88,7 +109,7 @@ module FinchAPI
             WORK: :work
             PERSONAL: :personal
 
-            def self?.values: -> ::Array[FinchAPI::Sandbox::IndividualUpdateParams::Email::type_]
+            def self?.values: -> ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::Email::type_]
           end
         end
 
@@ -133,18 +154,23 @@ module FinchAPI
         type phone_number =
           {
             data: String?,
-            type: FinchAPI::Sandbox::IndividualUpdateParams::PhoneNumber::type_?
+            type: FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::type_?
           }
 
         class PhoneNumber < FinchAPI::Internal::Type::BaseModel
           attr_accessor data: String?
 
-          attr_accessor type: FinchAPI::Sandbox::IndividualUpdateParams::PhoneNumber::type_?
+          attr_accessor type: FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::type_?
 
           def initialize: (
             ?data: String?,
-            ?type: FinchAPI::Sandbox::IndividualUpdateParams::PhoneNumber::type_?
+            ?type: FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::type_?
           ) -> void
+
+          def to_hash: -> {
+            data: String?,
+            type: FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::type_?
+          }
 
           type type_ = :work | :personal
 
@@ -154,7 +180,7 @@ module FinchAPI
             WORK: :work
             PERSONAL: :personal
 
-            def self?.values: -> ::Array[FinchAPI::Sandbox::IndividualUpdateParams::PhoneNumber::type_]
+            def self?.values: -> ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::type_]
           end
         end
       end

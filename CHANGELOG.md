@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.1.0-alpha.20 (2025-05-23)
+
+Full Changelog: [v0.1.0-alpha.19...v0.1.0-alpha.20](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.19...v0.1.0-alpha.20)
+
+### Features
+
+* **api:** api update ([6e46c62](https://github.com/Finch-API/finch-api-ruby/commit/6e46c62b78b34d3944136bea9decd9254b9d7b2c))
+* **api:** api update ([68d04c3](https://github.com/Finch-API/finch-api-ruby/commit/68d04c3e38f076254375ef4e1ea24383d7ff7aa2))
+
+
+### Bug Fixes
+
+* correctly instantiate sorbet type aliases for enums and unions ([9a84b92](https://github.com/Finch-API/finch-api-ruby/commit/9a84b92df48e001ee28989703cbe8bdd9f461528))
+* prevent rubocop from mangling `===` to `is_a?` check ([6301929](https://github.com/Finch-API/finch-api-ruby/commit/6301929d697ae1c006446a12e6c67046e83ef132))
+
+
+### Chores
+
+* **docs:** grammar improvements ([0c55f26](https://github.com/Finch-API/finch-api-ruby/commit/0c55f26abe131663cfe8e739b95154172d967085))
+* force utf-8 locale via `RUBYOPT` when formatting ([2f00817](https://github.com/Finch-API/finch-api-ruby/commit/2f008175f0a18dc01a0c2b900c2e692f77b3a0ac))
+* **internal:** version bump ([2b40219](https://github.com/Finch-API/finch-api-ruby/commit/2b4021961b248f64cb9c5564b4199d0c840593fd))
+* refine Yard and Sorbet types and ensure linting is turned on for examples ([e0eb636](https://github.com/Finch-API/finch-api-ruby/commit/e0eb63695b803e35dd9e35a57cd0769a60db7bc7))
+* use fully qualified names for yard annotations and rbs aliases ([98866d5](https://github.com/Finch-API/finch-api-ruby/commit/98866d5133c2afb76b141045f1361705f9bac94a))
+* use sorbet union aliases where available ([37cc1c2](https://github.com/Finch-API/finch-api-ruby/commit/37cc1c27968a448e7bfef8527a0f3105b476de09))
+* whitespaces ([16ff9b3](https://github.com/Finch-API/finch-api-ruby/commit/16ff9b32a68eecb17c5719b354de64fe788bedd4))
+
 ## 0.1.0-alpha.19 (2025-05-16)
 
 Full Changelog: [v0.1.0-alpha.18...v0.1.0-alpha.19](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.18...v0.1.0-alpha.19)

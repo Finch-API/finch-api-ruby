@@ -18,6 +18,12 @@ module FinchAPI
           start_date: Date,
           ?request_options: FinchAPI::request_opts
         ) -> void
+
+        def to_hash: -> {
+          end_date: Date,
+          start_date: Date,
+          request_options: FinchAPI::RequestOptions
+        }
       end
     end
   end

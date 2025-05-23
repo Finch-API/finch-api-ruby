@@ -44,7 +44,7 @@ module FinchAPI
         # @!attribute frequencies
         #   The list of frequencies supported by the provider for this benefit
         #
-        #   @return [Array<Symbol, FinchAPI::HRIS::BenefitFrequency, nil>, nil]
+        #   @return [Array<Symbol, FinchAPI::Models::HRIS::BenefitFrequency, nil>, nil]
         optional :frequencies,
                  -> { FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::HRIS::BenefitFrequency, nil?: true] }
 
@@ -71,7 +71,7 @@ module FinchAPI
         #
         #   @param employee_deduction [Array<Symbol, FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::EmployeeDeduction, nil>, nil] Supported deduction types. An empty array indicates deductions are not supported
         #
-        #   @param frequencies [Array<Symbol, FinchAPI::HRIS::BenefitFrequency, nil>] The list of frequencies supported by the provider for this benefit
+        #   @param frequencies [Array<Symbol, FinchAPI::Models::HRIS::BenefitFrequency, nil>] The list of frequencies supported by the provider for this benefit
         #
         #   @param hsa_contribution_limit [Array<Symbol, FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::HsaContributionLimit, nil>, nil] Whether the provider supports HSA contribution limits. Empty if this feature is
 
