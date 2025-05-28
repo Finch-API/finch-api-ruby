@@ -4,6 +4,8 @@ require_relative "../../test_helper"
 
 class FinchAPI::Test::Resources::Sandbox::ConnectionsTest < FinchAPI::Test::ResourceTest
   def test_create_required_params
+    skip("prism tests are broken")
+
     response = @finch.sandbox.connections.create(provider_id: "provider_id")
 
     assert_pattern do
