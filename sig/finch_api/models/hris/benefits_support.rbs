@@ -56,6 +56,21 @@ module FinchAPI
           ?simple: FinchAPI::HRIS::BenefitFeaturesAndOperations?,
           ?simple_ira: FinchAPI::HRIS::BenefitFeaturesAndOperations?
         ) -> void
+
+        def to_hash: -> {
+          commuter: FinchAPI::HRIS::BenefitFeaturesAndOperations?,
+          custom_post_tax: FinchAPI::HRIS::BenefitFeaturesAndOperations?,
+          custom_pre_tax: FinchAPI::HRIS::BenefitFeaturesAndOperations?,
+          fsa_dependent_care: FinchAPI::HRIS::BenefitFeaturesAndOperations?,
+          fsa_medical: FinchAPI::HRIS::BenefitFeaturesAndOperations?,
+          hsa_post: FinchAPI::HRIS::BenefitFeaturesAndOperations?,
+          hsa_pre: FinchAPI::HRIS::BenefitFeaturesAndOperations?,
+          :s125_dental => FinchAPI::HRIS::BenefitFeaturesAndOperations?,
+          :s125_medical => FinchAPI::HRIS::BenefitFeaturesAndOperations?,
+          :s125_vision => FinchAPI::HRIS::BenefitFeaturesAndOperations?,
+          simple: FinchAPI::HRIS::BenefitFeaturesAndOperations?,
+          simple_ira: FinchAPI::HRIS::BenefitFeaturesAndOperations?
+        }
       end
     end
   end

@@ -8,11 +8,11 @@ module FinchAPI
         #
         # @overload retrieve_many(options: nil, requests: nil, request_options: {})
         #
-        # @param options [FinchAPI::HRIS::IndividualRetrieveManyParams::Options, nil]
-        # @param requests [Array<FinchAPI::HRIS::IndividualRetrieveManyParams::Request>]
+        # @param options [FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, nil]
+        # @param requests [Array<FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request>]
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::Internal::ResponsesPage<FinchAPI::HRIS::IndividualResponse>]
+        # @return [FinchAPI::Internal::ResponsesPage<FinchAPI::Models::HRIS::IndividualResponse>]
         #
         # @see FinchAPI::Models::HRIS::IndividualRetrieveManyParams
         def retrieve_many(params = {})

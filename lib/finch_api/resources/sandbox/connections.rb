@@ -16,7 +16,7 @@ module FinchAPI
         #
         # @param provider_id [String] The provider associated with the connection
         #
-        # @param authentication_type [Symbol, FinchAPI::Sandbox::ConnectionCreateParams::AuthenticationType]
+        # @param authentication_type [Symbol, FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType]
         #
         # @param employee_size [Integer] Optional: the size of the employer to be created with this connection. Defaults
         #

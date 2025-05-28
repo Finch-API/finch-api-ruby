@@ -88,34 +88,9 @@ module FinchAPI
               :annually,
               FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol
             )
-          SEMI_ANNUALLY =
-            T.let(
-              :semi_annually,
-              FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol
-            )
-          QUARTERLY =
-            T.let(
-              :quarterly,
-              FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol
-            )
-          MONTHLY =
-            T.let(
-              :monthly,
-              FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol
-            )
-          SEMI_MONTHLY =
-            T.let(
-              :semi_monthly,
-              FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol
-            )
           BI_WEEKLY =
             T.let(
               :bi_weekly,
-              FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol
-            )
-          WEEKLY =
-            T.let(
-              :weekly,
               FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol
             )
           DAILY =
@@ -123,9 +98,34 @@ module FinchAPI
               :daily,
               FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol
             )
+          MONTHLY =
+            T.let(
+              :monthly,
+              FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol
+            )
           OTHER =
             T.let(
               :other,
+              FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol
+            )
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol
+            )
+          SEMI_ANNUALLY =
+            T.let(
+              :semi_annually,
+              FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol
+            )
+          SEMI_MONTHLY =
+            T.let(
+              :semi_monthly,
+              FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol
+            )
+          WEEKLY =
+            T.let(
+              :weekly,
               FinchAPI::Models::Payroll::PayGroupRetrieveResponse::PayFrequency::TaggedSymbol
             )
 

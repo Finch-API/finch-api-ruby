@@ -22,7 +22,7 @@ module FinchAPI
       # @!attribute client_type
       #   The type of application associated with a token.
       #
-      #   @return [Symbol, FinchAPI::CreateAccessTokenResponse::ClientType]
+      #   @return [Symbol, FinchAPI::Models::CreateAccessTokenResponse::ClientType]
       required :client_type, enum: -> { FinchAPI::CreateAccessTokenResponse::ClientType }
 
       # @!attribute company_id
@@ -46,7 +46,7 @@ module FinchAPI
       #   - `provider` - connection to an external provider
       #   - `finch` - finch-generated data.
       #
-      #   @return [Symbol, FinchAPI::CreateAccessTokenResponse::ConnectionType]
+      #   @return [Symbol, FinchAPI::Models::CreateAccessTokenResponse::ConnectionType]
       required :connection_type, enum: -> { FinchAPI::CreateAccessTokenResponse::ConnectionType }
 
       # @!attribute products
@@ -76,19 +76,19 @@ module FinchAPI
 
       # @!method initialize(access_token:, account_id:, client_type:, company_id:, connection_id:, connection_type:, products:, provider_id:, customer_id: nil, token_type: nil)
       #   Some parameter documentations has been truncated, see
-      #   {FinchAPI::CreateAccessTokenResponse} for more details.
+      #   {FinchAPI::Models::CreateAccessTokenResponse} for more details.
       #
       #   @param access_token [String] The access token for the connection.
       #
       #   @param account_id [String] [DEPRECATED] Use `connection_id` to identify the connection instead of this acco
       #
-      #   @param client_type [Symbol, FinchAPI::CreateAccessTokenResponse::ClientType] The type of application associated with a token.
+      #   @param client_type [Symbol, FinchAPI::Models::CreateAccessTokenResponse::ClientType] The type of application associated with a token.
       #
       #   @param company_id [String] [DEPRECATED] Use `connection_id` to identify the connection instead of this comp
       #
       #   @param connection_id [String] The Finch UUID of the connection associated with the `access_token`.
       #
-      #   @param connection_type [Symbol, FinchAPI::CreateAccessTokenResponse::ConnectionType] The type of the connection associated with the token.
+      #   @param connection_type [Symbol, FinchAPI::Models::CreateAccessTokenResponse::ConnectionType] The type of the connection associated with the token.
       #
       #   @param products [Array<String>] An array of the authorized products associated with the `access_token`.
       #
@@ -100,7 +100,7 @@ module FinchAPI
 
       # The type of application associated with a token.
       #
-      # @see FinchAPI::CreateAccessTokenResponse#client_type
+      # @see FinchAPI::Models::CreateAccessTokenResponse#client_type
       module ClientType
         extend FinchAPI::Internal::Type::Enum
 
@@ -117,7 +117,7 @@ module FinchAPI
       # - `provider` - connection to an external provider
       # - `finch` - finch-generated data.
       #
-      # @see FinchAPI::CreateAccessTokenResponse#connection_type
+      # @see FinchAPI::Models::CreateAccessTokenResponse#connection_type
       module ConnectionType
         extend FinchAPI::Internal::Type::Enum
 

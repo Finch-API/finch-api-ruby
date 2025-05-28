@@ -48,6 +48,15 @@ module FinchAPI
               ?request_options: FinchAPI::request_opts
             ) -> void
 
+            def to_hash: -> {
+              attributes: FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes,
+              conditions: ::Array[FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Condition],
+              effective_end_date: String?,
+              effective_start_date: String?,
+              entity_type: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::entity_type,
+              request_options: FinchAPI::RequestOptions
+            }
+
             type attributes = { metadata: ::Hash[Symbol, top] }
 
             class Attributes < FinchAPI::Internal::Type::BaseModel
@@ -56,12 +65,14 @@ module FinchAPI
               def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
               def initialize: (?metadata: ::Hash[Symbol, top]) -> void
+
+              def to_hash: -> { metadata: ::Hash[Symbol, top] }
             end
 
             type condition =
               {
                 field: String,
-                operator: FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::operator,
+                operator: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::operator,
                 value: String
               }
 
@@ -70,11 +81,11 @@ module FinchAPI
 
               def field=: (String) -> String
 
-              attr_reader operator: FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::operator?
+              attr_reader operator: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::operator?
 
               def operator=: (
-                FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::operator
-              ) -> FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::operator
+                FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::operator
+              ) -> FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::operator
 
               attr_reader value: String?
 
@@ -82,9 +93,15 @@ module FinchAPI
 
               def initialize: (
                 ?field: String,
-                ?operator: FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::operator,
+                ?operator: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::operator,
                 ?value: String
               ) -> void
+
+              def to_hash: -> {
+                field: String,
+                operator: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::operator,
+                value: String
+              }
 
               type operator = :equals
 
@@ -93,7 +110,7 @@ module FinchAPI
 
                 EQUALS: :equals
 
-                def self?.values: -> ::Array[FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::operator]
+                def self?.values: -> ::Array[FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::operator]
               end
             end
 

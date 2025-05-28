@@ -19,11 +19,7 @@ module FinchAPI
         variant :w4_2005, -> { FinchAPI::HRIS::W42005 }
 
         # @!method self.variants
-        #   @return [Array(FinchAPI::HRIS::W42020, FinchAPI::HRIS::W42005)]
-
-        define_sorbet_constant!(:Variants) do
-          T.type_alias { T.any(FinchAPI::HRIS::W42020, FinchAPI::HRIS::W42005) }
-        end
+        #   @return [Array(FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005)]
       end
     end
   end

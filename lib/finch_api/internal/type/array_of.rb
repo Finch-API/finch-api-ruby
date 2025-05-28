@@ -12,6 +12,7 @@ module FinchAPI
       # Array of items of a given type.
       class ArrayOf
         include FinchAPI::Internal::Type::Converter
+        include FinchAPI::Internal::Util::SorbetRuntimeSupport
 
         private_class_method :new
 
@@ -108,6 +109,13 @@ module FinchAPI
           else
             super
           end
+        end
+
+        # @api private
+        #
+        # @return [Object]
+        def to_sorbet_type
+          T::Array[FinchAPI::Internal::Util::SorbetRuntimeSupport.to_sorbet_type(item_type)]
         end
 
         # @api private

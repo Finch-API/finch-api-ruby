@@ -15,21 +15,21 @@ module FinchAPI
         #
         # @param class_code [String, nil] Worker's compensation classification code for this employee
         #
-        # @param custom_fields [Array<FinchAPI::Sandbox::EmploymentUpdateParams::CustomField>, nil] Custom fields for the individual. These are fields which are defined by the empl
+        # @param custom_fields [Array<FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField>, nil] Custom fields for the individual. These are fields which are defined by the empl
         #
-        # @param department [FinchAPI::Sandbox::EmploymentUpdateParams::Department, nil] The department object.
+        # @param department [FinchAPI::Models::Sandbox::EmploymentUpdateParams::Department, nil] The department object.
         #
-        # @param employment [FinchAPI::Sandbox::EmploymentUpdateParams::Employment, nil] The employment object.
+        # @param employment [FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment, nil] The employment object.
         #
-        # @param employment_status [Symbol, FinchAPI::Sandbox::EmploymentUpdateParams::EmploymentStatus, nil] The detailed employment status of the individual. Available options: `active`, `
+        # @param employment_status [Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus, nil] The detailed employment status of the individual. Available options: `active`, `
         #
         # @param end_date [String, nil]
         #
         # @param first_name [String, nil] The legal first name of the individual.
         #
-        # @param income [FinchAPI::Income, nil] The employee's income as reported by the provider. This may not always be annual
+        # @param income [FinchAPI::Models::Income, nil] The employee's income as reported by the provider. This may not always be annual
         #
-        # @param income_history [Array<FinchAPI::Income, nil>, nil] The array of income history.
+        # @param income_history [Array<FinchAPI::Models::Income, nil>, nil] The array of income history.
         #
         # @param is_active [Boolean, nil] `true` if the individual an an active employee or contractor at the company.
         #
@@ -37,9 +37,9 @@ module FinchAPI
         #
         # @param latest_rehire_date [String, nil]
         #
-        # @param location [FinchAPI::Location, nil]
+        # @param location [FinchAPI::Models::Location, nil]
         #
-        # @param manager [FinchAPI::Sandbox::EmploymentUpdateParams::Manager, nil] The manager object representing the manager of the individual within the org.
+        # @param manager [FinchAPI::Models::Sandbox::EmploymentUpdateParams::Manager, nil] The manager object representing the manager of the individual within the org.
         #
         # @param middle_name [String, nil] The legal middle name of the individual.
         #

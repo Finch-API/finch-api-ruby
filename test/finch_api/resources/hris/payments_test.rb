@@ -19,7 +19,7 @@ class FinchAPI::Test::Resources::HRIS::PaymentsTest < FinchAPI::Test::ResourceTe
 
     assert_pattern do
       row => {
-        id: String | nil,
+        id: String,
         company_debit: FinchAPI::Money | nil,
         debit_date: String | nil,
         employee_taxes: FinchAPI::Money | nil,

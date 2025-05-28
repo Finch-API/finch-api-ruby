@@ -9,7 +9,7 @@ module FinchAPI
       #
       # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [FinchAPI::DisconnectResponse]
+      # @return [FinchAPI::Models::DisconnectResponse]
       #
       # @see FinchAPI::Models::AccountDisconnectParams
       def disconnect(params = {})
@@ -27,7 +27,7 @@ module FinchAPI
       #
       # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [FinchAPI::Introspection]
+      # @return [FinchAPI::Models::Introspection]
       #
       # @see FinchAPI::Models::AccountIntrospectParams
       def introspect(params = {})

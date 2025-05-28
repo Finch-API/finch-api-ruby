@@ -89,6 +89,13 @@ module FinchAPI
 
             value
           end
+
+          # @api private
+          #
+          # @return [Object]
+          def to_sorbet_type
+            T.any(Pathname, StringIO, IO, String, FinchAPI::FilePart)
+          end
         end
       end
     end

@@ -37,6 +37,14 @@ module FinchAPI
             ?request_options: FinchAPI::request_opts
           ) -> void
 
+          def to_hash: -> {
+            company_id: String,
+            provider_id: String,
+            authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateParams::authentication_type,
+            products: ::Array[String],
+            request_options: FinchAPI::RequestOptions
+          }
+
           type authentication_type =
             :credential | :api_token | :oauth | :assisted
 

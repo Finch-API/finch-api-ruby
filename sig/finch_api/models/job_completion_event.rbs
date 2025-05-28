@@ -3,7 +3,7 @@ module FinchAPI
     type job_completion_event =
       {
         data: FinchAPI::JobCompletionEvent::Data,
-        event_type: FinchAPI::JobCompletionEvent::event_type
+        event_type: FinchAPI::Models::JobCompletionEvent::event_type
       }
 
     class JobCompletionEvent < FinchAPI::Models::BaseWebhookEvent
@@ -13,16 +13,21 @@ module FinchAPI
         FinchAPI::JobCompletionEvent::Data _
       ) -> FinchAPI::JobCompletionEvent::Data
 
-      def event_type: -> FinchAPI::JobCompletionEvent::event_type?
+      def event_type: -> FinchAPI::Models::JobCompletionEvent::event_type?
 
       def event_type=: (
-        FinchAPI::JobCompletionEvent::event_type _
-      ) -> FinchAPI::JobCompletionEvent::event_type
+        FinchAPI::Models::JobCompletionEvent::event_type _
+      ) -> FinchAPI::Models::JobCompletionEvent::event_type
 
       def initialize: (
         ?data: FinchAPI::JobCompletionEvent::Data,
-        ?event_type: FinchAPI::JobCompletionEvent::event_type
+        ?event_type: FinchAPI::Models::JobCompletionEvent::event_type
       ) -> void
+
+      def to_hash: -> {
+        data: FinchAPI::JobCompletionEvent::Data,
+        event_type: FinchAPI::Models::JobCompletionEvent::event_type
+      }
 
       type data = { job_id: String, job_url: String }
 
@@ -32,6 +37,8 @@ module FinchAPI
         attr_accessor job_url: String
 
         def initialize: (job_id: String, job_url: String) -> void
+
+        def to_hash: -> { job_id: String, job_url: String }
       end
 
       type event_type =
@@ -52,7 +59,7 @@ module FinchAPI
         JOB_BENEFIT_UPDATE_COMPLETED: :"job.benefit_update.completed"
         JOB_DATA_SYNC_ALL_COMPLETED: :"job.data_sync_all.completed"
 
-        def self?.values: -> ::Array[FinchAPI::JobCompletionEvent::event_type]
+        def self?.values: -> ::Array[FinchAPI::Models::JobCompletionEvent::event_type]
       end
     end
   end

@@ -8,55 +8,55 @@ module FinchAPI
         # @!attribute id
         #   The unique id for the payment.
         #
-        #   @return [String, nil]
-        optional :id, String
+        #   @return [String]
+        required :id, String
 
         # @!attribute company_debit
         #
-        #   @return [FinchAPI::Money, nil]
-        optional :company_debit, -> { FinchAPI::Money }, nil?: true
+        #   @return [FinchAPI::Models::Money, nil]
+        required :company_debit, -> { FinchAPI::Money }, nil?: true
 
         # @!attribute debit_date
         #
         #   @return [String, nil]
-        optional :debit_date, String, nil?: true
+        required :debit_date, String, nil?: true
 
         # @!attribute employee_taxes
         #
-        #   @return [FinchAPI::Money, nil]
-        optional :employee_taxes, -> { FinchAPI::Money }, nil?: true
+        #   @return [FinchAPI::Models::Money, nil]
+        required :employee_taxes, -> { FinchAPI::Money }, nil?: true
 
         # @!attribute employer_taxes
         #
-        #   @return [FinchAPI::Money, nil]
-        optional :employer_taxes, -> { FinchAPI::Money }, nil?: true
+        #   @return [FinchAPI::Models::Money, nil]
+        required :employer_taxes, -> { FinchAPI::Money }, nil?: true
 
         # @!attribute gross_pay
         #
-        #   @return [FinchAPI::Money, nil]
-        optional :gross_pay, -> { FinchAPI::Money }, nil?: true
+        #   @return [FinchAPI::Models::Money, nil]
+        required :gross_pay, -> { FinchAPI::Money }, nil?: true
 
         # @!attribute individual_ids
         #   Array of every individual on this payment.
         #
         #   @return [Array<String>, nil]
-        optional :individual_ids, FinchAPI::Internal::Type::ArrayOf[String], nil?: true
+        required :individual_ids, FinchAPI::Internal::Type::ArrayOf[String], nil?: true
 
         # @!attribute net_pay
         #
-        #   @return [FinchAPI::Money, nil]
-        optional :net_pay, -> { FinchAPI::Money }, nil?: true
+        #   @return [FinchAPI::Models::Money, nil]
+        required :net_pay, -> { FinchAPI::Money }, nil?: true
 
         # @!attribute pay_date
         #
         #   @return [String, nil]
-        optional :pay_date, String, nil?: true
+        required :pay_date, String, nil?: true
 
         # @!attribute pay_frequencies
         #   List of pay frequencies associated with this payment.
         #
-        #   @return [Array<Symbol, FinchAPI::HRIS::Payment::PayFrequency>, nil]
-        optional :pay_frequencies,
+        #   @return [Array<Symbol, FinchAPI::Models::HRIS::Payment::PayFrequency>, nil]
+        required :pay_frequencies,
                  -> { FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::HRIS::Payment::PayFrequency] },
                  nil?: true
 
@@ -64,69 +64,69 @@ module FinchAPI
         #   Array of the Finch id (uuidv4) of every pay group associated with this payment.
         #
         #   @return [Array<String>, nil]
-        optional :pay_group_ids, FinchAPI::Internal::Type::ArrayOf[String], nil?: true
+        required :pay_group_ids, FinchAPI::Internal::Type::ArrayOf[String], nil?: true
 
         # @!attribute pay_period
         #   The pay period object.
         #
-        #   @return [FinchAPI::HRIS::Payment::PayPeriod, nil]
-        optional :pay_period, -> { FinchAPI::HRIS::Payment::PayPeriod }, nil?: true
+        #   @return [FinchAPI::Models::HRIS::Payment::PayPeriod, nil]
+        required :pay_period, -> { FinchAPI::HRIS::Payment::PayPeriod }, nil?: true
 
-        # @!method initialize(id: nil, company_debit: nil, debit_date: nil, employee_taxes: nil, employer_taxes: nil, gross_pay: nil, individual_ids: nil, net_pay: nil, pay_date: nil, pay_frequencies: nil, pay_group_ids: nil, pay_period: nil)
+        # @!method initialize(id:, company_debit:, debit_date:, employee_taxes:, employer_taxes:, gross_pay:, individual_ids:, net_pay:, pay_date:, pay_frequencies:, pay_group_ids:, pay_period:)
         #   @param id [String] The unique id for the payment.
         #
-        #   @param company_debit [FinchAPI::Money, nil]
+        #   @param company_debit [FinchAPI::Models::Money, nil]
         #
         #   @param debit_date [String, nil]
         #
-        #   @param employee_taxes [FinchAPI::Money, nil]
+        #   @param employee_taxes [FinchAPI::Models::Money, nil]
         #
-        #   @param employer_taxes [FinchAPI::Money, nil]
+        #   @param employer_taxes [FinchAPI::Models::Money, nil]
         #
-        #   @param gross_pay [FinchAPI::Money, nil]
+        #   @param gross_pay [FinchAPI::Models::Money, nil]
         #
         #   @param individual_ids [Array<String>, nil] Array of every individual on this payment.
         #
-        #   @param net_pay [FinchAPI::Money, nil]
+        #   @param net_pay [FinchAPI::Models::Money, nil]
         #
         #   @param pay_date [String, nil]
         #
-        #   @param pay_frequencies [Array<Symbol, FinchAPI::HRIS::Payment::PayFrequency>, nil] List of pay frequencies associated with this payment.
+        #   @param pay_frequencies [Array<Symbol, FinchAPI::Models::HRIS::Payment::PayFrequency>, nil] List of pay frequencies associated with this payment.
         #
         #   @param pay_group_ids [Array<String>, nil] Array of the Finch id (uuidv4) of every pay group associated with this payment.
         #
-        #   @param pay_period [FinchAPI::HRIS::Payment::PayPeriod, nil] The pay period object.
+        #   @param pay_period [FinchAPI::Models::HRIS::Payment::PayPeriod, nil] The pay period object.
 
         module PayFrequency
           extend FinchAPI::Internal::Type::Enum
 
           ANNUALLY = :annually
-          SEMI_ANNUALLY = :semi_annually
-          QUARTERLY = :quarterly
-          MONTHLY = :monthly
-          SEMI_MONTHLY = :semi_monthly
           BI_WEEKLY = :bi_weekly
-          WEEKLY = :weekly
           DAILY = :daily
+          MONTHLY = :monthly
           OTHER = :other
+          QUARTERLY = :quarterly
+          SEMI_ANNUALLY = :semi_annually
+          SEMI_MONTHLY = :semi_monthly
+          WEEKLY = :weekly
 
           # @!method self.values
           #   @return [Array<Symbol>]
         end
 
-        # @see FinchAPI::HRIS::Payment#pay_period
+        # @see FinchAPI::Models::HRIS::Payment#pay_period
         class PayPeriod < FinchAPI::Internal::Type::BaseModel
           # @!attribute end_date
           #
           #   @return [String, nil]
-          optional :end_date, String, nil?: true
+          required :end_date, String, nil?: true
 
           # @!attribute start_date
           #
           #   @return [String, nil]
-          optional :start_date, String, nil?: true
+          required :start_date, String, nil?: true
 
-          # @!method initialize(end_date: nil, start_date: nil)
+          # @!method initialize(end_date:, start_date:)
           #   The pay period object.
           #
           #   @param end_date [String, nil]
