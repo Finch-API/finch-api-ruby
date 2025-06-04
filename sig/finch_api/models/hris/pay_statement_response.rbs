@@ -3,29 +3,69 @@ module FinchAPI
     module HRIS
       type pay_statement_response =
         {
-          body: FinchAPI::Models::HRIS::pay_statement_response_body,
+          body: FinchAPI::Models::HRIS::PayStatementResponse::body,
           code: Integer,
           payment_id: String
         }
 
       class PayStatementResponse < FinchAPI::Internal::Type::BaseModel
-        attr_accessor body: FinchAPI::Models::HRIS::pay_statement_response_body
+        attr_accessor body: FinchAPI::Models::HRIS::PayStatementResponse::body
 
         attr_accessor code: Integer
 
         attr_accessor payment_id: String
 
         def initialize: (
-          body: FinchAPI::Models::HRIS::pay_statement_response_body,
+          body: FinchAPI::Models::HRIS::PayStatementResponse::body,
           code: Integer,
           payment_id: String
         ) -> void
 
         def to_hash: -> {
-          body: FinchAPI::Models::HRIS::pay_statement_response_body,
+          body: FinchAPI::Models::HRIS::PayStatementResponse::body,
           code: Integer,
           payment_id: String
         }
+
+        type body =
+          FinchAPI::HRIS::PayStatementResponseBody
+          | FinchAPI::HRIS::PayStatementResponse::Body::BatchError
+          | FinchAPI::HRIS::PayStatementDataSyncInProgress
+
+        module Body
+          extend FinchAPI::Internal::Type::Union
+
+          type batch_error =
+            { code: Float, message: String, name: String, finch_code: String }
+
+          class BatchError < FinchAPI::Internal::Type::BaseModel
+            attr_accessor code: Float
+
+            attr_accessor message: String
+
+            attr_accessor name: String
+
+            attr_reader finch_code: String?
+
+            def finch_code=: (String) -> String
+
+            def initialize: (
+              code: Float,
+              message: String,
+              name: String,
+              ?finch_code: String
+            ) -> void
+
+            def to_hash: -> {
+              code: Float,
+              message: String,
+              name: String,
+              finch_code: String
+            }
+          end
+
+          def self?.variants: -> ::Array[FinchAPI::Models::HRIS::PayStatementResponse::body]
+        end
       end
     end
   end
