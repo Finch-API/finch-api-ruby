@@ -87,19 +87,22 @@ class FinchAPI::Test::Resources::HRIS::BenefitsTest < FinchAPI::Test::ResourceTe
     return if row.nil?
 
     assert_pattern do
-      row => FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse
+      row => FinchAPI::HRIS::SupportedBenefit
     end
 
     assert_pattern do
       row => {
         annual_maximum: FinchAPI::Internal::Type::Boolean | nil,
         catch_up: FinchAPI::Internal::Type::Boolean | nil,
-        company_contribution: ^(FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::CompanyContribution, nil?: true]) | nil,
+        company_contribution: ^(FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::HRIS::SupportedBenefit::CompanyContribution,
+                                                                  nil?: true]) | nil,
         description: String | nil,
-        employee_deduction: ^(FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::EmployeeDeduction, nil?: true]) | nil,
+        employee_deduction: ^(FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::HRIS::SupportedBenefit::EmployeeDeduction,
+                                                                nil?: true]) | nil,
         frequencies: ^(FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::HRIS::BenefitFrequency,
                                                          nil?: true]) | nil,
-        hsa_contribution_limit: ^(FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse::HsaContributionLimit, nil?: true]) | nil
+        hsa_contribution_limit: ^(FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::HRIS::SupportedBenefit::HsaContributionLimit,
+                                                                    nil?: true]) | nil
       }
     end
   end

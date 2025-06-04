@@ -29,7 +29,7 @@ module FinchAPI
 
         def list_supported_benefits: (
           ?request_options: FinchAPI::request_opts
-        ) -> FinchAPI::Internal::SinglePage[FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse]
+        ) -> FinchAPI::Internal::SinglePage[FinchAPI::HRIS::SupportedBenefit]
 
         def initialize: (client: FinchAPI::Client) -> void
       end
