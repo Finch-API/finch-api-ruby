@@ -3,6 +3,7 @@
 module FinchAPI
   module Models
     module HRIS
+      # @see FinchAPI::Resources::HRIS::Benefits#list_supported_benefits
       class SupportedBenefit < FinchAPI::Internal::Type::BaseModel
         # @!attribute annual_maximum
         #   Whether the provider supports an annual maximum for this benefit.
