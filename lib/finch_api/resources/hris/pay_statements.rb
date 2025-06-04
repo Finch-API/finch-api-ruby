@@ -11,11 +11,11 @@ module FinchAPI
         #
         # @overload retrieve_many(requests:, request_options: {})
         #
-        # @param requests [Array<FinchAPI::HRIS::PayStatementRetrieveManyParams::Request>] The array of batch requests.
+        # @param requests [Array<FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request>] The array of batch requests.
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::Internal::ResponsesPage<FinchAPI::HRIS::PayStatementResponse>]
+        # @return [FinchAPI::Internal::ResponsesPage<FinchAPI::Models::HRIS::PayStatementResponse>]
         #
         # @see FinchAPI::Models::HRIS::PayStatementRetrieveManyParams
         def retrieve_many(params)

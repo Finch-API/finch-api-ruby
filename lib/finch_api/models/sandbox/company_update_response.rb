@@ -41,7 +41,7 @@ module FinchAPI
 
         # @!attribute locations
         #
-        #   @return [Array<FinchAPI::Location, nil>, nil]
+        #   @return [Array<FinchAPI::Models::Location, nil>, nil]
         required :locations,
                  -> {
                    FinchAPI::Internal::Type::ArrayOf[FinchAPI::Location, nil?: true]
@@ -75,7 +75,7 @@ module FinchAPI
         #
         #   @param legal_name [String, nil] The legal name of the company.
         #
-        #   @param locations [Array<FinchAPI::Location, nil>, nil]
+        #   @param locations [Array<FinchAPI::Models::Location, nil>, nil]
         #
         #   @param primary_email [String, nil] The email of the main administrator on the account.
         #

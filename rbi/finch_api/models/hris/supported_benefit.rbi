@@ -25,7 +25,7 @@ module FinchAPI
             T.nilable(
               T::Array[
                 T.nilable(
-                  FinchAPI::HRIS::SupportedBenefit::CompanyContribution::OrSymbol
+                  FinchAPI::HRIS::SupportedBenefit::CompanyContribution::TaggedSymbol
                 )
               ]
             )
@@ -43,7 +43,7 @@ module FinchAPI
             T.nilable(
               T::Array[
                 T.nilable(
-                  FinchAPI::HRIS::SupportedBenefit::EmployeeDeduction::OrSymbol
+                  FinchAPI::HRIS::SupportedBenefit::EmployeeDeduction::TaggedSymbol
                 )
               ]
             )
@@ -55,7 +55,9 @@ module FinchAPI
         sig do
           returns(
             T.nilable(
-              T::Array[T.nilable(FinchAPI::HRIS::BenefitFrequency::OrSymbol)]
+              T::Array[
+                T.nilable(FinchAPI::HRIS::BenefitFrequency::TaggedSymbol)
+              ]
             )
           )
         end
@@ -76,7 +78,7 @@ module FinchAPI
             T.nilable(
               T::Array[
                 T.nilable(
-                  FinchAPI::HRIS::SupportedBenefit::HsaContributionLimit::OrSymbol
+                  FinchAPI::HRIS::SupportedBenefit::HsaContributionLimit::TaggedSymbol
                 )
               ]
             )
@@ -147,7 +149,7 @@ module FinchAPI
                 T.nilable(
                   T::Array[
                     T.nilable(
-                      FinchAPI::HRIS::SupportedBenefit::CompanyContribution::OrSymbol
+                      FinchAPI::HRIS::SupportedBenefit::CompanyContribution::TaggedSymbol
                     )
                   ]
                 ),
@@ -156,17 +158,19 @@ module FinchAPI
                 T.nilable(
                   T::Array[
                     T.nilable(
-                      FinchAPI::HRIS::SupportedBenefit::EmployeeDeduction::OrSymbol
+                      FinchAPI::HRIS::SupportedBenefit::EmployeeDeduction::TaggedSymbol
                     )
                   ]
                 ),
               frequencies:
-                T::Array[T.nilable(FinchAPI::HRIS::BenefitFrequency::OrSymbol)],
+                T::Array[
+                  T.nilable(FinchAPI::HRIS::BenefitFrequency::TaggedSymbol)
+                ],
               hsa_contribution_limit:
                 T.nilable(
                   T::Array[
                     T.nilable(
-                      FinchAPI::HRIS::SupportedBenefit::HsaContributionLimit::OrSymbol
+                      FinchAPI::HRIS::SupportedBenefit::HsaContributionLimit::TaggedSymbol
                     )
                   ]
                 )

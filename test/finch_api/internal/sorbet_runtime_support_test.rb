@@ -25,6 +25,7 @@ class FinchAPI::Test::SorbetRuntimeSupportTest < Minitest::Test
     err = FinchAPI::Internal::Util::SorbetRuntimeSupport::MissingSorbetRuntimeError
 
     assert_raises(err) { FinchAPI::Internal::AnyHash }
+    assert_raises(err) { FinchAPI::Internal::FileInput }
     assert_raises(err) { FinchAPI::Internal::Type::Converter::Input }
     assert_raises(err) { FinchAPI::Internal::Type::Converter::CoerceState }
     assert_raises(err) { FinchAPI::Internal::Type::Converter::DumpState }

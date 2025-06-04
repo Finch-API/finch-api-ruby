@@ -30,7 +30,7 @@ module FinchAPI
 
       # @!method initialize(account_id:, company_id:, connection_id: nil)
       #   Some parameter documentations has been truncated, see
-      #   {FinchAPI::BaseWebhookEvent} for more details.
+      #   {FinchAPI::Models::BaseWebhookEvent} for more details.
       #
       #   @param account_id [String] [DEPRECATED] Unique Finch ID of the employer account used to make this connectio
       #

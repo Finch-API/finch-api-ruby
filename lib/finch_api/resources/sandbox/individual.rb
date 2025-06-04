@@ -15,25 +15,25 @@ module FinchAPI
         #
         # @param dob [String, nil]
         #
-        # @param emails [Array<FinchAPI::Sandbox::IndividualUpdateParams::Email>, nil]
+        # @param emails [Array<FinchAPI::Models::Sandbox::IndividualUpdateParams::Email>, nil]
         #
         # @param encrypted_ssn [String, nil] Social Security Number of the individual in **encrypted** format. This field is
         #
-        # @param ethnicity [Symbol, FinchAPI::Sandbox::IndividualUpdateParams::Ethnicity, nil] The EEOC-defined ethnicity of the individual.
+        # @param ethnicity [Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::Ethnicity, nil] The EEOC-defined ethnicity of the individual.
         #
         # @param first_name [String, nil] The legal first name of the individual.
         #
-        # @param gender [Symbol, FinchAPI::Sandbox::IndividualUpdateParams::Gender, nil] The gender of the individual.
+        # @param gender [Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender, nil] The gender of the individual.
         #
         # @param last_name [String, nil] The legal last name of the individual.
         #
         # @param middle_name [String, nil] The legal middle name of the individual.
         #
-        # @param phone_numbers [Array<FinchAPI::Sandbox::IndividualUpdateParams::PhoneNumber, nil>, nil]
+        # @param phone_numbers [Array<FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber, nil>, nil]
         #
         # @param preferred_name [String, nil] The preferred name of the individual.
         #
-        # @param residence [FinchAPI::Location, nil]
+        # @param residence [FinchAPI::Models::Location, nil]
         #
         # @param ssn [String, nil] Social Security Number of the individual. This field is only available with the
         #

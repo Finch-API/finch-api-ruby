@@ -212,6 +212,21 @@ module FinchAPI
           super
         end
 
+        # @api private
+        #
+        # @return [Object]
+        def to_sorbet_type
+          types = variants.map { FinchAPI::Internal::Util::SorbetRuntimeSupport.to_sorbet_type(_1) }.uniq
+          case types
+          in []
+            T.noreturn
+          in [type]
+            type
+          else
+            T.any(*types)
+          end
+        end
+
         # rubocop:enable Style/CaseEquality
         # rubocop:enable Style/HashEachMethods
 

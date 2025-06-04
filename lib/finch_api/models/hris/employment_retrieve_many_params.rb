@@ -11,14 +11,14 @@ module FinchAPI
         # @!attribute requests
         #   The array of batch requests.
         #
-        #   @return [Array<FinchAPI::HRIS::EmploymentRetrieveManyParams::Request>]
+        #   @return [Array<FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request>]
         required :requests,
                  -> {
                    FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::EmploymentRetrieveManyParams::Request]
                  }
 
         # @!method initialize(requests:, request_options: {})
-        #   @param requests [Array<FinchAPI::HRIS::EmploymentRetrieveManyParams::Request>] The array of batch requests.
+        #   @param requests [Array<FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request>] The array of batch requests.
         #
         #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 
@@ -33,7 +33,8 @@ module FinchAPI
 
           # @!method initialize(individual_id:)
           #   Some parameter documentations has been truncated, see
-          #   {FinchAPI::HRIS::EmploymentRetrieveManyParams::Request} for more details.
+          #   {FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request} for more
+          #   details.
           #
           #   @param individual_id [String] A stable Finch `id` (UUID v4) for an individual in the company. There is no limi
         end

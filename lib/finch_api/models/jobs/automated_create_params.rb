@@ -11,18 +11,18 @@ module FinchAPI
         # @!attribute type
         #   The type of job to start.
         #
-        #   @return [Symbol, FinchAPI::Jobs::AutomatedCreateParams::Type]
+        #   @return [Symbol, FinchAPI::Models::Jobs::AutomatedCreateParams::Type]
         required :type, enum: -> { FinchAPI::Jobs::AutomatedCreateParams::Type }
 
         # @!attribute params
         #
-        #   @return [FinchAPI::Jobs::AutomatedCreateParams::Params]
+        #   @return [FinchAPI::Models::Jobs::AutomatedCreateParams::Params]
         required :params, -> { FinchAPI::Jobs::AutomatedCreateParams::Params }
 
         # @!method initialize(type:, params:, request_options: {})
-        #   @param type [Symbol, FinchAPI::Jobs::AutomatedCreateParams::Type] The type of job to start.
+        #   @param type [Symbol, FinchAPI::Models::Jobs::AutomatedCreateParams::Type] The type of job to start.
         #
-        #   @param params [FinchAPI::Jobs::AutomatedCreateParams::Params]
+        #   @param params [FinchAPI::Models::Jobs::AutomatedCreateParams::Params]
         #
         #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 

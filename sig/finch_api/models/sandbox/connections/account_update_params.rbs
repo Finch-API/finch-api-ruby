@@ -20,6 +20,11 @@ module FinchAPI
             ?connection_status: FinchAPI::Models::connection_status_type,
             ?request_options: FinchAPI::request_opts
           ) -> void
+
+          def to_hash: -> {
+            connection_status: FinchAPI::Models::connection_status_type,
+            request_options: FinchAPI::RequestOptions
+          }
         end
       end
     end

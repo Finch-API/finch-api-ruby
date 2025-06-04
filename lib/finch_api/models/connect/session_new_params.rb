@@ -20,7 +20,7 @@ module FinchAPI
 
         # @!attribute products
         #
-        #   @return [Array<Symbol, FinchAPI::Connect::SessionNewParams::Product>]
+        #   @return [Array<Symbol, FinchAPI::Models::Connect::SessionNewParams::Product>]
         required :products,
                  -> { FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Connect::SessionNewParams::Product] }
 
@@ -31,7 +31,7 @@ module FinchAPI
 
         # @!attribute integration
         #
-        #   @return [FinchAPI::Connect::SessionNewParams::Integration, nil]
+        #   @return [FinchAPI::Models::Connect::SessionNewParams::Integration, nil]
         optional :integration, -> { FinchAPI::Connect::SessionNewParams::Integration }, nil?: true
 
         # @!attribute manual
@@ -40,8 +40,8 @@ module FinchAPI
         optional :manual, FinchAPI::Internal::Type::Boolean, nil?: true
 
         # @!attribute minutes_to_expire
-        #   The number of minutes until the session expires (defaults to 43,200, which is 30
-        #   days)
+        #   The number of minutes until the session expires (defaults to 129,600, which is
+        #   90 days)
         #
         #   @return [Float, nil]
         optional :minutes_to_expire, Float, nil?: true
@@ -53,7 +53,7 @@ module FinchAPI
 
         # @!attribute sandbox
         #
-        #   @return [Symbol, FinchAPI::Connect::SessionNewParams::Sandbox, nil]
+        #   @return [Symbol, FinchAPI::Models::Connect::SessionNewParams::Sandbox, nil]
         optional :sandbox, enum: -> { FinchAPI::Connect::SessionNewParams::Sandbox }, nil?: true
 
         # @!method initialize(customer_id:, customer_name:, products:, customer_email: nil, integration: nil, manual: nil, minutes_to_expire: nil, redirect_uri: nil, sandbox: nil, request_options: {})
@@ -64,19 +64,19 @@ module FinchAPI
         #
         #   @param customer_name [String]
         #
-        #   @param products [Array<Symbol, FinchAPI::Connect::SessionNewParams::Product>]
+        #   @param products [Array<Symbol, FinchAPI::Models::Connect::SessionNewParams::Product>]
         #
         #   @param customer_email [String, nil]
         #
-        #   @param integration [FinchAPI::Connect::SessionNewParams::Integration, nil]
+        #   @param integration [FinchAPI::Models::Connect::SessionNewParams::Integration, nil]
         #
         #   @param manual [Boolean, nil]
         #
-        #   @param minutes_to_expire [Float, nil] The number of minutes until the session expires (defaults to 43,200, which is 30
+        #   @param minutes_to_expire [Float, nil] The number of minutes until the session expires (defaults to 129,600, which is 9
         #
         #   @param redirect_uri [String, nil]
         #
-        #   @param sandbox [Symbol, FinchAPI::Connect::SessionNewParams::Sandbox, nil]
+        #   @param sandbox [Symbol, FinchAPI::Models::Connect::SessionNewParams::Sandbox, nil]
         #
         #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 
@@ -102,7 +102,7 @@ module FinchAPI
         class Integration < FinchAPI::Internal::Type::BaseModel
           # @!attribute auth_method
           #
-          #   @return [Symbol, FinchAPI::Connect::SessionNewParams::Integration::AuthMethod, nil]
+          #   @return [Symbol, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod, nil]
           optional :auth_method,
                    enum: -> { FinchAPI::Connect::SessionNewParams::Integration::AuthMethod },
                    nil?: true
@@ -113,10 +113,10 @@ module FinchAPI
           optional :provider, String, nil?: true
 
           # @!method initialize(auth_method: nil, provider: nil)
-          #   @param auth_method [Symbol, FinchAPI::Connect::SessionNewParams::Integration::AuthMethod, nil]
+          #   @param auth_method [Symbol, FinchAPI::Models::Connect::SessionNewParams::Integration::AuthMethod, nil]
           #   @param provider [String, nil]
 
-          # @see FinchAPI::Connect::SessionNewParams::Integration#auth_method
+          # @see FinchAPI::Models::Connect::SessionNewParams::Integration#auth_method
           module AuthMethod
             extend FinchAPI::Internal::Type::Enum
 

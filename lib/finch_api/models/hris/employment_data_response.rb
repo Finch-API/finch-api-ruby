@@ -7,7 +7,7 @@ module FinchAPI
       class EmploymentDataResponse < FinchAPI::Internal::Type::BaseModel
         # @!attribute body
         #
-        #   @return [FinchAPI::HRIS::EmploymentData::UnionMember0, FinchAPI::HRIS::EmploymentData::BatchError]
+        #   @return [FinchAPI::Models::HRIS::EmploymentData::UnionMember0, FinchAPI::Models::HRIS::EmploymentData::BatchError]
         required :body, union: -> { FinchAPI::HRIS::EmploymentData }
 
         # @!attribute code
@@ -22,7 +22,7 @@ module FinchAPI
         required :individual_id, String
 
         # @!method initialize(body:, code:, individual_id:)
-        #   @param body [FinchAPI::HRIS::EmploymentData::UnionMember0, FinchAPI::HRIS::EmploymentData::BatchError]
+        #   @param body [FinchAPI::Models::HRIS::EmploymentData::UnionMember0, FinchAPI::Models::HRIS::EmploymentData::BatchError]
         #
         #   @param code [Integer]
         #

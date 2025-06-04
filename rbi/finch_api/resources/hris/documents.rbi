@@ -36,7 +36,7 @@ module FinchAPI
           params(
             document_id: String,
             request_options: FinchAPI::RequestOptions::OrHash
-          ).returns(T.any(FinchAPI::HRIS::W42020, FinchAPI::HRIS::W42005))
+          ).returns(FinchAPI::Models::HRIS::DocumentRetreiveResponse::Variants)
         end
         def retreive(
           # The unique identifier of the document.

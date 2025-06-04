@@ -8,10 +8,7 @@ module FinchAPI
         sig do
           params(
             end_date: String,
-            pay_statements:
-              T::Array[
-                FinchAPI::Sandbox::PaymentCreateParams::PayStatement::OrHash
-              ],
+            pay_statements: T::Array[FinchAPI::HRIS::PayStatement::OrHash],
             start_date: String,
             request_options: FinchAPI::RequestOptions::OrHash
           ).returns(FinchAPI::Models::Sandbox::PaymentCreateResponse)

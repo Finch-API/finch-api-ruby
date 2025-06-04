@@ -9,7 +9,7 @@ module FinchAPI
       #
       # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [FinchAPI::Internal::SinglePage<FinchAPI::Provider>]
+      # @return [FinchAPI::Internal::SinglePage<FinchAPI::Models::Provider>]
       #
       # @see FinchAPI::Models::ProviderListParams
       def list(params = {})

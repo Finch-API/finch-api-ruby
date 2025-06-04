@@ -18,7 +18,7 @@ module FinchAPI
         #
         # @param offset [Integer] Index to start from (defaults to 0)
         #
-        # @param types [Array<Symbol, FinchAPI::HRIS::DocumentListParams::Type>] Comma-delimited list of document types to filter on. If empty, defaults to all t
+        # @param types [Array<Symbol, FinchAPI::Models::HRIS::DocumentListParams::Type>] Comma-delimited list of document types to filter on. If empty, defaults to all t
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -45,7 +45,7 @@ module FinchAPI
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::HRIS::W42020, FinchAPI::HRIS::W42005]
+        # @return [FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005]
         #
         # @see FinchAPI::Models::HRIS::DocumentRetreiveParams
         def retreive(document_id, params = {})

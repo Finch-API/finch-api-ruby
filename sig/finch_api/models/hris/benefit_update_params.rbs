@@ -16,6 +16,11 @@ module FinchAPI
           ?description: String,
           ?request_options: FinchAPI::request_opts
         ) -> void
+
+        def to_hash: -> {
+          description: String,
+          request_options: FinchAPI::RequestOptions
+        }
       end
     end
   end

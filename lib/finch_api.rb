@@ -20,7 +20,9 @@ require "uri"
 
 # We already ship the preferred sorbet manifests in the package itself.
 # `tapioca` currently does not offer us a way to opt out of unnecessary compilation.
-if Object.const_defined?(:Tapioca) && caller.chain([$PROGRAM_NAME]).chain(ARGV).grep(/tapioca/)
+if Object.const_defined?(:Tapioca) &&
+   caller.chain([$PROGRAM_NAME]).chain(ARGV).any?(/tapioca/) &&
+   ARGV.none?(/dsl/)
   return
 end
 
@@ -74,7 +76,6 @@ require_relative "finch_api/models/hris/benefit_features_and_operations"
 require_relative "finch_api/models/hris/benefit_frequency"
 require_relative "finch_api/models/hris/benefit_list_params"
 require_relative "finch_api/models/hris/benefit_list_supported_benefits_params"
-require_relative "finch_api/models/hris/benefit_list_supported_benefits_response"
 require_relative "finch_api/models/hris/benefit_retrieve_params"
 require_relative "finch_api/models/hris/benefits/enrolled_individual_benefit_response"
 require_relative "finch_api/models/hris/benefits/individual_benefit"
@@ -119,6 +120,7 @@ require_relative "finch_api/models/hris/individual_retrieve_many_params"
 require_relative "finch_api/models/hris/payment"
 require_relative "finch_api/models/hris/payment_list_params"
 require_relative "finch_api/models/hris/pay_statement"
+require_relative "finch_api/models/hris/pay_statement_data_sync_in_progress"
 require_relative "finch_api/models/hris/pay_statement_response"
 require_relative "finch_api/models/hris/pay_statement_response_body"
 require_relative "finch_api/models/hris/pay_statement_retrieve_many_params"

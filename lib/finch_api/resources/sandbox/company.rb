@@ -11,17 +11,17 @@ module FinchAPI
         #
         # @overload update(accounts:, departments:, ein:, entity:, legal_name:, locations:, primary_email:, primary_phone_number:, request_options: {})
         #
-        # @param accounts [Array<FinchAPI::Sandbox::CompanyUpdateParams::Account>, nil] An array of bank account objects associated with the payroll/HRIS system.
+        # @param accounts [Array<FinchAPI::Models::Sandbox::CompanyUpdateParams::Account>, nil] An array of bank account objects associated with the payroll/HRIS system.
         #
-        # @param departments [Array<FinchAPI::Sandbox::CompanyUpdateParams::Department, nil>, nil] The array of company departments.
+        # @param departments [Array<FinchAPI::Models::Sandbox::CompanyUpdateParams::Department, nil>, nil] The array of company departments.
         #
         # @param ein [String, nil] The employer identification number.
         #
-        # @param entity [FinchAPI::Sandbox::CompanyUpdateParams::Entity, nil] The entity type object.
+        # @param entity [FinchAPI::Models::Sandbox::CompanyUpdateParams::Entity, nil] The entity type object.
         #
         # @param legal_name [String, nil] The legal name of the company.
         #
-        # @param locations [Array<FinchAPI::Location, nil>, nil]
+        # @param locations [Array<FinchAPI::Models::Location, nil>, nil]
         #
         # @param primary_email [String, nil] The email of the main administrator on the account.
         #
