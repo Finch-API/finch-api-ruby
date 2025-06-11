@@ -13,7 +13,7 @@ module FinchAPI
       # @param redirect_uri [String]
       # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [FinchAPI::CreateAccessTokenResponse]
+      # @return [FinchAPI::Models::CreateAccessTokenResponse]
       #
       # @see FinchAPI::Models::AccessTokenCreateParams
       def create(params)

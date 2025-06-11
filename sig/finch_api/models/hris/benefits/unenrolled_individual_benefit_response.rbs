@@ -8,6 +8,8 @@ module FinchAPI
           attr_accessor job_id: String
 
           def initialize: (job_id: String) -> void
+
+          def to_hash: -> { job_id: String }
         end
       end
     end

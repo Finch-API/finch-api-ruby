@@ -7,13 +7,13 @@ module FinchAPI
         # @!attribute data
         #   Detailed information specific to the 2020 W4 form.
         #
-        #   @return [FinchAPI::HRIS::W42020::Data, nil]
+        #   @return [FinchAPI::Models::HRIS::W42020::Data, nil]
         optional :data, -> { FinchAPI::HRIS::W42020::Data }
 
         # @!attribute type
         #   Specifies the form type, indicating that this document is a 2020 W4 form.
         #
-        #   @return [Symbol, FinchAPI::HRIS::W42020::Type, nil]
+        #   @return [Symbol, FinchAPI::Models::HRIS::W42020::Type, nil]
         optional :type, enum: -> { FinchAPI::HRIS::W42020::Type }
 
         # @!attribute year
@@ -26,13 +26,13 @@ module FinchAPI
         #   A 2020 version of the W-4 tax form containing information on an individual's
         #   filing status, dependents, and withholding details.
         #
-        #   @param data [FinchAPI::HRIS::W42020::Data] Detailed information specific to the 2020 W4 form.
+        #   @param data [FinchAPI::Models::HRIS::W42020::Data] Detailed information specific to the 2020 W4 form.
         #
-        #   @param type [Symbol, FinchAPI::HRIS::W42020::Type] Specifies the form type, indicating that this document is a 2020 W4 form.
+        #   @param type [Symbol, FinchAPI::Models::HRIS::W42020::Type] Specifies the form type, indicating that this document is a 2020 W4 form.
         #
         #   @param year [Float, nil] The tax year this W4 document applies to.
 
-        # @see FinchAPI::HRIS::W42020#data
+        # @see FinchAPI::Models::HRIS::W42020#data
         class Data < FinchAPI::Internal::Type::BaseModel
           # @!attribute amount_for_other_dependents
           #   Amount claimed for dependents other than qualifying children under 17 (in
@@ -62,7 +62,7 @@ module FinchAPI
           # @!attribute filing_status
           #   The individual's filing status for tax purposes.
           #
-          #   @return [Symbol, FinchAPI::HRIS::W42020::Data::FilingStatus, nil]
+          #   @return [Symbol, FinchAPI::Models::HRIS::W42020::Data::FilingStatus, nil]
           optional :filing_status, enum: -> { FinchAPI::HRIS::W42020::Data::FilingStatus }, nil?: true
 
           # @!attribute individual_id
@@ -85,7 +85,7 @@ module FinchAPI
 
           # @!method initialize(amount_for_other_dependents: nil, amount_for_qualifying_children_under_17: nil, deductions: nil, extra_withholding: nil, filing_status: nil, individual_id: nil, other_income: nil, total_claim_dependent_and_other_credits: nil)
           #   Some parameter documentations has been truncated, see
-          #   {FinchAPI::HRIS::W42020::Data} for more details.
+          #   {FinchAPI::Models::HRIS::W42020::Data} for more details.
           #
           #   Detailed information specific to the 2020 W4 form.
           #
@@ -97,7 +97,7 @@ module FinchAPI
           #
           #   @param extra_withholding [Integer, nil] Additional withholding amount (in cents).
           #
-          #   @param filing_status [Symbol, FinchAPI::HRIS::W42020::Data::FilingStatus, nil] The individual's filing status for tax purposes.
+          #   @param filing_status [Symbol, FinchAPI::Models::HRIS::W42020::Data::FilingStatus, nil] The individual's filing status for tax purposes.
           #
           #   @param individual_id [String] The unique identifier for the individual associated with this document.
           #
@@ -107,7 +107,7 @@ module FinchAPI
 
           # The individual's filing status for tax purposes.
           #
-          # @see FinchAPI::HRIS::W42020::Data#filing_status
+          # @see FinchAPI::Models::HRIS::W42020::Data#filing_status
           module FilingStatus
             extend FinchAPI::Internal::Type::Enum
 
@@ -123,7 +123,7 @@ module FinchAPI
 
         # Specifies the form type, indicating that this document is a 2020 W4 form.
         #
-        # @see FinchAPI::HRIS::W42020#type
+        # @see FinchAPI::Models::HRIS::W42020#type
         module Type
           extend FinchAPI::Internal::Type::Enum
 

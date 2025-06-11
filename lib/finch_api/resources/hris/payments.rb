@@ -17,7 +17,7 @@ module FinchAPI
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::Internal::SinglePage<FinchAPI::HRIS::Payment>]
+        # @return [FinchAPI::Internal::SinglePage<FinchAPI::Models::HRIS::Payment>]
         #
         # @see FinchAPI::Models::HRIS::PaymentListParams
         def list(params)

@@ -17,6 +17,12 @@ module FinchAPI
         company_id: String,
         ?connection_id: String
       ) -> void
+
+      def to_hash: -> {
+        account_id: String,
+        company_id: String,
+        connection_id: String
+      }
     end
   end
 end

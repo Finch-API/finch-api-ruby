@@ -32,13 +32,19 @@ module FinchAPI
             ?individual_id: String
           ) -> void
 
+          def to_hash: -> {
+            body: FinchAPI::HRIS::Benefits::IndividualBenefit::Body,
+            code: Integer,
+            individual_id: String
+          }
+
           type body =
             {
               annual_maximum: Integer?,
               catch_up: bool?,
               company_contribution: FinchAPI::HRIS::BenefitContribution?,
               employee_deduction: FinchAPI::HRIS::BenefitContribution?,
-              hsa_contribution_limit: FinchAPI::HRIS::Benefits::IndividualBenefit::Body::hsa_contribution_limit?
+              hsa_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::hsa_contribution_limit?
             }
 
           class Body < FinchAPI::Internal::Type::BaseModel
@@ -50,15 +56,23 @@ module FinchAPI
 
             attr_accessor employee_deduction: FinchAPI::HRIS::BenefitContribution?
 
-            attr_accessor hsa_contribution_limit: FinchAPI::HRIS::Benefits::IndividualBenefit::Body::hsa_contribution_limit?
+            attr_accessor hsa_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::hsa_contribution_limit?
 
             def initialize: (
               ?annual_maximum: Integer?,
               ?catch_up: bool?,
               ?company_contribution: FinchAPI::HRIS::BenefitContribution?,
               ?employee_deduction: FinchAPI::HRIS::BenefitContribution?,
-              ?hsa_contribution_limit: FinchAPI::HRIS::Benefits::IndividualBenefit::Body::hsa_contribution_limit?
+              ?hsa_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::hsa_contribution_limit?
             ) -> void
+
+            def to_hash: -> {
+              annual_maximum: Integer?,
+              catch_up: bool?,
+              company_contribution: FinchAPI::HRIS::BenefitContribution?,
+              employee_deduction: FinchAPI::HRIS::BenefitContribution?,
+              hsa_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::hsa_contribution_limit?
+            }
 
             type hsa_contribution_limit = :individual | :family
 
@@ -68,7 +82,7 @@ module FinchAPI
               INDIVIDUAL: :individual
               FAMILY: :family
 
-              def self?.values: -> ::Array[FinchAPI::HRIS::Benefits::IndividualBenefit::Body::hsa_contribution_limit]
+              def self?.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::hsa_contribution_limit]
             end
           end
         end

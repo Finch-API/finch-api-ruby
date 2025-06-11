@@ -7,7 +7,7 @@ module FinchAPI
       class AutomatedListResponse < FinchAPI::Internal::Type::BaseModel
         # @!attribute data
         #
-        #   @return [Array<FinchAPI::Jobs::AutomatedAsyncJob>]
+        #   @return [Array<FinchAPI::Models::Jobs::AutomatedAsyncJob>]
         required :data, -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Jobs::AutomatedAsyncJob] }
 
         # @!attribute meta
@@ -16,7 +16,7 @@ module FinchAPI
         required :meta, -> { FinchAPI::Models::Jobs::AutomatedListResponse::Meta }
 
         # @!method initialize(data:, meta:)
-        #   @param data [Array<FinchAPI::Jobs::AutomatedAsyncJob>]
+        #   @param data [Array<FinchAPI::Models::Jobs::AutomatedAsyncJob>]
         #   @param meta [FinchAPI::Models::Jobs::AutomatedListResponse::Meta]
 
         # @see FinchAPI::Models::Jobs::AutomatedListResponse#meta

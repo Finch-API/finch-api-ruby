@@ -15,7 +15,7 @@ module FinchAPI
       attr_accessor :currency
 
       # The date the income amount went into effect.
-      sig { returns(T.nilable(String)) }
+      sig { returns(T.nilable(Date)) }
       attr_accessor :effective_date
 
       # The income unit of payment. Options: `yearly`, `quarterly`, `monthly`,
@@ -30,7 +30,7 @@ module FinchAPI
         params(
           amount: T.nilable(Integer),
           currency: T.nilable(String),
-          effective_date: T.nilable(String),
+          effective_date: T.nilable(Date),
           unit: T.nilable(FinchAPI::Income::Unit::OrSymbol)
         ).returns(T.attached_class)
       end
@@ -52,7 +52,7 @@ module FinchAPI
           {
             amount: T.nilable(Integer),
             currency: T.nilable(String),
-            effective_date: T.nilable(String),
+            effective_date: T.nilable(Date),
             unit: T.nilable(FinchAPI::Income::Unit::OrSymbol)
           }
         )

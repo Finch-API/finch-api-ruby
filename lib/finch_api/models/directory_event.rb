@@ -5,17 +5,17 @@ module FinchAPI
     class DirectoryEvent < FinchAPI::Models::BaseWebhookEvent
       # @!attribute data
       #
-      #   @return [FinchAPI::DirectoryEvent::Data, nil]
+      #   @return [FinchAPI::Models::DirectoryEvent::Data, nil]
       optional :data, -> { FinchAPI::DirectoryEvent::Data }
 
       # @!attribute event_type
       #
-      #   @return [Symbol, FinchAPI::DirectoryEvent::EventType, nil]
+      #   @return [Symbol, FinchAPI::Models::DirectoryEvent::EventType, nil]
       optional :event_type, enum: -> { FinchAPI::DirectoryEvent::EventType }
 
       # @!method initialize(data: nil, event_type: nil)
-      #   @param data [FinchAPI::DirectoryEvent::Data]
-      #   @param event_type [Symbol, FinchAPI::DirectoryEvent::EventType]
+      #   @param data [FinchAPI::Models::DirectoryEvent::Data]
+      #   @param event_type [Symbol, FinchAPI::Models::DirectoryEvent::EventType]
 
       class Data < FinchAPI::Internal::Type::BaseModel
         # @!attribute individual_id

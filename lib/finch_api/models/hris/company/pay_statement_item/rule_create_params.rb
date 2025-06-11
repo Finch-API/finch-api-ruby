@@ -13,7 +13,7 @@ module FinchAPI
             # @!attribute attributes
             #   Specifies the fields to be applied when the condition is met.
             #
-            #   @return [FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes, nil]
+            #   @return [FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes, nil]
             optional :attributes,
                      -> {
                        FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes
@@ -21,7 +21,7 @@ module FinchAPI
 
             # @!attribute conditions
             #
-            #   @return [Array<FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Condition>, nil]
+            #   @return [Array<FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition>, nil]
             optional :conditions,
                      -> {
                        FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Condition]
@@ -42,20 +42,20 @@ module FinchAPI
             # @!attribute entity_type
             #   The entity type to which the rule is applied.
             #
-            #   @return [Symbol, FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::EntityType, nil]
+            #   @return [Symbol, FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::EntityType, nil]
             optional :entity_type,
                      enum: -> { FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::EntityType }
 
             # @!method initialize(attributes: nil, conditions: nil, effective_end_date: nil, effective_start_date: nil, entity_type: nil, request_options: {})
-            #   @param attributes [FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes] Specifies the fields to be applied when the condition is met.
+            #   @param attributes [FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes] Specifies the fields to be applied when the condition is met.
             #
-            #   @param conditions [Array<FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Condition>]
+            #   @param conditions [Array<FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition>]
             #
             #   @param effective_end_date [String, nil] Specifies when the rules should stop applying rules based on the date.
             #
             #   @param effective_start_date [String, nil] Specifies when the rule should begin applying based on the date.
             #
-            #   @param entity_type [Symbol, FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::EntityType] The entity type to which the rule is applied.
+            #   @param entity_type [Symbol, FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::EntityType] The entity type to which the rule is applied.
             #
             #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 
@@ -69,8 +69,8 @@ module FinchAPI
 
               # @!method initialize(metadata: nil)
               #   Some parameter documentations has been truncated, see
-              #   {FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes} for
-              #   more details.
+              #   {FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes}
+              #   for more details.
               #
               #   Specifies the fields to be applied when the condition is met.
               #
@@ -87,7 +87,7 @@ module FinchAPI
               # @!attribute operator
               #   The operator to be used in the rule.
               #
-              #   @return [Symbol, FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::Operator, nil]
+              #   @return [Symbol, FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::Operator, nil]
               optional :operator,
                        enum: -> {
                          FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::Operator
@@ -102,13 +102,13 @@ module FinchAPI
               # @!method initialize(field: nil, operator: nil, value: nil)
               #   @param field [String] The field to be checked in the rule.
               #
-              #   @param operator [Symbol, FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::Operator] The operator to be used in the rule.
+              #   @param operator [Symbol, FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition::Operator] The operator to be used in the rule.
               #
               #   @param value [String] The value of the field to be checked in the rule.
 
               # The operator to be used in the rule.
               #
-              # @see FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Condition#operator
+              # @see FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition#operator
               module Operator
                 extend FinchAPI::Internal::Type::Enum
 

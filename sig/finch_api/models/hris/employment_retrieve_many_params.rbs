@@ -18,12 +18,19 @@ module FinchAPI
           ?request_options: FinchAPI::request_opts
         ) -> void
 
+        def to_hash: -> {
+          requests: ::Array[FinchAPI::HRIS::EmploymentRetrieveManyParams::Request],
+          request_options: FinchAPI::RequestOptions
+        }
+
         type request = { individual_id: String }
 
         class Request < FinchAPI::Internal::Type::BaseModel
           attr_accessor individual_id: String
 
           def initialize: (individual_id: String) -> void
+
+          def to_hash: -> { individual_id: String }
         end
       end
     end

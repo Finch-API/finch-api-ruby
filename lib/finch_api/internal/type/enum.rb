@@ -114,6 +114,21 @@ module FinchAPI
 
         # @api private
         #
+        # @return [Object]
+        def to_sorbet_type
+          types = values.map { FinchAPI::Internal::Util::SorbetRuntimeSupport.to_sorbet_type(_1) }.uniq
+          case types
+          in []
+            T.noreturn
+          in [type]
+            type
+          else
+            T.any(*types)
+          end
+        end
+
+        # @api private
+        #
         # @param depth [Integer]
         #
         # @return [String]

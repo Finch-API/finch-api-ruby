@@ -22,6 +22,12 @@ module FinchAPI
           ?request_options: FinchAPI::request_opts
         ) -> void
 
+        def to_hash: -> {
+          type: FinchAPI::Models::Jobs::AutomatedCreateParams::type_,
+          params: FinchAPI::Jobs::AutomatedCreateParams::Params,
+          request_options: FinchAPI::RequestOptions
+        }
+
         type type_ = :w4_form_employee_sync
 
         module Type
@@ -38,6 +44,8 @@ module FinchAPI
           attr_accessor individual_id: String
 
           def initialize: (individual_id: String) -> void
+
+          def to_hash: -> { individual_id: String }
         end
       end
     end

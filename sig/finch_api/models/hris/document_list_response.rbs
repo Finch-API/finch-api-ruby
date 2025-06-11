@@ -16,6 +16,11 @@ module FinchAPI
           documents: ::Array[FinchAPI::HRIS::DocumentResponse],
           paging: FinchAPI::Paging
         ) -> void
+
+        def to_hash: -> {
+          documents: ::Array[FinchAPI::HRIS::DocumentResponse],
+          paging: FinchAPI::Paging
+        }
       end
     end
   end
