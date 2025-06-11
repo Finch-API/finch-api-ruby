@@ -3,9 +3,9 @@ module FinchAPI
     class Sandbox
       class Payment
         def create: (
-          ?end_date: String,
-          ?pay_statements: ::Array[FinchAPI::HRIS::PayStatement],
-          ?start_date: String,
+          ?end_date: Date,
+          ?pay_statements: ::Array[FinchAPI::Sandbox::PaymentCreateParams::PayStatement],
+          ?start_date: Date,
           ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::Models::Sandbox::PaymentCreateResponse
 

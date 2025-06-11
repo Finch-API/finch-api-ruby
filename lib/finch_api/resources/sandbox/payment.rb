@@ -8,9 +8,12 @@ module FinchAPI
         #
         # @overload create(end_date: nil, pay_statements: nil, start_date: nil, request_options: {})
         #
-        # @param end_date [String]
-        # @param pay_statements [Array<FinchAPI::Models::HRIS::PayStatement>]
-        # @param start_date [String]
+        # @param end_date [Date]
+        #
+        # @param pay_statements [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement>] Array of pay statements to include in the payment.
+        #
+        # @param start_date [Date]
+        #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Models::Sandbox::PaymentCreateResponse]
