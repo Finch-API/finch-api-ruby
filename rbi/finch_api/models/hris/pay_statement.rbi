@@ -61,7 +61,7 @@ module FinchAPI
         # The payment method.
         sig do
           returns(
-            T.nilable(FinchAPI::HRIS::PayStatement::PaymentMethod::OrSymbol)
+            T.nilable(FinchAPI::HRIS::PayStatement::PaymentMethod::TaggedSymbol)
           )
         end
         attr_accessor :payment_method
@@ -79,7 +79,9 @@ module FinchAPI
         attr_accessor :total_hours
 
         # The type of the payment associated with the pay statement.
-        sig { returns(T.nilable(FinchAPI::HRIS::PayStatement::Type::OrSymbol)) }
+        sig do
+          returns(T.nilable(FinchAPI::HRIS::PayStatement::Type::TaggedSymbol))
+        end
         attr_accessor :type
 
         sig do
@@ -166,14 +168,14 @@ module FinchAPI
               net_pay: T.nilable(FinchAPI::Money),
               payment_method:
                 T.nilable(
-                  FinchAPI::HRIS::PayStatement::PaymentMethod::OrSymbol
+                  FinchAPI::HRIS::PayStatement::PaymentMethod::TaggedSymbol
                 ),
               taxes:
                 T.nilable(
                   T::Array[T.nilable(FinchAPI::HRIS::PayStatement::Tax)]
                 ),
               total_hours: T.nilable(Float),
-              type: T.nilable(FinchAPI::HRIS::PayStatement::Type::OrSymbol)
+              type: T.nilable(FinchAPI::HRIS::PayStatement::Type::TaggedSymbol)
             }
           )
         end
@@ -209,7 +211,9 @@ module FinchAPI
           # The type of earning.
           sig do
             returns(
-              T.nilable(FinchAPI::HRIS::PayStatement::Earning::Type::OrSymbol)
+              T.nilable(
+                FinchAPI::HRIS::PayStatement::Earning::Type::TaggedSymbol
+              )
             )
           end
           attr_accessor :type
@@ -272,7 +276,7 @@ module FinchAPI
                 name: T.nilable(String),
                 type:
                   T.nilable(
-                    FinchAPI::HRIS::PayStatement::Earning::Type::OrSymbol
+                    FinchAPI::HRIS::PayStatement::Earning::Type::TaggedSymbol
                   ),
                 attributes:
                   T.nilable(FinchAPI::HRIS::PayStatement::Earning::Attributes)
@@ -478,7 +482,7 @@ module FinchAPI
           attr_accessor :pre_tax
 
           # Type of benefit.
-          sig { returns(T.nilable(FinchAPI::HRIS::BenefitType::OrSymbol)) }
+          sig { returns(T.nilable(FinchAPI::HRIS::BenefitType::TaggedSymbol)) }
           attr_accessor :type
 
           sig do
@@ -535,7 +539,7 @@ module FinchAPI
                 currency: T.nilable(String),
                 name: T.nilable(String),
                 pre_tax: T.nilable(T::Boolean),
-                type: T.nilable(FinchAPI::HRIS::BenefitType::OrSymbol),
+                type: T.nilable(FinchAPI::HRIS::BenefitType::TaggedSymbol),
                 attributes:
                   T.nilable(
                     FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes
@@ -647,7 +651,7 @@ module FinchAPI
           attr_accessor :name
 
           # Type of benefit.
-          sig { returns(T.nilable(FinchAPI::HRIS::BenefitType::OrSymbol)) }
+          sig { returns(T.nilable(FinchAPI::HRIS::BenefitType::TaggedSymbol)) }
           attr_accessor :type
 
           # The contribution amount in cents.
@@ -703,7 +707,7 @@ module FinchAPI
               {
                 currency: T.nilable(String),
                 name: T.nilable(String),
-                type: T.nilable(FinchAPI::HRIS::BenefitType::OrSymbol),
+                type: T.nilable(FinchAPI::HRIS::BenefitType::TaggedSymbol),
                 amount: T.nilable(Integer),
                 attributes:
                   T.nilable(
@@ -859,7 +863,7 @@ module FinchAPI
           # The type of taxes.
           sig do
             returns(
-              T.nilable(FinchAPI::HRIS::PayStatement::Tax::Type::OrSymbol)
+              T.nilable(FinchAPI::HRIS::PayStatement::Tax::Type::TaggedSymbol)
             )
           end
           attr_accessor :type
@@ -915,7 +919,9 @@ module FinchAPI
                 employer: T.nilable(T::Boolean),
                 name: T.nilable(String),
                 type:
-                  T.nilable(FinchAPI::HRIS::PayStatement::Tax::Type::OrSymbol),
+                  T.nilable(
+                    FinchAPI::HRIS::PayStatement::Tax::Type::TaggedSymbol
+                  ),
                 amount: T.nilable(Integer),
                 attributes:
                   T.nilable(FinchAPI::HRIS::PayStatement::Tax::Attributes)
