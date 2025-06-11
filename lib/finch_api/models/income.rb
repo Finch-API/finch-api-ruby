@@ -18,8 +18,8 @@ module FinchAPI
       # @!attribute effective_date
       #   The date the income amount went into effect.
       #
-      #   @return [String, nil]
-      required :effective_date, String, nil?: true
+      #   @return [Date, nil]
+      required :effective_date, Date, nil?: true
 
       # @!attribute unit
       #   The income unit of payment. Options: `yearly`, `quarterly`, `monthly`,
@@ -40,7 +40,7 @@ module FinchAPI
       #
       #   @param currency [String, nil] The currency code.
       #
-      #   @param effective_date [String, nil] The date the income amount went into effect.
+      #   @param effective_date [Date, nil] The date the income amount went into effect.
       #
       #   @param unit [Symbol, FinchAPI::Models::Income::Unit, nil] The income unit of payment. Options: `yearly`, `quarterly`, `monthly`, `semi_mon
 

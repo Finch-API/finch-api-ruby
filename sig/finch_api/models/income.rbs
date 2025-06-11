@@ -4,7 +4,7 @@ module FinchAPI
       {
         amount: Integer?,
         currency: String?,
-        effective_date: String?,
+        effective_date: Date?,
         unit: FinchAPI::Models::Income::unit?
       }
 
@@ -13,21 +13,21 @@ module FinchAPI
 
       attr_accessor currency: String?
 
-      attr_accessor effective_date: String?
+      attr_accessor effective_date: Date?
 
       attr_accessor unit: FinchAPI::Models::Income::unit?
 
       def initialize: (
         amount: Integer?,
         currency: String?,
-        effective_date: String?,
+        effective_date: Date?,
         unit: FinchAPI::Models::Income::unit?
       ) -> void
 
       def to_hash: -> {
         amount: Integer?,
         currency: String?,
-        effective_date: String?,
+        effective_date: Date?,
         unit: FinchAPI::Models::Income::unit?
       }
 
