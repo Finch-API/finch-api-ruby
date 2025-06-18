@@ -1,5 +1,42 @@
 # Changelog
 
+## 0.1.0-alpha.20 (2025-06-18)
+
+Full Changelog: [v0.1.0-alpha.19...v0.1.0-alpha.20](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.19...v0.1.0-alpha.20)
+
+### Features
+
+* **api:** api update ([6a3cc47](https://github.com/Finch-API/finch-api-ruby/commit/6a3cc47713d3f52d84da946c1f86c328692a71f1))
+* **api:** api update ([055b260](https://github.com/Finch-API/finch-api-ruby/commit/055b260f9607ea1c408510bf19c86390ba515b48))
+* **api:** api update ([6e46c62](https://github.com/Finch-API/finch-api-ruby/commit/6e46c62b78b34d3944136bea9decd9254b9d7b2c))
+* **api:** api update ([68d04c3](https://github.com/Finch-API/finch-api-ruby/commit/68d04c3e38f076254375ef4e1ea24383d7ff7aa2))
+
+
+### Bug Fixes
+
+* `to_sorbet_type` should not return branded types ([2819280](https://github.com/Finch-API/finch-api-ruby/commit/281928010fa852dd399354a4561191120e85ad00))
+* **client:** fix PayStatementResponse body ([bb0bb58](https://github.com/Finch-API/finch-api-ruby/commit/bb0bb581ffc994714895363e21f461e2ec82676e))
+* **client:** manual fix ([3774286](https://github.com/Finch-API/finch-api-ruby/commit/3774286f68227085e6f54396290e3de7569bba0d))
+* correctly instantiate sorbet type aliases for enums and unions ([9a84b92](https://github.com/Finch-API/finch-api-ruby/commit/9a84b92df48e001ee28989703cbe8bdd9f461528))
+* default content-type for text in multi-part formdata uploads should be text/plain ([2288848](https://github.com/Finch-API/finch-api-ruby/commit/2288848990739f298069c86ad90d915c1bd88c60))
+* issue where we cannot mutate arrays on base model derivatives ([c4c0158](https://github.com/Finch-API/finch-api-ruby/commit/c4c01587e16d76f1c6b3f5a48414000954dc4805))
+* prevent rubocop from mangling `===` to `is_a?` check ([6301929](https://github.com/Finch-API/finch-api-ruby/commit/6301929d697ae1c006446a12e6c67046e83ef132))
+* sorbet types for enums, and make tapioca detection ignore `tapioca dsl` ([4aaba62](https://github.com/Finch-API/finch-api-ruby/commit/4aaba6261e6c92833ab6e46acb2e2652da843be9))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([77fdc63](https://github.com/Finch-API/finch-api-ruby/commit/77fdc63fa78dd6356baf44cc3770902bfb83311b))
+* **ci:** link to correct github repo ([6479e22](https://github.com/Finch-API/finch-api-ruby/commit/6479e2217a712d55aac84da1041a88efcbd4f1f2))
+* **docs:** grammar improvements ([0c55f26](https://github.com/Finch-API/finch-api-ruby/commit/0c55f26abe131663cfe8e739b95154172d967085))
+* force utf-8 locale via `RUBYOPT` when formatting ([2f00817](https://github.com/Finch-API/finch-api-ruby/commit/2f008175f0a18dc01a0c2b900c2e692f77b3a0ac))
+* **internal:** version bump ([2b40219](https://github.com/Finch-API/finch-api-ruby/commit/2b4021961b248f64cb9c5564b4199d0c840593fd))
+* refine Yard and Sorbet types and ensure linting is turned on for examples ([e0eb636](https://github.com/Finch-API/finch-api-ruby/commit/e0eb63695b803e35dd9e35a57cd0769a60db7bc7))
+* **tests:** skip endpoints with basic auth ([529b41e](https://github.com/Finch-API/finch-api-ruby/commit/529b41ea3cf67b553d85e36a256cc5d6c4b13800))
+* use fully qualified names for yard annotations and rbs aliases ([98866d5](https://github.com/Finch-API/finch-api-ruby/commit/98866d5133c2afb76b141045f1361705f9bac94a))
+* use sorbet union aliases where available ([37cc1c2](https://github.com/Finch-API/finch-api-ruby/commit/37cc1c27968a448e7bfef8527a0f3105b476de09))
+* whitespaces ([16ff9b3](https://github.com/Finch-API/finch-api-ruby/commit/16ff9b32a68eecb17c5719b354de64fe788bedd4))
+
 ## 0.1.0-alpha.19 (2025-05-16)
 
 Full Changelog: [v0.1.0-alpha.18...v0.1.0-alpha.19](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.18...v0.1.0-alpha.19)
