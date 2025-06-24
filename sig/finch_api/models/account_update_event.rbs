@@ -3,7 +3,7 @@ module FinchAPI
     type account_update_event =
       {
         data: FinchAPI::AccountUpdateEvent::Data,
-        event_type: FinchAPI::AccountUpdateEvent::event_type
+        event_type: FinchAPI::Models::AccountUpdateEvent::event_type
       }
 
     class AccountUpdateEvent < FinchAPI::Models::BaseWebhookEvent
@@ -13,16 +13,21 @@ module FinchAPI
         FinchAPI::AccountUpdateEvent::Data _
       ) -> FinchAPI::AccountUpdateEvent::Data
 
-      def event_type: -> FinchAPI::AccountUpdateEvent::event_type?
+      def event_type: -> FinchAPI::Models::AccountUpdateEvent::event_type?
 
       def event_type=: (
-        FinchAPI::AccountUpdateEvent::event_type _
-      ) -> FinchAPI::AccountUpdateEvent::event_type
+        FinchAPI::Models::AccountUpdateEvent::event_type _
+      ) -> FinchAPI::Models::AccountUpdateEvent::event_type
 
       def initialize: (
         ?data: FinchAPI::AccountUpdateEvent::Data,
-        ?event_type: FinchAPI::AccountUpdateEvent::event_type
+        ?event_type: FinchAPI::Models::AccountUpdateEvent::event_type
       ) -> void
+
+      def to_hash: -> {
+        data: FinchAPI::AccountUpdateEvent::Data,
+        event_type: FinchAPI::Models::AccountUpdateEvent::event_type
+      }
 
       type data =
         {
@@ -40,11 +45,16 @@ module FinchAPI
           status: FinchAPI::Models::connection_status_type
         ) -> void
 
+        def to_hash: -> {
+          authentication_method: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod,
+          status: FinchAPI::Models::connection_status_type
+        }
+
         type authentication_method =
           {
             benefits_support: FinchAPI::HRIS::BenefitsSupport?,
             supported_fields: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields?,
-            type: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::type_
+            type: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::type_
           }
 
         class AuthenticationMethod < FinchAPI::Internal::Type::BaseModel
@@ -52,17 +62,23 @@ module FinchAPI
 
           attr_accessor supported_fields: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields?
 
-          attr_reader type: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::type_?
+          attr_reader type: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::type_?
 
           def type=: (
-            FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::type_
-          ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::type_
+            FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::type_
+          ) -> FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::type_
 
           def initialize: (
             ?benefits_support: FinchAPI::HRIS::BenefitsSupport?,
             ?supported_fields: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields?,
-            ?type: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::type_
+            ?type: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::type_
           ) -> void
+
+          def to_hash: -> {
+            benefits_support: FinchAPI::HRIS::BenefitsSupport?,
+            supported_fields: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields?,
+            type: FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::type_
+          }
 
           type supported_fields =
             {
@@ -127,6 +143,16 @@ module FinchAPI
               ?pay_statement: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement,
               ?payment: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment
             ) -> void
+
+            def to_hash: -> {
+              company: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company,
+              directory: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory,
+              employment: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment,
+              individual: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual,
+              pay_group: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayGroup,
+              pay_statement: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement,
+              payment: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment
+            }
 
             type company =
               {
@@ -198,6 +224,18 @@ module FinchAPI
                 ?primary_phone_number: bool
               ) -> void
 
+              def to_hash: -> {
+                id: bool,
+                accounts: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Accounts,
+                departments: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments,
+                ein: bool,
+                entity: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Entity,
+                legal_name: bool,
+                locations: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Locations,
+                primary_email: bool,
+                primary_phone_number: bool
+              }
+
               type accounts =
                 {
                   account_name: bool,
@@ -235,6 +273,14 @@ module FinchAPI
                   ?institution_name: bool,
                   ?routing_number: bool
                 ) -> void
+
+                def to_hash: -> {
+                  account_name: bool,
+                  account_number: bool,
+                  account_type: bool,
+                  institution_name: bool,
+                  routing_number: bool
+                }
               end
 
               type departments =
@@ -259,6 +305,11 @@ module FinchAPI
                   ?parent: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments::Parent
                 ) -> void
 
+                def to_hash: -> {
+                  name: bool,
+                  parent: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company::Departments::Parent
+                }
+
                 type parent = { name: bool }
 
                 class Parent < FinchAPI::Internal::Type::BaseModel
@@ -267,6 +318,8 @@ module FinchAPI
                   def name=: (bool) -> bool
 
                   def initialize: (?name: bool) -> void
+
+                  def to_hash: -> { name: bool }
                 end
               end
 
@@ -282,6 +335,8 @@ module FinchAPI
                 def type=: (bool) -> bool
 
                 def initialize: (?subtype: bool, ?type: bool) -> void
+
+                def to_hash: -> { subtype: bool, type: bool }
               end
 
               type locations =
@@ -327,6 +382,15 @@ module FinchAPI
                   ?postal_code: bool,
                   ?state: bool
                 ) -> void
+
+                def to_hash: -> {
+                  city: bool,
+                  country: bool,
+                  :line1 => bool,
+                  :line2 => bool,
+                  postal_code: bool,
+                  state: bool
+                }
               end
             end
 
@@ -353,6 +417,11 @@ module FinchAPI
                 ?individuals: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals,
                 ?paging: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Paging
               ) -> void
+
+              def to_hash: -> {
+                individuals: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals,
+                paging: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Paging
+              }
 
               type individuals =
                 {
@@ -406,6 +475,16 @@ module FinchAPI
                   ?middle_name: bool
                 ) -> void
 
+                def to_hash: -> {
+                  id: bool,
+                  department: bool,
+                  first_name: bool,
+                  is_active: bool,
+                  last_name: bool,
+                  manager: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager,
+                  middle_name: bool
+                }
+
                 type manager = { id: bool }
 
                 class Manager < FinchAPI::Internal::Type::BaseModel
@@ -414,6 +493,8 @@ module FinchAPI
                   def id=: (bool) -> bool
 
                   def initialize: (?id: bool) -> void
+
+                  def to_hash: -> { id: bool }
                 end
               end
 
@@ -429,6 +510,8 @@ module FinchAPI
                 def offset=: (bool) -> bool
 
                 def initialize: (?count: bool, ?offset: bool) -> void
+
+                def to_hash: -> { count: bool, offset: bool }
               end
             end
 
@@ -552,6 +635,26 @@ module FinchAPI
                 ?title: bool
               ) -> void
 
+              def to_hash: -> {
+                id: bool,
+                class_code: bool,
+                custom_fields: bool,
+                department: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Department,
+                employment: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Employment,
+                employment_status: bool,
+                end_date: bool,
+                first_name: bool,
+                income: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Income,
+                income_history: bool,
+                is_active: bool,
+                last_name: bool,
+                location: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Location,
+                manager: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager,
+                middle_name: bool,
+                start_date: bool,
+                title: bool
+              }
+
               type department = { name: bool }
 
               class Department < FinchAPI::Internal::Type::BaseModel
@@ -560,6 +663,8 @@ module FinchAPI
                 def name=: (bool) -> bool
 
                 def initialize: (?name: bool) -> void
+
+                def to_hash: -> { name: bool }
               end
 
               type employment = { subtype: bool, type: bool }
@@ -574,6 +679,8 @@ module FinchAPI
                 def type=: (bool) -> bool
 
                 def initialize: (?subtype: bool, ?type: bool) -> void
+
+                def to_hash: -> { subtype: bool, type: bool }
               end
 
               type income = { amount: bool, currency: bool, unit: bool }
@@ -596,6 +703,8 @@ module FinchAPI
                   ?currency: bool,
                   ?unit: bool
                 ) -> void
+
+                def to_hash: -> { amount: bool, currency: bool, unit: bool }
               end
 
               type location =
@@ -641,6 +750,15 @@ module FinchAPI
                   ?postal_code: bool,
                   ?state: bool
                 ) -> void
+
+                def to_hash: -> {
+                  city: bool,
+                  country: bool,
+                  :line1 => bool,
+                  :line2 => bool,
+                  postal_code: bool,
+                  state: bool
+                }
               end
 
               type manager = { id: bool }
@@ -651,6 +769,8 @@ module FinchAPI
                 def id=: (bool) -> bool
 
                 def initialize: (?id: bool) -> void
+
+                def to_hash: -> { id: bool }
               end
             end
 
@@ -746,6 +866,22 @@ module FinchAPI
                 ?ssn: bool
               ) -> void
 
+              def to_hash: -> {
+                id: bool,
+                dob: bool,
+                emails: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Emails,
+                encrypted_ssn: bool,
+                ethnicity: bool,
+                first_name: bool,
+                gender: bool,
+                last_name: bool,
+                middle_name: bool,
+                phone_numbers: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers,
+                preferred_name: bool,
+                residence: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual::Residence,
+                ssn: bool
+              }
+
               type emails = { data: bool, type: bool }
 
               class Emails < FinchAPI::Internal::Type::BaseModel
@@ -758,6 +894,8 @@ module FinchAPI
                 def type=: (bool) -> bool
 
                 def initialize: (?data: bool, ?type: bool) -> void
+
+                def to_hash: -> { data: bool, type: bool }
               end
 
               type phone_numbers = { data: bool, type: bool }
@@ -772,6 +910,8 @@ module FinchAPI
                 def type=: (bool) -> bool
 
                 def initialize: (?data: bool, ?type: bool) -> void
+
+                def to_hash: -> { data: bool, type: bool }
               end
 
               type residence =
@@ -817,6 +957,15 @@ module FinchAPI
                   ?postal_code: bool,
                   ?state: bool
                 ) -> void
+
+                def to_hash: -> {
+                  city: bool,
+                  country: bool,
+                  :line1 => bool,
+                  :line2 => bool,
+                  postal_code: bool,
+                  state: bool
+                }
               end
             end
 
@@ -851,6 +1000,13 @@ module FinchAPI
                 ?name: bool,
                 ?pay_frequencies: bool
               ) -> void
+
+              def to_hash: -> {
+                id: bool,
+                individual_ids: bool,
+                name: bool,
+                pay_frequencies: bool
+              }
             end
 
             type pay_statement =
@@ -877,6 +1033,11 @@ module FinchAPI
                 ?pay_statements: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements
               ) -> void
 
+              def to_hash: -> {
+                paging: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::Paging,
+                pay_statements: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements
+              }
+
               type paging = { count: bool, offset: bool }
 
               class Paging < FinchAPI::Internal::Type::BaseModel
@@ -885,6 +1046,8 @@ module FinchAPI
                 attr_accessor offset: bool
 
                 def initialize: (count: bool, offset: bool) -> void
+
+                def to_hash: -> { count: bool, offset: bool }
               end
 
               type pay_statements =
@@ -963,6 +1126,19 @@ module FinchAPI
                   ?type: bool
                 ) -> void
 
+                def to_hash: -> {
+                  earnings: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings,
+                  employee_deductions: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions,
+                  employer_contributions: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions,
+                  gross_pay: bool,
+                  individual_id: bool,
+                  net_pay: bool,
+                  payment_method: bool,
+                  taxes: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes,
+                  total_hours: bool,
+                  type: bool
+                }
+
                 type earnings =
                   { amount: bool, currency: bool, name: bool, type: bool }
 
@@ -989,6 +1165,13 @@ module FinchAPI
                     ?name: bool,
                     ?type: bool
                   ) -> void
+
+                  def to_hash: -> {
+                    amount: bool,
+                    currency: bool,
+                    name: bool,
+                    type: bool
+                  }
                 end
 
                 type employee_deductions =
@@ -1028,6 +1211,14 @@ module FinchAPI
                     ?pre_tax: bool,
                     ?type: bool
                   ) -> void
+
+                  def to_hash: -> {
+                    amount: bool,
+                    currency: bool,
+                    name: bool,
+                    pre_tax: bool,
+                    type: bool
+                  }
                 end
 
                 type employer_contributions =
@@ -1051,6 +1242,8 @@ module FinchAPI
                     ?currency: bool,
                     ?name: bool
                   ) -> void
+
+                  def to_hash: -> { amount: bool, currency: bool, name: bool }
                 end
 
                 type taxes =
@@ -1090,6 +1283,14 @@ module FinchAPI
                     ?name: bool,
                     ?type: bool
                   ) -> void
+
+                  def to_hash: -> {
+                    amount: bool,
+                    currency: bool,
+                    employer: bool,
+                    name: bool,
+                    type: bool
+                  }
                 end
               end
             end
@@ -1176,6 +1377,21 @@ module FinchAPI
                 ?pay_period: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment::PayPeriod
               ) -> void
 
+              def to_hash: -> {
+                id: bool,
+                company_debit: bool,
+                debit_date: bool,
+                employee_taxes: bool,
+                employer_taxes: bool,
+                gross_pay: bool,
+                individual_ids: bool,
+                net_pay: bool,
+                pay_date: bool,
+                pay_frequencies: bool,
+                pay_group_ids: bool,
+                pay_period: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment::PayPeriod
+              }
+
               type pay_period = { end_date: bool, start_date: bool }
 
               class PayPeriod < FinchAPI::Internal::Type::BaseModel
@@ -1188,6 +1404,8 @@ module FinchAPI
                 def start_date=: (bool) -> bool
 
                 def initialize: (?end_date: bool, ?start_date: bool) -> void
+
+                def to_hash: -> { end_date: bool, start_date: bool }
               end
             end
           end
@@ -1204,7 +1422,7 @@ module FinchAPI
             API_CREDENTIAL: :api_credential
             OAUTH: :oauth
 
-            def self?.values: -> ::Array[FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::type_]
+            def self?.values: -> ::Array[FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::type_]
           end
         end
       end
@@ -1216,7 +1434,7 @@ module FinchAPI
 
         ACCOUNT_UPDATED: :"account.updated"
 
-        def self?.values: -> ::Array[FinchAPI::AccountUpdateEvent::event_type]
+        def self?.values: -> ::Array[FinchAPI::Models::AccountUpdateEvent::event_type]
       end
     end
   end

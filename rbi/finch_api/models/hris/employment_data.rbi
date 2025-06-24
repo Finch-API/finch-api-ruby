@@ -31,20 +31,6 @@ module FinchAPI
           sig { returns(T.nilable(String)) }
           attr_accessor :class_code
 
-          # Custom fields for the individual. These are fields which are defined by the
-          # employer in the system. Custom fields are not currently supported for assisted
-          # connections.
-          sig do
-            returns(
-              T.nilable(
-                T::Array[
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField
-                ]
-              )
-            )
-          end
-          attr_accessor :custom_fields
-
           # The department object.
           sig do
             returns(
@@ -149,9 +135,19 @@ module FinchAPI
           sig { returns(T.nilable(String)) }
           attr_accessor :title
 
-          # This field is deprecated in favour of `source_id`
-          sig { returns(T.nilable(String)) }
-          attr_accessor :work_id
+          # Custom fields for the individual. These are fields which are defined by the
+          # employer in the system. Custom fields are not currently supported for assisted
+          # connections.
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField
+                ]
+              )
+            )
+          end
+          attr_accessor :custom_fields
 
           # The employee's income as reported by the provider. This may not always be
           # annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
@@ -170,16 +166,14 @@ module FinchAPI
           sig { returns(T.nilable(String)) }
           attr_accessor :source_id
 
+          # This field is deprecated in favour of `source_id`
+          sig { returns(T.nilable(String)) }
+          attr_accessor :work_id
+
           sig do
             params(
               id: String,
               class_code: T.nilable(String),
-              custom_fields:
-                T.nilable(
-                  T::Array[
-                    FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField::OrHash
-                  ]
-                ),
               department:
                 T.nilable(
                   FinchAPI::HRIS::EmploymentData::UnionMember0::Department::OrHash
@@ -205,11 +199,17 @@ module FinchAPI
               middle_name: T.nilable(String),
               start_date: T.nilable(String),
               title: T.nilable(String),
-              work_id: T.nilable(String),
+              custom_fields:
+                T.nilable(
+                  T::Array[
+                    FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField::OrHash
+                  ]
+                ),
               income: T.nilable(FinchAPI::Income::OrHash),
               income_history:
                 T.nilable(T::Array[T.nilable(FinchAPI::Income::OrHash)]),
-              source_id: T.nilable(String)
+              source_id: T.nilable(String),
+              work_id: T.nilable(String)
             ).returns(T.attached_class)
           end
           def self.new(
@@ -217,10 +217,6 @@ module FinchAPI
             id:,
             # Worker's compensation classification code for this employee
             class_code:,
-            # Custom fields for the individual. These are fields which are defined by the
-            # employer in the system. Custom fields are not currently supported for assisted
-            # connections.
-            custom_fields:,
             # The department object.
             department:,
             # The employment object.
@@ -244,8 +240,10 @@ module FinchAPI
             start_date:,
             # The current title of the individual.
             title:,
-            # This field is deprecated in favour of `source_id`
-            work_id:,
+            # Custom fields for the individual. These are fields which are defined by the
+            # employer in the system. Custom fields are not currently supported for assisted
+            # connections.
+            custom_fields: nil,
             # The employee's income as reported by the provider. This may not always be
             # annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
             # depending on what information the provider returns.
@@ -253,7 +251,9 @@ module FinchAPI
             # The array of income history.
             income_history: nil,
             # The source system's unique employment identifier for this individual
-            source_id: nil
+            source_id: nil,
+            # This field is deprecated in favour of `source_id`
+            work_id: nil
           )
           end
 
@@ -262,12 +262,6 @@ module FinchAPI
               {
                 id: String,
                 class_code: T.nilable(String),
-                custom_fields:
-                  T.nilable(
-                    T::Array[
-                      FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField
-                    ]
-                  ),
                 department:
                   T.nilable(
                     FinchAPI::HRIS::EmploymentData::UnionMember0::Department
@@ -293,116 +287,21 @@ module FinchAPI
                 middle_name: T.nilable(String),
                 start_date: T.nilable(String),
                 title: T.nilable(String),
-                work_id: T.nilable(String),
+                custom_fields:
+                  T.nilable(
+                    T::Array[
+                      FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField
+                    ]
+                  ),
                 income: T.nilable(FinchAPI::Income),
                 income_history:
                   T.nilable(T::Array[T.nilable(FinchAPI::Income)]),
-                source_id: T.nilable(String)
+                source_id: T.nilable(String),
+                work_id: T.nilable(String)
               }
             )
           end
           def to_hash
-          end
-
-          class CustomField < FinchAPI::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField,
-                  FinchAPI::Internal::AnyHash
-                )
-              end
-
-            sig { returns(T.nilable(String)) }
-            attr_accessor :name
-
-            sig do
-              returns(
-                T.nilable(
-                  T.any(
-                    String,
-                    T::Array[T.anything],
-                    T.anything,
-                    Float,
-                    T::Boolean
-                  )
-                )
-              )
-            end
-            attr_accessor :value
-
-            sig do
-              params(
-                name: T.nilable(String),
-                value:
-                  T.nilable(
-                    T.any(
-                      String,
-                      T::Array[T.anything],
-                      T.anything,
-                      Float,
-                      T::Boolean
-                    )
-                  )
-              ).returns(T.attached_class)
-            end
-            def self.new(name: nil, value: nil)
-            end
-
-            sig do
-              override.returns(
-                {
-                  name: T.nilable(String),
-                  value:
-                    T.nilable(
-                      T.any(
-                        String,
-                        T::Array[T.anything],
-                        T.anything,
-                        Float,
-                        T::Boolean
-                      )
-                    )
-                }
-              )
-            end
-            def to_hash
-            end
-
-            module Value
-              extend FinchAPI::Internal::Type::Union
-
-              Variants =
-                T.type_alias do
-                  T.nilable(
-                    T.any(
-                      String,
-                      T::Array[T.anything],
-                      T.anything,
-                      Float,
-                      T::Boolean
-                    )
-                  )
-                end
-
-              sig do
-                override.returns(
-                  T::Array[
-                    FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField::Value::Variants
-                  ]
-                )
-              end
-              def self.variants
-              end
-
-              UnionMember1Array =
-                T.let(
-                  FinchAPI::Internal::Type::ArrayOf[
-                    FinchAPI::Internal::Type::Unknown
-                  ],
-                  FinchAPI::Internal::Type::Converter
-                )
-            end
           end
 
           class Department < FinchAPI::Internal::Type::BaseModel
@@ -676,6 +575,89 @@ module FinchAPI
 
             sig { override.returns({ id: String }) }
             def to_hash
+            end
+          end
+
+          class CustomField < FinchAPI::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
+
+            sig { returns(T.nilable(String)) }
+            attr_accessor :name
+
+            sig do
+              returns(
+                T.nilable(
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField::Value::Variants
+                )
+              )
+            end
+            attr_accessor :value
+
+            sig do
+              params(
+                name: T.nilable(String),
+                value:
+                  T.nilable(
+                    FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField::Value::Variants
+                  )
+              ).returns(T.attached_class)
+            end
+            def self.new(name: nil, value: nil)
+            end
+
+            sig do
+              override.returns(
+                {
+                  name: T.nilable(String),
+                  value:
+                    T.nilable(
+                      FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField::Value::Variants
+                    )
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module Value
+              extend FinchAPI::Internal::Type::Union
+
+              Variants =
+                T.type_alias do
+                  T.nilable(
+                    T.any(
+                      String,
+                      T::Array[T.anything],
+                      T.anything,
+                      Float,
+                      T::Boolean
+                    )
+                  )
+                end
+
+              sig do
+                override.returns(
+                  T::Array[
+                    FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField::Value::Variants
+                  ]
+                )
+              end
+              def self.variants
+              end
+
+              UnionMember1Array =
+                T.let(
+                  FinchAPI::Internal::Type::ArrayOf[
+                    FinchAPI::Internal::Type::Unknown
+                  ],
+                  FinchAPI::Internal::Type::Converter
+                )
             end
           end
         end

@@ -4,7 +4,7 @@ module FinchAPI
       module Company
         type pay_statement_item_list_params =
           {
-            categories: ::Array[FinchAPI::HRIS::Company::PayStatementItemListParams::category],
+            categories: ::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::category],
             end_date: Date,
             name: String,
             start_date: Date,
@@ -16,11 +16,11 @@ module FinchAPI
           extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
 
-          attr_reader categories: ::Array[FinchAPI::HRIS::Company::PayStatementItemListParams::category]?
+          attr_reader categories: ::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::category]?
 
           def categories=: (
-            ::Array[FinchAPI::HRIS::Company::PayStatementItemListParams::category]
-          ) -> ::Array[FinchAPI::HRIS::Company::PayStatementItemListParams::category]
+            ::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::category]
+          ) -> ::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::category]
 
           attr_reader end_date: Date?
 
@@ -39,13 +39,22 @@ module FinchAPI
           def type=: (String) -> String
 
           def initialize: (
-            ?categories: ::Array[FinchAPI::HRIS::Company::PayStatementItemListParams::category],
+            ?categories: ::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::category],
             ?end_date: Date,
             ?name: String,
             ?start_date: Date,
             ?type: String,
             ?request_options: FinchAPI::request_opts
           ) -> void
+
+          def to_hash: -> {
+            categories: ::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::category],
+            end_date: Date,
+            name: String,
+            start_date: Date,
+            type: String,
+            request_options: FinchAPI::RequestOptions
+          }
 
           type category =
             :earnings | :taxes | :employee_deductions | :employer_contributions
@@ -58,7 +67,7 @@ module FinchAPI
             EMPLOYEE_DEDUCTIONS: :employee_deductions
             EMPLOYER_CONTRIBUTIONS: :employer_contributions
 
-            def self?.values: -> ::Array[FinchAPI::HRIS::Company::PayStatementItemListParams::category]
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::category]
           end
         end
       end

@@ -3,6 +3,7 @@ module FinchAPI
     module Type
       class Boolean
         extend FinchAPI::Internal::Type::Converter
+        extend FinchAPI::Internal::Util::SorbetRuntimeSupport
 
         def self.===: (top other) -> bool
 
@@ -17,6 +18,8 @@ module FinchAPI
           bool | top value,
           state: FinchAPI::Internal::Type::Converter::dump_state
         ) -> (bool | top)
+
+        def self.to_sorbet_type: -> top
       end
     end
   end

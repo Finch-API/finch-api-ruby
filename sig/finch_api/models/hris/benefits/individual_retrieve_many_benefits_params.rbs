@@ -18,6 +18,11 @@ module FinchAPI
             ?individual_ids: String,
             ?request_options: FinchAPI::request_opts
           ) -> void
+
+          def to_hash: -> {
+            individual_ids: String,
+            request_options: FinchAPI::RequestOptions
+          }
         end
       end
     end

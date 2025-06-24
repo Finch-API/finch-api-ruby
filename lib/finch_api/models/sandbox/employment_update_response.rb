@@ -64,13 +64,13 @@ module FinchAPI
         #   annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
         #   depending on what information the provider returns.
         #
-        #   @return [FinchAPI::Income, nil]
+        #   @return [FinchAPI::Models::Income, nil]
         optional :income, -> { FinchAPI::Income }, nil?: true
 
         # @!attribute income_history
         #   The array of income history.
         #
-        #   @return [Array<FinchAPI::Income, nil>, nil]
+        #   @return [Array<FinchAPI::Models::Income, nil>, nil]
         optional :income_history,
                  -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Income, nil?: true] },
                  nil?: true
@@ -94,7 +94,7 @@ module FinchAPI
 
         # @!attribute location
         #
-        #   @return [FinchAPI::Location, nil]
+        #   @return [FinchAPI::Models::Location, nil]
         optional :location, -> { FinchAPI::Location }, nil?: true
 
         # @!attribute manager
@@ -146,9 +146,9 @@ module FinchAPI
         #
         #   @param first_name [String, nil] The legal first name of the individual.
         #
-        #   @param income [FinchAPI::Income, nil] The employee's income as reported by the provider. This may not always be annual
+        #   @param income [FinchAPI::Models::Income, nil] The employee's income as reported by the provider. This may not always be annual
         #
-        #   @param income_history [Array<FinchAPI::Income, nil>, nil] The array of income history.
+        #   @param income_history [Array<FinchAPI::Models::Income, nil>, nil] The array of income history.
         #
         #   @param is_active [Boolean, nil] `true` if the individual an an active employee or contractor at the company.
         #
@@ -156,7 +156,7 @@ module FinchAPI
         #
         #   @param latest_rehire_date [String, nil]
         #
-        #   @param location [FinchAPI::Location, nil]
+        #   @param location [FinchAPI::Models::Location, nil]
         #
         #   @param manager [FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Manager, nil] The manager object representing the manager of the individual within the org.
         #

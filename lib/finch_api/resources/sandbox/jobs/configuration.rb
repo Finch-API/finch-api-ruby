@@ -11,7 +11,7 @@ module FinchAPI
           #
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Array<FinchAPI::Sandbox::Jobs::SandboxJobConfiguration>]
+          # @return [Array<FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration>]
           #
           # @see FinchAPI::Models::Sandbox::Jobs::ConfigurationRetrieveParams
           def retrieve(params = {})
@@ -27,11 +27,11 @@ module FinchAPI
           #
           # @overload update(completion_status:, type:, request_options: {})
           #
-          # @param completion_status [Symbol, FinchAPI::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus]
-          # @param type [Symbol, FinchAPI::Sandbox::Jobs::SandboxJobConfiguration::Type]
+          # @param completion_status [Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::CompletionStatus]
+          # @param type [Symbol, FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration::Type]
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [FinchAPI::Sandbox::Jobs::SandboxJobConfiguration]
+          # @return [FinchAPI::Models::Sandbox::Jobs::SandboxJobConfiguration]
           #
           # @see FinchAPI::Models::Sandbox::Jobs::ConfigurationUpdateParams
           def update(params)

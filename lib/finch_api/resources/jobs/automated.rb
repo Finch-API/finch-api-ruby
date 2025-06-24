@@ -21,9 +21,9 @@ module FinchAPI
         #
         # @overload create(type:, params:, request_options: {})
         #
-        # @param type [Symbol, FinchAPI::Jobs::AutomatedCreateParams::Type] The type of job to start.
+        # @param type [Symbol, FinchAPI::Models::Jobs::AutomatedCreateParams::Type] The type of job to start.
         #
-        # @param params [FinchAPI::Jobs::AutomatedCreateParams::Params]
+        # @param params [FinchAPI::Models::Jobs::AutomatedCreateParams::Params]
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -48,7 +48,7 @@ module FinchAPI
         # @param job_id [String]
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::Jobs::AutomatedAsyncJob]
+        # @return [FinchAPI::Models::Jobs::AutomatedAsyncJob]
         #
         # @see FinchAPI::Models::Jobs::AutomatedRetrieveParams
         def retrieve(job_id, params = {})

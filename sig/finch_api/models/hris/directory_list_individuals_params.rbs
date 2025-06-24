@@ -22,6 +22,12 @@ module FinchAPI
           ?offset: Integer,
           ?request_options: FinchAPI::request_opts
         ) -> void
+
+        def to_hash: -> {
+          limit: Integer,
+          offset: Integer,
+          request_options: FinchAPI::RequestOptions
+        }
       end
     end
   end

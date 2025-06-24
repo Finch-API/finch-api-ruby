@@ -10,6 +10,7 @@ module FinchAPI
       # When we don't know what to expect for the value.
       class Unknown
         extend FinchAPI::Internal::Type::Converter
+        extend FinchAPI::Internal::Util::SorbetRuntimeSupport
 
         # rubocop:disable Lint/UnusedMethodArgument
 
@@ -32,13 +33,19 @@ module FinchAPI
         class << self
           # @api private
           #
+          # No coercion needed for Unknown type.
+          #
           # @param value [Object]
           #
           # @param state [Hash{Symbol=>Object}] .
           #
-          #   @option state [Boolean, :strong] :strictness
+          #   @option state [Boolean] :translate_names
+          #
+          #   @option state [Boolean] :strictness
           #
           #   @option state [Hash{Symbol=>Object}] :exactness
+          #
+          #   @option state [Class<StandardError>] :error
           #
           #   @option state [Integer] :branched
           #
@@ -58,6 +65,13 @@ module FinchAPI
           #     @option state [Boolean] :can_retry
           #
           #   @return [Object]
+
+          # @api private
+          #
+          # @return [Object]
+          def to_sorbet_type
+            T.anything
+          end
         end
 
         # rubocop:enable Lint/UnusedMethodArgument

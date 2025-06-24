@@ -12,15 +12,13 @@ module FinchAPI
           individual_ids: ::Array[String]?,
           net_pay: FinchAPI::Money?,
           pay_date: String?,
-          pay_frequencies: ::Array[FinchAPI::HRIS::Payment::pay_frequency]?,
+          pay_frequencies: ::Array[FinchAPI::Models::HRIS::Payment::pay_frequency]?,
           pay_group_ids: ::Array[String]?,
           pay_period: FinchAPI::HRIS::Payment::PayPeriod?
         }
 
       class Payment < FinchAPI::Internal::Type::BaseModel
-        attr_reader id: String?
-
-        def id=: (String) -> String
+        attr_accessor id: String
 
         attr_accessor company_debit: FinchAPI::Money?
 
@@ -38,52 +36,67 @@ module FinchAPI
 
         attr_accessor pay_date: String?
 
-        attr_accessor pay_frequencies: ::Array[FinchAPI::HRIS::Payment::pay_frequency]?
+        attr_accessor pay_frequencies: ::Array[FinchAPI::Models::HRIS::Payment::pay_frequency]?
 
         attr_accessor pay_group_ids: ::Array[String]?
 
         attr_accessor pay_period: FinchAPI::HRIS::Payment::PayPeriod?
 
         def initialize: (
-          ?id: String,
-          ?company_debit: FinchAPI::Money?,
-          ?debit_date: String?,
-          ?employee_taxes: FinchAPI::Money?,
-          ?employer_taxes: FinchAPI::Money?,
-          ?gross_pay: FinchAPI::Money?,
-          ?individual_ids: ::Array[String]?,
-          ?net_pay: FinchAPI::Money?,
-          ?pay_date: String?,
-          ?pay_frequencies: ::Array[FinchAPI::HRIS::Payment::pay_frequency]?,
-          ?pay_group_ids: ::Array[String]?,
-          ?pay_period: FinchAPI::HRIS::Payment::PayPeriod?
+          id: String,
+          company_debit: FinchAPI::Money?,
+          debit_date: String?,
+          employee_taxes: FinchAPI::Money?,
+          employer_taxes: FinchAPI::Money?,
+          gross_pay: FinchAPI::Money?,
+          individual_ids: ::Array[String]?,
+          net_pay: FinchAPI::Money?,
+          pay_date: String?,
+          pay_frequencies: ::Array[FinchAPI::Models::HRIS::Payment::pay_frequency]?,
+          pay_group_ids: ::Array[String]?,
+          pay_period: FinchAPI::HRIS::Payment::PayPeriod?
         ) -> void
+
+        def to_hash: -> {
+          id: String,
+          company_debit: FinchAPI::Money?,
+          debit_date: String?,
+          employee_taxes: FinchAPI::Money?,
+          employer_taxes: FinchAPI::Money?,
+          gross_pay: FinchAPI::Money?,
+          individual_ids: ::Array[String]?,
+          net_pay: FinchAPI::Money?,
+          pay_date: String?,
+          pay_frequencies: ::Array[FinchAPI::Models::HRIS::Payment::pay_frequency]?,
+          pay_group_ids: ::Array[String]?,
+          pay_period: FinchAPI::HRIS::Payment::PayPeriod?
+        }
 
         type pay_frequency =
           :annually
-          | :semi_annually
-          | :quarterly
-          | :monthly
-          | :semi_monthly
           | :bi_weekly
-          | :weekly
           | :daily
+          | :monthly
           | :other
+          | :quarterly
+          | :semi_annually
+          | :semi_monthly
+          | :weekly
 
         module PayFrequency
           extend FinchAPI::Internal::Type::Enum
 
           ANNUALLY: :annually
-          SEMI_ANNUALLY: :semi_annually
-          QUARTERLY: :quarterly
-          MONTHLY: :monthly
-          SEMI_MONTHLY: :semi_monthly
           BI_WEEKLY: :bi_weekly
-          WEEKLY: :weekly
           DAILY: :daily
+          MONTHLY: :monthly
           OTHER: :other
+          QUARTERLY: :quarterly
+          SEMI_ANNUALLY: :semi_annually
+          SEMI_MONTHLY: :semi_monthly
+          WEEKLY: :weekly
 
-          def self?.values: -> ::Array[FinchAPI::HRIS::Payment::pay_frequency]
+          def self?.values: -> ::Array[FinchAPI::Models::HRIS::Payment::pay_frequency]
         end
 
         type pay_period = { end_date: String?, start_date: String? }
@@ -93,7 +106,9 @@ module FinchAPI
 
           attr_accessor start_date: String?
 
-          def initialize: (?end_date: String?, ?start_date: String?) -> void
+          def initialize: (end_date: String?, start_date: String?) -> void
+
+          def to_hash: -> { end_date: String?, start_date: String? }
         end
       end
     end

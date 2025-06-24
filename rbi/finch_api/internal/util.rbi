@@ -11,6 +11,15 @@ module FinchAPI
       def self.monotonic_secs
       end
 
+      # @api private
+      sig do
+        params(ns: T.any(Module, T::Class[T.anything])).returns(
+          T::Enumerable[T.any(Module, T::Class[T.anything])]
+        )
+      end
+      def self.walk_namespaces(ns)
+      end
+
       class << self
         # @api private
         sig { returns(String) }
@@ -323,6 +332,8 @@ module FinchAPI
         end
 
         # @api private
+        #
+        # https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.1.md#special-considerations-for-multipart-content
         sig do
           params(body: T.anything).returns([String, T::Enumerable[String]])
         end
@@ -442,8 +453,33 @@ module FinchAPI
         end
 
         # @api private
+        sig { params(name: Symbol).returns(T::Boolean) }
+        def sorbet_constant_defined?(name)
+        end
+
+        # @api private
         sig { params(name: Symbol, blk: T.proc.returns(T.anything)).void }
         def define_sorbet_constant!(name, &blk)
+        end
+
+        # @api private
+        sig { returns(T.anything) }
+        def to_sorbet_type
+        end
+
+        class << self
+          # @api private
+          sig do
+            params(
+              type:
+                T.any(
+                  FinchAPI::Internal::Util::SorbetRuntimeSupport,
+                  T.anything
+                )
+            ).returns(T.anything)
+          end
+          def to_sorbet_type(type)
+          end
         end
       end
     end

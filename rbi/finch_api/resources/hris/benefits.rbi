@@ -74,9 +74,7 @@ module FinchAPI
         # Get deductions metadata
         sig do
           params(request_options: FinchAPI::RequestOptions::OrHash).returns(
-            FinchAPI::Internal::SinglePage[
-              FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse
-            ]
+            FinchAPI::Internal::SinglePage[FinchAPI::HRIS::SupportedBenefit]
           )
         end
         def list_supported_benefits(request_options: {})

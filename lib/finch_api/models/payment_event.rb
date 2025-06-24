@@ -5,17 +5,17 @@ module FinchAPI
     class PaymentEvent < FinchAPI::Models::BaseWebhookEvent
       # @!attribute data
       #
-      #   @return [FinchAPI::PaymentEvent::Data, nil]
+      #   @return [FinchAPI::Models::PaymentEvent::Data, nil]
       optional :data, -> { FinchAPI::PaymentEvent::Data }
 
       # @!attribute event_type
       #
-      #   @return [Symbol, FinchAPI::PaymentEvent::EventType, nil]
+      #   @return [Symbol, FinchAPI::Models::PaymentEvent::EventType, nil]
       optional :event_type, enum: -> { FinchAPI::PaymentEvent::EventType }
 
       # @!method initialize(data: nil, event_type: nil)
-      #   @param data [FinchAPI::PaymentEvent::Data]
-      #   @param event_type [Symbol, FinchAPI::PaymentEvent::EventType]
+      #   @param data [FinchAPI::Models::PaymentEvent::Data]
+      #   @param event_type [Symbol, FinchAPI::Models::PaymentEvent::EventType]
 
       class Data < FinchAPI::Internal::Type::BaseModel
         # @!attribute pay_date

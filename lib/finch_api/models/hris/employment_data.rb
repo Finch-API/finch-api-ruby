@@ -23,35 +23,23 @@ module FinchAPI
           #   @return [String, nil]
           required :class_code, String, nil?: true
 
-          # @!attribute custom_fields
-          #   Custom fields for the individual. These are fields which are defined by the
-          #   employer in the system. Custom fields are not currently supported for assisted
-          #   connections.
-          #
-          #   @return [Array<FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField>, nil]
-          required :custom_fields,
-                   -> {
-                     FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField]
-                   },
-                   nil?: true
-
           # @!attribute department
           #   The department object.
           #
-          #   @return [FinchAPI::HRIS::EmploymentData::UnionMember0::Department, nil]
+          #   @return [FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Department, nil]
           required :department, -> { FinchAPI::HRIS::EmploymentData::UnionMember0::Department }, nil?: true
 
           # @!attribute employment
           #   The employment object.
           #
-          #   @return [FinchAPI::HRIS::EmploymentData::UnionMember0::Employment, nil]
+          #   @return [FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment, nil]
           required :employment, -> { FinchAPI::HRIS::EmploymentData::UnionMember0::Employment }, nil?: true
 
           # @!attribute employment_status
           #   The detailed employment status of the individual. Available options: `active`,
           #   `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
           #
-          #   @return [Symbol, FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus, nil]
+          #   @return [Symbol, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::EmploymentStatus, nil]
           required :employment_status,
                    enum: -> { FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus },
                    nil?: true
@@ -86,13 +74,13 @@ module FinchAPI
 
           # @!attribute location
           #
-          #   @return [FinchAPI::Location, nil]
+          #   @return [FinchAPI::Models::Location, nil]
           required :location, -> { FinchAPI::Location }, nil?: true
 
           # @!attribute manager
           #   The manager object representing the manager of the individual within the org.
           #
-          #   @return [FinchAPI::HRIS::EmploymentData::UnionMember0::Manager, nil]
+          #   @return [FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Manager, nil]
           required :manager, -> { FinchAPI::HRIS::EmploymentData::UnionMember0::Manager }, nil?: true
 
           # @!attribute middle_name
@@ -112,26 +100,30 @@ module FinchAPI
           #   @return [String, nil]
           required :title, String, nil?: true
 
-          # @!attribute work_id
-          #   @deprecated
+          # @!attribute custom_fields
+          #   Custom fields for the individual. These are fields which are defined by the
+          #   employer in the system. Custom fields are not currently supported for assisted
+          #   connections.
           #
-          #   This field is deprecated in favour of `source_id`
-          #
-          #   @return [String, nil]
-          required :work_id, String, nil?: true
+          #   @return [Array<FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField>, nil]
+          optional :custom_fields,
+                   -> {
+                     FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField]
+                   },
+                   nil?: true
 
           # @!attribute income
           #   The employee's income as reported by the provider. This may not always be
           #   annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
           #   depending on what information the provider returns.
           #
-          #   @return [FinchAPI::Income, nil]
+          #   @return [FinchAPI::Models::Income, nil]
           optional :income, -> { FinchAPI::Income }, nil?: true
 
           # @!attribute income_history
           #   The array of income history.
           #
-          #   @return [Array<FinchAPI::Income, nil>, nil]
+          #   @return [Array<FinchAPI::Models::Income, nil>, nil]
           optional :income_history,
                    -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Income, nil?: true] },
                    nil?: true
@@ -142,21 +134,27 @@ module FinchAPI
           #   @return [String, nil]
           optional :source_id, String, nil?: true
 
-          # @!method initialize(id:, class_code:, custom_fields:, department:, employment:, employment_status:, end_date:, first_name:, is_active:, last_name:, latest_rehire_date:, location:, manager:, middle_name:, start_date:, title:, work_id:, income: nil, income_history: nil, source_id: nil)
+          # @!attribute work_id
+          #   @deprecated
+          #
+          #   This field is deprecated in favour of `source_id`
+          #
+          #   @return [String, nil]
+          optional :work_id, String, nil?: true
+
+          # @!method initialize(id:, class_code:, department:, employment:, employment_status:, end_date:, first_name:, is_active:, last_name:, latest_rehire_date:, location:, manager:, middle_name:, start_date:, title:, custom_fields: nil, income: nil, income_history: nil, source_id: nil, work_id: nil)
           #   Some parameter documentations has been truncated, see
-          #   {FinchAPI::HRIS::EmploymentData::UnionMember0} for more details.
+          #   {FinchAPI::Models::HRIS::EmploymentData::UnionMember0} for more details.
           #
           #   @param id [String] A stable Finch `id` (UUID v4) for an individual in the company.
           #
           #   @param class_code [String, nil] Worker's compensation classification code for this employee
           #
-          #   @param custom_fields [Array<FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField>, nil] Custom fields for the individual. These are fields which are defined by the empl
+          #   @param department [FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Department, nil] The department object.
           #
-          #   @param department [FinchAPI::HRIS::EmploymentData::UnionMember0::Department, nil] The department object.
+          #   @param employment [FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment, nil] The employment object.
           #
-          #   @param employment [FinchAPI::HRIS::EmploymentData::UnionMember0::Employment, nil] The employment object.
-          #
-          #   @param employment_status [Symbol, FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus, nil] The detailed employment status of the individual. Available options: `active`, `
+          #   @param employment_status [Symbol, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::EmploymentStatus, nil] The detailed employment status of the individual. Available options: `active`, `
           #
           #   @param end_date [String, nil]
           #
@@ -168,9 +166,9 @@ module FinchAPI
           #
           #   @param latest_rehire_date [String, nil]
           #
-          #   @param location [FinchAPI::Location, nil]
+          #   @param location [FinchAPI::Models::Location, nil]
           #
-          #   @param manager [FinchAPI::HRIS::EmploymentData::UnionMember0::Manager, nil] The manager object representing the manager of the individual within the org.
+          #   @param manager [FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Manager, nil] The manager object representing the manager of the individual within the org.
           #
           #   @param middle_name [String, nil] The legal middle name of the individual.
           #
@@ -178,13 +176,126 @@ module FinchAPI
           #
           #   @param title [String, nil] The current title of the individual.
           #
-          #   @param work_id [String, nil] This field is deprecated in favour of `source_id`
+          #   @param custom_fields [Array<FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField>, nil] Custom fields for the individual. These are fields which are defined by the empl
           #
-          #   @param income [FinchAPI::Income, nil] The employee's income as reported by the provider. This may not always be annual
+          #   @param income [FinchAPI::Models::Income, nil] The employee's income as reported by the provider. This may not always be annual
           #
-          #   @param income_history [Array<FinchAPI::Income, nil>, nil] The array of income history.
+          #   @param income_history [Array<FinchAPI::Models::Income, nil>, nil] The array of income history.
           #
           #   @param source_id [String, nil] The source system's unique employment identifier for this individual
+          #
+          #   @param work_id [String, nil] This field is deprecated in favour of `source_id`
+
+          # @see FinchAPI::Models::HRIS::EmploymentData::UnionMember0#department
+          class Department < FinchAPI::Internal::Type::BaseModel
+            # @!attribute name
+            #   The name of the department associated with the individual.
+            #
+            #   @return [String, nil]
+            required :name, String, nil?: true
+
+            # @!method initialize(name:)
+            #   The department object.
+            #
+            #   @param name [String, nil] The name of the department associated with the individual.
+          end
+
+          # @see FinchAPI::Models::HRIS::EmploymentData::UnionMember0#employment
+          class Employment < FinchAPI::Internal::Type::BaseModel
+            # @!attribute subtype
+            #   The secondary employment type of the individual. Options: `full_time`,
+            #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
+            #
+            #   @return [Symbol, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment::Subtype, nil]
+            required :subtype,
+                     enum: -> { FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype },
+                     nil?: true
+
+            # @!attribute type
+            #   The main employment type of the individual.
+            #
+            #   @return [Symbol, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment::Type, nil]
+            required :type,
+                     enum: -> {
+                       FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Type
+                     },
+                     nil?: true
+
+            # @!method initialize(subtype:, type:)
+            #   Some parameter documentations has been truncated, see
+            #   {FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment} for more
+            #   details.
+            #
+            #   The employment object.
+            #
+            #   @param subtype [Symbol, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment::Subtype, nil] The secondary employment type of the individual. Options: `full_time`, `part_tim
+            #
+            #   @param type [Symbol, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment::Type, nil] The main employment type of the individual.
+
+            # The secondary employment type of the individual. Options: `full_time`,
+            # `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
+            #
+            # @see FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment#subtype
+            module Subtype
+              extend FinchAPI::Internal::Type::Enum
+
+              FULL_TIME = :full_time
+              INTERN = :intern
+              PART_TIME = :part_time
+              TEMP = :temp
+              SEASONAL = :seasonal
+              INDIVIDUAL_CONTRACTOR = :individual_contractor
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # The main employment type of the individual.
+            #
+            # @see FinchAPI::Models::HRIS::EmploymentData::UnionMember0::Employment#type
+            module Type
+              extend FinchAPI::Internal::Type::Enum
+
+              EMPLOYEE = :employee
+              CONTRACTOR = :contractor
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
+
+          # The detailed employment status of the individual. Available options: `active`,
+          # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
+          #
+          # @see FinchAPI::Models::HRIS::EmploymentData::UnionMember0#employment_status
+          module EmploymentStatus
+            extend FinchAPI::Internal::Type::Enum
+
+            ACTIVE = :active
+            DECEASED = :deceased
+            LEAVE = :leave
+            ONBOARDING = :onboarding
+            PREHIRE = :prehire
+            RETIRED = :retired
+            TERMINATED = :terminated
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # @see FinchAPI::Models::HRIS::EmploymentData::UnionMember0#manager
+          class Manager < FinchAPI::Internal::Type::BaseModel
+            # @!attribute id
+            #   A stable Finch `id` (UUID v4) for an individual in the company.
+            #
+            #   @return [String]
+            required :id, String
+
+            # @!method initialize(id:)
+            #   The manager object representing the manager of the individual within the org.
+            #
+            #   @param id [String] A stable Finch `id` (UUID v4) for an individual in the company.
+          end
 
           class CustomField < FinchAPI::Internal::Type::BaseModel
             # @!attribute name
@@ -203,15 +314,13 @@ module FinchAPI
             #   @param name [String, nil]
             #   @param value [String, Array<Object>, Object, Float, Boolean, nil]
 
-            # @see FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField#value
+            # @see FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField#value
             module Value
               extend FinchAPI::Internal::Type::Union
 
               variant String
 
-              variant -> {
-                FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField::Value::UnionMember1Array
-              }
+              variant -> { FinchAPI::Models::HRIS::EmploymentData::UnionMember0::CustomField::Value::UnionMember1Array }
 
               variant FinchAPI::Internal::Type::Unknown
 
@@ -222,123 +331,9 @@ module FinchAPI
               # @!method self.variants
               #   @return [Array(String, Array<Object>, Object, Float, Boolean)]
 
-              define_sorbet_constant!(:Variants) do
-                T.type_alias { T.nilable(T.any(String, T::Array[T.anything], T.anything, Float, T::Boolean)) }
-              end
-
               # @type [FinchAPI::Internal::Type::Converter]
               UnionMember1Array = FinchAPI::Internal::Type::ArrayOf[FinchAPI::Internal::Type::Unknown]
             end
-          end
-
-          # @see FinchAPI::HRIS::EmploymentData::UnionMember0#department
-          class Department < FinchAPI::Internal::Type::BaseModel
-            # @!attribute name
-            #   The name of the department associated with the individual.
-            #
-            #   @return [String, nil]
-            required :name, String, nil?: true
-
-            # @!method initialize(name:)
-            #   The department object.
-            #
-            #   @param name [String, nil] The name of the department associated with the individual.
-          end
-
-          # @see FinchAPI::HRIS::EmploymentData::UnionMember0#employment
-          class Employment < FinchAPI::Internal::Type::BaseModel
-            # @!attribute subtype
-            #   The secondary employment type of the individual. Options: `full_time`,
-            #   `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
-            #
-            #   @return [Symbol, FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype, nil]
-            required :subtype,
-                     enum: -> { FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype },
-                     nil?: true
-
-            # @!attribute type
-            #   The main employment type of the individual.
-            #
-            #   @return [Symbol, FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Type, nil]
-            required :type,
-                     enum: -> {
-                       FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Type
-                     },
-                     nil?: true
-
-            # @!method initialize(subtype:, type:)
-            #   Some parameter documentations has been truncated, see
-            #   {FinchAPI::HRIS::EmploymentData::UnionMember0::Employment} for more details.
-            #
-            #   The employment object.
-            #
-            #   @param subtype [Symbol, FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype, nil] The secondary employment type of the individual. Options: `full_time`, `part_tim
-            #
-            #   @param type [Symbol, FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Type, nil] The main employment type of the individual.
-
-            # The secondary employment type of the individual. Options: `full_time`,
-            # `part_time`, `intern`, `temp`, `seasonal` and `individual_contractor`.
-            #
-            # @see FinchAPI::HRIS::EmploymentData::UnionMember0::Employment#subtype
-            module Subtype
-              extend FinchAPI::Internal::Type::Enum
-
-              FULL_TIME = :full_time
-              INTERN = :intern
-              PART_TIME = :part_time
-              TEMP = :temp
-              SEASONAL = :seasonal
-              INDIVIDUAL_CONTRACTOR = :individual_contractor
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-
-            # The main employment type of the individual.
-            #
-            # @see FinchAPI::HRIS::EmploymentData::UnionMember0::Employment#type
-            module Type
-              extend FinchAPI::Internal::Type::Enum
-
-              EMPLOYEE = :employee
-              CONTRACTOR = :contractor
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-          end
-
-          # The detailed employment status of the individual. Available options: `active`,
-          # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
-          #
-          # @see FinchAPI::HRIS::EmploymentData::UnionMember0#employment_status
-          module EmploymentStatus
-            extend FinchAPI::Internal::Type::Enum
-
-            ACTIVE = :active
-            DECEASED = :deceased
-            LEAVE = :leave
-            ONBOARDING = :onboarding
-            PREHIRE = :prehire
-            RETIRED = :retired
-            TERMINATED = :terminated
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
-
-          # @see FinchAPI::HRIS::EmploymentData::UnionMember0#manager
-          class Manager < FinchAPI::Internal::Type::BaseModel
-            # @!attribute id
-            #   A stable Finch `id` (UUID v4) for an individual in the company.
-            #
-            #   @return [String]
-            required :id, String
-
-            # @!method initialize(id:)
-            #   The manager object representing the manager of the individual within the org.
-            #
-            #   @param id [String] A stable Finch `id` (UUID v4) for an individual in the company.
           end
         end
 
@@ -371,13 +366,7 @@ module FinchAPI
         end
 
         # @!method self.variants
-        #   @return [Array(FinchAPI::HRIS::EmploymentData::UnionMember0, FinchAPI::HRIS::EmploymentData::BatchError)]
-
-        define_sorbet_constant!(:Variants) do
-          T.type_alias do
-            T.any(FinchAPI::HRIS::EmploymentData::UnionMember0, FinchAPI::HRIS::EmploymentData::BatchError)
-          end
-        end
+        #   @return [Array(FinchAPI::Models::HRIS::EmploymentData::UnionMember0, FinchAPI::Models::HRIS::EmploymentData::BatchError)]
       end
     end
   end

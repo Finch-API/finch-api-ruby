@@ -8,6 +8,7 @@ module FinchAPI
       # When we don't know what to expect for the value.
       class Unknown
         extend FinchAPI::Internal::Type::Converter
+        extend FinchAPI::Internal::Util::SorbetRuntimeSupport
 
         abstract!
 
@@ -21,6 +22,8 @@ module FinchAPI
 
         class << self
           # @api private
+          #
+          # No coercion needed for Unknown type.
           sig do
             override
               .params(
@@ -42,6 +45,11 @@ module FinchAPI
               .returns(T.anything)
           end
           def dump(value, state:)
+          end
+
+          # @api private
+          sig { returns(T.anything) }
+          def to_sorbet_type
           end
         end
       end

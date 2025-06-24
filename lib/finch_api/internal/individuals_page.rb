@@ -19,7 +19,7 @@ module FinchAPI
       # @return [Array<generic<Elem>>, nil]
       attr_accessor :individuals
 
-      # @return [FinchAPI::Paging]
+      # @return [FinchAPI::Models::Paging]
       attr_accessor :paging
 
       # @return [Boolean]

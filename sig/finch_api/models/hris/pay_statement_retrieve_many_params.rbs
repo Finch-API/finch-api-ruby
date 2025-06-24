@@ -18,6 +18,11 @@ module FinchAPI
           ?request_options: FinchAPI::request_opts
         ) -> void
 
+        def to_hash: -> {
+          requests: ::Array[FinchAPI::HRIS::PayStatementRetrieveManyParams::Request],
+          request_options: FinchAPI::RequestOptions
+        }
+
         type request = { payment_id: String, limit: Integer, offset: Integer }
 
         class Request < FinchAPI::Internal::Type::BaseModel
@@ -36,6 +41,12 @@ module FinchAPI
             ?limit: Integer,
             ?offset: Integer
           ) -> void
+
+          def to_hash: -> {
+            payment_id: String,
+            limit: Integer,
+            offset: Integer
+          }
         end
       end
     end

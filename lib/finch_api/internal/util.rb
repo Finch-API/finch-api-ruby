@@ -9,6 +9,23 @@ module FinchAPI
       # @return [Float]
       def self.monotonic_secs = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 
+      # @api private
+      #
+      # @param ns [Module, Class]
+      #
+      # @return [Enumerable<Module, Class>]
+      def self.walk_namespaces(ns)
+        ns.constants(false).lazy.flat_map do
+          case (c = ns.const_get(_1, false))
+          in Module | Class
+            walk_namespaces(c)
+          else
+            []
+          end
+        end
+          .chain([ns])
+      end
+
       class << self
         # @api private
         #
@@ -480,7 +497,7 @@ module FinchAPI
         # @param closing [Array<Proc>]
         # @param content_type [String, nil]
         private def write_multipart_content(y, val:, closing:, content_type: nil)
-          content_type ||= "application/octet-stream"
+          content_line = "Content-Type: %s\r\n\r\n"
 
           case val
           in FinchAPI::FilePart
@@ -491,24 +508,21 @@ module FinchAPI
               content_type: val.content_type
             )
           in Pathname
-            y << "Content-Type: #{content_type}\r\n\r\n"
+            y << format(content_line, content_type || "application/octet-stream")
             io = val.open(binmode: true)
             closing << io.method(:close)
             IO.copy_stream(io, y)
           in IO
-            y << "Content-Type: #{content_type}\r\n\r\n"
+            y << format(content_line, content_type || "application/octet-stream")
             IO.copy_stream(val, y)
           in StringIO
-            y << "Content-Type: #{content_type}\r\n\r\n"
+            y << format(content_line, content_type || "application/octet-stream")
             y << val.string
-          in String
-            y << "Content-Type: #{content_type}\r\n\r\n"
-            y << val.to_s
           in -> { primitive?(_1) }
-            y << "Content-Type: text/plain\r\n\r\n"
+            y << format(content_line, content_type || "text/plain")
             y << val.to_s
           else
-            y << "Content-Type: application/json\r\n\r\n"
+            y << format(content_line, content_type || "application/json")
             y << JSON.generate(val)
           end
           y << "\r\n"
@@ -545,6 +559,8 @@ module FinchAPI
         end
 
         # @api private
+        #
+        # https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.1.md#special-considerations-for-multipart-content
         #
         # @param body [Object]
         #
@@ -583,11 +599,13 @@ module FinchAPI
         #
         # @return [Object]
         def encode_content(headers, body)
+          # rubocop:disable Style/CaseEquality
+          # rubocop:disable Layout/LineLength
           content_type = headers["content-type"]
           case [content_type, body]
           in [FinchAPI::Internal::Util::JSON_CONTENT, Hash | Array | -> { primitive?(_1) }]
             [headers, JSON.generate(body)]
-          in [FinchAPI::Internal::Util::JSONL_CONTENT, Enumerable] unless body.is_a?(FinchAPI::Internal::Type::FileInput)
+          in [FinchAPI::Internal::Util::JSONL_CONTENT, Enumerable] unless FinchAPI::Internal::Type::FileInput === body
             [headers, body.lazy.map { JSON.generate(_1) }]
           in [%r{^multipart/form-data}, Hash | FinchAPI::Internal::Type::FileInput]
             boundary, strio = encode_multipart_streaming(body)
@@ -602,6 +620,8 @@ module FinchAPI
           else
             [headers, body]
           end
+          # rubocop:enable Layout/LineLength
+          # rubocop:enable Style/CaseEquality
         end
 
         # @api private
@@ -829,8 +849,40 @@ module FinchAPI
         # @api private
         #
         # @param name [Symbol]
+        #
+        # @return [Boolean]
+        def sorbet_constant_defined?(name) = sorbet_runtime_constants.key?(name)
+
+        # @api private
+        #
+        # @param name [Symbol]
         # @param blk [Proc]
         def define_sorbet_constant!(name, &blk) = sorbet_runtime_constants.store(name, blk)
+
+        # @api private
+        #
+        # @return [Object]
+        def to_sorbet_type = raise NotImplementedError
+
+        class << self
+          # @api private
+          #
+          # @param type [FinchAPI::Internal::Util::SorbetRuntimeSupport, Object]
+          #
+          # @return [Object]
+          def to_sorbet_type(type)
+            case type
+            in FinchAPI::Internal::Util::SorbetRuntimeSupport
+              type.to_sorbet_type
+            in Class | Module
+              type
+            in true | false
+              T::Boolean
+            else
+              type.class
+            end
+          end
+        end
       end
 
       extend FinchAPI::Internal::Util::SorbetRuntimeSupport

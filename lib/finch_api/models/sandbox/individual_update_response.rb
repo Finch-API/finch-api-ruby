@@ -78,7 +78,7 @@ module FinchAPI
 
         # @!attribute residence
         #
-        #   @return [FinchAPI::Location, nil]
+        #   @return [FinchAPI::Models::Location, nil]
         optional :residence, -> { FinchAPI::Location }, nil?: true
 
         # @!attribute ssn
@@ -116,7 +116,7 @@ module FinchAPI
         #
         #   @param preferred_name [String, nil] The preferred name of the individual.
         #
-        #   @param residence [FinchAPI::Location, nil]
+        #   @param residence [FinchAPI::Models::Location, nil]
         #
         #   @param ssn [String, nil] Social Security Number of the individual. This field is only available with the
 

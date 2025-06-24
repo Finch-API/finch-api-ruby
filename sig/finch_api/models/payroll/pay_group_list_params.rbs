@@ -22,6 +22,12 @@ module FinchAPI
           ?pay_frequencies: ::Array[String],
           ?request_options: FinchAPI::request_opts
         ) -> void
+
+        def to_hash: -> {
+          individual_id: String,
+          pay_frequencies: ::Array[String],
+          request_options: FinchAPI::RequestOptions
+        }
       end
     end
   end

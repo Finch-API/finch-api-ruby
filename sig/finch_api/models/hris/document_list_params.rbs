@@ -6,7 +6,7 @@ module FinchAPI
           individual_ids: ::Array[String],
           limit: Integer,
           offset: Integer,
-          types: ::Array[FinchAPI::HRIS::DocumentListParams::type_]
+          types: ::Array[FinchAPI::Models::HRIS::DocumentListParams::type_]
         }
         & FinchAPI::Internal::Type::request_parameters
 
@@ -26,19 +26,27 @@ module FinchAPI
 
         def offset=: (Integer) -> Integer
 
-        attr_reader types: ::Array[FinchAPI::HRIS::DocumentListParams::type_]?
+        attr_reader types: ::Array[FinchAPI::Models::HRIS::DocumentListParams::type_]?
 
         def types=: (
-          ::Array[FinchAPI::HRIS::DocumentListParams::type_]
-        ) -> ::Array[FinchAPI::HRIS::DocumentListParams::type_]
+          ::Array[FinchAPI::Models::HRIS::DocumentListParams::type_]
+        ) -> ::Array[FinchAPI::Models::HRIS::DocumentListParams::type_]
 
         def initialize: (
           ?individual_ids: ::Array[String],
           ?limit: Integer,
           ?offset: Integer,
-          ?types: ::Array[FinchAPI::HRIS::DocumentListParams::type_],
+          ?types: ::Array[FinchAPI::Models::HRIS::DocumentListParams::type_],
           ?request_options: FinchAPI::request_opts
         ) -> void
+
+        def to_hash: -> {
+          individual_ids: ::Array[String],
+          limit: Integer,
+          offset: Integer,
+          types: ::Array[FinchAPI::Models::HRIS::DocumentListParams::type_],
+          request_options: FinchAPI::RequestOptions
+        }
 
         type type_ = :w4_2020 | :w4_2005
 
@@ -48,7 +56,7 @@ module FinchAPI
           W4_2020: :w4_2020
           W4_2005: :w4_2005
 
-          def self?.values: -> ::Array[FinchAPI::HRIS::DocumentListParams::type_]
+          def self?.values: -> ::Array[FinchAPI::Models::HRIS::DocumentListParams::type_]
         end
       end
     end

@@ -1,0 +1,78 @@
+module FinchAPI
+  module Models
+    module HRIS
+      type pay_statement_data_sync_in_progress =
+        {
+          code: FinchAPI::Models::HRIS::PayStatementDataSyncInProgress::code,
+          finch_code: FinchAPI::Models::HRIS::PayStatementDataSyncInProgress::finch_code,
+          message: FinchAPI::Models::HRIS::PayStatementDataSyncInProgress::message,
+          name: FinchAPI::Models::HRIS::PayStatementDataSyncInProgress::name_
+        }
+
+      class PayStatementDataSyncInProgress < FinchAPI::Internal::Type::BaseModel
+        attr_accessor code: FinchAPI::Models::HRIS::PayStatementDataSyncInProgress::code
+
+        attr_accessor finch_code: FinchAPI::Models::HRIS::PayStatementDataSyncInProgress::finch_code
+
+        attr_accessor message: FinchAPI::Models::HRIS::PayStatementDataSyncInProgress::message
+
+        attr_accessor name: FinchAPI::Models::HRIS::PayStatementDataSyncInProgress::name_
+
+        def initialize: (
+          code: FinchAPI::Models::HRIS::PayStatementDataSyncInProgress::code,
+          finch_code: FinchAPI::Models::HRIS::PayStatementDataSyncInProgress::finch_code,
+          message: FinchAPI::Models::HRIS::PayStatementDataSyncInProgress::message,
+          name: FinchAPI::Models::HRIS::PayStatementDataSyncInProgress::name_
+        ) -> void
+
+        def to_hash: -> {
+          code: FinchAPI::Models::HRIS::PayStatementDataSyncInProgress::code,
+          finch_code: FinchAPI::Models::HRIS::PayStatementDataSyncInProgress::finch_code,
+          message: FinchAPI::Models::HRIS::PayStatementDataSyncInProgress::message,
+          name: FinchAPI::Models::HRIS::PayStatementDataSyncInProgress::name_
+        }
+
+        type code = Float
+
+        module Code
+          extend FinchAPI::Internal::Type::Enum
+
+          CODE_202: 202
+
+          def self?.values: -> ::Array[FinchAPI::Models::HRIS::PayStatementDataSyncInProgress::code]
+        end
+
+        type finch_code = :data_sync_in_progress
+
+        module FinchCode
+          extend FinchAPI::Internal::Type::Enum
+
+          DATA_SYNC_IN_PROGRESS: :data_sync_in_progress
+
+          def self?.values: -> ::Array[FinchAPI::Models::HRIS::PayStatementDataSyncInProgress::finch_code]
+        end
+
+        type message =
+          :"The pay statements for this payment are being fetched. Please check back later."
+
+        module Message
+          extend FinchAPI::Internal::Type::Enum
+
+          THE_PAY_STATEMENTS_FOR_THIS_PAYMENT_ARE_BEING_FETCHED_PLEASE_CHECK_BACK_LATER: :"The pay statements for this payment are being fetched. Please check back later."
+
+          def self?.values: -> ::Array[FinchAPI::Models::HRIS::PayStatementDataSyncInProgress::message]
+        end
+
+        type name_ = :accepted
+
+        module Name
+          extend FinchAPI::Internal::Type::Enum
+
+          ACCEPTED: :accepted
+
+          def self?.values: -> ::Array[FinchAPI::Models::HRIS::PayStatementDataSyncInProgress::name_]
+        end
+      end
+    end
+  end
+end

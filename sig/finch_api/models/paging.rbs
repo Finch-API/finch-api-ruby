@@ -10,6 +10,8 @@ module FinchAPI
       def count=: (Integer) -> Integer
 
       def initialize: (offset: Integer, ?count: Integer) -> void
+
+      def to_hash: -> { offset: Integer, count: Integer }
     end
   end
 end

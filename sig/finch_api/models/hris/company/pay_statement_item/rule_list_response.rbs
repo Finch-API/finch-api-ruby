@@ -67,6 +67,18 @@ module FinchAPI
               ?updated_at: Time
             ) -> void
 
+            def to_hash: -> {
+              id: String,
+              attributes: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleListResponse::Attributes,
+              conditions: ::Array[FinchAPI::Models::HRIS::Company::PayStatementItem::RuleListResponse::Condition],
+              created_at: Time,
+              effective_end_date: String?,
+              effective_start_date: String?,
+              entity_type: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleListResponse::entity_type,
+              priority: Integer,
+              updated_at: Time
+            }
+
             type attributes = { metadata: ::Hash[Symbol, top] }
 
             class Attributes < FinchAPI::Internal::Type::BaseModel
@@ -75,6 +87,8 @@ module FinchAPI
               def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
               def initialize: (?metadata: ::Hash[Symbol, top]) -> void
+
+              def to_hash: -> { metadata: ::Hash[Symbol, top] }
             end
 
             type condition =
@@ -104,6 +118,12 @@ module FinchAPI
                 ?operator: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleListResponse::Condition::operator,
                 ?value: String
               ) -> void
+
+              def to_hash: -> {
+                field: String,
+                operator: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleListResponse::Condition::operator,
+                value: String
+              }
 
               type operator = :equals
 

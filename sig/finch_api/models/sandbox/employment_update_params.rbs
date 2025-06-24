@@ -86,6 +86,28 @@ module FinchAPI
           ?request_options: FinchAPI::request_opts
         ) -> void
 
+        def to_hash: -> {
+          class_code: String?,
+          custom_fields: ::Array[FinchAPI::Sandbox::EmploymentUpdateParams::CustomField]?,
+          department: FinchAPI::Sandbox::EmploymentUpdateParams::Department?,
+          employment: FinchAPI::Sandbox::EmploymentUpdateParams::Employment?,
+          employment_status: FinchAPI::Models::Sandbox::EmploymentUpdateParams::employment_status?,
+          end_date: String?,
+          first_name: String?,
+          income: FinchAPI::Income?,
+          income_history: ::Array[FinchAPI::Income?]?,
+          is_active: bool?,
+          last_name: String?,
+          latest_rehire_date: String?,
+          location: FinchAPI::Location?,
+          manager: FinchAPI::Sandbox::EmploymentUpdateParams::Manager?,
+          middle_name: String?,
+          source_id: String?,
+          start_date: String?,
+          title: String?,
+          request_options: FinchAPI::RequestOptions
+        }
+
         type custom_field = { name: String?, value: top }
 
         class CustomField < FinchAPI::Internal::Type::BaseModel
@@ -96,6 +118,8 @@ module FinchAPI
           def value=: (top) -> top
 
           def initialize: (?name: String?, ?value: top) -> void
+
+          def to_hash: -> { name: String?, value: top }
         end
 
         type department = { name: String? }
@@ -104,23 +128,30 @@ module FinchAPI
           attr_accessor name: String?
 
           def initialize: (?name: String?) -> void
+
+          def to_hash: -> { name: String? }
         end
 
         type employment =
           {
-            subtype: FinchAPI::Sandbox::EmploymentUpdateParams::Employment::subtype?,
-            type: FinchAPI::Sandbox::EmploymentUpdateParams::Employment::type_?
+            subtype: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::subtype?,
+            type: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::type_?
           }
 
         class Employment < FinchAPI::Internal::Type::BaseModel
-          attr_accessor subtype: FinchAPI::Sandbox::EmploymentUpdateParams::Employment::subtype?
+          attr_accessor subtype: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::subtype?
 
-          attr_accessor type: FinchAPI::Sandbox::EmploymentUpdateParams::Employment::type_?
+          attr_accessor type: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::type_?
 
           def initialize: (
-            ?subtype: FinchAPI::Sandbox::EmploymentUpdateParams::Employment::subtype?,
-            ?type: FinchAPI::Sandbox::EmploymentUpdateParams::Employment::type_?
+            ?subtype: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::subtype?,
+            ?type: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::type_?
           ) -> void
+
+          def to_hash: -> {
+            subtype: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::subtype?,
+            type: FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::type_?
+          }
 
           type subtype =
             :full_time
@@ -140,7 +171,7 @@ module FinchAPI
             SEASONAL: :seasonal
             INDIVIDUAL_CONTRACTOR: :individual_contractor
 
-            def self?.values: -> ::Array[FinchAPI::Sandbox::EmploymentUpdateParams::Employment::subtype]
+            def self?.values: -> ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::subtype]
           end
 
           type type_ = :employee | :contractor
@@ -151,7 +182,7 @@ module FinchAPI
             EMPLOYEE: :employee
             CONTRACTOR: :contractor
 
-            def self?.values: -> ::Array[FinchAPI::Sandbox::EmploymentUpdateParams::Employment::type_]
+            def self?.values: -> ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment::type_]
           end
         end
 
@@ -186,6 +217,8 @@ module FinchAPI
           def id=: (String) -> String
 
           def initialize: (?id: String) -> void
+
+          def to_hash: -> { id: String }
         end
       end
     end

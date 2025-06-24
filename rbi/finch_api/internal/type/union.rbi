@@ -78,6 +78,11 @@ module FinchAPI
         end
 
         # @api private
+        #
+        # Tries to efficiently coerce the given value to one of the known variants.
+        #
+        # If the value cannot match any of the known variants, the coercion is considered
+        # non-viable and returns the original value.
         sig do
           override
             .params(
@@ -99,6 +104,11 @@ module FinchAPI
             .returns(T.anything)
         end
         def dump(value, state:)
+        end
+
+        # @api private
+        sig { returns(T.anything) }
+        def to_sorbet_type
         end
 
         # @api private

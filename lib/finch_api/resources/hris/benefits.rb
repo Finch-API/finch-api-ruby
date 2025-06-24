@@ -15,17 +15,17 @@ module FinchAPI
         #
         # @overload create(company_contribution: nil, description: nil, frequency: nil, type: nil, request_options: {})
         #
-        # @param company_contribution [FinchAPI::HRIS::BenefitCreateParams::CompanyContribution, nil] The company match for this benefit.
+        # @param company_contribution [FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution, nil] The company match for this benefit.
         #
         # @param description [String] Name of the benefit as it appears in the provider and pay statements. Recommend
         #
-        # @param frequency [Symbol, FinchAPI::HRIS::BenefitFrequency, nil] The frequency of the benefit deduction/contribution.
+        # @param frequency [Symbol, FinchAPI::Models::HRIS::BenefitFrequency, nil] The frequency of the benefit deduction/contribution.
         #
-        # @param type [Symbol, FinchAPI::HRIS::BenefitType, nil] Type of benefit.
+        # @param type [Symbol, FinchAPI::Models::HRIS::BenefitType, nil] Type of benefit.
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::HRIS::CreateCompanyBenefitsResponse]
+        # @return [FinchAPI::Models::HRIS::CreateCompanyBenefitsResponse]
         #
         # @see FinchAPI::Models::HRIS::BenefitCreateParams
         def create(params = {})
@@ -46,7 +46,7 @@ module FinchAPI
         # @param benefit_id [String]
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::HRIS::CompanyBenefit]
+        # @return [FinchAPI::Models::HRIS::CompanyBenefit]
         #
         # @see FinchAPI::Models::HRIS::BenefitRetrieveParams
         def retrieve(benefit_id, params = {})
@@ -68,7 +68,7 @@ module FinchAPI
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::HRIS::UpdateCompanyBenefitResponse]
+        # @return [FinchAPI::Models::HRIS::UpdateCompanyBenefitResponse]
         #
         # @see FinchAPI::Models::HRIS::BenefitUpdateParams
         def update(benefit_id, params = {})
@@ -88,7 +88,7 @@ module FinchAPI
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::Internal::SinglePage<FinchAPI::HRIS::CompanyBenefit>]
+        # @return [FinchAPI::Internal::SinglePage<FinchAPI::Models::HRIS::CompanyBenefit>]
         #
         # @see FinchAPI::Models::HRIS::BenefitListParams
         def list(params = {})
@@ -107,7 +107,7 @@ module FinchAPI
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [FinchAPI::Internal::SinglePage<FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse>]
+        # @return [FinchAPI::Internal::SinglePage<FinchAPI::Models::HRIS::SupportedBenefit>]
         #
         # @see FinchAPI::Models::HRIS::BenefitListSupportedBenefitsParams
         def list_supported_benefits(params = {})
@@ -115,7 +115,7 @@ module FinchAPI
             method: :get,
             path: "employer/benefits/meta",
             page: FinchAPI::Internal::SinglePage,
-            model: FinchAPI::Models::HRIS::BenefitListSupportedBenefitsResponse,
+            model: FinchAPI::HRIS::SupportedBenefit,
             options: params[:request_options]
           )
         end

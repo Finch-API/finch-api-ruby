@@ -37,12 +37,24 @@ module FinchAPI
           middle_name: String?
         ) -> void
 
+        def to_hash: -> {
+          id: String,
+          department: FinchAPI::HRIS::IndividualInDirectory::Department?,
+          first_name: String?,
+          is_active: bool?,
+          last_name: String?,
+          manager: FinchAPI::HRIS::IndividualInDirectory::Manager?,
+          middle_name: String?
+        }
+
         type department = { name: String? }
 
         class Department < FinchAPI::Internal::Type::BaseModel
           attr_accessor name: String?
 
           def initialize: (?name: String?) -> void
+
+          def to_hash: -> { name: String? }
         end
 
         type manager = { id: String }
@@ -51,6 +63,8 @@ module FinchAPI
           attr_accessor id: String
 
           def initialize: (id: String) -> void
+
+          def to_hash: -> { id: String }
         end
       end
     end
