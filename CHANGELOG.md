@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.22 (2025-06-30)
+
+Full Changelog: [v0.1.0-alpha.21...v0.1.0-alpha.22](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.21...v0.1.0-alpha.22)
+
+### Chores
+
+* **internal:** allow streams to also be unwrapped on a per-row basis ([4146224](https://github.com/Finch-API/finch-api-ruby/commit/41462243c425627d1bcd8473c3fd7bea38edb3cd))
+* **internal:** version bump ([89516f1](https://github.com/Finch-API/finch-api-ruby/commit/89516f1e431dc0a56f324fd3c72b1c2e4c240d05))
+
 ## 0.1.0-alpha.21 (2025-06-27)
 
 Full Changelog: [v0.1.0-alpha.20...v0.1.0-alpha.21](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.20...v0.1.0-alpha.21)
