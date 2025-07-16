@@ -14,9 +14,10 @@ class FinchAPI::Test::Resources::Jobs::AutomatedTest < FinchAPI::Test::ResourceT
     assert_pattern do
       response => {
         allowed_refreshes: Integer,
-        job_id: String,
-        job_url: String,
-        remaining_refreshes: Integer
+        remaining_refreshes: Integer,
+        job_id: String | nil,
+        job_url: String | nil,
+        retry_at: String | nil
       }
     end
   end
