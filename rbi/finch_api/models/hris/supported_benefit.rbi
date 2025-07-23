@@ -13,11 +13,6 @@ module FinchAPI
         sig { returns(T.nilable(T::Boolean)) }
         attr_accessor :annual_maximum
 
-        # Whether the provider supports catch up for this benefit. This field will only be
-        # true for retirement benefits.
-        sig { returns(T.nilable(T::Boolean)) }
-        attr_accessor :catch_up
-
         # Supported contribution types. An empty array indicates contributions are not
         # supported.
         sig do
@@ -54,22 +49,15 @@ module FinchAPI
         # The list of frequencies supported by the provider for this benefit
         sig do
           returns(
-            T.nilable(
-              T::Array[
-                T.nilable(FinchAPI::HRIS::BenefitFrequency::TaggedSymbol)
-              ]
-            )
+            T::Array[T.nilable(FinchAPI::HRIS::BenefitFrequency::TaggedSymbol)]
           )
         end
-        attr_reader :frequencies
+        attr_accessor :frequencies
 
-        sig do
-          params(
-            frequencies:
-              T::Array[T.nilable(FinchAPI::HRIS::BenefitFrequency::OrSymbol)]
-          ).void
-        end
-        attr_writer :frequencies
+        # Whether the provider supports catch up for this benefit. This field will only be
+        # true for retirement benefits.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_accessor :catch_up
 
         # Whether the provider supports HSA contribution limits. Empty if this feature is
         # not supported for the benefit. This array only has values for HSA benefits.
@@ -89,7 +77,6 @@ module FinchAPI
         sig do
           params(
             annual_maximum: T.nilable(T::Boolean),
-            catch_up: T.nilable(T::Boolean),
             company_contribution:
               T.nilable(
                 T::Array[
@@ -109,6 +96,7 @@ module FinchAPI
               ),
             frequencies:
               T::Array[T.nilable(FinchAPI::HRIS::BenefitFrequency::OrSymbol)],
+            catch_up: T.nilable(T::Boolean),
             hsa_contribution_limit:
               T.nilable(
                 T::Array[
@@ -121,19 +109,19 @@ module FinchAPI
         end
         def self.new(
           # Whether the provider supports an annual maximum for this benefit.
-          annual_maximum: nil,
+          annual_maximum:,
+          # Supported contribution types. An empty array indicates contributions are not
+          # supported.
+          company_contribution:,
+          description:,
+          # Supported deduction types. An empty array indicates deductions are not
+          # supported.
+          employee_deduction:,
+          # The list of frequencies supported by the provider for this benefit
+          frequencies:,
           # Whether the provider supports catch up for this benefit. This field will only be
           # true for retirement benefits.
           catch_up: nil,
-          # Supported contribution types. An empty array indicates contributions are not
-          # supported.
-          company_contribution: nil,
-          description: nil,
-          # Supported deduction types. An empty array indicates deductions are not
-          # supported.
-          employee_deduction: nil,
-          # The list of frequencies supported by the provider for this benefit
-          frequencies: nil,
           # Whether the provider supports HSA contribution limits. Empty if this feature is
           # not supported for the benefit. This array only has values for HSA benefits.
           hsa_contribution_limit: nil
@@ -144,7 +132,6 @@ module FinchAPI
           override.returns(
             {
               annual_maximum: T.nilable(T::Boolean),
-              catch_up: T.nilable(T::Boolean),
               company_contribution:
                 T.nilable(
                   T::Array[
@@ -166,6 +153,7 @@ module FinchAPI
                 T::Array[
                   T.nilable(FinchAPI::HRIS::BenefitFrequency::TaggedSymbol)
                 ],
+              catch_up: T.nilable(T::Boolean),
               hsa_contribution_limit:
                 T.nilable(
                   T::Array[
@@ -257,14 +245,14 @@ module FinchAPI
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          INDIVIDUAL =
-            T.let(
-              :individual,
-              FinchAPI::HRIS::SupportedBenefit::HsaContributionLimit::TaggedSymbol
-            )
           FAMILY =
             T.let(
               :family,
+              FinchAPI::HRIS::SupportedBenefit::HsaContributionLimit::TaggedSymbol
+            )
+          INDIVIDUAL =
+            T.let(
+              :individual,
               FinchAPI::HRIS::SupportedBenefit::HsaContributionLimit::TaggedSymbol
             )
 

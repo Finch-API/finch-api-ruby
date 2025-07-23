@@ -13,6 +13,19 @@ module FinchAPI
         sig { returns(String) }
         attr_accessor :benefit_id
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :description
+
+        # The frequency of the benefit deduction/contribution.
+        sig do
+          returns(T.nilable(FinchAPI::HRIS::BenefitFrequency::TaggedSymbol))
+        end
+        attr_accessor :frequency
+
+        # Type of benefit.
+        sig { returns(T.nilable(FinchAPI::HRIS::BenefitType::TaggedSymbol)) }
+        attr_accessor :type
+
         # The company match for this benefit.
         sig do
           returns(
@@ -31,41 +44,28 @@ module FinchAPI
         end
         attr_writer :company_contribution
 
-        sig { returns(T.nilable(String)) }
-        attr_accessor :description
-
-        # The frequency of the benefit deduction/contribution.
-        sig do
-          returns(T.nilable(FinchAPI::HRIS::BenefitFrequency::TaggedSymbol))
-        end
-        attr_accessor :frequency
-
-        # Type of benefit.
-        sig { returns(T.nilable(FinchAPI::HRIS::BenefitType::TaggedSymbol)) }
-        attr_accessor :type
-
         sig do
           params(
             benefit_id: String,
+            description: T.nilable(String),
+            frequency: T.nilable(FinchAPI::HRIS::BenefitFrequency::OrSymbol),
+            type: T.nilable(FinchAPI::HRIS::BenefitType::OrSymbol),
             company_contribution:
               T.nilable(
                 FinchAPI::HRIS::CompanyBenefit::CompanyContribution::OrHash
-              ),
-            description: T.nilable(String),
-            frequency: T.nilable(FinchAPI::HRIS::BenefitFrequency::OrSymbol),
-            type: T.nilable(FinchAPI::HRIS::BenefitType::OrSymbol)
+              )
           ).returns(T.attached_class)
         end
         def self.new(
           # The id of the benefit.
           benefit_id:,
-          # The company match for this benefit.
-          company_contribution:,
           description:,
           # The frequency of the benefit deduction/contribution.
           frequency:,
           # Type of benefit.
-          type:
+          type:,
+          # The company match for this benefit.
+          company_contribution: nil
         )
         end
 
@@ -73,12 +73,12 @@ module FinchAPI
           override.returns(
             {
               benefit_id: String,
-              company_contribution:
-                T.nilable(FinchAPI::HRIS::CompanyBenefit::CompanyContribution),
               description: T.nilable(String),
               frequency:
                 T.nilable(FinchAPI::HRIS::BenefitFrequency::TaggedSymbol),
-              type: T.nilable(FinchAPI::HRIS::BenefitType::TaggedSymbol)
+              type: T.nilable(FinchAPI::HRIS::BenefitType::TaggedSymbol),
+              company_contribution:
+                T.nilable(FinchAPI::HRIS::CompanyBenefit::CompanyContribution)
             }
           )
         end
@@ -96,41 +96,19 @@ module FinchAPI
 
           sig do
             returns(
-              T.nilable(
-                T::Array[
-                  FinchAPI::HRIS::CompanyBenefit::CompanyContribution::Tier
-                ]
-              )
+              T::Array[
+                FinchAPI::HRIS::CompanyBenefit::CompanyContribution::Tier
+              ]
             )
           end
-          attr_reader :tiers
-
-          sig do
-            params(
-              tiers:
-                T::Array[
-                  FinchAPI::HRIS::CompanyBenefit::CompanyContribution::Tier::OrHash
-                ]
-            ).void
-          end
-          attr_writer :tiers
+          attr_accessor :tiers
 
           sig do
             returns(
-              T.nilable(
-                FinchAPI::HRIS::CompanyBenefit::CompanyContribution::Type::TaggedSymbol
-              )
+              FinchAPI::HRIS::CompanyBenefit::CompanyContribution::Type::TaggedSymbol
             )
           end
-          attr_reader :type
-
-          sig do
-            params(
-              type:
-                FinchAPI::HRIS::CompanyBenefit::CompanyContribution::Type::OrSymbol
-            ).void
-          end
-          attr_writer :type
+          attr_accessor :type
 
           # The company match for this benefit.
           sig do
@@ -143,7 +121,7 @@ module FinchAPI
                 FinchAPI::HRIS::CompanyBenefit::CompanyContribution::Type::OrSymbol
             ).returns(T.attached_class)
           end
-          def self.new(tiers: nil, type: nil)
+          def self.new(tiers:, type:)
           end
 
           sig do
@@ -170,24 +148,18 @@ module FinchAPI
                 )
               end
 
-            sig { returns(T.nilable(Integer)) }
-            attr_reader :match
+            sig { returns(Integer) }
+            attr_accessor :match
 
-            sig { params(match: Integer).void }
-            attr_writer :match
-
-            sig { returns(T.nilable(Integer)) }
-            attr_reader :threshold
-
-            sig { params(threshold: Integer).void }
-            attr_writer :threshold
+            sig { returns(Integer) }
+            attr_accessor :threshold
 
             sig do
               params(match: Integer, threshold: Integer).returns(
                 T.attached_class
               )
             end
-            def self.new(match: nil, threshold: nil)
+            def self.new(match:, threshold:)
             end
 
             sig { override.returns({ match: Integer, threshold: Integer }) }

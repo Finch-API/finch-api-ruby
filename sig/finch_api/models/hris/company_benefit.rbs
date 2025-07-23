@@ -4,16 +4,14 @@ module FinchAPI
       type company_benefit =
         {
           benefit_id: String,
-          company_contribution: FinchAPI::HRIS::CompanyBenefit::CompanyContribution?,
           description: String?,
           frequency: FinchAPI::Models::HRIS::benefit_frequency?,
-          type: FinchAPI::Models::HRIS::benefit_type?
+          type: FinchAPI::Models::HRIS::benefit_type?,
+          company_contribution: FinchAPI::HRIS::CompanyBenefit::CompanyContribution?
         }
 
       class CompanyBenefit < FinchAPI::Internal::Type::BaseModel
         attr_accessor benefit_id: String
-
-        attr_accessor company_contribution: FinchAPI::HRIS::CompanyBenefit::CompanyContribution?
 
         attr_accessor description: String?
 
@@ -21,20 +19,22 @@ module FinchAPI
 
         attr_accessor type: FinchAPI::Models::HRIS::benefit_type?
 
+        attr_accessor company_contribution: FinchAPI::HRIS::CompanyBenefit::CompanyContribution?
+
         def initialize: (
           benefit_id: String,
-          company_contribution: FinchAPI::HRIS::CompanyBenefit::CompanyContribution?,
           description: String?,
           frequency: FinchAPI::Models::HRIS::benefit_frequency?,
-          type: FinchAPI::Models::HRIS::benefit_type?
+          type: FinchAPI::Models::HRIS::benefit_type?,
+          ?company_contribution: FinchAPI::HRIS::CompanyBenefit::CompanyContribution?
         ) -> void
 
         def to_hash: -> {
           benefit_id: String,
-          company_contribution: FinchAPI::HRIS::CompanyBenefit::CompanyContribution?,
           description: String?,
           frequency: FinchAPI::Models::HRIS::benefit_frequency?,
-          type: FinchAPI::Models::HRIS::benefit_type?
+          type: FinchAPI::Models::HRIS::benefit_type?,
+          company_contribution: FinchAPI::HRIS::CompanyBenefit::CompanyContribution?
         }
 
         type company_contribution =
@@ -44,21 +44,13 @@ module FinchAPI
           }
 
         class CompanyContribution < FinchAPI::Internal::Type::BaseModel
-          attr_reader tiers: ::Array[FinchAPI::HRIS::CompanyBenefit::CompanyContribution::Tier]?
+          attr_accessor tiers: ::Array[FinchAPI::HRIS::CompanyBenefit::CompanyContribution::Tier]
 
-          def tiers=: (
-            ::Array[FinchAPI::HRIS::CompanyBenefit::CompanyContribution::Tier]
-          ) -> ::Array[FinchAPI::HRIS::CompanyBenefit::CompanyContribution::Tier]
-
-          attr_reader type: FinchAPI::Models::HRIS::CompanyBenefit::CompanyContribution::type_?
-
-          def type=: (
-            FinchAPI::Models::HRIS::CompanyBenefit::CompanyContribution::type_
-          ) -> FinchAPI::Models::HRIS::CompanyBenefit::CompanyContribution::type_
+          attr_accessor type: FinchAPI::Models::HRIS::CompanyBenefit::CompanyContribution::type_
 
           def initialize: (
-            ?tiers: ::Array[FinchAPI::HRIS::CompanyBenefit::CompanyContribution::Tier],
-            ?type: FinchAPI::Models::HRIS::CompanyBenefit::CompanyContribution::type_
+            tiers: ::Array[FinchAPI::HRIS::CompanyBenefit::CompanyContribution::Tier],
+            type: FinchAPI::Models::HRIS::CompanyBenefit::CompanyContribution::type_
           ) -> void
 
           def to_hash: -> {
@@ -69,15 +61,11 @@ module FinchAPI
           type tier = { match: Integer, threshold: Integer }
 
           class Tier < FinchAPI::Internal::Type::BaseModel
-            attr_reader match: Integer?
+            attr_accessor match: Integer
 
-            def match=: (Integer) -> Integer
+            attr_accessor threshold: Integer
 
-            attr_reader threshold: Integer?
-
-            def threshold=: (Integer) -> Integer
-
-            def initialize: (?match: Integer, ?threshold: Integer) -> void
+            def initialize: (match: Integer, threshold: Integer) -> void
 
             def to_hash: -> { match: Integer, threshold: Integer }
           end

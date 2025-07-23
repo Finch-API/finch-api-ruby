@@ -1,14 +1,14 @@
 module FinchAPI
   module Models
     module HRIS
-      type benefit_frequency = :one_time | :every_paycheck | :monthly
+      type benefit_frequency = :every_paycheck | :monthly | :one_time
 
       module BenefitFrequency
         extend FinchAPI::Internal::Type::Enum
 
-        ONE_TIME: :one_time
         EVERY_PAYCHECK: :every_paycheck
         MONTHLY: :monthly
+        ONE_TIME: :one_time
 
         def self?.values: -> ::Array[FinchAPI::Models::HRIS::benefit_frequency]
       end
