@@ -11,12 +11,6 @@ module FinchAPI
         #   @return [String]
         required :benefit_id, String
 
-        # @!attribute company_contribution
-        #   The company match for this benefit.
-        #
-        #   @return [FinchAPI::Models::HRIS::CompanyBenefit::CompanyContribution, nil]
-        required :company_contribution, -> { FinchAPI::HRIS::CompanyBenefit::CompanyContribution }, nil?: true
-
         # @!attribute description
         #
         #   @return [String, nil]
@@ -34,33 +28,39 @@ module FinchAPI
         #   @return [Symbol, FinchAPI::Models::HRIS::BenefitType, nil]
         required :type, enum: -> { FinchAPI::HRIS::BenefitType }, nil?: true
 
-        # @!method initialize(benefit_id:, company_contribution:, description:, frequency:, type:)
-        #   @param benefit_id [String] The id of the benefit.
+        # @!attribute company_contribution
+        #   The company match for this benefit.
         #
-        #   @param company_contribution [FinchAPI::Models::HRIS::CompanyBenefit::CompanyContribution, nil] The company match for this benefit.
+        #   @return [FinchAPI::Models::HRIS::CompanyBenefit::CompanyContribution, nil]
+        optional :company_contribution, -> { FinchAPI::HRIS::CompanyBenefit::CompanyContribution }, nil?: true
+
+        # @!method initialize(benefit_id:, description:, frequency:, type:, company_contribution: nil)
+        #   @param benefit_id [String] The id of the benefit.
         #
         #   @param description [String, nil]
         #
         #   @param frequency [Symbol, FinchAPI::Models::HRIS::BenefitFrequency, nil] The frequency of the benefit deduction/contribution.
         #
         #   @param type [Symbol, FinchAPI::Models::HRIS::BenefitType, nil] Type of benefit.
+        #
+        #   @param company_contribution [FinchAPI::Models::HRIS::CompanyBenefit::CompanyContribution, nil] The company match for this benefit.
 
         # @see FinchAPI::Models::HRIS::CompanyBenefit#company_contribution
         class CompanyContribution < FinchAPI::Internal::Type::BaseModel
           # @!attribute tiers
           #
-          #   @return [Array<FinchAPI::Models::HRIS::CompanyBenefit::CompanyContribution::Tier>, nil]
-          optional :tiers,
+          #   @return [Array<FinchAPI::Models::HRIS::CompanyBenefit::CompanyContribution::Tier>]
+          required :tiers,
                    -> {
                      FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::CompanyBenefit::CompanyContribution::Tier]
                    }
 
           # @!attribute type
           #
-          #   @return [Symbol, FinchAPI::Models::HRIS::CompanyBenefit::CompanyContribution::Type, nil]
-          optional :type, enum: -> { FinchAPI::HRIS::CompanyBenefit::CompanyContribution::Type }
+          #   @return [Symbol, FinchAPI::Models::HRIS::CompanyBenefit::CompanyContribution::Type]
+          required :type, enum: -> { FinchAPI::HRIS::CompanyBenefit::CompanyContribution::Type }
 
-          # @!method initialize(tiers: nil, type: nil)
+          # @!method initialize(tiers:, type:)
           #   The company match for this benefit.
           #
           #   @param tiers [Array<FinchAPI::Models::HRIS::CompanyBenefit::CompanyContribution::Tier>]
@@ -69,15 +69,15 @@ module FinchAPI
           class Tier < FinchAPI::Internal::Type::BaseModel
             # @!attribute match
             #
-            #   @return [Integer, nil]
-            optional :match, Integer
+            #   @return [Integer]
+            required :match, Integer
 
             # @!attribute threshold
             #
-            #   @return [Integer, nil]
-            optional :threshold, Integer
+            #   @return [Integer]
+            required :threshold, Integer
 
-            # @!method initialize(match: nil, threshold: nil)
+            # @!method initialize(match:, threshold:)
             #   @param match [Integer]
             #   @param threshold [Integer]
           end

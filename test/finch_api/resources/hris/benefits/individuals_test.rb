@@ -48,9 +48,9 @@ class FinchAPI::Test::Resources::HRIS::Benefits::IndividualsTest < FinchAPI::Tes
 
     assert_pattern do
       row => {
-        body: FinchAPI::HRIS::Benefits::IndividualBenefit::Body | nil,
-        code: Integer | nil,
-        individual_id: String | nil
+        body: FinchAPI::HRIS::Benefits::IndividualBenefit::Body,
+        code: Integer,
+        individual_id: String
       }
     end
   end

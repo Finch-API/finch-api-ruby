@@ -28,10 +28,10 @@ class FinchAPI::Test::Resources::HRIS::BenefitsTest < FinchAPI::Test::ResourceTe
     assert_pattern do
       response => {
         benefit_id: String,
-        company_contribution: FinchAPI::HRIS::CompanyBenefit::CompanyContribution | nil,
         description: String | nil,
         frequency: FinchAPI::HRIS::BenefitFrequency | nil,
-        type: FinchAPI::HRIS::BenefitType | nil
+        type: FinchAPI::HRIS::BenefitType | nil,
+        company_contribution: FinchAPI::HRIS::CompanyBenefit::CompanyContribution | nil
       }
     end
   end
@@ -68,10 +68,10 @@ class FinchAPI::Test::Resources::HRIS::BenefitsTest < FinchAPI::Test::ResourceTe
     assert_pattern do
       row => {
         benefit_id: String,
-        company_contribution: FinchAPI::HRIS::CompanyBenefit::CompanyContribution | nil,
         description: String | nil,
         frequency: FinchAPI::HRIS::BenefitFrequency | nil,
-        type: FinchAPI::HRIS::BenefitType | nil
+        type: FinchAPI::HRIS::BenefitType | nil,
+        company_contribution: FinchAPI::HRIS::CompanyBenefit::CompanyContribution | nil
       }
     end
   end
@@ -93,14 +93,13 @@ class FinchAPI::Test::Resources::HRIS::BenefitsTest < FinchAPI::Test::ResourceTe
     assert_pattern do
       row => {
         annual_maximum: FinchAPI::Internal::Type::Boolean | nil,
-        catch_up: FinchAPI::Internal::Type::Boolean | nil,
         company_contribution: ^(FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::HRIS::SupportedBenefit::CompanyContribution,
                                                                   nil?: true]) | nil,
         description: String | nil,
         employee_deduction: ^(FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::HRIS::SupportedBenefit::EmployeeDeduction,
                                                                 nil?: true]) | nil,
-        frequencies: ^(FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::HRIS::BenefitFrequency,
-                                                         nil?: true]) | nil,
+        frequencies: ^(FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::HRIS::BenefitFrequency, nil?: true]),
+        catch_up: FinchAPI::Internal::Type::Boolean | nil,
         hsa_contribution_limit: ^(FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::HRIS::SupportedBenefit::HsaContributionLimit,
                                                                     nil?: true]) | nil
       }

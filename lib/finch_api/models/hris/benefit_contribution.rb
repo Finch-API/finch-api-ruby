@@ -8,15 +8,15 @@ module FinchAPI
         #   Contribution amount in cents (if `fixed`) or basis points (if `percent`).
         #
         #   @return [Integer, nil]
-        optional :amount, Integer, nil?: true
+        required :amount, Integer, nil?: true
 
         # @!attribute type
         #   Contribution type.
         #
         #   @return [Symbol, FinchAPI::Models::HRIS::BenefitContribution::Type, nil]
-        optional :type, enum: -> { FinchAPI::HRIS::BenefitContribution::Type }, nil?: true
+        required :type, enum: -> { FinchAPI::HRIS::BenefitContribution::Type }, nil?: true
 
-        # @!method initialize(amount: nil, type: nil)
+        # @!method initialize(amount:, type:)
         #   @param amount [Integer, nil] Contribution amount in cents (if `fixed`) or basis points (if `percent`).
         #
         #   @param type [Symbol, FinchAPI::Models::HRIS::BenefitContribution::Type, nil] Contribution type.

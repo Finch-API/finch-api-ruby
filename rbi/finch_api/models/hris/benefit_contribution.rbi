@@ -32,9 +32,9 @@ module FinchAPI
         end
         def self.new(
           # Contribution amount in cents (if `fixed`) or basis points (if `percent`).
-          amount: nil,
+          amount:,
           # Contribution type.
-          type: nil
+          type:
         )
         end
 

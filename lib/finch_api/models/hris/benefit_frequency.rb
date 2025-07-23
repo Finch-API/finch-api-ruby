@@ -7,9 +7,9 @@ module FinchAPI
       module BenefitFrequency
         extend FinchAPI::Internal::Type::Enum
 
-        ONE_TIME = :one_time
         EVERY_PAYCHECK = :every_paycheck
         MONTHLY = :monthly
+        ONE_TIME = :one_time
 
         # @!method self.values
         #   @return [Array<Symbol>]
