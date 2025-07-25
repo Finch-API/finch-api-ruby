@@ -17,7 +17,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "finch-api", "~> 0.1.0.pre.alpha.23"
+gem "finch-api", "~> 0.1.0.pre.alpha.24"
 ```
 
 <!-- x-release-please-end -->
@@ -222,11 +222,11 @@ finch.hris.directory.list(**params)
 Since this library does not depend on `sorbet-runtime`, it cannot provide [`T::Enum`](https://sorbet.org/docs/tenum) instances. Instead, we provide "tagged symbols" instead, which is always a primitive at runtime:
 
 ```ruby
-# :one_time
-puts(FinchAPI::HRIS::BenefitFrequency::ONE_TIME)
+# :every_paycheck
+puts(FinchAPI::HRIS::BenefitFrequency::EVERY_PAYCHECK)
 
 # Revealed type: `T.all(FinchAPI::HRIS::BenefitFrequency, Symbol)`
-T.reveal_type(FinchAPI::HRIS::BenefitFrequency::ONE_TIME)
+T.reveal_type(FinchAPI::HRIS::BenefitFrequency::EVERY_PAYCHECK)
 ```
 
 Enum parameters have a "relaxed" type, so you can either pass in enum constants or their literal value:
@@ -234,13 +234,13 @@ Enum parameters have a "relaxed" type, so you can either pass in enum constants 
 ```ruby
 # Using the enum constants preserves the tagged type information:
 finch.hris.benefits.create(
-  frequency: FinchAPI::HRIS::BenefitFrequency::ONE_TIME,
+  frequency: FinchAPI::HRIS::BenefitFrequency::EVERY_PAYCHECK,
   # …
 )
 
 # Literal values are also permissible:
 finch.hris.benefits.create(
-  frequency: :one_time,
+  frequency: :every_paycheck,
   # …
 )
 ```

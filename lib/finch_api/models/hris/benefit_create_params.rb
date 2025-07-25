@@ -53,18 +53,18 @@ module FinchAPI
         class CompanyContribution < FinchAPI::Internal::Type::BaseModel
           # @!attribute tiers
           #
-          #   @return [Array<FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution::Tier>, nil]
-          optional :tiers,
+          #   @return [Array<FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution::Tier>]
+          required :tiers,
                    -> {
                      FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::Tier]
                    }
 
           # @!attribute type
           #
-          #   @return [Symbol, FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution::Type, nil]
-          optional :type, enum: -> { FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::Type }
+          #   @return [Symbol, FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution::Type]
+          required :type, enum: -> { FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::Type }
 
-          # @!method initialize(tiers: nil, type: nil)
+          # @!method initialize(tiers:, type:)
           #   The company match for this benefit.
           #
           #   @param tiers [Array<FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution::Tier>]
@@ -73,15 +73,15 @@ module FinchAPI
           class Tier < FinchAPI::Internal::Type::BaseModel
             # @!attribute match
             #
-            #   @return [Integer, nil]
-            optional :match, Integer
+            #   @return [Integer]
+            required :match, Integer
 
             # @!attribute threshold
             #
-            #   @return [Integer, nil]
-            optional :threshold, Integer
+            #   @return [Integer]
+            required :threshold, Integer
 
-            # @!method initialize(match: nil, threshold: nil)
+            # @!method initialize(match:, threshold:)
             #   @param match [Integer]
             #   @param threshold [Integer]
           end

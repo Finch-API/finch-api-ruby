@@ -6,84 +6,115 @@ module FinchAPI
       module Benefits
         type individual_benefit =
           {
-            body: FinchAPI::HRIS::Benefits::IndividualBenefit::Body,
+            body: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::body,
             code: Integer,
             individual_id: String
           }
 
         class IndividualBenefit < FinchAPI::Internal::Type::BaseModel
-          attr_reader body: FinchAPI::HRIS::Benefits::IndividualBenefit::Body?
+          attr_accessor body: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::body
 
-          def body=: (
-            FinchAPI::HRIS::Benefits::IndividualBenefit::Body
-          ) -> FinchAPI::HRIS::Benefits::IndividualBenefit::Body
+          attr_accessor code: Integer
 
-          attr_reader code: Integer?
-
-          def code=: (Integer) -> Integer
-
-          attr_reader individual_id: String?
-
-          def individual_id=: (String) -> String
+          attr_accessor individual_id: String
 
           def initialize: (
-            ?body: FinchAPI::HRIS::Benefits::IndividualBenefit::Body,
-            ?code: Integer,
-            ?individual_id: String
+            body: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::body,
+            code: Integer,
+            individual_id: String
           ) -> void
 
           def to_hash: -> {
-            body: FinchAPI::HRIS::Benefits::IndividualBenefit::Body,
+            body: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::body,
             code: Integer,
             individual_id: String
           }
 
           type body =
-            {
-              annual_maximum: Integer?,
-              catch_up: bool?,
-              company_contribution: FinchAPI::HRIS::BenefitContribution?,
-              employee_deduction: FinchAPI::HRIS::BenefitContribution?,
-              hsa_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::hsa_contribution_limit?
-            }
+            FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0
+            | FinchAPI::HRIS::Benefits::IndividualBenefit::Body::BatchError
 
-          class Body < FinchAPI::Internal::Type::BaseModel
-            attr_accessor annual_maximum: Integer?
+          module Body
+            extend FinchAPI::Internal::Type::Union
 
-            attr_accessor catch_up: bool?
+            type union_member0 =
+              {
+                annual_maximum: Integer?,
+                catch_up: bool?,
+                company_contribution: FinchAPI::HRIS::BenefitContribution?,
+                employee_deduction: FinchAPI::HRIS::BenefitContribution?,
+                hsa_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::hsa_contribution_limit?
+              }
 
-            attr_accessor company_contribution: FinchAPI::HRIS::BenefitContribution?
+            class UnionMember0 < FinchAPI::Internal::Type::BaseModel
+              attr_accessor annual_maximum: Integer?
 
-            attr_accessor employee_deduction: FinchAPI::HRIS::BenefitContribution?
+              attr_accessor catch_up: bool?
 
-            attr_accessor hsa_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::hsa_contribution_limit?
+              attr_accessor company_contribution: FinchAPI::HRIS::BenefitContribution?
 
-            def initialize: (
-              ?annual_maximum: Integer?,
-              ?catch_up: bool?,
-              ?company_contribution: FinchAPI::HRIS::BenefitContribution?,
-              ?employee_deduction: FinchAPI::HRIS::BenefitContribution?,
-              ?hsa_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::hsa_contribution_limit?
-            ) -> void
+              attr_accessor employee_deduction: FinchAPI::HRIS::BenefitContribution?
 
-            def to_hash: -> {
-              annual_maximum: Integer?,
-              catch_up: bool?,
-              company_contribution: FinchAPI::HRIS::BenefitContribution?,
-              employee_deduction: FinchAPI::HRIS::BenefitContribution?,
-              hsa_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::hsa_contribution_limit?
-            }
+              attr_accessor hsa_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::hsa_contribution_limit?
 
-            type hsa_contribution_limit = :individual | :family
+              def initialize: (
+                annual_maximum: Integer?,
+                catch_up: bool?,
+                company_contribution: FinchAPI::HRIS::BenefitContribution?,
+                employee_deduction: FinchAPI::HRIS::BenefitContribution?,
+                ?hsa_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::hsa_contribution_limit?
+              ) -> void
 
-            module HsaContributionLimit
-              extend FinchAPI::Internal::Type::Enum
+              def to_hash: -> {
+                annual_maximum: Integer?,
+                catch_up: bool?,
+                company_contribution: FinchAPI::HRIS::BenefitContribution?,
+                employee_deduction: FinchAPI::HRIS::BenefitContribution?,
+                hsa_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::hsa_contribution_limit?
+              }
 
-              INDIVIDUAL: :individual
-              FAMILY: :family
+              type hsa_contribution_limit = :individual | :family
 
-              def self?.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::hsa_contribution_limit]
+              module HsaContributionLimit
+                extend FinchAPI::Internal::Type::Enum
+
+                INDIVIDUAL: :individual
+                FAMILY: :family
+
+                def self?.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::hsa_contribution_limit]
+              end
             end
+
+            type batch_error =
+              { code: Float, message: String, name: String, finch_code: String }
+
+            class BatchError < FinchAPI::Internal::Type::BaseModel
+              attr_accessor code: Float
+
+              attr_accessor message: String
+
+              attr_accessor name: String
+
+              attr_reader finch_code: String?
+
+              def finch_code=: (String) -> String
+
+              def initialize: (
+                code: Float,
+                message: String,
+                name: String,
+                ?finch_code: String
+              ) -> void
+
+              def to_hash: -> {
+                code: Float,
+                message: String,
+                name: String,
+                finch_code: String
+              }
+            end
+
+            def self?.variants: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::body]
           end
         end
       end

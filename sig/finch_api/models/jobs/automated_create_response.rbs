@@ -4,32 +4,43 @@ module FinchAPI
       type automated_create_response =
         {
           allowed_refreshes: Integer,
+          remaining_refreshes: Integer,
           job_id: String,
           job_url: String,
-          remaining_refreshes: Integer
+          retry_at: String
         }
 
       class AutomatedCreateResponse < FinchAPI::Internal::Type::BaseModel
         attr_accessor allowed_refreshes: Integer
 
-        attr_accessor job_id: String
-
-        attr_accessor job_url: String
-
         attr_accessor remaining_refreshes: Integer
+
+        attr_reader job_id: String?
+
+        def job_id=: (String) -> String
+
+        attr_reader job_url: String?
+
+        def job_url=: (String) -> String
+
+        attr_reader retry_at: String?
+
+        def retry_at=: (String) -> String
 
         def initialize: (
           allowed_refreshes: Integer,
-          job_id: String,
-          job_url: String,
-          remaining_refreshes: Integer
+          remaining_refreshes: Integer,
+          ?job_id: String,
+          ?job_url: String,
+          ?retry_at: String
         ) -> void
 
         def to_hash: -> {
           allowed_refreshes: Integer,
+          remaining_refreshes: Integer,
           job_id: String,
           job_url: String,
-          remaining_refreshes: Integer
+          retry_at: String
         }
       end
     end

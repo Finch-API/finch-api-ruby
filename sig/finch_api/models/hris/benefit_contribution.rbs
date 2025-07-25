@@ -13,8 +13,8 @@ module FinchAPI
         attr_accessor type: FinchAPI::Models::HRIS::BenefitContribution::type_?
 
         def initialize: (
-          ?amount: Integer?,
-          ?type: FinchAPI::Models::HRIS::BenefitContribution::type_?
+          amount: Integer?,
+          type: FinchAPI::Models::HRIS::BenefitContribution::type_?
         ) -> void
 
         def to_hash: -> {

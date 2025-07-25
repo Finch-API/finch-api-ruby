@@ -105,41 +105,19 @@ module FinchAPI
 
           sig do
             returns(
-              T.nilable(
-                T::Array[
-                  FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::Tier
-                ]
-              )
+              T::Array[
+                FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::Tier
+              ]
             )
           end
-          attr_reader :tiers
-
-          sig do
-            params(
-              tiers:
-                T::Array[
-                  FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::Tier::OrHash
-                ]
-            ).void
-          end
-          attr_writer :tiers
+          attr_accessor :tiers
 
           sig do
             returns(
-              T.nilable(
-                FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::Type::OrSymbol
-              )
+              FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::Type::OrSymbol
             )
           end
-          attr_reader :type
-
-          sig do
-            params(
-              type:
-                FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::Type::OrSymbol
-            ).void
-          end
-          attr_writer :type
+          attr_accessor :type
 
           # The company match for this benefit.
           sig do
@@ -152,7 +130,7 @@ module FinchAPI
                 FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::Type::OrSymbol
             ).returns(T.attached_class)
           end
-          def self.new(tiers: nil, type: nil)
+          def self.new(tiers:, type:)
           end
 
           sig do
@@ -179,24 +157,18 @@ module FinchAPI
                 )
               end
 
-            sig { returns(T.nilable(Integer)) }
-            attr_reader :match
+            sig { returns(Integer) }
+            attr_accessor :match
 
-            sig { params(match: Integer).void }
-            attr_writer :match
-
-            sig { returns(T.nilable(Integer)) }
-            attr_reader :threshold
-
-            sig { params(threshold: Integer).void }
-            attr_writer :threshold
+            sig { returns(Integer) }
+            attr_accessor :threshold
 
             sig do
               params(match: Integer, threshold: Integer).returns(
                 T.attached_class
               )
             end
-            def self.new(match: nil, threshold: nil)
+            def self.new(match:, threshold:)
             end
 
             sig { override.returns({ match: Integer, threshold: Integer }) }
