@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.25 (2025-07-31)
+
+Full Changelog: [v0.1.0-alpha.24...v0.1.0-alpha.25](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.24...v0.1.0-alpha.25)
+
+### Bug Fixes
+
+* **internal:** ensure sorbet test always runs serially ([007501f](https://github.com/Finch-API/finch-api-ruby/commit/007501f8faade4e909775c5c2de7f99b3e344bb7))
+
+
+### Chores
+
+* **internal:** increase visibility of internal helper method ([66d0f39](https://github.com/Finch-API/finch-api-ruby/commit/66d0f3947c6724659efbd8d23890a5e5519be22c))
+* update contribute.md ([7d83851](https://github.com/Finch-API/finch-api-ruby/commit/7d8385183a2e4d9919780cd73a350431b27f4312))
+
 ## 0.1.0-alpha.24 (2025-07-23)
 
 Full Changelog: [v0.1.0-alpha.23...v0.1.0-alpha.24](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.23...v0.1.0-alpha.24)
