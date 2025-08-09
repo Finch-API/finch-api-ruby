@@ -16,7 +16,8 @@ module FinchAPI
             T::Array[
               [
                 T.nilable(Symbol),
-                T.proc.returns(FinchAPI::Internal::Type::Converter::Input)
+                T.proc.returns(FinchAPI::Internal::Type::Converter::Input),
+                FinchAPI::Internal::AnyHash
               ]
             ]
           )
@@ -25,7 +26,13 @@ module FinchAPI
         end
 
         # @api private
-        sig { returns(T::Array[[T.nilable(Symbol), T.anything]]) }
+        sig do
+          returns(
+            T::Array[
+              [T.nilable(Symbol), T.anything, FinchAPI::Internal::AnyHash]
+            ]
+          )
+        end
         protected def derefed_variants
         end
 
