@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.0-alpha.26 (2025-08-09)
+
+Full Changelog: [v0.1.0-alpha.25...v0.1.0-alpha.26](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.25...v0.1.0-alpha.26)
+
+### Chores
+
+* collect metadata from type DSL ([e919ec0](https://github.com/Finch-API/finch-api-ruby/commit/e919ec0b110aa3a5ba703bf9dd317b2ea4091a28))
+* **internal:** update comment in script ([5969020](https://github.com/Finch-API/finch-api-ruby/commit/59690202144cf2295b6edc7542f10cd6932b0da2))
+* update @stainless-api/prism-cli to v5.15.0 ([2953337](https://github.com/Finch-API/finch-api-ruby/commit/29533376815ef4be96be5fde8de45fcf3f48a232))
+
 ## 0.1.0-alpha.25 (2025-07-31)
 
 Full Changelog: [v0.1.0-alpha.24...v0.1.0-alpha.25](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.24...v0.1.0-alpha.25)
