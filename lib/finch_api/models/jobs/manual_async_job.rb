@@ -8,8 +8,10 @@ module FinchAPI
         # @!attribute body
         #   Specific information about the job, such as individual statuses for batch jobs.
         #
-        #   @return [Array<Object>, nil]
-        required :body, FinchAPI::Internal::Type::ArrayOf[FinchAPI::Internal::Type::Unknown], nil?: true
+        #   @return [Array<Object, nil>, nil]
+        required :body,
+                 FinchAPI::Internal::Type::ArrayOf[FinchAPI::Internal::Type::Unknown, nil?: true],
+                 nil?: true
 
         # @!attribute job_id
         #
@@ -22,7 +24,7 @@ module FinchAPI
         required :status, enum: -> { FinchAPI::Jobs::ManualAsyncJob::Status }
 
         # @!method initialize(body:, job_id:, status:)
-        #   @param body [Array<Object>, nil] Specific information about the job, such as individual statuses for batch jobs.
+        #   @param body [Array<Object, nil>, nil] Specific information about the job, such as individual statuses for batch jobs.
         #
         #   @param job_id [String]
         #
