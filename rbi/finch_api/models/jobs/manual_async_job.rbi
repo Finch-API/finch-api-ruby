@@ -10,7 +10,7 @@ module FinchAPI
           end
 
         # Specific information about the job, such as individual statuses for batch jobs.
-        sig { returns(T.nilable(T::Array[T.anything])) }
+        sig { returns(T.nilable(T::Array[T.nilable(T.anything)])) }
         attr_accessor :body
 
         sig { returns(String) }
@@ -21,7 +21,7 @@ module FinchAPI
 
         sig do
           params(
-            body: T.nilable(T::Array[T.anything]),
+            body: T.nilable(T::Array[T.nilable(T.anything)]),
             job_id: String,
             status: FinchAPI::Jobs::ManualAsyncJob::Status::OrSymbol
           ).returns(T.attached_class)
@@ -37,7 +37,7 @@ module FinchAPI
         sig do
           override.returns(
             {
-              body: T.nilable(T::Array[T.anything]),
+              body: T.nilable(T::Array[T.nilable(T.anything)]),
               job_id: String,
               status: FinchAPI::Jobs::ManualAsyncJob::Status::TaggedSymbol
             }

@@ -3,26 +3,26 @@ module FinchAPI
     module Jobs
       type manual_async_job =
         {
-          body: ::Array[top]?,
+          body: ::Array[top?]?,
           job_id: String,
           status: FinchAPI::Models::Jobs::ManualAsyncJob::status
         }
 
       class ManualAsyncJob < FinchAPI::Internal::Type::BaseModel
-        attr_accessor body: ::Array[top]?
+        attr_accessor body: ::Array[top?]?
 
         attr_accessor job_id: String
 
         attr_accessor status: FinchAPI::Models::Jobs::ManualAsyncJob::status
 
         def initialize: (
-          body: ::Array[top]?,
+          body: ::Array[top?]?,
           job_id: String,
           status: FinchAPI::Models::Jobs::ManualAsyncJob::status
         ) -> void
 
         def to_hash: -> {
-          body: ::Array[top]?,
+          body: ::Array[top?]?,
           job_id: String,
           status: FinchAPI::Models::Jobs::ManualAsyncJob::status
         }
