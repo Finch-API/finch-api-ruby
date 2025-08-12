@@ -10,10 +10,12 @@ module FinchAPI
 
         def retrieve: (
           String job_id,
+          ?entity_id: String,
           ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::Jobs::AutomatedAsyncJob
 
         def list: (
+          ?entity_id: String,
           ?limit: Integer,
           ?offset: Integer,
           ?request_options: FinchAPI::request_opts

@@ -11,14 +11,14 @@ module FinchAPI
           )
         end
 
-      # A string representation of the HTTP response body of the forwarded request’s
-      # response received from the underlying integration’s API. This field may be null
-      # in the case where the upstream system’s response is empty.
+      # A string representation of the HTTP response body of the forwarded request's
+      # response received from the underlying integration's API. This field may be null
+      # in the case where the upstream system's response is empty.
       sig { returns(T.nilable(String)) }
       attr_accessor :data
 
-      # The HTTP headers of the forwarded request’s response, exactly as received from
-      # the underlying integration’s API.
+      # The HTTP headers of the forwarded request's response, exactly as received from
+      # the underlying integration's API.
       sig { returns(T.nilable(T.anything)) }
       attr_accessor :headers
 
@@ -37,8 +37,8 @@ module FinchAPI
       end
       attr_writer :request
 
-      # The HTTP status code of the forwarded request’s response, exactly received from
-      # the underlying integration’s API. This value will be returned as an integer.
+      # The HTTP status code of the forwarded request's response, exactly received from
+      # the underlying integration's API. This value will be returned as an integer.
       sig { returns(Integer) }
       attr_accessor :status_code
 
@@ -52,18 +52,18 @@ module FinchAPI
         ).returns(T.attached_class)
       end
       def self.new(
-        # A string representation of the HTTP response body of the forwarded request’s
-        # response received from the underlying integration’s API. This field may be null
-        # in the case where the upstream system’s response is empty.
+        # A string representation of the HTTP response body of the forwarded request's
+        # response received from the underlying integration's API. This field may be null
+        # in the case where the upstream system's response is empty.
         data:,
-        # The HTTP headers of the forwarded request’s response, exactly as received from
-        # the underlying integration’s API.
+        # The HTTP headers of the forwarded request's response, exactly as received from
+        # the underlying integration's API.
         headers:,
         # An object containing details of your original forwarded request, for your ease
         # of reference.
         request:,
-        # The HTTP status code of the forwarded request’s response, exactly received from
-        # the underlying integration’s API. This value will be returned as an integer.
+        # The HTTP status code of the forwarded request's response, exactly received from
+        # the underlying integration's API. This value will be returned as an integer.
         status_code:
       )
       end

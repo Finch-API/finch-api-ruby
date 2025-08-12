@@ -2,15 +2,25 @@ module FinchAPI
   module Models
     module Jobs
       type automated_retrieve_params =
-        {  } & FinchAPI::Internal::Type::request_parameters
+        { entity_id: String } & FinchAPI::Internal::Type::request_parameters
 
       class AutomatedRetrieveParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
-        def initialize: (?request_options: FinchAPI::request_opts) -> void
+        attr_reader entity_id: String?
 
-        def to_hash: -> { request_options: FinchAPI::RequestOptions }
+        def entity_id=: (String) -> String
+
+        def initialize: (
+          ?entity_id: String,
+          ?request_options: FinchAPI::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          entity_id: String,
+          request_options: FinchAPI::RequestOptions
+        }
       end
     end
   end
