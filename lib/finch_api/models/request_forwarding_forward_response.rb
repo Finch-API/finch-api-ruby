@@ -5,16 +5,16 @@ module FinchAPI
     # @see FinchAPI::Resources::RequestForwarding#forward
     class RequestForwardingForwardResponse < FinchAPI::Internal::Type::BaseModel
       # @!attribute data
-      #   A string representation of the HTTP response body of the forwarded request’s
-      #   response received from the underlying integration’s API. This field may be null
-      #   in the case where the upstream system’s response is empty.
+      #   A string representation of the HTTP response body of the forwarded request's
+      #   response received from the underlying integration's API. This field may be null
+      #   in the case where the upstream system's response is empty.
       #
       #   @return [String, nil]
       required :data, String, nil?: true
 
       # @!attribute headers
-      #   The HTTP headers of the forwarded request’s response, exactly as received from
-      #   the underlying integration’s API.
+      #   The HTTP headers of the forwarded request's response, exactly as received from
+      #   the underlying integration's API.
       #
       #   @return [Object, nil]
       required :headers, FinchAPI::Internal::Type::Unknown, nil?: true
@@ -27,8 +27,8 @@ module FinchAPI
       required :request, -> { FinchAPI::Models::RequestForwardingForwardResponse::Request }
 
       # @!attribute status_code
-      #   The HTTP status code of the forwarded request’s response, exactly received from
-      #   the underlying integration’s API. This value will be returned as an integer.
+      #   The HTTP status code of the forwarded request's response, exactly received from
+      #   the underlying integration's API. This value will be returned as an integer.
       #
       #   @return [Integer]
       required :status_code, Integer, api_name: :statusCode
@@ -37,13 +37,13 @@ module FinchAPI
       #   Some parameter documentations has been truncated, see
       #   {FinchAPI::Models::RequestForwardingForwardResponse} for more details.
       #
-      #   @param data [String, nil] A string representation of the HTTP response body of the forwarded request’s res
+      #   @param data [String, nil] A string representation of the HTTP response body of the forwarded request's res
       #
-      #   @param headers [Object, nil] The HTTP headers of the forwarded request’s response, exactly as received from t
+      #   @param headers [Object, nil] The HTTP headers of the forwarded request's response, exactly as received from t
       #
       #   @param request [FinchAPI::Models::RequestForwardingForwardResponse::Request] An object containing details of your original forwarded request, for your ease o
       #
-      #   @param status_code [Integer] The HTTP status code of the forwarded request’s response, exactly received from
+      #   @param status_code [Integer] The HTTP status code of the forwarded request's response, exactly received from
 
       # @see FinchAPI::Models::RequestForwardingForwardResponse#request
       class Request < FinchAPI::Internal::Type::BaseModel
