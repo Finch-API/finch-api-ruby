@@ -12,7 +12,7 @@ class FinchAPI::Test::Resources::Jobs::ManualTest < FinchAPI::Test::ResourceTest
 
     assert_pattern do
       response => {
-        body: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Internal::Type::Unknown]) | nil,
+        body: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Internal::Type::Unknown, nil?: true]) | nil,
         job_id: String,
         status: FinchAPI::Jobs::ManualAsyncJob::Status
       }

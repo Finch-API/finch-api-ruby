@@ -58,7 +58,9 @@ module FinchAPI
     #
     # @return [Hash{String=>String}]
     private def auth_headers
-      {**bearer_auth, **basic_auth}
+      return bearer_auth unless bearer_auth.empty?
+      return basic_auth unless basic_auth.empty?
+      {}
     end
 
     # @api private
