@@ -17,9 +17,7 @@ module FinchAPI
         #
         #   @return [Array<FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request>, nil]
         optional :requests,
-                 -> {
-                   FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::IndividualRetrieveManyParams::Request]
-                 }
+                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::IndividualRetrieveManyParams::Request] }
 
         # @!method initialize(options: nil, requests: nil, request_options: {})
         #   @param options [FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, nil]

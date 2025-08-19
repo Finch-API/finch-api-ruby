@@ -14,9 +14,7 @@ module FinchAPI
           #
           #   @return [Array<FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual>, nil]
           optional :individuals,
-                   -> {
-                     FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual]
-                   }
+                   -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual] }
 
           # @!method initialize(individuals: nil, request_options: {})
           #   @param individuals [Array<FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual>] Array of the individual_id to enroll and a configuration object.
@@ -49,9 +47,7 @@ module FinchAPI
               #
               #   @return [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit, nil]
               optional :annual_contribution_limit,
-                       enum: -> {
-                         FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit
-                       }
+                       enum: -> { FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::AnnualContributionLimit }
 
               # @!attribute annual_maximum
               #   Maximum annual amount in cents
@@ -69,9 +65,7 @@ module FinchAPI
               #
               #   @return [FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution, nil]
               optional :company_contribution,
-                       -> {
-                         FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution
-                       }
+                       -> { FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution }
 
               # @!attribute effective_date
               #   The date the enrollment will take effect
@@ -83,9 +77,7 @@ module FinchAPI
               #
               #   @return [FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction, nil]
               optional :employee_deduction,
-                       -> {
-                         FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction
-                       }
+                       -> { FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction }
 
               # @!method initialize(annual_contribution_limit: nil, annual_maximum: nil, catch_up: nil, company_contribution: nil, effective_date: nil, employee_deduction: nil)
               #   Some parameter documentations has been truncated, see
@@ -131,9 +123,7 @@ module FinchAPI
                 #
                 #   @return [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type, nil]
                 optional :type,
-                         enum: -> {
-                           FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type
-                         }
+                         enum: -> { FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type }
 
                 # @!method initialize(amount: nil, type: nil)
                 #   Some parameter documentations has been truncated, see
@@ -169,9 +159,7 @@ module FinchAPI
                 #
                 #   @return [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type, nil]
                 optional :type,
-                         enum: -> {
-                           FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type
-                         }
+                         enum: -> { FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::EmployeeDeduction::Type }
 
                 # @!method initialize(amount: nil, type: nil)
                 #   Some parameter documentations has been truncated, see

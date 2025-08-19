@@ -55,9 +55,7 @@ module FinchAPI
           #
           #   @return [Array<FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution::Tier>]
           required :tiers,
-                   -> {
-                     FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::Tier]
-                   }
+                   -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::Tier] }
 
           # @!attribute type
           #

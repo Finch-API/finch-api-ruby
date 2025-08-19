@@ -32,10 +32,7 @@ module FinchAPI
         #   types
         #
         #   @return [Array<Symbol, FinchAPI::Models::HRIS::DocumentListParams::Type>, nil]
-        optional :types,
-                 -> {
-                   FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::HRIS::DocumentListParams::Type]
-                 }
+        optional :types, -> { FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::HRIS::DocumentListParams::Type] }
 
         # @!method initialize(individual_ids: nil, limit: nil, offset: nil, types: nil, request_options: {})
         #   Some parameter documentations has been truncated, see

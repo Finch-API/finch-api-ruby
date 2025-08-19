@@ -18,9 +18,7 @@ module FinchAPI
         #
         #   @return [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement>, nil]
         optional :pay_statements,
-                 -> {
-                   FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::PaymentCreateParams::PayStatement]
-                 }
+                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::PaymentCreateParams::PayStatement] }
 
         # @!attribute start_date
         #
@@ -46,25 +44,19 @@ module FinchAPI
           #
           #   @return [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Earning>, nil]
           optional :earnings,
-                   -> {
-                     FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning]
-                   }
+                   -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Earning] }
 
           # @!attribute employee_deductions
           #
           #   @return [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction>, nil]
           optional :employee_deductions,
-                   -> {
-                     FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction]
-                   }
+                   -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction] }
 
           # @!attribute employer_contributions
           #
           #   @return [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution>, nil]
           optional :employer_contributions,
-                   -> {
-                     FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution]
-                   }
+                   -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution] }
 
           # @!attribute gross_pay
           #
@@ -87,9 +79,7 @@ module FinchAPI
           #
           #   @return [Array<FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::Tax>, nil]
           optional :taxes,
-                   -> {
-                     FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax]
-                   }
+                   -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::PaymentCreateParams::PayStatement::Tax] }
 
           # @!attribute total_hours
           #
@@ -182,10 +172,7 @@ module FinchAPI
             # @!attribute type
             #
             #   @return [Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Type, nil]
-            optional :type,
-                     enum: -> {
-                       FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Type
-                     }
+            optional :type, enum: -> { FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Type }
 
             # @!method initialize(amount: nil, name: nil, pre_tax: nil, type: nil)
             #   @param amount [Integer]
@@ -237,9 +224,7 @@ module FinchAPI
             #
             #   @return [Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Type, nil]
             optional :type,
-                     enum: -> {
-                       FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Type
-                     }
+                     enum: -> { FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Type }
 
             # @!method initialize(amount: nil, name: nil, type: nil)
             #   @param amount [Integer]

@@ -13,10 +13,7 @@ module FinchAPI
         #   `/employment` endpoints. All fields are optional.
         #
         #   @return [Array<FinchAPI::Models::Sandbox::DirectoryCreateParams::Body>, nil]
-        optional :body,
-                 -> {
-                   FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::DirectoryCreateParams::Body]
-                 }
+        optional :body, -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::DirectoryCreateParams::Body] }
 
         # @!method initialize(body: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
