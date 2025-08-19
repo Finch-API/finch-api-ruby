@@ -334,10 +334,7 @@ module FinchAPI
             # @!attribute metadata
             #
             #   @return [FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata]
-            required :metadata,
-                     -> {
-                       FinchAPI::HRIS::PayStatement::EmployerContribution::Attributes::Metadata
-                     }
+            required :metadata, -> { FinchAPI::HRIS::PayStatement::EmployerContribution::Attributes::Metadata }
 
             # @!method initialize(metadata:)
             #   @param metadata [FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata]

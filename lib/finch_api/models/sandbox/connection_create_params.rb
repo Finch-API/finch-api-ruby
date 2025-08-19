@@ -17,10 +17,7 @@ module FinchAPI
         # @!attribute authentication_type
         #
         #   @return [Symbol, FinchAPI::Models::Sandbox::ConnectionCreateParams::AuthenticationType, nil]
-        optional :authentication_type,
-                 enum: -> {
-                   FinchAPI::Sandbox::ConnectionCreateParams::AuthenticationType
-                 }
+        optional :authentication_type, enum: -> { FinchAPI::Sandbox::ConnectionCreateParams::AuthenticationType }
 
         # @!attribute employee_size
         #   Optional: the size of the employer to be created with this connection. Defaults
