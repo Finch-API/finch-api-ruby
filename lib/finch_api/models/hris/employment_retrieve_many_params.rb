@@ -13,9 +13,7 @@ module FinchAPI
         #
         #   @return [Array<FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request>]
         required :requests,
-                 -> {
-                   FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::EmploymentRetrieveManyParams::Request]
-                 }
+                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::EmploymentRetrieveManyParams::Request] }
 
         # @!method initialize(requests:, request_options: {})
         #   @param requests [Array<FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request>] The array of batch requests.

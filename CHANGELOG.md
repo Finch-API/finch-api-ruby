@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.27 (2025-08-19)
+
+Full Changelog: [v0.1.0-alpha.26...v0.1.0-alpha.27](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.26...v0.1.0-alpha.27)
+
+### Bug Fixes
+
+* bump sorbet version and fix new type errors from the breaking change ([166381e](https://github.com/Finch-API/finch-api-ruby/commit/166381ebd49719646b7c0242605bd7caace4b780))
+
 ## 0.1.0-alpha.26 (2025-08-14)
 
 Full Changelog: [v0.1.0-alpha.25...v0.1.0-alpha.26](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.25...v0.1.0-alpha.26)

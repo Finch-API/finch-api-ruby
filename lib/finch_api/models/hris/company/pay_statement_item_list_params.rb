@@ -15,9 +15,7 @@ module FinchAPI
           #
           #   @return [Array<Symbol, FinchAPI::Models::HRIS::Company::PayStatementItemListParams::Category>, nil]
           optional :categories,
-                   -> {
-                     FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::HRIS::Company::PayStatementItemListParams::Category]
-                   }
+                   -> { FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::HRIS::Company::PayStatementItemListParams::Category] }
 
           # @!attribute end_date
           #   The end date to retrieve pay statement items by via their last seen pay date in

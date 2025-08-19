@@ -155,10 +155,7 @@ module FinchAPI
           # @!attribute pay_statement
           #
           #   @return [FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement, nil]
-          optional :pay_statement,
-                   -> {
-                     FinchAPI::Provider::AuthenticationMethod::SupportedFields::PayStatement
-                   }
+          optional :pay_statement, -> { FinchAPI::Provider::AuthenticationMethod::SupportedFields::PayStatement }
 
           # @!attribute payment
           #
@@ -186,10 +183,7 @@ module FinchAPI
             # @!attribute accounts
             #
             #   @return [FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Accounts, nil]
-            optional :accounts,
-                     -> {
-                       FinchAPI::Provider::AuthenticationMethod::SupportedFields::Company::Accounts
-                     }
+            optional :accounts, -> { FinchAPI::Provider::AuthenticationMethod::SupportedFields::Company::Accounts }
 
             # @!attribute departments
             #
@@ -205,10 +199,7 @@ module FinchAPI
             # @!attribute entity
             #
             #   @return [FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Entity, nil]
-            optional :entity,
-                     -> {
-                       FinchAPI::Provider::AuthenticationMethod::SupportedFields::Company::Entity
-                     }
+            optional :entity, -> { FinchAPI::Provider::AuthenticationMethod::SupportedFields::Company::Entity }
 
             # @!attribute legal_name
             #
@@ -218,10 +209,7 @@ module FinchAPI
             # @!attribute locations
             #
             #   @return [FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Locations, nil]
-            optional :locations,
-                     -> {
-                       FinchAPI::Provider::AuthenticationMethod::SupportedFields::Company::Locations
-                     }
+            optional :locations, -> { FinchAPI::Provider::AuthenticationMethod::SupportedFields::Company::Locations }
 
             # @!attribute primary_email
             #
@@ -290,9 +278,7 @@ module FinchAPI
               #
               #   @return [FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Company::Departments::Parent, nil]
               optional :parent,
-                       -> {
-                         FinchAPI::Provider::AuthenticationMethod::SupportedFields::Company::Departments::Parent
-                       }
+                       -> { FinchAPI::Provider::AuthenticationMethod::SupportedFields::Company::Departments::Parent }
 
               # @!method initialize(name: nil, parent: nil)
               #   @param name [Boolean]
@@ -380,10 +366,7 @@ module FinchAPI
             # @!attribute paging
             #
             #   @return [FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Paging, nil]
-            optional :paging,
-                     -> {
-                       FinchAPI::Provider::AuthenticationMethod::SupportedFields::Directory::Paging
-                     }
+            optional :paging, -> { FinchAPI::Provider::AuthenticationMethod::SupportedFields::Directory::Paging }
 
             # @!method initialize(individuals: nil, paging: nil)
             #   @param individuals [FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals]
@@ -420,9 +403,7 @@ module FinchAPI
               #
               #   @return [FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager, nil]
               optional :manager,
-                       -> {
-                         FinchAPI::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager
-                       }
+                       -> { FinchAPI::Provider::AuthenticationMethod::SupportedFields::Directory::Individuals::Manager }
 
               # @!attribute middle_name
               #
@@ -515,10 +496,7 @@ module FinchAPI
             # @!attribute income
             #
             #   @return [FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Income, nil]
-            optional :income,
-                     -> {
-                       FinchAPI::Provider::AuthenticationMethod::SupportedFields::Employment::Income
-                     }
+            optional :income, -> { FinchAPI::Provider::AuthenticationMethod::SupportedFields::Employment::Income }
 
             # @!attribute income_history
             #
@@ -538,18 +516,12 @@ module FinchAPI
             # @!attribute location
             #
             #   @return [FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Location, nil]
-            optional :location,
-                     -> {
-                       FinchAPI::Provider::AuthenticationMethod::SupportedFields::Employment::Location
-                     }
+            optional :location, -> { FinchAPI::Provider::AuthenticationMethod::SupportedFields::Employment::Location }
 
             # @!attribute manager
             #
             #   @return [FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Employment::Manager, nil]
-            optional :manager,
-                     -> {
-                       FinchAPI::Provider::AuthenticationMethod::SupportedFields::Employment::Manager
-                     }
+            optional :manager, -> { FinchAPI::Provider::AuthenticationMethod::SupportedFields::Employment::Manager }
 
             # @!attribute middle_name
             #
@@ -704,10 +676,7 @@ module FinchAPI
             # @!attribute emails
             #
             #   @return [FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::Emails, nil]
-            optional :emails,
-                     -> {
-                       FinchAPI::Provider::AuthenticationMethod::SupportedFields::Individual::Emails
-                     }
+            optional :emails, -> { FinchAPI::Provider::AuthenticationMethod::SupportedFields::Individual::Emails }
 
             # @!attribute encrypted_ssn
             #
@@ -743,9 +712,7 @@ module FinchAPI
             #
             #   @return [FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers, nil]
             optional :phone_numbers,
-                     -> {
-                       FinchAPI::Provider::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers
-                     }
+                     -> { FinchAPI::Provider::AuthenticationMethod::SupportedFields::Individual::PhoneNumbers }
 
             # @!attribute preferred_name
             #
@@ -888,18 +855,13 @@ module FinchAPI
             # @!attribute paging
             #
             #   @return [FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::Paging, nil]
-            optional :paging,
-                     -> {
-                       FinchAPI::Provider::AuthenticationMethod::SupportedFields::PayStatement::Paging
-                     }
+            optional :paging, -> { FinchAPI::Provider::AuthenticationMethod::SupportedFields::PayStatement::Paging }
 
             # @!attribute pay_statements
             #
             #   @return [FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements, nil]
             optional :pay_statements,
-                     -> {
-                       FinchAPI::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements
-                     }
+                     -> { FinchAPI::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements }
 
             # @!method initialize(paging: nil, pay_statements: nil)
             #   @param paging [FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::Paging]
@@ -928,25 +890,19 @@ module FinchAPI
               #
               #   @return [FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings, nil]
               optional :earnings,
-                       -> {
-                         FinchAPI::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings
-                       }
+                       -> { FinchAPI::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Earnings }
 
               # @!attribute employee_deductions
               #
               #   @return [FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions, nil]
               optional :employee_deductions,
-                       -> {
-                         FinchAPI::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions
-                       }
+                       -> { FinchAPI::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployeeDeductions }
 
               # @!attribute employer_contributions
               #
               #   @return [FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions, nil]
               optional :employer_contributions,
-                       -> {
-                         FinchAPI::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions
-                       }
+                       -> { FinchAPI::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::EmployerContributions }
 
               # @!attribute gross_pay
               #
@@ -972,9 +928,7 @@ module FinchAPI
               #
               #   @return [FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes, nil]
               optional :taxes,
-                       -> {
-                         FinchAPI::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes
-                       }
+                       -> { FinchAPI::Provider::AuthenticationMethod::SupportedFields::PayStatement::PayStatements::Taxes }
 
               # @!attribute total_hours
               #
@@ -1182,10 +1136,7 @@ module FinchAPI
             # @!attribute pay_period
             #
             #   @return [FinchAPI::Models::Provider::AuthenticationMethod::SupportedFields::Payment::PayPeriod, nil]
-            optional :pay_period,
-                     -> {
-                       FinchAPI::Provider::AuthenticationMethod::SupportedFields::Payment::PayPeriod
-                     }
+            optional :pay_period, -> { FinchAPI::Provider::AuthenticationMethod::SupportedFields::Payment::PayPeriod }
 
             # @!method initialize(id: nil, company_debit: nil, debit_date: nil, employee_taxes: nil, employer_taxes: nil, gross_pay: nil, individual_ids: nil, net_pay: nil, pay_date: nil, pay_frequencies: nil, pay_group_ids: nil, pay_period: nil)
             #   @param id [Boolean]
