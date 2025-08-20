@@ -5,12 +5,16 @@ module FinchAPI
     class AccessTokens
       # Exchange the authorization code for an access token
       #
-      # @overload create(code:, client_id: nil, client_secret: nil, redirect_uri: nil, request_options: {})
+      # @overload create(client_id:, client_secret:, code:, redirect_uri: nil, request_options: {})
       #
-      # @param code [String]
-      # @param client_id [String]
-      # @param client_secret [String]
-      # @param redirect_uri [String]
+      # @param client_id [String] The client ID for your application
+      #
+      # @param client_secret [String] The client secret for your application
+      #
+      # @param code [String] The authorization code received from the authorization server
+      #
+      # @param redirect_uri [String] The redirect URI used in the authorization request (optional)
+      #
       # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [FinchAPI::Models::CreateAccessTokenResponse]
