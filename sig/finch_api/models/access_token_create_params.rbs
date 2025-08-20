@@ -2,9 +2,9 @@ module FinchAPI
   module Models
     type access_token_create_params =
       {
-        code: String,
         client_id: String,
         client_secret: String,
+        code: String,
         redirect_uri: String
       }
       & FinchAPI::Internal::Type::request_parameters
@@ -13,32 +13,28 @@ module FinchAPI
       extend FinchAPI::Internal::Type::RequestParameters::Converter
       include FinchAPI::Internal::Type::RequestParameters
 
+      attr_accessor client_id: String
+
+      attr_accessor client_secret: String
+
       attr_accessor code: String
-
-      attr_reader client_id: String?
-
-      def client_id=: (String) -> String
-
-      attr_reader client_secret: String?
-
-      def client_secret=: (String) -> String
 
       attr_reader redirect_uri: String?
 
       def redirect_uri=: (String) -> String
 
       def initialize: (
+        client_id: String,
+        client_secret: String,
         code: String,
-        ?client_id: String,
-        ?client_secret: String,
         ?redirect_uri: String,
         ?request_options: FinchAPI::request_opts
       ) -> void
 
       def to_hash: -> {
-        code: String,
         client_id: String,
         client_secret: String,
+        code: String,
         redirect_uri: String,
         request_options: FinchAPI::RequestOptions
       }
