@@ -16,6 +16,8 @@ module FinchAPI
         customer_email: String?,
         customer_id: String?,
         customer_name: String?,
+        entity_ids: ::Array[String],
+        entity_mode: FinchAPI::Models::Introspection::entity_mode,
         manual: bool,
         payroll_provider_id: String,
         username: String?
@@ -58,6 +60,16 @@ module FinchAPI
 
       attr_accessor customer_name: String?
 
+      attr_reader entity_ids: ::Array[String]?
+
+      def entity_ids=: (::Array[String]) -> ::Array[String]
+
+      attr_reader entity_mode: FinchAPI::Models::Introspection::entity_mode?
+
+      def entity_mode=: (
+        FinchAPI::Models::Introspection::entity_mode
+      ) -> FinchAPI::Models::Introspection::entity_mode
+
       attr_reader manual: bool?
 
       def manual=: (bool) -> bool
@@ -83,6 +95,8 @@ module FinchAPI
         ?customer_email: String?,
         ?customer_id: String?,
         ?customer_name: String?,
+        ?entity_ids: ::Array[String],
+        ?entity_mode: FinchAPI::Models::Introspection::entity_mode,
         ?manual: bool,
         ?payroll_provider_id: String,
         ?username: String?
@@ -103,6 +117,8 @@ module FinchAPI
         customer_email: String?,
         customer_id: String?,
         customer_name: String?,
+        entity_ids: ::Array[String],
+        entity_mode: FinchAPI::Models::Introspection::entity_mode,
         manual: bool,
         payroll_provider_id: String,
         username: String?
@@ -251,6 +267,17 @@ module FinchAPI
             def self?.variants: -> ::Array[FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus::last_successful_sync]
           end
         end
+      end
+
+      type entity_mode = :single | :multi
+
+      module EntityMode
+        extend FinchAPI::Internal::Type::Enum
+
+        SINGLE: :single
+        MULTI: :multi
+
+        def self?.values: -> ::Array[FinchAPI::Models::Introspection::entity_mode]
       end
     end
   end
