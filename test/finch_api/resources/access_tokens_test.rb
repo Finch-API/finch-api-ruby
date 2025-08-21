@@ -4,7 +4,12 @@ require_relative "../test_helper"
 
 class FinchAPI::Test::Resources::AccessTokensTest < FinchAPI::Test::ResourceTest
   def test_create_required_params
-    response = @finch.access_tokens.create(code: "<your_authorization_code>")
+    response =
+      @finch.access_tokens.create(
+        client_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        client_secret: "client_secret",
+        code: "code"
+      )
 
     assert_pattern do
       response => FinchAPI::CreateAccessTokenResponse
@@ -13,15 +18,15 @@ class FinchAPI::Test::Resources::AccessTokensTest < FinchAPI::Test::ResourceTest
     assert_pattern do
       response => {
         access_token: String,
-        account_id: String,
         client_type: FinchAPI::CreateAccessTokenResponse::ClientType,
-        company_id: String,
         connection_id: String,
         connection_type: FinchAPI::CreateAccessTokenResponse::ConnectionType,
         products: ^(FinchAPI::Internal::Type::ArrayOf[String]),
         provider_id: String,
-        customer_id: String | nil,
-        token_type: String | nil
+        token_type: String,
+        account_id: String | nil,
+        company_id: String | nil,
+        customer_id: String | nil
       }
     end
   end

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.28 (2025-08-20)
+
+Full Changelog: [v0.1.0-alpha.27...v0.1.0-alpha.28](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.27...v0.1.0-alpha.28)
+
+### Features
+
+* **api:** api update ([e615899](https://github.com/Finch-API/finch-api-ruby/commit/e615899d0e9c1243db7fa677f08411ef4c291bbd))
+
 ## 0.1.0-alpha.27 (2025-08-19)
 
 Full Changelog: [v0.1.0-alpha.26...v0.1.0-alpha.27](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.26...v0.1.0-alpha.27)

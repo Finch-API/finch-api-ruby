@@ -3,36 +3,30 @@ module FinchAPI
     type introspection =
       {
         id: String,
-        account_id: String,
-        authentication_methods: ::Array[FinchAPI::Introspection::AuthenticationMethod],
         client_id: String,
         client_type: FinchAPI::Models::Introspection::client_type,
-        company_id: String,
         connection_id: String,
         connection_status: FinchAPI::Introspection::ConnectionStatus,
         connection_type: FinchAPI::Models::Introspection::connection_type,
+        products: ::Array[String],
+        provider_id: String,
+        account_id: String,
+        authentication_methods: ::Array[FinchAPI::Introspection::AuthenticationMethod],
+        company_id: String,
         customer_email: String?,
         customer_id: String?,
         customer_name: String?,
         manual: bool,
         payroll_provider_id: String,
-        products: ::Array[String],
-        provider_id: String,
-        username: String
+        username: String?
       }
 
     class Introspection < FinchAPI::Internal::Type::BaseModel
       attr_accessor id: String
 
-      attr_accessor account_id: String
-
-      attr_accessor authentication_methods: ::Array[FinchAPI::Introspection::AuthenticationMethod]
-
       attr_accessor client_id: String
 
       attr_accessor client_type: FinchAPI::Models::Introspection::client_type
-
-      attr_accessor company_id: String
 
       attr_accessor connection_id: String
 
@@ -40,70 +34,150 @@ module FinchAPI
 
       attr_accessor connection_type: FinchAPI::Models::Introspection::connection_type
 
+      attr_accessor products: ::Array[String]
+
+      attr_accessor provider_id: String
+
+      attr_reader account_id: String?
+
+      def account_id=: (String) -> String
+
+      attr_reader authentication_methods: ::Array[FinchAPI::Introspection::AuthenticationMethod]?
+
+      def authentication_methods=: (
+        ::Array[FinchAPI::Introspection::AuthenticationMethod]
+      ) -> ::Array[FinchAPI::Introspection::AuthenticationMethod]
+
+      attr_reader company_id: String?
+
+      def company_id=: (String) -> String
+
       attr_accessor customer_email: String?
 
       attr_accessor customer_id: String?
 
       attr_accessor customer_name: String?
 
-      attr_accessor manual: bool
+      attr_reader manual: bool?
 
-      attr_accessor payroll_provider_id: String
+      def manual=: (bool) -> bool
 
-      attr_accessor products: ::Array[String]
+      attr_reader payroll_provider_id: String?
 
-      attr_accessor provider_id: String
+      def payroll_provider_id=: (String) -> String
 
-      attr_accessor username: String
+      attr_accessor username: String?
 
       def initialize: (
         id: String,
-        account_id: String,
-        authentication_methods: ::Array[FinchAPI::Introspection::AuthenticationMethod],
         client_id: String,
         client_type: FinchAPI::Models::Introspection::client_type,
-        company_id: String,
         connection_id: String,
         connection_status: FinchAPI::Introspection::ConnectionStatus,
         connection_type: FinchAPI::Models::Introspection::connection_type,
-        customer_email: String?,
-        customer_id: String?,
-        customer_name: String?,
-        manual: bool,
-        payroll_provider_id: String,
         products: ::Array[String],
         provider_id: String,
-        username: String
+        ?account_id: String,
+        ?authentication_methods: ::Array[FinchAPI::Introspection::AuthenticationMethod],
+        ?company_id: String,
+        ?customer_email: String?,
+        ?customer_id: String?,
+        ?customer_name: String?,
+        ?manual: bool,
+        ?payroll_provider_id: String,
+        ?username: String?
       ) -> void
 
       def to_hash: -> {
         id: String,
-        account_id: String,
-        authentication_methods: ::Array[FinchAPI::Introspection::AuthenticationMethod],
         client_id: String,
         client_type: FinchAPI::Models::Introspection::client_type,
-        company_id: String,
         connection_id: String,
         connection_status: FinchAPI::Introspection::ConnectionStatus,
         connection_type: FinchAPI::Models::Introspection::connection_type,
+        products: ::Array[String],
+        provider_id: String,
+        account_id: String,
+        authentication_methods: ::Array[FinchAPI::Introspection::AuthenticationMethod],
+        company_id: String,
         customer_email: String?,
         customer_id: String?,
         customer_name: String?,
         manual: bool,
         payroll_provider_id: String,
-        products: ::Array[String],
-        provider_id: String,
-        username: String
+        username: String?
       }
+
+      type client_type = :development | :production | :sandbox
+
+      module ClientType
+        extend FinchAPI::Internal::Type::Enum
+
+        DEVELOPMENT: :development
+        PRODUCTION: :production
+        SANDBOX: :sandbox
+
+        def self?.values: -> ::Array[FinchAPI::Models::Introspection::client_type]
+      end
+
+      type connection_status =
+        {
+          status: FinchAPI::Models::connection_status_type,
+          last_successful_sync: FinchAPI::Models::Introspection::ConnectionStatus::last_successful_sync?,
+          message: String
+        }
+
+      class ConnectionStatus < FinchAPI::Internal::Type::BaseModel
+        attr_accessor status: FinchAPI::Models::connection_status_type
+
+        attr_accessor last_successful_sync: FinchAPI::Models::Introspection::ConnectionStatus::last_successful_sync?
+
+        attr_reader message: String?
+
+        def message=: (String) -> String
+
+        def initialize: (
+          status: FinchAPI::Models::connection_status_type,
+          ?last_successful_sync: FinchAPI::Models::Introspection::ConnectionStatus::last_successful_sync?,
+          ?message: String
+        ) -> void
+
+        def to_hash: -> {
+          status: FinchAPI::Models::connection_status_type,
+          last_successful_sync: FinchAPI::Models::Introspection::ConnectionStatus::last_successful_sync?,
+          message: String
+        }
+
+        type last_successful_sync = Time | String
+
+        module LastSuccessfulSync
+          extend FinchAPI::Internal::Type::Union
+
+          def self?.variants: -> ::Array[FinchAPI::Models::Introspection::ConnectionStatus::last_successful_sync]
+        end
+      end
+
+      type connection_type = :finch | :provider
+
+      module ConnectionType
+        extend FinchAPI::Internal::Type::Enum
+
+        FINCH: :finch
+        PROVIDER: :provider
+
+        def self?.values: -> ::Array[FinchAPI::Models::Introspection::connection_type]
+      end
 
       type authentication_method =
         {
+          type: FinchAPI::Models::Introspection::AuthenticationMethod::type_,
           connection_status: FinchAPI::Introspection::AuthenticationMethod::ConnectionStatus,
-          products: ::Array[String],
-          type: FinchAPI::Models::Introspection::AuthenticationMethod::type_
+          products: ::Array[String]
         }
 
       class AuthenticationMethod < FinchAPI::Internal::Type::BaseModel
+        attr_accessor type: FinchAPI::Models::Introspection::AuthenticationMethod::type_
+
         attr_reader connection_status: FinchAPI::Introspection::AuthenticationMethod::ConnectionStatus?
 
         def connection_status=: (
@@ -114,48 +188,17 @@ module FinchAPI
 
         def products=: (::Array[String]) -> ::Array[String]
 
-        attr_reader type: FinchAPI::Models::Introspection::AuthenticationMethod::type_?
-
-        def type=: (
-          FinchAPI::Models::Introspection::AuthenticationMethod::type_
-        ) -> FinchAPI::Models::Introspection::AuthenticationMethod::type_
-
         def initialize: (
+          type: FinchAPI::Models::Introspection::AuthenticationMethod::type_,
           ?connection_status: FinchAPI::Introspection::AuthenticationMethod::ConnectionStatus,
-          ?products: ::Array[String],
-          ?type: FinchAPI::Models::Introspection::AuthenticationMethod::type_
+          ?products: ::Array[String]
         ) -> void
 
         def to_hash: -> {
+          type: FinchAPI::Models::Introspection::AuthenticationMethod::type_,
           connection_status: FinchAPI::Introspection::AuthenticationMethod::ConnectionStatus,
-          products: ::Array[String],
-          type: FinchAPI::Models::Introspection::AuthenticationMethod::type_
+          products: ::Array[String]
         }
-
-        type connection_status =
-          { message: String, status: FinchAPI::Models::connection_status_type }
-
-        class ConnectionStatus < FinchAPI::Internal::Type::BaseModel
-          attr_reader message: String?
-
-          def message=: (String) -> String
-
-          attr_reader status: FinchAPI::Models::connection_status_type?
-
-          def status=: (
-            FinchAPI::Models::connection_status_type
-          ) -> FinchAPI::Models::connection_status_type
-
-          def initialize: (
-            ?message: String,
-            ?status: FinchAPI::Models::connection_status_type
-          ) -> void
-
-          def to_hash: -> {
-            message: String,
-            status: FinchAPI::Models::connection_status_type
-          }
-        end
 
         type type_ =
           :assisted | :credential | :api_token | :api_credential | :oauth
@@ -171,64 +214,43 @@ module FinchAPI
 
           def self?.values: -> ::Array[FinchAPI::Models::Introspection::AuthenticationMethod::type_]
         end
-      end
 
-      type client_type = :production | :development | :sandbox
+        type connection_status =
+          {
+            status: FinchAPI::Models::connection_status_type,
+            last_successful_sync: FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus::last_successful_sync?,
+            message: String
+          }
 
-      module ClientType
-        extend FinchAPI::Internal::Type::Enum
+        class ConnectionStatus < FinchAPI::Internal::Type::BaseModel
+          attr_accessor status: FinchAPI::Models::connection_status_type
 
-        PRODUCTION: :production
-        DEVELOPMENT: :development
-        SANDBOX: :sandbox
+          attr_accessor last_successful_sync: FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus::last_successful_sync?
 
-        def self?.values: -> ::Array[FinchAPI::Models::Introspection::client_type]
-      end
+          attr_reader message: String?
 
-      type connection_status =
-        {
-          last_successful_sync: Time,
-          message: String,
-          status: FinchAPI::Models::connection_status_type
-        }
+          def message=: (String) -> String
 
-      class ConnectionStatus < FinchAPI::Internal::Type::BaseModel
-        attr_reader last_successful_sync: Time?
+          def initialize: (
+            status: FinchAPI::Models::connection_status_type,
+            ?last_successful_sync: FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus::last_successful_sync?,
+            ?message: String
+          ) -> void
 
-        def last_successful_sync=: (Time) -> Time
+          def to_hash: -> {
+            status: FinchAPI::Models::connection_status_type,
+            last_successful_sync: FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus::last_successful_sync?,
+            message: String
+          }
 
-        attr_reader message: String?
+          type last_successful_sync = Time | String
 
-        def message=: (String) -> String
+          module LastSuccessfulSync
+            extend FinchAPI::Internal::Type::Union
 
-        attr_reader status: FinchAPI::Models::connection_status_type?
-
-        def status=: (
-          FinchAPI::Models::connection_status_type
-        ) -> FinchAPI::Models::connection_status_type
-
-        def initialize: (
-          ?last_successful_sync: Time,
-          ?message: String,
-          ?status: FinchAPI::Models::connection_status_type
-        ) -> void
-
-        def to_hash: -> {
-          last_successful_sync: Time,
-          message: String,
-          status: FinchAPI::Models::connection_status_type
-        }
-      end
-
-      type connection_type = :provider | :finch
-
-      module ConnectionType
-        extend FinchAPI::Internal::Type::Enum
-
-        PROVIDER: :provider
-        FINCH: :finch
-
-        def self?.values: -> ::Array[FinchAPI::Models::Introspection::connection_type]
+            def self?.variants: -> ::Array[FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus::last_successful_sync]
+          end
+        end
       end
     end
   end

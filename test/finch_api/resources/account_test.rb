@@ -27,22 +27,22 @@ class FinchAPI::Test::Resources::AccountTest < FinchAPI::Test::ResourceTest
     assert_pattern do
       response => {
         id: String,
-        account_id: String,
-        authentication_methods: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Introspection::AuthenticationMethod]),
         client_id: String,
         client_type: FinchAPI::Introspection::ClientType,
-        company_id: String,
         connection_id: String,
         connection_status: FinchAPI::Introspection::ConnectionStatus,
         connection_type: FinchAPI::Introspection::ConnectionType,
+        products: ^(FinchAPI::Internal::Type::ArrayOf[String]),
+        provider_id: String,
+        account_id: String | nil,
+        authentication_methods: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Introspection::AuthenticationMethod]) | nil,
+        company_id: String | nil,
         customer_email: String | nil,
         customer_id: String | nil,
         customer_name: String | nil,
-        manual: FinchAPI::Internal::Type::Boolean,
-        payroll_provider_id: String,
-        products: ^(FinchAPI::Internal::Type::ArrayOf[String]),
-        provider_id: String,
-        username: String
+        manual: FinchAPI::Internal::Type::Boolean | nil,
+        payroll_provider_id: String | nil,
+        username: String | nil
       }
     end
   end

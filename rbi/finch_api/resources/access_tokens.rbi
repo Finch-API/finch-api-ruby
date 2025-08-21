@@ -6,17 +6,21 @@ module FinchAPI
       # Exchange the authorization code for an access token
       sig do
         params(
-          code: String,
           client_id: String,
           client_secret: String,
+          code: String,
           redirect_uri: String,
           request_options: FinchAPI::RequestOptions::OrHash
         ).returns(FinchAPI::CreateAccessTokenResponse)
       end
       def create(
+        # The client ID for your application
+        client_id:,
+        # The client secret for your application
+        client_secret:,
+        # The authorization code received from the authorization server
         code:,
-        client_id: nil,
-        client_secret: nil,
+        # The redirect URI used in the authorization request (optional)
         redirect_uri: nil,
         request_options: {}
       )
