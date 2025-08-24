@@ -95,6 +95,24 @@ module FinchAPI
       sig { returns(T.nilable(String)) }
       attr_accessor :customer_name
 
+      # Array of entity IDs associated with this connection.
+      sig { returns(T.nilable(T::Array[String])) }
+      attr_reader :entity_ids
+
+      sig { params(entity_ids: T::Array[String]).void }
+      attr_writer :entity_ids
+
+      # Indicates whether this connection manages a single entity or multiple entities.
+      sig do
+        returns(T.nilable(FinchAPI::Introspection::EntityMode::TaggedSymbol))
+      end
+      attr_reader :entity_mode
+
+      sig do
+        params(entity_mode: FinchAPI::Introspection::EntityMode::OrSymbol).void
+      end
+      attr_writer :entity_mode
+
       # Whether the connection associated with the `access_token` uses the Assisted
       # Connect Flow. (`true` if using Assisted Connect, `false` if connection is
       # automated)
@@ -133,6 +151,8 @@ module FinchAPI
           customer_email: T.nilable(String),
           customer_id: T.nilable(String),
           customer_name: T.nilable(String),
+          entity_ids: T::Array[String],
+          entity_mode: FinchAPI::Introspection::EntityMode::OrSymbol,
           manual: T::Boolean,
           payroll_provider_id: String,
           username: T.nilable(String)
@@ -173,6 +193,10 @@ module FinchAPI
         # The name of your customer you provided to Finch when a connect session was
         # created for this connection
         customer_name: nil,
+        # Array of entity IDs associated with this connection.
+        entity_ids: nil,
+        # Indicates whether this connection manages a single entity or multiple entities.
+        entity_mode: nil,
         # Whether the connection associated with the `access_token` uses the Assisted
         # Connect Flow. (`true` if using Assisted Connect, `false` if connection is
         # automated)
@@ -204,6 +228,8 @@ module FinchAPI
             customer_email: T.nilable(String),
             customer_id: T.nilable(String),
             customer_name: T.nilable(String),
+            entity_ids: T::Array[String],
+            entity_mode: FinchAPI::Introspection::EntityMode::TaggedSymbol,
             manual: T::Boolean,
             payroll_provider_id: String,
             username: T.nilable(String)
@@ -542,6 +568,27 @@ module FinchAPI
             def self.variants
             end
           end
+        end
+      end
+
+      # Indicates whether this connection manages a single entity or multiple entities.
+      module EntityMode
+        extend FinchAPI::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, FinchAPI::Introspection::EntityMode) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        SINGLE =
+          T.let(:single, FinchAPI::Introspection::EntityMode::TaggedSymbol)
+        MULTI = T.let(:multi, FinchAPI::Introspection::EntityMode::TaggedSymbol)
+
+        sig do
+          override.returns(
+            T::Array[FinchAPI::Introspection::EntityMode::TaggedSymbol]
+          )
+        end
+        def self.values
         end
       end
     end
