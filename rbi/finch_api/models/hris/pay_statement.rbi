@@ -382,76 +382,31 @@ module FinchAPI
                 )
               end
 
+            # The metadata to be attached to the entity by existing rules. It is a key-value
+            # pairs where the values can be of any type (string, number, boolean, object,
+            # array, etc.).
+            sig { returns(T::Hash[Symbol, T.nilable(T.anything)]) }
+            attr_accessor :metadata
+
             sig do
-              returns(
-                FinchAPI::HRIS::PayStatement::Earning::Attributes::Metadata
+              params(metadata: T::Hash[Symbol, T.nilable(T.anything)]).returns(
+                T.attached_class
               )
             end
-            attr_reader :metadata
-
-            sig do
-              params(
-                metadata:
-                  FinchAPI::HRIS::PayStatement::Earning::Attributes::Metadata::OrHash
-              ).void
-            end
-            attr_writer :metadata
-
-            sig do
-              params(
-                metadata:
-                  FinchAPI::HRIS::PayStatement::Earning::Attributes::Metadata::OrHash
-              ).returns(T.attached_class)
-            end
-            def self.new(metadata:)
+            def self.new(
+              # The metadata to be attached to the entity by existing rules. It is a key-value
+              # pairs where the values can be of any type (string, number, boolean, object,
+              # array, etc.).
+              metadata:
+            )
             end
 
             sig do
               override.returns(
-                {
-                  metadata:
-                    FinchAPI::HRIS::PayStatement::Earning::Attributes::Metadata
-                }
+                { metadata: T::Hash[Symbol, T.nilable(T.anything)] }
               )
             end
             def to_hash
-            end
-
-            class Metadata < FinchAPI::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(
-                    FinchAPI::HRIS::PayStatement::Earning::Attributes::Metadata,
-                    FinchAPI::Internal::AnyHash
-                  )
-                end
-
-              # The metadata to be attached to the entity by existing rules. It is a key-value
-              # pairs where the values can be of any type (string, number, boolean, object,
-              # array, etc.).
-              sig { returns(T::Hash[Symbol, T.nilable(T.anything)]) }
-              attr_accessor :metadata
-
-              sig do
-                params(
-                  metadata: T::Hash[Symbol, T.nilable(T.anything)]
-                ).returns(T.attached_class)
-              end
-              def self.new(
-                # The metadata to be attached to the entity by existing rules. It is a key-value
-                # pairs where the values can be of any type (string, number, boolean, object,
-                # array, etc.).
-                metadata:
-              )
-              end
-
-              sig do
-                override.returns(
-                  { metadata: T::Hash[Symbol, T.nilable(T.anything)] }
-                )
-              end
-              def to_hash
-              end
             end
           end
         end
@@ -559,76 +514,31 @@ module FinchAPI
                 )
               end
 
+            # The metadata to be attached to the entity by existing rules. It is a key-value
+            # pairs where the values can be of any type (string, number, boolean, object,
+            # array, etc.).
+            sig { returns(T::Hash[Symbol, T.nilable(T.anything)]) }
+            attr_accessor :metadata
+
             sig do
-              returns(
-                FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata
+              params(metadata: T::Hash[Symbol, T.nilable(T.anything)]).returns(
+                T.attached_class
               )
             end
-            attr_reader :metadata
-
-            sig do
-              params(
-                metadata:
-                  FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata::OrHash
-              ).void
-            end
-            attr_writer :metadata
-
-            sig do
-              params(
-                metadata:
-                  FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata::OrHash
-              ).returns(T.attached_class)
-            end
-            def self.new(metadata:)
+            def self.new(
+              # The metadata to be attached to the entity by existing rules. It is a key-value
+              # pairs where the values can be of any type (string, number, boolean, object,
+              # array, etc.).
+              metadata:
+            )
             end
 
             sig do
               override.returns(
-                {
-                  metadata:
-                    FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata
-                }
+                { metadata: T::Hash[Symbol, T.nilable(T.anything)] }
               )
             end
             def to_hash
-            end
-
-            class Metadata < FinchAPI::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(
-                    FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata,
-                    FinchAPI::Internal::AnyHash
-                  )
-                end
-
-              # The metadata to be attached to the entity by existing rules. It is a key-value
-              # pairs where the values can be of any type (string, number, boolean, object,
-              # array, etc.).
-              sig { returns(T::Hash[Symbol, T.nilable(T.anything)]) }
-              attr_accessor :metadata
-
-              sig do
-                params(
-                  metadata: T::Hash[Symbol, T.nilable(T.anything)]
-                ).returns(T.attached_class)
-              end
-              def self.new(
-                # The metadata to be attached to the entity by existing rules. It is a key-value
-                # pairs where the values can be of any type (string, number, boolean, object,
-                # array, etc.).
-                metadata:
-              )
-              end
-
-              sig do
-                override.returns(
-                  { metadata: T::Hash[Symbol, T.nilable(T.anything)] }
-                )
-              end
-              def to_hash
-              end
             end
           end
         end
@@ -728,76 +638,31 @@ module FinchAPI
                 )
               end
 
+            # The metadata to be attached to the entity by existing rules. It is a key-value
+            # pairs where the values can be of any type (string, number, boolean, object,
+            # array, etc.).
+            sig { returns(T::Hash[Symbol, T.nilable(T.anything)]) }
+            attr_accessor :metadata
+
             sig do
-              returns(
-                FinchAPI::HRIS::PayStatement::EmployerContribution::Attributes::Metadata
+              params(metadata: T::Hash[Symbol, T.nilable(T.anything)]).returns(
+                T.attached_class
               )
             end
-            attr_reader :metadata
-
-            sig do
-              params(
-                metadata:
-                  FinchAPI::HRIS::PayStatement::EmployerContribution::Attributes::Metadata::OrHash
-              ).void
-            end
-            attr_writer :metadata
-
-            sig do
-              params(
-                metadata:
-                  FinchAPI::HRIS::PayStatement::EmployerContribution::Attributes::Metadata::OrHash
-              ).returns(T.attached_class)
-            end
-            def self.new(metadata:)
+            def self.new(
+              # The metadata to be attached to the entity by existing rules. It is a key-value
+              # pairs where the values can be of any type (string, number, boolean, object,
+              # array, etc.).
+              metadata:
+            )
             end
 
             sig do
               override.returns(
-                {
-                  metadata:
-                    FinchAPI::HRIS::PayStatement::EmployerContribution::Attributes::Metadata
-                }
+                { metadata: T::Hash[Symbol, T.nilable(T.anything)] }
               )
             end
             def to_hash
-            end
-
-            class Metadata < FinchAPI::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(
-                    FinchAPI::HRIS::PayStatement::EmployerContribution::Attributes::Metadata,
-                    FinchAPI::Internal::AnyHash
-                  )
-                end
-
-              # The metadata to be attached to the entity by existing rules. It is a key-value
-              # pairs where the values can be of any type (string, number, boolean, object,
-              # array, etc.).
-              sig { returns(T::Hash[Symbol, T.nilable(T.anything)]) }
-              attr_accessor :metadata
-
-              sig do
-                params(
-                  metadata: T::Hash[Symbol, T.nilable(T.anything)]
-                ).returns(T.attached_class)
-              end
-              def self.new(
-                # The metadata to be attached to the entity by existing rules. It is a key-value
-                # pairs where the values can be of any type (string, number, boolean, object,
-                # array, etc.).
-                metadata:
-              )
-              end
-
-              sig do
-                override.returns(
-                  { metadata: T::Hash[Symbol, T.nilable(T.anything)] }
-                )
-              end
-              def to_hash
-              end
             end
           end
         end
@@ -980,74 +845,31 @@ module FinchAPI
                 )
               end
 
-            sig do
-              returns(FinchAPI::HRIS::PayStatement::Tax::Attributes::Metadata)
-            end
-            attr_reader :metadata
+            # The metadata to be attached to the entity by existing rules. It is a key-value
+            # pairs where the values can be of any type (string, number, boolean, object,
+            # array, etc.).
+            sig { returns(T::Hash[Symbol, T.nilable(T.anything)]) }
+            attr_accessor :metadata
 
             sig do
-              params(
-                metadata:
-                  FinchAPI::HRIS::PayStatement::Tax::Attributes::Metadata::OrHash
-              ).void
+              params(metadata: T::Hash[Symbol, T.nilable(T.anything)]).returns(
+                T.attached_class
+              )
             end
-            attr_writer :metadata
-
-            sig do
-              params(
-                metadata:
-                  FinchAPI::HRIS::PayStatement::Tax::Attributes::Metadata::OrHash
-              ).returns(T.attached_class)
-            end
-            def self.new(metadata:)
+            def self.new(
+              # The metadata to be attached to the entity by existing rules. It is a key-value
+              # pairs where the values can be of any type (string, number, boolean, object,
+              # array, etc.).
+              metadata:
+            )
             end
 
             sig do
               override.returns(
-                {
-                  metadata:
-                    FinchAPI::HRIS::PayStatement::Tax::Attributes::Metadata
-                }
+                { metadata: T::Hash[Symbol, T.nilable(T.anything)] }
               )
             end
             def to_hash
-            end
-
-            class Metadata < FinchAPI::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(
-                    FinchAPI::HRIS::PayStatement::Tax::Attributes::Metadata,
-                    FinchAPI::Internal::AnyHash
-                  )
-                end
-
-              # The metadata to be attached to the entity by existing rules. It is a key-value
-              # pairs where the values can be of any type (string, number, boolean, object,
-              # array, etc.).
-              sig { returns(T::Hash[Symbol, T.nilable(T.anything)]) }
-              attr_accessor :metadata
-
-              sig do
-                params(
-                  metadata: T::Hash[Symbol, T.nilable(T.anything)]
-                ).returns(T.attached_class)
-              end
-              def self.new(
-                # The metadata to be attached to the entity by existing rules. It is a key-value
-                # pairs where the values can be of any type (string, number, boolean, object,
-                # array, etc.).
-                metadata:
-              )
-              end
-
-              sig do
-                override.returns(
-                  { metadata: T::Hash[Symbol, T.nilable(T.anything)] }
-                )
-              end
-              def to_hash
-              end
             end
           end
         end

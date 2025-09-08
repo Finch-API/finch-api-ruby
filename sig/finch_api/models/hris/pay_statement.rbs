@@ -138,31 +138,14 @@ module FinchAPI
             def self?.values: -> ::Array[FinchAPI::Models::HRIS::PayStatement::Earning::type_]
           end
 
-          type attributes =
-            {
-              metadata: FinchAPI::HRIS::PayStatement::Earning::Attributes::Metadata
-            }
+          type attributes = { metadata: ::Hash[Symbol, top?] }
 
           class Attributes < FinchAPI::Internal::Type::BaseModel
-            attr_accessor metadata: FinchAPI::HRIS::PayStatement::Earning::Attributes::Metadata
+            attr_accessor metadata: ::Hash[Symbol, top?]
 
-            def initialize: (
-              metadata: FinchAPI::HRIS::PayStatement::Earning::Attributes::Metadata
-            ) -> void
+            def initialize: (metadata: ::Hash[Symbol, top?]) -> void
 
-            def to_hash: -> {
-              metadata: FinchAPI::HRIS::PayStatement::Earning::Attributes::Metadata
-            }
-
-            type metadata = { metadata: ::Hash[Symbol, top?] }
-
-            class Metadata < FinchAPI::Internal::Type::BaseModel
-              attr_accessor metadata: ::Hash[Symbol, top?]
-
-              def initialize: (metadata: ::Hash[Symbol, top?]) -> void
-
-              def to_hash: -> { metadata: ::Hash[Symbol, top?] }
-            end
+            def to_hash: -> { metadata: ::Hash[Symbol, top?] }
           end
         end
 
@@ -207,31 +190,14 @@ module FinchAPI
             attributes: FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes?
           }
 
-          type attributes =
-            {
-              metadata: FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata
-            }
+          type attributes = { metadata: ::Hash[Symbol, top?] }
 
           class Attributes < FinchAPI::Internal::Type::BaseModel
-            attr_accessor metadata: FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata
+            attr_accessor metadata: ::Hash[Symbol, top?]
 
-            def initialize: (
-              metadata: FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata
-            ) -> void
+            def initialize: (metadata: ::Hash[Symbol, top?]) -> void
 
-            def to_hash: -> {
-              metadata: FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata
-            }
-
-            type metadata = { metadata: ::Hash[Symbol, top?] }
-
-            class Metadata < FinchAPI::Internal::Type::BaseModel
-              attr_accessor metadata: ::Hash[Symbol, top?]
-
-              def initialize: (metadata: ::Hash[Symbol, top?]) -> void
-
-              def to_hash: -> { metadata: ::Hash[Symbol, top?] }
-            end
+            def to_hash: -> { metadata: ::Hash[Symbol, top?] }
           end
         end
 
@@ -271,31 +237,14 @@ module FinchAPI
             attributes: FinchAPI::HRIS::PayStatement::EmployerContribution::Attributes?
           }
 
-          type attributes =
-            {
-              metadata: FinchAPI::HRIS::PayStatement::EmployerContribution::Attributes::Metadata
-            }
+          type attributes = { metadata: ::Hash[Symbol, top?] }
 
           class Attributes < FinchAPI::Internal::Type::BaseModel
-            attr_accessor metadata: FinchAPI::HRIS::PayStatement::EmployerContribution::Attributes::Metadata
+            attr_accessor metadata: ::Hash[Symbol, top?]
 
-            def initialize: (
-              metadata: FinchAPI::HRIS::PayStatement::EmployerContribution::Attributes::Metadata
-            ) -> void
+            def initialize: (metadata: ::Hash[Symbol, top?]) -> void
 
-            def to_hash: -> {
-              metadata: FinchAPI::HRIS::PayStatement::EmployerContribution::Attributes::Metadata
-            }
-
-            type metadata = { metadata: ::Hash[Symbol, top?] }
-
-            class Metadata < FinchAPI::Internal::Type::BaseModel
-              attr_accessor metadata: ::Hash[Symbol, top?]
-
-              def initialize: (metadata: ::Hash[Symbol, top?]) -> void
-
-              def to_hash: -> { metadata: ::Hash[Symbol, top?] }
-            end
+            def to_hash: -> { metadata: ::Hash[Symbol, top?] }
           end
         end
 
@@ -365,31 +314,14 @@ module FinchAPI
             def self?.values: -> ::Array[FinchAPI::Models::HRIS::PayStatement::Tax::type_]
           end
 
-          type attributes =
-            {
-              metadata: FinchAPI::HRIS::PayStatement::Tax::Attributes::Metadata
-            }
+          type attributes = { metadata: ::Hash[Symbol, top?] }
 
           class Attributes < FinchAPI::Internal::Type::BaseModel
-            attr_accessor metadata: FinchAPI::HRIS::PayStatement::Tax::Attributes::Metadata
+            attr_accessor metadata: ::Hash[Symbol, top?]
 
-            def initialize: (
-              metadata: FinchAPI::HRIS::PayStatement::Tax::Attributes::Metadata
-            ) -> void
+            def initialize: (metadata: ::Hash[Symbol, top?]) -> void
 
-            def to_hash: -> {
-              metadata: FinchAPI::HRIS::PayStatement::Tax::Attributes::Metadata
-            }
-
-            type metadata = { metadata: ::Hash[Symbol, top?] }
-
-            class Metadata < FinchAPI::Internal::Type::BaseModel
-              attr_accessor metadata: ::Hash[Symbol, top?]
-
-              def initialize: (metadata: ::Hash[Symbol, top?]) -> void
-
-              def to_hash: -> { metadata: ::Hash[Symbol, top?] }
-            end
+            def to_hash: -> { metadata: ::Hash[Symbol, top?] }
           end
         end
 
