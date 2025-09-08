@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.30 (2025-09-08)
+
+Full Changelog: [v0.1.0-alpha.29...v0.1.0-alpha.30](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.29...v0.1.0-alpha.30)
+
+### Features
+
+* **api:** api update ([a67b714](https://github.com/Finch-API/finch-api-ruby/commit/a67b7140a175c5091a52ef82b90860b39a74075f))
+* **api:** make client id, client secret optional again ([d1b769f](https://github.com/Finch-API/finch-api-ruby/commit/d1b769f81ce16d27fe940f647c19d6f6e4b1b2b4))
+
 ## 0.1.0-alpha.29 (2025-08-24)
 
 Full Changelog: [v0.1.0-alpha.28...v0.1.0-alpha.29](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.28...v0.1.0-alpha.29)
