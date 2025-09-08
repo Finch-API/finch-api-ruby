@@ -11,17 +11,23 @@ module FinchAPI
           T.any(FinchAPI::AccessTokenCreateParams, FinchAPI::Internal::AnyHash)
         end
 
-      # The client ID for your application
-      sig { returns(String) }
-      attr_accessor :client_id
-
-      # The client secret for your application
-      sig { returns(String) }
-      attr_accessor :client_secret
-
       # The authorization code received from the authorization server
       sig { returns(String) }
       attr_accessor :code
+
+      # The client ID for your application
+      sig { returns(T.nilable(String)) }
+      attr_reader :client_id
+
+      sig { params(client_id: String).void }
+      attr_writer :client_id
+
+      # The client secret for your application
+      sig { returns(T.nilable(String)) }
+      attr_reader :client_secret
+
+      sig { params(client_secret: String).void }
+      attr_writer :client_secret
 
       # The redirect URI used in the authorization request (optional)
       sig { returns(T.nilable(String)) }
@@ -32,20 +38,20 @@ module FinchAPI
 
       sig do
         params(
+          code: String,
           client_id: String,
           client_secret: String,
-          code: String,
           redirect_uri: String,
           request_options: FinchAPI::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
-        # The client ID for your application
-        client_id:,
-        # The client secret for your application
-        client_secret:,
         # The authorization code received from the authorization server
         code:,
+        # The client ID for your application
+        client_id: nil,
+        # The client secret for your application
+        client_secret: nil,
         # The redirect URI used in the authorization request (optional)
         redirect_uri: nil,
         request_options: {}
@@ -55,9 +61,9 @@ module FinchAPI
       sig do
         override.returns(
           {
+            code: String,
             client_id: String,
             client_secret: String,
-            code: String,
             redirect_uri: String,
             request_options: FinchAPI::RequestOptions
           }
