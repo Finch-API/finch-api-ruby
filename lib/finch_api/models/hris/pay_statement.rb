@@ -176,31 +176,19 @@ module FinchAPI
           # @see FinchAPI::Models::HRIS::PayStatement::Earning#attributes
           class Attributes < FinchAPI::Internal::Type::BaseModel
             # @!attribute metadata
+            #   The metadata to be attached to the entity by existing rules. It is a key-value
+            #   pairs where the values can be of any type (string, number, boolean, object,
+            #   array, etc.).
             #
-            #   @return [FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata]
-            required :metadata, -> { FinchAPI::HRIS::PayStatement::Earning::Attributes::Metadata }
+            #   @return [Hash{Symbol=>Object, nil}]
+            required :metadata,
+                     FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown, nil?: true]
 
             # @!method initialize(metadata:)
-            #   @param metadata [FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata]
-
-            # @see FinchAPI::Models::HRIS::PayStatement::Earning::Attributes#metadata
-            class Metadata < FinchAPI::Internal::Type::BaseModel
-              # @!attribute metadata
-              #   The metadata to be attached to the entity by existing rules. It is a key-value
-              #   pairs where the values can be of any type (string, number, boolean, object,
-              #   array, etc.).
-              #
-              #   @return [Hash{Symbol=>Object, nil}]
-              required :metadata,
-                       FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown, nil?: true]
-
-              # @!method initialize(metadata:)
-              #   Some parameter documentations has been truncated, see
-              #   {FinchAPI::Models::HRIS::PayStatement::Earning::Attributes::Metadata} for more
-              #   details.
-              #
-              #   @param metadata [Hash{Symbol=>Object, nil}] The metadata to be attached to the entity by existing rules. It is a key-value p
-            end
+            #   Some parameter documentations has been truncated, see
+            #   {FinchAPI::Models::HRIS::PayStatement::Earning::Attributes} for more details.
+            #
+            #   @param metadata [Hash{Symbol=>Object, nil}] The metadata to be attached to the entity by existing rules. It is a key-value p
           end
         end
 
@@ -256,31 +244,20 @@ module FinchAPI
           # @see FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction#attributes
           class Attributes < FinchAPI::Internal::Type::BaseModel
             # @!attribute metadata
+            #   The metadata to be attached to the entity by existing rules. It is a key-value
+            #   pairs where the values can be of any type (string, number, boolean, object,
+            #   array, etc.).
             #
-            #   @return [FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata]
-            required :metadata, -> { FinchAPI::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata }
+            #   @return [Hash{Symbol=>Object, nil}]
+            required :metadata,
+                     FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown, nil?: true]
 
             # @!method initialize(metadata:)
-            #   @param metadata [FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata]
-
-            # @see FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes#metadata
-            class Metadata < FinchAPI::Internal::Type::BaseModel
-              # @!attribute metadata
-              #   The metadata to be attached to the entity by existing rules. It is a key-value
-              #   pairs where the values can be of any type (string, number, boolean, object,
-              #   array, etc.).
-              #
-              #   @return [Hash{Symbol=>Object, nil}]
-              required :metadata,
-                       FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown, nil?: true]
-
-              # @!method initialize(metadata:)
-              #   Some parameter documentations has been truncated, see
-              #   {FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes::Metadata}
-              #   for more details.
-              #
-              #   @param metadata [Hash{Symbol=>Object, nil}] The metadata to be attached to the entity by existing rules. It is a key-value p
-            end
+            #   Some parameter documentations has been truncated, see
+            #   {FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction::Attributes} for more
+            #   details.
+            #
+            #   @param metadata [Hash{Symbol=>Object, nil}] The metadata to be attached to the entity by existing rules. It is a key-value p
           end
         end
 
@@ -332,31 +309,20 @@ module FinchAPI
           # @see FinchAPI::Models::HRIS::PayStatement::EmployerContribution#attributes
           class Attributes < FinchAPI::Internal::Type::BaseModel
             # @!attribute metadata
+            #   The metadata to be attached to the entity by existing rules. It is a key-value
+            #   pairs where the values can be of any type (string, number, boolean, object,
+            #   array, etc.).
             #
-            #   @return [FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata]
-            required :metadata, -> { FinchAPI::HRIS::PayStatement::EmployerContribution::Attributes::Metadata }
+            #   @return [Hash{Symbol=>Object, nil}]
+            required :metadata,
+                     FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown, nil?: true]
 
             # @!method initialize(metadata:)
-            #   @param metadata [FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata]
-
-            # @see FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes#metadata
-            class Metadata < FinchAPI::Internal::Type::BaseModel
-              # @!attribute metadata
-              #   The metadata to be attached to the entity by existing rules. It is a key-value
-              #   pairs where the values can be of any type (string, number, boolean, object,
-              #   array, etc.).
-              #
-              #   @return [Hash{Symbol=>Object, nil}]
-              required :metadata,
-                       FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown, nil?: true]
-
-              # @!method initialize(metadata:)
-              #   Some parameter documentations has been truncated, see
-              #   {FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes::Metadata}
-              #   for more details.
-              #
-              #   @param metadata [Hash{Symbol=>Object, nil}] The metadata to be attached to the entity by existing rules. It is a key-value p
-            end
+            #   Some parameter documentations has been truncated, see
+            #   {FinchAPI::Models::HRIS::PayStatement::EmployerContribution::Attributes} for
+            #   more details.
+            #
+            #   @param metadata [Hash{Symbol=>Object, nil}] The metadata to be attached to the entity by existing rules. It is a key-value p
           end
         end
 
@@ -441,31 +407,19 @@ module FinchAPI
           # @see FinchAPI::Models::HRIS::PayStatement::Tax#attributes
           class Attributes < FinchAPI::Internal::Type::BaseModel
             # @!attribute metadata
+            #   The metadata to be attached to the entity by existing rules. It is a key-value
+            #   pairs where the values can be of any type (string, number, boolean, object,
+            #   array, etc.).
             #
-            #   @return [FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata]
-            required :metadata, -> { FinchAPI::HRIS::PayStatement::Tax::Attributes::Metadata }
+            #   @return [Hash{Symbol=>Object, nil}]
+            required :metadata,
+                     FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown, nil?: true]
 
             # @!method initialize(metadata:)
-            #   @param metadata [FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata]
-
-            # @see FinchAPI::Models::HRIS::PayStatement::Tax::Attributes#metadata
-            class Metadata < FinchAPI::Internal::Type::BaseModel
-              # @!attribute metadata
-              #   The metadata to be attached to the entity by existing rules. It is a key-value
-              #   pairs where the values can be of any type (string, number, boolean, object,
-              #   array, etc.).
-              #
-              #   @return [Hash{Symbol=>Object, nil}]
-              required :metadata,
-                       FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown, nil?: true]
-
-              # @!method initialize(metadata:)
-              #   Some parameter documentations has been truncated, see
-              #   {FinchAPI::Models::HRIS::PayStatement::Tax::Attributes::Metadata} for more
-              #   details.
-              #
-              #   @param metadata [Hash{Symbol=>Object, nil}] The metadata to be attached to the entity by existing rules. It is a key-value p
-            end
+            #   Some parameter documentations has been truncated, see
+            #   {FinchAPI::Models::HRIS::PayStatement::Tax::Attributes} for more details.
+            #
+            #   @param metadata [Hash{Symbol=>Object, nil}] The metadata to be attached to the entity by existing rules. It is a key-value p
           end
         end
 

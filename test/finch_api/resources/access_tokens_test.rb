@@ -4,12 +4,7 @@ require_relative "../test_helper"
 
 class FinchAPI::Test::Resources::AccessTokensTest < FinchAPI::Test::ResourceTest
   def test_create_required_params
-    response =
-      @finch.access_tokens.create(
-        client_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        client_secret: "client_secret",
-        code: "code"
-      )
+    response = @finch.access_tokens.create(code: "code")
 
     assert_pattern do
       response => FinchAPI::CreateAccessTokenResponse
