@@ -2,7 +2,8 @@
 
 module FinchAPI
   module Models
-    class Provider < FinchAPI::Internal::Type::BaseModel
+    # @see FinchAPI::Resources::Providers#list
+    class ProviderListResponse < FinchAPI::Internal::Type::BaseModel
       # @!attribute id
       #   The id of the payroll provider used in Connect.
       #
@@ -24,9 +25,9 @@ module FinchAPI
       # @!attribute authentication_methods
       #   The authentication methods supported by the provider.
       #
-      #   @return [Array<FinchAPI::Models::Provider::AuthenticationMethod>, nil]
+      #   @return [Array<FinchAPI::Models::ProviderListResponse::AuthenticationMethod>, nil]
       optional :authentication_methods,
-               -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Provider::AuthenticationMethod] }
+               -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::ProviderListResponse::AuthenticationMethod] }
 
       # @!attribute beta
       #   `true` if the integration is in a beta state, `false` otherwise
@@ -70,7 +71,7 @@ module FinchAPI
 
       # @!method initialize(id:, display_name:, products:, authentication_methods: nil, beta: nil, icon: nil, logo: nil, manual: nil, mfa_required: nil, primary_color: nil)
       #   Some parameter documentations has been truncated, see
-      #   {FinchAPI::Models::Provider} for more details.
+      #   {FinchAPI::Models::ProviderListResponse} for more details.
       #
       #   @param id [String] The id of the payroll provider used in Connect.
       #
@@ -78,7 +79,7 @@ module FinchAPI
       #
       #   @param products [Array<String>] The list of Finch products supported on this payroll provider.
       #
-      #   @param authentication_methods [Array<FinchAPI::Models::Provider::AuthenticationMethod>] The authentication methods supported by the provider.
+      #   @param authentication_methods [Array<FinchAPI::Models::ProviderListResponse::AuthenticationMethod>] The authentication methods supported by the provider.
       #
       #   @param beta [Boolean] `true` if the integration is in a beta state, `false` otherwise
       #
@@ -96,8 +97,8 @@ module FinchAPI
         # @!attribute type
         #   The type of authentication method
         #
-        #   @return [Symbol, FinchAPI::Models::Provider::AuthenticationMethod::Type]
-        required :type, enum: -> { FinchAPI::Provider::AuthenticationMethod::Type }
+        #   @return [Symbol, FinchAPI::Models::ProviderListResponse::AuthenticationMethod::Type]
+        required :type, enum: -> { FinchAPI::Models::ProviderListResponse::AuthenticationMethod::Type }
 
         # @!attribute benefits_support
         #   The supported benefit types and their configurations
@@ -114,7 +115,7 @@ module FinchAPI
                  FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown, nil?: true]
 
         # @!method initialize(type:, benefits_support: nil, supported_fields: nil)
-        #   @param type [Symbol, FinchAPI::Models::Provider::AuthenticationMethod::Type] The type of authentication method
+        #   @param type [Symbol, FinchAPI::Models::ProviderListResponse::AuthenticationMethod::Type] The type of authentication method
         #
         #   @param benefits_support [Hash{Symbol=>Object, nil}] The supported benefit types and their configurations
         #
@@ -122,7 +123,7 @@ module FinchAPI
 
         # The type of authentication method
         #
-        # @see FinchAPI::Models::Provider::AuthenticationMethod#type
+        # @see FinchAPI::Models::ProviderListResponse::AuthenticationMethod#type
         module Type
           extend FinchAPI::Internal::Type::Enum
 

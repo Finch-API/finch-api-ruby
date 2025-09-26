@@ -2,70 +2,80 @@ module FinchAPI
   module Models
     type request_forwarding_forward_response =
       {
-        data: String?,
-        headers: top?,
         request: FinchAPI::Models::RequestForwardingForwardResponse::Request,
-        status_code: Integer
+        status_code: Integer,
+        data: String?,
+        headers: ::Hash[Symbol, top?]?
       }
 
     class RequestForwardingForwardResponse < FinchAPI::Internal::Type::BaseModel
-      attr_accessor data: String?
-
-      attr_accessor headers: top?
-
       attr_accessor request: FinchAPI::Models::RequestForwardingForwardResponse::Request
 
       attr_accessor status_code: Integer
 
+      attr_accessor data: String?
+
+      attr_accessor headers: ::Hash[Symbol, top?]?
+
       def initialize: (
-        data: String?,
-        headers: top?,
         request: FinchAPI::Models::RequestForwardingForwardResponse::Request,
-        status_code: Integer
+        status_code: Integer,
+        ?data: String?,
+        ?headers: ::Hash[Symbol, top?]?
       ) -> void
 
       def to_hash: -> {
-        data: String?,
-        headers: top?,
         request: FinchAPI::Models::RequestForwardingForwardResponse::Request,
-        status_code: Integer
+        status_code: Integer,
+        data: String?,
+        headers: ::Hash[Symbol, top?]?
       }
 
       type request =
         {
-          data: String?,
-          headers: top?,
           method_: String,
-          params: top?,
-          route: String
+          route: String,
+          data: FinchAPI::Models::RequestForwardingForwardResponse::Request::data?,
+          headers: ::Hash[Symbol, top?]?,
+          params: ::Hash[Symbol, top?]?
         }
 
       class Request < FinchAPI::Internal::Type::BaseModel
-        attr_accessor data: String?
-
-        attr_accessor headers: top?
-
         attr_accessor method_: String
-
-        attr_accessor params: top?
 
         attr_accessor route: String
 
+        attr_accessor data: FinchAPI::Models::RequestForwardingForwardResponse::Request::data?
+
+        attr_accessor headers: ::Hash[Symbol, top?]?
+
+        attr_accessor params: ::Hash[Symbol, top?]?
+
         def initialize: (
-          data: String?,
-          headers: top?,
           method_: String,
-          params: top?,
-          route: String
+          route: String,
+          ?data: FinchAPI::Models::RequestForwardingForwardResponse::Request::data?,
+          ?headers: ::Hash[Symbol, top?]?,
+          ?params: ::Hash[Symbol, top?]?
         ) -> void
 
         def to_hash: -> {
-          data: String?,
-          headers: top?,
           method_: String,
-          params: top?,
-          route: String
+          route: String,
+          data: FinchAPI::Models::RequestForwardingForwardResponse::Request::data?,
+          headers: ::Hash[Symbol, top?]?,
+          params: ::Hash[Symbol, top?]?
         }
+
+        type data = String | ::Hash[Symbol, top?]
+
+        module Data
+          extend FinchAPI::Internal::Type::Union
+
+          def self?.variants: -> ::Array[FinchAPI::Models::RequestForwardingForwardResponse::Request::data]
+
+          UnionMember1Map: FinchAPI::Internal::Type::Converter
+        end
       end
     end
   end

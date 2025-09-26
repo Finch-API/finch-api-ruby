@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class FinchAPI::Test::Resources::RequestForwardingTest < FinchAPI::Test::ResourceTest
   def test_forward_required_params
-    response = @finch.request_forwarding.forward(method_: "POST", route: "/people/search")
+    response = @finch.request_forwarding.forward(method_: "method", route: "route")
 
     assert_pattern do
       response => FinchAPI::Models::RequestForwardingForwardResponse
@@ -12,10 +12,10 @@ class FinchAPI::Test::Resources::RequestForwardingTest < FinchAPI::Test::Resourc
 
     assert_pattern do
       response => {
-        data: String | nil,
-        headers: FinchAPI::Internal::Type::Unknown | nil,
         request: FinchAPI::Models::RequestForwardingForwardResponse::Request,
-        status_code: Integer
+        status_code: Integer,
+        data: String | nil,
+        headers: ^(FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown, nil?: true]) | nil
       }
     end
   end

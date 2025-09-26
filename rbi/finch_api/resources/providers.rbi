@@ -6,7 +6,7 @@ module FinchAPI
       # Return details on all available payroll and HR systems.
       sig do
         params(request_options: FinchAPI::RequestOptions::OrHash).returns(
-          FinchAPI::Internal::SinglePage[FinchAPI::Provider]
+          FinchAPI::Internal::SinglePage[FinchAPI::Models::ProviderListResponse]
         )
       end
       def list(request_options: {})
