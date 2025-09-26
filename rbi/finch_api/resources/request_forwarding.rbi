@@ -12,8 +12,8 @@ module FinchAPI
           method_: String,
           route: String,
           data: T.nilable(String),
-          headers: T.nilable(T.anything),
-          params: T.nilable(T.anything),
+          headers: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+          params: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           request_options: FinchAPI::RequestOptions::OrHash
         ).returns(FinchAPI::Models::RequestForwardingForwardResponse)
       end

@@ -1,11 +1,11 @@
 module FinchAPI
   module Models
-    type provider =
+    type provider_list_response =
       {
         id: String,
         display_name: String,
         products: ::Array[String],
-        authentication_methods: ::Array[FinchAPI::Provider::AuthenticationMethod],
+        authentication_methods: ::Array[FinchAPI::Models::ProviderListResponse::AuthenticationMethod],
         beta: bool,
         icon: String,
         logo: String,
@@ -14,18 +14,18 @@ module FinchAPI
         primary_color: String
       }
 
-    class Provider < FinchAPI::Internal::Type::BaseModel
+    class ProviderListResponse < FinchAPI::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor display_name: String
 
       attr_accessor products: ::Array[String]
 
-      attr_reader authentication_methods: ::Array[FinchAPI::Provider::AuthenticationMethod]?
+      attr_reader authentication_methods: ::Array[FinchAPI::Models::ProviderListResponse::AuthenticationMethod]?
 
       def authentication_methods=: (
-        ::Array[FinchAPI::Provider::AuthenticationMethod]
-      ) -> ::Array[FinchAPI::Provider::AuthenticationMethod]
+        ::Array[FinchAPI::Models::ProviderListResponse::AuthenticationMethod]
+      ) -> ::Array[FinchAPI::Models::ProviderListResponse::AuthenticationMethod]
 
       attr_reader beta: bool?
 
@@ -55,7 +55,7 @@ module FinchAPI
         id: String,
         display_name: String,
         products: ::Array[String],
-        ?authentication_methods: ::Array[FinchAPI::Provider::AuthenticationMethod],
+        ?authentication_methods: ::Array[FinchAPI::Models::ProviderListResponse::AuthenticationMethod],
         ?beta: bool,
         ?icon: String,
         ?logo: String,
@@ -68,7 +68,7 @@ module FinchAPI
         id: String,
         display_name: String,
         products: ::Array[String],
-        authentication_methods: ::Array[FinchAPI::Provider::AuthenticationMethod],
+        authentication_methods: ::Array[FinchAPI::Models::ProviderListResponse::AuthenticationMethod],
         beta: bool,
         icon: String,
         logo: String,
@@ -79,13 +79,13 @@ module FinchAPI
 
       type authentication_method =
         {
-          type: FinchAPI::Models::Provider::AuthenticationMethod::type_,
+          type: FinchAPI::Models::ProviderListResponse::AuthenticationMethod::type_,
           benefits_support: ::Hash[Symbol, top?],
           supported_fields: ::Hash[Symbol, top?]
         }
 
       class AuthenticationMethod < FinchAPI::Internal::Type::BaseModel
-        attr_accessor type: FinchAPI::Models::Provider::AuthenticationMethod::type_
+        attr_accessor type: FinchAPI::Models::ProviderListResponse::AuthenticationMethod::type_
 
         attr_reader benefits_support: ::Hash[Symbol, top?]?
 
@@ -96,13 +96,13 @@ module FinchAPI
         def supported_fields=: (::Hash[Symbol, top?]) -> ::Hash[Symbol, top?]
 
         def initialize: (
-          type: FinchAPI::Models::Provider::AuthenticationMethod::type_,
+          type: FinchAPI::Models::ProviderListResponse::AuthenticationMethod::type_,
           ?benefits_support: ::Hash[Symbol, top?],
           ?supported_fields: ::Hash[Symbol, top?]
         ) -> void
 
         def to_hash: -> {
-          type: FinchAPI::Models::Provider::AuthenticationMethod::type_,
+          type: FinchAPI::Models::ProviderListResponse::AuthenticationMethod::type_,
           benefits_support: ::Hash[Symbol, top?],
           supported_fields: ::Hash[Symbol, top?]
         }
@@ -120,7 +120,7 @@ module FinchAPI
           OAUTH: :oauth
           API: :api
 
-          def self?.values: -> ::Array[FinchAPI::Models::Provider::AuthenticationMethod::type_]
+          def self?.values: -> ::Array[FinchAPI::Models::ProviderListResponse::AuthenticationMethod::type_]
         end
       end
     end

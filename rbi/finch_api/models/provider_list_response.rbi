@@ -2,9 +2,14 @@
 
 module FinchAPI
   module Models
-    class Provider < FinchAPI::Internal::Type::BaseModel
+    class ProviderListResponse < FinchAPI::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(FinchAPI::Provider, FinchAPI::Internal::AnyHash) }
+        T.type_alias do
+          T.any(
+            FinchAPI::Models::ProviderListResponse,
+            FinchAPI::Internal::AnyHash
+          )
+        end
 
       # The id of the payroll provider used in Connect.
       sig { returns(String) }
@@ -20,14 +25,22 @@ module FinchAPI
 
       # The authentication methods supported by the provider.
       sig do
-        returns(T.nilable(T::Array[FinchAPI::Provider::AuthenticationMethod]))
+        returns(
+          T.nilable(
+            T::Array[
+              FinchAPI::Models::ProviderListResponse::AuthenticationMethod
+            ]
+          )
+        )
       end
       attr_reader :authentication_methods
 
       sig do
         params(
           authentication_methods:
-            T::Array[FinchAPI::Provider::AuthenticationMethod::OrHash]
+            T::Array[
+              FinchAPI::Models::ProviderListResponse::AuthenticationMethod::OrHash
+            ]
         ).void
       end
       attr_writer :authentication_methods
@@ -82,7 +95,9 @@ module FinchAPI
           display_name: String,
           products: T::Array[String],
           authentication_methods:
-            T::Array[FinchAPI::Provider::AuthenticationMethod::OrHash],
+            T::Array[
+              FinchAPI::Models::ProviderListResponse::AuthenticationMethod::OrHash
+            ],
           beta: T::Boolean,
           icon: String,
           logo: String,
@@ -124,7 +139,9 @@ module FinchAPI
             display_name: String,
             products: T::Array[String],
             authentication_methods:
-              T::Array[FinchAPI::Provider::AuthenticationMethod],
+              T::Array[
+                FinchAPI::Models::ProviderListResponse::AuthenticationMethod
+              ],
             beta: T::Boolean,
             icon: String,
             logo: String,
@@ -141,14 +158,16 @@ module FinchAPI
         OrHash =
           T.type_alias do
             T.any(
-              FinchAPI::Provider::AuthenticationMethod,
+              FinchAPI::Models::ProviderListResponse::AuthenticationMethod,
               FinchAPI::Internal::AnyHash
             )
           end
 
         # The type of authentication method
         sig do
-          returns(FinchAPI::Provider::AuthenticationMethod::Type::OrSymbol)
+          returns(
+            FinchAPI::Models::ProviderListResponse::AuthenticationMethod::Type::TaggedSymbol
+          )
         end
         attr_accessor :type
 
@@ -172,7 +191,8 @@ module FinchAPI
 
         sig do
           params(
-            type: FinchAPI::Provider::AuthenticationMethod::Type::OrSymbol,
+            type:
+              FinchAPI::Models::ProviderListResponse::AuthenticationMethod::Type::OrSymbol,
             benefits_support: T::Hash[Symbol, T.nilable(T.anything)],
             supported_fields: T::Hash[Symbol, T.nilable(T.anything)]
           ).returns(T.attached_class)
@@ -190,7 +210,8 @@ module FinchAPI
         sig do
           override.returns(
             {
-              type: FinchAPI::Provider::AuthenticationMethod::Type::OrSymbol,
+              type:
+                FinchAPI::Models::ProviderListResponse::AuthenticationMethod::Type::TaggedSymbol,
               benefits_support: T::Hash[Symbol, T.nilable(T.anything)],
               supported_fields: T::Hash[Symbol, T.nilable(T.anything)]
             }
@@ -205,45 +226,48 @@ module FinchAPI
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, FinchAPI::Provider::AuthenticationMethod::Type)
+              T.all(
+                Symbol,
+                FinchAPI::Models::ProviderListResponse::AuthenticationMethod::Type
+              )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           ASSISTED =
             T.let(
               :assisted,
-              FinchAPI::Provider::AuthenticationMethod::Type::TaggedSymbol
+              FinchAPI::Models::ProviderListResponse::AuthenticationMethod::Type::TaggedSymbol
             )
           CREDENTIAL =
             T.let(
               :credential,
-              FinchAPI::Provider::AuthenticationMethod::Type::TaggedSymbol
+              FinchAPI::Models::ProviderListResponse::AuthenticationMethod::Type::TaggedSymbol
             )
           API_TOKEN =
             T.let(
               :api_token,
-              FinchAPI::Provider::AuthenticationMethod::Type::TaggedSymbol
+              FinchAPI::Models::ProviderListResponse::AuthenticationMethod::Type::TaggedSymbol
             )
           API_CREDENTIAL =
             T.let(
               :api_credential,
-              FinchAPI::Provider::AuthenticationMethod::Type::TaggedSymbol
+              FinchAPI::Models::ProviderListResponse::AuthenticationMethod::Type::TaggedSymbol
             )
           OAUTH =
             T.let(
               :oauth,
-              FinchAPI::Provider::AuthenticationMethod::Type::TaggedSymbol
+              FinchAPI::Models::ProviderListResponse::AuthenticationMethod::Type::TaggedSymbol
             )
           API =
             T.let(
               :api,
-              FinchAPI::Provider::AuthenticationMethod::Type::TaggedSymbol
+              FinchAPI::Models::ProviderListResponse::AuthenticationMethod::Type::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                FinchAPI::Provider::AuthenticationMethod::Type::TaggedSymbol
+                FinchAPI::Models::ProviderListResponse::AuthenticationMethod::Type::TaggedSymbol
               ]
             )
           end

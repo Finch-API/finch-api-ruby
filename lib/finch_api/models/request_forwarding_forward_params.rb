@@ -34,15 +34,19 @@ module FinchAPI
       #   specified as an object of key-value pairs. Example:
       #   `{"Content-Type": "application/xml", "X-API-Version": "v1" }`
       #
-      #   @return [Object, nil]
-      optional :headers, FinchAPI::Internal::Type::Unknown, nil?: true
+      #   @return [Hash{Symbol=>Object, nil}, nil]
+      optional :headers,
+               FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown, nil?: true],
+               nil?: true
 
       # @!attribute params
       #   The query parameters for the forwarded request. This value must be specified as
       #   a valid JSON object rather than a query string.
       #
-      #   @return [Object, nil]
-      optional :params, FinchAPI::Internal::Type::Unknown, nil?: true
+      #   @return [Hash{Symbol=>Object, nil}, nil]
+      optional :params,
+               FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown, nil?: true],
+               nil?: true
 
       # @!method initialize(method_:, route:, data: nil, headers: nil, params: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
@@ -54,9 +58,9 @@ module FinchAPI
       #
       #   @param data [String, nil] The body for the forwarded request. This value must be specified as either a str
       #
-      #   @param headers [Object, nil] The HTTP headers to include on the forwarded request. This value must be specifi
+      #   @param headers [Hash{Symbol=>Object, nil}, nil] The HTTP headers to include on the forwarded request. This value must be specifi
       #
-      #   @param params [Object, nil] The query parameters for the forwarded request. This value must be specified as
+      #   @param params [Hash{Symbol=>Object, nil}, nil] The query parameters for the forwarded request. This value must be specified as
       #
       #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
     end
