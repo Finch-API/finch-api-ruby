@@ -227,20 +227,24 @@ class FinchAPI::Test::UtilFormDataEncodingTest < Minitest::Test
 
   def test_file_encode
     file = Pathname(__FILE__)
+    fileinput = FinchAPI::Internal::Type::Converter.dump(FinchAPI::Internal::Type::FileInput, "abc")
     headers = {"content-type" => "multipart/form-data"}
     cases = {
-      "abc" => "abc",
-      StringIO.new("abc") => "abc",
-      FinchAPI::FilePart.new("abc") => "abc",
-      FinchAPI::FilePart.new(StringIO.new("abc")) => "abc",
-      file => /^class FinchAPI/,
-      FinchAPI::FilePart.new(file) => /^class FinchAPI/
+      "abc" => ["", "abc"],
+      StringIO.new("abc") => ["", "abc"],
+      fileinput => %w[upload abc],
+      FinchAPI::FilePart.new(StringIO.new("abc")) => ["", "abc"],
+      file => [file.basename.to_path, /^class FinchAPI/],
+      FinchAPI::FilePart.new(file, filename: "d o g") => ["d%20o%20g", /^class FinchAPI/]
     }
-    cases.each do |body, val|
+    cases.each do |body, testcase|
+      filename, val = testcase
       encoded = FinchAPI::Internal::Util.encode_content(headers, body)
       cgi = FakeCGI.new(*encoded)
+      io = cgi[""]
       assert_pattern do
-        cgi[""].read => ^val
+        io.original_filename => ^filename
+        io.read => ^val
       end
     end
   end
@@ -261,7 +265,14 @@ class FinchAPI::Test::UtilFormDataEncodingTest < Minitest::Test
       cgi = FakeCGI.new(*encoded)
       testcase.each do |key, val|
         assert_pattern do
-          cgi[key] => ^val
+          parsed =
+            case (p = cgi[key])
+            in StringIO
+              p.read
+            else
+              p
+            end
+          parsed => ^val
         end
       end
     end
