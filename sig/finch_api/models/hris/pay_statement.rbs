@@ -4,13 +4,13 @@ module FinchAPI
       type pay_statement =
         {
           earnings: ::Array[FinchAPI::HRIS::PayStatement::Earning?]?,
-          employee_deductions: ::Array[FinchAPI::HRIS::PayStatement::EmployeeDeduction?]?,
-          employer_contributions: ::Array[FinchAPI::HRIS::PayStatement::EmployerContribution?]?,
+          employee_deductions: ::Array[FinchAPI::HRIS::PayStatement::EmployeeDeduction]?,
+          employer_contributions: ::Array[FinchAPI::HRIS::PayStatement::EmployerContribution]?,
           gross_pay: FinchAPI::Money?,
           individual_id: String,
           net_pay: FinchAPI::Money?,
           payment_method: FinchAPI::Models::HRIS::PayStatement::payment_method?,
-          taxes: ::Array[FinchAPI::HRIS::PayStatement::Tax?]?,
+          taxes: ::Array[FinchAPI::HRIS::PayStatement::Tax]?,
           total_hours: Float?,
           type: FinchAPI::Models::HRIS::PayStatement::type_?
         }
@@ -18,9 +18,9 @@ module FinchAPI
       class PayStatement < FinchAPI::Internal::Type::BaseModel
         attr_accessor earnings: ::Array[FinchAPI::HRIS::PayStatement::Earning?]?
 
-        attr_accessor employee_deductions: ::Array[FinchAPI::HRIS::PayStatement::EmployeeDeduction?]?
+        attr_accessor employee_deductions: ::Array[FinchAPI::HRIS::PayStatement::EmployeeDeduction]?
 
-        attr_accessor employer_contributions: ::Array[FinchAPI::HRIS::PayStatement::EmployerContribution?]?
+        attr_accessor employer_contributions: ::Array[FinchAPI::HRIS::PayStatement::EmployerContribution]?
 
         attr_accessor gross_pay: FinchAPI::Money?
 
@@ -30,7 +30,7 @@ module FinchAPI
 
         attr_accessor payment_method: FinchAPI::Models::HRIS::PayStatement::payment_method?
 
-        attr_accessor taxes: ::Array[FinchAPI::HRIS::PayStatement::Tax?]?
+        attr_accessor taxes: ::Array[FinchAPI::HRIS::PayStatement::Tax]?
 
         attr_accessor total_hours: Float?
 
@@ -38,26 +38,26 @@ module FinchAPI
 
         def initialize: (
           earnings: ::Array[FinchAPI::HRIS::PayStatement::Earning?]?,
-          employee_deductions: ::Array[FinchAPI::HRIS::PayStatement::EmployeeDeduction?]?,
-          employer_contributions: ::Array[FinchAPI::HRIS::PayStatement::EmployerContribution?]?,
+          employee_deductions: ::Array[FinchAPI::HRIS::PayStatement::EmployeeDeduction]?,
+          employer_contributions: ::Array[FinchAPI::HRIS::PayStatement::EmployerContribution]?,
           gross_pay: FinchAPI::Money?,
           individual_id: String,
           net_pay: FinchAPI::Money?,
           payment_method: FinchAPI::Models::HRIS::PayStatement::payment_method?,
-          taxes: ::Array[FinchAPI::HRIS::PayStatement::Tax?]?,
+          taxes: ::Array[FinchAPI::HRIS::PayStatement::Tax]?,
           total_hours: Float?,
           type: FinchAPI::Models::HRIS::PayStatement::type_?
         ) -> void
 
         def to_hash: -> {
           earnings: ::Array[FinchAPI::HRIS::PayStatement::Earning?]?,
-          employee_deductions: ::Array[FinchAPI::HRIS::PayStatement::EmployeeDeduction?]?,
-          employer_contributions: ::Array[FinchAPI::HRIS::PayStatement::EmployerContribution?]?,
+          employee_deductions: ::Array[FinchAPI::HRIS::PayStatement::EmployeeDeduction]?,
+          employer_contributions: ::Array[FinchAPI::HRIS::PayStatement::EmployerContribution]?,
           gross_pay: FinchAPI::Money?,
           individual_id: String,
           net_pay: FinchAPI::Money?,
           payment_method: FinchAPI::Models::HRIS::PayStatement::payment_method?,
-          taxes: ::Array[FinchAPI::HRIS::PayStatement::Tax?]?,
+          taxes: ::Array[FinchAPI::HRIS::PayStatement::Tax]?,
           total_hours: Float?,
           type: FinchAPI::Models::HRIS::PayStatement::type_?
         }

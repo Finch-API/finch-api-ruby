@@ -15,22 +15,16 @@ module FinchAPI
         # @!attribute employee_deductions
         #   The array of deductions objects associated with this pay statement.
         #
-        #   @return [Array<FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction, nil>, nil]
+        #   @return [Array<FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction>, nil]
         required :employee_deductions,
-                 -> {
-                   FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::PayStatement::EmployeeDeduction,
-                                                     nil?: true]
-                 },
+                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::PayStatement::EmployeeDeduction] },
                  nil?: true
 
         # @!attribute employer_contributions
         #
-        #   @return [Array<FinchAPI::Models::HRIS::PayStatement::EmployerContribution, nil>, nil]
+        #   @return [Array<FinchAPI::Models::HRIS::PayStatement::EmployerContribution>, nil]
         required :employer_contributions,
-                 -> {
-                   FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::PayStatement::EmployerContribution,
-                                                     nil?: true]
-                 },
+                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::PayStatement::EmployerContribution] },
                  nil?: true
 
         # @!attribute gross_pay
@@ -58,9 +52,11 @@ module FinchAPI
         # @!attribute taxes
         #   The array of taxes objects associated with this pay statement.
         #
-        #   @return [Array<FinchAPI::Models::HRIS::PayStatement::Tax, nil>, nil]
+        #   @return [Array<FinchAPI::Models::HRIS::PayStatement::Tax>, nil]
         required :taxes,
-                 -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::PayStatement::Tax, nil?: true] },
+                 -> {
+                   FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::PayStatement::Tax]
+                 },
                  nil?: true
 
         # @!attribute total_hours
@@ -78,9 +74,9 @@ module FinchAPI
         # @!method initialize(earnings:, employee_deductions:, employer_contributions:, gross_pay:, individual_id:, net_pay:, payment_method:, taxes:, total_hours:, type:)
         #   @param earnings [Array<FinchAPI::Models::HRIS::PayStatement::Earning, nil>, nil] The array of earnings objects associated with this pay statement
         #
-        #   @param employee_deductions [Array<FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction, nil>, nil] The array of deductions objects associated with this pay statement.
+        #   @param employee_deductions [Array<FinchAPI::Models::HRIS::PayStatement::EmployeeDeduction>, nil] The array of deductions objects associated with this pay statement.
         #
-        #   @param employer_contributions [Array<FinchAPI::Models::HRIS::PayStatement::EmployerContribution, nil>, nil]
+        #   @param employer_contributions [Array<FinchAPI::Models::HRIS::PayStatement::EmployerContribution>, nil]
         #
         #   @param gross_pay [FinchAPI::Models::Money, nil]
         #
@@ -90,7 +86,7 @@ module FinchAPI
         #
         #   @param payment_method [Symbol, FinchAPI::Models::HRIS::PayStatement::PaymentMethod, nil] The payment method.
         #
-        #   @param taxes [Array<FinchAPI::Models::HRIS::PayStatement::Tax, nil>, nil] The array of taxes objects associated with this pay statement.
+        #   @param taxes [Array<FinchAPI::Models::HRIS::PayStatement::Tax>, nil] The array of taxes objects associated with this pay statement.
         #
         #   @param total_hours [Float, nil] The number of hours worked for this pay period
         #
