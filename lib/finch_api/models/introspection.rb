@@ -99,18 +99,6 @@ module FinchAPI
       #   @return [String, nil]
       optional :customer_name, String, nil?: true
 
-      # @!attribute entity_ids
-      #   Array of entity IDs associated with this connection.
-      #
-      #   @return [Array<String>, nil]
-      optional :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
-
-      # @!attribute entity_mode
-      #   Indicates whether this connection manages a single entity or multiple entities.
-      #
-      #   @return [Symbol, FinchAPI::Models::Introspection::EntityMode, nil]
-      optional :entity_mode, enum: -> { FinchAPI::Introspection::EntityMode }
-
       # @!attribute manual
       #   Whether the connection associated with the `access_token` uses the Assisted
       #   Connect Flow. (`true` if using Assisted Connect, `false` if connection is
@@ -134,7 +122,7 @@ module FinchAPI
       #   @return [String, nil]
       optional :username, String, nil?: true
 
-      # @!method initialize(id:, client_id:, client_type:, connection_id:, connection_status:, connection_type:, products:, provider_id:, account_id: nil, authentication_methods: nil, company_id: nil, customer_email: nil, customer_id: nil, customer_name: nil, entity_ids: nil, entity_mode: nil, manual: nil, payroll_provider_id: nil, username: nil)
+      # @!method initialize(id:, client_id:, client_type:, connection_id:, connection_status:, connection_type:, products:, provider_id:, account_id: nil, authentication_methods: nil, company_id: nil, customer_email: nil, customer_id: nil, customer_name: nil, manual: nil, payroll_provider_id: nil, username: nil)
       #   Some parameter documentations has been truncated, see
       #   {FinchAPI::Models::Introspection} for more details.
       #
@@ -165,10 +153,6 @@ module FinchAPI
       #   @param customer_id [String, nil] The ID of your customer you provided to Finch when a connect session was created
       #
       #   @param customer_name [String, nil] The name of your customer you provided to Finch when a connect session was creat
-      #
-      #   @param entity_ids [Array<String>] Array of entity IDs associated with this connection.
-      #
-      #   @param entity_mode [Symbol, FinchAPI::Models::Introspection::EntityMode] Indicates whether this connection manages a single entity or multiple entities.
       #
       #   @param manual [Boolean] Whether the connection associated with the `access_token` uses the Assisted Conn
       #
@@ -332,19 +316,6 @@ module FinchAPI
             #   @return [Array(Time, String)]
           end
         end
-      end
-
-      # Indicates whether this connection manages a single entity or multiple entities.
-      #
-      # @see FinchAPI::Models::Introspection#entity_mode
-      module EntityMode
-        extend FinchAPI::Internal::Type::Enum
-
-        SINGLE = :single
-        MULTI = :multi
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
       end
     end
   end
