@@ -4,7 +4,6 @@ module FinchAPI
       class Manual
         def retrieve: (
           String job_id,
-          ?entity_id: String,
           ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::Jobs::ManualAsyncJob
 

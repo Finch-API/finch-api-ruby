@@ -41,43 +41,30 @@ module FinchAPI
           )
         end
 
-        # Some parameter documentations has been truncated, see
-        # {FinchAPI::Models::Jobs::AutomatedRetrieveParams} for more details.
-        #
         # Get an automated job by `job_id`.
         #
-        # @overload retrieve(job_id, entity_id: nil, request_options: {})
+        # @overload retrieve(job_id, request_options: {})
         #
         # @param job_id [String]
-        #
-        # @param entity_id [String] The entity ID to use when authenticating with a multi-account token. Required wh
-        #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Models::Jobs::AutomatedAsyncJob]
         #
         # @see FinchAPI::Models::Jobs::AutomatedRetrieveParams
         def retrieve(job_id, params = {})
-          parsed, options = FinchAPI::Jobs::AutomatedRetrieveParams.dump_request(params)
           @client.request(
             method: :get,
             path: ["jobs/automated/%1$s", job_id],
-            query: parsed,
             model: FinchAPI::Jobs::AutomatedAsyncJob,
-            options: options
+            options: params[:request_options]
           )
         end
 
-        # Some parameter documentations has been truncated, see
-        # {FinchAPI::Models::Jobs::AutomatedListParams} for more details.
-        #
         # Get all automated jobs. Automated jobs are completed by a machine. By default,
         # jobs are sorted in descending order by submission time. For scheduled jobs such
         # as data syncs, only the next scheduled job is shown.
         #
-        # @overload list(entity_id: nil, limit: nil, offset: nil, request_options: {})
-        #
-        # @param entity_id [String] The entity ID to use when authenticating with a multi-account token. Required wh
+        # @overload list(limit: nil, offset: nil, request_options: {})
         #
         # @param limit [Integer] Number of items to return
         #

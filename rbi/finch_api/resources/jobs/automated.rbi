@@ -37,18 +37,10 @@ module FinchAPI
         sig do
           params(
             job_id: String,
-            entity_id: String,
             request_options: FinchAPI::RequestOptions::OrHash
           ).returns(FinchAPI::Jobs::AutomatedAsyncJob)
         end
-        def retrieve(
-          job_id,
-          # The entity ID to use when authenticating with a multi-account token. Required
-          # when using a multi-account token to specify which entity's data to access.
-          # Example: `123e4567-e89b-12d3-a456-426614174000`
-          entity_id: nil,
-          request_options: {}
-        )
+        def retrieve(job_id, request_options: {})
         end
 
         # Get all automated jobs. Automated jobs are completed by a machine. By default,
@@ -56,17 +48,12 @@ module FinchAPI
         # as data syncs, only the next scheduled job is shown.
         sig do
           params(
-            entity_id: String,
             limit: Integer,
             offset: Integer,
             request_options: FinchAPI::RequestOptions::OrHash
           ).returns(FinchAPI::Models::Jobs::AutomatedListResponse)
         end
         def list(
-          # The entity ID to use when authenticating with a multi-account token. Required
-          # when using a multi-account token to specify which entity's data to access.
-          # Example: `123e4567-e89b-12d3-a456-426614174000`
-          entity_id: nil,
           # Number of items to return
           limit: nil,
           # Index to start from (defaults to 0)
