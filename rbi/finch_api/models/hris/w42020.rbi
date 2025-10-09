@@ -10,21 +10,18 @@ module FinchAPI
           end
 
         # Detailed information specific to the 2020 W4 form.
-        sig { returns(T.nilable(FinchAPI::HRIS::W42020::Data)) }
+        sig { returns(FinchAPI::HRIS::W42020::Data) }
         attr_reader :data
 
         sig { params(data: FinchAPI::HRIS::W42020::Data::OrHash).void }
         attr_writer :data
 
         # Specifies the form type, indicating that this document is a 2020 W4 form.
-        sig { returns(T.nilable(FinchAPI::HRIS::W42020::Type::TaggedSymbol)) }
-        attr_reader :type
-
-        sig { params(type: FinchAPI::HRIS::W42020::Type::OrSymbol).void }
-        attr_writer :type
+        sig { returns(FinchAPI::HRIS::W42020::Type::TaggedSymbol) }
+        attr_accessor :type
 
         # The tax year this W4 document applies to.
-        sig { returns(T.nilable(Float)) }
+        sig { returns(Float) }
         attr_accessor :year
 
         # A 2020 version of the W-4 tax form containing information on an individual's
@@ -33,16 +30,16 @@ module FinchAPI
           params(
             data: FinchAPI::HRIS::W42020::Data::OrHash,
             type: FinchAPI::HRIS::W42020::Type::OrSymbol,
-            year: T.nilable(Float)
+            year: Float
           ).returns(T.attached_class)
         end
         def self.new(
           # Detailed information specific to the 2020 W4 form.
-          data: nil,
+          data:,
           # Specifies the form type, indicating that this document is a 2020 W4 form.
-          type: nil,
+          type:,
           # The tax year this W4 document applies to.
-          year: nil
+          year:
         )
         end
 
@@ -51,7 +48,7 @@ module FinchAPI
             {
               data: FinchAPI::HRIS::W42020::Data,
               type: FinchAPI::HRIS::W42020::Type::TaggedSymbol,
-              year: T.nilable(Float)
+              year: Float
             }
           )
         end
@@ -66,19 +63,19 @@ module FinchAPI
 
           # Amount claimed for dependents other than qualifying children under 17 (in
           # cents).
-          sig { returns(T.nilable(Integer)) }
+          sig { returns(Integer) }
           attr_accessor :amount_for_other_dependents
 
           # Amount claimed for dependents under 17 years old (in cents).
-          sig { returns(T.nilable(Integer)) }
+          sig { returns(Integer) }
           attr_accessor :amount_for_qualifying_children_under_17
 
           # Deductible expenses (in cents).
-          sig { returns(T.nilable(Integer)) }
+          sig { returns(Integer) }
           attr_accessor :deductions
 
           # Additional withholding amount (in cents).
-          sig { returns(T.nilable(Integer)) }
+          sig { returns(Integer) }
           attr_accessor :extra_withholding
 
           # The individual's filing status for tax purposes.
@@ -92,69 +89,66 @@ module FinchAPI
           attr_accessor :filing_status
 
           # The unique identifier for the individual associated with this document.
-          sig { returns(T.nilable(String)) }
-          attr_reader :individual_id
-
-          sig { params(individual_id: String).void }
-          attr_writer :individual_id
+          sig { returns(String) }
+          attr_accessor :individual_id
 
           # Additional income from sources outside of primary employment (in cents).
-          sig { returns(T.nilable(Integer)) }
+          sig { returns(Integer) }
           attr_accessor :other_income
 
           # Total amount claimed for dependents and other credits (in cents).
-          sig { returns(T.nilable(Integer)) }
+          sig { returns(Integer) }
           attr_accessor :total_claim_dependent_and_other_credits
 
           # Detailed information specific to the 2020 W4 form.
           sig do
             params(
-              amount_for_other_dependents: T.nilable(Integer),
-              amount_for_qualifying_children_under_17: T.nilable(Integer),
-              deductions: T.nilable(Integer),
-              extra_withholding: T.nilable(Integer),
+              amount_for_other_dependents: Integer,
+              amount_for_qualifying_children_under_17: Integer,
+              deductions: Integer,
+              extra_withholding: Integer,
               filing_status:
                 T.nilable(FinchAPI::HRIS::W42020::Data::FilingStatus::OrSymbol),
               individual_id: String,
-              other_income: T.nilable(Integer),
-              total_claim_dependent_and_other_credits: T.nilable(Integer)
+              other_income: Integer,
+              total_claim_dependent_and_other_credits: Integer
             ).returns(T.attached_class)
           end
           def self.new(
             # Amount claimed for dependents other than qualifying children under 17 (in
             # cents).
-            amount_for_other_dependents: nil,
+            amount_for_other_dependents:,
             # Amount claimed for dependents under 17 years old (in cents).
-            amount_for_qualifying_children_under_17: nil,
+            amount_for_qualifying_children_under_17:,
             # Deductible expenses (in cents).
-            deductions: nil,
+            deductions:,
             # Additional withholding amount (in cents).
-            extra_withholding: nil,
+            extra_withholding:,
             # The individual's filing status for tax purposes.
-            filing_status: nil,
+            filing_status:,
             # The unique identifier for the individual associated with this document.
-            individual_id: nil,
+            individual_id:,
             # Additional income from sources outside of primary employment (in cents).
-            other_income: nil,
+            other_income:,
             # Total amount claimed for dependents and other credits (in cents).
-            total_claim_dependent_and_other_credits: nil
+            total_claim_dependent_and_other_credits:
           )
           end
 
           sig do
             override.returns(
               {
-                amount_for_other_dependents: T.nilable(Integer),
-                amount_for_qualifying_children_under_17: T.nilable(Integer),
-                deductions: T.nilable(Integer),
-                extra_withholding: T.nilable(Integer),
+                amount_for_other_dependents: Integer,
+                amount_for_qualifying_children_under_17: Integer,
+                deductions: Integer,
+                extra_withholding: Integer,
                 filing_status:
                   T.nilable(
                     FinchAPI::HRIS::W42020::Data::FilingStatus::TaggedSymbol
                   ),
                 individual_id: String,
-                other_income: T.nilable(Integer),
-                total_claim_dependent_and_other_credits: T.nilable(Integer)
+                other_income: Integer,
+                total_claim_dependent_and_other_credits: Integer
               }
             )
           end

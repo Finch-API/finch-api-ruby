@@ -10,11 +10,8 @@ module FinchAPI
           end
 
         # A stable Finch id for the document.
-        sig { returns(T.nilable(String)) }
-        attr_reader :id
-
-        sig { params(id: String).void }
-        attr_writer :id
+        sig { returns(String) }
+        attr_accessor :id
 
         # The ID of the individual associated with the document. This will be null for
         # employer-level documents.
@@ -22,28 +19,16 @@ module FinchAPI
         attr_accessor :individual_id
 
         # The type of document.
-        sig do
-          returns(
-            T.nilable(FinchAPI::HRIS::DocumentResponse::Type::TaggedSymbol)
-          )
-        end
-        attr_reader :type
-
-        sig do
-          params(type: FinchAPI::HRIS::DocumentResponse::Type::OrSymbol).void
-        end
-        attr_writer :type
+        sig { returns(FinchAPI::HRIS::DocumentResponse::Type::TaggedSymbol) }
+        attr_accessor :type
 
         # A URL to access the document. Format:
         # `https://api.tryfinch.com/employer/documents/:document_id`.
-        sig { returns(T.nilable(String)) }
-        attr_reader :url
-
-        sig { params(url: String).void }
-        attr_writer :url
+        sig { returns(String) }
+        attr_accessor :url
 
         # The year the document applies to, if available.
-        sig { returns(T.nilable(Float)) }
+        sig { returns(Float) }
         attr_accessor :year
 
         sig do
@@ -52,22 +37,22 @@ module FinchAPI
             individual_id: T.nilable(String),
             type: FinchAPI::HRIS::DocumentResponse::Type::OrSymbol,
             url: String,
-            year: T.nilable(Float)
+            year: Float
           ).returns(T.attached_class)
         end
         def self.new(
           # A stable Finch id for the document.
-          id: nil,
+          id:,
           # The ID of the individual associated with the document. This will be null for
           # employer-level documents.
-          individual_id: nil,
+          individual_id:,
           # The type of document.
-          type: nil,
+          type:,
           # A URL to access the document. Format:
           # `https://api.tryfinch.com/employer/documents/:document_id`.
-          url: nil,
+          url:,
           # The year the document applies to, if available.
-          year: nil
+          year:
         )
         end
 
@@ -78,7 +63,7 @@ module FinchAPI
               individual_id: T.nilable(String),
               type: FinchAPI::HRIS::DocumentResponse::Type::TaggedSymbol,
               url: String,
-              year: T.nilable(Float)
+              year: Float
             }
           )
         end

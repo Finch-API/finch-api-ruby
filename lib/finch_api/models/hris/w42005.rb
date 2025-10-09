@@ -7,22 +7,22 @@ module FinchAPI
         # @!attribute data
         #   Detailed information specific to the 2005 W4 form.
         #
-        #   @return [FinchAPI::Models::HRIS::W42005::Data, nil]
-        optional :data, -> { FinchAPI::HRIS::W42005::Data }
+        #   @return [FinchAPI::Models::HRIS::W42005::Data]
+        required :data, -> { FinchAPI::HRIS::W42005::Data }
 
         # @!attribute type
         #   Specifies the form type, indicating that this document is a 2005 W4 form.
         #
-        #   @return [Symbol, FinchAPI::Models::HRIS::W42005::Type, nil]
-        optional :type, enum: -> { FinchAPI::HRIS::W42005::Type }
+        #   @return [Symbol, FinchAPI::Models::HRIS::W42005::Type]
+        required :type, enum: -> { FinchAPI::HRIS::W42005::Type }
 
         # @!attribute year
         #   The tax year this W4 document applies to.
         #
-        #   @return [Float, nil]
-        optional :year, Float, nil?: true
+        #   @return [Float]
+        required :year, Float
 
-        # @!method initialize(data: nil, type: nil, year: nil)
+        # @!method initialize(data:, type:, year:)
         #   A 2005 version of the W-4 tax form containing information on an individual's
         #   filing status, dependents, and withholding details.
         #
@@ -30,52 +30,52 @@ module FinchAPI
         #
         #   @param type [Symbol, FinchAPI::Models::HRIS::W42005::Type] Specifies the form type, indicating that this document is a 2005 W4 form.
         #
-        #   @param year [Float, nil] The tax year this W4 document applies to.
+        #   @param year [Float] The tax year this W4 document applies to.
 
         # @see FinchAPI::Models::HRIS::W42005#data
         class Data < FinchAPI::Internal::Type::BaseModel
           # @!attribute additional_withholding
           #   Additional withholding amount (in cents).
           #
-          #   @return [Integer, nil]
-          optional :additional_withholding, Integer, nil?: true
+          #   @return [Integer]
+          required :additional_withholding, Integer
 
           # @!attribute exemption
           #   Indicates exemption status from federal tax withholding.
           #
           #   @return [Symbol, FinchAPI::Models::HRIS::W42005::Data::Exemption, nil]
-          optional :exemption, enum: -> { FinchAPI::HRIS::W42005::Data::Exemption }
+          required :exemption, enum: -> { FinchAPI::HRIS::W42005::Data::Exemption }, nil?: true
 
           # @!attribute filing_status
           #   The individual's filing status for tax purposes.
           #
           #   @return [Symbol, FinchAPI::Models::HRIS::W42005::Data::FilingStatus, nil]
-          optional :filing_status, enum: -> { FinchAPI::HRIS::W42005::Data::FilingStatus }, nil?: true
+          required :filing_status, enum: -> { FinchAPI::HRIS::W42005::Data::FilingStatus }, nil?: true
 
           # @!attribute individual_id
           #   The unique identifier for the individual associated with this 2005 W4 form.
           #
-          #   @return [String, nil]
-          optional :individual_id, String
+          #   @return [String]
+          required :individual_id, String
 
           # @!attribute total_number_of_allowances
           #   Total number of allowances claimed (in cents).
           #
-          #   @return [Integer, nil]
-          optional :total_number_of_allowances, Integer, nil?: true
+          #   @return [Integer]
+          required :total_number_of_allowances, Integer
 
-          # @!method initialize(additional_withholding: nil, exemption: nil, filing_status: nil, individual_id: nil, total_number_of_allowances: nil)
+          # @!method initialize(additional_withholding:, exemption:, filing_status:, individual_id:, total_number_of_allowances:)
           #   Detailed information specific to the 2005 W4 form.
           #
-          #   @param additional_withholding [Integer, nil] Additional withholding amount (in cents).
+          #   @param additional_withholding [Integer] Additional withholding amount (in cents).
           #
-          #   @param exemption [Symbol, FinchAPI::Models::HRIS::W42005::Data::Exemption] Indicates exemption status from federal tax withholding.
+          #   @param exemption [Symbol, FinchAPI::Models::HRIS::W42005::Data::Exemption, nil] Indicates exemption status from federal tax withholding.
           #
           #   @param filing_status [Symbol, FinchAPI::Models::HRIS::W42005::Data::FilingStatus, nil] The individual's filing status for tax purposes.
           #
           #   @param individual_id [String] The unique identifier for the individual associated with this 2005 W4 form.
           #
-          #   @param total_number_of_allowances [Integer, nil] Total number of allowances claimed (in cents).
+          #   @param total_number_of_allowances [Integer] Total number of allowances claimed (in cents).
 
           # Indicates exemption status from federal tax withholding.
           #
