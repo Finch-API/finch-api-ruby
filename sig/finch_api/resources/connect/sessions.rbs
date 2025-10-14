@@ -3,23 +3,23 @@ module FinchAPI
     class Connect
       class Sessions
         def new: (
+          customer_email: String?,
           customer_id: String,
           customer_name: String,
+          integration: FinchAPI::Connect::SessionNewParams::Integration?,
+          manual: bool?,
+          minutes_to_expire: Float?,
           products: ::Array[FinchAPI::Models::Connect::SessionNewParams::product],
-          ?customer_email: String?,
-          ?integration: FinchAPI::Connect::SessionNewParams::Integration?,
-          ?manual: bool?,
-          ?minutes_to_expire: Float?,
-          ?redirect_uri: String?,
-          ?sandbox: FinchAPI::Models::Connect::SessionNewParams::sandbox?,
+          redirect_uri: String?,
+          sandbox: FinchAPI::Models::Connect::SessionNewParams::sandbox?,
           ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::Models::Connect::SessionNewResponse
 
         def reauthenticate: (
           connection_id: String,
-          ?minutes_to_expire: Integer?,
-          ?products: ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]?,
-          ?redirect_uri: String?,
+          minutes_to_expire: Integer,
+          products: ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]?,
+          redirect_uri: String?,
           ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::Models::Connect::SessionReauthenticateResponse
 
