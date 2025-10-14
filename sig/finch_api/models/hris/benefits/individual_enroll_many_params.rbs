@@ -126,6 +126,7 @@ module FinchAPI
               type company_contribution =
                 {
                   amount: Integer,
+                  tiers: ::Array[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Tier],
                   type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::type_
                 }
 
@@ -133,6 +134,12 @@ module FinchAPI
                 attr_reader amount: Integer?
 
                 def amount=: (Integer) -> Integer
+
+                attr_reader tiers: ::Array[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Tier]?
+
+                def tiers=: (
+                  ::Array[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Tier]
+                ) -> ::Array[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Tier]
 
                 attr_reader type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::type_?
 
@@ -142,21 +149,36 @@ module FinchAPI
 
                 def initialize: (
                   ?amount: Integer,
+                  ?tiers: ::Array[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Tier],
                   ?type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::type_
                 ) -> void
 
                 def to_hash: -> {
                   amount: Integer,
+                  tiers: ::Array[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Tier],
                   type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::type_
                 }
 
-                type type_ = :fixed | :percent
+                type tier = { match: Integer, threshold: Integer }
+
+                class Tier < FinchAPI::Internal::Type::BaseModel
+                  attr_accessor match: Integer
+
+                  attr_accessor threshold: Integer
+
+                  def initialize: (match: Integer, threshold: Integer) -> void
+
+                  def to_hash: -> { match: Integer, threshold: Integer }
+                end
+
+                type type_ = :fixed | :percent | :tiered
 
                 module Type
                   extend FinchAPI::Internal::Type::Enum
 
                   FIXED: :fixed
                   PERCENT: :percent
+                  TIERED: :tiered
 
                   def self?.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::type_]
                 end

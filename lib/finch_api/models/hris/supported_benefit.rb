@@ -89,6 +89,7 @@ module FinchAPI
 
           FIXED = :fixed
           PERCENT = :percent
+          TIERED = :tiered
 
           # @!method self.values
           #   @return [Array<Symbol>]

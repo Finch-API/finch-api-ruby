@@ -119,20 +119,49 @@ module FinchAPI
                 #   @return [Integer, nil]
                 optional :amount, Integer
 
+                # @!attribute tiers
+                #   Array of tier objects for tiered contribution matching (required when type is
+                #   tiered)
+                #
+                #   @return [Array<FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Tier>, nil]
+                optional :tiers,
+                         -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Tier] }
+
                 # @!attribute type
                 #
                 #   @return [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type, nil]
                 optional :type,
                          enum: -> { FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type }
 
-                # @!method initialize(amount: nil, type: nil)
+                # @!method initialize(amount: nil, tiers: nil, type: nil)
                 #   Some parameter documentations has been truncated, see
                 #   {FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution}
                 #   for more details.
                 #
                 #   @param amount [Integer] Amount in cents for fixed type or basis points (1/100th of a percent) for percen
                 #
+                #   @param tiers [Array<FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Tier>] Array of tier objects for tiered contribution matching (required when type is ti
+                #
                 #   @param type [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type]
+
+                class Tier < FinchAPI::Internal::Type::BaseModel
+                  # @!attribute match
+                  #   The employer match percentage in basis points (0-10000 = 0-100%)
+                  #
+                  #   @return [Integer]
+                  required :match, Integer
+
+                  # @!attribute threshold
+                  #   The employee contribution threshold in basis points (0-10000 = 0-100%)
+                  #
+                  #   @return [Integer]
+                  required :threshold, Integer
+
+                  # @!method initialize(match:, threshold:)
+                  #   @param match [Integer] The employer match percentage in basis points (0-10000 = 0-100%)
+                  #
+                  #   @param threshold [Integer] The employee contribution threshold in basis points (0-10000 = 0-100%)
+                end
 
                 # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution#type
                 module Type
@@ -140,6 +169,7 @@ module FinchAPI
 
                   FIXED = :fixed
                   PERCENT = :percent
+                  TIERED = :tiered
 
                   # @!method self.values
                   #   @return [Array<Symbol>]
