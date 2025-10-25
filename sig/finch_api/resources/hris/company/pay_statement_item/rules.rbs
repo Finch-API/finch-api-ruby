@@ -5,6 +5,7 @@ module FinchAPI
         class PayStatementItem
           class Rules
             def create: (
+              entity_ids: ::Array[String],
               ?attributes: FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes,
               ?conditions: ::Array[FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Condition],
               ?effective_end_date: String?,
@@ -15,16 +16,19 @@ module FinchAPI
 
             def update: (
               String rule_id,
+              entity_ids: ::Array[String],
               ?optional_property: top,
               ?request_options: FinchAPI::request_opts
             ) -> FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse
 
             def list: (
+              entity_ids: ::Array[String],
               ?request_options: FinchAPI::request_opts
             ) -> FinchAPI::Internal::ResponsesPage[FinchAPI::Models::HRIS::Company::PayStatementItem::RuleListResponse]
 
             def delete: (
               String rule_id,
+              entity_ids: ::Array[String],
               ?request_options: FinchAPI::request_opts
             ) -> FinchAPI::Models::HRIS::Company::PayStatementItem::RuleDeleteResponse
 

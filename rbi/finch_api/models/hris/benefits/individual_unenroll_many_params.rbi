@@ -16,6 +16,10 @@ module FinchAPI
               )
             end
 
+          # The entity IDs to specify which entities' data to access.
+          sig { returns(T::Array[String]) }
+          attr_accessor :entity_ids
+
           # Array of individual_ids to unenroll.
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :individual_ids
@@ -25,11 +29,14 @@ module FinchAPI
 
           sig do
             params(
+              entity_ids: T::Array[String],
               individual_ids: T::Array[String],
               request_options: FinchAPI::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
           def self.new(
+            # The entity IDs to specify which entities' data to access.
+            entity_ids:,
             # Array of individual_ids to unenroll.
             individual_ids: nil,
             request_options: {}
@@ -39,6 +46,7 @@ module FinchAPI
           sig do
             override.returns(
               {
+                entity_ids: T::Array[String],
                 individual_ids: T::Array[String],
                 request_options: FinchAPI::RequestOptions
               }

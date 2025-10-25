@@ -3,6 +3,7 @@ module FinchAPI
     class HRIS
       class Documents
         def list: (
+          entity_ids: ::Array[String],
           ?individual_ids: ::Array[String],
           ?limit: Integer,
           ?offset: Integer,
@@ -12,6 +13,7 @@ module FinchAPI
 
         def retreive: (
           String document_id,
+          entity_ids: ::Array[String],
           ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::Models::HRIS::document_retreive_response
 

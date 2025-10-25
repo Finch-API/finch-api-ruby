@@ -16,6 +16,10 @@ module FinchAPI
               )
             end
 
+          # The entity IDs to specify which entities' data to access.
+          sig { returns(T::Array[String]) }
+          attr_accessor :entity_ids
+
           # Comma-delimited list of pay statement item categories to filter on. If empty,
           # defaults to all categories.
           sig do
@@ -71,6 +75,7 @@ module FinchAPI
 
           sig do
             params(
+              entity_ids: T::Array[String],
               categories:
                 T::Array[
                   FinchAPI::HRIS::Company::PayStatementItemListParams::Category::OrSymbol
@@ -83,6 +88,8 @@ module FinchAPI
             ).returns(T.attached_class)
           end
           def self.new(
+            # The entity IDs to specify which entities' data to access.
+            entity_ids:,
             # Comma-delimited list of pay statement item categories to filter on. If empty,
             # defaults to all categories.
             categories: nil,
@@ -103,6 +110,7 @@ module FinchAPI
           sig do
             override.returns(
               {
+                entity_ids: T::Array[String],
                 categories:
                   T::Array[
                     FinchAPI::HRIS::Company::PayStatementItemListParams::Category::OrSymbol

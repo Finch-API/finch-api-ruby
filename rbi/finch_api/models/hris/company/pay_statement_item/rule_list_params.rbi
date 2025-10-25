@@ -17,16 +17,30 @@ module FinchAPI
                 )
               end
 
+            # The entity IDs to retrieve rules for.
+            sig { returns(T::Array[String]) }
+            attr_accessor :entity_ids
+
             sig do
-              params(request_options: FinchAPI::RequestOptions::OrHash).returns(
-                T.attached_class
-              )
+              params(
+                entity_ids: T::Array[String],
+                request_options: FinchAPI::RequestOptions::OrHash
+              ).returns(T.attached_class)
             end
-            def self.new(request_options: {})
+            def self.new(
+              # The entity IDs to retrieve rules for.
+              entity_ids:,
+              request_options: {}
+            )
             end
 
             sig do
-              override.returns({ request_options: FinchAPI::RequestOptions })
+              override.returns(
+                {
+                  entity_ids: T::Array[String],
+                  request_options: FinchAPI::RequestOptions
+                }
+              )
             end
             def to_hash
             end

@@ -8,15 +8,22 @@ module FinchAPI
         sig do
           params(
             pay_group_id: String,
+            entity_ids: T::Array[String],
             request_options: FinchAPI::RequestOptions::OrHash
           ).returns(FinchAPI::Models::Payroll::PayGroupRetrieveResponse)
         end
-        def retrieve(pay_group_id, request_options: {})
+        def retrieve(
+          pay_group_id,
+          # The entity IDs to specify which entities' data to access.
+          entity_ids:,
+          request_options: {}
+        )
         end
 
         # Read company pay groups and frequencies
         sig do
           params(
+            entity_ids: T::Array[String],
             individual_id: String,
             pay_frequencies: T::Array[String],
             request_options: FinchAPI::RequestOptions::OrHash
@@ -26,7 +33,13 @@ module FinchAPI
             ]
           )
         end
-        def list(individual_id: nil, pay_frequencies: nil, request_options: {})
+        def list(
+          # The entity IDs to specify which entities' data to access.
+          entity_ids:,
+          individual_id: nil,
+          pay_frequencies: nil,
+          request_options: {}
+        )
         end
 
         # @api private

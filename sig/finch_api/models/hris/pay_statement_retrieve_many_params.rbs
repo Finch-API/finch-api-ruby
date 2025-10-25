@@ -3,6 +3,7 @@ module FinchAPI
     module HRIS
       type pay_statement_retrieve_many_params =
         {
+          entity_ids: ::Array[String],
           requests: ::Array[FinchAPI::HRIS::PayStatementRetrieveManyParams::Request]
         }
         & FinchAPI::Internal::Type::request_parameters
@@ -11,14 +12,18 @@ module FinchAPI
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
+        attr_accessor entity_ids: ::Array[String]
+
         attr_accessor requests: ::Array[FinchAPI::HRIS::PayStatementRetrieveManyParams::Request]
 
         def initialize: (
+          entity_ids: ::Array[String],
           requests: ::Array[FinchAPI::HRIS::PayStatementRetrieveManyParams::Request],
           ?request_options: FinchAPI::request_opts
         ) -> void
 
         def to_hash: -> {
+          entity_ids: ::Array[String],
           requests: ::Array[FinchAPI::HRIS::PayStatementRetrieveManyParams::Request],
           request_options: FinchAPI::RequestOptions
         }

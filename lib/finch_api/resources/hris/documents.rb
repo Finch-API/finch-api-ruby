@@ -10,7 +10,9 @@ module FinchAPI
         # **Beta:** This endpoint is in beta and may change. Retrieve a list of
         # company-wide documents.
         #
-        # @overload list(individual_ids: nil, limit: nil, offset: nil, types: nil, request_options: {})
+        # @overload list(entity_ids:, individual_ids: nil, limit: nil, offset: nil, types: nil, request_options: {})
+        #
+        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
         #
         # @param individual_ids [Array<String>] Comma-delimited list of stable Finch uuids for each individual. If empty, defaul
         #
@@ -25,7 +27,7 @@ module FinchAPI
         # @return [FinchAPI::Models::HRIS::DocumentListResponse]
         #
         # @see FinchAPI::Models::HRIS::DocumentListParams
-        def list(params = {})
+        def list(params)
           parsed, options = FinchAPI::HRIS::DocumentListParams.dump_request(params)
           @client.request(
             method: :get,
@@ -39,21 +41,25 @@ module FinchAPI
         # **Beta:** This endpoint is in beta and may change. Retrieve details of a
         # specific document by its ID.
         #
-        # @overload retreive(document_id, request_options: {})
+        # @overload retreive(document_id, entity_ids:, request_options: {})
         #
         # @param document_id [String] The unique identifier of the document.
+        #
+        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Models::HRIS::W42020, FinchAPI::Models::HRIS::W42005]
         #
         # @see FinchAPI::Models::HRIS::DocumentRetreiveParams
-        def retreive(document_id, params = {})
+        def retreive(document_id, params)
+          parsed, options = FinchAPI::HRIS::DocumentRetreiveParams.dump_request(params)
           @client.request(
             method: :get,
             path: ["employer/documents/%1$s", document_id],
+            query: parsed,
             model: FinchAPI::Models::HRIS::DocumentRetreiveResponse,
-            options: params[:request_options]
+            options: options
           )
         end
 

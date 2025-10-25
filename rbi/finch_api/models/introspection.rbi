@@ -95,6 +95,16 @@ module FinchAPI
       sig { returns(T.nilable(String)) }
       attr_accessor :customer_name
 
+      # Array of detailed entity information for each connected account in multi-account
+      # mode
+      sig { returns(T.nilable(T::Array[FinchAPI::Introspection::Entity])) }
+      attr_reader :entities
+
+      sig do
+        params(entities: T::Array[FinchAPI::Introspection::Entity::OrHash]).void
+      end
+      attr_writer :entities
+
       # Whether the connection associated with the `access_token` uses the Assisted
       # Connect Flow. (`true` if using Assisted Connect, `false` if connection is
       # automated)
@@ -133,6 +143,7 @@ module FinchAPI
           customer_email: T.nilable(String),
           customer_id: T.nilable(String),
           customer_name: T.nilable(String),
+          entities: T::Array[FinchAPI::Introspection::Entity::OrHash],
           manual: T::Boolean,
           payroll_provider_id: String,
           username: T.nilable(String)
@@ -173,6 +184,9 @@ module FinchAPI
         # The name of your customer you provided to Finch when a connect session was
         # created for this connection
         customer_name: nil,
+        # Array of detailed entity information for each connected account in multi-account
+        # mode
+        entities: nil,
         # Whether the connection associated with the `access_token` uses the Assisted
         # Connect Flow. (`true` if using Assisted Connect, `false` if connection is
         # automated)
@@ -204,6 +218,7 @@ module FinchAPI
             customer_email: T.nilable(String),
             customer_id: T.nilable(String),
             customer_name: T.nilable(String),
+            entities: T::Array[FinchAPI::Introspection::Entity],
             manual: T::Boolean,
             payroll_provider_id: String,
             username: T.nilable(String)
@@ -542,6 +557,62 @@ module FinchAPI
             def self.variants
             end
           end
+        end
+      end
+
+      class Entity < FinchAPI::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(FinchAPI::Introspection::Entity, FinchAPI::Internal::AnyHash)
+          end
+
+        # The connection account ID for this entity
+        sig { returns(String) }
+        attr_accessor :id
+
+        # The name of the entity (payroll provider company name)
+        sig { returns(T.nilable(String)) }
+        attr_accessor :name
+
+        # The source ID of the entity
+        sig { returns(T.nilable(String)) }
+        attr_accessor :source_id
+
+        # The type of entity
+        sig { returns(T.nilable(String)) }
+        attr_accessor :type
+
+        sig do
+          params(
+            id: String,
+            name: T.nilable(String),
+            source_id: T.nilable(String),
+            type: T.nilable(String)
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The connection account ID for this entity
+          id:,
+          # The name of the entity (payroll provider company name)
+          name:,
+          # The source ID of the entity
+          source_id:,
+          # The type of entity
+          type:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              id: String,
+              name: T.nilable(String),
+              source_id: T.nilable(String),
+              type: T.nilable(String)
+            }
+          )
+        end
+        def to_hash
         end
       end
     end

@@ -3,23 +3,27 @@ module FinchAPI
     module HRIS
       module Benefits
         type individual_retrieve_many_benefits_params =
-          { individual_ids: String }
+          { entity_ids: ::Array[String], individual_ids: String }
           & FinchAPI::Internal::Type::request_parameters
 
         class IndividualRetrieveManyBenefitsParams < FinchAPI::Internal::Type::BaseModel
           extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
 
+          attr_accessor entity_ids: ::Array[String]
+
           attr_reader individual_ids: String?
 
           def individual_ids=: (String) -> String
 
           def initialize: (
+            entity_ids: ::Array[String],
             ?individual_ids: String,
             ?request_options: FinchAPI::request_opts
           ) -> void
 
           def to_hash: -> {
+            entity_ids: ::Array[String],
             individual_ids: String,
             request_options: FinchAPI::RequestOptions
           }

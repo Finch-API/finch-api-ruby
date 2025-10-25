@@ -3,8 +3,12 @@
 require_relative "../../../test_helper"
 
 class FinchAPI::Test::Resources::HRIS::Benefits::IndividualsTest < FinchAPI::Test::ResourceTest
-  def test_enroll_many
-    response = @finch.hris.benefits.individuals.enroll_many("benefit_id")
+  def test_enroll_many_required_params
+    response =
+      @finch.hris.benefits.individuals.enroll_many(
+        "benefit_id",
+        entity_ids: ["550e8400-e29b-41d4-a716-446655440000"]
+      )
 
     assert_pattern do
       response => FinchAPI::HRIS::Benefits::EnrolledIndividualBenefitResponse
@@ -17,8 +21,12 @@ class FinchAPI::Test::Resources::HRIS::Benefits::IndividualsTest < FinchAPI::Tes
     end
   end
 
-  def test_enrolled_ids
-    response = @finch.hris.benefits.individuals.enrolled_ids("benefit_id")
+  def test_enrolled_ids_required_params
+    response =
+      @finch.hris.benefits.individuals.enrolled_ids(
+        "benefit_id",
+        entity_ids: ["550e8400-e29b-41d4-a716-446655440000"]
+      )
 
     assert_pattern do
       response => FinchAPI::Models::HRIS::Benefits::IndividualEnrolledIDsResponse
@@ -32,8 +40,12 @@ class FinchAPI::Test::Resources::HRIS::Benefits::IndividualsTest < FinchAPI::Tes
     end
   end
 
-  def test_retrieve_many_benefits
-    response = @finch.hris.benefits.individuals.retrieve_many_benefits("benefit_id")
+  def test_retrieve_many_benefits_required_params
+    response =
+      @finch.hris.benefits.individuals.retrieve_many_benefits(
+        "benefit_id",
+        entity_ids: ["550e8400-e29b-41d4-a716-446655440000"]
+      )
 
     assert_pattern do
       response => FinchAPI::Internal::SinglePage
@@ -55,8 +67,12 @@ class FinchAPI::Test::Resources::HRIS::Benefits::IndividualsTest < FinchAPI::Tes
     end
   end
 
-  def test_unenroll_many
-    response = @finch.hris.benefits.individuals.unenroll_many("benefit_id")
+  def test_unenroll_many_required_params
+    response =
+      @finch.hris.benefits.individuals.unenroll_many(
+        "benefit_id",
+        entity_ids: ["550e8400-e29b-41d4-a716-446655440000"]
+      )
 
     assert_pattern do
       response => FinchAPI::HRIS::Benefits::UnenrolledIndividualBenefitResponse

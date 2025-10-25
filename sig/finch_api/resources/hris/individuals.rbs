@@ -3,6 +3,7 @@ module FinchAPI
     class HRIS
       class Individuals
         def retrieve_many: (
+          entity_ids: ::Array[String],
           ?options: FinchAPI::HRIS::IndividualRetrieveManyParams::Options?,
           ?requests: ::Array[FinchAPI::HRIS::IndividualRetrieveManyParams::Request],
           ?request_options: FinchAPI::request_opts

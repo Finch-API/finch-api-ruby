@@ -3,6 +3,7 @@ module FinchAPI
     class HRIS
       class PayStatements
         def retrieve_many: (
+          entity_ids: ::Array[String],
           requests: ::Array[FinchAPI::HRIS::PayStatementRetrieveManyParams::Request],
           ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::Internal::ResponsesPage[FinchAPI::HRIS::PayStatementResponse]

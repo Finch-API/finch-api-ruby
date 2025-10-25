@@ -8,6 +8,12 @@ module FinchAPI
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
+        # @!attribute entity_ids
+        #   The entity IDs to specify which entities' data to access.
+        #
+        #   @return [Array<String>]
+        required :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
+
         # @!attribute company_contribution
         #   The company match for this benefit.
         #
@@ -36,9 +42,11 @@ module FinchAPI
         #   @return [Symbol, FinchAPI::Models::HRIS::BenefitType, nil]
         optional :type, enum: -> { FinchAPI::HRIS::BenefitType }, nil?: true
 
-        # @!method initialize(company_contribution: nil, description: nil, frequency: nil, type: nil, request_options: {})
+        # @!method initialize(entity_ids:, company_contribution: nil, description: nil, frequency: nil, type: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {FinchAPI::Models::HRIS::BenefitCreateParams} for more details.
+        #
+        #   @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
         #
         #   @param company_contribution [FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution, nil] The company match for this benefit.
         #

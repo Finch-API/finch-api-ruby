@@ -3,8 +3,8 @@
 require_relative "../../test_helper"
 
 class FinchAPI::Test::Resources::HRIS::DirectoryTest < FinchAPI::Test::ResourceTest
-  def test_list
-    response = @finch.hris.directory.list
+  def test_list_required_params
+    response = @finch.hris.directory.list(entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
 
     assert_pattern do
       response => FinchAPI::Internal::IndividualsPage
@@ -30,8 +30,8 @@ class FinchAPI::Test::Resources::HRIS::DirectoryTest < FinchAPI::Test::ResourceT
     end
   end
 
-  def test_list_individuals
-    response = @finch.hris.directory.list_individuals
+  def test_list_individuals_required_params
+    response = @finch.hris.directory.list_individuals(entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
 
     assert_pattern do
       response => FinchAPI::Internal::IndividualsPage

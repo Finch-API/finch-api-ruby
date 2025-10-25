@@ -7,6 +7,7 @@ module FinchAPI
         # Read individual employment and income data
         sig do
           params(
+            entity_ids: T::Array[String],
             requests:
               T::Array[
                 FinchAPI::HRIS::EmploymentRetrieveManyParams::Request::OrHash
@@ -19,7 +20,9 @@ module FinchAPI
           )
         end
         def retrieve_many(
-          # The array of batch requests.
+          # Query param: The entity IDs to specify which entities' data to access.
+          entity_ids:,
+          # Body param: The array of batch requests.
           requests:,
           request_options: {}
         )
