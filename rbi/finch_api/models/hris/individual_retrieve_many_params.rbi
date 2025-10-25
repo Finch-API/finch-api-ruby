@@ -15,6 +15,10 @@ module FinchAPI
             )
           end
 
+        # The entity IDs to specify which entities' data to access.
+        sig { returns(T::Array[String]) }
+        attr_accessor :entity_ids
+
         sig do
           returns(
             T.nilable(FinchAPI::HRIS::IndividualRetrieveManyParams::Options)
@@ -53,6 +57,7 @@ module FinchAPI
 
         sig do
           params(
+            entity_ids: T::Array[String],
             options:
               T.nilable(
                 FinchAPI::HRIS::IndividualRetrieveManyParams::Options::OrHash
@@ -64,12 +69,19 @@ module FinchAPI
             request_options: FinchAPI::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(options: nil, requests: nil, request_options: {})
+        def self.new(
+          # The entity IDs to specify which entities' data to access.
+          entity_ids:,
+          options: nil,
+          requests: nil,
+          request_options: {}
+        )
         end
 
         sig do
           override.returns(
             {
+              entity_ids: T::Array[String],
               options:
                 T.nilable(
                   FinchAPI::HRIS::IndividualRetrieveManyParams::Options

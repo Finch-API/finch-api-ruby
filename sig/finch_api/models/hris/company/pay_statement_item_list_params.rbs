@@ -4,6 +4,7 @@ module FinchAPI
       module Company
         type pay_statement_item_list_params =
           {
+            entity_ids: ::Array[String],
             categories: ::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::category],
             end_date: Date,
             name: String,
@@ -15,6 +16,8 @@ module FinchAPI
         class PayStatementItemListParams < FinchAPI::Internal::Type::BaseModel
           extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
+
+          attr_accessor entity_ids: ::Array[String]
 
           attr_reader categories: ::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::category]?
 
@@ -39,6 +42,7 @@ module FinchAPI
           def type=: (String) -> String
 
           def initialize: (
+            entity_ids: ::Array[String],
             ?categories: ::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::category],
             ?end_date: Date,
             ?name: String,
@@ -48,6 +52,7 @@ module FinchAPI
           ) -> void
 
           def to_hash: -> {
+            entity_ids: ::Array[String],
             categories: ::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::category],
             end_date: Date,
             name: String,

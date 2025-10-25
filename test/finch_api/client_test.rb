@@ -33,7 +33,7 @@ class FinchAPITest < Minitest::Test
     finch = FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token")
 
     assert_raises(FinchAPI::Errors::InternalServerError) do
-      finch.hris.directory.list
+      finch.hris.directory.list(entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
     end
 
     assert_requested(:any, /./, times: 3)
@@ -46,7 +46,7 @@ class FinchAPITest < Minitest::Test
       FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token", max_retries: 3)
 
     assert_raises(FinchAPI::Errors::InternalServerError) do
-      finch.hris.directory.list
+      finch.hris.directory.list(entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
     end
 
     assert_requested(:any, /./, times: 4)
@@ -58,7 +58,10 @@ class FinchAPITest < Minitest::Test
     finch = FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token")
 
     assert_raises(FinchAPI::Errors::InternalServerError) do
-      finch.hris.directory.list(request_options: {max_retries: 3})
+      finch.hris.directory.list(
+        entity_ids: ["550e8400-e29b-41d4-a716-446655440000"],
+        request_options: {max_retries: 3}
+      )
     end
 
     assert_requested(:any, /./, times: 4)
@@ -71,7 +74,10 @@ class FinchAPITest < Minitest::Test
       FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token", max_retries: 3)
 
     assert_raises(FinchAPI::Errors::InternalServerError) do
-      finch.hris.directory.list(request_options: {max_retries: 4})
+      finch.hris.directory.list(
+        entity_ids: ["550e8400-e29b-41d4-a716-446655440000"],
+        request_options: {max_retries: 4}
+      )
     end
 
     assert_requested(:any, /./, times: 5)
@@ -88,7 +94,7 @@ class FinchAPITest < Minitest::Test
       FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token", max_retries: 1)
 
     assert_raises(FinchAPI::Errors::InternalServerError) do
-      finch.hris.directory.list
+      finch.hris.directory.list(entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
     end
 
     assert_requested(:any, /./, times: 2)
@@ -107,7 +113,7 @@ class FinchAPITest < Minitest::Test
 
     assert_raises(FinchAPI::Errors::InternalServerError) do
       Thread.current.thread_variable_set(:time_now, Time.now)
-      finch.hris.directory.list
+      finch.hris.directory.list(entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
       Thread.current.thread_variable_set(:time_now, nil)
     end
 
@@ -126,7 +132,7 @@ class FinchAPITest < Minitest::Test
       FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token", max_retries: 1)
 
     assert_raises(FinchAPI::Errors::InternalServerError) do
-      finch.hris.directory.list
+      finch.hris.directory.list(entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
     end
 
     assert_requested(:any, /./, times: 2)
@@ -139,7 +145,7 @@ class FinchAPITest < Minitest::Test
     finch = FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token")
 
     assert_raises(FinchAPI::Errors::InternalServerError) do
-      finch.hris.directory.list
+      finch.hris.directory.list(entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
     end
 
     3.times do
@@ -153,7 +159,10 @@ class FinchAPITest < Minitest::Test
     finch = FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token")
 
     assert_raises(FinchAPI::Errors::InternalServerError) do
-      finch.hris.directory.list(request_options: {extra_headers: {"x-stainless-retry-count" => nil}})
+      finch.hris.directory.list(
+        entity_ids: ["550e8400-e29b-41d4-a716-446655440000"],
+        request_options: {extra_headers: {"x-stainless-retry-count" => nil}}
+      )
     end
 
     assert_requested(:any, /./, times: 3) do
@@ -167,7 +176,10 @@ class FinchAPITest < Minitest::Test
     finch = FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token")
 
     assert_raises(FinchAPI::Errors::InternalServerError) do
-      finch.hris.directory.list(request_options: {extra_headers: {"x-stainless-retry-count" => "42"}})
+      finch.hris.directory.list(
+        entity_ids: ["550e8400-e29b-41d4-a716-446655440000"],
+        request_options: {extra_headers: {"x-stainless-retry-count" => "42"}}
+      )
     end
 
     assert_requested(:any, /./, headers: {"x-stainless-retry-count" => "42"}, times: 3)
@@ -187,7 +199,10 @@ class FinchAPITest < Minitest::Test
     finch = FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token")
 
     assert_raises(FinchAPI::Errors::APIConnectionError) do
-      finch.hris.directory.list(request_options: {extra_headers: {}})
+      finch.hris.directory.list(
+        entity_ids: ["550e8400-e29b-41d4-a716-446655440000"],
+        request_options: {extra_headers: {}}
+      )
     end
 
     recorded, = WebMock::RequestRegistry.instance.requested_signatures.hash.first
@@ -216,7 +231,10 @@ class FinchAPITest < Minitest::Test
     finch = FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token")
 
     assert_raises(FinchAPI::Errors::APIConnectionError) do
-      finch.hris.directory.list(request_options: {extra_headers: {}})
+      finch.hris.directory.list(
+        entity_ids: ["550e8400-e29b-41d4-a716-446655440000"],
+        request_options: {extra_headers: {}}
+      )
     end
 
     assert_requested(:get, "http://localhost/redirected", times: FinchAPI::Client::MAX_REDIRECTS) do
@@ -240,7 +258,10 @@ class FinchAPITest < Minitest::Test
     finch = FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token")
 
     assert_raises(FinchAPI::Errors::APIConnectionError) do
-      finch.hris.directory.list(request_options: {extra_headers: {"authorization" => "Bearer xyz"}})
+      finch.hris.directory.list(
+        entity_ids: ["550e8400-e29b-41d4-a716-446655440000"],
+        request_options: {extra_headers: {"authorization" => "Bearer xyz"}}
+      )
     end
 
     recorded, = WebMock::RequestRegistry.instance.requested_signatures.hash.first
@@ -267,7 +288,10 @@ class FinchAPITest < Minitest::Test
     finch = FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token")
 
     assert_raises(FinchAPI::Errors::APIConnectionError) do
-      finch.hris.directory.list(request_options: {extra_headers: {"authorization" => "Bearer xyz"}})
+      finch.hris.directory.list(
+        entity_ids: ["550e8400-e29b-41d4-a716-446655440000"],
+        request_options: {extra_headers: {"authorization" => "Bearer xyz"}}
+      )
     end
 
     assert_requested(:any, "https://example.com/redirected", times: FinchAPI::Client::MAX_REDIRECTS) do
@@ -281,7 +305,7 @@ class FinchAPITest < Minitest::Test
 
     finch = FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token")
 
-    finch.hris.directory.list
+    finch.hris.directory.list(entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
 
     assert_requested(:any, /./) do |req|
       headers = req.headers.transform_keys(&:downcase).fetch_values("accept", "content-type")

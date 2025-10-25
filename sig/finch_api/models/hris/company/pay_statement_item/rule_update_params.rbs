@@ -4,23 +4,27 @@ module FinchAPI
       module Company
         module PayStatementItem
           type rule_update_params =
-            { optional_property: top }
+            { entity_ids: ::Array[String], optional_property: top }
             & FinchAPI::Internal::Type::request_parameters
 
           class RuleUpdateParams < FinchAPI::Internal::Type::BaseModel
             extend FinchAPI::Internal::Type::RequestParameters::Converter
             include FinchAPI::Internal::Type::RequestParameters
 
+            attr_accessor entity_ids: ::Array[String]
+
             attr_reader optional_property: top?
 
             def optional_property=: (top) -> top
 
             def initialize: (
+              entity_ids: ::Array[String],
               ?optional_property: top,
               ?request_options: FinchAPI::request_opts
             ) -> void
 
             def to_hash: -> {
+              entity_ids: ::Array[String],
               optional_property: top,
               request_options: FinchAPI::RequestOptions
             }

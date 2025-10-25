@@ -16,6 +16,10 @@ module FinchAPI
               )
             end
 
+          # The entity IDs to specify which entities' data to access.
+          sig { returns(T::Array[String]) }
+          attr_accessor :entity_ids
+
           # Array of the individual_id to enroll and a configuration object.
           sig do
             returns(
@@ -40,6 +44,7 @@ module FinchAPI
 
           sig do
             params(
+              entity_ids: T::Array[String],
               individuals:
                 T::Array[
                   FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::OrHash
@@ -48,6 +53,8 @@ module FinchAPI
             ).returns(T.attached_class)
           end
           def self.new(
+            # The entity IDs to specify which entities' data to access.
+            entity_ids:,
             # Array of the individual_id to enroll and a configuration object.
             individuals: nil,
             request_options: {}
@@ -57,6 +64,7 @@ module FinchAPI
           sig do
             override.returns(
               {
+                entity_ids: T::Array[String],
                 individuals:
                   T::Array[
                     FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual

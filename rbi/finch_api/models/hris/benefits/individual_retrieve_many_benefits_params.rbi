@@ -16,6 +16,10 @@ module FinchAPI
               )
             end
 
+          # The entity IDs to specify which entities' data to access.
+          sig { returns(T::Array[String]) }
+          attr_accessor :entity_ids
+
           # comma-delimited list of stable Finch uuids for each individual. If empty,
           # defaults to all individuals
           sig { returns(T.nilable(String)) }
@@ -26,11 +30,14 @@ module FinchAPI
 
           sig do
             params(
+              entity_ids: T::Array[String],
               individual_ids: String,
               request_options: FinchAPI::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
           def self.new(
+            # The entity IDs to specify which entities' data to access.
+            entity_ids:,
             # comma-delimited list of stable Finch uuids for each individual. If empty,
             # defaults to all individuals
             individual_ids: nil,
@@ -41,6 +48,7 @@ module FinchAPI
           sig do
             override.returns(
               {
+                entity_ids: T::Array[String],
                 individual_ids: String,
                 request_options: FinchAPI::RequestOptions
               }

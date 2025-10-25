@@ -15,6 +15,7 @@ module FinchAPI
           # items for the access token's connection account.
           sig do
             params(
+              entity_ids: T::Array[String],
               categories:
                 T::Array[
                   FinchAPI::HRIS::Company::PayStatementItemListParams::Category::OrSymbol
@@ -31,6 +32,8 @@ module FinchAPI
             )
           end
           def list(
+            # The entity IDs to specify which entities' data to access.
+            entity_ids:,
             # Comma-delimited list of pay statement item categories to filter on. If empty,
             # defaults to all categories.
             categories: nil,

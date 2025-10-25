@@ -40,6 +40,7 @@ class FinchAPI::Test::Resources::AccountTest < FinchAPI::Test::ResourceTest
         customer_email: String | nil,
         customer_id: String | nil,
         customer_name: String | nil,
+        entities: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Introspection::Entity]) | nil,
         manual: FinchAPI::Internal::Type::Boolean | nil,
         payroll_provider_id: String | nil,
         username: String | nil

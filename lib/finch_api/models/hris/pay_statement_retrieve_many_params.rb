@@ -8,6 +8,12 @@ module FinchAPI
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
+        # @!attribute entity_ids
+        #   The entity IDs to specify which entities' data to access.
+        #
+        #   @return [Array<String>]
+        required :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
+
         # @!attribute requests
         #   The array of batch requests.
         #
@@ -15,7 +21,9 @@ module FinchAPI
         required :requests,
                  -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::PayStatementRetrieveManyParams::Request] }
 
-        # @!method initialize(requests:, request_options: {})
+        # @!method initialize(entity_ids:, requests:, request_options: {})
+        #   @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
+        #
         #   @param requests [Array<FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request>] The array of batch requests.
         #
         #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]

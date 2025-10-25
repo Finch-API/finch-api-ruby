@@ -3,6 +3,7 @@ module FinchAPI
     class HRIS
       class Directory
         def list: (
+          entity_ids: ::Array[String],
           ?limit: Integer,
           ?offset: Integer,
           ?request_options: FinchAPI::request_opts

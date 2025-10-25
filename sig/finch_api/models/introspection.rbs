@@ -16,6 +16,7 @@ module FinchAPI
         customer_email: String?,
         customer_id: String?,
         customer_name: String?,
+        entities: ::Array[FinchAPI::Introspection::Entity],
         manual: bool,
         payroll_provider_id: String,
         username: String?
@@ -58,6 +59,12 @@ module FinchAPI
 
       attr_accessor customer_name: String?
 
+      attr_reader entities: ::Array[FinchAPI::Introspection::Entity]?
+
+      def entities=: (
+        ::Array[FinchAPI::Introspection::Entity]
+      ) -> ::Array[FinchAPI::Introspection::Entity]
+
       attr_reader manual: bool?
 
       def manual=: (bool) -> bool
@@ -83,6 +90,7 @@ module FinchAPI
         ?customer_email: String?,
         ?customer_id: String?,
         ?customer_name: String?,
+        ?entities: ::Array[FinchAPI::Introspection::Entity],
         ?manual: bool,
         ?payroll_provider_id: String,
         ?username: String?
@@ -103,6 +111,7 @@ module FinchAPI
         customer_email: String?,
         customer_id: String?,
         customer_name: String?,
+        entities: ::Array[FinchAPI::Introspection::Entity],
         manual: bool,
         payroll_provider_id: String,
         username: String?
@@ -251,6 +260,33 @@ module FinchAPI
             def self?.variants: -> ::Array[FinchAPI::Models::Introspection::AuthenticationMethod::ConnectionStatus::last_successful_sync]
           end
         end
+      end
+
+      type entity =
+        { id: String, name: String?, source_id: String?, type: String? }
+
+      class Entity < FinchAPI::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor name: String?
+
+        attr_accessor source_id: String?
+
+        attr_accessor type: String?
+
+        def initialize: (
+          id: String,
+          name: String?,
+          source_id: String?,
+          type: String?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          name: String?,
+          source_id: String?,
+          type: String?
+        }
       end
     end
   end

@@ -12,6 +12,7 @@ module FinchAPI
           sig do
             params(
               benefit_id: String,
+              entity_ids: T::Array[String],
               individuals:
                 T::Array[
                   FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::OrHash
@@ -22,8 +23,11 @@ module FinchAPI
             )
           end
           def enroll_many(
+            # Path param:
             benefit_id,
-            # Array of the individual_id to enroll and a configuration object.
+            # Query param: The entity IDs to specify which entities' data to access.
+            entity_ids:,
+            # Body param: Array of the individual_id to enroll and a configuration object.
             individuals: nil,
             request_options: {}
           )
@@ -33,18 +37,25 @@ module FinchAPI
           sig do
             params(
               benefit_id: String,
+              entity_ids: T::Array[String],
               request_options: FinchAPI::RequestOptions::OrHash
             ).returns(
               FinchAPI::Models::HRIS::Benefits::IndividualEnrolledIDsResponse
             )
           end
-          def enrolled_ids(benefit_id, request_options: {})
+          def enrolled_ids(
+            benefit_id,
+            # The entity IDs to specify which entities' data to access.
+            entity_ids:,
+            request_options: {}
+          )
           end
 
           # Get enrollment information for the given individuals.
           sig do
             params(
               benefit_id: String,
+              entity_ids: T::Array[String],
               individual_ids: String,
               request_options: FinchAPI::RequestOptions::OrHash
             ).returns(
@@ -55,6 +66,8 @@ module FinchAPI
           end
           def retrieve_many_benefits(
             benefit_id,
+            # The entity IDs to specify which entities' data to access.
+            entity_ids:,
             # comma-delimited list of stable Finch uuids for each individual. If empty,
             # defaults to all individuals
             individual_ids: nil,
@@ -66,6 +79,7 @@ module FinchAPI
           sig do
             params(
               benefit_id: String,
+              entity_ids: T::Array[String],
               individual_ids: T::Array[String],
               request_options: FinchAPI::RequestOptions::OrHash
             ).returns(
@@ -73,8 +87,11 @@ module FinchAPI
             )
           end
           def unenroll_many(
+            # Path param:
             benefit_id,
-            # Array of individual_ids to unenroll.
+            # Query param: The entity IDs to specify which entities' data to access.
+            entity_ids:,
+            # Body param: Array of individual_ids to unenroll.
             individual_ids: nil,
             request_options: {}
           )

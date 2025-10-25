@@ -36,6 +36,10 @@ module FinchAPI
       end
       attr_accessor :connection_type
 
+      # An array of entity IDs that can be accessed with this access token
+      sig { returns(T::Array[String]) }
+      attr_accessor :entity_ids
+
       # An array of the authorized products associated with the `access_token`
       sig { returns(T::Array[String]) }
       attr_accessor :products
@@ -77,6 +81,7 @@ module FinchAPI
           connection_id: String,
           connection_type:
             FinchAPI::CreateAccessTokenResponse::ConnectionType::OrSymbol,
+          entity_ids: T::Array[String],
           products: T::Array[String],
           provider_id: String,
           token_type: String,
@@ -97,6 +102,8 @@ module FinchAPI
         # - `provider` - connection to an external provider
         # - `finch` - finch-generated data.
         connection_type:,
+        # An array of entity IDs that can be accessed with this access token
+        entity_ids:,
         # An array of the authorized products associated with the `access_token`
         products:,
         # The ID of the provider associated with the `access_token`
@@ -124,6 +131,7 @@ module FinchAPI
             connection_id: String,
             connection_type:
               FinchAPI::CreateAccessTokenResponse::ConnectionType::TaggedSymbol,
+            entity_ids: T::Array[String],
             products: T::Array[String],
             provider_id: String,
             token_type: String,

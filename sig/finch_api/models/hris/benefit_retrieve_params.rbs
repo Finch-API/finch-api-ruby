@@ -2,15 +2,24 @@ module FinchAPI
   module Models
     module HRIS
       type benefit_retrieve_params =
-        {  } & FinchAPI::Internal::Type::request_parameters
+        { entity_ids: ::Array[String] }
+        & FinchAPI::Internal::Type::request_parameters
 
       class BenefitRetrieveParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
-        def initialize: (?request_options: FinchAPI::request_opts) -> void
+        attr_accessor entity_ids: ::Array[String]
 
-        def to_hash: -> { request_options: FinchAPI::RequestOptions }
+        def initialize: (
+          entity_ids: ::Array[String],
+          ?request_options: FinchAPI::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          entity_ids: ::Array[String],
+          request_options: FinchAPI::RequestOptions
+        }
       end
     end
   end

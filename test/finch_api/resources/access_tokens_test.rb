@@ -16,6 +16,7 @@ class FinchAPI::Test::Resources::AccessTokensTest < FinchAPI::Test::ResourceTest
         client_type: FinchAPI::CreateAccessTokenResponse::ClientType,
         connection_id: String,
         connection_type: FinchAPI::CreateAccessTokenResponse::ConnectionType,
+        entity_ids: ^(FinchAPI::Internal::Type::ArrayOf[String]),
         products: ^(FinchAPI::Internal::Type::ArrayOf[String]),
         provider_id: String,
         token_type: String,

@@ -4,15 +4,24 @@ module FinchAPI
       module Company
         module PayStatementItem
           type rule_delete_params =
-            {  } & FinchAPI::Internal::Type::request_parameters
+            { entity_ids: ::Array[String] }
+            & FinchAPI::Internal::Type::request_parameters
 
           class RuleDeleteParams < FinchAPI::Internal::Type::BaseModel
             extend FinchAPI::Internal::Type::RequestParameters::Converter
             include FinchAPI::Internal::Type::RequestParameters
 
-            def initialize: (?request_options: FinchAPI::request_opts) -> void
+            attr_accessor entity_ids: ::Array[String]
 
-            def to_hash: -> { request_options: FinchAPI::RequestOptions }
+            def initialize: (
+              entity_ids: ::Array[String],
+              ?request_options: FinchAPI::request_opts
+            ) -> void
+
+            def to_hash: -> {
+              entity_ids: ::Array[String],
+              request_options: FinchAPI::RequestOptions
+            }
           end
         end
       end

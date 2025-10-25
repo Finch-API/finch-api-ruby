@@ -14,6 +14,7 @@ module FinchAPI
             # information is available.
             sig do
               params(
+                entity_ids: T::Array[String],
                 attributes:
                   FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes::OrHash,
                 conditions:
@@ -30,14 +31,18 @@ module FinchAPI
               )
             end
             def create(
-              # Specifies the fields to be applied when the condition is met.
+              # Query param: The entity IDs to create the rule for.
+              entity_ids:,
+              # Body param: Specifies the fields to be applied when the condition is met.
               attributes: nil,
+              # Body param:
               conditions: nil,
-              # Specifies when the rules should stop applying rules based on the date.
+              # Body param: Specifies when the rules should stop applying rules based on the
+              # date.
               effective_end_date: nil,
-              # Specifies when the rule should begin applying based on the date.
+              # Body param: Specifies when the rule should begin applying based on the date.
               effective_start_date: nil,
-              # The entity type to which the rule is applied.
+              # Body param: The entity type to which the rule is applied.
               entity_type: nil,
               request_options: {}
             )
@@ -48,25 +53,41 @@ module FinchAPI
             sig do
               params(
                 rule_id: String,
+                entity_ids: T::Array[String],
                 optional_property: T.anything,
                 request_options: FinchAPI::RequestOptions::OrHash
               ).returns(
                 FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse
               )
             end
-            def update(rule_id, optional_property: nil, request_options: {})
+            def update(
+              # Path param:
+              rule_id,
+              # Query param: The entity IDs to update the rule for.
+              entity_ids:,
+              # Body param:
+              optional_property: nil,
+              request_options: {}
+            )
             end
 
             # **Beta:** this endpoint currently serves employers onboarded after March 4th and
             # historical support will be added soon List all rules of a connection account.
             sig do
-              params(request_options: FinchAPI::RequestOptions::OrHash).returns(
+              params(
+                entity_ids: T::Array[String],
+                request_options: FinchAPI::RequestOptions::OrHash
+              ).returns(
                 FinchAPI::Internal::ResponsesPage[
                   FinchAPI::Models::HRIS::Company::PayStatementItem::RuleListResponse
                 ]
               )
             end
-            def list(request_options: {})
+            def list(
+              # The entity IDs to retrieve rules for.
+              entity_ids:,
+              request_options: {}
+            )
             end
 
             # **Beta:** this endpoint currently serves employers onboarded after March 4th and
@@ -74,12 +95,18 @@ module FinchAPI
             sig do
               params(
                 rule_id: String,
+                entity_ids: T::Array[String],
                 request_options: FinchAPI::RequestOptions::OrHash
               ).returns(
                 FinchAPI::Models::HRIS::Company::PayStatementItem::RuleDeleteResponse
               )
             end
-            def delete(rule_id, request_options: {})
+            def delete(
+              rule_id,
+              # The entity IDs to delete the rule for.
+              entity_ids:,
+              request_options: {}
+            )
             end
 
             # @api private

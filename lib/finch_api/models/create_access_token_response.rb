@@ -31,6 +31,12 @@ module FinchAPI
       #   @return [Symbol, FinchAPI::Models::CreateAccessTokenResponse::ConnectionType]
       required :connection_type, enum: -> { FinchAPI::CreateAccessTokenResponse::ConnectionType }
 
+      # @!attribute entity_ids
+      #   An array of entity IDs that can be accessed with this access token
+      #
+      #   @return [Array<String>]
+      required :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
+
       # @!attribute products
       #   An array of the authorized products associated with the `access_token`
       #
@@ -74,7 +80,7 @@ module FinchAPI
       #   @return [String, nil]
       optional :customer_id, String, nil?: true
 
-      # @!method initialize(access_token:, client_type:, connection_id:, connection_type:, products:, provider_id:, token_type:, account_id: nil, company_id: nil, customer_id: nil)
+      # @!method initialize(access_token:, client_type:, connection_id:, connection_type:, entity_ids:, products:, provider_id:, token_type:, account_id: nil, company_id: nil, customer_id: nil)
       #   Some parameter documentations has been truncated, see
       #   {FinchAPI::Models::CreateAccessTokenResponse} for more details.
       #
@@ -85,6 +91,8 @@ module FinchAPI
       #   @param connection_id [String] The Finch UUID of the connection associated with the `access_token`
       #
       #   @param connection_type [Symbol, FinchAPI::Models::CreateAccessTokenResponse::ConnectionType] The type of the connection associated with the token.
+      #
+      #   @param entity_ids [Array<String>] An array of entity IDs that can be accessed with this access token
       #
       #   @param products [Array<String>] An array of the authorized products associated with the `access_token`
       #

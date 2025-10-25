@@ -4,7 +4,12 @@ require_relative "../../test_helper"
 
 class FinchAPI::Test::Resources::HRIS::PaymentsTest < FinchAPI::Test::ResourceTest
   def test_list_required_params
-    response = @finch.hris.payments.list(end_date: "2021-01-01", start_date: "2021-01-01")
+    response =
+      @finch.hris.payments.list(
+        end_date: "2021-01-01",
+        entity_ids: ["550e8400-e29b-41d4-a716-446655440000"],
+        start_date: "2021-01-01"
+      )
 
     assert_pattern do
       response => FinchAPI::Internal::SinglePage

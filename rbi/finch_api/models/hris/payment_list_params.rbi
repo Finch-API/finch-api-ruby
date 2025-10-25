@@ -20,6 +20,10 @@ module FinchAPI
         sig { returns(Date) }
         attr_accessor :end_date
 
+        # The entity IDs to specify which entities' data to access.
+        sig { returns(T::Array[String]) }
+        attr_accessor :entity_ids
+
         # The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
         # format.
         sig { returns(Date) }
@@ -28,6 +32,7 @@ module FinchAPI
         sig do
           params(
             end_date: Date,
+            entity_ids: T::Array[String],
             start_date: Date,
             request_options: FinchAPI::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -36,6 +41,8 @@ module FinchAPI
           # The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
           # format.
           end_date:,
+          # The entity IDs to specify which entities' data to access.
+          entity_ids:,
           # The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
           # format.
           start_date:,
@@ -47,6 +54,7 @@ module FinchAPI
           override.returns(
             {
               end_date: Date,
+              entity_ids: T::Array[String],
               start_date: Date,
               request_options: FinchAPI::RequestOptions
             }

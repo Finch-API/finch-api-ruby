@@ -5,23 +5,27 @@ module FinchAPI
         class Individuals
           def enroll_many: (
             String benefit_id,
+            entity_ids: ::Array[String],
             ?individuals: ::Array[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual],
             ?request_options: FinchAPI::request_opts
           ) -> FinchAPI::HRIS::Benefits::EnrolledIndividualBenefitResponse
 
           def enrolled_ids: (
             String benefit_id,
+            entity_ids: ::Array[String],
             ?request_options: FinchAPI::request_opts
           ) -> FinchAPI::Models::HRIS::Benefits::IndividualEnrolledIDsResponse
 
           def retrieve_many_benefits: (
             String benefit_id,
+            entity_ids: ::Array[String],
             ?individual_ids: String,
             ?request_options: FinchAPI::request_opts
           ) -> FinchAPI::Internal::SinglePage[FinchAPI::HRIS::Benefits::IndividualBenefit]
 
           def unenroll_many: (
             String benefit_id,
+            entity_ids: ::Array[String],
             ?individual_ids: ::Array[String],
             ?request_options: FinchAPI::request_opts
           ) -> FinchAPI::HRIS::Benefits::UnenrolledIndividualBenefitResponse

@@ -3,8 +3,8 @@
 require_relative "../../test_helper"
 
 class FinchAPI::Test::Resources::HRIS::BenefitsTest < FinchAPI::Test::ResourceTest
-  def test_create
-    response = @finch.hris.benefits.create
+  def test_create_required_params
+    response = @finch.hris.benefits.create(entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
 
     assert_pattern do
       response => FinchAPI::HRIS::CreateCompanyBenefitsResponse
@@ -18,8 +18,9 @@ class FinchAPI::Test::Resources::HRIS::BenefitsTest < FinchAPI::Test::ResourceTe
     end
   end
 
-  def test_retrieve
-    response = @finch.hris.benefits.retrieve("benefit_id")
+  def test_retrieve_required_params
+    response =
+      @finch.hris.benefits.retrieve("benefit_id", entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
 
     assert_pattern do
       response => FinchAPI::HRIS::CompanyBenefit
@@ -36,8 +37,9 @@ class FinchAPI::Test::Resources::HRIS::BenefitsTest < FinchAPI::Test::ResourceTe
     end
   end
 
-  def test_update
-    response = @finch.hris.benefits.update("benefit_id")
+  def test_update_required_params
+    response =
+      @finch.hris.benefits.update("benefit_id", entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
 
     assert_pattern do
       response => FinchAPI::HRIS::UpdateCompanyBenefitResponse
@@ -51,8 +53,8 @@ class FinchAPI::Test::Resources::HRIS::BenefitsTest < FinchAPI::Test::ResourceTe
     end
   end
 
-  def test_list
-    response = @finch.hris.benefits.list
+  def test_list_required_params
+    response = @finch.hris.benefits.list(entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
 
     assert_pattern do
       response => FinchAPI::Internal::SinglePage
@@ -76,8 +78,9 @@ class FinchAPI::Test::Resources::HRIS::BenefitsTest < FinchAPI::Test::ResourceTe
     end
   end
 
-  def test_list_supported_benefits
-    response = @finch.hris.benefits.list_supported_benefits
+  def test_list_supported_benefits_required_params
+    response =
+      @finch.hris.benefits.list_supported_benefits(entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
 
     assert_pattern do
       response => FinchAPI::Internal::SinglePage
