@@ -3,8 +3,8 @@
 require_relative "../../test_helper"
 
 class FinchAPI::Test::Resources::HRIS::IndividualsTest < FinchAPI::Test::ResourceTest
-  def test_retrieve_many_required_params
-    response = @finch.hris.individuals.retrieve_many(entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
+  def test_retrieve_many
+    response = @finch.hris.individuals.retrieve_many
 
     assert_pattern do
       response => FinchAPI::Internal::ResponsesPage

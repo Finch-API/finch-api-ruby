@@ -17,7 +17,7 @@ module FinchAPI
             # pre-tax 401k. This metadata can be retrieved where pay statement item
             # information is available.
             #
-            # @overload create(entity_ids:, attributes: nil, conditions: nil, effective_end_date: nil, effective_start_date: nil, entity_type: nil, request_options: {})
+            # @overload create(entity_ids: nil, attributes: nil, conditions: nil, effective_end_date: nil, effective_start_date: nil, entity_type: nil, request_options: {})
             #
             # @param entity_ids [Array<String>] Query param: The entity IDs to create the rule for.
             #
@@ -36,7 +36,7 @@ module FinchAPI
             # @return [FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse]
             #
             # @see FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams
-            def create(params)
+            def create(params = {})
               parsed, options = FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams.dump_request(params)
               query_params = [:entity_ids]
               @client.request(
@@ -52,7 +52,7 @@ module FinchAPI
             # **Beta:** this endpoint currently serves employers onboarded after March 4th and
             # historical support will be added soon Update a rule for a pay statement item.
             #
-            # @overload update(rule_id, entity_ids:, optional_property: nil, request_options: {})
+            # @overload update(rule_id, entity_ids: nil, optional_property: nil, request_options: {})
             #
             # @param rule_id [String] Path param:
             #
@@ -65,7 +65,7 @@ module FinchAPI
             # @return [FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse]
             #
             # @see FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateParams
-            def update(rule_id, params)
+            def update(rule_id, params = {})
               parsed, options = FinchAPI::HRIS::Company::PayStatementItem::RuleUpdateParams.dump_request(params)
               query_params = [:entity_ids]
               @client.request(
@@ -81,7 +81,7 @@ module FinchAPI
             # **Beta:** this endpoint currently serves employers onboarded after March 4th and
             # historical support will be added soon List all rules of a connection account.
             #
-            # @overload list(entity_ids:, request_options: {})
+            # @overload list(entity_ids: nil, request_options: {})
             #
             # @param entity_ids [Array<String>] The entity IDs to retrieve rules for.
             #
@@ -90,7 +90,7 @@ module FinchAPI
             # @return [FinchAPI::Internal::ResponsesPage<FinchAPI::Models::HRIS::Company::PayStatementItem::RuleListResponse>]
             #
             # @see FinchAPI::Models::HRIS::Company::PayStatementItem::RuleListParams
-            def list(params)
+            def list(params = {})
               parsed, options = FinchAPI::HRIS::Company::PayStatementItem::RuleListParams.dump_request(params)
               @client.request(
                 method: :get,
@@ -105,7 +105,7 @@ module FinchAPI
             # **Beta:** this endpoint currently serves employers onboarded after March 4th and
             # historical support will be added soon Delete a rule for a pay statement item.
             #
-            # @overload delete(rule_id, entity_ids:, request_options: {})
+            # @overload delete(rule_id, entity_ids: nil, request_options: {})
             #
             # @param rule_id [String]
             #
@@ -116,7 +116,7 @@ module FinchAPI
             # @return [FinchAPI::Models::HRIS::Company::PayStatementItem::RuleDeleteResponse]
             #
             # @see FinchAPI::Models::HRIS::Company::PayStatementItem::RuleDeleteParams
-            def delete(rule_id, params)
+            def delete(rule_id, params = {})
               parsed, options = FinchAPI::HRIS::Company::PayStatementItem::RuleDeleteParams.dump_request(params)
               @client.request(
                 method: :delete,

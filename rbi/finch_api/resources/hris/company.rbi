@@ -16,7 +16,7 @@ module FinchAPI
         end
         def retrieve(
           # The entity IDs to specify which entities' data to access.
-          entity_ids:,
+          entity_ids: nil,
           request_options: {}
         )
         end

@@ -17,8 +17,11 @@ module FinchAPI
             end
 
           # The entity IDs to specify which entities' data to access.
-          sig { returns(T::Array[String]) }
-          attr_accessor :entity_ids
+          sig { returns(T.nilable(T::Array[String])) }
+          attr_reader :entity_ids
+
+          sig { params(entity_ids: T::Array[String]).void }
+          attr_writer :entity_ids
 
           # comma-delimited list of stable Finch uuids for each individual. If empty,
           # defaults to all individuals
@@ -37,7 +40,7 @@ module FinchAPI
           end
           def self.new(
             # The entity IDs to specify which entities' data to access.
-            entity_ids:,
+            entity_ids: nil,
             # comma-delimited list of stable Finch uuids for each individual. If empty,
             # defaults to all individuals
             individual_ids: nil,

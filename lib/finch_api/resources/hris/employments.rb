@@ -6,11 +6,11 @@ module FinchAPI
       class Employments
         # Read individual employment and income data
         #
-        # @overload retrieve_many(entity_ids:, requests:, request_options: {})
-        #
-        # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access.
+        # @overload retrieve_many(requests:, entity_ids: nil, request_options: {})
         #
         # @param requests [Array<FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request>] Body param: The array of batch requests.
+        #
+        # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access.
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #

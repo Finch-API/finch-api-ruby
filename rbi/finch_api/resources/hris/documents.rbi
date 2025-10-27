@@ -18,7 +18,7 @@ module FinchAPI
         end
         def list(
           # The entity IDs to specify which entities' data to access.
-          entity_ids:,
+          entity_ids: nil,
           # Comma-delimited list of stable Finch uuids for each individual. If empty,
           # defaults to all individuals
           individual_ids: nil,
@@ -46,7 +46,7 @@ module FinchAPI
           # The unique identifier of the document.
           document_id,
           # The entity IDs to specify which entities' data to access.
-          entity_ids:,
+          entity_ids: nil,
           request_options: {}
         )
         end

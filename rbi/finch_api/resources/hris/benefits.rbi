@@ -24,7 +24,7 @@ module FinchAPI
         end
         def create(
           # Query param: The entity IDs to specify which entities' data to access.
-          entity_ids:,
+          entity_ids: nil,
           # Body param: The company match for this benefit.
           company_contribution: nil,
           # Body param: Name of the benefit as it appears in the provider and pay
@@ -50,7 +50,7 @@ module FinchAPI
         def retrieve(
           benefit_id,
           # The entity IDs to specify which entities' data to access.
-          entity_ids:,
+          entity_ids: nil,
           request_options: {}
         )
         end
@@ -68,7 +68,7 @@ module FinchAPI
           # Path param:
           benefit_id,
           # Query param: The entity IDs to specify which entities' data to access.
-          entity_ids:,
+          entity_ids: nil,
           # Body param: Updated name or description.
           description: nil,
           request_options: {}
@@ -86,7 +86,7 @@ module FinchAPI
         end
         def list(
           # The entity IDs to specify which entities' data to access.
-          entity_ids:,
+          entity_ids: nil,
           request_options: {}
         )
         end
@@ -102,7 +102,7 @@ module FinchAPI
         end
         def list_supported_benefits(
           # The entity IDs to specify which entities' data to access.
-          entity_ids:,
+          entity_ids: nil,
           request_options: {}
         )
         end

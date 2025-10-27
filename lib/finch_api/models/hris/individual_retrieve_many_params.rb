@@ -11,8 +11,8 @@ module FinchAPI
         # @!attribute entity_ids
         #   The entity IDs to specify which entities' data to access.
         #
-        #   @return [Array<String>]
-        required :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
+        #   @return [Array<String>, nil]
+        optional :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
 
         # @!attribute options
         #
@@ -25,7 +25,7 @@ module FinchAPI
         optional :requests,
                  -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::IndividualRetrieveManyParams::Request] }
 
-        # @!method initialize(entity_ids:, options: nil, requests: nil, request_options: {})
+        # @!method initialize(entity_ids: nil, options: nil, requests: nil, request_options: {})
         #   @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
         #
         #   @param options [FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, nil]

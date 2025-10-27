@@ -4,12 +4,12 @@ module FinchAPI
       class PayGroups
         def retrieve: (
           String pay_group_id,
-          entity_ids: ::Array[String],
+          ?entity_ids: ::Array[String],
           ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::Models::Payroll::PayGroupRetrieveResponse
 
         def list: (
-          entity_ids: ::Array[String],
+          ?entity_ids: ::Array[String],
           ?individual_id: String,
           ?pay_frequencies: ::Array[String],
           ?request_options: FinchAPI::request_opts

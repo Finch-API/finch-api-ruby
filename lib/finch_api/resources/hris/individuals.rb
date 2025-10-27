@@ -6,7 +6,7 @@ module FinchAPI
       class Individuals
         # Read individual data, excluding income and employment data
         #
-        # @overload retrieve_many(entity_ids:, options: nil, requests: nil, request_options: {})
+        # @overload retrieve_many(entity_ids: nil, options: nil, requests: nil, request_options: {})
         #
         # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access.
         #
@@ -19,7 +19,7 @@ module FinchAPI
         # @return [FinchAPI::Internal::ResponsesPage<FinchAPI::Models::HRIS::IndividualResponse>]
         #
         # @see FinchAPI::Models::HRIS::IndividualRetrieveManyParams
-        def retrieve_many(params)
+        def retrieve_many(params = {})
           parsed, options = FinchAPI::HRIS::IndividualRetrieveManyParams.dump_request(params)
           query_params = [:entity_ids]
           @client.request(

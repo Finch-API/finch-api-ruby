@@ -9,13 +9,13 @@ module FinchAPI
         #
         # Read payroll and contractor related payments by the company.
         #
-        # @overload list(end_date:, entity_ids:, start_date:, request_options: {})
+        # @overload list(end_date:, start_date:, entity_ids: nil, request_options: {})
         #
         # @param end_date [Date] The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD` forma
         #
-        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
-        #
         # @param start_date [Date] The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD` for
+        #
+        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #

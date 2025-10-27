@@ -15,7 +15,9 @@ module FinchAPI
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
-        attr_accessor entity_ids: ::Array[String]
+        attr_reader entity_ids: ::Array[String]?
+
+        def entity_ids=: (::Array[String]) -> ::Array[String]
 
         attr_reader individual_ids: ::Array[String]?
 
@@ -36,7 +38,7 @@ module FinchAPI
         ) -> ::Array[FinchAPI::Models::HRIS::DocumentListParams::type_]
 
         def initialize: (
-          entity_ids: ::Array[String],
+          ?entity_ids: ::Array[String],
           ?individual_ids: ::Array[String],
           ?limit: Integer,
           ?offset: Integer,

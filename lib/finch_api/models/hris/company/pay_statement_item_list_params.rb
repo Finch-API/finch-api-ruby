@@ -9,12 +9,6 @@ module FinchAPI
           extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
 
-          # @!attribute entity_ids
-          #   The entity IDs to specify which entities' data to access.
-          #
-          #   @return [Array<String>]
-          required :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
-
           # @!attribute categories
           #   Comma-delimited list of pay statement item categories to filter on. If empty,
           #   defaults to all categories.
@@ -29,6 +23,12 @@ module FinchAPI
           #
           #   @return [Date, nil]
           optional :end_date, Date
+
+          # @!attribute entity_ids
+          #   The entity IDs to specify which entities' data to access.
+          #
+          #   @return [Array<String>, nil]
+          optional :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
 
           # @!attribute name
           #   Case-insensitive partial match search by pay statement item name.
@@ -49,15 +49,15 @@ module FinchAPI
           #   @return [String, nil]
           optional :type, String
 
-          # @!method initialize(entity_ids:, categories: nil, end_date: nil, name: nil, start_date: nil, type: nil, request_options: {})
+          # @!method initialize(categories: nil, end_date: nil, entity_ids: nil, name: nil, start_date: nil, type: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {FinchAPI::Models::HRIS::Company::PayStatementItemListParams} for more details.
-          #
-          #   @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
           #
           #   @param categories [Array<Symbol, FinchAPI::Models::HRIS::Company::PayStatementItemListParams::Category>] Comma-delimited list of pay statement item categories to filter on. If empty, de
           #
           #   @param end_date [Date] The end date to retrieve pay statement items by via their last seen pay date in
+          #
+          #   @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
           #
           #   @param name [String] Case-insensitive partial match search by pay statement item name.
           #

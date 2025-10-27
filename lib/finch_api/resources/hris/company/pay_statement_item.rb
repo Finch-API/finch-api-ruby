@@ -15,13 +15,13 @@ module FinchAPI
           # historical support will be added soon Retrieve a list of detailed pay statement
           # items for the access token's connection account.
           #
-          # @overload list(entity_ids:, categories: nil, end_date: nil, name: nil, start_date: nil, type: nil, request_options: {})
-          #
-          # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
+          # @overload list(categories: nil, end_date: nil, entity_ids: nil, name: nil, start_date: nil, type: nil, request_options: {})
           #
           # @param categories [Array<Symbol, FinchAPI::Models::HRIS::Company::PayStatementItemListParams::Category>] Comma-delimited list of pay statement item categories to filter on. If empty, de
           #
           # @param end_date [Date] The end date to retrieve pay statement items by via their last seen pay date in
+          #
+          # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
           #
           # @param name [String] Case-insensitive partial match search by pay statement item name.
           #
@@ -34,7 +34,7 @@ module FinchAPI
           # @return [FinchAPI::Internal::ResponsesPage<FinchAPI::Models::HRIS::Company::PayStatementItemListResponse>]
           #
           # @see FinchAPI::Models::HRIS::Company::PayStatementItemListParams
-          def list(params)
+          def list(params = {})
             parsed, options = FinchAPI::HRIS::Company::PayStatementItemListParams.dump_request(params)
             @client.request(
               method: :get,

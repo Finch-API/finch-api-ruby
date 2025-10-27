@@ -13,7 +13,7 @@ module FinchAPI
         # Creates a new company-wide deduction or contribution. Please use the
         # `/providers` endpoint to view available types for each provider.
         #
-        # @overload create(entity_ids:, company_contribution: nil, description: nil, frequency: nil, type: nil, request_options: {})
+        # @overload create(entity_ids: nil, company_contribution: nil, description: nil, frequency: nil, type: nil, request_options: {})
         #
         # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access.
         #
@@ -30,7 +30,7 @@ module FinchAPI
         # @return [FinchAPI::Models::HRIS::CreateCompanyBenefitsResponse]
         #
         # @see FinchAPI::Models::HRIS::BenefitCreateParams
-        def create(params)
+        def create(params = {})
           parsed, options = FinchAPI::HRIS::BenefitCreateParams.dump_request(params)
           query_params = [:entity_ids]
           @client.request(
@@ -45,7 +45,7 @@ module FinchAPI
 
         # Lists deductions and contributions information for a given item
         #
-        # @overload retrieve(benefit_id, entity_ids:, request_options: {})
+        # @overload retrieve(benefit_id, entity_ids: nil, request_options: {})
         #
         # @param benefit_id [String]
         #
@@ -56,7 +56,7 @@ module FinchAPI
         # @return [FinchAPI::Models::HRIS::CompanyBenefit]
         #
         # @see FinchAPI::Models::HRIS::BenefitRetrieveParams
-        def retrieve(benefit_id, params)
+        def retrieve(benefit_id, params = {})
           parsed, options = FinchAPI::HRIS::BenefitRetrieveParams.dump_request(params)
           @client.request(
             method: :get,
@@ -69,7 +69,7 @@ module FinchAPI
 
         # Updates an existing company-wide deduction or contribution
         #
-        # @overload update(benefit_id, entity_ids:, description: nil, request_options: {})
+        # @overload update(benefit_id, entity_ids: nil, description: nil, request_options: {})
         #
         # @param benefit_id [String] Path param:
         #
@@ -82,7 +82,7 @@ module FinchAPI
         # @return [FinchAPI::Models::HRIS::UpdateCompanyBenefitResponse]
         #
         # @see FinchAPI::Models::HRIS::BenefitUpdateParams
-        def update(benefit_id, params)
+        def update(benefit_id, params = {})
           parsed, options = FinchAPI::HRIS::BenefitUpdateParams.dump_request(params)
           query_params = [:entity_ids]
           @client.request(
@@ -97,7 +97,7 @@ module FinchAPI
 
         # List all company-wide deductions and contributions.
         #
-        # @overload list(entity_ids:, request_options: {})
+        # @overload list(entity_ids: nil, request_options: {})
         #
         # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
         #
@@ -106,7 +106,7 @@ module FinchAPI
         # @return [FinchAPI::Internal::SinglePage<FinchAPI::Models::HRIS::CompanyBenefit>]
         #
         # @see FinchAPI::Models::HRIS::BenefitListParams
-        def list(params)
+        def list(params = {})
           parsed, options = FinchAPI::HRIS::BenefitListParams.dump_request(params)
           @client.request(
             method: :get,
@@ -120,7 +120,7 @@ module FinchAPI
 
         # Get deductions metadata
         #
-        # @overload list_supported_benefits(entity_ids:, request_options: {})
+        # @overload list_supported_benefits(entity_ids: nil, request_options: {})
         #
         # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
         #
@@ -129,7 +129,7 @@ module FinchAPI
         # @return [FinchAPI::Internal::SinglePage<FinchAPI::Models::HRIS::SupportedBenefit>]
         #
         # @see FinchAPI::Models::HRIS::BenefitListSupportedBenefitsParams
-        def list_supported_benefits(params)
+        def list_supported_benefits(params = {})
           parsed, options = FinchAPI::HRIS::BenefitListSupportedBenefitsParams.dump_request(params)
           @client.request(
             method: :get,

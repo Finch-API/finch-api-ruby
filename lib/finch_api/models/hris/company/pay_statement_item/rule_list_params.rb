@@ -13,10 +13,10 @@ module FinchAPI
             # @!attribute entity_ids
             #   The entity IDs to retrieve rules for.
             #
-            #   @return [Array<String>]
-            required :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
+            #   @return [Array<String>, nil]
+            optional :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
 
-            # @!method initialize(entity_ids:, request_options: {})
+            # @!method initialize(entity_ids: nil, request_options: {})
             #   @param entity_ids [Array<String>] The entity IDs to retrieve rules for.
             #
             #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]

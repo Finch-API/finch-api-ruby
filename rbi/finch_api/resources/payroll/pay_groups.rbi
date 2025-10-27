@@ -15,7 +15,7 @@ module FinchAPI
         def retrieve(
           pay_group_id,
           # The entity IDs to specify which entities' data to access.
-          entity_ids:,
+          entity_ids: nil,
           request_options: {}
         )
         end
@@ -35,7 +35,7 @@ module FinchAPI
         end
         def list(
           # The entity IDs to specify which entities' data to access.
-          entity_ids:,
+          entity_ids: nil,
           individual_id: nil,
           pay_frequencies: nil,
           request_options: {}

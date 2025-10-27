@@ -11,8 +11,8 @@ module FinchAPI
         # @!attribute entity_ids
         #   The entity IDs to specify which entities' data to access.
         #
-        #   @return [Array<String>]
-        required :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
+        #   @return [Array<String>, nil]
+        optional :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
 
         # @!attribute description
         #   Updated name or description.
@@ -20,7 +20,7 @@ module FinchAPI
         #   @return [String, nil]
         optional :description, String
 
-        # @!method initialize(entity_ids:, description: nil, request_options: {})
+        # @!method initialize(entity_ids: nil, description: nil, request_options: {})
         #   @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
         #
         #   @param description [String] Updated name or description.

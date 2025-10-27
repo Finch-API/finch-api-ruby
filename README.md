@@ -30,7 +30,7 @@ require "finch_api"
 
 finch = FinchAPI::Client.new(access_token: "My Access Token")
 
-page = finch.hris.directory.list(entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
+page = finch.hris.directory.list
 
 puts(page.id)
 ```
@@ -42,7 +42,7 @@ List methods in the Finch API are paginated.
 This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
 
 ```ruby
-page = finch.hris.directory.list(entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
+page = finch.hris.directory.list
 
 # Fetch single item from page.
 directory = page.individuals[0]
@@ -69,7 +69,7 @@ When the library is unable to connect to the API, or if the API returns a non-su
 
 ```ruby
 begin
-  company = finch.hris.company.retrieve(entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
+  company = finch.hris.company.retrieve
 rescue FinchAPI::Errors::APIConnectionError => e
   puts("The server could not be reached")
   puts(e.cause)  # an underlying Exception, likely raised within `net/http`
@@ -112,10 +112,7 @@ finch = FinchAPI::Client.new(
 )
 
 # Or, configure per-request:
-finch.hris.directory.list(
-  entity_ids: ["550e8400-e29b-41d4-a716-446655440000"],
-  request_options: {max_retries: 5}
-)
+finch.hris.directory.list(request_options: {max_retries: 5})
 ```
 
 ### Timeouts
@@ -129,10 +126,7 @@ finch = FinchAPI::Client.new(
 )
 
 # Or, configure per-request:
-finch.hris.directory.list(
-  entity_ids: ["550e8400-e29b-41d4-a716-446655440000"],
-  request_options: {timeout: 5}
-)
+finch.hris.directory.list(request_options: {timeout: 5})
 ```
 
 On timeout, `FinchAPI::Errors::APITimeoutError` is raised.
@@ -164,7 +158,6 @@ Note: the `extra_` parameters of the same name overrides the documented paramete
 ```ruby
 page =
   finch.hris.directory.list(
-    entity_ids: ["550e8400-e29b-41d4-a716-446655440000"],
     request_options: {
       extra_query: {my_query_parameter: value},
       extra_body: {my_body_parameter: value},
@@ -210,17 +203,17 @@ This library provides comprehensive [RBI](https://sorbet.org/docs/rbi) definitio
 You can provide typesafe request parameters like so:
 
 ```ruby
-finch.hris.directory.list(entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
+finch.hris.directory.list
 ```
 
 Or, equivalently:
 
 ```ruby
 # Hashes work, but are not typesafe:
-finch.hris.directory.list(entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
+finch.hris.directory.list
 
 # You can also splat a full Params class:
-params = FinchAPI::HRIS::DirectoryListParams.new(entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
+params = FinchAPI::HRIS::DirectoryListParams.new
 finch.hris.directory.list(**params)
 ```
 

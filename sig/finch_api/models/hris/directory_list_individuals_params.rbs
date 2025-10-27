@@ -9,7 +9,9 @@ module FinchAPI
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
-        attr_accessor entity_ids: ::Array[String]
+        attr_reader entity_ids: ::Array[String]?
+
+        def entity_ids=: (::Array[String]) -> ::Array[String]
 
         attr_reader limit: Integer?
 
@@ -20,7 +22,7 @@ module FinchAPI
         def offset=: (Integer) -> Integer
 
         def initialize: (
-          entity_ids: ::Array[String],
+          ?entity_ids: ::Array[String],
           ?limit: Integer,
           ?offset: Integer,
           ?request_options: FinchAPI::request_opts
