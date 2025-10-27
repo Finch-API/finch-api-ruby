@@ -3,9 +3,8 @@
 require_relative "../../../../test_helper"
 
 class FinchAPI::Test::Resources::HRIS::Company::PayStatementItem::RulesTest < FinchAPI::Test::ResourceTest
-  def test_create_required_params
-    response =
-      @finch.hris.company.pay_statement_item.rules.create(entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
+  def test_create
+    response = @finch.hris.company.pay_statement_item.rules.create
 
     assert_pattern do
       response => FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse
@@ -26,12 +25,8 @@ class FinchAPI::Test::Resources::HRIS::Company::PayStatementItem::RulesTest < Fi
     end
   end
 
-  def test_update_required_params
-    response =
-      @finch.hris.company.pay_statement_item.rules.update(
-        "rule_id",
-        entity_ids: ["550e8400-e29b-41d4-a716-446655440000"]
-      )
+  def test_update
+    response = @finch.hris.company.pay_statement_item.rules.update("rule_id")
 
     assert_pattern do
       response => FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse
@@ -52,9 +47,8 @@ class FinchAPI::Test::Resources::HRIS::Company::PayStatementItem::RulesTest < Fi
     end
   end
 
-  def test_list_required_params
-    response =
-      @finch.hris.company.pay_statement_item.rules.list(entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
+  def test_list
+    response = @finch.hris.company.pay_statement_item.rules.list
 
     assert_pattern do
       response => FinchAPI::Internal::ResponsesPage
@@ -82,12 +76,8 @@ class FinchAPI::Test::Resources::HRIS::Company::PayStatementItem::RulesTest < Fi
     end
   end
 
-  def test_delete_required_params
-    response =
-      @finch.hris.company.pay_statement_item.rules.delete(
-        "rule_id",
-        entity_ids: ["550e8400-e29b-41d4-a716-446655440000"]
-      )
+  def test_delete
+    response = @finch.hris.company.pay_statement_item.rules.delete("rule_id")
 
     assert_pattern do
       response => FinchAPI::Models::HRIS::Company::PayStatementItem::RuleDeleteResponse

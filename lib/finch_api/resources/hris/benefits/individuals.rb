@@ -10,7 +10,7 @@ module FinchAPI
           # adjusted. Making the same request multiple times will not create new
           # enrollments, but will continue to set the state of the existing enrollment.
           #
-          # @overload enroll_many(benefit_id, entity_ids:, individuals: nil, request_options: {})
+          # @overload enroll_many(benefit_id, entity_ids: nil, individuals: nil, request_options: {})
           #
           # @param benefit_id [String] Path param:
           #
@@ -23,7 +23,7 @@ module FinchAPI
           # @return [FinchAPI::Models::HRIS::Benefits::EnrolledIndividualBenefitResponse]
           #
           # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams
-          def enroll_many(benefit_id, params)
+          def enroll_many(benefit_id, params = {})
             parsed, options = FinchAPI::HRIS::Benefits::IndividualEnrollManyParams.dump_request(params)
             @client.request(
               method: :post,
@@ -37,7 +37,7 @@ module FinchAPI
 
           # Lists individuals currently enrolled in a given deduction.
           #
-          # @overload enrolled_ids(benefit_id, entity_ids:, request_options: {})
+          # @overload enrolled_ids(benefit_id, entity_ids: nil, request_options: {})
           #
           # @param benefit_id [String]
           #
@@ -48,7 +48,7 @@ module FinchAPI
           # @return [FinchAPI::Models::HRIS::Benefits::IndividualEnrolledIDsResponse]
           #
           # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrolledIDsParams
-          def enrolled_ids(benefit_id, params)
+          def enrolled_ids(benefit_id, params = {})
             parsed, options = FinchAPI::HRIS::Benefits::IndividualEnrolledIDsParams.dump_request(params)
             @client.request(
               method: :get,
@@ -65,7 +65,7 @@ module FinchAPI
           #
           # Get enrollment information for the given individuals.
           #
-          # @overload retrieve_many_benefits(benefit_id, entity_ids:, individual_ids: nil, request_options: {})
+          # @overload retrieve_many_benefits(benefit_id, entity_ids: nil, individual_ids: nil, request_options: {})
           #
           # @param benefit_id [String]
           #
@@ -78,7 +78,7 @@ module FinchAPI
           # @return [FinchAPI::Internal::SinglePage<FinchAPI::Models::HRIS::Benefits::IndividualBenefit>]
           #
           # @see FinchAPI::Models::HRIS::Benefits::IndividualRetrieveManyBenefitsParams
-          def retrieve_many_benefits(benefit_id, params)
+          def retrieve_many_benefits(benefit_id, params = {})
             parsed, options = FinchAPI::HRIS::Benefits::IndividualRetrieveManyBenefitsParams.dump_request(params)
             @client.request(
               method: :get,
@@ -92,7 +92,7 @@ module FinchAPI
 
           # Unenroll individuals from a deduction or contribution
           #
-          # @overload unenroll_many(benefit_id, entity_ids:, individual_ids: nil, request_options: {})
+          # @overload unenroll_many(benefit_id, entity_ids: nil, individual_ids: nil, request_options: {})
           #
           # @param benefit_id [String] Path param:
           #
@@ -105,7 +105,7 @@ module FinchAPI
           # @return [FinchAPI::Models::HRIS::Benefits::UnenrolledIndividualBenefitResponse]
           #
           # @see FinchAPI::Models::HRIS::Benefits::IndividualUnenrollManyParams
-          def unenroll_many(benefit_id, params)
+          def unenroll_many(benefit_id, params = {})
             parsed, options = FinchAPI::HRIS::Benefits::IndividualUnenrollManyParams.dump_request(params)
             query_params = [:entity_ids]
             @client.request(

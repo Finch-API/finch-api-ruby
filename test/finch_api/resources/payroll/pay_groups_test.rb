@@ -3,9 +3,8 @@
 require_relative "../../test_helper"
 
 class FinchAPI::Test::Resources::Payroll::PayGroupsTest < FinchAPI::Test::ResourceTest
-  def test_retrieve_required_params
-    response =
-      @finch.payroll.pay_groups.retrieve("pay_group_id", entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
+  def test_retrieve
+    response = @finch.payroll.pay_groups.retrieve("pay_group_id")
 
     assert_pattern do
       response => FinchAPI::Models::Payroll::PayGroupRetrieveResponse
@@ -21,8 +20,8 @@ class FinchAPI::Test::Resources::Payroll::PayGroupsTest < FinchAPI::Test::Resour
     end
   end
 
-  def test_list_required_params
-    response = @finch.payroll.pay_groups.list(entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
+  def test_list
+    response = @finch.payroll.pay_groups.list
 
     assert_pattern do
       response => FinchAPI::Internal::SinglePage

@@ -5,7 +5,7 @@ module FinchAPI
         attr_reader individuals: FinchAPI::Resources::HRIS::Benefits::Individuals
 
         def create: (
-          entity_ids: ::Array[String],
+          ?entity_ids: ::Array[String],
           ?company_contribution: FinchAPI::HRIS::BenefitCreateParams::CompanyContribution?,
           ?description: String,
           ?frequency: FinchAPI::Models::HRIS::benefit_frequency?,
@@ -15,24 +15,24 @@ module FinchAPI
 
         def retrieve: (
           String benefit_id,
-          entity_ids: ::Array[String],
+          ?entity_ids: ::Array[String],
           ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::HRIS::CompanyBenefit
 
         def update: (
           String benefit_id,
-          entity_ids: ::Array[String],
+          ?entity_ids: ::Array[String],
           ?description: String,
           ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::HRIS::UpdateCompanyBenefitResponse
 
         def list: (
-          entity_ids: ::Array[String],
+          ?entity_ids: ::Array[String],
           ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::Internal::SinglePage[FinchAPI::HRIS::CompanyBenefit]
 
         def list_supported_benefits: (
-          entity_ids: ::Array[String],
+          ?entity_ids: ::Array[String],
           ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::Internal::SinglePage[FinchAPI::HRIS::SupportedBenefit]
 

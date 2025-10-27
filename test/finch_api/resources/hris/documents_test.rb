@@ -3,8 +3,8 @@
 require_relative "../../test_helper"
 
 class FinchAPI::Test::Resources::HRIS::DocumentsTest < FinchAPI::Test::ResourceTest
-  def test_list_required_params
-    response = @finch.hris.documents.list(entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
+  def test_list
+    response = @finch.hris.documents.list
 
     assert_pattern do
       response => FinchAPI::Models::HRIS::DocumentListResponse
@@ -18,9 +18,8 @@ class FinchAPI::Test::Resources::HRIS::DocumentsTest < FinchAPI::Test::ResourceT
     end
   end
 
-  def test_retreive_required_params
-    response =
-      @finch.hris.documents.retreive("document_id", entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
+  def test_retreive
+    response = @finch.hris.documents.retreive("document_id")
 
     assert_pattern do
       response => FinchAPI::Models::HRIS::DocumentRetreiveResponse

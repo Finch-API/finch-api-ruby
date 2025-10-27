@@ -3,9 +3,8 @@
 require_relative "../../../test_helper"
 
 class FinchAPI::Test::Resources::HRIS::Company::PayStatementItemTest < FinchAPI::Test::ResourceTest
-  def test_list_required_params
-    response =
-      @finch.hris.company.pay_statement_item.list(entity_ids: ["550e8400-e29b-41d4-a716-446655440000"])
+  def test_list
+    response = @finch.hris.company.pay_statement_item.list
 
     assert_pattern do
       response => FinchAPI::Internal::ResponsesPage

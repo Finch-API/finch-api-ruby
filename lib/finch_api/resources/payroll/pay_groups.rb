@@ -6,7 +6,7 @@ module FinchAPI
       class PayGroups
         # Read information from a single pay group
         #
-        # @overload retrieve(pay_group_id, entity_ids:, request_options: {})
+        # @overload retrieve(pay_group_id, entity_ids: nil, request_options: {})
         #
         # @param pay_group_id [String]
         #
@@ -17,7 +17,7 @@ module FinchAPI
         # @return [FinchAPI::Models::Payroll::PayGroupRetrieveResponse]
         #
         # @see FinchAPI::Models::Payroll::PayGroupRetrieveParams
-        def retrieve(pay_group_id, params)
+        def retrieve(pay_group_id, params = {})
           parsed, options = FinchAPI::Payroll::PayGroupRetrieveParams.dump_request(params)
           @client.request(
             method: :get,
@@ -30,7 +30,7 @@ module FinchAPI
 
         # Read company pay groups and frequencies
         #
-        # @overload list(entity_ids:, individual_id: nil, pay_frequencies: nil, request_options: {})
+        # @overload list(entity_ids: nil, individual_id: nil, pay_frequencies: nil, request_options: {})
         #
         # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
         #
@@ -43,7 +43,7 @@ module FinchAPI
         # @return [FinchAPI::Internal::SinglePage<FinchAPI::Models::Payroll::PayGroupListResponse>]
         #
         # @see FinchAPI::Models::Payroll::PayGroupListParams
-        def list(params)
+        def list(params = {})
           parsed, options = FinchAPI::Payroll::PayGroupListParams.dump_request(params)
           @client.request(
             method: :get,

@@ -6,7 +6,7 @@ module FinchAPI
       class Directory
         # Read company directory and organization structure
         #
-        # @overload list(entity_ids:, limit: nil, offset: nil, request_options: {})
+        # @overload list(entity_ids: nil, limit: nil, offset: nil, request_options: {})
         #
         # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
         #
@@ -19,7 +19,7 @@ module FinchAPI
         # @return [FinchAPI::Internal::IndividualsPage<FinchAPI::Models::HRIS::IndividualInDirectory>]
         #
         # @see FinchAPI::Models::HRIS::DirectoryListParams
-        def list(params)
+        def list(params = {})
           parsed, options = FinchAPI::HRIS::DirectoryListParams.dump_request(params)
           @client.request(
             method: :get,

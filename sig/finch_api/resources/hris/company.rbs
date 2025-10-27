@@ -5,7 +5,7 @@ module FinchAPI
         attr_reader pay_statement_item: FinchAPI::Resources::HRIS::Company::PayStatementItem
 
         def retrieve: (
-          entity_ids: ::Array[String],
+          ?entity_ids: ::Array[String],
           ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::HRIS::HRISCompany
 

@@ -15,12 +15,12 @@ module FinchAPI
           # items for the access token's connection account.
           sig do
             params(
-              entity_ids: T::Array[String],
               categories:
                 T::Array[
                   FinchAPI::HRIS::Company::PayStatementItemListParams::Category::OrSymbol
                 ],
               end_date: Date,
+              entity_ids: T::Array[String],
               name: String,
               start_date: Date,
               type: String,
@@ -32,14 +32,14 @@ module FinchAPI
             )
           end
           def list(
-            # The entity IDs to specify which entities' data to access.
-            entity_ids:,
             # Comma-delimited list of pay statement item categories to filter on. If empty,
             # defaults to all categories.
             categories: nil,
             # The end date to retrieve pay statement items by via their last seen pay date in
             # `YYYY-MM-DD` format.
             end_date: nil,
+            # The entity IDs to specify which entities' data to access.
+            entity_ids: nil,
             # Case-insensitive partial match search by pay statement item name.
             name: nil,
             # The start date to retrieve pay statement items by via their last seen pay date

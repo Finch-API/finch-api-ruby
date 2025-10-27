@@ -18,8 +18,11 @@ module FinchAPI
               end
 
             # The entity IDs to update the rule for.
-            sig { returns(T::Array[String]) }
-            attr_accessor :entity_ids
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_reader :entity_ids
+
+            sig { params(entity_ids: T::Array[String]).void }
+            attr_writer :entity_ids
 
             sig { returns(T.nilable(T.anything)) }
             attr_reader :optional_property
@@ -36,7 +39,7 @@ module FinchAPI
             end
             def self.new(
               # The entity IDs to update the rule for.
-              entity_ids:,
+              entity_ids: nil,
               optional_property: nil,
               request_options: {}
             )

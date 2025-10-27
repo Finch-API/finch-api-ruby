@@ -26,7 +26,7 @@ module FinchAPI
             # Path param:
             benefit_id,
             # Query param: The entity IDs to specify which entities' data to access.
-            entity_ids:,
+            entity_ids: nil,
             # Body param: Array of the individual_id to enroll and a configuration object.
             individuals: nil,
             request_options: {}
@@ -46,7 +46,7 @@ module FinchAPI
           def enrolled_ids(
             benefit_id,
             # The entity IDs to specify which entities' data to access.
-            entity_ids:,
+            entity_ids: nil,
             request_options: {}
           )
           end
@@ -67,7 +67,7 @@ module FinchAPI
           def retrieve_many_benefits(
             benefit_id,
             # The entity IDs to specify which entities' data to access.
-            entity_ids:,
+            entity_ids: nil,
             # comma-delimited list of stable Finch uuids for each individual. If empty,
             # defaults to all individuals
             individual_ids: nil,
@@ -90,7 +90,7 @@ module FinchAPI
             # Path param:
             benefit_id,
             # Query param: The entity IDs to specify which entities' data to access.
-            entity_ids:,
+            entity_ids: nil,
             # Body param: Array of individual_ids to unenroll.
             individual_ids: nil,
             request_options: {}
