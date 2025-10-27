@@ -1,5 +1,45 @@
 # Changelog
 
+## 0.1.0-alpha.31 (2025-10-27)
+
+Full Changelog: [v0.1.0-alpha.30...v0.1.0-alpha.31](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.30...v0.1.0-alpha.31)
+
+### Features
+
+* **api:** api update ([2c193f3](https://github.com/Finch-API/finch-api-ruby/commit/2c193f3efeec2a63a845a399a8ed678a95e14dd9))
+* **api:** api update ([a463808](https://github.com/Finch-API/finch-api-ruby/commit/a4638080bfdd91ed19083a7cf3f43b1cee5a8568))
+* **api:** api update ([4e526be](https://github.com/Finch-API/finch-api-ruby/commit/4e526befab7e3cc48a0b13cd869ff81df27f9469))
+* **api:** api update ([78a45f9](https://github.com/Finch-API/finch-api-ruby/commit/78a45f95a0ad4dbed56b70c66427c9158933383e))
+* **api:** api update ([61d827e](https://github.com/Finch-API/finch-api-ruby/commit/61d827e756ba40a17532ac75694370b666eed062))
+* **api:** api update ([0d1e8ba](https://github.com/Finch-API/finch-api-ruby/commit/0d1e8baa59306512f78750f4c5bfef9f2d66e0e6))
+* **api:** api update ([31c3661](https://github.com/Finch-API/finch-api-ruby/commit/31c3661fa11d6f74224e9c0af9b5dcee877183ee))
+* **api:** api update ([ab22783](https://github.com/Finch-API/finch-api-ruby/commit/ab2278377aae4058398fa1540df2a16f5cbaf704))
+* **api:** api update ([66b8a64](https://github.com/Finch-API/finch-api-ruby/commit/66b8a6446d12b5222a2408af0de686b94afff297))
+* expose response headers for both streams and errors ([45672bb](https://github.com/Finch-API/finch-api-ruby/commit/45672bb5a1b70d8fc1ea4acf2fa89044284d7fab))
+* handle thread interrupts in the core HTTP client ([97627a2](https://github.com/Finch-API/finch-api-ruby/commit/97627a28d523f0554075ca469e94aae6cc111def))
+
+
+### Bug Fixes
+
+* absolutely qualified uris should always override the default ([96b3cd9](https://github.com/Finch-API/finch-api-ruby/commit/96b3cd9ab133c0bb0b30cc151c9c1e3e1493d97e))
+* always send `filename=...` for multipart requests where a file is expected ([ee2e0ed](https://github.com/Finch-API/finch-api-ruby/commit/ee2e0ed334b365dbc89ec602402310695d48922b))
+* coroutine leaks from connection pool ([ed8c82c](https://github.com/Finch-API/finch-api-ruby/commit/ed8c82c1de78c5416bf2704b2c7208289d5526d6))
+* **internal:** use null byte as file separator in the fast formatting script ([8387c75](https://github.com/Finch-API/finch-api-ruby/commit/8387c751006f4e9832bbfcd87fc22a0e10c1e7cf))
+* shorten multipart boundary sep to less than RFC specificed max length ([df686c5](https://github.com/Finch-API/finch-api-ruby/commit/df686c5b25b82c9f4f44966e087812be37007fbf))
+* should not reuse buffers for `IO.copy_stream` interop ([8ad8c9d](https://github.com/Finch-API/finch-api-ruby/commit/8ad8c9dc1429b38df047ac7a17ebf33eafe84a10))
+
+
+### Performance Improvements
+
+* faster code formatting ([69f9d97](https://github.com/Finch-API/finch-api-ruby/commit/69f9d97f9f857b3b9912e733cb37d8e9ca41af3a))
+
+
+### Chores
+
+* allow fast-format to use bsd sed as well ([b7c6223](https://github.com/Finch-API/finch-api-ruby/commit/b7c6223003113460bef7064164ae2590940c984b))
+* do not install brew dependencies in ./scripts/bootstrap by default ([6faa93e](https://github.com/Finch-API/finch-api-ruby/commit/6faa93ee15839976d987e97701c988940e2a134e))
+* ignore linter error for tests having large collections ([d3f05ab](https://github.com/Finch-API/finch-api-ruby/commit/d3f05ab04c2a228488f57933ea8643913bfa6260))
+
 ## 0.1.0-alpha.30 (2025-09-08)
 
 Full Changelog: [v0.1.0-alpha.29...v0.1.0-alpha.30](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.29...v0.1.0-alpha.30)
