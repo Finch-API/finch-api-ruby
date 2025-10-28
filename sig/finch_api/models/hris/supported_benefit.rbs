@@ -47,13 +47,14 @@ module FinchAPI
           hsa_contribution_limit: ::Array[FinchAPI::Models::HRIS::SupportedBenefit::hsa_contribution_limit?]?
         }
 
-        type company_contribution = :fixed | :percent
+        type company_contribution = :fixed | :percent | :tiered
 
         module CompanyContribution
           extend FinchAPI::Internal::Type::Enum
 
           FIXED: :fixed
           PERCENT: :percent
+          TIERED: :tiered
 
           def self?.values: -> ::Array[FinchAPI::Models::HRIS::SupportedBenefit::company_contribution]
         end

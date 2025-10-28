@@ -3,6 +3,7 @@ module FinchAPI
     module HRIS
       type benefit_create_params =
         {
+          entity_ids: ::Array[String],
           company_contribution: FinchAPI::HRIS::BenefitCreateParams::CompanyContribution?,
           description: String,
           frequency: FinchAPI::Models::HRIS::benefit_frequency?,
@@ -13,6 +14,10 @@ module FinchAPI
       class BenefitCreateParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
+
+        attr_reader entity_ids: ::Array[String]?
+
+        def entity_ids=: (::Array[String]) -> ::Array[String]
 
         attr_accessor company_contribution: FinchAPI::HRIS::BenefitCreateParams::CompanyContribution?
 
@@ -25,6 +30,7 @@ module FinchAPI
         attr_accessor type: FinchAPI::Models::HRIS::benefit_type?
 
         def initialize: (
+          ?entity_ids: ::Array[String],
           ?company_contribution: FinchAPI::HRIS::BenefitCreateParams::CompanyContribution?,
           ?description: String,
           ?frequency: FinchAPI::Models::HRIS::benefit_frequency?,
@@ -33,6 +39,7 @@ module FinchAPI
         ) -> void
 
         def to_hash: -> {
+          entity_ids: ::Array[String],
           company_contribution: FinchAPI::HRIS::BenefitCreateParams::CompanyContribution?,
           description: String,
           frequency: FinchAPI::Models::HRIS::benefit_frequency?,

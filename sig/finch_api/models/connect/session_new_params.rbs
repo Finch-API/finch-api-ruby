@@ -3,13 +3,13 @@ module FinchAPI
     module Connect
       type session_new_params =
         {
+          customer_email: String?,
           customer_id: String,
           customer_name: String,
-          products: ::Array[FinchAPI::Models::Connect::SessionNewParams::product],
-          customer_email: String?,
           integration: FinchAPI::Connect::SessionNewParams::Integration?,
           manual: bool?,
           minutes_to_expire: Float?,
+          products: ::Array[FinchAPI::Models::Connect::SessionNewParams::product],
           redirect_uri: String?,
           sandbox: FinchAPI::Models::Connect::SessionNewParams::sandbox?
         }
@@ -19,13 +19,11 @@ module FinchAPI
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
+        attr_accessor customer_email: String?
+
         attr_accessor customer_id: String
 
         attr_accessor customer_name: String
-
-        attr_accessor products: ::Array[FinchAPI::Models::Connect::SessionNewParams::product]
-
-        attr_accessor customer_email: String?
 
         attr_accessor integration: FinchAPI::Connect::SessionNewParams::Integration?
 
@@ -33,64 +31,37 @@ module FinchAPI
 
         attr_accessor minutes_to_expire: Float?
 
+        attr_accessor products: ::Array[FinchAPI::Models::Connect::SessionNewParams::product]
+
         attr_accessor redirect_uri: String?
 
         attr_accessor sandbox: FinchAPI::Models::Connect::SessionNewParams::sandbox?
 
         def initialize: (
+          customer_email: String?,
           customer_id: String,
           customer_name: String,
+          integration: FinchAPI::Connect::SessionNewParams::Integration?,
+          manual: bool?,
+          minutes_to_expire: Float?,
           products: ::Array[FinchAPI::Models::Connect::SessionNewParams::product],
-          ?customer_email: String?,
-          ?integration: FinchAPI::Connect::SessionNewParams::Integration?,
-          ?manual: bool?,
-          ?minutes_to_expire: Float?,
-          ?redirect_uri: String?,
-          ?sandbox: FinchAPI::Models::Connect::SessionNewParams::sandbox?,
+          redirect_uri: String?,
+          sandbox: FinchAPI::Models::Connect::SessionNewParams::sandbox?,
           ?request_options: FinchAPI::request_opts
         ) -> void
 
         def to_hash: -> {
+          customer_email: String?,
           customer_id: String,
           customer_name: String,
-          products: ::Array[FinchAPI::Models::Connect::SessionNewParams::product],
-          customer_email: String?,
           integration: FinchAPI::Connect::SessionNewParams::Integration?,
           manual: bool?,
           minutes_to_expire: Float?,
+          products: ::Array[FinchAPI::Models::Connect::SessionNewParams::product],
           redirect_uri: String?,
           sandbox: FinchAPI::Models::Connect::SessionNewParams::sandbox?,
           request_options: FinchAPI::RequestOptions
         }
-
-        type product =
-          :company
-          | :directory
-          | :individual
-          | :employment
-          | :payment
-          | :pay_statement
-          | :benefits
-          | :ssn
-          | :deduction
-          | :documents
-
-        module Product
-          extend FinchAPI::Internal::Type::Enum
-
-          COMPANY: :company
-          DIRECTORY: :directory
-          INDIVIDUAL: :individual
-          EMPLOYMENT: :employment
-          PAYMENT: :payment
-          PAY_STATEMENT: :pay_statement
-          BENEFITS: :benefits
-          SSN: :ssn
-          DEDUCTION: :deduction
-          DOCUMENTS: :documents
-
-          def self?.values: -> ::Array[FinchAPI::Models::Connect::SessionNewParams::product]
-        end
 
         type integration =
           {
@@ -104,8 +75,8 @@ module FinchAPI
           attr_accessor provider: String?
 
           def initialize: (
-            ?auth_method: FinchAPI::Models::Connect::SessionNewParams::Integration::auth_method?,
-            ?provider: String?
+            auth_method: FinchAPI::Models::Connect::SessionNewParams::Integration::auth_method?,
+            provider: String?
           ) -> void
 
           def to_hash: -> {
@@ -125,6 +96,35 @@ module FinchAPI
 
             def self?.values: -> ::Array[FinchAPI::Models::Connect::SessionNewParams::Integration::auth_method]
           end
+        end
+
+        type product =
+          :benefits
+          | :company
+          | :deduction
+          | :directory
+          | :documents
+          | :employment
+          | :individual
+          | :payment
+          | :pay_statement
+          | :ssn
+
+        module Product
+          extend FinchAPI::Internal::Type::Enum
+
+          BENEFITS: :benefits
+          COMPANY: :company
+          DEDUCTION: :deduction
+          DIRECTORY: :directory
+          DOCUMENTS: :documents
+          EMPLOYMENT: :employment
+          INDIVIDUAL: :individual
+          PAYMENT: :payment
+          PAY_STATEMENT: :pay_statement
+          SSN: :ssn
+
+          def self?.values: -> ::Array[FinchAPI::Models::Connect::SessionNewParams::product]
         end
 
         type sandbox = :finch | :provider

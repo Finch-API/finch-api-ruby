@@ -9,25 +9,25 @@ module FinchAPI
         #
         # Create a new connect session for an employer
         #
-        # @overload new(customer_id:, customer_name:, products:, customer_email: nil, integration: nil, manual: nil, minutes_to_expire: nil, redirect_uri: nil, sandbox: nil, request_options: {})
+        # @overload new(customer_email:, customer_id:, customer_name:, integration:, manual:, minutes_to_expire:, products:, redirect_uri:, sandbox:, request_options: {})
         #
-        # @param customer_id [String]
+        # @param customer_email [String, nil] Email address of the customer
         #
-        # @param customer_name [String]
+        # @param customer_id [String] Unique identifier for the customer
         #
-        # @param products [Array<Symbol, FinchAPI::Models::Connect::SessionNewParams::Product>]
+        # @param customer_name [String] Name of the customer
         #
-        # @param customer_email [String, nil]
+        # @param integration [FinchAPI::Models::Connect::SessionNewParams::Integration, nil] Integration configuration for the connect session
         #
-        # @param integration [FinchAPI::Models::Connect::SessionNewParams::Integration, nil]
-        #
-        # @param manual [Boolean, nil]
+        # @param manual [Boolean, nil] Enable manual authentication mode
         #
         # @param minutes_to_expire [Float, nil] The number of minutes until the session expires (defaults to 129,600, which is 9
         #
-        # @param redirect_uri [String, nil]
+        # @param products [Array<Symbol, FinchAPI::Models::Connect::SessionNewParams::Product>] The Finch products to request access to
         #
-        # @param sandbox [Symbol, FinchAPI::Models::Connect::SessionNewParams::Sandbox, nil]
+        # @param redirect_uri [String, nil] The URI to redirect to after the Connect flow is completed
+        #
+        # @param sandbox [Symbol, FinchAPI::Models::Connect::SessionNewParams::Sandbox, nil] Sandbox mode for testing
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -50,11 +50,11 @@ module FinchAPI
         #
         # Create a new Connect session for reauthenticating an existing connection
         #
-        # @overload reauthenticate(connection_id:, minutes_to_expire: nil, products: nil, redirect_uri: nil, request_options: {})
+        # @overload reauthenticate(connection_id:, minutes_to_expire:, products:, redirect_uri:, request_options: {})
         #
         # @param connection_id [String] The ID of the existing connection to reauthenticate
         #
-        # @param minutes_to_expire [Integer, nil] The number of minutes until the session expires (defaults to 43,200, which is 30
+        # @param minutes_to_expire [Integer] The number of minutes until the session expires (defaults to 43,200, which is 30
         #
         # @param products [Array<Symbol, FinchAPI::Models::Connect::SessionReauthenticateParams::Product>, nil] The products to request access to (optional for reauthentication)
         #

@@ -15,15 +15,34 @@ module FinchAPI
             )
           end
 
+        # The entity IDs to specify which entities' data to access.
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_reader :entity_ids
+
+        sig { params(entity_ids: T::Array[String]).void }
+        attr_writer :entity_ids
+
         sig do
-          params(request_options: FinchAPI::RequestOptions::OrHash).returns(
-            T.attached_class
-          )
+          params(
+            entity_ids: T::Array[String],
+            request_options: FinchAPI::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
-        def self.new(request_options: {})
+        def self.new(
+          # The entity IDs to specify which entities' data to access.
+          entity_ids: nil,
+          request_options: {}
+        )
         end
 
-        sig { override.returns({ request_options: FinchAPI::RequestOptions }) }
+        sig do
+          override.returns(
+            {
+              entity_ids: T::Array[String],
+              request_options: FinchAPI::RequestOptions
+            }
+          )
+        end
         def to_hash
         end
       end

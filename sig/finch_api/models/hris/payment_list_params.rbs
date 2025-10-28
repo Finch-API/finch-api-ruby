@@ -2,7 +2,7 @@ module FinchAPI
   module Models
     module HRIS
       type payment_list_params =
-        { end_date: Date, start_date: Date }
+        { end_date: Date, start_date: Date, entity_ids: ::Array[String] }
         & FinchAPI::Internal::Type::request_parameters
 
       class PaymentListParams < FinchAPI::Internal::Type::BaseModel
@@ -13,15 +13,21 @@ module FinchAPI
 
         attr_accessor start_date: Date
 
+        attr_reader entity_ids: ::Array[String]?
+
+        def entity_ids=: (::Array[String]) -> ::Array[String]
+
         def initialize: (
           end_date: Date,
           start_date: Date,
+          ?entity_ids: ::Array[String],
           ?request_options: FinchAPI::request_opts
         ) -> void
 
         def to_hash: -> {
           end_date: Date,
           start_date: Date,
+          entity_ids: ::Array[String],
           request_options: FinchAPI::RequestOptions
         }
       end

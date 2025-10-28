@@ -5,87 +5,77 @@ module FinchAPI
         {
           data: FinchAPI::HRIS::W42020::Data,
           type: FinchAPI::Models::HRIS::W42020::type_,
-          year: Float?
+          year: Float
         }
 
       class W42020 < FinchAPI::Internal::Type::BaseModel
-        attr_reader data: FinchAPI::HRIS::W42020::Data?
+        attr_accessor data: FinchAPI::HRIS::W42020::Data
 
-        def data=: (
-          FinchAPI::HRIS::W42020::Data
-        ) -> FinchAPI::HRIS::W42020::Data
+        attr_accessor type: FinchAPI::Models::HRIS::W42020::type_
 
-        attr_reader type: FinchAPI::Models::HRIS::W42020::type_?
-
-        def type=: (
-          FinchAPI::Models::HRIS::W42020::type_
-        ) -> FinchAPI::Models::HRIS::W42020::type_
-
-        attr_accessor year: Float?
+        attr_accessor year: Float
 
         def initialize: (
-          ?data: FinchAPI::HRIS::W42020::Data,
-          ?type: FinchAPI::Models::HRIS::W42020::type_,
-          ?year: Float?
+          data: FinchAPI::HRIS::W42020::Data,
+          type: FinchAPI::Models::HRIS::W42020::type_,
+          year: Float
         ) -> void
 
         def to_hash: -> {
           data: FinchAPI::HRIS::W42020::Data,
           type: FinchAPI::Models::HRIS::W42020::type_,
-          year: Float?
+          year: Float
         }
 
         type data =
           {
-            amount_for_other_dependents: Integer?,
-            :amount_for_qualifying_children_under_17 => Integer?,
-            deductions: Integer?,
-            extra_withholding: Integer?,
+            amount_for_other_dependents: Integer,
+            :amount_for_qualifying_children_under_17 => Integer,
+            deductions: Integer,
+            extra_withholding: Integer,
             filing_status: FinchAPI::Models::HRIS::W42020::Data::filing_status?,
             individual_id: String,
-            other_income: Integer?,
-            total_claim_dependent_and_other_credits: Integer?
+            other_income: Integer,
+            total_claim_dependent_and_other_credits: Integer
           }
 
         class Data < FinchAPI::Internal::Type::BaseModel
-          attr_accessor amount_for_other_dependents: Integer?
+          attr_accessor amount_for_other_dependents: Integer
 
-          attr_accessor amount_for_qualifying_children_under_17: Integer?
+          attr_accessor amount_for_qualifying_children_under_17: Integer
 
-          attr_accessor deductions: Integer?
+          attr_accessor deductions: Integer
 
-          attr_accessor extra_withholding: Integer?
+          attr_accessor extra_withholding: Integer
 
           attr_accessor filing_status: FinchAPI::Models::HRIS::W42020::Data::filing_status?
 
-          attr_reader individual_id: String?
+          attr_accessor individual_id: String
 
-          def individual_id=: (String) -> String
+          attr_accessor other_income: Integer
 
-          attr_accessor other_income: Integer?
-
-          attr_accessor total_claim_dependent_and_other_credits: Integer?
+          attr_accessor total_claim_dependent_and_other_credits: Integer
 
           def initialize: (
-            ?amount_for_other_dependents: Integer?,
-            ?amount_for_qualifying_children_under_17: Integer?,
-            ?deductions: Integer?,
-            ?extra_withholding: Integer?,
-            ?filing_status: FinchAPI::Models::HRIS::W42020::Data::filing_status?,
-            ?individual_id: String,
-            ?other_income: Integer?,
-            ?total_claim_dependent_and_other_credits: Integer?
+            amount_for_other_dependents: Integer,
+            amount_for_qualifying_children_under_17: Integer,
+            deductions: Integer,
+            extra_withholding: Integer,
+            filing_status: FinchAPI::Models::HRIS::W42020::Data::filing_status?,
+            individual_id: String,
+            other_income: Integer,
+            total_claim_dependent_and_other_credits: Integer
           ) -> void
 
           def to_hash: -> {
-            amount_for_other_dependents: Integer?,
-            :amount_for_qualifying_children_under_17 => Integer?,
-            deductions: Integer?,
-            extra_withholding: Integer?,
+            amount_for_other_dependents: Integer,
+            :amount_for_qualifying_children_under_17 => Integer,
+            deductions: Integer,
+            extra_withholding: Integer,
             filing_status: FinchAPI::Models::HRIS::W42020::Data::filing_status?,
             individual_id: String,
-            other_income: Integer?,
-            total_claim_dependent_and_other_credits: Integer?
+            other_income: Integer,
+            total_claim_dependent_and_other_credits: Integer
           }
 
           type filing_status =

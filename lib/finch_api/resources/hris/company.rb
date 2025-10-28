@@ -9,7 +9,9 @@ module FinchAPI
 
         # Read basic company data
         #
-        # @overload retrieve(request_options: {})
+        # @overload retrieve(entity_ids: nil, request_options: {})
+        #
+        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -17,11 +19,13 @@ module FinchAPI
         #
         # @see FinchAPI::Models::HRIS::CompanyRetrieveParams
         def retrieve(params = {})
+          parsed, options = FinchAPI::HRIS::CompanyRetrieveParams.dump_request(params)
           @client.request(
             method: :get,
             path: "employer/company",
+            query: parsed,
             model: FinchAPI::HRIS::HRISCompany,
-            options: params[:request_options]
+            options: options
           )
         end
 

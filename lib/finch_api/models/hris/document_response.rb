@@ -7,36 +7,36 @@ module FinchAPI
         # @!attribute id
         #   A stable Finch id for the document.
         #
-        #   @return [String, nil]
-        optional :id, String
+        #   @return [String]
+        required :id, String
 
         # @!attribute individual_id
         #   The ID of the individual associated with the document. This will be null for
         #   employer-level documents.
         #
         #   @return [String, nil]
-        optional :individual_id, String, nil?: true
+        required :individual_id, String, nil?: true
 
         # @!attribute type
         #   The type of document.
         #
-        #   @return [Symbol, FinchAPI::Models::HRIS::DocumentResponse::Type, nil]
-        optional :type, enum: -> { FinchAPI::HRIS::DocumentResponse::Type }
+        #   @return [Symbol, FinchAPI::Models::HRIS::DocumentResponse::Type]
+        required :type, enum: -> { FinchAPI::HRIS::DocumentResponse::Type }
 
         # @!attribute url
         #   A URL to access the document. Format:
         #   `https://api.tryfinch.com/employer/documents/:document_id`.
         #
-        #   @return [String, nil]
-        optional :url, String
+        #   @return [String]
+        required :url, String
 
         # @!attribute year
         #   The year the document applies to, if available.
         #
-        #   @return [Float, nil]
-        optional :year, Float, nil?: true
+        #   @return [Float]
+        required :year, Float
 
-        # @!method initialize(id: nil, individual_id: nil, type: nil, url: nil, year: nil)
+        # @!method initialize(id:, individual_id:, type:, url:, year:)
         #   Some parameter documentations has been truncated, see
         #   {FinchAPI::Models::HRIS::DocumentResponse} for more details.
         #
@@ -48,7 +48,7 @@ module FinchAPI
         #
         #   @param url [String] A URL to access the document. Format: `https://api.tryfinch.com/employer/documen
         #
-        #   @param year [Float, nil] The year the document applies to, if available.
+        #   @param year [Float] The year the document applies to, if available.
 
         # The type of document.
         #

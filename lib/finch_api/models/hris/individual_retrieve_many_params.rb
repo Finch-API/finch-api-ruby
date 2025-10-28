@@ -8,6 +8,12 @@ module FinchAPI
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
+        # @!attribute entity_ids
+        #   The entity IDs to specify which entities' data to access.
+        #
+        #   @return [Array<String>, nil]
+        optional :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
+
         # @!attribute options
         #
         #   @return [FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, nil]
@@ -19,9 +25,13 @@ module FinchAPI
         optional :requests,
                  -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::IndividualRetrieveManyParams::Request] }
 
-        # @!method initialize(options: nil, requests: nil, request_options: {})
+        # @!method initialize(entity_ids: nil, options: nil, requests: nil, request_options: {})
+        #   @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
+        #
         #   @param options [FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, nil]
+        #
         #   @param requests [Array<FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request>]
+        #
         #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 
         class Options < FinchAPI::Internal::Type::BaseModel

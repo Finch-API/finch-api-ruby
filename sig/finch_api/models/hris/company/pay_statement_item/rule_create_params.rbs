@@ -5,6 +5,7 @@ module FinchAPI
         module PayStatementItem
           type rule_create_params =
             {
+              entity_ids: ::Array[String],
               attributes: FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes,
               conditions: ::Array[FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Condition],
               effective_end_date: String?,
@@ -16,6 +17,10 @@ module FinchAPI
           class RuleCreateParams < FinchAPI::Internal::Type::BaseModel
             extend FinchAPI::Internal::Type::RequestParameters::Converter
             include FinchAPI::Internal::Type::RequestParameters
+
+            attr_reader entity_ids: ::Array[String]?
+
+            def entity_ids=: (::Array[String]) -> ::Array[String]
 
             attr_reader attributes: FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes?
 
@@ -40,6 +45,7 @@ module FinchAPI
             ) -> FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::entity_type
 
             def initialize: (
+              ?entity_ids: ::Array[String],
               ?attributes: FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes,
               ?conditions: ::Array[FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Condition],
               ?effective_end_date: String?,
@@ -49,6 +55,7 @@ module FinchAPI
             ) -> void
 
             def to_hash: -> {
+              entity_ids: ::Array[String],
               attributes: FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes,
               conditions: ::Array[FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams::Condition],
               effective_end_date: String?,

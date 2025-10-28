@@ -34,8 +34,8 @@ class FinchAPI::Test::Resources::HRIS::DocumentsTest < FinchAPI::Test::ResourceT
 
     assert_pattern do
       case response
-      in {type: :w4_2020, data: FinchAPI::HRIS::W42020::Data | nil, year: Float | nil}
-      in {type: :w4_2005, data: FinchAPI::HRIS::W42005::Data | nil, year: Float | nil}
+      in {type: :w4_2020, data: FinchAPI::HRIS::W42020::Data, year: Float}
+      in {type: :w4_2005, data: FinchAPI::HRIS::W42005::Data, year: Float}
       end
     end
   end

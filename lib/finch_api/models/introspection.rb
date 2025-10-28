@@ -99,17 +99,12 @@ module FinchAPI
       #   @return [String, nil]
       optional :customer_name, String, nil?: true
 
-      # @!attribute entity_ids
-      #   Array of entity IDs associated with this connection.
+      # @!attribute entities
+      #   Array of detailed entity information for each connected account in multi-account
+      #   mode
       #
-      #   @return [Array<String>, nil]
-      optional :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
-
-      # @!attribute entity_mode
-      #   Indicates whether this connection manages a single entity or multiple entities.
-      #
-      #   @return [Symbol, FinchAPI::Models::Introspection::EntityMode, nil]
-      optional :entity_mode, enum: -> { FinchAPI::Introspection::EntityMode }
+      #   @return [Array<FinchAPI::Models::Introspection::Entity>, nil]
+      optional :entities, -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Introspection::Entity] }
 
       # @!attribute manual
       #   Whether the connection associated with the `access_token` uses the Assisted
@@ -134,7 +129,7 @@ module FinchAPI
       #   @return [String, nil]
       optional :username, String, nil?: true
 
-      # @!method initialize(id:, client_id:, client_type:, connection_id:, connection_status:, connection_type:, products:, provider_id:, account_id: nil, authentication_methods: nil, company_id: nil, customer_email: nil, customer_id: nil, customer_name: nil, entity_ids: nil, entity_mode: nil, manual: nil, payroll_provider_id: nil, username: nil)
+      # @!method initialize(id:, client_id:, client_type:, connection_id:, connection_status:, connection_type:, products:, provider_id:, account_id: nil, authentication_methods: nil, company_id: nil, customer_email: nil, customer_id: nil, customer_name: nil, entities: nil, manual: nil, payroll_provider_id: nil, username: nil)
       #   Some parameter documentations has been truncated, see
       #   {FinchAPI::Models::Introspection} for more details.
       #
@@ -166,9 +161,7 @@ module FinchAPI
       #
       #   @param customer_name [String, nil] The name of your customer you provided to Finch when a connect session was creat
       #
-      #   @param entity_ids [Array<String>] Array of entity IDs associated with this connection.
-      #
-      #   @param entity_mode [Symbol, FinchAPI::Models::Introspection::EntityMode] Indicates whether this connection manages a single entity or multiple entities.
+      #   @param entities [Array<FinchAPI::Models::Introspection::Entity>] Array of detailed entity information for each connected account in multi-account
       #
       #   @param manual [Boolean] Whether the connection associated with the `access_token` uses the Assisted Conn
       #
@@ -334,17 +327,39 @@ module FinchAPI
         end
       end
 
-      # Indicates whether this connection manages a single entity or multiple entities.
-      #
-      # @see FinchAPI::Models::Introspection#entity_mode
-      module EntityMode
-        extend FinchAPI::Internal::Type::Enum
+      class Entity < FinchAPI::Internal::Type::BaseModel
+        # @!attribute id
+        #   The connection account ID for this entity
+        #
+        #   @return [String]
+        required :id, String
 
-        SINGLE = :single
-        MULTI = :multi
+        # @!attribute name
+        #   The name of the entity (payroll provider company name)
+        #
+        #   @return [String, nil]
+        required :name, String, nil?: true
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        # @!attribute source_id
+        #   The source ID of the entity
+        #
+        #   @return [String, nil]
+        required :source_id, String, nil?: true
+
+        # @!attribute type
+        #   The type of entity
+        #
+        #   @return [String, nil]
+        required :type, String, nil?: true
+
+        # @!method initialize(id:, name:, source_id:, type:)
+        #   @param id [String] The connection account ID for this entity
+        #
+        #   @param name [String, nil] The name of the entity (payroll provider company name)
+        #
+        #   @param source_id [String, nil] The source ID of the entity
+        #
+        #   @param type [String, nil] The type of entity
       end
     end
   end

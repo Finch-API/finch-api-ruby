@@ -6,6 +6,7 @@ module FinchAPI
           {
             categories: ::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::category],
             end_date: Date,
+            entity_ids: ::Array[String],
             name: String,
             start_date: Date,
             type: String
@@ -26,6 +27,10 @@ module FinchAPI
 
           def end_date=: (Date) -> Date
 
+          attr_reader entity_ids: ::Array[String]?
+
+          def entity_ids=: (::Array[String]) -> ::Array[String]
+
           attr_reader name: String?
 
           def name=: (String) -> String
@@ -41,6 +46,7 @@ module FinchAPI
           def initialize: (
             ?categories: ::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::category],
             ?end_date: Date,
+            ?entity_ids: ::Array[String],
             ?name: String,
             ?start_date: Date,
             ?type: String,
@@ -50,6 +56,7 @@ module FinchAPI
           def to_hash: -> {
             categories: ::Array[FinchAPI::Models::HRIS::Company::PayStatementItemListParams::category],
             end_date: Date,
+            entity_ids: ::Array[String],
             name: String,
             start_date: Date,
             type: String,

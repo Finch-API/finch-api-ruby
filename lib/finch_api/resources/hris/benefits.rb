@@ -13,15 +13,17 @@ module FinchAPI
         # Creates a new company-wide deduction or contribution. Please use the
         # `/providers` endpoint to view available types for each provider.
         #
-        # @overload create(company_contribution: nil, description: nil, frequency: nil, type: nil, request_options: {})
+        # @overload create(entity_ids: nil, company_contribution: nil, description: nil, frequency: nil, type: nil, request_options: {})
         #
-        # @param company_contribution [FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution, nil] The company match for this benefit.
+        # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access.
         #
-        # @param description [String] Name of the benefit as it appears in the provider and pay statements. Recommend
+        # @param company_contribution [FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution, nil] Body param: The company match for this benefit.
         #
-        # @param frequency [Symbol, FinchAPI::Models::HRIS::BenefitFrequency, nil] The frequency of the benefit deduction/contribution.
+        # @param description [String] Body param: Name of the benefit as it appears in the provider and pay statements
         #
-        # @param type [Symbol, FinchAPI::Models::HRIS::BenefitType, nil] Type of benefit.
+        # @param frequency [Symbol, FinchAPI::Models::HRIS::BenefitFrequency, nil] Body param: The frequency of the benefit deduction/contribution.
+        #
+        # @param type [Symbol, FinchAPI::Models::HRIS::BenefitType, nil] Body param: Type of benefit.
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -30,10 +32,12 @@ module FinchAPI
         # @see FinchAPI::Models::HRIS::BenefitCreateParams
         def create(params = {})
           parsed, options = FinchAPI::HRIS::BenefitCreateParams.dump_request(params)
+          query_params = [:entity_ids]
           @client.request(
             method: :post,
             path: "employer/benefits",
-            body: parsed,
+            query: parsed.slice(*query_params),
+            body: parsed.except(*query_params),
             model: FinchAPI::HRIS::CreateCompanyBenefitsResponse,
             options: options
           )
@@ -41,30 +45,37 @@ module FinchAPI
 
         # Lists deductions and contributions information for a given item
         #
-        # @overload retrieve(benefit_id, request_options: {})
+        # @overload retrieve(benefit_id, entity_ids: nil, request_options: {})
         #
         # @param benefit_id [String]
+        #
+        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
+        #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Models::HRIS::CompanyBenefit]
         #
         # @see FinchAPI::Models::HRIS::BenefitRetrieveParams
         def retrieve(benefit_id, params = {})
+          parsed, options = FinchAPI::HRIS::BenefitRetrieveParams.dump_request(params)
           @client.request(
             method: :get,
             path: ["employer/benefits/%1$s", benefit_id],
+            query: parsed,
             model: FinchAPI::HRIS::CompanyBenefit,
-            options: params[:request_options]
+            options: options
           )
         end
 
         # Updates an existing company-wide deduction or contribution
         #
-        # @overload update(benefit_id, description: nil, request_options: {})
+        # @overload update(benefit_id, entity_ids: nil, description: nil, request_options: {})
         #
-        # @param benefit_id [String]
+        # @param benefit_id [String] Path param:
         #
-        # @param description [String] Updated name or description.
+        # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access.
+        #
+        # @param description [String] Body param: Updated name or description.
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -73,10 +84,12 @@ module FinchAPI
         # @see FinchAPI::Models::HRIS::BenefitUpdateParams
         def update(benefit_id, params = {})
           parsed, options = FinchAPI::HRIS::BenefitUpdateParams.dump_request(params)
+          query_params = [:entity_ids]
           @client.request(
             method: :post,
             path: ["employer/benefits/%1$s", benefit_id],
-            body: parsed,
+            query: parsed.slice(*query_params),
+            body: parsed.except(*query_params),
             model: FinchAPI::HRIS::UpdateCompanyBenefitResponse,
             options: options
           )
@@ -84,7 +97,9 @@ module FinchAPI
 
         # List all company-wide deductions and contributions.
         #
-        # @overload list(request_options: {})
+        # @overload list(entity_ids: nil, request_options: {})
+        #
+        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -92,18 +107,22 @@ module FinchAPI
         #
         # @see FinchAPI::Models::HRIS::BenefitListParams
         def list(params = {})
+          parsed, options = FinchAPI::HRIS::BenefitListParams.dump_request(params)
           @client.request(
             method: :get,
             path: "employer/benefits",
+            query: parsed,
             page: FinchAPI::Internal::SinglePage,
             model: FinchAPI::HRIS::CompanyBenefit,
-            options: params[:request_options]
+            options: options
           )
         end
 
         # Get deductions metadata
         #
-        # @overload list_supported_benefits(request_options: {})
+        # @overload list_supported_benefits(entity_ids: nil, request_options: {})
+        #
+        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -111,12 +130,14 @@ module FinchAPI
         #
         # @see FinchAPI::Models::HRIS::BenefitListSupportedBenefitsParams
         def list_supported_benefits(params = {})
+          parsed, options = FinchAPI::HRIS::BenefitListSupportedBenefitsParams.dump_request(params)
           @client.request(
             method: :get,
             path: "employer/benefits/meta",
+            query: parsed,
             page: FinchAPI::Internal::SinglePage,
             model: FinchAPI::HRIS::SupportedBenefit,
-            options: params[:request_options]
+            options: options
           )
         end
 

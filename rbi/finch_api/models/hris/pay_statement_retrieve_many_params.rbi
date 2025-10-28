@@ -23,18 +23,28 @@ module FinchAPI
         end
         attr_accessor :requests
 
+        # The entity IDs to specify which entities' data to access.
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_reader :entity_ids
+
+        sig { params(entity_ids: T::Array[String]).void }
+        attr_writer :entity_ids
+
         sig do
           params(
             requests:
               T::Array[
                 FinchAPI::HRIS::PayStatementRetrieveManyParams::Request::OrHash
               ],
+            entity_ids: T::Array[String],
             request_options: FinchAPI::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
           # The array of batch requests.
           requests:,
+          # The entity IDs to specify which entities' data to access.
+          entity_ids: nil,
           request_options: {}
         )
         end
@@ -46,6 +56,7 @@ module FinchAPI
                 T::Array[
                   FinchAPI::HRIS::PayStatementRetrieveManyParams::Request
                 ],
+              entity_ids: T::Array[String],
               request_options: FinchAPI::RequestOptions
             }
           )

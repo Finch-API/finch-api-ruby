@@ -2,12 +2,16 @@ module FinchAPI
   module Models
     module HRIS
       type directory_list_params =
-        { limit: Integer, offset: Integer }
+        { entity_ids: ::Array[String], limit: Integer, offset: Integer }
         & FinchAPI::Internal::Type::request_parameters
 
       class DirectoryListParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
+
+        attr_reader entity_ids: ::Array[String]?
+
+        def entity_ids=: (::Array[String]) -> ::Array[String]
 
         attr_reader limit: Integer?
 
@@ -18,12 +22,14 @@ module FinchAPI
         def offset=: (Integer) -> Integer
 
         def initialize: (
+          ?entity_ids: ::Array[String],
           ?limit: Integer,
           ?offset: Integer,
           ?request_options: FinchAPI::request_opts
         ) -> void
 
         def to_hash: -> {
+          entity_ids: ::Array[String],
           limit: Integer,
           offset: Integer,
           request_options: FinchAPI::RequestOptions

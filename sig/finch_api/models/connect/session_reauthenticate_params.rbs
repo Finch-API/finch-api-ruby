@@ -4,7 +4,7 @@ module FinchAPI
       type session_reauthenticate_params =
         {
           connection_id: String,
-          minutes_to_expire: Integer?,
+          minutes_to_expire: Integer,
           products: ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]?,
           redirect_uri: String?
         }
@@ -16,7 +16,7 @@ module FinchAPI
 
         attr_accessor connection_id: String
 
-        attr_accessor minutes_to_expire: Integer?
+        attr_accessor minutes_to_expire: Integer
 
         attr_accessor products: ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]?
 
@@ -24,45 +24,45 @@ module FinchAPI
 
         def initialize: (
           connection_id: String,
-          ?minutes_to_expire: Integer?,
-          ?products: ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]?,
-          ?redirect_uri: String?,
+          minutes_to_expire: Integer,
+          products: ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]?,
+          redirect_uri: String?,
           ?request_options: FinchAPI::request_opts
         ) -> void
 
         def to_hash: -> {
           connection_id: String,
-          minutes_to_expire: Integer?,
+          minutes_to_expire: Integer,
           products: ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]?,
           redirect_uri: String?,
           request_options: FinchAPI::RequestOptions
         }
 
         type product =
-          :company
+          :benefits
+          | :company
+          | :deduction
           | :directory
-          | :individual
+          | :documents
           | :employment
+          | :individual
           | :payment
           | :pay_statement
-          | :benefits
           | :ssn
-          | :deduction
-          | :documents
 
         module Product
           extend FinchAPI::Internal::Type::Enum
 
+          BENEFITS: :benefits
           COMPANY: :company
+          DEDUCTION: :deduction
           DIRECTORY: :directory
-          INDIVIDUAL: :individual
+          DOCUMENTS: :documents
           EMPLOYMENT: :employment
+          INDIVIDUAL: :individual
           PAYMENT: :payment
           PAY_STATEMENT: :pay_statement
-          BENEFITS: :benefits
           SSN: :ssn
-          DEDUCTION: :deduction
-          DOCUMENTS: :documents
 
           def self?.values: -> ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]
         end

@@ -7,6 +7,7 @@ module FinchAPI
         # Read company directory and organization structure
         sig do
           params(
+            entity_ids: T::Array[String],
             limit: Integer,
             offset: Integer,
             request_options: FinchAPI::RequestOptions::OrHash
@@ -17,6 +18,8 @@ module FinchAPI
           )
         end
         def list(
+          # The entity IDs to specify which entities' data to access.
+          entity_ids: nil,
           # Number of employees to return (defaults to all)
           limit: nil,
           # Index to start from (defaults to 0)

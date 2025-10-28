@@ -14,21 +14,21 @@ class FinchAPI::Test::Resources::ProvidersTest < FinchAPI::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => FinchAPI::Provider
+      row => FinchAPI::Models::ProviderListResponse
     end
 
     assert_pattern do
       row => {
-        id: String | nil,
-        authentication_methods: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Provider::AuthenticationMethod]) | nil,
+        id: String,
+        display_name: String,
+        products: ^(FinchAPI::Internal::Type::ArrayOf[String]),
+        authentication_methods: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::ProviderListResponse::AuthenticationMethod]) | nil,
         beta: FinchAPI::Internal::Type::Boolean | nil,
-        display_name: String | nil,
         icon: String | nil,
         logo: String | nil,
         manual: FinchAPI::Internal::Type::Boolean | nil,
         mfa_required: FinchAPI::Internal::Type::Boolean | nil,
-        primary_color: String | nil,
-        products: ^(FinchAPI::Internal::Type::ArrayOf[String]) | nil
+        primary_color: String | nil
       }
     end
   end

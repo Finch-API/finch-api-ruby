@@ -6,10 +6,14 @@ module FinchAPI
       class Individuals
         # Read individual data, excluding income and employment data
         #
-        # @overload retrieve_many(options: nil, requests: nil, request_options: {})
+        # @overload retrieve_many(entity_ids: nil, options: nil, requests: nil, request_options: {})
         #
-        # @param options [FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, nil]
-        # @param requests [Array<FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request>]
+        # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access.
+        #
+        # @param options [FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, nil] Body param:
+        #
+        # @param requests [Array<FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request>] Body param:
+        #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Internal::ResponsesPage<FinchAPI::Models::HRIS::IndividualResponse>]
@@ -17,10 +21,12 @@ module FinchAPI
         # @see FinchAPI::Models::HRIS::IndividualRetrieveManyParams
         def retrieve_many(params = {})
           parsed, options = FinchAPI::HRIS::IndividualRetrieveManyParams.dump_request(params)
+          query_params = [:entity_ids]
           @client.request(
             method: :post,
             path: "employer/individual",
-            body: parsed,
+            query: parsed.slice(*query_params),
+            body: parsed.except(*query_params),
             page: FinchAPI::Internal::ResponsesPage,
             model: FinchAPI::HRIS::IndividualResponse,
             options: options

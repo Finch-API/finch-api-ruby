@@ -190,6 +190,11 @@ module FinchAPI
               :percent,
               FinchAPI::HRIS::SupportedBenefit::CompanyContribution::TaggedSymbol
             )
+          TIERED =
+            T.let(
+              :tiered,
+              FinchAPI::HRIS::SupportedBenefit::CompanyContribution::TaggedSymbol
+            )
 
           sig do
             override.returns(

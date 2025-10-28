@@ -15,8 +15,16 @@ module FinchAPI
         required :requests,
                  -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::PayStatementRetrieveManyParams::Request] }
 
-        # @!method initialize(requests:, request_options: {})
+        # @!attribute entity_ids
+        #   The entity IDs to specify which entities' data to access.
+        #
+        #   @return [Array<String>, nil]
+        optional :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
+
+        # @!method initialize(requests:, entity_ids: nil, request_options: {})
         #   @param requests [Array<FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request>] The array of batch requests.
+        #
+        #   @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
         #
         #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 

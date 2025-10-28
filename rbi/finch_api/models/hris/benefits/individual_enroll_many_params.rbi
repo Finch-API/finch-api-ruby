@@ -16,6 +16,13 @@ module FinchAPI
               )
             end
 
+          # The entity IDs to specify which entities' data to access.
+          sig { returns(T.nilable(T::Array[String])) }
+          attr_reader :entity_ids
+
+          sig { params(entity_ids: T::Array[String]).void }
+          attr_writer :entity_ids
+
           # Array of the individual_id to enroll and a configuration object.
           sig do
             returns(
@@ -40,6 +47,7 @@ module FinchAPI
 
           sig do
             params(
+              entity_ids: T::Array[String],
               individuals:
                 T::Array[
                   FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::OrHash
@@ -48,6 +56,8 @@ module FinchAPI
             ).returns(T.attached_class)
           end
           def self.new(
+            # The entity IDs to specify which entities' data to access.
+            entity_ids: nil,
             # Array of the individual_id to enroll and a configuration object.
             individuals: nil,
             request_options: {}
@@ -57,6 +67,7 @@ module FinchAPI
           sig do
             override.returns(
               {
+                entity_ids: T::Array[String],
                 individuals:
                   T::Array[
                     FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual
@@ -306,6 +317,29 @@ module FinchAPI
                 sig { params(amount: Integer).void }
                 attr_writer :amount
 
+                # Array of tier objects for tiered contribution matching (required when type is
+                # tiered)
+                sig do
+                  returns(
+                    T.nilable(
+                      T::Array[
+                        FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Tier
+                      ]
+                    )
+                  )
+                end
+                attr_reader :tiers
+
+                sig do
+                  params(
+                    tiers:
+                      T::Array[
+                        FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Tier::OrHash
+                      ]
+                  ).void
+                end
+                attr_writer :tiers
+
                 sig do
                   returns(
                     T.nilable(
@@ -326,6 +360,10 @@ module FinchAPI
                 sig do
                   params(
                     amount: Integer,
+                    tiers:
+                      T::Array[
+                        FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Tier::OrHash
+                      ],
                     type:
                       FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::OrSymbol
                   ).returns(T.attached_class)
@@ -334,6 +372,9 @@ module FinchAPI
                   # Amount in cents for fixed type or basis points (1/100th of a percent) for
                   # percent type
                   amount: nil,
+                  # Array of tier objects for tiered contribution matching (required when type is
+                  # tiered)
+                  tiers: nil,
                   type: nil
                 )
                 end
@@ -342,12 +383,53 @@ module FinchAPI
                   override.returns(
                     {
                       amount: Integer,
+                      tiers:
+                        T::Array[
+                          FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Tier
+                        ],
                       type:
                         FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::OrSymbol
                     }
                   )
                 end
                 def to_hash
+                end
+
+                class Tier < FinchAPI::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Tier,
+                        FinchAPI::Internal::AnyHash
+                      )
+                    end
+
+                  # The employer match percentage in basis points (0-10000 = 0-100%)
+                  sig { returns(Integer) }
+                  attr_accessor :match
+
+                  # The employee contribution threshold in basis points (0-10000 = 0-100%)
+                  sig { returns(Integer) }
+                  attr_accessor :threshold
+
+                  sig do
+                    params(match: Integer, threshold: Integer).returns(
+                      T.attached_class
+                    )
+                  end
+                  def self.new(
+                    # The employer match percentage in basis points (0-10000 = 0-100%)
+                    match:,
+                    # The employee contribution threshold in basis points (0-10000 = 0-100%)
+                    threshold:
+                  )
+                  end
+
+                  sig do
+                    override.returns({ match: Integer, threshold: Integer })
+                  end
+                  def to_hash
+                  end
                 end
 
                 module Type
@@ -370,6 +452,11 @@ module FinchAPI
                   PERCENT =
                     T.let(
                       :percent,
+                      FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::TaggedSymbol
+                    )
+                  TIERED =
+                    T.let(
+                      :tiered,
                       FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type::TaggedSymbol
                     )
 

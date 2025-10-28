@@ -7,34 +7,26 @@ module FinchAPI
           individual_id: String?,
           type: FinchAPI::Models::HRIS::DocumentResponse::type_,
           url: String,
-          year: Float?
+          year: Float
         }
 
       class DocumentResponse < FinchAPI::Internal::Type::BaseModel
-        attr_reader id: String?
-
-        def id=: (String) -> String
+        attr_accessor id: String
 
         attr_accessor individual_id: String?
 
-        attr_reader type: FinchAPI::Models::HRIS::DocumentResponse::type_?
+        attr_accessor type: FinchAPI::Models::HRIS::DocumentResponse::type_
 
-        def type=: (
-          FinchAPI::Models::HRIS::DocumentResponse::type_
-        ) -> FinchAPI::Models::HRIS::DocumentResponse::type_
+        attr_accessor url: String
 
-        attr_reader url: String?
-
-        def url=: (String) -> String
-
-        attr_accessor year: Float?
+        attr_accessor year: Float
 
         def initialize: (
-          ?id: String,
-          ?individual_id: String?,
-          ?type: FinchAPI::Models::HRIS::DocumentResponse::type_,
-          ?url: String,
-          ?year: Float?
+          id: String,
+          individual_id: String?,
+          type: FinchAPI::Models::HRIS::DocumentResponse::type_,
+          url: String,
+          year: Float
         ) -> void
 
         def to_hash: -> {
@@ -42,7 +34,7 @@ module FinchAPI
           individual_id: String?,
           type: FinchAPI::Models::HRIS::DocumentResponse::type_,
           url: String,
-          year: Float?
+          year: Float
         }
 
         type type_ = :w4_2020 | :w4_2005

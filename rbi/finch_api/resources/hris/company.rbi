@@ -9,11 +9,16 @@ module FinchAPI
 
         # Read basic company data
         sig do
-          params(request_options: FinchAPI::RequestOptions::OrHash).returns(
-            FinchAPI::HRIS::HRISCompany
-          )
+          params(
+            entity_ids: T::Array[String],
+            request_options: FinchAPI::RequestOptions::OrHash
+          ).returns(FinchAPI::HRIS::HRISCompany)
         end
-        def retrieve(request_options: {})
+        def retrieve(
+          # The entity IDs to specify which entities' data to access.
+          entity_ids: nil,
+          request_options: {}
+        )
         end
 
         # @api private

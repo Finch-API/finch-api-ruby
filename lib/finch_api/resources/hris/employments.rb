@@ -6,9 +6,11 @@ module FinchAPI
       class Employments
         # Read individual employment and income data
         #
-        # @overload retrieve_many(requests:, request_options: {})
+        # @overload retrieve_many(requests:, entity_ids: nil, request_options: {})
         #
-        # @param requests [Array<FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request>] The array of batch requests.
+        # @param requests [Array<FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request>] Body param: The array of batch requests.
+        #
+        # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access.
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -17,10 +19,12 @@ module FinchAPI
         # @see FinchAPI::Models::HRIS::EmploymentRetrieveManyParams
         def retrieve_many(params)
           parsed, options = FinchAPI::HRIS::EmploymentRetrieveManyParams.dump_request(params)
+          query_params = [:entity_ids]
           @client.request(
             method: :post,
             path: "employer/employment",
-            body: parsed,
+            query: parsed.slice(*query_params),
+            body: parsed.except(*query_params),
             page: FinchAPI::Internal::ResponsesPage,
             model: FinchAPI::HRIS::EmploymentDataResponse,
             options: options

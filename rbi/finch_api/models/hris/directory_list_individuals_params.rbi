@@ -15,6 +15,13 @@ module FinchAPI
             )
           end
 
+        # The entity IDs to specify which entities' data to access.
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_reader :entity_ids
+
+        sig { params(entity_ids: T::Array[String]).void }
+        attr_writer :entity_ids
+
         # Number of employees to return (defaults to all)
         sig { returns(T.nilable(Integer)) }
         attr_reader :limit
@@ -31,12 +38,15 @@ module FinchAPI
 
         sig do
           params(
+            entity_ids: T::Array[String],
             limit: Integer,
             offset: Integer,
             request_options: FinchAPI::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          # The entity IDs to specify which entities' data to access.
+          entity_ids: nil,
           # Number of employees to return (defaults to all)
           limit: nil,
           # Index to start from (defaults to 0)
@@ -48,6 +58,7 @@ module FinchAPI
         sig do
           override.returns(
             {
+              entity_ids: T::Array[String],
               limit: Integer,
               offset: Integer,
               request_options: FinchAPI::RequestOptions

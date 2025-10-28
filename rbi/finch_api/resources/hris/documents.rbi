@@ -8,6 +8,7 @@ module FinchAPI
         # company-wide documents.
         sig do
           params(
+            entity_ids: T::Array[String],
             individual_ids: T::Array[String],
             limit: Integer,
             offset: Integer,
@@ -16,6 +17,8 @@ module FinchAPI
           ).returns(FinchAPI::Models::HRIS::DocumentListResponse)
         end
         def list(
+          # The entity IDs to specify which entities' data to access.
+          entity_ids: nil,
           # Comma-delimited list of stable Finch uuids for each individual. If empty,
           # defaults to all individuals
           individual_ids: nil,
@@ -35,12 +38,15 @@ module FinchAPI
         sig do
           params(
             document_id: String,
+            entity_ids: T::Array[String],
             request_options: FinchAPI::RequestOptions::OrHash
           ).returns(FinchAPI::Models::HRIS::DocumentRetreiveResponse::Variants)
         end
         def retreive(
           # The unique identifier of the document.
           document_id,
+          # The entity IDs to specify which entities' data to access.
+          entity_ids: nil,
           request_options: {}
         )
         end

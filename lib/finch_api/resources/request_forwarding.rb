@@ -19,9 +19,9 @@ module FinchAPI
       #
       # @param data [String, nil] The body for the forwarded request. This value must be specified as either a str
       #
-      # @param headers [Object, nil] The HTTP headers to include on the forwarded request. This value must be specifi
+      # @param headers [Hash{Symbol=>Object, nil}, nil] The HTTP headers to include on the forwarded request. This value must be specifi
       #
-      # @param params [Object, nil] The query parameters for the forwarded request. This value must be specified as
+      # @param params [Hash{Symbol=>Object, nil}, nil] The query parameters for the forwarded request. This value must be specified as
       #
       # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
       #

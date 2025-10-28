@@ -2,16 +2,12 @@ module FinchAPI
   module Models
     module Jobs
       type automated_list_params =
-        { entity_id: String, limit: Integer, offset: Integer }
+        { limit: Integer, offset: Integer }
         & FinchAPI::Internal::Type::request_parameters
 
       class AutomatedListParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
-
-        attr_reader entity_id: String?
-
-        def entity_id=: (String) -> String
 
         attr_reader limit: Integer?
 
@@ -22,14 +18,12 @@ module FinchAPI
         def offset=: (Integer) -> Integer
 
         def initialize: (
-          ?entity_id: String,
           ?limit: Integer,
           ?offset: Integer,
           ?request_options: FinchAPI::request_opts
         ) -> void
 
         def to_hash: -> {
-          entity_id: String,
           limit: Integer,
           offset: Integer,
           request_options: FinchAPI::RequestOptions

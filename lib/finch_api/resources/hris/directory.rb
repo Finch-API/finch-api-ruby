@@ -6,7 +6,9 @@ module FinchAPI
       class Directory
         # Read company directory and organization structure
         #
-        # @overload list(limit: nil, offset: nil, request_options: {})
+        # @overload list(entity_ids: nil, limit: nil, offset: nil, request_options: {})
+        #
+        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
         #
         # @param limit [Integer] Number of employees to return (defaults to all)
         #

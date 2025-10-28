@@ -7,6 +7,7 @@ module FinchAPI
         # Read individual data, excluding income and employment data
         sig do
           params(
+            entity_ids: T::Array[String],
             options:
               T.nilable(
                 FinchAPI::HRIS::IndividualRetrieveManyParams::Options::OrHash
@@ -22,7 +23,15 @@ module FinchAPI
             ]
           )
         end
-        def retrieve_many(options: nil, requests: nil, request_options: {})
+        def retrieve_many(
+          # Query param: The entity IDs to specify which entities' data to access.
+          entity_ids: nil,
+          # Body param:
+          options: nil,
+          # Body param:
+          requests: nil,
+          request_options: {}
+        )
         end
 
         # @api private

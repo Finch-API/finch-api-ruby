@@ -4,6 +4,7 @@ module FinchAPI
       module Benefits
         type individual_enroll_many_params =
           {
+            entity_ids: ::Array[String],
             individuals: ::Array[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual]
           }
           & FinchAPI::Internal::Type::request_parameters
@@ -12,6 +13,10 @@ module FinchAPI
           extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
 
+          attr_reader entity_ids: ::Array[String]?
+
+          def entity_ids=: (::Array[String]) -> ::Array[String]
+
           attr_reader individuals: ::Array[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual]?
 
           def individuals=: (
@@ -19,11 +24,13 @@ module FinchAPI
           ) -> ::Array[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual]
 
           def initialize: (
+            ?entity_ids: ::Array[String],
             ?individuals: ::Array[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual],
             ?request_options: FinchAPI::request_opts
           ) -> void
 
           def to_hash: -> {
+            entity_ids: ::Array[String],
             individuals: ::Array[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual],
             request_options: FinchAPI::RequestOptions
           }
@@ -126,6 +133,7 @@ module FinchAPI
               type company_contribution =
                 {
                   amount: Integer,
+                  tiers: ::Array[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Tier],
                   type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::type_
                 }
 
@@ -133,6 +141,12 @@ module FinchAPI
                 attr_reader amount: Integer?
 
                 def amount=: (Integer) -> Integer
+
+                attr_reader tiers: ::Array[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Tier]?
+
+                def tiers=: (
+                  ::Array[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Tier]
+                ) -> ::Array[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Tier]
 
                 attr_reader type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::type_?
 
@@ -142,21 +156,36 @@ module FinchAPI
 
                 def initialize: (
                   ?amount: Integer,
+                  ?tiers: ::Array[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Tier],
                   ?type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::type_
                 ) -> void
 
                 def to_hash: -> {
                   amount: Integer,
+                  tiers: ::Array[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Tier],
                   type: FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::type_
                 }
 
-                type type_ = :fixed | :percent
+                type tier = { match: Integer, threshold: Integer }
+
+                class Tier < FinchAPI::Internal::Type::BaseModel
+                  attr_accessor match: Integer
+
+                  attr_accessor threshold: Integer
+
+                  def initialize: (match: Integer, threshold: Integer) -> void
+
+                  def to_hash: -> { match: Integer, threshold: Integer }
+                end
+
+                type type_ = :fixed | :percent | :tiered
 
                 module Type
                   extend FinchAPI::Internal::Type::Enum
 
                   FIXED: :fixed
                   PERCENT: :percent
+                  TIERED: :tiered
 
                   def self?.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::type_]
                 end

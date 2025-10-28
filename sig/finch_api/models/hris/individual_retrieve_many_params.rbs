@@ -3,6 +3,7 @@ module FinchAPI
     module HRIS
       type individual_retrieve_many_params =
         {
+          entity_ids: ::Array[String],
           options: FinchAPI::HRIS::IndividualRetrieveManyParams::Options?,
           requests: ::Array[FinchAPI::HRIS::IndividualRetrieveManyParams::Request]
         }
@@ -11,6 +12,10 @@ module FinchAPI
       class IndividualRetrieveManyParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
+
+        attr_reader entity_ids: ::Array[String]?
+
+        def entity_ids=: (::Array[String]) -> ::Array[String]
 
         attr_accessor options: FinchAPI::HRIS::IndividualRetrieveManyParams::Options?
 
@@ -21,12 +26,14 @@ module FinchAPI
         ) -> ::Array[FinchAPI::HRIS::IndividualRetrieveManyParams::Request]
 
         def initialize: (
+          ?entity_ids: ::Array[String],
           ?options: FinchAPI::HRIS::IndividualRetrieveManyParams::Options?,
           ?requests: ::Array[FinchAPI::HRIS::IndividualRetrieveManyParams::Request],
           ?request_options: FinchAPI::request_opts
         ) -> void
 
         def to_hash: -> {
+          entity_ids: ::Array[String],
           options: FinchAPI::HRIS::IndividualRetrieveManyParams::Options?,
           requests: ::Array[FinchAPI::HRIS::IndividualRetrieveManyParams::Request],
           request_options: FinchAPI::RequestOptions

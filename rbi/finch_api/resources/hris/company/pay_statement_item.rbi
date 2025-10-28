@@ -20,6 +20,7 @@ module FinchAPI
                   FinchAPI::HRIS::Company::PayStatementItemListParams::Category::OrSymbol
                 ],
               end_date: Date,
+              entity_ids: T::Array[String],
               name: String,
               start_date: Date,
               type: String,
@@ -37,6 +38,8 @@ module FinchAPI
             # The end date to retrieve pay statement items by via their last seen pay date in
             # `YYYY-MM-DD` format.
             end_date: nil,
+            # The entity IDs to specify which entities' data to access.
+            entity_ids: nil,
             # Case-insensitive partial match search by pay statement item name.
             name: nil,
             # The start date to retrieve pay statement items by via their last seen pay date

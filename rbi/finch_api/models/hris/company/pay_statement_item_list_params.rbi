@@ -47,6 +47,13 @@ module FinchAPI
           sig { params(end_date: Date).void }
           attr_writer :end_date
 
+          # The entity IDs to specify which entities' data to access.
+          sig { returns(T.nilable(T::Array[String])) }
+          attr_reader :entity_ids
+
+          sig { params(entity_ids: T::Array[String]).void }
+          attr_writer :entity_ids
+
           # Case-insensitive partial match search by pay statement item name.
           sig { returns(T.nilable(String)) }
           attr_reader :name
@@ -76,6 +83,7 @@ module FinchAPI
                   FinchAPI::HRIS::Company::PayStatementItemListParams::Category::OrSymbol
                 ],
               end_date: Date,
+              entity_ids: T::Array[String],
               name: String,
               start_date: Date,
               type: String,
@@ -89,6 +97,8 @@ module FinchAPI
             # The end date to retrieve pay statement items by via their last seen pay date in
             # `YYYY-MM-DD` format.
             end_date: nil,
+            # The entity IDs to specify which entities' data to access.
+            entity_ids: nil,
             # Case-insensitive partial match search by pay statement item name.
             name: nil,
             # The start date to retrieve pay statement items by via their last seen pay date
@@ -108,6 +118,7 @@ module FinchAPI
                     FinchAPI::HRIS::Company::PayStatementItemListParams::Category::OrSymbol
                   ],
                 end_date: Date,
+                entity_ids: T::Array[String],
                 name: String,
                 start_date: Date,
                 type: String,

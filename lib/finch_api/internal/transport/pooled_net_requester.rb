@@ -128,37 +128,47 @@ module FinchAPI
           url, deadline = request.fetch_values(:url, :deadline)
 
           req = nil
-          eof = false
           finished = false
-          closing = nil
 
           # rubocop:disable Metrics/BlockLength
           enum = Enumerator.new do |y|
+            next if finished
+
             with_pool(url, deadline: deadline) do |conn|
-              next if finished
-
-              req, closing = self.class.build_request(request) do
-                self.class.calibrate_socket_timeout(conn, deadline)
-              end
-
-              self.class.calibrate_socket_timeout(conn, deadline)
-              unless conn.started?
-                conn.keep_alive_timeout = self.class::KEEP_ALIVE_TIMEOUT
-                conn.start
-              end
-
-              self.class.calibrate_socket_timeout(conn, deadline)
-              conn.request(req) do |rsp|
-                y << [conn, req, rsp]
-                break if finished
-
-                rsp.read_body do |bytes|
-                  y << bytes.force_encoding(Encoding::BINARY)
-                  break if finished
+              eof = false
+              closing = nil
+              ::Thread.handle_interrupt(Object => :never) do
+                ::Thread.handle_interrupt(Object => :immediate) do
+                  req, closing = self.class.build_request(request) do
+                    self.class.calibrate_socket_timeout(conn, deadline)
+                  end
 
                   self.class.calibrate_socket_timeout(conn, deadline)
+                  unless conn.started?
+                    conn.keep_alive_timeout = self.class::KEEP_ALIVE_TIMEOUT
+                    conn.start
+                  end
+
+                  self.class.calibrate_socket_timeout(conn, deadline)
+                  conn.request(req) do |rsp|
+                    y << [req, rsp]
+                    break if finished
+
+                    rsp.read_body do |bytes|
+                      y << bytes.force_encoding(Encoding::BINARY)
+                      break if finished
+
+                      self.class.calibrate_socket_timeout(conn, deadline)
+                    end
+                    eof = true
+                  end
                 end
-                eof = true
+              ensure
+                begin
+                  conn.finish if !eof && conn&.started?
+                ensure
+                  closing&.call
+                end
               end
             end
           rescue Timeout::Error
@@ -168,17 +178,10 @@ module FinchAPI
           end
           # rubocop:enable Metrics/BlockLength
 
-          conn, _, response = enum.next
+          _, response = enum.next
           body = FinchAPI::Internal::Util.fused_enum(enum, external: true) do
             finished = true
-            tap do
-              enum.next
-            rescue StopIteration
-              nil
-            end
-          ensure
-            conn.finish if !eof && conn&.started?
-            closing&.call
+            loop { enum.next }
           end
           [Integer(response.code), response, body]
         end

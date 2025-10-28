@@ -9,6 +9,12 @@ module FinchAPI
           extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
 
+          # @!attribute entity_ids
+          #   The entity IDs to specify which entities' data to access.
+          #
+          #   @return [Array<String>, nil]
+          optional :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
+
           # @!attribute individual_ids
           #   comma-delimited list of stable Finch uuids for each individual. If empty,
           #   defaults to all individuals
@@ -16,10 +22,12 @@ module FinchAPI
           #   @return [String, nil]
           optional :individual_ids, String
 
-          # @!method initialize(individual_ids: nil, request_options: {})
+          # @!method initialize(entity_ids: nil, individual_ids: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {FinchAPI::Models::HRIS::Benefits::IndividualRetrieveManyBenefitsParams} for
           #   more details.
+          #
+          #   @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
           #
           #   @param individual_ids [String] comma-delimited list of stable Finch uuids for each individual. If empty, defaul
           #

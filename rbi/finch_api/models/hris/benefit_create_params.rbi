@@ -15,6 +15,13 @@ module FinchAPI
             )
           end
 
+        # The entity IDs to specify which entities' data to access.
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_reader :entity_ids
+
+        sig { params(entity_ids: T::Array[String]).void }
+        attr_writer :entity_ids
+
         # The company match for this benefit.
         sig do
           returns(
@@ -52,6 +59,7 @@ module FinchAPI
 
         sig do
           params(
+            entity_ids: T::Array[String],
             company_contribution:
               T.nilable(
                 FinchAPI::HRIS::BenefitCreateParams::CompanyContribution::OrHash
@@ -63,6 +71,8 @@ module FinchAPI
           ).returns(T.attached_class)
         end
         def self.new(
+          # The entity IDs to specify which entities' data to access.
+          entity_ids: nil,
           # The company match for this benefit.
           company_contribution: nil,
           # Name of the benefit as it appears in the provider and pay statements. Recommend
@@ -80,6 +90,7 @@ module FinchAPI
         sig do
           override.returns(
             {
+              entity_ids: T::Array[String],
               company_contribution:
                 T.nilable(
                   FinchAPI::HRIS::BenefitCreateParams::CompanyContribution

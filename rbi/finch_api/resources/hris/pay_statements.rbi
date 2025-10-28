@@ -14,6 +14,7 @@ module FinchAPI
               T::Array[
                 FinchAPI::HRIS::PayStatementRetrieveManyParams::Request::OrHash
               ],
+            entity_ids: T::Array[String],
             request_options: FinchAPI::RequestOptions::OrHash
           ).returns(
             FinchAPI::Internal::ResponsesPage[
@@ -22,8 +23,10 @@ module FinchAPI
           )
         end
         def retrieve_many(
-          # The array of batch requests.
+          # Body param: The array of batch requests.
           requests:,
+          # Query param: The entity IDs to specify which entities' data to access.
+          entity_ids: nil,
           request_options: {}
         )
         end

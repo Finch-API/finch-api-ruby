@@ -5,6 +5,7 @@ module FinchAPI
         def list: (
           end_date: Date,
           start_date: Date,
+          ?entity_ids: ::Array[String],
           ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::Internal::SinglePage[FinchAPI::HRIS::Payment]
 

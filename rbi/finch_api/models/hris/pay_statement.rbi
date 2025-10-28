@@ -22,11 +22,7 @@ module FinchAPI
         # The array of deductions objects associated with this pay statement.
         sig do
           returns(
-            T.nilable(
-              T::Array[
-                T.nilable(FinchAPI::HRIS::PayStatement::EmployeeDeduction)
-              ]
-            )
+            T.nilable(T::Array[FinchAPI::HRIS::PayStatement::EmployeeDeduction])
           )
         end
         attr_accessor :employee_deductions
@@ -34,9 +30,7 @@ module FinchAPI
         sig do
           returns(
             T.nilable(
-              T::Array[
-                T.nilable(FinchAPI::HRIS::PayStatement::EmployerContribution)
-              ]
+              T::Array[FinchAPI::HRIS::PayStatement::EmployerContribution]
             )
           )
         end
@@ -67,11 +61,7 @@ module FinchAPI
         attr_accessor :payment_method
 
         # The array of taxes objects associated with this pay statement.
-        sig do
-          returns(
-            T.nilable(T::Array[T.nilable(FinchAPI::HRIS::PayStatement::Tax)])
-          )
-        end
+        sig { returns(T.nilable(T::Array[FinchAPI::HRIS::PayStatement::Tax])) }
         attr_accessor :taxes
 
         # The number of hours worked for this pay period
@@ -95,17 +85,13 @@ module FinchAPI
             employee_deductions:
               T.nilable(
                 T::Array[
-                  T.nilable(
-                    FinchAPI::HRIS::PayStatement::EmployeeDeduction::OrHash
-                  )
+                  FinchAPI::HRIS::PayStatement::EmployeeDeduction::OrHash
                 ]
               ),
             employer_contributions:
               T.nilable(
                 T::Array[
-                  T.nilable(
-                    FinchAPI::HRIS::PayStatement::EmployerContribution::OrHash
-                  )
+                  FinchAPI::HRIS::PayStatement::EmployerContribution::OrHash
                 ]
               ),
             gross_pay: T.nilable(FinchAPI::Money::OrHash),
@@ -114,9 +100,7 @@ module FinchAPI
             payment_method:
               T.nilable(FinchAPI::HRIS::PayStatement::PaymentMethod::OrSymbol),
             taxes:
-              T.nilable(
-                T::Array[T.nilable(FinchAPI::HRIS::PayStatement::Tax::OrHash)]
-              ),
+              T.nilable(T::Array[FinchAPI::HRIS::PayStatement::Tax::OrHash]),
             total_hours: T.nilable(Float),
             type: T.nilable(FinchAPI::HRIS::PayStatement::Type::OrSymbol)
           ).returns(T.attached_class)
@@ -151,17 +135,11 @@ module FinchAPI
                 ),
               employee_deductions:
                 T.nilable(
-                  T::Array[
-                    T.nilable(FinchAPI::HRIS::PayStatement::EmployeeDeduction)
-                  ]
+                  T::Array[FinchAPI::HRIS::PayStatement::EmployeeDeduction]
                 ),
               employer_contributions:
                 T.nilable(
-                  T::Array[
-                    T.nilable(
-                      FinchAPI::HRIS::PayStatement::EmployerContribution
-                    )
-                  ]
+                  T::Array[FinchAPI::HRIS::PayStatement::EmployerContribution]
                 ),
               gross_pay: T.nilable(FinchAPI::Money),
               individual_id: String,
@@ -170,10 +148,7 @@ module FinchAPI
                 T.nilable(
                   FinchAPI::HRIS::PayStatement::PaymentMethod::TaggedSymbol
                 ),
-              taxes:
-                T.nilable(
-                  T::Array[T.nilable(FinchAPI::HRIS::PayStatement::Tax)]
-                ),
+              taxes: T.nilable(T::Array[FinchAPI::HRIS::PayStatement::Tax]),
               total_hours: T.nilable(Float),
               type: T.nilable(FinchAPI::HRIS::PayStatement::Type::TaggedSymbol)
             }

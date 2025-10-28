@@ -1,7 +1,7 @@
 module FinchAPI
   module Models
     module HRIS
-      class BenfitContribution = FinchAPI::Models::HRIS::BenefitContribution
+      module BenfitContribution = FinchAPI::Models::HRIS::BenefitContribution
     end
   end
 end

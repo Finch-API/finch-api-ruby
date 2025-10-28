@@ -8,6 +8,12 @@ module FinchAPI
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
+        # @!attribute entity_ids
+        #   The entity IDs to specify which entities' data to access.
+        #
+        #   @return [Array<String>, nil]
+        optional :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
+
         # @!attribute individual_ids
         #   Comma-delimited list of stable Finch uuids for each individual. If empty,
         #   defaults to all individuals
@@ -34,9 +40,11 @@ module FinchAPI
         #   @return [Array<Symbol, FinchAPI::Models::HRIS::DocumentListParams::Type>, nil]
         optional :types, -> { FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::HRIS::DocumentListParams::Type] }
 
-        # @!method initialize(individual_ids: nil, limit: nil, offset: nil, types: nil, request_options: {})
+        # @!method initialize(entity_ids: nil, individual_ids: nil, limit: nil, offset: nil, types: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {FinchAPI::Models::HRIS::DocumentListParams} for more details.
+        #
+        #   @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
         #
         #   @param individual_ids [Array<String>] Comma-delimited list of stable Finch uuids for each individual. If empty, defaul
         #

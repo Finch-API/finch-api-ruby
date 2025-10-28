@@ -16,8 +16,7 @@ module FinchAPI
         customer_email: String?,
         customer_id: String?,
         customer_name: String?,
-        entity_ids: ::Array[String],
-        entity_mode: FinchAPI::Models::Introspection::entity_mode,
+        entities: ::Array[FinchAPI::Introspection::Entity],
         manual: bool,
         payroll_provider_id: String,
         username: String?
@@ -60,15 +59,11 @@ module FinchAPI
 
       attr_accessor customer_name: String?
 
-      attr_reader entity_ids: ::Array[String]?
+      attr_reader entities: ::Array[FinchAPI::Introspection::Entity]?
 
-      def entity_ids=: (::Array[String]) -> ::Array[String]
-
-      attr_reader entity_mode: FinchAPI::Models::Introspection::entity_mode?
-
-      def entity_mode=: (
-        FinchAPI::Models::Introspection::entity_mode
-      ) -> FinchAPI::Models::Introspection::entity_mode
+      def entities=: (
+        ::Array[FinchAPI::Introspection::Entity]
+      ) -> ::Array[FinchAPI::Introspection::Entity]
 
       attr_reader manual: bool?
 
@@ -95,8 +90,7 @@ module FinchAPI
         ?customer_email: String?,
         ?customer_id: String?,
         ?customer_name: String?,
-        ?entity_ids: ::Array[String],
-        ?entity_mode: FinchAPI::Models::Introspection::entity_mode,
+        ?entities: ::Array[FinchAPI::Introspection::Entity],
         ?manual: bool,
         ?payroll_provider_id: String,
         ?username: String?
@@ -117,8 +111,7 @@ module FinchAPI
         customer_email: String?,
         customer_id: String?,
         customer_name: String?,
-        entity_ids: ::Array[String],
-        entity_mode: FinchAPI::Models::Introspection::entity_mode,
+        entities: ::Array[FinchAPI::Introspection::Entity],
         manual: bool,
         payroll_provider_id: String,
         username: String?
@@ -269,15 +262,31 @@ module FinchAPI
         end
       end
 
-      type entity_mode = :single | :multi
+      type entity =
+        { id: String, name: String?, source_id: String?, type: String? }
 
-      module EntityMode
-        extend FinchAPI::Internal::Type::Enum
+      class Entity < FinchAPI::Internal::Type::BaseModel
+        attr_accessor id: String
 
-        SINGLE: :single
-        MULTI: :multi
+        attr_accessor name: String?
 
-        def self?.values: -> ::Array[FinchAPI::Models::Introspection::entity_mode]
+        attr_accessor source_id: String?
+
+        attr_accessor type: String?
+
+        def initialize: (
+          id: String,
+          name: String?,
+          source_id: String?,
+          type: String?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          name: String?,
+          source_id: String?,
+          type: String?
+        }
       end
     end
   end

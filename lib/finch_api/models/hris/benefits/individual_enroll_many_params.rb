@@ -9,6 +9,12 @@ module FinchAPI
           extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
 
+          # @!attribute entity_ids
+          #   The entity IDs to specify which entities' data to access.
+          #
+          #   @return [Array<String>, nil]
+          optional :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
+
           # @!attribute individuals
           #   Array of the individual_id to enroll and a configuration object.
           #
@@ -16,7 +22,9 @@ module FinchAPI
           optional :individuals,
                    -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual] }
 
-          # @!method initialize(individuals: nil, request_options: {})
+          # @!method initialize(entity_ids: nil, individuals: nil, request_options: {})
+          #   @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
+          #
           #   @param individuals [Array<FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual>] Array of the individual_id to enroll and a configuration object.
           #
           #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
@@ -119,20 +127,49 @@ module FinchAPI
                 #   @return [Integer, nil]
                 optional :amount, Integer
 
+                # @!attribute tiers
+                #   Array of tier objects for tiered contribution matching (required when type is
+                #   tiered)
+                #
+                #   @return [Array<FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Tier>, nil]
+                optional :tiers,
+                         -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Tier] }
+
                 # @!attribute type
                 #
                 #   @return [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type, nil]
                 optional :type,
                          enum: -> { FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type }
 
-                # @!method initialize(amount: nil, type: nil)
+                # @!method initialize(amount: nil, tiers: nil, type: nil)
                 #   Some parameter documentations has been truncated, see
                 #   {FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution}
                 #   for more details.
                 #
                 #   @param amount [Integer] Amount in cents for fixed type or basis points (1/100th of a percent) for percen
                 #
+                #   @param tiers [Array<FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Tier>] Array of tier objects for tiered contribution matching (required when type is ti
+                #
                 #   @param type [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution::Type]
+
+                class Tier < FinchAPI::Internal::Type::BaseModel
+                  # @!attribute match
+                  #   The employer match percentage in basis points (0-10000 = 0-100%)
+                  #
+                  #   @return [Integer]
+                  required :match, Integer
+
+                  # @!attribute threshold
+                  #   The employee contribution threshold in basis points (0-10000 = 0-100%)
+                  #
+                  #   @return [Integer]
+                  required :threshold, Integer
+
+                  # @!method initialize(match:, threshold:)
+                  #   @param match [Integer] The employer match percentage in basis points (0-10000 = 0-100%)
+                  #
+                  #   @param threshold [Integer] The employee contribution threshold in basis points (0-10000 = 0-100%)
+                end
 
                 # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual::Configuration::CompanyContribution#type
                 module Type
@@ -140,6 +177,7 @@ module FinchAPI
 
                   FIXED = :fixed
                   PERCENT = :percent
+                  TIERED = :tiered
 
                   # @!method self.values
                   #   @return [Array<Symbol>]

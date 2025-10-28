@@ -6,6 +6,7 @@ module FinchAPI
         client_type: FinchAPI::Models::CreateAccessTokenResponse::client_type,
         connection_id: String,
         connection_type: FinchAPI::Models::CreateAccessTokenResponse::connection_type,
+        entity_ids: ::Array[String],
         products: ::Array[String],
         provider_id: String,
         token_type: String,
@@ -22,6 +23,8 @@ module FinchAPI
       attr_accessor connection_id: String
 
       attr_accessor connection_type: FinchAPI::Models::CreateAccessTokenResponse::connection_type
+
+      attr_accessor entity_ids: ::Array[String]
 
       attr_accessor products: ::Array[String]
 
@@ -44,6 +47,7 @@ module FinchAPI
         client_type: FinchAPI::Models::CreateAccessTokenResponse::client_type,
         connection_id: String,
         connection_type: FinchAPI::Models::CreateAccessTokenResponse::connection_type,
+        entity_ids: ::Array[String],
         products: ::Array[String],
         provider_id: String,
         token_type: String,
@@ -57,6 +61,7 @@ module FinchAPI
         client_type: FinchAPI::Models::CreateAccessTokenResponse::client_type,
         connection_id: String,
         connection_type: FinchAPI::Models::CreateAccessTokenResponse::connection_type,
+        entity_ids: ::Array[String],
         products: ::Array[String],
         provider_id: String,
         token_type: String,
