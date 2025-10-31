@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.32 (2025-10-31)
+
+Full Changelog: [v0.1.0-alpha.31...v0.1.0-alpha.32](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.31...v0.1.0-alpha.32)
+
+### Chores
+
+* **ownership:** add platform team as codeowners ([#164](https://github.com/Finch-API/finch-api-ruby/issues/164)) ([afc5b36](https://github.com/Finch-API/finch-api-ruby/commit/afc5b3631204f4f76c9d3e59fea384c6b4e671d5))
+
 ## 0.1.0-alpha.31 (2025-10-27)
 
 Full Changelog: [v0.1.0-alpha.30...v0.1.0-alpha.31](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.30...v0.1.0-alpha.31)
