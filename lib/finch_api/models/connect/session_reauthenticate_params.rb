@@ -18,14 +18,14 @@ module FinchAPI
         #   The number of minutes until the session expires (defaults to 43,200, which is 30
         #   days)
         #
-        #   @return [Integer]
-        required :minutes_to_expire, Integer
+        #   @return [Integer, nil]
+        optional :minutes_to_expire, Integer
 
         # @!attribute products
         #   The products to request access to (optional for reauthentication)
         #
         #   @return [Array<Symbol, FinchAPI::Models::Connect::SessionReauthenticateParams::Product>, nil]
-        required :products,
+        optional :products,
                  -> {
                    FinchAPI::Internal::Type::ArrayOf[enum: FinchAPI::Connect::SessionReauthenticateParams::Product]
                  },
@@ -35,9 +35,9 @@ module FinchAPI
         #   The URI to redirect to after the Connect flow is completed
         #
         #   @return [String, nil]
-        required :redirect_uri, String, nil?: true
+        optional :redirect_uri, String, nil?: true
 
-        # @!method initialize(connection_id:, minutes_to_expire:, products:, redirect_uri:, request_options: {})
+        # @!method initialize(connection_id:, minutes_to_expire: nil, products: nil, redirect_uri: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {FinchAPI::Models::Connect::SessionReauthenticateParams} for more details.
         #

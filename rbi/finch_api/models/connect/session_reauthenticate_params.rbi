@@ -21,8 +21,11 @@ module FinchAPI
 
         # The number of minutes until the session expires (defaults to 43,200, which is 30
         # days)
-        sig { returns(Integer) }
-        attr_accessor :minutes_to_expire
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :minutes_to_expire
+
+        sig { params(minutes_to_expire: Integer).void }
+        attr_writer :minutes_to_expire
 
         # The products to request access to (optional for reauthentication)
         sig do
@@ -59,11 +62,11 @@ module FinchAPI
           connection_id:,
           # The number of minutes until the session expires (defaults to 43,200, which is 30
           # days)
-          minutes_to_expire:,
+          minutes_to_expire: nil,
           # The products to request access to (optional for reauthentication)
-          products:,
+          products: nil,
           # The URI to redirect to after the Connect flow is completed
-          redirect_uri:,
+          redirect_uri: nil,
           request_options: {}
         )
         end

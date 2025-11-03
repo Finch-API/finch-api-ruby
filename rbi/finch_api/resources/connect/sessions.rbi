@@ -7,17 +7,17 @@ module FinchAPI
         # Create a new connect session for an employer
         sig do
           params(
-            customer_email: T.nilable(String),
             customer_id: String,
             customer_name: String,
+            products:
+              T::Array[FinchAPI::Connect::SessionNewParams::Product::OrSymbol],
+            customer_email: T.nilable(String),
             integration:
               T.nilable(
                 FinchAPI::Connect::SessionNewParams::Integration::OrHash
               ),
             manual: T.nilable(T::Boolean),
             minutes_to_expire: T.nilable(Float),
-            products:
-              T::Array[FinchAPI::Connect::SessionNewParams::Product::OrSymbol],
             redirect_uri: T.nilable(String),
             sandbox:
               T.nilable(FinchAPI::Connect::SessionNewParams::Sandbox::OrSymbol),
@@ -25,25 +25,25 @@ module FinchAPI
           ).returns(FinchAPI::Models::Connect::SessionNewResponse)
         end
         def new(
-          # Email address of the customer
-          customer_email:,
           # Unique identifier for the customer
           customer_id:,
           # Name of the customer
           customer_name:,
-          # Integration configuration for the connect session
-          integration:,
-          # Enable manual authentication mode
-          manual:,
-          # The number of minutes until the session expires (defaults to 129,600, which is
-          # 90 days)
-          minutes_to_expire:,
           # The Finch products to request access to
           products:,
+          # Email address of the customer
+          customer_email: nil,
+          # Integration configuration for the connect session
+          integration: nil,
+          # Enable manual authentication mode
+          manual: nil,
+          # The number of minutes until the session expires (defaults to 129,600, which is
+          # 90 days)
+          minutes_to_expire: nil,
           # The URI to redirect to after the Connect flow is completed
-          redirect_uri:,
+          redirect_uri: nil,
           # Sandbox mode for testing
-          sandbox:,
+          sandbox: nil,
           request_options: {}
         )
         end
@@ -68,11 +68,11 @@ module FinchAPI
           connection_id:,
           # The number of minutes until the session expires (defaults to 43,200, which is 30
           # days)
-          minutes_to_expire:,
+          minutes_to_expire: nil,
           # The products to request access to (optional for reauthentication)
-          products:,
+          products: nil,
           # The URI to redirect to after the Connect flow is completed
-          redirect_uri:,
+          redirect_uri: nil,
           request_options: {}
         )
         end
