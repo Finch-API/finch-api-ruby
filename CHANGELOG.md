@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.33 (2025-11-03)
+
+Full Changelog: [v0.1.0-alpha.32...v0.1.0-alpha.33](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.32...v0.1.0-alpha.33)
+
+### Features
+
+* **api:** api update ([e2215da](https://github.com/Finch-API/finch-api-ruby/commit/e2215daac58922a19f110eb71249f5b0480bcfd4))
+
+
+### Chores
+
+* bump dependency version and update sorbet types ([82af149](https://github.com/Finch-API/finch-api-ruby/commit/82af1496618cbd69a049591e5fcaca45907f3fa4))
+* **client:** send user-agent header ([a1bdc99](https://github.com/Finch-API/finch-api-ruby/commit/a1bdc99fe97c31fcff475e4e46d9cba65893c4f3))
+
 ## 0.1.0-alpha.32 (2025-10-31)
 
 Full Changelog: [v0.1.0-alpha.31...v0.1.0-alpha.32](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.31...v0.1.0-alpha.32)
