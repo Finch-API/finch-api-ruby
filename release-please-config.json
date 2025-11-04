@@ -59,10 +59,6 @@
       "hidden": true
     }
   ],
-  "reviewers": [
-    "jordanbrauer",
-    "minupalaniappan"
-  ],
   "release-type": "ruby",
   "version-file": "lib/finch_api/version.rb",
   "extra-files": [
