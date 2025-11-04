@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.34 (2025-11-04)
+
+Full Changelog: [v0.1.0-alpha.33...v0.1.0-alpha.34](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.33...v0.1.0-alpha.34)
+
+### Features
+
+* **api:** update automated code reviewer selection ([783db04](https://github.com/Finch-API/finch-api-ruby/commit/783db04dbf3f2175cedd3b4e2aae34aa48977784))
+
 ## 0.1.0-alpha.33 (2025-11-03)
 
 Full Changelog: [v0.1.0-alpha.32...v0.1.0-alpha.33](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.32...v0.1.0-alpha.33)
