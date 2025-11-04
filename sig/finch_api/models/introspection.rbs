@@ -262,8 +262,7 @@ module FinchAPI
         end
       end
 
-      type entity =
-        { id: String, name: String?, source_id: String?, type: String? }
+      type entity = { id: String, name: String?, source_id: String? }
 
       class Entity < FinchAPI::Internal::Type::BaseModel
         attr_accessor id: String
@@ -272,21 +271,9 @@ module FinchAPI
 
         attr_accessor source_id: String?
 
-        attr_accessor type: String?
+        def initialize: (id: String, name: String?, source_id: String?) -> void
 
-        def initialize: (
-          id: String,
-          name: String?,
-          source_id: String?,
-          type: String?
-        ) -> void
-
-        def to_hash: -> {
-          id: String,
-          name: String?,
-          source_id: String?,
-          type: String?
-        }
+        def to_hash: -> { id: String, name: String?, source_id: String? }
       end
     end
   end

@@ -578,16 +578,11 @@ module FinchAPI
         sig { returns(T.nilable(String)) }
         attr_accessor :source_id
 
-        # The type of entity
-        sig { returns(T.nilable(String)) }
-        attr_accessor :type
-
         sig do
           params(
             id: String,
             name: T.nilable(String),
-            source_id: T.nilable(String),
-            type: T.nilable(String)
+            source_id: T.nilable(String)
           ).returns(T.attached_class)
         end
         def self.new(
@@ -596,9 +591,7 @@ module FinchAPI
           # The name of the entity (payroll provider company name)
           name:,
           # The source ID of the entity
-          source_id:,
-          # The type of entity
-          type:
+          source_id:
         )
         end
 
@@ -607,8 +600,7 @@ module FinchAPI
             {
               id: String,
               name: T.nilable(String),
-              source_id: T.nilable(String),
-              type: T.nilable(String)
+              source_id: T.nilable(String)
             }
           )
         end
