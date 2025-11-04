@@ -16,7 +16,9 @@ module FinchAPI
 
         attr_accessor connection_id: String
 
-        attr_accessor minutes_to_expire: Integer
+        attr_reader minutes_to_expire: Integer?
+
+        def minutes_to_expire=: (Integer) -> Integer
 
         attr_accessor products: ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]?
 
@@ -24,9 +26,9 @@ module FinchAPI
 
         def initialize: (
           connection_id: String,
-          minutes_to_expire: Integer,
-          products: ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]?,
-          redirect_uri: String?,
+          ?minutes_to_expire: Integer,
+          ?products: ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]?,
+          ?redirect_uri: String?,
           ?request_options: FinchAPI::request_opts
         ) -> void
 
