@@ -111,7 +111,7 @@ module FinchAPI
         attr_accessor :data
 
         # The HTTP headers that were specified for the forwarded request.
-        sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
+        sig { returns(T.nilable(T::Hash[Symbol, String])) }
         attr_accessor :headers
 
         # The query parameters that were specified for the forwarded request.
@@ -128,7 +128,7 @@ module FinchAPI
               T.nilable(
                 FinchAPI::Models::RequestForwardingForwardResponse::Request::Data::Variants
               ),
-            headers: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+            headers: T.nilable(T::Hash[Symbol, String]),
             params: T.nilable(T::Hash[Symbol, T.nilable(T.anything)])
           ).returns(T.attached_class)
         end
@@ -156,7 +156,7 @@ module FinchAPI
                 T.nilable(
                   FinchAPI::Models::RequestForwardingForwardResponse::Request::Data::Variants
                 ),
-              headers: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+              headers: T.nilable(T::Hash[Symbol, String]),
               params: T.nilable(T::Hash[Symbol, T.nilable(T.anything)])
             }
           )

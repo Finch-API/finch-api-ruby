@@ -73,10 +73,8 @@ module FinchAPI
         # @!attribute headers
         #   The HTTP headers that were specified for the forwarded request.
         #
-        #   @return [Hash{Symbol=>Object, nil}, nil]
-        optional :headers,
-                 FinchAPI::Internal::Type::HashOf[FinchAPI::Internal::Type::Unknown, nil?: true],
-                 nil?: true
+        #   @return [Hash{Symbol=>String}, nil]
+        optional :headers, FinchAPI::Internal::Type::HashOf[String], nil?: true
 
         # @!attribute params
         #   The query parameters that were specified for the forwarded request.
@@ -99,7 +97,7 @@ module FinchAPI
         #
         #   @param data [String, Hash{Symbol=>Object, nil}, nil] The body that was specified for the forwarded request.
         #
-        #   @param headers [Hash{Symbol=>Object, nil}, nil] The HTTP headers that were specified for the forwarded request.
+        #   @param headers [Hash{Symbol=>String}, nil] The HTTP headers that were specified for the forwarded request.
         #
         #   @param params [Hash{Symbol=>Object, nil}, nil] The query parameters that were specified for the forwarded request.
 

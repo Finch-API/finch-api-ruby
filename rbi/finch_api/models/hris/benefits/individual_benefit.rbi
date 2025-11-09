@@ -82,6 +82,9 @@ module FinchAPI
               sig { returns(T.nilable(T::Boolean)) }
               attr_accessor :catch_up
 
+              # Company contribution configuration. Supports fixed amounts (in cents),
+              # percentage-based contributions (in basis points where 100 = 1%), or tiered
+              # matching structures.
               sig do
                 returns(
                   T.nilable(
@@ -91,6 +94,8 @@ module FinchAPI
               end
               attr_accessor :company_contribution
 
+              # Employee deduction configuration. Supports both fixed amounts (in cents) and
+              # percentage-based contributions (in basis points where 100 = 1%).
               sig do
                 returns(
                   T.nilable(
@@ -141,7 +146,12 @@ module FinchAPI
                 # If the benefit supports catch up (401k, 403b, etc.), whether catch up is enabled
                 # for this individual.
                 catch_up:,
+                # Company contribution configuration. Supports fixed amounts (in cents),
+                # percentage-based contributions (in basis points where 100 = 1%), or tiered
+                # matching structures.
                 company_contribution:,
+                # Employee deduction configuration. Supports both fixed amounts (in cents) and
+                # percentage-based contributions (in basis points where 100 = 1%).
                 employee_deduction:,
                 # Type for HSA contribution limit if the benefit is a HSA.
                 hsa_contribution_limit: nil
@@ -171,6 +181,9 @@ module FinchAPI
               def to_hash
               end
 
+              # Company contribution configuration. Supports fixed amounts (in cents),
+              # percentage-based contributions (in basis points where 100 = 1%), or tiered
+              # matching structures.
               module CompanyContribution
                 extend FinchAPI::Internal::Type::Union
 
@@ -192,11 +205,13 @@ module FinchAPI
                       )
                     end
 
-                  # Contribution amount in cents.
+                  # Contribution amount in cents (for type=fixed) or basis points (for type=percent,
+                  # where 100 = 1%). Not used for type=tiered.
                   sig { returns(Integer) }
                   attr_accessor :amount
 
-                  # Fixed contribution type.
+                  # Contribution type. Supported values: "fixed" (amount in cents), "percent"
+                  # (amount in basis points), or "tiered" (multi-tier matching).
                   sig do
                     returns(
                       FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0::Type::TaggedSymbol
@@ -212,9 +227,11 @@ module FinchAPI
                     ).returns(T.attached_class)
                   end
                   def self.new(
-                    # Contribution amount in cents.
+                    # Contribution amount in cents (for type=fixed) or basis points (for type=percent,
+                    # where 100 = 1%). Not used for type=tiered.
                     amount:,
-                    # Fixed contribution type.
+                    # Contribution type. Supported values: "fixed" (amount in cents), "percent"
+                    # (amount in basis points), or "tiered" (multi-tier matching).
                     type:
                   )
                   end
@@ -231,7 +248,8 @@ module FinchAPI
                   def to_hash
                   end
 
-                  # Fixed contribution type.
+                  # Contribution type. Supported values: "fixed" (amount in cents), "percent"
+                  # (amount in basis points), or "tiered" (multi-tier matching).
                   module Type
                     extend FinchAPI::Internal::Type::Enum
 
@@ -271,11 +289,13 @@ module FinchAPI
                       )
                     end
 
-                  # Contribution amount in basis points (1/100th of a percent).
+                  # Contribution amount in cents (for type=fixed) or basis points (for type=percent,
+                  # where 100 = 1%). Not used for type=tiered.
                   sig { returns(Integer) }
                   attr_accessor :amount
 
-                  # Percentage contribution type.
+                  # Contribution type. Supported values: "fixed" (amount in cents), "percent"
+                  # (amount in basis points), or "tiered" (multi-tier matching).
                   sig do
                     returns(
                       FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1::Type::TaggedSymbol
@@ -291,9 +311,11 @@ module FinchAPI
                     ).returns(T.attached_class)
                   end
                   def self.new(
-                    # Contribution amount in basis points (1/100th of a percent).
+                    # Contribution amount in cents (for type=fixed) or basis points (for type=percent,
+                    # where 100 = 1%). Not used for type=tiered.
                     amount:,
-                    # Percentage contribution type.
+                    # Contribution type. Supported values: "fixed" (amount in cents), "percent"
+                    # (amount in basis points), or "tiered" (multi-tier matching).
                     type:
                   )
                   end
@@ -310,7 +332,8 @@ module FinchAPI
                   def to_hash
                   end
 
-                  # Percentage contribution type.
+                  # Contribution type. Supported values: "fixed" (amount in cents), "percent"
+                  # (amount in basis points), or "tiered" (multi-tier matching).
                   module Type
                     extend FinchAPI::Internal::Type::Enum
 
@@ -351,7 +374,7 @@ module FinchAPI
                     end
 
                   # Array of tier objects defining employer match tiers based on employee
-                  # contribution thresholds.
+                  # contribution thresholds. Required when type=tiered.
                   sig do
                     returns(
                       T::Array[
@@ -361,7 +384,8 @@ module FinchAPI
                   end
                   attr_accessor :tiers
 
-                  # Tiered contribution type (only valid for company_contribution).
+                  # Contribution type. Supported values: "fixed" (amount in cents), "percent"
+                  # (amount in basis points), or "tiered" (multi-tier matching).
                   sig do
                     returns(
                       FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::Type::TaggedSymbol
@@ -381,9 +405,10 @@ module FinchAPI
                   end
                   def self.new(
                     # Array of tier objects defining employer match tiers based on employee
-                    # contribution thresholds.
+                    # contribution thresholds. Required when type=tiered.
                     tiers:,
-                    # Tiered contribution type (only valid for company_contribution).
+                    # Contribution type. Supported values: "fixed" (amount in cents), "percent"
+                    # (amount in basis points), or "tiered" (multi-tier matching).
                     type:
                   )
                   end
@@ -433,7 +458,8 @@ module FinchAPI
                     end
                   end
 
-                  # Tiered contribution type (only valid for company_contribution).
+                  # Contribution type. Supported values: "fixed" (amount in cents), "percent"
+                  # (amount in basis points), or "tiered" (multi-tier matching).
                   module Type
                     extend FinchAPI::Internal::Type::Enum
 
@@ -475,6 +501,8 @@ module FinchAPI
                 end
               end
 
+              # Employee deduction configuration. Supports both fixed amounts (in cents) and
+              # percentage-based contributions (in basis points where 100 = 1%).
               module EmployeeDeduction
                 extend FinchAPI::Internal::Type::Union
 
@@ -495,11 +523,13 @@ module FinchAPI
                       )
                     end
 
-                  # Contribution amount in cents.
+                  # Contribution amount in cents (for type=fixed) or basis points (for type=percent,
+                  # where 100 = 1%).
                   sig { returns(Integer) }
                   attr_accessor :amount
 
-                  # Fixed contribution type.
+                  # Contribution type. Supported values: "fixed" (amount in cents) or "percent"
+                  # (amount in basis points).
                   sig do
                     returns(
                       FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0::Type::TaggedSymbol
@@ -515,9 +545,11 @@ module FinchAPI
                     ).returns(T.attached_class)
                   end
                   def self.new(
-                    # Contribution amount in cents.
+                    # Contribution amount in cents (for type=fixed) or basis points (for type=percent,
+                    # where 100 = 1%).
                     amount:,
-                    # Fixed contribution type.
+                    # Contribution type. Supported values: "fixed" (amount in cents) or "percent"
+                    # (amount in basis points).
                     type:
                   )
                   end
@@ -534,7 +566,8 @@ module FinchAPI
                   def to_hash
                   end
 
-                  # Fixed contribution type.
+                  # Contribution type. Supported values: "fixed" (amount in cents) or "percent"
+                  # (amount in basis points).
                   module Type
                     extend FinchAPI::Internal::Type::Enum
 
@@ -574,11 +607,13 @@ module FinchAPI
                       )
                     end
 
-                  # Contribution amount in basis points (1/100th of a percent).
+                  # Contribution amount in cents (for type=fixed) or basis points (for type=percent,
+                  # where 100 = 1%).
                   sig { returns(Integer) }
                   attr_accessor :amount
 
-                  # Percentage contribution type.
+                  # Contribution type. Supported values: "fixed" (amount in cents) or "percent"
+                  # (amount in basis points).
                   sig do
                     returns(
                       FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1::Type::TaggedSymbol
@@ -594,9 +629,11 @@ module FinchAPI
                     ).returns(T.attached_class)
                   end
                   def self.new(
-                    # Contribution amount in basis points (1/100th of a percent).
+                    # Contribution amount in cents (for type=fixed) or basis points (for type=percent,
+                    # where 100 = 1%).
                     amount:,
-                    # Percentage contribution type.
+                    # Contribution type. Supported values: "fixed" (amount in cents) or "percent"
+                    # (amount in basis points).
                     type:
                   )
                   end
@@ -613,7 +650,8 @@ module FinchAPI
                   def to_hash
                   end
 
-                  # Percentage contribution type.
+                  # Contribution type. Supported values: "fixed" (amount in cents) or "percent"
+                  # (amount in basis points).
                   module Type
                     extend FinchAPI::Internal::Type::Enum
 
