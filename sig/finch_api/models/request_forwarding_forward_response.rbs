@@ -36,7 +36,7 @@ module FinchAPI
           method_: String,
           route: String,
           data: FinchAPI::Models::RequestForwardingForwardResponse::Request::data?,
-          headers: ::Hash[Symbol, top?]?,
+          headers: ::Hash[Symbol, String]?,
           params: ::Hash[Symbol, top?]?
         }
 
@@ -47,7 +47,7 @@ module FinchAPI
 
         attr_accessor data: FinchAPI::Models::RequestForwardingForwardResponse::Request::data?
 
-        attr_accessor headers: ::Hash[Symbol, top?]?
+        attr_accessor headers: ::Hash[Symbol, String]?
 
         attr_accessor params: ::Hash[Symbol, top?]?
 
@@ -55,7 +55,7 @@ module FinchAPI
           method_: String,
           route: String,
           ?data: FinchAPI::Models::RequestForwardingForwardResponse::Request::data?,
-          ?headers: ::Hash[Symbol, top?]?,
+          ?headers: ::Hash[Symbol, String]?,
           ?params: ::Hash[Symbol, top?]?
         ) -> void
 
@@ -63,7 +63,7 @@ module FinchAPI
           method_: String,
           route: String,
           data: FinchAPI::Models::RequestForwardingForwardResponse::Request::data?,
-          headers: ::Hash[Symbol, top?]?,
+          headers: ::Hash[Symbol, String]?,
           params: ::Hash[Symbol, top?]?
         }
 
