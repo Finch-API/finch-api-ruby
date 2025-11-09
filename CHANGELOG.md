@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.35 (2025-11-09)
+
+Full Changelog: [v0.1.0-alpha.34...v0.1.0-alpha.35](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.34...v0.1.0-alpha.35)
+
+### Features
+
+* **api:** api update ([9ef0063](https://github.com/Finch-API/finch-api-ruby/commit/9ef0063aae5d7d717450833073f81fc6f9834566))
+* **api:** api update ([edeff3b](https://github.com/Finch-API/finch-api-ruby/commit/edeff3bdb90eb9cecbc26b3a6c0c569e594425dd))
+
+
+### Bug Fixes
+
+* better thread safety via early initializing SSL store during HTTP client creation ([ed1ac81](https://github.com/Finch-API/finch-api-ruby/commit/ed1ac81b9f90890405a00c49b23239dbd1d088dd))
+
 ## 0.1.0-alpha.34 (2025-11-04)
 
 Full Changelog: [v0.1.0-alpha.33...v0.1.0-alpha.34](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.33...v0.1.0-alpha.34)

@@ -49,6 +49,9 @@ module FinchAPI
               required :catch_up, FinchAPI::Internal::Type::Boolean, nil?: true
 
               # @!attribute company_contribution
+              #   Company contribution configuration. Supports fixed amounts (in cents),
+              #   percentage-based contributions (in basis points where 100 = 1%), or tiered
+              #   matching structures.
               #
               #   @return [FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2, nil]
               required :company_contribution,
@@ -58,6 +61,8 @@ module FinchAPI
                        nil?: true
 
               # @!attribute employee_deduction
+              #   Employee deduction configuration. Supports both fixed amounts (in cents) and
+              #   percentage-based contributions (in basis points where 100 = 1%).
               #
               #   @return [FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1, nil]
               required :employee_deduction,
@@ -85,12 +90,16 @@ module FinchAPI
               #
               #   @param catch_up [Boolean, nil] If the benefit supports catch up (401k, 403b, etc.), whether catch up is enabled
               #
-              #   @param company_contribution [FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2, nil]
+              #   @param company_contribution [FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2, nil] Company contribution configuration. Supports fixed amounts (in cents), percentag
               #
-              #   @param employee_deduction [FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1, nil]
+              #   @param employee_deduction [FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1, nil] Employee deduction configuration. Supports both fixed amounts (in cents) and per
               #
               #   @param hsa_contribution_limit [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::HsaContributionLimit, nil] Type for HSA contribution limit if the benefit is a HSA.
 
+              # Company contribution configuration. Supports fixed amounts (in cents),
+              # percentage-based contributions (in basis points where 100 = 1%), or tiered
+              # matching structures.
+              #
               # @see FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0#company_contribution
               module CompanyContribution
                 extend FinchAPI::Internal::Type::Union
@@ -103,24 +112,31 @@ module FinchAPI
 
                 class UnionMember0 < FinchAPI::Internal::Type::BaseModel
                   # @!attribute amount
-                  #   Contribution amount in cents.
+                  #   Contribution amount in cents (for type=fixed) or basis points (for type=percent,
+                  #   where 100 = 1%). Not used for type=tiered.
                   #
                   #   @return [Integer]
                   required :amount, Integer
 
                   # @!attribute type
-                  #   Fixed contribution type.
+                  #   Contribution type. Supported values: "fixed" (amount in cents), "percent"
+                  #   (amount in basis points), or "tiered" (multi-tier matching).
                   #
                   #   @return [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0::Type]
                   required :type,
                            enum: -> { FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0::Type }
 
                   # @!method initialize(amount:, type:)
-                  #   @param amount [Integer] Contribution amount in cents.
+                  #   Some parameter documentations has been truncated, see
+                  #   {FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0}
+                  #   for more details.
                   #
-                  #   @param type [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0::Type] Fixed contribution type.
+                  #   @param amount [Integer] Contribution amount in cents (for type=fixed) or basis points (for type=percent,
+                  #
+                  #   @param type [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0::Type] Contribution type. Supported values: "fixed" (amount in cents), "percent" (amoun
 
-                  # Fixed contribution type.
+                  # Contribution type. Supported values: "fixed" (amount in cents), "percent"
+                  # (amount in basis points), or "tiered" (multi-tier matching).
                   #
                   # @see FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0#type
                   module Type
@@ -135,24 +151,31 @@ module FinchAPI
 
                 class UnionMember1 < FinchAPI::Internal::Type::BaseModel
                   # @!attribute amount
-                  #   Contribution amount in basis points (1/100th of a percent).
+                  #   Contribution amount in cents (for type=fixed) or basis points (for type=percent,
+                  #   where 100 = 1%). Not used for type=tiered.
                   #
                   #   @return [Integer]
                   required :amount, Integer
 
                   # @!attribute type
-                  #   Percentage contribution type.
+                  #   Contribution type. Supported values: "fixed" (amount in cents), "percent"
+                  #   (amount in basis points), or "tiered" (multi-tier matching).
                   #
                   #   @return [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1::Type]
                   required :type,
                            enum: -> { FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1::Type }
 
                   # @!method initialize(amount:, type:)
-                  #   @param amount [Integer] Contribution amount in basis points (1/100th of a percent).
+                  #   Some parameter documentations has been truncated, see
+                  #   {FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1}
+                  #   for more details.
                   #
-                  #   @param type [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1::Type] Percentage contribution type.
+                  #   @param amount [Integer] Contribution amount in cents (for type=fixed) or basis points (for type=percent,
+                  #
+                  #   @param type [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1::Type] Contribution type. Supported values: "fixed" (amount in cents), "percent" (amoun
 
-                  # Percentage contribution type.
+                  # Contribution type. Supported values: "fixed" (amount in cents), "percent"
+                  # (amount in basis points), or "tiered" (multi-tier matching).
                   #
                   # @see FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1#type
                   module Type
@@ -168,14 +191,15 @@ module FinchAPI
                 class UnionMember2 < FinchAPI::Internal::Type::BaseModel
                   # @!attribute tiers
                   #   Array of tier objects defining employer match tiers based on employee
-                  #   contribution thresholds.
+                  #   contribution thresholds. Required when type=tiered.
                   #
                   #   @return [Array<FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::Tier>]
                   required :tiers,
                            -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::Tier] }
 
                   # @!attribute type
-                  #   Tiered contribution type (only valid for company_contribution).
+                  #   Contribution type. Supported values: "fixed" (amount in cents), "percent"
+                  #   (amount in basis points), or "tiered" (multi-tier matching).
                   #
                   #   @return [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::Type]
                   required :type,
@@ -188,7 +212,7 @@ module FinchAPI
                   #
                   #   @param tiers [Array<FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::Tier>] Array of tier objects defining employer match tiers based on employee contributi
                   #
-                  #   @param type [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::Type] Tiered contribution type (only valid for company_contribution).
+                  #   @param type [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::Type] Contribution type. Supported values: "fixed" (amount in cents), "percent" (amoun
 
                   class Tier < FinchAPI::Internal::Type::BaseModel
                     # @!attribute match
@@ -206,7 +230,8 @@ module FinchAPI
                     #   @param threshold [Integer]
                   end
 
-                  # Tiered contribution type (only valid for company_contribution).
+                  # Contribution type. Supported values: "fixed" (amount in cents), "percent"
+                  # (amount in basis points), or "tiered" (multi-tier matching).
                   #
                   # @see FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2#type
                   module Type
@@ -223,6 +248,9 @@ module FinchAPI
                 #   @return [Array(FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2)]
               end
 
+              # Employee deduction configuration. Supports both fixed amounts (in cents) and
+              # percentage-based contributions (in basis points where 100 = 1%).
+              #
               # @see FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0#employee_deduction
               module EmployeeDeduction
                 extend FinchAPI::Internal::Type::Union
@@ -233,24 +261,31 @@ module FinchAPI
 
                 class UnionMember0 < FinchAPI::Internal::Type::BaseModel
                   # @!attribute amount
-                  #   Contribution amount in cents.
+                  #   Contribution amount in cents (for type=fixed) or basis points (for type=percent,
+                  #   where 100 = 1%).
                   #
                   #   @return [Integer]
                   required :amount, Integer
 
                   # @!attribute type
-                  #   Fixed contribution type.
+                  #   Contribution type. Supported values: "fixed" (amount in cents) or "percent"
+                  #   (amount in basis points).
                   #
                   #   @return [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0::Type]
                   required :type,
                            enum: -> { FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0::Type }
 
                   # @!method initialize(amount:, type:)
-                  #   @param amount [Integer] Contribution amount in cents.
+                  #   Some parameter documentations has been truncated, see
+                  #   {FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0}
+                  #   for more details.
                   #
-                  #   @param type [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0::Type] Fixed contribution type.
+                  #   @param amount [Integer] Contribution amount in cents (for type=fixed) or basis points (for type=percent,
+                  #
+                  #   @param type [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0::Type] Contribution type. Supported values: "fixed" (amount in cents) or "percent" (amo
 
-                  # Fixed contribution type.
+                  # Contribution type. Supported values: "fixed" (amount in cents) or "percent"
+                  # (amount in basis points).
                   #
                   # @see FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0#type
                   module Type
@@ -265,24 +300,31 @@ module FinchAPI
 
                 class UnionMember1 < FinchAPI::Internal::Type::BaseModel
                   # @!attribute amount
-                  #   Contribution amount in basis points (1/100th of a percent).
+                  #   Contribution amount in cents (for type=fixed) or basis points (for type=percent,
+                  #   where 100 = 1%).
                   #
                   #   @return [Integer]
                   required :amount, Integer
 
                   # @!attribute type
-                  #   Percentage contribution type.
+                  #   Contribution type. Supported values: "fixed" (amount in cents) or "percent"
+                  #   (amount in basis points).
                   #
                   #   @return [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1::Type]
                   required :type,
                            enum: -> { FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1::Type }
 
                   # @!method initialize(amount:, type:)
-                  #   @param amount [Integer] Contribution amount in basis points (1/100th of a percent).
+                  #   Some parameter documentations has been truncated, see
+                  #   {FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1}
+                  #   for more details.
                   #
-                  #   @param type [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1::Type] Percentage contribution type.
+                  #   @param amount [Integer] Contribution amount in cents (for type=fixed) or basis points (for type=percent,
+                  #
+                  #   @param type [Symbol, FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1::Type] Contribution type. Supported values: "fixed" (amount in cents) or "percent" (amo
 
-                  # Percentage contribution type.
+                  # Contribution type. Supported values: "fixed" (amount in cents) or "percent"
+                  # (amount in basis points).
                   #
                   # @see FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1#type
                   module Type

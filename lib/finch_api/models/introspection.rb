@@ -346,20 +346,12 @@ module FinchAPI
         #   @return [String, nil]
         required :source_id, String, nil?: true
 
-        # @!attribute type
-        #   The type of entity
-        #
-        #   @return [String, nil]
-        required :type, String, nil?: true
-
-        # @!method initialize(id:, name:, source_id:, type:)
+        # @!method initialize(id:, name:, source_id:)
         #   @param id [String] The connection account ID for this entity
         #
         #   @param name [String, nil] The name of the entity (payroll provider company name)
         #
         #   @param source_id [String, nil] The source ID of the entity
-        #
-        #   @param type [String, nil] The type of entity
       end
     end
   end
