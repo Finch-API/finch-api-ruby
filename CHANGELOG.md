@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.36 (2025-11-20)
+
+Full Changelog: [v0.1.0-alpha.35...v0.1.0-alpha.36](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.35...v0.1.0-alpha.36)
+
+### Chores
+
+* explicitly require "base64" gem ([6ff4b07](https://github.com/Finch-API/finch-api-ruby/commit/6ff4b0724760875699854af9d8747f5680f4b77f))
+
 ## 0.1.0-alpha.35 (2025-11-09)
 
 Full Changelog: [v0.1.0-alpha.34...v0.1.0-alpha.35](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.34...v0.1.0-alpha.35)
