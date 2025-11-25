@@ -12,8 +12,8 @@ module FinchAPI
           method_: String,
           route: String,
           data: T.nilable(String),
-          headers: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           params: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+          request_headers: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           request_options: FinchAPI::RequestOptions::OrHash
         ).returns(FinchAPI::Models::RequestForwardingForwardResponse)
       end
@@ -28,13 +28,13 @@ module FinchAPI
         # The body for the forwarded request. This value must be specified as either a
         # string or a valid JSON object.
         data: nil,
-        # The HTTP headers to include on the forwarded request. This value must be
-        # specified as an object of key-value pairs. Example:
-        # `{"Content-Type": "application/xml", "X-API-Version": "v1" }`
-        headers: nil,
         # The query parameters for the forwarded request. This value must be specified as
         # a valid JSON object rather than a query string.
         params: nil,
+        # The HTTP headers to include on the forwarded request. This value must be
+        # specified as an object of key-value pairs. Example:
+        # `{"Content-Type": "application/xml", "X-API-Version": "v1" }`
+        request_headers: nil,
         request_options: {}
       )
       end

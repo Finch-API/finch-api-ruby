@@ -471,6 +471,7 @@ module FinchAPI
             sig { params(amount: Integer).void }
             attr_writer :amount
 
+            # The deduction name. Required when type is specified.
             sig { returns(T.nilable(String)) }
             attr_reader :name
 
@@ -509,7 +510,13 @@ module FinchAPI
                   FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Type::OrSymbol
               ).returns(T.attached_class)
             end
-            def self.new(amount: nil, name: nil, pre_tax: nil, type: nil)
+            def self.new(
+              amount: nil,
+              # The deduction name. Required when type is specified.
+              name: nil,
+              pre_tax: nil,
+              type: nil
+            )
             end
 
             sig do
@@ -661,6 +668,7 @@ module FinchAPI
             sig { params(amount: Integer).void }
             attr_writer :amount
 
+            # The contribution name. Required when type is specified.
             sig { returns(T.nilable(String)) }
             attr_reader :name
 
@@ -692,7 +700,12 @@ module FinchAPI
                   FinchAPI::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Type::OrSymbol
               ).returns(T.attached_class)
             end
-            def self.new(amount: nil, name: nil, type: nil)
+            def self.new(
+              amount: nil,
+              # The contribution name. Required when type is specified.
+              name: nil,
+              type: nil
+            )
             end
 
             sig do
