@@ -30,24 +30,24 @@ module FinchAPI
       sig { returns(T.nilable(String)) }
       attr_accessor :data
 
-      # The HTTP headers to include on the forwarded request. This value must be
-      # specified as an object of key-value pairs. Example:
-      # `{"Content-Type": "application/xml", "X-API-Version": "v1" }`
-      sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
-      attr_accessor :headers
-
       # The query parameters for the forwarded request. This value must be specified as
       # a valid JSON object rather than a query string.
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
       attr_accessor :params
+
+      # The HTTP headers to include on the forwarded request. This value must be
+      # specified as an object of key-value pairs. Example:
+      # `{"Content-Type": "application/xml", "X-API-Version": "v1" }`
+      sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
+      attr_accessor :request_headers
 
       sig do
         params(
           method_: String,
           route: String,
           data: T.nilable(String),
-          headers: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           params: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+          request_headers: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           request_options: FinchAPI::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -62,13 +62,13 @@ module FinchAPI
         # The body for the forwarded request. This value must be specified as either a
         # string or a valid JSON object.
         data: nil,
-        # The HTTP headers to include on the forwarded request. This value must be
-        # specified as an object of key-value pairs. Example:
-        # `{"Content-Type": "application/xml", "X-API-Version": "v1" }`
-        headers: nil,
         # The query parameters for the forwarded request. This value must be specified as
         # a valid JSON object rather than a query string.
         params: nil,
+        # The HTTP headers to include on the forwarded request. This value must be
+        # specified as an object of key-value pairs. Example:
+        # `{"Content-Type": "application/xml", "X-API-Version": "v1" }`
+        request_headers: nil,
         request_options: {}
       )
       end
@@ -79,8 +79,8 @@ module FinchAPI
             method_: String,
             route: String,
             data: T.nilable(String),
-            headers: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
             params: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+            request_headers: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
             request_options: FinchAPI::RequestOptions
           }
         )

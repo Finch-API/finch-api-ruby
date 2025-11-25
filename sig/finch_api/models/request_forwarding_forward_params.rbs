@@ -5,8 +5,8 @@ module FinchAPI
         method_: String,
         route: String,
         data: String?,
-        headers: ::Hash[Symbol, top?]?,
-        params: ::Hash[Symbol, top?]?
+        params: ::Hash[Symbol, top?]?,
+        request_headers: ::Hash[Symbol, top?]?
       }
       & FinchAPI::Internal::Type::request_parameters
 
@@ -20,16 +20,16 @@ module FinchAPI
 
       attr_accessor data: String?
 
-      attr_accessor headers: ::Hash[Symbol, top?]?
-
       attr_accessor params: ::Hash[Symbol, top?]?
+
+      attr_accessor request_headers: ::Hash[Symbol, top?]?
 
       def initialize: (
         method_: String,
         route: String,
         ?data: String?,
-        ?headers: ::Hash[Symbol, top?]?,
         ?params: ::Hash[Symbol, top?]?,
+        ?request_headers: ::Hash[Symbol, top?]?,
         ?request_options: FinchAPI::request_opts
       ) -> void
 
@@ -37,8 +37,8 @@ module FinchAPI
         method_: String,
         route: String,
         data: String?,
-        headers: ::Hash[Symbol, top?]?,
         params: ::Hash[Symbol, top?]?,
+        request_headers: ::Hash[Symbol, top?]?,
         request_options: FinchAPI::RequestOptions
       }
     end
