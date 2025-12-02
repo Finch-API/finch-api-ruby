@@ -5,8 +5,8 @@ module FinchAPI
         method_: String,
         route: String,
         ?data: String?,
-        ?headers: ::Hash[Symbol, top?]?,
         ?params: ::Hash[Symbol, top?]?,
+        ?request_headers: ::Hash[Symbol, top?]?,
         ?request_options: FinchAPI::request_opts
       ) -> FinchAPI::Models::RequestForwardingForwardResponse
 

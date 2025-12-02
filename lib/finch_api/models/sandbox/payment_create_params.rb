@@ -160,6 +160,7 @@ module FinchAPI
             optional :amount, Integer
 
             # @!attribute name
+            #   The deduction name. Required when type is specified.
             #
             #   @return [String, nil]
             optional :name, String
@@ -176,8 +177,11 @@ module FinchAPI
 
             # @!method initialize(amount: nil, name: nil, pre_tax: nil, type: nil)
             #   @param amount [Integer]
-            #   @param name [String]
+            #
+            #   @param name [String] The deduction name. Required when type is specified.
+            #
             #   @param pre_tax [Boolean]
+            #
             #   @param type [Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction::Type]
 
             # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployeeDeduction#type
@@ -216,6 +220,7 @@ module FinchAPI
             optional :amount, Integer
 
             # @!attribute name
+            #   The contribution name. Required when type is specified.
             #
             #   @return [String, nil]
             optional :name, String
@@ -228,7 +233,9 @@ module FinchAPI
 
             # @!method initialize(amount: nil, name: nil, type: nil)
             #   @param amount [Integer]
-            #   @param name [String]
+            #
+            #   @param name [String] The contribution name. Required when type is specified.
+            #
             #   @param type [Symbol, FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution::Type]
 
             # @see FinchAPI::Models::Sandbox::PaymentCreateParams::PayStatement::EmployerContribution#type

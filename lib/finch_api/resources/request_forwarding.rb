@@ -11,7 +11,7 @@ module FinchAPI
       # Forward allows you to push or pull data models directly against an integration's
       # API.
       #
-      # @overload forward(method_:, route:, data: nil, headers: nil, params: nil, request_options: {})
+      # @overload forward(method_:, route:, data: nil, params: nil, request_headers: nil, request_options: {})
       #
       # @param method_ [String] The HTTP method for the forwarded request. Valid values include: `GET` , `POST`
       #
@@ -19,9 +19,9 @@ module FinchAPI
       #
       # @param data [String, nil] The body for the forwarded request. This value must be specified as either a str
       #
-      # @param headers [Hash{Symbol=>Object, nil}, nil] The HTTP headers to include on the forwarded request. This value must be specifi
-      #
       # @param params [Hash{Symbol=>Object, nil}, nil] The query parameters for the forwarded request. This value must be specified as
+      #
+      # @param request_headers [Hash{Symbol=>Object, nil}, nil] The HTTP headers to include on the forwarded request. This value must be specifi
       #
       # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
       #
