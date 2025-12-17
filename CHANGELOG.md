@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.38 (2025-12-17)
+
+Full Changelog: [v0.1.0-alpha.37...v0.1.0-alpha.38](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.37...v0.1.0-alpha.38)
+
+### Bug Fixes
+
+* calling `break` out of streams should be instantaneous ([43194ad](https://github.com/Finch-API/finch-api-ruby/commit/43194ad4b198ddb8583b11bde270eb302ab99da3))
+
 ## 0.1.0-alpha.37 (2025-12-01)
 
 Full Changelog: [v0.1.0-alpha.36...v0.1.0-alpha.37](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.36...v0.1.0-alpha.37)
