@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    finch-api (0.1.0.pre.alpha.37)
+    finch-api (0.1.0.pre.alpha.38)
       connection_pool
 
 GEM
