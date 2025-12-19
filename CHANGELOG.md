@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.39 (2025-12-19)
+
+Full Changelog: [v0.1.0-alpha.38...v0.1.0-alpha.39](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.38...v0.1.0-alpha.39)
+
+### Bug Fixes
+
+* issue where json.parse errors when receiving HTTP 204 with nobody ([129433c](https://github.com/Finch-API/finch-api-ruby/commit/129433cc4ce1ab1f1e3b3c169cf804742f07e95d))
+
 ## 0.1.0-alpha.38 (2025-12-17)
 
 Full Changelog: [v0.1.0-alpha.37...v0.1.0-alpha.38](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.37...v0.1.0-alpha.38)
