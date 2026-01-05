@@ -7,9 +7,10 @@ module FinchAPI
             account_id: String,
             authentication_type: FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::authentication_type,
             company_id: String,
+            connection_id: String,
+            entity_id: String,
             products: ::Array[String],
-            provider_id: String,
-            connection_id: String
+            provider_id: String
           }
 
         class AccountUpdateResponse < FinchAPI::Internal::Type::BaseModel
@@ -19,30 +20,32 @@ module FinchAPI
 
           attr_accessor company_id: String
 
+          attr_accessor connection_id: String
+
+          attr_accessor entity_id: String
+
           attr_accessor products: ::Array[String]
 
           attr_accessor provider_id: String
-
-          attr_reader connection_id: String?
-
-          def connection_id=: (String) -> String
 
           def initialize: (
             account_id: String,
             authentication_type: FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::authentication_type,
             company_id: String,
+            connection_id: String,
+            entity_id: String,
             products: ::Array[String],
-            provider_id: String,
-            ?connection_id: String
+            provider_id: String
           ) -> void
 
           def to_hash: -> {
             account_id: String,
             authentication_type: FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::authentication_type,
             company_id: String,
+            connection_id: String,
+            entity_id: String,
             products: ::Array[String],
-            provider_id: String,
-            connection_id: String
+            provider_id: String
           }
 
           type authentication_type =
