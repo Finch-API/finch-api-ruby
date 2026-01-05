@@ -35,6 +35,10 @@ module FinchAPI
           sig { returns(String) }
           attr_accessor :connection_id
 
+          # The ID of the entity for this connection
+          sig { returns(String) }
+          attr_accessor :entity_id
+
           sig { returns(T::Array[String]) }
           attr_accessor :products
 
@@ -50,6 +54,7 @@ module FinchAPI
                 FinchAPI::Models::Sandbox::Connections::AccountCreateResponse::AuthenticationType::OrSymbol,
               company_id: String,
               connection_id: String,
+              entity_id: String,
               products: T::Array[String],
               provider_id: String
             ).returns(T.attached_class)
@@ -63,6 +68,8 @@ module FinchAPI
             company_id:,
             # The ID of the new connection
             connection_id:,
+            # The ID of the entity for this connection
+            entity_id:,
             products:,
             # The ID of the provider associated with the `access_token`
             provider_id:
@@ -78,6 +85,7 @@ module FinchAPI
                   FinchAPI::Models::Sandbox::Connections::AccountCreateResponse::AuthenticationType::TaggedSymbol,
                 company_id: String,
                 connection_id: String,
+                entity_id: String,
                 products: T::Array[String],
                 provider_id: String
               }

@@ -23,6 +23,7 @@ class FinchAPI::Test::Resources::Sandbox::Connections::AccountsTest < FinchAPI::
         authentication_type: FinchAPI::Models::Sandbox::Connections::AccountCreateResponse::AuthenticationType,
         company_id: String,
         connection_id: String,
+        entity_id: String,
         products: ^(FinchAPI::Internal::Type::ArrayOf[String]),
         provider_id: String
       }
@@ -41,9 +42,10 @@ class FinchAPI::Test::Resources::Sandbox::Connections::AccountsTest < FinchAPI::
         account_id: String,
         authentication_type: FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType,
         company_id: String,
+        connection_id: String,
+        entity_id: String,
         products: ^(FinchAPI::Internal::Type::ArrayOf[String]),
-        provider_id: String,
-        connection_id: String | nil
+        provider_id: String
       }
     end
   end
