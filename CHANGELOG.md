@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.0-alpha.40 (2026-01-05)
+
+Full Changelog: [v0.1.0-alpha.39...v0.1.0-alpha.40](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.39...v0.1.0-alpha.40)
+
+### Features
+
+* **api:** api update ([82c2483](https://github.com/Finch-API/finch-api-ruby/commit/82c2483e09e0facae50bc1fc3601b922ae86a5a5))
+
+
+### Chores
+
+* **internal:** codegen related update ([74a742a](https://github.com/Finch-API/finch-api-ruby/commit/74a742a5f1c7673a9f8fb06b5daaac5daf204fd5))
+
+
+### Documentation
+
+* prominently feature MCP server setup in root SDK readmes ([6d995c9](https://github.com/Finch-API/finch-api-ruby/commit/6d995c9789915687a71b11c33b1b5b8ccc9ffa48))
+
 ## 0.1.0-alpha.39 (2025-12-19)
 
 Full Changelog: [v0.1.0-alpha.38...v0.1.0-alpha.39](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.38...v0.1.0-alpha.39)
