@@ -39,6 +39,12 @@ module FinchAPI
           #   @return [String]
           required :connection_id, String
 
+          # @!attribute entity_id
+          #   The ID of the entity for this connection
+          #
+          #   @return [String]
+          required :entity_id, String
+
           # @!attribute products
           #
           #   @return [Array<String>]
@@ -50,7 +56,7 @@ module FinchAPI
           #   @return [String]
           required :provider_id, String
 
-          # @!method initialize(access_token:, account_id:, authentication_type:, company_id:, connection_id:, products:, provider_id:)
+          # @!method initialize(access_token:, account_id:, authentication_type:, company_id:, connection_id:, entity_id:, products:, provider_id:)
           #   @param access_token [String]
           #
           #   @param account_id [String] [DEPRECATED] Use `connection_id` to associate a connection with an access token
@@ -60,6 +66,8 @@ module FinchAPI
           #   @param company_id [String] [DEPRECATED] Use `connection_id` to associate a connection with an access token
           #
           #   @param connection_id [String] The ID of the new connection
+          #
+          #   @param entity_id [String] The ID of the entity for this connection
           #
           #   @param products [Array<String>]
           #

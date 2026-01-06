@@ -28,6 +28,14 @@ module FinchAPI
           sig { returns(String) }
           attr_accessor :company_id
 
+          # The ID of the new connection
+          sig { returns(String) }
+          attr_accessor :connection_id
+
+          # The ID of the entity whose status was updated
+          sig { returns(String) }
+          attr_accessor :entity_id
+
           sig { returns(T::Array[String]) }
           attr_accessor :products
 
@@ -35,22 +43,16 @@ module FinchAPI
           sig { returns(String) }
           attr_accessor :provider_id
 
-          # The ID of the new connection
-          sig { returns(T.nilable(String)) }
-          attr_reader :connection_id
-
-          sig { params(connection_id: String).void }
-          attr_writer :connection_id
-
           sig do
             params(
               account_id: String,
               authentication_type:
                 FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType::OrSymbol,
               company_id: String,
+              connection_id: String,
+              entity_id: String,
               products: T::Array[String],
-              provider_id: String,
-              connection_id: String
+              provider_id: String
             ).returns(T.attached_class)
           end
           def self.new(
@@ -59,11 +61,13 @@ module FinchAPI
             authentication_type:,
             # [DEPRECATED] Use `connection_id` to associate a connection with an access token
             company_id:,
+            # The ID of the new connection
+            connection_id:,
+            # The ID of the entity whose status was updated
+            entity_id:,
             products:,
             # The ID of the provider associated with the `access_token`
-            provider_id:,
-            # The ID of the new connection
-            connection_id: nil
+            provider_id:
           )
           end
 
@@ -74,9 +78,10 @@ module FinchAPI
                 authentication_type:
                   FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType::TaggedSymbol,
                 company_id: String,
+                connection_id: String,
+                entity_id: String,
                 products: T::Array[String],
-                provider_id: String,
-                connection_id: String
+                provider_id: String
               }
             )
           end

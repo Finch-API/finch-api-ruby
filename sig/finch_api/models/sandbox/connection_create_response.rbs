@@ -8,6 +8,7 @@ module FinchAPI
           authentication_type: FinchAPI::Models::Sandbox::ConnectionCreateResponse::authentication_type,
           company_id: String,
           connection_id: String,
+          entity_id: String,
           products: ::Array[String],
           provider_id: String,
           token_type: String
@@ -24,6 +25,8 @@ module FinchAPI
 
         attr_accessor connection_id: String
 
+        attr_accessor entity_id: String
+
         attr_accessor products: ::Array[String]
 
         attr_accessor provider_id: String
@@ -38,6 +41,7 @@ module FinchAPI
           authentication_type: FinchAPI::Models::Sandbox::ConnectionCreateResponse::authentication_type,
           company_id: String,
           connection_id: String,
+          entity_id: String,
           products: ::Array[String],
           provider_id: String,
           ?token_type: String
@@ -49,6 +53,7 @@ module FinchAPI
           authentication_type: FinchAPI::Models::Sandbox::ConnectionCreateResponse::authentication_type,
           company_id: String,
           connection_id: String,
+          entity_id: String,
           products: ::Array[String],
           provider_id: String,
           token_type: String

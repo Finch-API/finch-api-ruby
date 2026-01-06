@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module FinchAPI
-  VERSION = "0.1.0.pre.alpha.39"
+  VERSION = "0.1.0.pre.alpha.40"
 end

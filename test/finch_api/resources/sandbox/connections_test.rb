@@ -19,6 +19,7 @@ class FinchAPI::Test::Resources::Sandbox::ConnectionsTest < FinchAPI::Test::Reso
         authentication_type: FinchAPI::Models::Sandbox::ConnectionCreateResponse::AuthenticationType,
         company_id: String,
         connection_id: String,
+        entity_id: String,
         products: ^(FinchAPI::Internal::Type::ArrayOf[String]),
         provider_id: String,
         token_type: String | nil
