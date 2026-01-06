@@ -16,12 +16,12 @@ module FinchAPI
           end
 
         # The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
-        # format.
+        # format. Filters payments by their **pay_date** field.
         sig { returns(Date) }
         attr_accessor :end_date
 
         # The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
-        # format.
+        # format. Filters payments by their **pay_date** field.
         sig { returns(Date) }
         attr_accessor :start_date
 
@@ -42,10 +42,10 @@ module FinchAPI
         end
         def self.new(
           # The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
-          # format.
+          # format. Filters payments by their **pay_date** field.
           end_date:,
           # The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
-          # format.
+          # format. Filters payments by their **pay_date** field.
           start_date:,
           # The entity IDs to specify which entities' data to access.
           entity_ids: nil,
