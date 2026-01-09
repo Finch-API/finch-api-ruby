@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.41 (2026-01-09)
+
+Full Changelog: [v0.1.0-alpha.40...v0.1.0-alpha.41](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.40...v0.1.0-alpha.41)
+
+### Features
+
+* **api:** api update ([c7cf406](https://github.com/Finch-API/finch-api-ruby/commit/c7cf4068b9cff10eb1b8c34ee507375a31bcc412))
+
+
+### Chores
+
+* move `cgi` into dependencies for ruby 4 ([05f9567](https://github.com/Finch-API/finch-api-ruby/commit/05f95676c9102c184d4d157c055f4387f42dc66b))
+
 ## 0.1.0-alpha.40 (2026-01-05)
 
 Full Changelog: [v0.1.0-alpha.39...v0.1.0-alpha.40](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.39...v0.1.0-alpha.40)
