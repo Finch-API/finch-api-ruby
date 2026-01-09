@@ -11,9 +11,8 @@ module FinchAPI
           # Some parameter documentations has been truncated, see
           # {FinchAPI::Models::HRIS::Company::PayStatementItemListParams} for more details.
           #
-          # **Beta:** this endpoint currently serves employers onboarded after March 4th and
-          # historical support will be added soon Retrieve a list of detailed pay statement
-          # items for the access token's connection account.
+          # Retrieve a list of detailed pay statement items for the access token's
+          # connection account.
           #
           # @overload list(categories: nil, end_date: nil, entity_ids: nil, name: nil, start_date: nil, type: nil, request_options: {})
           #

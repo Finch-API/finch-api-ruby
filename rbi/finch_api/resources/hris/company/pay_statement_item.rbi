@@ -10,9 +10,8 @@ module FinchAPI
           end
           attr_reader :rules
 
-          # **Beta:** this endpoint currently serves employers onboarded after March 4th and
-          # historical support will be added soon Retrieve a list of detailed pay statement
-          # items for the access token's connection account.
+          # Retrieve a list of detailed pay statement items for the access token's
+          # connection account.
           sig do
             params(
               categories:

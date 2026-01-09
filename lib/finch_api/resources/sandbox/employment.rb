@@ -21,7 +21,7 @@ module FinchAPI
         #
         # @param employment [FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment, nil] The employment object.
         #
-        # @param employment_status [Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus, nil] The detailed employment status of the individual. Available options: `active`, `
+        # @param employment_status [Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus, nil] The detailed employment status of the individual.
         #
         # @param end_date [String, nil]
         #
