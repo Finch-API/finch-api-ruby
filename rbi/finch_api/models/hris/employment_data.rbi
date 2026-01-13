@@ -71,8 +71,7 @@ module FinchAPI
           end
           attr_writer :employment
 
-          # The detailed employment status of the individual. Available options: `active`,
-          # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
+          # The detailed employment status of the individual.
           sig do
             returns(
               T.nilable(
@@ -221,8 +220,7 @@ module FinchAPI
             department:,
             # The employment object.
             employment:,
-            # The detailed employment status of the individual. Available options: `active`,
-            # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
+            # The detailed employment status of the individual.
             employment_status:,
             end_date:,
             # The legal first name of the individual.
@@ -491,8 +489,7 @@ module FinchAPI
             end
           end
 
-          # The detailed employment status of the individual. Available options: `active`,
-          # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
+          # The detailed employment status of the individual.
           module EmploymentStatus
             extend FinchAPI::Internal::Type::Enum
 

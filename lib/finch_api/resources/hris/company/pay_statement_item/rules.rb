@@ -10,12 +10,10 @@ module FinchAPI
             # {FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams} for more
             # details.
             #
-            # **Beta:** this endpoint currently serves employers onboarded after March 4th and
-            # historical support will be added soon Custom rules can be created to associate
-            # specific attributes to pay statement items depending on the use case. For
-            # example, pay statement items that meet certain conditions can be labeled as a
-            # pre-tax 401k. This metadata can be retrieved where pay statement item
-            # information is available.
+            # Custom rules can be created to associate specific attributes to pay statement
+            # items depending on the use case. For example, pay statement items that meet
+            # certain conditions can be labeled as a pre-tax 401k. This metadata can be
+            # retrieved where pay statement item information is available.
             #
             # @overload create(entity_ids: nil, attributes: nil, conditions: nil, effective_end_date: nil, effective_start_date: nil, entity_type: nil, request_options: {})
             #
@@ -23,7 +21,7 @@ module FinchAPI
             #
             # @param attributes [FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes] Body param: Specifies the fields to be applied when the condition is met.
             #
-            # @param conditions [Array<FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition>] Body param:
+            # @param conditions [Array<FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition>] Body param
             #
             # @param effective_end_date [String, nil] Body param: Specifies when the rules should stop applying rules based on the dat
             #
@@ -49,16 +47,15 @@ module FinchAPI
               )
             end
 
-            # **Beta:** this endpoint currently serves employers onboarded after March 4th and
-            # historical support will be added soon Update a rule for a pay statement item.
+            # Update a rule for a pay statement item.
             #
             # @overload update(rule_id, entity_ids: nil, optional_property: nil, request_options: {})
             #
-            # @param rule_id [String] Path param:
+            # @param rule_id [String] Path param
             #
             # @param entity_ids [Array<String>] Query param: The entity IDs to update the rule for.
             #
-            # @param optional_property [Object] Body param:
+            # @param optional_property [Object] Body param
             #
             # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
             #
@@ -78,8 +75,7 @@ module FinchAPI
               )
             end
 
-            # **Beta:** this endpoint currently serves employers onboarded after March 4th and
-            # historical support will be added soon List all rules of a connection account.
+            # List all rules of a connection account.
             #
             # @overload list(entity_ids: nil, request_options: {})
             #
@@ -102,8 +98,7 @@ module FinchAPI
               )
             end
 
-            # **Beta:** this endpoint currently serves employers onboarded after March 4th and
-            # historical support will be added soon Delete a rule for a pay statement item.
+            # Delete a rule for a pay statement item.
             #
             # @overload delete(rule_id, entity_ids: nil, request_options: {})
             #

@@ -59,8 +59,7 @@ module FinchAPI
           department: nil,
           # The employment object.
           employment: nil,
-          # The detailed employment status of the individual. Available options: `active`,
-          # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
+          # The detailed employment status of the individual.
           employment_status: nil,
           end_date: nil,
           # The legal first name of the individual.

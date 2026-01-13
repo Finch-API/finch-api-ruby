@@ -39,8 +39,7 @@ module FinchAPI
         optional :employment, -> { FinchAPI::Sandbox::EmploymentUpdateParams::Employment }, nil?: true
 
         # @!attribute employment_status
-        #   The detailed employment status of the individual. Available options: `active`,
-        #   `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
+        #   The detailed employment status of the individual.
         #
         #   @return [Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus, nil]
         optional :employment_status,
@@ -137,7 +136,7 @@ module FinchAPI
         #
         #   @param employment [FinchAPI::Models::Sandbox::EmploymentUpdateParams::Employment, nil] The employment object.
         #
-        #   @param employment_status [Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus, nil] The detailed employment status of the individual. Available options: `active`, `
+        #   @param employment_status [Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateParams::EmploymentStatus, nil] The detailed employment status of the individual.
         #
         #   @param end_date [String, nil]
         #
@@ -257,8 +256,7 @@ module FinchAPI
           end
         end
 
-        # The detailed employment status of the individual. Available options: `active`,
-        # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
+        # The detailed employment status of the individual.
         module EmploymentStatus
           extend FinchAPI::Internal::Type::Enum
 

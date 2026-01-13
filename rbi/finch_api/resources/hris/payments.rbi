@@ -15,10 +15,10 @@ module FinchAPI
         end
         def list(
           # The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
-          # format.
+          # format. Filters payments by their **pay_date** field.
           end_date:,
           # The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
-          # format.
+          # format. Filters payments by their **pay_date** field.
           start_date:,
           # The entity IDs to specify which entities' data to access.
           entity_ids: nil,

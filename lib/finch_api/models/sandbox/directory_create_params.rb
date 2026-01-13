@@ -69,8 +69,7 @@ module FinchAPI
           optional :employment, -> { FinchAPI::Sandbox::DirectoryCreateParams::Body::Employment }, nil?: true
 
           # @!attribute employment_status
-          #   The detailed employment status of the individual. Available options: `active`,
-          #   `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
+          #   The detailed employment status of the individual.
           #
           #   @return [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus, nil]
           optional :employment_status,
@@ -225,7 +224,7 @@ module FinchAPI
           #
           #   @param employment [FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Employment, nil] The employment object.
           #
-          #   @param employment_status [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus, nil] The detailed employment status of the individual. Available options: `active`, `
+          #   @param employment_status [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::EmploymentStatus, nil] The detailed employment status of the individual.
           #
           #   @param encrypted_ssn [String, nil] Social Security Number of the individual in **encrypted** format. This field is
           #
@@ -392,8 +391,7 @@ module FinchAPI
             end
           end
 
-          # The detailed employment status of the individual. Available options: `active`,
-          # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
+          # The detailed employment status of the individual.
           #
           # @see FinchAPI::Models::Sandbox::DirectoryCreateParams::Body#employment_status
           module EmploymentStatus

@@ -137,8 +137,7 @@ module FinchAPI
           end
           attr_writer :employment
 
-          # The detailed employment status of the individual. Available options: `active`,
-          # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
+          # The detailed employment status of the individual.
           sig do
             returns(
               T.nilable(
@@ -354,8 +353,7 @@ module FinchAPI
             emails: nil,
             # The employment object.
             employment: nil,
-            # The detailed employment status of the individual. Available options: `active`,
-            # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
+            # The detailed employment status of the individual.
             employment_status: nil,
             # Social Security Number of the individual in **encrypted** format. This field is
             # only available with the `ssn` scope enabled and the
@@ -778,8 +776,7 @@ module FinchAPI
             end
           end
 
-          # The detailed employment status of the individual. Available options: `active`,
-          # `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
+          # The detailed employment status of the individual.
           module EmploymentStatus
             extend FinchAPI::Internal::Type::Enum
 
