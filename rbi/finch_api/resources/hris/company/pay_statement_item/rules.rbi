@@ -33,7 +33,7 @@ module FinchAPI
               entity_ids: nil,
               # Body param: Specifies the fields to be applied when the condition is met.
               attributes: nil,
-              # Body param:
+              # Body param
               conditions: nil,
               # Body param: Specifies when the rules should stop applying rules based on the
               # date.
@@ -58,11 +58,11 @@ module FinchAPI
               )
             end
             def update(
-              # Path param:
+              # Path param
               rule_id,
               # Query param: The entity IDs to update the rule for.
               entity_ids: nil,
-              # Body param:
+              # Body param
               optional_property: nil,
               request_options: {}
             )

@@ -71,7 +71,7 @@ module FinchAPI
         #
         # @overload update(benefit_id, entity_ids: nil, description: nil, request_options: {})
         #
-        # @param benefit_id [String] Path param:
+        # @param benefit_id [String] Path param
         #
         # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access.
         #

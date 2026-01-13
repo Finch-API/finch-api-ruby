@@ -21,7 +21,7 @@ module FinchAPI
             #
             # @param attributes [FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Attributes] Body param: Specifies the fields to be applied when the condition is met.
             #
-            # @param conditions [Array<FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition>] Body param:
+            # @param conditions [Array<FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams::Condition>] Body param
             #
             # @param effective_end_date [String, nil] Body param: Specifies when the rules should stop applying rules based on the dat
             #
@@ -51,11 +51,11 @@ module FinchAPI
             #
             # @overload update(rule_id, entity_ids: nil, optional_property: nil, request_options: {})
             #
-            # @param rule_id [String] Path param:
+            # @param rule_id [String] Path param
             #
             # @param entity_ids [Array<String>] Query param: The entity IDs to update the rule for.
             #
-            # @param optional_property [Object] Body param:
+            # @param optional_property [Object] Body param
             #
             # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
             #

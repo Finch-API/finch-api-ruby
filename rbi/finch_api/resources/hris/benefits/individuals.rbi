@@ -23,7 +23,7 @@ module FinchAPI
             )
           end
           def enroll_many(
-            # Path param:
+            # Path param
             benefit_id,
             # Query param: The entity IDs to specify which entities' data to access.
             entity_ids: nil,
@@ -87,7 +87,7 @@ module FinchAPI
             )
           end
           def unenroll_many(
-            # Path param:
+            # Path param
             benefit_id,
             # Query param: The entity IDs to specify which entities' data to access.
             entity_ids: nil,

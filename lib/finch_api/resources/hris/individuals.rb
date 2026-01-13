@@ -10,9 +10,9 @@ module FinchAPI
         #
         # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access.
         #
-        # @param options [FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, nil] Body param:
+        # @param options [FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, nil] Body param
         #
-        # @param requests [Array<FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request>] Body param:
+        # @param requests [Array<FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request>] Body param
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
