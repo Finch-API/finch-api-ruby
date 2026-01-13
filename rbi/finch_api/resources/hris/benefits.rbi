@@ -65,7 +65,7 @@ module FinchAPI
           ).returns(FinchAPI::HRIS::UpdateCompanyBenefitResponse)
         end
         def update(
-          # Path param:
+          # Path param
           benefit_id,
           # Query param: The entity IDs to specify which entities' data to access.
           entity_ids: nil,

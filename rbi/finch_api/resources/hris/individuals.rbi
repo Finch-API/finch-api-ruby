@@ -26,9 +26,9 @@ module FinchAPI
         def retrieve_many(
           # Query param: The entity IDs to specify which entities' data to access.
           entity_ids: nil,
-          # Body param:
+          # Body param
           options: nil,
-          # Body param:
+          # Body param
           requests: nil,
           request_options: {}
         )

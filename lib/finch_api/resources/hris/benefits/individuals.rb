@@ -12,7 +12,7 @@ module FinchAPI
           #
           # @overload enroll_many(benefit_id, entity_ids: nil, individuals: nil, request_options: {})
           #
-          # @param benefit_id [String] Path param:
+          # @param benefit_id [String] Path param
           #
           # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access.
           #
@@ -94,7 +94,7 @@ module FinchAPI
           #
           # @overload unenroll_many(benefit_id, entity_ids: nil, individual_ids: nil, request_options: {})
           #
-          # @param benefit_id [String] Path param:
+          # @param benefit_id [String] Path param
           #
           # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access.
           #
