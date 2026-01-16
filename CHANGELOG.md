@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.42 (2026-01-16)
+
+Full Changelog: [v0.1.0-alpha.41...v0.1.0-alpha.42](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.41...v0.1.0-alpha.42)
+
+### Chores
+
+* **internal:** update `actions/checkout` version ([e0297b6](https://github.com/Finch-API/finch-api-ruby/commit/e0297b62f06fd43c8c451fcb40acf8e17a446098))
+
 ## 0.1.0-alpha.41 (2026-01-13)
 
 Full Changelog: [v0.1.0-alpha.40...v0.1.0-alpha.41](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.40...v0.1.0-alpha.41)
