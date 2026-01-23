@@ -49,6 +49,7 @@ module FinchAPI
             path: ["sandbox/individual/%1$s", individual_id],
             body: parsed,
             model: FinchAPI::Models::Sandbox::IndividualUpdateResponse,
+            security: {bearer_auth: true},
             options: options
           )
         end

@@ -31,7 +31,19 @@ module FinchAPI
           #
           # @raise [ArgumentError]
           def validate!(req)
-            keys = [:method, :path, :query, :headers, :body, :unwrap, :page, :stream, :model, :options]
+            keys = [
+              :method,
+              :path,
+              :query,
+              :headers,
+              :body,
+              :unwrap,
+              :page,
+              :stream,
+              :model,
+              :security,
+              :options
+            ]
             case req
             in Hash
               req.each_key do |k|
@@ -252,6 +264,8 @@ module FinchAPI
         #
         #   @option req [FinchAPI::Internal::Type::Converter, Class, nil] :model
         #
+        #   @option req [Hash{Symbol=>Boolean}, nil] :security
+        #
         # @param opts [Hash{Symbol=>Object}] .
         #
         #   @option opts [String, nil] :idempotency_key
@@ -276,7 +290,12 @@ module FinchAPI
 
           headers = FinchAPI::Internal::Util.normalized_headers(
             @headers,
-            auth_headers,
+            auth_headers(
+              security: req.fetch(
+                :security,
+                {bearer_auth: true, basic_auth: true}
+              )
+            ),
             req[:headers].to_h,
             opts[:extra_headers].to_h
           )
@@ -439,7 +458,7 @@ module FinchAPI
         # Execute the request specified by `req`. This is the method that all resource
         # methods call into.
         #
-        # @overload request(method, path, query: {}, headers: {}, body: nil, unwrap: nil, page: nil, stream: nil, model: FinchAPI::Internal::Type::Unknown, options: {})
+        # @overload request(method, path, query: {}, headers: {}, body: nil, unwrap: nil, page: nil, stream: nil, model: FinchAPI::Internal::Type::Unknown, security: {bearer_auth: true, basic_auth: true}, options: {})
         #
         # @param method [Symbol]
         #
@@ -458,6 +477,8 @@ module FinchAPI
         # @param stream [Class<FinchAPI::Internal::Type::BaseStream>, nil]
         #
         # @param model [FinchAPI::Internal::Type::Converter, Class, nil]
+        #
+        # @param security [Hash{Symbol=>Boolean}, nil]
         #
         # @param options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil] .
         #
@@ -551,6 +572,7 @@ module FinchAPI
               page: T.nilable(T::Class[FinchAPI::Internal::Type::BasePage[FinchAPI::Internal::Type::BaseModel]]),
               stream: T.nilable(T::Class[T.anything]),
               model: T.nilable(FinchAPI::Internal::Type::Converter::Input),
+              security: T.nilable({bearer_auth: T::Boolean, basic_auth: T::Boolean}),
               options: T.nilable(FinchAPI::RequestOptions::OrHash)
             }
           end

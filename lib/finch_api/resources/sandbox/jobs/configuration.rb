@@ -19,6 +19,7 @@ module FinchAPI
               method: :get,
               path: "sandbox/jobs/configuration",
               model: FinchAPI::Internal::Type::ArrayOf[FinchAPI::Sandbox::Jobs::SandboxJobConfiguration],
+              security: {bearer_auth: true},
               options: params[:request_options]
             )
           end
@@ -41,6 +42,7 @@ module FinchAPI
               path: "sandbox/jobs/configuration",
               body: parsed,
               model: FinchAPI::Sandbox::Jobs::SandboxJobConfiguration,
+              security: {bearer_auth: true},
               options: options
             )
           end

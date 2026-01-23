@@ -50,8 +50,12 @@ module FinchAPI
     attr_reader :connect
 
     # @api private
-    sig { override.returns(T::Hash[String, String]) }
-    private def auth_headers
+    sig do
+      override
+        .params(security: { bearer_auth: T::Boolean, basic_auth: T::Boolean })
+        .returns(T::Hash[String, String])
+    end
+    private def auth_headers(security:)
     end
 
     # @api private

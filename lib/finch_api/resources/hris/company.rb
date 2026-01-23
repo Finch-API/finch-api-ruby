@@ -25,6 +25,7 @@ module FinchAPI
             path: "employer/company",
             query: parsed,
             model: FinchAPI::HRIS::HRISCompany,
+            security: {bearer_auth: true},
             options: options
           )
         end

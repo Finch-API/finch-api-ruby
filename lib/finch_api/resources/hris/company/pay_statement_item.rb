@@ -41,6 +41,7 @@ module FinchAPI
               query: parsed,
               page: FinchAPI::Internal::ResponsesPage,
               model: FinchAPI::Models::HRIS::Company::PayStatementItemListResponse,
+              security: {bearer_auth: true},
               options: options
             )
           end

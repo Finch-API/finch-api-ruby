@@ -26,6 +26,7 @@ module FinchAPI
             path: "sandbox/payment",
             body: parsed,
             model: FinchAPI::Models::Sandbox::PaymentCreateResponse,
+            security: {bearer_auth: true},
             options: options
           )
         end

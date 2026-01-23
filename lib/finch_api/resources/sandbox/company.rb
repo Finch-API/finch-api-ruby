@@ -39,6 +39,7 @@ module FinchAPI
             path: "sandbox/company",
             body: parsed,
             model: FinchAPI::Models::Sandbox::CompanyUpdateResponse,
+            security: {bearer_auth: true},
             options: options
           )
         end

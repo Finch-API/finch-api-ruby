@@ -61,6 +61,7 @@ module FinchAPI
             path: ["sandbox/employment/%1$s", individual_id],
             body: parsed,
             model: FinchAPI::Models::Sandbox::EmploymentUpdateResponse,
+            security: {bearer_auth: true},
             options: options
           )
         end

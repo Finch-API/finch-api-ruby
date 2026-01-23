@@ -25,6 +25,7 @@ module FinchAPI
             path: "sandbox/directory",
             body: parsed[:body],
             model: FinchAPI::Internal::Type::ArrayOf[FinchAPI::Internal::Type::Unknown],
+            security: {bearer_auth: true},
             options: options
           )
         end

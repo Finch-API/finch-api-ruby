@@ -30,6 +30,7 @@ module FinchAPI
             body: parsed.except(*query_params),
             page: FinchAPI::Internal::ResponsesPage,
             model: FinchAPI::HRIS::PayStatementResponse,
+            security: {bearer_auth: true},
             options: options
           )
         end

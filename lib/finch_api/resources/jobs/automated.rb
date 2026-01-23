@@ -37,6 +37,7 @@ module FinchAPI
             path: "jobs/automated",
             body: parsed,
             model: FinchAPI::Models::Jobs::AutomatedCreateResponse,
+            security: {bearer_auth: true},
             options: options
           )
         end
@@ -56,6 +57,7 @@ module FinchAPI
             method: :get,
             path: ["jobs/automated/%1$s", job_id],
             model: FinchAPI::Jobs::AutomatedAsyncJob,
+            security: {bearer_auth: true},
             options: params[:request_options]
           )
         end
@@ -82,6 +84,7 @@ module FinchAPI
             path: "jobs/automated",
             query: parsed,
             model: FinchAPI::Models::Jobs::AutomatedListResponse,
+            security: {bearer_auth: true},
             options: options
           )
         end

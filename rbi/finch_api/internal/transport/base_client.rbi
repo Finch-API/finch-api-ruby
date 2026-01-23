@@ -51,6 +51,8 @@ module FinchAPI
                 ),
               stream: T.nilable(T::Class[T.anything]),
               model: T.nilable(FinchAPI::Internal::Type::Converter::Input),
+              security:
+                T.nilable({ bearer_auth: T::Boolean, basic_auth: T::Boolean }),
               options: T.nilable(FinchAPI::RequestOptions::OrHash)
             }
           end
@@ -228,7 +230,7 @@ module FinchAPI
         # Execute the request specified by `req`. This is the method that all resource
         # methods call into.
         #
-        # @overload request(method, path, query: {}, headers: {}, body: nil, unwrap: nil, page: nil, stream: nil, model: FinchAPI::Internal::Type::Unknown, options: {})
+        # @overload request(method, path, query: {}, headers: {}, body: nil, unwrap: nil, page: nil, stream: nil, model: FinchAPI::Internal::Type::Unknown, security: {bearer_auth: true, basic_auth: true}, options: {})
         sig do
           params(
             method: Symbol,
@@ -270,6 +272,8 @@ module FinchAPI
               ),
             stream: T.nilable(T::Class[T.anything]),
             model: T.nilable(FinchAPI::Internal::Type::Converter::Input),
+            security:
+              T.nilable({ bearer_auth: T::Boolean, basic_auth: T::Boolean }),
             options: T.nilable(FinchAPI::RequestOptions::OrHash)
           ).returns(T.anything)
         end
@@ -283,6 +287,7 @@ module FinchAPI
           page: nil,
           stream: nil,
           model: FinchAPI::Internal::Type::Unknown,
+          security: { bearer_auth: true, basic_auth: true },
           options: {}
         )
         end

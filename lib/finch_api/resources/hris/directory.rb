@@ -27,6 +27,7 @@ module FinchAPI
             query: parsed,
             page: FinchAPI::Internal::IndividualsPage,
             model: FinchAPI::HRIS::IndividualInDirectory,
+            security: {bearer_auth: true},
             options: options
           )
         end

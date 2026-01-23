@@ -35,6 +35,7 @@ module FinchAPI
           path: "forward",
           body: parsed,
           model: FinchAPI::Models::RequestForwardingForwardResponse,
+          security: {bearer_auth: true},
           options: options
         )
       end

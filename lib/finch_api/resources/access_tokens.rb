@@ -27,6 +27,7 @@ module FinchAPI
           path: "auth/token",
           body: parsed,
           model: FinchAPI::CreateAccessTokenResponse,
+          security: {},
           options: options
         )
       end

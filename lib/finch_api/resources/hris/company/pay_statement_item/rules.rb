@@ -43,6 +43,7 @@ module FinchAPI
                 query: parsed.slice(*query_params),
                 body: parsed.except(*query_params),
                 model: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse,
+                security: {bearer_auth: true},
                 options: options
               )
             end
@@ -71,6 +72,7 @@ module FinchAPI
                 query: parsed.slice(*query_params),
                 body: parsed.except(*query_params),
                 model: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse,
+                security: {bearer_auth: true},
                 options: options
               )
             end
@@ -94,6 +96,7 @@ module FinchAPI
                 query: parsed,
                 page: FinchAPI::Internal::ResponsesPage,
                 model: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleListResponse,
+                security: {bearer_auth: true},
                 options: options
               )
             end
@@ -118,6 +121,7 @@ module FinchAPI
                 path: ["employer/pay-statement-item/rule/%1$s", rule_id],
                 query: parsed,
                 model: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleDeleteResponse,
+                security: {bearer_auth: true},
                 options: options
               )
             end

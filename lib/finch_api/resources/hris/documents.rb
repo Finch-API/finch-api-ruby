@@ -34,6 +34,7 @@ module FinchAPI
             path: "employer/documents",
             query: parsed,
             model: FinchAPI::Models::HRIS::DocumentListResponse,
+            security: {bearer_auth: true},
             options: options
           )
         end
@@ -59,6 +60,7 @@ module FinchAPI
             path: ["employer/documents/%1$s", document_id],
             query: parsed,
             model: FinchAPI::Models::HRIS::DocumentRetreiveResponse,
+            security: {bearer_auth: true},
             options: options
           )
         end

@@ -24,6 +24,7 @@ module FinchAPI
             path: ["employer/pay-groups/%1$s", pay_group_id],
             query: parsed,
             model: FinchAPI::Models::Payroll::PayGroupRetrieveResponse,
+            security: {bearer_auth: true},
             options: options
           )
         end
@@ -51,6 +52,7 @@ module FinchAPI
             query: parsed,
             page: FinchAPI::Internal::SinglePage,
             model: FinchAPI::Models::Payroll::PayGroupListResponse,
+            security: {bearer_auth: true},
             options: options
           )
         end
