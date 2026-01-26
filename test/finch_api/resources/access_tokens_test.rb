@@ -4,6 +4,8 @@ require_relative "../test_helper"
 
 class FinchAPI::Test::Resources::AccessTokensTest < FinchAPI::Test::ResourceTest
   def test_create_required_params
+    skip("prism doesnt like the format for the API-Version header")
+
     response = @finch.access_tokens.create(code: "code")
 
     assert_pattern do
