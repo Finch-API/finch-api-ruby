@@ -34,25 +34,13 @@ class FinchAPI::Test::Resources::HRIS::DirectoryTest < FinchAPI::Test::ResourceT
     response = @finch.hris.directory.list_individuals
 
     assert_pattern do
-      response => FinchAPI::Internal::IndividualsPage
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => FinchAPI::HRIS::IndividualInDirectory
+      response => FinchAPI::UnnamedTypeWithNoPropertyInfoOrParent0
     end
 
     assert_pattern do
-      row => {
-        id: String,
-        department: FinchAPI::HRIS::IndividualInDirectory::Department | nil,
-        first_name: String | nil,
-        is_active: FinchAPI::Internal::Type::Boolean | nil,
-        last_name: String | nil,
-        manager: FinchAPI::HRIS::IndividualInDirectory::Manager | nil,
-        middle_name: String | nil
+      response => {
+        individuals: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::IndividualInDirectory]),
+        paging: FinchAPI::Paging
       }
     end
   end
