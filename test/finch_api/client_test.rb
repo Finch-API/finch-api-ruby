@@ -30,7 +30,13 @@ class FinchAPITest < Minitest::Test
   def test_client_default_request_default_retry_attempts
     stub_request(:get, "http://localhost/employer/directory").to_return_json(status: 500, body: {})
 
-    finch = FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token")
+    finch =
+      FinchAPI::Client.new(
+        base_url: "http://localhost",
+        access_token: "My Access Token",
+        client_id: "4ab15e51-11ad-49f4-acae-f343b7794375",
+        client_secret: "My Client Secret"
+      )
 
     assert_raises(FinchAPI::Errors::InternalServerError) do
       finch.hris.directory.list
@@ -43,7 +49,13 @@ class FinchAPITest < Minitest::Test
     stub_request(:get, "http://localhost/employer/directory").to_return_json(status: 500, body: {})
 
     finch =
-      FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token", max_retries: 3)
+      FinchAPI::Client.new(
+        base_url: "http://localhost",
+        access_token: "My Access Token",
+        client_id: "4ab15e51-11ad-49f4-acae-f343b7794375",
+        client_secret: "My Client Secret",
+        max_retries: 3
+      )
 
     assert_raises(FinchAPI::Errors::InternalServerError) do
       finch.hris.directory.list
@@ -55,7 +67,13 @@ class FinchAPITest < Minitest::Test
   def test_client_default_request_given_retry_attempts
     stub_request(:get, "http://localhost/employer/directory").to_return_json(status: 500, body: {})
 
-    finch = FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token")
+    finch =
+      FinchAPI::Client.new(
+        base_url: "http://localhost",
+        access_token: "My Access Token",
+        client_id: "4ab15e51-11ad-49f4-acae-f343b7794375",
+        client_secret: "My Client Secret"
+      )
 
     assert_raises(FinchAPI::Errors::InternalServerError) do
       finch.hris.directory.list(request_options: {max_retries: 3})
@@ -68,7 +86,13 @@ class FinchAPITest < Minitest::Test
     stub_request(:get, "http://localhost/employer/directory").to_return_json(status: 500, body: {})
 
     finch =
-      FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token", max_retries: 3)
+      FinchAPI::Client.new(
+        base_url: "http://localhost",
+        access_token: "My Access Token",
+        client_id: "4ab15e51-11ad-49f4-acae-f343b7794375",
+        client_secret: "My Client Secret",
+        max_retries: 3
+      )
 
     assert_raises(FinchAPI::Errors::InternalServerError) do
       finch.hris.directory.list(request_options: {max_retries: 4})
@@ -85,7 +109,13 @@ class FinchAPITest < Minitest::Test
     )
 
     finch =
-      FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token", max_retries: 1)
+      FinchAPI::Client.new(
+        base_url: "http://localhost",
+        access_token: "My Access Token",
+        client_id: "4ab15e51-11ad-49f4-acae-f343b7794375",
+        client_secret: "My Client Secret",
+        max_retries: 1
+      )
 
     assert_raises(FinchAPI::Errors::InternalServerError) do
       finch.hris.directory.list
@@ -103,7 +133,13 @@ class FinchAPITest < Minitest::Test
     )
 
     finch =
-      FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token", max_retries: 1)
+      FinchAPI::Client.new(
+        base_url: "http://localhost",
+        access_token: "My Access Token",
+        client_id: "4ab15e51-11ad-49f4-acae-f343b7794375",
+        client_secret: "My Client Secret",
+        max_retries: 1
+      )
 
     assert_raises(FinchAPI::Errors::InternalServerError) do
       Thread.current.thread_variable_set(:time_now, Time.now)
@@ -123,7 +159,13 @@ class FinchAPITest < Minitest::Test
     )
 
     finch =
-      FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token", max_retries: 1)
+      FinchAPI::Client.new(
+        base_url: "http://localhost",
+        access_token: "My Access Token",
+        client_id: "4ab15e51-11ad-49f4-acae-f343b7794375",
+        client_secret: "My Client Secret",
+        max_retries: 1
+      )
 
     assert_raises(FinchAPI::Errors::InternalServerError) do
       finch.hris.directory.list
@@ -136,7 +178,13 @@ class FinchAPITest < Minitest::Test
   def test_retry_count_header
     stub_request(:get, "http://localhost/employer/directory").to_return_json(status: 500, body: {})
 
-    finch = FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token")
+    finch =
+      FinchAPI::Client.new(
+        base_url: "http://localhost",
+        access_token: "My Access Token",
+        client_id: "4ab15e51-11ad-49f4-acae-f343b7794375",
+        client_secret: "My Client Secret"
+      )
 
     assert_raises(FinchAPI::Errors::InternalServerError) do
       finch.hris.directory.list
@@ -150,7 +198,13 @@ class FinchAPITest < Minitest::Test
   def test_omit_retry_count_header
     stub_request(:get, "http://localhost/employer/directory").to_return_json(status: 500, body: {})
 
-    finch = FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token")
+    finch =
+      FinchAPI::Client.new(
+        base_url: "http://localhost",
+        access_token: "My Access Token",
+        client_id: "4ab15e51-11ad-49f4-acae-f343b7794375",
+        client_secret: "My Client Secret"
+      )
 
     assert_raises(FinchAPI::Errors::InternalServerError) do
       finch.hris.directory.list(request_options: {extra_headers: {"x-stainless-retry-count" => nil}})
@@ -164,7 +218,13 @@ class FinchAPITest < Minitest::Test
   def test_overwrite_retry_count_header
     stub_request(:get, "http://localhost/employer/directory").to_return_json(status: 500, body: {})
 
-    finch = FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token")
+    finch =
+      FinchAPI::Client.new(
+        base_url: "http://localhost",
+        access_token: "My Access Token",
+        client_id: "4ab15e51-11ad-49f4-acae-f343b7794375",
+        client_secret: "My Client Secret"
+      )
 
     assert_raises(FinchAPI::Errors::InternalServerError) do
       finch.hris.directory.list(request_options: {extra_headers: {"x-stainless-retry-count" => "42"}})
@@ -184,7 +244,13 @@ class FinchAPITest < Minitest::Test
       headers: {"location" => "/redirected"}
     )
 
-    finch = FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token")
+    finch =
+      FinchAPI::Client.new(
+        base_url: "http://localhost",
+        access_token: "My Access Token",
+        client_id: "4ab15e51-11ad-49f4-acae-f343b7794375",
+        client_secret: "My Client Secret"
+      )
 
     assert_raises(FinchAPI::Errors::APIConnectionError) do
       finch.hris.directory.list(request_options: {extra_headers: {}})
@@ -213,7 +279,13 @@ class FinchAPITest < Minitest::Test
       headers: {"location" => "/redirected"}
     )
 
-    finch = FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token")
+    finch =
+      FinchAPI::Client.new(
+        base_url: "http://localhost",
+        access_token: "My Access Token",
+        client_id: "4ab15e51-11ad-49f4-acae-f343b7794375",
+        client_secret: "My Client Secret"
+      )
 
     assert_raises(FinchAPI::Errors::APIConnectionError) do
       finch.hris.directory.list(request_options: {extra_headers: {}})
@@ -237,7 +309,13 @@ class FinchAPITest < Minitest::Test
       headers: {"location" => "/redirected"}
     )
 
-    finch = FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token")
+    finch =
+      FinchAPI::Client.new(
+        base_url: "http://localhost",
+        access_token: "My Access Token",
+        client_id: "4ab15e51-11ad-49f4-acae-f343b7794375",
+        client_secret: "My Client Secret"
+      )
 
     assert_raises(FinchAPI::Errors::APIConnectionError) do
       finch.hris.directory.list(request_options: {extra_headers: {"authorization" => "Bearer xyz"}})
@@ -264,7 +342,13 @@ class FinchAPITest < Minitest::Test
       headers: {"location" => "https://example.com/redirected"}
     )
 
-    finch = FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token")
+    finch =
+      FinchAPI::Client.new(
+        base_url: "http://localhost",
+        access_token: "My Access Token",
+        client_id: "4ab15e51-11ad-49f4-acae-f343b7794375",
+        client_secret: "My Client Secret"
+      )
 
     assert_raises(FinchAPI::Errors::APIConnectionError) do
       finch.hris.directory.list(request_options: {extra_headers: {"authorization" => "Bearer xyz"}})
@@ -279,7 +363,13 @@ class FinchAPITest < Minitest::Test
   def test_default_headers
     stub_request(:get, "http://localhost/employer/directory").to_return_json(status: 200, body: {})
 
-    finch = FinchAPI::Client.new(base_url: "http://localhost", access_token: "My Access Token")
+    finch =
+      FinchAPI::Client.new(
+        base_url: "http://localhost",
+        access_token: "My Access Token",
+        client_id: "4ab15e51-11ad-49f4-acae-f343b7794375",
+        client_secret: "My Client Secret"
+      )
 
     finch.hris.directory.list
 

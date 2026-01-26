@@ -56,11 +56,11 @@ module FinchAPI
 
     # @api private
     #
+    # @param security [Hash{Symbol=>Boolean}]
+    #
     # @return [Hash{String=>String}]
-    private def auth_headers
-      return bearer_auth unless bearer_auth.empty?
-      return basic_auth unless basic_auth.empty?
-      {}
+    private def auth_headers(security:)
+      {bearer_auth:, basic_auth:}.slice(*security.keys).values.reduce({}, :merge)
     end
 
     # @api private

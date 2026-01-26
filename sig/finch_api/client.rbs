@@ -34,7 +34,9 @@ module FinchAPI
 
     attr_reader connect: FinchAPI::Resources::Connect
 
-    private def auth_headers: -> ::Hash[String, String]
+    private def auth_headers: (
+      security: { bearer_auth: bool, basic_auth: bool }
+    ) -> ::Hash[String, String]
 
     private def bearer_auth: -> ::Hash[String, String]
 

@@ -17,6 +17,7 @@ module FinchAPI
           method: :post,
           path: "disconnect",
           model: FinchAPI::DisconnectResponse,
+          security: {bearer_auth: true},
           options: params[:request_options]
         )
       end
@@ -35,6 +36,7 @@ module FinchAPI
           method: :get,
           path: "introspect",
           model: FinchAPI::Introspection,
+          security: {bearer_auth: true},
           options: params[:request_options]
         )
       end

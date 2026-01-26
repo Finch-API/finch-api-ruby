@@ -31,6 +31,7 @@ module FinchAPI
               query: parsed.except(:individuals),
               body: parsed[:individuals],
               model: FinchAPI::HRIS::Benefits::EnrolledIndividualBenefitResponse,
+              security: {bearer_auth: true},
               options: options
             )
           end
@@ -55,6 +56,7 @@ module FinchAPI
               path: ["employer/benefits/%1$s/enrolled", benefit_id],
               query: parsed,
               model: FinchAPI::Models::HRIS::Benefits::IndividualEnrolledIDsResponse,
+              security: {bearer_auth: true},
               options: options
             )
           end
@@ -86,6 +88,7 @@ module FinchAPI
               query: parsed,
               page: FinchAPI::Internal::SinglePage,
               model: FinchAPI::HRIS::Benefits::IndividualBenefit,
+              security: {bearer_auth: true},
               options: options
             )
           end
@@ -114,6 +117,7 @@ module FinchAPI
               query: parsed.slice(*query_params),
               body: parsed.except(*query_params),
               model: FinchAPI::HRIS::Benefits::UnenrolledIndividualBenefitResponse,
+              security: {bearer_auth: true},
               options: options
             )
           end

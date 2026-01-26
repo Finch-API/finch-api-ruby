@@ -20,6 +20,7 @@ module FinchAPI
             method: :get,
             path: ["jobs/manual/%1$s", job_id],
             model: FinchAPI::Jobs::ManualAsyncJob,
+            security: {bearer_auth: true},
             options: params[:request_options]
           )
         end

@@ -30,6 +30,7 @@ module FinchAPI
             query: parsed,
             page: FinchAPI::Internal::SinglePage,
             model: FinchAPI::HRIS::Payment,
+            security: {bearer_auth: true},
             options: options
           )
         end

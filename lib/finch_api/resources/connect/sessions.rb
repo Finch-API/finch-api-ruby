@@ -41,6 +41,7 @@ module FinchAPI
             path: "connect/sessions",
             body: parsed,
             model: FinchAPI::Models::Connect::SessionNewResponse,
+            security: {basic_auth: true},
             options: options
           )
         end
@@ -72,6 +73,7 @@ module FinchAPI
             path: "connect/sessions/reauthenticate",
             body: parsed,
             model: FinchAPI::Models::Connect::SessionReauthenticateResponse,
+            security: {basic_auth: true},
             options: options
           )
         end
