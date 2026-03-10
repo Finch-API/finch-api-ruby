@@ -21,12 +21,13 @@ module FinchAPI
         #
         # @see FinchAPI::Models::HRIS::PayStatementRetrieveManyParams
         def retrieve_many(params)
-          parsed, options = FinchAPI::HRIS::PayStatementRetrieveManyParams.dump_request(params)
           query_params = [:entity_ids]
+          parsed, options = FinchAPI::HRIS::PayStatementRetrieveManyParams.dump_request(params)
+          query = FinchAPI::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :post,
             path: "employer/pay-statement",
-            query: parsed.slice(*query_params),
+            query: query,
             body: parsed.except(*query_params),
             page: FinchAPI::Internal::ResponsesPage,
             model: FinchAPI::HRIS::PayStatementResponse,

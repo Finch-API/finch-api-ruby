@@ -20,17 +20,15 @@ module FinchAPI
         # access to this endpoint, please contact your Finch account manager.
         sig do
           params(
-            type: FinchAPI::Jobs::AutomatedCreateParams::Type::OrSymbol,
-            params: FinchAPI::Jobs::AutomatedCreateParams::Params::OrHash,
+            body:
+              T.any(
+                FinchAPI::Jobs::AutomatedCreateParams::Body::DataSyncAll::OrHash,
+                FinchAPI::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync::OrHash
+              ),
             request_options: FinchAPI::RequestOptions::OrHash
           ).returns(FinchAPI::Models::Jobs::AutomatedCreateResponse)
         end
-        def create(
-          # The type of job to start.
-          type:,
-          params:,
-          request_options: {}
-        )
+        def create(body:, request_options: {})
         end
 
         # Get an automated job by `job_id`.

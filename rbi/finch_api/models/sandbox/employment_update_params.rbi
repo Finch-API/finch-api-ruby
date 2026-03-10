@@ -15,6 +15,9 @@ module FinchAPI
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :individual_id
+
         # Worker's compensation classification code for this employee
         sig { returns(T.nilable(String)) }
         attr_accessor :class_code
@@ -158,6 +161,7 @@ module FinchAPI
 
         sig do
           params(
+            individual_id: String,
             class_code: T.nilable(String),
             custom_fields:
               T.nilable(
@@ -202,6 +206,7 @@ module FinchAPI
           ).returns(T.attached_class)
         end
         def self.new(
+          individual_id:,
           # Worker's compensation classification code for this employee
           class_code: nil,
           # Custom fields for the individual. These are fields which are defined by the
@@ -248,6 +253,7 @@ module FinchAPI
         sig do
           override.returns(
             {
+              individual_id: String,
               class_code: T.nilable(String),
               custom_fields:
                 T.nilable(

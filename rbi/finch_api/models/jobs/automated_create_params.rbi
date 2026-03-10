@@ -15,40 +15,37 @@ module FinchAPI
             )
           end
 
-        # The type of job to start.
-        sig { returns(FinchAPI::Jobs::AutomatedCreateParams::Type::OrSymbol) }
-        attr_accessor :type
-
-        sig { returns(FinchAPI::Jobs::AutomatedCreateParams::Params) }
-        attr_reader :params
-
         sig do
-          params(
-            params: FinchAPI::Jobs::AutomatedCreateParams::Params::OrHash
-          ).void
+          returns(
+            T.any(
+              FinchAPI::Jobs::AutomatedCreateParams::Body::DataSyncAll,
+              FinchAPI::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync
+            )
+          )
         end
-        attr_writer :params
+        attr_accessor :body
 
         sig do
           params(
-            type: FinchAPI::Jobs::AutomatedCreateParams::Type::OrSymbol,
-            params: FinchAPI::Jobs::AutomatedCreateParams::Params::OrHash,
+            body:
+              T.any(
+                FinchAPI::Jobs::AutomatedCreateParams::Body::DataSyncAll::OrHash,
+                FinchAPI::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync::OrHash
+              ),
             request_options: FinchAPI::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(
-          # The type of job to start.
-          type:,
-          params:,
-          request_options: {}
-        )
+        def self.new(body:, request_options: {})
         end
 
         sig do
           override.returns(
             {
-              type: FinchAPI::Jobs::AutomatedCreateParams::Type::OrSymbol,
-              params: FinchAPI::Jobs::AutomatedCreateParams::Params,
+              body:
+                T.any(
+                  FinchAPI::Jobs::AutomatedCreateParams::Body::DataSyncAll,
+                  FinchAPI::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync
+                ),
               request_options: FinchAPI::RequestOptions
             }
           )
@@ -56,55 +53,128 @@ module FinchAPI
         def to_hash
         end
 
-        # The type of job to start.
-        module Type
-          extend FinchAPI::Internal::Type::Enum
+        module Body
+          extend FinchAPI::Internal::Type::Union
 
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, FinchAPI::Jobs::AutomatedCreateParams::Type)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          W4_FORM_EMPLOYEE_SYNC =
-            T.let(
-              :w4_form_employee_sync,
-              FinchAPI::Jobs::AutomatedCreateParams::Type::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                FinchAPI::Jobs::AutomatedCreateParams::Type::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
-        end
-
-        class Params < FinchAPI::Internal::Type::BaseModel
-          OrHash =
+          Variants =
             T.type_alias do
               T.any(
-                FinchAPI::Jobs::AutomatedCreateParams::Params,
-                FinchAPI::Internal::AnyHash
+                FinchAPI::Jobs::AutomatedCreateParams::Body::DataSyncAll,
+                FinchAPI::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync
               )
             end
 
-          # The unique ID of the individual for W-4 data sync.
-          sig { returns(String) }
-          attr_accessor :individual_id
+          class DataSyncAll < FinchAPI::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  FinchAPI::Jobs::AutomatedCreateParams::Body::DataSyncAll,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
 
-          sig { params(individual_id: String).returns(T.attached_class) }
-          def self.new(
-            # The unique ID of the individual for W-4 data sync.
-            individual_id:
-          )
+            # The type of job to start.
+            sig { returns(Symbol) }
+            attr_accessor :type
+
+            sig { params(type: Symbol).returns(T.attached_class) }
+            def self.new(
+              # The type of job to start.
+              type: :data_sync_all
+            )
+            end
+
+            sig { override.returns({ type: Symbol }) }
+            def to_hash
+            end
           end
 
-          sig { override.returns({ individual_id: String }) }
-          def to_hash
+          class W4FormEmployeeSync < FinchAPI::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  FinchAPI::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync,
+                  FinchAPI::Internal::AnyHash
+                )
+              end
+
+            sig do
+              returns(
+                FinchAPI::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync::Params
+              )
+            end
+            attr_reader :params
+
+            sig do
+              params(
+                params:
+                  FinchAPI::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync::Params::OrHash
+              ).void
+            end
+            attr_writer :params
+
+            # The type of job to start.
+            sig { returns(Symbol) }
+            attr_accessor :type
+
+            sig do
+              params(
+                params:
+                  FinchAPI::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync::Params::OrHash,
+                type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              params:,
+              # The type of job to start.
+              type: :w4_form_employee_sync
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  params:
+                    FinchAPI::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync::Params,
+                  type: Symbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class Params < FinchAPI::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    FinchAPI::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync::Params,
+                    FinchAPI::Internal::AnyHash
+                  )
+                end
+
+              # The unique ID of the individual for W-4 data sync.
+              sig { returns(String) }
+              attr_accessor :individual_id
+
+              sig { params(individual_id: String).returns(T.attached_class) }
+              def self.new(
+                # The unique ID of the individual for W-4 data sync.
+                individual_id:
+              )
+              end
+
+              sig { override.returns({ individual_id: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[FinchAPI::Jobs::AutomatedCreateParams::Body::Variants]
+            )
+          end
+          def self.variants
           end
         end
       end

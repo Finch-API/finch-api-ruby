@@ -19,12 +19,9 @@ module FinchAPI
         # This endpoint is available for _Scale_ tier customers as an add-on. To request
         # access to this endpoint, please contact your Finch account manager.
         #
-        # @overload create(type:, params:, request_options: {})
+        # @overload create(body:, request_options: {})
         #
-        # @param type [Symbol, FinchAPI::Models::Jobs::AutomatedCreateParams::Type] The type of job to start.
-        #
-        # @param params [FinchAPI::Models::Jobs::AutomatedCreateParams::Params]
-        #
+        # @param body [FinchAPI::Models::Jobs::AutomatedCreateParams::Body::DataSyncAll, FinchAPI::Models::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync]
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Models::Jobs::AutomatedCreateResponse]
@@ -35,7 +32,7 @@ module FinchAPI
           @client.request(
             method: :post,
             path: "jobs/automated",
-            body: parsed,
+            body: parsed[:body],
             model: FinchAPI::Models::Jobs::AutomatedCreateResponse,
             security: {bearer_auth: true},
             options: options
@@ -79,10 +76,11 @@ module FinchAPI
         # @see FinchAPI::Models::Jobs::AutomatedListParams
         def list(params = {})
           parsed, options = FinchAPI::Jobs::AutomatedListParams.dump_request(params)
+          query = FinchAPI::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "jobs/automated",
-            query: parsed,
+            query: query,
             model: FinchAPI::Models::Jobs::AutomatedListResponse,
             security: {bearer_auth: true},
             options: options

@@ -2,23 +2,27 @@ module FinchAPI
   module Models
     module Payroll
       type pay_group_retrieve_params =
-        { entity_ids: ::Array[String] }
+        { pay_group_id: String, entity_ids: ::Array[String] }
         & FinchAPI::Internal::Type::request_parameters
 
       class PayGroupRetrieveParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
+        attr_accessor pay_group_id: String
+
         attr_reader entity_ids: ::Array[String]?
 
         def entity_ids=: (::Array[String]) -> ::Array[String]
 
         def initialize: (
+          pay_group_id: String,
           ?entity_ids: ::Array[String],
           ?request_options: FinchAPI::request_opts
         ) -> void
 
         def to_hash: -> {
+          pay_group_id: String,
           entity_ids: ::Array[String],
           request_options: FinchAPI::RequestOptions
         }

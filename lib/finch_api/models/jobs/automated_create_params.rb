@@ -8,43 +8,67 @@ module FinchAPI
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
-        # @!attribute type
-        #   The type of job to start.
+        # @!attribute body
         #
-        #   @return [Symbol, FinchAPI::Models::Jobs::AutomatedCreateParams::Type]
-        required :type, enum: -> { FinchAPI::Jobs::AutomatedCreateParams::Type }
+        #   @return [FinchAPI::Models::Jobs::AutomatedCreateParams::Body::DataSyncAll, FinchAPI::Models::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync]
+        required :body, union: -> { FinchAPI::Jobs::AutomatedCreateParams::Body }
 
-        # @!attribute params
-        #
-        #   @return [FinchAPI::Models::Jobs::AutomatedCreateParams::Params]
-        required :params, -> { FinchAPI::Jobs::AutomatedCreateParams::Params }
-
-        # @!method initialize(type:, params:, request_options: {})
-        #   @param type [Symbol, FinchAPI::Models::Jobs::AutomatedCreateParams::Type] The type of job to start.
-        #
-        #   @param params [FinchAPI::Models::Jobs::AutomatedCreateParams::Params]
-        #
+        # @!method initialize(body:, request_options: {})
+        #   @param body [FinchAPI::Models::Jobs::AutomatedCreateParams::Body::DataSyncAll, FinchAPI::Models::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync]
         #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 
-        # The type of job to start.
-        module Type
-          extend FinchAPI::Internal::Type::Enum
+        module Body
+          extend FinchAPI::Internal::Type::Union
 
-          W4_FORM_EMPLOYEE_SYNC = :w4_form_employee_sync
+          discriminator :type
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
+          variant :data_sync_all, -> { FinchAPI::Jobs::AutomatedCreateParams::Body::DataSyncAll }
 
-        class Params < FinchAPI::Internal::Type::BaseModel
-          # @!attribute individual_id
-          #   The unique ID of the individual for W-4 data sync.
-          #
-          #   @return [String]
-          required :individual_id, String
+          variant :w4_form_employee_sync, -> { FinchAPI::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync }
 
-          # @!method initialize(individual_id:)
-          #   @param individual_id [String] The unique ID of the individual for W-4 data sync.
+          class DataSyncAll < FinchAPI::Internal::Type::BaseModel
+            # @!attribute type
+            #   The type of job to start.
+            #
+            #   @return [Symbol, :data_sync_all]
+            required :type, const: :data_sync_all
+
+            # @!method initialize(type: :data_sync_all)
+            #   @param type [Symbol, :data_sync_all] The type of job to start.
+          end
+
+          class W4FormEmployeeSync < FinchAPI::Internal::Type::BaseModel
+            # @!attribute params
+            #
+            #   @return [FinchAPI::Models::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync::Params]
+            required :params, -> { FinchAPI::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync::Params }
+
+            # @!attribute type
+            #   The type of job to start.
+            #
+            #   @return [Symbol, :w4_form_employee_sync]
+            required :type, const: :w4_form_employee_sync
+
+            # @!method initialize(params:, type: :w4_form_employee_sync)
+            #   @param params [FinchAPI::Models::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync::Params]
+            #
+            #   @param type [Symbol, :w4_form_employee_sync] The type of job to start.
+
+            # @see FinchAPI::Models::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync#params
+            class Params < FinchAPI::Internal::Type::BaseModel
+              # @!attribute individual_id
+              #   The unique ID of the individual for W-4 data sync.
+              #
+              #   @return [String]
+              required :individual_id, String
+
+              # @!method initialize(individual_id:)
+              #   @param individual_id [String] The unique ID of the individual for W-4 data sync.
+            end
+          end
+
+          # @!method self.variants
+          #   @return [Array(FinchAPI::Models::Jobs::AutomatedCreateParams::Body::DataSyncAll, FinchAPI::Models::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync)]
         end
       end
     end

@@ -24,10 +24,11 @@ module FinchAPI
         # @see FinchAPI::Models::HRIS::PaymentListParams
         def list(params)
           parsed, options = FinchAPI::HRIS::PaymentListParams.dump_request(params)
+          query = FinchAPI::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "employer/payment",
-            query: parsed,
+            query: query,
             page: FinchAPI::Internal::SinglePage,
             model: FinchAPI::HRIS::Payment,
             security: {bearer_auth: true},

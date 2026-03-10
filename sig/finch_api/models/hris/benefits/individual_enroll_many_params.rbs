@@ -4,6 +4,7 @@ module FinchAPI
       module Benefits
         type individual_enroll_many_params =
           {
+            benefit_id: String,
             entity_ids: ::Array[String],
             individuals: ::Array[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual]
           }
@@ -12,6 +13,8 @@ module FinchAPI
         class IndividualEnrollManyParams < FinchAPI::Internal::Type::BaseModel
           extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
+
+          attr_accessor benefit_id: String
 
           attr_reader entity_ids: ::Array[String]?
 
@@ -24,12 +27,14 @@ module FinchAPI
           ) -> ::Array[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual]
 
           def initialize: (
+            benefit_id: String,
             ?entity_ids: ::Array[String],
             ?individuals: ::Array[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual],
             ?request_options: FinchAPI::request_opts
           ) -> void
 
           def to_hash: -> {
+            benefit_id: String,
             entity_ids: ::Array[String],
             individuals: ::Array[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual],
             request_options: FinchAPI::RequestOptions

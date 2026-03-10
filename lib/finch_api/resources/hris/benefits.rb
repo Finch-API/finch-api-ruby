@@ -31,12 +31,13 @@ module FinchAPI
         #
         # @see FinchAPI::Models::HRIS::BenefitCreateParams
         def create(params = {})
-          parsed, options = FinchAPI::HRIS::BenefitCreateParams.dump_request(params)
           query_params = [:entity_ids]
+          parsed, options = FinchAPI::HRIS::BenefitCreateParams.dump_request(params)
+          query = FinchAPI::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :post,
             path: "employer/benefits",
-            query: parsed.slice(*query_params),
+            query: query,
             body: parsed.except(*query_params),
             model: FinchAPI::HRIS::CreateCompanyBenefitsResponse,
             security: {bearer_auth: true},
@@ -59,10 +60,11 @@ module FinchAPI
         # @see FinchAPI::Models::HRIS::BenefitRetrieveParams
         def retrieve(benefit_id, params = {})
           parsed, options = FinchAPI::HRIS::BenefitRetrieveParams.dump_request(params)
+          query = FinchAPI::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["employer/benefits/%1$s", benefit_id],
-            query: parsed,
+            query: query,
             model: FinchAPI::HRIS::CompanyBenefit,
             security: {bearer_auth: true},
             options: options
@@ -85,12 +87,13 @@ module FinchAPI
         #
         # @see FinchAPI::Models::HRIS::BenefitUpdateParams
         def update(benefit_id, params = {})
-          parsed, options = FinchAPI::HRIS::BenefitUpdateParams.dump_request(params)
           query_params = [:entity_ids]
+          parsed, options = FinchAPI::HRIS::BenefitUpdateParams.dump_request(params)
+          query = FinchAPI::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :post,
             path: ["employer/benefits/%1$s", benefit_id],
-            query: parsed.slice(*query_params),
+            query: query,
             body: parsed.except(*query_params),
             model: FinchAPI::HRIS::UpdateCompanyBenefitResponse,
             security: {bearer_auth: true},
@@ -111,10 +114,11 @@ module FinchAPI
         # @see FinchAPI::Models::HRIS::BenefitListParams
         def list(params = {})
           parsed, options = FinchAPI::HRIS::BenefitListParams.dump_request(params)
+          query = FinchAPI::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "employer/benefits",
-            query: parsed,
+            query: query,
             page: FinchAPI::Internal::SinglePage,
             model: FinchAPI::HRIS::CompanyBenefit,
             security: {bearer_auth: true},
@@ -135,10 +139,11 @@ module FinchAPI
         # @see FinchAPI::Models::HRIS::BenefitListSupportedBenefitsParams
         def list_supported_benefits(params = {})
           parsed, options = FinchAPI::HRIS::BenefitListSupportedBenefitsParams.dump_request(params)
+          query = FinchAPI::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "employer/benefits/meta",
-            query: parsed,
+            query: query,
             page: FinchAPI::Internal::SinglePage,
             model: FinchAPI::HRIS::SupportedBenefit,
             security: {bearer_auth: true},

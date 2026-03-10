@@ -16,6 +16,9 @@ module FinchAPI
               )
             end
 
+          sig { returns(String) }
+          attr_accessor :benefit_id
+
           # The entity IDs to specify which entities' data to access.
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :entity_ids
@@ -47,6 +50,7 @@ module FinchAPI
 
           sig do
             params(
+              benefit_id: String,
               entity_ids: T::Array[String],
               individuals:
                 T::Array[
@@ -56,6 +60,7 @@ module FinchAPI
             ).returns(T.attached_class)
           end
           def self.new(
+            benefit_id:,
             # The entity IDs to specify which entities' data to access.
             entity_ids: nil,
             # Array of the individual_id to enroll and a configuration object.
@@ -67,6 +72,7 @@ module FinchAPI
           sig do
             override.returns(
               {
+                benefit_id: String,
                 entity_ids: T::Array[String],
                 individuals:
                   T::Array[
