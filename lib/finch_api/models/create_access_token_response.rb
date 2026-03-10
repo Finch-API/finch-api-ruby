@@ -80,7 +80,14 @@ module FinchAPI
       #   @return [String, nil]
       optional :customer_id, String, nil?: true
 
-      # @!method initialize(access_token:, client_type:, connection_id:, connection_type:, entity_ids:, products:, provider_id:, token_type:, account_id: nil, company_id: nil, customer_id: nil)
+      # @!attribute customer_name
+      #   The name of your customer you provided to Finch when a connect session was
+      #   created for this connection
+      #
+      #   @return [String, nil]
+      optional :customer_name, String, nil?: true
+
+      # @!method initialize(access_token:, client_type:, connection_id:, connection_type:, entity_ids:, products:, provider_id:, token_type:, account_id: nil, company_id: nil, customer_id: nil, customer_name: nil)
       #   Some parameter documentations has been truncated, see
       #   {FinchAPI::Models::CreateAccessTokenResponse} for more details.
       #
@@ -105,6 +112,8 @@ module FinchAPI
       #   @param company_id [String] [DEPRECATED] Use `connection_id` to identify the connection instead of this comp
       #
       #   @param customer_id [String, nil] The ID of your customer you provided to Finch when a connect session was created
+      #
+      #   @param customer_name [String, nil] The name of your customer you provided to Finch when a connect session was creat
 
       # The type of application associated with a token.
       #

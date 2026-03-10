@@ -12,7 +12,8 @@ module FinchAPI
         token_type: String,
         account_id: String,
         company_id: String,
-        customer_id: String?
+        customer_id: String?,
+        customer_name: String?
       }
 
     class CreateAccessTokenResponse < FinchAPI::Internal::Type::BaseModel
@@ -42,6 +43,8 @@ module FinchAPI
 
       attr_accessor customer_id: String?
 
+      attr_accessor customer_name: String?
+
       def initialize: (
         access_token: String,
         client_type: FinchAPI::Models::CreateAccessTokenResponse::client_type,
@@ -53,7 +56,8 @@ module FinchAPI
         token_type: String,
         ?account_id: String,
         ?company_id: String,
-        ?customer_id: String?
+        ?customer_id: String?,
+        ?customer_name: String?
       ) -> void
 
       def to_hash: -> {
@@ -67,7 +71,8 @@ module FinchAPI
         token_type: String,
         account_id: String,
         company_id: String,
-        customer_id: String?
+        customer_id: String?,
+        customer_name: String?
       }
 
       type client_type = :development | :production | :sandbox

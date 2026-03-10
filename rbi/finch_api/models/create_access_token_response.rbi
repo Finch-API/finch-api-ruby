@@ -73,6 +73,11 @@ module FinchAPI
       sig { returns(T.nilable(String)) }
       attr_accessor :customer_id
 
+      # The name of your customer you provided to Finch when a connect session was
+      # created for this connection
+      sig { returns(T.nilable(String)) }
+      attr_accessor :customer_name
+
       sig do
         params(
           access_token: String,
@@ -87,7 +92,8 @@ module FinchAPI
           token_type: String,
           account_id: String,
           company_id: String,
-          customer_id: T.nilable(String)
+          customer_id: T.nilable(String),
+          customer_name: T.nilable(String)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -118,7 +124,10 @@ module FinchAPI
         company_id: nil,
         # The ID of your customer you provided to Finch when a connect session was created
         # for this connection
-        customer_id: nil
+        customer_id: nil,
+        # The name of your customer you provided to Finch when a connect session was
+        # created for this connection
+        customer_name: nil
       )
       end
 
@@ -137,7 +146,8 @@ module FinchAPI
             token_type: String,
             account_id: String,
             company_id: String,
-            customer_id: T.nilable(String)
+            customer_id: T.nilable(String),
+            customer_name: T.nilable(String)
           }
         )
       end
