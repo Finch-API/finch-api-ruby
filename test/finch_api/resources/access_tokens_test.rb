@@ -24,7 +24,8 @@ class FinchAPI::Test::Resources::AccessTokensTest < FinchAPI::Test::ResourceTest
         token_type: String,
         account_id: String | nil,
         company_id: String | nil,
-        customer_id: String | nil
+        customer_id: String | nil,
+        customer_name: String | nil
       }
     end
   end
