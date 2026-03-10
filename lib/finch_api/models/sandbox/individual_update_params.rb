@@ -8,6 +8,11 @@ module FinchAPI
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
+        # @!attribute individual_id
+        #
+        #   @return [String]
+        required :individual_id, String
+
         # @!attribute dob
         #
         #   @return [String, nil]
@@ -88,9 +93,11 @@ module FinchAPI
         #   @return [String, nil]
         optional :ssn, String, nil?: true
 
-        # @!method initialize(dob: nil, emails: nil, encrypted_ssn: nil, ethnicity: nil, first_name: nil, gender: nil, last_name: nil, middle_name: nil, phone_numbers: nil, preferred_name: nil, residence: nil, ssn: nil, request_options: {})
+        # @!method initialize(individual_id:, dob: nil, emails: nil, encrypted_ssn: nil, ethnicity: nil, first_name: nil, gender: nil, last_name: nil, middle_name: nil, phone_numbers: nil, preferred_name: nil, residence: nil, ssn: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {FinchAPI::Models::Sandbox::IndividualUpdateParams} for more details.
+        #
+        #   @param individual_id [String]
         #
         #   @param dob [String, nil]
         #

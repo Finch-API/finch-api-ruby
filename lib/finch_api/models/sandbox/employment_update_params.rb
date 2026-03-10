@@ -8,6 +8,11 @@ module FinchAPI
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
+        # @!attribute individual_id
+        #
+        #   @return [String]
+        required :individual_id, String
+
         # @!attribute class_code
         #   Worker's compensation classification code for this employee
         #
@@ -131,9 +136,11 @@ module FinchAPI
         #   @return [String, nil]
         optional :title, String, nil?: true
 
-        # @!method initialize(class_code: nil, custom_fields: nil, department: nil, employment: nil, employment_status: nil, end_date: nil, first_name: nil, flsa_status: nil, income: nil, income_history: nil, is_active: nil, last_name: nil, latest_rehire_date: nil, location: nil, manager: nil, middle_name: nil, source_id: nil, start_date: nil, title: nil, request_options: {})
+        # @!method initialize(individual_id:, class_code: nil, custom_fields: nil, department: nil, employment: nil, employment_status: nil, end_date: nil, first_name: nil, flsa_status: nil, income: nil, income_history: nil, is_active: nil, last_name: nil, latest_rehire_date: nil, location: nil, manager: nil, middle_name: nil, source_id: nil, start_date: nil, title: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {FinchAPI::Models::Sandbox::EmploymentUpdateParams} for more details.
+        #
+        #   @param individual_id [String]
         #
         #   @param class_code [String, nil] Worker's compensation classification code for this employee
         #

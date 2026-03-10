@@ -15,6 +15,9 @@ module FinchAPI
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :individual_id
+
         sig { returns(T.nilable(String)) }
         attr_accessor :dob
 
@@ -97,6 +100,7 @@ module FinchAPI
 
         sig do
           params(
+            individual_id: String,
             dob: T.nilable(String),
             emails:
               T.nilable(
@@ -131,6 +135,7 @@ module FinchAPI
           ).returns(T.attached_class)
         end
         def self.new(
+          individual_id:,
           dob: nil,
           emails: nil,
           # Social Security Number of the individual in **encrypted** format. This field is
@@ -163,6 +168,7 @@ module FinchAPI
         sig do
           override.returns(
             {
+              individual_id: String,
               dob: T.nilable(String),
               emails:
                 T.nilable(

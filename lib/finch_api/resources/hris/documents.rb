@@ -29,10 +29,11 @@ module FinchAPI
         # @see FinchAPI::Models::HRIS::DocumentListParams
         def list(params = {})
           parsed, options = FinchAPI::HRIS::DocumentListParams.dump_request(params)
+          query = FinchAPI::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "employer/documents",
-            query: parsed,
+            query: query,
             model: FinchAPI::Models::HRIS::DocumentListResponse,
             security: {bearer_auth: true},
             options: options
@@ -55,10 +56,11 @@ module FinchAPI
         # @see FinchAPI::Models::HRIS::DocumentRetreiveParams
         def retreive(document_id, params = {})
           parsed, options = FinchAPI::HRIS::DocumentRetreiveParams.dump_request(params)
+          query = FinchAPI::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["employer/documents/%1$s", document_id],
-            query: parsed,
+            query: query,
             model: FinchAPI::Models::HRIS::DocumentRetreiveResponse,
             security: {bearer_auth: true},
             options: options

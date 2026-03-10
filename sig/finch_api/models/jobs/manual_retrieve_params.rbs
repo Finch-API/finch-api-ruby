@@ -2,15 +2,23 @@ module FinchAPI
   module Models
     module Jobs
       type manual_retrieve_params =
-        {  } & FinchAPI::Internal::Type::request_parameters
+        { job_id: String } & FinchAPI::Internal::Type::request_parameters
 
       class ManualRetrieveParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
-        def initialize: (?request_options: FinchAPI::request_opts) -> void
+        attr_accessor job_id: String
 
-        def to_hash: -> { request_options: FinchAPI::RequestOptions }
+        def initialize: (
+          job_id: String,
+          ?request_options: FinchAPI::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          job_id: String,
+          request_options: FinchAPI::RequestOptions
+        }
       end
     end
   end

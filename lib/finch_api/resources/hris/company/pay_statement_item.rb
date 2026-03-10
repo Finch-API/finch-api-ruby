@@ -35,10 +35,11 @@ module FinchAPI
           # @see FinchAPI::Models::HRIS::Company::PayStatementItemListParams
           def list(params = {})
             parsed, options = FinchAPI::HRIS::Company::PayStatementItemListParams.dump_request(params)
+            query = FinchAPI::Internal::Util.encode_query_params(parsed)
             @client.request(
               method: :get,
               path: "employer/pay-statement-item",
-              query: parsed,
+              query: query,
               page: FinchAPI::Internal::ResponsesPage,
               model: FinchAPI::Models::HRIS::Company::PayStatementItemListResponse,
               security: {bearer_auth: true},

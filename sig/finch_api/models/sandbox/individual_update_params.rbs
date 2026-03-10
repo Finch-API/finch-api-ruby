@@ -3,6 +3,7 @@ module FinchAPI
     module Sandbox
       type individual_update_params =
         {
+          individual_id: String,
           dob: String?,
           emails: ::Array[FinchAPI::Sandbox::IndividualUpdateParams::Email]?,
           encrypted_ssn: String?,
@@ -21,6 +22,8 @@ module FinchAPI
       class IndividualUpdateParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
+
+        attr_accessor individual_id: String
 
         attr_accessor dob: String?
 
@@ -47,6 +50,7 @@ module FinchAPI
         attr_accessor ssn: String?
 
         def initialize: (
+          individual_id: String,
           ?dob: String?,
           ?emails: ::Array[FinchAPI::Sandbox::IndividualUpdateParams::Email]?,
           ?encrypted_ssn: String?,
@@ -63,6 +67,7 @@ module FinchAPI
         ) -> void
 
         def to_hash: -> {
+          individual_id: String,
           dob: String?,
           emails: ::Array[FinchAPI::Sandbox::IndividualUpdateParams::Email]?,
           encrypted_ssn: String?,

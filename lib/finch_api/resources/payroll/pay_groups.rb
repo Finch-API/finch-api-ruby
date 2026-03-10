@@ -19,10 +19,11 @@ module FinchAPI
         # @see FinchAPI::Models::Payroll::PayGroupRetrieveParams
         def retrieve(pay_group_id, params = {})
           parsed, options = FinchAPI::Payroll::PayGroupRetrieveParams.dump_request(params)
+          query = FinchAPI::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["employer/pay-groups/%1$s", pay_group_id],
-            query: parsed,
+            query: query,
             model: FinchAPI::Models::Payroll::PayGroupRetrieveResponse,
             security: {bearer_auth: true},
             options: options
@@ -46,10 +47,11 @@ module FinchAPI
         # @see FinchAPI::Models::Payroll::PayGroupListParams
         def list(params = {})
           parsed, options = FinchAPI::Payroll::PayGroupListParams.dump_request(params)
+          query = FinchAPI::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "employer/pay-groups",
-            query: parsed,
+            query: query,
             page: FinchAPI::Internal::SinglePage,
             model: FinchAPI::Models::Payroll::PayGroupListResponse,
             security: {bearer_auth: true},

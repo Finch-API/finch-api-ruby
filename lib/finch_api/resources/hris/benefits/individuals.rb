@@ -25,10 +25,11 @@ module FinchAPI
           # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams
           def enroll_many(benefit_id, params = {})
             parsed, options = FinchAPI::HRIS::Benefits::IndividualEnrollManyParams.dump_request(params)
+            query = FinchAPI::Internal::Util.encode_query_params(parsed.except(:individuals))
             @client.request(
               method: :post,
               path: ["employer/benefits/%1$s/individuals", benefit_id],
-              query: parsed.except(:individuals),
+              query: query,
               body: parsed[:individuals],
               model: FinchAPI::HRIS::Benefits::EnrolledIndividualBenefitResponse,
               security: {bearer_auth: true},
@@ -51,10 +52,11 @@ module FinchAPI
           # @see FinchAPI::Models::HRIS::Benefits::IndividualEnrolledIDsParams
           def enrolled_ids(benefit_id, params = {})
             parsed, options = FinchAPI::HRIS::Benefits::IndividualEnrolledIDsParams.dump_request(params)
+            query = FinchAPI::Internal::Util.encode_query_params(parsed)
             @client.request(
               method: :get,
               path: ["employer/benefits/%1$s/enrolled", benefit_id],
-              query: parsed,
+              query: query,
               model: FinchAPI::Models::HRIS::Benefits::IndividualEnrolledIDsResponse,
               security: {bearer_auth: true},
               options: options
@@ -82,10 +84,11 @@ module FinchAPI
           # @see FinchAPI::Models::HRIS::Benefits::IndividualRetrieveManyBenefitsParams
           def retrieve_many_benefits(benefit_id, params = {})
             parsed, options = FinchAPI::HRIS::Benefits::IndividualRetrieveManyBenefitsParams.dump_request(params)
+            query = FinchAPI::Internal::Util.encode_query_params(parsed)
             @client.request(
               method: :get,
               path: ["employer/benefits/%1$s/individuals", benefit_id],
-              query: parsed,
+              query: query,
               page: FinchAPI::Internal::SinglePage,
               model: FinchAPI::HRIS::Benefits::IndividualBenefit,
               security: {bearer_auth: true},
@@ -109,12 +112,13 @@ module FinchAPI
           #
           # @see FinchAPI::Models::HRIS::Benefits::IndividualUnenrollManyParams
           def unenroll_many(benefit_id, params = {})
-            parsed, options = FinchAPI::HRIS::Benefits::IndividualUnenrollManyParams.dump_request(params)
             query_params = [:entity_ids]
+            parsed, options = FinchAPI::HRIS::Benefits::IndividualUnenrollManyParams.dump_request(params)
+            query = FinchAPI::Internal::Util.encode_query_params(parsed.slice(*query_params))
             @client.request(
               method: :delete,
               path: ["employer/benefits/%1$s/individuals", benefit_id],
-              query: parsed.slice(*query_params),
+              query: query,
               body: parsed.except(*query_params),
               model: FinchAPI::HRIS::Benefits::UnenrolledIndividualBenefitResponse,
               security: {bearer_auth: true},

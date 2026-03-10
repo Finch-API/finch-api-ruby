@@ -20,10 +20,11 @@ module FinchAPI
         # @see FinchAPI::Models::HRIS::CompanyRetrieveParams
         def retrieve(params = {})
           parsed, options = FinchAPI::HRIS::CompanyRetrieveParams.dump_request(params)
+          query = FinchAPI::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "employer/company",
-            query: parsed,
+            query: query,
             model: FinchAPI::HRIS::HRISCompany,
             security: {bearer_auth: true},
             options: options

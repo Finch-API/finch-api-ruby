@@ -3,6 +3,7 @@ module FinchAPI
     module Sandbox
       type employment_update_params =
         {
+          individual_id: String,
           class_code: String?,
           custom_fields: ::Array[FinchAPI::Sandbox::EmploymentUpdateParams::CustomField]?,
           department: FinchAPI::Sandbox::EmploymentUpdateParams::Department?,
@@ -28,6 +29,8 @@ module FinchAPI
       class EmploymentUpdateParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
+
+        attr_accessor individual_id: String
 
         attr_accessor class_code: String?
 
@@ -68,6 +71,7 @@ module FinchAPI
         attr_accessor title: String?
 
         def initialize: (
+          individual_id: String,
           ?class_code: String?,
           ?custom_fields: ::Array[FinchAPI::Sandbox::EmploymentUpdateParams::CustomField]?,
           ?department: FinchAPI::Sandbox::EmploymentUpdateParams::Department?,
@@ -91,6 +95,7 @@ module FinchAPI
         ) -> void
 
         def to_hash: -> {
+          individual_id: String,
           class_code: String?,
           custom_fields: ::Array[FinchAPI::Sandbox::EmploymentUpdateParams::CustomField]?,
           department: FinchAPI::Sandbox::EmploymentUpdateParams::Department?,

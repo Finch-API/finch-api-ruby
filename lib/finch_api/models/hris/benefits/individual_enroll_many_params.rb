@@ -9,6 +9,11 @@ module FinchAPI
           extend FinchAPI::Internal::Type::RequestParameters::Converter
           include FinchAPI::Internal::Type::RequestParameters
 
+          # @!attribute benefit_id
+          #
+          #   @return [String]
+          required :benefit_id, String
+
           # @!attribute entity_ids
           #   The entity IDs to specify which entities' data to access.
           #
@@ -22,7 +27,9 @@ module FinchAPI
           optional :individuals,
                    -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::Benefits::IndividualEnrollManyParams::Individual] }
 
-          # @!method initialize(entity_ids: nil, individuals: nil, request_options: {})
+          # @!method initialize(benefit_id:, entity_ids: nil, individuals: nil, request_options: {})
+          #   @param benefit_id [String]
+          #
           #   @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
           #
           #   @param individuals [Array<FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual>] Array of the individual_id to enroll and a configuration object.

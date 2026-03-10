@@ -20,12 +20,13 @@ module FinchAPI
         #
         # @see FinchAPI::Models::HRIS::IndividualRetrieveManyParams
         def retrieve_many(params = {})
-          parsed, options = FinchAPI::HRIS::IndividualRetrieveManyParams.dump_request(params)
           query_params = [:entity_ids]
+          parsed, options = FinchAPI::HRIS::IndividualRetrieveManyParams.dump_request(params)
+          query = FinchAPI::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :post,
             path: "employer/individual",
-            query: parsed.slice(*query_params),
+            query: query,
             body: parsed.except(*query_params),
             page: FinchAPI::Internal::ResponsesPage,
             model: FinchAPI::HRIS::IndividualResponse,
