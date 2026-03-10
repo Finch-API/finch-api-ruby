@@ -11,6 +11,7 @@ module FinchAPI
           ?employment_status: FinchAPI::Models::Sandbox::EmploymentUpdateParams::employment_status?,
           ?end_date: String?,
           ?first_name: String?,
+          ?flsa_status: FinchAPI::Models::Sandbox::EmploymentUpdateParams::flsa_status?,
           ?income: FinchAPI::Income?,
           ?income_history: ::Array[FinchAPI::Income?]?,
           ?is_active: bool?,

@@ -54,6 +54,17 @@ module FinchAPI
           #   @return [String, nil]
           required :first_name, String, nil?: true
 
+          # @!attribute flsa_status
+          #   The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
+          #   `unknown`.
+          #
+          #   @return [Symbol, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::FlsaStatus, nil]
+          required :flsa_status,
+                   enum: -> {
+                     FinchAPI::HRIS::EmploymentData::UnionMember0::FlsaStatus
+                   },
+                   nil?: true
+
           # @!attribute is_active
           #   `true` if the individual an an active employee or contractor at the company.
           #
@@ -141,7 +152,7 @@ module FinchAPI
           #   @return [String, nil]
           optional :work_id, String, nil?: true
 
-          # @!method initialize(id:, class_code:, department:, employment:, employment_status:, end_date:, first_name:, is_active:, last_name:, latest_rehire_date:, location:, manager:, middle_name:, start_date:, title:, custom_fields: nil, income: nil, income_history: nil, source_id: nil, work_id: nil)
+          # @!method initialize(id:, class_code:, department:, employment:, employment_status:, end_date:, first_name:, flsa_status:, is_active:, last_name:, latest_rehire_date:, location:, manager:, middle_name:, start_date:, title:, custom_fields: nil, income: nil, income_history: nil, source_id: nil, work_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {FinchAPI::Models::HRIS::EmploymentData::UnionMember0} for more details.
           #
@@ -158,6 +169,8 @@ module FinchAPI
           #   @param end_date [String, nil]
           #
           #   @param first_name [String, nil] The legal first name of the individual.
+          #
+          #   @param flsa_status [Symbol, FinchAPI::Models::HRIS::EmploymentData::UnionMember0::FlsaStatus, nil] The FLSA status of the individual. Available options: `exempt`, `non_exempt`, `u
           #
           #   @param is_active [Boolean, nil] `true` if the individual an an active employee or contractor at the company.
           #
@@ -276,6 +289,21 @@ module FinchAPI
             PREHIRE = :prehire
             RETIRED = :retired
             TERMINATED = :terminated
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
+          # `unknown`.
+          #
+          # @see FinchAPI::Models::HRIS::EmploymentData::UnionMember0#flsa_status
+          module FlsaStatus
+            extend FinchAPI::Internal::Type::Enum
+
+            EXEMPT = :exempt
+            NON_EXEMPT = :non_exempt
+            UNKNOWN = :unknown
 
             # @!method self.values
             #   @return [Array<Symbol>]

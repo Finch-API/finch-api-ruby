@@ -105,6 +105,17 @@ module FinchAPI
           #   @return [String, nil]
           optional :first_name, String, nil?: true
 
+          # @!attribute flsa_status
+          #   The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
+          #   `unknown`.
+          #
+          #   @return [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::FlsaStatus, nil]
+          optional :flsa_status,
+                   enum: -> {
+                     FinchAPI::Sandbox::DirectoryCreateParams::Body::FlsaStatus
+                   },
+                   nil?: true
+
           # @!attribute gender
           #   The gender of the individual.
           #
@@ -208,7 +219,7 @@ module FinchAPI
           #   @return [String, nil]
           optional :title, String, nil?: true
 
-          # @!method initialize(class_code: nil, custom_fields: nil, department: nil, dob: nil, emails: nil, employment: nil, employment_status: nil, encrypted_ssn: nil, end_date: nil, ethnicity: nil, first_name: nil, gender: nil, income: nil, income_history: nil, is_active: nil, last_name: nil, latest_rehire_date: nil, location: nil, manager: nil, middle_name: nil, phone_numbers: nil, preferred_name: nil, residence: nil, source_id: nil, ssn: nil, start_date: nil, title: nil)
+          # @!method initialize(class_code: nil, custom_fields: nil, department: nil, dob: nil, emails: nil, employment: nil, employment_status: nil, encrypted_ssn: nil, end_date: nil, ethnicity: nil, first_name: nil, flsa_status: nil, gender: nil, income: nil, income_history: nil, is_active: nil, last_name: nil, latest_rehire_date: nil, location: nil, manager: nil, middle_name: nil, phone_numbers: nil, preferred_name: nil, residence: nil, source_id: nil, ssn: nil, start_date: nil, title: nil)
           #   Some parameter documentations has been truncated, see
           #   {FinchAPI::Models::Sandbox::DirectoryCreateParams::Body} for more details.
           #
@@ -233,6 +244,8 @@ module FinchAPI
           #   @param ethnicity [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Ethnicity, nil] The EEOC-defined ethnicity of the individual.
           #
           #   @param first_name [String, nil] The legal first name of the individual.
+          #
+          #   @param flsa_status [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::FlsaStatus, nil] The FLSA status of the individual. Available options: `exempt`, `non_exempt`, `u
           #
           #   @param gender [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender, nil] The gender of the individual.
           #
@@ -423,6 +436,21 @@ module FinchAPI
             HISPANIC_OR_LATINO = :hispanic_or_latino
             TWO_OR_MORE_RACES = :two_or_more_races
             DECLINE_TO_SPECIFY = :decline_to_specify
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
+          # `unknown`.
+          #
+          # @see FinchAPI::Models::Sandbox::DirectoryCreateParams::Body#flsa_status
+          module FlsaStatus
+            extend FinchAPI::Internal::Type::Enum
+
+            EXEMPT = :exempt
+            NON_EXEMPT = :non_exempt
+            UNKNOWN = :unknown
 
             # @!method self.values
             #   @return [Array<Symbol>]

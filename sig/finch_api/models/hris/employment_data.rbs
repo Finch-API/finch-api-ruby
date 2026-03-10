@@ -17,6 +17,7 @@ module FinchAPI
             employment_status: FinchAPI::Models::HRIS::EmploymentData::UnionMember0::employment_status?,
             end_date: String?,
             first_name: String?,
+            flsa_status: FinchAPI::Models::HRIS::EmploymentData::UnionMember0::flsa_status?,
             is_active: bool?,
             last_name: String?,
             latest_rehire_date: String?,
@@ -46,6 +47,8 @@ module FinchAPI
           attr_accessor end_date: String?
 
           attr_accessor first_name: String?
+
+          attr_accessor flsa_status: FinchAPI::Models::HRIS::EmploymentData::UnionMember0::flsa_status?
 
           attr_accessor is_active: bool?
 
@@ -81,6 +84,7 @@ module FinchAPI
             employment_status: FinchAPI::Models::HRIS::EmploymentData::UnionMember0::employment_status?,
             end_date: String?,
             first_name: String?,
+            flsa_status: FinchAPI::Models::HRIS::EmploymentData::UnionMember0::flsa_status?,
             is_active: bool?,
             last_name: String?,
             latest_rehire_date: String?,
@@ -104,6 +108,7 @@ module FinchAPI
             employment_status: FinchAPI::Models::HRIS::EmploymentData::UnionMember0::employment_status?,
             end_date: String?,
             first_name: String?,
+            flsa_status: FinchAPI::Models::HRIS::EmploymentData::UnionMember0::flsa_status?,
             is_active: bool?,
             last_name: String?,
             latest_rehire_date: String?,
@@ -204,6 +209,18 @@ module FinchAPI
             TERMINATED: :terminated
 
             def self?.values: -> ::Array[FinchAPI::Models::HRIS::EmploymentData::UnionMember0::employment_status]
+          end
+
+          type flsa_status = :exempt | :non_exempt | :unknown
+
+          module FlsaStatus
+            extend FinchAPI::Internal::Type::Enum
+
+            EXEMPT: :exempt
+            NON_EXEMPT: :non_exempt
+            UNKNOWN: :unknown
+
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::EmploymentData::UnionMember0::flsa_status]
           end
 
           type manager = { id: String }
