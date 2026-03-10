@@ -10,6 +10,7 @@ module FinchAPI
           employment_status: FinchAPI::Models::Sandbox::EmploymentUpdateParams::employment_status?,
           end_date: String?,
           first_name: String?,
+          flsa_status: FinchAPI::Models::Sandbox::EmploymentUpdateParams::flsa_status?,
           income: FinchAPI::Income?,
           income_history: ::Array[FinchAPI::Income?]?,
           is_active: bool?,
@@ -42,6 +43,8 @@ module FinchAPI
 
         attr_accessor first_name: String?
 
+        attr_accessor flsa_status: FinchAPI::Models::Sandbox::EmploymentUpdateParams::flsa_status?
+
         attr_accessor income: FinchAPI::Income?
 
         attr_accessor income_history: ::Array[FinchAPI::Income?]?
@@ -72,6 +75,7 @@ module FinchAPI
           ?employment_status: FinchAPI::Models::Sandbox::EmploymentUpdateParams::employment_status?,
           ?end_date: String?,
           ?first_name: String?,
+          ?flsa_status: FinchAPI::Models::Sandbox::EmploymentUpdateParams::flsa_status?,
           ?income: FinchAPI::Income?,
           ?income_history: ::Array[FinchAPI::Income?]?,
           ?is_active: bool?,
@@ -94,6 +98,7 @@ module FinchAPI
           employment_status: FinchAPI::Models::Sandbox::EmploymentUpdateParams::employment_status?,
           end_date: String?,
           first_name: String?,
+          flsa_status: FinchAPI::Models::Sandbox::EmploymentUpdateParams::flsa_status?,
           income: FinchAPI::Income?,
           income_history: ::Array[FinchAPI::Income?]?,
           is_active: bool?,
@@ -207,6 +212,18 @@ module FinchAPI
           TERMINATED: :terminated
 
           def self?.values: -> ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::employment_status]
+        end
+
+        type flsa_status = :exempt | :non_exempt | :unknown
+
+        module FlsaStatus
+          extend FinchAPI::Internal::Type::Enum
+
+          EXEMPT: :exempt
+          NON_EXEMPT: :non_exempt
+          UNKNOWN: :unknown
+
+          def self?.values: -> ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::flsa_status]
         end
 
         type manager = { id: String }

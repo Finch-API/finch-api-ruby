@@ -88,6 +88,17 @@ module FinchAPI
           sig { returns(T.nilable(String)) }
           attr_accessor :first_name
 
+          # The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
+          # `unknown`.
+          sig do
+            returns(
+              T.nilable(
+                FinchAPI::HRIS::EmploymentData::UnionMember0::FlsaStatus::TaggedSymbol
+              )
+            )
+          end
+          attr_accessor :flsa_status
+
           # `true` if the individual an an active employee or contractor at the company.
           sig { returns(T.nilable(T::Boolean)) }
           attr_accessor :is_active
@@ -187,6 +198,10 @@ module FinchAPI
                 ),
               end_date: T.nilable(String),
               first_name: T.nilable(String),
+              flsa_status:
+                T.nilable(
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::FlsaStatus::OrSymbol
+                ),
               is_active: T.nilable(T::Boolean),
               last_name: T.nilable(String),
               latest_rehire_date: T.nilable(String),
@@ -225,6 +240,9 @@ module FinchAPI
             end_date:,
             # The legal first name of the individual.
             first_name:,
+            # The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
+            # `unknown`.
+            flsa_status:,
             # `true` if the individual an an active employee or contractor at the company.
             is_active:,
             # The legal last name of the individual.
@@ -274,6 +292,10 @@ module FinchAPI
                   ),
                 end_date: T.nilable(String),
                 first_name: T.nilable(String),
+                flsa_status:
+                  T.nilable(
+                    FinchAPI::HRIS::EmploymentData::UnionMember0::FlsaStatus::TaggedSymbol
+                  ),
                 is_active: T.nilable(T::Boolean),
                 last_name: T.nilable(String),
                 latest_rehire_date: T.nilable(String),
@@ -542,6 +564,47 @@ module FinchAPI
               override.returns(
                 T::Array[
                   FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
+          # `unknown`.
+          module FlsaStatus
+            extend FinchAPI::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::FlsaStatus
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            EXEMPT =
+              T.let(
+                :exempt,
+                FinchAPI::HRIS::EmploymentData::UnionMember0::FlsaStatus::TaggedSymbol
+              )
+            NON_EXEMPT =
+              T.let(
+                :non_exempt,
+                FinchAPI::HRIS::EmploymentData::UnionMember0::FlsaStatus::TaggedSymbol
+              )
+            UNKNOWN =
+              T.let(
+                :unknown,
+                FinchAPI::HRIS::EmploymentData::UnionMember0::FlsaStatus::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  FinchAPI::HRIS::EmploymentData::UnionMember0::FlsaStatus::TaggedSymbol
                 ]
               )
             end

@@ -29,6 +29,10 @@ module FinchAPI
               ),
             end_date: T.nilable(String),
             first_name: T.nilable(String),
+            flsa_status:
+              T.nilable(
+                FinchAPI::Sandbox::EmploymentUpdateParams::FlsaStatus::OrSymbol
+              ),
             income: T.nilable(FinchAPI::Income::OrHash),
             income_history:
               T.nilable(T::Array[T.nilable(FinchAPI::Income::OrHash)]),
@@ -64,6 +68,9 @@ module FinchAPI
           end_date: nil,
           # The legal first name of the individual.
           first_name: nil,
+          # The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
+          # `unknown`.
+          flsa_status: nil,
           # The employee's income as reported by the provider. This may not always be
           # annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
           # depending on what information the provider returns.

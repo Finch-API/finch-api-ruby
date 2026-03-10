@@ -94,6 +94,17 @@ module FinchAPI
         sig { returns(T.nilable(String)) }
         attr_accessor :first_name
 
+        # The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
+        # `unknown`.
+        sig do
+          returns(
+            T.nilable(
+              FinchAPI::Models::Sandbox::EmploymentUpdateResponse::FlsaStatus::TaggedSymbol
+            )
+          )
+        end
+        attr_accessor :flsa_status
+
         # The employee's income as reported by the provider. This may not always be
         # annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
         # depending on what information the provider returns.
@@ -183,6 +194,10 @@ module FinchAPI
               ),
             end_date: T.nilable(String),
             first_name: T.nilable(String),
+            flsa_status:
+              T.nilable(
+                FinchAPI::Models::Sandbox::EmploymentUpdateResponse::FlsaStatus::OrSymbol
+              ),
             income: T.nilable(FinchAPI::Income::OrHash),
             income_history:
               T.nilable(T::Array[T.nilable(FinchAPI::Income::OrHash)]),
@@ -218,6 +233,9 @@ module FinchAPI
           end_date: nil,
           # The legal first name of the individual.
           first_name: nil,
+          # The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
+          # `unknown`.
+          flsa_status: nil,
           # The employee's income as reported by the provider. This may not always be
           # annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
           # depending on what information the provider returns.
@@ -267,6 +285,10 @@ module FinchAPI
                 ),
               end_date: T.nilable(String),
               first_name: T.nilable(String),
+              flsa_status:
+                T.nilable(
+                  FinchAPI::Models::Sandbox::EmploymentUpdateResponse::FlsaStatus::TaggedSymbol
+                ),
               income: T.nilable(FinchAPI::Income),
               income_history: T.nilable(T::Array[T.nilable(FinchAPI::Income)]),
               is_active: T.nilable(T::Boolean),
@@ -560,6 +582,47 @@ module FinchAPI
             override.returns(
               T::Array[
                 FinchAPI::Models::Sandbox::EmploymentUpdateResponse::EmploymentStatus::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
+        # `unknown`.
+        module FlsaStatus
+          extend FinchAPI::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                FinchAPI::Models::Sandbox::EmploymentUpdateResponse::FlsaStatus
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          EXEMPT =
+            T.let(
+              :exempt,
+              FinchAPI::Models::Sandbox::EmploymentUpdateResponse::FlsaStatus::TaggedSymbol
+            )
+          NON_EXEMPT =
+            T.let(
+              :non_exempt,
+              FinchAPI::Models::Sandbox::EmploymentUpdateResponse::FlsaStatus::TaggedSymbol
+            )
+          UNKNOWN =
+            T.let(
+              :unknown,
+              FinchAPI::Models::Sandbox::EmploymentUpdateResponse::FlsaStatus::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                FinchAPI::Models::Sandbox::EmploymentUpdateResponse::FlsaStatus::TaggedSymbol
               ]
             )
           end

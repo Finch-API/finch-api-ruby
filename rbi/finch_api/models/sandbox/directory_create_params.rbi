@@ -170,6 +170,17 @@ module FinchAPI
           sig { returns(T.nilable(String)) }
           attr_accessor :first_name
 
+          # The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
+          # `unknown`.
+          sig do
+            returns(
+              T.nilable(
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::FlsaStatus::OrSymbol
+              )
+            )
+          end
+          attr_accessor :flsa_status
+
           # The gender of the individual.
           sig do
             returns(
@@ -308,6 +319,10 @@ module FinchAPI
                   FinchAPI::Sandbox::DirectoryCreateParams::Body::Ethnicity::OrSymbol
                 ),
               first_name: T.nilable(String),
+              flsa_status:
+                T.nilable(
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::FlsaStatus::OrSymbol
+                ),
               gender:
                 T.nilable(
                   FinchAPI::Sandbox::DirectoryCreateParams::Body::Gender::OrSymbol
@@ -364,6 +379,9 @@ module FinchAPI
             ethnicity: nil,
             # The legal first name of the individual.
             first_name: nil,
+            # The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
+            # `unknown`.
+            flsa_status: nil,
             # The gender of the individual.
             gender: nil,
             # The employee's income as reported by the provider. This may not always be
@@ -435,6 +453,10 @@ module FinchAPI
                     FinchAPI::Sandbox::DirectoryCreateParams::Body::Ethnicity::OrSymbol
                   ),
                 first_name: T.nilable(String),
+                flsa_status:
+                  T.nilable(
+                    FinchAPI::Sandbox::DirectoryCreateParams::Body::FlsaStatus::OrSymbol
+                  ),
                 gender:
                   T.nilable(
                     FinchAPI::Sandbox::DirectoryCreateParams::Body::Gender::OrSymbol
@@ -894,6 +916,47 @@ module FinchAPI
               override.returns(
                 T::Array[
                   FinchAPI::Sandbox::DirectoryCreateParams::Body::Ethnicity::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
+          # `unknown`.
+          module FlsaStatus
+            extend FinchAPI::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::FlsaStatus
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            EXEMPT =
+              T.let(
+                :exempt,
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::FlsaStatus::TaggedSymbol
+              )
+            NON_EXEMPT =
+              T.let(
+                :non_exempt,
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::FlsaStatus::TaggedSymbol
+              )
+            UNKNOWN =
+              T.let(
+                :unknown,
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::FlsaStatus::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::FlsaStatus::TaggedSymbol
                 ]
               )
             end

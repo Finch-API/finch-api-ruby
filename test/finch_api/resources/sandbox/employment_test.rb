@@ -20,6 +20,7 @@ class FinchAPI::Test::Resources::Sandbox::EmploymentTest < FinchAPI::Test::Resou
         employment_status: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::EmploymentStatus | nil,
         end_date: String | nil,
         first_name: String | nil,
+        flsa_status: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::FlsaStatus | nil,
         income: FinchAPI::Income | nil,
         income_history: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Income, nil?: true]) | nil,
         is_active: FinchAPI::Internal::Type::Boolean | nil,
