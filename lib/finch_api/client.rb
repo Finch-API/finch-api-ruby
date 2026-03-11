@@ -24,6 +24,9 @@ module FinchAPI
     # @return [String, nil]
     attr_reader :client_secret
 
+    # @return [String, nil]
+    attr_reader :webhook_secret
+
     # @return [FinchAPI::Resources::AccessTokens]
     attr_reader :access_tokens
 
@@ -90,6 +93,8 @@ module FinchAPI
     #
     # @param access_token [String, nil]
     #
+    # @param webhook_secret [String, nil] Defaults to `ENV["FINCH_WEBHOOK_SECRET"]`
+    #
     # @param base_url [String, nil] Override the default base URL for the API, e.g.,
     # `"https://api.example.com/v2/"`. Defaults to `ENV["FINCH_BASE_URL"]`
     #
@@ -104,6 +109,7 @@ module FinchAPI
       client_id: ENV["FINCH_CLIENT_ID"],
       client_secret: ENV["FINCH_CLIENT_SECRET"],
       access_token: nil,
+      webhook_secret: ENV["FINCH_WEBHOOK_SECRET"],
       base_url: ENV["FINCH_BASE_URL"],
       max_retries: self.class::DEFAULT_MAX_RETRIES,
       timeout: self.class::DEFAULT_TIMEOUT_IN_SECONDS,
@@ -119,6 +125,7 @@ module FinchAPI
       @client_id = client_id&.to_s
       @client_secret = client_secret&.to_s
       @access_token = access_token&.to_s
+      @webhook_secret = webhook_secret&.to_s
 
       super(
         base_url: base_url,
