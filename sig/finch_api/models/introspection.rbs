@@ -262,7 +262,13 @@ module FinchAPI
         end
       end
 
-      type entity = { id: String, name: String?, source_id: String? }
+      type entity =
+        {
+          id: String,
+          name: String?,
+          source_id: String?,
+          status: FinchAPI::Models::Introspection::Entity::status
+        }
 
       class Entity < FinchAPI::Internal::Type::BaseModel
         attr_accessor id: String
@@ -271,9 +277,44 @@ module FinchAPI
 
         attr_accessor source_id: String?
 
-        def initialize: (id: String, name: String?, source_id: String?) -> void
+        attr_accessor status: FinchAPI::Models::Introspection::Entity::status
 
-        def to_hash: -> { id: String, name: String?, source_id: String? }
+        def initialize: (
+          id: String,
+          name: String?,
+          source_id: String?,
+          status: FinchAPI::Models::Introspection::Entity::status
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          name: String?,
+          source_id: String?,
+          status: FinchAPI::Models::Introspection::Entity::status
+        }
+
+        type status =
+          :pending
+          | :processing
+          | :connected
+          | :error_no_account_setup
+          | :error_permissions
+          | :reauth
+          | :disconnected
+
+        module Status
+          extend FinchAPI::Internal::Type::Enum
+
+          PENDING: :pending
+          PROCESSING: :processing
+          CONNECTED: :connected
+          ERROR_NO_ACCOUNT_SETUP: :error_no_account_setup
+          ERROR_PERMISSIONS: :error_permissions
+          REAUTH: :reauth
+          DISCONNECTED: :disconnected
+
+          def self?.values: -> ::Array[FinchAPI::Models::Introspection::Entity::status]
+        end
       end
     end
   end
