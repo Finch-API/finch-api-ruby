@@ -578,11 +578,16 @@ module FinchAPI
         sig { returns(T.nilable(String)) }
         attr_accessor :source_id
 
+        # The status of the entity connection
+        sig { returns(FinchAPI::Introspection::Entity::Status::TaggedSymbol) }
+        attr_accessor :status
+
         sig do
           params(
             id: String,
             name: T.nilable(String),
-            source_id: T.nilable(String)
+            source_id: T.nilable(String),
+            status: FinchAPI::Introspection::Entity::Status::OrSymbol
           ).returns(T.attached_class)
         end
         def self.new(
@@ -591,7 +596,9 @@ module FinchAPI
           # The name of the entity (payroll provider company name)
           name:,
           # The source ID of the entity
-          source_id:
+          source_id:,
+          # The status of the entity connection
+          status:
         )
         end
 
@@ -600,11 +607,67 @@ module FinchAPI
             {
               id: String,
               name: T.nilable(String),
-              source_id: T.nilable(String)
+              source_id: T.nilable(String),
+              status: FinchAPI::Introspection::Entity::Status::TaggedSymbol
             }
           )
         end
         def to_hash
+        end
+
+        # The status of the entity connection
+        module Status
+          extend FinchAPI::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, FinchAPI::Introspection::Entity::Status)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          PENDING =
+            T.let(
+              :pending,
+              FinchAPI::Introspection::Entity::Status::TaggedSymbol
+            )
+          PROCESSING =
+            T.let(
+              :processing,
+              FinchAPI::Introspection::Entity::Status::TaggedSymbol
+            )
+          CONNECTED =
+            T.let(
+              :connected,
+              FinchAPI::Introspection::Entity::Status::TaggedSymbol
+            )
+          ERROR_NO_ACCOUNT_SETUP =
+            T.let(
+              :error_no_account_setup,
+              FinchAPI::Introspection::Entity::Status::TaggedSymbol
+            )
+          ERROR_PERMISSIONS =
+            T.let(
+              :error_permissions,
+              FinchAPI::Introspection::Entity::Status::TaggedSymbol
+            )
+          REAUTH =
+            T.let(
+              :reauth,
+              FinchAPI::Introspection::Entity::Status::TaggedSymbol
+            )
+          DISCONNECTED =
+            T.let(
+              :disconnected,
+              FinchAPI::Introspection::Entity::Status::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[FinchAPI::Introspection::Entity::Status::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
       end
     end
