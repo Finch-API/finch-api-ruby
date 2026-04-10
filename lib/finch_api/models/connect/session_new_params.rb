@@ -21,7 +21,9 @@ module FinchAPI
         required :customer_name, String
 
         # @!attribute products
-        #   The Finch products to request access to
+        #   The Finch products to request access to. Use `benefits` to access deductions
+        #   endpoints — `deduction` is a deprecated alias that is still accepted but should
+        #   not be combined with `benefits`.
         #
         #   @return [Array<Symbol, FinchAPI::Models::Connect::SessionNewParams::Product>]
         required :products,
@@ -72,7 +74,7 @@ module FinchAPI
         #
         #   @param customer_name [String] Name of the customer
         #
-        #   @param products [Array<Symbol, FinchAPI::Models::Connect::SessionNewParams::Product>] The Finch products to request access to
+        #   @param products [Array<Symbol, FinchAPI::Models::Connect::SessionNewParams::Product>] The Finch products to request access to. Use `benefits` to access deductions end
         #
         #   @param customer_email [String, nil] Email address of the customer
         #
@@ -88,7 +90,6 @@ module FinchAPI
         #
         #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 
-        # The Finch products that can be requested during the Connect flow.
         module Product
           extend FinchAPI::Internal::Type::Enum
 
