@@ -15,7 +15,7 @@ module FinchAPI
         #
         # @param customer_name [String] Name of the customer
         #
-        # @param products [Array<Symbol, FinchAPI::Models::Connect::SessionNewParams::Product>] The Finch products to request access to
+        # @param products [Array<Symbol, FinchAPI::Models::Connect::SessionNewParams::Product>] The Finch products to request access to. Use `benefits` to access deductions end
         #
         # @param customer_email [String, nil] Email address of the customer
         #
@@ -57,7 +57,7 @@ module FinchAPI
         #
         # @param minutes_to_expire [Integer] The number of minutes until the session expires (defaults to 43,200, which is 30
         #
-        # @param products [Array<Symbol, FinchAPI::Models::Connect::SessionReauthenticateParams::Product>, nil] The products to request access to (optional for reauthentication)
+        # @param products [Array<Symbol, FinchAPI::Models::Connect::SessionReauthenticateParams::Product>, nil] The products to request access to (optional for reauthentication). Use `benefits
         #
         # @param redirect_uri [String, nil] The URI to redirect to after the Connect flow is completed
         #

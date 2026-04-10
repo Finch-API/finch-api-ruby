@@ -22,7 +22,9 @@ module FinchAPI
         optional :minutes_to_expire, Integer
 
         # @!attribute products
-        #   The products to request access to (optional for reauthentication)
+        #   The products to request access to (optional for reauthentication). Use
+        #   `benefits` to access deductions endpoints — `deduction` is a deprecated alias
+        #   that is still accepted but should not be combined with `benefits`.
         #
         #   @return [Array<Symbol, FinchAPI::Models::Connect::SessionReauthenticateParams::Product>, nil]
         optional :products,
@@ -45,13 +47,12 @@ module FinchAPI
         #
         #   @param minutes_to_expire [Integer] The number of minutes until the session expires (defaults to 43,200, which is 30
         #
-        #   @param products [Array<Symbol, FinchAPI::Models::Connect::SessionReauthenticateParams::Product>, nil] The products to request access to (optional for reauthentication)
+        #   @param products [Array<Symbol, FinchAPI::Models::Connect::SessionReauthenticateParams::Product>, nil] The products to request access to (optional for reauthentication). Use `benefits
         #
         #   @param redirect_uri [String, nil] The URI to redirect to after the Connect flow is completed
         #
         #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 
-        # The Finch products that can be requested during the Connect flow.
         module Product
           extend FinchAPI::Internal::Type::Enum
 
