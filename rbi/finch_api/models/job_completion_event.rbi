@@ -120,6 +120,21 @@ module FinchAPI
             :"job.data_sync_all.completed",
             FinchAPI::JobCompletionEvent::EventType::TaggedSymbol
           )
+        JOB_W4_FORM_EMPLOYEE_SYNC_COMPLETED =
+          T.let(
+            :"job.w4_form_employee_sync.completed",
+            FinchAPI::JobCompletionEvent::EventType::TaggedSymbol
+          )
+        JOB_INITIAL_DATA_SYNC_ORG_SUCCEEDED =
+          T.let(
+            :"job.initial_data_sync_org.succeeded",
+            FinchAPI::JobCompletionEvent::EventType::TaggedSymbol
+          )
+        JOB_INITIAL_DATA_SYNC_PAYROLL_SUCCEEDED =
+          T.let(
+            :"job.initial_data_sync_payroll.succeeded",
+            FinchAPI::JobCompletionEvent::EventType::TaggedSymbol
+          )
 
         sig do
           override.returns(
