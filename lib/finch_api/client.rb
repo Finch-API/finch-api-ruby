@@ -121,6 +121,17 @@ module FinchAPI
       headers = {
         "finch-api-version" => "2020-09-17"
       }
+      custom_headers_env = ENV["FINCH_CUSTOM_HEADERS"]
+      unless custom_headers_env.nil?
+        parsed = {}
+        custom_headers_env.split("\n").each do |line|
+          colon = line.index(":")
+          unless colon.nil?
+            parsed[line[0...colon].strip] = line[(colon + 1)..].strip
+          end
+        end
+        headers = parsed.merge(headers)
+      end
 
       @client_id = client_id&.to_s
       @client_secret = client_secret&.to_s
