@@ -26,19 +26,11 @@ module FinchAPI
       sig { params(connection_id: String).void }
       attr_writer :connection_id
 
-      # Unique Finch id of the entity for which data has been updated.
-      sig { returns(T.nilable(String)) }
-      attr_reader :entity_id
-
-      sig { params(entity_id: String).void }
-      attr_writer :entity_id
-
       sig do
         params(
           account_id: String,
           company_id: String,
-          connection_id: String,
-          entity_id: String
+          connection_id: String
         ).returns(T.attached_class)
       end
       def self.new(
@@ -50,20 +42,13 @@ module FinchAPI
         # `connection_id` instead to identify the connection associated with this event.
         company_id:,
         # Unique Finch ID of the connection associated with the webhook event.
-        connection_id: nil,
-        # Unique Finch id of the entity for which data has been updated.
-        entity_id: nil
+        connection_id: nil
       )
       end
 
       sig do
         override.returns(
-          {
-            account_id: String,
-            company_id: String,
-            connection_id: String,
-            entity_id: String
-          }
+          { account_id: String, company_id: String, connection_id: String }
         )
       end
       def to_hash
