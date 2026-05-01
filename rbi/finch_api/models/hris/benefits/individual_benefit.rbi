@@ -30,7 +30,7 @@ module FinchAPI
             params(
               body:
                 T.any(
-                  FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::OrHash,
+                  FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::OrHash,
                   FinchAPI::HRIS::Benefits::IndividualBenefit::Body::BatchError::OrHash
                 ),
               code: Integer,
@@ -59,16 +59,16 @@ module FinchAPI
             Variants =
               T.type_alias do
                 T.any(
-                  FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0,
+                  FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit,
                   FinchAPI::HRIS::Benefits::IndividualBenefit::Body::BatchError
                 )
               end
 
-            class UnionMember0 < FinchAPI::Internal::Type::BaseModel
+            class IndividualBenefit < FinchAPI::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
                   T.any(
-                    FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0,
+                    FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit,
                     FinchAPI::Internal::AnyHash
                   )
                 end
@@ -88,7 +88,7 @@ module FinchAPI
               sig do
                 returns(
                   T.nilable(
-                    FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::Variants
+                    FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::Variants
                   )
                 )
               end
@@ -99,7 +99,7 @@ module FinchAPI
               sig do
                 returns(
                   T.nilable(
-                    FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::Variants
+                    FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::Variants
                   )
                 )
               end
@@ -109,7 +109,7 @@ module FinchAPI
               sig do
                 returns(
                   T.nilable(
-                    FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::HsaContributionLimit::TaggedSymbol
+                    FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::HsaContributionLimit::TaggedSymbol
                   )
                 )
               end
@@ -122,21 +122,21 @@ module FinchAPI
                   company_contribution:
                     T.nilable(
                       T.any(
-                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0::OrHash,
-                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1::OrHash,
-                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::OrHash
+                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionFixed::OrHash,
+                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionPercent::OrHash,
+                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionTiered::OrHash
                       )
                     ),
                   employee_deduction:
                     T.nilable(
                       T.any(
-                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0::OrHash,
-                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1::OrHash
+                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionFixed::OrHash,
+                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionPercent::OrHash
                       )
                     ),
                   hsa_contribution_limit:
                     T.nilable(
-                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::HsaContributionLimit::OrSymbol
+                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::HsaContributionLimit::OrSymbol
                     )
                 ).returns(T.attached_class)
               end
@@ -165,15 +165,15 @@ module FinchAPI
                     catch_up: T.nilable(T::Boolean),
                     company_contribution:
                       T.nilable(
-                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::Variants
+                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::Variants
                       ),
                     employee_deduction:
                       T.nilable(
-                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::Variants
+                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::Variants
                       ),
                     hsa_contribution_limit:
                       T.nilable(
-                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::HsaContributionLimit::TaggedSymbol
+                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::HsaContributionLimit::TaggedSymbol
                       )
                   }
                 )
@@ -190,17 +190,17 @@ module FinchAPI
                 Variants =
                   T.type_alias do
                     T.any(
-                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0,
-                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1,
-                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2
+                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionFixed,
+                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionPercent,
+                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionTiered
                     )
                   end
 
-                class UnionMember0 < FinchAPI::Internal::Type::BaseModel
+                class CompanyContributionFixed < FinchAPI::Internal::Type::BaseModel
                   OrHash =
                     T.type_alias do
                       T.any(
-                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0,
+                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionFixed,
                         FinchAPI::Internal::AnyHash
                       )
                     end
@@ -214,7 +214,7 @@ module FinchAPI
                   # (amount in basis points), or "tiered" (multi-tier matching).
                   sig do
                     returns(
-                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0::Type::TaggedSymbol
+                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionFixed::Type::TaggedSymbol
                     )
                   end
                   attr_accessor :type
@@ -223,7 +223,7 @@ module FinchAPI
                     params(
                       amount: Integer,
                       type:
-                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0::Type::OrSymbol
+                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionFixed::Type::OrSymbol
                     ).returns(T.attached_class)
                   end
                   def self.new(
@@ -241,7 +241,7 @@ module FinchAPI
                       {
                         amount: Integer,
                         type:
-                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0::Type::TaggedSymbol
+                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionFixed::Type::TaggedSymbol
                       }
                     )
                   end
@@ -257,7 +257,7 @@ module FinchAPI
                       T.type_alias do
                         T.all(
                           Symbol,
-                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0::Type
+                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionFixed::Type
                         )
                       end
                     OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -265,13 +265,13 @@ module FinchAPI
                     FIXED =
                       T.let(
                         :fixed,
-                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0::Type::TaggedSymbol
+                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionFixed::Type::TaggedSymbol
                       )
 
                     sig do
                       override.returns(
                         T::Array[
-                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0::Type::TaggedSymbol
+                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionFixed::Type::TaggedSymbol
                         ]
                       )
                     end
@@ -280,11 +280,11 @@ module FinchAPI
                   end
                 end
 
-                class UnionMember1 < FinchAPI::Internal::Type::BaseModel
+                class CompanyContributionPercent < FinchAPI::Internal::Type::BaseModel
                   OrHash =
                     T.type_alias do
                       T.any(
-                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1,
+                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionPercent,
                         FinchAPI::Internal::AnyHash
                       )
                     end
@@ -298,7 +298,7 @@ module FinchAPI
                   # (amount in basis points), or "tiered" (multi-tier matching).
                   sig do
                     returns(
-                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1::Type::TaggedSymbol
+                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionPercent::Type::TaggedSymbol
                     )
                   end
                   attr_accessor :type
@@ -307,7 +307,7 @@ module FinchAPI
                     params(
                       amount: Integer,
                       type:
-                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1::Type::OrSymbol
+                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionPercent::Type::OrSymbol
                     ).returns(T.attached_class)
                   end
                   def self.new(
@@ -325,7 +325,7 @@ module FinchAPI
                       {
                         amount: Integer,
                         type:
-                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1::Type::TaggedSymbol
+                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionPercent::Type::TaggedSymbol
                       }
                     )
                   end
@@ -341,7 +341,7 @@ module FinchAPI
                       T.type_alias do
                         T.all(
                           Symbol,
-                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1::Type
+                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionPercent::Type
                         )
                       end
                     OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -349,13 +349,13 @@ module FinchAPI
                     PERCENT =
                       T.let(
                         :percent,
-                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1::Type::TaggedSymbol
+                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionPercent::Type::TaggedSymbol
                       )
 
                     sig do
                       override.returns(
                         T::Array[
-                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1::Type::TaggedSymbol
+                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionPercent::Type::TaggedSymbol
                         ]
                       )
                     end
@@ -364,11 +364,11 @@ module FinchAPI
                   end
                 end
 
-                class UnionMember2 < FinchAPI::Internal::Type::BaseModel
+                class CompanyContributionTiered < FinchAPI::Internal::Type::BaseModel
                   OrHash =
                     T.type_alias do
                       T.any(
-                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2,
+                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionTiered,
                         FinchAPI::Internal::AnyHash
                       )
                     end
@@ -378,7 +378,7 @@ module FinchAPI
                   sig do
                     returns(
                       T::Array[
-                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::Tier
+                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionTiered::Tier
                       ]
                     )
                   end
@@ -388,7 +388,7 @@ module FinchAPI
                   # (amount in basis points), or "tiered" (multi-tier matching).
                   sig do
                     returns(
-                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::Type::TaggedSymbol
+                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionTiered::Type::TaggedSymbol
                     )
                   end
                   attr_accessor :type
@@ -397,10 +397,10 @@ module FinchAPI
                     params(
                       tiers:
                         T::Array[
-                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::Tier::OrHash
+                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionTiered::Tier::OrHash
                         ],
                       type:
-                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::Type::OrSymbol
+                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionTiered::Type::OrSymbol
                     ).returns(T.attached_class)
                   end
                   def self.new(
@@ -418,10 +418,10 @@ module FinchAPI
                       {
                         tiers:
                           T::Array[
-                            FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::Tier
+                            FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionTiered::Tier
                           ],
                         type:
-                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::Type::TaggedSymbol
+                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionTiered::Type::TaggedSymbol
                       }
                     )
                   end
@@ -432,7 +432,7 @@ module FinchAPI
                     OrHash =
                       T.type_alias do
                         T.any(
-                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::Tier,
+                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionTiered::Tier,
                           FinchAPI::Internal::AnyHash
                         )
                       end
@@ -467,7 +467,7 @@ module FinchAPI
                       T.type_alias do
                         T.all(
                           Symbol,
-                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::Type
+                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionTiered::Type
                         )
                       end
                     OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -475,13 +475,13 @@ module FinchAPI
                     TIERED =
                       T.let(
                         :tiered,
-                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::Type::TaggedSymbol
+                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionTiered::Type::TaggedSymbol
                       )
 
                     sig do
                       override.returns(
                         T::Array[
-                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::Type::TaggedSymbol
+                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionTiered::Type::TaggedSymbol
                         ]
                       )
                     end
@@ -493,7 +493,7 @@ module FinchAPI
                 sig do
                   override.returns(
                     T::Array[
-                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::Variants
+                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::Variants
                     ]
                   )
                 end
@@ -509,16 +509,16 @@ module FinchAPI
                 Variants =
                   T.type_alias do
                     T.any(
-                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0,
-                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1
+                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionFixed,
+                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionPercent
                     )
                   end
 
-                class UnionMember0 < FinchAPI::Internal::Type::BaseModel
+                class EmployeeDeductionContributionFixed < FinchAPI::Internal::Type::BaseModel
                   OrHash =
                     T.type_alias do
                       T.any(
-                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0,
+                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionFixed,
                         FinchAPI::Internal::AnyHash
                       )
                     end
@@ -532,7 +532,7 @@ module FinchAPI
                   # (amount in basis points).
                   sig do
                     returns(
-                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0::Type::TaggedSymbol
+                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionFixed::Type::TaggedSymbol
                     )
                   end
                   attr_accessor :type
@@ -541,7 +541,7 @@ module FinchAPI
                     params(
                       amount: Integer,
                       type:
-                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0::Type::OrSymbol
+                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionFixed::Type::OrSymbol
                     ).returns(T.attached_class)
                   end
                   def self.new(
@@ -559,7 +559,7 @@ module FinchAPI
                       {
                         amount: Integer,
                         type:
-                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0::Type::TaggedSymbol
+                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionFixed::Type::TaggedSymbol
                       }
                     )
                   end
@@ -575,7 +575,7 @@ module FinchAPI
                       T.type_alias do
                         T.all(
                           Symbol,
-                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0::Type
+                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionFixed::Type
                         )
                       end
                     OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -583,13 +583,13 @@ module FinchAPI
                     FIXED =
                       T.let(
                         :fixed,
-                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0::Type::TaggedSymbol
+                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionFixed::Type::TaggedSymbol
                       )
 
                     sig do
                       override.returns(
                         T::Array[
-                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0::Type::TaggedSymbol
+                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionFixed::Type::TaggedSymbol
                         ]
                       )
                     end
@@ -598,11 +598,11 @@ module FinchAPI
                   end
                 end
 
-                class UnionMember1 < FinchAPI::Internal::Type::BaseModel
+                class EmployeeDeductionContributionPercent < FinchAPI::Internal::Type::BaseModel
                   OrHash =
                     T.type_alias do
                       T.any(
-                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1,
+                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionPercent,
                         FinchAPI::Internal::AnyHash
                       )
                     end
@@ -616,7 +616,7 @@ module FinchAPI
                   # (amount in basis points).
                   sig do
                     returns(
-                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1::Type::TaggedSymbol
+                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionPercent::Type::TaggedSymbol
                     )
                   end
                   attr_accessor :type
@@ -625,7 +625,7 @@ module FinchAPI
                     params(
                       amount: Integer,
                       type:
-                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1::Type::OrSymbol
+                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionPercent::Type::OrSymbol
                     ).returns(T.attached_class)
                   end
                   def self.new(
@@ -643,7 +643,7 @@ module FinchAPI
                       {
                         amount: Integer,
                         type:
-                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1::Type::TaggedSymbol
+                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionPercent::Type::TaggedSymbol
                       }
                     )
                   end
@@ -659,7 +659,7 @@ module FinchAPI
                       T.type_alias do
                         T.all(
                           Symbol,
-                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1::Type
+                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionPercent::Type
                         )
                       end
                     OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -667,13 +667,13 @@ module FinchAPI
                     PERCENT =
                       T.let(
                         :percent,
-                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1::Type::TaggedSymbol
+                        FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionPercent::Type::TaggedSymbol
                       )
 
                     sig do
                       override.returns(
                         T::Array[
-                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1::Type::TaggedSymbol
+                          FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionPercent::Type::TaggedSymbol
                         ]
                       )
                     end
@@ -685,7 +685,7 @@ module FinchAPI
                 sig do
                   override.returns(
                     T::Array[
-                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::Variants
+                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::Variants
                     ]
                   )
                 end
@@ -701,7 +701,7 @@ module FinchAPI
                   T.type_alias do
                     T.all(
                       Symbol,
-                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::HsaContributionLimit
+                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::HsaContributionLimit
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -709,18 +709,18 @@ module FinchAPI
                 INDIVIDUAL =
                   T.let(
                     :individual,
-                    FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::HsaContributionLimit::TaggedSymbol
+                    FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::HsaContributionLimit::TaggedSymbol
                   )
                 FAMILY =
                   T.let(
                     :family,
-                    FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::HsaContributionLimit::TaggedSymbol
+                    FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::HsaContributionLimit::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::HsaContributionLimit::TaggedSymbol
+                      FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::HsaContributionLimit::TaggedSymbol
                     ]
                   )
                 end

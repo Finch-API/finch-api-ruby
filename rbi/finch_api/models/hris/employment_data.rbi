@@ -9,16 +9,16 @@ module FinchAPI
         Variants =
           T.type_alias do
             T.any(
-              FinchAPI::HRIS::EmploymentData::UnionMember0,
+              FinchAPI::HRIS::EmploymentData::EmploymentData,
               FinchAPI::HRIS::EmploymentData::BatchError
             )
           end
 
-        class UnionMember0 < FinchAPI::Internal::Type::BaseModel
+        class EmploymentData < FinchAPI::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
               T.any(
-                FinchAPI::HRIS::EmploymentData::UnionMember0,
+                FinchAPI::HRIS::EmploymentData::EmploymentData,
                 FinchAPI::Internal::AnyHash
               )
             end
@@ -35,7 +35,7 @@ module FinchAPI
           sig do
             returns(
               T.nilable(
-                FinchAPI::HRIS::EmploymentData::UnionMember0::Department
+                FinchAPI::HRIS::EmploymentData::EmploymentData::Department
               )
             )
           end
@@ -45,7 +45,7 @@ module FinchAPI
             params(
               department:
                 T.nilable(
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::Department::OrHash
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::Department::OrHash
                 )
             ).void
           end
@@ -55,7 +55,7 @@ module FinchAPI
           sig do
             returns(
               T.nilable(
-                FinchAPI::HRIS::EmploymentData::UnionMember0::Employment
+                FinchAPI::HRIS::EmploymentData::EmploymentData::Employment
               )
             )
           end
@@ -65,7 +65,7 @@ module FinchAPI
             params(
               employment:
                 T.nilable(
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::OrHash
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::Employment::OrHash
                 )
             ).void
           end
@@ -75,7 +75,7 @@ module FinchAPI
           sig do
             returns(
               T.nilable(
-                FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol
+                FinchAPI::HRIS::EmploymentData::EmploymentData::EmploymentStatus::TaggedSymbol
               )
             )
           end
@@ -93,7 +93,7 @@ module FinchAPI
           sig do
             returns(
               T.nilable(
-                FinchAPI::HRIS::EmploymentData::UnionMember0::FlsaStatus::TaggedSymbol
+                FinchAPI::HRIS::EmploymentData::EmploymentData::FlsaStatus::TaggedSymbol
               )
             )
           end
@@ -119,7 +119,7 @@ module FinchAPI
           # The manager object representing the manager of the individual within the org.
           sig do
             returns(
-              T.nilable(FinchAPI::HRIS::EmploymentData::UnionMember0::Manager)
+              T.nilable(FinchAPI::HRIS::EmploymentData::EmploymentData::Manager)
             )
           end
           attr_reader :manager
@@ -128,7 +128,7 @@ module FinchAPI
             params(
               manager:
                 T.nilable(
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::Manager::OrHash
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::Manager::OrHash
                 )
             ).void
           end
@@ -152,7 +152,7 @@ module FinchAPI
             returns(
               T.nilable(
                 T::Array[
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::CustomField
                 ]
               )
             )
@@ -186,21 +186,21 @@ module FinchAPI
               class_code: T.nilable(String),
               department:
                 T.nilable(
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::Department::OrHash
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::Department::OrHash
                 ),
               employment:
                 T.nilable(
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::OrHash
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::Employment::OrHash
                 ),
               employment_status:
                 T.nilable(
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus::OrSymbol
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::EmploymentStatus::OrSymbol
                 ),
               end_date: T.nilable(String),
               first_name: T.nilable(String),
               flsa_status:
                 T.nilable(
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::FlsaStatus::OrSymbol
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::FlsaStatus::OrSymbol
                 ),
               is_active: T.nilable(T::Boolean),
               last_name: T.nilable(String),
@@ -208,7 +208,7 @@ module FinchAPI
               location: T.nilable(FinchAPI::Location::OrHash),
               manager:
                 T.nilable(
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::Manager::OrHash
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::Manager::OrHash
                 ),
               middle_name: T.nilable(String),
               start_date: T.nilable(String),
@@ -216,7 +216,7 @@ module FinchAPI
               custom_fields:
                 T.nilable(
                   T::Array[
-                    FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField::OrHash
+                    FinchAPI::HRIS::EmploymentData::EmploymentData::CustomField::OrHash
                   ]
                 ),
               income: T.nilable(FinchAPI::Income::OrHash),
@@ -280,21 +280,21 @@ module FinchAPI
                 class_code: T.nilable(String),
                 department:
                   T.nilable(
-                    FinchAPI::HRIS::EmploymentData::UnionMember0::Department
+                    FinchAPI::HRIS::EmploymentData::EmploymentData::Department
                   ),
                 employment:
                   T.nilable(
-                    FinchAPI::HRIS::EmploymentData::UnionMember0::Employment
+                    FinchAPI::HRIS::EmploymentData::EmploymentData::Employment
                   ),
                 employment_status:
                   T.nilable(
-                    FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol
+                    FinchAPI::HRIS::EmploymentData::EmploymentData::EmploymentStatus::TaggedSymbol
                   ),
                 end_date: T.nilable(String),
                 first_name: T.nilable(String),
                 flsa_status:
                   T.nilable(
-                    FinchAPI::HRIS::EmploymentData::UnionMember0::FlsaStatus::TaggedSymbol
+                    FinchAPI::HRIS::EmploymentData::EmploymentData::FlsaStatus::TaggedSymbol
                   ),
                 is_active: T.nilable(T::Boolean),
                 last_name: T.nilable(String),
@@ -302,7 +302,7 @@ module FinchAPI
                 location: T.nilable(FinchAPI::Location),
                 manager:
                   T.nilable(
-                    FinchAPI::HRIS::EmploymentData::UnionMember0::Manager
+                    FinchAPI::HRIS::EmploymentData::EmploymentData::Manager
                   ),
                 middle_name: T.nilable(String),
                 start_date: T.nilable(String),
@@ -310,7 +310,7 @@ module FinchAPI
                 custom_fields:
                   T.nilable(
                     T::Array[
-                      FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField
+                      FinchAPI::HRIS::EmploymentData::EmploymentData::CustomField
                     ]
                   ),
                 income: T.nilable(FinchAPI::Income),
@@ -328,7 +328,7 @@ module FinchAPI
             OrHash =
               T.type_alias do
                 T.any(
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::Department,
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::Department,
                   FinchAPI::Internal::AnyHash
                 )
               end
@@ -354,7 +354,7 @@ module FinchAPI
             OrHash =
               T.type_alias do
                 T.any(
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment,
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::Employment,
                   FinchAPI::Internal::AnyHash
                 )
               end
@@ -364,7 +364,7 @@ module FinchAPI
             sig do
               returns(
                 T.nilable(
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::Employment::Subtype::TaggedSymbol
                 )
               )
             end
@@ -374,7 +374,7 @@ module FinchAPI
             sig do
               returns(
                 T.nilable(
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Type::TaggedSymbol
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::Employment::Type::TaggedSymbol
                 )
               )
             end
@@ -385,11 +385,11 @@ module FinchAPI
               params(
                 subtype:
                   T.nilable(
-                    FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype::OrSymbol
+                    FinchAPI::HRIS::EmploymentData::EmploymentData::Employment::Subtype::OrSymbol
                   ),
                 type:
                   T.nilable(
-                    FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Type::OrSymbol
+                    FinchAPI::HRIS::EmploymentData::EmploymentData::Employment::Type::OrSymbol
                   )
               ).returns(T.attached_class)
             end
@@ -407,11 +407,11 @@ module FinchAPI
                 {
                   subtype:
                     T.nilable(
-                      FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol
+                      FinchAPI::HRIS::EmploymentData::EmploymentData::Employment::Subtype::TaggedSymbol
                     ),
                   type:
                     T.nilable(
-                      FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Type::TaggedSymbol
+                      FinchAPI::HRIS::EmploymentData::EmploymentData::Employment::Type::TaggedSymbol
                     )
                 }
               )
@@ -428,7 +428,7 @@ module FinchAPI
                 T.type_alias do
                   T.all(
                     Symbol,
-                    FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype
+                    FinchAPI::HRIS::EmploymentData::EmploymentData::Employment::Subtype
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -436,38 +436,38 @@ module FinchAPI
               FULL_TIME =
                 T.let(
                   :full_time,
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::Employment::Subtype::TaggedSymbol
                 )
               INTERN =
                 T.let(
                   :intern,
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::Employment::Subtype::TaggedSymbol
                 )
               PART_TIME =
                 T.let(
                   :part_time,
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::Employment::Subtype::TaggedSymbol
                 )
               TEMP =
                 T.let(
                   :temp,
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::Employment::Subtype::TaggedSymbol
                 )
               SEASONAL =
                 T.let(
                   :seasonal,
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::Employment::Subtype::TaggedSymbol
                 )
               INDIVIDUAL_CONTRACTOR =
                 T.let(
                   :individual_contractor,
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::Employment::Subtype::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Subtype::TaggedSymbol
+                    FinchAPI::HRIS::EmploymentData::EmploymentData::Employment::Subtype::TaggedSymbol
                   ]
                 )
               end
@@ -483,7 +483,7 @@ module FinchAPI
                 T.type_alias do
                   T.all(
                     Symbol,
-                    FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Type
+                    FinchAPI::HRIS::EmploymentData::EmploymentData::Employment::Type
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -491,18 +491,18 @@ module FinchAPI
               EMPLOYEE =
                 T.let(
                   :employee,
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Type::TaggedSymbol
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::Employment::Type::TaggedSymbol
                 )
               CONTRACTOR =
                 T.let(
                   :contractor,
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Type::TaggedSymbol
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::Employment::Type::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    FinchAPI::HRIS::EmploymentData::UnionMember0::Employment::Type::TaggedSymbol
+                    FinchAPI::HRIS::EmploymentData::EmploymentData::Employment::Type::TaggedSymbol
                   ]
                 )
               end
@@ -519,7 +519,7 @@ module FinchAPI
               T.type_alias do
                 T.all(
                   Symbol,
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::EmploymentStatus
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -527,43 +527,43 @@ module FinchAPI
             ACTIVE =
               T.let(
                 :active,
-                FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol
+                FinchAPI::HRIS::EmploymentData::EmploymentData::EmploymentStatus::TaggedSymbol
               )
             DECEASED =
               T.let(
                 :deceased,
-                FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol
+                FinchAPI::HRIS::EmploymentData::EmploymentData::EmploymentStatus::TaggedSymbol
               )
             LEAVE =
               T.let(
                 :leave,
-                FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol
+                FinchAPI::HRIS::EmploymentData::EmploymentData::EmploymentStatus::TaggedSymbol
               )
             ONBOARDING =
               T.let(
                 :onboarding,
-                FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol
+                FinchAPI::HRIS::EmploymentData::EmploymentData::EmploymentStatus::TaggedSymbol
               )
             PREHIRE =
               T.let(
                 :prehire,
-                FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol
+                FinchAPI::HRIS::EmploymentData::EmploymentData::EmploymentStatus::TaggedSymbol
               )
             RETIRED =
               T.let(
                 :retired,
-                FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol
+                FinchAPI::HRIS::EmploymentData::EmploymentData::EmploymentStatus::TaggedSymbol
               )
             TERMINATED =
               T.let(
                 :terminated,
-                FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol
+                FinchAPI::HRIS::EmploymentData::EmploymentData::EmploymentStatus::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::EmploymentStatus::TaggedSymbol
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::EmploymentStatus::TaggedSymbol
                 ]
               )
             end
@@ -580,7 +580,7 @@ module FinchAPI
               T.type_alias do
                 T.all(
                   Symbol,
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::FlsaStatus
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::FlsaStatus
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -588,23 +588,23 @@ module FinchAPI
             EXEMPT =
               T.let(
                 :exempt,
-                FinchAPI::HRIS::EmploymentData::UnionMember0::FlsaStatus::TaggedSymbol
+                FinchAPI::HRIS::EmploymentData::EmploymentData::FlsaStatus::TaggedSymbol
               )
             NON_EXEMPT =
               T.let(
                 :non_exempt,
-                FinchAPI::HRIS::EmploymentData::UnionMember0::FlsaStatus::TaggedSymbol
+                FinchAPI::HRIS::EmploymentData::EmploymentData::FlsaStatus::TaggedSymbol
               )
             UNKNOWN =
               T.let(
                 :unknown,
-                FinchAPI::HRIS::EmploymentData::UnionMember0::FlsaStatus::TaggedSymbol
+                FinchAPI::HRIS::EmploymentData::EmploymentData::FlsaStatus::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::FlsaStatus::TaggedSymbol
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::FlsaStatus::TaggedSymbol
                 ]
               )
             end
@@ -616,7 +616,7 @@ module FinchAPI
             OrHash =
               T.type_alias do
                 T.any(
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::Manager,
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::Manager,
                   FinchAPI::Internal::AnyHash
                 )
               end
@@ -642,7 +642,7 @@ module FinchAPI
             OrHash =
               T.type_alias do
                 T.any(
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField,
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::CustomField,
                   FinchAPI::Internal::AnyHash
                 )
               end
@@ -653,7 +653,7 @@ module FinchAPI
             sig do
               returns(
                 T.nilable(
-                  FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField::Value::Variants
+                  FinchAPI::HRIS::EmploymentData::EmploymentData::CustomField::Value::Variants
                 )
               )
             end
@@ -664,7 +664,7 @@ module FinchAPI
                 name: T.nilable(String),
                 value:
                   T.nilable(
-                    FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField::Value::Variants
+                    FinchAPI::HRIS::EmploymentData::EmploymentData::CustomField::Value::Variants
                   )
               ).returns(T.attached_class)
             end
@@ -677,7 +677,7 @@ module FinchAPI
                   name: T.nilable(String),
                   value:
                     T.nilable(
-                      FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField::Value::Variants
+                      FinchAPI::HRIS::EmploymentData::EmploymentData::CustomField::Value::Variants
                     )
                 }
               )
@@ -704,7 +704,7 @@ module FinchAPI
               sig do
                 override.returns(
                   T::Array[
-                    FinchAPI::HRIS::EmploymentData::UnionMember0::CustomField::Value::Variants
+                    FinchAPI::HRIS::EmploymentData::EmploymentData::CustomField::Value::Variants
                   ]
                 )
               end

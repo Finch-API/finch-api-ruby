@@ -31,75 +31,75 @@ module FinchAPI
           }
 
           type body =
-            FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0
+            FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit
             | FinchAPI::HRIS::Benefits::IndividualBenefit::Body::BatchError
 
           module Body
             extend FinchAPI::Internal::Type::Union
 
-            type union_member0 =
+            type individual_benefit =
               {
                 annual_maximum: Integer?,
                 catch_up: bool?,
-                company_contribution: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::company_contribution?,
-                employee_deduction: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::employee_deduction?,
-                hsa_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::hsa_contribution_limit?
+                company_contribution: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::company_contribution?,
+                employee_deduction: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::employee_deduction?,
+                hsa_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::hsa_contribution_limit?
               }
 
-            class UnionMember0 < FinchAPI::Internal::Type::BaseModel
+            class IndividualBenefit < FinchAPI::Internal::Type::BaseModel
               attr_accessor annual_maximum: Integer?
 
               attr_accessor catch_up: bool?
 
-              attr_accessor company_contribution: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::company_contribution?
+              attr_accessor company_contribution: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::company_contribution?
 
-              attr_accessor employee_deduction: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::employee_deduction?
+              attr_accessor employee_deduction: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::employee_deduction?
 
-              attr_accessor hsa_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::hsa_contribution_limit?
+              attr_accessor hsa_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::hsa_contribution_limit?
 
               def initialize: (
                 annual_maximum: Integer?,
                 catch_up: bool?,
-                company_contribution: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::company_contribution?,
-                employee_deduction: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::employee_deduction?,
-                ?hsa_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::hsa_contribution_limit?
+                company_contribution: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::company_contribution?,
+                employee_deduction: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::employee_deduction?,
+                ?hsa_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::hsa_contribution_limit?
               ) -> void
 
               def to_hash: -> {
                 annual_maximum: Integer?,
                 catch_up: bool?,
-                company_contribution: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::company_contribution?,
-                employee_deduction: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::employee_deduction?,
-                hsa_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::hsa_contribution_limit?
+                company_contribution: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::company_contribution?,
+                employee_deduction: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::employee_deduction?,
+                hsa_contribution_limit: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::hsa_contribution_limit?
               }
 
               type company_contribution =
-                FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0
-                | FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1
-                | FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2
+                FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionFixed
+                | FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionPercent
+                | FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionTiered
 
               module CompanyContribution
                 extend FinchAPI::Internal::Type::Union
 
-                type union_member0 =
+                type company_contribution_fixed =
                   {
                     amount: Integer,
-                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0::type_
+                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionFixed::type_
                   }
 
-                class UnionMember0 < FinchAPI::Internal::Type::BaseModel
+                class CompanyContributionFixed < FinchAPI::Internal::Type::BaseModel
                   attr_accessor amount: Integer
 
-                  attr_accessor type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0::type_
+                  attr_accessor type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionFixed::type_
 
                   def initialize: (
                     amount: Integer,
-                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0::type_
+                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionFixed::type_
                   ) -> void
 
                   def to_hash: -> {
                     amount: Integer,
-                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0::type_
+                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionFixed::type_
                   }
 
                   type type_ = :fixed
@@ -109,29 +109,29 @@ module FinchAPI
 
                     FIXED: :fixed
 
-                    def self?.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember0::type_]
+                    def self?.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionFixed::type_]
                   end
                 end
 
-                type union_member1 =
+                type company_contribution_percent =
                   {
                     amount: Integer,
-                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1::type_
+                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionPercent::type_
                   }
 
-                class UnionMember1 < FinchAPI::Internal::Type::BaseModel
+                class CompanyContributionPercent < FinchAPI::Internal::Type::BaseModel
                   attr_accessor amount: Integer
 
-                  attr_accessor type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1::type_
+                  attr_accessor type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionPercent::type_
 
                   def initialize: (
                     amount: Integer,
-                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1::type_
+                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionPercent::type_
                   ) -> void
 
                   def to_hash: -> {
                     amount: Integer,
-                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1::type_
+                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionPercent::type_
                   }
 
                   type type_ = :percent
@@ -141,29 +141,29 @@ module FinchAPI
 
                     PERCENT: :percent
 
-                    def self?.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember1::type_]
+                    def self?.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionPercent::type_]
                   end
                 end
 
-                type union_member2 =
+                type company_contribution_tiered =
                   {
-                    tiers: ::Array[FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::Tier],
-                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::type_
+                    tiers: ::Array[FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionTiered::Tier],
+                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionTiered::type_
                   }
 
-                class UnionMember2 < FinchAPI::Internal::Type::BaseModel
-                  attr_accessor tiers: ::Array[FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::Tier]
+                class CompanyContributionTiered < FinchAPI::Internal::Type::BaseModel
+                  attr_accessor tiers: ::Array[FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionTiered::Tier]
 
-                  attr_accessor type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::type_
+                  attr_accessor type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionTiered::type_
 
                   def initialize: (
-                    tiers: ::Array[FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::Tier],
-                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::type_
+                    tiers: ::Array[FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionTiered::Tier],
+                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionTiered::type_
                   ) -> void
 
                   def to_hash: -> {
-                    tiers: ::Array[FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::Tier],
-                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::type_
+                    tiers: ::Array[FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionTiered::Tier],
+                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionTiered::type_
                   }
 
                   type tier = { match: Integer, threshold: Integer }
@@ -185,39 +185,39 @@ module FinchAPI
 
                     TIERED: :tiered
 
-                    def self?.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::CompanyContribution::UnionMember2::type_]
+                    def self?.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::CompanyContribution::CompanyContributionTiered::type_]
                   end
                 end
 
-                def self?.variants: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::company_contribution]
+                def self?.variants: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::company_contribution]
               end
 
               type employee_deduction =
-                FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0
-                | FinchAPI::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1
+                FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionFixed
+                | FinchAPI::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionPercent
 
               module EmployeeDeduction
                 extend FinchAPI::Internal::Type::Union
 
-                type union_member0 =
+                type employee_deduction_contribution_fixed =
                   {
                     amount: Integer,
-                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0::type_
+                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionFixed::type_
                   }
 
-                class UnionMember0 < FinchAPI::Internal::Type::BaseModel
+                class EmployeeDeductionContributionFixed < FinchAPI::Internal::Type::BaseModel
                   attr_accessor amount: Integer
 
-                  attr_accessor type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0::type_
+                  attr_accessor type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionFixed::type_
 
                   def initialize: (
                     amount: Integer,
-                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0::type_
+                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionFixed::type_
                   ) -> void
 
                   def to_hash: -> {
                     amount: Integer,
-                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0::type_
+                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionFixed::type_
                   }
 
                   type type_ = :fixed
@@ -227,29 +227,29 @@ module FinchAPI
 
                     FIXED: :fixed
 
-                    def self?.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember0::type_]
+                    def self?.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionFixed::type_]
                   end
                 end
 
-                type union_member1 =
+                type employee_deduction_contribution_percent =
                   {
                     amount: Integer,
-                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1::type_
+                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionPercent::type_
                   }
 
-                class UnionMember1 < FinchAPI::Internal::Type::BaseModel
+                class EmployeeDeductionContributionPercent < FinchAPI::Internal::Type::BaseModel
                   attr_accessor amount: Integer
 
-                  attr_accessor type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1::type_
+                  attr_accessor type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionPercent::type_
 
                   def initialize: (
                     amount: Integer,
-                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1::type_
+                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionPercent::type_
                   ) -> void
 
                   def to_hash: -> {
                     amount: Integer,
-                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1::type_
+                    type: FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionPercent::type_
                   }
 
                   type type_ = :percent
@@ -259,11 +259,11 @@ module FinchAPI
 
                     PERCENT: :percent
 
-                    def self?.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::EmployeeDeduction::UnionMember1::type_]
+                    def self?.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::EmployeeDeduction::EmployeeDeductionContributionPercent::type_]
                   end
                 end
 
-                def self?.variants: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::employee_deduction]
+                def self?.variants: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::employee_deduction]
               end
 
               type hsa_contribution_limit = :individual | :family
@@ -274,7 +274,7 @@ module FinchAPI
                 INDIVIDUAL: :individual
                 FAMILY: :family
 
-                def self?.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::UnionMember0::hsa_contribution_limit]
+                def self?.values: -> ::Array[FinchAPI::Models::HRIS::Benefits::IndividualBenefit::Body::IndividualBenefit::hsa_contribution_limit]
               end
             end
 

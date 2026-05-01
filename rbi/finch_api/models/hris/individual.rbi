@@ -9,16 +9,16 @@ module FinchAPI
         Variants =
           T.type_alias do
             T.any(
-              FinchAPI::HRIS::Individual::UnionMember0,
+              FinchAPI::HRIS::Individual::Individual,
               FinchAPI::HRIS::Individual::BatchError
             )
           end
 
-        class UnionMember0 < FinchAPI::Internal::Type::BaseModel
+        class Individual < FinchAPI::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
               T.any(
-                FinchAPI::HRIS::Individual::UnionMember0,
+                FinchAPI::HRIS::Individual::Individual,
                 FinchAPI::Internal::AnyHash
               )
             end
@@ -34,7 +34,7 @@ module FinchAPI
           sig do
             returns(
               T.nilable(
-                FinchAPI::HRIS::Individual::UnionMember0::Ethnicity::TaggedSymbol
+                FinchAPI::HRIS::Individual::Individual::Ethnicity::TaggedSymbol
               )
             )
           end
@@ -48,7 +48,7 @@ module FinchAPI
           sig do
             returns(
               T.nilable(
-                FinchAPI::HRIS::Individual::UnionMember0::Gender::TaggedSymbol
+                FinchAPI::HRIS::Individual::Individual::Gender::TaggedSymbol
               )
             )
           end
@@ -66,9 +66,7 @@ module FinchAPI
             returns(
               T.nilable(
                 T::Array[
-                  T.nilable(
-                    FinchAPI::HRIS::Individual::UnionMember0::PhoneNumber
-                  )
+                  T.nilable(FinchAPI::HRIS::Individual::Individual::PhoneNumber)
                 ]
               )
             )
@@ -87,9 +85,7 @@ module FinchAPI
 
           sig do
             returns(
-              T.nilable(
-                T::Array[FinchAPI::HRIS::Individual::UnionMember0::Email]
-              )
+              T.nilable(T::Array[FinchAPI::HRIS::Individual::Individual::Email])
             )
           end
           attr_accessor :emails
@@ -113,12 +109,12 @@ module FinchAPI
               dob: T.nilable(String),
               ethnicity:
                 T.nilable(
-                  FinchAPI::HRIS::Individual::UnionMember0::Ethnicity::OrSymbol
+                  FinchAPI::HRIS::Individual::Individual::Ethnicity::OrSymbol
                 ),
               first_name: T.nilable(String),
               gender:
                 T.nilable(
-                  FinchAPI::HRIS::Individual::UnionMember0::Gender::OrSymbol
+                  FinchAPI::HRIS::Individual::Individual::Gender::OrSymbol
                 ),
               last_name: T.nilable(String),
               middle_name: T.nilable(String),
@@ -126,7 +122,7 @@ module FinchAPI
                 T.nilable(
                   T::Array[
                     T.nilable(
-                      FinchAPI::HRIS::Individual::UnionMember0::PhoneNumber::OrHash
+                      FinchAPI::HRIS::Individual::Individual::PhoneNumber::OrHash
                     )
                   ]
                 ),
@@ -135,7 +131,7 @@ module FinchAPI
               emails:
                 T.nilable(
                   T::Array[
-                    FinchAPI::HRIS::Individual::UnionMember0::Email::OrHash
+                    FinchAPI::HRIS::Individual::Individual::Email::OrHash
                   ]
                 ),
               encrypted_ssn: T.nilable(String),
@@ -180,12 +176,12 @@ module FinchAPI
                 dob: T.nilable(String),
                 ethnicity:
                   T.nilable(
-                    FinchAPI::HRIS::Individual::UnionMember0::Ethnicity::TaggedSymbol
+                    FinchAPI::HRIS::Individual::Individual::Ethnicity::TaggedSymbol
                   ),
                 first_name: T.nilable(String),
                 gender:
                   T.nilable(
-                    FinchAPI::HRIS::Individual::UnionMember0::Gender::TaggedSymbol
+                    FinchAPI::HRIS::Individual::Individual::Gender::TaggedSymbol
                   ),
                 last_name: T.nilable(String),
                 middle_name: T.nilable(String),
@@ -193,7 +189,7 @@ module FinchAPI
                   T.nilable(
                     T::Array[
                       T.nilable(
-                        FinchAPI::HRIS::Individual::UnionMember0::PhoneNumber
+                        FinchAPI::HRIS::Individual::Individual::PhoneNumber
                       )
                     ]
                   ),
@@ -201,7 +197,7 @@ module FinchAPI
                 residence: T.nilable(FinchAPI::Location),
                 emails:
                   T.nilable(
-                    T::Array[FinchAPI::HRIS::Individual::UnionMember0::Email]
+                    T::Array[FinchAPI::HRIS::Individual::Individual::Email]
                   ),
                 encrypted_ssn: T.nilable(String),
                 ssn: T.nilable(String)
@@ -217,58 +213,55 @@ module FinchAPI
 
             TaggedSymbol =
               T.type_alias do
-                T.all(
-                  Symbol,
-                  FinchAPI::HRIS::Individual::UnionMember0::Ethnicity
-                )
+                T.all(Symbol, FinchAPI::HRIS::Individual::Individual::Ethnicity)
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             ASIAN =
               T.let(
                 :asian,
-                FinchAPI::HRIS::Individual::UnionMember0::Ethnicity::TaggedSymbol
+                FinchAPI::HRIS::Individual::Individual::Ethnicity::TaggedSymbol
               )
             WHITE =
               T.let(
                 :white,
-                FinchAPI::HRIS::Individual::UnionMember0::Ethnicity::TaggedSymbol
+                FinchAPI::HRIS::Individual::Individual::Ethnicity::TaggedSymbol
               )
             BLACK_OR_AFRICAN_AMERICAN =
               T.let(
                 :black_or_african_american,
-                FinchAPI::HRIS::Individual::UnionMember0::Ethnicity::TaggedSymbol
+                FinchAPI::HRIS::Individual::Individual::Ethnicity::TaggedSymbol
               )
             NATIVE_HAWAIIAN_OR_PACIFIC_ISLANDER =
               T.let(
                 :native_hawaiian_or_pacific_islander,
-                FinchAPI::HRIS::Individual::UnionMember0::Ethnicity::TaggedSymbol
+                FinchAPI::HRIS::Individual::Individual::Ethnicity::TaggedSymbol
               )
             AMERICAN_INDIAN_OR_ALASKA_NATIVE =
               T.let(
                 :american_indian_or_alaska_native,
-                FinchAPI::HRIS::Individual::UnionMember0::Ethnicity::TaggedSymbol
+                FinchAPI::HRIS::Individual::Individual::Ethnicity::TaggedSymbol
               )
             HISPANIC_OR_LATINO =
               T.let(
                 :hispanic_or_latino,
-                FinchAPI::HRIS::Individual::UnionMember0::Ethnicity::TaggedSymbol
+                FinchAPI::HRIS::Individual::Individual::Ethnicity::TaggedSymbol
               )
             TWO_OR_MORE_RACES =
               T.let(
                 :two_or_more_races,
-                FinchAPI::HRIS::Individual::UnionMember0::Ethnicity::TaggedSymbol
+                FinchAPI::HRIS::Individual::Individual::Ethnicity::TaggedSymbol
               )
             DECLINE_TO_SPECIFY =
               T.let(
                 :decline_to_specify,
-                FinchAPI::HRIS::Individual::UnionMember0::Ethnicity::TaggedSymbol
+                FinchAPI::HRIS::Individual::Individual::Ethnicity::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  FinchAPI::HRIS::Individual::UnionMember0::Ethnicity::TaggedSymbol
+                  FinchAPI::HRIS::Individual::Individual::Ethnicity::TaggedSymbol
                 ]
               )
             end
@@ -282,35 +275,35 @@ module FinchAPI
 
             TaggedSymbol =
               T.type_alias do
-                T.all(Symbol, FinchAPI::HRIS::Individual::UnionMember0::Gender)
+                T.all(Symbol, FinchAPI::HRIS::Individual::Individual::Gender)
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             FEMALE =
               T.let(
                 :female,
-                FinchAPI::HRIS::Individual::UnionMember0::Gender::TaggedSymbol
+                FinchAPI::HRIS::Individual::Individual::Gender::TaggedSymbol
               )
             MALE =
               T.let(
                 :male,
-                FinchAPI::HRIS::Individual::UnionMember0::Gender::TaggedSymbol
+                FinchAPI::HRIS::Individual::Individual::Gender::TaggedSymbol
               )
             OTHER =
               T.let(
                 :other,
-                FinchAPI::HRIS::Individual::UnionMember0::Gender::TaggedSymbol
+                FinchAPI::HRIS::Individual::Individual::Gender::TaggedSymbol
               )
             DECLINE_TO_SPECIFY =
               T.let(
                 :decline_to_specify,
-                FinchAPI::HRIS::Individual::UnionMember0::Gender::TaggedSymbol
+                FinchAPI::HRIS::Individual::Individual::Gender::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  FinchAPI::HRIS::Individual::UnionMember0::Gender::TaggedSymbol
+                  FinchAPI::HRIS::Individual::Individual::Gender::TaggedSymbol
                 ]
               )
             end
@@ -322,7 +315,7 @@ module FinchAPI
             OrHash =
               T.type_alias do
                 T.any(
-                  FinchAPI::HRIS::Individual::UnionMember0::PhoneNumber,
+                  FinchAPI::HRIS::Individual::Individual::PhoneNumber,
                   FinchAPI::Internal::AnyHash
                 )
               end
@@ -333,7 +326,7 @@ module FinchAPI
             sig do
               returns(
                 T.nilable(
-                  FinchAPI::HRIS::Individual::UnionMember0::PhoneNumber::Type::TaggedSymbol
+                  FinchAPI::HRIS::Individual::Individual::PhoneNumber::Type::TaggedSymbol
                 )
               )
             end
@@ -344,7 +337,7 @@ module FinchAPI
                 data: T.nilable(String),
                 type:
                   T.nilable(
-                    FinchAPI::HRIS::Individual::UnionMember0::PhoneNumber::Type::OrSymbol
+                    FinchAPI::HRIS::Individual::Individual::PhoneNumber::Type::OrSymbol
                   )
               ).returns(T.attached_class)
             end
@@ -357,7 +350,7 @@ module FinchAPI
                   data: T.nilable(String),
                   type:
                     T.nilable(
-                      FinchAPI::HRIS::Individual::UnionMember0::PhoneNumber::Type::TaggedSymbol
+                      FinchAPI::HRIS::Individual::Individual::PhoneNumber::Type::TaggedSymbol
                     )
                 }
               )
@@ -372,7 +365,7 @@ module FinchAPI
                 T.type_alias do
                   T.all(
                     Symbol,
-                    FinchAPI::HRIS::Individual::UnionMember0::PhoneNumber::Type
+                    FinchAPI::HRIS::Individual::Individual::PhoneNumber::Type
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -380,18 +373,18 @@ module FinchAPI
               WORK =
                 T.let(
                   :work,
-                  FinchAPI::HRIS::Individual::UnionMember0::PhoneNumber::Type::TaggedSymbol
+                  FinchAPI::HRIS::Individual::Individual::PhoneNumber::Type::TaggedSymbol
                 )
               PERSONAL =
                 T.let(
                   :personal,
-                  FinchAPI::HRIS::Individual::UnionMember0::PhoneNumber::Type::TaggedSymbol
+                  FinchAPI::HRIS::Individual::Individual::PhoneNumber::Type::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    FinchAPI::HRIS::Individual::UnionMember0::PhoneNumber::Type::TaggedSymbol
+                    FinchAPI::HRIS::Individual::Individual::PhoneNumber::Type::TaggedSymbol
                   ]
                 )
               end
@@ -404,7 +397,7 @@ module FinchAPI
             OrHash =
               T.type_alias do
                 T.any(
-                  FinchAPI::HRIS::Individual::UnionMember0::Email,
+                  FinchAPI::HRIS::Individual::Individual::Email,
                   FinchAPI::Internal::AnyHash
                 )
               end
@@ -415,7 +408,7 @@ module FinchAPI
             sig do
               returns(
                 T.nilable(
-                  FinchAPI::HRIS::Individual::UnionMember0::Email::Type::TaggedSymbol
+                  FinchAPI::HRIS::Individual::Individual::Email::Type::TaggedSymbol
                 )
               )
             end
@@ -426,7 +419,7 @@ module FinchAPI
                 data: String,
                 type:
                   T.nilable(
-                    FinchAPI::HRIS::Individual::UnionMember0::Email::Type::OrSymbol
+                    FinchAPI::HRIS::Individual::Individual::Email::Type::OrSymbol
                   )
               ).returns(T.attached_class)
             end
@@ -439,7 +432,7 @@ module FinchAPI
                   data: String,
                   type:
                     T.nilable(
-                      FinchAPI::HRIS::Individual::UnionMember0::Email::Type::TaggedSymbol
+                      FinchAPI::HRIS::Individual::Individual::Email::Type::TaggedSymbol
                     )
                 }
               )
@@ -454,7 +447,7 @@ module FinchAPI
                 T.type_alias do
                   T.all(
                     Symbol,
-                    FinchAPI::HRIS::Individual::UnionMember0::Email::Type
+                    FinchAPI::HRIS::Individual::Individual::Email::Type
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -462,18 +455,18 @@ module FinchAPI
               WORK =
                 T.let(
                   :work,
-                  FinchAPI::HRIS::Individual::UnionMember0::Email::Type::TaggedSymbol
+                  FinchAPI::HRIS::Individual::Individual::Email::Type::TaggedSymbol
                 )
               PERSONAL =
                 T.let(
                   :personal,
-                  FinchAPI::HRIS::Individual::UnionMember0::Email::Type::TaggedSymbol
+                  FinchAPI::HRIS::Individual::Individual::Email::Type::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    FinchAPI::HRIS::Individual::UnionMember0::Email::Type::TaggedSymbol
+                    FinchAPI::HRIS::Individual::Individual::Email::Type::TaggedSymbol
                   ]
                 )
               end
