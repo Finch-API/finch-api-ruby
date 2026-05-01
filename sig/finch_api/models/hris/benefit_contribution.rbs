@@ -2,32 +2,32 @@ module FinchAPI
   module Models
     module HRIS
       type benefit_contribution =
-        FinchAPI::HRIS::BenefitContribution::UnionMember0
-        | FinchAPI::HRIS::BenefitContribution::UnionMember1
-        | FinchAPI::HRIS::BenefitContribution::UnionMember2
+        FinchAPI::HRIS::BenefitContribution::BenefitContributionFixed
+        | FinchAPI::HRIS::BenefitContribution::BenefitContributionPercent
+        | FinchAPI::HRIS::BenefitContribution::BenefitContributionTiered
 
       module BenefitContribution
         extend FinchAPI::Internal::Type::Union
 
-        type union_member0 =
+        type benefit_contribution_fixed =
           {
             amount: Integer,
-            type: FinchAPI::Models::HRIS::BenefitContribution::UnionMember0::type_
+            type: FinchAPI::Models::HRIS::BenefitContribution::BenefitContributionFixed::type_
           }
 
-        class UnionMember0 < FinchAPI::Internal::Type::BaseModel
+        class BenefitContributionFixed < FinchAPI::Internal::Type::BaseModel
           attr_accessor amount: Integer
 
-          attr_accessor type: FinchAPI::Models::HRIS::BenefitContribution::UnionMember0::type_
+          attr_accessor type: FinchAPI::Models::HRIS::BenefitContribution::BenefitContributionFixed::type_
 
           def initialize: (
             amount: Integer,
-            type: FinchAPI::Models::HRIS::BenefitContribution::UnionMember0::type_
+            type: FinchAPI::Models::HRIS::BenefitContribution::BenefitContributionFixed::type_
           ) -> void
 
           def to_hash: -> {
             amount: Integer,
-            type: FinchAPI::Models::HRIS::BenefitContribution::UnionMember0::type_
+            type: FinchAPI::Models::HRIS::BenefitContribution::BenefitContributionFixed::type_
           }
 
           type type_ = :fixed
@@ -37,29 +37,29 @@ module FinchAPI
 
             FIXED: :fixed
 
-            def self?.values: -> ::Array[FinchAPI::Models::HRIS::BenefitContribution::UnionMember0::type_]
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::BenefitContribution::BenefitContributionFixed::type_]
           end
         end
 
-        type union_member1 =
+        type benefit_contribution_percent =
           {
             amount: Integer,
-            type: FinchAPI::Models::HRIS::BenefitContribution::UnionMember1::type_
+            type: FinchAPI::Models::HRIS::BenefitContribution::BenefitContributionPercent::type_
           }
 
-        class UnionMember1 < FinchAPI::Internal::Type::BaseModel
+        class BenefitContributionPercent < FinchAPI::Internal::Type::BaseModel
           attr_accessor amount: Integer
 
-          attr_accessor type: FinchAPI::Models::HRIS::BenefitContribution::UnionMember1::type_
+          attr_accessor type: FinchAPI::Models::HRIS::BenefitContribution::BenefitContributionPercent::type_
 
           def initialize: (
             amount: Integer,
-            type: FinchAPI::Models::HRIS::BenefitContribution::UnionMember1::type_
+            type: FinchAPI::Models::HRIS::BenefitContribution::BenefitContributionPercent::type_
           ) -> void
 
           def to_hash: -> {
             amount: Integer,
-            type: FinchAPI::Models::HRIS::BenefitContribution::UnionMember1::type_
+            type: FinchAPI::Models::HRIS::BenefitContribution::BenefitContributionPercent::type_
           }
 
           type type_ = :percent
@@ -69,29 +69,29 @@ module FinchAPI
 
             PERCENT: :percent
 
-            def self?.values: -> ::Array[FinchAPI::Models::HRIS::BenefitContribution::UnionMember1::type_]
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::BenefitContribution::BenefitContributionPercent::type_]
           end
         end
 
-        type union_member2 =
+        type benefit_contribution_tiered =
           {
-            tiers: ::Array[FinchAPI::HRIS::BenefitContribution::UnionMember2::Tier],
-            type: FinchAPI::Models::HRIS::BenefitContribution::UnionMember2::type_
+            tiers: ::Array[FinchAPI::HRIS::BenefitContribution::BenefitContributionTiered::Tier],
+            type: FinchAPI::Models::HRIS::BenefitContribution::BenefitContributionTiered::type_
           }
 
-        class UnionMember2 < FinchAPI::Internal::Type::BaseModel
-          attr_accessor tiers: ::Array[FinchAPI::HRIS::BenefitContribution::UnionMember2::Tier]
+        class BenefitContributionTiered < FinchAPI::Internal::Type::BaseModel
+          attr_accessor tiers: ::Array[FinchAPI::HRIS::BenefitContribution::BenefitContributionTiered::Tier]
 
-          attr_accessor type: FinchAPI::Models::HRIS::BenefitContribution::UnionMember2::type_
+          attr_accessor type: FinchAPI::Models::HRIS::BenefitContribution::BenefitContributionTiered::type_
 
           def initialize: (
-            tiers: ::Array[FinchAPI::HRIS::BenefitContribution::UnionMember2::Tier],
-            type: FinchAPI::Models::HRIS::BenefitContribution::UnionMember2::type_
+            tiers: ::Array[FinchAPI::HRIS::BenefitContribution::BenefitContributionTiered::Tier],
+            type: FinchAPI::Models::HRIS::BenefitContribution::BenefitContributionTiered::type_
           ) -> void
 
           def to_hash: -> {
-            tiers: ::Array[FinchAPI::HRIS::BenefitContribution::UnionMember2::Tier],
-            type: FinchAPI::Models::HRIS::BenefitContribution::UnionMember2::type_
+            tiers: ::Array[FinchAPI::HRIS::BenefitContribution::BenefitContributionTiered::Tier],
+            type: FinchAPI::Models::HRIS::BenefitContribution::BenefitContributionTiered::type_
           }
 
           type tier = { match: Integer, threshold: Integer }
@@ -113,7 +113,7 @@ module FinchAPI
 
             TIERED: :tiered
 
-            def self?.values: -> ::Array[FinchAPI::Models::HRIS::BenefitContribution::UnionMember2::type_]
+            def self?.values: -> ::Array[FinchAPI::Models::HRIS::BenefitContribution::BenefitContributionTiered::type_]
           end
         end
 
