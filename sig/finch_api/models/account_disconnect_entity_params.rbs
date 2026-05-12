@@ -1,0 +1,24 @@
+module FinchAPI
+  module Models
+    type account_disconnect_entity_params =
+      { entity_ids: ::Array[String] }
+      & FinchAPI::Internal::Type::request_parameters
+
+    class AccountDisconnectEntityParams < FinchAPI::Internal::Type::BaseModel
+      extend FinchAPI::Internal::Type::RequestParameters::Converter
+      include FinchAPI::Internal::Type::RequestParameters
+
+      attr_accessor entity_ids: ::Array[String]
+
+      def initialize: (
+        entity_ids: ::Array[String],
+        ?request_options: FinchAPI::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        entity_ids: ::Array[String],
+        request_options: FinchAPI::RequestOptions
+      }
+    end
+  end
+end

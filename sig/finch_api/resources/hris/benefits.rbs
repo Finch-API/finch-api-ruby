@@ -36,6 +36,14 @@ module FinchAPI
           ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::Internal::SinglePage[FinchAPI::HRIS::SupportedBenefit]
 
+        def register: (
+          ?entity_ids: ::Array[String],
+          ?description: String,
+          ?frequency: FinchAPI::Models::HRIS::benefit_frequency?,
+          ?type: FinchAPI::Models::HRIS::benefit_type?,
+          ?request_options: FinchAPI::request_opts
+        ) -> FinchAPI::HRIS::RegisterCompanyBenefitResponse
+
         def initialize: (client: FinchAPI::Client) -> void
       end
     end

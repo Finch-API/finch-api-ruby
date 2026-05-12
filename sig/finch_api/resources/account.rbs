@@ -5,6 +5,11 @@ module FinchAPI
         ?request_options: FinchAPI::request_opts
       ) -> FinchAPI::DisconnectResponse
 
+      def disconnect_entity: (
+        entity_ids: ::Array[String],
+        ?request_options: FinchAPI::request_opts
+      ) -> FinchAPI::DisconnectEntityResponse
+
       def introspect: (
         ?request_options: FinchAPI::request_opts
       ) -> FinchAPI::Introspection

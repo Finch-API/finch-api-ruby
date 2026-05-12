@@ -107,6 +107,30 @@ module FinchAPI
         )
         end
 
+        # Register existing benefits from the customer on the provider, on Finch's end.
+        # Please use the `/provider` endpoint to view available types for each provider.
+        sig do
+          params(
+            entity_ids: T::Array[String],
+            description: String,
+            frequency: T.nilable(FinchAPI::HRIS::BenefitFrequency::OrSymbol),
+            type: T.nilable(FinchAPI::HRIS::BenefitType::OrSymbol),
+            request_options: FinchAPI::RequestOptions::OrHash
+          ).returns(FinchAPI::HRIS::RegisterCompanyBenefitResponse)
+        end
+        def register(
+          # Query param: The entity IDs to specify which entities' data to access.
+          entity_ids: nil,
+          # Body param
+          description: nil,
+          # Body param: The frequency of the benefit deduction/contribution.
+          frequency: nil,
+          # Body param: Type of benefit.
+          type: nil,
+          request_options: {}
+        )
+        end
+
         # @api private
         sig { params(client: FinchAPI::Client).returns(T.attached_class) }
         def self.new(client:)

@@ -1,0 +1,47 @@
+module FinchAPI
+  module Models
+    module HRIS
+      type benefit_register_params =
+        {
+          entity_ids: ::Array[String],
+          description: String,
+          frequency: FinchAPI::Models::HRIS::benefit_frequency?,
+          type: FinchAPI::Models::HRIS::benefit_type?
+        }
+        & FinchAPI::Internal::Type::request_parameters
+
+      class BenefitRegisterParams < FinchAPI::Internal::Type::BaseModel
+        extend FinchAPI::Internal::Type::RequestParameters::Converter
+        include FinchAPI::Internal::Type::RequestParameters
+
+        attr_reader entity_ids: ::Array[String]?
+
+        def entity_ids=: (::Array[String]) -> ::Array[String]
+
+        attr_reader description: String?
+
+        def description=: (String) -> String
+
+        attr_accessor frequency: FinchAPI::Models::HRIS::benefit_frequency?
+
+        attr_accessor type: FinchAPI::Models::HRIS::benefit_type?
+
+        def initialize: (
+          ?entity_ids: ::Array[String],
+          ?description: String,
+          ?frequency: FinchAPI::Models::HRIS::benefit_frequency?,
+          ?type: FinchAPI::Models::HRIS::benefit_type?,
+          ?request_options: FinchAPI::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          entity_ids: ::Array[String],
+          description: String,
+          frequency: FinchAPI::Models::HRIS::benefit_frequency?,
+          type: FinchAPI::Models::HRIS::benefit_type?,
+          request_options: FinchAPI::RequestOptions
+        }
+      end
+    end
+  end
+end

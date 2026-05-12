@@ -151,6 +151,39 @@ module FinchAPI
           )
         end
 
+        # Register existing benefits from the customer on the provider, on Finch's end.
+        # Please use the `/provider` endpoint to view available types for each provider.
+        #
+        # @overload register(entity_ids: nil, description: nil, frequency: nil, type: nil, request_options: {})
+        #
+        # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access.
+        #
+        # @param description [String] Body param
+        #
+        # @param frequency [Symbol, FinchAPI::Models::HRIS::BenefitFrequency, nil] Body param: The frequency of the benefit deduction/contribution.
+        #
+        # @param type [Symbol, FinchAPI::Models::HRIS::BenefitType, nil] Body param: Type of benefit.
+        #
+        # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [FinchAPI::Models::HRIS::RegisterCompanyBenefitResponse]
+        #
+        # @see FinchAPI::Models::HRIS::BenefitRegisterParams
+        def register(params = {})
+          query_params = [:entity_ids]
+          parsed, options = FinchAPI::HRIS::BenefitRegisterParams.dump_request(params)
+          query = FinchAPI::Internal::Util.encode_query_params(parsed.slice(*query_params))
+          @client.request(
+            method: :post,
+            path: "employer/benefits/register",
+            query: query,
+            body: parsed.except(*query_params),
+            model: FinchAPI::HRIS::RegisterCompanyBenefitResponse,
+            security: {bearer_auth: true},
+            options: options
+          )
+        end
+
         # @api private
         #
         # @param client [FinchAPI::Client]

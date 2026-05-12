@@ -17,6 +17,23 @@ class FinchAPI::Test::Resources::AccountTest < FinchAPI::Test::ResourceTest
     end
   end
 
+  def test_disconnect_entity_required_params
+    response =
+      @finch.account.disconnect_entity(
+        entity_ids: %w[3c90c3cc-0d44-4b50-8888-8dd25736052a 5e6f7a8b-9c10-4d11-a12b-c13d14e15f16]
+      )
+
+    assert_pattern do
+      response => FinchAPI::DisconnectEntityResponse
+    end
+
+    assert_pattern do
+      response => {
+        status: String
+      }
+    end
+  end
+
   def test_introspect
     response = @finch.account.introspect
 
