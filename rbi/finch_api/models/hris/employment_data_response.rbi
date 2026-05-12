@@ -26,7 +26,7 @@ module FinchAPI
           params(
             body:
               T.any(
-                FinchAPI::HRIS::EmploymentData::EmploymentData::OrHash,
+                FinchAPI::HRIS::EmploymentData::EmploymentDataResponseBody::OrHash,
                 FinchAPI::HRIS::EmploymentData::BatchError::OrHash
               ),
             code: Integer,

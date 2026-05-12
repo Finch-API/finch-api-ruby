@@ -25,7 +25,7 @@ module FinchAPI
           params(
             body:
               T.any(
-                FinchAPI::HRIS::Individual::Individual::OrHash,
+                FinchAPI::HRIS::Individual::IndividualResponseBody::OrHash,
                 FinchAPI::HRIS::Individual::BatchError::OrHash
               ),
             code: Integer,
