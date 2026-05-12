@@ -190,12 +190,37 @@ module FinchAPI
 
           # @!attribute value
           #
-          #   @return [Object, nil]
-          optional :value, FinchAPI::Internal::Type::Unknown
+          #   @return [String, Array<Object>, Object, Float, Boolean, nil]
+          optional :value,
+                   union: -> {
+                     FinchAPI::Sandbox::EmploymentUpdateParams::CustomField::Value
+                   },
+                   nil?: true
 
           # @!method initialize(name: nil, value: nil)
           #   @param name [String, nil]
-          #   @param value [Object]
+          #   @param value [String, Array<Object>, Object, Float, Boolean, nil]
+
+          # @see FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField#value
+          module Value
+            extend FinchAPI::Internal::Type::Union
+
+            variant String
+
+            variant -> { FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField::Value::UnionMember1Array }
+
+            variant FinchAPI::Internal::Type::Unknown
+
+            variant Float
+
+            variant FinchAPI::Internal::Type::Boolean
+
+            # @!method self.variants
+            #   @return [Array(String, Array<Object>, Object, Float, Boolean)]
+
+            # @type [FinchAPI::Internal::Type::Converter]
+            UnionMember1Array = FinchAPI::Internal::Type::ArrayOf[FinchAPI::Internal::Type::Unknown]
+          end
         end
 
         class Department < FinchAPI::Internal::Type::BaseModel

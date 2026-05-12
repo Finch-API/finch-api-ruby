@@ -118,18 +118,36 @@ module FinchAPI
           request_options: FinchAPI::RequestOptions
         }
 
-        type custom_field = { name: String?, value: top }
+        type custom_field =
+          {
+            name: String?,
+            value: FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField::value?
+          }
 
         class CustomField < FinchAPI::Internal::Type::BaseModel
           attr_accessor name: String?
 
-          attr_reader value: top?
+          attr_accessor value: FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField::value?
 
-          def value=: (top) -> top
+          def initialize: (
+            ?name: String?,
+            ?value: FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField::value?
+          ) -> void
 
-          def initialize: (?name: String?, ?value: top) -> void
+          def to_hash: -> {
+            name: String?,
+            value: FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField::value?
+          }
 
-          def to_hash: -> { name: String?, value: top }
+          type value = (String | ::Array[top] | top | Float | bool)?
+
+          module Value
+            extend FinchAPI::Internal::Type::Union
+
+            def self?.variants: -> ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField::value]
+
+            UnionMember1Array: FinchAPI::Internal::Type::Converter
+          end
         end
 
         type department = { name: String? }

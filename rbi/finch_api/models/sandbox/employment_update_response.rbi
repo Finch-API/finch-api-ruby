@@ -321,24 +321,74 @@ module FinchAPI
           sig { returns(T.nilable(String)) }
           attr_accessor :name
 
-          sig { returns(T.nilable(T.anything)) }
-          attr_reader :value
-
-          sig { params(value: T.anything).void }
-          attr_writer :value
+          sig do
+            returns(
+              T.nilable(
+                FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField::Value::Variants
+              )
+            )
+          end
+          attr_accessor :value
 
           sig do
-            params(name: T.nilable(String), value: T.anything).returns(
-              T.attached_class
-            )
+            params(
+              name: T.nilable(String),
+              value:
+                T.nilable(
+                  FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField::Value::Variants
+                )
+            ).returns(T.attached_class)
           end
           def self.new(name: nil, value: nil)
           end
 
           sig do
-            override.returns({ name: T.nilable(String), value: T.anything })
+            override.returns(
+              {
+                name: T.nilable(String),
+                value:
+                  T.nilable(
+                    FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField::Value::Variants
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          module Value
+            extend FinchAPI::Internal::Type::Union
+
+            Variants =
+              T.type_alias do
+                T.nilable(
+                  T.any(
+                    String,
+                    T::Array[T.anything],
+                    T.anything,
+                    Float,
+                    T::Boolean
+                  )
+                )
+              end
+
+            sig do
+              override.returns(
+                T::Array[
+                  FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField::Value::Variants
+                ]
+              )
+            end
+            def self.variants
+            end
+
+            UnionMember1Array =
+              T.let(
+                FinchAPI::Internal::Type::ArrayOf[
+                  FinchAPI::Internal::Type::Unknown
+                ],
+                FinchAPI::Internal::Type::Converter
+              )
           end
         end
 
