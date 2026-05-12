@@ -3,6 +3,9 @@
 module FinchAPI
   AccessTokenCreateParams = FinchAPI::Models::AccessTokenCreateParams
 
+  AccountDisconnectEntityParams =
+    FinchAPI::Models::AccountDisconnectEntityParams
+
   AccountDisconnectParams = FinchAPI::Models::AccountDisconnectParams
 
   AccountIntrospectParams = FinchAPI::Models::AccountIntrospectParams
@@ -20,6 +23,8 @@ module FinchAPI
   CreateAccessTokenResponse = FinchAPI::Models::CreateAccessTokenResponse
 
   DirectoryEvent = FinchAPI::Models::DirectoryEvent
+
+  DisconnectEntityResponse = FinchAPI::Models::DisconnectEntityResponse
 
   DisconnectResponse = FinchAPI::Models::DisconnectResponse
 

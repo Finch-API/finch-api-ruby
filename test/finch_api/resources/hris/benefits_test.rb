@@ -105,4 +105,19 @@ class FinchAPI::Test::Resources::HRIS::BenefitsTest < FinchAPI::Test::ResourceTe
       }
     end
   end
+
+  def test_register
+    response = @finch.hris.benefits.register
+
+    assert_pattern do
+      response => FinchAPI::HRIS::RegisterCompanyBenefitResponse
+    end
+
+    assert_pattern do
+      response => {
+        benefit_id: String,
+        job_id: String
+      }
+    end
+  end
 end

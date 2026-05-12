@@ -12,6 +12,21 @@ module FinchAPI
       def disconnect(request_options: {})
       end
 
+      # Disconnect entity(s) from a connection without affecting other entities
+      # associated with the same connection.
+      sig do
+        params(
+          entity_ids: T::Array[String],
+          request_options: FinchAPI::RequestOptions::OrHash
+        ).returns(FinchAPI::DisconnectEntityResponse)
+      end
+      def disconnect_entity(
+        # Array of entity UUIDs to disconnect. At least one entity ID must be provided.
+        entity_ids:,
+        request_options: {}
+      )
+      end
+
       # Read account information associated with an `access_token`
       sig do
         params(request_options: FinchAPI::RequestOptions::OrHash).returns(

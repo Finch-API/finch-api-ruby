@@ -1,0 +1,18 @@
+module FinchAPI
+  module Models
+    module HRIS
+      type register_company_benefit_response =
+        { benefit_id: String, job_id: String }
+
+      class RegisterCompanyBenefitResponse < FinchAPI::Internal::Type::BaseModel
+        attr_accessor benefit_id: String
+
+        attr_accessor job_id: String
+
+        def initialize: (benefit_id: String, job_id: String) -> void
+
+        def to_hash: -> { benefit_id: String, job_id: String }
+      end
+    end
+  end
+end
