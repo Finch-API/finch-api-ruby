@@ -264,8 +264,8 @@ class FinchAPITest < Minitest::Test
       assert_equal(recorded.method, _1.method)
       assert_equal(recorded.body, _1.body)
       assert_equal(
-        recorded.headers.transform_keys(&:downcase).fetch("content-type"),
-        _1.headers.transform_keys(&:downcase).fetch("content-type")
+        recorded.headers.transform_keys(&:downcase)["content-type"],
+        _1.headers.transform_keys(&:downcase)["content-type"]
       )
     end
   end
@@ -376,8 +376,9 @@ class FinchAPITest < Minitest::Test
     finch.hris.directory.list
 
     assert_requested(:any, /./) do |req|
-      headers = req.headers.transform_keys(&:downcase).fetch_values("accept", "content-type")
-      headers.each { refute_empty(_1) }
+      headers = req.headers.transform_keys(&:downcase)
+      expected = req.body.nil? ? ["accept"] : %w[accept content-type]
+      headers.fetch_values(*expected).each { refute_empty(_1) }
     end
   end
 end
