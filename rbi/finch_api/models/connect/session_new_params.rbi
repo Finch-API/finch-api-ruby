@@ -199,6 +199,11 @@ module FinchAPI
               :pay_statement,
               FinchAPI::Connect::SessionNewParams::Product::TaggedSymbol
             )
+          RECORDKEEPING =
+            T.let(
+              :recordkeeping,
+              FinchAPI::Connect::SessionNewParams::Product::TaggedSymbol
+            )
           SSN =
             T.let(
               :ssn,
