@@ -50,6 +50,7 @@ module FinchAPI
           | :individual
           | :payment
           | :pay_statement
+          | :recordkeeping
           | :ssn
 
         module Product
@@ -64,6 +65,7 @@ module FinchAPI
           INDIVIDUAL: :individual
           PAYMENT: :payment
           PAY_STATEMENT: :pay_statement
+          RECORDKEEPING: :recordkeeping
           SSN: :ssn
 
           def self?.values: -> ::Array[FinchAPI::Models::Connect::SessionReauthenticateParams::product]

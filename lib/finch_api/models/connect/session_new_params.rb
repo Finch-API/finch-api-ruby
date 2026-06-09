@@ -102,6 +102,7 @@ module FinchAPI
           INDIVIDUAL = :individual
           PAYMENT = :payment
           PAY_STATEMENT = :pay_statement
+          RECORDKEEPING = :recordkeeping
           SSN = :ssn
 
           # @!method self.values
