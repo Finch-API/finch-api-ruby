@@ -1,5 +1,70 @@
 # Changelog
 
+## 0.1.0-alpha.43 (2026-06-16)
+
+Full Changelog: [v0.1.0-alpha.42...v0.1.0-alpha.43](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.42...v0.1.0-alpha.43)
+
+### Features
+
+* **api:** add per endpoint security ([ac937c1](https://github.com/Finch-API/finch-api-ruby/commit/ac937c138291704137a33d18cea1571d2e6f96ca))
+* **api:** add register benefits method ([89807f1](https://github.com/Finch-API/finch-api-ruby/commit/89807f1e708599cb05875e3f17aae5048ea7f583))
+* **api:** api update ([d67143c](https://github.com/Finch-API/finch-api-ruby/commit/d67143ccd5299f0f6e67e9bb2fb0e6088f52f5d6))
+* **api:** api update ([9e8d805](https://github.com/Finch-API/finch-api-ruby/commit/9e8d805da92b732b225c58454d1a1938448733ba))
+* **api:** api update ([2a1f82f](https://github.com/Finch-API/finch-api-ruby/commit/2a1f82f3af8070b630bb9ba9f10cd9b6f91a02eb))
+* **api:** api update ([d0d32b0](https://github.com/Finch-API/finch-api-ruby/commit/d0d32b0861ed65a60d1636da5cc37c5052ca7e28))
+* **api:** api update ([ee649a8](https://github.com/Finch-API/finch-api-ruby/commit/ee649a8915029f8bce8e676d7af80bbfe5846c61))
+* **api:** api update ([4496981](https://github.com/Finch-API/finch-api-ruby/commit/44969816152b1033dc51052723d552de315c6c9d))
+* **api:** api update ([8ff38e4](https://github.com/Finch-API/finch-api-ruby/commit/8ff38e4aeb774f2ec8f5be0692c787652a72b88f))
+* **api:** api update ([04d90f0](https://github.com/Finch-API/finch-api-ruby/commit/04d90f03077ba6b6459e3a1ecbb41baffd1e9eb5))
+* **api:** change auth to npm to oidc ([de40fd7](https://github.com/Finch-API/finch-api-ruby/commit/de40fd771fe09e381c1439f3c9efd1c5d075572c))
+* **api:** manual updates ([7a3e05f](https://github.com/Finch-API/finch-api-ruby/commit/7a3e05f0e143eb5fdaf5589b29a7cf223bc4a763))
+* **client:** add webhook support ([f4ad88e](https://github.com/Finch-API/finch-api-ruby/commit/f4ad88e63dcec2d9c6f9b64e9f10aa01a34c2af4))
+* support setting headers via env ([d563eb5](https://github.com/Finch-API/finch-api-ruby/commit/d563eb54c98253fff9a54c05632c7f4c19f1616c))
+
+
+### Bug Fixes
+
+* **aliases:** resolve broken types for alias methods with pagination ([f591bd3](https://github.com/Finch-API/finch-api-ruby/commit/f591bd32e12660e3104486b7b5297d6bf2dfc613))
+* align path encoding with RFC 3986 section 3.3 ([0a99d63](https://github.com/Finch-API/finch-api-ruby/commit/0a99d63c11aa9516a7cac12937d35972c9638f32))
+* **api:** remove invalid transform config ([826feaa](https://github.com/Finch-API/finch-api-ruby/commit/826feaab2ca5d0afd202b196f5da0910c029a591))
+* **client:** always add content-length to post body, even when empty ([66e8f66](https://github.com/Finch-API/finch-api-ruby/commit/66e8f668ba49f9959bd0067d4161d972ebad46ee))
+* **client:** elide content type header on requests without body ([d087396](https://github.com/Finch-API/finch-api-ruby/commit/d087396167b6ad3cbe79acef1745955a844a8933))
+* **client:** loosen json header parsing ([7bc3e65](https://github.com/Finch-API/finch-api-ruby/commit/7bc3e6509545d52948558cc20180865f09e946dc))
+* **client:** send content-type header for requests with an omitted optional body ([4286c51](https://github.com/Finch-API/finch-api-ruby/commit/4286c51395109aa33a0642f5fc0d73ed15f05b95))
+* **docs:** fix mcp installation instructions for remote servers ([8022436](https://github.com/Finch-API/finch-api-ruby/commit/8022436ca504321dffdb8eedabc0c9ee82e0bf45))
+* **internal:** correct multipart form field name encoding ([76c688f](https://github.com/Finch-API/finch-api-ruby/commit/76c688f93a7a6bf6827baa4b1b06ad715826c491))
+* multipart encoding for file arrays ([13e7bc1](https://github.com/Finch-API/finch-api-ruby/commit/13e7bc161a931d7a13128cb32d4bd2cc859784b4))
+* properly mock time in ruby ci tests ([86ece75](https://github.com/Finch-API/finch-api-ruby/commit/86ece75b5fefd736c827c70dc7b6140ec67fdf35))
+* **tests:** skip broken date validation test ([2ee41c8](https://github.com/Finch-API/finch-api-ruby/commit/2ee41c81ef9707aa7180723a283789a5bbaa041d))
+* variable name typo ([09ceda2](https://github.com/Finch-API/finch-api-ruby/commit/09ceda237d92712263d0942f1deb8654afc18071))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([b8e66d9](https://github.com/Finch-API/finch-api-ruby/commit/b8e66d9232c428b9c4104bf5c6ce6673690afa2a))
+* **ci:** skip uploading artifacts on stainless-internal branches ([1229fe8](https://github.com/Finch-API/finch-api-ruby/commit/1229fe85090c9c58caeb17b10434a8923fe2dcb2))
+* **ci:** support opting out of skipping builds on metadata-only commits ([f892be4](https://github.com/Finch-API/finch-api-ruby/commit/f892be499c5676f466ac47676d4106bb67f52f77))
+* **docs:** remove www prefix ([57bc88c](https://github.com/Finch-API/finch-api-ruby/commit/57bc88cdd60bfec535752170ffeeebe157a0bfce))
+* fix custom code ([3d5cf2f](https://github.com/Finch-API/finch-api-ruby/commit/3d5cf2fde4f02b8b29d07e2ccb98117ddfc75f74))
+* **internal:** codegen related update ([796b4db](https://github.com/Finch-API/finch-api-ruby/commit/796b4dba769b768e65dcff3921257f098d6ff9df))
+* **internal:** codegen related update ([a021ffb](https://github.com/Finch-API/finch-api-ruby/commit/a021ffb4eec64de459cb22c27b4c7c4592003d21))
+* **internal:** more robust bootstrap script ([6be623f](https://github.com/Finch-API/finch-api-ruby/commit/6be623fd1d3ddf902856844d74be66cf00b84195))
+* **internal:** tweak CI branches ([c0b42bc](https://github.com/Finch-API/finch-api-ruby/commit/c0b42bcd72ff06cf71fec9a98856c12043b5cfe2))
+* **internal:** update gitignore ([a315475](https://github.com/Finch-API/finch-api-ruby/commit/a3154752a39a30ad3cb8aac78b2d473c3bb86dcf))
+* **tests:** bump steady to v0.19.4 ([93617aa](https://github.com/Finch-API/finch-api-ruby/commit/93617aad24e3c174e12dfdf2de4bad5cce0aeb2f))
+* **tests:** bump steady to v0.19.5 ([424035c](https://github.com/Finch-API/finch-api-ruby/commit/424035c08a1d4c56c3b1118cd1071bc1cbaad28a))
+* **tests:** bump steady to v0.19.6 ([b832805](https://github.com/Finch-API/finch-api-ruby/commit/b8328058d1e51765ee48832897ebf00984272323))
+* **tests:** bump steady to v0.19.7 ([fe2f5fb](https://github.com/Finch-API/finch-api-ruby/commit/fe2f5fb484c9684d6586106172cd984f17e914c1))
+* **tests:** bump steady to v0.20.1 ([6fb5f11](https://github.com/Finch-API/finch-api-ruby/commit/6fb5f11fe816634a6ea3267f5c10831b2f5a1058))
+* **tests:** bump steady to v0.20.2 ([a37acc5](https://github.com/Finch-API/finch-api-ruby/commit/a37acc5ccb90a944a7bb903befbf8a5faa60a32e))
+* **tests:** bump steady to v0.22.1 ([582e669](https://github.com/Finch-API/finch-api-ruby/commit/582e669ac39599bd86c77b66c2bafcd0b4204ace))
+* update mock server docs ([47876a8](https://github.com/Finch-API/finch-api-ruby/commit/47876a8821367b8d730229c8bf401bc92907d4f0))
+
+
+### Refactors
+
+* **tests:** switch from prism to steady ([e294a79](https://github.com/Finch-API/finch-api-ruby/commit/e294a795e94df460394978881960bbc067181a7e))
+
 ## 0.1.0-alpha.42 (2026-01-16)
 
 Full Changelog: [v0.1.0-alpha.41...v0.1.0-alpha.42](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.41...v0.1.0-alpha.42)
