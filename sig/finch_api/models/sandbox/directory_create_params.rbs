@@ -38,6 +38,7 @@ module FinchAPI
             end_date: String?,
             ethnicity: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::ethnicity?,
             first_name: String?,
+            flsa_status: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::flsa_status?,
             gender: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::gender?,
             income: FinchAPI::Income?,
             income_history: ::Array[FinchAPI::Income?]?,
@@ -78,6 +79,8 @@ module FinchAPI
           attr_accessor ethnicity: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::ethnicity?
 
           attr_accessor first_name: String?
+
+          attr_accessor flsa_status: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::flsa_status?
 
           attr_accessor gender: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::gender?
 
@@ -123,6 +126,7 @@ module FinchAPI
             ?end_date: String?,
             ?ethnicity: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::ethnicity?,
             ?first_name: String?,
+            ?flsa_status: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::flsa_status?,
             ?gender: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::gender?,
             ?income: FinchAPI::Income?,
             ?income_history: ::Array[FinchAPI::Income?]?,
@@ -153,6 +157,7 @@ module FinchAPI
             end_date: String?,
             ethnicity: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::ethnicity?,
             first_name: String?,
+            flsa_status: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::flsa_status?,
             gender: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::gender?,
             income: FinchAPI::Income?,
             income_history: ::Array[FinchAPI::Income?]?,
@@ -171,18 +176,36 @@ module FinchAPI
             title: String?
           }
 
-          type custom_field = { name: String?, value: top }
+          type custom_field =
+            {
+              name: String?,
+              value: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField::value?
+            }
 
           class CustomField < FinchAPI::Internal::Type::BaseModel
             attr_accessor name: String?
 
-            attr_reader value: top?
+            attr_accessor value: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField::value?
 
-            def value=: (top) -> top
+            def initialize: (
+              ?name: String?,
+              ?value: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField::value?
+            ) -> void
 
-            def initialize: (?name: String?, ?value: top) -> void
+            def to_hash: -> {
+              name: String?,
+              value: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField::value?
+            }
 
-            def to_hash: -> { name: String?, value: top }
+            type value = (String | ::Array[top] | top | Float | bool)?
+
+            module Value
+              extend FinchAPI::Internal::Type::Union
+
+              def self?.variants: -> ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::CustomField::value]
+
+              UnionMember1Array: FinchAPI::Internal::Type::Converter
+            end
           end
 
           type department = { name: String? }
@@ -330,6 +353,18 @@ module FinchAPI
             DECLINE_TO_SPECIFY: :decline_to_specify
 
             def self?.values: -> ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::ethnicity]
+          end
+
+          type flsa_status = :exempt | :non_exempt | :unknown
+
+          module FlsaStatus
+            extend FinchAPI::Internal::Type::Enum
+
+            EXEMPT: :exempt
+            NON_EXEMPT: :non_exempt
+            UNKNOWN: :unknown
+
+            def self?.values: -> ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::flsa_status]
           end
 
           type gender = :female | :male | :other | :decline_to_specify

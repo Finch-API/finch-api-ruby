@@ -35,14 +35,16 @@ module FinchAPI
             #
             # @see FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateParams
             def create(params = {})
-              parsed, options = FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams.dump_request(params)
               query_params = [:entity_ids]
+              parsed, options = FinchAPI::HRIS::Company::PayStatementItem::RuleCreateParams.dump_request(params)
+              query = FinchAPI::Internal::Util.encode_query_params(parsed.slice(*query_params))
               @client.request(
                 method: :post,
                 path: "employer/pay-statement-item/rule",
-                query: parsed.slice(*query_params),
+                query: query,
                 body: parsed.except(*query_params),
                 model: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleCreateResponse,
+                security: {bearer_auth: true},
                 options: options
               )
             end
@@ -63,14 +65,16 @@ module FinchAPI
             #
             # @see FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateParams
             def update(rule_id, params = {})
-              parsed, options = FinchAPI::HRIS::Company::PayStatementItem::RuleUpdateParams.dump_request(params)
               query_params = [:entity_ids]
+              parsed, options = FinchAPI::HRIS::Company::PayStatementItem::RuleUpdateParams.dump_request(params)
+              query = FinchAPI::Internal::Util.encode_query_params(parsed.slice(*query_params))
               @client.request(
                 method: :put,
                 path: ["employer/pay-statement-item/rule/%1$s", rule_id],
-                query: parsed.slice(*query_params),
+                query: query,
                 body: parsed.except(*query_params),
                 model: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleUpdateResponse,
+                security: {bearer_auth: true},
                 options: options
               )
             end
@@ -88,12 +92,14 @@ module FinchAPI
             # @see FinchAPI::Models::HRIS::Company::PayStatementItem::RuleListParams
             def list(params = {})
               parsed, options = FinchAPI::HRIS::Company::PayStatementItem::RuleListParams.dump_request(params)
+              query = FinchAPI::Internal::Util.encode_query_params(parsed)
               @client.request(
                 method: :get,
                 path: "employer/pay-statement-item/rule",
-                query: parsed,
+                query: query,
                 page: FinchAPI::Internal::ResponsesPage,
                 model: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleListResponse,
+                security: {bearer_auth: true},
                 options: options
               )
             end
@@ -113,11 +119,13 @@ module FinchAPI
             # @see FinchAPI::Models::HRIS::Company::PayStatementItem::RuleDeleteParams
             def delete(rule_id, params = {})
               parsed, options = FinchAPI::HRIS::Company::PayStatementItem::RuleDeleteParams.dump_request(params)
+              query = FinchAPI::Internal::Util.encode_query_params(parsed)
               @client.request(
                 method: :delete,
                 path: ["employer/pay-statement-item/rule/%1$s", rule_id],
-                query: parsed,
+                query: query,
                 model: FinchAPI::Models::HRIS::Company::PayStatementItem::RuleDeleteResponse,
+                security: {bearer_auth: true},
                 options: options
               )
             end

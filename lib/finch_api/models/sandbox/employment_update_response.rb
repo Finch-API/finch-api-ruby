@@ -58,6 +58,15 @@ module FinchAPI
         #   @return [String, nil]
         optional :first_name, String, nil?: true
 
+        # @!attribute flsa_status
+        #   The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
+        #   `unknown`.
+        #
+        #   @return [Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::FlsaStatus, nil]
+        optional :flsa_status,
+                 enum: -> { FinchAPI::Models::Sandbox::EmploymentUpdateResponse::FlsaStatus },
+                 nil?: true
+
         # @!attribute income
         #   The employee's income as reported by the provider. This may not always be
         #   annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
@@ -125,7 +134,7 @@ module FinchAPI
         #   @return [String, nil]
         optional :title, String, nil?: true
 
-        # @!method initialize(id: nil, class_code: nil, custom_fields: nil, department: nil, employment: nil, employment_status: nil, end_date: nil, first_name: nil, income: nil, income_history: nil, is_active: nil, last_name: nil, latest_rehire_date: nil, location: nil, manager: nil, middle_name: nil, source_id: nil, start_date: nil, title: nil)
+        # @!method initialize(id: nil, class_code: nil, custom_fields: nil, department: nil, employment: nil, employment_status: nil, end_date: nil, first_name: nil, flsa_status: nil, income: nil, income_history: nil, is_active: nil, last_name: nil, latest_rehire_date: nil, location: nil, manager: nil, middle_name: nil, source_id: nil, start_date: nil, title: nil)
         #   Some parameter documentations has been truncated, see
         #   {FinchAPI::Models::Sandbox::EmploymentUpdateResponse} for more details.
         #
@@ -144,6 +153,8 @@ module FinchAPI
         #   @param end_date [String, nil]
         #
         #   @param first_name [String, nil] The legal first name of the individual.
+        #
+        #   @param flsa_status [Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateResponse::FlsaStatus, nil] The FLSA status of the individual. Available options: `exempt`, `non_exempt`, `u
         #
         #   @param income [FinchAPI::Models::Income, nil] The employee's income as reported by the provider. This may not always be annual
         #
@@ -175,12 +186,35 @@ module FinchAPI
 
           # @!attribute value
           #
-          #   @return [Object, nil]
-          optional :value, FinchAPI::Internal::Type::Unknown
+          #   @return [String, Array<Object>, Object, Float, Boolean, nil]
+          optional :value,
+                   union: -> { FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField::Value },
+                   nil?: true
 
           # @!method initialize(name: nil, value: nil)
           #   @param name [String, nil]
-          #   @param value [Object]
+          #   @param value [String, Array<Object>, Object, Float, Boolean, nil]
+
+          # @see FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField#value
+          module Value
+            extend FinchAPI::Internal::Type::Union
+
+            variant String
+
+            variant -> { FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField::Value::UnionMember1Array }
+
+            variant FinchAPI::Internal::Type::Unknown
+
+            variant Float
+
+            variant FinchAPI::Internal::Type::Boolean
+
+            # @!method self.variants
+            #   @return [Array(String, Array<Object>, Object, Float, Boolean)]
+
+            # @type [FinchAPI::Internal::Type::Converter]
+            UnionMember1Array = FinchAPI::Internal::Type::ArrayOf[FinchAPI::Internal::Type::Unknown]
+          end
         end
 
         # @see FinchAPI::Models::Sandbox::EmploymentUpdateResponse#department
@@ -272,6 +306,21 @@ module FinchAPI
           PREHIRE = :prehire
           RETIRED = :retired
           TERMINATED = :terminated
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
+        # `unknown`.
+        #
+        # @see FinchAPI::Models::Sandbox::EmploymentUpdateResponse#flsa_status
+        module FlsaStatus
+          extend FinchAPI::Internal::Type::Enum
+
+          EXEMPT = :exempt
+          NON_EXEMPT = :non_exempt
+          UNKNOWN = :unknown
 
           # @!method self.values
           #   @return [Array<Symbol>]

@@ -32,6 +32,7 @@ module FinchAPI
               path: "sandbox/connections/accounts",
               body: parsed,
               model: FinchAPI::Models::Sandbox::Connections::AccountCreateResponse,
+              security: {basic_auth: true},
               options: options
             )
           end
@@ -54,6 +55,7 @@ module FinchAPI
               path: "sandbox/connections/accounts",
               body: parsed,
               model: FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse,
+              security: {bearer_auth: true},
               options: options
             )
           end

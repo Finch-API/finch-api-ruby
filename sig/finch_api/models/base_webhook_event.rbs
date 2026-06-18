@@ -1,7 +1,12 @@
 module FinchAPI
   module Models
     type base_webhook_event =
-      { account_id: String, company_id: String, connection_id: String }
+      {
+        account_id: String,
+        company_id: String,
+        connection_id: String,
+        entity_id: String
+      }
 
     class BaseWebhookEvent < FinchAPI::Internal::Type::BaseModel
       attr_accessor account_id: String
@@ -12,16 +17,22 @@ module FinchAPI
 
       def connection_id=: (String) -> String
 
+      attr_reader entity_id: String?
+
+      def entity_id=: (String) -> String
+
       def initialize: (
         account_id: String,
         company_id: String,
-        ?connection_id: String
+        ?connection_id: String,
+        ?entity_id: String
       ) -> void
 
       def to_hash: -> {
         account_id: String,
         company_id: String,
-        connection_id: String
+        connection_id: String,
+        entity_id: String
       }
     end
   end

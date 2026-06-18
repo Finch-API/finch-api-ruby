@@ -15,6 +15,9 @@ module FinchAPI
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :individual_id
+
         # Worker's compensation classification code for this employee
         sig { returns(T.nilable(String)) }
         attr_accessor :class_code
@@ -84,6 +87,17 @@ module FinchAPI
         sig { returns(T.nilable(String)) }
         attr_accessor :first_name
 
+        # The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
+        # `unknown`.
+        sig do
+          returns(
+            T.nilable(
+              FinchAPI::Sandbox::EmploymentUpdateParams::FlsaStatus::OrSymbol
+            )
+          )
+        end
+        attr_accessor :flsa_status
+
         # The employee's income as reported by the provider. This may not always be
         # annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
         # depending on what information the provider returns.
@@ -147,6 +161,7 @@ module FinchAPI
 
         sig do
           params(
+            individual_id: String,
             class_code: T.nilable(String),
             custom_fields:
               T.nilable(
@@ -168,6 +183,10 @@ module FinchAPI
               ),
             end_date: T.nilable(String),
             first_name: T.nilable(String),
+            flsa_status:
+              T.nilable(
+                FinchAPI::Sandbox::EmploymentUpdateParams::FlsaStatus::OrSymbol
+              ),
             income: T.nilable(FinchAPI::Income::OrHash),
             income_history:
               T.nilable(T::Array[T.nilable(FinchAPI::Income::OrHash)]),
@@ -187,6 +206,7 @@ module FinchAPI
           ).returns(T.attached_class)
         end
         def self.new(
+          individual_id:,
           # Worker's compensation classification code for this employee
           class_code: nil,
           # Custom fields for the individual. These are fields which are defined by the
@@ -202,6 +222,9 @@ module FinchAPI
           end_date: nil,
           # The legal first name of the individual.
           first_name: nil,
+          # The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
+          # `unknown`.
+          flsa_status: nil,
           # The employee's income as reported by the provider. This may not always be
           # annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
           # depending on what information the provider returns.
@@ -230,6 +253,7 @@ module FinchAPI
         sig do
           override.returns(
             {
+              individual_id: String,
               class_code: T.nilable(String),
               custom_fields:
                 T.nilable(
@@ -251,6 +275,10 @@ module FinchAPI
                 ),
               end_date: T.nilable(String),
               first_name: T.nilable(String),
+              flsa_status:
+                T.nilable(
+                  FinchAPI::Sandbox::EmploymentUpdateParams::FlsaStatus::OrSymbol
+                ),
               income: T.nilable(FinchAPI::Income),
               income_history: T.nilable(T::Array[T.nilable(FinchAPI::Income)]),
               is_active: T.nilable(T::Boolean),
@@ -282,24 +310,74 @@ module FinchAPI
           sig { returns(T.nilable(String)) }
           attr_accessor :name
 
-          sig { returns(T.nilable(T.anything)) }
-          attr_reader :value
-
-          sig { params(value: T.anything).void }
-          attr_writer :value
+          sig do
+            returns(
+              T.nilable(
+                FinchAPI::Sandbox::EmploymentUpdateParams::CustomField::Value::Variants
+              )
+            )
+          end
+          attr_accessor :value
 
           sig do
-            params(name: T.nilable(String), value: T.anything).returns(
-              T.attached_class
-            )
+            params(
+              name: T.nilable(String),
+              value:
+                T.nilable(
+                  FinchAPI::Sandbox::EmploymentUpdateParams::CustomField::Value::Variants
+                )
+            ).returns(T.attached_class)
           end
           def self.new(name: nil, value: nil)
           end
 
           sig do
-            override.returns({ name: T.nilable(String), value: T.anything })
+            override.returns(
+              {
+                name: T.nilable(String),
+                value:
+                  T.nilable(
+                    FinchAPI::Sandbox::EmploymentUpdateParams::CustomField::Value::Variants
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          module Value
+            extend FinchAPI::Internal::Type::Union
+
+            Variants =
+              T.type_alias do
+                T.nilable(
+                  T.any(
+                    String,
+                    T::Array[T.anything],
+                    T.anything,
+                    Float,
+                    T::Boolean
+                  )
+                )
+              end
+
+            sig do
+              override.returns(
+                T::Array[
+                  FinchAPI::Sandbox::EmploymentUpdateParams::CustomField::Value::Variants
+                ]
+              )
+            end
+            def self.variants
+            end
+
+            UnionMember1Array =
+              T.let(
+                FinchAPI::Internal::Type::ArrayOf[
+                  FinchAPI::Internal::Type::Unknown
+                ],
+                FinchAPI::Internal::Type::Converter
+              )
           end
         end
 
@@ -543,6 +621,47 @@ module FinchAPI
             override.returns(
               T::Array[
                 FinchAPI::Sandbox::EmploymentUpdateParams::EmploymentStatus::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
+        # `unknown`.
+        module FlsaStatus
+          extend FinchAPI::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                FinchAPI::Sandbox::EmploymentUpdateParams::FlsaStatus
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          EXEMPT =
+            T.let(
+              :exempt,
+              FinchAPI::Sandbox::EmploymentUpdateParams::FlsaStatus::TaggedSymbol
+            )
+          NON_EXEMPT =
+            T.let(
+              :non_exempt,
+              FinchAPI::Sandbox::EmploymentUpdateParams::FlsaStatus::TaggedSymbol
+            )
+          UNKNOWN =
+            T.let(
+              :unknown,
+              FinchAPI::Sandbox::EmploymentUpdateParams::FlsaStatus::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                FinchAPI::Sandbox::EmploymentUpdateParams::FlsaStatus::TaggedSymbol
               ]
             )
           end

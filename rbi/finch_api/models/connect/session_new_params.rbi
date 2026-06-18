@@ -23,7 +23,9 @@ module FinchAPI
         sig { returns(String) }
         attr_accessor :customer_name
 
-        # The Finch products to request access to
+        # The Finch products to request access to. Use `benefits` to access deductions
+        # endpoints — `deduction` is a deprecated alias that is still accepted but should
+        # not be combined with `benefits`.
         sig do
           returns(
             T::Array[FinchAPI::Connect::SessionNewParams::Product::OrSymbol]
@@ -96,7 +98,9 @@ module FinchAPI
           customer_id:,
           # Name of the customer
           customer_name:,
-          # The Finch products to request access to
+          # The Finch products to request access to. Use `benefits` to access deductions
+          # endpoints — `deduction` is a deprecated alias that is still accepted but should
+          # not be combined with `benefits`.
           products:,
           # Email address of the customer
           customer_email: nil,
@@ -141,7 +145,6 @@ module FinchAPI
         def to_hash
         end
 
-        # The Finch products that can be requested during the Connect flow.
         module Product
           extend FinchAPI::Internal::Type::Enum
 
@@ -194,6 +197,11 @@ module FinchAPI
           PAY_STATEMENT =
             T.let(
               :pay_statement,
+              FinchAPI::Connect::SessionNewParams::Product::TaggedSymbol
+            )
+          RECORDKEEPING =
+            T.let(
+              :recordkeeping,
               FinchAPI::Connect::SessionNewParams::Product::TaggedSymbol
             )
           SSN =

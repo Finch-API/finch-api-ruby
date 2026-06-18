@@ -8,7 +8,13 @@ module FinchAPI
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
-        # @!method initialize(request_options: {})
+        # @!attribute job_id
+        #
+        #   @return [String]
+        required :job_id, String
+
+        # @!method initialize(job_id:, request_options: {})
+        #   @param job_id [String]
         #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
       end
     end

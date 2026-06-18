@@ -24,6 +24,9 @@ module FinchAPI
     # @return [String, nil]
     attr_reader :client_secret
 
+    # @return [String, nil]
+    attr_reader :webhook_secret
+
     # @return [FinchAPI::Resources::AccessTokens]
     attr_reader :access_tokens
 
@@ -56,11 +59,11 @@ module FinchAPI
 
     # @api private
     #
+    # @param security [Hash{Symbol=>Boolean}]
+    #
     # @return [Hash{String=>String}]
-    private def auth_headers
-      return bearer_auth unless bearer_auth.empty?
-      return basic_auth unless basic_auth.empty?
-      {}
+    private def auth_headers(security:)
+      {bearer_auth:, basic_auth:}.slice(*security.keys).values.reduce({}, :merge)
     end
 
     # @api private
@@ -90,6 +93,8 @@ module FinchAPI
     #
     # @param access_token [String, nil]
     #
+    # @param webhook_secret [String, nil] Defaults to `ENV["FINCH_WEBHOOK_SECRET"]`
+    #
     # @param base_url [String, nil] Override the default base URL for the API, e.g.,
     # `"https://api.example.com/v2/"`. Defaults to `ENV["FINCH_BASE_URL"]`
     #
@@ -104,6 +109,7 @@ module FinchAPI
       client_id: ENV["FINCH_CLIENT_ID"],
       client_secret: ENV["FINCH_CLIENT_SECRET"],
       access_token: nil,
+      webhook_secret: ENV["FINCH_WEBHOOK_SECRET"],
       base_url: ENV["FINCH_BASE_URL"],
       max_retries: self.class::DEFAULT_MAX_RETRIES,
       timeout: self.class::DEFAULT_TIMEOUT_IN_SECONDS,
@@ -115,10 +121,22 @@ module FinchAPI
       headers = {
         "finch-api-version" => "2020-09-17"
       }
+      custom_headers_env = ENV["FINCH_CUSTOM_HEADERS"]
+      unless custom_headers_env.nil?
+        parsed = {}
+        custom_headers_env.split("\n").each do |line|
+          colon = line.index(":")
+          unless colon.nil?
+            parsed[line[0...colon].strip] = line[(colon + 1)..].strip
+          end
+        end
+        headers = parsed.merge(headers)
+      end
 
       @client_id = client_id&.to_s
       @client_secret = client_secret&.to_s
       @access_token = access_token&.to_s
+      @webhook_secret = webhook_secret&.to_s
 
       super(
         base_url: base_url,

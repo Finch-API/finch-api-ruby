@@ -25,6 +25,7 @@ module FinchAPI
             path: "sandbox/jobs",
             body: parsed,
             model: FinchAPI::Models::Sandbox::JobCreateResponse,
+            security: {bearer_auth: true},
             options: options
           )
         end

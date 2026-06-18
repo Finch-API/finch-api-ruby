@@ -27,7 +27,9 @@ module FinchAPI
         sig { params(minutes_to_expire: Integer).void }
         attr_writer :minutes_to_expire
 
-        # The products to request access to (optional for reauthentication)
+        # The products to request access to (optional for reauthentication). Use
+        # `benefits` to access deductions endpoints — `deduction` is a deprecated alias
+        # that is still accepted but should not be combined with `benefits`.
         sig do
           returns(
             T.nilable(
@@ -63,7 +65,9 @@ module FinchAPI
           # The number of minutes until the session expires (defaults to 43,200, which is 30
           # days)
           minutes_to_expire: nil,
-          # The products to request access to (optional for reauthentication)
+          # The products to request access to (optional for reauthentication). Use
+          # `benefits` to access deductions endpoints — `deduction` is a deprecated alias
+          # that is still accepted but should not be combined with `benefits`.
           products: nil,
           # The URI to redirect to after the Connect flow is completed
           redirect_uri: nil,
@@ -90,7 +94,6 @@ module FinchAPI
         def to_hash
         end
 
-        # The Finch products that can be requested during the Connect flow.
         module Product
           extend FinchAPI::Internal::Type::Enum
 
@@ -146,6 +149,11 @@ module FinchAPI
           PAY_STATEMENT =
             T.let(
               :pay_statement,
+              FinchAPI::Connect::SessionReauthenticateParams::Product::TaggedSymbol
+            )
+          RECORDKEEPING =
+            T.let(
+              :recordkeeping,
               FinchAPI::Connect::SessionReauthenticateParams::Product::TaggedSymbol
             )
           SSN =

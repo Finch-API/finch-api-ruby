@@ -3,8 +3,7 @@ module FinchAPI
     class Jobs
       class Automated
         def create: (
-          type: FinchAPI::Models::Jobs::AutomatedCreateParams::type_,
-          params: FinchAPI::Jobs::AutomatedCreateParams::Params,
+          body: FinchAPI::Models::Jobs::AutomatedCreateParams::body,
           ?request_options: FinchAPI::request_opts
         ) -> FinchAPI::Models::Jobs::AutomatedCreateResponse
 

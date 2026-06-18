@@ -2,12 +2,14 @@ module FinchAPI
   module Models
     module HRIS
       type benefit_update_params =
-        { entity_ids: ::Array[String], description: String }
+        { benefit_id: String, entity_ids: ::Array[String], description: String }
         & FinchAPI::Internal::Type::request_parameters
 
       class BenefitUpdateParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
+
+        attr_accessor benefit_id: String
 
         attr_reader entity_ids: ::Array[String]?
 
@@ -18,12 +20,14 @@ module FinchAPI
         def description=: (String) -> String
 
         def initialize: (
+          benefit_id: String,
           ?entity_ids: ::Array[String],
           ?description: String,
           ?request_options: FinchAPI::request_opts
         ) -> void
 
         def to_hash: -> {
+          benefit_id: String,
           entity_ids: ::Array[String],
           description: String,
           request_options: FinchAPI::RequestOptions

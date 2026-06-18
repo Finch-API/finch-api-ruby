@@ -45,6 +45,9 @@ module FinchAPI
         JOB_BENEFIT_UNENROLL_COMPLETED = :"job.benefit_unenroll.completed"
         JOB_BENEFIT_UPDATE_COMPLETED = :"job.benefit_update.completed"
         JOB_DATA_SYNC_ALL_COMPLETED = :"job.data_sync_all.completed"
+        JOB_W4_FORM_EMPLOYEE_SYNC_COMPLETED = :"job.w4_form_employee_sync.completed"
+        JOB_INITIAL_DATA_SYNC_ORG_SUCCEEDED = :"job.initial_data_sync_org.succeeded"
+        JOB_INITIAL_DATA_SYNC_PAYROLL_SUCCEEDED = :"job.initial_data_sync_payroll.succeeded"
 
         # @!method self.values
         #   @return [Array<Symbol>]

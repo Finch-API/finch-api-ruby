@@ -21,12 +21,14 @@ module FinchAPI
         # @see FinchAPI::Models::HRIS::DirectoryListParams
         def list(params = {})
           parsed, options = FinchAPI::HRIS::DirectoryListParams.dump_request(params)
+          query = FinchAPI::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "employer/directory",
-            query: parsed,
+            query: query,
             page: FinchAPI::Internal::IndividualsPage,
             model: FinchAPI::HRIS::IndividualInDirectory,
+            security: {bearer_auth: true},
             options: options
           )
         end

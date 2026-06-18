@@ -4,8 +4,7 @@ require_relative "../../test_helper"
 
 class FinchAPI::Test::Resources::Jobs::AutomatedTest < FinchAPI::Test::ResourceTest
   def test_create_required_params
-    response =
-      @finch.jobs.automated.create(params: {individual_id: "individual_id"}, type: :w4_form_employee_sync)
+    response = @finch.jobs.automated.create(body: {type: :data_sync_all})
 
     assert_pattern do
       response => FinchAPI::Models::Jobs::AutomatedCreateResponse

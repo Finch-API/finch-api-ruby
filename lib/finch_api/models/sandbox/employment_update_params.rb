@@ -8,6 +8,11 @@ module FinchAPI
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
+        # @!attribute individual_id
+        #
+        #   @return [String]
+        required :individual_id, String
+
         # @!attribute class_code
         #   Worker's compensation classification code for this employee
         #
@@ -56,6 +61,13 @@ module FinchAPI
         #
         #   @return [String, nil]
         optional :first_name, String, nil?: true
+
+        # @!attribute flsa_status
+        #   The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
+        #   `unknown`.
+        #
+        #   @return [Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateParams::FlsaStatus, nil]
+        optional :flsa_status, enum: -> { FinchAPI::Sandbox::EmploymentUpdateParams::FlsaStatus }, nil?: true
 
         # @!attribute income
         #   The employee's income as reported by the provider. This may not always be
@@ -124,9 +136,11 @@ module FinchAPI
         #   @return [String, nil]
         optional :title, String, nil?: true
 
-        # @!method initialize(class_code: nil, custom_fields: nil, department: nil, employment: nil, employment_status: nil, end_date: nil, first_name: nil, income: nil, income_history: nil, is_active: nil, last_name: nil, latest_rehire_date: nil, location: nil, manager: nil, middle_name: nil, source_id: nil, start_date: nil, title: nil, request_options: {})
+        # @!method initialize(individual_id:, class_code: nil, custom_fields: nil, department: nil, employment: nil, employment_status: nil, end_date: nil, first_name: nil, flsa_status: nil, income: nil, income_history: nil, is_active: nil, last_name: nil, latest_rehire_date: nil, location: nil, manager: nil, middle_name: nil, source_id: nil, start_date: nil, title: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {FinchAPI::Models::Sandbox::EmploymentUpdateParams} for more details.
+        #
+        #   @param individual_id [String]
         #
         #   @param class_code [String, nil] Worker's compensation classification code for this employee
         #
@@ -141,6 +155,8 @@ module FinchAPI
         #   @param end_date [String, nil]
         #
         #   @param first_name [String, nil] The legal first name of the individual.
+        #
+        #   @param flsa_status [Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateParams::FlsaStatus, nil] The FLSA status of the individual. Available options: `exempt`, `non_exempt`, `u
         #
         #   @param income [FinchAPI::Models::Income, nil] The employee's income as reported by the provider. This may not always be annual
         #
@@ -174,12 +190,37 @@ module FinchAPI
 
           # @!attribute value
           #
-          #   @return [Object, nil]
-          optional :value, FinchAPI::Internal::Type::Unknown
+          #   @return [String, Array<Object>, Object, Float, Boolean, nil]
+          optional :value,
+                   union: -> {
+                     FinchAPI::Sandbox::EmploymentUpdateParams::CustomField::Value
+                   },
+                   nil?: true
 
           # @!method initialize(name: nil, value: nil)
           #   @param name [String, nil]
-          #   @param value [Object]
+          #   @param value [String, Array<Object>, Object, Float, Boolean, nil]
+
+          # @see FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField#value
+          module Value
+            extend FinchAPI::Internal::Type::Union
+
+            variant String
+
+            variant -> { FinchAPI::Models::Sandbox::EmploymentUpdateParams::CustomField::Value::UnionMember1Array }
+
+            variant FinchAPI::Internal::Type::Unknown
+
+            variant Float
+
+            variant FinchAPI::Internal::Type::Boolean
+
+            # @!method self.variants
+            #   @return [Array(String, Array<Object>, Object, Float, Boolean)]
+
+            # @type [FinchAPI::Internal::Type::Converter]
+            UnionMember1Array = FinchAPI::Internal::Type::ArrayOf[FinchAPI::Internal::Type::Unknown]
+          end
         end
 
         class Department < FinchAPI::Internal::Type::BaseModel
@@ -267,6 +308,19 @@ module FinchAPI
           PREHIRE = :prehire
           RETIRED = :retired
           TERMINATED = :terminated
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
+        # `unknown`.
+        module FlsaStatus
+          extend FinchAPI::Internal::Type::Enum
+
+          EXEMPT = :exempt
+          NON_EXEMPT = :non_exempt
+          UNKNOWN = :unknown
 
           # @!method self.values
           #   @return [Array<Symbol>]

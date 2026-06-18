@@ -2,50 +2,75 @@ module FinchAPI
   module Models
     module Jobs
       type automated_create_params =
-        {
-          type: FinchAPI::Models::Jobs::AutomatedCreateParams::type_,
-          params: FinchAPI::Jobs::AutomatedCreateParams::Params
-        }
+        { body: FinchAPI::Models::Jobs::AutomatedCreateParams::body }
         & FinchAPI::Internal::Type::request_parameters
 
       class AutomatedCreateParams < FinchAPI::Internal::Type::BaseModel
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
-        attr_accessor type: FinchAPI::Models::Jobs::AutomatedCreateParams::type_
-
-        attr_accessor params: FinchAPI::Jobs::AutomatedCreateParams::Params
+        attr_accessor body: FinchAPI::Models::Jobs::AutomatedCreateParams::body
 
         def initialize: (
-          type: FinchAPI::Models::Jobs::AutomatedCreateParams::type_,
-          params: FinchAPI::Jobs::AutomatedCreateParams::Params,
+          body: FinchAPI::Models::Jobs::AutomatedCreateParams::body,
           ?request_options: FinchAPI::request_opts
         ) -> void
 
         def to_hash: -> {
-          type: FinchAPI::Models::Jobs::AutomatedCreateParams::type_,
-          params: FinchAPI::Jobs::AutomatedCreateParams::Params,
+          body: FinchAPI::Models::Jobs::AutomatedCreateParams::body,
           request_options: FinchAPI::RequestOptions
         }
 
-        type type_ = :w4_form_employee_sync
+        type body =
+          FinchAPI::Jobs::AutomatedCreateParams::Body::DataSyncAll
+          | FinchAPI::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync
 
-        module Type
-          extend FinchAPI::Internal::Type::Enum
+        module Body
+          extend FinchAPI::Internal::Type::Union
 
-          W4_FORM_EMPLOYEE_SYNC: :w4_form_employee_sync
+          type data_sync_all = { type: :data_sync_all }
 
-          def self?.values: -> ::Array[FinchAPI::Models::Jobs::AutomatedCreateParams::type_]
-        end
+          class DataSyncAll < FinchAPI::Internal::Type::BaseModel
+            attr_accessor type: :data_sync_all
 
-        type params = { individual_id: String }
+            def initialize: (?type: :data_sync_all) -> void
 
-        class Params < FinchAPI::Internal::Type::BaseModel
-          attr_accessor individual_id: String
+            def to_hash: -> { type: :data_sync_all }
+          end
 
-          def initialize: (individual_id: String) -> void
+          type w4_form_employee_sync =
+            {
+              params: FinchAPI::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync::Params,
+              type: :w4_form_employee_sync
+            }
 
-          def to_hash: -> { individual_id: String }
+          class W4FormEmployeeSync < FinchAPI::Internal::Type::BaseModel
+            attr_accessor params: FinchAPI::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync::Params
+
+            attr_accessor type: :w4_form_employee_sync
+
+            def initialize: (
+              params: FinchAPI::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync::Params,
+              ?type: :w4_form_employee_sync
+            ) -> void
+
+            def to_hash: -> {
+              params: FinchAPI::Jobs::AutomatedCreateParams::Body::W4FormEmployeeSync::Params,
+              type: :w4_form_employee_sync
+            }
+
+            type params = { individual_id: String }
+
+            class Params < FinchAPI::Internal::Type::BaseModel
+              attr_accessor individual_id: String
+
+              def initialize: (individual_id: String) -> void
+
+              def to_hash: -> { individual_id: String }
+            end
+          end
+
+          def self?.variants: -> ::Array[FinchAPI::Models::Jobs::AutomatedCreateParams::body]
         end
       end
     end

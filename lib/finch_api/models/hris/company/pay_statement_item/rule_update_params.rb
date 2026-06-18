@@ -10,6 +10,11 @@ module FinchAPI
             extend FinchAPI::Internal::Type::RequestParameters::Converter
             include FinchAPI::Internal::Type::RequestParameters
 
+            # @!attribute rule_id
+            #
+            #   @return [String]
+            required :rule_id, String
+
             # @!attribute entity_ids
             #   The entity IDs to update the rule for.
             #
@@ -21,7 +26,9 @@ module FinchAPI
             #   @return [Object, nil]
             optional :optional_property, FinchAPI::Internal::Type::Unknown, api_name: :optionalProperty
 
-            # @!method initialize(entity_ids: nil, optional_property: nil, request_options: {})
+            # @!method initialize(rule_id:, entity_ids: nil, optional_property: nil, request_options: {})
+            #   @param rule_id [String]
+            #
             #   @param entity_ids [Array<String>] The entity IDs to update the rule for.
             #
             #   @param optional_property [Object]

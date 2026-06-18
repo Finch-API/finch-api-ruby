@@ -29,7 +29,9 @@ module FinchAPI
           customer_id:,
           # Name of the customer
           customer_name:,
-          # The Finch products to request access to
+          # The Finch products to request access to. Use `benefits` to access deductions
+          # endpoints — `deduction` is a deprecated alias that is still accepted but should
+          # not be combined with `benefits`.
           products:,
           # Email address of the customer
           customer_email: nil,
@@ -69,7 +71,9 @@ module FinchAPI
           # The number of minutes until the session expires (defaults to 43,200, which is 30
           # days)
           minutes_to_expire: nil,
-          # The products to request access to (optional for reauthentication)
+          # The products to request access to (optional for reauthentication). Use
+          # `benefits` to access deductions endpoints — `deduction` is a deprecated alias
+          # that is still accepted but should not be combined with `benefits`.
           products: nil,
           # The URI to redirect to after the Connect flow is completed
           redirect_uri: nil,

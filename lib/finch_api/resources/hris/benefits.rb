@@ -31,14 +31,16 @@ module FinchAPI
         #
         # @see FinchAPI::Models::HRIS::BenefitCreateParams
         def create(params = {})
-          parsed, options = FinchAPI::HRIS::BenefitCreateParams.dump_request(params)
           query_params = [:entity_ids]
+          parsed, options = FinchAPI::HRIS::BenefitCreateParams.dump_request(params)
+          query = FinchAPI::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :post,
             path: "employer/benefits",
-            query: parsed.slice(*query_params),
+            query: query,
             body: parsed.except(*query_params),
             model: FinchAPI::HRIS::CreateCompanyBenefitsResponse,
+            security: {bearer_auth: true},
             options: options
           )
         end
@@ -58,11 +60,13 @@ module FinchAPI
         # @see FinchAPI::Models::HRIS::BenefitRetrieveParams
         def retrieve(benefit_id, params = {})
           parsed, options = FinchAPI::HRIS::BenefitRetrieveParams.dump_request(params)
+          query = FinchAPI::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["employer/benefits/%1$s", benefit_id],
-            query: parsed,
+            query: query,
             model: FinchAPI::HRIS::CompanyBenefit,
+            security: {bearer_auth: true},
             options: options
           )
         end
@@ -83,14 +87,16 @@ module FinchAPI
         #
         # @see FinchAPI::Models::HRIS::BenefitUpdateParams
         def update(benefit_id, params = {})
-          parsed, options = FinchAPI::HRIS::BenefitUpdateParams.dump_request(params)
           query_params = [:entity_ids]
+          parsed, options = FinchAPI::HRIS::BenefitUpdateParams.dump_request(params)
+          query = FinchAPI::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :post,
             path: ["employer/benefits/%1$s", benefit_id],
-            query: parsed.slice(*query_params),
+            query: query,
             body: parsed.except(*query_params),
             model: FinchAPI::HRIS::UpdateCompanyBenefitResponse,
+            security: {bearer_auth: true},
             options: options
           )
         end
@@ -108,12 +114,14 @@ module FinchAPI
         # @see FinchAPI::Models::HRIS::BenefitListParams
         def list(params = {})
           parsed, options = FinchAPI::HRIS::BenefitListParams.dump_request(params)
+          query = FinchAPI::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "employer/benefits",
-            query: parsed,
+            query: query,
             page: FinchAPI::Internal::SinglePage,
             model: FinchAPI::HRIS::CompanyBenefit,
+            security: {bearer_auth: true},
             options: options
           )
         end
@@ -131,12 +139,47 @@ module FinchAPI
         # @see FinchAPI::Models::HRIS::BenefitListSupportedBenefitsParams
         def list_supported_benefits(params = {})
           parsed, options = FinchAPI::HRIS::BenefitListSupportedBenefitsParams.dump_request(params)
+          query = FinchAPI::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "employer/benefits/meta",
-            query: parsed,
+            query: query,
             page: FinchAPI::Internal::SinglePage,
             model: FinchAPI::HRIS::SupportedBenefit,
+            security: {bearer_auth: true},
+            options: options
+          )
+        end
+
+        # Register existing benefits from the customer on the provider, on Finch's end.
+        # Please use the `/provider` endpoint to view available types for each provider.
+        #
+        # @overload register(entity_ids: nil, description: nil, frequency: nil, type: nil, request_options: {})
+        #
+        # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access.
+        #
+        # @param description [String] Body param
+        #
+        # @param frequency [Symbol, FinchAPI::Models::HRIS::BenefitFrequency, nil] Body param: The frequency of the benefit deduction/contribution.
+        #
+        # @param type [Symbol, FinchAPI::Models::HRIS::BenefitType, nil] Body param: Type of benefit.
+        #
+        # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [FinchAPI::Models::HRIS::RegisterCompanyBenefitResponse]
+        #
+        # @see FinchAPI::Models::HRIS::BenefitRegisterParams
+        def register(params = {})
+          query_params = [:entity_ids]
+          parsed, options = FinchAPI::HRIS::BenefitRegisterParams.dump_request(params)
+          query = FinchAPI::Internal::Util.encode_query_params(parsed.slice(*query_params))
+          @client.request(
+            method: :post,
+            path: "employer/benefits/register",
+            query: query,
+            body: parsed.except(*query_params),
+            model: FinchAPI::HRIS::RegisterCompanyBenefitResponse,
+            security: {bearer_auth: true},
             options: options
           )
         end

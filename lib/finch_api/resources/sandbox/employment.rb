@@ -9,7 +9,7 @@ module FinchAPI
         #
         # Update sandbox employment
         #
-        # @overload update(individual_id, class_code: nil, custom_fields: nil, department: nil, employment: nil, employment_status: nil, end_date: nil, first_name: nil, income: nil, income_history: nil, is_active: nil, last_name: nil, latest_rehire_date: nil, location: nil, manager: nil, middle_name: nil, source_id: nil, start_date: nil, title: nil, request_options: {})
+        # @overload update(individual_id, class_code: nil, custom_fields: nil, department: nil, employment: nil, employment_status: nil, end_date: nil, first_name: nil, flsa_status: nil, income: nil, income_history: nil, is_active: nil, last_name: nil, latest_rehire_date: nil, location: nil, manager: nil, middle_name: nil, source_id: nil, start_date: nil, title: nil, request_options: {})
         #
         # @param individual_id [String]
         #
@@ -26,6 +26,8 @@ module FinchAPI
         # @param end_date [String, nil]
         #
         # @param first_name [String, nil] The legal first name of the individual.
+        #
+        # @param flsa_status [Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateParams::FlsaStatus, nil] The FLSA status of the individual. Available options: `exempt`, `non_exempt`, `u
         #
         # @param income [FinchAPI::Models::Income, nil] The employee's income as reported by the provider. This may not always be annual
         #
@@ -61,6 +63,7 @@ module FinchAPI
             path: ["sandbox/employment/%1$s", individual_id],
             body: parsed,
             model: FinchAPI::Models::Sandbox::EmploymentUpdateResponse,
+            security: {bearer_auth: true},
             options: options
           )
         end

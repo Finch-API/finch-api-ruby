@@ -34,6 +34,7 @@ module FinchAPI
             path: "sandbox/connections",
             body: parsed,
             model: FinchAPI::Models::Sandbox::ConnectionCreateResponse,
+            security: {basic_auth: true},
             options: options
           )
         end

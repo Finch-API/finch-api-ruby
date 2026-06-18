@@ -48,7 +48,12 @@ class FinchAPI::Test::SingletonClient < FinchAPI::Client
   TEST_API_BASE_URL = ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010")
 
   def initialize
-    super(base_url: FinchAPI::Test::SingletonClient::TEST_API_BASE_URL, access_token: "My Access Token")
+    super(
+      base_url: FinchAPI::Test::SingletonClient::TEST_API_BASE_URL,
+      access_token: "My Access Token",
+      client_id: "4ab15e51-11ad-49f4-acae-f343b7794375",
+      client_secret: "My Client Secret"
+    )
   end
 end
 

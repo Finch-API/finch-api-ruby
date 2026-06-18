@@ -346,12 +346,38 @@ module FinchAPI
         #   @return [String, nil]
         required :source_id, String, nil?: true
 
-        # @!method initialize(id:, name:, source_id:)
+        # @!attribute status
+        #   The status of the entity connection
+        #
+        #   @return [Symbol, FinchAPI::Models::Introspection::Entity::Status]
+        required :status, enum: -> { FinchAPI::Introspection::Entity::Status }
+
+        # @!method initialize(id:, name:, source_id:, status:)
         #   @param id [String] The connection account ID for this entity
         #
         #   @param name [String, nil] The name of the entity (payroll provider company name)
         #
         #   @param source_id [String, nil] The source ID of the entity
+        #
+        #   @param status [Symbol, FinchAPI::Models::Introspection::Entity::Status] The status of the entity connection
+
+        # The status of the entity connection
+        #
+        # @see FinchAPI::Models::Introspection::Entity#status
+        module Status
+          extend FinchAPI::Internal::Type::Enum
+
+          PENDING = :pending
+          PROCESSING = :processing
+          CONNECTED = :connected
+          ERROR_NO_ACCOUNT_SETUP = :error_no_account_setup
+          ERROR_PERMISSIONS = :error_permissions
+          REAUTH = :reauth
+          DISCONNECTED = :disconnected
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
       end
     end
   end

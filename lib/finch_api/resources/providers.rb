@@ -18,6 +18,7 @@ module FinchAPI
           path: "providers",
           page: FinchAPI::Internal::SinglePage,
           model: FinchAPI::Models::ProviderListResponse,
+          security: {bearer_auth: true},
           options: params[:request_options]
         )
       end

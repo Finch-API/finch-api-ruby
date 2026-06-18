@@ -17,7 +17,32 @@ module FinchAPI
           method: :post,
           path: "disconnect",
           model: FinchAPI::DisconnectResponse,
+          security: {bearer_auth: true},
           options: params[:request_options]
+        )
+      end
+
+      # Disconnect entity(s) from a connection without affecting other entities
+      # associated with the same connection.
+      #
+      # @overload disconnect_entity(entity_ids:, request_options: {})
+      #
+      # @param entity_ids [Array<String>] Array of entity UUIDs to disconnect. At least one entity ID must be provided.
+      #
+      # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [FinchAPI::Models::DisconnectEntityResponse]
+      #
+      # @see FinchAPI::Models::AccountDisconnectEntityParams
+      def disconnect_entity(params)
+        parsed, options = FinchAPI::AccountDisconnectEntityParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "disconnect-entity",
+          body: parsed,
+          model: FinchAPI::DisconnectEntityResponse,
+          security: {bearer_auth: true},
+          options: options
         )
       end
 
@@ -35,6 +60,7 @@ module FinchAPI
           method: :get,
           path: "introspect",
           model: FinchAPI::Introspection,
+          security: {bearer_auth: true},
           options: params[:request_options]
         )
       end

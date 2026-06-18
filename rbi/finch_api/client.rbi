@@ -19,6 +19,9 @@ module FinchAPI
     sig { returns(T.nilable(String)) }
     attr_reader :client_secret
 
+    sig { returns(T.nilable(String)) }
+    attr_reader :webhook_secret
+
     sig { returns(FinchAPI::Resources::AccessTokens) }
     attr_reader :access_tokens
 
@@ -50,8 +53,12 @@ module FinchAPI
     attr_reader :connect
 
     # @api private
-    sig { override.returns(T::Hash[String, String]) }
-    private def auth_headers
+    sig do
+      override
+        .params(security: { bearer_auth: T::Boolean, basic_auth: T::Boolean })
+        .returns(T::Hash[String, String])
+    end
+    private def auth_headers(security:)
     end
 
     # @api private
@@ -70,6 +77,7 @@ module FinchAPI
         client_id: T.nilable(String),
         client_secret: T.nilable(String),
         access_token: T.nilable(String),
+        webhook_secret: T.nilable(String),
         base_url: T.nilable(String),
         max_retries: Integer,
         timeout: Float,
@@ -83,6 +91,8 @@ module FinchAPI
       # Defaults to `ENV["FINCH_CLIENT_SECRET"]`
       client_secret: ENV["FINCH_CLIENT_SECRET"],
       access_token: nil,
+      # Defaults to `ENV["FINCH_WEBHOOK_SECRET"]`
+      webhook_secret: ENV["FINCH_WEBHOOK_SECRET"],
       # Override the default base URL for the API, e.g.,
       # `"https://api.example.com/v2/"`. Defaults to `ENV["FINCH_BASE_URL"]`
       base_url: ENV["FINCH_BASE_URL"],
