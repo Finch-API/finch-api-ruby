@@ -6,6 +6,9 @@ module FinchAPI
       sig { returns(FinchAPI::Resources::HRIS::Company) }
       attr_reader :company
 
+      sig { returns(FinchAPI::Resources::HRIS::PayStatementItem) }
+      attr_reader :pay_statement_item
+
       sig { returns(FinchAPI::Resources::HRIS::Directory) }
       attr_reader :directory
 

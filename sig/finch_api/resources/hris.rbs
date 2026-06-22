@@ -3,6 +3,8 @@ module FinchAPI
     class HRIS
       attr_reader company: FinchAPI::Resources::HRIS::Company
 
+      attr_reader pay_statement_item: FinchAPI::Resources::HRIS::PayStatementItem
+
       attr_reader directory: FinchAPI::Resources::HRIS::Directory
 
       attr_reader individuals: FinchAPI::Resources::HRIS::Individuals

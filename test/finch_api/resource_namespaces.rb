@@ -6,11 +6,6 @@ module FinchAPI
       module Benefits
       end
 
-      module Company
-        module PayStatementItem
-        end
-      end
-
       module Connect
       end
 
@@ -21,9 +16,7 @@ module FinchAPI
         module Benefits
         end
 
-        module Company
-          module PayStatementItem
-          end
+        module PayStatementItem
         end
       end
 

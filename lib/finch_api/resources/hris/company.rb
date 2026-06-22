@@ -4,9 +4,6 @@ module FinchAPI
   module Resources
     class HRIS
       class Company
-        # @return [FinchAPI::Resources::HRIS::Company::PayStatementItem]
-        attr_reader :pay_statement_item
-
         # Read basic company data
         #
         # @overload retrieve(entity_ids: nil, request_options: {})
@@ -36,7 +33,6 @@ module FinchAPI
         # @param client [FinchAPI::Client]
         def initialize(client:)
           @client = client
-          @pay_statement_item = FinchAPI::Resources::HRIS::Company::PayStatementItem.new(client: client)
         end
       end
     end
