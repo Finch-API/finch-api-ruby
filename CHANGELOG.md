@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.45 (2026-06-22)
+
+Full Changelog: [v0.1.0-alpha.44...v0.1.0-alpha.45](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.44...v0.1.0-alpha.45)
+
+### Bug Fixes
+
+* **payroll:** pay_statement_item is now a direct subresource of hris instead of company ([83b50ae](https://github.com/Finch-API/finch-api-ruby/commit/83b50ae945eb5a7db1cc1212ec7de522553ea050))
+
 ## 0.1.0-alpha.44 (2026-06-22)
 
 Full Changelog: [v0.1.0-alpha.43...v0.1.0-alpha.44](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.43...v0.1.0-alpha.44)
