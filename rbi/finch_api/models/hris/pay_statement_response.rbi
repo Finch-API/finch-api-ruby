@@ -25,7 +25,7 @@ module FinchAPI
           params(
             body:
               T.any(
-                FinchAPI::HRIS::PayStatementResponseBody::OrHash,
+                FinchAPI::HRIS::PayStatementData::OrHash,
                 FinchAPI::HRIS::PayStatementResponse::Body::BatchError::OrHash,
                 FinchAPI::HRIS::PayStatementDataSyncInProgress::OrHash
               ),
@@ -54,7 +54,7 @@ module FinchAPI
           Variants =
             T.type_alias do
               T.any(
-                FinchAPI::HRIS::PayStatementResponseBody,
+                FinchAPI::HRIS::PayStatementData,
                 FinchAPI::HRIS::PayStatementResponse::Body::BatchError,
                 FinchAPI::HRIS::PayStatementDataSyncInProgress
               )

@@ -28,7 +28,7 @@ module FinchAPI
         }
 
         type body =
-          FinchAPI::HRIS::PayStatementResponseBody
+          FinchAPI::HRIS::PayStatementData
           | FinchAPI::HRIS::PayStatementResponse::Body::BatchError
           | FinchAPI::HRIS::PayStatementDataSyncInProgress
 

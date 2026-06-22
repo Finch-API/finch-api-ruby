@@ -3,22 +3,17 @@
 module FinchAPI
   module Models
     module HRIS
-      class PayStatementResponseBody < FinchAPI::Internal::Type::BaseModel
+      class PayStatementData < FinchAPI::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
-            T.any(
-              FinchAPI::HRIS::PayStatementResponseBody,
-              FinchAPI::Internal::AnyHash
-            )
+            T.any(FinchAPI::HRIS::PayStatementData, FinchAPI::Internal::AnyHash)
           end
 
-        sig { returns(FinchAPI::HRIS::PayStatementResponseBody::Paging) }
+        sig { returns(FinchAPI::HRIS::PayStatementData::Paging) }
         attr_reader :paging
 
         sig do
-          params(
-            paging: FinchAPI::HRIS::PayStatementResponseBody::Paging::OrHash
-          ).void
+          params(paging: FinchAPI::HRIS::PayStatementData::Paging::OrHash).void
         end
         attr_writer :paging
 
@@ -27,7 +22,7 @@ module FinchAPI
 
         sig do
           params(
-            paging: FinchAPI::HRIS::PayStatementResponseBody::Paging::OrHash,
+            paging: FinchAPI::HRIS::PayStatementData::Paging::OrHash,
             pay_statements: T::Array[FinchAPI::HRIS::PayStatement::OrHash]
           ).returns(T.attached_class)
         end
@@ -37,7 +32,7 @@ module FinchAPI
         sig do
           override.returns(
             {
-              paging: FinchAPI::HRIS::PayStatementResponseBody::Paging,
+              paging: FinchAPI::HRIS::PayStatementData::Paging,
               pay_statements: T::Array[FinchAPI::HRIS::PayStatement]
             }
           )
@@ -49,7 +44,7 @@ module FinchAPI
           OrHash =
             T.type_alias do
               T.any(
-                FinchAPI::HRIS::PayStatementResponseBody::Paging,
+                FinchAPI::HRIS::PayStatementData::Paging,
                 FinchAPI::Internal::AnyHash
               )
             end
