@@ -7,7 +7,7 @@ module FinchAPI
       class PayStatementResponse < FinchAPI::Internal::Type::BaseModel
         # @!attribute body
         #
-        #   @return [FinchAPI::Models::HRIS::PayStatementResponseBody, FinchAPI::Models::HRIS::PayStatementResponse::Body::BatchError, FinchAPI::Models::HRIS::PayStatementDataSyncInProgress]
+        #   @return [FinchAPI::Models::HRIS::PayStatementData, FinchAPI::Models::HRIS::PayStatementResponse::Body::BatchError, FinchAPI::Models::HRIS::PayStatementDataSyncInProgress]
         required :body, union: -> { FinchAPI::HRIS::PayStatementResponse::Body }
 
         # @!attribute code
@@ -21,7 +21,7 @@ module FinchAPI
         required :payment_id, String
 
         # @!method initialize(body:, code:, payment_id:)
-        #   @param body [FinchAPI::Models::HRIS::PayStatementResponseBody, FinchAPI::Models::HRIS::PayStatementResponse::Body::BatchError, FinchAPI::Models::HRIS::PayStatementDataSyncInProgress]
+        #   @param body [FinchAPI::Models::HRIS::PayStatementData, FinchAPI::Models::HRIS::PayStatementResponse::Body::BatchError, FinchAPI::Models::HRIS::PayStatementDataSyncInProgress]
         #   @param code [Integer]
         #   @param payment_id [String]
 
@@ -29,7 +29,7 @@ module FinchAPI
         module Body
           extend FinchAPI::Internal::Type::Union
 
-          variant -> { FinchAPI::HRIS::PayStatementResponseBody }
+          variant -> { FinchAPI::HRIS::PayStatementData }
 
           variant -> { FinchAPI::HRIS::PayStatementResponse::Body::BatchError }
 
@@ -64,7 +64,7 @@ module FinchAPI
           end
 
           # @!method self.variants
-          #   @return [Array(FinchAPI::Models::HRIS::PayStatementResponseBody, FinchAPI::Models::HRIS::PayStatementResponse::Body::BatchError, FinchAPI::Models::HRIS::PayStatementDataSyncInProgress)]
+          #   @return [Array(FinchAPI::Models::HRIS::PayStatementData, FinchAPI::Models::HRIS::PayStatementResponse::Body::BatchError, FinchAPI::Models::HRIS::PayStatementDataSyncInProgress)]
         end
       end
     end
