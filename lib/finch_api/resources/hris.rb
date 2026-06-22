@@ -6,6 +6,9 @@ module FinchAPI
       # @return [FinchAPI::Resources::HRIS::Company]
       attr_reader :company
 
+      # @return [FinchAPI::Resources::HRIS::PayStatementItem]
+      attr_reader :pay_statement_item
+
       # @return [FinchAPI::Resources::HRIS::Directory]
       attr_reader :directory
 
@@ -33,6 +36,7 @@ module FinchAPI
       def initialize(client:)
         @client = client
         @company = FinchAPI::Resources::HRIS::Company.new(client: client)
+        @pay_statement_item = FinchAPI::Resources::HRIS::PayStatementItem.new(client: client)
         @directory = FinchAPI::Resources::HRIS::Directory.new(client: client)
         @individuals = FinchAPI::Resources::HRIS::Individuals.new(client: client)
         @employments = FinchAPI::Resources::HRIS::Employments.new(client: client)

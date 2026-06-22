@@ -2,8 +2,6 @@ module FinchAPI
   module Resources
     class HRIS
       class Company
-        attr_reader pay_statement_item: FinchAPI::Resources::HRIS::Company::PayStatementItem
-
         def retrieve: (
           ?entity_ids: ::Array[String],
           ?request_options: FinchAPI::request_opts
