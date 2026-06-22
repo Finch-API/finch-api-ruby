@@ -3,11 +3,11 @@
 module FinchAPI
   module Models
     module HRIS
-      class PayStatementResponseBody < FinchAPI::Internal::Type::BaseModel
+      class PayStatementData < FinchAPI::Internal::Type::BaseModel
         # @!attribute paging
         #
-        #   @return [FinchAPI::Models::HRIS::PayStatementResponseBody::Paging]
-        required :paging, -> { FinchAPI::HRIS::PayStatementResponseBody::Paging }
+        #   @return [FinchAPI::Models::HRIS::PayStatementData::Paging]
+        required :paging, -> { FinchAPI::HRIS::PayStatementData::Paging }
 
         # @!attribute pay_statements
         #
@@ -15,10 +15,10 @@ module FinchAPI
         required :pay_statements, -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::PayStatement] }
 
         # @!method initialize(paging:, pay_statements:)
-        #   @param paging [FinchAPI::Models::HRIS::PayStatementResponseBody::Paging]
+        #   @param paging [FinchAPI::Models::HRIS::PayStatementData::Paging]
         #   @param pay_statements [Array<FinchAPI::Models::HRIS::PayStatement>]
 
-        # @see FinchAPI::Models::HRIS::PayStatementResponseBody#paging
+        # @see FinchAPI::Models::HRIS::PayStatementData#paging
         class Paging < FinchAPI::Internal::Type::BaseModel
           # @!attribute offset
           #   The current start index of the returned list of elements
