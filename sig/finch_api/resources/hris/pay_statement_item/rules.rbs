@@ -1,0 +1,39 @@
+module FinchAPI
+  module Resources
+    class HRIS
+      class PayStatementItem
+        class Rules
+          def create: (
+            ?entity_ids: ::Array[String],
+            ?attributes: FinchAPI::HRIS::PayStatementItem::RuleCreateParams::Attributes,
+            ?conditions: ::Array[FinchAPI::HRIS::PayStatementItem::RuleCreateParams::Condition],
+            ?effective_end_date: String?,
+            ?effective_start_date: String?,
+            ?entity_type: FinchAPI::Models::HRIS::PayStatementItem::RuleCreateParams::entity_type,
+            ?request_options: FinchAPI::request_opts
+          ) -> FinchAPI::Models::HRIS::PayStatementItem::RuleCreateResponse
+
+          def update: (
+            String rule_id,
+            ?entity_ids: ::Array[String],
+            ?optional_property: top,
+            ?request_options: FinchAPI::request_opts
+          ) -> FinchAPI::Models::HRIS::PayStatementItem::RuleUpdateResponse
+
+          def list: (
+            ?entity_ids: ::Array[String],
+            ?request_options: FinchAPI::request_opts
+          ) -> FinchAPI::Internal::ResponsesPage[FinchAPI::Models::HRIS::PayStatementItem::RuleListResponse]
+
+          def delete: (
+            String rule_id,
+            ?entity_ids: ::Array[String],
+            ?request_options: FinchAPI::request_opts
+          ) -> FinchAPI::Models::HRIS::PayStatementItem::RuleDeleteResponse
+
+          def initialize: (client: FinchAPI::Client) -> void
+        end
+      end
+    end
+  end
+end

@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    finch-api (0.1.0.pre.alpha.44)
+    finch-api (0.1.0.pre.alpha.45)
       cgi
       connection_pool
 
