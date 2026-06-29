@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.46 (2026-06-29)
+
+Full Changelog: [v0.1.0-alpha.45...v0.1.0-alpha.46](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.45...v0.1.0-alpha.46)
+
+### Chores
+
+* **internal:** bound formatter parallelism to CPU count ([6eb683c](https://github.com/Finch-API/finch-api-ruby/commit/6eb683c9491278b7461aaf6f0d656cb4898a2484))
+
 ## 0.1.0-alpha.45 (2026-06-22)
 
 Full Changelog: [v0.1.0-alpha.44...v0.1.0-alpha.45](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.44...v0.1.0-alpha.45)
