@@ -179,7 +179,7 @@ module FinchAPI
           sig { returns(T.nilable(Float)) }
           attr_accessor :hours
 
-          # The exact name of the deduction from the pay statement.
+          # The exact name of the earning from the pay statement.
           sig { returns(T.nilable(String)) }
           attr_accessor :name
 
@@ -234,7 +234,7 @@ module FinchAPI
             # The number of hours associated with this earning. (For salaried employees, this
             # could be hours per pay period, `0` or `null`, depending on the provider).
             hours:,
-            # The exact name of the deduction from the pay statement.
+            # The exact name of the earning from the pay statement.
             name:,
             # The type of earning.
             type:,
