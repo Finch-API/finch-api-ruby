@@ -113,7 +113,7 @@ module FinchAPI
           required :hours, Float, nil?: true
 
           # @!attribute name
-          #   The exact name of the deduction from the pay statement.
+          #   The exact name of the earning from the pay statement.
           #
           #   @return [String, nil]
           required :name, String, nil?: true
@@ -139,7 +139,7 @@ module FinchAPI
           #
           #   @param hours [Float, nil] The number of hours associated with this earning. (For salaried employees, this
           #
-          #   @param name [String, nil] The exact name of the deduction from the pay statement.
+          #   @param name [String, nil] The exact name of the earning from the pay statement.
           #
           #   @param type [Symbol, FinchAPI::Models::HRIS::PayStatement::Earning::Type, nil] The type of earning.
           #
