@@ -6,20 +6,20 @@ module FinchAPI
       class Individuals
         # Read individual data, excluding income and employment data
         #
-        # @overload retrieve_many(entity_ids: nil, options: nil, requests: nil, request_options: {})
+        # @overload retrieve_many(requests:, entity_ids: nil, options: nil, request_options: {})
+        #
+        # @param requests [Array<FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request>] Body param: The array of batch requests. Maximum 10000 items per request.
         #
         # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access.
         #
         # @param options [FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, nil] Body param
-        #
-        # @param requests [Array<FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request>] Body param
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [FinchAPI::Internal::ResponsesPage<FinchAPI::Models::HRIS::IndividualResponse>]
         #
         # @see FinchAPI::Models::HRIS::IndividualRetrieveManyParams
-        def retrieve_many(params = {})
+        def retrieve_many(params)
           query_params = [:entity_ids]
           parsed, options = FinchAPI::HRIS::IndividualRetrieveManyParams.dump_request(params)
           query = FinchAPI::Internal::Util.encode_query_params(parsed.slice(*query_params))

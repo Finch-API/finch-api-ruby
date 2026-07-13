@@ -10,7 +10,7 @@ module FinchAPI
         #
         # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
         #
-        # @param limit [Integer] Number of employees to return (defaults to all)
+        # @param limit [Integer] Number of employees to return (defaults to 100, maximum 10000)
         #
         # @param offset [Integer] Index to start from (defaults to 0)
         #

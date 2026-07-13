@@ -15,6 +15,14 @@ module FinchAPI
             )
           end
 
+        # The array of batch requests. Maximum 10000 items per request.
+        sig do
+          returns(
+            T::Array[FinchAPI::HRIS::IndividualRetrieveManyParams::Request]
+          )
+        end
+        attr_accessor :requests
+
         # The entity IDs to specify which entities' data to access.
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :entity_ids
@@ -40,43 +48,25 @@ module FinchAPI
         attr_writer :options
 
         sig do
-          returns(
-            T.nilable(
-              T::Array[FinchAPI::HRIS::IndividualRetrieveManyParams::Request]
-            )
-          )
-        end
-        attr_reader :requests
-
-        sig do
           params(
             requests:
               T::Array[
                 FinchAPI::HRIS::IndividualRetrieveManyParams::Request::OrHash
-              ]
-          ).void
-        end
-        attr_writer :requests
-
-        sig do
-          params(
+              ],
             entity_ids: T::Array[String],
             options:
               T.nilable(
                 FinchAPI::HRIS::IndividualRetrieveManyParams::Options::OrHash
               ),
-            requests:
-              T::Array[
-                FinchAPI::HRIS::IndividualRetrieveManyParams::Request::OrHash
-              ],
             request_options: FinchAPI::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          # The array of batch requests. Maximum 10000 items per request.
+          requests:,
           # The entity IDs to specify which entities' data to access.
           entity_ids: nil,
           options: nil,
-          requests: nil,
           request_options: {}
         )
         end
@@ -84,18 +74,39 @@ module FinchAPI
         sig do
           override.returns(
             {
+              requests:
+                T::Array[FinchAPI::HRIS::IndividualRetrieveManyParams::Request],
               entity_ids: T::Array[String],
               options:
                 T.nilable(
                   FinchAPI::HRIS::IndividualRetrieveManyParams::Options
                 ),
-              requests:
-                T::Array[FinchAPI::HRIS::IndividualRetrieveManyParams::Request],
               request_options: FinchAPI::RequestOptions
             }
           )
         end
         def to_hash
+        end
+
+        class Request < FinchAPI::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                FinchAPI::HRIS::IndividualRetrieveManyParams::Request,
+                FinchAPI::Internal::AnyHash
+              )
+            end
+
+          sig { returns(String) }
+          attr_accessor :individual_id
+
+          sig { params(individual_id: String).returns(T.attached_class) }
+          def self.new(individual_id:)
+          end
+
+          sig { override.returns({ individual_id: String }) }
+          def to_hash
+          end
         end
 
         class Options < FinchAPI::Internal::Type::BaseModel
@@ -118,30 +129,6 @@ module FinchAPI
           end
 
           sig { override.returns({ include: T::Array[String] }) }
-          def to_hash
-          end
-        end
-
-        class Request < FinchAPI::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                FinchAPI::HRIS::IndividualRetrieveManyParams::Request,
-                FinchAPI::Internal::AnyHash
-              )
-            end
-
-          sig { returns(T.nilable(String)) }
-          attr_reader :individual_id
-
-          sig { params(individual_id: String).void }
-          attr_writer :individual_id
-
-          sig { params(individual_id: String).returns(T.attached_class) }
-          def self.new(individual_id: nil)
-          end
-
-          sig { override.returns({ individual_id: String }) }
           def to_hash
           end
         end

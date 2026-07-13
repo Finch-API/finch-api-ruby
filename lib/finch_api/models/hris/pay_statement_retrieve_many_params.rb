@@ -9,7 +9,7 @@ module FinchAPI
         include FinchAPI::Internal::Type::RequestParameters
 
         # @!attribute requests
-        #   The array of batch requests.
+        #   The array of batch requests. Maximum 10 payment_ids per request.
         #
         #   @return [Array<FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request>]
         required :requests,
@@ -22,7 +22,7 @@ module FinchAPI
         optional :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
 
         # @!method initialize(requests:, entity_ids: nil, request_options: {})
-        #   @param requests [Array<FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request>] The array of batch requests.
+        #   @param requests [Array<FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request>] The array of batch requests. Maximum 10 payment_ids per request.
         #
         #   @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
         #
@@ -36,7 +36,7 @@ module FinchAPI
           required :payment_id, String
 
           # @!attribute limit
-          #   Number of pay statements to return (defaults to all).
+          #   Number of pay statements to return (defaults to 100, maximum 5000).
           #
           #   @return [Integer, nil]
           optional :limit, Integer
@@ -50,7 +50,7 @@ module FinchAPI
           # @!method initialize(payment_id:, limit: nil, offset: nil)
           #   @param payment_id [String] A stable Finch `id` (UUID v4) for a payment.
           #
-          #   @param limit [Integer] Number of pay statements to return (defaults to all).
+          #   @param limit [Integer] Number of pay statements to return (defaults to 100, maximum 5000).
           #
           #   @param offset [Integer] Index to start from.
         end

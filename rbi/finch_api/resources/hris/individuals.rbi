@@ -7,15 +7,15 @@ module FinchAPI
         # Read individual data, excluding income and employment data
         sig do
           params(
+            requests:
+              T::Array[
+                FinchAPI::HRIS::IndividualRetrieveManyParams::Request::OrHash
+              ],
             entity_ids: T::Array[String],
             options:
               T.nilable(
                 FinchAPI::HRIS::IndividualRetrieveManyParams::Options::OrHash
               ),
-            requests:
-              T::Array[
-                FinchAPI::HRIS::IndividualRetrieveManyParams::Request::OrHash
-              ],
             request_options: FinchAPI::RequestOptions::OrHash
           ).returns(
             FinchAPI::Internal::ResponsesPage[
@@ -24,12 +24,12 @@ module FinchAPI
           )
         end
         def retrieve_many(
+          # Body param: The array of batch requests. Maximum 10000 items per request.
+          requests:,
           # Query param: The entity IDs to specify which entities' data to access.
           entity_ids: nil,
           # Body param
           options: nil,
-          # Body param
-          requests: nil,
           request_options: {}
         )
         end
