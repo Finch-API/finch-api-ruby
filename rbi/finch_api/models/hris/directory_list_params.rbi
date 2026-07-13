@@ -22,7 +22,7 @@ module FinchAPI
         sig { params(entity_ids: T::Array[String]).void }
         attr_writer :entity_ids
 
-        # Number of employees to return (defaults to all)
+        # Number of employees to return (defaults to 100, maximum 10000)
         sig { returns(T.nilable(Integer)) }
         attr_reader :limit
 
@@ -47,7 +47,7 @@ module FinchAPI
         def self.new(
           # The entity IDs to specify which entities' data to access.
           entity_ids: nil,
-          # Number of employees to return (defaults to all)
+          # Number of employees to return (defaults to 100, maximum 10000)
           limit: nil,
           # Index to start from (defaults to 0)
           offset: nil,

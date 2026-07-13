@@ -15,7 +15,7 @@ module FinchAPI
             )
           end
 
-        # The array of batch requests.
+        # The array of batch requests. Maximum 10000 items per request.
         sig do
           returns(
             T::Array[FinchAPI::HRIS::EmploymentRetrieveManyParams::Request]
@@ -41,7 +41,7 @@ module FinchAPI
           ).returns(T.attached_class)
         end
         def self.new(
-          # The array of batch requests.
+          # The array of batch requests. Maximum 10000 items per request.
           requests:,
           # The entity IDs to specify which entities' data to access.
           entity_ids: nil,
@@ -71,17 +71,13 @@ module FinchAPI
               )
             end
 
-          # A stable Finch `id` (UUID v4) for an individual in the company. There is no
-          # limit to the number of `individual_id` to send per request. It is preferantial
-          # to send all ids in a single request for Finch to optimize provider rate-limits.
+          # A stable Finch `id` (UUID v4) for an individual in the company.
           sig { returns(String) }
           attr_accessor :individual_id
 
           sig { params(individual_id: String).returns(T.attached_class) }
           def self.new(
-            # A stable Finch `id` (UUID v4) for an individual in the company. There is no
-            # limit to the number of `individual_id` to send per request. It is preferantial
-            # to send all ids in a single request for Finch to optimize provider rate-limits.
+            # A stable Finch `id` (UUID v4) for an individual in the company.
             individual_id:
           )
           end

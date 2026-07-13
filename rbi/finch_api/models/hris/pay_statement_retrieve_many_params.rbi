@@ -15,7 +15,7 @@ module FinchAPI
             )
           end
 
-        # The array of batch requests.
+        # The array of batch requests. Maximum 10 payment_ids per request.
         sig do
           returns(
             T::Array[FinchAPI::HRIS::PayStatementRetrieveManyParams::Request]
@@ -41,7 +41,7 @@ module FinchAPI
           ).returns(T.attached_class)
         end
         def self.new(
-          # The array of batch requests.
+          # The array of batch requests. Maximum 10 payment_ids per request.
           requests:,
           # The entity IDs to specify which entities' data to access.
           entity_ids: nil,
@@ -77,7 +77,7 @@ module FinchAPI
           sig { returns(String) }
           attr_accessor :payment_id
 
-          # Number of pay statements to return (defaults to all).
+          # Number of pay statements to return (defaults to 100, maximum 5000).
           sig { returns(T.nilable(Integer)) }
           attr_reader :limit
 
@@ -99,7 +99,7 @@ module FinchAPI
           def self.new(
             # A stable Finch `id` (UUID v4) for a payment.
             payment_id:,
-            # Number of pay statements to return (defaults to all).
+            # Number of pay statements to return (defaults to 100, maximum 5000).
             limit: nil,
             # Index to start from.
             offset: nil

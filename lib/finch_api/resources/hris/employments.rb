@@ -8,7 +8,7 @@ module FinchAPI
         #
         # @overload retrieve_many(requests:, entity_ids: nil, request_options: {})
         #
-        # @param requests [Array<FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request>] Body param: The array of batch requests.
+        # @param requests [Array<FinchAPI::Models::HRIS::EmploymentRetrieveManyParams::Request>] Body param: The array of batch requests. Maximum 10000 items per request.
         #
         # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access.
         #
