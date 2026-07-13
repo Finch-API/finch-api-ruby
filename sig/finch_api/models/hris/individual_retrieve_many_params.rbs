@@ -3,9 +3,9 @@ module FinchAPI
     module HRIS
       type individual_retrieve_many_params =
         {
+          requests: ::Array[FinchAPI::HRIS::IndividualRetrieveManyParams::Request],
           entity_ids: ::Array[String],
-          options: FinchAPI::HRIS::IndividualRetrieveManyParams::Options?,
-          requests: ::Array[FinchAPI::HRIS::IndividualRetrieveManyParams::Request]
+          options: FinchAPI::HRIS::IndividualRetrieveManyParams::Options?
         }
         & FinchAPI::Internal::Type::request_parameters
 
@@ -13,31 +13,37 @@ module FinchAPI
         extend FinchAPI::Internal::Type::RequestParameters::Converter
         include FinchAPI::Internal::Type::RequestParameters
 
+        attr_accessor requests: ::Array[FinchAPI::HRIS::IndividualRetrieveManyParams::Request]
+
         attr_reader entity_ids: ::Array[String]?
 
         def entity_ids=: (::Array[String]) -> ::Array[String]
 
         attr_accessor options: FinchAPI::HRIS::IndividualRetrieveManyParams::Options?
 
-        attr_reader requests: ::Array[FinchAPI::HRIS::IndividualRetrieveManyParams::Request]?
-
-        def requests=: (
-          ::Array[FinchAPI::HRIS::IndividualRetrieveManyParams::Request]
-        ) -> ::Array[FinchAPI::HRIS::IndividualRetrieveManyParams::Request]
-
         def initialize: (
+          requests: ::Array[FinchAPI::HRIS::IndividualRetrieveManyParams::Request],
           ?entity_ids: ::Array[String],
           ?options: FinchAPI::HRIS::IndividualRetrieveManyParams::Options?,
-          ?requests: ::Array[FinchAPI::HRIS::IndividualRetrieveManyParams::Request],
           ?request_options: FinchAPI::request_opts
         ) -> void
 
         def to_hash: -> {
+          requests: ::Array[FinchAPI::HRIS::IndividualRetrieveManyParams::Request],
           entity_ids: ::Array[String],
           options: FinchAPI::HRIS::IndividualRetrieveManyParams::Options?,
-          requests: ::Array[FinchAPI::HRIS::IndividualRetrieveManyParams::Request],
           request_options: FinchAPI::RequestOptions
         }
+
+        type request = { individual_id: String }
+
+        class Request < FinchAPI::Internal::Type::BaseModel
+          attr_accessor individual_id: String
+
+          def initialize: (individual_id: String) -> void
+
+          def to_hash: -> { individual_id: String }
+        end
 
         type options = { include: ::Array[String] }
 
@@ -49,18 +55,6 @@ module FinchAPI
           def initialize: (?include: ::Array[String]) -> void
 
           def to_hash: -> { include: ::Array[String] }
-        end
-
-        type request = { individual_id: String }
-
-        class Request < FinchAPI::Internal::Type::BaseModel
-          attr_reader individual_id: String?
-
-          def individual_id=: (String) -> String
-
-          def initialize: (?individual_id: String) -> void
-
-          def to_hash: -> { individual_id: String }
         end
       end
     end

@@ -20,7 +20,7 @@ module FinchAPI
         def list(
           # The entity IDs to specify which entities' data to access.
           entity_ids: nil,
-          # Number of employees to return (defaults to all)
+          # Number of employees to return (defaults to 100, maximum 10000)
           limit: nil,
           # Index to start from (defaults to 0)
           offset: nil,
