@@ -4,11 +4,14 @@ module FinchAPI
   module Resources
     class HRIS
       class Company
+        # Some parameter documentations has been truncated, see
+        # {FinchAPI::Models::HRIS::CompanyRetrieveParams} for more details.
+        #
         # Read basic company data
         #
         # @overload retrieve(entity_ids: nil, request_options: {})
         #
-        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
+        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access. Provide exactly one en
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #

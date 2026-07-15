@@ -9,7 +9,8 @@ module FinchAPI
         include FinchAPI::Internal::Type::RequestParameters
 
         # @!attribute entity_ids
-        #   The entity IDs to specify which entities' data to access.
+        #   The entity IDs to specify which entities' data to access. Provide exactly one
+        #   entity ID per request; a maximum of one is accepted.
         #
         #   @return [Array<String>, nil]
         optional :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
@@ -32,7 +33,10 @@ module FinchAPI
         optional :type, enum: -> { FinchAPI::HRIS::BenefitType }, nil?: true
 
         # @!method initialize(entity_ids: nil, description: nil, frequency: nil, type: nil, request_options: {})
-        #   @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
+        #   Some parameter documentations has been truncated, see
+        #   {FinchAPI::Models::HRIS::BenefitRegisterParams} for more details.
+        #
+        #   @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access. Provide exactly one en
         #
         #   @param description [String]
         #

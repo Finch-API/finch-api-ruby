@@ -16,7 +16,8 @@ module FinchAPI
                  -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::HRIS::IndividualRetrieveManyParams::Request] }
 
         # @!attribute entity_ids
-        #   The entity IDs to specify which entities' data to access.
+        #   The entity IDs to specify which entities' data to access. Provide exactly one
+        #   entity ID per request; a maximum of one is accepted.
         #
         #   @return [Array<String>, nil]
         optional :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
@@ -27,9 +28,12 @@ module FinchAPI
         optional :options, -> { FinchAPI::HRIS::IndividualRetrieveManyParams::Options }, nil?: true
 
         # @!method initialize(requests:, entity_ids: nil, options: nil, request_options: {})
+        #   Some parameter documentations has been truncated, see
+        #   {FinchAPI::Models::HRIS::IndividualRetrieveManyParams} for more details.
+        #
         #   @param requests [Array<FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request>] The array of batch requests. Maximum 10000 items per request.
         #
-        #   @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
+        #   @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access. Provide exactly one en
         #
         #   @param options [FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, nil]
         #

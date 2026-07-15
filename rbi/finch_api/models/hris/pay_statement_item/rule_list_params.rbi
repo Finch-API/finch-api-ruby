@@ -16,7 +16,8 @@ module FinchAPI
               )
             end
 
-          # The entity IDs to retrieve rules for.
+          # The entity IDs to retrieve rules for. Provide exactly one entity ID per request;
+          # a maximum of one is accepted.
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :entity_ids
 
@@ -30,7 +31,8 @@ module FinchAPI
             ).returns(T.attached_class)
           end
           def self.new(
-            # The entity IDs to retrieve rules for.
+            # The entity IDs to retrieve rules for. Provide exactly one entity ID per request;
+            # a maximum of one is accepted.
             entity_ids: nil,
             request_options: {}
           )

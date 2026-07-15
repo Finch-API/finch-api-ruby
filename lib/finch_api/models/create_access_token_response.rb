@@ -65,10 +65,7 @@ module FinchAPI
       optional :account_id, String
 
       # @!attribute company_id
-      #   @deprecated
-      #
-      #   [DEPRECATED] Use `connection_id` to identify the connection instead of this
-      #   company ID
+      #   The Finch UUID of the company associated with the `access_token`.
       #
       #   @return [String, nil]
       optional :company_id, String
@@ -109,7 +106,7 @@ module FinchAPI
       #
       #   @param account_id [String] [DEPRECATED] Use `connection_id` to identify the connection instead of this acco
       #
-      #   @param company_id [String] [DEPRECATED] Use `connection_id` to identify the connection instead of this comp
+      #   @param company_id [String] The Finch UUID of the company associated with the `access_token`.
       #
       #   @param customer_id [String, nil] The ID of your customer you provided to Finch when a connect session was created
       #

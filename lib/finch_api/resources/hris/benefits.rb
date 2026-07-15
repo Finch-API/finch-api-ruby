@@ -15,7 +15,7 @@ module FinchAPI
         #
         # @overload create(entity_ids: nil, company_contribution: nil, description: nil, frequency: nil, type: nil, request_options: {})
         #
-        # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access.
+        # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access. Provide e
         #
         # @param company_contribution [FinchAPI::Models::HRIS::BenefitCreateParams::CompanyContribution, nil] Body param: The company match for this benefit.
         #
@@ -45,13 +45,16 @@ module FinchAPI
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {FinchAPI::Models::HRIS::BenefitRetrieveParams} for more details.
+        #
         # Lists deductions and contributions information for a given item
         #
         # @overload retrieve(benefit_id, entity_ids: nil, request_options: {})
         #
         # @param benefit_id [String]
         #
-        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
+        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access. Provide exactly one en
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -71,13 +74,16 @@ module FinchAPI
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {FinchAPI::Models::HRIS::BenefitUpdateParams} for more details.
+        #
         # Updates an existing company-wide deduction or contribution
         #
         # @overload update(benefit_id, entity_ids: nil, description: nil, request_options: {})
         #
         # @param benefit_id [String] Path param
         #
-        # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access.
+        # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access. Provide e
         #
         # @param description [String] Body param: Updated name or description.
         #
@@ -101,11 +107,14 @@ module FinchAPI
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {FinchAPI::Models::HRIS::BenefitListParams} for more details.
+        #
         # List all company-wide deductions and contributions.
         #
         # @overload list(entity_ids: nil, request_options: {})
         #
-        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
+        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access. Provide exactly one en
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -126,11 +135,14 @@ module FinchAPI
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {FinchAPI::Models::HRIS::BenefitListSupportedBenefitsParams} for more details.
+        #
         # Get deductions metadata
         #
         # @overload list_supported_benefits(entity_ids: nil, request_options: {})
         #
-        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
+        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access. Provide exactly one en
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -151,12 +163,15 @@ module FinchAPI
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {FinchAPI::Models::HRIS::BenefitRegisterParams} for more details.
+        #
         # Register existing benefits from the customer on the provider, on Finch's end.
         # Please use the `/provider` endpoint to view available types for each provider.
         #
         # @overload register(entity_ids: nil, description: nil, frequency: nil, type: nil, request_options: {})
         #
-        # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access.
+        # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access. Provide e
         #
         # @param description [String] Body param
         #

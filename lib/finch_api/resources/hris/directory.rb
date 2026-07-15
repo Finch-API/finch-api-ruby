@@ -4,11 +4,14 @@ module FinchAPI
   module Resources
     class HRIS
       class Directory
+        # Some parameter documentations has been truncated, see
+        # {FinchAPI::Models::HRIS::DirectoryListParams} for more details.
+        #
         # Read company directory and organization structure
         #
         # @overload list(entity_ids: nil, limit: nil, offset: nil, request_options: {})
         #
-        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
+        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access. Provide exactly one en
         #
         # @param limit [Integer] Number of employees to return (defaults to 100, maximum 10000)
         #

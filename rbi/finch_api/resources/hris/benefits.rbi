@@ -23,7 +23,8 @@ module FinchAPI
           ).returns(FinchAPI::HRIS::CreateCompanyBenefitsResponse)
         end
         def create(
-          # Query param: The entity IDs to specify which entities' data to access.
+          # Query param: The entity IDs to specify which entities' data to access. Provide
+          # exactly one entity ID per request; a maximum of one is accepted.
           entity_ids: nil,
           # Body param: The company match for this benefit.
           company_contribution: nil,
@@ -49,7 +50,8 @@ module FinchAPI
         end
         def retrieve(
           benefit_id,
-          # The entity IDs to specify which entities' data to access.
+          # The entity IDs to specify which entities' data to access. Provide exactly one
+          # entity ID per request; a maximum of one is accepted.
           entity_ids: nil,
           request_options: {}
         )
@@ -67,7 +69,8 @@ module FinchAPI
         def update(
           # Path param
           benefit_id,
-          # Query param: The entity IDs to specify which entities' data to access.
+          # Query param: The entity IDs to specify which entities' data to access. Provide
+          # exactly one entity ID per request; a maximum of one is accepted.
           entity_ids: nil,
           # Body param: Updated name or description.
           description: nil,
@@ -85,7 +88,8 @@ module FinchAPI
           )
         end
         def list(
-          # The entity IDs to specify which entities' data to access.
+          # The entity IDs to specify which entities' data to access. Provide exactly one
+          # entity ID per request; a maximum of one is accepted.
           entity_ids: nil,
           request_options: {}
         )
@@ -101,7 +105,8 @@ module FinchAPI
           )
         end
         def list_supported_benefits(
-          # The entity IDs to specify which entities' data to access.
+          # The entity IDs to specify which entities' data to access. Provide exactly one
+          # entity ID per request; a maximum of one is accepted.
           entity_ids: nil,
           request_options: {}
         )
@@ -119,7 +124,8 @@ module FinchAPI
           ).returns(FinchAPI::HRIS::RegisterCompanyBenefitResponse)
         end
         def register(
-          # Query param: The entity IDs to specify which entities' data to access.
+          # Query param: The entity IDs to specify which entities' data to access. Provide
+          # exactly one entity ID per request; a maximum of one is accepted.
           entity_ids: nil,
           # Body param
           description: nil,

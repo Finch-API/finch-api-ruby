@@ -23,7 +23,8 @@ module FinchAPI
         required :start_date, Date
 
         # @!attribute entity_ids
-        #   The entity IDs to specify which entities' data to access.
+        #   The entity IDs to specify which entities' data to access. Provide exactly one
+        #   entity ID per request; a maximum of one is accepted.
         #
         #   @return [Array<String>, nil]
         optional :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
@@ -36,7 +37,7 @@ module FinchAPI
         #
         #   @param start_date [Date] The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD` for
         #
-        #   @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
+        #   @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access. Provide exactly one en
         #
         #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
       end

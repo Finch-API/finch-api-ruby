@@ -12,7 +12,7 @@ module FinchAPI
         #
         # @overload list(entity_ids: nil, individual_ids: nil, limit: nil, offset: nil, types: nil, request_options: {})
         #
-        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
+        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access. Provide exactly one en
         #
         # @param individual_ids [Array<String>] Comma-delimited list of stable Finch uuids for each individual. If empty, defaul
         #
@@ -40,6 +40,9 @@ module FinchAPI
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {FinchAPI::Models::HRIS::DocumentRetreiveParams} for more details.
+        #
         # **Beta:** This endpoint is in beta and may change. Retrieve details of a
         # specific document by its ID.
         #
@@ -47,7 +50,7 @@ module FinchAPI
         #
         # @param document_id [String] The unique identifier of the document.
         #
-        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
+        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access. Provide exactly one en
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #

@@ -24,7 +24,8 @@ module FinchAPI
         optional :end_date, Date
 
         # @!attribute entity_ids
-        #   The entity IDs to specify which entities' data to access.
+        #   The entity IDs to specify which entities' data to access. Provide exactly one
+        #   entity ID per request; a maximum of one is accepted.
         #
         #   @return [Array<String>, nil]
         optional :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
@@ -56,7 +57,7 @@ module FinchAPI
         #
         #   @param end_date [Date] The end date to retrieve pay statement items by via their last seen pay date in
         #
-        #   @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
+        #   @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access. Provide exactly one en
         #
         #   @param name [String] Case-insensitive partial match search by pay statement item name.
         #

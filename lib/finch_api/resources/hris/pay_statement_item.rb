@@ -19,7 +19,7 @@ module FinchAPI
         #
         # @param end_date [Date] The end date to retrieve pay statement items by via their last seen pay date in
         #
-        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
+        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access. Provide exactly one en
         #
         # @param name [String] Case-insensitive partial match search by pay statement item name.
         #

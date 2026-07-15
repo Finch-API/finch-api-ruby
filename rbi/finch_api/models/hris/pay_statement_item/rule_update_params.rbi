@@ -19,7 +19,8 @@ module FinchAPI
           sig { returns(String) }
           attr_accessor :rule_id
 
-          # The entity IDs to update the rule for.
+          # The entity IDs to update the rule for. Provide exactly one entity ID per
+          # request; a maximum of one is accepted.
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :entity_ids
 
@@ -42,7 +43,8 @@ module FinchAPI
           end
           def self.new(
             rule_id:,
-            # The entity IDs to update the rule for.
+            # The entity IDs to update the rule for. Provide exactly one entity ID per
+            # request; a maximum of one is accepted.
             entity_ids: nil,
             optional_property: nil,
             request_options: {}
