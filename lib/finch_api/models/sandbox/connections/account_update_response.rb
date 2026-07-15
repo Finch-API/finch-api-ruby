@@ -21,9 +21,7 @@ module FinchAPI
                    enum: -> { FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType }
 
           # @!attribute company_id
-          #   @deprecated
-          #
-          #   [DEPRECATED] Use `connection_id` to associate a connection with an access token
+          #   The Finch UUID of the company associated with the `access_token`.
           #
           #   @return [String]
           required :company_id, String
@@ -56,7 +54,7 @@ module FinchAPI
           #
           #   @param authentication_type [Symbol, FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType]
           #
-          #   @param company_id [String] [DEPRECATED] Use `connection_id` to associate a connection with an access token
+          #   @param company_id [String] The Finch UUID of the company associated with the `access_token`.
           #
           #   @param connection_id [String] The ID of the new connection
           #

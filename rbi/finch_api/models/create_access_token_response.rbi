@@ -60,8 +60,7 @@ module FinchAPI
       sig { params(account_id: String).void }
       attr_writer :account_id
 
-      # [DEPRECATED] Use `connection_id` to identify the connection instead of this
-      # company ID
+      # The Finch UUID of the company associated with the `access_token`.
       sig { returns(T.nilable(String)) }
       attr_reader :company_id
 
@@ -119,8 +118,7 @@ module FinchAPI
         # [DEPRECATED] Use `connection_id` to identify the connection instead of this
         # account ID
         account_id: nil,
-        # [DEPRECATED] Use `connection_id` to identify the connection instead of this
-        # company ID
+        # The Finch UUID of the company associated with the `access_token`.
         company_id: nil,
         # The ID of your customer you provided to Finch when a connect session was created
         # for this connection

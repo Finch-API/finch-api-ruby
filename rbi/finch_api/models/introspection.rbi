@@ -72,8 +72,7 @@ module FinchAPI
       end
       attr_writer :authentication_methods
 
-      # [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection
-      # instead of this company ID
+      # The Finch UUID of the company associated with the `access_token`.
       sig { returns(T.nilable(String)) }
       attr_reader :company_id
 
@@ -172,8 +171,7 @@ module FinchAPI
         # instead of this account ID
         account_id: nil,
         authentication_methods: nil,
-        # [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection
-        # instead of this company ID
+        # The Finch UUID of the company associated with the `access_token`.
         company_id: nil,
         # The email of your customer you provided to Finch when a connect session was
         # created for this connection

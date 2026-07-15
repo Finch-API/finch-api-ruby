@@ -15,15 +15,19 @@ module FinchAPI
           required :rule_id, String
 
           # @!attribute entity_ids
-          #   The entity IDs to delete the rule for.
+          #   The entity IDs to delete the rule for. Provide exactly one entity ID per
+          #   request; a maximum of one is accepted.
           #
           #   @return [Array<String>, nil]
           optional :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
 
           # @!method initialize(rule_id:, entity_ids: nil, request_options: {})
+          #   Some parameter documentations has been truncated, see
+          #   {FinchAPI::Models::HRIS::PayStatementItem::RuleDeleteParams} for more details.
+          #
           #   @param rule_id [String]
           #
-          #   @param entity_ids [Array<String>] The entity IDs to delete the rule for.
+          #   @param entity_ids [Array<String>] The entity IDs to delete the rule for. Provide exactly one entity ID per request
           #
           #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
         end

@@ -70,10 +70,7 @@ module FinchAPI
                -> { FinchAPI::Internal::Type::ArrayOf[FinchAPI::Introspection::AuthenticationMethod] }
 
       # @!attribute company_id
-      #   @deprecated
-      #
-      #   [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection
-      #   instead of this company ID
+      #   The Finch UUID of the company associated with the `access_token`.
       #
       #   @return [String, nil]
       optional :company_id, String
@@ -153,7 +150,7 @@ module FinchAPI
       #
       #   @param authentication_methods [Array<FinchAPI::Models::Introspection::AuthenticationMethod>]
       #
-      #   @param company_id [String] [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection ins
+      #   @param company_id [String] The Finch UUID of the company associated with the `access_token`.
       #
       #   @param customer_email [String, nil] The email of your customer you provided to Finch when a connect session was crea
       #

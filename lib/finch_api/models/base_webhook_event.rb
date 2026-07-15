@@ -14,10 +14,7 @@ module FinchAPI
       required :account_id, String
 
       # @!attribute company_id
-      #   @deprecated
-      #
-      #   [DEPRECATED] Unique Finch ID of the company for which data has been updated. Use
-      #   `connection_id` instead to identify the connection associated with this event.
+      #   Unique Finch ID of the company for which data has been updated.
       #
       #   @return [String]
       required :company_id, String
@@ -40,7 +37,7 @@ module FinchAPI
       #
       #   @param account_id [String] [DEPRECATED] Unique Finch ID of the employer account used to make this connectio
       #
-      #   @param company_id [String] [DEPRECATED] Unique Finch ID of the company for which data has been updated. Use
+      #   @param company_id [String] Unique Finch ID of the company for which data has been updated.
       #
       #   @param connection_id [String] Unique Finch ID of the connection associated with the webhook event.
       #

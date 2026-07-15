@@ -4,13 +4,16 @@ module FinchAPI
   module Resources
     class HRIS
       class Individuals
+        # Some parameter documentations has been truncated, see
+        # {FinchAPI::Models::HRIS::IndividualRetrieveManyParams} for more details.
+        #
         # Read individual data, excluding income and employment data
         #
         # @overload retrieve_many(requests:, entity_ids: nil, options: nil, request_options: {})
         #
         # @param requests [Array<FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Request>] Body param: The array of batch requests. Maximum 10000 items per request.
         #
-        # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access.
+        # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access. Provide e
         #
         # @param options [FinchAPI::Models::HRIS::IndividualRetrieveManyParams::Options, nil] Body param
         #

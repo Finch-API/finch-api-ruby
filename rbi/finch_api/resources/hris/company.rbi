@@ -12,7 +12,8 @@ module FinchAPI
           ).returns(FinchAPI::HRIS::HRISCompany)
         end
         def retrieve(
-          # The entity IDs to specify which entities' data to access.
+          # The entity IDs to specify which entities' data to access. Provide exactly one
+          # entity ID per request; a maximum of one is accepted.
           entity_ids: nil,
           request_options: {}
         )

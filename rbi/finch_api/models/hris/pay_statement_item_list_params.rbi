@@ -46,7 +46,8 @@ module FinchAPI
         sig { params(end_date: Date).void }
         attr_writer :end_date
 
-        # The entity IDs to specify which entities' data to access.
+        # The entity IDs to specify which entities' data to access. Provide exactly one
+        # entity ID per request; a maximum of one is accepted.
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :entity_ids
 
@@ -96,7 +97,8 @@ module FinchAPI
           # The end date to retrieve pay statement items by via their last seen pay date in
           # `YYYY-MM-DD` format.
           end_date: nil,
-          # The entity IDs to specify which entities' data to access.
+          # The entity IDs to specify which entities' data to access. Provide exactly one
+          # entity ID per request; a maximum of one is accepted.
           entity_ids: nil,
           # Case-insensitive partial match search by pay statement item name.
           name: nil,
