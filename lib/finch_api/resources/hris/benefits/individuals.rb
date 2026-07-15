@@ -5,6 +5,9 @@ module FinchAPI
     class HRIS
       class Benefits
         class Individuals
+          # Some parameter documentations has been truncated, see
+          # {FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams} for more details.
+          #
           # Enroll an individual into a deduction or contribution. This is an overwrite
           # operation. If the employee is already enrolled, the enrollment amounts will be
           # adjusted. Making the same request multiple times will not create new
@@ -14,7 +17,7 @@ module FinchAPI
           #
           # @param benefit_id [String] Path param
           #
-          # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access.
+          # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access. Provide e
           #
           # @param individuals [Array<FinchAPI::Models::HRIS::Benefits::IndividualEnrollManyParams::Individual>] Body param: Array of the individual_id to enroll and a configuration object.
           #
@@ -37,13 +40,17 @@ module FinchAPI
             )
           end
 
+          # Some parameter documentations has been truncated, see
+          # {FinchAPI::Models::HRIS::Benefits::IndividualEnrolledIDsParams} for more
+          # details.
+          #
           # Lists individuals currently enrolled in a given deduction.
           #
           # @overload enrolled_ids(benefit_id, entity_ids: nil, request_options: {})
           #
           # @param benefit_id [String]
           #
-          # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
+          # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access. Provide exactly one en
           #
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -73,7 +80,7 @@ module FinchAPI
           #
           # @param benefit_id [String]
           #
-          # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
+          # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access. Provide exactly one en
           #
           # @param individual_ids [String] comma-delimited list of stable Finch uuids for each individual. If empty, defaul
           #
@@ -96,13 +103,17 @@ module FinchAPI
             )
           end
 
+          # Some parameter documentations has been truncated, see
+          # {FinchAPI::Models::HRIS::Benefits::IndividualUnenrollManyParams} for more
+          # details.
+          #
           # Unenroll individuals from a deduction or contribution
           #
           # @overload unenroll_many(benefit_id, entity_ids: nil, individual_ids: nil, request_options: {})
           #
           # @param benefit_id [String] Path param
           #
-          # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access.
+          # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access. Provide e
           #
           # @param individual_ids [Array<String>] Body param: Array of individual_ids to unenroll.
           #

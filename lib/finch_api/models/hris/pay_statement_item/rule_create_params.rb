@@ -10,7 +10,8 @@ module FinchAPI
           include FinchAPI::Internal::Type::RequestParameters
 
           # @!attribute entity_ids
-          #   The entity IDs to create the rule for.
+          #   The entity IDs to create the rule for. Provide exactly one entity ID per
+          #   request; a maximum of one is accepted.
           #
           #   @return [Array<String>, nil]
           optional :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
@@ -46,7 +47,10 @@ module FinchAPI
           optional :entity_type, enum: -> { FinchAPI::HRIS::PayStatementItem::RuleCreateParams::EntityType }
 
           # @!method initialize(entity_ids: nil, attributes: nil, conditions: nil, effective_end_date: nil, effective_start_date: nil, entity_type: nil, request_options: {})
-          #   @param entity_ids [Array<String>] The entity IDs to create the rule for.
+          #   Some parameter documentations has been truncated, see
+          #   {FinchAPI::Models::HRIS::PayStatementItem::RuleCreateParams} for more details.
+          #
+          #   @param entity_ids [Array<String>] The entity IDs to create the rule for. Provide exactly one entity ID per request
           #
           #   @param attributes [FinchAPI::Models::HRIS::PayStatementItem::RuleCreateParams::Attributes] Specifies the fields to be applied when the condition is met.
           #

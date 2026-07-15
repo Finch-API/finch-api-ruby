@@ -25,7 +25,8 @@ module FinchAPI
         def retrieve_many(
           # Body param: The array of batch requests. Maximum 10 payment_ids per request.
           requests:,
-          # Query param: The entity IDs to specify which entities' data to access.
+          # Query param: The entity IDs to specify which entities' data to access. Provide
+          # exactly one entity ID per request; a maximum of one is accepted.
           entity_ids: nil,
           request_options: {}
         )

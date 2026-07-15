@@ -23,7 +23,8 @@ module FinchAPI
         end
         attr_accessor :requests
 
-        # The entity IDs to specify which entities' data to access.
+        # The entity IDs to specify which entities' data to access. Provide exactly one
+        # entity ID per request; a maximum of one is accepted.
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :entity_ids
 
@@ -43,7 +44,8 @@ module FinchAPI
         def self.new(
           # The array of batch requests. Maximum 10 payment_ids per request.
           requests:,
-          # The entity IDs to specify which entities' data to access.
+          # The entity IDs to specify which entities' data to access. Provide exactly one
+          # entity ID per request; a maximum of one is accepted.
           entity_ids: nil,
           request_options: {}
         )

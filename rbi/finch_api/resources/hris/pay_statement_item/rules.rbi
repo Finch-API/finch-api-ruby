@@ -28,7 +28,8 @@ module FinchAPI
             )
           end
           def create(
-            # Query param: The entity IDs to create the rule for.
+            # Query param: The entity IDs to create the rule for. Provide exactly one entity
+            # ID per request; a maximum of one is accepted.
             entity_ids: nil,
             # Body param: Specifies the fields to be applied when the condition is met.
             attributes: nil,
@@ -59,7 +60,8 @@ module FinchAPI
           def update(
             # Path param
             rule_id,
-            # Query param: The entity IDs to update the rule for.
+            # Query param: The entity IDs to update the rule for. Provide exactly one entity
+            # ID per request; a maximum of one is accepted.
             entity_ids: nil,
             # Body param
             optional_property: nil,
@@ -79,7 +81,8 @@ module FinchAPI
             )
           end
           def list(
-            # The entity IDs to retrieve rules for.
+            # The entity IDs to retrieve rules for. Provide exactly one entity ID per request;
+            # a maximum of one is accepted.
             entity_ids: nil,
             request_options: {}
           )
@@ -97,7 +100,8 @@ module FinchAPI
           end
           def delete(
             rule_id,
-            # The entity IDs to delete the rule for.
+            # The entity IDs to delete the rule for. Provide exactly one entity ID per
+            # request; a maximum of one is accepted.
             entity_ids: nil,
             request_options: {}
           )

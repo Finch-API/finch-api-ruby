@@ -18,7 +18,8 @@ module FinchAPI
           )
         end
         def list(
-          # The entity IDs to specify which entities' data to access.
+          # The entity IDs to specify which entities' data to access. Provide exactly one
+          # entity ID per request; a maximum of one is accepted.
           entity_ids: nil,
           # Number of employees to return (defaults to 100, maximum 10000)
           limit: nil,

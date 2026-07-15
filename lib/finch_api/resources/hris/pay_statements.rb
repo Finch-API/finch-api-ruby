@@ -4,6 +4,9 @@ module FinchAPI
   module Resources
     class HRIS
       class PayStatements
+        # Some parameter documentations has been truncated, see
+        # {FinchAPI::Models::HRIS::PayStatementRetrieveManyParams} for more details.
+        #
         # Read detailed pay statements for each individual.
         #
         # Deduction and contribution types are supported by the payroll systems that
@@ -13,7 +16,7 @@ module FinchAPI
         #
         # @param requests [Array<FinchAPI::Models::HRIS::PayStatementRetrieveManyParams::Request>] Body param: The array of batch requests. Maximum 10 payment_ids per request.
         #
-        # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access.
+        # @param entity_ids [Array<String>] Query param: The entity IDs to specify which entities' data to access. Provide e
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #

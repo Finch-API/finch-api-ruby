@@ -27,7 +27,7 @@ module FinchAPI
           end
           attr_accessor :authentication_type
 
-          # [DEPRECATED] Use `connection_id` to associate a connection with an access token
+          # The Finch UUID of the company associated with the `access_token`.
           sig { returns(String) }
           attr_accessor :company_id
 
@@ -64,7 +64,7 @@ module FinchAPI
             # [DEPRECATED] Use `connection_id` to associate a connection with an access token
             account_id:,
             authentication_type:,
-            # [DEPRECATED] Use `connection_id` to associate a connection with an access token
+            # The Finch UUID of the company associated with the `access_token`.
             company_id:,
             # The ID of the new connection
             connection_id:,

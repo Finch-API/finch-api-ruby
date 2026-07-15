@@ -14,7 +14,8 @@ module FinchAPI
         end
         def retrieve(
           pay_group_id,
-          # The entity IDs to specify which entities' data to access.
+          # The entity IDs to specify which entities' data to access. Provide exactly one
+          # entity ID per request; a maximum of one is accepted.
           entity_ids: nil,
           request_options: {}
         )
@@ -34,7 +35,8 @@ module FinchAPI
           )
         end
         def list(
-          # The entity IDs to specify which entities' data to access.
+          # The entity IDs to specify which entities' data to access. Provide exactly one
+          # entity ID per request; a maximum of one is accepted.
           entity_ids: nil,
           individual_id: nil,
           pay_frequencies: nil,

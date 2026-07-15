@@ -4,13 +4,16 @@ module FinchAPI
   module Resources
     class Payroll
       class PayGroups
+        # Some parameter documentations has been truncated, see
+        # {FinchAPI::Models::Payroll::PayGroupRetrieveParams} for more details.
+        #
         # Read information from a single pay group
         #
         # @overload retrieve(pay_group_id, entity_ids: nil, request_options: {})
         #
         # @param pay_group_id [String]
         #
-        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
+        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access. Provide exactly one en
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -30,11 +33,14 @@ module FinchAPI
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {FinchAPI::Models::Payroll::PayGroupListParams} for more details.
+        #
         # Read company pay groups and frequencies
         #
         # @overload list(entity_ids: nil, individual_id: nil, pay_frequencies: nil, request_options: {})
         #
-        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
+        # @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access. Provide exactly one en
         #
         # @param individual_id [String]
         #

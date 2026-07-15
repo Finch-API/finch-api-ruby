@@ -15,7 +15,8 @@ module FinchAPI
           required :rule_id, String
 
           # @!attribute entity_ids
-          #   The entity IDs to update the rule for.
+          #   The entity IDs to update the rule for. Provide exactly one entity ID per
+          #   request; a maximum of one is accepted.
           #
           #   @return [Array<String>, nil]
           optional :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
@@ -26,9 +27,12 @@ module FinchAPI
           optional :optional_property, FinchAPI::Internal::Type::Unknown, api_name: :optionalProperty
 
           # @!method initialize(rule_id:, entity_ids: nil, optional_property: nil, request_options: {})
+          #   Some parameter documentations has been truncated, see
+          #   {FinchAPI::Models::HRIS::PayStatementItem::RuleUpdateParams} for more details.
+          #
           #   @param rule_id [String]
           #
-          #   @param entity_ids [Array<String>] The entity IDs to update the rule for.
+          #   @param entity_ids [Array<String>] The entity IDs to update the rule for. Provide exactly one entity ID per request
           #
           #   @param optional_property [Object]
           #

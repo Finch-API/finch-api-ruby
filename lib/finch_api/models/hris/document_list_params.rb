@@ -9,7 +9,8 @@ module FinchAPI
         include FinchAPI::Internal::Type::RequestParameters
 
         # @!attribute entity_ids
-        #   The entity IDs to specify which entities' data to access.
+        #   The entity IDs to specify which entities' data to access. Provide exactly one
+        #   entity ID per request; a maximum of one is accepted.
         #
         #   @return [Array<String>, nil]
         optional :entity_ids, FinchAPI::Internal::Type::ArrayOf[String]
@@ -44,7 +45,7 @@ module FinchAPI
         #   Some parameter documentations has been truncated, see
         #   {FinchAPI::Models::HRIS::DocumentListParams} for more details.
         #
-        #   @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access.
+        #   @param entity_ids [Array<String>] The entity IDs to specify which entities' data to access. Provide exactly one en
         #
         #   @param individual_ids [Array<String>] Comma-delimited list of stable Finch uuids for each individual. If empty, defaul
         #

@@ -15,7 +15,7 @@ module FinchAPI
           #
           # @overload create(entity_ids: nil, attributes: nil, conditions: nil, effective_end_date: nil, effective_start_date: nil, entity_type: nil, request_options: {})
           #
-          # @param entity_ids [Array<String>] Query param: The entity IDs to create the rule for.
+          # @param entity_ids [Array<String>] Query param: The entity IDs to create the rule for. Provide exactly one entity I
           #
           # @param attributes [FinchAPI::Models::HRIS::PayStatementItem::RuleCreateParams::Attributes] Body param: Specifies the fields to be applied when the condition is met.
           #
@@ -47,13 +47,16 @@ module FinchAPI
             )
           end
 
+          # Some parameter documentations has been truncated, see
+          # {FinchAPI::Models::HRIS::PayStatementItem::RuleUpdateParams} for more details.
+          #
           # Update a rule for a pay statement item.
           #
           # @overload update(rule_id, entity_ids: nil, optional_property: nil, request_options: {})
           #
           # @param rule_id [String] Path param
           #
-          # @param entity_ids [Array<String>] Query param: The entity IDs to update the rule for.
+          # @param entity_ids [Array<String>] Query param: The entity IDs to update the rule for. Provide exactly one entity I
           #
           # @param optional_property [Object] Body param
           #
@@ -77,11 +80,14 @@ module FinchAPI
             )
           end
 
+          # Some parameter documentations has been truncated, see
+          # {FinchAPI::Models::HRIS::PayStatementItem::RuleListParams} for more details.
+          #
           # List all rules of a connection account.
           #
           # @overload list(entity_ids: nil, request_options: {})
           #
-          # @param entity_ids [Array<String>] The entity IDs to retrieve rules for.
+          # @param entity_ids [Array<String>] The entity IDs to retrieve rules for. Provide exactly one entity ID per request;
           #
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -102,13 +108,16 @@ module FinchAPI
             )
           end
 
+          # Some parameter documentations has been truncated, see
+          # {FinchAPI::Models::HRIS::PayStatementItem::RuleDeleteParams} for more details.
+          #
           # Delete a rule for a pay statement item.
           #
           # @overload delete(rule_id, entity_ids: nil, request_options: {})
           #
           # @param rule_id [String]
           #
-          # @param entity_ids [Array<String>] The entity IDs to delete the rule for.
+          # @param entity_ids [Array<String>] The entity IDs to delete the rule for. Provide exactly one entity ID per request
           #
           # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
           #

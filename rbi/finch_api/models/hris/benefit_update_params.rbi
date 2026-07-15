@@ -18,7 +18,8 @@ module FinchAPI
         sig { returns(String) }
         attr_accessor :benefit_id
 
-        # The entity IDs to specify which entities' data to access.
+        # The entity IDs to specify which entities' data to access. Provide exactly one
+        # entity ID per request; a maximum of one is accepted.
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :entity_ids
 
@@ -42,7 +43,8 @@ module FinchAPI
         end
         def self.new(
           benefit_id:,
-          # The entity IDs to specify which entities' data to access.
+          # The entity IDs to specify which entities' data to access. Provide exactly one
+          # entity ID per request; a maximum of one is accepted.
           entity_ids: nil,
           # Updated name or description.
           description: nil,

@@ -14,8 +14,7 @@ module FinchAPI
       sig { returns(String) }
       attr_accessor :account_id
 
-      # [DEPRECATED] Unique Finch ID of the company for which data has been updated. Use
-      # `connection_id` instead to identify the connection associated with this event.
+      # Unique Finch ID of the company for which data has been updated.
       sig { returns(String) }
       attr_accessor :company_id
 
@@ -46,8 +45,7 @@ module FinchAPI
         # connection. Use `connection_id` instead to identify the connection associated
         # with this event.
         account_id:,
-        # [DEPRECATED] Unique Finch ID of the company for which data has been updated. Use
-        # `connection_id` instead to identify the connection associated with this event.
+        # Unique Finch ID of the company for which data has been updated.
         company_id:,
         # Unique Finch ID of the connection associated with the webhook event.
         connection_id: nil,

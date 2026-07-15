@@ -15,7 +15,8 @@ module FinchAPI
             )
           end
 
-        # The entity IDs to specify which entities' data to access.
+        # The entity IDs to specify which entities' data to access. Provide exactly one
+        # entity ID per request; a maximum of one is accepted.
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :entity_ids
 
@@ -45,7 +46,8 @@ module FinchAPI
           ).returns(T.attached_class)
         end
         def self.new(
-          # The entity IDs to specify which entities' data to access.
+          # The entity IDs to specify which entities' data to access. Provide exactly one
+          # entity ID per request; a maximum of one is accepted.
           entity_ids: nil,
           # Number of employees to return (defaults to 100, maximum 10000)
           limit: nil,

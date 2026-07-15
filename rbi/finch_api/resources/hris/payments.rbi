@@ -20,7 +20,8 @@ module FinchAPI
           # The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
           # format. Filters payments by their **pay_date** field.
           start_date:,
-          # The entity IDs to specify which entities' data to access.
+          # The entity IDs to specify which entities' data to access. Provide exactly one
+          # entity ID per request; a maximum of one is accepted.
           entity_ids: nil,
           request_options: {}
         )
