@@ -67,6 +67,17 @@ module FinchAPI
         sig { returns(T.nilable(String)) }
         attr_accessor :last_name
 
+        # The employee's marital status, used for beneficiary designation and spousal
+        # consent workflows.
+        sig do
+          returns(
+            T.nilable(
+              FinchAPI::Models::Sandbox::IndividualUpdateResponse::MaritalStatus::TaggedSymbol
+            )
+          )
+        end
+        attr_accessor :marital_status
+
         # The legal middle name of the individual.
         sig { returns(T.nilable(String)) }
         attr_accessor :middle_name
@@ -122,6 +133,10 @@ module FinchAPI
                 FinchAPI::Models::Sandbox::IndividualUpdateResponse::Gender::OrSymbol
               ),
             last_name: T.nilable(String),
+            marital_status:
+              T.nilable(
+                FinchAPI::Models::Sandbox::IndividualUpdateResponse::MaritalStatus::OrSymbol
+              ),
             middle_name: T.nilable(String),
             phone_numbers:
               T.nilable(
@@ -153,6 +168,9 @@ module FinchAPI
           gender: nil,
           # The legal last name of the individual.
           last_name: nil,
+          # The employee's marital status, used for beneficiary designation and spousal
+          # consent workflows.
+          marital_status: nil,
           # The legal middle name of the individual.
           middle_name: nil,
           phone_numbers: nil,
@@ -189,6 +207,10 @@ module FinchAPI
                   FinchAPI::Models::Sandbox::IndividualUpdateResponse::Gender::TaggedSymbol
                 ),
               last_name: T.nilable(String),
+              marital_status:
+                T.nilable(
+                  FinchAPI::Models::Sandbox::IndividualUpdateResponse::MaritalStatus::TaggedSymbol
+                ),
               middle_name: T.nilable(String),
               phone_numbers:
                 T.nilable(
@@ -395,6 +417,62 @@ module FinchAPI
             override.returns(
               T::Array[
                 FinchAPI::Models::Sandbox::IndividualUpdateResponse::Gender::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # The employee's marital status, used for beneficiary designation and spousal
+        # consent workflows.
+        module MaritalStatus
+          extend FinchAPI::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                FinchAPI::Models::Sandbox::IndividualUpdateResponse::MaritalStatus
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          SINGLE =
+            T.let(
+              :single,
+              FinchAPI::Models::Sandbox::IndividualUpdateResponse::MaritalStatus::TaggedSymbol
+            )
+          MARRIED =
+            T.let(
+              :married,
+              FinchAPI::Models::Sandbox::IndividualUpdateResponse::MaritalStatus::TaggedSymbol
+            )
+          DIVORCED =
+            T.let(
+              :divorced,
+              FinchAPI::Models::Sandbox::IndividualUpdateResponse::MaritalStatus::TaggedSymbol
+            )
+          WIDOWED =
+            T.let(
+              :widowed,
+              FinchAPI::Models::Sandbox::IndividualUpdateResponse::MaritalStatus::TaggedSymbol
+            )
+          DOMESTIC_PARTNER =
+            T.let(
+              :domestic_partner,
+              FinchAPI::Models::Sandbox::IndividualUpdateResponse::MaritalStatus::TaggedSymbol
+            )
+          UNKNOWN =
+            T.let(
+              :unknown,
+              FinchAPI::Models::Sandbox::IndividualUpdateResponse::MaritalStatus::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                FinchAPI::Models::Sandbox::IndividualUpdateResponse::MaritalStatus::TaggedSymbol
               ]
             )
           end

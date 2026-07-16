@@ -26,6 +26,10 @@ module FinchAPI
                 FinchAPI::Sandbox::IndividualUpdateParams::Gender::OrSymbol
               ),
             last_name: T.nilable(String),
+            marital_status:
+              T.nilable(
+                FinchAPI::Sandbox::IndividualUpdateParams::MaritalStatus::OrSymbol
+              ),
             middle_name: T.nilable(String),
             phone_numbers:
               T.nilable(
@@ -57,6 +61,9 @@ module FinchAPI
           gender: nil,
           # The legal last name of the individual.
           last_name: nil,
+          # The employee's marital status, used for beneficiary designation and spousal
+          # consent workflows.
+          marital_status: nil,
           # The legal middle name of the individual.
           middle_name: nil,
           phone_numbers: nil,

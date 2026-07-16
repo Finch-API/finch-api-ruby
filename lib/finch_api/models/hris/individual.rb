@@ -52,6 +52,15 @@ module FinchAPI
           #   @return [String, nil]
           required :last_name, String, nil?: true
 
+          # @!attribute marital_status
+          #   The employee's marital status, used for beneficiary designation and spousal
+          #   consent workflows.
+          #
+          #   @return [Symbol, FinchAPI::Models::HRIS::Individual::IndividualResponseBody::MaritalStatus, nil]
+          required :marital_status,
+                   enum: -> { FinchAPI::HRIS::Individual::IndividualResponseBody::MaritalStatus },
+                   nil?: true
+
           # @!attribute middle_name
           #   The legal middle name of the individual.
           #
@@ -105,7 +114,7 @@ module FinchAPI
           #   @return [String, nil]
           optional :ssn, String, nil?: true
 
-          # @!method initialize(id:, dob:, ethnicity:, first_name:, gender:, last_name:, middle_name:, phone_numbers:, preferred_name:, residence:, emails: nil, encrypted_ssn: nil, ssn: nil)
+          # @!method initialize(id:, dob:, ethnicity:, first_name:, gender:, last_name:, marital_status:, middle_name:, phone_numbers:, preferred_name:, residence:, emails: nil, encrypted_ssn: nil, ssn: nil)
           #   Some parameter documentations has been truncated, see
           #   {FinchAPI::Models::HRIS::Individual::IndividualResponseBody} for more details.
           #
@@ -120,6 +129,8 @@ module FinchAPI
           #   @param gender [Symbol, FinchAPI::Models::HRIS::Individual::IndividualResponseBody::Gender, nil] The gender of the individual.
           #
           #   @param last_name [String, nil] The legal last name of the individual.
+          #
+          #   @param marital_status [Symbol, FinchAPI::Models::HRIS::Individual::IndividualResponseBody::MaritalStatus, nil] The employee's marital status, used for beneficiary designation and spousal cons
           #
           #   @param middle_name [String, nil] The legal middle name of the individual.
           #
@@ -164,6 +175,24 @@ module FinchAPI
             MALE = :male
             OTHER = :other
             DECLINE_TO_SPECIFY = :decline_to_specify
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # The employee's marital status, used for beneficiary designation and spousal
+          # consent workflows.
+          #
+          # @see FinchAPI::Models::HRIS::Individual::IndividualResponseBody#marital_status
+          module MaritalStatus
+            extend FinchAPI::Internal::Type::Enum
+
+            SINGLE = :single
+            MARRIED = :married
+            DIVORCED = :divorced
+            WIDOWED = :widowed
+            DOMESTIC_PARTNER = :domestic_partner
+            UNKNOWN = :unknown
 
             # @!method self.values
             #   @return [Array<Symbol>]

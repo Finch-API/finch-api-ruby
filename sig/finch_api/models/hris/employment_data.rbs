@@ -18,7 +18,9 @@ module FinchAPI
             end_date: String?,
             first_name: String?,
             flsa_status: FinchAPI::Models::HRIS::EmploymentData::EmploymentDataResponseBody::flsa_status?,
+            highly_compensated_employee: bool?,
             is_active: bool?,
+            key_employee: bool?,
             last_name: String?,
             latest_rehire_date: String?,
             location: FinchAPI::Location?,
@@ -26,6 +28,8 @@ module FinchAPI
             middle_name: String?,
             start_date: String?,
             title: String?,
+            union_code: String?,
+            union_local: String?,
             custom_fields: ::Array[FinchAPI::HRIS::EmploymentData::EmploymentDataResponseBody::CustomField]?,
             income: FinchAPI::Income?,
             income_history: ::Array[FinchAPI::Income?]?,
@@ -50,7 +54,11 @@ module FinchAPI
 
           attr_accessor flsa_status: FinchAPI::Models::HRIS::EmploymentData::EmploymentDataResponseBody::flsa_status?
 
+          attr_accessor highly_compensated_employee: bool?
+
           attr_accessor is_active: bool?
+
+          attr_accessor key_employee: bool?
 
           attr_accessor last_name: String?
 
@@ -65,6 +73,10 @@ module FinchAPI
           attr_accessor start_date: String?
 
           attr_accessor title: String?
+
+          attr_accessor union_code: String?
+
+          attr_accessor union_local: String?
 
           attr_accessor custom_fields: ::Array[FinchAPI::HRIS::EmploymentData::EmploymentDataResponseBody::CustomField]?
 
@@ -85,7 +97,9 @@ module FinchAPI
             end_date: String?,
             first_name: String?,
             flsa_status: FinchAPI::Models::HRIS::EmploymentData::EmploymentDataResponseBody::flsa_status?,
+            highly_compensated_employee: bool?,
             is_active: bool?,
+            key_employee: bool?,
             last_name: String?,
             latest_rehire_date: String?,
             location: FinchAPI::Location?,
@@ -93,6 +107,8 @@ module FinchAPI
             middle_name: String?,
             start_date: String?,
             title: String?,
+            union_code: String?,
+            union_local: String?,
             ?custom_fields: ::Array[FinchAPI::HRIS::EmploymentData::EmploymentDataResponseBody::CustomField]?,
             ?income: FinchAPI::Income?,
             ?income_history: ::Array[FinchAPI::Income?]?,
@@ -109,7 +125,9 @@ module FinchAPI
             end_date: String?,
             first_name: String?,
             flsa_status: FinchAPI::Models::HRIS::EmploymentData::EmploymentDataResponseBody::flsa_status?,
+            highly_compensated_employee: bool?,
             is_active: bool?,
+            key_employee: bool?,
             last_name: String?,
             latest_rehire_date: String?,
             location: FinchAPI::Location?,
@@ -117,6 +135,8 @@ module FinchAPI
             middle_name: String?,
             start_date: String?,
             title: String?,
+            union_code: String?,
+            union_local: String?,
             custom_fields: ::Array[FinchAPI::HRIS::EmploymentData::EmploymentDataResponseBody::CustomField]?,
             income: FinchAPI::Income?,
             income_history: ::Array[FinchAPI::Income?]?,

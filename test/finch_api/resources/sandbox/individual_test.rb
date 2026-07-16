@@ -20,6 +20,7 @@ class FinchAPI::Test::Resources::Sandbox::IndividualTest < FinchAPI::Test::Resou
         first_name: String | nil,
         gender: FinchAPI::Models::Sandbox::IndividualUpdateResponse::Gender | nil,
         last_name: String | nil,
+        marital_status: FinchAPI::Models::Sandbox::IndividualUpdateResponse::MaritalStatus | nil,
         middle_name: String | nil,
         phone_numbers: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::IndividualUpdateResponse::PhoneNumber, nil?: true]) | nil,
         preferred_name: String | nil,
