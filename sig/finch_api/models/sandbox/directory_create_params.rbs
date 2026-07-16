@@ -40,13 +40,16 @@ module FinchAPI
             first_name: String?,
             flsa_status: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::flsa_status?,
             gender: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::gender?,
+            highly_compensated_employee: bool?,
             income: FinchAPI::Income?,
             income_history: ::Array[FinchAPI::Income?]?,
             is_active: bool?,
+            key_employee: bool?,
             last_name: String?,
             latest_rehire_date: String?,
             location: FinchAPI::Location?,
             manager: FinchAPI::Sandbox::DirectoryCreateParams::Body::Manager?,
+            marital_status: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::marital_status?,
             middle_name: String?,
             phone_numbers: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber?]?,
             preferred_name: String?,
@@ -54,7 +57,9 @@ module FinchAPI
             source_id: String?,
             ssn: String?,
             start_date: String?,
-            title: String?
+            title: String?,
+            union_code: String?,
+            union_local: String?
           }
 
         class Body < FinchAPI::Internal::Type::BaseModel
@@ -84,11 +89,15 @@ module FinchAPI
 
           attr_accessor gender: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::gender?
 
+          attr_accessor highly_compensated_employee: bool?
+
           attr_accessor income: FinchAPI::Income?
 
           attr_accessor income_history: ::Array[FinchAPI::Income?]?
 
           attr_accessor is_active: bool?
+
+          attr_accessor key_employee: bool?
 
           attr_accessor last_name: String?
 
@@ -97,6 +106,8 @@ module FinchAPI
           attr_accessor location: FinchAPI::Location?
 
           attr_accessor manager: FinchAPI::Sandbox::DirectoryCreateParams::Body::Manager?
+
+          attr_accessor marital_status: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::marital_status?
 
           attr_accessor middle_name: String?
 
@@ -114,6 +125,10 @@ module FinchAPI
 
           attr_accessor title: String?
 
+          attr_accessor union_code: String?
+
+          attr_accessor union_local: String?
+
           def initialize: (
             ?class_code: String?,
             ?custom_fields: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField]?,
@@ -128,13 +143,16 @@ module FinchAPI
             ?first_name: String?,
             ?flsa_status: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::flsa_status?,
             ?gender: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::gender?,
+            ?highly_compensated_employee: bool?,
             ?income: FinchAPI::Income?,
             ?income_history: ::Array[FinchAPI::Income?]?,
             ?is_active: bool?,
+            ?key_employee: bool?,
             ?last_name: String?,
             ?latest_rehire_date: String?,
             ?location: FinchAPI::Location?,
             ?manager: FinchAPI::Sandbox::DirectoryCreateParams::Body::Manager?,
+            ?marital_status: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::marital_status?,
             ?middle_name: String?,
             ?phone_numbers: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber?]?,
             ?preferred_name: String?,
@@ -142,7 +160,9 @@ module FinchAPI
             ?source_id: String?,
             ?ssn: String?,
             ?start_date: String?,
-            ?title: String?
+            ?title: String?,
+            ?union_code: String?,
+            ?union_local: String?
           ) -> void
 
           def to_hash: -> {
@@ -159,13 +179,16 @@ module FinchAPI
             first_name: String?,
             flsa_status: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::flsa_status?,
             gender: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::gender?,
+            highly_compensated_employee: bool?,
             income: FinchAPI::Income?,
             income_history: ::Array[FinchAPI::Income?]?,
             is_active: bool?,
+            key_employee: bool?,
             last_name: String?,
             latest_rehire_date: String?,
             location: FinchAPI::Location?,
             manager: FinchAPI::Sandbox::DirectoryCreateParams::Body::Manager?,
+            marital_status: FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::marital_status?,
             middle_name: String?,
             phone_numbers: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::PhoneNumber?]?,
             preferred_name: String?,
@@ -173,7 +196,9 @@ module FinchAPI
             source_id: String?,
             ssn: String?,
             start_date: String?,
-            title: String?
+            title: String?,
+            union_code: String?,
+            union_local: String?
           }
 
           type custom_field =
@@ -390,6 +415,27 @@ module FinchAPI
             def initialize: (?id: String) -> void
 
             def to_hash: -> { id: String }
+          end
+
+          type marital_status =
+            :single
+            | :married
+            | :divorced
+            | :widowed
+            | :domestic_partner
+            | :unknown
+
+          module MaritalStatus
+            extend FinchAPI::Internal::Type::Enum
+
+            SINGLE: :single
+            MARRIED: :married
+            DIVORCED: :divorced
+            WIDOWED: :widowed
+            DOMESTIC_PARTNER: :domestic_partner
+            UNKNOWN: :unknown
+
+            def self?.values: -> ::Array[FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::marital_status]
           end
 
           type phone_number =

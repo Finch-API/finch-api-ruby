@@ -67,11 +67,25 @@ module FinchAPI
                    enum: -> { FinchAPI::HRIS::EmploymentData::EmploymentDataResponseBody::FlsaStatus },
                    nil?: true
 
+          # @!attribute highly_compensated_employee
+          #   IRS flag indicating whether the employee is classified as a Highly Compensated
+          #   Employee for nondiscrimination testing purposes (ADP/ACP tests). US-only.
+          #
+          #   @return [Boolean, nil]
+          required :highly_compensated_employee, FinchAPI::Internal::Type::Boolean, nil?: true
+
           # @!attribute is_active
           #   `true` if the individual an an active employee or contractor at the company.
           #
           #   @return [Boolean, nil]
           required :is_active, FinchAPI::Internal::Type::Boolean, nil?: true
+
+          # @!attribute key_employee
+          #   IRS flag indicating whether the employee is classified as a Key Employee for
+          #   top-heavy testing purposes. US-only.
+          #
+          #   @return [Boolean, nil]
+          required :key_employee, FinchAPI::Internal::Type::Boolean, nil?: true
 
           # @!attribute last_name
           #   The legal last name of the individual.
@@ -116,6 +130,19 @@ module FinchAPI
           #   @return [String, nil]
           required :title, String, nil?: true
 
+          # @!attribute union_code
+          #   The code identifying the union the employee is a member of, as configured in the
+          #   payroll system.
+          #
+          #   @return [String, nil]
+          required :union_code, String, nil?: true
+
+          # @!attribute union_local
+          #   The local chapter or local number within the employee's union.
+          #
+          #   @return [String, nil]
+          required :union_local, String, nil?: true
+
           # @!attribute custom_fields
           #   Custom fields for the individual. These are fields which are defined by the
           #   employer in the system. Custom fields are not currently supported for assisted
@@ -158,7 +185,7 @@ module FinchAPI
           #   @return [String, nil]
           optional :work_id, String, nil?: true
 
-          # @!method initialize(id:, class_code:, department:, employment:, employment_status:, end_date:, first_name:, flsa_status:, is_active:, last_name:, latest_rehire_date:, location:, manager:, middle_name:, start_date:, title:, custom_fields: nil, income: nil, income_history: nil, source_id: nil, work_id: nil)
+          # @!method initialize(id:, class_code:, department:, employment:, employment_status:, end_date:, first_name:, flsa_status:, highly_compensated_employee:, is_active:, key_employee:, last_name:, latest_rehire_date:, location:, manager:, middle_name:, start_date:, title:, union_code:, union_local:, custom_fields: nil, income: nil, income_history: nil, source_id: nil, work_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {FinchAPI::Models::HRIS::EmploymentData::EmploymentDataResponseBody} for more
           #   details.
@@ -179,7 +206,11 @@ module FinchAPI
           #
           #   @param flsa_status [Symbol, FinchAPI::Models::HRIS::EmploymentData::EmploymentDataResponseBody::FlsaStatus, nil] The FLSA status of the individual. Available options: `exempt`, `non_exempt`, `u
           #
+          #   @param highly_compensated_employee [Boolean, nil] IRS flag indicating whether the employee is classified as a Highly Compensated E
+          #
           #   @param is_active [Boolean, nil] `true` if the individual an an active employee or contractor at the company.
+          #
+          #   @param key_employee [Boolean, nil] IRS flag indicating whether the employee is classified as a Key Employee for top
           #
           #   @param last_name [String, nil] The legal last name of the individual.
           #
@@ -194,6 +225,10 @@ module FinchAPI
           #   @param start_date [String, nil]
           #
           #   @param title [String, nil] The current title of the individual.
+          #
+          #   @param union_code [String, nil] The code identifying the union the employee is a member of, as configured in the
+          #
+          #   @param union_local [String, nil] The local chapter or local number within the employee's union.
           #
           #   @param custom_fields [Array<FinchAPI::Models::HRIS::EmploymentData::EmploymentDataResponseBody::CustomField>, nil] Custom fields for the individual. These are fields which are defined by the empl
           #

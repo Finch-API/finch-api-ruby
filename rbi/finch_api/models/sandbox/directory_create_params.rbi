@@ -191,6 +191,11 @@ module FinchAPI
           end
           attr_accessor :gender
 
+          # IRS flag indicating whether the employee is classified as a Highly Compensated
+          # Employee for nondiscrimination testing purposes (ADP/ACP tests). US-only.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_accessor :highly_compensated_employee
+
           # The employee's income as reported by the provider. This may not always be
           # annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
           # depending on what information the provider returns.
@@ -207,6 +212,11 @@ module FinchAPI
           # `true` if the individual an an active employee or contractor at the company.
           sig { returns(T.nilable(T::Boolean)) }
           attr_accessor :is_active
+
+          # IRS flag indicating whether the employee is classified as a Key Employee for
+          # top-heavy testing purposes. US-only.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_accessor :key_employee
 
           # The legal last name of the individual.
           sig { returns(T.nilable(String)) }
@@ -238,6 +248,17 @@ module FinchAPI
             ).void
           end
           attr_writer :manager
+
+          # The employee's marital status, used for beneficiary designation and spousal
+          # consent workflows.
+          sig do
+            returns(
+              T.nilable(
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::MaritalStatus::OrSymbol
+              )
+            )
+          end
+          attr_accessor :marital_status
 
           # The legal middle name of the individual.
           sig { returns(T.nilable(String)) }
@@ -284,6 +305,15 @@ module FinchAPI
           sig { returns(T.nilable(String)) }
           attr_accessor :title
 
+          # The code identifying the union the employee is a member of, as configured in the
+          # payroll system.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :union_code
+
+          # The local chapter or local number within the employee's union.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :union_local
+
           sig do
             params(
               class_code: T.nilable(String),
@@ -327,16 +357,22 @@ module FinchAPI
                 T.nilable(
                   FinchAPI::Sandbox::DirectoryCreateParams::Body::Gender::OrSymbol
                 ),
+              highly_compensated_employee: T.nilable(T::Boolean),
               income: T.nilable(FinchAPI::Income::OrHash),
               income_history:
                 T.nilable(T::Array[T.nilable(FinchAPI::Income::OrHash)]),
               is_active: T.nilable(T::Boolean),
+              key_employee: T.nilable(T::Boolean),
               last_name: T.nilable(String),
               latest_rehire_date: T.nilable(String),
               location: T.nilable(FinchAPI::Location::OrHash),
               manager:
                 T.nilable(
                   FinchAPI::Sandbox::DirectoryCreateParams::Body::Manager::OrHash
+                ),
+              marital_status:
+                T.nilable(
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::MaritalStatus::OrSymbol
                 ),
               middle_name: T.nilable(String),
               phone_numbers:
@@ -352,7 +388,9 @@ module FinchAPI
               source_id: T.nilable(String),
               ssn: T.nilable(String),
               start_date: T.nilable(String),
-              title: T.nilable(String)
+              title: T.nilable(String),
+              union_code: T.nilable(String),
+              union_local: T.nilable(String)
             ).returns(T.attached_class)
           end
           def self.new(
@@ -384,6 +422,9 @@ module FinchAPI
             flsa_status: nil,
             # The gender of the individual.
             gender: nil,
+            # IRS flag indicating whether the employee is classified as a Highly Compensated
+            # Employee for nondiscrimination testing purposes (ADP/ACP tests). US-only.
+            highly_compensated_employee: nil,
             # The employee's income as reported by the provider. This may not always be
             # annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
             # depending on what information the provider returns.
@@ -392,12 +433,18 @@ module FinchAPI
             income_history: nil,
             # `true` if the individual an an active employee or contractor at the company.
             is_active: nil,
+            # IRS flag indicating whether the employee is classified as a Key Employee for
+            # top-heavy testing purposes. US-only.
+            key_employee: nil,
             # The legal last name of the individual.
             last_name: nil,
             latest_rehire_date: nil,
             location: nil,
             # The manager object representing the manager of the individual within the org.
             manager: nil,
+            # The employee's marital status, used for beneficiary designation and spousal
+            # consent workflows.
+            marital_status: nil,
             # The legal middle name of the individual.
             middle_name: nil,
             phone_numbers: nil,
@@ -413,7 +460,12 @@ module FinchAPI
             ssn: nil,
             start_date: nil,
             # The current title of the individual.
-            title: nil
+            title: nil,
+            # The code identifying the union the employee is a member of, as configured in the
+            # payroll system.
+            union_code: nil,
+            # The local chapter or local number within the employee's union.
+            union_local: nil
           )
           end
 
@@ -461,16 +513,22 @@ module FinchAPI
                   T.nilable(
                     FinchAPI::Sandbox::DirectoryCreateParams::Body::Gender::OrSymbol
                   ),
+                highly_compensated_employee: T.nilable(T::Boolean),
                 income: T.nilable(FinchAPI::Income),
                 income_history:
                   T.nilable(T::Array[T.nilable(FinchAPI::Income)]),
                 is_active: T.nilable(T::Boolean),
+                key_employee: T.nilable(T::Boolean),
                 last_name: T.nilable(String),
                 latest_rehire_date: T.nilable(String),
                 location: T.nilable(FinchAPI::Location),
                 manager:
                   T.nilable(
                     FinchAPI::Sandbox::DirectoryCreateParams::Body::Manager
+                  ),
+                marital_status:
+                  T.nilable(
+                    FinchAPI::Sandbox::DirectoryCreateParams::Body::MaritalStatus::OrSymbol
                   ),
                 middle_name: T.nilable(String),
                 phone_numbers:
@@ -486,7 +544,9 @@ module FinchAPI
                 source_id: T.nilable(String),
                 ssn: T.nilable(String),
                 start_date: T.nilable(String),
-                title: T.nilable(String)
+                title: T.nilable(String),
+                union_code: T.nilable(String),
+                union_local: T.nilable(String)
               }
             )
           end
@@ -1085,6 +1145,62 @@ module FinchAPI
 
             sig { override.returns({ id: String }) }
             def to_hash
+            end
+          end
+
+          # The employee's marital status, used for beneficiary designation and spousal
+          # consent workflows.
+          module MaritalStatus
+            extend FinchAPI::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::MaritalStatus
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            SINGLE =
+              T.let(
+                :single,
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::MaritalStatus::TaggedSymbol
+              )
+            MARRIED =
+              T.let(
+                :married,
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::MaritalStatus::TaggedSymbol
+              )
+            DIVORCED =
+              T.let(
+                :divorced,
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::MaritalStatus::TaggedSymbol
+              )
+            WIDOWED =
+              T.let(
+                :widowed,
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::MaritalStatus::TaggedSymbol
+              )
+            DOMESTIC_PARTNER =
+              T.let(
+                :domestic_partner,
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::MaritalStatus::TaggedSymbol
+              )
+            UNKNOWN =
+              T.let(
+                :unknown,
+                FinchAPI::Sandbox::DirectoryCreateParams::Body::MaritalStatus::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  FinchAPI::Sandbox::DirectoryCreateParams::Body::MaritalStatus::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
             end
           end
 

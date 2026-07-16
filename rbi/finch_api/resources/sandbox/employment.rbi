@@ -33,10 +33,12 @@ module FinchAPI
               T.nilable(
                 FinchAPI::Sandbox::EmploymentUpdateParams::FlsaStatus::OrSymbol
               ),
+            highly_compensated_employee: T.nilable(T::Boolean),
             income: T.nilable(FinchAPI::Income::OrHash),
             income_history:
               T.nilable(T::Array[T.nilable(FinchAPI::Income::OrHash)]),
             is_active: T.nilable(T::Boolean),
+            key_employee: T.nilable(T::Boolean),
             last_name: T.nilable(String),
             latest_rehire_date: T.nilable(String),
             location: T.nilable(FinchAPI::Location::OrHash),
@@ -48,6 +50,8 @@ module FinchAPI
             source_id: T.nilable(String),
             start_date: T.nilable(String),
             title: T.nilable(String),
+            union_code: T.nilable(String),
+            union_local: T.nilable(String),
             request_options: FinchAPI::RequestOptions::OrHash
           ).returns(FinchAPI::Models::Sandbox::EmploymentUpdateResponse)
         end
@@ -71,6 +75,9 @@ module FinchAPI
           # The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
           # `unknown`.
           flsa_status: nil,
+          # IRS flag indicating whether the employee is classified as a Highly Compensated
+          # Employee for nondiscrimination testing purposes (ADP/ACP tests). US-only.
+          highly_compensated_employee: nil,
           # The employee's income as reported by the provider. This may not always be
           # annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
           # depending on what information the provider returns.
@@ -79,6 +86,9 @@ module FinchAPI
           income_history: nil,
           # `true` if the individual an an active employee or contractor at the company.
           is_active: nil,
+          # IRS flag indicating whether the employee is classified as a Key Employee for
+          # top-heavy testing purposes. US-only.
+          key_employee: nil,
           # The legal last name of the individual.
           last_name: nil,
           latest_rehire_date: nil,
@@ -92,6 +102,11 @@ module FinchAPI
           start_date: nil,
           # The current title of the individual.
           title: nil,
+          # The code identifying the union the employee is a member of, as configured in the
+          # payroll system.
+          union_code: nil,
+          # The local chapter or local number within the employee's union.
+          union_local: nil,
           request_options: {}
         )
         end

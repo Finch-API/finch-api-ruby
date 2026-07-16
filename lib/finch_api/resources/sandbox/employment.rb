@@ -9,7 +9,7 @@ module FinchAPI
         #
         # Update sandbox employment
         #
-        # @overload update(individual_id, class_code: nil, custom_fields: nil, department: nil, employment: nil, employment_status: nil, end_date: nil, first_name: nil, flsa_status: nil, income: nil, income_history: nil, is_active: nil, last_name: nil, latest_rehire_date: nil, location: nil, manager: nil, middle_name: nil, source_id: nil, start_date: nil, title: nil, request_options: {})
+        # @overload update(individual_id, class_code: nil, custom_fields: nil, department: nil, employment: nil, employment_status: nil, end_date: nil, first_name: nil, flsa_status: nil, highly_compensated_employee: nil, income: nil, income_history: nil, is_active: nil, key_employee: nil, last_name: nil, latest_rehire_date: nil, location: nil, manager: nil, middle_name: nil, source_id: nil, start_date: nil, title: nil, union_code: nil, union_local: nil, request_options: {})
         #
         # @param individual_id [String]
         #
@@ -29,11 +29,15 @@ module FinchAPI
         #
         # @param flsa_status [Symbol, FinchAPI::Models::Sandbox::EmploymentUpdateParams::FlsaStatus, nil] The FLSA status of the individual. Available options: `exempt`, `non_exempt`, `u
         #
+        # @param highly_compensated_employee [Boolean, nil] IRS flag indicating whether the employee is classified as a Highly Compensated E
+        #
         # @param income [FinchAPI::Models::Income, nil] The employee's income as reported by the provider. This may not always be annual
         #
         # @param income_history [Array<FinchAPI::Models::Income, nil>, nil] The array of income history.
         #
         # @param is_active [Boolean, nil] `true` if the individual an an active employee or contractor at the company.
+        #
+        # @param key_employee [Boolean, nil] IRS flag indicating whether the employee is classified as a Key Employee for top
         #
         # @param last_name [String, nil] The legal last name of the individual.
         #
@@ -50,6 +54,10 @@ module FinchAPI
         # @param start_date [String, nil]
         #
         # @param title [String, nil] The current title of the individual.
+        #
+        # @param union_code [String, nil] The code identifying the union the employee is a member of, as configured in the
+        #
+        # @param union_local [String, nil] The local chapter or local number within the employee's union.
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #

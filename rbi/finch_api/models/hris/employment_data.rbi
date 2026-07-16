@@ -99,9 +99,19 @@ module FinchAPI
           end
           attr_accessor :flsa_status
 
+          # IRS flag indicating whether the employee is classified as a Highly Compensated
+          # Employee for nondiscrimination testing purposes (ADP/ACP tests). US-only.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_accessor :highly_compensated_employee
+
           # `true` if the individual an an active employee or contractor at the company.
           sig { returns(T.nilable(T::Boolean)) }
           attr_accessor :is_active
+
+          # IRS flag indicating whether the employee is classified as a Key Employee for
+          # top-heavy testing purposes. US-only.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_accessor :key_employee
 
           # The legal last name of the individual.
           sig { returns(T.nilable(String)) }
@@ -146,6 +156,15 @@ module FinchAPI
           # The current title of the individual.
           sig { returns(T.nilable(String)) }
           attr_accessor :title
+
+          # The code identifying the union the employee is a member of, as configured in the
+          # payroll system.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :union_code
+
+          # The local chapter or local number within the employee's union.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :union_local
 
           # Custom fields for the individual. These are fields which are defined by the
           # employer in the system. Custom fields are not currently supported for assisted
@@ -204,7 +223,9 @@ module FinchAPI
                 T.nilable(
                   FinchAPI::HRIS::EmploymentData::EmploymentDataResponseBody::FlsaStatus::OrSymbol
                 ),
+              highly_compensated_employee: T.nilable(T::Boolean),
               is_active: T.nilable(T::Boolean),
+              key_employee: T.nilable(T::Boolean),
               last_name: T.nilable(String),
               latest_rehire_date: T.nilable(String),
               location: T.nilable(FinchAPI::Location::OrHash),
@@ -215,6 +236,8 @@ module FinchAPI
               middle_name: T.nilable(String),
               start_date: T.nilable(String),
               title: T.nilable(String),
+              union_code: T.nilable(String),
+              union_local: T.nilable(String),
               custom_fields:
                 T.nilable(
                   T::Array[
@@ -245,8 +268,14 @@ module FinchAPI
             # The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
             # `unknown`.
             flsa_status:,
+            # IRS flag indicating whether the employee is classified as a Highly Compensated
+            # Employee for nondiscrimination testing purposes (ADP/ACP tests). US-only.
+            highly_compensated_employee:,
             # `true` if the individual an an active employee or contractor at the company.
             is_active:,
+            # IRS flag indicating whether the employee is classified as a Key Employee for
+            # top-heavy testing purposes. US-only.
+            key_employee:,
             # The legal last name of the individual.
             last_name:,
             latest_rehire_date:,
@@ -258,6 +287,11 @@ module FinchAPI
             start_date:,
             # The current title of the individual.
             title:,
+            # The code identifying the union the employee is a member of, as configured in the
+            # payroll system.
+            union_code:,
+            # The local chapter or local number within the employee's union.
+            union_local:,
             # Custom fields for the individual. These are fields which are defined by the
             # employer in the system. Custom fields are not currently supported for assisted
             # connections.
@@ -298,7 +332,9 @@ module FinchAPI
                   T.nilable(
                     FinchAPI::HRIS::EmploymentData::EmploymentDataResponseBody::FlsaStatus::TaggedSymbol
                   ),
+                highly_compensated_employee: T.nilable(T::Boolean),
                 is_active: T.nilable(T::Boolean),
+                key_employee: T.nilable(T::Boolean),
                 last_name: T.nilable(String),
                 latest_rehire_date: T.nilable(String),
                 location: T.nilable(FinchAPI::Location),
@@ -309,6 +345,8 @@ module FinchAPI
                 middle_name: T.nilable(String),
                 start_date: T.nilable(String),
                 title: T.nilable(String),
+                union_code: T.nilable(String),
+                union_local: T.nilable(String),
                 custom_fields:
                   T.nilable(
                     T::Array[
