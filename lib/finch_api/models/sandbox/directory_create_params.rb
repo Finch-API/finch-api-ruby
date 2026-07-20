@@ -122,6 +122,13 @@ module FinchAPI
           #   @return [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender, nil]
           optional :gender, enum: -> { FinchAPI::Sandbox::DirectoryCreateParams::Body::Gender }, nil?: true
 
+          # @!attribute highly_compensated_employee
+          #   IRS flag indicating whether the employee is classified as a Highly Compensated
+          #   Employee for nondiscrimination testing purposes (ADP/ACP tests). US-only.
+          #
+          #   @return [Boolean, nil]
+          optional :highly_compensated_employee, FinchAPI::Internal::Type::Boolean, nil?: true
+
           # @!attribute income
           #   The employee's income as reported by the provider. This may not always be
           #   annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
@@ -144,6 +151,13 @@ module FinchAPI
           #   @return [Boolean, nil]
           optional :is_active, FinchAPI::Internal::Type::Boolean, nil?: true
 
+          # @!attribute key_employee
+          #   IRS flag indicating whether the employee is classified as a Key Employee for
+          #   top-heavy testing purposes. US-only.
+          #
+          #   @return [Boolean, nil]
+          optional :key_employee, FinchAPI::Internal::Type::Boolean, nil?: true
+
           # @!attribute last_name
           #   The legal last name of the individual.
           #
@@ -165,6 +179,15 @@ module FinchAPI
           #
           #   @return [FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Manager, nil]
           optional :manager, -> { FinchAPI::Sandbox::DirectoryCreateParams::Body::Manager }, nil?: true
+
+          # @!attribute marital_status
+          #   The employee's marital status, used for beneficiary designation and spousal
+          #   consent workflows.
+          #
+          #   @return [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::MaritalStatus, nil]
+          optional :marital_status,
+                   enum: -> { FinchAPI::Sandbox::DirectoryCreateParams::Body::MaritalStatus },
+                   nil?: true
 
           # @!attribute middle_name
           #   The legal middle name of the individual.
@@ -219,7 +242,20 @@ module FinchAPI
           #   @return [String, nil]
           optional :title, String, nil?: true
 
-          # @!method initialize(class_code: nil, custom_fields: nil, department: nil, dob: nil, emails: nil, employment: nil, employment_status: nil, encrypted_ssn: nil, end_date: nil, ethnicity: nil, first_name: nil, flsa_status: nil, gender: nil, income: nil, income_history: nil, is_active: nil, last_name: nil, latest_rehire_date: nil, location: nil, manager: nil, middle_name: nil, phone_numbers: nil, preferred_name: nil, residence: nil, source_id: nil, ssn: nil, start_date: nil, title: nil)
+          # @!attribute union_code
+          #   The code identifying the union the employee is a member of, as configured in the
+          #   payroll system.
+          #
+          #   @return [String, nil]
+          optional :union_code, String, nil?: true
+
+          # @!attribute union_local
+          #   The local chapter or local number within the employee's union.
+          #
+          #   @return [String, nil]
+          optional :union_local, String, nil?: true
+
+          # @!method initialize(class_code: nil, custom_fields: nil, department: nil, dob: nil, emails: nil, employment: nil, employment_status: nil, encrypted_ssn: nil, end_date: nil, ethnicity: nil, first_name: nil, flsa_status: nil, gender: nil, highly_compensated_employee: nil, income: nil, income_history: nil, is_active: nil, key_employee: nil, last_name: nil, latest_rehire_date: nil, location: nil, manager: nil, marital_status: nil, middle_name: nil, phone_numbers: nil, preferred_name: nil, residence: nil, source_id: nil, ssn: nil, start_date: nil, title: nil, union_code: nil, union_local: nil)
           #   Some parameter documentations has been truncated, see
           #   {FinchAPI::Models::Sandbox::DirectoryCreateParams::Body} for more details.
           #
@@ -249,11 +285,15 @@ module FinchAPI
           #
           #   @param gender [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Gender, nil] The gender of the individual.
           #
+          #   @param highly_compensated_employee [Boolean, nil] IRS flag indicating whether the employee is classified as a Highly Compensated E
+          #
           #   @param income [FinchAPI::Models::Income, nil] The employee's income as reported by the provider. This may not always be annual
           #
           #   @param income_history [Array<FinchAPI::Models::Income, nil>, nil] The array of income history.
           #
           #   @param is_active [Boolean, nil] `true` if the individual an an active employee or contractor at the company.
+          #
+          #   @param key_employee [Boolean, nil] IRS flag indicating whether the employee is classified as a Key Employee for top
           #
           #   @param last_name [String, nil] The legal last name of the individual.
           #
@@ -262,6 +302,8 @@ module FinchAPI
           #   @param location [FinchAPI::Models::Location, nil]
           #
           #   @param manager [FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::Manager, nil] The manager object representing the manager of the individual within the org.
+          #
+          #   @param marital_status [Symbol, FinchAPI::Models::Sandbox::DirectoryCreateParams::Body::MaritalStatus, nil] The employee's marital status, used for beneficiary designation and spousal cons
           #
           #   @param middle_name [String, nil] The legal middle name of the individual.
           #
@@ -278,6 +320,10 @@ module FinchAPI
           #   @param start_date [String, nil]
           #
           #   @param title [String, nil] The current title of the individual.
+          #
+          #   @param union_code [String, nil] The code identifying the union the employee is a member of, as configured in the
+          #
+          #   @param union_local [String, nil] The local chapter or local number within the employee's union.
 
           class CustomField < FinchAPI::Internal::Type::BaseModel
             # @!attribute name
@@ -506,6 +552,24 @@ module FinchAPI
             #   The manager object representing the manager of the individual within the org.
             #
             #   @param id [String] A stable Finch `id` (UUID v4) for an individual in the company.
+          end
+
+          # The employee's marital status, used for beneficiary designation and spousal
+          # consent workflows.
+          #
+          # @see FinchAPI::Models::Sandbox::DirectoryCreateParams::Body#marital_status
+          module MaritalStatus
+            extend FinchAPI::Internal::Type::Enum
+
+            SINGLE = :single
+            MARRIED = :married
+            DIVORCED = :divorced
+            WIDOWED = :widowed
+            DOMESTIC_PARTNER = :domestic_partner
+            UNKNOWN = :unknown
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
 
           class PhoneNumber < FinchAPI::Internal::Type::BaseModel

@@ -9,7 +9,7 @@ module FinchAPI
         #
         # Update sandbox individual
         #
-        # @overload update(individual_id, dob: nil, emails: nil, encrypted_ssn: nil, ethnicity: nil, first_name: nil, gender: nil, last_name: nil, middle_name: nil, phone_numbers: nil, preferred_name: nil, residence: nil, ssn: nil, request_options: {})
+        # @overload update(individual_id, dob: nil, emails: nil, encrypted_ssn: nil, ethnicity: nil, first_name: nil, gender: nil, last_name: nil, marital_status: nil, middle_name: nil, phone_numbers: nil, preferred_name: nil, residence: nil, ssn: nil, request_options: {})
         #
         # @param individual_id [String]
         #
@@ -26,6 +26,8 @@ module FinchAPI
         # @param gender [Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::Gender, nil] The gender of the individual.
         #
         # @param last_name [String, nil] The legal last name of the individual.
+        #
+        # @param marital_status [Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::MaritalStatus, nil] The employee's marital status, used for beneficiary designation and spousal cons
         #
         # @param middle_name [String, nil] The legal middle name of the individual.
         #

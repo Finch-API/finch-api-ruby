@@ -21,9 +21,11 @@ class FinchAPI::Test::Resources::Sandbox::EmploymentTest < FinchAPI::Test::Resou
         end_date: String | nil,
         first_name: String | nil,
         flsa_status: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::FlsaStatus | nil,
+        highly_compensated_employee: FinchAPI::Internal::Type::Boolean | nil,
         income: FinchAPI::Income | nil,
         income_history: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Income, nil?: true]) | nil,
         is_active: FinchAPI::Internal::Type::Boolean | nil,
+        key_employee: FinchAPI::Internal::Type::Boolean | nil,
         last_name: String | nil,
         latest_rehire_date: String | nil,
         location: FinchAPI::Location | nil,
@@ -31,7 +33,9 @@ class FinchAPI::Test::Resources::Sandbox::EmploymentTest < FinchAPI::Test::Resou
         middle_name: String | nil,
         source_id: String | nil,
         start_date: String | nil,
-        title: String | nil
+        title: String | nil,
+        union_code: String | nil,
+        union_local: String | nil
       }
     end
   end

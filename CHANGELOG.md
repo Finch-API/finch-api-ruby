@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.50 (2026-07-17)
+
+Full Changelog: [v0.1.0-alpha.49...v0.1.0-alpha.50](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.49...v0.1.0-alpha.50)
+
+### Features
+
+* **api:** api update ([043c5b5](https://github.com/Finch-API/finch-api-ruby/commit/043c5b520c2561f0f20d377cfa75c443b07b4bb6))
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([ba8e0a7](https://github.com/Finch-API/finch-api-ruby/commit/ba8e0a7037b38eed4f688e413b0b001af0e31a26))
+
 ## 0.1.0-alpha.49 (2026-07-15)
 
 Full Changelog: [v0.1.0-alpha.48...v0.1.0-alpha.49](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.48...v0.1.0-alpha.49)

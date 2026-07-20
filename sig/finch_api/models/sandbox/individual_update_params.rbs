@@ -11,6 +11,7 @@ module FinchAPI
           first_name: String?,
           gender: FinchAPI::Models::Sandbox::IndividualUpdateParams::gender?,
           last_name: String?,
+          marital_status: FinchAPI::Models::Sandbox::IndividualUpdateParams::marital_status?,
           middle_name: String?,
           phone_numbers: ::Array[FinchAPI::Sandbox::IndividualUpdateParams::PhoneNumber?]?,
           preferred_name: String?,
@@ -39,6 +40,8 @@ module FinchAPI
 
         attr_accessor last_name: String?
 
+        attr_accessor marital_status: FinchAPI::Models::Sandbox::IndividualUpdateParams::marital_status?
+
         attr_accessor middle_name: String?
 
         attr_accessor phone_numbers: ::Array[FinchAPI::Sandbox::IndividualUpdateParams::PhoneNumber?]?
@@ -58,6 +61,7 @@ module FinchAPI
           ?first_name: String?,
           ?gender: FinchAPI::Models::Sandbox::IndividualUpdateParams::gender?,
           ?last_name: String?,
+          ?marital_status: FinchAPI::Models::Sandbox::IndividualUpdateParams::marital_status?,
           ?middle_name: String?,
           ?phone_numbers: ::Array[FinchAPI::Sandbox::IndividualUpdateParams::PhoneNumber?]?,
           ?preferred_name: String?,
@@ -75,6 +79,7 @@ module FinchAPI
           first_name: String?,
           gender: FinchAPI::Models::Sandbox::IndividualUpdateParams::gender?,
           last_name: String?,
+          marital_status: FinchAPI::Models::Sandbox::IndividualUpdateParams::marital_status?,
           middle_name: String?,
           phone_numbers: ::Array[FinchAPI::Sandbox::IndividualUpdateParams::PhoneNumber?]?,
           preferred_name: String?,
@@ -154,6 +159,27 @@ module FinchAPI
           DECLINE_TO_SPECIFY: :decline_to_specify
 
           def self?.values: -> ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::gender]
+        end
+
+        type marital_status =
+          :single
+          | :married
+          | :divorced
+          | :widowed
+          | :domestic_partner
+          | :unknown
+
+        module MaritalStatus
+          extend FinchAPI::Internal::Type::Enum
+
+          SINGLE: :single
+          MARRIED: :married
+          DIVORCED: :divorced
+          WIDOWED: :widowed
+          DOMESTIC_PARTNER: :domestic_partner
+          UNKNOWN: :unknown
+
+          def self?.values: -> ::Array[FinchAPI::Models::Sandbox::IndividualUpdateParams::marital_status]
         end
 
         type phone_number =

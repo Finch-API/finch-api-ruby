@@ -11,6 +11,7 @@ module FinchAPI
           ?first_name: String?,
           ?gender: FinchAPI::Models::Sandbox::IndividualUpdateParams::gender?,
           ?last_name: String?,
+          ?marital_status: FinchAPI::Models::Sandbox::IndividualUpdateParams::marital_status?,
           ?middle_name: String?,
           ?phone_numbers: ::Array[FinchAPI::Sandbox::IndividualUpdateParams::PhoneNumber?]?,
           ?preferred_name: String?,
