@@ -102,6 +102,9 @@ module FinchAPI
           INDIVIDUAL = :individual
           PAYMENT = :payment
           PAY_STATEMENT = :pay_statement
+          PLANS = :plans
+          PLANS_DEPENDENTS = :plans_dependents
+          PLANS_ENROLLMENTS = :plans_enrollments
           RECORDKEEPING = :recordkeeping
           SSN = :ssn
 
