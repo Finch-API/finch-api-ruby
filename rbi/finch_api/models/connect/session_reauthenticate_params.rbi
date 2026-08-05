@@ -151,6 +151,21 @@ module FinchAPI
               :pay_statement,
               FinchAPI::Connect::SessionReauthenticateParams::Product::TaggedSymbol
             )
+          PLANS =
+            T.let(
+              :plans,
+              FinchAPI::Connect::SessionReauthenticateParams::Product::TaggedSymbol
+            )
+          PLANS_DEPENDENTS =
+            T.let(
+              :plans_dependents,
+              FinchAPI::Connect::SessionReauthenticateParams::Product::TaggedSymbol
+            )
+          PLANS_ENROLLMENTS =
+            T.let(
+              :plans_enrollments,
+              FinchAPI::Connect::SessionReauthenticateParams::Product::TaggedSymbol
+            )
           RECORDKEEPING =
             T.let(
               :recordkeeping,
