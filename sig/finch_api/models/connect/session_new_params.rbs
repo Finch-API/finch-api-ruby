@@ -73,6 +73,9 @@ module FinchAPI
           | :individual
           | :payment
           | :pay_statement
+          | :plans
+          | :plans_dependents
+          | :plans_enrollments
           | :recordkeeping
           | :ssn
 
@@ -88,6 +91,9 @@ module FinchAPI
           INDIVIDUAL: :individual
           PAYMENT: :payment
           PAY_STATEMENT: :pay_statement
+          PLANS: :plans
+          PLANS_DEPENDENTS: :plans_dependents
+          PLANS_ENROLLMENTS: :plans_enrollments
           RECORDKEEPING: :recordkeeping
           SSN: :ssn
 
