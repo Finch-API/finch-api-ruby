@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.0-alpha.52 (2026-08-05)
+
+Full Changelog: [v0.1.0-alpha.51...v0.1.0-alpha.52](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.51...v0.1.0-alpha.52)
+
 ## 0.1.0-alpha.51 (2026-07-29)
 
 Full Changelog: [v0.1.0-alpha.50...v0.1.0-alpha.51](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.50...v0.1.0-alpha.51)
