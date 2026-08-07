@@ -15,7 +15,6 @@ module FinchAPI
         sig { returns(String) }
         attr_accessor :access_token
 
-        # [DEPRECATED] Use `connection_id` to associate a connection with an access token
         sig { returns(String) }
         attr_accessor :account_id
 
@@ -26,30 +25,23 @@ module FinchAPI
         end
         attr_accessor :authentication_type
 
-        # The Finch UUID of the company associated with the `access_token`.
-        sig { returns(String) }
+        sig { returns(T.nilable(String)) }
         attr_accessor :company_id
 
-        # The ID of the new connection
         sig { returns(String) }
         attr_accessor :connection_id
 
-        # The ID of the entity for this connection
         sig { returns(String) }
         attr_accessor :entity_id
 
         sig { returns(T::Array[String]) }
         attr_accessor :products
 
-        # The ID of the provider associated with the `access_token`.
         sig { returns(String) }
         attr_accessor :provider_id
 
-        sig { returns(T.nilable(String)) }
-        attr_reader :token_type
-
-        sig { params(token_type: String).void }
-        attr_writer :token_type
+        sig { returns(String) }
+        attr_accessor :token_type
 
         sig do
           params(
@@ -57,7 +49,7 @@ module FinchAPI
             account_id: String,
             authentication_type:
               FinchAPI::Models::Sandbox::ConnectionCreateResponse::AuthenticationType::OrSymbol,
-            company_id: String,
+            company_id: T.nilable(String),
             connection_id: String,
             entity_id: String,
             products: T::Array[String],
@@ -67,19 +59,14 @@ module FinchAPI
         end
         def self.new(
           access_token:,
-          # [DEPRECATED] Use `connection_id` to associate a connection with an access token
           account_id:,
           authentication_type:,
-          # The Finch UUID of the company associated with the `access_token`.
           company_id:,
-          # The ID of the new connection
           connection_id:,
-          # The ID of the entity for this connection
           entity_id:,
           products:,
-          # The ID of the provider associated with the `access_token`.
           provider_id:,
-          token_type: nil
+          token_type:
         )
         end
 
@@ -90,7 +77,7 @@ module FinchAPI
               account_id: String,
               authentication_type:
                 FinchAPI::Models::Sandbox::ConnectionCreateResponse::AuthenticationType::TaggedSymbol,
-              company_id: String,
+              company_id: T.nilable(String),
               connection_id: String,
               entity_id: String,
               products: T::Array[String],
@@ -114,24 +101,24 @@ module FinchAPI
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          CREDENTIAL =
-            T.let(
-              :credential,
-              FinchAPI::Models::Sandbox::ConnectionCreateResponse::AuthenticationType::TaggedSymbol
-            )
           API_TOKEN =
             T.let(
               :api_token,
               FinchAPI::Models::Sandbox::ConnectionCreateResponse::AuthenticationType::TaggedSymbol
             )
-          OAUTH =
-            T.let(
-              :oauth,
-              FinchAPI::Models::Sandbox::ConnectionCreateResponse::AuthenticationType::TaggedSymbol
-            )
           ASSISTED =
             T.let(
               :assisted,
+              FinchAPI::Models::Sandbox::ConnectionCreateResponse::AuthenticationType::TaggedSymbol
+            )
+          CREDENTIAL =
+            T.let(
+              :credential,
+              FinchAPI::Models::Sandbox::ConnectionCreateResponse::AuthenticationType::TaggedSymbol
+            )
+          OAUTH =
+            T.let(
+              :oauth,
               FinchAPI::Models::Sandbox::ConnectionCreateResponse::AuthenticationType::TaggedSymbol
             )
 

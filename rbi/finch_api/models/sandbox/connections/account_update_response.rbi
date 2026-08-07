@@ -100,24 +100,24 @@ module FinchAPI
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            CREDENTIAL =
-              T.let(
-                :credential,
-                FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType::TaggedSymbol
-              )
             API_TOKEN =
               T.let(
                 :api_token,
                 FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType::TaggedSymbol
               )
-            OAUTH =
-              T.let(
-                :oauth,
-                FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType::TaggedSymbol
-              )
             ASSISTED =
               T.let(
                 :assisted,
+                FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType::TaggedSymbol
+              )
+            CREDENTIAL =
+              T.let(
+                :credential,
+                FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType::TaggedSymbol
+              )
+            OAUTH =
+              T.let(
+                :oauth,
                 FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::AuthenticationType::TaggedSymbol
               )
 

@@ -6,7 +6,7 @@ module FinchAPI
           access_token: String,
           account_id: String,
           authentication_type: FinchAPI::Models::Sandbox::ConnectionCreateResponse::authentication_type,
-          company_id: String,
+          company_id: String?,
           connection_id: String,
           entity_id: String,
           products: ::Array[String],
@@ -21,7 +21,7 @@ module FinchAPI
 
         attr_accessor authentication_type: FinchAPI::Models::Sandbox::ConnectionCreateResponse::authentication_type
 
-        attr_accessor company_id: String
+        attr_accessor company_id: String?
 
         attr_accessor connection_id: String
 
@@ -31,27 +31,25 @@ module FinchAPI
 
         attr_accessor provider_id: String
 
-        attr_reader token_type: String?
-
-        def token_type=: (String) -> String
+        attr_accessor token_type: String
 
         def initialize: (
           access_token: String,
           account_id: String,
           authentication_type: FinchAPI::Models::Sandbox::ConnectionCreateResponse::authentication_type,
-          company_id: String,
+          company_id: String?,
           connection_id: String,
           entity_id: String,
           products: ::Array[String],
           provider_id: String,
-          ?token_type: String
+          token_type: String
         ) -> void
 
         def to_hash: -> {
           access_token: String,
           account_id: String,
           authentication_type: FinchAPI::Models::Sandbox::ConnectionCreateResponse::authentication_type,
-          company_id: String,
+          company_id: String?,
           connection_id: String,
           entity_id: String,
           products: ::Array[String],
@@ -59,15 +57,15 @@ module FinchAPI
           token_type: String
         }
 
-        type authentication_type = :credential | :api_token | :oauth | :assisted
+        type authentication_type = :api_token | :assisted | :credential | :oauth
 
         module AuthenticationType
           extend FinchAPI::Internal::Type::Enum
 
-          CREDENTIAL: :credential
           API_TOKEN: :api_token
-          OAUTH: :oauth
           ASSISTED: :assisted
+          CREDENTIAL: :credential
+          OAUTH: :oauth
 
           def self?.values: -> ::Array[FinchAPI::Models::Sandbox::ConnectionCreateResponse::authentication_type]
         end
