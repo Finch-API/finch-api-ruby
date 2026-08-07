@@ -49,10 +49,10 @@ module FinchAPI
         module AuthenticationType
           extend FinchAPI::Internal::Type::Enum
 
-          CREDENTIAL = :credential
           API_TOKEN = :api_token
-          OAUTH = :oauth
           ASSISTED = :assisted
+          CREDENTIAL = :credential
+          OAUTH = :oauth
 
           # @!method self.values
           #   @return [Array<Symbol>]

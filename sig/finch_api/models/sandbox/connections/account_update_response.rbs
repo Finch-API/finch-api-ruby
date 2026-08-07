@@ -49,15 +49,15 @@ module FinchAPI
           }
 
           type authentication_type =
-            :credential | :api_token | :oauth | :assisted
+            :api_token | :assisted | :credential | :oauth
 
           module AuthenticationType
             extend FinchAPI::Internal::Type::Enum
 
-            CREDENTIAL: :credential
             API_TOKEN: :api_token
-            OAUTH: :oauth
             ASSISTED: :assisted
+            CREDENTIAL: :credential
+            OAUTH: :oauth
 
             def self?.values: -> ::Array[FinchAPI::Models::Sandbox::Connections::AccountUpdateResponse::authentication_type]
           end
