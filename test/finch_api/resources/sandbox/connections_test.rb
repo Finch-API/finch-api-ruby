@@ -17,12 +17,12 @@ class FinchAPI::Test::Resources::Sandbox::ConnectionsTest < FinchAPI::Test::Reso
         access_token: String,
         account_id: String,
         authentication_type: FinchAPI::Models::Sandbox::ConnectionCreateResponse::AuthenticationType,
-        company_id: String,
+        company_id: String | nil,
         connection_id: String,
         entity_id: String,
         products: ^(FinchAPI::Internal::Type::ArrayOf[String]),
         provider_id: String,
-        token_type: String | nil
+        token_type: String
       }
     end
   end
