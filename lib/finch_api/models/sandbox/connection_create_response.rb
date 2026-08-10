@@ -21,11 +21,6 @@ module FinchAPI
         required :authentication_type,
                  enum: -> { FinchAPI::Models::Sandbox::ConnectionCreateResponse::AuthenticationType }
 
-        # @!attribute company_id
-        #
-        #   @return [String, nil]
-        required :company_id, String, nil?: true
-
         # @!attribute connection_id
         #
         #   @return [String]
@@ -51,16 +46,21 @@ module FinchAPI
         #   @return [String]
         required :token_type, String
 
-        # @!method initialize(access_token:, account_id:, authentication_type:, company_id:, connection_id:, entity_id:, products:, provider_id:, token_type:)
+        # @!attribute company_id
+        #
+        #   @return [String, nil]
+        optional :company_id, String, nil?: true
+
+        # @!method initialize(access_token:, account_id:, authentication_type:, connection_id:, entity_id:, products:, provider_id:, token_type:, company_id: nil)
         #   @param access_token [String]
         #   @param account_id [String]
         #   @param authentication_type [Symbol, FinchAPI::Models::Sandbox::ConnectionCreateResponse::AuthenticationType]
-        #   @param company_id [String, nil]
         #   @param connection_id [String]
         #   @param entity_id [String]
         #   @param products [Array<String>]
         #   @param provider_id [String]
         #   @param token_type [String]
+        #   @param company_id [String, nil]
 
         # @see FinchAPI::Models::Sandbox::ConnectionCreateResponse#authentication_type
         module AuthenticationType

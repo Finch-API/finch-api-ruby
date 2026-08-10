@@ -25,9 +25,6 @@ module FinchAPI
         end
         attr_accessor :authentication_type
 
-        sig { returns(T.nilable(String)) }
-        attr_accessor :company_id
-
         sig { returns(String) }
         attr_accessor :connection_id
 
@@ -43,30 +40,33 @@ module FinchAPI
         sig { returns(String) }
         attr_accessor :token_type
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :company_id
+
         sig do
           params(
             access_token: String,
             account_id: String,
             authentication_type:
               FinchAPI::Models::Sandbox::ConnectionCreateResponse::AuthenticationType::OrSymbol,
-            company_id: T.nilable(String),
             connection_id: String,
             entity_id: String,
             products: T::Array[String],
             provider_id: String,
-            token_type: String
+            token_type: String,
+            company_id: T.nilable(String)
           ).returns(T.attached_class)
         end
         def self.new(
           access_token:,
           account_id:,
           authentication_type:,
-          company_id:,
           connection_id:,
           entity_id:,
           products:,
           provider_id:,
-          token_type:
+          token_type:,
+          company_id: nil
         )
         end
 
@@ -77,12 +77,12 @@ module FinchAPI
               account_id: String,
               authentication_type:
                 FinchAPI::Models::Sandbox::ConnectionCreateResponse::AuthenticationType::TaggedSymbol,
-              company_id: T.nilable(String),
               connection_id: String,
               entity_id: String,
               products: T::Array[String],
               provider_id: String,
-              token_type: String
+              token_type: String,
+              company_id: T.nilable(String)
             }
           )
         end
