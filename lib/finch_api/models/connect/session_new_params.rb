@@ -54,6 +54,14 @@ module FinchAPI
         #   @return [Float, nil]
         optional :minutes_to_expire, Float, nil?: true
 
+        # @!attribute recordkeeping
+        #   Optional recordkeeping configuration. Can only be provided when the
+        #   `recordkeeping` product is requested. Currently supports `recordkeeper` set to
+        #   `voya`.
+        #
+        #   @return [FinchAPI::Models::Connect::SessionNewParams::Recordkeeping, nil]
+        optional :recordkeeping, -> { FinchAPI::Connect::SessionNewParams::Recordkeeping }, nil?: true
+
         # @!attribute redirect_uri
         #   The URI to redirect to after the Connect flow is completed
         #
@@ -66,7 +74,7 @@ module FinchAPI
         #   @return [Symbol, FinchAPI::Models::Connect::SessionNewParams::Sandbox, nil]
         optional :sandbox, enum: -> { FinchAPI::Connect::SessionNewParams::Sandbox }, nil?: true
 
-        # @!method initialize(customer_id:, customer_name:, products:, customer_email: nil, integration: nil, manual: nil, minutes_to_expire: nil, redirect_uri: nil, sandbox: nil, request_options: {})
+        # @!method initialize(customer_id:, customer_name:, products:, customer_email: nil, integration: nil, manual: nil, minutes_to_expire: nil, recordkeeping: nil, redirect_uri: nil, sandbox: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {FinchAPI::Models::Connect::SessionNewParams} for more details.
         #
@@ -83,6 +91,8 @@ module FinchAPI
         #   @param manual [Boolean, nil] Enable manual authentication mode
         #
         #   @param minutes_to_expire [Float, nil] The number of minutes until the session expires (defaults to 129,600, which is 9
+        #
+        #   @param recordkeeping [FinchAPI::Models::Connect::SessionNewParams::Recordkeeping, nil] Optional recordkeeping configuration. Can only be provided when the `recordkeepi
         #
         #   @param redirect_uri [String, nil] The URI to redirect to after the Connect flow is completed
         #
@@ -144,6 +154,41 @@ module FinchAPI
             CREDENTIAL = :credential
             OAUTH = :oauth
             API_TOKEN = :api_token
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
+        class Recordkeeping < FinchAPI::Internal::Type::BaseModel
+          # @!attribute plan_id
+          #   The plan identifier used by the recordkeeper
+          #
+          #   @return [String]
+          required :plan_id, String
+
+          # @!attribute recordkeeper
+          #   The recordkeeper to configure for this connection
+          #
+          #   @return [Symbol, FinchAPI::Models::Connect::SessionNewParams::Recordkeeping::Recordkeeper]
+          required :recordkeeper, enum: -> { FinchAPI::Connect::SessionNewParams::Recordkeeping::Recordkeeper }
+
+          # @!method initialize(plan_id:, recordkeeper:)
+          #   Optional recordkeeping configuration. Can only be provided when the
+          #   `recordkeeping` product is requested. Currently supports `recordkeeper` set to
+          #   `voya`.
+          #
+          #   @param plan_id [String] The plan identifier used by the recordkeeper
+          #
+          #   @param recordkeeper [Symbol, FinchAPI::Models::Connect::SessionNewParams::Recordkeeping::Recordkeeper] The recordkeeper to configure for this connection
+
+          # The recordkeeper to configure for this connection
+          #
+          # @see FinchAPI::Models::Connect::SessionNewParams::Recordkeeping#recordkeeper
+          module Recordkeeper
+            extend FinchAPI::Internal::Type::Enum
+
+            VOYA = :voya
 
             # @!method self.values
             #   @return [Array<Symbol>]

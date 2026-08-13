@@ -10,6 +10,7 @@ module FinchAPI
           integration: FinchAPI::Connect::SessionNewParams::Integration?,
           manual: bool?,
           minutes_to_expire: Float?,
+          recordkeeping: FinchAPI::Connect::SessionNewParams::Recordkeeping?,
           redirect_uri: String?,
           sandbox: FinchAPI::Models::Connect::SessionNewParams::sandbox?
         }
@@ -33,6 +34,8 @@ module FinchAPI
 
         attr_accessor minutes_to_expire: Float?
 
+        attr_accessor recordkeeping: FinchAPI::Connect::SessionNewParams::Recordkeeping?
+
         attr_accessor redirect_uri: String?
 
         attr_accessor sandbox: FinchAPI::Models::Connect::SessionNewParams::sandbox?
@@ -45,6 +48,7 @@ module FinchAPI
           ?integration: FinchAPI::Connect::SessionNewParams::Integration?,
           ?manual: bool?,
           ?minutes_to_expire: Float?,
+          ?recordkeeping: FinchAPI::Connect::SessionNewParams::Recordkeeping?,
           ?redirect_uri: String?,
           ?sandbox: FinchAPI::Models::Connect::SessionNewParams::sandbox?,
           ?request_options: FinchAPI::request_opts
@@ -58,6 +62,7 @@ module FinchAPI
           integration: FinchAPI::Connect::SessionNewParams::Integration?,
           manual: bool?,
           minutes_to_expire: Float?,
+          recordkeeping: FinchAPI::Connect::SessionNewParams::Recordkeeping?,
           redirect_uri: String?,
           sandbox: FinchAPI::Models::Connect::SessionNewParams::sandbox?,
           request_options: FinchAPI::RequestOptions
@@ -132,6 +137,38 @@ module FinchAPI
             API_TOKEN: :api_token
 
             def self?.values: -> ::Array[FinchAPI::Models::Connect::SessionNewParams::Integration::auth_method]
+          end
+        end
+
+        type recordkeeping =
+          {
+            plan_id: String,
+            recordkeeper: FinchAPI::Models::Connect::SessionNewParams::Recordkeeping::recordkeeper
+          }
+
+        class Recordkeeping < FinchAPI::Internal::Type::BaseModel
+          attr_accessor plan_id: String
+
+          attr_accessor recordkeeper: FinchAPI::Models::Connect::SessionNewParams::Recordkeeping::recordkeeper
+
+          def initialize: (
+            plan_id: String,
+            recordkeeper: FinchAPI::Models::Connect::SessionNewParams::Recordkeeping::recordkeeper
+          ) -> void
+
+          def to_hash: -> {
+            plan_id: String,
+            recordkeeper: FinchAPI::Models::Connect::SessionNewParams::Recordkeeping::recordkeeper
+          }
+
+          type recordkeeper = :voya
+
+          module Recordkeeper
+            extend FinchAPI::Internal::Type::Enum
+
+            VOYA: :voya
+
+            def self?.values: -> ::Array[FinchAPI::Models::Connect::SessionNewParams::Recordkeeping::recordkeeper]
           end
         end
 
