@@ -18,6 +18,10 @@ module FinchAPI
               ),
             manual: T.nilable(T::Boolean),
             minutes_to_expire: T.nilable(Float),
+            recordkeeping:
+              T.nilable(
+                FinchAPI::Connect::SessionNewParams::Recordkeeping::OrHash
+              ),
             redirect_uri: T.nilable(String),
             sandbox:
               T.nilable(FinchAPI::Connect::SessionNewParams::Sandbox::OrSymbol),
@@ -42,6 +46,10 @@ module FinchAPI
           # The number of minutes until the session expires (defaults to 129,600, which is
           # 90 days)
           minutes_to_expire: nil,
+          # Optional recordkeeping configuration. Can only be provided when the
+          # `recordkeeping` product is requested. Currently supports `recordkeeper` set to
+          # `voya`.
+          recordkeeping: nil,
           # The URI to redirect to after the Connect flow is completed
           redirect_uri: nil,
           # Sandbox mode for testing

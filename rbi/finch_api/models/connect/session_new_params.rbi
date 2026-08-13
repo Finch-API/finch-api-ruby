@@ -62,6 +62,24 @@ module FinchAPI
         sig { returns(T.nilable(Float)) }
         attr_accessor :minutes_to_expire
 
+        # Optional recordkeeping configuration. Can only be provided when the
+        # `recordkeeping` product is requested. Currently supports `recordkeeper` set to
+        # `voya`.
+        sig do
+          returns(T.nilable(FinchAPI::Connect::SessionNewParams::Recordkeeping))
+        end
+        attr_reader :recordkeeping
+
+        sig do
+          params(
+            recordkeeping:
+              T.nilable(
+                FinchAPI::Connect::SessionNewParams::Recordkeeping::OrHash
+              )
+          ).void
+        end
+        attr_writer :recordkeeping
+
         # The URI to redirect to after the Connect flow is completed
         sig { returns(T.nilable(String)) }
         attr_accessor :redirect_uri
@@ -87,6 +105,10 @@ module FinchAPI
               ),
             manual: T.nilable(T::Boolean),
             minutes_to_expire: T.nilable(Float),
+            recordkeeping:
+              T.nilable(
+                FinchAPI::Connect::SessionNewParams::Recordkeeping::OrHash
+              ),
             redirect_uri: T.nilable(String),
             sandbox:
               T.nilable(FinchAPI::Connect::SessionNewParams::Sandbox::OrSymbol),
@@ -111,6 +133,10 @@ module FinchAPI
           # The number of minutes until the session expires (defaults to 129,600, which is
           # 90 days)
           minutes_to_expire: nil,
+          # Optional recordkeeping configuration. Can only be provided when the
+          # `recordkeeping` product is requested. Currently supports `recordkeeper` set to
+          # `voya`.
+          recordkeeping: nil,
           # The URI to redirect to after the Connect flow is completed
           redirect_uri: nil,
           # Sandbox mode for testing
@@ -133,6 +159,8 @@ module FinchAPI
                 T.nilable(FinchAPI::Connect::SessionNewParams::Integration),
               manual: T.nilable(T::Boolean),
               minutes_to_expire: T.nilable(Float),
+              recordkeeping:
+                T.nilable(FinchAPI::Connect::SessionNewParams::Recordkeeping),
               redirect_uri: T.nilable(String),
               sandbox:
                 T.nilable(
@@ -329,6 +357,88 @@ module FinchAPI
               override.returns(
                 T::Array[
                   FinchAPI::Connect::SessionNewParams::Integration::AuthMethod::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
+        class Recordkeeping < FinchAPI::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                FinchAPI::Connect::SessionNewParams::Recordkeeping,
+                FinchAPI::Internal::AnyHash
+              )
+            end
+
+          # The plan identifier used by the recordkeeper
+          sig { returns(String) }
+          attr_accessor :plan_id
+
+          # The recordkeeper to configure for this connection
+          sig do
+            returns(
+              FinchAPI::Connect::SessionNewParams::Recordkeeping::Recordkeeper::OrSymbol
+            )
+          end
+          attr_accessor :recordkeeper
+
+          # Optional recordkeeping configuration. Can only be provided when the
+          # `recordkeeping` product is requested. Currently supports `recordkeeper` set to
+          # `voya`.
+          sig do
+            params(
+              plan_id: String,
+              recordkeeper:
+                FinchAPI::Connect::SessionNewParams::Recordkeeping::Recordkeeper::OrSymbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The plan identifier used by the recordkeeper
+            plan_id:,
+            # The recordkeeper to configure for this connection
+            recordkeeper:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                plan_id: String,
+                recordkeeper:
+                  FinchAPI::Connect::SessionNewParams::Recordkeeping::Recordkeeper::OrSymbol
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The recordkeeper to configure for this connection
+          module Recordkeeper
+            extend FinchAPI::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  FinchAPI::Connect::SessionNewParams::Recordkeeping::Recordkeeper
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            VOYA =
+              T.let(
+                :voya,
+                FinchAPI::Connect::SessionNewParams::Recordkeeping::Recordkeeper::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  FinchAPI::Connect::SessionNewParams::Recordkeeping::Recordkeeper::TaggedSymbol
                 ]
               )
             end
