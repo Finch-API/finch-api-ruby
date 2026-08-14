@@ -48,7 +48,7 @@ module FinchAPI
           minutes_to_expire: nil,
           # Optional recordkeeping configuration. Can only be provided when the
           # `recordkeeping` product is requested. Currently supports `recordkeeper` set to
-          # `voya`.
+          # `voya` or `empower`.
           recordkeeping: nil,
           # The URI to redirect to after the Connect flow is completed
           redirect_uri: nil,

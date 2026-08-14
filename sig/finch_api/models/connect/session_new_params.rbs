@@ -142,31 +142,32 @@ module FinchAPI
 
         type recordkeeping =
           {
-            plan_id: String,
-            recordkeeper: FinchAPI::Models::Connect::SessionNewParams::Recordkeeping::recordkeeper
+            recordkeeper: FinchAPI::Models::Connect::SessionNewParams::Recordkeeping::recordkeeper,
+            plan_id: String?
           }
 
         class Recordkeeping < FinchAPI::Internal::Type::BaseModel
-          attr_accessor plan_id: String
-
           attr_accessor recordkeeper: FinchAPI::Models::Connect::SessionNewParams::Recordkeeping::recordkeeper
 
+          attr_accessor plan_id: String?
+
           def initialize: (
-            plan_id: String,
-            recordkeeper: FinchAPI::Models::Connect::SessionNewParams::Recordkeeping::recordkeeper
+            recordkeeper: FinchAPI::Models::Connect::SessionNewParams::Recordkeeping::recordkeeper,
+            ?plan_id: String?
           ) -> void
 
           def to_hash: -> {
-            plan_id: String,
-            recordkeeper: FinchAPI::Models::Connect::SessionNewParams::Recordkeeping::recordkeeper
+            recordkeeper: FinchAPI::Models::Connect::SessionNewParams::Recordkeeping::recordkeeper,
+            plan_id: String?
           }
 
-          type recordkeeper = :voya
+          type recordkeeper = :voya | :empower
 
           module Recordkeeper
             extend FinchAPI::Internal::Type::Enum
 
             VOYA: :voya
+            EMPOWER: :empower
 
             def self?.values: -> ::Array[FinchAPI::Models::Connect::SessionNewParams::Recordkeeping::recordkeeper]
           end

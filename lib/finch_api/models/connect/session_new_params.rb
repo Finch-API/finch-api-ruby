@@ -57,7 +57,7 @@ module FinchAPI
         # @!attribute recordkeeping
         #   Optional recordkeeping configuration. Can only be provided when the
         #   `recordkeeping` product is requested. Currently supports `recordkeeper` set to
-        #   `voya`.
+        #   `voya` or `empower`.
         #
         #   @return [FinchAPI::Models::Connect::SessionNewParams::Recordkeeping, nil]
         optional :recordkeeping, -> { FinchAPI::Connect::SessionNewParams::Recordkeeping }, nil?: true
@@ -161,26 +161,26 @@ module FinchAPI
         end
 
         class Recordkeeping < FinchAPI::Internal::Type::BaseModel
-          # @!attribute plan_id
-          #   The plan identifier used by the recordkeeper
-          #
-          #   @return [String]
-          required :plan_id, String
-
           # @!attribute recordkeeper
           #   The recordkeeper to configure for this connection
           #
           #   @return [Symbol, FinchAPI::Models::Connect::SessionNewParams::Recordkeeping::Recordkeeper]
           required :recordkeeper, enum: -> { FinchAPI::Connect::SessionNewParams::Recordkeeping::Recordkeeper }
 
-          # @!method initialize(plan_id:, recordkeeper:)
+          # @!attribute plan_id
+          #   The plan identifier used by the recordkeeper
+          #
+          #   @return [String, nil]
+          optional :plan_id, String, nil?: true
+
+          # @!method initialize(recordkeeper:, plan_id: nil)
           #   Optional recordkeeping configuration. Can only be provided when the
           #   `recordkeeping` product is requested. Currently supports `recordkeeper` set to
-          #   `voya`.
-          #
-          #   @param plan_id [String] The plan identifier used by the recordkeeper
+          #   `voya` or `empower`.
           #
           #   @param recordkeeper [Symbol, FinchAPI::Models::Connect::SessionNewParams::Recordkeeping::Recordkeeper] The recordkeeper to configure for this connection
+          #
+          #   @param plan_id [String, nil] The plan identifier used by the recordkeeper
 
           # The recordkeeper to configure for this connection
           #
@@ -189,6 +189,7 @@ module FinchAPI
             extend FinchAPI::Internal::Type::Enum
 
             VOYA = :voya
+            EMPOWER = :empower
 
             # @!method self.values
             #   @return [Array<Symbol>]

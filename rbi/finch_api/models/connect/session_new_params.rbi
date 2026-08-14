@@ -64,7 +64,7 @@ module FinchAPI
 
         # Optional recordkeeping configuration. Can only be provided when the
         # `recordkeeping` product is requested. Currently supports `recordkeeper` set to
-        # `voya`.
+        # `voya` or `empower`.
         sig do
           returns(T.nilable(FinchAPI::Connect::SessionNewParams::Recordkeeping))
         end
@@ -135,7 +135,7 @@ module FinchAPI
           minutes_to_expire: nil,
           # Optional recordkeeping configuration. Can only be provided when the
           # `recordkeeping` product is requested. Currently supports `recordkeeper` set to
-          # `voya`.
+          # `voya` or `empower`.
           recordkeeping: nil,
           # The URI to redirect to after the Connect flow is completed
           redirect_uri: nil,
@@ -374,10 +374,6 @@ module FinchAPI
               )
             end
 
-          # The plan identifier used by the recordkeeper
-          sig { returns(String) }
-          attr_accessor :plan_id
-
           # The recordkeeper to configure for this connection
           sig do
             returns(
@@ -386,30 +382,34 @@ module FinchAPI
           end
           attr_accessor :recordkeeper
 
+          # The plan identifier used by the recordkeeper
+          sig { returns(T.nilable(String)) }
+          attr_accessor :plan_id
+
           # Optional recordkeeping configuration. Can only be provided when the
           # `recordkeeping` product is requested. Currently supports `recordkeeper` set to
-          # `voya`.
+          # `voya` or `empower`.
           sig do
             params(
-              plan_id: String,
               recordkeeper:
-                FinchAPI::Connect::SessionNewParams::Recordkeeping::Recordkeeper::OrSymbol
+                FinchAPI::Connect::SessionNewParams::Recordkeeping::Recordkeeper::OrSymbol,
+              plan_id: T.nilable(String)
             ).returns(T.attached_class)
           end
           def self.new(
-            # The plan identifier used by the recordkeeper
-            plan_id:,
             # The recordkeeper to configure for this connection
-            recordkeeper:
+            recordkeeper:,
+            # The plan identifier used by the recordkeeper
+            plan_id: nil
           )
           end
 
           sig do
             override.returns(
               {
-                plan_id: String,
                 recordkeeper:
-                  FinchAPI::Connect::SessionNewParams::Recordkeeping::Recordkeeper::OrSymbol
+                  FinchAPI::Connect::SessionNewParams::Recordkeeping::Recordkeeper::OrSymbol,
+                plan_id: T.nilable(String)
               }
             )
           end
@@ -432,6 +432,11 @@ module FinchAPI
             VOYA =
               T.let(
                 :voya,
+                FinchAPI::Connect::SessionNewParams::Recordkeeping::Recordkeeper::TaggedSymbol
+              )
+            EMPOWER =
+              T.let(
+                :empower,
                 FinchAPI::Connect::SessionNewParams::Recordkeeping::Recordkeeper::TaggedSymbol
               )
 
