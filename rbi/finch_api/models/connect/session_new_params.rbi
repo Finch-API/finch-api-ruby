@@ -64,7 +64,7 @@ module FinchAPI
 
         # Optional recordkeeping configuration. Can only be provided when the
         # `recordkeeping` product is requested. Currently supports `recordkeeper` set to
-        # `voya` or `empower`.
+        # `voya`, `empower`, `fidelity`, or `transamerica`.
         sig do
           returns(T.nilable(FinchAPI::Connect::SessionNewParams::Recordkeeping))
         end
@@ -135,7 +135,7 @@ module FinchAPI
           minutes_to_expire: nil,
           # Optional recordkeeping configuration. Can only be provided when the
           # `recordkeeping` product is requested. Currently supports `recordkeeper` set to
-          # `voya` or `empower`.
+          # `voya`, `empower`, `fidelity`, or `transamerica`.
           recordkeeping: nil,
           # The URI to redirect to after the Connect flow is completed
           redirect_uri: nil,
@@ -388,7 +388,7 @@ module FinchAPI
 
           # Optional recordkeeping configuration. Can only be provided when the
           # `recordkeeping` product is requested. Currently supports `recordkeeper` set to
-          # `voya` or `empower`.
+          # `voya`, `empower`, `fidelity`, or `transamerica`.
           sig do
             params(
               recordkeeper:
@@ -437,6 +437,16 @@ module FinchAPI
             EMPOWER =
               T.let(
                 :empower,
+                FinchAPI::Connect::SessionNewParams::Recordkeeping::Recordkeeper::TaggedSymbol
+              )
+            FIDELITY =
+              T.let(
+                :fidelity,
+                FinchAPI::Connect::SessionNewParams::Recordkeeping::Recordkeeper::TaggedSymbol
+              )
+            TRANSAMERICA =
+              T.let(
+                :transamerica,
                 FinchAPI::Connect::SessionNewParams::Recordkeeping::Recordkeeper::TaggedSymbol
               )
 
