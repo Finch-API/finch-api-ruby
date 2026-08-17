@@ -57,7 +57,7 @@ module FinchAPI
         # @!attribute recordkeeping
         #   Optional recordkeeping configuration. Can only be provided when the
         #   `recordkeeping` product is requested. Currently supports `recordkeeper` set to
-        #   `voya` or `empower`.
+        #   `voya`, `empower`, `fidelity`, or `transamerica`.
         #
         #   @return [FinchAPI::Models::Connect::SessionNewParams::Recordkeeping, nil]
         optional :recordkeeping, -> { FinchAPI::Connect::SessionNewParams::Recordkeeping }, nil?: true
@@ -176,7 +176,7 @@ module FinchAPI
           # @!method initialize(recordkeeper:, plan_id: nil)
           #   Optional recordkeeping configuration. Can only be provided when the
           #   `recordkeeping` product is requested. Currently supports `recordkeeper` set to
-          #   `voya` or `empower`.
+          #   `voya`, `empower`, `fidelity`, or `transamerica`.
           #
           #   @param recordkeeper [Symbol, FinchAPI::Models::Connect::SessionNewParams::Recordkeeping::Recordkeeper] The recordkeeper to configure for this connection
           #
@@ -190,6 +190,8 @@ module FinchAPI
 
             VOYA = :voya
             EMPOWER = :empower
+            FIDELITY = :fidelity
+            TRANSAMERICA = :transamerica
 
             # @!method self.values
             #   @return [Array<Symbol>]

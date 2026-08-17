@@ -161,13 +161,15 @@ module FinchAPI
             plan_id: String?
           }
 
-          type recordkeeper = :voya | :empower
+          type recordkeeper = :voya | :empower | :fidelity | :transamerica
 
           module Recordkeeper
             extend FinchAPI::Internal::Type::Enum
 
             VOYA: :voya
             EMPOWER: :empower
+            FIDELITY: :fidelity
+            TRANSAMERICA: :transamerica
 
             def self?.values: -> ::Array[FinchAPI::Models::Connect::SessionNewParams::Recordkeeping::recordkeeper]
           end
