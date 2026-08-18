@@ -10,6 +10,7 @@ module FinchAPI
           ?integration: FinchAPI::Connect::SessionNewParams::Integration?,
           ?manual: bool?,
           ?minutes_to_expire: Float?,
+          ?recordkeeping: FinchAPI::Connect::SessionNewParams::Recordkeeping?,
           ?redirect_uri: String?,
           ?sandbox: FinchAPI::Models::Connect::SessionNewParams::sandbox?,
           ?request_options: FinchAPI::request_opts
