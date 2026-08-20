@@ -9,7 +9,7 @@ module FinchAPI
         #
         # Create a new connect session for an employer
         #
-        # @overload new(customer_id:, customer_name:, products:, customer_email: nil, integration: nil, manual: nil, minutes_to_expire: nil, redirect_uri: nil, sandbox: nil, request_options: {})
+        # @overload new(customer_id:, customer_name:, products:, customer_email: nil, integration: nil, manual: nil, minutes_to_expire: nil, recordkeeping: nil, redirect_uri: nil, sandbox: nil, request_options: {})
         #
         # @param customer_id [String] Unique identifier for the customer
         #
@@ -24,6 +24,8 @@ module FinchAPI
         # @param manual [Boolean, nil] Enable manual authentication mode
         #
         # @param minutes_to_expire [Float, nil] The number of minutes until the session expires (defaults to 129,600, which is 9
+        #
+        # @param recordkeeping [FinchAPI::Models::Connect::SessionNewParams::Recordkeeping, nil] Optional recordkeeping configuration. Can only be provided when the `recordkeepi
         #
         # @param redirect_uri [String, nil] The URI to redirect to after the Connect flow is completed
         #
