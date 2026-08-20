@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.0-alpha.55](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.54...v0.1.0-alpha.55) (2026-08-20)
+
+
+### Features
+
+* **stainless:** migrate SDK generation from Stainless SaaS to self-hosted stlc - PLAT-3989 ([3b99962](https://github.com/Finch-API/finch-api-ruby/commit/3b99962dbd58f8c0566f8412406cce02c73c272a))
+
 ## 0.1.0-alpha.54 (2026-08-07)
 
 Full Changelog: [v0.1.0-alpha.53...v0.1.0-alpha.54](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.53...v0.1.0-alpha.54)
