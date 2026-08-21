@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.0-alpha.56](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.55...v0.1.0-alpha.56) (2026-08-21)
+
+
+### Bug Fixes
+
+* **stainless:** prevent codegen release deadlock - PLAT-3989 ([f826606](https://github.com/Finch-API/finch-api-ruby/commit/f826606c873fe03fa2e509a26d470381fb79886d))
+
 ## [0.1.0-alpha.55](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.54...v0.1.0-alpha.55) (2026-08-20)
 
 
