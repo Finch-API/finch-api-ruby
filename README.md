@@ -26,7 +26,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "finch-api", "~> 0.1.0.pre.alpha.57"
+gem "finch-api", "~> 0.1.0-alpha.58.pre.alpha.57"
 ```
 
 <!-- x-release-please-end -->
