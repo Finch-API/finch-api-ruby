@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.0-alpha.58](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.57...v0.1.0-alpha.58) (2026-08-28)
+
+
+### Bug Fixes
+
+* **stlc:** PLAT-3989 deploy main release reconciliation ([740ea96](https://github.com/Finch-API/finch-api-ruby/commit/740ea963c8056a505835ebf409434ff5c08b16fe))
+
 ## [0.1.0-alpha.57](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.56...v0.1.0-alpha.57) (2026-08-24)
 
 
