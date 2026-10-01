@@ -211,6 +211,9 @@ module FinchAPI
 
         class PhoneNumber < FinchAPI::Internal::Type::BaseModel
           # @!attribute data
+          #   The phone number. Format: E.164, with extension where applicable, e.g.
+          #   `+NNNNNNNNNNN xExtension`. If the number cannot be parsed, the raw value from
+          #   the provider is returned.
           #
           #   @return [String, nil]
           optional :data, String, nil?: true
@@ -225,7 +228,12 @@ module FinchAPI
                    nil?: true
 
           # @!method initialize(data: nil, type: nil)
-          #   @param data [String, nil]
+          #   Some parameter documentations has been truncated, see
+          #   {FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber} for more
+          #   details.
+          #
+          #   @param data [String, nil] The phone number. Format: E.164, with extension where applicable, e.g. `+NNNNNNN
+          #
           #   @param type [Symbol, FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber::Type, nil]
 
           # @see FinchAPI::Models::Sandbox::IndividualUpdateParams::PhoneNumber#type
