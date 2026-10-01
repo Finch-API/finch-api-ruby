@@ -412,6 +412,9 @@ module FinchAPI
                 )
               end
 
+            # The phone number. Format: E.164, with extension where applicable, e.g.
+            # `+NNNNNNNNNNN xExtension`. If the number cannot be parsed, the raw value from
+            # the provider is returned.
             sig { returns(T.nilable(String)) }
             attr_accessor :data
 
@@ -433,7 +436,13 @@ module FinchAPI
                   )
               ).returns(T.attached_class)
             end
-            def self.new(data:, type:)
+            def self.new(
+              # The phone number. Format: E.164, with extension where applicable, e.g.
+              # `+NNNNNNNNNNN xExtension`. If the number cannot be parsed, the raw value from
+              # the provider is returned.
+              data:,
+              type:
+            )
             end
 
             sig do
