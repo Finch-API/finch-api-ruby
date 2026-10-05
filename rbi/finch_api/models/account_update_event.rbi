@@ -117,7 +117,7 @@ module FinchAPI
           end
           attr_writer :benefits_support
 
-          # The supported data fields returned by our HR and payroll endpoints
+          # The supported data fields returned by our HR, payroll, and benefits endpoints
           sig do
             returns(
               T.nilable(
@@ -171,7 +171,7 @@ module FinchAPI
             # Each benefit type and their supported features. If the benefit type is not
             # supported, the property will be null
             benefits_support: nil,
-            # The supported data fields returned by our HR and payroll endpoints
+            # The supported data fields returned by our HR, payroll, and benefits endpoints
             supported_fields: nil,
             # The type of authentication method.
             type: nil
@@ -322,7 +322,58 @@ module FinchAPI
             end
             attr_writer :payment
 
-            # The supported data fields returned by our HR and payroll endpoints
+            sig do
+              returns(
+                T.nilable(
+                  FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents
+                )
+              )
+            end
+            attr_reader :plan_dependents
+
+            sig do
+              params(
+                plan_dependents:
+                  FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::OrHash
+              ).void
+            end
+            attr_writer :plan_dependents
+
+            sig do
+              returns(
+                T.nilable(
+                  FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments
+                )
+              )
+            end
+            attr_reader :plan_enrollments
+
+            sig do
+              params(
+                plan_enrollments:
+                  FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::OrHash
+              ).void
+            end
+            attr_writer :plan_enrollments
+
+            sig do
+              returns(
+                T.nilable(
+                  FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans
+                )
+              )
+            end
+            attr_reader :plans
+
+            sig do
+              params(
+                plans:
+                  FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans::OrHash
+              ).void
+            end
+            attr_writer :plans
+
+            # The supported data fields returned by our HR, payroll, and benefits endpoints
             sig do
               params(
                 company:
@@ -338,7 +389,13 @@ module FinchAPI
                 pay_statement:
                   FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement::OrHash,
                 payment:
-                  FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment::OrHash
+                  FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment::OrHash,
+                plan_dependents:
+                  FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::OrHash,
+                plan_enrollments:
+                  FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::OrHash,
+                plans:
+                  FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans::OrHash
               ).returns(T.attached_class)
             end
             def self.new(
@@ -348,7 +405,10 @@ module FinchAPI
               individual: nil,
               pay_group: nil,
               pay_statement: nil,
-              payment: nil
+              payment: nil,
+              plan_dependents: nil,
+              plan_enrollments: nil,
+              plans: nil
             )
             end
 
@@ -368,7 +428,13 @@ module FinchAPI
                   pay_statement:
                     FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement,
                   payment:
-                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment
+                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment,
+                  plan_dependents:
+                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents,
+                  plan_enrollments:
+                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments,
+                  plans:
+                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans
                 }
               )
             end
@@ -886,10 +952,7 @@ module FinchAPI
                 attr_writer :id
 
                 sig { returns(T.nilable(T::Boolean)) }
-                attr_reader :department
-
-                sig { params(department: T::Boolean).void }
-                attr_writer :department
+                attr_accessor :department
 
                 sig { returns(T.nilable(T::Boolean)) }
                 attr_reader :first_name
@@ -935,7 +998,7 @@ module FinchAPI
                 sig do
                   params(
                     id: T::Boolean,
-                    department: T::Boolean,
+                    department: T.nilable(T::Boolean),
                     first_name: T::Boolean,
                     is_active: T::Boolean,
                     last_name: T::Boolean,
@@ -959,7 +1022,7 @@ module FinchAPI
                   override.returns(
                     {
                       id: T::Boolean,
-                      department: T::Boolean,
+                      department: T.nilable(T::Boolean),
                       first_name: T::Boolean,
                       is_active: T::Boolean,
                       last_name: T::Boolean,
@@ -1177,7 +1240,9 @@ module FinchAPI
               sig do
                 params(
                   manager:
-                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager::OrHash
+                    T.nilable(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager::OrHash
+                    )
                 ).void
               end
               attr_writer :manager
@@ -1220,7 +1285,9 @@ module FinchAPI
                   location:
                     FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Location::OrHash,
                   manager:
-                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager::OrHash,
+                    T.nilable(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager::OrHash
+                    ),
                   middle_name: T::Boolean,
                   start_date: T::Boolean,
                   title: T::Boolean
@@ -1268,7 +1335,9 @@ module FinchAPI
                     location:
                       FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Location,
                     manager:
-                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager,
+                      T.nilable(
+                        FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager
+                      ),
                     middle_name: T::Boolean,
                     start_date: T::Boolean,
                     title: T::Boolean
@@ -2589,6 +2658,660 @@ module FinchAPI
                     { end_date: T::Boolean, start_date: T::Boolean }
                   )
                 end
+                def to_hash
+                end
+              end
+            end
+
+            class PlanDependents < FinchAPI::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents,
+                    FinchAPI::Internal::AnyHash
+                  )
+                end
+
+              sig do
+                returns(
+                  T.nilable(
+                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage
+                  )
+                )
+              end
+              attr_reader :coverage
+
+              sig do
+                params(
+                  coverage:
+                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage::OrHash
+                ).void
+              end
+              attr_writer :coverage
+
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :date_of_birth
+
+              sig { params(date_of_birth: T::Boolean).void }
+              attr_writer :date_of_birth
+
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :dependent_id
+
+              sig { params(dependent_id: T::Boolean).void }
+              attr_writer :dependent_id
+
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :first_name
+
+              sig { params(first_name: T::Boolean).void }
+              attr_writer :first_name
+
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :gender
+
+              sig { params(gender: T::Boolean).void }
+              attr_writer :gender
+
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :last_name
+
+              sig { params(last_name: T::Boolean).void }
+              attr_writer :last_name
+
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :middle_name
+
+              sig { params(middle_name: T::Boolean).void }
+              attr_writer :middle_name
+
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :ssn
+
+              sig { params(ssn: T::Boolean).void }
+              attr_writer :ssn
+
+              sig do
+                params(
+                  coverage:
+                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage::OrHash,
+                  date_of_birth: T::Boolean,
+                  dependent_id: T::Boolean,
+                  first_name: T::Boolean,
+                  gender: T::Boolean,
+                  last_name: T::Boolean,
+                  middle_name: T::Boolean,
+                  ssn: T::Boolean
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                coverage: nil,
+                date_of_birth: nil,
+                dependent_id: nil,
+                first_name: nil,
+                gender: nil,
+                last_name: nil,
+                middle_name: nil,
+                ssn: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    coverage:
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage,
+                    date_of_birth: T::Boolean,
+                    dependent_id: T::Boolean,
+                    first_name: T::Boolean,
+                    gender: T::Boolean,
+                    last_name: T::Boolean,
+                    middle_name: T::Boolean,
+                    ssn: T::Boolean
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Coverage < FinchAPI::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage,
+                      FinchAPI::Internal::AnyHash
+                    )
+                  end
+
+                sig do
+                  returns(
+                    T.nilable(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage::Enrollments
+                    )
+                  )
+                end
+                attr_reader :enrollments
+
+                sig do
+                  params(
+                    enrollments:
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage::Enrollments::OrHash
+                  ).void
+                end
+                attr_writer :enrollments
+
+                sig { returns(T.nilable(T::Boolean)) }
+                attr_reader :individual_id
+
+                sig { params(individual_id: T::Boolean).void }
+                attr_writer :individual_id
+
+                sig { returns(T.nilable(T::Boolean)) }
+                attr_reader :relationship_to_individual
+
+                sig { params(relationship_to_individual: T::Boolean).void }
+                attr_writer :relationship_to_individual
+
+                sig do
+                  params(
+                    enrollments:
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage::Enrollments::OrHash,
+                    individual_id: T::Boolean,
+                    relationship_to_individual: T::Boolean
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  enrollments: nil,
+                  individual_id: nil,
+                  relationship_to_individual: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      enrollments:
+                        FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage::Enrollments,
+                      individual_id: T::Boolean,
+                      relationship_to_individual: T::Boolean
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                class Enrollments < FinchAPI::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage::Enrollments,
+                        FinchAPI::Internal::AnyHash
+                      )
+                    end
+
+                  sig { returns(T.nilable(T::Boolean)) }
+                  attr_reader :id
+
+                  sig { params(id: T::Boolean).void }
+                  attr_writer :id
+
+                  sig { returns(T.nilable(T::Boolean)) }
+                  attr_reader :type
+
+                  sig { params(type: T::Boolean).void }
+                  attr_writer :type
+
+                  sig do
+                    params(id: T::Boolean, type: T::Boolean).returns(
+                      T.attached_class
+                    )
+                  end
+                  def self.new(id: nil, type: nil)
+                  end
+
+                  sig { override.returns({ id: T::Boolean, type: T::Boolean }) }
+                  def to_hash
+                  end
+                end
+              end
+            end
+
+            class PlanEnrollments < FinchAPI::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments,
+                    FinchAPI::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :id
+
+              sig { params(id: T::Boolean).void }
+              attr_writer :id
+
+              sig do
+                returns(
+                  T.nilable(
+                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions
+                  )
+                )
+              end
+              attr_reader :contributions
+
+              sig do
+                params(
+                  contributions:
+                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::OrHash
+                ).void
+              end
+              attr_writer :contributions
+
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :coverage_end_date
+
+              sig { params(coverage_end_date: T::Boolean).void }
+              attr_writer :coverage_end_date
+
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :coverage_start_date
+
+              sig { params(coverage_start_date: T::Boolean).void }
+              attr_writer :coverage_start_date
+
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :coverage_tier
+
+              sig { params(coverage_tier: T::Boolean).void }
+              attr_writer :coverage_tier
+
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :dependent_ids
+
+              sig { params(dependent_ids: T::Boolean).void }
+              attr_writer :dependent_ids
+
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :individual_id
+
+              sig { params(individual_id: T::Boolean).void }
+              attr_writer :individual_id
+
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :plan_id
+
+              sig { params(plan_id: T::Boolean).void }
+              attr_writer :plan_id
+
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :status
+
+              sig { params(status: T::Boolean).void }
+              attr_writer :status
+
+              sig do
+                params(
+                  id: T::Boolean,
+                  contributions:
+                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::OrHash,
+                  coverage_end_date: T::Boolean,
+                  coverage_start_date: T::Boolean,
+                  coverage_tier: T::Boolean,
+                  dependent_ids: T::Boolean,
+                  individual_id: T::Boolean,
+                  plan_id: T::Boolean,
+                  status: T::Boolean
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                id: nil,
+                contributions: nil,
+                coverage_end_date: nil,
+                coverage_start_date: nil,
+                coverage_tier: nil,
+                dependent_ids: nil,
+                individual_id: nil,
+                plan_id: nil,
+                status: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    id: T::Boolean,
+                    contributions:
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions,
+                    coverage_end_date: T::Boolean,
+                    coverage_start_date: T::Boolean,
+                    coverage_tier: T::Boolean,
+                    dependent_ids: T::Boolean,
+                    individual_id: T::Boolean,
+                    plan_id: T::Boolean,
+                    status: T::Boolean
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Contributions < FinchAPI::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions,
+                      FinchAPI::Internal::AnyHash
+                    )
+                  end
+
+                sig do
+                  returns(
+                    T.nilable(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployeeContribution
+                    )
+                  )
+                end
+                attr_reader :employee_contribution
+
+                sig do
+                  params(
+                    employee_contribution:
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployeeContribution::OrHash
+                  ).void
+                end
+                attr_writer :employee_contribution
+
+                sig do
+                  returns(
+                    T.nilable(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployerContribution
+                    )
+                  )
+                end
+                attr_reader :employer_contribution
+
+                sig do
+                  params(
+                    employer_contribution:
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployerContribution::OrHash
+                  ).void
+                end
+                attr_writer :employer_contribution
+
+                sig { returns(T.nilable(T::Boolean)) }
+                attr_reader :frequency
+
+                sig { params(frequency: T::Boolean).void }
+                attr_writer :frequency
+
+                sig do
+                  params(
+                    employee_contribution:
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployeeContribution::OrHash,
+                    employer_contribution:
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployerContribution::OrHash,
+                    frequency: T::Boolean
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  employee_contribution: nil,
+                  employer_contribution: nil,
+                  frequency: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      employee_contribution:
+                        FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployeeContribution,
+                      employer_contribution:
+                        FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployerContribution,
+                      frequency: T::Boolean
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                class EmployeeContribution < FinchAPI::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployeeContribution,
+                        FinchAPI::Internal::AnyHash
+                      )
+                    end
+
+                  sig { returns(T.nilable(T::Boolean)) }
+                  attr_reader :amount
+
+                  sig { params(amount: T::Boolean).void }
+                  attr_writer :amount
+
+                  sig { returns(T.nilable(T::Boolean)) }
+                  attr_reader :currency
+
+                  sig { params(currency: T::Boolean).void }
+                  attr_writer :currency
+
+                  sig do
+                    params(amount: T::Boolean, currency: T::Boolean).returns(
+                      T.attached_class
+                    )
+                  end
+                  def self.new(amount: nil, currency: nil)
+                  end
+
+                  sig do
+                    override.returns(
+                      { amount: T::Boolean, currency: T::Boolean }
+                    )
+                  end
+                  def to_hash
+                  end
+                end
+
+                class EmployerContribution < FinchAPI::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployerContribution,
+                        FinchAPI::Internal::AnyHash
+                      )
+                    end
+
+                  sig { returns(T.nilable(T::Boolean)) }
+                  attr_reader :amount
+
+                  sig { params(amount: T::Boolean).void }
+                  attr_writer :amount
+
+                  sig { returns(T.nilable(T::Boolean)) }
+                  attr_reader :currency
+
+                  sig { params(currency: T::Boolean).void }
+                  attr_writer :currency
+
+                  sig do
+                    params(amount: T::Boolean, currency: T::Boolean).returns(
+                      T.attached_class
+                    )
+                  end
+                  def self.new(amount: nil, currency: nil)
+                  end
+
+                  sig do
+                    override.returns(
+                      { amount: T::Boolean, currency: T::Boolean }
+                    )
+                  end
+                  def to_hash
+                  end
+                end
+              end
+            end
+
+            class Plans < FinchAPI::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans,
+                    FinchAPI::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :id
+
+              sig { params(id: T::Boolean).void }
+              attr_writer :id
+
+              sig do
+                returns(
+                  T.nilable(
+                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans::Carrier
+                  )
+                )
+              end
+              attr_reader :carrier
+
+              sig do
+                params(
+                  carrier:
+                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans::Carrier::OrHash
+                ).void
+              end
+              attr_writer :carrier
+
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :coverage_tiers
+
+              sig { params(coverage_tiers: T::Boolean).void }
+              attr_writer :coverage_tiers
+
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :deduction_codes
+
+              sig { params(deduction_codes: T::Boolean).void }
+              attr_writer :deduction_codes
+
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :description
+
+              sig { params(description: T::Boolean).void }
+              attr_writer :description
+
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :end_date
+
+              sig { params(end_date: T::Boolean).void }
+              attr_writer :end_date
+
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :name
+
+              sig { params(name: T::Boolean).void }
+              attr_writer :name
+
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :network_type
+
+              sig { params(network_type: T::Boolean).void }
+              attr_writer :network_type
+
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :start_date
+
+              sig { params(start_date: T::Boolean).void }
+              attr_writer :start_date
+
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :type
+
+              sig { params(type: T::Boolean).void }
+              attr_writer :type
+
+              sig do
+                params(
+                  id: T::Boolean,
+                  carrier:
+                    FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans::Carrier::OrHash,
+                  coverage_tiers: T::Boolean,
+                  deduction_codes: T::Boolean,
+                  description: T::Boolean,
+                  end_date: T::Boolean,
+                  name: T::Boolean,
+                  network_type: T::Boolean,
+                  start_date: T::Boolean,
+                  type: T::Boolean
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                id: nil,
+                carrier: nil,
+                coverage_tiers: nil,
+                deduction_codes: nil,
+                description: nil,
+                end_date: nil,
+                name: nil,
+                network_type: nil,
+                start_date: nil,
+                type: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    id: T::Boolean,
+                    carrier:
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans::Carrier,
+                    coverage_tiers: T::Boolean,
+                    deduction_codes: T::Boolean,
+                    description: T::Boolean,
+                    end_date: T::Boolean,
+                    name: T::Boolean,
+                    network_type: T::Boolean,
+                    start_date: T::Boolean,
+                    type: T::Boolean
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Carrier < FinchAPI::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans::Carrier,
+                      FinchAPI::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(T.nilable(T::Boolean)) }
+                attr_reader :id
+
+                sig { params(id: T::Boolean).void }
+                attr_writer :id
+
+                sig { returns(T.nilable(T::Boolean)) }
+                attr_reader :name
+
+                sig { params(name: T::Boolean).void }
+                attr_writer :name
+
+                sig do
+                  params(id: T::Boolean, name: T::Boolean).returns(
+                    T.attached_class
+                  )
+                end
+                def self.new(id: nil, name: nil)
+                end
+
+                sig { override.returns({ id: T::Boolean, name: T::Boolean }) }
                 def to_hash
                 end
               end

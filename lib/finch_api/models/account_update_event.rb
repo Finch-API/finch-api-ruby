@@ -42,7 +42,7 @@ module FinchAPI
           optional :benefits_support, -> { FinchAPI::HRIS::BenefitsSupport }, nil?: true
 
           # @!attribute supported_fields
-          #   The supported data fields returned by our HR and payroll endpoints
+          #   The supported data fields returned by our HR, payroll, and benefits endpoints
           #
           #   @return [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields, nil]
           optional :supported_fields,
@@ -62,7 +62,7 @@ module FinchAPI
           #
           #   @param benefits_support [FinchAPI::Models::HRIS::BenefitsSupport, nil] Each benefit type and their supported features. If the benefit type is not suppo
           #
-          #   @param supported_fields [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields, nil] The supported data fields returned by our HR and payroll endpoints
+          #   @param supported_fields [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields, nil] The supported data fields returned by our HR, payroll, and benefits endpoints
           #
           #   @param type [Symbol, FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::Type] The type of authentication method.
 
@@ -110,8 +110,25 @@ module FinchAPI
             optional :payment,
                      -> { FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment }
 
-            # @!method initialize(company: nil, directory: nil, employment: nil, individual: nil, pay_group: nil, pay_statement: nil, payment: nil)
-            #   The supported data fields returned by our HR and payroll endpoints
+            # @!attribute plan_dependents
+            #
+            #   @return [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents, nil]
+            optional :plan_dependents,
+                     -> { FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents }
+
+            # @!attribute plan_enrollments
+            #
+            #   @return [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments, nil]
+            optional :plan_enrollments,
+                     -> { FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments }
+
+            # @!attribute plans
+            #
+            #   @return [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans, nil]
+            optional :plans, -> { FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans }
+
+            # @!method initialize(company: nil, directory: nil, employment: nil, individual: nil, pay_group: nil, pay_statement: nil, payment: nil, plan_dependents: nil, plan_enrollments: nil, plans: nil)
+            #   The supported data fields returned by our HR, payroll, and benefits endpoints
             #
             #   @param company [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company]
             #   @param directory [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory]
@@ -120,6 +137,9 @@ module FinchAPI
             #   @param pay_group [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayGroup]
             #   @param pay_statement [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement]
             #   @param payment [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment]
+            #   @param plan_dependents [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents]
+            #   @param plan_enrollments [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments]
+            #   @param plans [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans]
 
             # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields#company
             class Company < FinchAPI::Internal::Type::BaseModel
@@ -334,7 +354,7 @@ module FinchAPI
                 # @!attribute department
                 #
                 #   @return [Boolean, nil]
-                optional :department, FinchAPI::Internal::Type::Boolean
+                optional :department, FinchAPI::Internal::Type::Boolean, nil?: true
 
                 # @!attribute first_name
                 #
@@ -364,7 +384,7 @@ module FinchAPI
 
                 # @!method initialize(id: nil, department: nil, first_name: nil, is_active: nil, last_name: nil, manager: nil, middle_name: nil)
                 #   @param id [Boolean]
-                #   @param department [Boolean]
+                #   @param department [Boolean, nil]
                 #   @param first_name [Boolean]
                 #   @param is_active [Boolean]
                 #   @param last_name [Boolean]
@@ -476,7 +496,10 @@ module FinchAPI
               #
               #   @return [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager, nil]
               optional :manager,
-                       -> { FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager }
+                       -> {
+                         FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager
+                       },
+                       nil?: true
 
               # @!attribute middle_name
               #
@@ -507,7 +530,7 @@ module FinchAPI
               #   @param is_active [Boolean]
               #   @param last_name [Boolean]
               #   @param location [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Location]
-              #   @param manager [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager]
+              #   @param manager [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager, nil]
               #   @param middle_name [Boolean]
               #   @param start_date [Boolean]
               #   @param title [Boolean]
@@ -1125,6 +1148,303 @@ module FinchAPI
                 # @!method initialize(end_date: nil, start_date: nil)
                 #   @param end_date [Boolean]
                 #   @param start_date [Boolean]
+              end
+            end
+
+            # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields#plan_dependents
+            class PlanDependents < FinchAPI::Internal::Type::BaseModel
+              # @!attribute coverage
+              #
+              #   @return [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage, nil]
+              optional :coverage,
+                       -> { FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage }
+
+              # @!attribute date_of_birth
+              #
+              #   @return [Boolean, nil]
+              optional :date_of_birth, FinchAPI::Internal::Type::Boolean
+
+              # @!attribute dependent_id
+              #
+              #   @return [Boolean, nil]
+              optional :dependent_id, FinchAPI::Internal::Type::Boolean
+
+              # @!attribute first_name
+              #
+              #   @return [Boolean, nil]
+              optional :first_name, FinchAPI::Internal::Type::Boolean
+
+              # @!attribute gender
+              #
+              #   @return [Boolean, nil]
+              optional :gender, FinchAPI::Internal::Type::Boolean
+
+              # @!attribute last_name
+              #
+              #   @return [Boolean, nil]
+              optional :last_name, FinchAPI::Internal::Type::Boolean
+
+              # @!attribute middle_name
+              #
+              #   @return [Boolean, nil]
+              optional :middle_name, FinchAPI::Internal::Type::Boolean
+
+              # @!attribute ssn
+              #
+              #   @return [Boolean, nil]
+              optional :ssn, FinchAPI::Internal::Type::Boolean
+
+              # @!method initialize(coverage: nil, date_of_birth: nil, dependent_id: nil, first_name: nil, gender: nil, last_name: nil, middle_name: nil, ssn: nil)
+              #   @param coverage [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage]
+              #   @param date_of_birth [Boolean]
+              #   @param dependent_id [Boolean]
+              #   @param first_name [Boolean]
+              #   @param gender [Boolean]
+              #   @param last_name [Boolean]
+              #   @param middle_name [Boolean]
+              #   @param ssn [Boolean]
+
+              # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents#coverage
+              class Coverage < FinchAPI::Internal::Type::BaseModel
+                # @!attribute enrollments
+                #
+                #   @return [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage::Enrollments, nil]
+                optional :enrollments,
+                         -> { FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage::Enrollments }
+
+                # @!attribute individual_id
+                #
+                #   @return [Boolean, nil]
+                optional :individual_id, FinchAPI::Internal::Type::Boolean
+
+                # @!attribute relationship_to_individual
+                #
+                #   @return [Boolean, nil]
+                optional :relationship_to_individual, FinchAPI::Internal::Type::Boolean
+
+                # @!method initialize(enrollments: nil, individual_id: nil, relationship_to_individual: nil)
+                #   @param enrollments [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage::Enrollments]
+                #   @param individual_id [Boolean]
+                #   @param relationship_to_individual [Boolean]
+
+                # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage#enrollments
+                class Enrollments < FinchAPI::Internal::Type::BaseModel
+                  # @!attribute id
+                  #
+                  #   @return [Boolean, nil]
+                  optional :id, FinchAPI::Internal::Type::Boolean
+
+                  # @!attribute type
+                  #
+                  #   @return [Boolean, nil]
+                  optional :type, FinchAPI::Internal::Type::Boolean
+
+                  # @!method initialize(id: nil, type: nil)
+                  #   @param id [Boolean]
+                  #   @param type [Boolean]
+                end
+              end
+            end
+
+            # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields#plan_enrollments
+            class PlanEnrollments < FinchAPI::Internal::Type::BaseModel
+              # @!attribute id
+              #
+              #   @return [Boolean, nil]
+              optional :id, FinchAPI::Internal::Type::Boolean
+
+              # @!attribute contributions
+              #
+              #   @return [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions, nil]
+              optional :contributions,
+                       -> { FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions }
+
+              # @!attribute coverage_end_date
+              #
+              #   @return [Boolean, nil]
+              optional :coverage_end_date, FinchAPI::Internal::Type::Boolean
+
+              # @!attribute coverage_start_date
+              #
+              #   @return [Boolean, nil]
+              optional :coverage_start_date, FinchAPI::Internal::Type::Boolean
+
+              # @!attribute coverage_tier
+              #
+              #   @return [Boolean, nil]
+              optional :coverage_tier, FinchAPI::Internal::Type::Boolean
+
+              # @!attribute dependent_ids
+              #
+              #   @return [Boolean, nil]
+              optional :dependent_ids, FinchAPI::Internal::Type::Boolean
+
+              # @!attribute individual_id
+              #
+              #   @return [Boolean, nil]
+              optional :individual_id, FinchAPI::Internal::Type::Boolean
+
+              # @!attribute plan_id
+              #
+              #   @return [Boolean, nil]
+              optional :plan_id, FinchAPI::Internal::Type::Boolean
+
+              # @!attribute status
+              #
+              #   @return [Boolean, nil]
+              optional :status, FinchAPI::Internal::Type::Boolean
+
+              # @!method initialize(id: nil, contributions: nil, coverage_end_date: nil, coverage_start_date: nil, coverage_tier: nil, dependent_ids: nil, individual_id: nil, plan_id: nil, status: nil)
+              #   @param id [Boolean]
+              #   @param contributions [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions]
+              #   @param coverage_end_date [Boolean]
+              #   @param coverage_start_date [Boolean]
+              #   @param coverage_tier [Boolean]
+              #   @param dependent_ids [Boolean]
+              #   @param individual_id [Boolean]
+              #   @param plan_id [Boolean]
+              #   @param status [Boolean]
+
+              # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments#contributions
+              class Contributions < FinchAPI::Internal::Type::BaseModel
+                # @!attribute employee_contribution
+                #
+                #   @return [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployeeContribution, nil]
+                optional :employee_contribution,
+                         -> { FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployeeContribution }
+
+                # @!attribute employer_contribution
+                #
+                #   @return [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployerContribution, nil]
+                optional :employer_contribution,
+                         -> { FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployerContribution }
+
+                # @!attribute frequency
+                #
+                #   @return [Boolean, nil]
+                optional :frequency, FinchAPI::Internal::Type::Boolean
+
+                # @!method initialize(employee_contribution: nil, employer_contribution: nil, frequency: nil)
+                #   @param employee_contribution [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployeeContribution]
+                #   @param employer_contribution [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployerContribution]
+                #   @param frequency [Boolean]
+
+                # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions#employee_contribution
+                class EmployeeContribution < FinchAPI::Internal::Type::BaseModel
+                  # @!attribute amount
+                  #
+                  #   @return [Boolean, nil]
+                  optional :amount, FinchAPI::Internal::Type::Boolean
+
+                  # @!attribute currency
+                  #
+                  #   @return [Boolean, nil]
+                  optional :currency, FinchAPI::Internal::Type::Boolean
+
+                  # @!method initialize(amount: nil, currency: nil)
+                  #   @param amount [Boolean]
+                  #   @param currency [Boolean]
+                end
+
+                # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions#employer_contribution
+                class EmployerContribution < FinchAPI::Internal::Type::BaseModel
+                  # @!attribute amount
+                  #
+                  #   @return [Boolean, nil]
+                  optional :amount, FinchAPI::Internal::Type::Boolean
+
+                  # @!attribute currency
+                  #
+                  #   @return [Boolean, nil]
+                  optional :currency, FinchAPI::Internal::Type::Boolean
+
+                  # @!method initialize(amount: nil, currency: nil)
+                  #   @param amount [Boolean]
+                  #   @param currency [Boolean]
+                end
+              end
+            end
+
+            # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields#plans
+            class Plans < FinchAPI::Internal::Type::BaseModel
+              # @!attribute id
+              #
+              #   @return [Boolean, nil]
+              optional :id, FinchAPI::Internal::Type::Boolean
+
+              # @!attribute carrier
+              #
+              #   @return [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans::Carrier, nil]
+              optional :carrier,
+                       -> { FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans::Carrier }
+
+              # @!attribute coverage_tiers
+              #
+              #   @return [Boolean, nil]
+              optional :coverage_tiers, FinchAPI::Internal::Type::Boolean
+
+              # @!attribute deduction_codes
+              #
+              #   @return [Boolean, nil]
+              optional :deduction_codes, FinchAPI::Internal::Type::Boolean
+
+              # @!attribute description
+              #
+              #   @return [Boolean, nil]
+              optional :description, FinchAPI::Internal::Type::Boolean
+
+              # @!attribute end_date
+              #
+              #   @return [Boolean, nil]
+              optional :end_date, FinchAPI::Internal::Type::Boolean
+
+              # @!attribute name
+              #
+              #   @return [Boolean, nil]
+              optional :name, FinchAPI::Internal::Type::Boolean
+
+              # @!attribute network_type
+              #
+              #   @return [Boolean, nil]
+              optional :network_type, FinchAPI::Internal::Type::Boolean
+
+              # @!attribute start_date
+              #
+              #   @return [Boolean, nil]
+              optional :start_date, FinchAPI::Internal::Type::Boolean
+
+              # @!attribute type
+              #
+              #   @return [Boolean, nil]
+              optional :type, FinchAPI::Internal::Type::Boolean
+
+              # @!method initialize(id: nil, carrier: nil, coverage_tiers: nil, deduction_codes: nil, description: nil, end_date: nil, name: nil, network_type: nil, start_date: nil, type: nil)
+              #   @param id [Boolean]
+              #   @param carrier [FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans::Carrier]
+              #   @param coverage_tiers [Boolean]
+              #   @param deduction_codes [Boolean]
+              #   @param description [Boolean]
+              #   @param end_date [Boolean]
+              #   @param name [Boolean]
+              #   @param network_type [Boolean]
+              #   @param start_date [Boolean]
+              #   @param type [Boolean]
+
+              # @see FinchAPI::Models::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans#carrier
+              class Carrier < FinchAPI::Internal::Type::BaseModel
+                # @!attribute id
+                #
+                #   @return [Boolean, nil]
+                optional :id, FinchAPI::Internal::Type::Boolean
+
+                # @!attribute name
+                #
+                #   @return [Boolean, nil]
+                optional :name, FinchAPI::Internal::Type::Boolean
+
+                # @!method initialize(id: nil, name: nil)
+                #   @param id [Boolean]
+                #   @param name [Boolean]
               end
             end
           end
