@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.0-alpha.59](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.58...v0.1.0-alpha.59) (2026-10-01)
+
+
+### Chores
+
+* **api:** rebuild SDK ([8c752f2](https://github.com/Finch-API/finch-api-ruby/commit/8c752f231041e66e4dbaf16bf5701c809266dfa3))
+
+
+### Documentation
+
+* **spec:** document phone number format on individual phone_numbers ([015efe5](https://github.com/Finch-API/finch-api-ruby/commit/015efe5f87553064cf3b1711cd998cb583a8f5d2))
+
 ## [0.1.0-alpha.58](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.57...v0.1.0-alpha.58) (2026-09-15)
 
 
