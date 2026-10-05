@@ -88,7 +88,10 @@ module FinchAPI
               individual: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual,
               pay_group: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayGroup,
               pay_statement: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement,
-              payment: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment
+              payment: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment,
+              plan_dependents: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents,
+              plan_enrollments: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments,
+              plans: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans
             }
 
           class SupportedFields < FinchAPI::Internal::Type::BaseModel
@@ -134,6 +137,24 @@ module FinchAPI
               FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment
             ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment
 
+            attr_reader plan_dependents: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents?
+
+            def plan_dependents=: (
+              FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents
+            ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents
+
+            attr_reader plan_enrollments: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments?
+
+            def plan_enrollments=: (
+              FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments
+            ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments
+
+            attr_reader plans: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans?
+
+            def plans=: (
+              FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans
+            ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans
+
             def initialize: (
               ?company: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Company,
               ?directory: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Directory,
@@ -141,7 +162,10 @@ module FinchAPI
               ?individual: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual,
               ?pay_group: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayGroup,
               ?pay_statement: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement,
-              ?payment: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment
+              ?payment: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment,
+              ?plan_dependents: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents,
+              ?plan_enrollments: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments,
+              ?plans: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans
             ) -> void
 
             def to_hash: -> {
@@ -151,7 +175,10 @@ module FinchAPI
               individual: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Individual,
               pay_group: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayGroup,
               pay_statement: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PayStatement,
-              payment: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment
+              payment: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Payment,
+              plan_dependents: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents,
+              plan_enrollments: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments,
+              plans: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans
             }
 
             type company =
@@ -426,7 +453,7 @@ module FinchAPI
               type individuals =
                 {
                   id: bool,
-                  department: bool,
+                  department: bool?,
                   first_name: bool,
                   is_active: bool,
                   last_name: bool,
@@ -439,9 +466,7 @@ module FinchAPI
 
                 def id=: (bool) -> bool
 
-                attr_reader department: bool?
-
-                def department=: (bool) -> bool
+                attr_accessor department: bool?
 
                 attr_reader first_name: bool?
 
@@ -467,7 +492,7 @@ module FinchAPI
 
                 def initialize: (
                   ?id: bool,
-                  ?department: bool,
+                  ?department: bool?,
                   ?first_name: bool,
                   ?is_active: bool,
                   ?last_name: bool,
@@ -477,7 +502,7 @@ module FinchAPI
 
                 def to_hash: -> {
                   id: bool,
-                  department: bool,
+                  department: bool?,
                   first_name: bool,
                   is_active: bool,
                   last_name: bool,
@@ -530,7 +555,7 @@ module FinchAPI
                 is_active: bool,
                 last_name: bool,
                 location: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Location,
-                manager: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager,
+                manager: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager?,
                 middle_name: bool,
                 start_date: bool,
                 title: bool
@@ -597,11 +622,7 @@ module FinchAPI
                 FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Location
               ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Location
 
-              attr_reader manager: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager?
-
-              def manager=: (
-                FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager
-              ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager
+              attr_accessor manager: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager?
 
               attr_reader middle_name: bool?
 
@@ -629,7 +650,7 @@ module FinchAPI
                 ?is_active: bool,
                 ?last_name: bool,
                 ?location: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Location,
-                ?manager: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager,
+                ?manager: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager?,
                 ?middle_name: bool,
                 ?start_date: bool,
                 ?title: bool
@@ -649,7 +670,7 @@ module FinchAPI
                 is_active: bool,
                 last_name: bool,
                 location: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Location,
-                manager: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager,
+                manager: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Employment::Manager?,
                 middle_name: bool,
                 start_date: bool,
                 title: bool
@@ -1406,6 +1427,373 @@ module FinchAPI
                 def initialize: (?end_date: bool, ?start_date: bool) -> void
 
                 def to_hash: -> { end_date: bool, start_date: bool }
+              end
+            end
+
+            type plan_dependents =
+              {
+                coverage: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage,
+                date_of_birth: bool,
+                dependent_id: bool,
+                first_name: bool,
+                gender: bool,
+                last_name: bool,
+                middle_name: bool,
+                ssn: bool
+              }
+
+            class PlanDependents < FinchAPI::Internal::Type::BaseModel
+              attr_reader coverage: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage?
+
+              def coverage=: (
+                FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage
+              ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage
+
+              attr_reader date_of_birth: bool?
+
+              def date_of_birth=: (bool) -> bool
+
+              attr_reader dependent_id: bool?
+
+              def dependent_id=: (bool) -> bool
+
+              attr_reader first_name: bool?
+
+              def first_name=: (bool) -> bool
+
+              attr_reader gender: bool?
+
+              def gender=: (bool) -> bool
+
+              attr_reader last_name: bool?
+
+              def last_name=: (bool) -> bool
+
+              attr_reader middle_name: bool?
+
+              def middle_name=: (bool) -> bool
+
+              attr_reader ssn: bool?
+
+              def ssn=: (bool) -> bool
+
+              def initialize: (
+                ?coverage: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage,
+                ?date_of_birth: bool,
+                ?dependent_id: bool,
+                ?first_name: bool,
+                ?gender: bool,
+                ?last_name: bool,
+                ?middle_name: bool,
+                ?ssn: bool
+              ) -> void
+
+              def to_hash: -> {
+                coverage: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage,
+                date_of_birth: bool,
+                dependent_id: bool,
+                first_name: bool,
+                gender: bool,
+                last_name: bool,
+                middle_name: bool,
+                ssn: bool
+              }
+
+              type coverage =
+                {
+                  enrollments: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage::Enrollments,
+                  individual_id: bool,
+                  relationship_to_individual: bool
+                }
+
+              class Coverage < FinchAPI::Internal::Type::BaseModel
+                attr_reader enrollments: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage::Enrollments?
+
+                def enrollments=: (
+                  FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage::Enrollments
+                ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage::Enrollments
+
+                attr_reader individual_id: bool?
+
+                def individual_id=: (bool) -> bool
+
+                attr_reader relationship_to_individual: bool?
+
+                def relationship_to_individual=: (bool) -> bool
+
+                def initialize: (
+                  ?enrollments: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage::Enrollments,
+                  ?individual_id: bool,
+                  ?relationship_to_individual: bool
+                ) -> void
+
+                def to_hash: -> {
+                  enrollments: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanDependents::Coverage::Enrollments,
+                  individual_id: bool,
+                  relationship_to_individual: bool
+                }
+
+                type enrollments = { id: bool, type: bool }
+
+                class Enrollments < FinchAPI::Internal::Type::BaseModel
+                  attr_reader id: bool?
+
+                  def id=: (bool) -> bool
+
+                  attr_reader type: bool?
+
+                  def type=: (bool) -> bool
+
+                  def initialize: (?id: bool, ?type: bool) -> void
+
+                  def to_hash: -> { id: bool, type: bool }
+                end
+              end
+            end
+
+            type plan_enrollments =
+              {
+                id: bool,
+                contributions: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions,
+                coverage_end_date: bool,
+                coverage_start_date: bool,
+                coverage_tier: bool,
+                dependent_ids: bool,
+                individual_id: bool,
+                plan_id: bool,
+                status: bool
+              }
+
+            class PlanEnrollments < FinchAPI::Internal::Type::BaseModel
+              attr_reader id: bool?
+
+              def id=: (bool) -> bool
+
+              attr_reader contributions: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions?
+
+              def contributions=: (
+                FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions
+              ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions
+
+              attr_reader coverage_end_date: bool?
+
+              def coverage_end_date=: (bool) -> bool
+
+              attr_reader coverage_start_date: bool?
+
+              def coverage_start_date=: (bool) -> bool
+
+              attr_reader coverage_tier: bool?
+
+              def coverage_tier=: (bool) -> bool
+
+              attr_reader dependent_ids: bool?
+
+              def dependent_ids=: (bool) -> bool
+
+              attr_reader individual_id: bool?
+
+              def individual_id=: (bool) -> bool
+
+              attr_reader plan_id: bool?
+
+              def plan_id=: (bool) -> bool
+
+              attr_reader status: bool?
+
+              def status=: (bool) -> bool
+
+              def initialize: (
+                ?id: bool,
+                ?contributions: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions,
+                ?coverage_end_date: bool,
+                ?coverage_start_date: bool,
+                ?coverage_tier: bool,
+                ?dependent_ids: bool,
+                ?individual_id: bool,
+                ?plan_id: bool,
+                ?status: bool
+              ) -> void
+
+              def to_hash: -> {
+                id: bool,
+                contributions: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions,
+                coverage_end_date: bool,
+                coverage_start_date: bool,
+                coverage_tier: bool,
+                dependent_ids: bool,
+                individual_id: bool,
+                plan_id: bool,
+                status: bool
+              }
+
+              type contributions =
+                {
+                  employee_contribution: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployeeContribution,
+                  employer_contribution: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployerContribution,
+                  frequency: bool
+                }
+
+              class Contributions < FinchAPI::Internal::Type::BaseModel
+                attr_reader employee_contribution: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployeeContribution?
+
+                def employee_contribution=: (
+                  FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployeeContribution
+                ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployeeContribution
+
+                attr_reader employer_contribution: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployerContribution?
+
+                def employer_contribution=: (
+                  FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployerContribution
+                ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployerContribution
+
+                attr_reader frequency: bool?
+
+                def frequency=: (bool) -> bool
+
+                def initialize: (
+                  ?employee_contribution: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployeeContribution,
+                  ?employer_contribution: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployerContribution,
+                  ?frequency: bool
+                ) -> void
+
+                def to_hash: -> {
+                  employee_contribution: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployeeContribution,
+                  employer_contribution: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::PlanEnrollments::Contributions::EmployerContribution,
+                  frequency: bool
+                }
+
+                type employee_contribution = { amount: bool, currency: bool }
+
+                class EmployeeContribution < FinchAPI::Internal::Type::BaseModel
+                  attr_reader amount: bool?
+
+                  def amount=: (bool) -> bool
+
+                  attr_reader currency: bool?
+
+                  def currency=: (bool) -> bool
+
+                  def initialize: (?amount: bool, ?currency: bool) -> void
+
+                  def to_hash: -> { amount: bool, currency: bool }
+                end
+
+                type employer_contribution = { amount: bool, currency: bool }
+
+                class EmployerContribution < FinchAPI::Internal::Type::BaseModel
+                  attr_reader amount: bool?
+
+                  def amount=: (bool) -> bool
+
+                  attr_reader currency: bool?
+
+                  def currency=: (bool) -> bool
+
+                  def initialize: (?amount: bool, ?currency: bool) -> void
+
+                  def to_hash: -> { amount: bool, currency: bool }
+                end
+              end
+            end
+
+            type plans =
+              {
+                id: bool,
+                carrier: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans::Carrier,
+                coverage_tiers: bool,
+                deduction_codes: bool,
+                description: bool,
+                end_date: bool,
+                name: bool,
+                network_type: bool,
+                start_date: bool,
+                type: bool
+              }
+
+            class Plans < FinchAPI::Internal::Type::BaseModel
+              attr_reader id: bool?
+
+              def id=: (bool) -> bool
+
+              attr_reader carrier: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans::Carrier?
+
+              def carrier=: (
+                FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans::Carrier
+              ) -> FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans::Carrier
+
+              attr_reader coverage_tiers: bool?
+
+              def coverage_tiers=: (bool) -> bool
+
+              attr_reader deduction_codes: bool?
+
+              def deduction_codes=: (bool) -> bool
+
+              attr_reader description: bool?
+
+              def description=: (bool) -> bool
+
+              attr_reader end_date: bool?
+
+              def end_date=: (bool) -> bool
+
+              attr_reader name: bool?
+
+              def name=: (bool) -> bool
+
+              attr_reader network_type: bool?
+
+              def network_type=: (bool) -> bool
+
+              attr_reader start_date: bool?
+
+              def start_date=: (bool) -> bool
+
+              attr_reader type: bool?
+
+              def type=: (bool) -> bool
+
+              def initialize: (
+                ?id: bool,
+                ?carrier: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans::Carrier,
+                ?coverage_tiers: bool,
+                ?deduction_codes: bool,
+                ?description: bool,
+                ?end_date: bool,
+                ?name: bool,
+                ?network_type: bool,
+                ?start_date: bool,
+                ?type: bool
+              ) -> void
+
+              def to_hash: -> {
+                id: bool,
+                carrier: FinchAPI::AccountUpdateEvent::Data::AuthenticationMethod::SupportedFields::Plans::Carrier,
+                coverage_tiers: bool,
+                deduction_codes: bool,
+                description: bool,
+                end_date: bool,
+                name: bool,
+                network_type: bool,
+                start_date: bool,
+                type: bool
+              }
+
+              type carrier = { id: bool, name: bool }
+
+              class Carrier < FinchAPI::Internal::Type::BaseModel
+                attr_reader id: bool?
+
+                def id=: (bool) -> bool
+
+                attr_reader name: bool?
+
+                def name=: (bool) -> bool
+
+                def initialize: (?id: bool, ?name: bool) -> void
+
+                def to_hash: -> { id: bool, name: bool }
               end
             end
           end
