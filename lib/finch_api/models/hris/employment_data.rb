@@ -17,6 +17,14 @@ module FinchAPI
           #   @return [String]
           required :id, String
 
+          # @!attribute benefit_eligibility_class
+          #   The employer defined benefit eligibility class that groups an employee into a
+          #   set of eligible benefit plans, as stored by the provider. Null when not
+          #   configured.
+          #
+          #   @return [String, nil]
+          required :benefit_eligibility_class, String, nil?: true
+
           # @!attribute class_code
           #   Worker's compensation classification code for this employee
           #
@@ -185,12 +193,14 @@ module FinchAPI
           #   @return [String, nil]
           optional :work_id, String, nil?: true
 
-          # @!method initialize(id:, class_code:, department:, employment:, employment_status:, end_date:, first_name:, flsa_status:, highly_compensated_employee:, is_active:, key_employee:, last_name:, latest_rehire_date:, location:, manager:, middle_name:, start_date:, title:, union_code:, union_local:, custom_fields: nil, income: nil, income_history: nil, source_id: nil, work_id: nil)
+          # @!method initialize(id:, benefit_eligibility_class:, class_code:, department:, employment:, employment_status:, end_date:, first_name:, flsa_status:, highly_compensated_employee:, is_active:, key_employee:, last_name:, latest_rehire_date:, location:, manager:, middle_name:, start_date:, title:, union_code:, union_local:, custom_fields: nil, income: nil, income_history: nil, source_id: nil, work_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {FinchAPI::Models::HRIS::EmploymentData::EmploymentDataResponseBody} for more
           #   details.
           #
           #   @param id [String] A stable Finch `id` (UUID v4) for an individual in the company.
+          #
+          #   @param benefit_eligibility_class [String, nil] The employer defined benefit eligibility class that groups an employee into a se
           #
           #   @param class_code [String, nil] Worker's compensation classification code for this employee
           #

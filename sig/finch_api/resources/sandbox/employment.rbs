@@ -4,6 +4,7 @@ module FinchAPI
       class Employment
         def update: (
           String individual_id,
+          ?benefit_eligibility_class: String?,
           ?class_code: String?,
           ?custom_fields: ::Array[FinchAPI::Sandbox::EmploymentUpdateParams::CustomField]?,
           ?department: FinchAPI::Sandbox::EmploymentUpdateParams::Department?,

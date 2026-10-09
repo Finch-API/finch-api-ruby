@@ -9,9 +9,11 @@ module FinchAPI
         #
         # Update sandbox employment
         #
-        # @overload update(individual_id, class_code: nil, custom_fields: nil, department: nil, employment: nil, employment_status: nil, end_date: nil, first_name: nil, flsa_status: nil, highly_compensated_employee: nil, income: nil, income_history: nil, is_active: nil, key_employee: nil, last_name: nil, latest_rehire_date: nil, location: nil, manager: nil, middle_name: nil, source_id: nil, start_date: nil, title: nil, union_code: nil, union_local: nil, request_options: {})
+        # @overload update(individual_id, benefit_eligibility_class: nil, class_code: nil, custom_fields: nil, department: nil, employment: nil, employment_status: nil, end_date: nil, first_name: nil, flsa_status: nil, highly_compensated_employee: nil, income: nil, income_history: nil, is_active: nil, key_employee: nil, last_name: nil, latest_rehire_date: nil, location: nil, manager: nil, middle_name: nil, source_id: nil, start_date: nil, title: nil, union_code: nil, union_local: nil, request_options: {})
         #
         # @param individual_id [String]
+        #
+        # @param benefit_eligibility_class [String, nil] The employer defined benefit eligibility class that groups an employee into a se
         #
         # @param class_code [String, nil] Worker's compensation classification code for this employee
         #
