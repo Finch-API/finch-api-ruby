@@ -13,6 +13,7 @@ class FinchAPI::Test::Resources::Sandbox::EmploymentTest < FinchAPI::Test::Resou
     assert_pattern do
       response => {
         id: String | nil,
+        benefit_eligibility_class: String | nil,
         class_code: String | nil,
         custom_fields: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField]) | nil,
         department: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Department | nil,

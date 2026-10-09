@@ -11,6 +11,7 @@ module FinchAPI
         type employment_data_response_body =
           {
             id: String,
+            benefit_eligibility_class: String?,
             class_code: String?,
             department: FinchAPI::HRIS::EmploymentData::EmploymentDataResponseBody::Department?,
             employment: FinchAPI::HRIS::EmploymentData::EmploymentDataResponseBody::Employment?,
@@ -39,6 +40,8 @@ module FinchAPI
 
         class EmploymentDataResponseBody < FinchAPI::Internal::Type::BaseModel
           attr_accessor id: String
+
+          attr_accessor benefit_eligibility_class: String?
 
           attr_accessor class_code: String?
 
@@ -90,6 +93,7 @@ module FinchAPI
 
           def initialize: (
             id: String,
+            benefit_eligibility_class: String?,
             class_code: String?,
             department: FinchAPI::HRIS::EmploymentData::EmploymentDataResponseBody::Department?,
             employment: FinchAPI::HRIS::EmploymentData::EmploymentDataResponseBody::Employment?,
@@ -118,6 +122,7 @@ module FinchAPI
 
           def to_hash: -> {
             id: String,
+            benefit_eligibility_class: String?,
             class_code: String?,
             department: FinchAPI::HRIS::EmploymentData::EmploymentDataResponseBody::Department?,
             employment: FinchAPI::HRIS::EmploymentData::EmploymentDataResponseBody::Employment?,
