@@ -67,6 +67,12 @@ module FinchAPI
               )
             end
 
+          # The employer defined benefit eligibility class that groups an employee into a
+          # set of eligible benefit plans, as stored by the provider. Null when not
+          # configured.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :benefit_eligibility_class
+
           # Worker's compensation classification code for this employee
           sig { returns(T.nilable(String)) }
           attr_accessor :class_code
@@ -316,6 +322,7 @@ module FinchAPI
 
           sig do
             params(
+              benefit_eligibility_class: T.nilable(String),
               class_code: T.nilable(String),
               custom_fields:
                 T.nilable(
@@ -394,6 +401,10 @@ module FinchAPI
             ).returns(T.attached_class)
           end
           def self.new(
+            # The employer defined benefit eligibility class that groups an employee into a
+            # set of eligible benefit plans, as stored by the provider. Null when not
+            # configured.
+            benefit_eligibility_class: nil,
             # Worker's compensation classification code for this employee
             class_code: nil,
             # Custom fields for the individual. These are fields which are defined by the
@@ -472,6 +483,7 @@ module FinchAPI
           sig do
             override.returns(
               {
+                benefit_eligibility_class: T.nilable(String),
                 class_code: T.nilable(String),
                 custom_fields:
                   T.nilable(

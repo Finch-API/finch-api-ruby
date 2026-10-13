@@ -4,6 +4,7 @@ module FinchAPI
       type employment_update_response =
         {
           id: String,
+          benefit_eligibility_class: String?,
           class_code: String?,
           custom_fields: ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField]?,
           department: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Department?,
@@ -33,6 +34,8 @@ module FinchAPI
         attr_reader id: String?
 
         def id=: (String) -> String
+
+        attr_accessor benefit_eligibility_class: String?
 
         attr_accessor class_code: String?
 
@@ -82,6 +85,7 @@ module FinchAPI
 
         def initialize: (
           ?id: String,
+          ?benefit_eligibility_class: String?,
           ?class_code: String?,
           ?custom_fields: ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField]?,
           ?department: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Department?,
@@ -109,6 +113,7 @@ module FinchAPI
 
         def to_hash: -> {
           id: String,
+          benefit_eligibility_class: String?,
           class_code: String?,
           custom_fields: ::Array[FinchAPI::Models::Sandbox::EmploymentUpdateResponse::CustomField]?,
           department: FinchAPI::Models::Sandbox::EmploymentUpdateResponse::Department?,

@@ -27,6 +27,7 @@ module FinchAPI
 
         type body =
           {
+            benefit_eligibility_class: String?,
             class_code: String?,
             custom_fields: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField]?,
             department: FinchAPI::Sandbox::DirectoryCreateParams::Body::Department?,
@@ -63,6 +64,8 @@ module FinchAPI
           }
 
         class Body < FinchAPI::Internal::Type::BaseModel
+          attr_accessor benefit_eligibility_class: String?
+
           attr_accessor class_code: String?
 
           attr_accessor custom_fields: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField]?
@@ -130,6 +133,7 @@ module FinchAPI
           attr_accessor union_local: String?
 
           def initialize: (
+            ?benefit_eligibility_class: String?,
             ?class_code: String?,
             ?custom_fields: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField]?,
             ?department: FinchAPI::Sandbox::DirectoryCreateParams::Body::Department?,
@@ -166,6 +170,7 @@ module FinchAPI
           ) -> void
 
           def to_hash: -> {
+            benefit_eligibility_class: String?,
             class_code: String?,
             custom_fields: ::Array[FinchAPI::Sandbox::DirectoryCreateParams::Body::CustomField]?,
             department: FinchAPI::Sandbox::DirectoryCreateParams::Body::Department?,

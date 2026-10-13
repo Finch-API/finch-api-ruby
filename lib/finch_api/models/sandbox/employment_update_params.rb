@@ -13,6 +13,14 @@ module FinchAPI
         #   @return [String]
         required :individual_id, String
 
+        # @!attribute benefit_eligibility_class
+        #   The employer defined benefit eligibility class that groups an employee into a
+        #   set of eligible benefit plans, as stored by the provider. Null when not
+        #   configured.
+        #
+        #   @return [String, nil]
+        optional :benefit_eligibility_class, String, nil?: true
+
         # @!attribute class_code
         #   Worker's compensation classification code for this employee
         #
@@ -163,11 +171,13 @@ module FinchAPI
         #   @return [String, nil]
         optional :union_local, String, nil?: true
 
-        # @!method initialize(individual_id:, class_code: nil, custom_fields: nil, department: nil, employment: nil, employment_status: nil, end_date: nil, first_name: nil, flsa_status: nil, highly_compensated_employee: nil, income: nil, income_history: nil, is_active: nil, key_employee: nil, last_name: nil, latest_rehire_date: nil, location: nil, manager: nil, middle_name: nil, source_id: nil, start_date: nil, title: nil, union_code: nil, union_local: nil, request_options: {})
+        # @!method initialize(individual_id:, benefit_eligibility_class: nil, class_code: nil, custom_fields: nil, department: nil, employment: nil, employment_status: nil, end_date: nil, first_name: nil, flsa_status: nil, highly_compensated_employee: nil, income: nil, income_history: nil, is_active: nil, key_employee: nil, last_name: nil, latest_rehire_date: nil, location: nil, manager: nil, middle_name: nil, source_id: nil, start_date: nil, title: nil, union_code: nil, union_local: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {FinchAPI::Models::Sandbox::EmploymentUpdateParams} for more details.
         #
         #   @param individual_id [String]
+        #
+        #   @param benefit_eligibility_class [String, nil] The employer defined benefit eligibility class that groups an employee into a se
         #
         #   @param class_code [String, nil] Worker's compensation classification code for this employee
         #

@@ -24,6 +24,14 @@ module FinchAPI
         #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 
         class Body < FinchAPI::Internal::Type::BaseModel
+          # @!attribute benefit_eligibility_class
+          #   The employer defined benefit eligibility class that groups an employee into a
+          #   set of eligible benefit plans, as stored by the provider. Null when not
+          #   configured.
+          #
+          #   @return [String, nil]
+          optional :benefit_eligibility_class, String, nil?: true
+
           # @!attribute class_code
           #   Worker's compensation classification code for this employee
           #
@@ -255,9 +263,11 @@ module FinchAPI
           #   @return [String, nil]
           optional :union_local, String, nil?: true
 
-          # @!method initialize(class_code: nil, custom_fields: nil, department: nil, dob: nil, emails: nil, employment: nil, employment_status: nil, encrypted_ssn: nil, end_date: nil, ethnicity: nil, first_name: nil, flsa_status: nil, gender: nil, highly_compensated_employee: nil, income: nil, income_history: nil, is_active: nil, key_employee: nil, last_name: nil, latest_rehire_date: nil, location: nil, manager: nil, marital_status: nil, middle_name: nil, phone_numbers: nil, preferred_name: nil, residence: nil, source_id: nil, ssn: nil, start_date: nil, title: nil, union_code: nil, union_local: nil)
+          # @!method initialize(benefit_eligibility_class: nil, class_code: nil, custom_fields: nil, department: nil, dob: nil, emails: nil, employment: nil, employment_status: nil, encrypted_ssn: nil, end_date: nil, ethnicity: nil, first_name: nil, flsa_status: nil, gender: nil, highly_compensated_employee: nil, income: nil, income_history: nil, is_active: nil, key_employee: nil, last_name: nil, latest_rehire_date: nil, location: nil, manager: nil, marital_status: nil, middle_name: nil, phone_numbers: nil, preferred_name: nil, residence: nil, source_id: nil, ssn: nil, start_date: nil, title: nil, union_code: nil, union_local: nil)
           #   Some parameter documentations has been truncated, see
           #   {FinchAPI::Models::Sandbox::DirectoryCreateParams::Body} for more details.
+          #
+          #   @param benefit_eligibility_class [String, nil] The employer defined benefit eligibility class that groups an employee into a se
           #
           #   @param class_code [String, nil] Worker's compensation classification code for this employee
           #
