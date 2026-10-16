@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.0-alpha.61](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.60...v0.1.0-alpha.61) (2026-10-16)
+
+
+### Chores
+
+* **api:** rebuild SDK ([d232b31](https://github.com/Finch-API/finch-api-ruby/commit/d232b3150eab252a1dc56de39201fe316938db71))
+
 ## [0.1.0-alpha.60](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.59...v0.1.0-alpha.60) (2026-10-13)
 
 
