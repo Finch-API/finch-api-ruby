@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.0-alpha.60](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.59...v0.1.0-alpha.60) (2026-10-13)
+
+
+### Features
+
+* **employment:** expose benefit_eligibility_class on the API surface [INT-4092] ([5bd28e8](https://github.com/Finch-API/finch-api-ruby/commit/5bd28e84fe7d95f7731b0b4d752be7561e37172b))
+
+
+### Chores
+
+* **api:** rebuild SDK ([e544049](https://github.com/Finch-API/finch-api-ruby/commit/e544049748fe698fadb1615c36f7190fdd6eff8c))
+
 ## [0.1.0-alpha.59](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.58...v0.1.0-alpha.59) (2026-10-01)
 
 
