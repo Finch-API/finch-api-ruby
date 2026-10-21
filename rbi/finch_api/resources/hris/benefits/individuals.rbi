@@ -26,7 +26,9 @@ module FinchAPI
             # Path param
             benefit_id,
             # Query param: The entity IDs to specify which entities' data to access. Provide
-            # exactly one entity ID per request; a maximum of one is accepted.
+            # exactly one entity ID per request; a maximum of one is accepted. Required when
+            # the connection has more than one entity — omitting it returns a `400`
+            # `invalid_request_error`. Optional for single-entity connections.
             entity_ids: nil,
             # Body param: Array of the individual_id to enroll and a configuration object.
             individuals: nil,
@@ -47,7 +49,9 @@ module FinchAPI
           def enrolled_ids(
             benefit_id,
             # The entity IDs to specify which entities' data to access. Provide exactly one
-            # entity ID per request; a maximum of one is accepted.
+            # entity ID per request; a maximum of one is accepted. Required when the
+            # connection has more than one entity — omitting it returns a `400`
+            # `invalid_request_error`. Optional for single-entity connections.
             entity_ids: nil,
             request_options: {}
           )
@@ -69,7 +73,9 @@ module FinchAPI
           def retrieve_many_benefits(
             benefit_id,
             # The entity IDs to specify which entities' data to access. Provide exactly one
-            # entity ID per request; a maximum of one is accepted.
+            # entity ID per request; a maximum of one is accepted. Required when the
+            # connection has more than one entity — omitting it returns a `400`
+            # `invalid_request_error`. Optional for single-entity connections.
             entity_ids: nil,
             # comma-delimited list of stable Finch uuids for each individual. If empty,
             # defaults to all individuals
@@ -93,7 +99,9 @@ module FinchAPI
             # Path param
             benefit_id,
             # Query param: The entity IDs to specify which entities' data to access. Provide
-            # exactly one entity ID per request; a maximum of one is accepted.
+            # exactly one entity ID per request; a maximum of one is accepted. Required when
+            # the connection has more than one entity — omitting it returns a `400`
+            # `invalid_request_error`. Optional for single-entity connections.
             entity_ids: nil,
             # Body param: Array of individual_ids to unenroll.
             individual_ids: nil,

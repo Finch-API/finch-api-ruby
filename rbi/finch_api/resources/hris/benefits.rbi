@@ -24,7 +24,9 @@ module FinchAPI
         end
         def create(
           # Query param: The entity IDs to specify which entities' data to access. Provide
-          # exactly one entity ID per request; a maximum of one is accepted.
+          # exactly one entity ID per request; a maximum of one is accepted. Required when
+          # the connection has more than one entity — omitting it returns a `400`
+          # `invalid_request_error`. Optional for single-entity connections.
           entity_ids: nil,
           # Body param: The company match for this benefit.
           company_contribution: nil,
@@ -51,7 +53,9 @@ module FinchAPI
         def retrieve(
           benefit_id,
           # The entity IDs to specify which entities' data to access. Provide exactly one
-          # entity ID per request; a maximum of one is accepted.
+          # entity ID per request; a maximum of one is accepted. Required when the
+          # connection has more than one entity — omitting it returns a `400`
+          # `invalid_request_error`. Optional for single-entity connections.
           entity_ids: nil,
           request_options: {}
         )
@@ -70,7 +74,9 @@ module FinchAPI
           # Path param
           benefit_id,
           # Query param: The entity IDs to specify which entities' data to access. Provide
-          # exactly one entity ID per request; a maximum of one is accepted.
+          # exactly one entity ID per request; a maximum of one is accepted. Required when
+          # the connection has more than one entity — omitting it returns a `400`
+          # `invalid_request_error`. Optional for single-entity connections.
           entity_ids: nil,
           # Body param: Updated name or description.
           description: nil,
@@ -89,7 +95,9 @@ module FinchAPI
         end
         def list(
           # The entity IDs to specify which entities' data to access. Provide exactly one
-          # entity ID per request; a maximum of one is accepted.
+          # entity ID per request; a maximum of one is accepted. Required when the
+          # connection has more than one entity — omitting it returns a `400`
+          # `invalid_request_error`. Optional for single-entity connections.
           entity_ids: nil,
           request_options: {}
         )
@@ -106,7 +114,9 @@ module FinchAPI
         end
         def list_supported_benefits(
           # The entity IDs to specify which entities' data to access. Provide exactly one
-          # entity ID per request; a maximum of one is accepted.
+          # entity ID per request; a maximum of one is accepted. Required when the
+          # connection has more than one entity — omitting it returns a `400`
+          # `invalid_request_error`. Optional for single-entity connections.
           entity_ids: nil,
           request_options: {}
         )
@@ -125,7 +135,9 @@ module FinchAPI
         end
         def register(
           # Query param: The entity IDs to specify which entities' data to access. Provide
-          # exactly one entity ID per request; a maximum of one is accepted.
+          # exactly one entity ID per request; a maximum of one is accepted. Required when
+          # the connection has more than one entity — omitting it returns a `400`
+          # `invalid_request_error`. Optional for single-entity connections.
           entity_ids: nil,
           # Body param
           description: nil,

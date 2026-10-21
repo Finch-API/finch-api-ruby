@@ -17,7 +17,9 @@ module FinchAPI
             end
 
           # The entity IDs to create the rule for. Provide exactly one entity ID per
-          # request; a maximum of one is accepted.
+          # request; a maximum of one is accepted. Required when the connection has more
+          # than one entity — omitting it returns a `400` `invalid_request_error`. Optional
+          # for single-entity connections.
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :entity_ids
 
@@ -107,7 +109,9 @@ module FinchAPI
           end
           def self.new(
             # The entity IDs to create the rule for. Provide exactly one entity ID per
-            # request; a maximum of one is accepted.
+            # request; a maximum of one is accepted. Required when the connection has more
+            # than one entity — omitting it returns a `400` `invalid_request_error`. Optional
+            # for single-entity connections.
             entity_ids: nil,
             # Specifies the fields to be applied when the condition is met.
             attributes: nil,
