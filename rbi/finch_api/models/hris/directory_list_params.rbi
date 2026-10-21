@@ -16,7 +16,9 @@ module FinchAPI
           end
 
         # The entity IDs to specify which entities' data to access. Provide exactly one
-        # entity ID per request; a maximum of one is accepted.
+        # entity ID per request; a maximum of one is accepted. Required when the
+        # connection has more than one entity — omitting it returns a `400`
+        # `invalid_request_error`. Optional for single-entity connections.
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :entity_ids
 
@@ -47,7 +49,9 @@ module FinchAPI
         end
         def self.new(
           # The entity IDs to specify which entities' data to access. Provide exactly one
-          # entity ID per request; a maximum of one is accepted.
+          # entity ID per request; a maximum of one is accepted. Required when the
+          # connection has more than one entity — omitting it returns a `400`
+          # `invalid_request_error`. Optional for single-entity connections.
           entity_ids: nil,
           # Number of employees to return (defaults to 100, maximum 10000)
           limit: nil,

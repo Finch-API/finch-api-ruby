@@ -29,7 +29,9 @@ module FinchAPI
           end
           def create(
             # Query param: The entity IDs to create the rule for. Provide exactly one entity
-            # ID per request; a maximum of one is accepted.
+            # ID per request; a maximum of one is accepted. Required when the connection has
+            # more than one entity — omitting it returns a `400` `invalid_request_error`.
+            # Optional for single-entity connections.
             entity_ids: nil,
             # Body param: Specifies the fields to be applied when the condition is met.
             attributes: nil,
@@ -61,7 +63,9 @@ module FinchAPI
             # Path param
             rule_id,
             # Query param: The entity IDs to update the rule for. Provide exactly one entity
-            # ID per request; a maximum of one is accepted.
+            # ID per request; a maximum of one is accepted. Required when the connection has
+            # more than one entity — omitting it returns a `400` `invalid_request_error`.
+            # Optional for single-entity connections.
             entity_ids: nil,
             # Body param
             optional_property: nil,
@@ -82,7 +86,9 @@ module FinchAPI
           end
           def list(
             # The entity IDs to retrieve rules for. Provide exactly one entity ID per request;
-            # a maximum of one is accepted.
+            # a maximum of one is accepted. Required when the connection has more than one
+            # entity — omitting it returns a `400` `invalid_request_error`. Optional for
+            # single-entity connections.
             entity_ids: nil,
             request_options: {}
           )
@@ -101,7 +107,9 @@ module FinchAPI
           def delete(
             rule_id,
             # The entity IDs to delete the rule for. Provide exactly one entity ID per
-            # request; a maximum of one is accepted.
+            # request; a maximum of one is accepted. Required when the connection has more
+            # than one entity — omitting it returns a `400` `invalid_request_error`. Optional
+            # for single-entity connections.
             entity_ids: nil,
             request_options: {}
           )

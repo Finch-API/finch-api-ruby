@@ -20,7 +20,9 @@ module FinchAPI
           attr_accessor :benefit_id
 
           # The entity IDs to specify which entities' data to access. Provide exactly one
-          # entity ID per request; a maximum of one is accepted.
+          # entity ID per request; a maximum of one is accepted. Required when the
+          # connection has more than one entity — omitting it returns a `400`
+          # `invalid_request_error`. Optional for single-entity connections.
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :entity_ids
 
@@ -46,7 +48,9 @@ module FinchAPI
           def self.new(
             benefit_id:,
             # The entity IDs to specify which entities' data to access. Provide exactly one
-            # entity ID per request; a maximum of one is accepted.
+            # entity ID per request; a maximum of one is accepted. Required when the
+            # connection has more than one entity — omitting it returns a `400`
+            # `invalid_request_error`. Optional for single-entity connections.
             entity_ids: nil,
             # comma-delimited list of stable Finch uuids for each individual. If empty,
             # defaults to all individuals

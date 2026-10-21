@@ -26,7 +26,9 @@ module FinchAPI
         attr_accessor :start_date
 
         # The entity IDs to specify which entities' data to access. Provide exactly one
-        # entity ID per request; a maximum of one is accepted.
+        # entity ID per request; a maximum of one is accepted. Required when the
+        # connection has more than one entity — omitting it returns a `400`
+        # `invalid_request_error`. Optional for single-entity connections.
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :entity_ids
 
@@ -49,7 +51,9 @@ module FinchAPI
           # format. Filters payments by their **pay_date** field.
           start_date:,
           # The entity IDs to specify which entities' data to access. Provide exactly one
-          # entity ID per request; a maximum of one is accepted.
+          # entity ID per request; a maximum of one is accepted. Required when the
+          # connection has more than one entity — omitting it returns a `400`
+          # `invalid_request_error`. Optional for single-entity connections.
           entity_ids: nil,
           request_options: {}
         )
