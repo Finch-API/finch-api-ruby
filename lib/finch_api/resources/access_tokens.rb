@@ -3,6 +3,9 @@
 module FinchAPI
   module Resources
     class AccessTokens
+      # Some parameter documentations has been truncated, see
+      # {FinchAPI::Models::AccessTokenCreateParams} for more details.
+      #
       # Exchange the authorization code for an access token
       #
       # @overload create(code:, client_id: nil, client_secret: nil, redirect_uri: nil, request_options: {})
@@ -13,7 +16,7 @@ module FinchAPI
       #
       # @param client_secret [String] The client secret for your application
       #
-      # @param redirect_uri [String] The redirect URI used in the authorization request (optional)
+      # @param redirect_uri [String] The redirect URI used when creating the Connect session. Required if the authori
       #
       # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
       #

@@ -50,7 +50,9 @@ module FinchAPI
           # `recordkeeping` product is requested. Currently supports `recordkeeper` set to
           # `voya`, `empower`, `fidelity`, or `transamerica`.
           recordkeeping: nil,
-          # The URI to redirect to after the Connect flow is completed
+          # The URI to redirect to after the Connect flow is completed. Required if you use
+          # the redirect flow, and it must be registered on the Credentials tab of the Finch
+          # Developer Dashboard. Omit it for the embedded flow (Connect SDK).
           redirect_uri: nil,
           # Sandbox mode for testing
           sandbox: nil,
@@ -83,7 +85,9 @@ module FinchAPI
           # `benefits` to access deductions endpoints — `deduction` is a deprecated alias
           # that is still accepted but should not be combined with `benefits`.
           products: nil,
-          # The URI to redirect to after the Connect flow is completed
+          # The URI to redirect to after the Connect flow is completed. Required if you use
+          # the redirect flow, and it must be registered on the Credentials tab of the Finch
+          # Developer Dashboard. Omit it for the embedded flow (Connect SDK).
           redirect_uri: nil,
           request_options: {}
         )
