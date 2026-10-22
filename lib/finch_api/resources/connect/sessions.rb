@@ -27,7 +27,7 @@ module FinchAPI
         #
         # @param recordkeeping [FinchAPI::Models::Connect::SessionNewParams::Recordkeeping, nil] Optional recordkeeping configuration. Can only be provided when the `recordkeepi
         #
-        # @param redirect_uri [String, nil] The URI to redirect to after the Connect flow is completed
+        # @param redirect_uri [String, nil] The URI to redirect to after the Connect flow is completed. Required if you use
         #
         # @param sandbox [Symbol, FinchAPI::Models::Connect::SessionNewParams::Sandbox, nil] Sandbox mode for testing
         #
@@ -61,7 +61,7 @@ module FinchAPI
         #
         # @param products [Array<Symbol, FinchAPI::Models::Connect::SessionReauthenticateParams::Product>, nil] The products to request access to (optional for reauthentication). Use `benefits
         #
-        # @param redirect_uri [String, nil] The URI to redirect to after the Connect flow is completed
+        # @param redirect_uri [String, nil] The URI to redirect to after the Connect flow is completed. Required if you use
         #
         # @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}, nil]
         #

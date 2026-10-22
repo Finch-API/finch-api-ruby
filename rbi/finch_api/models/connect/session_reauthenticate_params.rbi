@@ -41,7 +41,9 @@ module FinchAPI
         end
         attr_accessor :products
 
-        # The URI to redirect to after the Connect flow is completed
+        # The URI to redirect to after the Connect flow is completed. Required if you use
+        # the redirect flow, and it must be registered on the Credentials tab of the Finch
+        # Developer Dashboard. Omit it for the embedded flow (Connect SDK).
         sig { returns(T.nilable(String)) }
         attr_accessor :redirect_uri
 
@@ -69,7 +71,9 @@ module FinchAPI
           # `benefits` to access deductions endpoints — `deduction` is a deprecated alias
           # that is still accepted but should not be combined with `benefits`.
           products: nil,
-          # The URI to redirect to after the Connect flow is completed
+          # The URI to redirect to after the Connect flow is completed. Required if you use
+          # the redirect flow, and it must be registered on the Credentials tab of the Finch
+          # Developer Dashboard. Omit it for the embedded flow (Connect SDK).
           redirect_uri: nil,
           request_options: {}
         )

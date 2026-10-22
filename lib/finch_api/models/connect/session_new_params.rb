@@ -63,7 +63,9 @@ module FinchAPI
         optional :recordkeeping, -> { FinchAPI::Connect::SessionNewParams::Recordkeeping }, nil?: true
 
         # @!attribute redirect_uri
-        #   The URI to redirect to after the Connect flow is completed
+        #   The URI to redirect to after the Connect flow is completed. Required if you use
+        #   the redirect flow, and it must be registered on the Credentials tab of the Finch
+        #   Developer Dashboard. Omit it for the embedded flow (Connect SDK).
         #
         #   @return [String, nil]
         optional :redirect_uri, String, nil?: true
@@ -94,7 +96,7 @@ module FinchAPI
         #
         #   @param recordkeeping [FinchAPI::Models::Connect::SessionNewParams::Recordkeeping, nil] Optional recordkeeping configuration. Can only be provided when the `recordkeepi
         #
-        #   @param redirect_uri [String, nil] The URI to redirect to after the Connect flow is completed
+        #   @param redirect_uri [String, nil] The URI to redirect to after the Connect flow is completed. Required if you use
         #
         #   @param sandbox [Symbol, FinchAPI::Models::Connect::SessionNewParams::Sandbox, nil] Sandbox mode for testing
         #

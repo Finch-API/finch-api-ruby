@@ -34,7 +34,9 @@ module FinchAPI
                  nil?: true
 
         # @!attribute redirect_uri
-        #   The URI to redirect to after the Connect flow is completed
+        #   The URI to redirect to after the Connect flow is completed. Required if you use
+        #   the redirect flow, and it must be registered on the Credentials tab of the Finch
+        #   Developer Dashboard. Omit it for the embedded flow (Connect SDK).
         #
         #   @return [String, nil]
         optional :redirect_uri, String, nil?: true
@@ -49,7 +51,7 @@ module FinchAPI
         #
         #   @param products [Array<Symbol, FinchAPI::Models::Connect::SessionReauthenticateParams::Product>, nil] The products to request access to (optional for reauthentication). Use `benefits
         #
-        #   @param redirect_uri [String, nil] The URI to redirect to after the Connect flow is completed
+        #   @param redirect_uri [String, nil] The URI to redirect to after the Connect flow is completed. Required if you use
         #
         #   @param request_options [FinchAPI::RequestOptions, Hash{Symbol=>Object}]
 
