@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.1.0-alpha.61](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.60...v0.1.0-alpha.61) (2026-10-22)
+
+
+### Chores
+
+* **api:** rebuild SDK ([d232b31](https://github.com/Finch-API/finch-api-ruby/commit/d232b3150eab252a1dc56de39201fe316938db71))
+
+
+### Documentation
+
+* **spec:** clarify redirect_uri requirement on connect and token endpoints [DDR-1050] ([d5ea0da](https://github.com/Finch-API/finch-api-ruby/commit/d5ea0dac0b4270a4e4929c9bfe20d4b394713c2d))
+* **spec:** document missing entity_ids error for multi-entity connections [DDR-1051] ([7bb4ab7](https://github.com/Finch-API/finch-api-ruby/commit/7bb4ab7e788b6f5b078257838876a10e73ca8446))
+
 ## [0.1.0-alpha.60](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.59...v0.1.0-alpha.60) (2026-10-13)
 
 
