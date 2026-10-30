@@ -20,7 +20,7 @@ module FinchAPI
         attr_accessor :connection_id
 
         # The number of minutes until the session expires (defaults to 43,200, which is 30
-        # days)
+        # days). Must be between 1 and 129,600 (90 days).
         sig { returns(T.nilable(Integer)) }
         attr_reader :minutes_to_expire
 
@@ -65,7 +65,7 @@ module FinchAPI
           # The ID of the existing connection to reauthenticate
           connection_id:,
           # The number of minutes until the session expires (defaults to 43,200, which is 30
-          # days)
+          # days). Must be between 1 and 129,600 (90 days).
           minutes_to_expire: nil,
           # The products to request access to (optional for reauthentication). Use
           # `benefits` to access deductions endpoints — `deduction` is a deprecated alias
