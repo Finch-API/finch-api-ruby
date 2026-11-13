@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.1.0-alpha.63](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.62...v0.1.0-alpha.63) (2026-11-13)
+
+
+### Features
+
+* **benefit-plan-admin:** accept coverage date, individual and plan filters on the list endpoints [DDR-1177] ([574f48d](https://github.com/Finch-API/finch-api-ruby/commit/574f48d7664249003272be91e078f01435f4aa70))
+
+
+### Chores
+
+* **api:** rebuild SDK ([8867f4b](https://github.com/Finch-API/finch-api-ruby/commit/8867f4bfa55570a8b568f2efeb841d41a0f3398e))
+* **codeowners:** DEVOPS-390 Transfer SDK ownership to Data Delivery ([#220](https://github.com/Finch-API/finch-api-ruby/issues/220)) ([f9a90d1](https://github.com/Finch-API/finch-api-ruby/commit/f9a90d1f0f7474238e4e3a11e9ea55f837d345f6))
+* **codeowners:** transfer ownership to data delivery ([f9a90d1](https://github.com/Finch-API/finch-api-ruby/commit/f9a90d1f0f7474238e4e3a11e9ea55f837d345f6))
+
 ## [0.1.0-alpha.62](https://github.com/Finch-API/finch-api-ruby/compare/v0.1.0-alpha.61...v0.1.0-alpha.62) (2026-10-30)
 
 
