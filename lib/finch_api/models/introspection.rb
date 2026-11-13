@@ -61,7 +61,7 @@ module FinchAPI
       #   instead of this account ID
       #
       #   @return [String, nil]
-      optional :account_id, String
+      optional :account_id, String, nil?: true
 
       # @!attribute authentication_methods
       #
@@ -73,7 +73,7 @@ module FinchAPI
       #   The Finch UUID of the company associated with the `access_token`.
       #
       #   @return [String, nil]
-      optional :company_id, String
+      optional :company_id, String, nil?: true
 
       # @!attribute customer_email
       #   The email of your customer you provided to Finch when a connect session was
@@ -146,11 +146,11 @@ module FinchAPI
       #
       #   @param provider_id [String] The ID of the provider associated with the `access_token`.
       #
-      #   @param account_id [String] [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection ins
+      #   @param account_id [String, nil] [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection ins
       #
       #   @param authentication_methods [Array<FinchAPI::Models::Introspection::AuthenticationMethod>]
       #
-      #   @param company_id [String] The Finch UUID of the company associated with the `access_token`.
+      #   @param company_id [String, nil] The Finch UUID of the company associated with the `access_token`.
       #
       #   @param customer_email [String, nil] The email of your customer you provided to Finch when a connect session was crea
       #

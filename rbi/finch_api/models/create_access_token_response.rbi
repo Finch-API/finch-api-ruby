@@ -55,17 +55,11 @@ module FinchAPI
       # [DEPRECATED] Use `connection_id` to identify the connection instead of this
       # account ID
       sig { returns(T.nilable(String)) }
-      attr_reader :account_id
-
-      sig { params(account_id: String).void }
-      attr_writer :account_id
+      attr_accessor :account_id
 
       # The Finch UUID of the company associated with the `access_token`.
       sig { returns(T.nilable(String)) }
-      attr_reader :company_id
-
-      sig { params(company_id: String).void }
-      attr_writer :company_id
+      attr_accessor :company_id
 
       # The ID of your customer you provided to Finch when a connect session was created
       # for this connection
@@ -89,8 +83,8 @@ module FinchAPI
           products: T::Array[String],
           provider_id: String,
           token_type: String,
-          account_id: String,
-          company_id: String,
+          account_id: T.nilable(String),
+          company_id: T.nilable(String),
           customer_id: T.nilable(String),
           customer_name: T.nilable(String)
         ).returns(T.attached_class)
@@ -142,8 +136,8 @@ module FinchAPI
             products: T::Array[String],
             provider_id: String,
             token_type: String,
-            account_id: String,
-            company_id: String,
+            account_id: T.nilable(String),
+            company_id: T.nilable(String),
             customer_id: T.nilable(String),
             customer_name: T.nilable(String)
           }
