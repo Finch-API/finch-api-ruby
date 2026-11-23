@@ -5,6 +5,7 @@ module FinchAPI
         {
           body: ::Array[top?]?,
           job_id: String,
+          sla_deadline: Time,
           status: FinchAPI::Models::Jobs::ManualAsyncJob::status
         }
 
@@ -13,17 +14,21 @@ module FinchAPI
 
         attr_accessor job_id: String
 
+        attr_accessor sla_deadline: Time
+
         attr_accessor status: FinchAPI::Models::Jobs::ManualAsyncJob::status
 
         def initialize: (
           body: ::Array[top?]?,
           job_id: String,
+          sla_deadline: Time,
           status: FinchAPI::Models::Jobs::ManualAsyncJob::status
         ) -> void
 
         def to_hash: -> {
           body: ::Array[top?]?,
           job_id: String,
+          sla_deadline: Time,
           status: FinchAPI::Models::Jobs::ManualAsyncJob::status
         }
 

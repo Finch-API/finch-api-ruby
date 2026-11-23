@@ -16,6 +16,11 @@ module FinchAPI
         sig { returns(String) }
         attr_accessor :job_id
 
+        # The datetime by which the job is expected to be completed. Only returned for
+        # jobs that include requests Finch processes manually (assisted).
+        sig { returns(Time) }
+        attr_accessor :sla_deadline
+
         sig { returns(FinchAPI::Jobs::ManualAsyncJob::Status::TaggedSymbol) }
         attr_accessor :status
 
@@ -23,6 +28,7 @@ module FinchAPI
           params(
             body: T.nilable(T::Array[T.nilable(T.anything)]),
             job_id: String,
+            sla_deadline: Time,
             status: FinchAPI::Jobs::ManualAsyncJob::Status::OrSymbol
           ).returns(T.attached_class)
         end
@@ -30,6 +36,9 @@ module FinchAPI
           # Specific information about the job, such as individual statuses for batch jobs.
           body:,
           job_id:,
+          # The datetime by which the job is expected to be completed. Only returned for
+          # jobs that include requests Finch processes manually (assisted).
+          sla_deadline:,
           status:
         )
         end
@@ -39,6 +48,7 @@ module FinchAPI
             {
               body: T.nilable(T::Array[T.nilable(T.anything)]),
               job_id: String,
+              sla_deadline: Time,
               status: FinchAPI::Jobs::ManualAsyncJob::Status::TaggedSymbol
             }
           )
