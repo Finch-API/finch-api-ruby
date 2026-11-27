@@ -14,6 +14,7 @@ class FinchAPI::Test::Resources::Jobs::ManualTest < FinchAPI::Test::ResourceTest
       response => {
         body: ^(FinchAPI::Internal::Type::ArrayOf[FinchAPI::Internal::Type::Unknown, nil?: true]) | nil,
         job_id: String,
+        sla_deadline: Time,
         status: FinchAPI::Jobs::ManualAsyncJob::Status
       }
     end

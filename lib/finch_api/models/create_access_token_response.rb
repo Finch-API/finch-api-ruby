@@ -62,13 +62,13 @@ module FinchAPI
       #   account ID
       #
       #   @return [String, nil]
-      optional :account_id, String
+      optional :account_id, String, nil?: true
 
       # @!attribute company_id
       #   The Finch UUID of the company associated with the `access_token`.
       #
       #   @return [String, nil]
-      optional :company_id, String
+      optional :company_id, String, nil?: true
 
       # @!attribute customer_id
       #   The ID of your customer you provided to Finch when a connect session was created
@@ -104,9 +104,9 @@ module FinchAPI
       #
       #   @param token_type [String] The RFC 8693 token type (Finch uses `bearer` tokens)
       #
-      #   @param account_id [String] [DEPRECATED] Use `connection_id` to identify the connection instead of this acco
+      #   @param account_id [String, nil] [DEPRECATED] Use `connection_id` to identify the connection instead of this acco
       #
-      #   @param company_id [String] The Finch UUID of the company associated with the `access_token`.
+      #   @param company_id [String, nil] The Finch UUID of the company associated with the `access_token`.
       #
       #   @param customer_id [String, nil] The ID of your customer you provided to Finch when a connect session was created
       #

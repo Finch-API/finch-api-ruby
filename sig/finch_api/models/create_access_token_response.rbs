@@ -10,8 +10,8 @@ module FinchAPI
         products: ::Array[String],
         provider_id: String,
         token_type: String,
-        account_id: String,
-        company_id: String,
+        account_id: String?,
+        company_id: String?,
         customer_id: String?,
         customer_name: String?
       }
@@ -33,13 +33,9 @@ module FinchAPI
 
       attr_accessor token_type: String
 
-      attr_reader account_id: String?
+      attr_accessor account_id: String?
 
-      def account_id=: (String) -> String
-
-      attr_reader company_id: String?
-
-      def company_id=: (String) -> String
+      attr_accessor company_id: String?
 
       attr_accessor customer_id: String?
 
@@ -54,8 +50,8 @@ module FinchAPI
         products: ::Array[String],
         provider_id: String,
         token_type: String,
-        ?account_id: String,
-        ?company_id: String,
+        ?account_id: String?,
+        ?company_id: String?,
         ?customer_id: String?,
         ?customer_name: String?
       ) -> void
@@ -69,8 +65,8 @@ module FinchAPI
         products: ::Array[String],
         provider_id: String,
         token_type: String,
-        account_id: String,
-        company_id: String,
+        account_id: String?,
+        company_id: String?,
         customer_id: String?,
         customer_name: String?
       }

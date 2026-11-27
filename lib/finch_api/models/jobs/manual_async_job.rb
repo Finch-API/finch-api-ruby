@@ -18,15 +18,27 @@ module FinchAPI
         #   @return [String]
         required :job_id, String
 
+        # @!attribute sla_deadline
+        #   The datetime by which the job is expected to be completed. Only returned for
+        #   jobs that include requests Finch processes manually (assisted).
+        #
+        #   @return [Time]
+        required :sla_deadline, Time
+
         # @!attribute status
         #
         #   @return [Symbol, FinchAPI::Models::Jobs::ManualAsyncJob::Status]
         required :status, enum: -> { FinchAPI::Jobs::ManualAsyncJob::Status }
 
-        # @!method initialize(body:, job_id:, status:)
+        # @!method initialize(body:, job_id:, sla_deadline:, status:)
+        #   Some parameter documentations has been truncated, see
+        #   {FinchAPI::Models::Jobs::ManualAsyncJob} for more details.
+        #
         #   @param body [Array<Object, nil>, nil] Specific information about the job, such as individual statuses for batch jobs.
         #
         #   @param job_id [String]
+        #
+        #   @param sla_deadline [Time] The datetime by which the job is expected to be completed. Only returned for job
         #
         #   @param status [Symbol, FinchAPI::Models::Jobs::ManualAsyncJob::Status]
 

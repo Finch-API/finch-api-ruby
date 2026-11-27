@@ -10,9 +10,9 @@ module FinchAPI
         connection_type: FinchAPI::Models::Introspection::connection_type,
         products: ::Array[String],
         provider_id: String,
-        account_id: String,
+        account_id: String?,
         authentication_methods: ::Array[FinchAPI::Introspection::AuthenticationMethod],
-        company_id: String,
+        company_id: String?,
         customer_email: String?,
         customer_id: String?,
         customer_name: String?,
@@ -39,9 +39,7 @@ module FinchAPI
 
       attr_accessor provider_id: String
 
-      attr_reader account_id: String?
-
-      def account_id=: (String) -> String
+      attr_accessor account_id: String?
 
       attr_reader authentication_methods: ::Array[FinchAPI::Introspection::AuthenticationMethod]?
 
@@ -49,9 +47,7 @@ module FinchAPI
         ::Array[FinchAPI::Introspection::AuthenticationMethod]
       ) -> ::Array[FinchAPI::Introspection::AuthenticationMethod]
 
-      attr_reader company_id: String?
-
-      def company_id=: (String) -> String
+      attr_accessor company_id: String?
 
       attr_accessor customer_email: String?
 
@@ -84,9 +80,9 @@ module FinchAPI
         connection_type: FinchAPI::Models::Introspection::connection_type,
         products: ::Array[String],
         provider_id: String,
-        ?account_id: String,
+        ?account_id: String?,
         ?authentication_methods: ::Array[FinchAPI::Introspection::AuthenticationMethod],
-        ?company_id: String,
+        ?company_id: String?,
         ?customer_email: String?,
         ?customer_id: String?,
         ?customer_name: String?,
@@ -105,9 +101,9 @@ module FinchAPI
         connection_type: FinchAPI::Models::Introspection::connection_type,
         products: ::Array[String],
         provider_id: String,
-        account_id: String,
+        account_id: String?,
         authentication_methods: ::Array[FinchAPI::Introspection::AuthenticationMethod],
-        company_id: String,
+        company_id: String?,
         customer_email: String?,
         customer_id: String?,
         customer_name: String?,

@@ -52,10 +52,7 @@ module FinchAPI
       # [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection
       # instead of this account ID
       sig { returns(T.nilable(String)) }
-      attr_reader :account_id
-
-      sig { params(account_id: String).void }
-      attr_writer :account_id
+      attr_accessor :account_id
 
       sig do
         returns(
@@ -74,10 +71,7 @@ module FinchAPI
 
       # The Finch UUID of the company associated with the `access_token`.
       sig { returns(T.nilable(String)) }
-      attr_reader :company_id
-
-      sig { params(company_id: String).void }
-      attr_writer :company_id
+      attr_accessor :company_id
 
       # The email of your customer you provided to Finch when a connect session was
       # created for this connection
@@ -135,10 +129,10 @@ module FinchAPI
           connection_type: FinchAPI::Introspection::ConnectionType::OrSymbol,
           products: T::Array[String],
           provider_id: String,
-          account_id: String,
+          account_id: T.nilable(String),
           authentication_methods:
             T::Array[FinchAPI::Introspection::AuthenticationMethod::OrHash],
-          company_id: String,
+          company_id: T.nilable(String),
           customer_email: T.nilable(String),
           customer_id: T.nilable(String),
           customer_name: T.nilable(String),
@@ -209,10 +203,10 @@ module FinchAPI
               FinchAPI::Introspection::ConnectionType::TaggedSymbol,
             products: T::Array[String],
             provider_id: String,
-            account_id: String,
+            account_id: T.nilable(String),
             authentication_methods:
               T::Array[FinchAPI::Introspection::AuthenticationMethod],
-            company_id: String,
+            company_id: T.nilable(String),
             customer_email: T.nilable(String),
             customer_id: T.nilable(String),
             customer_name: T.nilable(String),
